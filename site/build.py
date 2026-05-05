@@ -474,6 +474,7 @@ def page(title, content, active=""):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(title)} — Claude Slays the Spire</title>
+<script defer data-domain="claudeslaysthespire.org" src="https://plausible.io/js/script.js"></script>
 <style>{STYLES}</style>
 </head>
 <body>
