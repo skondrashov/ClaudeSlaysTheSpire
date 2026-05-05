@@ -158,9 +158,8 @@ async def state_watcher():
     was_in_combat = False
     game_over_handled = False
     last_event_name = ""
-    # Debounce run starts: only count a run once it progresses past floor 1.
-    # This prevents false starts (retried start commands) from inflating the counter.
-    pending_run_start = False
+    # Neow-based run counting: a new run is counted when Neow's event screen appears.
+    # run_counted is False when in_game transitions true, set True on Neow detection.
     run_counted = False
 
     # Initialize was_in_game from current state so we don't
@@ -208,10 +207,8 @@ async def state_watcher():
                             _save_stats()
                             await _broadcast_stats()
 
-                        # Detect new run start — mark as pending, don't count yet.
-                        # Only count once the run progresses past floor 1.
-                        if not was_in_game and floor <= 1:
-                            pending_run_start = True
+                        # Detect new game session (in_game transitions true)
+                        if not was_in_game:
                             run_counted = False
                             game_over_handled = False
                             # Clear feed for the new run
@@ -219,11 +216,12 @@ async def state_watcher():
                             _save_feed()
                             recent_events.clear()
 
-                        # Count the run once it actually progresses (floor > 1)
-                        # This prevents false starts from inflating the counter
-                        if pending_run_start and not run_counted and floor > 1:
+                        # Count the run when Neow event appears — every STS run
+                        # starts with Neow, so this is the definitive signal.
+                        if (not run_counted
+                                and screen == "EVENT"
+                                and "neow" in ss.get("event_name", "").lower()):
                             run_counted = True
-                            pending_run_start = False
                             run_stats["total_runs"] += 1
                             _save_stats()
                             await broadcast({
@@ -236,10 +234,9 @@ async def state_watcher():
                         # Detect game over (only process once per run)
                         if screen == "GAME_OVER" and not game_over_handled:
                             game_over_handled = True
-                            # If run was never counted (died on floor 1), count it now
+                            # If run was never counted (Neow detection missed), count it now
                             if not run_counted:
                                 run_counted = True
-                                pending_run_start = False
                                 run_stats["total_runs"] += 1
                             victory = ss.get("victory", False)
                             if victory:
