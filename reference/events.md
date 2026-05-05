@@ -138,10 +138,18 @@ DECISION FRAMEWORK: Don't engage at low HP. The reward is uncertain and the HP c
 PRIORITY: Leave (low HP) > Engage (high HP, feeling adventurous).
 
 ### Cursed Tome (Act 2)
-OPTIONS: Unknown. Name suggests interaction with Curses.
+OPTIONS:
+- [Read] Start reading the book. Then presented with [Continue] or [Stop] at each stage:
+  - Stage 1: Lose 1 HP. [Continue] or [Stop].
+  - Stage 2: Lose 2 HP. [Continue] or [Stop].
+  - Stage 3: Lose 3 HP. [Continue] or [Stop].
+  - Stage 4 (final): Lose 10 HP, obtain a book relic (e.g., Enchiridion).
+- [Leave] Walk away.
 
-DECISION FRAMEWORK: Avoid unless more information is available. Curses permanently pollute the deck.
-PRIORITY: Leave (default).
+Total HP cost to complete: 1+2+3+10 = 16 HP. Can leave at any stage.
+
+DECISION FRAMEWORK: Book relics are powerful (Enchiridion gives a free Power every fight). At 16 HP total cost, worth it when above 50% HP and not approaching a boss. Can bail early if HP gets too low -- you only lose the HP already spent.
+PRIORITY: Read to completion (high HP, no boss imminent) > Leave early (moderate HP) > Leave immediately (low HP).
 
 ### The Joust (Act 2)
 OPTIONS:
@@ -150,3 +158,35 @@ OPTIONS:
 
 DECISION FRAMEWORK: Expected value: 0.7*100 - 0.3*50 = +55g. Mathematically positive but high variance. Take if gold isn't critical for imminent shop purchases.
 PRIORITY: Bet (gold surplus) > Leave (need gold for shop soon).
+
+### Bonfire Spirits (Act 1/2)
+OPTIONS:
+- [Offer] Remove a card from your deck (sacrifice it to the fire).
+- [Leave]
+
+DECISION FRAMEWORK: Free card removal is always valuable. Remove Strikes first, then excess Defends. One of the best events in the game -- no HP cost, no gold cost. Always choose Offer unless the deck is already perfectly trimmed.
+PRIORITY: Offer (always, unless deck is ideal).
+
+### Purifier (Act 1/2)
+OPTIONS:
+- [Purify] Remove a card from your deck.
+- [Leave]
+
+DECISION FRAMEWORK: Free card removal. Same as Bonfire Spirits -- always take it. Remove Strikes before Defends.
+PRIORITY: Purify (always).
+
+### World of Goop (Act 1)
+OPTIONS:
+- [Gather Gold] Gain 75 Gold, lose 11 HP.
+- [Leave]
+
+DECISION FRAMEWORK: 75 gold for 11 HP is a strong trade when HP is high. 75g buys a card removal (50-75g at shop) or a useful relic. At low HP (<40%), skip it.
+PRIORITY: Gather Gold (high HP) > Leave (low HP).
+
+### Woman in Blue (Act 2)
+OPTIONS:
+- [Buy] Purchase potions for 20 Gold each.
+- [Leave]
+
+DECISION FRAMEWORK: 20g per potion is cheap. Stock up on useful potions before boss fights or dangerous elites. Potions provide flexible answers to unknown fights. Buy if you have empty potion slots and gold to spare.
+PRIORITY: Buy (empty slots + gold available) > Leave (full slots or gold-poor).

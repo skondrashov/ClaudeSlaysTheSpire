@@ -115,6 +115,7 @@ WHAT THIS MEANS: Use Thunderclap to strip 1 Flight from ALL Byrds and apply Vuln
 BENCHMARKS: With Carnage+: 7-turn fight, ~20 HP lost. Without Carnage+: 10-12 turns, 36-58 HP lost. This fight is the primary Act 2 HP drain.
 BRING: AOE (Thunderclap for Flight stripping + Vulnerable), burst damage (Carnage+ nearly one-shots a Byrd), Metallicize (essential for long fight), Reaper (sustain healing).
 AVOID: Small single-hit attacks (halved by Flight and inefficient). Entering below 50% HP.
+NOTE: Byrds can appear alongside Chosen (Chosen+Byrd fight). This combines Flight mechanics with Hex (Skills add Dazed). Extremely dangerous -- you need Attacks for Byrd Flight stripping but also need block from Skills, which trigger Hex. Enter at 50%+ HP minimum.
 
 ### Chosen (hallway, Act 2, HP: ~95)
 PATTERN: Applies Hex (adds Dazed to draw pile when you play Skills). Applies Weak to player. Gains +3 Strength over the fight. Attacks escalate from ~13 to 16+ to 36+.
@@ -141,11 +142,11 @@ BRING: Shockwave+ (MUST play turn 2), AOE (Thunderclap), single-target burst for
 AVOID: Delaying Shockwave+ past turn 2. Entering below 50% HP. Spreading damage across all 3 instead of focus-firing.
 
 ### Snake Plant (hallway, Act 2, HP: ~60-75)
-PATTERN: Attacks for significant damage. Exact pattern not well documented.
-KEY MECHANIC: Dangerous enough to warrant Shockwave on turn 1.
-WHAT THIS MEANS: Apply Vulnerable, burst down. 4-turn kill with good deck.
-BRING: Burst damage, Vulnerable application.
-AVOID: Entering at low HP.
+PATTERN: Attacks for 15+ damage per turn. Applies Frail and Weak as debuffs. Has Malleable mechanic.
+KEY MECHANIC: **Malleable** -- gains increasing block each time it is attacked in a single turn. First hit in a turn: gains ~3 block. Second hit: more block. This punishes multi-hit strategies and rewards single large hits per turn. Also applies Frail (block reduced 25%) and Weak (damage reduced 25%), making the fight harder over time.
+WHAT THIS MEANS: Use single large attacks rather than many small hits per turn. Apply Vulnerable early. Shockwave is critical to reduce incoming damage (Weak cancels its attacks, Vulnerable boosts your damage through its Malleable block). Kill in 4-5 turns before debuffs stack.
+BRING: Burst damage (Carnage+, Rampage), Shockwave for Weak+Vulnerable, single large hits.
+AVOID: Multi-hit attacks (Whirlwind, Twin Strike) which trigger Malleable block repeatedly. Entering at low HP -- the Frail+Weak debuffs make recovery difficult.
 
 ### Spheric Guardian (hallway, Act 2, HP: ~20, effectively 60+)
 PATTERN: Starts with 40 block + Barricade (block persists) + 3 Artifact + applies Frail 5. Attacks 10x2 = 20 per turn. Gains more block each turn.
@@ -154,6 +155,20 @@ WHAT THIS MEANS: Strip 3 Artifact charges first with cheap debuffs (Thunderclap 
 BENCHMARKS: 6-turn fight. Expect 30+ HP lost from Frail-reduced blocking vs 10x2 attacks.
 BRING: Thunderclap (strip Artifact), Pen Nib (double damage to break block), burst damage (Fiend Fire), Headbutt (find specific cards).
 AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it).
+
+### Snecko (hallway, Act 2, HP: ~60)
+PATTERN: Attacks for moderate damage. Has a debuff that confuses card costs (randomizes hand costs to 0-3 each turn).
+KEY MECHANIC: Cost confusion debuff. When applied, all cards in hand are randomly assigned costs of 0-3 each turn. This can make expensive cards free or cheap cards unplayable.
+WHAT THIS MEANS: Kill fast before the cost confusion ruins multiple turns. With good RNG, confused turns can be better than normal (0-cost cards). With bad RNG, entire turns are wasted. Vulnerable application helps end the fight faster.
+BRING: Burst damage, Vulnerable. Potions to compensate for bad cost rolls.
+AVOID: Long fights where cost confusion ruins many hands.
+
+### Shelled Parasite (hallway, Act 2, HP: ~60-70)
+PATTERN: Attacks for moderate damage. Has Plated Armor (passive block each turn). When Plated Armor is stripped, may become more aggressive.
+KEY MECHANIC: Plated Armor provides passive block each turn, making chip damage ineffective. Need to deal enough unblocked damage to strip the armor, then burst.
+WHAT THIS MEANS: Apply Vulnerable, use large single hits to break through Plated Armor. Once armor is stripped, the enemy takes full damage.
+BRING: Burst damage, Vulnerable application.
+AVOID: Small multi-hit attacks that get absorbed by Plated Armor.
 
 ---
 

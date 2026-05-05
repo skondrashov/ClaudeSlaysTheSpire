@@ -18,12 +18,21 @@ Items pending confirmation or further investigation. Promote to reference/ when 
 - Mode Shift initial value: Run 2 observed starting at 27 (not 10 as previously thought). Later cycle values (40, 50) need reconfirmation.
 - Flight damage halving rounding: Believed to be floor(damage/2) but exact rounding not confirmed. Math example from Run 3 showed Pommel Strike (9 damage) dealing ~4-5 vs Flight 3 Byrd.
 - Council of Ghosts Apparition power: Apparitions prevent ALL damage for 1 turn each, Ethereal. Never actually used — refused in Run 4 at 79 Max HP. Value vs cost (-40 Max HP) untested.
+- Torii damage threshold: Believed to trigger at 5 or less unblocked damage, reducing to 1. Confirmed against Burns (2->1) in Runs 11 and 12. Does it work on all sources or only attacks? Hexaghost Inferno individual hits at 6 damage each may be above the threshold.
+- Molten Egg upgrade scope: Confirmed to auto-upgrade Attack cards obtained after acquiring it. Does it also upgrade Attack cards from potions (Attack Potion, Skill Potion generating Attacks)? Needs confirmation.
+- Lizard Tail heal amount: Believed to heal to 50% Max HP. Observed once in Run 13. Needs second observation to confirm exact percentage.
+- Enchiridion Power pool: What Powers can Enchiridion generate? Observed Corruption in Run 13. Can it generate any Power in the game, or only class-specific Powers?
+- Dream Catcher card pool: Does Dream Catcher at rest sites offer the same card pool as normal rewards? Or is it a different/restricted pool?
 
 ## Open Questions
 
 - Shop bug root cause: Recurring in 3/8 runs (37.5%). Is this a CommunicationMod issue, a state_formatter issue, or a cmd.py issue? The `choose` probe workaround has not been fully tested.
-- Cursed Tome event: Encountered in Run 4, player left immediately. What does it actually offer?
 - Face Trader event: Encountered in Run 3, player left at low HP. What are the actual options and outcomes?
 - Transmogrifier transform rules: Does it keep the same rarity? Run 4 transformed Strike into Headbutt (both Common). Need more data.
 - Ancient Writing second option: Player chose Simplicity (upgrade all Strikes/Defends). The other option ([Insight]) was not explored. What does it offer?
 - The Joust odds: Listed as 70% win chance for Murderer. Is this accurate? Run 5 appeared to lose. Expected value calculation needs verification.
+- Rampage+ starting damage: Observed scaling 12->20->28->36->48->60 in Run 13. Does Rampage+ start at 12 damage (vs 8 base)? Or does it start at 8 and scale +8? The sequence 12, 20, 28... fits +8 increments starting at 12. Need confirmation of base Rampage starting damage.
+- Shelled Parasite mechanics: Encountered in Run 13 (Fungi Beast + Shelled Parasite fight). Has Plated Armor. Exact HP, damage patterns, and Plated Armor amount need documentation from future encounters.
+- Snecko confusion mechanic: Snecko applies cost confusion (randomizes card costs 0-3). Exact duration, whether it stacks, and interaction with X-cost cards need confirmation.
+- Corruption interaction with Second Wind: Does Second Wind exhaust itself after use (since it's a Skill under Corruption)? If so, it becomes a one-time mass exhaust for block. Need confirmation.
+- Brutality HP threshold for multiple copies: Run 13 died playing 2 copies at 10 HP. What's the safe HP threshold for playing 2 Brutalities? Hypothesis: 40+ HP for 2 copies in a fight expected to last 5+ turns.

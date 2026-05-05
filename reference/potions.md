@@ -68,3 +68,23 @@ OPTIMAL TIMING: Use immediately -- +5 Max HP is equally valuable whenever used. 
 ### Regen Potion
 EFFECT: Gain Regeneration. Heals HP each turn, decrementing: 5, 4, 3, 2, 1 = 15 total HP over 5 turns.
 OPTIMAL TIMING: Turn 1 of a long fight (boss) for maximum total healing. The earlier it's used, the more turns of healing. Total: ~15 HP over 5 turns.
+
+### Duplication Potion
+EFFECT: This turn, your next card is played twice.
+OPTIMAL TIMING: Before a high-value card play. Rampage at 40 damage = 80 total. Carnage+ at 28 = 56 total. Bash+ = double Vulnerable application (redundant). Best with damage cards for burst. Similar to Double Tap but works on any card type (Skills, Powers too).
+
+### Energy Potion
+EFFECT: Gain 2 Energy this turn.
+OPTIMAL TIMING: On turns where you have more cards to play than energy allows. Enables playing expensive combos (Bash+ 2E + Shockwave 2E in one turn with only 3 base energy). Use on critical turns, not throwaway turns.
+
+### Liquid Memories
+EFFECT: Choose a card from your discard pile, return it to your hand. It costs 0 this turn.
+OPTIMAL TIMING: When a key card is in the discard pile and you need it NOW. Retrieve Impervious for a big incoming attack, Bash+ to refresh Vulnerable, or a kill card for a lethal opportunity. The 0 cost makes it free value.
+
+### Attack Potion
+EFFECT: Choose 1 of 3 random Attack cards and add it to your hand. It costs 0 energy this turn.
+OPTIMAL TIMING: When you need more damage output or a specific answer. Can find burst damage, AOE, or scaling. The 0 cost means whatever you get is free. Best during boss fights when extra cards provide more options.
+
+### Elixir
+EFFECT: Exhaust all cards in your hand that you choose.
+OPTIMAL TIMING: When hand is clogged with status cards (Burns, Wounds, Slimed, Dazed). Mass-exhaust garbage cards to improve future draws. Also useful for controlled deck thinning mid-combat (exhaust extra Strikes/Defends).

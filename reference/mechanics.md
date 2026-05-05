@@ -113,7 +113,7 @@ Exhaust is NOT card removal. Permanent card removal only happens at shops (remov
 
 ### Innate
 - Innate cards are always in your opening hand (turn 1 draw).
-- Not observed frequently in current card pool.
+- Bottled Flame relic makes a chosen Attack card Innate (always in opening hand). Best target: Bash+ for guaranteed turn 1 Vulnerable.
 
 ### Retain
 - Retained cards stay in hand at end of turn instead of being discarded.
@@ -179,3 +179,10 @@ Exhaust is NOT card removal. Permanent card removal only happens at shops (remov
 ### Ritual (Cultist)
 - Gains +3 Strength per Ritual activation. Permanent and stacking.
 - Cultists activate Ritual every turn. Kill fast before damage escalates.
+
+### Malleable (Snake Plant)
+- Gains increasing block each time it is attacked within a single turn.
+- First attack in a turn: gains ~3 block. Subsequent attacks in the same turn: gains more block (amount increases).
+- Resets at the start of each turn.
+- Counter-strategy: Use one large hit per turn instead of multiple small hits. Rampage (40+ damage) is better than Whirlwind (5 per hit, each triggering more Malleable block).
+- Applies to Snake Plant in Act 2.

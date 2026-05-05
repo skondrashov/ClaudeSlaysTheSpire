@@ -34,6 +34,8 @@ WHAT NOT TO DO:
 - Ignore Slimed cards. They accumulate and destroy hand quality.
 - Play Berserk. Self-Vulnerable against 2 enemies doing 25-36 combined is suicidal.
 - Split damage between both slimes. Focus fire one to reduce enemy count.
+- Use Hemokinesis at low HP during split phase. The 2 HP self-damage compounds with split damage. One run died because Hemokinesis self-damage at low HP left no margin for the split's combined attacks.
+- Enter below 50% HP. Even with a strong deck (Shockwave, Metallicize, Impervious), low entry HP leaves no buffer for the split transition.
 
 ---
 
@@ -96,6 +98,13 @@ PREPARATION CHECKLIST (must have at least 2 of 3):
 3. Passive block (Metallicize) OR Impervious for the Inferno turn.
 
 If you have 0-1 of these, Hexaghost will likely kill you.
+
+DAMAGE OUTPUT MATTERS: Weak and block keep you alive, but insufficient damage is equally fatal. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone. Two runs died with Weak sources (Clothesline, Disarm) because they lacked the damage output to end the fight before Burns overwhelmed them. Damage scaling cards (Rampage, Inflame, Reaper) shorten the fight and reduce total Burns damage.
+
+WHAT WORKS:
+- Disarm (-2 Str permanently) -- reduces all Hexaghost attacks including each Inferno hit. Very effective.
+- Rampage+ -- scales over the long fight to 40-60+ damage per play. One of the best Hexaghost-killing cards.
+- Torii relic -- reduces each 2-damage Burn to 1 damage (halves Burns attrition). Does not save the fight alone but significantly extends survivability.
 
 STRATEGY:
 - **Turn 1 (free)**: Set up. Play Thunderclap for mass Vulnerable. Play Metallicize. Play Powers.

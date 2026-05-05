@@ -58,15 +58,15 @@ SYNERGIES: Any deck that wants to find specific cards (Bash+, Fiend Fire, Feed).
 High burst for 1 energy. The 2 HP self-damage is minor when healthy.
 
 WHEN IT'S GOOD: Opening turns, boss burst damage, finishing blows where HP cost is irrelevant.
-DECISION POINTS: Check current HP. At low HP in a long fight, the 2 HP per play adds up. With Vulnerable on target: floor(15*1.5) = 22 damage for 1E -- exceptional burst.
-SYNERGIES: Vulnerable (22 damage for 1E), kill shots where HP cost doesn't matter.
+DECISION POINTS: Check current HP. At low HP in a long fight, the 2 HP per play adds up. Against Slime Boss split phase, the 2 HP cost is especially dangerous -- combined with split damage (25-36/turn), even one Hemokinesis can be the difference between survival and death. With Vulnerable on target: floor(15*1.5) = 22 damage for 1E -- exceptional burst.
+SYNERGIES: Vulnerable (22 damage for 1E), kill shots where HP cost doesn't matter. Rupture (+1 Str per play from self-damage).
 
-### Clothesline (2E, Attack, 12 damage + 2 Weak)
-Expensive but applies Weak. Reduces enemy attack damage by 25% for 2 turns.
+### Clothesline (2E, Attack, 12 damage + 2 Weak | +: 14 damage + 3 Weak)
+Expensive but applies Weak. Reduces enemy attack damage by 25% for 2-3 turns.
 
 WHEN IT'S GOOD: Against single big attackers where Weak saves more HP than alternative plays. Against Hexaghost when no other Weak source is available.
 DECISION POINTS: Is 2E for 12 damage + Weak worth more than two 1E cards? Against multiple enemies, you can only Weak one. Consider energy economy.
-UPGRADE: Values unconfirmed.
+UPGRADE: 12->14 damage, 2->3 Weak. The extra Weak turn is significant for boss fights. Medium priority.
 MATCHUPS: Hexaghost -- Weak reduces 7x6=42 Inferno to 7x4=28. This is a lifesaving application.
 
 ### Iron Wave (1E, Attack, 5 damage + 5 block | +: 7 damage + 7 block)
@@ -164,6 +164,22 @@ UPGRADE: 5->8 damage. With Vulnerable: 7->12 damage. The upgrade matters because
 SYNERGIES: Bash+ (3 turns Vulnerable = 3 free Dropkick plays), Thunderclap (mass Vulnerable = Dropkick any target).
 MATCHUPS: Book of Stabbing -- Dropkick+ dealt 12 Vuln damage three times as free actions = 36 total damage for 0 net energy.
 
+### Rampage (1E, Attack, 8 damage, gains +8 damage each time played this combat | +: 8 damage, gains +8 each play)
+Scaling attack that gets stronger every time you play it. The upgrade may increase the starting damage.
+
+WHEN IT'S GOOD: Long fights (bosses, elites) where you can play it 3+ times. By the 3rd play it deals 24+ damage for 1E. By the 5th play: 40+ damage. Against Hexaghost (13-turn fight), Rampage scales to 48-60+ damage per play -- one of the best boss-killing cards available.
+DECISION POINTS: Play every turn you can afford it. Each play increases all future plays. In short fights (3 turns), Rampage only reaches 16-24 damage total, which is mediocre. In long fights, it becomes the highest damage-per-energy card in the deck.
+UPGRADE: Likely increases starting damage. Observed Rampage+ scaling from 12->20->28->36->48->60 in a boss fight.
+SYNERGIES: Double Tap (play Rampage twice in one turn -- each counts as a separate play, accelerating the scaling). Headbutt (top-deck Rampage for next turn to keep the scaling going). Vulnerable (50% bonus on already-high damage is devastating).
+MATCHUPS: Hexaghost -- exceptional. The 13-turn fight lets Rampage scale to 60+ damage. With Vulnerable: 90+ damage per play.
+
+### Double Tap (1E, Skill, next Attack card played this turn is played twice)
+Doubles the next Attack. The duplicated play counts as a separate play for all purposes.
+
+WHEN IT'S GOOD: With high-damage Attacks (Rampage at 40+ damage = 80+ total, Carnage+ at 28 = 56 total). The doubled play triggers all on-play effects separately.
+DECISION POINTS: Play BEFORE your strongest Attack card. The next Attack played after Double Tap fires twice. Plan the turn: Double Tap -> strongest Attack -> remaining plays. At 1E cost, only worth it when the doubled Attack deals significant damage.
+SYNERGIES: Rampage (double play = double scaling acceleration + massive damage), Pommel Strike+ (double = 20 damage + draw 4), any high-damage Attack.
+
 ---
 
 ## Skill Cards
@@ -211,7 +227,7 @@ Permanent Strength reduction. Extremely powerful against scaling enemies.
 
 WHEN IT'S GOOD: Against enemies that gain Strength over time (Gremlin Leader, Cultist). Unlike Weak (temporary 25% reduction), Disarm permanently removes 2 damage from every attack.
 DECISION POINTS: Save for the enemy with the most dangerous Strength scaling. Against multi-hit enemies, the value compounds (5-hit attack loses 10 total damage). Against Gremlin Nob and Chosen, do NOT play (Skill triggers Enrage/Hex).
-MATCHUPS: Gremlin Leader -- reduces Rally effectiveness. Against multi-hit enemies.
+MATCHUPS: Gremlin Leader -- reduces Rally effectiveness. Hexaghost -- -2 Str permanently reduces all attacks including each Inferno hit. Very effective in the long fight. Against multi-hit enemies generally.
 
 ### Intimidate (0E, Skill, apply 1 Weak to ALL enemies, Exhaust)
 Free mass Weak. Zero downside.
@@ -239,6 +255,20 @@ Free energy. Costs 0 to play, gains 2E, exhausts.
 WHEN IT'S GOOD: Any turn where you have cards to play but not enough energy. Effectively adds 2E to your turn for free.
 DECISION POINTS: Play early in the turn so you can use the 2E on remaining cards. Excellent for enabling expensive plays (Bash+ 2E + another 2E card in the same turn).
 SYNERGIES: Expensive cards (Carnage 2E, Shockwave 2E, Fiend Fire 2E). Enables playing them alongside other cards.
+
+### Armaments (1E, Skill, 5 block, upgrade a card in hand | +: 5 block, upgrade ALL cards in hand)
+Block + card upgrade in one play. Upgraded version is transformative.
+
+WHEN IT'S GOOD: Armaments+ is one of the best cards in the game -- every turn it upgrades your entire hand. Over a long fight, every card in the deck gets upgraded. Unupgraded version is decent (5 block + 1 upgrade per turn).
+DECISION POINTS: Play every turn. The upgrades are permanent for the combat. Prioritize upgrading Armaments itself first if given the choice (Armaments+ is enormously better than Armaments). Against Gremlin Nob, do NOT play (Skill triggers Enrage).
+UPGRADE: Single card upgrade -> ALL cards in hand. This is one of the highest-priority upgrades in the game.
+
+### Second Wind (1E, Skill, exhaust all non-Attack cards in hand, gain 5 block per card exhausted | +: 7 block per card)
+Mass exhaust for block. Clears status cards while gaining significant block.
+
+WHEN IT'S GOOD: When hand is full of status cards (Burns, Wounds, Slimed, Dazed) -- each one exhausted becomes 5-7 block. Also exhausts Defends and other Skills for block. Excellent in fights that generate status cards (Hexaghost Burns, Slime Boss Slimed).
+DECISION POINTS: Exhausts ALL non-Attack cards including useful Skills. Check what you're losing before playing. If hand has 3 status cards + 1 useful Skill, the 20 block from exhausting 4 cards may not be worth losing the Skill. Best when the non-Attack cards are expendable.
+SYNERGIES: Corruption (Skills cost 0 but exhaust -- Second Wind exhausts them for block value instead). Status-heavy fights. Dark Embrace (draw per exhaust).
 
 ---
 
@@ -277,6 +307,22 @@ MATCHUPS: Hexaghost -- NEVER play. Burns + self-damage + Vulnerable is a death s
 ### Brutality (0E, Power, lose 1 HP/turn, draw 1 extra card/turn)
 DANGEROUS in long fights. Extra draw at the cost of permanent HP drain.
 
-WHEN IT'S GOOD: Short fights (3-4 turns) where the extra draw finds lethal faster. With healing (Reaper, Feed) to offset self-damage.
-DECISION POINTS: How long will this fight last? In a 9-turn fight, Brutality costs 9 HP minimum. Against Hexaghost with Burns (2-4 HP/turn), Brutality compounds the self-damage to 3-5 HP/turn total. NEVER play against bosses with status card damage (Hexaghost Burns) or fights expected to last 7+ turns.
+WHEN IT'S GOOD: Short fights (3-4 turns) where the extra draw finds lethal faster. With healing (Reaper, Feed) to offset self-damage. With Rupture, each Brutality provides +1 Strength/turn permanently -- a powerful scaling engine.
+DECISION POINTS: How long will this fight last? In a 9-turn fight, Brutality costs 9 HP minimum. Against Hexaghost with Burns (2-4 HP/turn), Brutality compounds the self-damage to 3-5 HP/turn total. NEVER play against bosses with status card damage (Hexaghost Burns) or fights expected to last 7+ turns. With Rupture in play, Brutality becomes a scaling engine -- but NEVER play 2 copies at low HP. Two Brutalities = 2 HP/turn self-damage, which is lethal below ~20 HP even in short fights.
+SYNERGIES: Rupture (each Brutality triggers +1 Str/turn permanently). With 1 Brutality + Rupture, you gain +1 Str every turn -- fights get easier over time. With 2 Brutalities + Rupture, you gain +2 Str/turn but lose 2 HP/turn. Only play multiple copies at 40+ HP.
 MATCHUPS: Hexaghost -- NEVER play. Burns + Brutality = death spiral (20-30 HP from self-damage alone).
+
+### Rupture (1E, Power, whenever you lose HP from a card, gain 1 Strength)
+Converts self-damage into permanent Strength scaling.
+
+WHEN IT'S GOOD: With Brutality (gain +1 Str every turn from the HP loss), Hemokinesis (+1 Str per play), Offering (+1 Str per play), or Combust. The Strength gain is permanent and compounds -- after 5 turns of Brutality, you have +5 Str on every Attack.
+DECISION POINTS: Play as early as possible to maximize Strength accumulation. Rupture does nothing without self-damage cards. Without Brutality or Hemokinesis, it's a dead card. With Brutality, it creates a scaling engine that makes long fights easier over time.
+SYNERGIES: Brutality (automatic +1 Str/turn), Hemokinesis (+1 Str per play), Offering (+1 Str per play). Multiple Ruptures stack (2 Ruptures + Brutality = +2 Str/turn).
+
+### Corruption (3E, Power, all Skills cost 0 energy but Exhaust when played)
+Extremely powerful but fundamentally changes deck economy. All Skills become free but one-time-use.
+
+WHEN IT'S GOOD: When your deck has many Skills (Defend, Shrug It Off, Shockwave, Impervious). Making Shockwave free is enormous. Making Impervious free is game-winning. The energy savings over a long fight are massive.
+DECISION POINTS: At 3E, the setup turn is expensive. Play on a free turn when possible. After Corruption, every Skill exhausts -- plan for a finite number of block/utility plays. In a 12-turn fight, if you have 8 Skills, you get 8 free plays then have no Skills left. Pair with Second Wind or other exhaust synergies.
+SYNERGIES: Second Wind (exhaust non-Attacks for block -- with Corruption, all Skills exhaust anyway), Dark Embrace (draw per exhaust), Barricade (accumulated block persists). Enchiridion (can grant Corruption at start of combat for free).
+MATCHUPS: Boss fights where the energy savings outweigh the loss of repeated Skill use.

@@ -6,7 +6,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-Entering fights at critically low HP is the single most common cause of death across all runs. Five of eight deaths resulted from entering an Act 2 fight below 50% HP.
+Entering fights at critically low HP is the single most common cause of death across all runs. Eight of thirteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
 
 | Run | Entry HP | % of Max | Fight | Result |
 |---|---|---|---|---|
@@ -15,6 +15,9 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 5 | 11 | 13% | Gremlin Leader | Died (unwinnable) |
 | 6 | 6 | 7% | Book of Stabbing | Died (dealt 140 dmg, Book at 21 HP) |
 | 8 | 37 | 39% | 3 Cultists | Died (Shockwave+ timing + low HP) |
+| 10 | low | <50% | Slime Boss | Died (Hemokinesis self-damage post-split) |
+| 11 | 18 | ~22% | Chosen+Byrd | Died (HP drained through Act 2) |
+| 13 | 10 | ~12% | Fungi Beast+Shelled Parasite | Died (2x Brutality self-damage at 10 HP) |
 
 ### HP Thresholds for Act 2
 
@@ -64,13 +67,14 @@ Only upgrading once in 28 floors was the worst strategic error observed. Each mi
 
 1. Bash (3 Vulnerable vs 2 is massive)
 2. True Grit (CHOSEN exhaust vs RANDOM is game-deciding)
-3. Carnage (28 vs 20 damage)
-4. Iron Wave (7/7 vs 5/5)
-5. Pommel Strike (10 damage + draw 2 vs 9 + draw 1)
-6. Thunderclap (7 vs 4 AOE)
-7. Shrug It Off (11 vs 8 block)
-8. Headbutt (12 vs 9 damage)
-9. Defend (8 vs 5 block -- low individual priority but Ancient Writing mass upgrade is excellent)
+3. Armaments (upgrade 1 card -> upgrade ALL cards in hand -- transformative)
+4. Carnage (28 vs 20 damage)
+5. Iron Wave (7/7 vs 5/5)
+6. Pommel Strike (10 damage + draw 2 vs 9 + draw 1)
+7. Thunderclap (7 vs 4 AOE)
+8. Shrug It Off (11 vs 8 block)
+9. Headbutt (12 vs 9 damage)
+10. Defend (8 vs 5 block -- low individual priority but Ancient Writing mass upgrade is excellent)
 
 ---
 
@@ -128,6 +132,7 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 
 **Hexaghost needs:**
 - Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) -- MANDATORY
+- Damage scaling (Rampage, Inflame) -- kill before Burns overwhelm (insufficient damage killed 2 runs despite having Weak)
 - Passive block (Metallicize) for the 13-turn fight
 - Turn 1 setup (Thunderclap for Vulnerable)
 - No self-damage cards (Brutality, Berserk)
@@ -223,9 +228,10 @@ Burning Blood (+6/fight) cannot compensate for 30-50 HP fights. Reaper and Feed 
 
 ### Cross-Run Victory Pattern
 
-Across all boss victories, the differentiators are:
-1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this.
-2. **Passive block/sustain**: Metallicize, Plated Armor, or Pantograph appeared in most victories. None of the deaths had passive block.
+Across all boss victories (7 total), the differentiators are:
+1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions.
+2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block.
 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.
-4. **Self-damage avoidance**: No victory used Berserk or Brutality.
+4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage.
 5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards.
+6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Two deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.
