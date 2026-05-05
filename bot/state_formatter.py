@@ -202,7 +202,7 @@ def format_combat(gs: dict) -> str:
             flags.append("exhaust")
         if ethereal:
             flags.append("ethereal")
-        if card.get("upgrades", 0) > 0:
+        if card.get("upgrades", 0) > 0 and not name.endswith("+"):
             name += "+"
 
         flag_str = f" [{', '.join(flags)}]" if flags else ""
@@ -260,7 +260,7 @@ def format_shop(gs: dict) -> str:
         for i, card in enumerate(cards):
             name = card.get("name", "?")
             price = card.get("price", "?")
-            if card.get("upgrades", 0) > 0:
+            if card.get("upgrades", 0) > 0 and not name.endswith("+"):
                 name += "+"
             lines.append(f"  [{i}] {name} — {price}g")
 
@@ -358,7 +358,7 @@ def format_card_reward(gs: dict) -> str:
         ctype = card.get("type", "?").lower()
         cost = card.get("cost", "?")
         rarity = card.get("rarity", "?").lower()
-        if card.get("upgrades", 0) > 0:
+        if card.get("upgrades", 0) > 0 and not name.endswith("+"):
             name += "+"
         lines.append(f"  [{i}] {name} ({ctype}, {cost}E, {rarity})")
 
@@ -424,7 +424,7 @@ def format_grid(gs: dict) -> str:
 
     for i, card in enumerate(cards):
         name = card.get("name", "?")
-        if card.get("upgrades", 0) > 0:
+        if card.get("upgrades", 0) > 0 and not name.endswith("+"):
             name += "+"
         cost = card.get("cost", "?")
         ctype = card.get("type", "?").lower()
@@ -444,7 +444,7 @@ def format_hand_select(gs: dict) -> str:
     lines.append(f"Select {num_cards} card(s) from hand:")
     for i, card in enumerate(hand):
         name = card.get("name", "?")
-        if card.get("upgrades", 0) > 0:
+        if card.get("upgrades", 0) > 0 and not name.endswith("+"):
             name += "+"
         lines.append(f"  [{i}] {name}")
 

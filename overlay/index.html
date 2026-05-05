@@ -43,7 +43,7 @@
     overflow: hidden;
   }
 
-  /* === SIDEBAR === */
+  /* === SIDEBAR: header + full reasoning log === */
 
   .header {
     background: linear-gradient(135deg, rgba(30,12,52,0.98), rgba(24,36,68,0.98));
@@ -53,17 +53,12 @@
   }
 
   .header h1 {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 800;
     color: #d4a0ff;
     letter-spacing: 1.5px;
-  }
-
-  .header .subtitle {
-    font-size: 14px;
-    color: #aaa;
-    margin-top: 4px;
-    font-weight: 500;
+    display: flex;
+    align-items: center;
   }
 
   .status-dot {
@@ -96,7 +91,7 @@
   }
 
   .section-title {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     color: #999;
     text-transform: uppercase;
@@ -105,200 +100,195 @@
     flex-shrink: 0;
   }
 
-  /* Thinking — big, readable, fills sidebar */
-  .reasoning {
+  /* Reasoning log — scrollable, fills sidebar */
+  .reasoning-log {
     flex: 1;
     overflow-y: auto;
     min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
-  .reasoning .text {
-    font-size: 18px;
+  .reasoning-entry {
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .reasoning-entry:first-child {
+    font-size: 22px;
     line-height: 1.55;
     color: #eee;
-    font-weight: 400;
   }
 
-  .reasoning .text.empty {
-    color: #555;
-    font-style: italic;
+  .reasoning-entry:not(:first-child) {
+    font-size: 18px;
+    line-height: 1.45;
+    color: #999;
   }
 
-  .reasoning .command-badge {
+  .reasoning-entry .command-badge {
     display: inline-block;
     background: #5a2090;
     color: #e8d0ff;
     padding: 4px 14px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     font-family: 'Consolas', monospace;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
-  /* Enemies */
-  .enemies {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .reasoning-entry:first-child .command-badge {
+    font-size: 20px;
+    padding: 5px 16px;
+    margin-bottom: 8px;
   }
 
-  .enemy {
-    background: rgba(40, 20, 20, 0.9);
-    border-radius: 6px;
-    padding: 10px 14px;
-    border-left: 4px solid #ef4444;
+  .reasoning-entry .reason-text {
+    display: block;
   }
 
-  .enemy .name {
-    font-weight: 700;
-    font-size: 16px;
-    color: #f0f0f0;
-  }
-
-  .enemy .details {
-    font-size: 14px;
-    color: #bbb;
-    margin-top: 3px;
-  }
-
-  .hp-bar-container {
-    height: 4px;
-    background: #444;
-    border-radius: 2px;
-    margin-top: 5px;
-    overflow: hidden;
-  }
-
-  .hp-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #ef4444, #f87171);
-    border-radius: 2px;
-    transition: width 0.3s ease;
+  .reasoning-empty {
+    color: #555;
+    font-style: italic;
+    font-size: 22px;
   }
 
   /* === BOTTOM BAR === */
+  /* Layout: stats (narrow) | actions (3-col, wide) | changelog (right) */
 
   .bottom-section {
     display: flex;
     flex-direction: column;
-    padding: 14px 20px;
+    padding: 14px 16px;
     border-right: 1px solid rgba(255,255,255,0.08);
     overflow: hidden;
   }
 
-  .bottom-section.log-section {
-    width: 700px;
-    flex-shrink: 0;
-  }
-
   .bottom-section.stats-section {
-    width: 240px;
+    width: 130px;
     flex-shrink: 0;
     justify-content: center;
+    align-items: center;
   }
 
-  .bottom-section.open-space {
+  .bottom-section.feed-section {
     flex: 1;
+  }
+
+  .bottom-section.changelog-section {
+    width: 380px;
+    flex-shrink: 0;
     border-right: none;
   }
 
-  .action-log {
-    flex: 1;
-    overflow-y: auto;
-    min-height: 0;
-  }
-
-  .log-entry {
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    animation: fadeIn 0.3s ease;
-  }
-
-  .log-entry:last-child { border-bottom: none; }
-
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; } }
-
-  .log-entry .log-command {
-    font-family: 'Consolas', monospace;
-    font-size: 15px;
-    font-weight: 600;
-    color: #d4a0ff;
-  }
-
-  .log-entry .log-reason {
-    font-size: 14px;
-    color: #aaa;
-    margin-top: 3px;
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .log-entry .log-time {
-    font-size: 11px;
-    color: #666;
-    float: right;
-    font-weight: 500;
-  }
-
+  /* Run stats — compact column */
   .run-stats {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
+    align-items: center;
   }
 
   .run-stat {
-    font-size: 14px;
+    font-size: 13px;
     color: #888;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: center;
   }
 
   .run-stat span {
     display: block;
-    font-size: 32px;
+    font-size: 28px;
     color: #f0f0f0;
     font-weight: 800;
     margin-top: 2px;
   }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #555; border-radius: 2px; }
+  /* Action feed — 3 columns, bottom-aligned (newest = bottom-right) */
+  .action-feed {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 0 16px;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .feed-entry {
+    display: flex;
+    align-items: baseline;
+    padding: 3px 0;
+    width: calc(33.33% - 11px);
+  }
+
+  .feed-action {
+    font-family: 'Consolas', monospace;
+    font-size: 17px;
+    font-weight: 600;
+    color: #d4a0ff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .feed-action.highlight {
+    color: #4ade80;
+  }
+
+  /* Changelog — human updates */
+  .changelog-list {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+
+  .changelog-entry {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .changelog-entry .cl-date {
+    font-size: 13px;
+    color: #555;
+    font-family: 'Consolas', monospace;
+    text-transform: uppercase;
+  }
+
+  .changelog-entry .cl-text {
+    font-size: 16px;
+    color: #bbb;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  /* Hide all scrollbars */
+  ::-webkit-scrollbar { width: 0; height: 0; display: none; }
+  * { scrollbar-width: none; }
 </style>
 </head>
 <body>
 
+<!-- Right sidebar: reasoning history -->
 <div class="sidebar">
   <div class="header">
     <h1><span class="status-dot disconnected" id="statusDot"></span>CLAUDE PLAYS STS</h1>
-    <div class="subtitle" id="subtitle">Connecting...</div>
   </div>
 
   <div class="section grow">
-    <div class="section-title">Thinking</div>
-    <div class="reasoning" id="reasoning">
-      <div class="text empty">Waiting for first decision...</div>
+    <div class="reasoning-log" id="reasoningLog">
+      <div class="reasoning-empty">Waiting for first decision...</div>
     </div>
-  </div>
-
-  <div class="section" id="enemySection" style="display:none">
-    <div class="section-title">Enemies</div>
-    <div class="enemies" id="enemies"></div>
   </div>
 </div>
 
+<!-- Bottom bar: stats | actions (3-col) | changelog -->
 <div class="bottom-bar">
-  <div class="bottom-section log-section">
-    <div class="section-title">Action Log</div>
-    <div class="action-log" id="actionLog"></div>
-  </div>
-
   <div class="bottom-section stats-section">
     <div class="run-stats" id="runStats">
       <div class="run-stat">Runs<span id="totalRuns">0</span></div>
@@ -307,7 +297,20 @@
     </div>
   </div>
 
-  <div class="bottom-section open-space"></div>
+  <div class="bottom-section feed-section">
+    <div class="section-title">Actions</div>
+    <div class="action-feed" id="actionFeed"></div>
+  </div>
+
+  <div class="bottom-section changelog-section">
+    <div class="section-title">Dev Log</div>
+    <div class="changelog-list" id="changelog">
+      <div class="changelog-entry">
+        <div class="cl-date">May 4</div>
+        <div class="cl-text">Initial build. CommunicationMod relay, cmd.py interface, OBS overlay, stream server. First test run.</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -315,17 +318,17 @@ const WS_URL = 'ws://127.0.0.1:3001';
 let ws = null;
 let reconnectDelay = 1000;
 
+// Last known game state for translating commands
+let lastState = null;
+
 function connect() {
   const dot = document.getElementById('statusDot');
-  const sub = document.getElementById('subtitle');
   dot.className = 'status-dot connecting';
-  sub.textContent = 'Connecting...';
 
   ws = new WebSocket(WS_URL);
 
   ws.onopen = () => {
     dot.className = 'status-dot connected';
-    sub.textContent = 'Live';
     reconnectDelay = 1000;
   };
 
@@ -338,7 +341,6 @@ function connect() {
 
   ws.onclose = () => {
     dot.className = 'status-dot disconnected';
-    sub.textContent = 'Disconnected';
     setTimeout(connect, reconnectDelay);
     reconnectDelay = Math.min(reconnectDelay * 1.5, 15000);
   };
@@ -349,85 +351,125 @@ function connect() {
 function handleEvent(event) {
   switch (event.type) {
     case 'state':
-      updateState(event);
+      lastState = event;
       break;
     case 'decision':
-      addDecision(event);
+      addReasoning(event);
+      const cmd = event.command ? event.command.trim().split(/\s+/)[0] : '';
+      const isPhase = cmd === 'end' || cmd === 'proceed' || cmd === 'start';
+      // Use server-side translated text if available (survives refresh), fall back to client-side
+      const displayText = event.translated || translateCommand(event.command);
+      addFeedEntry(displayText, isPhase);
+      break;
+    case 'feed':
+      addFeedEntry(event.text, event.highlight);
       break;
     case 'run_start':
-      document.getElementById('subtitle').textContent =
-        `${event.class} — Run #${event.run_number}`;
+      addFeedEntry('RUN START — ' + event.class, true);
       break;
     case 'run_end':
-      addLogEntry(
-        event.victory ? 'VICTORY' : 'DEFEAT',
-        `Floor ${event.floor}`,
+      addFeedEntry(
+        (event.victory ? 'VICTORY' : 'DEFEAT') + ` — Floor ${event.floor}`,
         true
       );
       break;
     case 'stats':
       updateRunStats(event);
       break;
+    case 'reload':
+      location.reload();
+      break;
   }
 }
 
-function updateState(s) {
-  const section = document.getElementById('enemySection');
-  const container = document.getElementById('enemies');
-  if (s.in_combat && s.enemies && s.enemies.length > 0) {
-    section.style.display = '';
-    container.innerHTML = s.enemies.map(e => {
-      const pct = e.max_hp > 0 ? (e.hp / e.max_hp * 100) : 0;
-      return `<div class="enemy">
-        <div class="name">${esc(e.name)}</div>
-        <div class="details">HP: ${e.hp}/${e.max_hp} — Intent: ${esc(e.intent || '?')}</div>
-        <div class="hp-bar-container"><div class="hp-bar-fill" style="width:${pct}%"></div></div>
-      </div>`;
-    }).join('');
-  } else {
-    section.style.display = 'none';
+// Translate raw commands into readable actions using last known state
+function translateCommand(cmd) {
+  if (!cmd) return cmd;
+
+  const parts = cmd.trim().split(/\s+/);
+  const verb = parts[0];
+
+  if (verb === 'play' && lastState && lastState.hand) {
+    const cardIdx = parseInt(parts[1]);
+    const targetIdx = parts[2] !== undefined ? parseInt(parts[2]) : null;
+    const card = lastState.hand ? lastState.hand[cardIdx - 1] : null;
+    const cardName = card ? card.name : `card ${parts[1]}`;
+
+    if (targetIdx !== null && lastState.enemies) {
+      const enemy = lastState.enemies[targetIdx];
+      const enemyName = enemy ? enemy.name : `enemy ${parts[2]}`;
+      return `${cardName} → ${enemyName}`;
+    }
+    return cardName;
   }
 
-  if (s.class && s.class !== '?') {
-    const sub = document.getElementById('subtitle');
-    const screen = s.screen !== 'NONE' ? ` — ${s.screen}` : s.in_combat ? ' — COMBAT' : '';
-    sub.textContent = `${s.class} Floor ${s.floor}${screen}`;
+  if (verb === 'choose' && lastState && lastState.choices) {
+    const idx = parseInt(parts[1]);
+    const choice = lastState.choices ? lastState.choices[idx] : null;
+    if (choice) return `Choose: ${choice}`;
   }
+
+  if (verb === 'end') return 'End Turn';
+  if (verb === 'proceed') return 'Proceed';
+  if (verb === 'skip' || verb === 'return') return 'Skip';
+  if (verb === 'leave') return 'Leave';
+
+  if (verb === 'potion') {
+    const action = parts[1];
+    if (action === 'use') return `Use Potion ${parts[2]}`;
+    if (action === 'discard') return `Discard Potion ${parts[2]}`;
+  }
+
+  if (verb === 'start') return `Start — ${parts[1] || 'IRONCLAD'}`;
+
+  return cmd;
 }
 
-function addDecision(d) {
-  const reasoning = document.getElementById('reasoning');
-  let html = '';
-  if (d.command) {
-    html += `<div class="command-badge">${esc(d.command)}</div>`;
-  }
-  if (d.reasoning) {
-    html += `<div class="text">${esc(d.reasoning)}</div>`;
-  } else {
-    html += `<div class="text empty">No reasoning provided</div>`;
-  }
-  reasoning.innerHTML = html;
+function addReasoning(d) {
+  const log = document.getElementById('reasoningLog');
 
-  addLogEntry(d.command, d.reasoning);
-}
-
-function addLogEntry(command, reason, highlight) {
-  const log = document.getElementById('actionLog');
-  const now = new Date();
-  const time = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  // Clear empty state
+  const empty = log.querySelector('.reasoning-empty');
+  if (empty) empty.remove();
 
   const entry = document.createElement('div');
-  entry.className = 'log-entry';
-  entry.innerHTML = `
-    <span class="log-time">${time}</span>
-    <div class="log-command"${highlight ? ' style="color:#4ade80"' : ''}>${esc(command || '')}</div>
-    ${reason ? `<div class="log-reason">${esc(reason)}</div>` : ''}
-  `;
+  entry.className = 'reasoning-entry';
+  let html = '';
+  if (d.command) {
+    const badgeText = d.translated || translateCommand(d.command);
+    html += `<div class="command-badge">${esc(badgeText)}</div>`;
+  }
+  if (d.reasoning) {
+    html += `<span class="reason-text">${esc(d.reasoning)}</span>`;
+  }
+  entry.innerHTML = html;
 
   log.insertBefore(entry, log.firstChild);
 
-  while (log.children.length > 15) {
+  // Keep max 20
+  while (log.children.length > 20) {
     log.removeChild(log.lastChild);
+  }
+
+  log.scrollTop = 0;
+}
+
+// Actions: append to end (newest = bottom of last column)
+function addFeedEntry(text, highlight) {
+  const feed = document.getElementById('actionFeed');
+
+  const entry = document.createElement('div');
+  entry.className = 'feed-entry';
+  entry.innerHTML = `
+    <span class="feed-action${highlight ? ' highlight' : ''}">${esc(text || '')}</span>
+  `;
+
+  feed.appendChild(entry);
+
+  // Remove oldest from the top when we overflow
+  const maxEntries = 24; // ~8 per column x 3 columns
+  while (feed.children.length > maxEntries) {
+    feed.removeChild(feed.firstChild);
   }
 }
 

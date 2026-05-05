@@ -26,25 +26,53 @@ WS_PORT = 3001
 HTTP_PORT = 3002
 STATE_FILE = os.path.join(os.path.dirname(__file__), "data", "last_state.json")
 EVENT_LOG = os.path.join(os.path.dirname(__file__), "data", "stream_events.jsonl")
+STATS_FILE = os.path.join(os.path.dirname(__file__), "data", "run_stats.json")
 
 # Connected overlay clients
 clients = set()
 
-# Recent events for new clients
+# Recent events for new clients (decisions/reasoning)
 recent_events = []
 MAX_RECENT = 20
 
-# Run stats
-run_stats = {
-    "total_runs": 0,
-    "wins": 0,
-    "deaths": 0,
-    "best_floor": 0,
-    "current_floor": 0,
-    "current_hp": 0,
-    "max_hp": 0,
-    "current_class": "?",
-}
+# Separate feed for action entries (survives overlay refresh)
+FEED_FILE = os.path.join(os.path.dirname(__file__), "data", "action_feed.json")
+MAX_FEED = 30
+
+def _load_feed():
+    try:
+        with open(FEED_FILE) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+def _save_feed():
+    os.makedirs(os.path.dirname(FEED_FILE), exist_ok=True)
+    with open(FEED_FILE, "w") as f:
+        json.dump(action_feed, f)
+
+action_feed = _load_feed()
+
+# Run stats — persisted to disk
+def _load_stats():
+    try:
+        with open(STATS_FILE) as f:
+            saved = json.load(f)
+        # Merge with defaults so new fields don't break
+        defaults = {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0,
+                     "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?"}
+        defaults.update(saved)
+        return defaults
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0,
+                "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?"}
+
+def _save_stats():
+    os.makedirs(os.path.dirname(STATS_FILE), exist_ok=True)
+    with open(STATS_FILE, "w") as f:
+        json.dump(run_stats, f)
+
+run_stats = _load_stats()
 
 
 async def broadcast(event: dict):
@@ -52,6 +80,13 @@ async def broadcast(event: dict):
     recent_events.append(event)
     if len(recent_events) > MAX_RECENT:
         recent_events.pop(0)
+
+    # Track feed-worthy events separately for persistence
+    if event.get("type") in ("decision", "feed", "run_start", "run_end"):
+        action_feed.append(event)
+        if len(action_feed) > MAX_FEED:
+            action_feed.pop(0)
+        _save_feed()
 
     if clients:
         msg = json.dumps(event)
@@ -66,9 +101,13 @@ async def ws_handler(websocket):
     clients.add(websocket)
     print(f"[stream] Overlay connected ({len(clients)} clients)")
     try:
-        # Send recent events to catch up
-        for event in recent_events:
+        # Send persistent feed to populate action panel
+        for event in action_feed:
             await websocket.send(json.dumps(event))
+        # Send recent reasoning events
+        for event in recent_events:
+            if event.get("type") == "decision":
+                await websocket.send(json.dumps(event))
         # Send current stats
         await websocket.send(json.dumps({"type": "stats", **run_stats}))
 
@@ -89,6 +128,7 @@ async def state_watcher():
     last_mtime = 0
     last_floor = 0
     was_in_game = False
+    was_in_combat = False
 
     while True:
         try:
@@ -117,10 +157,14 @@ async def state_watcher():
                         run_stats["current_class"] = cls
                         if floor > run_stats["best_floor"]:
                             run_stats["best_floor"] = floor
+                            _save_stats()
 
-                        # Detect new run
-                        if not was_in_game:
+                        # Detect new run — only when transitioning from
+                        # no-game to in-game AND floor is low (actual new run,
+                        # not just stream.py restarting mid-run)
+                        if not was_in_game and floor <= 1:
                             run_stats["total_runs"] += 1
+                            _save_stats()
                             await broadcast({
                                 "type": "run_start",
                                 "class": cls,
@@ -135,6 +179,7 @@ async def state_watcher():
                                 run_stats["wins"] += 1
                             else:
                                 run_stats["deaths"] += 1
+                            _save_stats()
                             await broadcast({
                                 "type": "run_end",
                                 "victory": victory,
@@ -142,8 +187,35 @@ async def state_watcher():
                                 "stats": dict(run_stats),
                             })
 
-                        # Broadcast state
+                        # Detect combat start
                         combat = gs.get("combat_state")
+                        in_combat = combat is not None
+                        if in_combat and not was_in_combat:
+                            monsters = []
+                            if combat:
+                                for m in combat.get("monsters", []):
+                                    if not m.get("is_gone"):
+                                        monsters.append(m.get("name", "?"))
+                            enemy_str = " + ".join(monsters) if monsters else "?"
+                            await broadcast({
+                                "type": "feed",
+                                "text": f"COMBAT — {enemy_str}",
+                                "highlight": True,
+                                "timestamp": time.time(),
+                            })
+                        was_in_combat = in_combat
+
+                        # Broadcast state
+                        hand = []
+                        if combat:
+                            for c in combat.get("hand", []):
+                                hand.append({"name": c.get("name", "?")})
+                        enemies = []
+                        if combat:
+                            for m in combat.get("monsters", []):
+                                if not m.get("is_gone"):
+                                    enemies.append({"name": m.get("name"), "hp": m.get("current_hp"), "max_hp": m.get("max_hp"), "intent": m.get("intent")})
+                        choices = gs.get("choice_list", [])
                         await broadcast({
                             "type": "state",
                             "floor": floor,
@@ -154,11 +226,9 @@ async def state_watcher():
                             "phase": phase,
                             "class": cls,
                             "in_combat": combat is not None,
-                            "enemies": [
-                                {"name": m.get("name"), "hp": m.get("current_hp"), "max_hp": m.get("max_hp"), "intent": m.get("intent")}
-                                for m in (combat or {}).get("monsters", [])
-                                if not m.get("is_gone")
-                            ] if combat else [],
+                            "enemies": enemies,
+                            "hand": hand,
+                            "choices": choices,
                         })
 
                     was_in_game = in_game
@@ -188,6 +258,7 @@ class DecisionHandler(BaseHTTPRequestHandler):
                 event = {
                     "type": "decision",
                     "command": data.get("command", ""),
+                    "translated": data.get("translated", data.get("command", "")),
                     "reasoning": data.get("reasoning", ""),
                     "timestamp": time.time(),
                 }
@@ -209,6 +280,13 @@ class DecisionHandler(BaseHTTPRequestHandler):
                 self.send_response(400)
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": str(e)}).encode())
+        elif self.path == "/reload":
+            asyncio.run_coroutine_threadsafe(
+                broadcast({"type": "reload"}), loop
+            )
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b'{"ok":true}')
         else:
             self.send_response(404)
             self.end_headers()
