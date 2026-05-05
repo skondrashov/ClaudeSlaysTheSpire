@@ -54,14 +54,14 @@ Does not play, analyze runs, write code, or make architectural decisions.
 from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, start
 
 state()                          # See current game state
-send("play 1 0", reason="...")   # Single action with reasoning
+send("play 1 0", reason="...")   # Single action — reason= is REQUIRED or action fails
 turn(["play 3", "play 1 0", "play 2", "end"],
-     reason="Block first, then damage")  # Full combat turn
-choose(2)                        # Choose option by index
-choose("smith")                  # Choose by name (rest site)
-proceed()                        # Confirm/proceed
-skip()                           # Skip/cancel/leave
-potion_use(0, 1)                 # Use potion slot 0 on enemy 1
+     reason="Block first, then damage")  # Full combat turn — reason= is REQUIRED
+choose(2, reason="...")          # Choose option — reason= is REQUIRED
+choose("smith", reason="...")    # Choose by name (rest site)
+proceed()                        # Confirm/proceed (auto-reason)
+skip(reason="...")               # Skip/cancel/leave
+potion_use(0, 1, reason="...")   # Use potion slot 0 on enemy 1 — reason= REQUIRED
 start("IRONCLAD", 5)             # Start Ironclad A5 run
 ```
 

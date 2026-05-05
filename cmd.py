@@ -460,8 +460,9 @@ def send(command: str, reason: str = "") -> str:
                    "play Bash 0"       — play Bash targeting enemy 0 (resolved automatically)
                    "play Shrug It Off" — play Shrug It Off (no target)
                  Using card names avoids index-shift errors when playing multiple cards.
-        reason: Optional reasoning for the overlay/stream. Explain why
-                you're making this decision — viewers want to understand.
+        reason: REQUIRED — reasoning for the overlay/stream. Explain WHY
+                you're making this decision. Viewers need to see your thinking.
+                The action will not execute without reasoning.
 
     Commands:
         play N [target]     — Play card N (1-indexed) at optional target
@@ -477,6 +478,12 @@ def send(command: str, reason: str = "") -> str:
         key K [timeout]     — Press key K
         wait T              — Wait T milliseconds
     """
+    if not reason or not reason.strip():
+        return (
+            "[ERROR] reason= is REQUIRED. Explain WHY you're making this decision.\n"
+            "Example: send('play Bash 0', reason='Applying Vulnerable for damage amplification next turn')\n"
+            "The stream overlay shows your reasoning to viewers — it cannot be empty."
+        )
     _acquire_lock()
     # Fetch pre-command state so translation has current hand/enemies
     global _last_raw_state
@@ -661,6 +668,14 @@ def turn(actions: list, reason: str = "") -> str:
     if not actions:
         return state()
 
+    if not reason or not reason.strip():
+        return (
+            "[ERROR] reason= is REQUIRED. Explain your combat plan.\n"
+            "Example: turn(['play Bash 0', 'play Strike 0', 'end'],\n"
+            "         reason='Bash for Vulnerable, Strike for 9 damage. 5 block vs 12 incoming, take 7 to 58 HP.')\n"
+            "The stream overlay shows your reasoning to viewers — it cannot be empty."
+        )
+
     _acquire_lock()
     # Fetch pre-turn state for translation
     global _last_raw_state
@@ -718,49 +733,50 @@ def turn(actions: list, reason: str = "") -> str:
     return formatted
 
 
-def play(card, target: int = None) -> str:
+def play(card, target: int = None, reason: str = "") -> str:
     """Play a card by index or name. Target is enemy index (0-indexed), required for targeted cards.
 
     Args:
         card: Card index (1-indexed int) or card name (str).
               Examples: 3, "Bash", "Shrug It Off", "Bash+"
         target: Enemy index (0-indexed), required for targeted attack cards.
+        reason: REQUIRED — why you're playing this card.
     """
     if target is not None:
-        return send(f"play {card} {target}")
-    return send(f"play {card}")
+        return send(f"play {card} {target}", reason=reason)
+    return send(f"play {card}", reason=reason)
 
 
-def end() -> str:
+def end(reason: str = "End turn") -> str:
     """End turn."""
-    return send("end")
+    return send("end", reason=reason)
 
 
-def choose(option) -> str:
-    """Choose an option by index or name."""
-    return send(f"choose {option}")
+def choose(option, reason: str = "") -> str:
+    """Choose an option by index or name. reason= is REQUIRED."""
+    return send(f"choose {option}", reason=reason)
 
 
-def proceed() -> str:
+def proceed(reason: str = "Proceeding") -> str:
     """Press proceed/confirm."""
-    return send("proceed")
+    return send("proceed", reason=reason)
 
 
-def skip() -> str:
+def skip(reason: str = "Skipping") -> str:
     """Press skip/cancel/leave."""
-    return send("return")
+    return send("return", reason=reason)
 
 
-def potion_use(slot: int, target: int = None) -> str:
-    """Use a potion."""
+def potion_use(slot: int, target: int = None, reason: str = "") -> str:
+    """Use a potion. reason= is REQUIRED."""
     if target is not None:
-        return send(f"potion use {slot} {target}")
-    return send(f"potion use {slot}")
+        return send(f"potion use {slot} {target}", reason=reason)
+    return send(f"potion use {slot}", reason=reason)
 
 
-def potion_discard(slot: int) -> str:
-    """Discard a potion."""
-    return send(f"potion discard {slot}")
+def potion_discard(slot: int, reason: str = "") -> str:
+    """Discard a potion. reason= is REQUIRED."""
+    return send(f"potion discard {slot}", reason=reason)
 
 
 def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> str:
@@ -770,7 +786,7 @@ def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> 
         cmd += f" {ascension}"
     if seed:
         cmd += f" {seed}"
-    return send(cmd)
+    return send(cmd, reason=f"Starting {character} A{ascension}")
 
 
 # Allow running directly: python cmd.py state / python cmd.py "play 1 0"
