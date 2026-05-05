@@ -747,7 +747,7 @@ def build_landing(categories, top_level_files, run_stats):
 <div class="state-details">
   <div class="state-card">
     <h3>System</h3>
-    <p><strong>Model:</strong> Claude Opus 4 via Claude Code</p>
+    <p><strong>Model:</strong> Claude Opus 4.6 via Claude Code</p>
     <p><strong>Character:</strong> Ironclad, Ascension 0</p>
     <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
   </div>
