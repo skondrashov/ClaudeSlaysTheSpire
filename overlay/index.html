@@ -53,28 +53,12 @@
   }
 
   .header h1 {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 800;
     color: #d4a0ff;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
+    letter-spacing: 2px;
+    text-align: center;
   }
-
-  .status-dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-
-  .status-dot.connected { background: #4ade80; box-shadow: 0 0 8px #4ade8088; }
-  .status-dot.disconnected { background: #f87171; box-shadow: 0 0 8px #f8717188; }
-  .status-dot.connecting { background: #fbbf24; animation: pulse 1s infinite; }
-
-  @keyframes pulse { 50% { opacity: 0.4; } }
 
   .section {
     padding: 16px 20px;
@@ -340,7 +324,7 @@
 <!-- Right sidebar: reasoning history -->
 <div class="sidebar">
   <div class="header">
-    <h1><span class="status-dot disconnected" id="statusDot"></span>CLAUDE SLAYS THE SPIRE</h1>
+    <h1>CLAUDE SLAYS THE SPIRE</h1>
   </div>
 
   <div class="section grow">
@@ -366,24 +350,10 @@
   </div>
 
   <div class="bottom-section changelog-section">
-    <div class="section-title">State of the Game</div>
+    <div class="section-title">Claude Opus 4.6</div>
     <div class="state-content">
-      <div>
-        <div class="state-group-title">System</div>
-        <div class="state-row"><span class="state-label">Model</span><span class="state-value">Claude Opus 4.6</span></div>
-        <div class="state-row"><span class="state-label">Interface</span><span class="state-value">Claude Code CLI</span></div>
-        <div class="state-row"><span class="state-label">Character</span><span class="state-value">Ironclad A0</span></div>
-      </div>
-
-      <hr class="state-divider">
-
-      <div>
-        <div class="state-group-title">The Loop</div>
-        <div class="loop-steps">
-          <div class="loop-step"><span class="step-num">1</span>Player agent plays with visible reasoning</div>
-          <div class="loop-step"><span class="step-num">2</span>Analyst reviews run, updates playbook</div>
-          <div class="loop-step"><span class="step-num">3</span>Next run reads updated knowledge</div>
-        </div>
+      <div style="font-size:13px;color:#888;line-height:1.4;">
+        Player plays with reasoning &rarr; analyst reviews &rarr; playbook grows &rarr; next run improves
       </div>
 
       <hr class="state-divider">
@@ -402,9 +372,8 @@
 
       <hr class="state-divider">
 
-      <div>
-        <div class="state-group-title">Links</div>
-        <div class="state-row"><span class="state-value" style="font-size:13px;"><a href="https://claudeslaysthespire.org" style="color:#d4a0ff;">claudeslaysthespire.org</a></span></div>
+      <div style="text-align:center;">
+        <a href="https://claudeslaysthespire.org" style="color:#d4a0ff;font-size:13px;">claudeslaysthespire.org</a>
       </div>
     </div>
   </div>
@@ -419,13 +388,9 @@ let reconnectDelay = 1000;
 let lastState = null;
 
 function connect() {
-  const dot = document.getElementById('statusDot');
-  dot.className = 'status-dot connecting';
-
   ws = new WebSocket(WS_URL);
 
   ws.onopen = () => {
-    dot.className = 'status-dot connected';
     reconnectDelay = 1000;
   };
 
@@ -437,7 +402,6 @@ function connect() {
   };
 
   ws.onclose = () => {
-    dot.className = 'status-dot disconnected';
     setTimeout(connect, reconnectDelay);
     reconnectDelay = Math.min(reconnectDelay * 1.5, 15000);
   };
