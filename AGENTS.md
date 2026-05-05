@@ -26,16 +26,27 @@ Plays the game. Makes every decision with reasoning. In combat, fills out a comb
 Key traits:
 - **Humble.** Says "I think" not "clearly." Admits uncertainty. Doesn't rationalize deaths.
 - **Plans full turns.** Doesn't play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.
-- **References knowledge.** Reads playbook/ and knowledge/ files. Leans toward documented knowledge over instinct.
+- **References playbook.** Reads `playbook/` files (individual files per card, enemy, boss, etc.). Leans toward documented knowledge over instinct.
+- **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.
 
 ### Analyst (`agents/analyst.md`)
-Runs after a completed run (victory or defeat). Reads the event log, identifies what went well and what went wrong, and updates knowledge files.
+Runs after a completed run (victory or defeat). Reads the event log, identifies what went well and what went wrong, and updates playbook files.
 
-Two output directories:
-- `knowledge/` — Stable facts: card evaluations, boss mechanics, enemy patterns, relic interactions
-- `playbook/` — Evolving strategy: what works, documented mistakes, decision patterns
+Output directories:
+- `playbook/` — Individual files per card, enemy, boss, event, potion, relic. Plus `mechanics.md` and `strategy.md` for general reference.
+- `analyst/` — Working notes: `run_log.md` (brief per-run summaries), `observations.md` (uncertain items pending more data)
 
-Every claim gets a confidence tag: HIGH / MEDIUM / LOW / WRONG.
+No confidence tags. If it's confirmed, it goes in `playbook/`. If uncertain, it goes in `analyst/observations.md`.
+
+### Steward (`agents/steward.md`)
+Runs between sessions or when context is cluttered. Keeps the project clean and efficient.
+
+Key responsibilities:
+- **Playbook quality.** Verifies accuracy, removes duplicates, ensures card entries have DECISION POINTS and enemy entries have PATTERN/WHAT THIS MEANS sections.
+- **Context hygiene.** Trims bloated run logs, promotes confirmed observations to reference/playbook, cleans up agent files.
+- **Run data cleanup.** Archives processed run logs, verifies run_stats.json, removes stale temp files.
+
+Does not play, analyze runs, write code, or make architectural decisions.
 
 ## Commands (cmd.py)
 
@@ -65,29 +76,29 @@ start("IRONCLAD", 5)             # Start Ironclad A5 run
 3. CommunicationMod — game state + action protocol
 4. SuperFastMode — speed up animations for bot play
 
-## Knowledge Loop
+## Learning Loop
 
 ```
 Player plays run → stream_events.jsonl captures every decision
     ↓
-Run ends (victory or defeat)
+Run ends (victory or defeat) → player STOPS
     ↓
-Analyst reads log, updates knowledge/ and playbook/
+Analyst reads log, updates playbook/ files
     ↓
-Next run: player reads updated knowledge before first action
+Next run: player reads updated playbook before first action
     ↓
 Player makes better decisions → repeat
 ```
 
-The site (claudeslaysthespire.org) tracks every knowledge diff over time — what changed, what was learned, how the system evolved. Two kinds of changes show up:
+The site (claudeslaysthespire.org) tracks every playbook diff over time — what changed, what was learned, how the system evolved. Two kinds of changes show up:
 - **Pipeline changes** — dev restructures to improve how the system works
-- **Knowledge changes** — analyst updates from gameplay experience
+- **Playbook changes** — analyst updates from gameplay experience
 
 ## Repository
 
 This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondrashov/ClaudeSlaysTheSpire`. The parent `autoplay/` repo is a separate project that contains all games. **Do not add autoplay's remote to this directory, and do not add this directory's files to autoplay's git.** They are separate repos that happen to share a filesystem.
 
-The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/`, `knowledge/`, or `site/` triggers a rebuild.
+The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/` or `site/` triggers a rebuild.
 
 ## Spawning Agents
 
@@ -96,7 +107,7 @@ Player and analyst agents are spawned as Claude Code subagents. Their role defin
 Key rules:
 - **One player agent at a time.** The lock file in `data/player.lock` enforces this, but don't rely on it — just don't spawn two.
 - **Analyst runs after the run ends.** Don't run analyst and player simultaneously.
-- **Commit knowledge after analyst.** The analyst writes to `knowledge/` and `playbook/`. Commit and push those changes so the site updates and the changelog tracks the diff.
+- **Commit playbook after analyst.** The analyst writes to `playbook/` and `analyst/`. Commit and push those changes so the site updates and the changelog tracks the diff.
 
 ## Key Differences from Balatro
 

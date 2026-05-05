@@ -1,5 +1,5 @@
 """
-Build static site from reference markdown files.
+Build static site from playbook markdown files.
 Generates HTML pages + a changelog with diffs from git history.
 
 Usage: python site/build.py
@@ -12,7 +12,7 @@ from datetime import datetime
 
 ROOT = Path(__file__).parent.parent
 OUT = ROOT / "site" / "out"
-CONTENT_DIRS = ["reference"]
+CONTENT_DIRS = ["playbook"]
 
 # ── Minimal markdown → HTML ──────────────────────────────────────────
 
@@ -85,12 +85,12 @@ def inline(text):
 # ── Git history ──────────────────────────────────────────────────────
 
 def git_changelog(max_entries=50):
-    """Get commits that touched reference/, agents/, or legacy playbook/knowledge/ with diffs."""
+    """Get commits that touched playbook/ or agents/ with diffs."""
     try:
         result = subprocess.run(
             ["git", "log", f"--max-count={max_entries}", "--pretty=format:%H|%ai|%s",
              "--diff-filter=ACDMR", "-p", "--",
-             "reference/", "playbook/", "knowledge/", "agents/", "AGENTS.md"],
+             "playbook/", "agents/", "AGENTS.md"],
             capture_output=True, text=True, cwd=ROOT, encoding="utf-8"
         )
         if result.returncode != 0:
@@ -248,6 +248,76 @@ strong { color: #f0f0f0; }
   margin-top: 4px;
 }
 
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
 /* Changelog */
 .changelog-entry {
   border: 1px solid var(--border);
@@ -322,7 +392,7 @@ TWITCH_CHANNEL = "ClaudeSlaysTheSpire"
 def page(title, content, active=""):
     nav_items = [
         ("index.html", "Home"),
-        ("reference.html", "Reference"),
+        ("playbook.html", "Playbook"),
         ("changelog.html", "Changelog"),
     ]
     nav_html = "\n".join(
@@ -343,15 +413,90 @@ def page(title, content, active=""):
 <nav>{nav_html}</nav>
 {content}
 <footer>
-  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
 </footer>
 </body>
 </html>"""
 
 
+# ── Playbook helpers ────────────────────────────────────────────────
+
+def discover_playbook(playbook_dir):
+    """Discover playbook structure: categories (subdirs) and top-level files.
+
+    Returns:
+        categories: dict of category_name -> {
+            "index_content": str (markdown from _index.md),
+            "entries": list of {"name": str, "stem": str, "content": str}
+        }
+        top_level_files: list of {"name": str, "stem": str, "content": str}
+    """
+    categories = {}
+    top_level_files = []
+
+    if not playbook_dir.exists():
+        return categories, top_level_files
+
+    # Top-level .md files (mechanics.md, strategy.md, etc.)
+    for f in sorted(playbook_dir.glob("*.md")):
+        content = f.read_text(encoding="utf-8")
+        # Extract title from first H1 if present, else derive from filename
+        title_match = re.match(r'^#\s+(.+)', content.strip())
+        name = title_match.group(1) if title_match else f.stem.replace("-", " ").replace("_", " ").title()
+        top_level_files.append({
+            "name": name,
+            "stem": f.stem,
+            "content": content,
+        })
+
+    # Subdirectories (cards/, enemies/, bosses/, etc.)
+    for d in sorted(playbook_dir.iterdir()):
+        if not d.is_dir():
+            continue
+        cat_name = d.name
+
+        # Read _index.md for the category
+        index_file = d / "_index.md"
+        index_content = ""
+        if index_file.exists():
+            index_content = index_file.read_text(encoding="utf-8")
+
+        # Read all entry files (excluding _index.md)
+        entries = []
+        for f in sorted(d.glob("*.md")):
+            if f.name == "_index.md":
+                continue
+            content = f.read_text(encoding="utf-8")
+            title_match = re.match(r'^#\s+(.+)', content.strip())
+            name = title_match.group(1) if title_match else f.stem.replace("-", " ").replace("_", " ").title()
+            entries.append({
+                "name": name,
+                "stem": f.stem,
+                "content": content,
+            })
+
+        categories[cat_name] = {
+            "index_content": index_content,
+            "entries": entries,
+        }
+
+    return categories, top_level_files
+
+
+def make_slug(category, entry_stem=None):
+    """Generate the output HTML filename for a playbook page.
+
+    playbook-cards.html, playbook-cards-headbutt.html, playbook-mechanics.html
+    """
+    if entry_stem:
+        return f"playbook-{category}-{entry_stem}.html"
+    return f"playbook-{category}.html"
+
+
 # ── Landing page ────────────────────────────────────────────────────
 
-def build_landing(all_files):
+def build_landing(categories, top_level_files):
     """Build the index/landing page content."""
 
     # Twitch embed
@@ -392,10 +537,10 @@ strategy or hand-holding.
 
 <p>
 The system has two agents that take turns. A <strong>player agent</strong> actually plays the game,
-reading the board state and deciding what to do each turn. It has access to a set of reference
+reading the board state and deciding what to do each turn. It has access to a set of playbook
 files that document what's been learned so far about cards, enemies, bosses, and strategy. After
 each run (win or loss), an <strong>analyst agent</strong> reviews what happened, identifies the key
-decision points where things went well or badly, and updates those reference files with what it
+decision points where things went well or badly, and updates those playbook files with what it
 learned. The next run's player reads the updated files and hopefully makes better decisions.
 </p>
 
@@ -417,14 +562,14 @@ show up here:
 <ul>
 <li><strong>Knowledge changes</strong> are updates the analyst agent makes after reviewing runs. A
 new card evaluation, a revised boss strategy, a documented mistake that future runs should avoid.
-These show up in the <a href="reference.html">Reference</a> section.</li>
+These show up in the <a href="playbook.html">Playbook</a> section.</li>
 <li><strong>Pipeline changes</strong> are structural improvements to how the system itself works &mdash;
 better prompting, new tools for the player, changes to how the analyst reviews runs. These are
 development work rather than gameplay learning.</li>
 </ul>
 
 <p>
-The <a href="changelog.html">Changelog</a> shows diffs of every change to the reference files, so
+The <a href="changelog.html">Changelog</a> shows diffs of every change to the playbook files, so
 you can follow exactly what was learned and when.
 </p>
 
@@ -452,21 +597,29 @@ reasoning and learning layers instead of fighting with the interaction layer.
 </div>
 """
 
-    # Content listing (if any reference files exist)
+    # Playbook categories listing
     content_html = ""
-    if all_files:
-        sections = {}
-        for path, info in all_files.items():
-            sections.setdefault(info["category"], []).append((path, info))
+    if categories or top_level_files:
+        content_html += '<h2>Playbook</h2>\n<div class="category-grid">\n'
 
-        content_html += '<div style="margin-top: 20px;">'
-        for cat, files in sections.items():
-            content_html += f"<h2>{cat.title()}</h2>\n<ul class='file-list'>\n"
-            for path, info in files:
-                slug = path.replace("/", "-").replace("\\", "-").replace(".md", ".html")
-                content_html += f'<li><a href="{slug}">{info["name"]}</a></li>\n'
-            content_html += "</ul>\n"
-        content_html += "</div>"
+        # Top-level playbook files first
+        for tlf in top_level_files:
+            slug = make_slug(tlf["stem"])
+            content_html += f"""<div class="category-card"><a href="{slug}">
+  <h3>{html.escape(tlf["name"])}</h3>
+</a></div>\n"""
+
+        # Category cards
+        for cat_name, cat_data in categories.items():
+            slug = make_slug(cat_name)
+            count = len(cat_data["entries"])
+            display_name = cat_name.replace("-", " ").replace("_", " ").title()
+            content_html += f"""<div class="category-card"><a href="{slug}">
+  <h3>{html.escape(display_name)}</h3>
+  <div class="count">{count} {"entry" if count == 1 else "entries"}</div>
+</a></div>\n"""
+
+        content_html += "</div>\n"
 
     return twitch_html + intro_html + content_html
 
@@ -479,43 +632,89 @@ def build():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
 
-    # Collect content files
-    all_files = {}
-    for dirname in CONTENT_DIRS:
-        d = ROOT / dirname
-        if not d.exists():
-            continue
-        for f in sorted(d.rglob("*.md")):
-            rel = f.relative_to(ROOT)
-            all_files[str(rel)] = {
-                "path": f,
-                "category": dirname,
-                "name": f.stem.replace("-", " ").replace("_", " ").title(),
-                "content": f.read_text(encoding="utf-8"),
-            }
+    # Discover playbook structure
+    playbook_dir = ROOT / "playbook"
+    categories, top_level_files = discover_playbook(playbook_dir)
+
+    total_pages = 0
 
     # ── Index page ──
-    index_body = build_landing(all_files)
+    index_body = build_landing(categories, top_level_files)
     (OUT / "index.html").write_text(page("Home", index_body, "Home"), encoding="utf-8")
+    total_pages += 1
 
-    # ── Content pages ──
-    reference_body = ""
+    # ── Playbook index page ──
+    playbook_body = "<h2>Playbook</h2>\n"
+    playbook_body += "<p>Everything Claude has learned about Slay the Spire, organized by category.</p>\n"
 
-    for path, info in all_files.items():
-        slug = path.replace("\\", "-").replace("/", "-").replace(".md", ".html")
-        content_html = md_to_html(info["content"])
-        back_link = f'<p style="margin-bottom:24px"><a href="reference.html">&larr; Back to reference</a></p>'
-        single_page = page(info["name"], back_link + content_html, "Reference")
+    # Top-level files section
+    if top_level_files:
+        playbook_body += '<div style="margin: 24px 0;">\n'
+        for tlf in top_level_files:
+            slug = make_slug(tlf["stem"])
+            playbook_body += f'<h3><a href="{slug}">{html.escape(tlf["name"])}</a></h3>\n'
+        playbook_body += "</div>\n"
+
+    # Category sections
+    for cat_name, cat_data in categories.items():
+        slug = make_slug(cat_name)
+        display_name = cat_name.replace("-", " ").replace("_", " ").title()
+        count = len(cat_data["entries"])
+        playbook_body += f'<h3><a href="{slug}">{html.escape(display_name)}</a> <span style="color:var(--text-dim);font-size:14px;font-weight:400;">({count})</span></h3>\n'
+        playbook_body += '<div class="entry-grid">\n'
+        for entry in cat_data["entries"]:
+            entry_slug = make_slug(cat_name, entry["stem"])
+            playbook_body += f'<a href="{entry_slug}">{html.escape(entry["name"])}</a>\n'
+        playbook_body += "</div>\n"
+
+    if not categories and not top_level_files:
+        playbook_body = '<div class="empty-state">Playbook is empty. Strategy, cards, and mechanics will appear here as Claude learns.</div>'
+
+    (OUT / "playbook.html").write_text(page("Playbook", playbook_body, "Playbook"), encoding="utf-8")
+    total_pages += 1
+
+    # ── Top-level playbook file pages (mechanics, strategy, etc.) ──
+    for tlf in top_level_files:
+        slug = make_slug(tlf["stem"])
+        content_html = md_to_html(tlf["content"])
+        back_link = '<div class="back-link"><a href="playbook.html">&larr; Back to playbook</a></div>'
+        single_page = page(tlf["name"], back_link + content_html, "Playbook")
         (OUT / slug).write_text(single_page, encoding="utf-8")
+        total_pages += 1
 
-        # Also accumulate into the reference page
-        section = f'<div style="margin-bottom:40px"><h2><a href="{slug}">{info["name"]}</a></h2>\n{content_html}</div>\n'
-        reference_body += section
+    # ── Category pages and individual entry pages ──
+    for cat_name, cat_data in categories.items():
+        display_name = cat_name.replace("-", " ").replace("_", " ").title()
 
-    if not reference_body:
-        reference_body = '<div class="empty-state">Reference is empty. Strategy, cards, and mechanics will appear here as Claude learns.</div>'
+        # Category page: render the _index.md content with links rewritten
+        cat_slug = make_slug(cat_name)
+        back_link = '<div class="back-link"><a href="playbook.html">&larr; Back to playbook</a></div>'
 
-    (OUT / "reference.html").write_text(page("Reference", reference_body, "Reference"), encoding="utf-8")
+        # Rewrite markdown links in _index.md to point to generated HTML pages
+        index_md = cat_data["index_content"]
+        # Replace links like [Name](file.md) -> [Name](playbook-category-file.html)
+        def rewrite_link(m):
+            link_text = m.group(1)
+            link_target = m.group(2)
+            if link_target.endswith(".md"):
+                entry_stem = link_target[:-3]  # remove .md
+                return f"[{link_text}]({make_slug(cat_name, entry_stem)})"
+            return m.group(0)
+
+        index_md_rewritten = re.sub(r'\[(.+?)\]\((.+?)\)', rewrite_link, index_md)
+        cat_html = md_to_html(index_md_rewritten)
+        cat_page = page(display_name, back_link + cat_html, "Playbook")
+        (OUT / cat_slug).write_text(cat_page, encoding="utf-8")
+        total_pages += 1
+
+        # Individual entry pages
+        for entry in cat_data["entries"]:
+            entry_slug = make_slug(cat_name, entry["stem"])
+            content_html = md_to_html(entry["content"])
+            back_link = f'<div class="back-link"><a href="{cat_slug}">&larr; Back to {html.escape(display_name)}</a></div>'
+            entry_page = page(entry["name"], back_link + content_html, "Playbook")
+            (OUT / entry_slug).write_text(entry_page, encoding="utf-8")
+            total_pages += 1
 
     # ── Changelog ──
     entries = git_changelog()
@@ -537,14 +736,15 @@ def build():
   </div>
 </div>"""
     else:
-        changelog_body = '<div class="empty-state">No changes to reference files yet.</div>'
+        changelog_body = '<div class="empty-state">No changes to playbook files yet.</div>'
 
     (OUT / "changelog.html").write_text(page("Changelog", changelog_body, "Changelog"), encoding="utf-8")
+    total_pages += 1
 
     # ── CNAME for GitHub Pages ──
     (OUT / "CNAME").write_text("claudeslaysthespire.org", encoding="utf-8")
 
-    print(f"Built {len(all_files)} content pages + index, reference, changelog")
+    print(f"Built {total_pages} pages (index, playbook, {len(top_level_files)} top-level, {sum(len(c['entries']) for c in categories.values())} entries across {len(categories)} categories, changelog)")
     print(f"Output: {OUT}")
 
 

@@ -123,19 +123,21 @@ Think about what your deck needs, not just whether a card is generically "good."
 - Read the options carefully. Many events have hidden costs or benefits.
 - If you don't know an event, be cautious — say so and pick the safe option.
 
-## Reference
+## Playbook
 
-The `reference/` directory contains everything you need to make good decisions — mechanics, strategy, and decision prompts for every card, enemy, and situation. Load the RELEVANT file(s) for your current decision:
+The `playbook/` directory contains everything you need to make good decisions — mechanics, strategy, and decision prompts for every card, enemy, and situation. Each card, enemy, boss, event, relic, and potion has its own file. Load the RELEVANT file(s) for your current decision:
 
-- **Start of run**: Read `reference/strategy.md` for high-level principles. Note which boss is coming.
-- **Combat start**: Read the entry for your enemy in `reference/enemies.md` or `reference/bosses.md`. For interesting cards in your hand, check their entries in `reference/cards-ironclad.md` — especially the DECISION POINTS section, which tells you what to consider before playing.
-- **Card rewards**: Check offered cards in `reference/cards-ironclad.md`. Consider what your deck needs and what the upcoming boss requires.
-- **Events**: Read the event entry in `reference/events.md`.
-- **Shop**: Check `reference/relics.md` and `reference/potions.md` for what's offered.
-- **Rest sites**: `reference/strategy.md` has the upgrade-vs-rest framework and upgrade priority.
-- **Map pathing**: `reference/strategy.md` has HP thresholds and pathing principles.
+- **Start of run**: Read `playbook/strategy.md` for high-level principles. Note which boss is coming.
+- **Combat start**: Read the specific enemy file `playbook/enemies/<enemy-name>.md` or `playbook/bosses/<boss-name>.md`. For key cards in your hand, read `playbook/cards/<card-name>.md`.
+- **Card rewards**: Read each offered card file from `playbook/cards/`. Consider what your deck needs and what the upcoming boss requires.
+- **Events**: Read `playbook/events/<event-name>.md`.
+- **Shop**: Read relevant files from `playbook/relics/` and `playbook/potions/`.
+- **Rest sites**: `playbook/strategy.md` has the upgrade-vs-rest framework and upgrade priority.
+- **Map pathing**: `playbook/strategy.md` has HP thresholds and pathing principles.
 
-Don't load all files at once. Load what's relevant to the decision in front of you. The reference files are designed so that loading the right entry naturally brings the context you need to reason well.
+File naming convention: lowercase, hyphens for spaces. `Shrug It Off` -> `shrug-it-off.md`. `Gremlin Nob` -> `gremlin-nob.md`.
+
+Don't load all files at once. Load what's relevant to the decision in front of you. The playbook files are designed so that loading the right entry naturally brings the context you need to reason well.
 
 ## Potions
 
@@ -160,6 +162,12 @@ potion_discard(slot)             — Discard potion
 ```
 
 Card indices are 1-indexed. Enemy indices are 0-indexed.
+
+**ALWAYS provide `reason=` to `send()` and `turn()` calls.** This is critical for the stream overlay — viewers need to see WHY each decision is made. Without reasoning, the overlay thinking panel is empty.
+
+```python
+send("choose rest", reason="40% HP, rest site before boss. Need healing more than upgrade.")
+```
 
 ## Run End
 
