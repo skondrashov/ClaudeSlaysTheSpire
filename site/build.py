@@ -439,6 +439,67 @@ tr:nth-child(even) td {
 .diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
 .diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
 .diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
 .empty-state {
   text-align: center;
   padding: 80px 20px;
@@ -622,10 +683,44 @@ def make_slug(category, entry_stem=None):
     return f"playbook-{category}.html"
 
 
+# ── Run stats from analyst/run_log.md ───────────────────────────────
+
+def parse_run_log(root):
+    """Parse analyst/run_log.md to extract run statistics."""
+    run_log = root / "analyst" / "run_log.md"
+    stats = {"total_runs": 0, "boss_kills": 0, "best_floor": 0, "deaths": 0}
+
+    if not run_log.exists():
+        return stats
+
+    content = run_log.read_text(encoding="utf-8")
+    for line in content.split("\n"):
+        if not line.startswith("## Run "):
+            continue
+        stats["total_runs"] += 1
+
+        # Count boss victories (e.g., "Victory (Guardian)")
+        if "Victory" in line:
+            stats["boss_kills"] += line.count("Victory")
+
+        # Count deaths
+        if "Death" in line:
+            stats["deaths"] += 1
+
+        # Extract floor numbers from "Death Floor N" or "Death Floor N ("
+        for m in re.finditer(r'Death Floor (\d+)', line):
+            floor = int(m.group(1))
+            stats["best_floor"] = max(stats["best_floor"], floor)
+
+    return stats
+
+
 # ── Landing page ────────────────────────────────────────────────────
 
-def build_landing(categories, top_level_files):
+def build_landing(categories, top_level_files, run_stats):
     """Build the index/landing page content."""
+
+    total_entries = sum(len(c["entries"]) for c in categories.values())
 
     # Twitch embed
     twitch_html = f"""
@@ -640,87 +735,43 @@ def build_landing(categories, top_level_files):
 </div>
 """
 
-    # Project explanation
+    # Stats panel
+    stats_html = f"""
+<div class="stats-grid">
+  <div class="stat"><div class="stat-value">{run_stats['total_runs']}</div><div class="stat-label">Runs</div></div>
+  <div class="stat"><div class="stat-value">{run_stats['boss_kills']}</div><div class="stat-label">Boss Kills</div></div>
+  <div class="stat"><div class="stat-value">{run_stats['best_floor']}</div><div class="stat-label">Best Floor</div></div>
+  <div class="stat"><div class="stat-value">{total_entries}</div><div class="stat-label">Playbook Entries</div></div>
+</div>
+
+<div class="state-details">
+  <div class="state-card">
+    <h3>System</h3>
+    <p><strong>Model:</strong> Claude Sonnet 4 via Claude Code</p>
+    <p><strong>Character:</strong> Ironclad, Ascension 0</p>
+    <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
+  </div>
+  <div class="state-card">
+    <h3>The Loop</h3>
+    <p>A <strong>player agent</strong> plays a run with visible reasoning. When it ends, an <strong>analyst agent</strong> reviews what went wrong and updates the <a href="playbook.html">playbook</a>. Next run reads the updated knowledge. Repeat.</p>
+  </div>
+</div>
+"""
+
+    # Condensed intro
     intro_html = """
 <div style="margin-bottom: 40px;">
 <p>
-This is an experiment in teaching an AI to play a game it's not very good at, and documenting
-the whole learning process as it happens. Claude (Anthropic's AI) plays
-<a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>
-through a mod that exposes the game state over a protocol, makes decisions one at a time with
-explicit reasoning, and then reviews its own runs afterward to figure out what went wrong and
-what to do differently next time.
+Claude plays <a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>,
+makes decisions one at a time with explicit reasoning, and then reviews its own runs afterward to
+figure out what went wrong. No hardcoded strategy. Everything it knows comes from playing and
+self-review.
 </p>
 
 <p>
-Out of the box, Claude can stumble its way through Act 1 on Ascension 0 and sometimes make it
-into Act 2, but it makes a lot of mistakes along the way. It overvalues mediocre cards, misreads
-enemy intents, takes bad fights when it should rest, and generally plays like someone who's read
-about the game but hasn't really internalized the patterns yet. The goal is to see how far
-persistent context and structured self-review can push that baseline, without any hardcoded
-strategy or hand-holding.
-</p>
-
-<h2>How it works</h2>
-
-<p>
-The system has two agents that take turns. A <strong>player agent</strong> actually plays the game,
-reading the board state and deciding what to do each turn. It has access to a set of playbook
-files that document what's been learned so far about cards, enemies, bosses, and strategy. After
-each run (win or loss), an <strong>analyst agent</strong> reviews what happened, identifies the key
-decision points where things went well or badly, and updates those playbook files with what it
-learned. The next run's player reads the updated files and hopefully makes better decisions.
-</p>
-
-<p>
-The player plans full combat turns as a batch rather than playing one card at a time. It fills out a
-structured combat plan (what are the threats, what does this turn need to accomplish, what's the card
-sequence, what should the board look like afterward) and then executes the whole thing. Outside of
-combat, it reasons about each decision individually &mdash; which path to take on the map, which cards
-to pick up, when to rest vs upgrade.
-</p>
-
-<h2>What this site tracks</h2>
-
-<p>
-This site is the record of how the system evolves over time. There are two kinds of changes that
-show up here:
-</p>
-
-<ul>
-<li><strong>Knowledge changes</strong> are updates the analyst agent makes after reviewing runs. A
-new card evaluation, a revised boss strategy, a documented mistake that future runs should avoid.
-These show up in the <a href="playbook.html">Playbook</a> section.</li>
-<li><strong>Pipeline changes</strong> are structural improvements to how the system itself works &mdash;
-better prompting, new tools for the player, changes to how the analyst reviews runs. These are
-development work rather than gameplay learning.</li>
-</ul>
-
-<p>
-The <a href="changelog.html">Changelog</a> shows diffs of every change to the playbook files, so
-you can follow exactly what was learned and when.
-</p>
-
-<h2>Why Slay the Spire 1?</h2>
-
-<p>
-Slay the Spire 2 exists and is in early access, so a reasonable question is why we're playing the
-original. The answer is entirely about the interaction layer. Slay the Spire 1 has
-<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a>,
-a community mod that exposes the full game state and accepts commands through a clean JSON protocol
-over stdin/stdout. It's essentially a complete API for the game &mdash; you can read every card in
-your hand, every enemy's intent, every relic's state, and send back exactly the action you want to
-take. The mod handles all the UI interaction, animation waiting, and state synchronization.
-</p>
-
-<p>
-Slay the Spire 2 has no equivalent. We spent several weeks building a custom C# mod with Harmony
-patches to try to get the same level of access, and the result was fragile, partial, and constantly
-breaking as the game updated. The mod could read game state (mostly) by writing it to a JSON file,
-and execute actions by sending PostMessage window clicks to the right coordinates, but it was
-unreliable and required constant maintenance. Ultimately it was easier to go back to the original
-game where a mature, stable mod already does everything we need, and focus our effort on the
-reasoning and learning layers instead of fighting with the interaction layer.
+The <a href="playbook.html">Playbook</a> is everything Claude has learned so far &mdash; card
+evaluations, enemy patterns, boss strategies, event guides. The
+<a href="changelog.html">Changelog</a> shows every update: what changed, what was learned, and when.
 </p>
 </div>
 """
@@ -749,7 +800,7 @@ reasoning and learning layers instead of fighting with the interaction layer.
 
         content_html += "</div>\n"
 
-    return twitch_html + intro_html + content_html
+    return twitch_html + stats_html + intro_html + content_html
 
 
 # ── Build ────────────────────────────────────────────────────────────
@@ -764,10 +815,11 @@ def build():
     playbook_dir = ROOT / "playbook"
     categories, top_level_files = discover_playbook(playbook_dir)
 
+    run_stats = parse_run_log(ROOT)
     total_pages = 0
 
     # ── Index page ──
-    index_body = build_landing(categories, top_level_files)
+    index_body = build_landing(categories, top_level_files, run_stats)
     (OUT / "index.html").write_text(page("Home", index_body, "Home"), encoding="utf-8")
     total_pages += 1
 
