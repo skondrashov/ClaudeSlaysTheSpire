@@ -228,9 +228,18 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 ### Dazed
 - Cost: Unplayable
 - Effect: Ethereal. Cannot be played. If in hand at end of turn, exhausts (Ethereal).
-- Source: Chosen enemy adds Dazed when you play Skill cards (via Hex debuff).
+- Source: Chosen enemy adds Dazed when you play Skill cards (via Hex debuff). Sentries add Dazed via Beam ability.
 - Impact: Clogs your hand for 1 turn, then exhausts itself. Less permanent than Burns or Slimed, but the constant influx from Hex (every Skill played = 1 Dazed added) can overwhelm draws quickly.
-- Confidence: LOW (observed in Run 3 Chosen fight, exact mechanics inferred — Ethereal + Unplayable needs confirmation)
+- Confidence: LOW (observed in Run 3 Chosen fight and Run 4 Sentries, exact mechanics inferred — Ethereal + Unplayable needs confirmation)
+
+### Wound
+- Cost: Unplayable
+- Effect: Cannot be played. Sits in hand doing nothing. Does NOT deal damage (unlike Burns). Does NOT exhaust at end of turn (unlike Dazed).
+- Source: Book of Stabbing elite (Act 2) adds Wounds via Painful Stabs attack.
+- Impact: Pure hand clogging. Each Wound in a 5-card hand means one fewer playable card. Unlike Dazed (self-exhausts via Ethereal) or Slimed (can be played for 1E to exhaust), Wounds persist in the deck and cycle through repeatedly.
+- **Exhausting Wounds**: True Grit+ can exhaust Wounds from hand. Burning Pact can exhaust Wounds. Fiend Fire exhausts all cards in hand (including Wounds, converting them to damage). Without exhaust tools, Wounds permanently degrade deck quality.
+- **Comparison to other status cards**: Burns deal 2 damage per turn + clog. Slimed costs 1E to exhaust. Dazed auto-exhausts via Ethereal. Wounds are the most persistent — no self-removal, no damage, just dead draws forever.
+- Confidence: MEDIUM (observed in Run 6 Book of Stabbing fight — Wounds clogged draws, preventing block cards from being drawn)
 
 ## Flight (Enemy Mechanic)
 
@@ -288,6 +297,24 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - Effect: Gain 10 block at the start of each combat. (Inferred — player had 10 block on turn 1 of multiple fights in Run 5 without playing block cards.)
 - Evaluation: Free block on turn 1 every fight. Equivalent to a free Defend + half a Defend. Reduces turn 1 damage taken, which compounds over the run. Particularly valuable against enemies with dangerous turn 1 attacks.
 - Confidence: LOW (Run 5, acquired but effect inferred from combat patterns, not directly confirmed)
+
+### Letter Opener
+- Source: Lagavulin elite reward (Run 6).
+- Effect: Whenever you play a Skill card, deal 5 damage to a random enemy.
+- Evaluation: Turns every Defend into Defend + 5 damage. In fights where you play 2-3 Skills per turn, this adds 10-15 free damage. Over a 12-turn Guardian fight with 2 Skills/turn, that's ~120 free damage. Extremely strong with Skill-heavy play — but conflicts with Gremlin Nob (can't play Skills) and Chosen (Skills trigger Hex).
+- **Synergy with Intimidate**: Intimidate is 0E Skill, so playing it triggers Letter Opener for free 5 damage + Weak.
+- **Synergy with double Defend turns**: When blocking with 2-3 Defends, Letter Opener adds 10-15 damage passively.
+- Run 6: Acquired after Lagavulin elite. Used in every subsequent fight. Notable in Guardian fight: every Defend turn added 5-10 damage from Letter Opener, contributing ~40+ damage over the 12-turn fight. Also used vs Centurion+Mystic — Defend turns dealt chip damage to both enemies.
+- Confidence: MEDIUM (Run 6, used in 8+ fights, 5 damage per Skill confirmed from player reasoning)
+
+### Maw Bank
+- Source: Pleading Vagrant event (Run 6, floor 22). Cost: 85 gold.
+- Effect: Unknown — likely gold-related (gain gold over time?). Not directly observed in gameplay. Player acquired it for 85g from Pleading Vagrant event.
+- Confidence: LOW (Run 6, acquired but effect not confirmed from gameplay)
+
+### Blood Vial (Potion — not relic)
+- Note: Blood Potion observed in Run 6 Byrd fight. Healed 16 HP (20% of 83 max HP). Formula: heal floor(maxHP * 0.2).
+- Confidence: LOW (used once in Run 6, 20% max HP heal inferred from 16/83)
 
 ### Neow's Lament
 - Source: Neow's blessing (Run 3 opening choice).
@@ -380,6 +407,27 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - Options: Unknown (player left immediately). Name suggests interaction with Curses.
 - Run 4: Player left, reasoning "likely adds a Curse to deck."
 - Confidence: LOW (1 encounter in Run 4, not engaged)
+
+### Ominous Forge
+- Options: [Forge] Upgrade a card in your deck. [Leave].
+- Effect: Free card upgrade — no HP cost, no gold cost.
+- Run 6: Player chose Forge, upgraded Thunderclap to Thunderclap+. This is always correct — free upgrades are the best events in the game.
+- Evaluation: ALWAYS choose Forge. A free upgrade is worth more than any other event option. Upgrade priority should follow the same rules as rest site smithing: Bash > key attack cards > Thunderclap > Defend.
+- Confidence: MEDIUM (1 encounter in Run 6, effect confirmed — free upgrade)
+
+### Ancient Writing
+- Options: [Simplicity] Upgrade all Strikes and Defends. [Insight] Obtain Bottled Flame? (Unknown second option — player chose Simplicity.)
+- Run 6: Player chose Simplicity. Upgraded all remaining Strikes to Strike+ (9 damage) and all Defends to Defend+ (8 block). This was approximately +8 upgrades in one event — equivalent to 8 rest site smithing sessions.
+- **Impact**: Massive power spike. Strike+ (9 damage, 13 Vuln) is 50% more damage than Strike (6 damage, 9 Vuln). Defend+ (8 block) is 60% more block than Defend (5 block). Every subsequent fight benefited from this — in the Book of Stabbing fight, Strike+ Vuln dealt 13 damage and Defend+ gave 8 block.
+- **When to choose Simplicity**: When your deck has many unupgraded Strikes and Defends. In Run 6, the player had 3 Strikes and 4 Defends remaining (7 cards upgraded). The alternative option may have been better for a deck with few basic cards.
+- Evaluation: One of the most valuable events in the game. 8 free upgrades is game-changing. This event alone transformed the Run 6 deck from adequate to strong.
+- Confidence: MEDIUM (1 encounter in Run 6, Simplicity option confirmed — upgrades all Strikes and Defends)
+
+### Pleading Vagrant
+- Options: [Offer Gold] 85 Gold: Obtain a Relic. [Rob] Obtain a Relic + gain a Curse. [Leave].
+- Run 6: Player paid 85g for a relic (Maw Bank). At 85g cost, this is expensive but avoids the curse from robbing.
+- Evaluation: If you can afford 85g and don't need it for shops, paying for a relic is usually positive — relics provide permanent value. Robbing is risky (curse permanently clogs deck). Leave if gold is critical for upcoming shop purchases.
+- Confidence: LOW (1 encounter in Run 6, Offer Gold option confirmed)
 
 ### The Joust (Act 2)
 - Options: [Murderer] Bet 50 Gold — 70% chance to win 100 Gold. Other options unknown.

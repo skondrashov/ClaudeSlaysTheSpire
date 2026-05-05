@@ -24,7 +24,7 @@ By floor 12-15, you should be thinking about the boss. Each act boss has specifi
 
 If you don't have the tools to handle the boss, prioritize getting them from card rewards, shops, and events over minor deck improvements.
 
-Confidence: MEDIUM (6 boss encounters across Runs 0-5 — 2 Guardian victories, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory, 1 Slime Boss victory)
+Confidence: MEDIUM (7 boss encounters across Runs 0-6 — 3 Guardian victories, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory, 1 Slime Boss victory)
 
 ## Combat
 
@@ -150,7 +150,22 @@ The Guardian is a long fight (240 HP) with alternating modes:
 - **Key difference from Run 2**: Had Carnage+ for massive burst (42 with Vuln). Run 2 relied on chipping with Strikes/Iron Wave. The burst allowed faster kill (12 turns vs 14) and triggered fewer Mode Shifts.
 - **12-turn fight, HP: 69 -> 0 (Fairy) -> 24 -> kill**. Guardian is still an HP drain even with good play.
 
-Confidence: MEDIUM -> HIGH (2 victories across Runs 0 and 5, 1 death in Run 2 — winning formula is burst damage + single big block card for 32-damage turn)
+**Run 6 Guardian Victory** (third victory):
+- Entered at 67/80 HP after resting. Deck: 13 cards, 4 upgrades (Bash+, Pommel Strike+, Headbutt+, Thunderclap+), Metallicize x2, Intimidate, Letter Opener relic.
+- **Double Metallicize** turn 1: 6 block/turn for the entire fight. This handled many attack patterns (9 damage, 8x2=16 damage) with only 1 Defend needed.
+- **Intimidate** (0E, Weak ALL): Reduced 32 attack to 24. Free play, no downside.
+- **Snecko Oil** clutch: On a dangerous turn, drew 5 cards with randomized costs. Got 0-cost Strikes and Pommel Strike+, enabling massive free damage output during Defensive Mode despite Sharp Hide.
+- **Letter Opener** relic: Every Skill played dealt 5 chip damage. Over 12+ turns, contributed ~40+ total damage passively.
+- Killed Guardian at 10 HP remaining. The Snecko Oil turn was decisive — without it, the fight would have been much closer.
+
+**Winning formula refined across 3 victories (Runs 0, 5, 6)**:
+1. One big block source for 32-damage turn (Impervious, double Metallicize + Defend, Intimidate Weak)
+2. Burst damage for Mode Shift (Carnage+, Snecko Oil free cards, Headbutt+ Vuln loops)
+3. Passive block scaling for the long fight (Metallicize is the best card; double Metallicize is exceptional)
+4. Safety net (Fairy in a Bottle) — triggered in Run 5, not needed in Run 6
+5. Deck manipulation (Headbutt+ placing key cards on top)
+
+Confidence: HIGH (4 fights — 3 victories in Runs 0, 5, 6; 1 death in Run 2. Winning formula well-established.)
 
 ## Gremlin Nob Strategy
 
@@ -209,7 +224,7 @@ By floor 12-15, you should be thinking about the boss. Each act boss has specifi
 - **The Guardian**: Mode-switching boss with heavy attacks (5x4=20, single 32). Need block cards that can reach 32+ total per turn. Sharp Hide (3 damage per Attack played) in Defensive Mode. Long fight (240 HP). DO NOT over-exhaust.
 - **Hexaghost**: 250 HP, 7x6=42 Inferno attack. Need (1) Weak to reduce Inferno to ~28, (2) Metallicize for passive block in long fight, (3) way to handle Burns (exhaust tools). Pantograph makes HP entry irrelevant. Shockwave is the single best card for this boss. Turn 1 is free (no attack).
 
-Confidence: MEDIUM (6 boss encounters across Runs 0-5 — 2 Guardian wins, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win, 1 Slime Boss win)
+Confidence: MEDIUM (7 boss encounters across Runs 0-6 — 3 Guardian wins, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win, 1 Slime Boss win)
 
 ## Hexaghost Strategy (Run 3 Victory)
 
@@ -257,13 +272,21 @@ Act 2 enemies are significantly harder than Act 1. Key threats observed in Runs 
 - **HP threshold**: Enter with 60%+ HP. Run 5 entered at 13% and died despite Impervious, Disarm, and Shockwave.
 - **Critical warning**: Exhaust-heavy decks are dangerous here. Once Impervious/Shockwave/Disarm are gone (turns 1-5), you need enough remaining cards to survive 3+ more turns of 30-50 incoming damage.
 
+### Book of Stabbing (NEW from Run 6)
+- 161 HP elite with scaling multi-hit attacks and Wound card generation. Attacks increase in hit count each turn (observed: 8, 18, 21, 24 over 4 turns).
+- **What you need**: High burst damage to end the fight quickly (Dropkick+ cycling, Headbutt+ Vuln). Exhaust tools for Wound removal (True Grit+, Burning Pact). Block cards that handle multi-hit (Metallicize for passive, Impervious for one big turn). Vulnerable application for Dropkick+ synergy.
+- **What kills you**: Wound accumulation clogs draws -> can't draw block cards -> take full multi-hit damage -> die. The fight is a race between your damage output and the Book's escalating attacks + Wound flood.
+- **HP threshold**: Enter with 50+ HP. Run 6 entered at 6 HP and died with Book at 21 HP despite dealing 140 damage in 5 turns. At low HP, the scaling attacks overwhelm any block strategy.
+
 ### General Act 2 Rule
 - Enter Act 2 at or near full HP. The Pantograph relic should heal you before the Act 1 boss, but hallway fights in Act 2 hit much harder than Act 1. The Byrd fight in Run 3 drained 58 HP.
-- Having healing sustain (Reaper) is critical for surviving the HP drain of Act 2 multi-enemy fights.
+- Having healing sustain (Reaper, Feed) is critical for surviving the HP drain of Act 2 multi-enemy fights. Feed is especially good because it provides permanent Max HP scaling.
 - **Upgrades matter more in Act 2**: Run 4 entered Act 2 with ZERO upgrades and only upgraded Bash on floor 27 (1 upgrade in 28 floors). Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 60%.
 - **Run 5 improvement**: 3 upgrades by Act 2 (Bash+, Shrug It Off+, Carnage+). This made a significant difference — Carnage+ carried the Guardian fight and was useful in Act 2. But the deck still lacked sustained answers for long fights.
+- **Run 6 improvement**: Entered Act 2 at full HP (80/80) for the first time. Had 4+ upgrades (Bash+, Pommel Strike+, Headbutt+, Thunderclap+) plus Ancient Writing event upgraded all Strikes and Defends. Despite this strong position, Act 2 still killed the run through the Byrd -> Centurion+Mystic -> Elite HP drain cascade.
+- **Fairy in a Bottle management**: In Runs 5 and 6, Fairy was consumed in hallway fights (Centurion+Mystic), leaving no safety net for elites. Consider: if Fairy is your only death insurance, avoid fights that might trigger it before the elite/boss.
 
-Confidence: LOW -> MEDIUM (3 partial Act 2 experiences in Runs 3, 4, and 5, died floors 20, 28, and 25)
+Confidence: MEDIUM (4 partial Act 2 experiences in Runs 3, 4, 5, and 6, died floors 20, 28, 25, and 24)
 
 ## Slime Boss Strategy (Run 4 Victory)
 
@@ -348,10 +371,13 @@ Confidence: MEDIUM (Run 5 death from exhaust depletion, consistent with Run 2 ov
 
 ## HP Management Into Elites (Cross-Run Pattern)
 
-Entering fights at critically low HP is a recurring cause of death:
+Entering fights at critically low HP is a recurring cause of death. This is the #1 cause of death across all runs:
 - **Run 3**: Entered Chosen at 28 HP (35%) after Byrd drain. Died with Chosen at 6 HP. 22 more HP would have survived.
 - **Run 4**: Entered Centurion+Mystic at 42 HP (50%). Died at 1 HP. Barely insufficient.
 - **Run 5**: Entered Gremlin Leader at 11 HP (13%). Completely unwinnable regardless of play quality.
+- **Run 6**: Entered Book of Stabbing at 6 HP (7%) after Centurion+Mystic drain. Book at 21 HP when player died. Unwinnable at that HP.
+
+**The pattern is now 4 runs deep**: Runs 3, 4, 5, and 6 all died from entering Act 2 fights at dangerously low HP. The root cause is the same every time: a long Act 2 fight (Byrds, Centurion+Mystic) drains HP to critical levels, and then the next fight is entered without healing.
 
 **HP thresholds for Act 2 fights:**
 | Fight Type | Minimum HP | Notes |
@@ -366,4 +392,12 @@ Entering fights at critically low HP is a recurring cause of death:
 - If forced into a fight below threshold, use all potions aggressively. Don't save them for "later" — there may not be a later.
 - If there's a rest site before the elite, REST (don't upgrade). HP > upgrades when you're below threshold.
 
-Confidence: MEDIUM (pattern across Runs 3, 4, and 5 — three deaths from low HP entry)
+**Run 6 specific failure**: Player rested at rest site before elite (went from ~5 HP to ~6 HP? Or from higher and the rest brought them to a slightly better state). But the rest site was immediately before the elite — at 6 HP, even resting wasn't enough. The player needed to take an alternative path entirely. The Fairy in a Bottle was consumed during the Centurion+Mystic fight, leaving no safety net for the elite.
+
+**What actually causes the HP drain (cross-run analysis)**:
+1. **Byrd fights** (Runs 3, 6): 36-58 HP lost per fight. Flight mechanic makes fights 10-12 turns long. This is the primary Act 2 HP drain source.
+2. **Centurion+Mystic** (Runs 4, 5, 6): 25-42 HP lost per fight. Mystic's healing extends the fight, Centurion attacks for 12-18/turn.
+3. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights. Reaper and Feed are the only in-combat healing options.
+4. **Fairy consumed in wrong fight**: In Runs 5 and 6, Fairy in a Bottle was consumed in a hallway fight, leaving no safety net for the elite. Save Fairy for elites/bosses when possible.
+
+Confidence: HIGH (pattern across Runs 3, 4, 5, and 6 — four deaths from low HP entry, root causes now identified)

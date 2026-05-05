@@ -45,7 +45,9 @@ Act 1 boss. HP: 240 (confirmed in Run 2).
 - **Run 2 died to this boss** at 123/240 HP. Deck was exhausted down to 3 cards (Defend, Iron Wave, True Grit) and could only generate 20 block per turn. The 32-damage attack was unsurvivable. Root cause: over-exhausting with unupgraded True Grit (random exhaust) destroyed key cards.
 - **Run 5 victory**: Beat Guardian at 69/80 HP entry. 15-card deck, 3 upgrades (Bash+, Shrug It Off+, Carnage+). Key plays: (1) Skill Potion -> Impervious on turn 2 for 30 block vs 32 attack. (2) Carnage+ + Headbutt loop dealt 28-42 damage every other turn. (3) Fairy in a Bottle revived on turn 11 after taking 32 damage. (4) Killed turn 12 with Strike at 2 HP remaining on Guardian. Mode Shift confirmed at 30 on cycle 1 (player noted Mode Shift 30->18 after 12 damage turn 1).
 - **Winning formula confirmed**: (1) One big block card for 32-damage turn (Impervious ideal). (2) High burst damage for fast Mode Shift triggering (Carnage+ at 28-42). (3) Headbutt for deck manipulation (guarantee Carnage+ draw). (4) Safety net (Fairy in a Bottle).
-- Confidence: MEDIUM -> HIGH (3 fights observed — Runs 0 and 5 victories, Run 2 death. Winning formula now identified across 2 victories.)
+- **Run 6 victory**: Beat Guardian at 10 HP. Entered at 67/80 HP after resting. Deck had Metallicize x2, Headbutt+, Pommel Strike+, Bash+, Thunderclap+, Intimidate, Letter Opener relic. Key plays: (1) Double Metallicize setup turn 1 (6 block/turn for rest of fight). (2) Intimidate (0E, Weak ALL) reduced 32-damage turn to 24. (3) Snecko Oil potion on a critical turn gave 0-cost Strikes and Pommel Strike+ for massive free damage. (4) Letter Opener relic dealt 5 damage whenever a Skill was played — significant chip damage over 12+ turns. (5) 0-cost cards from Snecko Oil dealt 18+ damage in free hits during Defensive Mode. Final kill: all-in with Bash+ Vuln + 3 free Strikes (9 each Vuln) for 37 damage, reducing Guardian from 44 to 0. Survived at 10 HP.
+- **Third victory formula**: Double Metallicize (6/turn passive block) + Headbutt+ loop (guaranteed draw manipulation) + Snecko Oil (free cards for burst). The double Metallicize is the standout — 6 block/turn handles many attack patterns without spending cards.
+- Confidence: HIGH (4 fights — Runs 0, 5, 6 victories, Run 2 death. Winning formula well-established: burst damage + big block source for 32-damage turn + passive block for sustain.)
 
 ## Jaw Worm
 
@@ -110,7 +112,9 @@ Act 1 elite. HP: 110 (confirmed in Run 2).
 - **Strategy**: Wake it immediately with Bash (Vulnerable helps more than 3 turns of chipping through 8 block). Front-load damage on debuff turns (free turns). Kill before Strength debuffs accumulate — each -1 Strength makes every attack card worse.
 - **Run 2 experience**: 7-turn fight. Player correctly woke it turn 1 with Bash, went all-in on free turns. Took 36 HP damage total (82->35 after Burning Blood heal to 35+6=41... actually player ended at 35 HP before Burning Blood). The fight's length caused significant Strength loss (-2 or -3 Strength by end).
 - **Math warning**: After multiple debuff turns, recalculate damage. Strike goes from 6 to 5 to 4. Pommel Strike 9 to 8 to 7. Iron Wave 5 to 4 to 3. Plans made with base damage values will overestimate output.
-- Confidence: MEDIUM (1 fight in Run 2, mechanics observed)
+- **Run 6 experience**: 7-turn fight. Player entered at ~66 HP. Opened with Metallicize + Bash+ (woke Lagavulin immediately). Used Weak Potion to reduce 18 damage to 13. Headbutt+ Vuln dealt 18 damage. Pommel Strike+ Vuln dealt 15. Used Headbutt+ to put Bash+ on top for Vuln refresh. Kill on turn 7 with Headbutt+ Vuln (16 damage at -1 Str) + Thunderclap+ (8 kills). Took ~20 HP damage (66->~46 before Burning Blood). Much cleaner than Run 2 thanks to Headbutt+ deck manipulation and Metallicize passive block.
+- **Headbutt+ with Lagavulin Str debuff**: At -1 Strength, Headbutt+ does floor((12-1)*1.5) = 16 damage with Vulnerable. The Strength debuffs compound: plan around reduced damage values.
+- Confidence: MEDIUM -> HIGH (2 fights across Runs 2 and 6, mechanics well-documented, Weak Potion strategy confirmed effective)
 
 ## Gremlin Nob
 
@@ -180,7 +184,8 @@ Act 2 hallway enemy. Appears in groups of 3. HP: ~25-30 per Byrd (estimated).
 - **Strategy**: (1) Use Thunderclap to strip Flight from all Byrds and apply Vulnerable simultaneously. (2) Focus fire one Byrd at a time — reducing from 3 to 2 enemies is the biggest damage reduction. (3) Once Flight is at 0, burst with Vulnerable attacks to kill. (4) Metallicize is critical for the long fight — passive block every turn. (5) Consider using Reaper mid-fight for healing sustain.
 - **CRITICAL WARNING**: This fight is an HP sponge. Even with good play, expect to lose 40-60 HP. If entering Act 2 with low HP, Byrds can end the run through sheer attrition. Prioritize healing before Act 2.
 - **Run 5 improvement**: 7-turn fight (vs 12 in Run 3). Key differences: (1) Carnage+ (28 damage, halved to ~14) nearly one-shot a Byrd turn 1 after Thunderclap stripped 1 Flight + applied Vulnerable. (2) Killed first Byrd turn 2, reducing incoming by 33%. (3) Impervious used turn 2 for massive block safety margin. (4) Dropkick provided free cycling on Vulnerable Byrds. HP cost: ~20 HP (vs 58 HP in Run 3). Dramatically better result from having Carnage+ and better card quality.
-- Confidence: MEDIUM (2 fights across Runs 3 and 5, 12-turn and 7-turn experiences. Carnage+ / high burst significantly reduces fight length.)
+- **Run 6 update**: 10-turn fight (3 Byrds). Player entered at ~61 HP. Used Thunderclap+ for AOE + Vuln + Flight stripping. Feed killed Byrd 1 on turn 4 for +3 max HP (80->83). Blood Potion used mid-fight (healed 16 HP). Exited at ~19 HP + Burning Blood = 25 HP. HP cost: ~36 HP. Without Carnage+ (which Run 5 had), the fight reverted to a slow attrition grind. Feed as a kill card was clever — combining damage with max HP gain.
+- Confidence: MEDIUM -> HIGH (3 fights across Runs 3, 5, and 6. Fight length: 12, 7, 10 turns. Carnage+ dramatically shortens the fight. Without it, expect 10+ turns and 36-58 HP lost.)
 
 ## Chosen
 
@@ -207,7 +212,9 @@ Act 2 hallway enemy pair. Centurion HP: ~65 (estimated from Run 4). Mystic HP: ~
 - **Free turns**: Both enemies can have turns where they defend/buff without attacking. These are critical windows to burst Mystic.
 - **Run 4 death**: Player entered at 42/84 HP. Used Whirlwind turn 1 (15 AOE) to damage both. Correctly targeted Mystic with Fiend Fire (burst) and Bash+ (Vuln). Killed Mystic on turn 5 but was at 7 HP by then. Centurion's attacks (12-18 per turn) whittled HP while player focused Mystic. Died turn 8 at 1 HP — couldn't block 18 incoming with only 10 block available.
 - **Strategy**: (1) KILL MYSTIC FIRST. (2) Use AOE on turn 1 to damage both while you figure out intents. (3) Save burst damage (Fiend Fire, Whirlwind) for Mystic. (4) Apply Weak to Centurion to reduce incoming while you kill Mystic. (5) Once Mystic is dead, Centurion is a straightforward single-target fight. (6) Enter with 50+ HP — this fight drains HP fast even with correct play.
-- Confidence: MEDIUM (2 fights across Runs 4 and 5 — died in Run 4, survived in Run 5 but dropped to 4 HP. See Run 5 update below.)
+- **Run 6 update**: Third encounter. Player entered at 25 HP (after Fairy revive from Byrd fight). Correctly killed Mystic first using Bash+ Vuln + Pommel Strike+ + Headbutt+ + Thunderclap+. Killed Mystic in ~6 turns. Double Metallicize (6 block/turn) kept player alive vs Centurion. Fairy in a Bottle consumed during this fight (player deliberately took 24 damage with only 6 Metallicize block, knowing Fairy would revive at ~24 HP). After Mystic died, used Feed to kill Centurion for +3 max HP. Exited fight at ~5 HP + Burning Blood = ~11 HP.
+- **Lesson confirmed across 3 runs**: Kill Mystic first is absolutely correct and was executed well in Run 6. But the fight STILL drains massive HP (25->~5 even with correct play and double Metallicize). The double Metallicize (6 block/turn) is a significant upgrade over single (3/turn) and was critical for surviving.
+- Confidence: MEDIUM -> HIGH (3 fights across Runs 4, 5, and 6 — died in Run 4, survived in Runs 5 and 6 but badly damaged both times. Kill Mystic first confirmed as correct strategy.)
 
 ## Spheric Guardian
 
@@ -259,16 +266,31 @@ Act 2 hallway enemy. HP: ~60-75 (estimated from Run 5 — fight lasted 4 turns w
 - Run 5: Fought on floor 23. Shockwave opener, then Impervious for block, Dropkick for cycling, Carnage+ for burst, Bash+ for Vuln refresh, Searing Blow for kill. Took some damage but survived.
 - Confidence: LOW (1 fight in Run 5, limited data — reasoning fields were empty)
 
-## Centurion + Mystic (Run 5 Update)
+## Centurion + Mystic (Run 5 and 6 Updates)
 
 - Run 5: Second encounter. Player entered at unknown HP (higher than Run 4's 42 HP). Fight lasted 12 turns.
-- **Headbutt does 9 damage, not 11**: Player's Run 5 reasoning mentioned Headbutt doing 9 damage. Previous Centurion+Mystic entry estimated Mystic HP at ~41. Headbutt left Mystic at 1 HP — Mystic healed back. This suggests Mystic HP may be higher than estimated, or block absorbed more than expected.
-- **KILL MYSTIC FASTER**: The 12-turn fight drained massive HP. Key issue: Headbutt (9 dmg) is not enough burst vs Mystic's ~15 block per turn. Need Carnage+ or Searing Blow for burst through block.
-- **Correct target priority maintained**: Player correctly focused Mystic with Searing Blow, Headbutt, Carnage+ while using Thunderclap for AOE Vulnerable and Bash+ on Centurion for Weak/damage reduction.
-- **Dropped to 4 HP**: Even with correct play, the fight went 12 turns and drained HP to 4. The player survived but entered the next fights critically low.
-- Confidence: MEDIUM (2 fights across Runs 4 and 5 — died in Run 4, survived in Run 5 but badly damaged)
+- **Headbutt does 9 damage (unupgraded), 12 damage (upgraded)**: Player's Run 5 had unupgraded Headbutt (9 damage), which left Mystic at 1 HP. Run 6 had Headbutt+ (12 damage, 13 Vuln through block), which was significantly more effective.
+- **KILL MYSTIC FASTER**: The 12-turn fight drained massive HP. Key issue: unupgraded Headbutt (9 dmg) is not enough burst vs Mystic's ~15 block per turn. Headbutt+ (12 dmg, 13 Vuln) is better but still doesn't punch through 15 block in one hit. Need Carnage+ or Searing Blow for burst through block.
+- **Correct target priority maintained**: Player correctly focused Mystic in both Runs 5 and 6.
+- **Run 6**: Third encounter. Player entered at 25 HP. Killed Mystic in ~6 turns using Bash+ Vuln + Headbutt+ 13 Vuln + Pommel Strike+ 15 Vuln + Thunderclap+ 12 Vuln. Double Metallicize (6 block/turn) helped survive Centurion's attacks. Fairy consumed during fight (24 incoming, 6 block only). Used Feed to kill Centurion for +3 Max HP. Exited at ~5 HP.
+- **Mystic HP revised**: Observed Mystic at 49 HP in Run 6 (Pommel Strike+ 10 damage, 49->39). Previous estimate was ~41. Mystic HP is likely ~49-50.
+- Confidence: MEDIUM -> HIGH (3 fights across Runs 4, 5, and 6 — died in Run 4, survived in Runs 5 and 6 but heavily damaged. Kill Mystic first is confirmed. Mystic HP ~49.)
 
 
+
+## Book of Stabbing
+
+Act 2 elite. HP: 161 (confirmed in Run 6).
+
+- **Multi-hit attacks that scale**: Book of Stabbing attacks multiple times per turn. The number of hits INCREASES each turn. Run 6 observed: Turn 1: ~8 damage (Weakened). Turn 2: 6x3 = 18. Turn 3: 6x3.5? ~21. Turn 4: 6x4 = 24. Turn 5: ~21 (with only 1 Metallicize). The hits-per-turn escalation is the core threat.
+- **Painful Stabs (Wound cards)**: Each attack adds Wound status cards to the player's deck. Wounds are Unplayable — they sit in hand and waste card slots. Unlike Burns (deal damage), Wounds just clog draws. Over 5 turns, Wounds accumulate and dilute the deck, making it impossible to draw both damage AND block cards in the same hand.
+- **Wound + scaling = death spiral**: Wounds clog draws -> fewer block cards per hand -> take more damage -> need more block -> draws are clogged with Wounds. By turn 5 in Run 6, the player had Wounds in hand and couldn't draw enough Defend+ cards to survive 21+ incoming.
+- **HP is high (161)**: This is a long fight. Even with strong burst (Dropkick+ free cycling, Pommel Strike+ 15 Vuln, Headbutt+ 13 Vuln), the player dealt 140 damage in 5 turns and still had 21 HP remaining on the Book when they died.
+- **Vulnerable synergy is critical**: Dropkick+ was the best card in this fight — effectively free (refunds energy + draws) when target is Vulnerable. The player dealt significant damage via Dropkick+ cycles.
+- **Run 6 death**: Entered at 6 HP after resting. Book at 161 HP. Player dealt 140 damage in 5 turns (Bash+, Headbutt+ Vuln, Dropkick+ free cycles, Pommel Strike+, Strike+). Intimidate applied Weak turn 1 reducing first attack. Double Metallicize (6 block/turn) was insufficient against scaling multi-hit. Died with Book at 21 HP.
+- **Strategy**: (1) Enter with HIGH HP — minimum 60% for this elite. (2) Apply Vulnerable immediately for Dropkick+ cycling. (3) Weak reduces each individual hit. (4) Front-load damage — every turn the fight goes on, attacks get worse AND Wounds clog draws. (5) Exhaust tools (True Grit+, Burning Pact) help remove Wounds. (6) Double Metallicize (6/turn) is good but insufficient against 4+ hit attacks.
+- **HP THRESHOLD**: At 6 HP, this fight was unwinnable. Even with perfect play, 5 turns of scaling multi-hit damage overwhelms any amount of block. Enter with 50+ HP minimum.
+- Confidence: MEDIUM (1 fight in Run 6, died — HP, attack scaling, and Wound mechanic confirmed)
 
 ### Frail
 - Reduces block gained from cards by 25%. This is multiplicative with the card's block value.

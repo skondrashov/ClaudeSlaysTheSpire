@@ -243,3 +243,35 @@ Documented mistakes from actual runs. Each entry explains what went wrong and wh
 - **Target priority**: Correctly focused Mystic in Centurion+Mystic (applying Run 4 lesson).
 - **The run failed from HP management** (entering Gremlin Leader at 11 HP) and the shop bug (157g lost), not from tactical errors.
 - Confidence: HIGH (Run 5 — player demonstrably applied lessons from Runs 1-4, improvements are measurable)
+
+## Run 6: Entered Book of Stabbing elite at 6 HP — 4th death from low HP entry
+
+- Floor 24 (Act 2): Player entered Book of Stabbing elite at 6 HP (7% of 86 max). The fight was unwinnable from the start — despite dealing 140 damage in 5 turns (Book went 161->21), the player couldn't survive the scaling multi-hit attacks with Wound-clogged draws at 6 HP.
+- **HP trace**: Entered Act 2 at 80/80 (full HP for first time!). Byrd fight drained to ~19 HP. Burning Blood +6 = 25 HP. Centurion+Mystic fight: Fairy consumed reviving at ~24 HP. Exit fight at ~5 HP. Burning Blood +6 = ~11 HP. Dropkick+ taken. Pleading Vagrant event (85g for relic). Ancient Writing (mass upgrades). Rest site: rested to ~6 HP? Book of Stabbing elite: died at 6 HP.
+- **Why only 6 HP at rest site**: The Centurion+Mystic fight consumed the Fairy in a Bottle and left the player at ~5 HP. Burning Blood healed to ~11 HP. The rest site healed some but the player was still critically low.
+- **Root cause**: The Byrd -> Centurion+Mystic -> Elite path is a death cascade. Each long fight drains 25-50 HP, Burning Blood cannot compensate (+6/fight), and there aren't enough healing opportunities between fights. The Fairy being consumed in Centurion+Mystic removed the safety net.
+- **This is the 4th death from low HP entry** (Runs 3, 4, 5, 6). The pattern is unambiguous. The player must start making different pathing decisions to avoid this cascade.
+- Lesson: (1) After ANY fight that drops you below 30% HP, the next room MUST be a rest site, shop, or event — not another monster/elite. (2) If the path forces elite after a brutal fight with no healing, skip the elite entirely (backtrack to a different path if possible). (3) Fairy in a Bottle should be saved for elites/bosses — using it in a hallway fight means no safety net later. (4) Consider: is the elite reward worth the risk of death? At 6 HP, no reward is worth the risk.
+- Confidence: HIGH (Run 6 — 4th consecutive Act 2 death from low HP entry)
+
+## Run 6: Fairy consumed during Centurion+Mystic — no safety net for elite
+
+- Floor 21: Player deliberately took 24 damage (8x3 from Centurion) with only 6 Metallicize block, knowing Fairy in a Bottle would revive at ~24 HP. The Fairy was consumed here instead of being available for the Book of Stabbing elite 3 floors later.
+- **Was this wrong?** The player had no choice — at 9 HP with 24 incoming damage, death was unavoidable. But the path leading to this point (Byrd fight draining to 25 HP, then Centurion+Mystic) is what caused the Fairy consumption.
+- **Pattern**: In Run 5, Fairy was consumed in Centurion+Mystic fight (floor 22), then died to Gremlin Leader (floor 25). In Run 6, same pattern — Fairy consumed in Centurion+Mystic, then died to Book of Stabbing. Centurion+Mystic is consistently the fight that burns through Fairy.
+- Lesson: (1) Centurion+Mystic is a Fairy-consuming fight. If you enter below 50% HP, expect to lose the Fairy. (2) Plan paths so that Fairy is available for elites, not consumed in hallway fights. (3) If Fairy is your only safety net, do not fight Centurion+Mystic at low HP — find an alternative path.
+- Confidence: HIGH (Run 5 and 6 — same pattern in consecutive runs)
+
+## Run 6: Correct play — significant improvements from Runs 1-5
+
+- NOTE: Not a mistake. Documenting what went RIGHT for reference.
+- **Entered Act 2 at full HP (80/80)**: First time ever. Previous best was Run 5 at 69/80. This was a major milestone — the Act 1 HP management was excellent.
+- **Centurion+Mystic lesson applied**: Correctly killed Mystic first in the Centurion+Mystic fight (applying Run 4 lesson). Fight was still long but played correctly.
+- **Feed card usage**: Brilliant use of Feed to kill Byrd (+3 Max HP) and Centurion (+3 Max HP) for +6 total Max HP. Used Headbutt+ to place Feed on top of draw pile for guaranteed kill shots. This is the kind of creative play that wins runs.
+- **Ancient Writing event**: Chose [Simplicity] to upgrade all Strikes and Defends — approximately +8 upgrades. This massively improved deck quality. Strike+ (9 damage) and Defend+ (8 block) are significantly better than base versions.
+- **Dropkick+ synergy**: Recognized and exploited the Vulnerable synergy — Dropkick+ was effectively free (1E cost, 1E refund, draw 1) against Vulnerable targets. Against Book of Stabbing, Dropkick+ dealt 36 total damage for 0 net energy.
+- **Double Metallicize**: Setup 6 block/turn passive in both Guardian and Centurion+Mystic fights. This is a strong defensive foundation.
+- **Upgrade discipline**: 4+ upgrades before Act 2 (Bash+, Pommel Strike+, Headbutt+, Thunderclap+), plus Ancient Writing for mass upgrades. Best upgrade record across all runs.
+- **Guardian victory**: Third Guardian victory across all runs. Clean fight using Snecko Oil clutch turn + double Metallicize + Letter Opener passive damage.
+- **The run failed from HP management** (6 HP into Book of Stabbing elite), not from card play or tactical errors. The player's tactical execution was the best yet.
+- Confidence: HIGH (Run 6 — measurable improvements in upgrade discipline, HP management into Act 2, card synergy exploitation, and creative Feed usage)

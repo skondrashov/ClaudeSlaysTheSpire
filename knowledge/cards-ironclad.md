@@ -153,10 +153,12 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 
 ### Thunderclap
 - Type: Attack, 1 energy, 4 damage to ALL enemies, applies 1 Vulnerable to ALL enemies
-- Evaluation: Cheap AOE that applies mass Vulnerable for 1 energy. Doesn't deal much damage on its own (4 to each enemy), but the mass Vulnerable makes all subsequent attacks deal 50% more. In multi-enemy fights, this is extremely efficient — 1 energy to set up 50% more damage on every enemy. Against single enemies, worse than Bash+ (which applies 3 turns of Vulnerable for 2 energy and deals 10 damage).
-- Run 3: Taken after Gremlin Nob elite. Used extensively in Looter fight (killed Acid Slime with 4 damage when at 3 HP), Louse fights, Hexaghost boss, Byrd fight, and Chosen fight. The mass Vulnerable was consistently valuable.
+- Upgrade (Thunderclap+): 1 energy, 7 damage to ALL enemies, applies 1 Vulnerable to ALL enemies (confirmed Run 6 — 7 AOE, later 8 observed with possible Strength buff)
+- Evaluation: Cheap AOE that applies mass Vulnerable for 1 energy. Doesn't deal much damage on its own (4/7 to each enemy), but the mass Vulnerable makes all subsequent attacks deal 50% more. In multi-enemy fights, this is extremely efficient — 1 energy to set up 50% more damage on every enemy. Against single enemies, worse than Bash+ (which applies 3 turns of Vulnerable for 2 energy and deals 10 damage).
+- Run 3: Taken after Gremlin Nob elite. Used extensively in Looter fight, Louse fights, Hexaghost boss, Byrd fight, and Chosen fight. The mass Vulnerable was consistently valuable.
+- Run 6: Upgraded at Ominous Forge event. Thunderclap+ (7 AOE + Vuln ALL) was core utility throughout. Used to finish Lagavulin (8 AOE killed at 1 HP), strip Byrd Flight, apply Vuln for Dropkick+ synergy, and chip damage to Centurion during Mystic-focus turns. With Vulnerable on targets, 7 base becomes ~10 damage each — significant AOE.
 - Note: Each hit on a Flight enemy reduces Flight by 1. Thunderclap hitting multiple Byrds reduces each one's Flight. This makes it useful for stripping Flight efficiently.
-- Confidence: MEDIUM (used in ~8 fights across Run 3, damage and Vulnerable confirmed)
+- Confidence: MEDIUM -> HIGH (used in 15+ fights across Runs 3 and 6, 4 base / 7 upgraded damage confirmed, mass Vulnerable consistently critical)
 
 ### Iron Wave+ (Upgraded)
 - Type: Attack, 1 energy, 7 damage, gain 7 block
@@ -174,7 +176,9 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 - Type: Power, 1 energy
 - Effect: Gain 3 block at the end of each turn (permanent for rest of combat)
 - Run 3 update: Taken as a card reward (floor 12). Played in Byrd fight and Chosen fight. The 3 passive block per turn was critical in long fights. Over the 12-turn Byrd fight, provided 36 free block. Metallicize value of 3 now confirmed across Runs 2 and 3.
-- Confidence: HIGH (used in Runs 2 and 3, value = 3 confirmed)
+- **Run 6 update — DOUBLE METALLICIZE**: Player had 2 copies of Metallicize, providing 6 block/turn passive. This was a game-changing defensive setup. In the Guardian fight, 6 block/turn meant many attack patterns (8x2=16, 9 damage) could be handled with just 1 Defend + Metallicize. In the Centurion+Mystic fight, 6 block/turn reduced incoming damage significantly and helped survive with Fairy. Against Book of Stabbing, 6 block/turn was the only block available on the death turn (no block cards drawn due to Wounds). 
+- **Double Metallicize evaluation**: Two copies at 1E each cost 2E total in setup. In a 10-turn fight, they provide 60 free block. For comparison, 2 Defends provide 10 block per turn but cost 2E every turn. Metallicize pays for itself after turn 1. Running 2 copies is excellent.
+- Confidence: HIGH (used in Runs 2, 3, and 6. Double Metallicize confirmed as strongest defensive setup in Run 6.)
 
 ## Cards Seen in Run 4
 
@@ -196,10 +200,13 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 
 ### Headbutt
 - Type: Attack, 1 energy, 9 damage
-- Effect: Deals 9 damage. After dealing damage, choose a card from your discard pile and place it on top of your draw pile.
-- Evaluation: Damage + deck manipulation. The discard-to-top effect is powerful — it guarantees you draw a specific card next turn. Use it to find Bash (for Vulnerable setup), Fiend Fire (for burst), or any key card. Against enemies with Barricade/persistent block, placing Bash on top ensures you apply Vulnerable consistently.
+- Upgrade (Headbutt+): 1 energy, 12 damage. Same discard-to-top effect.
+- Effect: Deals damage. After dealing damage, choose a card from your discard pile and place it on top of your draw pile.
+- Evaluation: Damage + deck manipulation. The discard-to-top effect is powerful — it guarantees you draw a specific card next turn. Use it to find Bash+ (for Vulnerable setup), Fiend Fire (for burst), Feed (for kill shot), or any key card. Against enemies with Barricade/persistent block, placing Bash on top ensures you apply Vulnerable consistently.
+- **Upgrade is significant**: Headbutt+ (12 damage) vs Headbutt (9 damage) is a 33% increase. With Vulnerable: floor(12*1.5) = 18 vs floor(9*1.5) = 13. The 5 extra Vuln damage often makes the difference between killing an enemy this turn or next turn. In Run 5, unupgraded Headbutt (9 damage) left Mystic at 1 HP, extending the fight 2+ turns. In Run 6, Headbutt+ (12 base, 18 Vuln) was one of the best cards in the deck.
 - Run 4: Obtained from Transmogrifier event (transformed Strike into Headbutt). Used against Spheric Guardian — placed Bash on top of draw pile to apply Vulnerable after Artifact was stripped. Used in Slime Boss fight (13 damage with Vuln).
-- Confidence: MEDIUM (used in 4+ fights in Run 4, effect confirmed — 9 damage + discard-to-top)
+- Run 6: Had Headbutt+ (upgraded, likely from Neow or event). 12 base damage, 18 with Vulnerable. Used extensively: (1) Lagavulin fight — 18 Vuln damage + put Bash+ on top. (2) Guardian fight — placed key cards on top for next turn. (3) Centurion+Mystic — 13 Vuln damage to Mystic through block. (4) Book of Stabbing — 13 Vuln damage + deck manipulation. With Lagavulin's -1 Str debuff: floor((12-1)*1.5) = 16 Vuln damage confirmed.
+- Confidence: MEDIUM -> HIGH (used in 8+ fights across Runs 4, 5, and 6 — 9 base / 12+ upgraded confirmed, discard-to-top is consistently one of the most valuable effects)
 
 ### Burning Pact
 - Type: Skill, 1 energy, Exhaust
@@ -214,6 +221,23 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 - Effect: Gain 2 Strength (permanent for rest of combat)
 - Run 4 update: Taken from Looter fight card reward in Act 2. Played against Centurion+Mystic — used on turn 4 for +2 Str to boost all subsequent attacks. With Inflame, every Attack card dealt 2 more damage for the rest of the fight.
 - Confidence: HIGH (used in Runs 2, 3, and 4 — effect confirmed, consistently strong)
+
+## Cards Seen in Run 6
+
+### Intimidate
+- Type: Skill, 0 energy, Exhaust
+- Effect: Apply 1 Weak to ALL enemies.
+- Evaluation: Free mass Weak for 0 energy. Reduces ALL enemy attack damage by 25% for 1 turn. Since it costs 0 energy, it should ALWAYS be played when drawn — there is zero downside. Exhaust means one-time use, but 0 cost means it doesn't compete with other cards for energy.
+- **Synergy with Letter Opener**: Every Skill played triggers Letter Opener (5 damage to a random enemy). Intimidate being 0 cost means free 5 damage + mass Weak.
+- **Best use**: Turn 1 of dangerous fights for immediate damage reduction. Against multi-hit enemies (Book of Stabbing, Guardian 5x4), Weak reduces each individual hit.
+- Run 6: Taken after floor 13 Acid Slime fight. Used in Guardian fight (Weak reduced 32 attack to 24), Mugger fight (free Weak + LO damage), Centurion+Mystic (Weak ALL on turn 1), Book of Stabbing (reduced first multi-hit attack). Always played immediately for free value.
+- **Skill card warning**: Triggers Gremlin Nob Enrage (+2 Str) and Chosen Hex (adds Dazed). Do not play against these enemies.
+- Confidence: MEDIUM (used in 4+ fights in Run 6, 0 energy + Weak ALL + Exhaust confirmed)
+
+### Pommel Strike+ (Upgraded)
+- Type: Attack, 1 energy, 10 damage, draw 2 cards
+- Run 6 update: Confirmed upgrade values. Pommel Strike+ deals 10 base damage (vs 9 unupgraded) and draws 2 cards (vs 1 unupgraded). With Vulnerable: floor(10*1.5) = 15 damage + draw 2. The double draw makes this one of the best cycling cards in the game — in the Guardian fight, Pommel Strike+ drew into additional 0-cost cards from Snecko Oil for massive turns.
+- Confidence: HIGH (used extensively in Runs 3-6, 10 damage / draw 2 confirmed for upgraded version)
 
 ## Cards Seen in Run 5
 
@@ -251,11 +275,25 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 
 ### Dropkick
 - Type: Attack, 1 energy, 5 damage
+- Upgrade (Dropkick+): 1 energy, 8 damage. Same conditional effect.
 - Effect: If the target is Vulnerable, gain 1 energy and draw 1 card.
-- Evaluation: Effectively FREE when target is Vulnerable — costs 1E, refunds 1E, deals damage, and draws a replacement card. Infinite cycling tool with Bash+ (3 turns Vulnerable). Without Vulnerable on target, it's a terrible card (5 damage, no benefit, worse than Strike).
+- Evaluation: Effectively FREE when target is Vulnerable — costs 1E, refunds 1E, deals damage, and draws a replacement card. Infinite cycling tool with Bash+ (3 turns Vulnerable). Without Vulnerable on target, it's a terrible card (5/8 damage, no benefit, worse than Strike).
 - **Conditional value**: Dropkick is amazing with reliable Vulnerable application (Bash+, Thunderclap) and terrible without it. In fights where you can't apply Vulnerable (Artifact enemies until stripped), Dropkick is a dead card.
+- **Dropkick+ with Vulnerable**: 8 base * 1.5 = 12 damage + draw 1 + gain 1E. Effectively free 12 damage that cycles the deck. Against Book of Stabbing in Run 6, Dropkick+ dealt 12 Vuln damage three times as a free action, contributing 36 total damage for 0 net energy.
 - Run 5: Taken after Looter/Mugger fight in Act 2. Used in Byrd fight (Dropkick on Vulnerable Byrd = free cycle + Flight strip). Used in Centurion+Mystic (Dropkick on Vulnerable Centurion = free energy + draw). Used in Gremlin Leader fight.
-- Confidence: MEDIUM (used in 3+ fights in Run 5, energy refund + draw confirmed when target Vulnerable)
+- Run 6: Taken as Dropkick+ (already upgraded) after Centurion+Mystic fight. Star card against Book of Stabbing — 3 free plays of 12 Vuln damage. The energy refund enabled playing additional cards (Bash+, Defend+) in the same turn.
+- Confidence: MEDIUM -> HIGH (used in 6+ fights across Runs 5 and 6, energy refund + draw confirmed, Dropkick+ 8 base / 12 Vuln confirmed)
+
+### Feed
+- Type: Attack, 1 energy, 10 damage, Exhaust
+- Effect: If this kills the enemy, gain 3 Max HP permanently (persists after combat).
+- Evaluation: One of the strongest Ironclad cards. Damage is decent (10 base, 15 Vuln), but the real value is permanent Max HP scaling. Each Feed kill adds 3 Max HP, which compounds over the entire run. Exhaust means one-time use per combat, so you must land the kill with this card.
+- **Headbutt synergy**: Use Headbutt to place Feed on top of draw pile when an enemy is low HP. Guarantees drawing Feed for the kill shot.
+- **Best targets**: Low-HP enemies about to die (finish them with Feed instead of Strike). In multi-enemy fights, soften one target then Feed kill it for +3 Max HP. Byrds, Mystic, and Gremlins are good targets.
+- **Vuln matters**: With Vulnerable, Feed does floor(10*1.5) = 15 damage. This is enough to kill many softened enemies through remaining HP or Flight.
+- Run 6: Taken after Guardian boss. Used three times: (1) Byrd fight — Feed killed Vuln Byrd through Flight for +3 Max HP (80->83). (2) Centurion fight — Feed killed Vuln Centurion at 5 HP for +3 Max HP (83->86). (3) Attempted on Mugger but used Headbutt to set up Feed on top of draw pile. Player correctly used Headbutt to guarantee drawing Feed at the right moment.
+- **Run 6 impact**: Feed provided +6 Max HP total across 2 kills (83->86). This is equivalent to finding a Strawberry relic. The permanent scaling is what makes Ironclad viable in long runs.
+- Confidence: MEDIUM (used 2-3 times in Run 6, 10 damage / 15 Vuln / +3 Max HP on kill confirmed)
 
 ### Shockwave
 - Type: Skill, 2 energy, applies 3 Weak and 3 Vulnerable to ALL enemies, Exhaust
