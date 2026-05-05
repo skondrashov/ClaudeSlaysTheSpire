@@ -24,6 +24,10 @@ Items pending confirmation or further investigation. Promote to reference/ when 
 - Enchiridion Power pool: What Powers can Enchiridion generate? Observed Corruption in Run 13. Can it generate any Power in the game, or only class-specific Powers?
 - Dream Catcher card pool: Does Dream Catcher at rest sites offer the same card pool as normal rewards? Or is it a different/restricted pool?
 
+- Potion use discipline failure pattern: Across deaths at low HP, potions are frequently unused. The strategy.md guidance says "use ALL potions aggressively" but the player still hoards them. Is the issue that the guidance isn't specific enough about WHEN the threshold triggers? Hypothesis: the player needs a hard rule like "below 35% HP = use every potion on turn 1, no exceptions" rather than the softer "use aggressively."
+- Power Through deck-building trap: When taken without exhaust tools, creates a negative feedback loop in long fights. Wounds reduce block density, which increases damage taken, which makes the fight longer, which means more Wound cycling. Need to confirm whether this is unique to Power Through or applies to any status-generating card (Wild Strike Wounds, Reckless Charge Dazed).
+- Looter+Mugger fight HP cost: This fight drained from some higher HP to 18/72. What is the typical HP cost of Looter+Mugger? If consistently 20-30+ HP, it should be documented as a "drain fight" alongside Byrds and Centurion+Mystic.
+
 ## Open Questions
 
 - Shop bug root cause: Recurring in 3/8 runs (37.5%). Is this a CommunicationMod issue, a state_formatter issue, or a cmd.py issue? The `choose` probe workaround has not been fully tested.
@@ -32,7 +36,7 @@ Items pending confirmation or further investigation. Promote to reference/ when 
 - Ancient Writing second option: Player chose Simplicity (upgrade all Strikes/Defends). The other option ([Insight]) was not explored. What does it offer?
 - The Joust odds: Listed as 70% win chance for Murderer. Is this accurate? Run 5 appeared to lose. Expected value calculation needs verification.
 - Rampage+ starting damage: Observed scaling 12->20->28->36->48->60 in Run 13. Does Rampage+ start at 12 damage (vs 8 base)? Or does it start at 8 and scale +8? The sequence 12, 20, 28... fits +8 increments starting at 12. Need confirmation of base Rampage starting damage.
-- Shelled Parasite mechanics: Encountered in Run 13 (Fungi Beast + Shelled Parasite fight). Has Plated Armor. Exact HP, damage patterns, and Plated Armor amount need documentation from future encounters.
+- Shelled Parasite mechanics: CONFIRMED. HP 68-71, Plated Armor 14, attacks for 13+ damage. Promoted to playbook/enemies/shelled-parasite.md with full details.
 - Snecko confusion mechanic: Snecko applies cost confusion (randomizes card costs 0-3). Exact duration, whether it stacks, and interaction with X-cost cards need confirmation.
 - Corruption interaction with Second Wind: Does Second Wind exhaust itself after use (since it's a Skill under Corruption)? If so, it becomes a one-time mass exhaust for block. Need confirmation.
 - Brutality HP threshold for multiple copies: Run 13 died playing 2 copies at 10 HP. What's the safe HP threshold for playing 2 Brutalities? Hypothesis: 40+ HP for 2 copies in a fight expected to last 5+ turns.

@@ -6,7 +6,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-Entering fights at critically low HP is the single most common cause of death across all runs. Eight of thirteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
+Entering fights at critically low HP is the single most common cause of death across all runs. Nine of fourteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
 
 | Run | Entry HP | % of Max | Fight | Result |
 |---|---|---|---|---|
@@ -18,6 +18,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 10 | low | <50% | Slime Boss | Died (Hemokinesis self-damage post-split) |
 | 11 | 18 | ~22% | Chosen+Byrd | Died (HP drained through Act 2) |
 | 13 | 10 | ~12% | Fungi Beast+Shelled Parasite | Died (2x Brutality self-damage at 10 HP) |
+| 19 | 18 | 25% | Shelled Parasite+Fungi Beast | Died (no block cards, Offering -6 HP left at 6) |
 
 ### HP Thresholds for Act 2
 
@@ -31,9 +32,15 @@ Entering fights at critically low HP is the single most common cause of death ac
 ### What to Do at Low HP
 
 - Below the threshold for the next fight? Take a DIFFERENT PATH. Event rooms, rest sites, shops -- anything but combat.
-- If forced into a fight below threshold, use ALL potions aggressively on turns 1-2. Don't save them for "later" -- there may not be a later.
+- If forced into a fight below threshold, use ALL potions aggressively on turn 1. Don't save them for "later" -- there may not be a later. This includes Strength Potions: +2 damage per attack over a 5-turn fight is 10-20 extra damage, which is 2-4 fewer turns of incoming damage. An unused potion on a death screen is a strategic failure.
 - If there's a rest site before an elite, REST (don't upgrade). HP > upgrades when below threshold.
 - After any fight that drops you below 30% HP, the next room MUST be a rest site, shop, or event -- not combat.
+
+### The Act 2 Death Spiral Is Predictable
+
+The pattern across 9 low-HP deaths: the player enters Act 2 at reasonable HP, loses 30-50 HP in one brutal fight (Byrds, Centurion+Mystic, Looter+Mugger), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it's taking a second combat room immediately after. After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. If the map doesn't offer this, the run was lost at map selection, not at the fight.
+
+**Act 2 decision point:** After each fight, if HP is below 35%, evaluate the ENTIRE remaining path. If it contains 2+ consecutive combat rooms before a rest site, consider abandoning elites and taking the safest available path even if it means missing rewards.
 
 ### What Causes the HP Drain
 
