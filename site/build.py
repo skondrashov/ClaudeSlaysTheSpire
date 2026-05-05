@@ -22,6 +22,8 @@ def md_to_html(text):
     out = []
     in_code = False
     in_list = False
+    in_table = False
+    pending_table_header = None
 
     for line in lines:
         # Code blocks
@@ -44,6 +46,43 @@ def md_to_html(text):
         if in_list and not stripped.startswith("- ") and not stripped.startswith("* "):
             out.append("</ul>")
             in_list = False
+
+        # Table handling
+        is_table_line = stripped.startswith("|") and stripped.endswith("|") and len(stripped) > 2
+        if is_table_line:
+            cells = [c.strip() for c in stripped[1:-1].split("|")]
+            is_separator = all(re.match(r'^:?-+:?$', c) for c in cells if c)
+            if is_separator and pending_table_header:
+                header_cells = [c.strip() for c in pending_table_header[1:-1].split("|")]
+                out.append('<table><thead><tr>')
+                for cell in header_cells:
+                    out.append(f'<th>{inline(cell)}</th>')
+                out.append('</tr></thead><tbody>')
+                in_table = True
+                pending_table_header = None
+            elif in_table:
+                out.append('<tr>')
+                for cell in cells:
+                    out.append(f'<td>{inline(cell)}</td>')
+                out.append('</tr>')
+            else:
+                if pending_table_header:
+                    out.append(f"<p>{inline(pending_table_header)}</p>")
+                pending_table_header = stripped
+            continue
+
+        # Close table state if not a table line
+        if pending_table_header:
+            out.append(f"<p>{inline(pending_table_header)}</p>")
+            pending_table_header = None
+        if in_table:
+            out.append('</tbody></table>')
+            in_table = False
+
+        # Horizontal rules
+        if stripped in ('---', '***', '___'):
+            out.append('<hr>')
+            continue
 
         # Headers
         if m := re.match(r'^(#{1,6})\s+(.+)', stripped):
@@ -68,6 +107,10 @@ def md_to_html(text):
         out.append("</ul>")
     if in_code:
         out.append("</code></pre>")
+    if in_table:
+        out.append('</tbody></table>')
+    if pending_table_header:
+        out.append(f"<p>{inline(pending_table_header)}</p>")
 
     return "\n".join(out)
 
@@ -231,6 +274,32 @@ code {
 }
 pre code { background: none; padding: 0; font-size: 14px; }
 strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
 
 /* File list */
 .file-list { list-style: none; margin: 0; padding: 0; }
@@ -484,6 +553,63 @@ def discover_playbook(playbook_dir):
     return categories, top_level_files
 
 
+def short_name(full_name):
+    """Extract just the display name before any parenthetical stats.
+
+    'Bash (2E, Attack, 8 damage...)' -> 'Bash'
+    'Jaw Worm (hallway, Act 1, HP: ~40-44)' -> 'Jaw Worm'
+    """
+    idx = full_name.find(" (")
+    if idx > 0:
+        return full_name[:idx]
+    return full_name
+
+
+def render_category_page(index_md, cat_name):
+    """Render category _index.md as section headers + tile grids.
+
+    Instead of rendering markdown lists as <ul><li>, this parses the
+    section structure and renders link lists as entry-grid tiles.
+    """
+    lines = index_md.split("\n")
+    html_parts = []
+    pending_links = []
+
+    def flush_grid():
+        nonlocal pending_links
+        if pending_links:
+            html_parts.append('<div class="entry-grid">')
+            for text, href in pending_links:
+                html_parts.append(f'<a href="{href}">{html.escape(text)}</a>')
+            html_parts.append('</div>')
+            pending_links = []
+
+    for line in lines:
+        stripped = line.strip()
+
+        # Headers
+        if m := re.match(r'^(#{1,6})\s+(.+)', stripped):
+            flush_grid()
+            level = len(m.group(1))
+            content = inline(m.group(2))
+            slug = re.sub(r'[^a-z0-9]+', '-', m.group(2).lower()).strip('-')
+            html_parts.append(f'<h{level} id="{slug}">{content}</h{level}>')
+
+        # List items with links -> tile entries
+        elif (stripped.startswith("- ") or stripped.startswith("* ")):
+            item = stripped[2:]
+            if link_m := re.match(r'\[(.+?)\]\((.+?)\)', item):
+                link_text = link_m.group(1)
+                link_target = link_m.group(2)
+                if link_target.endswith(".md"):
+                    entry_stem = link_target[:-3]
+                    href = make_slug(cat_name, entry_stem)
+                    pending_links.append((link_text, href))
+
+    flush_grid()
+    return "\n".join(html_parts)
+
+
 def make_slug(category, entry_stem=None):
     """Generate the output HTML filename for a playbook page.
 
@@ -664,7 +790,7 @@ def build():
         playbook_body += '<div class="entry-grid">\n'
         for entry in cat_data["entries"]:
             entry_slug = make_slug(cat_name, entry["stem"])
-            playbook_body += f'<a href="{entry_slug}">{html.escape(entry["name"])}</a>\n'
+            playbook_body += f'<a href="{entry_slug}">{html.escape(short_name(entry["name"]))}</a>\n'
         playbook_body += "</div>\n"
 
     if not categories and not top_level_files:
@@ -690,19 +816,8 @@ def build():
         cat_slug = make_slug(cat_name)
         back_link = '<div class="back-link"><a href="playbook.html">&larr; Back to playbook</a></div>'
 
-        # Rewrite markdown links in _index.md to point to generated HTML pages
-        index_md = cat_data["index_content"]
-        # Replace links like [Name](file.md) -> [Name](playbook-category-file.html)
-        def rewrite_link(m):
-            link_text = m.group(1)
-            link_target = m.group(2)
-            if link_target.endswith(".md"):
-                entry_stem = link_target[:-3]  # remove .md
-                return f"[{link_text}]({make_slug(cat_name, entry_stem)})"
-            return m.group(0)
-
-        index_md_rewritten = re.sub(r'\[(.+?)\]\((.+?)\)', rewrite_link, index_md)
-        cat_html = md_to_html(index_md_rewritten)
+        # Render category page as tile grids instead of bullet lists
+        cat_html = render_category_page(cat_data["index_content"], cat_name)
         cat_page = page(display_name, back_link + cat_html, "Playbook")
         (OUT / cat_slug).write_text(cat_page, encoding="utf-8")
         total_pages += 1
