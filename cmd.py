@@ -14,10 +14,14 @@ Usage from Claude Code:
     send("return")    # Skip/cancel/leave
 """
 
+import atexit
 import json
+import os
 import socket
 import sys
+import time
 import urllib.request
+import uuid
 
 from bot.state_formatter import format_state
 
@@ -25,6 +29,88 @@ HOST = "127.0.0.1"
 PORT = 19284
 TIMEOUT = 120  # seconds — long timeout for slow animations
 STREAM_URL = "http://127.0.0.1:3002/decision"
+LOCK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "player.lock")
+LOCK_STALE_SECONDS = 300  # lock expires after 5 minutes of inactivity
+
+# Each import of cmd.py gets a unique session ID.
+# Two agents importing cmd.py = two sessions = lock conflict.
+_SESSION_ID = str(uuid.uuid4())
+
+
+def _acquire_lock():
+    """Acquire the player lock. Explodes if another session holds it."""
+    os.makedirs(os.path.dirname(LOCK_FILE), exist_ok=True)
+
+    if os.path.exists(LOCK_FILE):
+        try:
+            with open(LOCK_FILE) as f:
+                lock = json.load(f)
+            other_id = lock.get("session_id", "")
+            lock_time = lock.get("timestamp", 0)
+
+            # Our lock — just refresh the timestamp
+            if other_id == _SESSION_ID:
+                lock["timestamp"] = time.time()
+                with open(LOCK_FILE, "w") as f:
+                    json.dump(lock, f)
+                return
+
+            age = time.time() - lock_time
+            if age < LOCK_STALE_SECONDS:
+                raise RuntimeError(
+                    f"\n{'='*60}\n"
+                    f"PLAYER LOCK CONFLICT\n"
+                    f"{'='*60}\n"
+                    f"Another player agent is already running!\n"
+                    f"  Session: {other_id[:12]}...\n"
+                    f"  Last active: {int(age)}s ago\n"
+                    f"\n"
+                    f"Only ONE player agent can run at a time.\n"
+                    f"Kill the other agent before starting a new one.\n"
+                    f"To force-break: from cmd import force_unlock; force_unlock()\n"
+                    f"{'='*60}\n"
+                )
+            else:
+                print(f"[cmd] Stale lock from {other_id[:12]}... ({int(age)}s old) — taking over",
+                      file=sys.stderr)
+        except (json.JSONDecodeError, OSError):
+            pass  # corrupted lock, take it
+
+    # Write our lock
+    with open(LOCK_FILE, "w") as f:
+        json.dump({"session_id": _SESSION_ID, "timestamp": time.time()}, f)
+
+
+def _release_lock():
+    """Release our lock on exit (best-effort)."""
+    try:
+        if os.path.exists(LOCK_FILE):
+            with open(LOCK_FILE) as f:
+                lock = json.load(f)
+            if lock.get("session_id") == _SESSION_ID:
+                os.remove(LOCK_FILE)
+                print("[cmd] Player lock released", file=sys.stderr)
+    except Exception:
+        pass
+
+
+def force_unlock():
+    """Force-break the player lock. Use when a stale agent left a lock behind."""
+    try:
+        if os.path.exists(LOCK_FILE):
+            with open(LOCK_FILE) as f:
+                lock = json.load(f)
+            print(f"Removing lock from session {lock.get('session_id', '?')[:12]}...")
+        os.remove(LOCK_FILE)
+        print("Lock removed.")
+    except FileNotFoundError:
+        print("No lock file found.")
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+# Release lock when this process exits
+atexit.register(_release_lock)
 
 
 def _tcp_request(request: dict) -> dict:
@@ -57,6 +143,7 @@ def _tcp_request(request: dict) -> dict:
 
 def state() -> str:
     """Get current game state, formatted for reading."""
+    _acquire_lock()
     global _last_raw_state
     raw = _tcp_request({"type": "state"})
     _last_raw_state = raw
@@ -169,11 +256,15 @@ def _translate_command(command: str) -> str:
                 return f"Buy {cards[idx].get('name', '?')}"
             # Relics/potions use different indexing in CommunicationMod
         elif screen == "EVENT":
+            event_name = ss.get("event_name", "")
             options = ss.get("options", [])
             if 0 <= idx < len(options):
                 import re
                 text = options[idx].get("text", "?")
-                return re.sub(r"<[^>]+>", "", text)[:50]
+                text = re.sub(r"<[^>]+>", "", text)[:50]
+                if event_name:
+                    return f"{event_name}: {text}"
+                return text
         elif screen == "GRID":
             cards = ss.get("cards", [])
             if 0 <= idx < len(cards):
@@ -210,14 +301,16 @@ def _translate_command(command: str) -> str:
     return command
 
 
-def _post_decision(command: str, reasoning: str = ""):
+def _post_decision(command: str, reasoning: str = "", translated_override: str = None,
+                    skip_feed: bool = False):
     """Post decision to stream server (best-effort, non-blocking)."""
     try:
-        translated = _translate_command(command)
+        translated = translated_override or _translate_command(command)
         data = json.dumps({
             "command": command,
             "translated": translated,
             "reasoning": reasoning,
+            "skip_feed": skip_feed,
         }).encode()
         req = urllib.request.Request(
             STREAM_URL, data=data,
@@ -226,6 +319,20 @@ def _post_decision(command: str, reasoning: str = ""):
         urllib.request.urlopen(req, timeout=1)
     except Exception:
         pass  # Stream server might not be running
+
+
+def _post_feed(text: str, highlight: bool = False):
+    """Post a feed-only entry to stream server (action feed, not reasoning log)."""
+    try:
+        data = json.dumps({"text": text, "highlight": highlight}).encode()
+        req = urllib.request.Request(
+            STREAM_URL.replace("/decision", "/feed"),
+            data=data,
+            headers={"Content-Type": "application/json"},
+        )
+        urllib.request.urlopen(req, timeout=1)
+    except Exception:
+        pass
 
 
 def send(command: str, reason: str = "") -> str:
@@ -250,6 +357,7 @@ def send(command: str, reason: str = "") -> str:
         key K [timeout]     — Press key K
         wait T              — Wait T milliseconds
     """
+    _acquire_lock()
     # Fetch pre-command state so translation has current hand/enemies
     global _last_raw_state
     _last_raw_state = _tcp_request({"type": "state"})
@@ -257,6 +365,56 @@ def send(command: str, reason: str = "") -> str:
     raw = _tcp_request({"type": "command", "command": command})
     _last_raw_state = raw  # Update cache
     return format_state(raw)
+
+
+def turn(actions: list, reason: str = "") -> str:
+    """Execute a full combat turn as a batch.
+
+    Plan your entire turn, then execute it all at once. This is how you
+    should play combat — reason about your whole hand, figure out the
+    optimal sequence, then commit.
+
+    Args:
+        actions: List of command strings, e.g. ["play 1 0", "play 3", "play 2 0", "end"]
+                 Card indices shift as you play cards! If you play card 3, what was card 4
+                 becomes card 3. Plan your indices accordingly (play highest indices first
+                 to avoid shifting, or account for the shifts).
+        reason: Your reasoning for the whole turn. Shows on stream overlay.
+
+    Returns:
+        Final game state after all actions executed.
+
+    If any action produces an error state, execution stops and returns that state.
+    """
+    if not actions:
+        return state()
+
+    _acquire_lock()
+    # Fetch pre-turn state for translation
+    global _last_raw_state
+    _last_raw_state = _tcp_request({"type": "state"})
+
+    # Translate all actions using pre-turn state for the stream
+    translated_actions = [_translate_command(a) for a in actions]
+    translated_summary = " → ".join(translated_actions)
+
+    # Post the full plan as one reasoning entry (skip the combined feed entry)
+    _post_decision(
+        command="; ".join(actions),
+        reasoning=reason,
+        translated_override=translated_summary,
+        skip_feed=True,
+    )
+
+    # Execute each action, posting individual feed entries
+    for i, action in enumerate(actions):
+        _post_feed(translated_actions[i])
+        raw = _tcp_request({"type": "command", "command": action.strip()})
+        _last_raw_state = raw
+        if "error" in raw:
+            return format_state(raw)
+
+    return format_state(_last_raw_state)
 
 
 def play(card: int, target: int = None) -> str:

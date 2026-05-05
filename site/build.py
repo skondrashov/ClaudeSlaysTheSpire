@@ -85,11 +85,12 @@ def inline(text):
 # ── Git history ──────────────────────────────────────────────────────
 
 def git_changelog(max_entries=50):
-    """Get commits that touched playbook/ or knowledge/ with diffs."""
+    """Get commits that touched playbook/, knowledge/, or agents/ with diffs."""
     try:
         result = subprocess.run(
             ["git", "log", f"--max-count={max_entries}", "--pretty=format:%H|%ai|%s",
-             "--diff-filter=ACDMR", "-p", "--", "playbook/", "knowledge/"],
+             "--diff-filter=ACDMR", "-p", "--",
+             "playbook/", "knowledge/", "agents/", "AGENTS.md"],
             capture_output=True, text=True, cwd=ROOT, encoding="utf-8"
         )
         if result.returncode != 0:
@@ -316,6 +317,8 @@ footer {
 }
 """
 
+TWITCH_CHANNEL = "ClaudeSlaysTheSpire"
+
 def page(title, content, active=""):
     nav_items = [
         ("index.html", "Home"),
@@ -337,7 +340,7 @@ def page(title, content, active=""):
 </head>
 <body>
 <h1>Claude Slays the Spire</h1>
-<div class="site-subtitle">An AI plays Slay the Spire. Every thought documented.</div>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
 <nav>{nav_html}</nav>
 {content}
 <footer>
@@ -346,6 +349,107 @@ def page(title, content, active=""):
 </footer>
 </body>
 </html>"""
+
+
+# ── Landing page ────────────────────────────────────────────────────
+
+def build_landing(all_files):
+    """Build the index/landing page content."""
+
+    # Twitch embed
+    twitch_html = f"""
+<div style="margin: 24px 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
+  <iframe
+    src="https://player.twitch.tv/?channel={TWITCH_CHANNEL}&parent=claudeslaysthespire.org&muted=true"
+    height="360"
+    width="100%"
+    allowfullscreen
+    style="border: none; display: block;">
+  </iframe>
+</div>
+"""
+
+    # Project explanation
+    intro_html = """
+<div style="margin-bottom: 40px;">
+<p>
+This is an experiment in teaching an AI to play a game it's not very good at, and documenting
+the whole learning process as it happens. Claude (Anthropic's AI) plays
+<a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>
+through a mod that exposes the game state over a protocol, makes decisions one at a time with
+explicit reasoning, and then reviews its own runs afterward to figure out what went wrong and
+what to do differently next time.
+</p>
+
+<p>
+Out of the box, Claude can stumble its way through Act 1 on Ascension 0 and sometimes make it
+into Act 2, but it makes a lot of mistakes along the way. It overvalues mediocre cards, misreads
+enemy intents, takes bad fights when it should rest, and generally plays like someone who's read
+about the game but hasn't really internalized the patterns yet. The goal is to see how far
+persistent context and structured self-review can push that baseline, without any hardcoded
+strategy or hand-holding.
+</p>
+
+<h2>How it works</h2>
+
+<p>
+The system has two agents that take turns. A <strong>player agent</strong> actually plays the game,
+reading the board state and deciding what to do each turn. It has access to a set of knowledge
+files that document what's been learned so far about cards, enemies, bosses, and strategy. After
+each run (win or loss), an <strong>analyst agent</strong> reviews what happened, identifies the key
+decision points where things went well or badly, and updates those knowledge files with what it
+learned. The next run's player reads the updated files and hopefully makes better decisions.
+</p>
+
+<p>
+The player plans full combat turns as a batch rather than playing one card at a time. It fills out a
+structured combat plan (what are the threats, what does this turn need to accomplish, what's the card
+sequence, what should the board look like afterward) and then executes the whole thing. Outside of
+combat, it reasons about each decision individually &mdash; which path to take on the map, which cards
+to pick up, when to rest vs upgrade.
+</p>
+
+<h2>What this site tracks</h2>
+
+<p>
+This site is the record of how the system evolves over time. There are two kinds of changes that
+show up here:
+</p>
+
+<ul>
+<li><strong>Knowledge changes</strong> are updates the analyst agent makes after reviewing runs. A
+new card evaluation, a revised boss strategy, a documented mistake that future runs should avoid.
+These show up in the <a href="playbook.html">Playbook</a> and <a href="knowledge.html">Knowledge</a>
+sections.</li>
+<li><strong>Pipeline changes</strong> are structural improvements to how the system itself works &mdash;
+better prompting, new tools for the player, changes to how the analyst reviews runs. These are
+development work rather than gameplay learning.</li>
+</ul>
+
+<p>
+The <a href="changelog.html">Changelog</a> shows diffs of every change to the knowledge base, so
+you can follow exactly what was learned and when.
+</p>
+</div>
+"""
+
+    # Content listing (if any knowledge/playbook files exist)
+    content_html = ""
+    if all_files:
+        sections = {}
+        for path, info in all_files.items():
+            sections.setdefault(info["category"], []).append((path, info))
+
+        content_html += '<div style="margin-top: 20px;">'
+        for cat, files in sections.items():
+            content_html += f"<h2>{cat.title()}</h2>\n<ul class='file-list'>\n"
+            for path, info in files:
+                slug = path.replace("/", "-").replace("\\", "-").replace(".md", ".html")
+                content_html += f'<li><a href="{slug}">{info["name"]}</a></li>\n'
+            content_html += "</ul>\n"
+        content_html += "</div>"
+
+    return twitch_html + intro_html + content_html
 
 
 # ── Build ────────────────────────────────────────────────────────────
@@ -372,21 +476,7 @@ def build():
             }
 
     # ── Index page ──
-    if all_files:
-        sections = {}
-        for path, info in all_files.items():
-            sections.setdefault(info["category"], []).append((path, info))
-
-        index_body = ""
-        for cat, files in sections.items():
-            index_body += f"<h2>{cat.title()}</h2>\n<ul class='file-list'>\n"
-            for path, info in files:
-                slug = path.replace("/", "-").replace(".md", ".html")
-                index_body += f'<li><a href="{slug}">{info["name"]}</a></li>\n'
-            index_body += "</ul>\n"
-    else:
-        index_body = '<div class="empty-state">No playbook entries yet. Claude hasn\'t started learning.</div>'
-
+    index_body = build_landing(all_files)
     (OUT / "index.html").write_text(page("Home", index_body, "Home"), encoding="utf-8")
 
     # ── Content pages ──

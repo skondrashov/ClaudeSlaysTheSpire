@@ -2,9 +2,9 @@
 
 Deckbuilder roguelike. CommunicationMod reads game state and executes actions. Claude Code CLI plays via TCP relay.
 
-**DO NOT AUTOPLAY.** No scripts, loops, or automation that sends game actions. Every action is a deliberate, reasoned choice made in conversation.
+**DO NOT AUTOPLAY.** No scripts, loops, or automation that sends game actions without reasoning. Every action is a deliberate choice. In combat, plan the full turn, then execute as a batch — but still with explicit reasoning.
 
-## How It Connects
+## Architecture
 
 ```
 CommunicationMod (in-game Java mod, stdin/stdout)
@@ -12,29 +12,51 @@ CommunicationMod (in-game Java mod, stdin/stdout)
     relay.py (TCP server on localhost:19284)
         |
     Claude Code CLI (via cmd.py functions)
+        |
+    stream.py (WebSocket :3001 + HTTP :3002)
+        |
+    overlay/index.html (OBS browser source)
 ```
 
-CommunicationMod sends JSON game state on stdin when the game stabilizes (no pending animations). We respond with a command on stdout. The relay bridges this to TCP so Claude Code can connect per-action.
+## Agents
+
+### Player (`agents/player.md`)
+Plays the game. Makes every decision with reasoning. In combat, fills out a combat plan template for the full turn, then executes with `turn()`. Outside combat, uses `send()` one action at a time.
+
+Key traits:
+- **Humble.** Says "I think" not "clearly." Admits uncertainty. Doesn't rationalize deaths.
+- **Plans full turns.** Doesn't play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.
+- **References knowledge.** Reads playbook/ and knowledge/ files. Leans toward documented knowledge over instinct.
+
+### Analyst (`agents/analyst.md`)
+Runs after a completed run (victory or defeat). Reads the event log, identifies what went well and what went wrong, and updates knowledge files.
+
+Two output directories:
+- `knowledge/` — Stable facts: card evaluations, boss mechanics, enemy patterns, relic interactions
+- `playbook/` — Evolving strategy: what works, documented mistakes, decision patterns
+
+Every claim gets a confidence tag: HIGH / MEDIUM / LOW / WRONG.
 
 ## Commands (cmd.py)
 
 ```python
-from cmd import state, send, play, end, choose, proceed, skip, potion_use, start
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, start
 
-state()              # See current game state
-play(1, 0)           # Play card 1 targeting enemy 0 (1-indexed cards!)
-end()                # End turn
-choose(2)            # Choose option 2 (events, map, rewards, shop)
-choose("smith")      # Choose by name (rest site)
-choose("purge")      # Card removal at shop
-proceed()            # Confirm/proceed
-skip()               # Skip/cancel/leave
-potion_use(0, 1)     # Use potion slot 0 on enemy 1
-potion_discard(0)    # Discard potion slot 0
-start("IRONCLAD", 5) # Start Ironclad A5 run
+state()                          # See current game state
+send("play 1 0", reason="...")   # Single action with reasoning
+turn(["play 3", "play 1 0", "play 2", "end"],
+     reason="Block first, then damage")  # Full combat turn
+choose(2)                        # Choose option by index
+choose("smith")                  # Choose by name (rest site)
+proceed()                        # Confirm/proceed
+skip()                           # Skip/cancel/leave
+potion_use(0, 1)                 # Use potion slot 0 on enemy 1
+start("IRONCLAD", 5)             # Start Ironclad A5 run
 ```
 
-**Card indices are 1-indexed.** This is a CommunicationMod convention.
+**Card indices are 1-indexed. Enemy indices are 0-indexed.**
+
+**Card indices shift when you play cards!** Playing card 3 makes card 4 become card 3. Plan accordingly.
 
 ## Mod Stack (all Steam Workshop)
 
@@ -43,14 +65,28 @@ start("IRONCLAD", 5) # Start Ironclad A5 run
 3. CommunicationMod — game state + action protocol
 4. SuperFastMode — speed up animations for bot play
 
-## Game Model
+## Knowledge Loop
 
-Act 1-3 (+ optional Act 4). Each act: ~15 floors of monsters, elites, events, shops, rest sites, then a boss. Card rewards after combat. Upgrade cards at rest sites. Build synergistic decks. Don't die.
+```
+Player plays run → stream_events.jsonl captures every decision
+    ↓
+Run ends (victory or defeat)
+    ↓
+Analyst reads log, updates knowledge/ and playbook/
+    ↓
+Next run: player reads updated knowledge before first action
+    ↓
+Player makes better decisions → repeat
+```
+
+The site (claudeslaysthespire.org) tracks every knowledge diff over time — what changed, what was learned, how the system evolved. Two kinds of changes show up:
+- **Pipeline changes** — dev restructures to improve how the system works
+- **Knowledge changes** — analyst updates from gameplay experience
 
 ## Key Differences from Balatro
 
 - No custom mod needed — CommunicationMod does everything
 - stdin/stdout, not TCP (relay bridges to TCP)
 - Synchronous lock-step — mod waits for our command
-- Draw pile order is leaked (CommunicationMod known behavior)
 - 1-indexed card positions
+- Full turn planning with `turn()` instead of card-by-card

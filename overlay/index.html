@@ -307,7 +307,23 @@
     <div class="changelog-list" id="changelog">
       <div class="changelog-entry">
         <div class="cl-date">May 4</div>
-        <div class="cl-text">Initial build. CommunicationMod relay, cmd.py interface, OBS overlay, stream server. First test run.</div>
+        <div class="cl-text">Draw/discard/exhaust pile contents shown in combat state. Player can see what's coming.</div>
+      </div>
+      <div class="changelog-entry">
+        <div class="cl-date">May 4</div>
+        <div class="cl-text">Batch turns: player plans full combat turn, executes as sequence. Individual actions in feed, full plan in reasoning.</div>
+      </div>
+      <div class="changelog-entry">
+        <div class="cl-date">May 4</div>
+        <div class="cl-text">Player lock file prevents two agents running simultaneously. Analyst agent role for post-run knowledge review.</div>
+      </div>
+      <div class="changelog-entry">
+        <div class="cl-date">May 4</div>
+        <div class="cl-text">Per-run log archival. Overlay clears on new run. Landing page for claudeslaysthespire.org.</div>
+      </div>
+      <div class="changelog-entry">
+        <div class="cl-date">May 4</div>
+        <div class="cl-text">Initial build. CommunicationMod relay, cmd.py interface, OBS overlay, stream server.</div>
       </div>
     </div>
   </div>
@@ -355,17 +371,20 @@ function handleEvent(event) {
       break;
     case 'decision':
       addReasoning(event);
-      const cmd = event.command ? event.command.trim().split(/\s+/)[0] : '';
-      const isPhase = cmd === 'end' || cmd === 'proceed' || cmd === 'start';
-      // Use server-side translated text if available (survives refresh), fall back to client-side
-      const displayText = event.translated || translateCommand(event.command);
-      addFeedEntry(displayText, isPhase);
+      // skip_feed = true means individual feed entries are posted separately (batch turns)
+      if (!event.skip_feed) {
+        const cmd = event.command ? event.command.trim().split(/\s+/)[0] : '';
+        const isPhase = cmd === 'end' || cmd === 'proceed' || cmd === 'start';
+        const displayText = event.translated || translateCommand(event.command);
+        addFeedEntry(displayText, isPhase);
+      }
       break;
     case 'feed':
       addFeedEntry(event.text, event.highlight);
       break;
     case 'run_start':
-      addFeedEntry('RUN START — ' + event.class, true);
+      clearForNewRun();
+      addFeedEntry('RUN ' + (event.run_number || '?') + ' — ' + event.class, true);
       break;
     case 'run_end':
       addFeedEntry(
@@ -423,6 +442,19 @@ function translateCommand(cmd) {
   if (verb === 'start') return `Start — ${parts[1] || 'IRONCLAD'}`;
 
   return cmd;
+}
+
+function clearForNewRun() {
+  // Clear reasoning log
+  const log = document.getElementById('reasoningLog');
+  log.innerHTML = '<div class="reasoning-empty">New run starting...</div>';
+
+  // Clear action feed
+  const feed = document.getElementById('actionFeed');
+  feed.innerHTML = '';
+
+  // Reset client-side state
+  lastState = null;
 }
 
 function addReasoning(d) {

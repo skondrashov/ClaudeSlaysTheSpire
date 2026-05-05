@@ -208,11 +208,15 @@ def format_combat(gs: dict) -> str:
         flag_str = f" [{', '.join(flags)}]" if flags else ""
         lines.append(f"  [{idx}] {name} ({ctype}, {cost}E){flag_str}")
 
-    # Pile counts
-    draw = len(cs.get("draw_pile", []))
-    discard = len(cs.get("discard_pile", []))
-    exhaust = len(cs.get("exhaust_pile", []))
-    lines.append(f"\nDraw: {draw} | Discard: {discard} | Exhaust: {exhaust}")
+    # Pile contents — grouped summaries so the player knows what's coming
+    draw_pile = cs.get("draw_pile", [])
+    discard_pile = cs.get("discard_pile", [])
+    exhaust_pile = cs.get("exhaust_pile", [])
+
+    lines.append(f"\nDRAW PILE ({len(draw_pile)}): {_summarize_pile(draw_pile)}")
+    lines.append(f"DISCARD ({len(discard_pile)}): {_summarize_pile(discard_pile)}")
+    if exhaust_pile:
+        lines.append(f"EXHAUST ({len(exhaust_pile)}): {_summarize_pile(exhaust_pile)}")
 
     return "\n".join(lines)
 
@@ -471,6 +475,27 @@ def format_game_over(gs: dict) -> str:
 
 def format_complete(gs: dict) -> str:
     return "\n=== RUN COMPLETE ===\nUse: proceed"
+
+
+def _summarize_pile(cards: list) -> str:
+    """Summarize a pile of cards as grouped counts: '2x Strike, 1x Bash, 1x Defend+'."""
+    if not cards:
+        return "(empty)"
+    counts = {}
+    for card in cards:
+        name = card.get("name", "?")
+        if card.get("upgrades", 0) > 0 and not name.endswith("+"):
+            name += "+"
+        counts[name] = counts.get(name, 0) + 1
+    # Sort by count descending, then name
+    sorted_cards = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
+    parts = []
+    for name, count in sorted_cards:
+        if count > 1:
+            parts.append(f"{count}x {name}")
+        else:
+            parts.append(name)
+    return ", ".join(parts)
 
 
 def format_power(power: dict) -> str:

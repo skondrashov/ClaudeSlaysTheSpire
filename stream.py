@@ -24,9 +24,11 @@ except ImportError:
 
 WS_PORT = 3001
 HTTP_PORT = 3002
-STATE_FILE = os.path.join(os.path.dirname(__file__), "data", "last_state.json")
-EVENT_LOG = os.path.join(os.path.dirname(__file__), "data", "stream_events.jsonl")
-STATS_FILE = os.path.join(os.path.dirname(__file__), "data", "run_stats.json")
+DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+STATE_FILE = os.path.join(DATA_DIR, "last_state.json")
+EVENT_LOG = os.path.join(DATA_DIR, "stream_events.jsonl")
+STATS_FILE = os.path.join(DATA_DIR, "run_stats.json")
+RUNS_DIR = os.path.join(DATA_DIR, "runs")
 
 # Connected overlay clients
 clients = set()
@@ -73,6 +75,27 @@ def _save_stats():
         json.dump(run_stats, f)
 
 run_stats = _load_stats()
+
+
+def _archive_run(run_number: int, victory: bool, floor: int, cls: str):
+    """Archive current run's event log to data/runs/run_NNN.jsonl and reset."""
+    os.makedirs(RUNS_DIR, exist_ok=True)
+    result = "win" if victory else f"death_f{floor}"
+    archive_name = f"run_{run_number:03d}_{cls.lower()}_{result}.jsonl"
+    archive_path = os.path.join(RUNS_DIR, archive_name)
+
+    try:
+        if os.path.exists(EVENT_LOG) and os.path.getsize(EVENT_LOG) > 0:
+            import shutil
+            shutil.copy2(EVENT_LOG, archive_path)
+            print(f"[stream] Archived run {run_number} → {archive_name}")
+            # Clear the event log for the next run
+            with open(EVENT_LOG, "w") as f:
+                pass
+        else:
+            print(f"[stream] No events to archive for run {run_number}")
+    except OSError as e:
+        print(f"[stream] Archive error: {e}")
 
 
 async def broadcast(event: dict):
@@ -127,8 +150,22 @@ async def state_watcher():
     """Watch last_state.json for changes, broadcast state updates."""
     last_mtime = 0
     last_floor = 0
-    was_in_game = False
     was_in_combat = False
+    game_over_handled = False
+    last_event_name = ""
+
+    # Initialize was_in_game from current state so we don't
+    # false-count a new run when stream.py restarts mid-game
+    was_in_game = False
+    try:
+        if os.path.exists(STATE_FILE):
+            with open(STATE_FILE) as f:
+                init_state = json.load(f)
+            was_in_game = init_state.get("in_game", False)
+            if was_in_game:
+                print(f"[stream] Game already in progress on startup (floor {init_state.get('game_state', {}).get('floor', '?')})")
+    except Exception:
+        pass
 
     while True:
         try:
@@ -150,6 +187,7 @@ async def state_watcher():
                         cls = gs.get("class", "?")
                         screen = gs.get("screen_type", "?")
                         phase = gs.get("room_phase", "?")
+                        ss = gs.get("screen_state", {})
 
                         run_stats["current_floor"] = floor
                         run_stats["current_hp"] = hp
@@ -164,16 +202,21 @@ async def state_watcher():
                         # not just stream.py restarting mid-run)
                         if not was_in_game and floor <= 1:
                             run_stats["total_runs"] += 1
+                            game_over_handled = False
                             _save_stats()
+                            # Clear feed for the new run
+                            action_feed.clear()
+                            _save_feed()
+                            recent_events.clear()
                             await broadcast({
                                 "type": "run_start",
                                 "class": cls,
                                 "run_number": run_stats["total_runs"],
                             })
 
-                        # Detect game over
-                        if screen == "GAME_OVER":
-                            ss = gs.get("screen_state", {})
+                        # Detect game over (only process once per run)
+                        if screen == "GAME_OVER" and not game_over_handled:
+                            game_over_handled = True
                             victory = ss.get("victory", False)
                             if victory:
                                 run_stats["wins"] += 1
@@ -186,6 +229,24 @@ async def state_watcher():
                                 "floor": floor,
                                 "stats": dict(run_stats),
                             })
+                            # Archive this run's event log
+                            _archive_run(
+                                run_stats["total_runs"], victory, floor, cls
+                            )
+
+                        # Detect event screen
+                        if screen == "EVENT":
+                            event_name = ss.get("event_name", "")
+                            if event_name and event_name != last_event_name:
+                                last_event_name = event_name
+                                await broadcast({
+                                    "type": "feed",
+                                    "text": f"EVENT — {event_name}",
+                                    "highlight": True,
+                                    "timestamp": time.time(),
+                                })
+                        else:
+                            last_event_name = ""
 
                         # Detect combat start
                         combat = gs.get("combat_state")
@@ -260,6 +321,7 @@ class DecisionHandler(BaseHTTPRequestHandler):
                     "command": data.get("command", ""),
                     "translated": data.get("translated", data.get("command", "")),
                     "reasoning": data.get("reasoning", ""),
+                    "skip_feed": data.get("skip_feed", False),
                     "timestamp": time.time(),
                 }
                 # Put into async queue
@@ -273,6 +335,31 @@ class DecisionHandler(BaseHTTPRequestHandler):
                 except OSError:
                     pass
 
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(b'{"ok":true}')
+            except Exception as e:
+                self.send_response(400)
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode())
+        elif self.path == "/feed":
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            try:
+                data = json.loads(body)
+                event = {
+                    "type": "feed",
+                    "text": data.get("text", ""),
+                    "highlight": data.get("highlight", False),
+                    "timestamp": time.time(),
+                }
+                asyncio.run_coroutine_threadsafe(event_queue.put(event), loop)
+                # Log to event file
+                try:
+                    with open(EVENT_LOG, "a") as f:
+                        f.write(json.dumps(event) + "\n")
+                except OSError:
+                    pass
                 self.send_response(200)
                 self.end_headers()
                 self.wfile.write(b'{"ok":true}')
