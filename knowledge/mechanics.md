@@ -42,11 +42,15 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 
 ## Damage Calculation
 
-- Base formula: (card_base_damage + strength) * multipliers
+- Base formula: floor((card_base_damage + strength) * multipliers)
 - Vulnerable multiplier: 1.5x (on target)
 - Weak multiplier: 0.75x (on attacker)
 - These stack multiplicatively
-- Confidence: MEDIUM (standard mechanics, need to verify interaction ordering)
+- **Order of operations (confirmed Run 3)**: Add Strength to base damage FIRST, then apply multipliers. floor((base + Str) * Weak * Vuln). Rounding: floor() is applied AFTER all multipliers.
+- **Example with Strength + Weak (Run 3 confirmation)**: Strike (6 base) + 2 Strength + Weakened: floor((6+2) * 0.75) = floor(6.0) = 6 damage. Player calculated this correctly in Run 3 Chosen fight and the observed damage matched (2 Strikes dealt 12 damage total, Chosen went from 18 to 6 HP).
+- **Example with Strength + Vulnerable**: Strike (6 base) + 2 Strength, target Vulnerable: floor((6+2) * 1.5) = floor(12) = 12 damage.
+- **Example with Weak + Vulnerable stacking**: Strike (6 base), Weakened attacker, Vulnerable target: floor(6 * 0.75 * 1.5) = floor(6.75) = 6 damage.
+- Confidence: HIGH (Run 3 confirmed Strength + Weak formula with exact damage match)
 
 ## Exhaust
 
@@ -194,6 +198,69 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - CORRECTION: Previous entry said "used before Guardian fight (consumed or discarded?)" — actually triggered during floor 11 Slaver fight, consumed there. Player did NOT have it for the Guardian fight.
 - Confidence: MEDIUM (triggered once in Run 2, revive amount ~30% max HP confirmed)
 
+## Status Cards (Run 3 additions)
+
+### Burn
+- Cost: Unplayable (cannot be played from hand)
+- Effect: At end of turn, if Burn is in your hand, take 2 damage. The Burn stays in your hand and cycles back to your draw pile.
+- Source: Hexaghost boss adds Burns to your deck on ATTACK_DEBUFF turns.
+- Impact: Double punishment — (1) takes a card slot in your hand, reducing effective hand size, AND (2) deals 2 damage per Burn per turn. Multiple Burns compound: 3 Burns = 6 damage per turn + 3 fewer playable cards.
+- Cannot be played or exhausted normally. Cards that exhaust from hand (True Grit+) can remove them.
+- Confidence: MEDIUM (observed in Run 3 Hexaghost fight, damage and unplayable status confirmed)
+
+### Dazed
+- Cost: Unplayable
+- Effect: Ethereal. Cannot be played. If in hand at end of turn, exhausts (Ethereal).
+- Source: Chosen enemy adds Dazed when you play Skill cards (via Hex debuff).
+- Impact: Clogs your hand for 1 turn, then exhausts itself. Less permanent than Burns or Slimed, but the constant influx from Hex (every Skill played = 1 Dazed added) can overwhelm draws quickly.
+- Confidence: LOW (observed in Run 3 Chosen fight, exact mechanics inferred — Ethereal + Unplayable needs confirmation)
+
+## Flight (Enemy Mechanic)
+
+- **Effect**: While an enemy has Flight N (N > 0), all damage dealt to that enemy is halved (likely floor(damage/2)). Each time the enemy is hit by an attack, Flight decrements by 1.
+- **Stripping Flight**: Each individual hit reduces Flight by 1. Multi-hit attacks (Whirlwind) and AOE (Thunderclap) each count as separate hits. Thunderclap hitting 3 Byrds reduces each Byrd's Flight by 1.
+- **Flight reset**: After Flight reaches 0, the enemy takes full damage. However, Byrds can regain Flight on buff turns ("take flight" action), resetting the counter.
+- **Strategy**: (1) Use cheap multi-hit or AOE attacks to strip Flight first. (2) Save big single-hit attacks (Bash+, Pommel Strike) for after Flight is at 0. (3) Focus fire one enemy to strip its Flight and kill it before it can reset.
+- **Math example (Run 3)**: Pommel Strike (9 damage) vs Flight 3 Byrd: deals ~4-5 damage and reduces Flight to 2. Strike (6 damage) vs same Byrd: deals ~3 damage and reduces Flight to 1. Next hit: Flight 0, full damage goes through.
+- Confidence: MEDIUM (observed in Run 3 Byrd fight, damage halving confirmed, exact rounding uncertain)
+
+## Hex (Enemy Debuff)
+
+- **Effect**: When you play a Skill card, a Dazed status card is added to your draw pile.
+- **Source**: Applied by the Chosen enemy (Act 2).
+- **Impact**: Punishes defensive play. Every Defend, Shrug It Off, True Grit, Shockwave, etc. adds a dead card. This creates a vicious cycle — you need block to survive, but blocking clogs your deck with Dazed cards, which means fewer block cards drawn next turn.
+- **Counter-strategy**: Minimize Skill usage. Rely on Attack cards that provide block (Iron Wave), Powers that provide passive block (Metallicize), or just kill the enemy fast with pure Attacks.
+- Confidence: LOW (observed in Run 3 Chosen fight, exact trigger confirmed — needs more data on duration/stacking)
+
+## Relics (Run 3 additions)
+
+### Pantograph
+- Source: Gremlin Nob elite reward (Run 3).
+- Effect: Heal to full HP at the start of boss fights.
+- Run 3: Player entered Hexaghost boss at 56/80 HP. HP was 80/80 at start of turn 2 (and potions were used for Regen, so the 80 HP is from Pantograph, not Regen). Confirmed: Pantograph restores ALL HP, not a partial heal.
+- Evaluation: Extremely powerful relic. Removes the need to conserve HP before the boss — you can take risky elite fights, spend HP at events, and still enter the boss at full. Changes the rest-site calculus: always Smith before boss when you have Pantograph.
+- Confidence: HIGH (Run 3, heal to full confirmed — entered at 56, started boss at 80)
+
+### Lantern
+- Source: Scrap Ooze event (Run 3, floor 9). Cost 3 HP.
+- Effect: Gain 1 energy on turn 1 of each combat (4 energy turn 1 instead of 3).
+- Run 3: Player noted "gives +1 energy on turn 1 of each combat." Turn 1 of Hexaghost boss, the player played 4 cards costing 1E each (Thunderclap + Pommel Strike + Strike + Defend), suggesting 4 energy available. This is consistent with 3 base + 1 Lantern = 4 energy.
+- Evaluation: Solid relic. Extra energy on turn 1 allows stronger openers — play a setup Power AND still have energy for damage/block. Weaker than Ancient Tea Set (which gives +2 energy but only after rest sites).
+- Confidence: MEDIUM (Run 3, +1 energy turn 1 inferred from play patterns, not explicitly confirmed by game text)
+
+### Neow's Lament
+- Source: Neow's blessing (Run 3 opening choice).
+- Effect: Enemies in your next 3 combats have 1 HP. Gives 3 completely free fights with full card/gold/potion rewards.
+- Run 3: All 3 fights were instant kills. Floor 1 (Acid Slime M + Spike Slime S), Floor 3 (Jaw Worm), Floor 4 (2 Louses). One Strike each was sufficient to kill. Player got Pommel Strike, Iron Wave, and a Flex Potion as rewards from these free fights.
+- Evaluation: One of the best Neow offerings. 3 free fights = 3 card rewards + 3 gold drops + potential potions + zero HP lost. Equivalent to ~50 gold and 3 card choices with no risk.
+- Confidence: HIGH (Run 3, all 3 combats confirmed enemies at 1 HP)
+
+### Golden Idol
+- Source: Golden Idol event (Act 1). Costs: 20 HP damage, 6 max HP, or a curse card.
+- Effect: Increases gold earned by 25% (unconfirmed from our runs — effect not directly observed).
+- Run 3: Player took the idol again (chose 20 HP damage at 80 HP -> 60 HP). Player was still unable to observe what Golden Idol does during gameplay. The 25% gold increase is from common game knowledge but not confirmed from our data.
+- Confidence: LOW (taken in Runs 1 and 3, effect never directly observed in gameplay)
+
 ## Events (Act 1)
 
 ### The Cleric
@@ -207,12 +274,52 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - Confidence: MEDIUM (1 encounter in Run 2)
 
 ### Living Wall
-- Options: [Grow] Upgrade a card, [Change] Transform a card, [Remove] Remove a card (exact wording uncertain)
+- Options: [Forget] Remove a card, [Grow] Upgrade a card, [Change] Transform a card
 - Run 2: Player chose Remove (removed a Strike) despite initially wanting Upgrade. This was a critical mistake — upgrading True Grit to True Grit+ would have changed the outcome of the entire run.
-- Decision framework: If you have a card where the upgrade is game-defining (True Grit, Shockwave, etc.), ALWAYS choose Upgrade over Remove at this event.
-- Confidence: MEDIUM (1 encounter in Run 2, outcome-decisive)
+- Run 3: Player chose Forget (Remove), removed a Strike. Correct decision here — no critical upgrade targets (Bash already upgraded, no True Grit in deck). Deck went from 13 to 12 cards.
+- Decision framework: If you have a card where the upgrade is game-defining (True Grit, Shockwave, etc.), ALWAYS choose Upgrade over Remove at this event. Otherwise, Remove is the default best choice.
+- Confidence: MEDIUM (2 encounters across Runs 2 and 3, option names confirmed as [Forget]/[Grow]/[Change])
 
 ### Shining Light
 - Options: [Enter] Take 17 damage, upgrade 2 random cards, [Leave] Nothing
 - Run 2: Player left — correct decision at 21 HP (17 damage would leave 4 HP before the boss). Would be strong at high HP.
 - Confidence: LOW (1 encounter in Run 2, did not enter)
+
+### Golden Idol
+- Options: [Take] Obtain Golden Idol, trigger a trap. Then: [Outrun] Lose 6 Max HP, [Smash] Take 20 damage, [Hide] Gain a curse (Injury?)
+- Run 3: Player chose Take, then Smash (20 HP damage, 80->60 HP). At full HP with Neow's Lament active, the 20 HP cost was affordable. Correct evaluation: 20 damage is recoverable, -6 Max HP is permanent, curse is a permanent deck clog.
+- Confidence: MEDIUM (2 encounters across Runs 1 and 3, trap options confirmed)
+
+### Scrap Ooze
+- Options: [Reach Inside] Lose 3 HP. 25%: Find a Relic. Repeatable.
+- Run 3: Player reached inside once at 63 HP, lost 3 HP, and found a Relic (Lantern) on the first try. Lucky outcome — expected HP cost is 12 HP (4 tries at 3 HP each on average).
+- Confidence: LOW (1 encounter in Run 3, got lucky on first try)
+
+### Face Trader (Act 2)
+- Options: Unknown exact options. Player saw [Continue] then a choice to trade (lose 8 HP?) or [Leave].
+- Run 3: Player left at 28 HP — couldn't afford the HP cost for an unknown gamble. Correct decision at low HP.
+- Confidence: LOW (1 encounter in Run 3, chose not to engage)
+
+## Events (Act 2)
+
+No events fully documented yet. Face Trader observed but not engaged.
+
+## Potions (Run 3 additions)
+
+### Flex Potion
+- Effect: Gain +2 Strength for this turn only (Strength is removed at end of turn).
+- Run 3: Used against Gremlin Nob on turn 2. Bash+ with +2 Str dealt 12 damage (10 base + 2 Str). The temporary Strength was well-timed for a burst turn.
+- Best use: On a turn where you play multiple Attack cards (each one benefits from +2 damage). On a turn with Bash+ or Pommel Strike to maximize the value.
+- Confidence: MEDIUM (used once in Run 3, +2 Str for 1 turn confirmed)
+
+### Regen Potion
+- Effect: Gain Regeneration. Heals HP each turn for several turns (amount decreases by 1 each turn — starts at 5, then 4, 3, 2, 1 = 15 total HP, unconfirmed exact numbers).
+- Run 3: Used at start of Hexaghost fight turn 2. Player referenced "5 Regen" then "4 Regen" then "3 Regen" in subsequent turns, confirming the decrementing mechanic. Total healing over 5 turns was approximately 15 HP.
+- Best use: Start of a long fight (boss) for maximum total healing. The earlier you use it, the more turns of healing you get.
+- Confidence: MEDIUM (used once in Run 3, decrementing heal confirmed from player references)
+
+### Skill Potion
+- Effect: Choose 1 of 3 random Skill cards and add it to your hand. It costs 0 energy this turn.
+- Run 3: Used twice during Hexaghost fight. First use: chose Shockwave (Weak + Vulnerable to all enemies, Exhaust). Second use: chose Ghostly Armor (10 block, Ethereal). Both were critical — Shockwave reduced Hexaghost's Inferno from 42 to ~28, Ghostly Armor provided 10 free block on a key turn.
+- Best use: During boss fights when you need a specific answer (mass debuff, big block, etc.). The 0-cost means it's essentially free value.
+- Confidence: MEDIUM (used twice in Run 3, choose-1-of-3 + free confirmed)

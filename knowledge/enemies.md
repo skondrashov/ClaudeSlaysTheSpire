@@ -118,7 +118,9 @@ Act 1 elite. HP: 85 (observed in Run 2).
 - **Strategy**: All-out Attacks. Kill before Enrage stacks make attacks unsurvivable. Use potions if needed to burst it down. Bash (Attack card) is safe and applies Vulnerable.
 - **Run 2 experience**: Player fought at 29 HP. Turn 1: 21 damage with Attacks only. Turn 2: Dark Embrace (Power, safe) + Iron Wave. Turn 3: Snecko Oil for desperate card draw, played 2x True Grit for block (each triggered Enrage +2 Str, making Nob stronger). Used second Snecko Oil turn 4 and killed Nob at 27 HP with Vulnerable Pommel Strike + Strikes. Survived at 3 HP.
 - **Lesson from Run 2**: Even when desperate for block, playing Skills feeds Enrage. The player played 2x True Grit (Skills) and a Defend, giving Nob +6 Strength total. With hindsight, those Skills turned a 14-damage attack into a 20+ damage attack.
-- Confidence: MEDIUM (1 fight in Run 2, Enrage confirmed, Power-exception confirmed)
+- **Run 3 experience**: Fought at 72/80 HP. Player correctly played zero Skills. Turn 1: Pommel Strike + 2x Strike (21 damage) while Nob buffed. Turn 2: Flex Potion (+2 Str) + Bash+ (12 dmg, 3 Vuln) + Iron Wave+ (dealt damage + provided block). Turn 3: 1 Strike (9 w/Vuln). Turn 4: Pommel Strike + Strike for exact lethal (22 damage vs 22 HP). Clean 4-turn kill. Took ~9 damage total. Vastly better than Run 2 (survived at 3 HP).
+- **Lesson confirmed across runs**: Zero Skills is the correct approach. Run 2 played 3 Skills (+6 Str to Nob), nearly died. Run 3 played 0 Skills, clean victory.
+- Confidence: HIGH (2 fights across Runs 2 and 3 — Run 2 near-death from Skills, Run 3 clean kill from Attacks-only)
 
 ## Red Slaver
 
@@ -141,6 +143,50 @@ Act 1 hallway enemy. HP: ~19 (observed in Run 2, floor 11).
 - **Run 2**: Fought 2x Fungi Beasts at floor 11 at 9 HP. Player used True Grit exhaust engine (Charon's Ashes 3 AOE damage). Survived at 1 HP. Spore Cloud Vulnerable was correctly accounted for: player blocked to absorb the Vulnerable-boosted attack.
 - Confidence: LOW (1 fight in Run 2)
 
+## Hexaghost
+
+Act 1 boss. HP: 250 (confirmed in Run 3).
+
+- **Turn 1**: Does NOT attack. Intent shown as UNKNOWN. Safe to set up (play Thunderclap for Vulnerable, play damage cards). Pantograph heals to full at the start of boss fights, so even low HP entry is compensated.
+- **Big attack (Inferno)**: 7x6 = 42 damage. This is multi-hit, meaning each hit is checked against block individually. Weak reduces each hit: floor(6*0.75)=4 per hit = 28 total with Weak. This is the most dangerous attack.
+- **Burn cards**: Hexaghost adds Burn status cards to your deck on certain turns (ATTACK_DEBUFF intent). Burns deal 2 damage at end of turn if they are in your hand (they are Unplayable — you cannot play them, they just sit in hand and deal damage). Burns clog your hand (fewer real cards) AND deal damage. Over time, Burns accumulate and drain HP through attrition.
+- **DEFEND_BUFF turns**: Hexaghost gains block and Strength. No attack. Free turns for damage. However, the Strength gain makes subsequent attacks stronger.
+- **Low damage turns**: Some turns deal only 4-8 damage. Use these to set up (play Metallicize, refresh Vulnerable with Bash+).
+- **Medium attack turns**: 14 and 24 damage observed on attack turns that are not the big Inferno.
+- **Block**: Hexaghost can gain block (12 block observed). Plan damage accordingly — don't assume all damage goes to HP.
+- **Fight length**: ~13 turns observed in Run 3. Long fight. Metallicize and Strength scaling pay off massively.
+- **Strategy**: (1) Use turn 1 to set up — Thunderclap for Vulnerable, play damage. (2) Save Shockwave for the first Inferno turn to apply Weak and reduce 42 to ~28. (3) Play Metallicize early for cumulative block value. (4) Reapply Vulnerable with Bash+ on DEFEND_BUFF (free) turns. (5) Manage Burns — they deal end-of-turn damage and reduce effective hand size.
+- **Run 3 experience**: Beat Hexaghost at 250 HP, survived at 1 HP. Used Shockwave + Regen Potion to survive first Inferno. Metallicize 3 provided passive block. Burns accumulated and nearly killed the player on late turns. Pantograph relic healed from 56 to 80 HP at fight start.
+- Confidence: MEDIUM (1 fight in Run 3, survived at 1 HP — detailed turn-by-turn data)
+
+## Byrd
+
+Act 2 hallway enemy. Appears in groups of 3. HP: ~25-30 per Byrd (estimated).
+
+- **Flight**: Byrds have the Flight mechanic. Flight N means damage is halved (rounded down?) and Flight decrements by 1 each time the Byrd is hit. Once Flight reaches 0, all damage goes through normally. Flight resets after some turns (Byrds "take flight" again).
+- **Flight interaction with damage**: With Flight 3 and a 9-damage Strike: damage is halved to ~4-5. Each hit also reduces Flight by 1. So hitting a Byrd 3 times (3 separate attacks) reduces Flight from 3 to 0, then subsequent attacks deal full damage.
+- **Multi-hit matters**: Cards that hit multiple times (like Thunderclap hitting all enemies) each reduce Flight by 1. AOE is especially valuable because it strips Flight from multiple Byrds simultaneously.
+- **Buff turns**: Byrds have turns where they buff (gain Strength) instead of attacking. Free damage turns.
+- **Attack damage**: Individual Byrd attacks: ~5-10 damage each. But with 3 Byrds, combined incoming can be 15-36+ damage per turn, especially after Strength buffs.
+- **Fight duration**: Extremely long. Run 3 Byrd fight lasted 12 turns. This is a massive HP drain — player went from 80 HP (post-Burning Blood) to 22 HP.
+- **Strategy**: (1) Use Thunderclap to strip Flight from all Byrds and apply Vulnerable simultaneously. (2) Focus fire one Byrd at a time — reducing from 3 to 2 enemies is the biggest damage reduction. (3) Once Flight is at 0, burst with Vulnerable attacks to kill. (4) Metallicize is critical for the long fight — passive block every turn. (5) Consider using Reaper mid-fight for healing sustain.
+- **CRITICAL WARNING**: This fight is an HP sponge. Even with good play, expect to lose 40-60 HP. If entering Act 2 with low HP, Byrds can end the run through sheer attrition. Prioritize healing before Act 2.
+- Confidence: MEDIUM (1 fight in Run 3, 12 turns of detailed data, Flight mechanic observed but exact formula uncertain)
+
+## Chosen
+
+Act 2 hallway enemy. HP: ~95 (estimated from Run 3).
+
+- **Hex**: On certain turns, the Chosen applies Hex to the player. Hex adds a Dazed status card to your draw pile every time you play a Skill card. This means Defend, Shrug It Off, True Grit, Shockwave, etc. all add a dead card to your deck. Over time, this clogs your draws badly.
+- **Weakened**: The Chosen applies Weak to the player, reducing attack damage by 25%. With Weak, Strike goes from 6 to floor(6*0.75)=4 damage. With +2 Strength and Weak, Strike does floor((6+2)*0.75)=6.
+- **Strength gain**: The Chosen gains +3 Strength over the course of the fight (exact timing unconfirmed). This makes its attacks escalate from ~13 to ~16+ damage.
+- **Debuff-only turns**: Has turns where it only applies debuffs (Hex or Weak), no attack. These are free damage turns.
+- **Attack damage**: Base ~13, scaling to 16+ with Strength buffs. Late-fight attacks can hit for 36+ if combined with player Vulnerable.
+- **CRITICAL INTERACTION**: Hex punishes Skill-heavy play. Every Defend you play adds a Dazed card. This means blocking is actively costly. Attack-heavy decks handle Chosen much better. Ironclad with Inflame + Strikes (all Attacks) is naturally suited, but if you need to play Defends to survive, each one dilutes your deck.
+- **Death scenario (Run 3)**: Player entered at 28 HP. Dealt 77 damage in 5 turns but couldn't finish the last 6 HP because Weakened reduced Strikes from 6 to 4 damage (without Strength) or 6 (with +2 Strength). The critical error was playing a Defend card targeting Chosen (deals 0 damage) instead of a third Strike, wasting 1 energy and adding a Dazed from Hex.
+- **Strategy**: (1) Minimize Skill usage to avoid Hex/Dazed clogging. (2) Front-load damage with Attacks. (3) Apply Vulnerable early (Bash+ is an Attack, safe from Hex). (4) Inflame for Strength helps overcome the Weakened penalty. (5) Kill before Strength buffs make attacks lethal.
+- Confidence: MEDIUM (1 fight in Run 3, died to this enemy, mechanics partially observed)
+
 ## General Notes
 
 ### Frail
@@ -152,11 +198,12 @@ Act 1 hallway enemy. HP: ~19 (observed in Run 2, floor 11).
 
 ### Weak
 - Reduces attack damage dealt by the affected entity by 25%
-- Formula: floor(base_damage * 0.75)
+- Formula: floor((base_damage + strength) * 0.75) — Strength is added BEFORE the Weak multiplier is applied
 - When applied to enemies (via Clothesline, Shockwave): reduces THEIR attacks by 25%. Very valuable survivability tool.
-- When applied to yourself (via enemy debuffs): reduces YOUR Strikes/attacks by 25%. Strike goes from 6 to floor(6*0.75) = 4.
+- When applied to yourself (via enemy debuffs): reduces YOUR Strikes/attacks by 25%. Strike goes from 6 to floor(6*0.75) = 4. With +2 Strength: floor((6+2)*0.75) = floor(6.0) = 6.
 - Direction matters: Weak on the ENEMY reduces incoming damage. Weak on YOU reduces outgoing damage. Don't confuse with Vulnerable.
-- Confidence: MEDIUM (observed in Run 1 — Clothesline applied Weak to enemies, player was Weakened by slimes)
+- **Run 3 confirmation**: Player was Weakened by Chosen and had +2 Strength from Inflame. Strikes dealt floor((6+2)*0.75) = 6 damage each. 2 Strikes dealt exactly 12 damage (Chosen 18->6 HP). Formula confirmed: Strength is added to base BEFORE Weak multiplier.
+- Confidence: HIGH (confirmed in Runs 1, 3 — formula with Strength verified in Run 3)
 
 ### Vulnerable
 - The Vulnerable entity takes 50% more damage from attacks

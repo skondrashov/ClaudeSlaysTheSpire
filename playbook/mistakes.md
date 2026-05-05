@@ -120,3 +120,41 @@ Documented mistakes from actual runs. Each entry explains what went wrong and wh
 - That 1E could have been a Defend (5 block) which would have reduced damage taken on a subsequent turn. Over a 14-turn fight, every HP matters — especially when the player entered at ~46 HP.
 - Lesson: On high-energy turns (Ancient Tea Set, Snecko Oil), always count total energy and plan to spend ALL of it. Wasted energy in boss fights is wasted survival.
 - Confidence: MEDIUM (Run 2 — 1E wasted is minor but the principle matters)
+
+## Run 3: Played Defend targeting Chosen instead of a third Strike (floor 20, death turn)
+
+- The player needed to deal 18 damage to kill Chosen at 18 HP. With Inflame (+2 Str) and Weakened, each Strike deals floor((6+2)*0.75) = 6 damage. Three Strikes = 18 = exact lethal.
+- The player executed: `play 6; play 4 0; play 3 0; play 2 0` which translated to Inflame (Power, 0E), Strike (1E), **Defend** (1E), Strike (1E). The second card played was a Defend, not a Strike.
+- Defend is a Skill card. It deals 0 damage even when "targeting" an enemy. It also triggered Hex (adding a Dazed to draw pile). The player wasted 1 energy on 0 damage and 0 useful block (Chosen was about to deal 36 damage — 5 block is meaningless).
+- Result: Only 2 Strikes landed = 12 damage. Chosen survived at 6 HP. Next turn, Chosen dealt 36 damage (28 after 8 block) and killed the player at 14 HP.
+- **Root cause**: Card indices shift when you play cards. After playing Inflame (card 6) and Strike (card 4 -> now shifted), the next "card 3" was a Defend, not a Strike. The player did not re-index after each play.
+- Lesson: ALWAYS re-count card indices after each card play. When a card is played from position N, all cards at positions > N shift down by 1. Plan the full sequence with shifted indices, or use the `turn()` batch command which handles this.
+- **Secondary lesson**: When Hex is active, playing a Defend that doesn't save your life is double-punished — you lose 1 energy AND add a Dazed.
+- Confidence: HIGH (Run 3 — directly caused death, card index shifting confirmed as root cause)
+
+## Run 3: Byrd fight drained 58 HP (floor 16, Act 2)
+
+- The Byrd fight lasted 12 turns. Player entered at 80 HP (post-Burning Blood heal) and exited at 22 HP. This is a 58 HP loss from a single hallway fight.
+- Flight mechanic halves all damage, making Byrds extremely tanky. With 3 Byrds, each regenerating Flight on buff turns, the fight becomes an attrition war the player cannot win quickly.
+- The deck lacked efficient ways to strip Flight. Thunderclap (4 AOE + Vulnerable) is the only AOE and it strips only 1 Flight per Byrd per use.
+- The player correctly played Metallicize early (turn 3) for passive block, but 3 block/turn against 15-36 incoming from 3 Byrds is insufficient.
+- Reaper was used once for 6 HP healing — helpful but not enough to offset 58 HP drain.
+- Lesson: Act 2 Byrds require (1) more AOE to strip Flight efficiently, (2) multi-hit attacks to decrement Flight faster, (3) Strength scaling to make halved damage still meaningful. If the deck can't handle Flight enemies, consider pathing to avoid monster fights in early Act 2 until the deck improves.
+- Confidence: MEDIUM (Run 3, 1 fight — devastating HP cost even with correct play)
+
+## Run 3: Entered Chosen fight at 28 HP after Byrd attrition
+
+- After the Byrd fight (22 HP + 6 Burning Blood = 28 HP), the player went directly into a Chosen fight with no rest site.
+- At 28 HP, the player had very little margin. Chosen attacks escalate to 16+ damage per turn, and Weakened reduces the player's damage output. The fight lasted 6 turns and the player dealt 89 of 95 HP of damage — dying with Chosen at 6 HP.
+- If the player had entered at 50+ HP, the extra 22 HP would have allowed surviving the final Chosen attack (28 damage after block) and killing it next turn.
+- Lesson: After a brutally expensive fight like Byrds, prioritize healing (rest site, Reaper) before engaging the next monster. If no healing is available, consider event rooms or other non-combat paths.
+- Confidence: MEDIUM (Run 3 — low HP entry directly contributed to death)
+
+## Run 3: Hexaghost fight survived at 1 HP — nearly fatal Burns
+
+- While the Hexaghost fight was a victory, surviving at 1 HP means any small optimization would have made the difference between winning and losing.
+- Burns accumulated over the fight and dealt 2+ damage per turn in the late game. The deck had no way to exhaust Burns (no True Grit, no Burning Pact).
+- The player used Skill Potions reactively during the fight. Using the Regen Potion earlier (turn 1 instead of turn 2) would have gained 1 additional HP of healing.
+- The fight was 13 turns. If the player had Inflame (taken later from Power Potion in Act 2), every attack would have dealt 2 more damage, potentially shortening the fight by 2-3 turns and reducing Burn accumulation.
+- Lesson: Against Hexaghost, (1) take Inflame or other Strength scaling BEFORE the boss for a shorter fight, (2) take burn-removal tools (True Grit+, Burning Pact) for late-fight safety, (3) use healing potions as early as possible in long fights.
+- Confidence: MEDIUM (Run 3 — victory but dangerously close to death)

@@ -20,10 +20,11 @@ Confidence: MEDIUM (based on Run 1 death — deck lacked AOE for Slime Boss)
 By floor 12-15, you should be thinking about the boss. Each act boss has specific threats you need to handle:
 - **Slime Boss**: Need AOE for the split, burst single-target to kill one slime fast, exhaust tools for Slimed cards. Combined post-split damage is 25-36 per turn.
 - **The Guardian**: Mode-switching boss with heavy attacks (5x4=20, single 32). Need block cards that can reach 32+ total per turn. Sharp Hide (3 damage per Attack played) in Defensive Mode means you need block before playing Attacks. Long fight (240 HP) rewards Strength scaling and efficient multi-purpose cards. DO NOT over-exhaust — keep enough cards to block 32 damage.
+- **Hexaghost**: 250 HP. 7x6=42 Inferno attack is the biggest threat. Need Weak (Shockwave, Clothesline) to reduce it to ~28. Metallicize is excellent for the long fight. Burns accumulate and deal end-of-turn damage — exhaust tools help. Turn 1 is free (no attack). Pantograph negates low HP entry.
 
 If you don't have the tools to handle the boss, prioritize getting them from card rewards, shops, and events over minor deck improvements.
 
-Confidence: MEDIUM (3 boss encounters across Runs 0, 1, and 2 — 1 Guardian victory, 1 Slime Boss death, 1 Guardian death)
+Confidence: MEDIUM (4 boss encounters across Runs 0, 1, 2, 3 — 1 Guardian victory, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory)
 
 ## Combat
 
@@ -188,3 +189,59 @@ In Run 2, the player stopped filling in reasoning for turns 7-14 of the Guardian
 The absence of reasoning in Run 2's late turns correlated directly with the failure to notice the deck was approaching an unsurvivable state.
 
 Confidence: HIGH (Run 2 — empty reasoning fields correlated with death)
+
+## Prepare for Act boss (updated after Run 3)
+
+By floor 12-15, you should be thinking about the boss. Each act boss has specific threats:
+- **Slime Boss**: Need AOE for the split, burst single-target to kill one slime fast, exhaust tools for Slimed cards. Combined post-split damage is 25-36 per turn.
+- **The Guardian**: Mode-switching boss with heavy attacks (5x4=20, single 32). Need block cards that can reach 32+ total per turn. Sharp Hide (3 damage per Attack played) in Defensive Mode. Long fight (240 HP). DO NOT over-exhaust.
+- **Hexaghost**: 250 HP, 7x6=42 Inferno attack. Need (1) Weak to reduce Inferno to ~28, (2) Metallicize for passive block in long fight, (3) way to handle Burns (exhaust tools). Pantograph makes HP entry irrelevant. Shockwave is the single best card for this boss. Turn 1 is free (no attack).
+
+Confidence: MEDIUM (4 boss encounters across Runs 0, 1, 2, 3 — 1 Guardian win, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win)
+
+## Hexaghost Strategy (Run 3 Victory)
+
+Run 3 deck beat Hexaghost at 250 HP, surviving at 1 HP:
+- **Pantograph** healed from 56 to 80 HP at fight start
+- **Thunderclap** applied Vulnerable on turn 1 (free turn, no attack)
+- **Regen Potion** used turn 2 for sustained healing (~15 HP total)
+- **Skill Potion -> Shockwave** applied Weak for the first Inferno, reducing 42 to ~28
+- **Metallicize** set up on turn 4 for 3 passive block per turn (provided ~27 block over 9 remaining turns)
+- **Bash+** refreshed Vulnerable every 3 turns on free turns (DEFEND_BUFF intent)
+- **Burns nearly killed**: By turn 12, multiple Burns were dealing end-of-turn damage and clogging hands. The fight was won with exactly 1 HP remaining.
+
+**What this deck needed more of**: (1) A way to exhaust Burns (True Grit+ would have been perfect). (2) More block — only 4 Defends + Iron Wave+ was barely enough for Inferno turns. (3) Faster damage — the fight was 13 turns, which allowed Burns to accumulate dangerously.
+
+Confidence: MEDIUM (Run 3, 1 victory)
+
+## Act 2 Preparation
+
+Act 2 enemies are significantly harder than Act 1. Key threats observed in Run 3:
+
+### Byrds (Flight)
+- Flight halves all damage. A 12-card deck with Strikes and Defends takes 12+ turns to kill 3 Byrds.
+- **What you need**: AOE to strip Flight from all Byrds simultaneously (Thunderclap, Whirlwind). Strength scaling to make even halved damage meaningful. Metallicize for the long fight.
+- **HP cost**: Even with good play, expect 40-60 HP lost. If entering Act 2 below 50% HP, Byrds can end the run.
+
+### Chosen (Hex)
+- Hex punishes Skills. Every Defend adds a Dazed card.
+- **What you need**: Attack-heavy deck. Iron Wave (Attack that also blocks) is excellent. Inflame for Strength to overcome Weakened. Fast kill before Strength buffs escalate damage.
+- **What NOT to do**: Don't play Defend cards unless you absolutely must survive this turn. Each Defend clogs the deck.
+
+### General Act 2 Rule
+- Enter Act 2 at or near full HP. The Pantograph relic should heal you before the Act 1 boss, but hallway fights in Act 2 hit much harder than Act 1. The Byrd fight in Run 3 drained 58 HP.
+- Having healing sustain (Reaper) is critical for surviving the HP drain of Act 2 multi-enemy fights.
+
+Confidence: LOW (1 partial Act 2 experience in Run 3, died floor 20)
+
+## Gremlin Nob Strategy (Refined after Run 3)
+
+Run 3 demonstrated the correct approach vs Run 2's mistakes:
+1. **Zero Skills.** Not one Defend, not one Shrug It Off, nothing. Every Skill gives Nob +2 Strength permanently.
+2. **Turn 1 is free.** Nob buffs, does not attack. Go all-in on damage: Pommel Strike + Strike + Strike = 21 damage for 0 HP lost.
+3. **Bash+ turn 2 with Flex Potion.** Apply Vulnerable early for 50% more damage on all subsequent attacks. Flex Potion's +2 Str is consumed this turn so use it when playing the most Attack cards.
+4. **4-turn kill.** With Bash+ Vulnerable and focused Attacks, Nob dies in 4 turns. Taking only ~9 HP damage total.
+
+Run 2 fought Nob with Skills (3 Skills = +6 Str, survived at 3 HP). Run 3 fought with 0 Skills (survived at 63 HP). The difference is massive.
+
+Confidence: HIGH (confirmed across Runs 2 and 3 — night-and-day results)

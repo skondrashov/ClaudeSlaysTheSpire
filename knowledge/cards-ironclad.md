@@ -16,8 +16,10 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 
 ### Bash
 - Type: Attack, 2 energy, 8 damage, applies 2 Vulnerable
-- Evaluation: Strong opener in fights. Vulnerable for 2 turns means your next 2 turns of attacks deal 50% more. Best when you have multiple attack cards to follow up. Upgrading to Bash+ gives 3 turns of Vulnerable, which is a significant improvement.
-- Confidence: MEDIUM (used in Run 1, seemed strong)
+- Upgrade (Bash+): 2 energy, 10 damage, applies 3 Vulnerable
+- Evaluation: Strong opener in fights. Vulnerable for 2 turns means your next 2 turns of attacks deal 50% more. Best when you have multiple attack cards to follow up. Upgrading to Bash+ gives 3 turns of Vulnerable AND +2 damage (10 vs 8), a significant improvement.
+- Run 3: Upgraded at rest site floor 6. Bash+ was used as the primary Vulnerable applicator throughout the run. With Vulnerable + Flex Potion, Bash+ dealt 12 damage to Gremlin Nob. Against Hexaghost, used on free turns (DEFEND_BUFF intent) to refresh Vulnerable for 3 more turns. Bash+ is safe against Gremlin Nob (it's an Attack, not a Skill).
+- Confidence: HIGH (used extensively in Runs 1, 2, and 3 — Bash+ values 10 damage/3 Vuln confirmed)
 
 ## Cards Seen in Run 1
 
@@ -129,7 +131,8 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 - Evaluation: Damage + draw is excellent. Replaces itself in hand while dealing more than a Strike. With Vulnerable on target, deals floor(9 * 1.5) = 13 damage. Core cycling card that enables finding the right answer each turn.
 - Run 0: Finished off The Guardian at 2 HP.
 - Run 2: Used extensively throughout Act 1. Correctly identified as double-duty (damage + draw). Randomly exhausted by True Grit during Guardian fight — a critical loss.
-- Confidence: HIGH (used in Run 0 and Run 2, base damage 9 confirmed from Run 2 log math)
+- Run 3: Taken as first card reward (floor 1). Used in every fight — Gremlin Nob, Hexaghost, Byrds, Chosen. The draw is especially valuable in long fights where finding the right card matters. Against Byrds, the 9 damage was halved by Flight but the draw still cycled to find better answers.
+- Confidence: HIGH (used in Runs 0, 2, and 3 — consistently one of the best 1-energy Attack cards)
 
 ### Inflame
 - Type: Power, 1 energy
@@ -139,7 +142,36 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 - Confidence: MEDIUM (used in Run 2, effect confirmed)
 
 ### Reaper
-- Type: Attack, 2 energy (cost unconfirmed)
-- Effect: Unknown — deals damage to all enemies and heals based on damage dealt (unconfirmed, common STS knowledge)
-- Evaluation: SKIPPED in Run 2 (floor 5 card reward). Player skipped because "lesson from Run 1 says don't take cards you don't understand." This was likely a mistake — Reaper provides sustain (healing) which was the run's biggest problem (low HP throughout Act 1). If Reaper heals for unblocked damage, it would have recovered HP in hallway fights.
-- Confidence: LOW (never played, effect unconfirmed from our runs, skipping it may have been a strategic error)
+- Type: Attack, 2 energy
+- Effect: Deals damage to ALL enemies, heals HP equal to unblocked damage dealt
+- Evaluation: SKIPPED in Run 2 (floor 5 card reward). Taken in Run 3 after Hexaghost boss. Used twice: once in Byrd fight (healed 6 HP), once in Chosen fight. With Strength, Reaper's damage and healing both scale — each point of Strength adds damage to every enemy hit, which means more healing. With Vulnerable on enemies, the bonus damage also heals. Essential sustain card for Ironclad.
+- Run 3: Taken after beating Hexaghost. Used against Byrds (healed 6 HP from ~2 damage to each of 3 Byrds). Used against Chosen but healing was reduced by Flight/block.
+- Synergy: Inflame (+2 Str) boosts Reaper's damage to all enemies, increasing healing proportionally. In multi-enemy fights, Reaper heals for the sum of damage dealt to all enemies.
+- Confidence: MEDIUM (used twice in Run 3, healing confirmed, 2 energy cost confirmed)
+
+## Cards Seen in Run 3
+
+### Thunderclap
+- Type: Attack, 1 energy, 4 damage to ALL enemies, applies 1 Vulnerable to ALL enemies
+- Evaluation: Cheap AOE that applies mass Vulnerable for 1 energy. Doesn't deal much damage on its own (4 to each enemy), but the mass Vulnerable makes all subsequent attacks deal 50% more. In multi-enemy fights, this is extremely efficient — 1 energy to set up 50% more damage on every enemy. Against single enemies, worse than Bash+ (which applies 3 turns of Vulnerable for 2 energy and deals 10 damage).
+- Run 3: Taken after Gremlin Nob elite. Used extensively in Looter fight (killed Acid Slime with 4 damage when at 3 HP), Louse fights, Hexaghost boss, Byrd fight, and Chosen fight. The mass Vulnerable was consistently valuable.
+- Note: Each hit on a Flight enemy reduces Flight by 1. Thunderclap hitting multiple Byrds reduces each one's Flight. This makes it useful for stripping Flight efficiently.
+- Confidence: MEDIUM (used in ~8 fights across Run 3, damage and Vulnerable confirmed)
+
+### Iron Wave+ (Upgraded)
+- Type: Attack, 1 energy, 7 damage, gain 7 block
+- Evaluation: Upgraded from 5/5 to 7/7 — both halves improve. At 7 damage + 7 block for 1 energy, this is one of the best multi-purpose cards available. With Strength, the damage scales further (7+Str). With Vulnerable on target, damage becomes floor((7+Str)*1.5). The block half is unaffected by Strength but is affected by Frail and Dexterity.
+- Run 3: Upgraded at rest site floor 10. Core card throughout the run — used in nearly every fight for its dual-purpose efficiency. In Hexaghost fight, provided both damage pressure and block simultaneously.
+- Confidence: HIGH (used extensively in Run 3, values 7/7 confirmed from multiple fights)
+
+### Inflame
+- Type: Power, 1 energy
+- Effect: Gain 2 Strength (permanent for rest of combat)
+- Run 3 update: Obtained from Power Potion during Chosen fight. Player calculated that with +2 Strength and Weakened, Strikes deal floor((6+2)*0.75) = 6 damage each. This math was CORRECT but the player miscounted available Strikes (played a Defend targeting Chosen instead of a third Strike, dealing 0 damage). The damage formula is confirmed: floor((base + Str) * 0.75) when Weakened.
+- Confidence: HIGH (Runs 2 and 3, effect confirmed, damage formula with Weak verified)
+
+### Metallicize
+- Type: Power, 1 energy
+- Effect: Gain 3 block at the end of each turn (permanent for rest of combat)
+- Run 3 update: Taken as a card reward (floor 12). Played in Byrd fight and Chosen fight. The 3 passive block per turn was critical in long fights. Over the 12-turn Byrd fight, provided 36 free block. Metallicize value of 3 now confirmed across Runs 2 and 3.
+- Confidence: HIGH (used in Runs 2 and 3, value = 3 confirmed)
