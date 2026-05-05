@@ -18,13 +18,13 @@ Confidence: MEDIUM (based on Run 1 death — deck lacked AOE for Slime Boss)
 ### Prepare for the Act boss
 
 By floor 12-15, you should be thinking about the boss. Each act boss has specific threats you need to handle:
-- **Slime Boss**: Need AOE for the split, burst single-target to kill one slime fast, exhaust tools for Slimed cards. Combined post-split damage is 25-36 per turn.
+- **Slime Boss**: Need AOE for the split, burst single-target to kill one slime fast, exhaust tools for Slimed cards. Combined post-split damage is 25-36 per turn. Run 4 victory used Thunderclap (mass Vuln), Whirlwind (AOE), and Fiend Fire (burst + Slimed exhaust). Plated Armor potion helped survive the split phase.
 - **The Guardian**: Mode-switching boss with heavy attacks (5x4=20, single 32). Need block cards that can reach 32+ total per turn. Sharp Hide (3 damage per Attack played) in Defensive Mode means you need block before playing Attacks. Long fight (240 HP) rewards Strength scaling and efficient multi-purpose cards. DO NOT over-exhaust — keep enough cards to block 32 damage.
 - **Hexaghost**: 250 HP. 7x6=42 Inferno attack is the biggest threat. Need Weak (Shockwave, Clothesline) to reduce it to ~28. Metallicize is excellent for the long fight. Burns accumulate and deal end-of-turn damage — exhaust tools help. Turn 1 is free (no attack). Pantograph negates low HP entry.
 
 If you don't have the tools to handle the boss, prioritize getting them from card rewards, shops, and events over minor deck improvements.
 
-Confidence: MEDIUM (4 boss encounters across Runs 0, 1, 2, 3 — 1 Guardian victory, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory)
+Confidence: MEDIUM (5 boss encounters across Runs 0-4 — 1 Guardian victory, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory, 1 Slime Boss victory)
 
 ## Combat
 
@@ -48,13 +48,17 @@ Confidence: MEDIUM (Run 1 — Slimed cards were the primary reason for losing te
 
 Upgrading a key card gives you permanent value for the whole run. Healing gives you HP that you'll probably lose again. Only heal when your HP is low enough that the next fight could kill you.
 
-What counts as "in danger" depends on what's ahead — if you're about to fight an elite or a boss, you need more HP than if you're about to fight a normal enemy.
+What counts as "in danger": HP below 35% before an elite or boss. HP below 25% before normal monster rooms. At 45-50% HP before unknowns or normal fights, you should UPGRADE, not rest.
 
 Run 1 data: Rested at floor 6 (63/85 HP after taking 21 damage from Golden Idol trap — correct, needed HP buffer). Smithed at floor 8 (full HP — correct, upgraded Bash). Smithed at floor 13 (76/85 HP — upgraded Shockwave, good call for boss prep). Rested at floor 15 (65/85 HP — correct, full heal before boss).
 
-Pattern: the player correctly alternated between rest and smith based on HP, with a bias toward smithing. 3 out of 4 rest site decisions were correct. This principle holds.
+**Run 4 FAILURE**: Rested 3 times, upgraded ONCE in 28 floors. Rest site decisions: Floor 8 (46% HP, rested), Floor 14 (45% HP, rested), Floor 27 (50% HP, FINALLY smithed Bash+). The player rested at 45-50% HP every time, which is too conservative. This led to entering Act 2 with zero upgrades, making every fight harder and draining more HP — a death spiral.
 
-Confidence: MEDIUM (tested in Run 1 — 4 rest site decisions, all reasonable)
+**Revised rule**: At 45-50% HP with a rest site before unknowns/normal fights, UPGRADE. Rest only at 35% HP or lower, or immediately before an elite/boss. The earlier you upgrade, the more fights benefit from it. One upgrade on floor 8 pays dividends for 20+ floors.
+
+**Upgrade priority**: Bash (3 Vuln vs 2 is huge), Iron Wave (7/7 vs 5/5), Whirlwind (8 per hit vs 5), Thunderclap (7 vs 4), Shrug It Off (11 block vs 8), Uppercut (2 turns debuffs vs 1).
+
+Confidence: HIGH (Run 1 correct upgrades vs Run 4 catastrophic under-upgrading — the contrast is stark)
 
 ## Boss Preparation
 
@@ -190,14 +194,14 @@ The absence of reasoning in Run 2's late turns correlated directly with the fail
 
 Confidence: HIGH (Run 2 — empty reasoning fields correlated with death)
 
-## Prepare for Act boss (updated after Run 3)
+## Prepare for Act boss (updated after Run 4)
 
 By floor 12-15, you should be thinking about the boss. Each act boss has specific threats:
-- **Slime Boss**: Need AOE for the split, burst single-target to kill one slime fast, exhaust tools for Slimed cards. Combined post-split damage is 25-36 per turn.
+- **Slime Boss**: Need AOE for the split (Thunderclap, Whirlwind), burst single-target to kill one slime fast (Fiend Fire), exhaust tools for Slimed cards. Combined post-split damage is 25-36 per turn. Run 4 victory confirmed: AOE + exhaust + Plated Armor potion = win.
 - **The Guardian**: Mode-switching boss with heavy attacks (5x4=20, single 32). Need block cards that can reach 32+ total per turn. Sharp Hide (3 damage per Attack played) in Defensive Mode. Long fight (240 HP). DO NOT over-exhaust.
 - **Hexaghost**: 250 HP, 7x6=42 Inferno attack. Need (1) Weak to reduce Inferno to ~28, (2) Metallicize for passive block in long fight, (3) way to handle Burns (exhaust tools). Pantograph makes HP entry irrelevant. Shockwave is the single best card for this boss. Turn 1 is free (no attack).
 
-Confidence: MEDIUM (4 boss encounters across Runs 0, 1, 2, 3 — 1 Guardian win, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win)
+Confidence: MEDIUM (5 boss encounters across Runs 0-4 — 1 Guardian win, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win, 1 Slime Boss win)
 
 ## Hexaghost Strategy (Run 3 Victory)
 
@@ -216,7 +220,7 @@ Confidence: MEDIUM (Run 3, 1 victory)
 
 ## Act 2 Preparation
 
-Act 2 enemies are significantly harder than Act 1. Key threats observed in Run 3:
+Act 2 enemies are significantly harder than Act 1. Key threats observed in Runs 3 and 4:
 
 ### Byrds (Flight)
 - Flight halves all damage. A 12-card deck with Strikes and Defends takes 12+ turns to kill 3 Byrds.
@@ -228,11 +232,37 @@ Act 2 enemies are significantly harder than Act 1. Key threats observed in Run 3
 - **What you need**: Attack-heavy deck. Iron Wave (Attack that also blocks) is excellent. Inflame for Strength to overcome Weakened. Fast kill before Strength buffs escalate damage.
 - **What NOT to do**: Don't play Defend cards unless you absolutely must survive this turn. Each Defend clogs the deck.
 
+### Centurion + Mystic (NEW from Run 4)
+- Mystic heals Centurion ~12 HP/turn and gains ~15 block. Centurion attacks for 12-18 per turn.
+- **KILL MYSTIC FIRST**: Absolutely non-negotiable. You cannot out-damage Mystic's healing on Centurion.
+- **What you need**: Burst damage to break through Mystic's block (Fiend Fire, Whirlwind). Weak on Centurion to reduce incoming while you focus Mystic. Enough HP to absorb Centurion's attacks for 4-5 turns.
+- **HP threshold**: Enter with 50+ HP. Run 4 entered at 42 HP and died. Even with correct target priority (killed Mystic on turn 5), Centurion's attacks drained HP too fast.
+
+### Spheric Guardian (NEW from Run 4)
+- 20 HP but starts with 40 block + Barricade (block persists) + 3 Artifact + Frail 5. Effective HP is 60+.
+- **What you need**: Strip Artifact first (3 cheap debuffs), then apply Vulnerable, then burst through block with high-damage cards. Pen Nib double damage is excellent here.
+- **HP cost**: Expect 20-30 HP lost from Frail-reduced blocking against 10x2 attacks.
+
 ### General Act 2 Rule
 - Enter Act 2 at or near full HP. The Pantograph relic should heal you before the Act 1 boss, but hallway fights in Act 2 hit much harder than Act 1. The Byrd fight in Run 3 drained 58 HP.
 - Having healing sustain (Reaper) is critical for surviving the HP drain of Act 2 multi-enemy fights.
+- **Upgrades matter more in Act 2**: Run 4 entered Act 2 with ZERO upgrades and only upgraded Bash on floor 27 (1 upgrade in 28 floors). Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 60%.
 
-Confidence: LOW (1 partial Act 2 experience in Run 3, died floor 20)
+Confidence: LOW -> MEDIUM (2 partial Act 2 experiences in Runs 3 and 4, died floors 20 and 28)
+
+## Slime Boss Strategy (Run 4 Victory)
+
+Run 4 deck beat Slime Boss at ~140 HP, surviving at 17 HP:
+- **Neow choice**: Lost 8 Max HP for Fiend Fire (rare card). Perfect boss prep — Fiend Fire exhausts Slimed cards AND deals burst damage.
+- **Card choices**: Thunderclap (mass AOE + Vuln), Whirlwind (X-cost AOE), Uppercut (Weak + Vuln), all taken specifically for Slime Boss.
+- **Plated Armor 4** from Essence of Steel potion provided passive block every turn.
+- **Pre-split**: 4 turns. Dealt ~76 damage using free STRONG_DEBUFF turns. Bash for Vuln setup, Thunderclap to refresh Vuln, Strikes for damage. Boss split at ~58 HP.
+- **Post-split**: Spike Slime (L) + Acid Slime (L) appeared. Used Thunderclap for mass Vuln on both. Exhausted 3 Slimed cards on free debuff turns. Fire Potion on Acid Slime for burst. Killed Spike Slime (L) which split into 2x Spike Slime (M). Cleaned up mediums in 2 turns.
+- **Key success factors**: (1) Dedicated AOE cards (Thunderclap, Whirlwind). (2) Fiend Fire for burst + Slimed exhaust. (3) Plated Armor for sustained blocking. (4) Killing attacking slime first while exhausting Slimed on free turns. (5) Proper debuff turn identification.
+
+**What this deck had that Run 1 lacked**: (1) Mass AOE (Thunderclap + Whirlwind vs nothing). (2) Exhaust for Slimed (Fiend Fire vs nothing). (3) Dual debuffs (Uppercut for Weak + Vuln vs Shockwave only). The Run 1 lesson about needing AOE for Slime Boss was directly applied.
+
+Confidence: MEDIUM (Run 4, 1 victory — first successful Slime Boss kill)
 
 ## Gremlin Nob Strategy (Refined after Run 3)
 
@@ -242,6 +272,8 @@ Run 3 demonstrated the correct approach vs Run 2's mistakes:
 3. **Bash+ turn 2 with Flex Potion.** Apply Vulnerable early for 50% more damage on all subsequent attacks. Flex Potion's +2 Str is consumed this turn so use it when playing the most Attack cards.
 4. **4-turn kill.** With Bash+ Vulnerable and focused Attacks, Nob dies in 4 turns. Taking only ~9 HP damage total.
 
-Run 2 fought Nob with Skills (3 Skills = +6 Str, survived at 3 HP). Run 3 fought with 0 Skills (survived at 63 HP). The difference is massive.
+Run 2 fought Nob with Skills (3 Skills = +6 Str, survived at 3 HP). Runs 3 and 4 fought with 0 Skills (survived at 63 HP and 46 HP respectively). The difference is massive.
 
-Confidence: HIGH (confirmed across Runs 2 and 3 — night-and-day results)
+**Run 4 optimization**: Strength Potion on turn 1 (free BUFF turn) maximized value — every Attack for rest of fight got +2 damage. Combined with Bash Vuln, Strikes dealt 12 each. Clean 3-turn kill (vs Run 3's 4-turn kill). Using a Strength Potion on the free turn is the optimal Nob opener.
+
+Confidence: HIGH (confirmed across Runs 2, 3, and 4 — three fights, night-and-day results between Skills and no-Skills approaches)

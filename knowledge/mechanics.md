@@ -95,6 +95,23 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - WRONG previous confidence: Was LOW, now upgraded. Confirmed in Run 2: player explicitly referenced "Burning Blood heals to X" multiple times with consistent +6 HP math (e.g., floor 3: "71 HP stays. Burning Blood heals to 77" = +6).
 - Confidence: HIGH (confirmed across Run 2, exact heal amount = 6)
 
+## Barricade (Enemy Passive)
+
+- Block does NOT expire at the start of the enemy's turn. Block accumulates turn over turn.
+- Observed on Spheric Guardian in Run 4: Started with 40 block and gained more each turn. Block values of 46+ observed on turn 2.
+- This makes enemies with Barricade effectively much tankier than their HP suggests. A 20 HP enemy with 40 block and Barricade is effectively a 60+ HP enemy.
+- Strategy: You need sustained high damage or burst to break through accumulated block. Chipping away with Strikes is nearly useless — the block regenerates faster than you can deplete it.
+- Confidence: MEDIUM (observed on Spheric Guardian in Run 4, mechanic clear from gameplay)
+
+## Artifact (Enemy Buff)
+
+- Artifact N means the next N debuffs applied to this enemy are negated (consumed by Artifact instead of applying).
+- Each debuff application consumes 1 Artifact charge: Bash's Vulnerable = 1 charge, Uppercut's Weak + Vulnerable = 2 charges, Thunderclap's Vulnerable = 1 charge per enemy.
+- Once all Artifact charges are consumed, subsequent debuffs apply normally.
+- Strategy: Use cheap debuffs (Thunderclap at 1 energy) to strip Artifact, then apply real debuffs (Bash+ for 3-turn Vulnerable) once Artifact is gone.
+- Observed: Spheric Guardian (3 Artifact) in Run 4, Sentries (1 Artifact each) in Run 4.
+- Confidence: MEDIUM (observed in Run 4, 2 different enemy types confirmed)
+
 ## Curl Up (Enemy Passive)
 
 - Some enemies (Louses) have a passive shield that triggers when they are first hit
@@ -248,6 +265,24 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - Evaluation: Solid relic. Extra energy on turn 1 allows stronger openers — play a setup Power AND still have energy for damage/block. Weaker than Ancient Tea Set (which gives +2 energy but only after rest sites).
 - Confidence: MEDIUM (Run 3, +1 energy turn 1 inferred from play patterns, not explicitly confirmed by game text)
 
+### Strawberry
+- Source: Elite reward (Run 4, Sentry fight).
+- Effect: Gain 7 Max HP (confirmed in Run 4 — player went from 72 to 79 Max HP after taking it).
+- Evaluation: Straightforward HP boost. Always take it. 7 Max HP is equivalent to a free heal of 7 + permanent extra HP buffer for the rest of the run.
+- Confidence: MEDIUM (Run 4, +7 Max HP confirmed from 72->79)
+
+### Pen Nib
+- Source: Elite reward (Run 4, Gremlin Nob fight).
+- Effect: Every 10th Attack card played deals double damage. The counter persists across combats.
+- Evaluation: Free burst damage on a cycle. Best when you can time the 10th Attack to coincide with a high-damage card (Fiend Fire, Uppercut) or a Vulnerable target. Pen Nib + Strike = 12 damage instead of 6. Pen Nib + Fiend Fire with 4 cards = 56 damage instead of 28.
+- Run 4: Used against Fungi Beasts (Headbutt doubled to 18, killed a Fungi Beast) and against Spheric Guardian (Strike doubled to 18 for breaking through Barricade block).
+- Confidence: MEDIUM (Run 4, double damage on 10th Attack confirmed from multiple combats)
+
+### Odd Mushroom
+- Source: Event reward (Run 4, Mushroom Fungi Beast fight).
+- Effect: Unknown — player guessed "+1 Dex or modifies Vulnerable." Not directly observed in gameplay.
+- Confidence: LOW (Run 4, acquired but effect never confirmed)
+
 ### Neow's Lament
 - Source: Neow's blessing (Run 3 opening choice).
 - Effect: Enemies in your next 3 combats have 1 HP. Gives 3 completely free fights with full card/gold/potion rewards.
@@ -290,6 +325,19 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - Run 3: Player chose Take, then Smash (20 HP damage, 80->60 HP). At full HP with Neow's Lament active, the 20 HP cost was affordable. Correct evaluation: 20 damage is recoverable, -6 Max HP is permanent, curse is a permanent deck clog.
 - Confidence: MEDIUM (2 encounters across Runs 1 and 3, trap options confirmed)
 
+### Transmogrifier
+- Options: [Pray] Transform a card, [Leave].
+- Transform turns a chosen card into a random card of the same rarity (unconfirmed).
+- Run 4: Player transformed Strike into Headbutt. Headbutt (9 damage + put a discard card on top of draw) is a significant upgrade over Strike. Good outcome.
+- Evaluation: Transforming a Strike is almost always positive — nearly any card is better than Strike. Risk: could transform into a worse card, but the floor is very low.
+- Confidence: LOW (1 encounter in Run 4)
+
+### Mushrooms
+- Options: [Stomp] Fight Fungi Beasts, [Leave (or Curse option)].
+- Run 4: Player chose Stomp ("Anger the Mushrooms") to fight Fungi Beasts rather than take a curse. Beat the Fungi Beasts and received Odd Mushroom relic as reward.
+- Evaluation: Fighting is usually better than a permanent curse in the deck. Fungi Beasts are manageable if you can handle Spore Cloud Vulnerable.
+- Confidence: LOW (1 encounter in Run 4)
+
 ### Scrap Ooze
 - Options: [Reach Inside] Lose 3 HP. 25%: Find a Relic. Repeatable.
 - Run 3: Player reached inside once at 63 HP, lost 3 HP, and found a Relic (Lantern) on the first try. Lucky outcome — expected HP cost is 12 HP (4 tries at 3 HP each on average).
@@ -302,7 +350,30 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 
 ## Events (Act 2)
 
-No events fully documented yet. Face Trader observed but not engaged.
+### Council of Ghosts
+- Options: [Accept] Lose 40 Max HP, gain 5 Apparition cards. [Refuse] Leave.
+- Apparitions: Prevent ALL damage for 1 turn each. Ethereal (exhaust if not played). 5 copies = 5 turns of invincibility, but -40 Max HP is permanent and devastating.
+- Run 4: Player refused at 79 Max HP. Losing 40 Max HP would drop to 39/39 — too fragile for Act 2 with no upgrades and weak block. The decision depends heavily on current Max HP and deck quality.
+- **When to accept**: High Max HP (100+), strong deck that can end fights quickly (Apparitions buy 5 free turns to kill enemies). With Ironclad's Burning Blood (+6 HP per fight), the Max HP loss is partially offset.
+- **When to refuse**: Low Max HP (<80), weak deck, no healing sustain. Being at 39 Max HP means one bad fight ends the run.
+- Confidence: LOW (1 encounter in Run 4, refused — Apparition power not tested)
+
+### Forgotten Altar
+- Options: [Sacrifice] Lose 20 HP, gain +5 Max HP. [Desecrate] Gain Decay curse. [Leave].
+- Run 4: Player chose Sacrifice at 65/84 HP (went to 45/84, Max HP increased to 84 -> likely already included). Correct reasoning: 20 HP is recoverable at rest sites, Decay curse permanently ruins deck draws, +5 Max HP is permanent value.
+- Decision framework: If near a rest site, Sacrifice is almost always correct. Deck pollution from curses is worse than temporary HP loss.
+- Confidence: LOW (1 encounter in Run 4, Sacrifice chosen)
+
+### Old Beggar
+- Options: [Offer Gold] 75 Gold: Remove a card from your deck. [Leave].
+- Run 4: Player paid 75g to remove a Strike (had 395g). At 320g remaining, this was a good trade — Strike removal improves draw quality permanently.
+- Evaluation: 75g for card removal is slightly expensive (shops charge 50-75g for removal), but if you're not heading to a shop soon, this is a solid deal. Always remove Strikes before Defends (Strikes become worse as you add better attacks, but Defend's 5 block stays relevant).
+- Confidence: LOW (1 encounter in Run 4)
+
+### Cursed Tome
+- Options: Unknown (player left immediately). Name suggests interaction with Curses.
+- Run 4: Player left, reasoning "likely adds a Curse to deck."
+- Confidence: LOW (1 encounter in Run 4, not engaged)
 
 ## Potions (Run 3 additions)
 
@@ -323,3 +394,30 @@ No events fully documented yet. Face Trader observed but not engaged.
 - Run 3: Used twice during Hexaghost fight. First use: chose Shockwave (Weak + Vulnerable to all enemies, Exhaust). Second use: chose Ghostly Armor (10 block, Ethereal). Both were critical — Shockwave reduced Hexaghost's Inferno from 42 to ~28, Ghostly Armor provided 10 free block on a key turn.
 - Best use: During boss fights when you need a specific answer (mass debuff, big block, etc.). The 0-cost means it's essentially free value.
 - Confidence: MEDIUM (used twice in Run 3, choose-1-of-3 + free confirmed)
+
+### Strength Potion
+- Effect: Gain +2 Strength for the rest of combat (permanent, unlike Flex Potion which is 1 turn).
+- Run 4: Used on turn 1 of Gremlin Nob fight (free BUFF turn). Every Attack card dealt +2 damage for the rest of the fight. Strikes went from 6 to 8, Bash from 8 to 10. Over a 3-turn fight, this was +6 damage per Strike played.
+- **Difference from Flex Potion**: Strength Potion is PERMANENT for combat. Flex Potion is 1 TURN only. Strength Potion is strictly better — use it as early as possible for maximum value.
+- Confidence: MEDIUM (used once in Run 4, permanent +2 Str confirmed)
+
+### Entropic Brew
+- Effect: Fills all empty potion slots with random potions. The Entropic Brew itself is consumed.
+- Run 4: Used twice. First use: on the map screen before fights, filled empty slots. Second use: before Slime Boss fight, filled empty slots. Random potions received included Essence of Steel (Plated Armor), Fire Potion, Distilled Chaos, Weak Potion.
+- Best use: Before a boss fight or dangerous elite to maximize potion count. Can be used on the map (not in combat).
+- Confidence: MEDIUM (used twice in Run 4, fill-empty-slots confirmed)
+
+### Essence of Steel (Potion)
+- Effect: Gain Plated Armor N (passive block at end of each turn, permanent for combat). N=4 observed in Run 4.
+- Run 4: Used turn 1 of Slime Boss fight. Plated Armor 4 provided 4 free block every turn for the rest of the 9-turn fight = 36 total block. Functionally similar to Metallicize.
+- Note: Plated Armor decreases by 1 each time you take unblocked damage. So it can degrade if you're taking hits.
+- Confidence: MEDIUM (used once in Run 4, Plated Armor 4 confirmed)
+
+## Known Bugs
+
+### Shop Screen Bug (Run 4)
+- On floor 22 (Act 2), the player entered a Shop but the screen appeared empty — no cards, relics, or removal options were displayed. The player sent `proceed` and was immediately placed back on the map screen, having bought nothing.
+- The player had 395 gold and desperately needed card removal and upgrades. Missing the shop was a significant setback.
+- **Impact**: Lost opportunity to remove Strikes, buy Inflame/other scaling, or purchase a relic. With 395 gold, the shop could have transformed the deck.
+- **Workaround for future runs**: If the shop screen appears empty, try `state` first to inspect the screen_state. If screen_state is empty/missing, the bug is in cmd.py or state_formatter. Do NOT send `proceed` — it exits the shop. Instead, try `choose` commands with indices to see if shop items exist but aren't being displayed.
+- Confidence: HIGH (observed in Run 4 log — lines 735-737 clearly show proceed immediately after entering shop)

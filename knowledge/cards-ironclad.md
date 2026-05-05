@@ -175,3 +175,42 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 - Effect: Gain 3 block at the end of each turn (permanent for rest of combat)
 - Run 3 update: Taken as a card reward (floor 12). Played in Byrd fight and Chosen fight. The 3 passive block per turn was critical in long fights. Over the 12-turn Byrd fight, provided 36 free block. Metallicize value of 3 now confirmed across Runs 2 and 3.
 - Confidence: HIGH (used in Runs 2 and 3, value = 3 confirmed)
+
+## Cards Seen in Run 4
+
+### Fiend Fire
+- Type: Attack, 2 energy, Exhaust
+- Effect: Exhausts all other cards in hand and deals 7 damage per card exhausted to a single target.
+- Evaluation: Extremely powerful burst card. With 4 other cards in hand: 4 x 7 = 28 damage. With Vulnerable on target: 4 x floor(7*1.5) = 4 x 10 = 40 damage. With +2 Strength: 4 x floor((7+2)*1.5) = 4 x 13 = 52 damage. Scales with hand size AND Strength AND Vulnerable.
+- **Perfect vs Slimed/status cards**: Exhausting Slimed cards doesn't waste them — each one adds 7 damage. Turns deck pollution into fuel.
+- **Drawback**: Exhausts ALL other cards in hand. After playing Fiend Fire, your hand is empty. This means you lose block cards, utility cards, everything. Only play when: (1) the burst will kill the target, or (2) it's a free turn (enemy not attacking), or (3) remaining cards are expendable (all Strikes/Slimed).
+- Run 4: Obtained from Neow's rare card choice. Used in Slime Boss fight (not observed in split phase due to log gaps), Mugger fight (lethal burst), and Centurion+Mystic fight (burst on Mystic through block for ~34 damage).
+- Confidence: MEDIUM (used 3+ times in Run 4, damage formula confirmed — 7 per card exhausted)
+
+### Uppercut
+- Type: Attack, 2 energy, deals 13 damage, applies 1 Weak + 1 Vulnerable
+- Evaluation: Expensive at 2 energy but applies BOTH major debuffs in one card. Weak reduces enemy damage 25%, Vulnerable increases your damage 50%. Against single targets, this is extremely efficient — one card does what Bash + Clothesline would take 4 energy to do. Safe vs Gremlin Nob (Attack card).
+- **Artifact interaction**: Each debuff strips 1 Artifact charge separately. So Uppercut strips 2 Artifact charges, which is useful against Spheric Guardian (3 Artifact).
+- Run 4: Taken floor 2. Used extensively. Critical against Spheric Guardian (stripped 2 Artifact charges). Used against Centurion to apply Weak for damage reduction.
+- Confidence: MEDIUM (used in ~5 fights across Run 4, damage and debuff values confirmed)
+
+### Headbutt
+- Type: Attack, 1 energy, 9 damage
+- Effect: Deals 9 damage. After dealing damage, choose a card from your discard pile and place it on top of your draw pile.
+- Evaluation: Damage + deck manipulation. The discard-to-top effect is powerful — it guarantees you draw a specific card next turn. Use it to find Bash (for Vulnerable setup), Fiend Fire (for burst), or any key card. Against enemies with Barricade/persistent block, placing Bash on top ensures you apply Vulnerable consistently.
+- Run 4: Obtained from Transmogrifier event (transformed Strike into Headbutt). Used against Spheric Guardian — placed Bash on top of draw pile to apply Vulnerable after Artifact was stripped. Used in Slime Boss fight (13 damage with Vuln).
+- Confidence: MEDIUM (used in 4+ fights in Run 4, effect confirmed — 9 damage + discard-to-top)
+
+### Burning Pact
+- Type: Skill, 1 energy, Exhaust
+- Effect: Exhaust 1 card from your hand (you choose), then draw 2 cards.
+- Evaluation: Controlled exhaust + card draw. Unlike True Grit (random exhaust when unupgraded), Burning Pact lets you CHOOSE which card to exhaust. The draw 2 means you net +1 card in hand. Excellent for: (1) removing status cards (Slimed, Dazed), (2) cycling to find key cards, (3) thinning in-combat deck safely.
+- **Skill card warning**: Triggers Gremlin Nob's Enrage (+2 Str) and Chosen's Hex (adds Dazed). Do not play against these enemies.
+- Run 4: Taken after Gremlin Nob elite. Used against Spheric Guardian — exhausted a Defend (only 3 block with Frail) and drew 2 cards to find damage.
+- Confidence: MEDIUM (used in 2+ fights in Run 4, choose-then-draw confirmed)
+
+### Inflame
+- Type: Power, 1 energy
+- Effect: Gain 2 Strength (permanent for rest of combat)
+- Run 4 update: Taken from Looter fight card reward in Act 2. Played against Centurion+Mystic — used on turn 4 for +2 Str to boost all subsequent attacks. With Inflame, every Attack card dealt 2 more damage for the rest of the fight.
+- Confidence: HIGH (used in Runs 2, 3, and 4 — effect confirmed, consistently strong)

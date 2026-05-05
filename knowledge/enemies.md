@@ -6,14 +6,15 @@ Enemy mechanics documented from actual runs. Entries cite the run where they wer
 
 Act 1 boss. HP: ~140 (observed).
 
-- **Pre-split behavior**: Has debuff-only turns (no attack) alternating with high-damage attacks (35 damage observed in Run 1). The debuff turns are safe windows for damage.
-- **Split**: When reduced to ~50% HP, Slime Boss splits into Spike Slime (L) and Acid Slime (L). This is the most dangerous part of the fight — you go from one enemy to two, both with significant HP and damage.
+- **Pre-split behavior**: Alternates between STRONG_DEBUFF turns (no attack, safe to go all-in) and high-damage ATTACK turns (35 damage observed in Run 1). The debuff turns are safe windows for damage.
+- **Split**: When reduced to ~50% HP, Slime Boss splits into Spike Slime (L) and Acid Slime (L). This is the most dangerous part of the fight — you go from one enemy to two, both with significant HP and damage. In Run 4, split triggered when boss hit ~58 HP.
 - **Slimed cards**: Both large slimes add Slimed cards to your deck. Slimed is a status card that costs 1 energy and exhausts when played, doing nothing useful. These clog your hand badly — we saw 3 out of 5 cards be Slimed in a single hand.
 - **Pre-split strategy**: You want to prepare for the split. Front-loading damage before the split is less important than having the tools to handle two enemies afterward. Use debuff turns to deal damage without blocking.
 - **Post-split priority**: After the split, you're fighting two enemies that each attack for 11-16+ damage per turn. AOE or the ability to kill one quickly is critical. Without either, the combined damage overwhelms your block.
 - **Post-split debuffs**: Spike Slime (L) applies Frail (block reduced 25%). Acid Slime (L) applies Weak (damage reduced 25%). Getting both debuffs simultaneously is devastating — reduced offense AND defense.
 - **What you need**: (1) AOE for split damage. (2) Burst single-target to kill one slime fast. (3) Exhaust tools to handle Slimed cards. (4) Enough block/HP to survive 2-3 turns of combined 25-36 damage.
-- Confidence: MEDIUM (1 run observed, died to this boss — detailed fight data from Run 1)
+- **Run 4 victory**: Beat Slime Boss at ~17 HP. Key differences from Run 1 death: (1) Had Thunderclap for mass Vulnerable on split, (2) Had Whirlwind for AOE damage, (3) Used Fiend Fire for burst + Slimed exhaust, (4) Killed attacking slime first while exhausting Slimed on free debuff turns, (5) Spike Slime (L) split into 2x Spike Slime (M) which were easier to clean up. Fight lasted 9 turns. Plated Armor 4 from potion provided passive block every turn.
+- Confidence: MEDIUM -> HIGH (2 runs — Run 1 death, Run 4 victory. Pre-split pattern and post-split mechanics well-documented.)
 
 ### Spike Slime (L)
 - Attacks for ~16 damage
@@ -48,11 +49,12 @@ Act 1 boss. HP: 240 (confirmed in Run 2).
 
 Act 1 hallway enemy. HP: ~40-44 (estimated from Run 1 — took 4 turns to kill with Strikes and Bash).
 
-- **Turn 1 behavior**: Unknown intent on turn 1 (player hedged with Strike + Defend). May attack or buff.
-- **Buff/defend turn**: Has a turn where it curls up (gains block) and/or buffs strength. This is a safe turn to go all-in on damage.
-- **Damage output**: 7 damage observed (Run 1, turn 2).
-- **Strategy**: Apply Vulnerable with Bash, then burst damage during buff turns. Straightforward fight.
-- Confidence: LOW (1 fight observed, incomplete data)
+- **Turn 1 behavior**: Unknown intent on turn 1 (player hedged with Strike + Defend in Run 1, Defend + 2 Strikes in Run 4). May attack or buff.
+- **Buff/defend turn**: Has a turn where it curls up (gains block ~5) and/or buffs strength. This is a safe turn to go all-in on damage.
+- **Damage output**: 7 damage (Run 1), 11 damage (Run 4 turn 3 attack). Damage increases over time, possibly from Strength buffs.
+- **Strategy**: Apply Vulnerable with Bash on turn 2, then burst damage during buff turns. 4-turn kill typical.
+- Run 4: Killed in 4 turns. T1: 5 block + 12 damage. T2: Bash (8+Vuln) + Strike (9 Vuln) = 17. T3: Thunderclap (6 Vuln) + 2 Defends (10 block) vs 11 attack. T4: 2 Strikes (18 Vuln) for kill.
+- Confidence: LOW -> MEDIUM (2 fights across Runs 1 and 4, attack patterns partially observed)
 
 ## Cultist
 
@@ -62,7 +64,8 @@ Act 1 hallway enemy. HP: ~50 (estimated from Run 1).
 - **Ritual stacking**: Gains +3 Strength per Ritual stack. Attacks get progressively more dangerous each turn. Kill fast.
 - **Strategy**: Turn 1 is free damage (no attack incoming). Apply Vulnerable with Bash, then burst down. Every turn the fight goes on, the Cultist hits harder.
 - Observed: Run 1, floor 7. Killed in 3 turns with Bash + Hemokinesis + Strike.
-- Confidence: MEDIUM (1 fight, but Ritual mechanic is well-known)
+- Run 4: Floor 1. Killed in 4 turns. T1 (free): Bash (8+Vuln) + Strike (9 Vuln) = 17. T2: 2 Strikes (18 Vuln) + Defend (5 block), took 1 damage. T3: Strike (6) + 3 Defends (15 block), took 0. T4: 2 Strikes (12) for kill. Cultist had 9 damage by turn 2 (Ritual +3 Str, so base 6 + 3 = 9).
+- Confidence: MEDIUM (2 fights across Runs 1 and 4, Ritual mechanic confirmed)
 
 ## Louse (Small / Generic)
 
@@ -87,13 +90,13 @@ Act 1 hallway enemy. HP: ~44-48 (estimated from Run 1).
 
 ## Spike Slime (M)
 
-Medium Spike Slime. HP: ~28 (estimated from Run 1, floor 11 split + floor 14).
+Medium Spike Slime. HP: ~28 (estimated from Run 1, floor 11 split + floor 14). ~11 HP observed in Run 4 Slime Boss fight (post-split from Spike Slime L).
 
 - **Damage output**: ~8 damage per attack.
-- **Debuff turns**: Has turns where it only applies Frail instead of attacking.
+- **Debuff turns**: Has turns where it only applies Frail instead of attacking. These are free damage turns.
 - **Slimed cards**: Adds Slimed status cards to deck.
-- **Split from Large**: Spike Slime (L) splits into medium slimes when killed or at low HP (observed in Run 1, floor 11 — fight started with Spike Slime (L) and later showed Spike Slime (M) enemies).
-- Confidence: LOW (limited data, split behavior needs confirmation)
+- **Split from Large**: Spike Slime (L) splits into 2x Spike Slime (M) when killed (confirmed in Run 4 Slime Boss fight — Spike Slime L was killed and 2x Spike Slime M appeared with ~11 HP each). Also observed in Run 1, floor 11.
+- Confidence: LOW -> MEDIUM (split behavior confirmed in Run 4 Slime Boss fight, HP varies by context)
 
 ## Lagavulin
 
@@ -119,8 +122,9 @@ Act 1 elite. HP: 85 (observed in Run 2).
 - **Run 2 experience**: Player fought at 29 HP. Turn 1: 21 damage with Attacks only. Turn 2: Dark Embrace (Power, safe) + Iron Wave. Turn 3: Snecko Oil for desperate card draw, played 2x True Grit for block (each triggered Enrage +2 Str, making Nob stronger). Used second Snecko Oil turn 4 and killed Nob at 27 HP with Vulnerable Pommel Strike + Strikes. Survived at 3 HP.
 - **Lesson from Run 2**: Even when desperate for block, playing Skills feeds Enrage. The player played 2x True Grit (Skills) and a Defend, giving Nob +6 Strength total. With hindsight, those Skills turned a 14-damage attack into a 20+ damage attack.
 - **Run 3 experience**: Fought at 72/80 HP. Player correctly played zero Skills. Turn 1: Pommel Strike + 2x Strike (21 damage) while Nob buffed. Turn 2: Flex Potion (+2 Str) + Bash+ (12 dmg, 3 Vuln) + Iron Wave+ (dealt damage + provided block). Turn 3: 1 Strike (9 w/Vuln). Turn 4: Pommel Strike + Strike for exact lethal (22 damage vs 22 HP). Clean 4-turn kill. Took ~9 damage total. Vastly better than Run 2 (survived at 3 HP).
-- **Lesson confirmed across runs**: Zero Skills is the correct approach. Run 2 played 3 Skills (+6 Str to Nob), nearly died. Run 3 played 0 Skills, clean victory.
-- Confidence: HIGH (2 fights across Runs 2 and 3 — Run 2 near-death from Skills, Run 3 clean kill from Attacks-only)
+- **Run 4 experience**: Fought at 60/79 HP. Used Strength Potion for +2 Str on turn 1 (free BUFF turn). Bash + Iron Wave (both Attacks) for 20 damage turn 1. Turn 2: Thunderclap (Attack, refreshes Vuln) + Strike for 31 damage with Vuln+Str. Turn 3: 3 Strikes for 36 damage (Vuln+Str), killing Nob. Clean 3-turn kill, zero Skills. Took only 14 damage. Strength Potion on turn 1 maximized value since every Attack got +2 damage.
+- **Lesson confirmed across 3 runs**: Zero Skills is the correct approach. Run 2 played 3 Skills (+6 Str to Nob), nearly died. Runs 3 and 4 played 0 Skills, clean victories.
+- Confidence: HIGH (3 fights across Runs 2, 3, and 4 — Run 2 near-death from Skills, Runs 3 and 4 clean kills from Attacks-only)
 
 ## Red Slaver
 
@@ -186,6 +190,45 @@ Act 2 hallway enemy. HP: ~95 (estimated from Run 3).
 - **Death scenario (Run 3)**: Player entered at 28 HP. Dealt 77 damage in 5 turns but couldn't finish the last 6 HP because Weakened reduced Strikes from 6 to 4 damage (without Strength) or 6 (with +2 Strength). The critical error was playing a Defend card targeting Chosen (deals 0 damage) instead of a third Strike, wasting 1 energy and adding a Dazed from Hex.
 - **Strategy**: (1) Minimize Skill usage to avoid Hex/Dazed clogging. (2) Front-load damage with Attacks. (3) Apply Vulnerable early (Bash+ is an Attack, safe from Hex). (4) Inflame for Strength helps overcome the Weakened penalty. (5) Kill before Strength buffs make attacks lethal.
 - Confidence: MEDIUM (1 fight in Run 3, died to this enemy, mechanics partially observed)
+
+## Centurion + Mystic
+
+Act 2 hallway enemy pair. Centurion HP: ~65 (estimated from Run 4). Mystic HP: ~41 (estimated from Run 4).
+
+- **Mystic heals Centurion**: Mystic heals ~12 HP per turn to Centurion and gains ~15 block. This makes Centurion nearly unkillable while Mystic is alive — you deal 15 damage and it heals back 12.
+- **KILL MYSTIC FIRST**: This is the critical rule. If you attack Centurion while Mystic is alive, you're in an unwinnable attrition war. Focus all damage on Mystic despite Centurion being the bigger threat per-turn.
+- **Centurion attacks**: 12 damage per attack (observed in Run 4, possibly multi-hit 6x3 based on player reasoning referencing "each 6 becomes floor(6*0.75)=4, x3=12"). Can also attack for 18 (observed when player had 18 incoming).
+- **Mystic behavior**: Alternates between heal/buff turns (healing Centurion + gaining block) and other actions. Mystic gains significant block (15 observed) making it tanky despite lower HP.
+- **Free turns**: Both enemies can have turns where they defend/buff without attacking. These are critical windows to burst Mystic.
+- **Run 4 death**: Player entered at 42/84 HP. Used Whirlwind turn 1 (15 AOE) to damage both. Correctly targeted Mystic with Fiend Fire (burst) and Bash+ (Vuln). Killed Mystic on turn 5 but was at 7 HP by then. Centurion's attacks (12-18 per turn) whittled HP while player focused Mystic. Died turn 8 at 1 HP — couldn't block 18 incoming with only 10 block available.
+- **Strategy**: (1) KILL MYSTIC FIRST. (2) Use AOE on turn 1 to damage both while you figure out intents. (3) Save burst damage (Fiend Fire, Whirlwind) for Mystic. (4) Apply Weak to Centurion to reduce incoming while you kill Mystic. (5) Once Mystic is dead, Centurion is a straightforward single-target fight. (6) Enter with 50+ HP — this fight drains HP fast even with correct play.
+- Confidence: MEDIUM (1 fight in Run 4, died — detailed turn-by-turn data)
+
+## Spheric Guardian
+
+Act 2 hallway enemy. HP: ~20 (estimated from Run 4). Extremely tanky despite low HP due to persistent block.
+
+- **Barricade**: Block does NOT expire at start of turn. Block accumulates turn over turn, making the enemy effectively much tankier than its HP suggests.
+- **Starting Block**: Starts with 40 block (observed in Run 4). Combined with Barricade, this means you need to deal 40+ damage just to start dealing HP damage.
+- **Artifact 3**: Starts with 3 Artifact charges. First 3 debuffs applied are negated. This means Bash's Vulnerable, Uppercut's Weak+Vulnerable, etc. are all wasted on stripping Artifact. Plan 3 "throwaway" debuffs before your real debuffs stick.
+- **Frail 5**: Applies Frail 5 to the player. With 5 turns of Frail, block cards give 25% less block for a very long time. Defend goes from 5 to 3.
+- **Attacks 10x2**: Deals 10 damage twice per attack turn (20 total). Significant damage when combined with Frail reducing your block.
+- **Gains block each turn**: Adds more block each turn on top of Barricade. Block of 46+ observed on turn 2.
+- **Strategy**: (1) Strip Artifact first with cheap debuffs (Thunderclap is ideal — 1 energy strips 1 charge from each enemy). (2) Once Artifact is gone, apply Vulnerable for 50% more damage. (3) Use Burning Pact/draw to cycle to high-damage cards. (4) Pen Nib (double damage on 10th Attack) is extremely valuable here. (5) Fiend Fire with hand full of cards can burst through remaining block + HP. (6) This fight is a DPS check — if your deck can't deal 60+ damage fast, you'll take too much from Frail + 10x2 attacks.
+- **Run 4 experience**: 6-turn fight. Lost 30+ HP. Player stripped 3 Artifact charges over 3 turns (Uppercut for 2, Bash for 1). Used Pen Nib double-damage Strike (18 damage) + Iron Wave to break through block. Finished with Thunderclap + Fiend Fire. Headbutt was used to place Bash on top of draw pile (excellent for this enemy since you need to find specific cards).
+- Confidence: MEDIUM (1 fight in Run 4, mechanics observed but block amounts may vary)
+
+## Sentry
+
+Act 1 elite. HP: ~42 each (estimated from Run 4). Appears as a group of 3.
+
+- **Attack pattern**: Two Sentries attack while one uses a Beam ability (adds Dazed status cards to your deck). The attacking pair rotates each turn.
+- **Attack damage**: 9 damage per attacking Sentry (observed in Run 4). With 2 attacking, that's 18 incoming per turn.
+- **Dazed cards**: The non-attacking Sentry adds Dazed (Unplayable, Ethereal) status cards to your discard. These clog draws — Run 4 player had 3 Dazed in a 5-card hand on turn 5.
+- **Artifact**: Each Sentry starts with Artifact (observed — Thunderclap's Vulnerable was negated). Strips are needed before debuffs stick.
+- **Strategy**: (1) AOE is king — Whirlwind for 15 damage to all 3 (45 total) is the best turn 1. (2) Focus fire one Sentry at a time to reduce incoming attack count. (3) Thunderclap strips Artifact + applies Vulnerable once Artifact is gone. (4) Block on turns when 2 Sentries attack (18 damage). (5) Kill them before Dazed cards overwhelm your draws.
+- **Run 4 experience**: 7-turn fight. Whirlwind turn 1 for 45 total AOE. Then focused Sentries one at a time. Took ~22 HP damage total (59->37 HP before Burning Blood).
+- Confidence: MEDIUM (1 fight in Run 4, mechanics observed)
 
 ## General Notes
 

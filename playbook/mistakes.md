@@ -158,3 +158,41 @@ Documented mistakes from actual runs. Each entry explains what went wrong and wh
 - The fight was 13 turns. If the player had Inflame (taken later from Power Potion in Act 2), every attack would have dealt 2 more damage, potentially shortening the fight by 2-3 turns and reducing Burn accumulation.
 - Lesson: Against Hexaghost, (1) take Inflame or other Strength scaling BEFORE the boss for a shorter fight, (2) take burn-removal tools (True Grit+, Burning Pact) for late-fight safety, (3) use healing potions as early as possible in long fights.
 - Confidence: MEDIUM (Run 3 — victory but dangerously close to death)
+
+## Run 4: Only 1 upgrade in 28 floors — catastrophic upgrade discipline
+
+- The player reached floor 28 with only a SINGLE upgrade (Bash+ on floor 27). In 28 floors, they visited 3 rest sites and rested at ALL of them instead of upgrading.
+- Rest site decisions: Floor 8 (46% HP, rested to 60%), Floor 14 (45% HP, rested to ~59%), Floor 27 (50% HP, smithed Bash+). Only the final rest site was used for upgrading.
+- The consequences were devastating throughout Act 2: unupgraded Iron Wave dealt 5+5 instead of 7+7. Unupgraded Bash applied 2 Vulnerable instead of 3. Unupgraded Uppercut applied 1 turn of debuffs instead of 2. Unupgraded Thunderclap dealt 4 instead of 7.
+- Against Spheric Guardian (40 block + Barricade), unupgraded cards couldn't break through fast enough, costing 30+ HP. Against Centurion+Mystic, unupgraded attacks couldn't kill Mystic fast enough before Centurion's damage accumulated.
+- **Root cause**: The player consistently chose to rest at 45-50% HP instead of upgrading. While resting at 45% HP before an elite is reasonable, resting at 45% HP before an unknown room is overly conservative. The HP threshold for "must rest" should be 35-40%, not 45-50%.
+- **Compounding effect**: Each missed upgrade made subsequent fights harder, which drained more HP, which made the next rest site a "forced rest" too. This is a death spiral — not upgrading leads to harder fights leads to more HP loss leads to not upgrading.
+- Lesson: (1) Upgrade at rest sites unless HP is below 35% or the next room is a known dangerous fight (elite, boss). (2) At 45-50% HP with a rest site before unknowns, UPGRADE. (3) Prioritize upgrades over everything at the first rest site — the earlier an upgrade is applied, the more fights it improves. (4) Target upgrade priority: Bash > Iron Wave > Whirlwind > Thunderclap > Shrug It Off > others.
+- Confidence: HIGH (Run 4 — 1 upgrade in 28 floors is the worst upgrade record across all 5 runs, directly contributed to Act 2 death)
+
+## Run 4: Shop bug — exited shop without buying anything (395 gold wasted)
+
+- Floor 22 (Act 2): Player entered a Shop with 395 gold. The shop screen appeared empty (no items displayed). Player sent `proceed` and exited the shop immediately without buying anything.
+- The shop could have provided: card removal (75g removes a Strike), key cards (Inflame, Shrug It Off, etc.), relics, or potions. With 395 gold, the player could have afforded 2-3 purchases.
+- **Root cause**: Likely a bug in cmd.py or state_formatter where the shop screen_state was not properly populated. The player saw an empty screen and assumed there was nothing to do.
+- **Lesson**: If a shop screen appears empty, do NOT send `proceed`. Instead: (1) call `state` to inspect the raw screen_state, (2) try `choose 0`, `choose 1`, etc. to see if items exist but are not displayed, (3) the shop may have loaded but the display layer failed. `proceed` exits the shop and wastes the opportunity.
+- **Impact**: 395 gold unspent is equivalent to ~5 card removals or 2 relics. This was one of the biggest missed opportunities in the entire run.
+- Confidence: HIGH (Run 4, lines 735-737 in log — player entered shop, sent proceed, was on map screen next frame)
+
+## Run 4: Entered Centurion+Mystic fight at 42/84 HP after no upgrades
+
+- Floor 28 (Act 2): Player entered Centurion+Mystic fight at 42/84 HP (50%) with only 1 card upgrade (Bash+). The fight required 8 turns to kill Mystic, during which Centurion dealt ~22 damage unblocked. Player died at 1 HP unable to block 18 incoming.
+- Contributing factors: (1) Spheric Guardian fight on floor 26 drained 30+ HP. (2) No healing between fights (only Burning Blood +6). (3) Unupgraded cards couldn't deal enough damage to kill Mystic quickly. (4) Missed shop meant no card improvements.
+- If the player had 2-3 upgrades and the shop purchases, the deck would have been significantly stronger — likely killing Mystic 2-3 turns faster and surviving with HP to spare.
+- Lesson: Act 2 is a gear check. If your deck enters Act 2 with 0 upgrades and 17+ cards of mostly basic quality, monster fights will drain HP faster than Burning Blood can recover. Upgrade discipline in Act 1 directly determines Act 2 survival.
+- Confidence: HIGH (Run 4 — death was a direct consequence of accumulated underinvestment in deck quality)
+
+## Run 4: Correct play — applied Run 1 lessons successfully
+
+- NOTE: Not a mistake. Documenting what went RIGHT for reference.
+- **Gremlin Nob**: Zero Skills played, clean 3-turn kill (applying Run 2/3 lesson). Strength Potion on free turn 1 maximized damage.
+- **Slime Boss**: AOE cards (Thunderclap, Whirlwind) prepared for split (applying Run 1 lesson). Fiend Fire handled Slimed cards. First successful boss kill.
+- **Card selection**: Every card taken was chosen with Slime Boss in mind (Thunderclap for AOE+Vuln, Uppercut for dual debuffs, Whirlwind for X-cost AOE). This is correct boss-prep deck building.
+- **Target priority**: Correctly killed attacking slimes first, exhausted Slimed on free turns, targeted Mystic first in Centurion+Mystic.
+- The run failed not from tactical errors but from strategic resource management (not upgrading, missing the shop).
+- Confidence: HIGH (Run 4 — player demonstrably applied lessons from Runs 1-3)
