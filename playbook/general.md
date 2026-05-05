@@ -24,7 +24,7 @@ By floor 12-15, you should be thinking about the boss. Each act boss has specifi
 
 If you don't have the tools to handle the boss, prioritize getting them from card rewards, shops, and events over minor deck improvements.
 
-Confidence: MEDIUM (5 boss encounters across Runs 0-4 — 1 Guardian victory, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory, 1 Slime Boss victory)
+Confidence: MEDIUM (6 boss encounters across Runs 0-5 — 2 Guardian victories, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory, 1 Slime Boss victory)
 
 ## Combat
 
@@ -142,7 +142,15 @@ The Guardian is a long fight (240 HP) with alternating modes:
 - A deck thick enough to not get exhausted into oblivion over 14+ turns
 - Strength scaling helps since fight is long (even +2 Str adds up over many turns)
 
-Confidence: MEDIUM (Run 0 victory, Run 2 14-turn death — both inform this strategy)
+**Run 5 Guardian Victory** (second victory):
+- Entered at 69/80 HP, 15-card deck, 3 upgrades (Bash+, Shrug It Off+, Carnage+), 3 potions (Skill, Fear, Fairy).
+- **Skill Potion -> Impervious** on turn 2: 30 block absorbed 32-damage attack (took 2). Game-saving play.
+- **Carnage+ + Headbutt loop**: Headbutt placed Carnage+ on top of draw repeatedly. Every other turn dealt 28-42 damage.
+- **Fairy in a Bottle** triggered on turn 11 (took 32 damage at 18 HP). Revived at ~24 HP. Kill on turn 12 with Shrug It Off+ (block for Sharp Hide) + Strike (6 damage on 2 HP Guardian).
+- **Key difference from Run 2**: Had Carnage+ for massive burst (42 with Vuln). Run 2 relied on chipping with Strikes/Iron Wave. The burst allowed faster kill (12 turns vs 14) and triggered fewer Mode Shifts.
+- **12-turn fight, HP: 69 -> 0 (Fairy) -> 24 -> kill**. Guardian is still an HP drain even with good play.
+
+Confidence: MEDIUM -> HIGH (2 victories across Runs 0 and 5, 1 death in Run 2 — winning formula is burst damage + single big block card for 32-damage turn)
 
 ## Gremlin Nob Strategy
 
@@ -201,7 +209,7 @@ By floor 12-15, you should be thinking about the boss. Each act boss has specifi
 - **The Guardian**: Mode-switching boss with heavy attacks (5x4=20, single 32). Need block cards that can reach 32+ total per turn. Sharp Hide (3 damage per Attack played) in Defensive Mode. Long fight (240 HP). DO NOT over-exhaust.
 - **Hexaghost**: 250 HP, 7x6=42 Inferno attack. Need (1) Weak to reduce Inferno to ~28, (2) Metallicize for passive block in long fight, (3) way to handle Burns (exhaust tools). Pantograph makes HP entry irrelevant. Shockwave is the single best card for this boss. Turn 1 is free (no attack).
 
-Confidence: MEDIUM (5 boss encounters across Runs 0-4 — 1 Guardian win, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win, 1 Slime Boss win)
+Confidence: MEDIUM (6 boss encounters across Runs 0-5 — 2 Guardian wins, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win, 1 Slime Boss win)
 
 ## Hexaghost Strategy (Run 3 Victory)
 
@@ -243,12 +251,19 @@ Act 2 enemies are significantly harder than Act 1. Key threats observed in Runs 
 - **What you need**: Strip Artifact first (3 cheap debuffs), then apply Vulnerable, then burst through block with high-damage cards. Pen Nib double damage is excellent here.
 - **HP cost**: Expect 20-30 HP lost from Frail-reduced blocking against 10x2 attacks.
 
+### Gremlin Leader (NEW from Run 5)
+- DEFEND_BUFF rallies give ALL enemies +3 Str permanently. The fight's damage scales exponentially with each rally turn.
+- **What you need**: AOE to kill gremlins fast (Thunderclap, Whirlwind), mass debuff (Shockwave), Strength reduction (Disarm). Non-exhaust damage to sustain after one-time-use cards are gone.
+- **HP threshold**: Enter with 60%+ HP. Run 5 entered at 13% and died despite Impervious, Disarm, and Shockwave.
+- **Critical warning**: Exhaust-heavy decks are dangerous here. Once Impervious/Shockwave/Disarm are gone (turns 1-5), you need enough remaining cards to survive 3+ more turns of 30-50 incoming damage.
+
 ### General Act 2 Rule
 - Enter Act 2 at or near full HP. The Pantograph relic should heal you before the Act 1 boss, but hallway fights in Act 2 hit much harder than Act 1. The Byrd fight in Run 3 drained 58 HP.
 - Having healing sustain (Reaper) is critical for surviving the HP drain of Act 2 multi-enemy fights.
 - **Upgrades matter more in Act 2**: Run 4 entered Act 2 with ZERO upgrades and only upgraded Bash on floor 27 (1 upgrade in 28 floors). Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 60%.
+- **Run 5 improvement**: 3 upgrades by Act 2 (Bash+, Shrug It Off+, Carnage+). This made a significant difference — Carnage+ carried the Guardian fight and was useful in Act 2. But the deck still lacked sustained answers for long fights.
 
-Confidence: LOW -> MEDIUM (2 partial Act 2 experiences in Runs 3 and 4, died floors 20 and 28)
+Confidence: LOW -> MEDIUM (3 partial Act 2 experiences in Runs 3, 4, and 5, died floors 20, 28, and 25)
 
 ## Slime Boss Strategy (Run 4 Victory)
 
@@ -276,4 +291,79 @@ Run 2 fought Nob with Skills (3 Skills = +6 Str, survived at 3 HP). Runs 3 and 4
 
 **Run 4 optimization**: Strength Potion on turn 1 (free BUFF turn) maximized value — every Attack for rest of fight got +2 damage. Combined with Bash Vuln, Strikes dealt 12 each. Clean 3-turn kill (vs Run 3's 4-turn kill). Using a Strength Potion on the free turn is the optimal Nob opener.
 
-Confidence: HIGH (confirmed across Runs 2, 3, and 4 — three fights, night-and-day results between Skills and no-Skills approaches)
+Confidence: HIGH (confirmed across Runs 2, 3, 4, and 5 — four fights, night-and-day results between Skills and no-Skills approaches)
+
+## Gremlin Leader Strategy (Run 5 Death)
+
+Gremlin Leader is the hardest Act 2 elite observed. DEFEND_BUFF rallies give ALL enemies +3 Strength permanently. This means the fight's damage scales exponentially with turn count.
+
+**Why it's deadly:**
+- Unlike Centurion+Mystic (kill the healer) or Spheric Guardian (DPS check), the Leader's threat compounds: each rally makes EVERY enemy stronger.
+- By turn 8 in Run 5, total incoming was 49 damage (Leader + 3 gremlins, each with accumulated Str buffs).
+- Exhaust cards (Impervious, Shockwave, Disarm) are one-time use. Once they're gone, you have no answers for the scaling.
+
+**Strategy:**
+1. **KILL GREMLINS FAST.** Dead gremlins don't benefit from rally. AOE (Thunderclap, Whirlwind) is critical.
+2. **Apply Shockwave early** for mass Weak (reduces all incoming by 25%) AND mass Vulnerable (50% more damage to all = faster kills).
+3. **Disarm on Leader** removes 2 Str permanently, partially offsetting one rally.
+4. **DO NOT enter below 60% HP.** Run 5 entered at 11 HP (13%) and it was unwinnable. Even correct play (Impervious opener, Disarm, Shockwave) couldn't overcome the starting HP deficit.
+5. **Avoid if deck is exhaust-heavy.** Exhaust cards are used once. In a long fight like this, once Impervious/Shockwave/Disarm are gone, you're playing with a thin deck of Strikes and Defends against enemies with +9 Strength.
+
+**Pre-fight checklist:**
+- HP above 60%? If no, AVOID.
+- Have AOE for gremlins? If no, very dangerous.
+- Have mass debuff (Shockwave)? Critical.
+- Have Strength reduction (Disarm)? Helpful.
+- Have enough non-exhaust cards to sustain a 6+ turn fight? If deck is mostly exhaust cards, AVOID.
+
+Confidence: MEDIUM (1 fight in Run 5, died — mechanics clear but more data needed on timing and thresholds)
+
+## Exhaust-Heavy Decks: The Long Fight Problem (Run 5 Lesson)
+
+Exhaust cards (Impervious, Shockwave, Disarm, Carnage+ via Ethereal, True Grit+ exhausting others) are extremely powerful — but they are one-time-use. In long fights (8+ turns), an exhaust-heavy deck runs out of answers.
+
+**Run 5 Gremlin Leader fight:**
+- Turn 1: Impervious (30 block, exhausted)
+- Turn 3: Disarm (-2 Str on Leader, exhausted)
+- Turn 5: Shockwave (mass debuff, exhausted)
+- Turn 6: Reaper (damage + heal, exhausted — wait, Reaper doesn't exhaust? It was played again turn 6)
+- Turn 7: True Grit+ (exhausted a Strike)
+- By turn 8: Key tools gone. Deck was Strikes, Defends, and a few attack cards vs enemies with +6-9 Strength. 49 incoming, ~21 block available. Death.
+
+**The tradeoff:**
+- Exhaust cards win SHORT fights (1-5 turns) decisively: Impervious + Shockwave + Carnage+ = massive burst + total defense.
+- Exhaust cards LOSE LONG fights (8+ turns): once exhausted, the remaining deck is anemic.
+- The inflection point is around turn 6-7. If the fight isn't over by then, an exhaust-heavy deck is in trouble.
+
+**When to build exhaust-heavy:**
+- Against bosses with known mechanics and turn counts (Guardian 12 turns, Hexaghost 13 turns — you can plan which turns to use each card).
+- When the deck has a strong non-exhaust core (Bash+, Strikes, Defends, Iron Wave, Headbutt).
+
+**When exhaust-heavy is dangerous:**
+- Against enemies that summon reinforcements (Gremlin Leader).
+- Against enemies with Strength scaling (Gremlin Leader DEFEND_BUFF, Cultist Ritual).
+- When you don't know how long the fight will last.
+
+Confidence: MEDIUM (Run 5 death from exhaust depletion, consistent with Run 2 over-exhaust lesson)
+
+## HP Management Into Elites (Cross-Run Pattern)
+
+Entering fights at critically low HP is a recurring cause of death:
+- **Run 3**: Entered Chosen at 28 HP (35%) after Byrd drain. Died with Chosen at 6 HP. 22 more HP would have survived.
+- **Run 4**: Entered Centurion+Mystic at 42 HP (50%). Died at 1 HP. Barely insufficient.
+- **Run 5**: Entered Gremlin Leader at 11 HP (13%). Completely unwinnable regardless of play quality.
+
+**HP thresholds for Act 2 fights:**
+| Fight Type | Minimum HP | Notes |
+|---|---|---|
+| Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP |
+| Hallway (hard) | 40% | Centurion+Mystic, Snake Plant |
+| Elite | 60% | Gremlin Leader, Book of Stabbing |
+| Boss | 70% or Pantograph | Act 2 boss has massive damage |
+
+**Decision at low HP:**
+- Below the threshold for the next fight? Take a DIFFERENT PATH. Event rooms, rest sites, shops — anything but the dangerous fight.
+- If forced into a fight below threshold, use all potions aggressively. Don't save them for "later" — there may not be a later.
+- If there's a rest site before the elite, REST (don't upgrade). HP > upgrades when you're below threshold.
+
+Confidence: MEDIUM (pattern across Runs 3, 4, and 5 — three deaths from low HP entry)

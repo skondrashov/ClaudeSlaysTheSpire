@@ -43,7 +43,9 @@ Act 1 boss. HP: 240 (confirmed in Run 2).
 - **Strategy**: Block on attack turns, damage on free turns. Sharp Hide punishes Attack cards, so during Defensive Mode either (1) block before playing attacks to absorb Sharp Hide damage, or (2) play only Skills for pure block. Need enough block cards to survive 32-damage turns.
 - **Run 0 beat this boss** with block+cycle strategy (True Grit+, Shrug It Off+, Pommel Strike).
 - **Run 2 died to this boss** at 123/240 HP. Deck was exhausted down to 3 cards (Defend, Iron Wave, True Grit) and could only generate 20 block per turn. The 32-damage attack was unsurvivable. Root cause: over-exhausting with unupgraded True Grit (random exhaust) destroyed key cards.
-- Confidence: MEDIUM (2 fights observed — Run 0 victory, Run 2 death. Mode Shift and Sharp Hide mechanics well-documented.)
+- **Run 5 victory**: Beat Guardian at 69/80 HP entry. 15-card deck, 3 upgrades (Bash+, Shrug It Off+, Carnage+). Key plays: (1) Skill Potion -> Impervious on turn 2 for 30 block vs 32 attack. (2) Carnage+ + Headbutt loop dealt 28-42 damage every other turn. (3) Fairy in a Bottle revived on turn 11 after taking 32 damage. (4) Killed turn 12 with Strike at 2 HP remaining on Guardian. Mode Shift confirmed at 30 on cycle 1 (player noted Mode Shift 30->18 after 12 damage turn 1).
+- **Winning formula confirmed**: (1) One big block card for 32-damage turn (Impervious ideal). (2) High burst damage for fast Mode Shift triggering (Carnage+ at 28-42). (3) Headbutt for deck manipulation (guarantee Carnage+ draw). (4) Safety net (Fairy in a Bottle).
+- Confidence: MEDIUM -> HIGH (3 fights observed — Runs 0 and 5 victories, Run 2 death. Winning formula now identified across 2 victories.)
 
 ## Jaw Worm
 
@@ -124,7 +126,9 @@ Act 1 elite. HP: 85 (observed in Run 2).
 - **Run 3 experience**: Fought at 72/80 HP. Player correctly played zero Skills. Turn 1: Pommel Strike + 2x Strike (21 damage) while Nob buffed. Turn 2: Flex Potion (+2 Str) + Bash+ (12 dmg, 3 Vuln) + Iron Wave+ (dealt damage + provided block). Turn 3: 1 Strike (9 w/Vuln). Turn 4: Pommel Strike + Strike for exact lethal (22 damage vs 22 HP). Clean 4-turn kill. Took ~9 damage total. Vastly better than Run 2 (survived at 3 HP).
 - **Run 4 experience**: Fought at 60/79 HP. Used Strength Potion for +2 Str on turn 1 (free BUFF turn). Bash + Iron Wave (both Attacks) for 20 damage turn 1. Turn 2: Thunderclap (Attack, refreshes Vuln) + Strike for 31 damage with Vuln+Str. Turn 3: 3 Strikes for 36 damage (Vuln+Str), killing Nob. Clean 3-turn kill, zero Skills. Took only 14 damage. Strength Potion on turn 1 maximized value since every Attack got +2 damage.
 - **Lesson confirmed across 3 runs**: Zero Skills is the correct approach. Run 2 played 3 Skills (+6 Str to Nob), nearly died. Runs 3 and 4 played 0 Skills, clean victories.
-- Confidence: HIGH (3 fights across Runs 2, 3, and 4 — Run 2 near-death from Skills, Runs 3 and 4 clean kills from Attacks-only)
+- **Run 5 experience**: Fought at 75/80 HP. Zero Skills. Turn 1 (free BUFF): Bash+ (10 dmg + 3 Vuln) + Headbutt (13 dmg Vuln) = 23 damage. Put Bash+ on top of draw. Turn 2: Searing Blow (18 Vuln) + Strike (9 Vuln) = 27 damage. Turn 3: 2 Strikes (18 Vuln). Turn 4: Bash+ (10 Vuln) + Strike (9 Vuln) = 19 for kill. Total 4-turn kill, took ~20 damage (75->~55 HP). Anchor relic + Carnage as elite reward.
+- **Lesson confirmed across 4 runs**: Zero Skills is the correct approach. Run 2 played 3 Skills (+6 Str to Nob), nearly died. Runs 3, 4, and 5 played 0 Skills, clean victories.
+- Confidence: HIGH (4 fights across Runs 2, 3, 4, and 5 — Run 2 near-death from Skills, Runs 3-5 clean kills from Attacks-only)
 
 ## Red Slaver
 
@@ -175,7 +179,8 @@ Act 2 hallway enemy. Appears in groups of 3. HP: ~25-30 per Byrd (estimated).
 - **Fight duration**: Extremely long. Run 3 Byrd fight lasted 12 turns. This is a massive HP drain — player went from 80 HP (post-Burning Blood) to 22 HP.
 - **Strategy**: (1) Use Thunderclap to strip Flight from all Byrds and apply Vulnerable simultaneously. (2) Focus fire one Byrd at a time — reducing from 3 to 2 enemies is the biggest damage reduction. (3) Once Flight is at 0, burst with Vulnerable attacks to kill. (4) Metallicize is critical for the long fight — passive block every turn. (5) Consider using Reaper mid-fight for healing sustain.
 - **CRITICAL WARNING**: This fight is an HP sponge. Even with good play, expect to lose 40-60 HP. If entering Act 2 with low HP, Byrds can end the run through sheer attrition. Prioritize healing before Act 2.
-- Confidence: MEDIUM (1 fight in Run 3, 12 turns of detailed data, Flight mechanic observed but exact formula uncertain)
+- **Run 5 improvement**: 7-turn fight (vs 12 in Run 3). Key differences: (1) Carnage+ (28 damage, halved to ~14) nearly one-shot a Byrd turn 1 after Thunderclap stripped 1 Flight + applied Vulnerable. (2) Killed first Byrd turn 2, reducing incoming by 33%. (3) Impervious used turn 2 for massive block safety margin. (4) Dropkick provided free cycling on Vulnerable Byrds. HP cost: ~20 HP (vs 58 HP in Run 3). Dramatically better result from having Carnage+ and better card quality.
+- Confidence: MEDIUM (2 fights across Runs 3 and 5, 12-turn and 7-turn experiences. Carnage+ / high burst significantly reduces fight length.)
 
 ## Chosen
 
@@ -202,7 +207,7 @@ Act 2 hallway enemy pair. Centurion HP: ~65 (estimated from Run 4). Mystic HP: ~
 - **Free turns**: Both enemies can have turns where they defend/buff without attacking. These are critical windows to burst Mystic.
 - **Run 4 death**: Player entered at 42/84 HP. Used Whirlwind turn 1 (15 AOE) to damage both. Correctly targeted Mystic with Fiend Fire (burst) and Bash+ (Vuln). Killed Mystic on turn 5 but was at 7 HP by then. Centurion's attacks (12-18 per turn) whittled HP while player focused Mystic. Died turn 8 at 1 HP — couldn't block 18 incoming with only 10 block available.
 - **Strategy**: (1) KILL MYSTIC FIRST. (2) Use AOE on turn 1 to damage both while you figure out intents. (3) Save burst damage (Fiend Fire, Whirlwind) for Mystic. (4) Apply Weak to Centurion to reduce incoming while you kill Mystic. (5) Once Mystic is dead, Centurion is a straightforward single-target fight. (6) Enter with 50+ HP — this fight drains HP fast even with correct play.
-- Confidence: MEDIUM (1 fight in Run 4, died — detailed turn-by-turn data)
+- Confidence: MEDIUM (2 fights across Runs 4 and 5 — died in Run 4, survived in Run 5 but dropped to 4 HP. See Run 5 update below.)
 
 ## Spheric Guardian
 
@@ -230,7 +235,40 @@ Act 1 elite. HP: ~42 each (estimated from Run 4). Appears as a group of 3.
 - **Run 4 experience**: 7-turn fight. Whirlwind turn 1 for 45 total AOE. Then focused Sentries one at a time. Took ~22 HP damage total (59->37 HP before Burning Blood).
 - Confidence: MEDIUM (1 fight in Run 4, mechanics observed)
 
-## General Notes
+## Gremlin Leader
+
+Act 2 elite. HP: unknown (high — fight lasted 8 turns before death). Appears with summoned Sneaky Gremlins.
+
+- **Summons Gremlins**: Gremlin Leader summons Sneaky Gremlins (small, ~10-12 HP each). At fight start, 1-2 gremlins may already be present. Leader summons more over time.
+- **DEFEND_BUFF (Rally)**: The most dangerous mechanic. When the Leader uses DEFEND_BUFF, it gives ALL enemies (including itself and all gremlins) +3 Strength. This is PERMANENT and STACKING. After 2 rallies, every gremlin attacks for base+6. After 3 rallies, base+9.
+- **Strength scaling is the kill condition**: Unlike most enemies where HP is the threat, the Leader's damage scales exponentially with each rally. By turn 8 in Run 5, total incoming damage was 49 (from Leader + 3 gremlins with accumulated Strength). The fight becomes mathematically unwinnable once Strength stacks too high.
+- **Gremlin types observed**: Sneaky Gremlins (low HP, attack for ~9 base damage). More types may exist.
+- **Run 5 death**: Entered at 11 HP (13% of max). Fight was unwinnable from the start — even with Impervious turn 1 (30 block), Disarm on Leader turn 3 (-2 Str), and Shockwave turn 5 (mass Weak+Vuln), the incoming damage scaled faster than block could handle. By turn 8, 49 incoming damage vs ~21 block = death.
+- **Key cards exhausted too early**: Impervious (turn 1), Shockwave (turn 5), Disarm (turn 3), Reaper (turn 6), Carnage+ (played but eventually exhausted via Ethereal), Strikes (exhausted by True Grit+). By late fight, the deck was too thin to generate both damage and block.
+- **Strategy**: (1) KILL GREMLINS FIRST. Each dead gremlin is one fewer recipient of rally Strength buffs. (2) AOE is critical — Thunderclap, Whirlwind strip gremlin count fast. (3) Disarm on Leader reduces rally effectiveness but only by 2 Str (rally gives +3 to ALL, not just Leader). (4) DO NOT enter this fight below 50% HP. The Strength scaling means even 80% HP may not be enough. (5) Kill fast — every turn the fight goes on, rally makes it worse. (6) Shockwave is the single best card (mass Weak + Vuln).
+- **HP THRESHOLD**: This is the hardest Act 2 elite observed. Entering at 11 HP was suicide. Minimum entry HP should be 60%+ with a strong deck. If HP is below 50%, take any alternative path.
+- Confidence: MEDIUM (1 fight in Run 5, died — DEFEND_BUFF +3 Str to all confirmed, exact HP/attack values need more data)
+
+## Snake Plant
+
+Act 2 hallway enemy. HP: ~60-75 (estimated from Run 5 — fight lasted 4 turns with heavy burst).
+
+- **Attack pattern**: Attacks for significant damage. Exact values not recorded (reasoning fields empty in Run 5 log).
+- **Weak debuff observed**: Player used Shockwave turn 1 for mass Weak+Vuln, suggesting Snake Plant attacks are dangerous enough to warrant Shockwave.
+- **Strategy**: Apply Vulnerable, burst down. Impervious + Dropkick + Carnage+ used in Run 5 to kill in 4 turns.
+- Run 5: Fought on floor 23. Shockwave opener, then Impervious for block, Dropkick for cycling, Carnage+ for burst, Bash+ for Vuln refresh, Searing Blow for kill. Took some damage but survived.
+- Confidence: LOW (1 fight in Run 5, limited data — reasoning fields were empty)
+
+## Centurion + Mystic (Run 5 Update)
+
+- Run 5: Second encounter. Player entered at unknown HP (higher than Run 4's 42 HP). Fight lasted 12 turns.
+- **Headbutt does 9 damage, not 11**: Player's Run 5 reasoning mentioned Headbutt doing 9 damage. Previous Centurion+Mystic entry estimated Mystic HP at ~41. Headbutt left Mystic at 1 HP — Mystic healed back. This suggests Mystic HP may be higher than estimated, or block absorbed more than expected.
+- **KILL MYSTIC FASTER**: The 12-turn fight drained massive HP. Key issue: Headbutt (9 dmg) is not enough burst vs Mystic's ~15 block per turn. Need Carnage+ or Searing Blow for burst through block.
+- **Correct target priority maintained**: Player correctly focused Mystic with Searing Blow, Headbutt, Carnage+ while using Thunderclap for AOE Vulnerable and Bash+ on Centurion for Weak/damage reduction.
+- **Dropped to 4 HP**: Even with correct play, the fight went 12 turns and drained HP to 4. The player survived but entered the next fights critically low.
+- Confidence: MEDIUM (2 fights across Runs 4 and 5 — died in Run 4, survived in Run 5 but badly damaged)
+
+
 
 ### Frail
 - Reduces block gained from cards by 25%. This is multiplicative with the card's block value.

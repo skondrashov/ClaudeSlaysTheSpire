@@ -214,3 +214,55 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 - Effect: Gain 2 Strength (permanent for rest of combat)
 - Run 4 update: Taken from Looter fight card reward in Act 2. Played against Centurion+Mystic — used on turn 4 for +2 Str to boost all subsequent attacks. With Inflame, every Attack card dealt 2 more damage for the rest of the fight.
 - Confidence: HIGH (used in Runs 2, 3, and 4 — effect confirmed, consistently strong)
+
+## Cards Seen in Run 5
+
+### Searing Blow
+- Type: Attack, 1 energy, 12 damage
+- Evaluation: Decent damage for 1 energy (double a Strike). Can be upgraded multiple times (unique mechanic — not confirmed). At 12 base damage with Vulnerable: floor(12*1.5) = 18 damage. Good filler attack.
+- Run 5: Bought from shop floor 3. Used extensively throughout Act 1. Searing Blow + Vuln = 18 damage was a key burst tool against Gremlin Nob and Guardian.
+- Confidence: MEDIUM (used in ~8 fights in Run 5, 12 damage confirmed)
+
+### Carnage
+- Type: Attack, 2 energy, 20 damage, Ethereal
+- Upgrade (Carnage+): 2 energy, 28 damage, Ethereal
+- Evaluation: Massive single-target burst. 20 base (28 upgraded) for 2 energy is exceptional damage per card. Ethereal means it MUST be played or it exhausts permanently at end of turn. With Vulnerable: Carnage+ deals floor(28*1.5) = 42 damage — one of the highest single-card damage outputs available.
+- **Ethereal trap**: If drawn on a turn where you need all 3 energy for block, you either play Carnage (spending 2E on damage instead of block) or lose it permanently. This tension is manageable if the deck has enough block cards.
+- **Headbutt synergy**: Headbutt can place Carnage+ on top of draw pile, guaranteeing it for next turn. Player used this combo repeatedly in Run 5 Guardian fight for consistent 28-42 damage turns.
+- Run 5: Taken from Gremlin Nob elite reward. Upgraded to Carnage+ at rest site floor 15. Was the primary damage engine for the Guardian fight — dealt 42 damage per play with Vulnerable (turns 6, 7). Also used in Act 2 Byrd and Centurion+Mystic fights. Carnage+ exhausted once in Byrd fight when not played (Ethereal).
+- Confidence: HIGH (used in ~10 fights in Run 5, 20 base / 28 upgraded / 42 with Vuln confirmed)
+
+### Impervious
+- Type: Skill, 2 energy, 30 block, Exhaust
+- Evaluation: The best single-card block in the game. 30 block for 2 energy survives Guardian's 32-damage attack (take only 2). Exhaust means one-time use — save for the biggest incoming hit.
+- **When to use**: Against the biggest attack of the fight (Guardian 32, Hexaghost Inferno 42, or any massive single hit). Using it on a 16-damage turn is wasteful — Defends can handle that.
+- **Skill warning**: Triggers Gremlin Nob Enrage (+2 Str). Do NOT play vs Nob.
+- Run 5: First obtained from Skill Potion during Guardian fight (free to play). Used to block Guardian's 32-damage attack turn 2 (took 2 damage). Also taken as post-boss card reward. Used in Act 2: Byrd fight (turn 2 for safety), Centurion+Mystic (turn 3 for 30 block), Gremlin Leader (turn 1 opener). Exhausted before Leader fight ended — not available for late-fight survival.
+- Confidence: HIGH (used 4+ times in Run 5, 30 block confirmed, Exhaust confirmed)
+
+### Disarm
+- Type: Skill, 1 energy, Exhaust
+- Effect: Reduce an enemy's Strength by 2 permanently (for rest of combat).
+- Evaluation: Permanent Strength reduction is extremely powerful against enemies that scale (Gremlin Leader, Cultist, Nob). Unlike Weak (25% reduction for N turns), Disarm permanently removes 2 damage from every attack for the rest of the fight. Against multi-hit enemies, the value compounds (5-hit attack loses 10 total damage).
+- **Exhaust**: One-time use. Save for the enemy with the most dangerous Strength scaling.
+- **Skill warning**: Triggers Gremlin Nob Enrage and Chosen Hex.
+- Run 5: Taken after Snake Plant fight (floor 23). Used in Gremlin Leader fight turn 3 — applied Disarm to Gremlin Leader (enemy 2), reducing its Strength by 2 permanently. This was critical because DEFEND_BUFF rallies give +3 Str to all gremlins — Disarm partially offset one rally.
+- Confidence: MEDIUM (used once in Run 5, -2 Str permanent confirmed)
+
+### Dropkick
+- Type: Attack, 1 energy, 5 damage
+- Effect: If the target is Vulnerable, gain 1 energy and draw 1 card.
+- Evaluation: Effectively FREE when target is Vulnerable — costs 1E, refunds 1E, deals damage, and draws a replacement card. Infinite cycling tool with Bash+ (3 turns Vulnerable). Without Vulnerable on target, it's a terrible card (5 damage, no benefit, worse than Strike).
+- **Conditional value**: Dropkick is amazing with reliable Vulnerable application (Bash+, Thunderclap) and terrible without it. In fights where you can't apply Vulnerable (Artifact enemies until stripped), Dropkick is a dead card.
+- Run 5: Taken after Looter/Mugger fight in Act 2. Used in Byrd fight (Dropkick on Vulnerable Byrd = free cycle + Flight strip). Used in Centurion+Mystic (Dropkick on Vulnerable Centurion = free energy + draw). Used in Gremlin Leader fight.
+- Confidence: MEDIUM (used in 3+ fights in Run 5, energy refund + draw confirmed when target Vulnerable)
+
+### Shockwave
+- Type: Skill, 2 energy, applies 3 Weak and 3 Vulnerable to ALL enemies, Exhaust
+- Run 5 update: Taken after Centurion+Mystic fight. Used in Snake Plant fight (turn 1 opener for mass debuff). Used in Gremlin Leader fight (turn 5, mass Weak+Vuln on all gremlins + leader). Confirmed: 3 turns of each debuff to ALL enemies. Exhaust means one use per fight.
+- **CRITICAL for Gremlin Leader**: With 3-4 enemies, Shockwave's mass debuff reduces total incoming by ~25% (Weak) AND boosts all attacks by 50% (Vuln) for 3 turns. This is the best possible card for that fight.
+- Confidence: HIGH (used in Runs 1, 3, and 5 — mass debuff confirmed, Exhaust confirmed)
+
+### True Grit+ (Upgraded)
+- Run 5 update: Taken as card reward after Byrd fight (Act 2 floor 18). Used in Centurion+Mystic fight (exhausted a Strike for 7 block) and Gremlin Leader fight (exhausted a Strike for 7 block). The CHOSEN exhaust is confirmed critical — player specifically chose to exhaust Strikes (expendable) while keeping key cards.
+- Confidence: HIGH (Runs 0, 2, 5 — upgraded version lets you choose exhaust target, confirmed game-deciding difference)

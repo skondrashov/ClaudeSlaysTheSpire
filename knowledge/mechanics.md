@@ -283,6 +283,12 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - Effect: Unknown — player guessed "+1 Dex or modifies Vulnerable." Not directly observed in gameplay.
 - Confidence: LOW (Run 4, acquired but effect never confirmed)
 
+### Anchor
+- Source: Elite reward (Run 5, Gremlin Nob fight).
+- Effect: Gain 10 block at the start of each combat. (Inferred — player had 10 block on turn 1 of multiple fights in Run 5 without playing block cards.)
+- Evaluation: Free block on turn 1 every fight. Equivalent to a free Defend + half a Defend. Reduces turn 1 damage taken, which compounds over the run. Particularly valuable against enemies with dangerous turn 1 attacks.
+- Confidence: LOW (Run 5, acquired but effect inferred from combat patterns, not directly confirmed)
+
 ### Neow's Lament
 - Source: Neow's blessing (Run 3 opening choice).
 - Effect: Enemies in your next 3 combats have 1 HP. Gives 3 completely free fights with full card/gold/potion rewards.
@@ -375,6 +381,12 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - Run 4: Player left, reasoning "likely adds a Curse to deck."
 - Confidence: LOW (1 encounter in Run 4, not engaged)
 
+### The Joust (Act 2)
+- Options: [Murderer] Bet 50 Gold — 70% chance to win 100 Gold. Other options unknown.
+- Run 5: Player bet 50g on Murderer. Outcome: appears to have lost (no gold gain recorded, player watched and then left).
+- Evaluation: Gambling event. 70% chance for +100g, 30% chance for -50g. Expected value: 0.7*100 - 0.3*50 = +55g. Mathematically positive but high variance. Take if gold isn't critical; skip if 50g loss would hurt shop purchases.
+- Confidence: LOW (1 encounter in Run 5, outcome unclear from log)
+
 ## Potions (Run 3 additions)
 
 ### Flex Potion
@@ -415,9 +427,17 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 
 ## Known Bugs
 
-### Shop Screen Bug (Run 4)
-- On floor 22 (Act 2), the player entered a Shop but the screen appeared empty — no cards, relics, or removal options were displayed. The player sent `proceed` and was immediately placed back on the map screen, having bought nothing.
-- The player had 395 gold and desperately needed card removal and upgrades. Missing the shop was a significant setback.
-- **Impact**: Lost opportunity to remove Strikes, buy Inflame/other scaling, or purchase a relic. With 395 gold, the shop could have transformed the deck.
-- **Workaround for future runs**: If the shop screen appears empty, try `state` first to inspect the screen_state. If screen_state is empty/missing, the bug is in cmd.py or state_formatter. Do NOT send `proceed` — it exits the shop. Instead, try `choose` commands with indices to see if shop items exist but aren't being displayed.
-- Confidence: HIGH (observed in Run 4 log — lines 735-737 clearly show proceed immediately after entering shop)
+### Shop Screen Bug (Runs 4 AND 5 — RECURRING)
+- **Run 4 (floor 22)**: Player entered Shop with 395 gold. Screen appeared empty. Player sent `proceed` and exited without buying anything. Lost opportunity for ~5 card removals or 2 relics.
+- **Run 5 (floor 20)**: Player entered Shop with 157+ gold. SAME BUG. Player sent `proceed` and exited immediately without any interaction. 157 gold of purchases lost. This is the SECOND time this bug has cost a run.
+- **PATTERN**: This bug has now occurred in 2 out of 5 runs (40%). It appears to happen specifically in Act 2 shops. Both times, the player lost critical shopping opportunities that directly contributed to death.
+- **Impact (cumulative)**: Run 4 lost 395g of purchases (contributed to 0-upgrade death). Run 5 lost 157g of purchases (no card removal before elites, contributing to thin deck issues vs Gremlin Leader).
+- **THIS IS A CRITICAL BUG. It must be worked around until fixed.**
+- **MANDATORY WORKAROUND**: When entering ANY shop:
+  1. **NEVER send `proceed` first.** This exits the shop immediately.
+  2. Call `state` first to inspect screen_state.
+  3. If screen_state shows no items, try `choose 0`, `choose 1`, `choose 2` etc. to probe for hidden items.
+  4. Try `choose purge` to attempt card removal even if the display is empty.
+  5. Only send `proceed` or `leave` AFTER confirming the shop is genuinely broken.
+  6. If the shop is broken, at minimum try card removal (`choose purge`) since that may work independently of the display bug.
+- Confidence: HIGH (observed in Runs 4 and 5 — recurring bug, 2/5 runs affected, directly impacts outcomes)

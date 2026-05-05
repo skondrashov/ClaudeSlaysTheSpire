@@ -196,3 +196,50 @@ Documented mistakes from actual runs. Each entry explains what went wrong and wh
 - **Target priority**: Correctly killed attacking slimes first, exhausted Slimed on free turns, targeted Mystic first in Centurion+Mystic.
 - The run failed not from tactical errors but from strategic resource management (not upgrading, missing the shop).
 - Confidence: HIGH (Run 4 — player demonstrably applied lessons from Runs 1-3)
+
+## Run 5: Shop bug hit AGAIN — second time, 157g lost (floor 20)
+
+- Floor 20 (Act 2): Player entered a Shop with 157+ gold. The shop screen appeared empty (same bug as Run 4). Player sent `proceed` and exited without buying anything.
+- This is the SECOND occurrence in 5 runs (also happened Run 4 floor 22 with 395g). The player has now lost 550+ gold across two runs to this bug.
+- **Root cause**: Same as Run 4 — likely bug in cmd.py or state_formatter. The player did not attempt the workaround documented after Run 4 (try `state`, then `choose` commands). The reasoning fields were empty at this point in the run (lines 631-634), suggesting the player may not have noticed the bug was recurring.
+- **Lesson**: The workaround from Run 4 MUST be followed. Before entering ANY shop: call `state`, then probe with `choose` commands. NEVER send `proceed` as the first action in a shop. This is now documented twice and should be a hard rule.
+- Confidence: HIGH (2 occurrences across Runs 4 and 5 — confirmed recurring bug)
+
+## Run 5: Entered Gremlin Leader elite at 11 HP (13%) — unwinnable
+
+- Floor 25: Player entered Gremlin Leader elite at 11 HP (13% of ~80 max). The fight was mathematically unwinnable from the start.
+- **Why 11 HP**: The Centurion+Mystic fight (floor 22) drained HP to 4. Burning Blood +6 = 10 HP. Snake Plant fight (floor 23) drained some more. Joust event (floor 24) gave no healing. By the elite, HP was 11.
+- **Despite excellent tactical play**: Impervious turn 1 (30 block), Disarm on Leader turn 3 (-2 Str), Shockwave turn 5 (mass Weak+Vuln on all enemies), gremlins killed efficiently — none of it mattered. DEFEND_BUFF rallies added +3 Str to all enemies each time. By turn 8, 49 incoming damage vs ~21 block.
+- **The decision to fight the elite was the mistake**: At 11 HP, any Act 2 elite is suicide. The player should have taken an alternative path. If no alternative existed, using the rest site before the elite (if available) or drinking all potions for the fight.
+- **Pattern**: This is the third run where low HP entry into an Act 2 fight caused death (Run 3: 28 HP into Chosen, Run 4: 42 HP into Centurion+Mystic, Run 5: 11 HP into Gremlin Leader). The pattern is clear and must be broken.
+- Lesson: (1) Never enter an Act 2 elite below 60% HP. (2) If HP is below 30%, take ANY alternative path, even if it means skipping the elite entirely. (3) After a brutal fight (Centurion+Mystic), prioritize healing before the next combat room. (4) If the path forces an elite and HP is low, drink all potions at the start of the fight.
+- Confidence: HIGH (Run 5 — third death from low HP entry into Act 2 fights)
+
+## Run 5: Exhaust-heavy deck ran out of answers vs Gremlin Leader
+
+- The Run 5 deck had 5 exhaust/ethereal cards: Impervious (Exhaust), Shockwave (Exhaust), Disarm (Exhaust), Carnage+ (Ethereal), True Grit+ (exhausts other cards). These are all excellent cards — but they are all one-time-use.
+- In the Gremlin Leader fight (8 turns), all of these were consumed by turn 7. The remaining deck was: Strikes, Defends, Bash+, Headbutt, Searing Blow, Dropkick, Shrug It Off+, Thunderclap, Reaper. Against enemies with +6-9 Strength, this wasn't enough.
+- **The core issue**: Exhaust cards front-load power into the first 5 turns. After that, the deck plays like a basic starter deck. Against enemies that scale (Gremlin Leader rallies), the first 5 turns aren't enough to win, and the remaining deck can't handle scaled enemies.
+- **Contrast with Run 2**: Run 2 over-exhausted with True Grit (random exhaust thinned the deck to 3 cards). Run 5 had controlled exhaust (True Grit+ chose what to exhaust) but still ran out of tools. The lesson is similar but distinct: Run 2's problem was RANDOM exhaust destroying key cards. Run 5's problem was INTENDED exhaust leaving no answers for a long fight.
+- Lesson: (1) Count your exhaust cards before a long fight. If more than 30% of your deck exhausts/is ethereal, the fight MUST be won in 5-6 turns or you'll be playing a weakened deck. (2) Against scaling enemies (Gremlin Leader, Cultist), avoid exhaust-heavy strategies unless you can kill before the scaling overwhelms. (3) Non-exhaust damage and block cards are the backbone of long fights — don't neglect them in favor of flashy exhaust cards.
+- Confidence: MEDIUM (Run 5 — first clear example of exhaust depletion in a controlled exhaust deck, distinct from Run 2's random exhaust problem)
+
+## Run 5: Centurion+Mystic took 12 turns — Headbutt 9 dmg left Mystic at 1 HP
+
+- Floor 22: The Centurion+Mystic fight took 12 turns (matching the brutal length of Run 4). Player correctly targeted Mystic but Headbutt (9 damage) was insufficient against Mystic's ~15 block.
+- **Headbutt does 9 damage, not 11**: The summary noted the player assumed Headbutt dealt 11. It deals 9. This miscalculation left Mystic at 1 HP instead of killing it, allowing Mystic to heal back. This extended the fight by 2+ turns.
+- **Why this matters**: Each extra turn vs Centurion+Mystic costs ~12-18 HP from Centurion's attacks. Two extra turns = 24-36 HP lost, which was the difference between entering the Gremlin Leader at 35+ HP vs 11 HP.
+- Lesson: (1) Check exact card damage values before committing to a kill sequence. (2) Against Mystic, use high-burst cards (Carnage+, Searing Blow) to break through block in one hit. Headbutt + follow-up is risky when Mystic gains 15 block per turn. (3) Leaving an enemy at 1 HP is the worst possible outcome — all the resources spent dealing 40+ damage were wasted because the last 1 HP healed back.
+- Confidence: MEDIUM (Run 5 — Headbutt 9 damage confirmed from card entry, Mystic surviving at 1 HP reported in summary)
+
+## Run 5: Correct play — applied lessons from Runs 1-4 successfully
+
+- NOTE: Not a mistake. Documenting what went RIGHT for reference.
+- **Gremlin Nob**: Zero Skills, 4-turn clean kill (applying Runs 2/3/4 lesson). Bash+ turn 1 on free turn, Headbutt for 13 Vuln damage + deck manipulation.
+- **Guardian boss**: Beat The Guardian for the second time. Carnage+ + Headbutt loop for consistent 28-42 damage. Skill Potion -> Impervious for the 32-damage turn. Fairy as safety net. 12-turn fight.
+- **Upgrade discipline**: 3 upgrades by Act 2 (Bash+, Shrug It Off+, Carnage+) — massive improvement over Run 4's 1 upgrade in 28 floors.
+- **Card evaluation**: Took Reaper from Neow (applying Run 2 lesson of not skipping strong unknown cards). Took Carnage correctly evaluating Ethereal tradeoff. Took Dropkick for Vulnerable synergy.
+- **Byrd fight**: 7 turns (vs 12 in Run 3). Carnage+ killed first Byrd turn 1, Thunderclap for AOE Flight stripping. Dramatically better than Run 3.
+- **Target priority**: Correctly focused Mystic in Centurion+Mystic (applying Run 4 lesson).
+- **The run failed from HP management** (entering Gremlin Leader at 11 HP) and the shop bug (157g lost), not from tactical errors.
+- Confidence: HIGH (Run 5 — player demonstrably applied lessons from Runs 1-4, improvements are measurable)
