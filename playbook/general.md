@@ -24,7 +24,7 @@ By floor 12-15, you should be thinking about the boss. Each act boss has specifi
 
 If you don't have the tools to handle the boss, prioritize getting them from card rewards, shops, and events over minor deck improvements.
 
-Confidence: MEDIUM (7 boss encounters across Runs 0-6 — 3 Guardian victories, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory, 1 Slime Boss victory)
+Confidence: MEDIUM -> HIGH (9 boss encounters across Runs 0-8 — 3 Guardian victories, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost victory, 2 Slime Boss victories, 1 Hexaghost death)
 
 ## Combat
 
@@ -224,7 +224,7 @@ By floor 12-15, you should be thinking about the boss. Each act boss has specifi
 - **The Guardian**: Mode-switching boss with heavy attacks (5x4=20, single 32). Need block cards that can reach 32+ total per turn. Sharp Hide (3 damage per Attack played) in Defensive Mode. Long fight (240 HP). DO NOT over-exhaust.
 - **Hexaghost**: 250 HP, 7x6=42 Inferno attack. Need (1) Weak to reduce Inferno to ~28, (2) Metallicize for passive block in long fight, (3) way to handle Burns (exhaust tools). Pantograph makes HP entry irrelevant. Shockwave is the single best card for this boss. Turn 1 is free (no attack).
 
-Confidence: MEDIUM (7 boss encounters across Runs 0-6 — 3 Guardian wins, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win, 1 Slime Boss win)
+Confidence: MEDIUM -> HIGH (9 boss encounters across Runs 0-8 — 3 Guardian wins, 1 Slime Boss death, 1 Guardian death, 1 Hexaghost win, 2 Slime Boss wins, 1 Hexaghost death. Hexaghost requires Weak; Slime Boss requires AOE; Guardian requires 32-block.)
 
 ## Hexaghost Strategy (Run 3 Victory)
 
@@ -240,6 +240,35 @@ Run 3 deck beat Hexaghost at 250 HP, surviving at 1 HP:
 **What this deck needed more of**: (1) A way to exhaust Burns (True Grit+ would have been perfect). (2) More block — only 4 Defends + Iron Wave+ was barely enough for Inferno turns. (3) Faster damage — the fight was 13 turns, which allowed Burns to accumulate dangerously.
 
 Confidence: MEDIUM (Run 3, 1 victory)
+
+## Hexaghost Strategy FAILURE (Run 7 Death)
+
+Run 7 deck DIED to Hexaghost at 61 HP remaining (boss was at 61/250 when player died). This is a REGRESSION after 3 consecutive boss victories.
+
+**What went wrong (root causes ranked by impact):**
+1. **NO WEAK SOURCE**: The deck had zero Weak-applying cards. No Shockwave, no Clothesline, no Intimidate. Inferno dealt full 42 damage. This is the single biggest failure — Weak is MANDATORY for Hexaghost.
+2. **Brutality self-damage**: Brutality (draw +1 card/turn, lose 1 HP/turn) compounded with Burns. By late turns, the player was losing 3-5 HP/turn from Brutality + Burns, plus taking enemy attacks. This is a death spiral specific to Hexaghost.
+3. **Low HP entry (~50/80)**: No Pantograph relic. Scrap Ooze event lost 25 HP (multiple failed attempts, no relic found). Entered boss at ~50 HP with no way to reduce the 42-damage Inferno.
+4. **No Metallicize**: No passive block source for the long fight. Run 3 had Metallicize providing 3 block/turn for 13 turns = 39 free block. Run 7 had nothing comparable.
+
+**Contrast with Run 3 Victory:**
+| Factor | Run 3 (Victory) | Run 7 (Death) |
+|---|---|---|
+| Weak for Inferno | Skill Potion -> Shockwave | NONE |
+| Passive block | Metallicize 3/turn | NONE |
+| HP at boss start | 80/80 (Pantograph) | ~50/80 |
+| Self-damage | None | Brutality 1 HP/turn |
+| Burns mitigation | None (survived at 1 HP) | None (died turn 9) |
+| Scrap Ooze | Lantern on 1st try (3 HP) | No relic (25 HP lost) |
+
+**REVISED HEXAGHOST CHECKLIST (must have at least 2 of 3):**
+1. Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) — reduces Inferno from 42 to 28
+2. HP above 70% OR Pantograph relic
+3. Passive block (Metallicize) OR Impervious for the Inferno turn
+
+**If you have 0-1 of these, Hexaghost will likely kill you.** Run 3 had #1 + #2 + #3, survived at 1 HP. Run 7 had NONE of these, died with boss at 61 HP.
+
+Confidence: HIGH (2 Hexaghost fights — Run 3 victory at 1 HP, Run 7 death. The requirements are now clear.)
 
 ## Act 2 Preparation
 
@@ -277,6 +306,14 @@ Act 2 enemies are significantly harder than Act 1. Key threats observed in Runs 
 - **What you need**: High burst damage to end the fight quickly (Dropkick+ cycling, Headbutt+ Vuln). Exhaust tools for Wound removal (True Grit+, Burning Pact). Block cards that handle multi-hit (Metallicize for passive, Impervious for one big turn). Vulnerable application for Dropkick+ synergy.
 - **What kills you**: Wound accumulation clogs draws -> can't draw block cards -> take full multi-hit damage -> die. The fight is a race between your damage output and the Book's escalating attacks + Wound flood.
 - **HP threshold**: Enter with 50+ HP. Run 6 entered at 6 HP and died with Book at 21 HP despite dealing 140 damage in 5 turns. At low HP, the scaling attacks overwhelm any block strategy.
+
+### 3 Cultists (NEW from Run 8)
+- 3 Cultists with Ritual 3 EACH. Damage scales +9/turn across all enemies combined. The fastest-scaling hallway fight observed.
+- **Turn 1 is free** (all 3 use Ritual). Use this to apply Vulnerable (Thunderclap) or set up damage.
+- **What you need**: Shockwave+ on turn 2 (CRITICAL — mass Weak reduces all 3 attacks by 25% for 3-5 turns). AOE for softening all targets. Single-target burst to kill one Cultist FAST (each dead Cultist = 33% less incoming).
+- **HP threshold**: Enter with 50%+ HP. Run 8 entered at 39% and died despite having Shockwave+, Reaper, and Feed.
+- **Shockwave+ TIMING**: MUST be played turn 2 (first attack turn), NOT turn 4. Delay costs 16+ HP in unmitigated damage.
+- **Kill order**: Focus fire one Cultist at a time. Dead Cultists don't scale.
 
 ### General Act 2 Rule
 - Enter Act 2 at or near full HP. The Pantograph relic should heal you before the Act 1 boss, but hallway fights in Act 2 hit much harder than Act 1. The Byrd fight in Run 3 drained 58 HP.
@@ -377,7 +414,7 @@ Entering fights at critically low HP is a recurring cause of death. This is the 
 - **Run 5**: Entered Gremlin Leader at 11 HP (13%). Completely unwinnable regardless of play quality.
 - **Run 6**: Entered Book of Stabbing at 6 HP (7%) after Centurion+Mystic drain. Book at 21 HP when player died. Unwinnable at that HP.
 
-**The pattern is now 4 runs deep**: Runs 3, 4, 5, and 6 all died from entering Act 2 fights at dangerously low HP. The root cause is the same every time: a long Act 2 fight (Byrds, Centurion+Mystic) drains HP to critical levels, and then the next fight is entered without healing.
+**The pattern is now 5 runs deep**: Runs 3, 4, 5, 6, and 8 all died from entering Act 2 fights at dangerously low HP. The root cause is the same every time: an Act 2 fight is entered below 50% HP and the player dies. Run 8 (37/95 HP = 39% into 3 Cultists) continues this exact pattern.
 
 **HP thresholds for Act 2 fights:**
 | Fight Type | Minimum HP | Notes |
@@ -401,3 +438,55 @@ Entering fights at critically low HP is a recurring cause of death. This is the 
 4. **Fairy consumed in wrong fight**: In Runs 5 and 6, Fairy in a Bottle was consumed in a hallway fight, leaving no safety net for the elite. Save Fairy for elites/bosses when possible.
 
 Confidence: HIGH (pattern across Runs 3, 4, 5, and 6 — four deaths from low HP entry, root causes now identified)
+
+## Shockwave+ Timing: General Rule (NEW from Run 8)
+
+Shockwave+ (mass Weak + Vulnerable to ALL enemies, Exhaust) is one of the most powerful cards in the game. But its timing determines whether it saves or wastes its value.
+
+**THE RULE: Play Shockwave+ on the FIRST ATTACK TURN of multi-enemy fights.**
+
+- **Turn 1 is NOT always the right time**: If all enemies are buffing (3 Cultists turn 1, Gremlin Nob turn 1), the Weak is wasted because no attacks are coming. Play damage/setup instead.
+- **Turn 2 is usually correct**: For fights where turn 1 is free (Cultists, Nob), turn 2 is when attacks start. Play Shockwave+ HERE to reduce the first wave of attacks AND set up Vulnerable for your burst turns.
+- **NEVER save for turn 4+**: By turn 4 in scaling fights (Cultists, Gremlin Leader), enemies have already accumulated significant Strength. Reducing a 15-damage attack by 25% saves less HP than reducing a 9-damage attack by 25% over MORE turns.
+
+**Run 8 failure**: Shockwave+ played turn 4 against 3 Cultists. By then, each Cultist attacked for 15+. Three turns of full-damage attacks (turns 2-4) dealt ~70+ unmitigated damage. If Shockwave+ had been played turn 2, it would have reduced turns 2-6 damage by 25% each = ~20-30 HP saved.
+
+**Priority vs other turn 2 plays:**
+- Shockwave+ (mass Weak+Vuln) > Reaper (healing) > single-target damage
+- Preventing damage with Weak > healing damage already taken
+- Vulnerable on ALL enemies enables faster kills, which is the best defense
+
+Confidence: HIGH (Runs 1, 3, 5, 8 — timing pattern confirmed. Early Shockwave saves more HP than late Shockwave in every observed case.)
+
+## Act 1 Boss Win vs Loss Pattern (Cross-Run Analysis)
+
+Across 9 boss attempts (Runs 0-8), clear patterns distinguish victories from deaths:
+
+**VICTORIES (6 total):**
+- Run 0: Guardian — True Grit+ (controlled exhaust), Shrug It Off+ (block+draw)
+- Run 3: Hexaghost — Shockwave (via Skill Potion), Metallicize, Pantograph, Regen Potion
+- Run 4: Slime Boss — Thunderclap + Whirlwind (AOE), Fiend Fire (burst+exhaust), Plated Armor
+- Run 5: Guardian — Carnage+ (burst), Impervious (32-block), Fairy, Headbutt loop
+- Run 6: Guardian — Double Metallicize, Intimidate, Snecko Oil, Letter Opener
+- Run 8: Slime Boss — Shockwave+ (mass debuff), Feed (sustain), Seeing Red+ (energy)
+
+**DEATHS (3 total):**
+- Run 1: Slime Boss — No AOE for split, no exhaust for Slimed, deck too thick
+- Run 2: Guardian — Unupgraded True Grit (random exhaust), over-exhausted to 3 cards
+- Run 7: Hexaghost — No Weak for Inferno, Brutality self-damage, low HP entry
+
+**The differentiators:**
+1. **Boss-specific answer cards**: Every victory had at least one card specifically addressing the boss's main threat (Weak for Inferno, AOE for Slime split, 32-block for Guardian). Every death lacked this.
+2. **Passive block/sustain**: Metallicize, Plated Armor, or Pantograph appeared in 4/6 victories. None of the 3 deaths had passive block.
+3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph for full heal). Deaths entered at 16-50 HP.
+4. **Self-damage avoidance**: No victory used Berserk or Brutality. Two deaths (Runs 1, 7) involved self-damage cards compounding the problem.
+5. **Upgrade discipline**: Victories had 1-4 key upgrades (Bash+, Carnage+, etc.). Run 4 victory had 0 upgrades but had rare cards (Fiend Fire) compensating.
+
+**RULE: Before the Act 1 boss, verify you have ALL THREE:**
+1. A card that addresses the specific boss threat (Weak for Hexaghost, AOE for Slime Boss, 32-block for Guardian)
+2. A sustain/passive defense source (Metallicize, Plated Armor, Pantograph, or very high HP)
+3. Enough HP (60%+ without Pantograph)
+
+**If you have 0-1 of these, the boss will likely kill you. Consider resting instead of upgrading, or adjusting card picks in remaining floors to fill the gap.**
+
+Confidence: HIGH (9 boss encounters — pattern is clear and consistent across all runs)

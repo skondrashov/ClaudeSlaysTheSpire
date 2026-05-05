@@ -304,3 +304,61 @@ Card evaluations based on actual gameplay. Entries cite the run(s) where they we
 ### True Grit+ (Upgraded)
 - Run 5 update: Taken as card reward after Byrd fight (Act 2 floor 18). Used in Centurion+Mystic fight (exhausted a Strike for 7 block) and Gremlin Leader fight (exhausted a Strike for 7 block). The CHOSEN exhaust is confirmed critical — player specifically chose to exhaust Strikes (expendable) while keeping key cards.
 - Confidence: HIGH (Runs 0, 2, 5 — upgraded version lets you choose exhaust target, confirmed game-deciding difference)
+
+## Cards Seen in Run 7
+
+### Brutality
+- Type: Power, 0 energy
+- Effect: At the start of each turn, lose 1 HP and draw 1 additional card.
+- Evaluation: DANGEROUS in long fights. The extra draw is valuable (6 cards/turn instead of 5), but 1 HP/turn self-damage is permanent and compounds with other HP drains (Burns, enemy attacks). In a 9-turn Hexaghost fight, Brutality costs 9 HP minimum — plus the Burns add 2-4 HP/turn on top of that.
+- **When it's good**: Short fights (3-4 turns) where the extra draw finds lethal faster. Against enemies with low damage where 1 HP/turn is trivial. In decks with healing (Reaper, Feed) that offset the self-damage.
+- **When it's BAD**: Long fights (boss fights, 8+ turns). Against enemies that add status cards (Hexaghost Burns compound with self-damage). At low HP where every point matters. Without healing sources.
+- **Run 7 failure**: Played against Hexaghost. Over 9 turns, Brutality cost 9 HP. Combined with Burns (2-4 damage/turn from hand), the player lost 20-30 HP to self-inflicted sources alone. This directly contributed to death.
+- **RULE**: Do NOT play Brutality against bosses unless the deck has healing (Reaper, Feed) AND the fight will be short (under 6 turns). Against Hexaghost specifically, NEVER play Brutality — Burns + self-damage is a death spiral.
+- Confidence: MEDIUM (1 fight in Run 7, self-damage confirmed lethal in combination with Burns)
+
+### Twin Strike
+- Type: Attack, 1 energy, deals damage twice (likely 5+5 = 10 total, unconfirmed exact values)
+- Evaluation: Multi-hit attack. Each hit applies separately, meaning it strips 2 Flight from Byrds. With Vulnerable, each hit gets the 50% bonus: floor(5*1.5)*2 = 14 total (if base is 5). Good for Flight stripping and Pen Nib optimization (each hit counts toward the 10-hit counter).
+- Run 7: In deck for Hexaghost fight. Used for damage throughout Act 1.
+- Confidence: LOW (1 run, exact damage values unconfirmed — likely 5x2 base)
+
+### Cleave
+- Type: Attack, 1 energy, deals damage to ALL enemies (likely 8 AOE, unconfirmed)
+- Evaluation: Cheap AOE damage. Does NOT apply Vulnerable like Thunderclap, but deals more raw damage to each enemy. Good for clearing low-HP enemies in multi-enemy fights.
+- Run 8: Used turn 1 of 3 Cultists fight for AOE damage spread. Dealt damage to all 3 Cultists simultaneously. Works well on free turns (turn 1 of Cultist fights) to soften all targets.
+- Confidence: LOW (1 run, exact damage unconfirmed — likely 8 base AOE)
+
+## Cards Seen in Run 8
+
+### Seeing Red+
+- Type: Skill, 0 energy, Exhaust
+- Effect: Gain 2 Energy.
+- Evaluation: FREE energy — costs 0 to play, gains 2 energy, exhausts. This is one of the best cards in the game. On any turn where you have cards to play but not enough energy, Seeing Red+ adds 2 energy for free. Effectively makes any 5-card hand a "7 energy" hand for one turn.
+- **Synergy**: With expensive cards (Carnage at 2E, Shockwave at 2E, Fiend Fire at 2E), Seeing Red+ enables playing them alongside other cards. With Bash+ (2E) + Seeing Red+ (0E) + 3 more 1E cards, you spend 5E in a single turn.
+- **Exhaust is a feature**: One-time use means it doesn't clog the deck after the critical turn. Draw it once, gain 2E, done.
+- Run 8: Used in 3 Cultists fight (turn 3) to enable Thunderclap + Bash+ + Strike in a single turn for killing the first Cultist. The extra 2 energy was critical for the burst turn.
+- Confidence: MEDIUM (1 run, 0E cost + 2E gain + Exhaust confirmed)
+
+### Power Through
+- Type: Skill, 1 energy
+- Effect: Gain 15 block. Add 2 Wound cards to your hand.
+- Evaluation: Massive block (15 for 1E = triple a Defend) but pollutes your hand with 2 Wounds (Unplayable status cards). The Wounds persist in the deck and cycle through repeatedly, clogging future hands.
+- **When it's good**: Turns where you MUST survive massive incoming damage (15 block in one card is huge). When you have exhaust tools (True Grit+, Fiend Fire) that can remove the Wounds.
+- **When it's bad**: In long fights where Wounds accumulate and ruin draws. Without exhaust tools to remove them.
+- Run 8: In deck but usage details not fully documented. The 15 block is excellent value but the Wound generation is a real cost.
+- Confidence: LOW (1 run, effect inferred — exact values need confirmation)
+
+### Feed (Run 8 Update — Cumulative Value)
+- **Run 8 impact**: Feed provided massive cumulative Max HP gain across the run. Starting Max HP: 80. Final Max HP at death: 95-98. That's +15-18 Max HP from Feed kills across multiple combats — equivalent to finding 2+ Strawberry relics.
+- **Observed kills**: Fat Gremlin (+3 Max HP), Slaver (+3 Max HP), Spike Slime during Slime Boss split (+3 Max HP), Cultist in 3 Cultists fight (+3 Max HP). Minimum confirmed: +12 Max HP, possibly +15-18.
+- **This confirms Feed as a top-tier Ironclad card**: Over a full run, Feed accumulates 12-18+ Max HP, which is more than any single relic provides. It effectively "heals" by raising the ceiling, making all future fights more survivable.
+- **Feed strategy**: (1) Take Feed as early as possible for maximum kills. (2) Use Headbutt to place Feed on top of draw when enemies are low. (3) Prioritize Feed kills on low-HP enemies (Fat Gremlin, Spike Slime M, Cultists) where the 10 damage is sufficient. (4) In multi-enemy fights, soften one target with other attacks then Feed for the kill.
+- Confidence: MEDIUM -> HIGH (Runs 6 and 8 — cumulative +6 Max HP in Run 6, +12-18 Max HP in Run 8. Feed is confirmed as one of the strongest Ironclad cards for long runs.)
+
+### Shockwave+ (Run 8 Timing Update)
+- **Run 8 lesson — TIMING IS CRITICAL**: In the 3 Cultists fight, Shockwave+ was played on turn 4 instead of turn 2. By turn 4, each Cultist was already attacking for 15+ damage (base 6 + 3*3 Ritual Strength = 15). The Weak from Shockwave+ reduced turn 4 attacks to ~11 each, but 3 turns of full-damage attacks had already dealt massive damage.
+- **Correct timing**: Shockwave+ should be played on the FIRST ATTACK TURN of multi-enemy fights. For 3 Cultists, that's turn 2 (turn 1 is free — all Ritual). For other fights, play Shockwave+ when enemies first start attacking, not after they've already dealt damage.
+- **Why delayed?**: Player chose to play Reaper on turn 2 for healing instead. While healing has value, the damage PREVENTED by early Shockwave+ (mass Weak for 5 turns) far exceeds the healing from one Reaper use.
+- **General rule**: In multi-enemy fights, play Shockwave+ before the first big damage turn. Preventing 25%+ of damage for 3-5 turns is worth more than any other single card play.
+- Confidence: HIGH (Runs 1, 3, 5, and 8 — mass debuff timing confirmed critical across multiple fights)

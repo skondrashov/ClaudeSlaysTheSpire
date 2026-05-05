@@ -316,6 +316,25 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 - Note: Blood Potion observed in Run 6 Byrd fight. Healed 16 HP (20% of 83 max HP). Formula: heal floor(maxHP * 0.2).
 - Confidence: LOW (used once in Run 6, 20% max HP heal inferred from 16/83)
 
+### Happy Flower
+- Source: Observed in Run 8.
+- Effect: Every 3 turns, gain 1 energy. (Counter increments each turn; on every 3rd turn, gain +1 energy for that turn.)
+- Evaluation: Free energy every 3 turns. In a 9-turn fight, provides 3 extra energy total. Less impactful than Lantern (+1E turn 1 every fight) but provides sustained value in long fights. Passive — no action required.
+- Confidence: LOW (Run 8, acquired — effect inferred from standard game knowledge, not directly confirmed from gameplay)
+
+### Toy Ornithopter
+- Source: Observed in Run 8.
+- Effect: Whenever you use a potion, heal 5 HP.
+- Evaluation: Turns potion usage into healing. If you use 3 potions in a run, that's +15 HP total. Synergizes well with Entropic Brew (fills potion slots = more heal triggers). Minor but free value on every potion.
+- Confidence: LOW (Run 8, acquired — effect inferred from standard game knowledge, not directly confirmed from gameplay)
+
+### Liquid Bronze
+- Source: Observed in Run 7.
+- Effect: Whenever you take damage from an Attack, deal 3 damage back to the attacker (Thorns 3).
+- Evaluation: Passive retaliation damage. Against multi-hit attacks (Hexaghost 7x6), each hit triggers 3 damage back = 21 thorns damage from one Inferno. Against multiple enemies attacking, deals 3 to each attacker. Value is highest against multi-hit enemies and swarm fights.
+- Run 7: Acquired during Act 1. Against Hexaghost's 7-hit Inferno, would deal 7*3 = 21 thorns damage. Over a 9-turn fight with multiple attacks, contributed significant passive damage. However, it didn't prevent the death — damage reduction (Weak) is more important than damage reflection.
+- Confidence: LOW (Run 7, acquired — exact mechanic inferred, thorns-vs-multi-hit interaction assumed)
+
 ### Neow's Lament
 - Source: Neow's blessing (Run 3 opening choice).
 - Effect: Enemies in your next 3 combats have 1 HP. Gives 3 completely free fights with full card/gold/potion rewards.
@@ -374,7 +393,9 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 ### Scrap Ooze
 - Options: [Reach Inside] Lose 3 HP. 25%: Find a Relic. Repeatable.
 - Run 3: Player reached inside once at 63 HP, lost 3 HP, and found a Relic (Lantern) on the first try. Lucky outcome — expected HP cost is 12 HP (4 tries at 3 HP each on average).
-- Confidence: LOW (1 encounter in Run 3, got lucky on first try)
+- **Run 7 FAILURE**: Player reached inside ~8 times, lost ~25 HP total, found NO relic. This dropped entry HP for Hexaghost from ~75 to ~50, directly contributing to boss death. The event is high variance.
+- **Stopping rule**: Set a max HP budget BEFORE starting. Above 80% HP: spend up to 12 HP (4 attempts). At 60-80% HP: spend at most 6 HP (2 attempts). Below 60% HP: LEAVE IMMEDIATELY. Run 7 proved that unlimited attempts at moderate HP is a trap.
+- Confidence: MEDIUM (2 encounters — Run 3 success on 1st try, Run 7 failure after 8 tries. High variance event.)
 
 ### Face Trader (Act 2)
 - Options: Unknown exact options. Player saw [Continue] then a choice to trade (lose 8 HP?) or [Leave].
@@ -475,17 +496,20 @@ Mechanics documented from actual runs. Focus on things we got wrong or needed to
 
 ## Known Bugs
 
-### Shop Screen Bug (Runs 4 AND 5 — RECURRING)
+### Shop Screen Bug (Runs 4, 5, AND 8 — RECURRING, 3rd OCCURRENCE)
 - **Run 4 (floor 22)**: Player entered Shop with 395 gold. Screen appeared empty. Player sent `proceed` and exited without buying anything. Lost opportunity for ~5 card removals or 2 relics.
 - **Run 5 (floor 20)**: Player entered Shop with 157+ gold. SAME BUG. Player sent `proceed` and exited immediately without any interaction. 157 gold of purchases lost. This is the SECOND time this bug has cost a run.
-- **PATTERN**: This bug has now occurred in 2 out of 5 runs (40%). It appears to happen specifically in Act 2 shops. Both times, the player lost critical shopping opportunities that directly contributed to death.
-- **Impact (cumulative)**: Run 4 lost 395g of purchases (contributed to 0-upgrade death). Run 5 lost 157g of purchases (no card removal before elites, contributing to thin deck issues vs Gremlin Leader).
-- **THIS IS A CRITICAL BUG. It must be worked around until fixed.**
-- **MANDATORY WORKAROUND**: When entering ANY shop:
+- **Run 8 (floor 11)**: THIRD OCCURRENCE. Player entered shop, called `state`, saw empty shop, then used `proceed` to exit. Despite the workaround being documented after Runs 4 and 5, the player did not probe with `choose` commands. Gold lost unknown but shopping opportunity wasted again.
+- **PATTERN**: This bug has now occurred in 3 out of 8 runs (37.5%). It appears in both Act 1 (Run 8 floor 11) and Act 2 (Runs 4 and 5) shops. All three times, the player lost critical shopping opportunities.
+- **Impact (cumulative)**: Run 4 lost 395g of purchases (contributed to 0-upgrade death). Run 5 lost 157g of purchases (no card removal before elites). Run 8 lost a shopping opportunity in Act 1.
+- **THIS IS A CRITICAL BUG. The workaround is NOT being followed. It must be ENFORCED.**
+- **MANDATORY WORKAROUND (MUST BE FOLLOWED EVERY TIME)**:
   1. **NEVER send `proceed` first.** This exits the shop immediately.
   2. Call `state` first to inspect screen_state.
   3. If screen_state shows no items, try `choose 0`, `choose 1`, `choose 2` etc. to probe for hidden items.
   4. Try `choose purge` to attempt card removal even if the display is empty.
-  5. Only send `proceed` or `leave` AFTER confirming the shop is genuinely broken.
-  6. If the shop is broken, at minimum try card removal (`choose purge`) since that may work independently of the display bug.
-- Confidence: HIGH (observed in Runs 4 and 5 — recurring bug, 2/5 runs affected, directly impacts outcomes)
+  5. Try `choose card_removal` as an alternative command.
+  6. Only send `proceed` or `leave` AFTER exhausting ALL probe commands.
+  7. If the shop is broken, at minimum try card removal (`choose purge`) since that may work independently of the display bug.
+- **FAILURE TO FOLLOW THIS WORKAROUND HAS NOW COST 3 RUNS. This is a HARD RULE — no exceptions.**
+- Confidence: HIGH (observed in Runs 4, 5, and 8 — recurring bug, 3/8 runs affected, directly impacts outcomes)

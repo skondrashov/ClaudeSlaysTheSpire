@@ -275,3 +275,67 @@ Documented mistakes from actual runs. Each entry explains what went wrong and wh
 - **Guardian victory**: Third Guardian victory across all runs. Clean fight using Snecko Oil clutch turn + double Metallicize + Letter Opener passive damage.
 - **The run failed from HP management** (6 HP into Book of Stabbing elite), not from card play or tactical errors. The player's tactical execution was the best yet.
 - Confidence: HIGH (Run 6 — measurable improvements in upgrade discipline, HP management into Act 2, card synergy exploitation, and creative Feed usage)
+
+## Run 7: No Weak source for Hexaghost — REGRESSION after 3 boss victories
+
+- Floor 16, died to Hexaghost (Ironclad, A0) with boss at 61/250 HP remaining.
+- **This is a regression**: Runs 4, 5, and 6 all beat their Act 1 boss. Run 7 died. The player had been improving steadily — this death breaks the winning streak.
+- **Root cause #1 — No Weak for Inferno**: The deck had NO way to apply Weak (no Shockwave, no Clothesline, no Intimidate, no Weak Potion). Hexaghost's 7x6=42 Inferno attack hit at full power. Without Weak (reduces to 28), this multi-hit attack is near-impossible to survive.
+- **Root cause #2 — Brutality in a long fight**: Brutality (0E Power, draw +1 card/turn, lose 1 HP/turn) was played early. In a 9-turn fight, this cost 9 HP minimum. Combined with Burns (2-4 HP/turn from unplayable status cards), the player lost 20-30 HP from self-inflicted damage alone.
+- **Root cause #3 — Scrap Ooze event wasted 25 HP**: Player repeatedly reached inside Scrap Ooze (3 HP per attempt) and found no relic. Total HP lost: ~25. This left the player entering the boss at ~50/80 HP instead of ~75/80.
+- **Root cause #4 — No Metallicize**: No passive block for the long fight. Run 3's Metallicize provided 39 free block over 13 turns. Run 7 had nothing.
+- **Why this is a regression**: The player KNEW Hexaghost needs Weak (Run 3 Hexaghost Strategy section documents this clearly). But the card picks during Act 1 did not prioritize finding a Weak source. The deck focused on damage (Twin Strike, Pommel Strike+, Thunderclap) without solving the defensive problem.
+- **Lesson**: (1) When Hexaghost is the boss, acquiring a Weak source is the #1 priority from floors 1-15. Take Clothesline, Shockwave, or Intimidate over almost anything else. Buy a Weak Potion at the shop if available. (2) Do NOT play Brutality against bosses with Burns or other end-of-turn damage sources. (3) Scrap Ooze at low HP is a trap — if you've lost 9+ HP (3 attempts) with no relic, stop and leave. (4) Verify the Hexaghost Checklist (Weak source + HP 70%+ + Passive block) before floor 16. If missing requirements, adjust card picks.
+- Confidence: HIGH (Run 7 — clear regression, all 4 root causes identified, directly contradicts lessons from Run 3 that were already documented)
+
+## Run 7: Brutality against Hexaghost — self-damage spiral
+
+- Brutality (Power, 0E, draw 1 extra card/turn, lose 1 HP/turn) was played in the Hexaghost fight.
+- Over 9 turns: 9 HP lost to Brutality. But more importantly, the extra draw didn't help enough — drawing 6 cards/turn instead of 5 doesn't matter when the deck lacks the answers (no Weak, no Metallicize). The extra card drawn was usually a Strike or Defend, not a game-changing answer.
+- Combined with Burns dealing 2-4 HP/turn from turn 3 onward, the total self-inflicted damage was 20-30 HP over the fight. That's 40-60% of the player's starting HP wasted on self-damage.
+- **RULE**: NEVER play Brutality against: (1) Hexaghost (Burns compound with self-damage), (2) Any fight expected to last 7+ turns, (3) When entering at less than 70% HP. Brutality is only safe in short fights (3-5 turns) or when Reaper/Feed can offset the HP drain.
+- Confidence: HIGH (Run 7 — 9 HP from Brutality + 15-20 HP from Burns = 24-29 HP from self-damage in one fight. This alone would have kept the player alive long enough to potentially win.)
+
+## Run 7: Scrap Ooze at low HP — lost 25 HP for nothing
+
+- The Scrap Ooze event costs 3 HP per attempt with a 25% chance of finding a relic per attempt. The player attempted ~8 times (25 HP total) and found nothing.
+- Expected HP cost for one relic: 12 HP (4 attempts on average). Getting unlucky with 8 attempts (25 HP) is within normal variance — but at ~75 HP going into the boss, spending 25 HP on a gamble is too risky.
+- **Stopping rule**: At Scrap Ooze, set a maximum HP you're willing to spend BEFORE starting. If HP is above 80%, spend up to 12 HP (4 attempts). If HP is 60-80%, spend at most 6 HP (2 attempts). If HP is below 60%, LEAVE IMMEDIATELY.
+- Run 3 got Lantern from Scrap Ooze on the first try (3 HP cost). Run 7 got nothing after 25 HP. The variance makes this event a gamble — only take it when you can afford to lose.
+- Confidence: MEDIUM (Runs 3 and 7 — one success in 1 try, one failure in 8 tries. Event is high variance.)
+
+## Run 8: Shockwave+ delayed to turn 4 against 3 Cultists — critical timing error
+
+- Floor 20, died to 3 Cultists (Act 2 hallway fight) at 37/95 HP.
+- **The critical mistake**: Shockwave+ was available in hand on turn 2 but was NOT played. Instead, Reaper was played on turn 2 for healing. Shockwave+ was finally played on turn 4.
+- **By turn 4**, each Cultist had +9 Strength (3 Ritual/turn * 3 turns). Attacks were 15+ damage each. The Weak from Shockwave+ reduced turn 4 attacks from 15 to ~11 each — but turns 2 and 3 dealt full damage (27 + 36 = 63 total unmitigated damage from the 3 Cultists).
+- **If Shockwave+ was played turn 2**: Turns 2-6 would all have Weak applied (-25% damage). Turn 2 goes from 27 to ~20. Turn 3 from 36 to ~27. That's ~16 HP saved on those two turns alone, plus Vulnerable on all enemies means faster kills = fewer total turns of damage.
+- **Why the player chose Reaper instead**: Reaper heals based on damage dealt. On turn 2, the healing from Reaper was maybe 5-8 HP. But Shockwave+ would have PREVENTED 16+ HP of damage over turns 2-3. Prevention > healing.
+- **General lesson**: In scaling fights (Cultists, Gremlin Leader), damage prevention cards (Shockwave+ Weak) ALWAYS take priority over healing cards (Reaper). The damage you prevent by applying Weak early far exceeds the healing from one Reaper use. Play Shockwave+ on the first attack turn, not later.
+- Confidence: HIGH (Run 8 — turn 4 Shockwave+ vs turn 2 Shockwave+ is a 16+ HP difference. Timing is everything in scaling fights.)
+
+## Run 8: Entered 3 Cultists at 37/95 HP with 0 potions
+
+- Floor 20: Player entered the 3 Cultists fight at 37/95 HP (39%) with zero potions available. This is the 5th death from entering a fight at dangerously low HP.
+- **HP pattern continues**: Runs 3 (28 HP), 4 (42 HP), 5 (11 HP), 6 (6 HP), and now 8 (37 HP) — every Act 2 death is preceded by entering a fight below 50% HP.
+- **Zero potions**: With no potions to supplement healing or provide emergency block, the player had no safety net. A single Block Potion or Weak Potion on turn 2 could have extended survival.
+- **Lesson**: The 50% HP minimum rule for Act 2 fights is now confirmed across 5 deaths. If HP is below 50% in Act 2, take alternative paths (events, rest sites, shops). If forced into combat, use ALL available potions aggressively on turn 1-2.
+- Confidence: HIGH (Run 8 — 5th death from low HP entry, pattern is undeniable)
+
+## Run 8: Shop bug — THIRD occurrence, workaround NOT followed
+
+- Floor 11 (Act 1): Player entered shop. Called `state` (partial workaround), saw empty shop, then sent `proceed` to exit.
+- The player did NOT try `choose 0`, `choose 1`, `choose purge`, or other probe commands. The workaround from Runs 4 and 5 was only partially followed.
+- **This is the 3rd time in 8 runs (37.5%)** that the shop bug has cost the player. The workaround was documented after Run 4 and reinforced after Run 5, but is STILL not being fully executed.
+- **The player must probe the shop with `choose` commands EVERY TIME the shop appears empty.** Calling `state` alone is not sufficient. The bug may be in the display layer while items are still selectable.
+- Confidence: HIGH (3 occurrences across Runs 4, 5, 8 — workaround partially attempted but not fully executed)
+
+## Run 8: Correct play — significant strengths despite death
+
+- NOTE: Not a mistake. Documenting what went RIGHT for reference.
+- **Feed mastery**: Feed accumulated +12-18 Max HP across multiple combats (Fat Gremlin, Slaver, Spike Slime during boss, Cultist). Starting from 80 Max HP, reached 95-98 Max HP. This is the best Feed usage across all runs.
+- **Slime Boss victory**: Second successful Slime Boss kill. Used Shockwave+ for mass debuff, Feed for kill+Max HP during split phase. Clean boss execution.
+- **Seeing Red+ utility**: Used 0E gain-2E card to enable multi-card burst turns. Excellent energy efficiency.
+- **Reaper for sustain**: Used Reaper effectively in multiple fights for healing (though timing vs Shockwave+ was wrong in the death fight).
+- **The run failed from** (1) Shockwave+ timing in the Cultists fight, (2) low HP entry into that fight, and (3) zero potions. The boss phase was played well — the Act 2 hallway fight was the problem.
+- Confidence: HIGH (Run 8 — Feed usage and Slime Boss victory show significant improvement, death was from specific timing error + HP management)

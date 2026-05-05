@@ -14,7 +14,8 @@ Act 1 boss. HP: ~140 (observed).
 - **Post-split debuffs**: Spike Slime (L) applies Frail (block reduced 25%). Acid Slime (L) applies Weak (damage reduced 25%). Getting both debuffs simultaneously is devastating — reduced offense AND defense.
 - **What you need**: (1) AOE for split damage. (2) Burst single-target to kill one slime fast. (3) Exhaust tools to handle Slimed cards. (4) Enough block/HP to survive 2-3 turns of combined 25-36 damage.
 - **Run 4 victory**: Beat Slime Boss at ~17 HP. Key differences from Run 1 death: (1) Had Thunderclap for mass Vulnerable on split, (2) Had Whirlwind for AOE damage, (3) Used Fiend Fire for burst + Slimed exhaust, (4) Killed attacking slime first while exhausting Slimed on free debuff turns, (5) Spike Slime (L) split into 2x Spike Slime (M) which were easier to clean up. Fight lasted 9 turns. Plated Armor 4 from potion provided passive block every turn.
-- Confidence: MEDIUM -> HIGH (2 runs — Run 1 death, Run 4 victory. Pre-split pattern and post-split mechanics well-documented.)
+- **Run 8 victory**: Beat Slime Boss (floor 13). Deck included Shockwave+, Feed, Seeing Red+, Power Through, Reaper, Thunderclap, Pommel Strike+, Bash+. Feed killed Spike Slime during split phase for +3 Max HP. Used Shockwave+ for mass Weak+Vuln on split. This is the second successful Slime Boss kill.
+- Confidence: HIGH (3 runs — Run 1 death, Run 4 victory, Run 8 victory. Pre-split pattern and post-split mechanics well-documented.)
 
 ### Spike Slime (L)
 - Attacks for ~16 damage
@@ -70,6 +71,27 @@ Act 1 hallway enemy. HP: ~50 (estimated from Run 1).
 - Observed: Run 1, floor 7. Killed in 3 turns with Bash + Hemokinesis + Strike.
 - Run 4: Floor 1. Killed in 4 turns. T1 (free): Bash (8+Vuln) + Strike (9 Vuln) = 17. T2: 2 Strikes (18 Vuln) + Defend (5 block), took 1 damage. T3: Strike (6) + 3 Defends (15 block), took 0. T4: 2 Strikes (12) for kill. Cultist had 9 damage by turn 2 (Ritual +3 Str, so base 6 + 3 = 9).
 - Confidence: MEDIUM (2 fights across Runs 1 and 4, Ritual mechanic confirmed)
+
+### 3 Cultists (Act 2 hallway fight)
+
+Act 2 multi-enemy fight. 3 Cultists, each with Ritual 3.
+
+- **Turn 1**: ALL three use Ritual (free turn — 0 damage incoming). This is the ONLY free turn.
+- **Damage escalation**: Each Cultist gains +3 Str per turn. With 3 Cultists, that's +9 total Str per turn across all enemies. By turn 4, each Cultist attacks for ~15 damage (base 6 + 3*3 = 15). By turn 6, each attacks for ~21 (base 6 + 3*5 = 21). Combined damage from 2 surviving Cultists on turn 7: ~42 damage.
+- **This is one of the fastest-scaling fights in the game.** Unlike Gremlin Leader (where Rally gives +3 to ALL enemies periodically), Cultists EACH independently gain +3 Str EVERY turn. The damage ramp is steeper than any other observed enemy.
+- **Kill order matters**: Focus fire on one Cultist at a time. Each dead Cultist removes one source of scaling damage. Going from 3 to 2 Cultists removes 33% of incoming damage AND one scaling threat.
+- **Shockwave+ timing is CRITICAL**: In Run 8, Shockwave+ was saved until turn 4. By then, each Cultist was already attacking for 15+. Shockwave+ should be played turn 2 (first attack turn) to reduce damage during the critical turns 2-4 when you're killing the first Cultist.
+- **Damage timeline (observed Run 8)**:
+  - Turn 1: 0 incoming (all Ritual)
+  - Turn 2: ~9 each = ~27 total (3 Cultists)
+  - Turn 3: ~12 each = ~36 total (3 Cultists) or ~24 (2 Cultists)
+  - Turn 4: ~15 each (with Weak from Shockwave: ~11 each)
+  - Turn 7: ~21 each (1 surviving Cultist: 21, with only 10 block = dead)
+- **Run 8 death**: Entered at 37/95 HP with 0 potions. Turn 1 free — used Cleave + Pommel Strike for AOE damage. Played Reaper turn 2 for healing. Killed first Cultist turn 3 with Seeing Red+ + Thunderclap + Bash+ + Strike. Played Shockwave+ turn 4 (TOO LATE — already taken massive damage). Killed second Cultist turn 6 with Feed (+3 Max HP). Died turn 7 — last Cultist attacked for 15, player had only 10 block at 1 HP.
+- **What went wrong**: (1) Shockwave+ delayed to turn 4 instead of turn 2. (2) Entered at 37/95 HP (39%) — too low for this fight. (3) Zero potions available. (4) Reaper on turn 2 was correct for healing but didn't deal enough damage to shorten the fight.
+- **Correct strategy**: (1) Turn 1 (free): AOE damage + Vulnerable setup. (2) Turn 2: Shockwave+ IMMEDIATELY for mass Weak + Vuln. (3) Turns 2-4: Focus fire one Cultist to death as fast as possible. (4) Turns 4-6: Kill second Cultist. (5) One remaining Cultist is manageable even at high Str.
+- **HP threshold**: Enter with 50%+ HP minimum. At 39% HP, the fight was unwinnable even with Shockwave+ and Reaper available.
+- Confidence: MEDIUM (1 fight in Run 8, died — damage scaling confirmed, Shockwave+ timing lesson clear)
 
 ## Louse (Small / Generic)
 
@@ -169,7 +191,17 @@ Act 1 boss. HP: 250 (confirmed in Run 3).
 - **Fight length**: ~13 turns observed in Run 3. Long fight. Metallicize and Strength scaling pay off massively.
 - **Strategy**: (1) Use turn 1 to set up — Thunderclap for Vulnerable, play damage. (2) Save Shockwave for the first Inferno turn to apply Weak and reduce 42 to ~28. (3) Play Metallicize early for cumulative block value. (4) Reapply Vulnerable with Bash+ on DEFEND_BUFF (free) turns. (5) Manage Burns — they deal end-of-turn damage and reduce effective hand size.
 - **Run 3 experience**: Beat Hexaghost at 250 HP, survived at 1 HP. Used Shockwave + Regen Potion to survive first Inferno. Metallicize 3 provided passive block. Burns accumulated and nearly killed the player on late turns. Pantograph relic healed from 56 to 80 HP at fight start.
-- Confidence: MEDIUM (1 fight in Run 3, survived at 1 HP — detailed turn-by-turn data)
+- **Run 7 DEATH**: Ironclad A0, died floor 16 to Hexaghost. This was a REGRESSION after 3 consecutive Act 1 boss victories (Runs 4, 5, 6).
+  - **Entry HP**: ~50/80 HP. No Pantograph relic to heal to full. Low HP entry without mass Weak for Inferno was fatal.
+  - **Deck**: Bash+, Twin Strike, Iron Wave, Pommel Strike+, Thunderclap, Brutality, Shrug It Off, Ghostly Armor + starters. 14 cards. NO Shockwave, NO Metallicize, NO mass Weak source.
+  - **Brutality self-damage**: Brutality (Power, 0E, draw 1 extra card/turn, lose 1 HP/turn) was played early. The 1 HP/turn self-damage compounded with Burns (2-4 HP/turn from unplayable Burn cards). By turn 6+, player was losing 3-5 HP/turn from Brutality + Burns alone.
+  - **No Weak for Inferno**: The 7x6=42 Inferno attack hit for full damage. Without Shockwave, Clothesline, or any Weak source, there was no way to reduce this multi-hit attack. This is the #1 lesson: Weak is MANDATORY for Hexaghost.
+  - **Burns attrition**: Burns accumulated over 9 turns, dealing end-of-turn damage and clogging hand (fewer real cards drawn = fewer block cards). Combined with Brutality's 1 HP/turn, the attrition was overwhelming.
+  - **Scrap Ooze event**: Lost 25 HP total to Scrap Ooze event (3 HP per attempt, no relic found). This meant entering the boss at ~50 HP instead of ~75 HP. The event was a trap at that HP level.
+  - **Death**: Turn 9, Hexaghost at 61 HP remaining. Player could not survive combined Inferno + Burns + Brutality damage.
+  - **What was missing vs Run 3 victory**: (1) No Pantograph to heal to full at boss start. (2) No Shockwave/Weak for Inferno (Run 3 used Skill Potion -> Shockwave). (3) No Metallicize for passive block. (4) Brutality was actively harmful (self-damage in a long fight). (5) Scrap Ooze wasted 25 HP that Run 3 didn't lose (Run 3 got Lantern from Scrap Ooze on first try for only 3 HP).
+- **CRITICAL LESSON from Run 7**: Hexaghost WITHOUT Weak is near-unwinnable. The 42-damage Inferno multi-hit cannot be fully blocked without Impervious. Weak reduces it to 28, which is survivable. If your deck has NO Weak source (Shockwave, Clothesline, Intimidate, Weak Potion), do NOT fight Hexaghost at low HP. Pantograph makes HP entry irrelevant, but without Pantograph, you need 70%+ HP AND Weak.
+- Confidence: MEDIUM -> HIGH (2 fights — Run 3 victory at 1 HP, Run 7 death at 61 HP remaining. Weak is confirmed mandatory. No-Weak + low HP + Brutality self-damage = guaranteed death.)
 
 ## Byrd
 
