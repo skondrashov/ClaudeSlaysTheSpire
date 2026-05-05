@@ -31,14 +31,18 @@ Act 1 boss. HP: ~140 (observed).
 
 ## The Guardian
 
-Act 1 boss. HP: unknown exact, but was at 34 HP mid-fight in Run 0.
+Act 1 boss. HP: 240 (confirmed in Run 2).
 
-- **Mode-switching boss**: The Guardian alternates between offensive and defensive modes. In one mode it attacks, in the other it uses debuffs/other intents.
-- **Debuff turns**: The Guardian has turns where its intent is "debuff" rather than attack. These turns are safe windows to play damage without blocking.
-- **Damage output**: At least 20 and 32 damage observed in different turns (Run 0). Can hit very hard.
-- **Strategy**: The Guardian fight is about managing its offensive/defensive cycles. Block on attack turns, damage on debuff turns. The Run 0 player did this successfully with block cards (Shrug It Off+, True Grit+) and burst damage (Pommel Strike).
-- **Run 0 beat this boss.** The deck had: Shrug It Off+, True Grit+, Pommel Strike, plus unknown other cards. The exhaust + block + cycle package worked well. The fight ended with the Guardian at 2 HP, killed by Pommel Strike.
-- Confidence: LOW (only 1 fight observed, log is partial — only last few turns visible)
+- **Mode-switching boss**: The Guardian alternates between Attack Mode and Defensive Mode based on the Mode Shift mechanic.
+- **Mode Shift**: In Attack Mode, the Guardian has a Mode Shift counter that tracks damage dealt. When you deal enough total damage to reduce Mode Shift to 0, it switches to Defensive Mode. The counter resets higher each cycle (observed starting at 27 in Run 2, then increasing). Counter increases each cycle, making Defensive Mode harder to trigger later in the fight.
+- **Attack Mode intents**: ATTACK (5x4 = 20 damage), ATTACK (32 damage), ATTACK_BUFF (8x2 = 16 damage), DEFEND (gains block, no damage), STRONG_DEBUFF (no damage). The Guardian cycles through these in Attack Mode.
+- **Defensive Mode (Sharp Hide)**: Guardian gains Sharp Hide 3 — deals 3 damage to the player every time the player plays an Attack card. Also has its own attack pattern (9 damage, 8x2 = 16). After some turns, switches back to Attack Mode with Mode Shift counter reset (higher than before).
+- **Free turns**: DEFEND and STRONG_DEBUFF intents deal no damage — use these to go all-out on damage. BUFF intent in defensive mode is also free.
+- **32 damage attack**: The Guardian's biggest single hit. At 3 energy with basic cards, maximum block is ~17-20. This attack can one-shot you if your deck is too thin or if you lack enough block cards.
+- **Strategy**: Block on attack turns, damage on free turns. Sharp Hide punishes Attack cards, so during Defensive Mode either (1) block before playing attacks to absorb Sharp Hide damage, or (2) play only Skills for pure block. Need enough block cards to survive 32-damage turns.
+- **Run 0 beat this boss** with block+cycle strategy (True Grit+, Shrug It Off+, Pommel Strike).
+- **Run 2 died to this boss** at 123/240 HP. Deck was exhausted down to 3 cards (Defend, Iron Wave, True Grit) and could only generate 20 block per turn. The 32-damage attack was unsurvivable. Root cause: over-exhausting with unupgraded True Grit (random exhaust) destroyed key cards.
+- Confidence: MEDIUM (2 fights observed — Run 0 victory, Run 2 death. Mode Shift and Sharp Hide mechanics well-documented.)
 
 ## Jaw Worm
 
@@ -90,6 +94,52 @@ Medium Spike Slime. HP: ~28 (estimated from Run 1, floor 11 split + floor 14).
 - **Slimed cards**: Adds Slimed status cards to deck.
 - **Split from Large**: Spike Slime (L) splits into medium slimes when killed or at low HP (observed in Run 1, floor 11 — fight started with Spike Slime (L) and later showed Spike Slime (M) enemies).
 - Confidence: LOW (limited data, split behavior needs confirmation)
+
+## Lagavulin
+
+Act 1 elite. HP: 110 (confirmed in Run 2).
+
+- **Sleeping phase**: Starts asleep with 8 block per turn. Does not attack while sleeping. Wakes up when attacked OR after 3 turns of sleeping.
+- **Debuff turns**: After waking, alternates between attack and debuff. Debuff turn applies -1 Strength and -1 Dexterity (reduces player's attack damage and block gained). These stack and are permanent for the combat.
+- **Attack damage**: 18 damage per attack turn (observed in Run 2).
+- **Strategy**: Wake it immediately with Bash (Vulnerable helps more than 3 turns of chipping through 8 block). Front-load damage on debuff turns (free turns). Kill before Strength debuffs accumulate — each -1 Strength makes every attack card worse.
+- **Run 2 experience**: 7-turn fight. Player correctly woke it turn 1 with Bash, went all-in on free turns. Took 36 HP damage total (82->35 after Burning Blood heal to 35+6=41... actually player ended at 35 HP before Burning Blood). The fight's length caused significant Strength loss (-2 or -3 Strength by end).
+- **Math warning**: After multiple debuff turns, recalculate damage. Strike goes from 6 to 5 to 4. Pommel Strike 9 to 8 to 7. Iron Wave 5 to 4 to 3. Plans made with base damage values will overestimate output.
+- Confidence: MEDIUM (1 fight in Run 2, mechanics observed)
+
+## Gremlin Nob
+
+Act 1 elite. HP: 85 (observed in Run 2).
+
+- **Enrage**: When the player plays a Skill card, Gremlin Nob gains +2 Strength (permanent). This makes playing Defend, True Grit, or any Skill card actively dangerous — each one makes Nob's attacks hit harder.
+- **Turn 1**: Buffs (Skull Bash or similar — gains Vulnerable on player?). No attack turn 1.
+- **Attack damage**: Starts at ~14 damage, increases with Enrage stacks. By turn 3 in Run 2, attacks were dealing 21+ damage.
+- **CRITICAL RULE**: Do NOT play Skills against Gremlin Nob. Only play Attacks. Powers do NOT trigger Enrage (confirmed in Run 2 — Dark Embrace played without triggering Enrage).
+- **Strategy**: All-out Attacks. Kill before Enrage stacks make attacks unsurvivable. Use potions if needed to burst it down. Bash (Attack card) is safe and applies Vulnerable.
+- **Run 2 experience**: Player fought at 29 HP. Turn 1: 21 damage with Attacks only. Turn 2: Dark Embrace (Power, safe) + Iron Wave. Turn 3: Snecko Oil for desperate card draw, played 2x True Grit for block (each triggered Enrage +2 Str, making Nob stronger). Used second Snecko Oil turn 4 and killed Nob at 27 HP with Vulnerable Pommel Strike + Strikes. Survived at 3 HP.
+- **Lesson from Run 2**: Even when desperate for block, playing Skills feeds Enrage. The player played 2x True Grit (Skills) and a Defend, giving Nob +6 Strength total. With hindsight, those Skills turned a 14-damage attack into a 20+ damage attack.
+- Confidence: MEDIUM (1 fight in Run 2, Enrage confirmed, Power-exception confirmed)
+
+## Red Slaver
+
+Act 1 hallway enemy. HP: ~50 (estimated from Run 2, floors 7 and 11).
+
+- **Attack damage**: 12 damage (observed in Run 2, floor 7), 13 damage (floor 11).
+- **Debuff turns**: Has turns where it applies Entangle (player cannot play Attack cards for 1 turn?) or other debuffs instead of attacking.
+- **Strategy**: Kill fast with Attacks. Apply Vulnerable and burst. Straightforward fight.
+- **Run 2**: Fought on floor 7 (3 turns, took 5 damage) and floor 11 (3 turns, deliberately took lethal relying on Fairy in a Bottle revive).
+- Confidence: LOW (2 fights, limited data)
+
+## Fungi Beast
+
+Act 1 hallway enemy. HP: ~19 (observed in Run 2, floor 11).
+
+- **Spore Cloud**: On death, applies Vulnerable 2 to the player. This means killing a Fungi Beast makes the player take 50% more damage from surviving enemies.
+- **Buff turns**: Has turns where it buffs (gains Strength?) instead of attacking. These are free damage turns.
+- **Attack damage**: ~9 damage per attack (inferred from Run 2 calculation: "floor(9*1.5)-5=8" implies 9 base attack).
+- **Strategy**: Kill one at a time, but be aware that Spore Cloud Vulnerable applies after the kill. Block accordingly on the turn you expect to kill one. In multi-Fungi fights, kill when the other Fungi is NOT attacking.
+- **Run 2**: Fought 2x Fungi Beasts at floor 11 at 9 HP. Player used True Grit exhaust engine (Charon's Ashes 3 AOE damage). Survived at 1 HP. Spore Cloud Vulnerable was correctly accounted for: player blocked to absorb the Vulnerable-boosted attack.
+- Confidence: LOW (1 fight in Run 2)
 
 ## General Notes
 

@@ -18,12 +18,12 @@ Confidence: MEDIUM (based on Run 1 death — deck lacked AOE for Slime Boss)
 ### Prepare for the Act boss
 
 By floor 12-15, you should be thinking about the boss. Each act boss has specific threats you need to handle:
-- Slime Boss: Need AOE for the split, burst single-target to kill one slime fast, exhaust tools for Slimed cards. Combined post-split damage is 25-36 per turn.
-- The Guardian: Mode-switching boss with heavy attacks (20-32 damage). Need strong block for attack turns and burst damage for debuff turns. Cards that do double duty (block+draw, damage+draw) worked well in Run 0.
+- **Slime Boss**: Need AOE for the split, burst single-target to kill one slime fast, exhaust tools for Slimed cards. Combined post-split damage is 25-36 per turn.
+- **The Guardian**: Mode-switching boss with heavy attacks (5x4=20, single 32). Need block cards that can reach 32+ total per turn. Sharp Hide (3 damage per Attack played) in Defensive Mode means you need block before playing Attacks. Long fight (240 HP) rewards Strength scaling and efficient multi-purpose cards. DO NOT over-exhaust — keep enough cards to block 32 damage.
 
 If you don't have the tools to handle the boss, prioritize getting them from card rewards, shops, and events over minor deck improvements.
 
-Confidence: LOW (one run, generalizing from one boss encounter)
+Confidence: MEDIUM (3 boss encounters across Runs 0, 1, and 2 — 1 Guardian victory, 1 Slime Boss death, 1 Guardian death)
 
 ## Combat
 
@@ -93,3 +93,98 @@ The Run 0 deck beat The Guardian (Act 1 boss) with a block-and-cycle strategy:
 This is a "quality over quantity" deck — each card does two things (block+exhaust, block+draw, damage+draw). The card draw keeps cycling to find the right answers. This is a model to aim for: cards that do double duty rather than just one thing.
 
 Confidence: LOW (partial log, can't see full deck or full fight)
+
+## What Went Wrong in Run 2 (Guardian Boss Death)
+
+The Run 2 deck had strong synergy potential (Dark Embrace + Charon's Ashes + True Grit = exhaust engine) but two fatal flaws:
+1. **True Grit was unupgraded** — random exhaust destroyed Whirlwind, Bash, and Pommel Strike, the deck's best cards.
+2. **Too much exhausting** — the deck thinned to 3 cards, which couldn't generate enough block to survive Guardian's 32-damage attack.
+
+Key takeaways:
+- **True Grit upgrade is mandatory** before using it as an exhaust engine. Random exhaust is suicide.
+- **Know your block ceiling**: Calculate the maximum block your remaining cards can produce. If that's less than the enemy's biggest attack, stop exhausting.
+- **Iron Wave + Metallicize carried the fight** for 14 turns. Iron Wave (damage + block) and Metallicize (passive block every turn) are the kind of efficient, multi-purpose cards that win long fights.
+- **The Guardian has a 32-damage attack**. Any deck that can't block 32 in a single turn will eventually die. You need at minimum ~6 block cards or equivalent to survive this.
+- **Entry HP was ~46, not 16**: The player entered at approximately 46 HP after resting. The "16 HP" figure may refer to HP during the fight. Still low for a 240-HP boss.
+
+Confidence: MEDIUM (Run 2 death, confirmed mechanics)
+
+## Exhaust Strategy
+
+### Exhaust is powerful but has a breakpoint
+
+Exhaust synergy (Dark Embrace draw + Charon's Ashes 3 damage) is a strong engine: every exhaust draws a card AND deals damage. But there's a critical breakpoint: once your deck is too thin, you can't survive big attacks.
+
+**Before exhausting a card, ask:**
+1. Can my remaining deck survive the enemy's biggest attack? (Calculate max block from remaining block cards + Metallicize/passive sources)
+2. Is the card I'm exhausting truly expendable? (Strikes and Defends early — yes. Core damage/block cards — no.)
+3. Am I in the first half of the fight (thin deck = good, draws key cards more often) or the second half (thin deck = not enough block cards)?
+
+**Safe exhaust targets**: Strikes, extra Defends, status cards (Slimed, Wound, etc.)
+**Never exhaust**: Your last copy of your best damage card, your last copy of a high-block card
+
+Confidence: HIGH (Run 2 death was caused by exhausting key cards)
+
+## Guardian-Specific Strategy
+
+The Guardian is a long fight (240 HP) with alternating modes:
+1. **Attack Mode**: Mode Shift counter tracks damage dealt. When counter reaches 0, switches to Defensive Mode. Attacks include 5x4=20, 32 single hit, 8x2=16. Also has DEFEND (gains block, no damage) and STRONG_DEBUFF (no damage) turns.
+2. **Defensive Mode (Sharp Hide)**: Deals 3 damage to player per Attack card played. Has its own attack pattern. Switches back to Attack Mode after some turns.
+
+**What you need for Guardian**:
+- Block cards that can reach 32+ per turn (Defend + Defend + True Grit + Iron Wave + Metallicize = 20-25 minimum)
+- Damage that works around Sharp Hide (Skills, or enough block to absorb Sharp Hide + enemy attack)
+- A deck thick enough to not get exhausted into oblivion over 14+ turns
+- Strength scaling helps since fight is long (even +2 Str adds up over many turns)
+
+Confidence: MEDIUM (Run 0 victory, Run 2 14-turn death — both inform this strategy)
+
+## Gremlin Nob Strategy
+
+Gremlin Nob punishes Skills with Enrage (+2 Strength per Skill played). Strategy:
+1. **Only play Attacks.** No Defend, no True Grit, no Shrug It Off. Every Skill card buffs Nob permanently.
+2. **Powers are safe.** Dark Embrace, Inflame, Metallicize are NOT Skills — they do not trigger Enrage.
+3. **Potions can substitute for block.** Use potions (Block Potion, Fairy in a Bottle) instead of playing Skill block cards.
+4. **Kill fast.** The longer the fight, the more turns Nob accumulates Strength from inevitable Skills. Even if you play only Attacks, Nob's base damage is dangerous.
+5. **Bash is safe.** It's an Attack card that applies Vulnerable. Open with Bash for +50% damage.
+
+Run 2 example: Player played 2x True Grit + 1x Defend (3 Skills = +6 Strength to Nob) during the desperation phase. Even though the block was needed, those Skills made the next attack ~6 damage stronger.
+
+Confidence: MEDIUM (Run 2, 1 fight, Enrage/Power-exception confirmed)
+
+## Elites: Risk Assessment
+
+Before fighting an elite, check:
+1. **HP threshold**: Below 30 HP for Act 1 elites is very dangerous. Lagavulin deals 18/turn, Gremlin Nob scales indefinitely.
+2. **Deck vs elite matchup**: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks (debuffs accumulate). 3 Sentinels require AOE.
+3. **Potions available**: Potions can compensate for bad matchups. Snecko Oil, Fairy in a Bottle, and Block Potions saved the Run 2 Gremlin Nob fight.
+4. **Path alternatives**: If a safer path exists with similar value, take it. Run 2 had "forced" elite paths but verify this — sometimes there are alternative routes.
+
+Run 2: Both elite fights nearly killed the player. Lagavulin (82->35 HP), Gremlin Nob (29->3 HP, saved by Fairy). The relics gained (Charon's Ashes, Ancient Tea Set) were excellent but the HP cost almost ended the run before the boss.
+
+Confidence: MEDIUM (Run 2, 2 elite fights observed)
+
+## Card Evaluation Heuristic: Unknown Cards
+
+Run 1 lesson was "don't take cards you don't understand" (Berserk disaster). But Run 2 applied this too broadly, skipping Reaper (a strong card).
+
+**Refined rule:**
+- **Skip unknown cards** that might have hidden self-damage or self-debuff (words like "lose," "take damage," "Vulnerable to self," curses)
+- **Take unknown cards** that seem purely beneficial (damage + heal, damage + draw, block + effect). The upside of discovering a strong card outweighs the risk.
+- **Especially take** unknown cards that fill a known gap in your deck (e.g., Reaper fills "need healing" gap, AOE fills "need multi-target" gap)
+
+Confidence: MEDIUM (Runs 1 and 2 — one overcorrection observed)
+
+## Turn Planning: Never Skip Reasoning
+
+In Run 2, the player stopped filling in reasoning for turns 7-14 of the Guardian fight. These were the turns where the deck was thinning from True Grit exhaust and every decision mattered most.
+
+**Rule: Always reason about the current turn, especially when:**
+1. Your deck has fewer than 8 cards remaining
+2. You're playing exhaust cards that thin the deck further
+3. The enemy's biggest attack exceeds your maximum block
+4. You're below 30% HP
+
+The absence of reasoning in Run 2's late turns correlated directly with the failure to notice the deck was approaching an unsurvivable state.
+
+Confidence: HIGH (Run 2 — empty reasoning fields correlated with death)
