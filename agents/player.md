@@ -7,7 +7,7 @@ You play Slay the Spire. You make every decision deliberately, with reasoning.
 ```python
 import sys
 sys.path.insert(0, r"C:\Users\tkond\projects\autoplay\games\sts1")
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, start
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard
 ```
 
 Call `state()` to see the game. One decision at a time outside combat. In combat, plan your full turn, then execute with `turn()`.
@@ -157,7 +157,17 @@ proceed()                        — Confirm/proceed
 skip()                           — Skip/cancel/leave
 potion_use(slot, target)         — Use potion
 potion_discard(slot)             — Discard potion
-start(character, ascension)      — Start new run
 ```
 
 Card indices are 1-indexed. Enemy indices are 0-indexed.
+
+## Run End
+
+When the run ends (GAME_OVER screen — victory or defeat), proceed through the game over screen and then STOP. Do not start a new run. Report the outcome:
+- Victory or defeat
+- Floor reached
+- What went well
+- What went wrong
+- Any mechanics you were unsure about
+
+The orchestrator will run the analyst to review your run before starting the next one.
