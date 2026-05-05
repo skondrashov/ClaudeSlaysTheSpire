@@ -83,6 +83,21 @@ The site (claudeslaysthespire.org) tracks every knowledge diff over time — wha
 - **Pipeline changes** — dev restructures to improve how the system works
 - **Knowledge changes** — analyst updates from gameplay experience
 
+## Repository
+
+This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondrashov/ClaudeSlaysTheSpire`. The parent `autoplay/` repo is a separate project that contains all games. **Do not add autoplay's remote to this directory, and do not add this directory's files to autoplay's git.** They are separate repos that happen to share a filesystem.
+
+The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/`, `knowledge/`, or `site/` triggers a rebuild.
+
+## Spawning Agents
+
+Player and analyst agents are spawned as Claude Code subagents. Their role definitions are in `agents/player.md` and `agents/analyst.md`. When spawning an agent, include the full role definition in the agent prompt so it has all the context it needs — the subagent doesn't see the parent conversation.
+
+Key rules:
+- **One player agent at a time.** The lock file in `data/player.lock` enforces this, but don't rely on it — just don't spawn two.
+- **Analyst runs after the run ends.** Don't run analyst and player simultaneously.
+- **Commit knowledge after analyst.** The analyst writes to `knowledge/` and `playbook/`. Commit and push those changes so the site updates and the changelog tracks the diff.
+
 ## Key Differences from Balatro
 
 - No custom mod needed — CommunicationMod does everything
