@@ -385,12 +385,16 @@ function handleEvent(event) {
     case 'run_start':
       clearForNewRun();
       addFeedEntry('RUN ' + (event.run_number || '?') + ' — ' + event.class, true);
+      if (event.run_number) {
+        document.getElementById('totalRuns').textContent = event.run_number;
+      }
       break;
     case 'run_end':
       addFeedEntry(
         (event.victory ? 'VICTORY' : 'DEFEAT') + ` — Floor ${event.floor}`,
         true
       );
+      if (event.stats) updateRunStats(event.stats);
       break;
     case 'stats':
       updateRunStats(event);

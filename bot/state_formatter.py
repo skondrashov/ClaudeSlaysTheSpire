@@ -257,6 +257,15 @@ def format_shop(gs: dict) -> str:
     purge_available = ss.get("purge_available", False)
     purge_cost = ss.get("purge_cost", 0)
 
+    # SHOP_ROOM is the "entering shop" state before items are populated.
+    # Need to proceed to get the actual SHOP_SCREEN with inventory.
+    screen = gs.get("screen_type", "")
+    if screen == "SHOP_ROOM" and not cards and not relics and not potions:
+        lines = ["\n=== SHOP (entering) ==="]
+        lines.append("Shop is loading. Use PROCEED to enter the shop.")
+        lines.append(f"\nGold: {gs.get('gold', 0)}")
+        return "\n".join(lines)
+
     lines = ["\n=== SHOP ==="]
 
     if cards:

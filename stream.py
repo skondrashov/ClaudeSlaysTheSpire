@@ -146,6 +146,11 @@ async def ws_handler(websocket):
 event_queue = asyncio.Queue()
 
 
+async def _broadcast_stats():
+    """Broadcast current stats to all overlay clients."""
+    await broadcast({"type": "stats", **run_stats})
+
+
 async def state_watcher():
     """Watch last_state.json for changes, broadcast state updates."""
     last_mtime = 0
@@ -153,6 +158,10 @@ async def state_watcher():
     was_in_combat = False
     game_over_handled = False
     last_event_name = ""
+    # Debounce run starts: only count a run once it progresses past floor 1.
+    # This prevents false starts (retried start commands) from inflating the counter.
+    pending_run_start = False
+    run_counted = False
 
     # Initialize was_in_game from current state so we don't
     # false-count a new run when stream.py restarts mid-game
@@ -164,6 +173,7 @@ async def state_watcher():
             was_in_game = init_state.get("in_game", False)
             if was_in_game:
                 print(f"[stream] Game already in progress on startup (floor {init_state.get('game_state', {}).get('floor', '?')})")
+                run_counted = True  # Don't count the in-progress run again
     except Exception:
         pass
 
@@ -196,27 +206,41 @@ async def state_watcher():
                         if floor > run_stats["best_floor"]:
                             run_stats["best_floor"] = floor
                             _save_stats()
+                            await _broadcast_stats()
 
-                        # Detect new run — only when transitioning from
-                        # no-game to in-game AND floor is low (actual new run,
-                        # not just stream.py restarting mid-run)
+                        # Detect new run start — mark as pending, don't count yet.
+                        # Only count once the run progresses past floor 1.
                         if not was_in_game and floor <= 1:
-                            run_stats["total_runs"] += 1
+                            pending_run_start = True
+                            run_counted = False
                             game_over_handled = False
-                            _save_stats()
                             # Clear feed for the new run
                             action_feed.clear()
                             _save_feed()
                             recent_events.clear()
+
+                        # Count the run once it actually progresses (floor > 1)
+                        # This prevents false starts from inflating the counter
+                        if pending_run_start and not run_counted and floor > 1:
+                            run_counted = True
+                            pending_run_start = False
+                            run_stats["total_runs"] += 1
+                            _save_stats()
                             await broadcast({
                                 "type": "run_start",
                                 "class": cls,
                                 "run_number": run_stats["total_runs"],
                             })
+                            await _broadcast_stats()
 
                         # Detect game over (only process once per run)
                         if screen == "GAME_OVER" and not game_over_handled:
                             game_over_handled = True
+                            # If run was never counted (died on floor 1), count it now
+                            if not run_counted:
+                                run_counted = True
+                                pending_run_start = False
+                                run_stats["total_runs"] += 1
                             victory = ss.get("victory", False)
                             if victory:
                                 run_stats["wins"] += 1
@@ -229,6 +253,7 @@ async def state_watcher():
                                 "floor": floor,
                                 "stats": dict(run_stats),
                             })
+                            await _broadcast_stats()
                             # Archive this run's event log
                             _archive_run(
                                 run_stats["total_runs"], victory, floor, cls

@@ -167,6 +167,74 @@ def state_raw() -> dict:
 _last_raw_state = None
 
 
+def _resolve_card_name(raw_state: dict, action: str) -> str:
+    """Translate card names in play commands to indices at execution time.
+
+    If the action is a 'play' command with a card name instead of an index,
+    look up the card in the current hand and replace the name with its index.
+
+    Examples:
+        "play Bash 0"       -> "play 2 0"   (if Bash is at index 2)
+        "play Shrug It Off"  -> "play 3"     (if Shrug It Off is at index 3)
+        "play Bash+ 0"      -> "play 2 0"   (matches upgraded Bash specifically)
+        "play 3 0"           -> "play 3 0"   (numeric index, unchanged)
+    """
+    if not action or not action.strip().lower().startswith("play "):
+        return action
+
+    parts = action.strip().split()
+    if len(parts) < 2:
+        return action
+
+    # Extract everything after "play"
+    after_play = action.strip()[len("play "):].strip()
+
+    # Determine if the last token is a target (a digit)
+    tokens = after_play.split()
+    if tokens and tokens[-1].isdigit() and len(tokens) > 1:
+        target = tokens[-1]
+        card_ref = " ".join(tokens[:-1])
+    else:
+        target = None
+        card_ref = after_play
+
+    # If card_ref is a pure number, it's already an index — leave as-is
+    try:
+        int(card_ref)
+        return action  # backwards compatible
+    except ValueError:
+        pass
+
+    # Look up the card by name in the current hand
+    if not raw_state:
+        return action
+    combat = (raw_state.get("game_state") or {}).get("combat_state")
+    if not combat:
+        return action
+    hand = combat.get("hand", [])
+    if not hand:
+        return action
+
+    # Check if the name ends with '+' (upgrade-specific match)
+    require_upgrade = card_ref.endswith("+")
+    search_name = card_ref[:-1] if require_upgrade else card_ref
+
+    # Find first matching card (case-insensitive)
+    for i, card in enumerate(hand):
+        card_name = card.get("name", "")
+        if card_name.lower() == search_name.lower():
+            if require_upgrade and card.get("upgrades", 0) < 1:
+                continue
+            idx = i + 1  # 1-indexed
+            if target is not None:
+                return f"play {idx} {target}"
+            else:
+                return f"play {idx}"
+
+    # No match found — return unchanged, let relay handle the error
+    return action
+
+
 def _translate_named_choose(name: str, screen: str) -> str:
     """Translate named choose commands like 'choose rest'."""
     name_map = {
@@ -306,6 +374,8 @@ def _translate_command(command: str) -> str:
     return command
 
 
+_event_seq = 0
+
 def _log_event(event: dict):
     """Write event directly to stream_events.jsonl (independent of stream.py).
 
@@ -313,7 +383,13 @@ def _log_event(event: dict):
     decisions posted via HTTP are silently dropped. cmd.py now writes every event
     to the log file itself, so the full run log always exists even if stream.py
     is down.
+
+    Each event gets a unique sequence number to distinguish legitimate repeated
+    actions (e.g., playing Strike twice) from tool-retry duplicates.
     """
+    global _event_seq
+    _event_seq += 1
+    event["seq"] = _event_seq
     try:
         os.makedirs(os.path.dirname(EVENT_LOG), exist_ok=True)
         with open(EVENT_LOG, "a") as f:
@@ -378,7 +454,12 @@ def send(command: str, reason: str = "") -> str:
     """Send a command and return the resulting game state.
 
     Args:
-        command: The game command to send.
+        command: The game command to send. Card references in play commands
+                 can be indices (1-indexed) or card names:
+                   "play 3 0"          — play card at index 3 targeting enemy 0
+                   "play Bash 0"       — play Bash targeting enemy 0 (resolved automatically)
+                   "play Shrug It Off" — play Shrug It Off (no target)
+                 Using card names avoids index-shift errors when playing multiple cards.
         reason: Optional reasoning for the overlay/stream. Explain why
                 you're making this decision — viewers want to understand.
 
@@ -400,10 +481,153 @@ def send(command: str, reason: str = "") -> str:
     # Fetch pre-command state so translation has current hand/enemies
     global _last_raw_state
     _last_raw_state = _tcp_request({"type": "state"})
-    _post_decision(command, reason)
-    raw = _tcp_request({"type": "command", "command": command})
+    # Resolve card names to indices using current hand state
+    resolved = _resolve_card_name(_last_raw_state, command)
+    _post_decision(resolved, reason)
+    raw = _tcp_request({"type": "command", "command": resolved})
     _last_raw_state = raw  # Update cache
+
+    # Auto-handle mechanical transitions (shop, chest, gold collection)
+    raw = _auto_handle_mechanical(raw)
+
     return format_state(raw)
+
+
+def _auto_proceed_shop(raw: dict) -> dict:
+    """If we landed on an empty SHOP_ROOM, auto-proceed to get the real shop screen."""
+    global _last_raw_state
+    if not raw.get("in_game"):
+        return raw
+    gs = raw.get("game_state", {})
+    if gs.get("screen_type") != "SHOP_ROOM":
+        return raw
+    ss = gs.get("screen_state", {})
+    # Only auto-proceed if shop inventory is empty (the transition state)
+    if ss.get("cards") or ss.get("relics") or ss.get("potions"):
+        return raw
+    # Auto-proceed to load the actual shop
+    raw = _tcp_request({"type": "command", "command": "proceed"})
+    _last_raw_state = raw
+    return raw
+
+
+def _auto_proceed_chest(raw: dict) -> dict:
+    """Auto-open chests — there's never a reason not to open them."""
+    global _last_raw_state
+    if not raw.get("in_game"):
+        return raw
+    gs = raw.get("game_state", {})
+    if gs.get("screen_type") != "CHEST":
+        return raw
+    # Chests always contain loot; opening is never a decision.
+    raw = _tcp_request({"type": "command", "command": "proceed"})
+    _last_raw_state = raw
+    return raw
+
+
+def _auto_collect_gold(raw: dict) -> dict:
+    """Auto-collect gold/stolen_gold from combat rewards — free value with no downside."""
+    global _last_raw_state
+    if not raw.get("in_game"):
+        return raw
+    gs = raw.get("game_state", {})
+    if gs.get("screen_type") != "COMBAT_REWARD":
+        return raw
+    ss = gs.get("screen_state", {})
+    rewards = ss.get("rewards", [])
+    # Collect all gold rewards (iterate because indices shift after each pick)
+    while True:
+        gold_idx = None
+        for i, r in enumerate(rewards):
+            if r.get("reward_type") in ("GOLD", "STOLEN_GOLD"):
+                gold_idx = i
+                break
+        if gold_idx is None:
+            break
+        # Pick up the gold — always beneficial, never a trade-off.
+        raw = _tcp_request({"type": "command", "command": f"choose {gold_idx}"})
+        _last_raw_state = raw
+        if not raw.get("in_game"):
+            return raw
+        gs = raw.get("game_state", {})
+        if gs.get("screen_type") != "COMBAT_REWARD":
+            # Gold was the only reward; screen changed. Return new state.
+            return raw
+        ss = gs.get("screen_state", {})
+        rewards = ss.get("rewards", [])
+    return raw
+
+
+def _auto_handle_mechanical(raw: dict) -> dict:
+    """Handle mechanical transitions that never involve a real decision."""
+    raw = _auto_proceed_shop(raw)
+    raw = _auto_proceed_chest(raw)
+    raw = _auto_collect_gold(raw)
+    return raw
+
+
+def _validate_action(raw: dict, action: str) -> str | None:
+    """Check whether the next action in a turn sequence is still valid.
+
+    Returns None if valid, or a reason string if the action should be skipped
+    (and the sequence stopped).
+    """
+    # 1. Still in game?
+    if not raw.get("in_game"):
+        return "not in game"
+
+    gs = raw.get("game_state", {})
+    combat = gs.get("combat_state")
+
+    # 2. Still in combat?
+    if not combat:
+        screen = gs.get("screen_type", "unknown")
+        return f"combat ended (screen: {screen})"
+
+    parts = action.strip().split()
+    verb = parts[0].lower() if parts else ""
+
+    # 3. "end" is always valid during combat
+    if verb == "end":
+        return None
+
+    # 4. "play N [target]" — validate card index and playability
+    if verb == "play":
+        if len(parts) < 2:
+            return "play command missing card index"
+        try:
+            card_n = int(parts[1])
+        except ValueError:
+            return f"invalid card index: {parts[1]}"
+
+        hand = combat.get("hand", [])
+        if card_n < 1 or card_n > len(hand):
+            return f"card index {card_n} out of range (hand has {len(hand)} cards)"
+
+        card = hand[card_n - 1]
+        if not card.get("is_playable", False):
+            card_name = card.get("name", f"card {card_n}")
+            return f"{card_name} is not playable (likely not enough energy)"
+
+        # Validate target if specified
+        if len(parts) > 2:
+            try:
+                target_idx = int(parts[2])
+            except ValueError:
+                return f"invalid target index: {parts[2]}"
+            monsters = combat.get("monsters", [])
+            alive = [m for m in monsters if not m.get("is_gone")]
+            if target_idx < 0 or target_idx >= len(alive):
+                return f"target index {target_idx} out of range ({len(alive)} alive monsters)"
+
+        return None
+
+    # 5. Potion commands — always valid (rare errors, recoverable)
+    if verb == "potion":
+        return None
+
+    # Unknown verb — let it through, relay will handle errors
+    return None
 
 
 def turn(actions: list, reason: str = "") -> str:
@@ -413,17 +637,26 @@ def turn(actions: list, reason: str = "") -> str:
     should play combat — reason about your whole hand, figure out the
     optimal sequence, then commit.
 
+    Card references can be indices (1-indexed) or card names:
+      "play 3 0"           — play card at index 3 targeting enemy 0
+      "play Bash 0"        — play Bash targeting enemy 0 (index resolved automatically)
+      "play Shrug It Off"  — play Shrug It Off (no target)
+    Using card names avoids index-shift errors when playing multiple cards.
+
     Args:
-        actions: List of command strings, e.g. ["play 1 0", "play 3", "play 2 0", "end"]
-                 Card indices shift as you play cards! If you play card 3, what was card 4
-                 becomes card 3. Plan your indices accordingly (play highest indices first
-                 to avoid shifting, or account for the shifts).
+        actions: List of command strings, e.g. ["play Bash 0", "play Strike 0", "play Defend", "end"]
+                 Card names are resolved against the current hand at execution time,
+                 so they're always correct regardless of what was played before.
+                 Numeric indices still work: ["play 3 0", "play 2 0", "end"]
+                 but indices shift as you play cards — names don't.
         reason: Your reasoning for the whole turn. Shows on stream overlay.
 
     Returns:
         Final game state after all actions executed.
 
-    If any action produces an error state, execution stops and returns that state.
+    If any action fails validation (combat ended, card unplayable, etc.),
+    the sequence stops early and returns the current state with a note
+    about what happened.
     """
     if not actions:
         return state()
@@ -433,8 +666,9 @@ def turn(actions: list, reason: str = "") -> str:
     global _last_raw_state
     _last_raw_state = _tcp_request({"type": "state"})
 
-    # Translate all actions using pre-turn state for the stream
-    translated_actions = [_translate_command(a) for a in actions]
+    # Resolve and translate all actions using pre-turn state for the stream
+    # (Translation uses original names for readability; resolution happens per-action below)
+    translated_actions = [_translate_command(_resolve_card_name(_last_raw_state, a)) for a in actions]
     translated_summary = " → ".join(translated_actions)
 
     # Post the full plan as one reasoning entry (skip the combined feed entry)
@@ -445,19 +679,53 @@ def turn(actions: list, reason: str = "") -> str:
         skip_feed=True,
     )
 
-    # Execute each action, posting individual feed entries
+    total = len(actions)
+    stopped_msg = None
+
+    # Execute each action, resolving card names against CURRENT state
     for i, action in enumerate(actions):
-        _post_feed(translated_actions[i])
-        raw = _tcp_request({"type": "command", "command": action.strip()})
+        # Resolve card name to index using current hand (not pre-turn hand)
+        resolved_action = _resolve_card_name(_last_raw_state, action)
+
+        # Validate before sending (uses current game state)
+        if i > 0:
+            # First action uses pre-turn state which may not have combat_state
+            # fields populated the same way; skip validation for it.
+            # After the first action, we have fresh state from the relay.
+            fail_reason = _validate_action(_last_raw_state, resolved_action)
+            if fail_reason:
+                stopped_msg = (
+                    f"[SEQUENCE STOPPED after action {i}/{total}: "
+                    f"{fail_reason}. Remaining actions skipped.]"
+                )
+                break
+
+        # Re-translate with resolved action for accurate feed display
+        _post_feed(_translate_command(resolved_action))
+        raw = _tcp_request({"type": "command", "command": resolved_action.strip()})
         _last_raw_state = raw
         if "error" in raw:
-            return format_state(raw)
+            # Auto-handle mechanical transitions even on error
+            _last_raw_state = _auto_handle_mechanical(_last_raw_state)
+            return format_state(_last_raw_state)
 
-    return format_state(_last_raw_state)
+    # Auto-handle mechanical transitions after the turn completes
+    _last_raw_state = _auto_handle_mechanical(_last_raw_state)
+
+    formatted = format_state(_last_raw_state)
+    if stopped_msg:
+        return stopped_msg + "\n\n" + formatted
+    return formatted
 
 
-def play(card: int, target: int = None) -> str:
-    """Play a card. Card is 1-indexed. Target is enemy index (0-indexed), required for targeted cards."""
+def play(card, target: int = None) -> str:
+    """Play a card by index or name. Target is enemy index (0-indexed), required for targeted cards.
+
+    Args:
+        card: Card index (1-indexed int) or card name (str).
+              Examples: 3, "Bash", "Shrug It Off", "Bash+"
+        target: Enemy index (0-indexed), required for targeted attack cards.
+    """
     if target is not None:
         return send(f"play {card} {target}")
     return send(f"play {card}")
