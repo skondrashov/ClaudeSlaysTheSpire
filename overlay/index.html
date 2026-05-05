@@ -241,30 +241,93 @@
     color: #4ade80;
   }
 
-  /* Changelog — human updates */
-  .changelog-list {
+  /* State of the Game panel */
+  .state-content {
     flex: 1;
     overflow-y: auto;
     min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
-  .changelog-entry {
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .changelog-entry .cl-date {
-    font-size: 13px;
-    color: #555;
-    font-family: 'Consolas', monospace;
+  .state-group-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #666;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
   }
 
-  .changelog-entry .cl-text {
-    font-size: 16px;
-    color: #bbb;
-    line-height: 1.4;
-    margin-top: 2px;
+  .state-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 2px 0;
+  }
+
+  .state-label {
+    font-size: 14px;
+    color: #777;
+  }
+
+  .state-value {
+    font-size: 14px;
+    color: #ddd;
+    font-weight: 600;
+  }
+
+  .state-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin: 2px 0;
+  }
+
+  .loop-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .loop-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.35;
+  }
+
+  .loop-step .step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #5a2090;
+    color: #e8d0ff;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .knowledge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 12px;
+  }
+
+  .knowledge-item {
+    font-size: 14px;
+    color: #999;
+    padding: 1px 0;
+  }
+
+  .knowledge-item span {
+    color: #d4a0ff;
+    font-weight: 700;
   }
 
   /* Hide all scrollbars */
@@ -303,27 +366,45 @@
   </div>
 
   <div class="bottom-section changelog-section">
-    <div class="section-title">Dev Log</div>
-    <div class="changelog-list" id="changelog">
-      <div class="changelog-entry">
-        <div class="cl-date">May 4</div>
-        <div class="cl-text">Draw/discard/exhaust pile contents shown in combat state. Player can see what's coming.</div>
+    <div class="section-title">State of the Game</div>
+    <div class="state-content">
+      <div>
+        <div class="state-group-title">System</div>
+        <div class="state-row"><span class="state-label">Model</span><span class="state-value">Claude Opus 4</span></div>
+        <div class="state-row"><span class="state-label">Interface</span><span class="state-value">Claude Code CLI</span></div>
+        <div class="state-row"><span class="state-label">Character</span><span class="state-value">Ironclad A0</span></div>
       </div>
-      <div class="changelog-entry">
-        <div class="cl-date">May 4</div>
-        <div class="cl-text">Batch turns: player plans full combat turn, executes as sequence. Individual actions in feed, full plan in reasoning.</div>
+
+      <hr class="state-divider">
+
+      <div>
+        <div class="state-group-title">The Loop</div>
+        <div class="loop-steps">
+          <div class="loop-step"><span class="step-num">1</span>Player agent plays with visible reasoning</div>
+          <div class="loop-step"><span class="step-num">2</span>Analyst reviews run, updates playbook</div>
+          <div class="loop-step"><span class="step-num">3</span>Next run reads updated knowledge</div>
+        </div>
       </div>
-      <div class="changelog-entry">
-        <div class="cl-date">May 4</div>
-        <div class="cl-text">Player lock file prevents two agents running simultaneously. Analyst agent role for post-run knowledge review.</div>
+
+      <hr class="state-divider">
+
+      <div>
+        <div class="state-group-title">Knowledge Base</div>
+        <div class="knowledge-grid" id="knowledgeGrid">
+          <div class="knowledge-item"><span>40</span> cards</div>
+          <div class="knowledge-item"><span>22</span> enemies</div>
+          <div class="knowledge-item"><span>3</span> bosses</div>
+          <div class="knowledge-item"><span>21</span> events</div>
+          <div class="knowledge-item"><span>25</span> relics</div>
+          <div class="knowledge-item"><span>19</span> potions</div>
+        </div>
       </div>
-      <div class="changelog-entry">
-        <div class="cl-date">May 4</div>
-        <div class="cl-text">Per-run log archival. Overlay clears on new run. Landing page for claudeslaysthespire.org.</div>
-      </div>
-      <div class="changelog-entry">
-        <div class="cl-date">May 4</div>
-        <div class="cl-text">Initial build. CommunicationMod relay, cmd.py interface, OBS overlay, stream server.</div>
+
+      <hr class="state-divider">
+
+      <div>
+        <div class="state-group-title">Links</div>
+        <div class="state-row"><span class="state-value" style="font-size:13px;"><a href="https://claudeslaysthespire.org" style="color:#d4a0ff;">claudeslaysthespire.org</a></span></div>
       </div>
     </div>
   </div>
