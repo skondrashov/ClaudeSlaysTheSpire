@@ -65,12 +65,19 @@ The prediction forces you to do the math. If the numbers don't work out (you die
 
 Then execute with `turn()`:
 ```python
-turn(["play 3", "play 2 0", "play 1 0", "end"], reason="15 block vs 20 incoming, take 5 to 70 HP. Jaw Worm: 25-12=13 HP.")
+turn(["play Defend", "play Bash 0", "play Strike 0", "end"], reason="15 block vs 20 incoming, take 5 to 70 HP. Jaw Worm: 25-12=13 HP.")
 ```
 
 The `reason` should be a concise summary of the prediction — the key numbers. Viewers want to see the math.
 
-### Card Index Shifting
+### Card Names vs. Indices
+
+**Prefer card names over indices to avoid shift errors:**
+```python
+turn(["play Bash 0", "play Strike 0", "play Defend", "end"], reason="...")
+```
+Card names are resolved against the current hand at execution time, so they're
+always correct regardless of what was played before.
 
 When you play a card, remaining cards shift down. If your hand is:
 ```
@@ -81,14 +88,14 @@ And you play card 3 (Bash), the hand becomes:
 [1] Strike  [2] Defend  [3] Strike  [4] Defend
 ```
 
-**Plan your indices for the sequence, not the original hand.** Playing highest indices first avoids shifting issues. Or account for the shifts explicitly.
+If you use numeric indices, plan them for the sequence, not the original hand. But card names avoid this problem entirely.
 
 ### Draw Effects
 
 If a card draws more cards (e.g., Shrug It Off, Pommel Strike, Battle Trance), you can't fully plan the turn. Play the draw card first, read the new state, then plan the rest:
 
 ```python
-send("play 2", reason="Shrug It Off for block + draw, then I'll plan the rest of the turn")
+send("play Shrug It Off", reason="Block + draw, then I'll plan the rest of the turn")
 # Now read new state and plan remaining cards
 ```
 
@@ -116,13 +123,19 @@ Think about what your deck needs, not just whether a card is generically "good."
 - Read the options carefully. Many events have hidden costs or benefits.
 - If you don't know an event, be cautious — say so and pick the safe option.
 
-## Knowledge
+## Reference
 
-Before your first action each run, check if knowledge files exist:
-- `playbook/` — Strategy insights from past runs
-- `knowledge/` — Card evaluations, boss guides, mechanics
+The `reference/` directory contains everything you need to make good decisions — mechanics, strategy, and decision prompts for every card, enemy, and situation. Load the RELEVANT file(s) for your current decision:
 
-Reference these when making decisions. If they contradict your instinct, note the conflict but lean toward the documented knowledge (it's based on evidence from actual runs).
+- **Start of run**: Read `reference/strategy.md` for high-level principles. Note which boss is coming.
+- **Combat start**: Read the entry for your enemy in `reference/enemies.md` or `reference/bosses.md`. For interesting cards in your hand, check their entries in `reference/cards-ironclad.md` — especially the DECISION POINTS section, which tells you what to consider before playing.
+- **Card rewards**: Check offered cards in `reference/cards-ironclad.md`. Consider what your deck needs and what the upcoming boss requires.
+- **Events**: Read the event entry in `reference/events.md`.
+- **Shop**: Check `reference/relics.md` and `reference/potions.md` for what's offered.
+- **Rest sites**: `reference/strategy.md` has the upgrade-vs-rest framework and upgrade priority.
+- **Map pathing**: `reference/strategy.md` has HP thresholds and pathing principles.
+
+Don't load all files at once. Load what's relevant to the decision in front of you. The reference files are designed so that loading the right entry naturally brings the context you need to reason well.
 
 ## Potions
 

@@ -1,5 +1,5 @@
 """
-Build static site from playbook + knowledge markdown files.
+Build static site from reference markdown files.
 Generates HTML pages + a changelog with diffs from git history.
 
 Usage: python site/build.py
@@ -12,7 +12,7 @@ from datetime import datetime
 
 ROOT = Path(__file__).parent.parent
 OUT = ROOT / "site" / "out"
-CONTENT_DIRS = ["playbook", "knowledge"]
+CONTENT_DIRS = ["reference"]
 
 # ── Minimal markdown → HTML ──────────────────────────────────────────
 
@@ -85,12 +85,12 @@ def inline(text):
 # ── Git history ──────────────────────────────────────────────────────
 
 def git_changelog(max_entries=50):
-    """Get commits that touched playbook/, knowledge/, or agents/ with diffs."""
+    """Get commits that touched reference/, agents/, or legacy playbook/knowledge/ with diffs."""
     try:
         result = subprocess.run(
             ["git", "log", f"--max-count={max_entries}", "--pretty=format:%H|%ai|%s",
              "--diff-filter=ACDMR", "-p", "--",
-             "playbook/", "knowledge/", "agents/", "AGENTS.md"],
+             "reference/", "playbook/", "knowledge/", "agents/", "AGENTS.md"],
             capture_output=True, text=True, cwd=ROOT, encoding="utf-8"
         )
         if result.returncode != 0:
@@ -322,8 +322,7 @@ TWITCH_CHANNEL = "ClaudeSlaysTheSpire"
 def page(title, content, active=""):
     nav_items = [
         ("index.html", "Home"),
-        ("playbook.html", "Playbook"),
-        ("knowledge.html", "Knowledge"),
+        ("reference.html", "Reference"),
         ("changelog.html", "Changelog"),
     ]
     nav_html = "\n".join(
@@ -393,10 +392,10 @@ strategy or hand-holding.
 
 <p>
 The system has two agents that take turns. A <strong>player agent</strong> actually plays the game,
-reading the board state and deciding what to do each turn. It has access to a set of knowledge
+reading the board state and deciding what to do each turn. It has access to a set of reference
 files that document what's been learned so far about cards, enemies, bosses, and strategy. After
 each run (win or loss), an <strong>analyst agent</strong> reviews what happened, identifies the key
-decision points where things went well or badly, and updates those knowledge files with what it
+decision points where things went well or badly, and updates those reference files with what it
 learned. The next run's player reads the updated files and hopefully makes better decisions.
 </p>
 
@@ -418,15 +417,14 @@ show up here:
 <ul>
 <li><strong>Knowledge changes</strong> are updates the analyst agent makes after reviewing runs. A
 new card evaluation, a revised boss strategy, a documented mistake that future runs should avoid.
-These show up in the <a href="playbook.html">Playbook</a> and <a href="knowledge.html">Knowledge</a>
-sections.</li>
+These show up in the <a href="reference.html">Reference</a> section.</li>
 <li><strong>Pipeline changes</strong> are structural improvements to how the system itself works &mdash;
 better prompting, new tools for the player, changes to how the analyst reviews runs. These are
 development work rather than gameplay learning.</li>
 </ul>
 
 <p>
-The <a href="changelog.html">Changelog</a> shows diffs of every change to the knowledge base, so
+The <a href="changelog.html">Changelog</a> shows diffs of every change to the reference files, so
 you can follow exactly what was learned and when.
 </p>
 
@@ -454,7 +452,7 @@ reasoning and learning layers instead of fighting with the interaction layer.
 </div>
 """
 
-    # Content listing (if any knowledge/playbook files exist)
+    # Content listing (if any reference files exist)
     content_html = ""
     if all_files:
         sections = {}
@@ -501,30 +499,23 @@ def build():
     (OUT / "index.html").write_text(page("Home", index_body, "Home"), encoding="utf-8")
 
     # ── Content pages ──
-    playbook_body = ""
-    knowledge_body = ""
+    reference_body = ""
 
     for path, info in all_files.items():
         slug = path.replace("\\", "-").replace("/", "-").replace(".md", ".html")
         content_html = md_to_html(info["content"])
-        back_link = f'<p style="margin-bottom:24px"><a href="{info["category"]}.html">&larr; Back to {info["category"]}</a></p>'
-        single_page = page(info["name"], back_link + content_html, info["category"].title())
+        back_link = f'<p style="margin-bottom:24px"><a href="reference.html">&larr; Back to reference</a></p>'
+        single_page = page(info["name"], back_link + content_html, "Reference")
         (OUT / slug).write_text(single_page, encoding="utf-8")
 
-        # Also accumulate into category pages
+        # Also accumulate into the reference page
         section = f'<div style="margin-bottom:40px"><h2><a href="{slug}">{info["name"]}</a></h2>\n{content_html}</div>\n'
-        if info["category"] == "playbook":
-            playbook_body += section
-        else:
-            knowledge_body += section
+        reference_body += section
 
-    if not playbook_body:
-        playbook_body = '<div class="empty-state">Playbook is empty. Strategy will appear here as Claude learns.</div>'
-    if not knowledge_body:
-        knowledge_body = '<div class="empty-state">Knowledge base is empty. Game mechanics and card data will appear here.</div>'
+    if not reference_body:
+        reference_body = '<div class="empty-state">Reference is empty. Strategy, cards, and mechanics will appear here as Claude learns.</div>'
 
-    (OUT / "playbook.html").write_text(page("Playbook", playbook_body, "Playbook"), encoding="utf-8")
-    (OUT / "knowledge.html").write_text(page("Knowledge", knowledge_body, "Knowledge"), encoding="utf-8")
+    (OUT / "reference.html").write_text(page("Reference", reference_body, "Reference"), encoding="utf-8")
 
     # ── Changelog ──
     entries = git_changelog()
@@ -546,14 +537,14 @@ def build():
   </div>
 </div>"""
     else:
-        changelog_body = '<div class="empty-state">No changes to playbook or knowledge yet.</div>'
+        changelog_body = '<div class="empty-state">No changes to reference files yet.</div>'
 
     (OUT / "changelog.html").write_text(page("Changelog", changelog_body, "Changelog"), encoding="utf-8")
 
     # ── CNAME for GitHub Pages ──
     (OUT / "CNAME").write_text("claudeslaysthespire.org", encoding="utf-8")
 
-    print(f"Built {len(all_files)} content pages + index, playbook, knowledge, changelog")
+    print(f"Built {len(all_files)} content pages + index, reference, changelog")
     print(f"Output: {OUT}")
 
 

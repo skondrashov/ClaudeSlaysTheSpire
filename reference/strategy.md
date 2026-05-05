@@ -1,0 +1,231 @@
+# Strategy
+
+High-level strategic principles for Ironclad runs.
+
+---
+
+## HP Management: The #1 Cause of Death
+
+Entering fights at critically low HP is the single most common cause of death across all runs. Five of eight deaths resulted from entering an Act 2 fight below 50% HP.
+
+| Run | Entry HP | % of Max | Fight | Result |
+|---|---|---|---|---|
+| 3 | 28 | 35% | Chosen | Died (Chosen at 6 HP) |
+| 4 | 42 | 50% | Centurion+Mystic | Died (at 1 HP) |
+| 5 | 11 | 13% | Gremlin Leader | Died (unwinnable) |
+| 6 | 6 | 7% | Book of Stabbing | Died (dealt 140 dmg, Book at 21 HP) |
+| 8 | 37 | 39% | 3 Cultists | Died (Shockwave+ timing + low HP) |
+
+### HP Thresholds for Act 2
+
+| Fight Type | Minimum HP | Notes |
+|---|---|---|
+| Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP |
+| Hallway (hard) | 40% | Centurion+Mystic, Snake Plant |
+| Elite | 60% | Gremlin Leader, Book of Stabbing |
+| Boss | 70% or Pantograph | Act 2 boss has massive damage |
+
+### What to Do at Low HP
+
+- Below the threshold for the next fight? Take a DIFFERENT PATH. Event rooms, rest sites, shops -- anything but combat.
+- If forced into a fight below threshold, use ALL potions aggressively on turns 1-2. Don't save them for "later" -- there may not be a later.
+- If there's a rest site before an elite, REST (don't upgrade). HP > upgrades when below threshold.
+- After any fight that drops you below 30% HP, the next room MUST be a rest site, shop, or event -- not combat.
+
+### What Causes the HP Drain
+
+1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 10-12 turns. The primary Act 2 HP drain.
+2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight. Often consumes Fairy in a Bottle.
+3. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
+4. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.
+
+---
+
+## Rest Site Decisions
+
+### Upgrade vs Rest Framework
+
+**Upgrade** when:
+- HP is above 45%
+- Next room is unknown or normal monsters
+- A critical upgrade target exists (Bash, True Grit, key attack card)
+- Earlier is better: one upgrade on floor 8 benefits 20+ fights
+
+**Rest** when:
+- HP is below 35%
+- Next room is a known elite or boss
+- At 35-45%, consider the specific next room -- elite/boss = rest, unknown = upgrade
+
+### The Upgrade Death Spiral
+
+Only upgrading once in 28 floors was the worst strategic error observed. Each missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. Break the cycle: upgrade at the FIRST rest site unless HP is critically low.
+
+### Upgrade Priority
+
+1. Bash (3 Vulnerable vs 2 is massive)
+2. True Grit (CHOSEN exhaust vs RANDOM is game-deciding)
+3. Carnage (28 vs 20 damage)
+4. Iron Wave (7/7 vs 5/5)
+5. Pommel Strike (10 damage + draw 2 vs 9 + draw 1)
+6. Thunderclap (7 vs 4 AOE)
+7. Shrug It Off (11 vs 8 block)
+8. Headbutt (12 vs 9 damage)
+9. Defend (8 vs 5 block -- low individual priority but Ancient Writing mass upgrade is excellent)
+
+---
+
+## Deck Building Philosophy
+
+### Take Cards That Solve Problems
+
+A card's value depends on what your deck needs RIGHT NOW.
+
+Before taking a card, ask:
+- What fights am I struggling with?
+- Do I have enough damage? Enough block? AOE?
+- Will this card dilute my draws (bigger deck = less likely to draw key cards)?
+
+A mediocre card that fills a gap is better than a strong card that duplicates what you already have.
+
+### Deck Thinning
+
+Remove Strikes at shops and events. A 10-12 card deck draws key cards much more reliably than a 15+ card deck. Remove Strikes before Defends (Strikes get outclassed faster; Defend's 5 block stays relevant).
+
+### Multi-Purpose Cards Win
+
+The winning formula across all victories: cards that do two things. Block+draw (Shrug It Off), damage+draw (Pommel Strike), damage+block (Iron Wave), damage+heal (Reaper), damage+deck manipulation (Headbutt). Single-purpose cards (Strike, Defend) are the weakest cards in the deck.
+
+### Unknown Card Evaluation
+
+- **Skip** unknown cards with self-damage, self-debuff, or suspicious keywords ("lose," "take damage," "Vulnerable to self," curses).
+- **Take** unknown cards that seem purely beneficial (damage + heal, damage + draw, block + effect). The upside outweighs the risk.
+- **Especially take** unknown cards that fill a known gap in your deck.
+
+---
+
+## Boss Preparation
+
+### Pre-Boss Checklist (Verify by Floor 12-15)
+
+Before the Act 1 boss, verify ALL THREE:
+1. A card that addresses the specific boss threat
+2. A sustain/passive defense source (Metallicize, Plated Armor, Pantograph, or high HP)
+3. Enough HP (60%+ without Pantograph)
+
+If you have 0-1 of these, the boss will likely kill you. Adjust card picks in remaining floors.
+
+### Boss-Specific Requirements
+
+**Slime Boss needs:**
+- AOE for the split (Thunderclap, Whirlwind) -- MANDATORY
+- Burst single-target to kill one slime fast (Fiend Fire)
+- Exhaust for Slimed cards
+
+**The Guardian needs:**
+- 32+ block capability in one turn (Impervious, double Metallicize + Weak)
+- Burst damage for Mode Shift (Carnage+)
+- Enough cards to last 12+ turns (do NOT over-exhaust)
+
+**Hexaghost needs:**
+- Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) -- MANDATORY
+- Passive block (Metallicize) for the 13-turn fight
+- Turn 1 setup (Thunderclap for Vulnerable)
+- No self-damage cards (Brutality, Berserk)
+
+### Save One-Use Cards for Bosses
+
+Exhaust cards like Shockwave+ are single-use per combat. Don't waste them on hallway fights unless the fight is genuinely dangerous. The boss is almost always the hardest fight.
+
+### Use Potions at Boss Start
+
+Stat-boost potions (Strength, Speed, Essence of Steel) provide maximum value when used turn 1 of a boss fight. Powers from Power Potion are permanent for the combat. Don't hoard potions -- use them.
+
+---
+
+## Shockwave+ Timing Rule
+
+**Play Shockwave+ on the FIRST ATTACK TURN of multi-enemy fights.**
+
+- Turn 1 is NOT always right: if all enemies are buffing (Cultists turn 1), Weak is wasted.
+- Turn 2 is usually correct: attacks start here for most multi-enemy fights.
+- NEVER save for turn 4+: enemies have already accumulated Strength by then. Early Weak saves more HP than late Weak.
+
+Priority on first attack turn: Shockwave+ (mass Weak+Vuln) > Reaper (healing) > single-target damage. Preventing damage with Weak > healing damage already taken.
+
+---
+
+## Exhaust Strategy
+
+### The Power and the Limit
+
+Exhaust synergy (Dark Embrace draw + Charon's Ashes 3 AOE) is a strong engine. But there's a critical breakpoint: once the deck is too thin, you can't survive big attacks.
+
+### Before Exhausting, Ask:
+
+1. Can my remaining deck survive the enemy's biggest attack? Calculate max block from remaining block cards.
+2. Is the card truly expendable? Strikes and Defends early -- yes. Core damage/block cards -- never.
+3. Am I in the first half of the fight (thin = good) or second half (thin = fatal)?
+
+### Safe Exhaust Targets
+- Strikes (once better attacks exist)
+- Extra Defends
+- Status cards (Slimed, Wound, Burn, Dazed)
+
+### Never Exhaust
+- Last copy of your best damage card
+- Last copy of a high-block card
+- Core combo pieces (Bash+ when Vulnerable matters)
+
+### The Long Fight Problem
+
+Exhaust cards front-load power into the first 5 turns. After that, the deck plays like a basic starter deck. Against scaling enemies (Gremlin Leader rallies, Cultist Ritual), the first 5 turns aren't enough, and the remaining deck can't handle scaled enemies. If 30%+ of the deck exhausts/is Ethereal, the fight MUST be won in 5-6 turns.
+
+---
+
+## Map Pathing
+
+### Core Principles
+
+- Prefer routes with a rest site in the last 1-2 floors before the boss.
+- Don't take unnecessary damage from events when HP is limited.
+- After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
+- If the path forces an elite at low HP, skip it entirely -- take any alternative path.
+
+### Elite Risk Assessment
+
+Before fighting an elite, check:
+1. **HP threshold**: Below 30 HP for Act 1 elites is dangerous. Below 60% for Act 2 elites is dangerous.
+2. **Deck vs elite matchup**: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE.
+3. **Potions available**: Potions compensate for bad matchups.
+4. **Path alternatives**: If a safer path exists with similar value, take it.
+
+### Fairy Management
+
+Fairy in a Bottle is often consumed in Centurion+Mystic fights. If Fairy is your only death insurance, avoid fights that might trigger it before the elite/boss. Plan paths so Fairy is available for the most dangerous fight.
+
+---
+
+## Act 2 Preparation
+
+Act 2 enemies hit significantly harder than Act 1.
+
+### Enter Act 2 at Full HP
+
+Pantograph heals to full before the boss, but Act 2 hallway fights drain 30-60 HP. Enter with maximum possible HP.
+
+### Upgrades Matter More
+
+Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 45%. The upgrade death spiral (no upgrades -> harder fights -> more HP loss -> forced resting -> no upgrades) must be avoided.
+
+### Healing Sustain Is Critical
+
+Burning Blood (+6/fight) cannot compensate for 30-50 HP fights. Reaper and Feed are the only reliable in-combat healing. Feed provides permanent Max HP scaling (12-18+ Max HP over a full run). Take healing cards early for maximum value.
+
+### Cross-Run Victory Pattern
+
+Across all boss victories, the differentiators are:
+1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this.
+2. **Passive block/sustain**: Metallicize, Plated Armor, or Pantograph appeared in most victories. None of the deaths had passive block.
+3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.
+4. **Self-damage avoidance**: No victory used Berserk or Brutality.
+5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards.
