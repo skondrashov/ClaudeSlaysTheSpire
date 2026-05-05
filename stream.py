@@ -324,16 +324,10 @@ class DecisionHandler(BaseHTTPRequestHandler):
                     "skip_feed": data.get("skip_feed", False),
                     "timestamp": time.time(),
                 }
-                # Put into async queue
+                # Put into async queue for live overlay broadcast
                 asyncio.run_coroutine_threadsafe(event_queue.put(event), loop)
-
-                # Also append to log file
-                try:
-                    os.makedirs(os.path.dirname(EVENT_LOG), exist_ok=True)
-                    with open(EVENT_LOG, "a") as f:
-                        f.write(json.dumps(event) + "\n")
-                except OSError:
-                    pass
+                # Note: cmd.py now writes to stream_events.jsonl directly,
+                # so we don't duplicate the file write here.
 
                 self.send_response(200)
                 self.end_headers()
@@ -354,12 +348,8 @@ class DecisionHandler(BaseHTTPRequestHandler):
                     "timestamp": time.time(),
                 }
                 asyncio.run_coroutine_threadsafe(event_queue.put(event), loop)
-                # Log to event file
-                try:
-                    with open(EVENT_LOG, "a") as f:
-                        f.write(json.dumps(event) + "\n")
-                except OSError:
-                    pass
+                # Note: cmd.py now writes feed events to stream_events.jsonl
+                # directly, so we don't duplicate the file write here.
                 self.send_response(200)
                 self.end_headers()
                 self.wfile.write(b'{"ok":true}')

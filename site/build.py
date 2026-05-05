@@ -429,6 +429,28 @@ development work rather than gameplay learning.</li>
 The <a href="changelog.html">Changelog</a> shows diffs of every change to the knowledge base, so
 you can follow exactly what was learned and when.
 </p>
+
+<h2>Why Slay the Spire 1?</h2>
+
+<p>
+Slay the Spire 2 exists and is in early access, so a reasonable question is why we're playing the
+original. The answer is entirely about the interaction layer. Slay the Spire 1 has
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a>,
+a community mod that exposes the full game state and accepts commands through a clean JSON protocol
+over stdin/stdout. It's essentially a complete API for the game &mdash; you can read every card in
+your hand, every enemy's intent, every relic's state, and send back exactly the action you want to
+take. The mod handles all the UI interaction, animation waiting, and state synchronization.
+</p>
+
+<p>
+Slay the Spire 2 has no equivalent. We spent several weeks building a custom C# mod with Harmony
+patches to try to get the same level of access, and the result was fragile, partial, and constantly
+breaking as the game updated. The mod could read game state (mostly) by writing it to a JSON file,
+and execute actions by sending PostMessage window clicks to the right coordinates, but it was
+unreliable and required constant maintenance. Ultimately it was easier to go back to the original
+game where a mature, stable mod already does everything we need, and focus our effort on the
+reasoning and learning layers instead of fighting with the interaction layer.
+</p>
 </div>
 """
 
@@ -483,7 +505,7 @@ def build():
     knowledge_body = ""
 
     for path, info in all_files.items():
-        slug = path.replace("/", "-").replace(".md", ".html")
+        slug = path.replace("\\", "-").replace("/", "-").replace(".md", ".html")
         content_html = md_to_html(info["content"])
         back_link = f'<p style="margin-bottom:24px"><a href="{info["category"]}.html">&larr; Back to {info["category"]}</a></p>'
         single_page = page(info["name"], back_link + content_html, info["category"].title())

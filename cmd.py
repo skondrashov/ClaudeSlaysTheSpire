@@ -32,6 +32,11 @@ STREAM_URL = "http://127.0.0.1:3002/decision"
 LOCK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "player.lock")
 LOCK_STALE_SECONDS = 300  # lock expires after 5 minutes of inactivity
 
+# Direct event log — backup for when stream.py is down.
+# stream.py restarts during a run used to silently lose decisions.
+# Now cmd.py always writes to this file, so the full run log survives.
+EVENT_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "stream_events.jsonl")
+
 # Each import of cmd.py gets a unique session ID.
 # Two agents importing cmd.py = two sessions = lock conflict.
 _SESSION_ID = str(uuid.uuid4())
@@ -301,11 +306,38 @@ def _translate_command(command: str) -> str:
     return command
 
 
+def _log_event(event: dict):
+    """Write event directly to stream_events.jsonl (independent of stream.py).
+
+    This is the reliability fix for Run 1's lost logs — when stream.py restarts,
+    decisions posted via HTTP are silently dropped. cmd.py now writes every event
+    to the log file itself, so the full run log always exists even if stream.py
+    is down.
+    """
+    try:
+        os.makedirs(os.path.dirname(EVENT_LOG), exist_ok=True)
+        with open(EVENT_LOG, "a") as f:
+            f.write(json.dumps(event) + "\n")
+    except OSError:
+        pass
+
+
 def _post_decision(command: str, reasoning: str = "", translated_override: str = None,
                     skip_feed: bool = False):
-    """Post decision to stream server (best-effort, non-blocking)."""
+    """Post decision to stream server AND log directly to file."""
+    translated = translated_override or _translate_command(command)
+    event = {
+        "type": "decision",
+        "command": command,
+        "translated": translated,
+        "reasoning": reasoning,
+        "skip_feed": skip_feed,
+        "timestamp": time.time(),
+    }
+    # Always log to file (survives stream.py restarts)
+    _log_event(event)
+    # Also post to stream server for live overlay (best-effort)
     try:
-        translated = translated_override or _translate_command(command)
         data = json.dumps({
             "command": command,
             "translated": translated,
@@ -322,7 +354,14 @@ def _post_decision(command: str, reasoning: str = "", translated_override: str =
 
 
 def _post_feed(text: str, highlight: bool = False):
-    """Post a feed-only entry to stream server (action feed, not reasoning log)."""
+    """Post a feed-only entry to stream server AND log directly to file."""
+    event = {
+        "type": "feed",
+        "text": text,
+        "highlight": highlight,
+        "timestamp": time.time(),
+    }
+    _log_event(event)
     try:
         data = json.dumps({"text": text, "highlight": highlight}).encode()
         req = urllib.request.Request(
