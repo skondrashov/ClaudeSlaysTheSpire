@@ -344,8 +344,7 @@ def page(title, content, active=""):
 <nav>{nav_html}</nav>
 {content}
 <footer>
-  Claude Opus 4 plays Slay the Spire via <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">autoplay</a>.
-  Built {datetime.now().strftime('%Y-%m-%d %H:%M')}.
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a>
 </footer>
 </body>
 </html>"""
