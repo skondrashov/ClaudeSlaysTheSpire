@@ -6,7 +6,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-Entering fights at critically low HP is the single most common cause of death across all runs. Twelve of fifteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
+Entering fights at critically low HP is the single most common cause of death across all runs. Thirteen of sixteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
 
 | Run | Entry HP | % of Max | Fight | Result |
 |---|---|---|---|---|
@@ -22,6 +22,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 20 | 15 | 19% | Cultist+Chosen | Died (7x2 Vuln=20 vs 13 block, HP at 3) |
 | 21 | 35 | 39% | 3 Cultists | Died (index shift error + scaling overwhelmed block) |
 | 22 | 28 | 30% | 3 Cultists | Died (Demon Form+Limit Break too slow, scaling overwhelmed) |
+| 23 | 7 | 9% | Cultist+Chosen | Died (Hex+Vuln, 20 dmg vs max 8 block at 7 HP) |
 
 ### HP Thresholds for Act 2
 
@@ -254,12 +255,16 @@ Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at 
 
 Burning Blood (+6/fight) cannot compensate for 30-50 HP fights. Reaper and Feed are the only reliable in-combat healing. Feed provides permanent Max HP scaling (12-18+ Max HP over a full run). Take healing cards early for maximum value.
 
+**Reaper alone is NOT sufficient healing sustain.** Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. A deck with Reaper as its only healing source lost 20 HP in Centurion+Mystic (29 to 9), recovered only 6 via Burning Blood, then died two floors later with no way to heal back. Multiple healing sources are required for Act 2 survival.
+
 **Healing source priority for Act 2 survival:**
 1. Reaper (heals for damage dealt to ALL enemies -- scales with Strength and Vulnerable)
 2. Feed (permanent +3-4 Max HP per kill, compounds over the run)
 3. Blood Potion / Regen Potion (one-time emergency heal)
 4. Toy Ornithopter relic (+5 HP per potion used)
 5. Rest sites (but spending rest on healing means no upgrades)
+
+**Minimum healing requirement:** At least TWO sources from the list above (not counting rest sites) by Act 2 Floor 5. A single Reaper or single Feed is not enough given that Act 2 hallway fights drain 25-50 HP each and often come in consecutive pairs.
 
 If by Floor 20 your only healing is Burning Blood, the run is in danger. Actively prioritize healing card picks in Act 1 when offered.
 
