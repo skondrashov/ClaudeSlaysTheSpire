@@ -19,6 +19,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 11 | 18 | ~22% | Chosen+Byrd | Died (HP drained through Act 2) |
 | 13 | 10 | ~12% | Fungi Beast+Shelled Parasite | Died (2x Brutality self-damage at 10 HP) |
 | 19 | 18 | 25% | Shelled Parasite+Fungi Beast | Died (no block cards, Offering -6 HP left at 6) |
+| 20 | 15 | 19% | Cultist+Chosen | Died (7x2 Vuln=20 vs 13 block, HP at 3) |
 
 ### HP Thresholds for Act 2
 
@@ -46,8 +47,10 @@ The pattern across 9 low-HP deaths: the player enters Act 2 at reasonable HP, lo
 
 1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 10-12 turns. The primary Act 2 HP drain.
 2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight. Often consumes Fairy in a Bottle.
-3. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
-4. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.
+3. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Even with burst damage, drains 20-30 HP. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.
+4. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
+5. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.
+6. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. With 2 Decays, that is 4 HP/turn lost regardless of block. Over a 5-turn fight, that is 20 free HP lost. Prioritize curse removal at shops or via exhaust (Fiend Fire).
 
 ---
 
@@ -192,6 +195,10 @@ Exhaust synergy (Dark Embrace draw + Charon's Ashes 3 AOE) is a strong engine. B
 
 Exhaust cards front-load power into the first 5 turns. After that, the deck plays like a basic starter deck. Against scaling enemies (Gremlin Leader rallies, Cultist Ritual), the first 5 turns aren't enough, and the remaining deck can't handle scaled enemies. If 30%+ of the deck exhausts/is Ethereal, the fight MUST be won in 5-6 turns.
 
+### Fiend Fire + Unceasing Top Engine
+
+Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustained draw engine. After Fiend Fire exhausts hand, Top draws a card. Play it, hand empties, draw again. This cycles through the draw pile in one mega-turn. With energy from Bloodletting/Offering, this can deal 50-100+ damage in a single turn while generating block from Rage. This is currently the strongest combo observed for Ironclad.
+
 ---
 
 ## Map Pathing
@@ -232,6 +239,15 @@ Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at 
 ### Healing Sustain Is Critical
 
 Burning Blood (+6/fight) cannot compensate for 30-50 HP fights. Reaper and Feed are the only reliable in-combat healing. Feed provides permanent Max HP scaling (12-18+ Max HP over a full run). Take healing cards early for maximum value.
+
+**Healing source priority for Act 2 survival:**
+1. Reaper (heals for damage dealt to ALL enemies -- scales with Strength and Vulnerable)
+2. Feed (permanent +3-4 Max HP per kill, compounds over the run)
+3. Blood Potion / Regen Potion (one-time emergency heal)
+4. Toy Ornithopter relic (+5 HP per potion used)
+5. Rest sites (but spending rest on healing means no upgrades)
+
+If by Floor 20 your only healing is Burning Blood, the run is in danger. Actively prioritize healing card picks in Act 1 when offered.
 
 ### Cross-Run Victory Pattern
 

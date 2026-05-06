@@ -14,6 +14,7 @@
 - [Essence of Steel](essence-of-steel.md)
 - [Entropic Brew](entropic-brew.md)
 - [Blood Potion](blood-potion.md)
+- [Distilled Chaos](distilled-chaos.md)
 
 ## Passive/Triggered Potions
 

@@ -52,3 +52,4 @@
 - [Brutality](brutality.md)
 - [Rupture](rupture.md)
 - [Corruption](corruption.md)
+- [Rage](rage.md)

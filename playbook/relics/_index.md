@@ -15,6 +15,7 @@
 - [Torii](torii.md)
 - [White Beast Statue](white-beast-statue.md)
 - [Pear](pear.md)
+- [Paper Phrog](paper-phrog.md)
 
 ## Uncommon Relics
 
@@ -32,6 +33,7 @@
 - [Lizard Tail](lizard-tail.md)
 - [Molten Egg](molten-egg.md)
 - [Enchiridion](enchiridion.md)
+- [Unceasing Top](unceasing-top.md)
 
 ## Boss Relics / Special
 
