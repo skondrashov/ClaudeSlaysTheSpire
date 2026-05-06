@@ -42,11 +42,13 @@
 - [Seeing Red+](seeing-red.md)
 - [Armaments](armaments.md)
 - [Second Wind](second-wind.md)
+- [Limit Break](limit-break.md)
 
 ## Power Cards
 
 - [Inflame](inflame.md)
 - [Metallicize](metallicize.md)
+- [Demon Form](demon-form.md)
 - [Dark Embrace](dark-embrace.md)
 - [Berserk](berserk.md)
 - [Brutality](brutality.md)

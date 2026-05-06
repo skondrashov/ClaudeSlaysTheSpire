@@ -2,6 +2,9 @@
 PATTERN: Turn 1 applies Hex (adds Dazed to draw pile when you play Skills). Applies Vulnerable to player. Has a 7x2 multi-attack (14 raw, 20 with Vulnerable on player). Gains +3 Strength over the fight. Attacks escalate from ~10 to 14 (7x2) to 20+ as Strength stacks.
 KEY MECHANIC: Hex. Every Skill card played adds a Dazed to draw pile. Blocking is actively costly -- each Defend clogs the deck. Also applies Vulnerable to player, making its 7x2 hit deal 20 effective damage.
 WHAT THIS MEANS: Minimize Skill usage. Front-load damage with Attacks. Bash+ is safe (Attack). Kill before Strength buffs make 7x2 lethal. With Vulnerable on you, even 7x2 base becomes 20 damage per turn. At low HP (<20), the 7x2 with Vulnerable is a death sentence.
+
+HP DRAIN: This fight routinely drains 30-40 HP even with a strong deck. If opening hand lacks block cards, the first 1-2 turns of unblocked 10-14 damage create immediate danger. At 50 HP entry, leaving at 17 HP is a realistic outcome -- which then makes the NEXT fight lethal (the death spiral pattern).
+
 BENCHMARKS: Kill in 4-5 turns. Damage output drops from Weak -- plan accordingly. Must enter with 40+ HP minimum.
 BRING: Attack-heavy deck. Iron Wave (Attack that blocks). Inflame (Strength overcomes Weak penalty). Bash+ (Attack, applies Vulnerable). Fiend Fire (exhausts Dazed cards while dealing burst).
 AVOID: Playing Defend unless absolutely necessary (each one adds Dazed). Slow kill (Strength scaling is lethal). Entering below 30 HP (7x2 + Vulnerable = 20/turn is often unblockable at low card density).

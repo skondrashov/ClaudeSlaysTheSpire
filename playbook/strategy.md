@@ -6,7 +6,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-Entering fights at critically low HP is the single most common cause of death across all runs. Nine of fourteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
+Entering fights at critically low HP is the single most common cause of death across all runs. Twelve of fifteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
 
 | Run | Entry HP | % of Max | Fight | Result |
 |---|---|---|---|---|
@@ -21,6 +21,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 19 | 18 | 25% | Shelled Parasite+Fungi Beast | Died (no block cards, Offering -6 HP left at 6) |
 | 20 | 15 | 19% | Cultist+Chosen | Died (7x2 Vuln=20 vs 13 block, HP at 3) |
 | 21 | 35 | 39% | 3 Cultists | Died (index shift error + scaling overwhelmed block) |
+| 22 | 28 | 30% | 3 Cultists | Died (Demon Form+Limit Break too slow, scaling overwhelmed) |
 
 ### HP Thresholds for Act 2
 
@@ -31,7 +32,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 | Elite | 60% | Gremlin Leader, Book of Stabbing |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
 
-**CRITICAL: 3 Cultists is a hallway fight that scales like an elite.** Triple independent +3 Str/turn = +9 combined Str/turn. At 35-40% HP this fight is near-unwinnable even with Shockwave+. Two deaths (Runs 8 and 21) occurred at 37-39% HP entry against 3 Cultists. The 50% threshold for hard hallway fights exists because of this encounter.
+**CRITICAL: 3 Cultists is the single most lethal encounter in the game -- responsible for three deaths (the most of any fight).** Triple independent +3 Str/turn = +9 combined Str/turn. Deaths occurred at 30%, 37%, and 39% HP entry. Even a deck with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage failed at 30% HP because slow scaling engines cannot kill fast enough to survive the combined damage. The 50% threshold for hard hallway fights is NON-NEGOTIABLE for this encounter.
 
 ### What to Do at Low HP
 
@@ -44,7 +45,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 
 The pattern across 10 low-HP deaths: the player enters Act 2 at reasonable HP, loses 30-50 HP in one brutal fight (Byrds, Centurion+Mystic, Cultist+Chosen, Looter+Mugger), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it's taking a second combat room immediately after. After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. If the map doesn't offer this, the run was lost at map selection, not at the fight.
 
-Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the player at 37% and 39% HP entry. These are not elites -- they appear on normal Monster nodes. The only defense is entering with sufficient HP or having a path that avoids consecutive combat rooms.
+Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the player three times at 30-39% HP entry. These are not elites -- they appear on normal Monster nodes. The only defense is entering with sufficient HP or having a path that avoids consecutive combat rooms.
 
 **Act 2 decision point:** After each fight, if HP is below 35%, evaluate the ENTIRE remaining path. If it contains 2+ consecutive combat rooms before a rest site, consider abandoning elites and taking the safest available path even if it means missing rewards.
 
@@ -113,6 +114,14 @@ Remove Strikes at shops and events. A 10-12 card deck draws key cards much more 
 ### Multi-Purpose Cards Win
 
 The winning formula across all victories: cards that do two things. Block+draw (Shrug It Off), damage+draw (Pommel Strike), damage+block (Iron Wave), damage+heal (Reaper), damage+deck manipulation (Headbutt). Single-purpose cards (Strike, Defend) are the weakest cards in the deck.
+
+### Slow Scaling Engines Are a Deck Weakness
+
+Demon Form (+2 Str/turn) and Limit Break (double Strength) are powerful scaling cards in long fights -- but they require 2-3 free setup turns before providing meaningful value. Against fast-scaling enemies at low HP (3 Cultists, multi-enemy fights), this setup time does not exist. The player is dead before the engine comes online.
+
+**Pattern:** A deck built around Demon Form + Limit Break can beat bosses comfortably but die to hallway fights when entered at low HP. The fix is NOT to avoid these cards -- it is to recognize that they solve long fights (bosses) but do NOT solve emergency situations. The deck still needs immediate burst (Fiend Fire, Rampage, Immolate) and block density for fights where you cannot afford 2 turns of setup.
+
+**Rule:** If your primary damage scaling is Demon Form or Limit Break, you MUST have an alternative fast-burst plan for emergencies. Do not enter fights below 50% HP relying solely on a slow engine.
 
 ### Unknown Card Evaluation
 

@@ -1,6 +1,9 @@
 # 3 Cultists (hallway, Act 2, 3 Cultists with Ritual 3 each, ~50 HP each)
+
+**THIS IS THE MOST LETHAL HALLWAY FIGHT IN THE GAME. Three deaths across all runs -- more than any other single encounter. A hallway fight that scales like an elite and has killed at 30%, 37%, and 39% HP entry.**
+
 PATTERN: Turn 1: ALL three use Ritual (+3 Str each, 0 damage). Subsequent turns: attacks that escalate. Each Cultist gains +3 Str/turn independently = +9 total Str/turn across the group.
-KEY MECHANIC: Independent Ritual +3 Str EACH per turn. This is the fastest-scaling fight in the game. A hallway fight that is deadlier than most elites due to triple independent scaling.
+KEY MECHANIC: Independent Ritual +3 Str EACH per turn. Triple independent scaling means combined incoming damage grows by +9 EVERY TURN. No other hallway fight has this escalation rate.
 
 SCALING MATH:
 - Turn 2: Each Cultist has 3 Str. Base attack 6 + 3 = 9 each. Combined: 27 damage.
@@ -10,10 +13,13 @@ SCALING MATH:
 - Turn 7: Each has 18 Str. 6+18=24 each. Combined: 72 damage.
 - With Weak applied: multiply by 0.75 (Turn 2 weakened = 20 combined).
 
-WHAT THIS MEANS: Turn 1 is free -- use it for Powers (Metallicize, Inflame) and initial damage on one target. Turn 2: play Shockwave+ IMMEDIATELY for mass Weak + Vulnerable. Focus fire one Cultist at a time -- each dead Cultist permanently removes one scaling threat. The fight becomes unwinnable if it goes past turn 6-7 with all 3 alive.
+WHAT THIS MEANS: Turn 1 is free -- use it for Powers (Metallicize, Inflame) and initial damage on one target. Turn 2-3: play Shockwave+ on the FIRST ATTACK TURN for mass Weak + Vulnerable. Focus fire one Cultist at a time -- each dead Cultist permanently removes one scaling threat. The fight becomes unwinnable if it goes past turn 6-7 with all 3 alive.
 
 KILL PRIORITY: Kill one Cultist ASAP. Reducing from 3 to 2 cuts incoming by 33%. Reducing to 1 makes the fight trivial. Each turn a Cultist stays alive, it gets permanently stronger.
 
-BENCHMARKS: Enter with 50%+ HP minimum. At 35-40% HP this fight is near-unwinnable even with Shockwave+ because you cannot tank the 4-5 turns needed to kill all three.
-BRING: Shockwave+ (MUST play turn 2), Powers for free turn setup (Inflame, Metallicize), single-target burst for focus fire (Rampage, Fiend Fire, Iron Wave+).
-AVOID: Delaying Shockwave+ past turn 2. Entering below 50% HP. Spreading damage across all 3 instead of focus-firing. Using numeric card indices (index shifting has caused fatal misplays in this fight twice).
+BENCHMARKS: **Enter with 50%+ HP MINIMUM -- this is a hard threshold, not a guideline.** Three deaths occurred at 30%, 37%, and 39% HP entry. Even with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage in the deck, the fight was fatal at 30% because the deck's scaling engine (Demon Form + Limit Break, or Rampage) needs 4-5 turns to kill all three, and the combined incoming damage overwhelms block capacity at low HP. The math is simple: if you cannot survive 4 turns of 18-27 combined damage per turn (after Weak), you die.
+
+WHY DECKS FAIL HERE: Slow scaling engines (Demon Form, Limit Break) need 2-3 free setup turns that do not exist at low HP. Even fast scaling (Rampage) killed one Cultist but could not finish the second before combined damage was lethal. The fight demands BOTH burst damage AND sustained block for 4-6 turns simultaneously.
+
+BRING: Shockwave+ (MUST play on first attack turn), Powers for free turn setup (Inflame, Metallicize), single-target burst for focus fire (Rampage, Fiend Fire, Iron Wave+), immediate block (Defend, Ghostly Armor).
+AVOID: Entering below 50% HP (three deaths confirm this). Delaying Shockwave+ past the first attack turn. Spreading damage across all 3 instead of focus-firing. Using numeric card indices (index shifting has caused fatal misplays in this fight). Relying solely on slow scaling (Demon Form) without fast burst to complement it.
