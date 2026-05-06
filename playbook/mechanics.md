@@ -121,6 +121,29 @@ Exhaust is NOT card removal. Permanent card removal only happens at shops (remov
 
 ---
 
+## Card Index Shifting (CRITICAL — RECURRING FATAL ERROR)
+
+When you play a card by numeric index, all cards after it shift down by 1. This means multi-card commands using numeric indices will play WRONG CARDS if the indices aren't adjusted for each prior play.
+
+**Example:** Hand is [1]Strike [2]Defend [3]Bash [4]Iron Wave [5]Fiend Fire
+- You plan: "play 3 0; play 5 0" (Bash, then Fiend Fire)
+- After Bash plays, hand becomes: [1]Strike [2]Defend [3]Iron Wave [4]Fiend Fire
+- "play 5 0" now targets NOTHING (only 4 cards) or errors
+- "play 4 0" would hit Fiend Fire (the correct adjusted index)
+
+**THE FIX: USE CARD NAMES, NOT NUMBERS.**
+- "play Bash 0; play Fiend Fire 0" always works regardless of shifting
+- Card names are resolved against the current hand at execution time
+- This eliminates the entire class of index shift errors
+
+**KNOWN KILLS FROM THIS BUG:**
+- Run 3: Played Defend instead of Strike due to shift. Chosen survived at 6 HP, killed player next turn.
+- Run 21: Final turn planned Fiend Fire (would have killed Cultist for 39 damage) but index shift caused Strike to play instead (only 12 damage). Could not kill second Cultist, died next turn.
+
+**RULE: NEVER use numeric indices in multi-card turn commands. Always use card names.** The only exception is when two copies of the same card are in hand and you need a specific one — in that case, use the index for ONLY that card and names for everything else.
+
+---
+
 ## Energy System
 
 - Base energy: 3 per turn (Ironclad, no modifiers).

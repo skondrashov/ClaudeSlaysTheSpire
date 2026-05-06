@@ -20,15 +20,18 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 13 | 10 | ~12% | Fungi Beast+Shelled Parasite | Died (2x Brutality self-damage at 10 HP) |
 | 19 | 18 | 25% | Shelled Parasite+Fungi Beast | Died (no block cards, Offering -6 HP left at 6) |
 | 20 | 15 | 19% | Cultist+Chosen | Died (7x2 Vuln=20 vs 13 block, HP at 3) |
+| 21 | 35 | 39% | 3 Cultists | Died (index shift error + scaling overwhelmed block) |
 
 ### HP Thresholds for Act 2
 
 | Fight Type | Minimum HP | Notes |
 |---|---|---|
 | Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP |
-| Hallway (hard) | 40% | Centurion+Mystic, Snake Plant |
+| Hallway (hard) | 50% | 3 Cultists, Centurion+Mystic, Snake Plant |
 | Elite | 60% | Gremlin Leader, Book of Stabbing |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
+
+**CRITICAL: 3 Cultists is a hallway fight that scales like an elite.** Triple independent +3 Str/turn = +9 combined Str/turn. At 35-40% HP this fight is near-unwinnable even with Shockwave+. Two deaths (Runs 8 and 21) occurred at 37-39% HP entry against 3 Cultists. The 50% threshold for hard hallway fights exists because of this encounter.
 
 ### What to Do at Low HP
 
@@ -39,7 +42,9 @@ Entering fights at critically low HP is the single most common cause of death ac
 
 ### The Act 2 Death Spiral Is Predictable
 
-The pattern across 9 low-HP deaths: the player enters Act 2 at reasonable HP, loses 30-50 HP in one brutal fight (Byrds, Centurion+Mystic, Looter+Mugger), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it's taking a second combat room immediately after. After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. If the map doesn't offer this, the run was lost at map selection, not at the fight.
+The pattern across 10 low-HP deaths: the player enters Act 2 at reasonable HP, loses 30-50 HP in one brutal fight (Byrds, Centurion+Mystic, Cultist+Chosen, Looter+Mugger), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it's taking a second combat room immediately after. After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. If the map doesn't offer this, the run was lost at map selection, not at the fight.
+
+Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the player at 37% and 39% HP entry. These are not elites -- they appear on normal Monster nodes. The only defense is entering with sufficient HP or having a path that avoids consecutive combat rooms.
 
 **Act 2 decision point:** After each fight, if HP is below 35%, evaluate the ENTIRE remaining path. If it contains 2+ consecutive combat rooms before a rest site, consider abandoning elites and taking the safest available path even if it means missing rewards.
 

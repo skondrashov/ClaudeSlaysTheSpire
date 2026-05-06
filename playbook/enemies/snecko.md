@@ -1,6 +1,8 @@
-# Snecko (hallway, Act 2, HP: ~60)
-PATTERN: Attacks for moderate damage. Has a debuff that confuses card costs (randomizes hand costs to 0-3 each turn).
-KEY MECHANIC: Cost confusion debuff. When applied, all cards in hand are randomly assigned costs of 0-3 each turn. This can make expensive cards free or cheap cards unplayable.
-WHAT THIS MEANS: Kill fast before the cost confusion ruins multiple turns. With good RNG, confused turns can be better than normal (0-cost cards). With bad RNG, entire turns are wasted. Vulnerable application helps end the fight faster.
-BRING: Burst damage, Vulnerable. Potions to compensate for bad cost rolls.
-AVOID: Long fights where cost confusion ruins many hands.
+# Snecko (hallway, Act 2, HP: ~114-120)
+PATTERN: Turn 1 applies Confusion debuff (randomizes card costs). Subsequent turns: alternates between attacks (~13 damage) and debuff/buff turns.
+KEY MECHANIC: Confusion debuff. When applied, all cards in hand are randomly assigned costs of 0-3 each turn for the rest of combat. This can make expensive cards free or cheap cards unplayable. Persists until combat ends.
+WHAT THIS MEANS: Kill fast before cost confusion ruins multiple turns. With good RNG, confused turns can be better than normal (0-cost Fiend Fire, 0-cost Bash). With bad RNG, entire turns are wasted on unplayable 3-cost cards. Apply Vulnerable early to maximize every successful attack turn. Metallicize is excellent here since Powers are played once (before or after Confusion) and provide guaranteed value every turn regardless of cost rolls.
+HP IS HIGH (~114-120): Despite being a hallway fight, Snecko is tanky. Plan for a 5-7 turn fight even with good damage.
+BRING: Burst damage, Vulnerable, Powers (guaranteed value regardless of cost rolls), Metallicize (passive block every turn).
+AVOID: Long fights where cost confusion compounds. Relying solely on expensive cards (2-3 cost) since they may be randomly assigned 3 cost anyway.
+NOTE: Red Mask relic applies 1 Weak to Snecko at combat start, slightly reducing first attack.

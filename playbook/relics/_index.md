@@ -16,6 +16,9 @@
 - [White Beast Statue](white-beast-statue.md)
 - [Pear](pear.md)
 - [Paper Phrog](paper-phrog.md)
+- [Red Mask](red-mask.md)
+- [Centennial Puzzle](centennial-puzzle.md)
+- [Bloody Idol](bloody-idol.md)
 
 ## Uncommon Relics
 
