@@ -154,6 +154,7 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - 32+ block capability in one turn (Impervious, double Metallicize + Weak)
 - Burst damage for Mode Shift (Carnage+)
 - Enough cards to last 12+ turns (do NOT over-exhaust)
+- **Avoid exhaustion-heavy strategies.** Fiend Fire + Dark Embrace creates a thin deck by mid-fight. Block density on 32-damage turns (turns 8-12) drops below survivable thresholds when the deck thins to 8-10 cards. Use Fiend Fire on free turns or for burst, never as the primary deck engine.
 
 **Hexaghost needs:**
 - Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) -- MANDATORY

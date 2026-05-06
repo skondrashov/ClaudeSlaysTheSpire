@@ -11,4 +11,7 @@ SYNERGIES:
 - Snecko Oil: Randomize costs before Fiend Fire -- if Fiend Fire costs 0, massive burst with energy left for drawn cards.
 MATCHUPS: Slime Boss -- burst + Slimed exhaust. Mystic -- burst through block. Spheric Guardian -- exhaust Artifacts turn then burst. Chosen -- exhaust Dazed cards while dealing damage.
 CAUTION: Exhausting key cards (Barricade, Clothesline) is permanent. In Run 20, exhausted Barricade to exhaust Decay curse at 3 HP -- survival > future value. At low HP, exhausting everything for survival is correct.
+
+GUARDIAN WARNING: Fiend Fire as a primary engine drains the deck unsustainably. Playing Fiend Fire multiple times (turns 3, 5, 7) exhausts 12+ cards by mid-fight, leaving only 8-10 cards in the deck. The Guardian is a 12-14 turn fight requiring 20+ block on 32-damage turns (turns 8-12). With a thin deck, block sources (Defend, Shrug It Off) appear too infrequently. Use Fiend Fire on free turns (DEFEND/STRONG_DEBUFF intents) for burst damage without paying the hand cost. Never plan the deck around Fiend Fire as the sole damage engine -- pair it with immediate-damage cards (Bludgeon, Rampage, Carnage) that don't exhaust the hand.
+
 INDEX SHIFTING DANGER: Fiend Fire is commonly the last card in a multi-card turn plan. If earlier cards shift indices, Fiend Fire may not play. In Run 21, the player planned Iron Wave + Fiend Fire but index shift caused Strike to play instead of Fiend Fire, costing the run. ALWAYS reference Fiend Fire by name ("play Fiend Fire 0") rather than by index number.

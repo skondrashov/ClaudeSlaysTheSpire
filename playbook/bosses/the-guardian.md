@@ -31,5 +31,9 @@ WHAT NOT TO DO:
 - Play unupgraded True Grit. Random exhaust can destroy key cards. True Grit+ (chosen exhaust) is mandatory.
 - Ignore Sharp Hide. Playing 3 Attack cards in Sharp Hide mode costs 9 HP. Block first.
 - Enter without a plan for the 32-damage turn. If your maximum block is under 25, you will die.
+- Use Fiend Fire as your primary exhaust engine. Fiend Fire exhausts 4+ cards (28+ damage) but thins the deck catastrophically. In Defensive Mode with Sharp Hide, the 9-card hand shrinks after one Fiend Fire, leaving insufficient block cards for 32-damage turns. Fiend Fire is excellent on free turns or for burst, but building the deck around it causes thin-deck syndrome mid-fight.
+
+CRITICAL DECK DENSITY WARNING:
+The Guardian is a 12-14 turn fight. An exhaustion-heavy deck (Fiend Fire, Dark Embrace, Charon's Ashes) front-loads power into turns 1-5, but leaves a thin deck for turns 6-12. When the deck is reduced to 9-10 cards by turn 7, you cannot generate 20+ block on 32-damage turns. Fiend Fire + True Grit (unupgraded) is particularly dangerous: True Grit's random exhaust removes key cards, Fiend Fire exhausts the remainder, and the mid-fight deck becomes unplayable. Entered at 62 HP with Bash+, True Grit (unupgraded), and Fiend Fire. By turn 7, True Grit had randomly exhausted Bash+, and Fiend Fire had exhausted 3+ cards. On a 32-damage turn with only 5 playable cards left, maximum block was 9 (Defend + Shrug It Off). Died at 5 HP unable to block the final 32.
 
 ---
