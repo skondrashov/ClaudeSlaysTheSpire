@@ -45,7 +45,7 @@ Items pending confirmation or further investigation. Promote to reference/ when 
 - Fire Potion damage CONFIRMED: 20 damage to a single target. Run 23 used Fire Potion + Bash+ to kill Cultist turn 2 in Cultist+Chosen fight. PROMOTED to fire-potion.md.
 - Reaper exhaust limitation: CONFIRMED as critical weakness in Run 23. Reaper was the only healing source. It exhausted in the Centurion+Mystic fight (Floor 29), leaving no in-combat healing for subsequent fights. Burning Blood (+6) was insufficient to recover from 9 HP. The player entered Floor 31 at 7 HP with zero ability to heal. PROMOTED to strategy.md and reaper.md — minimum two healing sources required for Act 2.
 - The Nest event: Options are 99 Gold or Ritual Dagger (lose 6 HP). Run 23 correctly chose Gold at 15 HP (Ritual Dagger would have left at 9 HP going into Cultist+Chosen). PROMOTED to events/the-nest.md.
-- Best floor milestone: Floor 31 (Run 23). Previous best was Floor 28 (Runs 20, 22). Progress is incremental but consistent — Act 2 mid-game (Floors 25-35) remains the barrier. All deaths occur in Act 2 hallway fights after HP drain from a previous fight.
+- Best floor milestone: Floor 33 (Run 48). Previous best was Floor 31. Progress continues -- now reaching the Act 2 boss itself. The barrier has shifted from Act 2 hallway fights to the Act 2 boss. The persistent problem is HP management: entering the boss at less than 70% HP.
 
 ## Open Questions
 
@@ -56,7 +56,7 @@ Items pending confirmation or further investigation. Promote to reference/ when 
 - The Joust odds: Listed as 70% win chance for Murderer. Is this accurate? Run 5 appeared to lose. Expected value calculation needs verification.
 - Rampage+ starting damage: Run 13 observed 12->20->28->36->48->60 (Rampage+). Run 21 observed unupgraded Rampage: play 1 = 8, play 2 = 16 (confirmed in Guardian fight: (16+2)*1.5=27). Unupgraded Rampage starts at 8, gains +8 per play. Rampage+ likely starts at 12 and gains +8 per play (12, 20, 28, 36... matches Run 13 data). PARTIALLY CONFIRMED: base Rampage = 8 start, +8 per play. Rampage+ = 12 start, +8 per play.
 - Shelled Parasite mechanics: CONFIRMED. HP 68-71, Plated Armor 14, attacks for 13+ damage. Promoted to playbook/enemies/shelled-parasite.md with full details.
-- Snecko confusion mechanic: Snecko applies Confusion on turn 1 (randomizes card costs 0-3 for rest of combat). Run 21 confirmed: confusion persists entire fight, costs re-randomize each turn. Player got lucky with 0-cost Strikes on kill turn. Interaction with X-cost cards still unconfirmed (does Whirlwind get randomized or use all energy?).
+- Snecko confusion mechanic: Snecko applies Confusion on turn 1 (randomizes card costs 0-3 for rest of combat). Confusion persists entire fight, costs re-randomize each turn. CONFIRMED: Snecko also applies Vulnerable to the player on later turns (observed turn 3 in a fight). The Confusion + Vulnerable combo is Snecko's kill pattern: randomized costs prevent efficient blocking while Vulnerable amplifies incoming damage by 50%. PROMOTED Vulnerable detail to snecko.md. Interaction with X-cost cards still unconfirmed.
 - Corruption interaction with Second Wind: Does Second Wind exhaust itself after use (since it's a Skill under Corruption)? If so, it becomes a one-time mass exhaust for block. Need confirmation.
 - Brutality HP threshold for multiple copies: Run 13 died playing 2 copies at 10 HP. What's the safe HP threshold for playing 2 Brutalities? Hypothesis: 40+ HP for 2 copies in a fight expected to last 5+ turns.
 
@@ -79,6 +79,24 @@ Items pending confirmation or further investigation. Promote to reference/ when 
 - Thunderclap timing in deck building: Player had no Thunderclap during the Floor 19 Byrd fight (the most Thunderclap-dependent fight in the game). Thunderclap+ was taken AFTER the Byrd fight, from the Chosen card reward on Floor 17. If Thunderclap had been prioritized earlier (e.g., at the shop or from card rewards), the Byrd fight would have been significantly shorter and cheaper. Question: should Thunderclap be a mandatory pickup by mid-Act 1 if the deck lacks AOE?
 - Liquid Memories potion value confirmed: Used effectively in Guardian fight to retrieve Ghostly Armor from discard for 0 cost, providing critical block on a 16-damage turn. CONFIRMED as high-value potion. Already documented in playbook.
 - Rampage+ scaling in Guardian fight: Play 1 = 15 damage, play 2 = 18, play 3 = ~30, killing blow. Confirmed the card is excellent for Guardian's long fight. But losing it to Havoc random exhaust in the very next fight demonstrates how fragile the strategy is when random exhaust exists in the deck.
+
+## Run 48 Findings
+
+- Smoke Bomb confirmed working mid-combat: Used against Snecko at 16 HP to escape lethal combat. Immediately ends the fight with no rewards. PROMOTED to smoke-bomb.md.
+- Gambler's Brew mechanics confirmed: Discard any number of cards from hand, draw that many. Used at 2 HP against Collector to discard 3 attack cards and draw block cards (Rage+, Thunderclap). The exact redraw provided 15 block vs 14 incoming. PROMOTED to gamblers-brew.md.
+- Fear Potion confirmed: Applies Vulnerable 3 to a single enemy. Used against Guardian mid-fight to refresh Vulnerable. PROMOTED to fear-potion.md.
+- Bludgeon damage confirmed: 32 base damage for 3E. With +2 Str and Vulnerable: floor(34*1.5) = 51 damage. With +4 Str and Vulnerable: floor(36*1.5) = 54 damage. PROMOTED to bludgeon.md.
+- Immolate AOE damage confirmed: 21 damage to ALL enemies for 2E. Adds 1 Burn to discard pile. With +4 Str and Vulnerable: floor(25*1.5) = 37 AOE. PROMOTED to immolate.md.
+- Mercury Hourglass relic: Deals 3 damage to ALL enemies at start of each turn. Passive, free, every turn. PROMOTED to mercury-hourglass.md.
+- The Collector boss mechanics: 279 HP, spawns 2 Torch Heads (7 damage each). Turn 4 STRONG_DEBUFF applies Vuln 3 + Frail 3 + Weak 3 simultaneously. PROMOTED to the-collector.md.
+- Collector Turn 4 is a free turn: STRONG_DEBUFF deals no direct damage. Can be used for burst (Bludgeon for 48-54 damage with Vuln+Str). However, the debuffs applied make the FOLLOWING turns extremely dangerous.
+- Snecko applies Vulnerable to the player: Observed at turn 3 -- player was Vulnerable, making Snecko's 22 attack deal 33 effective damage. This is a separate debuff from Confusion. Snecko's attack pattern includes applying Vulnerability.
+- Liquid Memories clutch use confirmed again: Retrieved Bludgeon from discard for 0 cost against Centurion at 8 HP. Bludgeon dealt 34 damage to kill 33 HP Centurion. Second instance of Liquid Memories being a fight-winning potion (first in Guardian fight retrieving Ghostly Armor).
+- Reaper healing from multiple enemies: Against The Collector + 2 Torch Heads, Reaper healed 14 HP in one play. Multi-target healing scales with number of enemies present. Reaper is particularly strong against The Collector due to 3 targets.
+- Rage+ block value in Collector fight: At 0E cost, Rage+ provided 5 block per attack. Combined with Thunderclap (1 attack), provided 5 block that was the difference between survival and death on Turn 4 (15 block vs 14 incoming).
+- Armaments+ Guardian strategy: Playing Armaments+ on Guardian's free turns (DEFEND, STRONG_DEBUFF) to upgrade Defends to Defend+ provided the block density needed for the 16-damage turns. Over a 14-turn fight, Armaments+ upgraded nearly every card in the deck.
+- Best floor milestone: Floor 33 (previous best Floor 31). First Act 2 boss encounter. Progress continues -- the barrier has shifted from Act 2 hallway fights to the Act 2 boss itself.
+- HP management still the primary issue: Entered Collector at 45% HP (below 70% boss threshold). The Snecko fight drained HP even after escaping. Two Shelled Parasite fights (Floors 17 and 22) drained significant HP. The cumulative HP drain through Act 2 remains the core problem.
 
 ## Run 45 Findings
 

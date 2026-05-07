@@ -7,4 +7,4 @@ DECISION POINTS: Play at start of turn before any attacks. Since it costs 0, it 
 
 SYNERGIES: Attack-heavy decks, Unceasing Top (draw attacks after Fiend Fire, each gives block), multi-attack turns (Offering + many attacks). Excellent vs Gremlin Leader where you want to both kill gremlins AND block incoming damage in the same turn.
 
-OBSERVED (Run 20): Against Gremlin Leader at 17 HP, Rage provided 3 block per attack. Combined with Speed Potion (+5 Dex on Defends) and Clothesline Weak, survived 18 incoming damage that would otherwise have been lethal.
+MATCHUPS: Excellent vs Gremlin Leader (block while killing gremlins). Against The Collector, Rage+ (5 block per attack) combined with Thunderclap provided exactly the block needed to survive a lethal turn at 2 HP. At 0 energy, Rage/Rage+ is never a wasted play.

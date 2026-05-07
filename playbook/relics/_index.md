@@ -28,6 +28,7 @@
 - [Bottled Flame](bottled-flame.md)
 - [Dream Catcher](dream-catcher.md)
 - [Potion Belt](potion-belt.md)
+- [Mercury Hourglass](mercury-hourglass.md)
 
 ## Rare Relics
 

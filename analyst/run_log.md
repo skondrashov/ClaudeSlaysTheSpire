@@ -150,3 +150,10 @@ RELICS: Burning Blood
 CAUSE OF DEATH: Entered Slime Boss at 35/80 (43%). Post-split, focused all damage on Acid Slime (L) while Spike Slime (L) untouched at 63 HP. Acid Slime (L) died and split into 2x Acid Slime (M), creating 3-enemy state. Combined 33 damage vs 10 max block at 12 HP.
 KEY MOMENTS: (1) Feel No Pain from Neow generated 15 block from 5 Slimed exhausts. (2) Double Tap + Bash+ dealt 30 damage in one turn. (3) 4-Gremlin fight drained 37 HP (Floor 11). (4) Snecko Oil at 12 HP vs Slaver enabled 0-cost burst kill. (5) Havoc skipped twice (playbook lesson applied).
 LESSONS: Both large slimes split on death (not just Spike). Spread damage post-split instead of focus-firing one. HP management failure: 43% entry below 50% threshold. Feel No Pain is a strong Slime Boss card.
+
+## Run 48 — Ironclad A0, Death Floor 33 (The Collector) — NEW BEST FLOOR
+DECK: Bash+, Bludgeon, Immolate, Shockwave, Inflame, Reaper, Armaments+, Clothesline+, Thunderclap+, Shrug It Off+, Cleave, Rage+, Limit Break, Defend+x2, Strike+
+RELICS: Burning Blood, Pear, Mercury Hourglass
+CAUSE OF DEATH: Entered Collector at 41/90 HP (45%). STRONG_DEBUFF on Turn 4 applied Vuln 3 + Frail 3 + Weak 3. Turn 5 incoming 47+ at 2 HP with Frail-reduced block = unwinnable.
+KEY MOMENTS: (1) Guardian victory at 43/90 HP. (2) Snecko fight escaped via Smoke Bomb at 16 HP. (3) Liquid Memories retrieved free Bludgeon to kill Centurion at 8 HP. (4) Gambler's Brew found exact block cards on Collector Turn 4. (5) Reaper healed 14 HP in Collector fight.
+LESSONS: First Collector encounter -- STRONG_DEBUFF mechanic documented. 45% HP entry below 70% boss threshold. Bludgeon is the best burst card for boss free turns.

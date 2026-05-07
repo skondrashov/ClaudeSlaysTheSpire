@@ -26,3 +26,9 @@
 - [Liquid Memories](liquid-memories.md)
 - [Attack Potion](attack-potion.md)
 - [Elixir](elixir.md)
+
+## Utility Potions
+
+- [Smoke Bomb](smoke-bomb.md)
+- [Gambler's Brew](gamblers-brew.md)
+- [Fear Potion](fear-potion.md)

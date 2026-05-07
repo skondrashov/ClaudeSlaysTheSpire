@@ -13,7 +13,7 @@ KEY MECHANICS:
 
 PREPARATION CHECKLIST:
 1. One big block source for the 32-damage turn (Impervious, double Metallicize + Weak, or mass block cards)
-2. Burst damage for fast Mode Shift triggering (Carnage+ at 28-42, Headbutt+ loops)
+2. Burst damage for fast Mode Shift triggering (Bludgeon at 32-48, Carnage+ at 28-42, Headbutt+ loops)
 3. Passive block for the long fight (Metallicize is the best card; double Metallicize is exceptional)
 4. Safety net (Fairy in a Bottle) -- not required but very helpful
 5. Deck manipulation (Headbutt+ to guarantee key cards when needed)

@@ -6,7 +6,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-Entering fights at critically low HP is the single most common cause of death across all runs. Fifteen of eighteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
+Entering fights at critically low HP is the single most common cause of death across all runs. Sixteen of nineteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
 
 | Run | Entry HP | % of Max | Fight | Result |
 |---|---|---|---|---|
@@ -25,6 +25,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 23 | 7 | 9% | Cultist+Chosen | Died (Hex+Vuln, 20 dmg vs max 8 block at 7 HP) |
 | 44 | 14 | 18% | Sentry+Spheric Guardian | Died (Byrd fight drained 36 HP, no healing, forced combat) |
 | 45 | 35 | 43% | Slime Boss | Died (split phase created 3 enemies at 12 HP, 33 dmg vs 10 block) |
+| 48 | 41 | 45% | The Collector | Died (STRONG_DEBUFF Turn 4 applied Vuln+Frail+Weak, 47+ incoming at 2 HP) |
 
 ### HP Thresholds for Act 2
 
@@ -154,7 +155,7 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 
 **The Guardian needs:**
 - 32+ block capability in one turn (Impervious, double Metallicize + Weak)
-- Burst damage for Mode Shift (Carnage+)
+- Burst damage for Mode Shift (Bludgeon at 32-48, Carnage+ at 28-42)
 - Enough cards to last 12+ turns (do NOT over-exhaust)
 - **Avoid exhaustion-heavy strategies.** Fiend Fire + Dark Embrace creates a thin deck by mid-fight. Block density on 32-damage turns (turns 8-12) drops below survivable thresholds when the deck thins to 8-10 cards. Use Fiend Fire on free turns or for burst, never as the primary deck engine.
 
@@ -164,6 +165,13 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - Passive block (Metallicize) for the 13-turn fight
 - Turn 1 setup (Thunderclap for Vulnerable)
 - No self-damage cards (Brutality, Berserk)
+
+**The Collector needs:**
+- HP entry at 70%+ -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Surviving the post-debuff turns requires a large HP buffer.
+- Strength scaling (Inflame, Limit Break) -- 279 HP boss with minions, fight lasts 8-12 turns
+- AOE damage (Immolate, Thunderclap, Reaper) -- Torch Head minions add 14 damage/turn combined
+- Reaper -- heals from all 3 targets (Collector + 2 Torch Heads), critical sustain
+- Block density for post-debuff turns -- Frail reduces block by 25%, need multiple sources
 
 ### Save One-Use Cards for Bosses
 

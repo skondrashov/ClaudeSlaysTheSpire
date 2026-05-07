@@ -27,6 +27,8 @@
 - [Dropkick](dropkick.md)
 - [Rampage](rampage.md)
 - [Double Tap](double-tap.md)
+- [Bludgeon](bludgeon.md)
+- [Immolate](immolate.md)
 
 ## Skill Cards
 
