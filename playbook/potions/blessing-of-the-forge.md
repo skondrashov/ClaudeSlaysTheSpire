@@ -5,4 +5,4 @@ WHEN TO USE: Use before a fight, not during. The upgrade is permanent and applie
 
 VALUE: Moderate. The random targeting means it could upgrade a Strike (low value) or a key card like Bash (high value). Most valuable when the deck has many unupgraded cards, least valuable when most cards are already upgraded.
 
-NOTE: This is a utility potion, not a combat potion. Cannot be used mid-combat for any benefit. The exact targeting (random card in deck vs random card in hand) is unconfirmed -- the potion was acquired but never used. Needs confirmation in a future run.
+NOTE: This is a utility potion, not a combat potion. Can be used at rest sites to get an extra upgrade on top of the normal Smith action (confirmed: used at rest site to upgrade one card, then Smithed to upgrade a second). Can also be used before boss fights for a last-minute upgrade. Confirmed to upgrade a card in the deck (not hand).

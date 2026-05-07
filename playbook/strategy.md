@@ -8,7 +8,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-20 of 23 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
+21 of 24 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
 
 ### HP Thresholds for Act 2
 
@@ -41,6 +41,7 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 8-12 turns. The primary Act 2 HP drain. Without Thunderclap (mass Flight stripping + Vulnerable), expect the upper end. Thunderclap is the single most important card for Act 2 Byrd survival.
 2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight. Often consumes Fairy in a Bottle.
 3. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Even with burst damage, drains 20-30 HP. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.
+3b. **Spheric Guardian + Sentry from Unknown rooms**: 29 combined damage/turn with Frail 5 reducing block. Spheric Guardian's Barricade block makes Reaper useless and chip damage futile. Two deaths confirmed from this encounter (at 26% and 43% HP entry). Unknown rooms are the most dangerous room type in Act 2 at low HP.
 4. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
 5. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.
 6. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. With 2 Decays, that is 4 HP/turn lost regardless of block. Over a 5-turn fight, that is 20 free HP lost. Prioritize curse removal at shops or via exhaust (Fiend Fire).
@@ -253,7 +254,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 - Prefer routes with a rest site in the last 1-2 floors before the boss.
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
 - If the path forces an elite at low HP, skip it entirely -- take any alternative path.
-- **Unknown rooms are NOT safe at low HP.** They can resolve as any hallway fight, including Byrds and Snake Plant. Treat Unknown rooms as Monster rooms when below 40% HP.
+- **Unknown rooms are NOT safe at low HP.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. Two deaths confirmed from Spheric Guardian spawning from Unknown rooms. Treat Unknown rooms as Monster rooms when below 40% HP.
 
 ### Elite Risk Assessment
 

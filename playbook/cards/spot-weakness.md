@@ -9,4 +9,4 @@ UPGRADE: +3 STR -> +4 STR. Worth upgrading for scaling fights.
 
 SYNERGIES: Multi-hit attacks (Pummel, Twin Strike, Whirlwind) -- Strength applies per hit. Heavy Blade -- +3 Str becomes +9 damage (or +15 upgraded) due to the multiplier. Limit Break -- doubling Strength after Spot Weakness gives massive scaling. Long fights (bosses) where Strength compounds over many attack plays.
 
-MATCHUPS: Excellent vs Guardian (predictable attack turns, long fight). Good vs any boss with visible attack intents. Useless on turns where enemy is buffing/defending.
+MATCHUPS: Excellent vs Guardian (predictable attack turns, long fight). Excellent vs Hexaghost (frequent attack turns in a long fight -- two applications of Spot Weakness+ gave +8 Str that scaled all remaining attacks). Good vs any boss with visible attack intents. Useless on turns where enemy is buffing/defending. Marginally useful vs Spheric Guardian (enemy alternates attack/defend, so triggers every other turn, but the Str gain may still be insufficient to break through Barricade block).

@@ -27,6 +27,7 @@
 - [Purifier](purifier.md)
 - [World of Goop](world-of-goop.md)
 - [Woman in Blue](woman-in-blue.md)
+- [Match and Keep](match-and-keep.md)
 - [The Nest](the-nest.md)
 - [Vampires](vampires.md)
 - [Wheel of Change](wheel-of-change.md)

@@ -6,7 +6,7 @@ Items pending confirmation or further investigation. Promote to playbook when co
 
 - Golden Idol effect: Believed to increase gold earned by 25%. Taken but effect never directly measured.
 - Odd Mushroom relic effect: Acquired in Run 4. Possibly +1 Dex or modifies Vulnerable. Never confirmed.
-- Maw Bank relic effect: Acquired in Run 6. Likely gold-related. Never confirmed.
+- Maw Bank relic effect: PROMOTED TO PLAYBOOK. Confirmed: 12 gold per non-shop floor, disabled when spending gold at shop.
 
 
 - Flight damage halving rounding: Believed to be floor(damage/2). Not precisely confirmed.
@@ -17,7 +17,7 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Enchiridion Power pool: Confirmed to generate Brutality (Ironclad Power). Can it generate non-class Powers? Needs cross-class data point.
 - Dream Catcher card pool: Same as normal rewards or different/restricted?
 - Corruption + Second Wind interaction: Does Second Wind exhaust itself under Corruption? Needs confirmation.
-- Blessing of the Forge exact mechanic: Used during Guardian fight. Appears to upgrade a random card. Provided exact lethal through 9 block. Still unclear if it upgrades hand or deck cards.
+- Blessing of the Forge: PROMOTED TO PLAYBOOK. Confirmed: upgrades a card in the deck. Can be used at rest sites for an extra upgrade alongside Smith. Used twice in a single run (once at rest site, once before boss).
 - Vampires Max HP loss exact formula: Observed 80->56 (-24, 30% loss). Is it always 30% or a fixed amount? Needs second data point.
 - Bite upgrade: Does Bite have an upgraded version? If so, what are the improved stats?
 - Gremlin Leader summoning pattern: Does Leader re-summon immediately when gremlins die, or on specific turns? Rally confirmed to give +3 Str to ALL enemies. Re-summoning trigger still unconfirmed.
@@ -42,9 +42,15 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Hard Rule 4 strategic tradeoff: Rule correctly prevented True Grit (unupgraded, random exhaust) from being played. However, in the Book of Stabbing fight, True Grit would have been the only Wound exhaust tool available. The rule prevents misplays but also removes options in fights where even random exhaust is better than Wound clog. The rule is still correct -- random exhaust of key cards is historically deadlier than Wound clog -- but this tradeoff is worth monitoring.
 - Knowing Skull HP cost scaling: Observed 12 HP loss from a single interaction. Exact scaling formula unknown -- does it cost a flat amount per ask, or does the cost increase per subsequent ask? Need more data points.
 
+- Spheric Guardian block growth rate: Observed block values of 40 (start), 58, 60, 64 over successive turns despite being attacked each turn. Exact per-turn block gain unknown. Could be 15-20 block on defend turns, but the exact pattern (does it defend every other turn? every turn?) needs more data.
+- Spot Weakness+ upgrade confirmed: +4 Str (up from +3) when enemy intends to attack. Observed twice in Hexaghost fight for total +8 Str.
+- Dark Embrace + Second Wind interaction: Second Wind exhausts all non-Attacks, Dark Embrace draws 1 per exhaust. This combo works as expected but is dangerous -- it can draw into more Skills which are NOT exhausted (already resolved). The draw happens after all exhausts.
+- Match and Keep card pool: Observed Bash and Perfected Strike as matchable cards. Are the cards drawn from a fixed pool, from the player's class, or random? Need more data.
+
 ## Prediction Errors (non-fatal, for monitoring)
 
 - Weak multiplier applied incorrectly: Player calculated Strike+ damage as floor((9+9)*0.75) = 13 against Acid Slime (L), but Acid Slime does not apply Weak to the player. Correct damage should have been 18 (no multiplier reduction). The fight was won regardless, but this shows confusion about when the 0.75 Weak damage reduction applies. Weak reduces the PLAYER'S Attack damage when the player is Weakened, or reduces ENEMY Attack damage when the enemy is Weakened. If neither is Weakened, no 0.75 multiplier applies.
+- Spheric Guardian incoming damage miscalculation: Player wrote "10 incoming" in turn 6 reasoning when Spheric Guardian does 10x2=20 on attack turns. In context, the Spheric Guardian was actually on a defend turn (player took 0 damage), so the "10 incoming" may have been from a Sentry or the player may have been confused about the attack pattern. Non-fatal but worth monitoring for future Spheric Guardian encounters.
 
 ## Open Questions
 
