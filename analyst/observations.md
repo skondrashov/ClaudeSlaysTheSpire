@@ -2,6 +2,13 @@
 
 Items pending confirmation or further investigation. Promote to playbook when confident.
 
+## Promoted from Run 70
+
+- Preserved Insect relic: PROMOTED TO PLAYBOOK. Documented in relics/preserved-insect.md. Enemies in Elite fights start with 25% less HP.
+- Upgrade death spiral third data point: PROMOTED TO PLAYBOOK. Run 70 confirmed the pattern for the third time. Updated strategy.md.
+- Slime Boss split threshold management: PROMOTED TO PLAYBOOK. Updated bosses/slime-boss.md with damage threshold management guidance.
+- Disarm vs Slime Boss split: PROMOTED TO PLAYBOOK. Strength reduction does not transfer to split slimes. Documented in cards/disarm.md.
+
 ## Promoted from Run 73
 
 - Corruption + Dead Branch synergy: PROMOTED TO PLAYBOOK. Documented in cards/corruption.md and relics/dead-branch.md.
@@ -75,6 +82,9 @@ Items pending confirmation or further investigation. Promote to playbook when co
 
 - Corruption played into multi-enemy fight without block: FATAL prediction error. Player played Corruption (3E) on turn 1 against Looter + Mugger, leaving zero energy for Defend. Combined enemy damage was 20+ unblocked. The player likely assumed the Corruption + Dead Branch engine would generate enough value to compensate, but the engine requires at least one full turn of Skill plays to start generating cards. The setup turn is a pure tempo loss. This is the same category of error as playing Barricade (3E) into active enemies -- expensive Powers must wait for free turns or require energy surplus. ADDRESSED in playbook: corruption.md updated with SETUP COST TRAP section.
 
+- Feel No Pain block and Frail interaction: Does Frail reduce FNP's 3 block per exhaust? FNP is a Power effect, not a card play. Frail says "block gained from cards is reduced by 25%." If FNP block is classified as "from a Power trigger" rather than "from a card," it would be unaffected by Frail. This matters in Slime Boss fights where Spike Slime L applies Frail. Needs in-game testing.
+- Disarm Strength reduction vs Slime Boss split: Confirmed that pre-split Disarm does NOT carry to split slimes. The split creates new enemy instances with base stats. Play Disarm post-split, not pre-split.
+- Slimed card generation timing vs split mechanics: Do Slimed cards get added to the deck during the split turn itself, or only on subsequent enemy attack turns? If Slimed is added during the split transition, the hand clog starts immediately. Needs precise observation.
 - Frail interaction with Rage block: Does Frail reduce block gained from Rage (a Power triggering on Attack plays)? Frail says "Block gained from cards is reduced by 25%." Rage block is gained from a Power effect, not directly from a card play. This distinction may mean Rage block is NOT reduced by Frail. Needs confirmation -- the question was raised but never tested because Rage expired before the Frail turns.
 - Spheric Guardian Frail application: PROMOTED TO PLAYBOOK. Applies Frail 5 at start of fight. Confirmed in all 3 encounters. Documented in enemies/spheric-guardian.md.
 

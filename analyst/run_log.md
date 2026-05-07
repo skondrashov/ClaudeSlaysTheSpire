@@ -61,6 +61,13 @@ CAUSE OF DEATH: Spheric Guardian + Sentry from Unknown room at 43% HP (34/80). K
 KEY MOMENTS: (1) Reaper from Neow blessing -- defined the run's healing strategy. (2) Hexaghost beaten cleanly in 12 turns with Shockwave+ (5 Weak/Vuln), Spot Weakness+ (+4 Str twice = 9 Str), and Metallicize+. (3) Match and Keep event added Bash and Perfected Strike -- unwanted deck dilution. (4) Second Wind exhausted Shockwave+, True Grit+, and Defend+ during Spheric Guardian fight, removing key utility cards. (5) Reaper healed 0 HP vs Spheric Guardian because all damage absorbed by 60+ block.
 LESSONS: 21st low-HP death. Spheric Guardian's Barricade makes Reaper useless (all damage absorbed = zero healing). At 1 Str, chip damage cannot break through Barricade block regeneration -- fight is mathematically unwinnable. Second Wind in attrition fights is dangerous (exhausts key Skills permanently). Match and Keep event is a deck dilution trap. Unknown rooms remain lethal at low HP in Act 2.
 
+## Run 70 — Ironclad A0, Death Floor 16 (Slime Boss, Act 1)
+DECK: Dropkick, Clothesline, Feel No Pain, Disarm, Burning Pact, Ghostly Armor, Power Through, basics
+RELICS: Burning Blood, Preserved Insect
+CAUSE OF DEATH: Slime Boss split overwhelmed defenses. No AOE in deck. Slimed cards clogged hand faster than exhaust tools could clear them. Entered at 50/85 HP (58%), below 60% threshold. Zero upgrades until Floor 15.
+KEY MOMENTS: (1) Beat Lagavulin elite, earned Preserved Insect. (2) Both rest sites spent healing due to critically low HP -- zero upgrades performed. (3) No AOE card (Thunderclap, Whirlwind, Cleave) was ever offered in card rewards. (4) FNP + exhaust synergy building but insufficient without AOE. (5) Dealt excess damage past 70 HP split threshold -- both slimes spawned at 63 HP. (6) Disarm's Strength reduction did not carry to split slimes (new enemies with own stats).
+LESSONS: 24th death. Upgrade death spiral confirmed for the third time -- zero upgrades makes every fight harder, which forces resting, which prevents upgrading. AOE for Slime Boss is mandatory (documented already, reconfirmed). Disarm Strength reduction does not transfer through Slime Boss split. Excess overkill damage past 70 HP split threshold is wasted -- manage damage carefully near the threshold. Preserved Insect documented as new relic entry.
+
 ## Run 72 — Ironclad A0, Victory (Guardian), Death Floor 30 (Spheric Guardian + Sentry, Act 2)
 DECK: Bash+, True Grit+, Pommel Strike+, Headbutt, Iron Wave, Shrug It Off, Battle Trance, Spot Weakness, Brutality, Body Slam, Blood for Blood, Rampage+, Cleave+, Barricade, Rage+, Strike x2, Defend x2
 RELICS: Burning Blood, Dream Catcher, Stone Calendar, Lee's Waffle

@@ -37,6 +37,7 @@
 - [Gremlin Horn](gremlin-horn.md)
 - [Meat on the Bone](meat-on-the-bone.md)
 - [Matryoshka](matryoshka.md)
+- [Preserved Insect](preserved-insect.md)
 
 ## Uncommon Relics (continued)
 

@@ -10,7 +10,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-22 of 25 documented deaths resulted from entering a fight below safe HP thresholds (one death occurred at full HP but self-damage from Brutality drained HP during the fight). The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
+23 of 26 documented deaths resulted from entering a fight below safe HP thresholds (one death occurred at full HP but self-damage from Brutality drained HP during the fight). The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
 
 ### HP Thresholds for Act 2
 
@@ -67,9 +67,11 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 
 ### The Upgrade Death Spiral
 
-Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed twice: once with only 1 upgrade across 28 floors, and once with literally ZERO upgrades across 23 floors. Both runs died in Act 2 with decks that had adequate card quality but no upgraded cards to back it up.
+Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed three times: once with only 1 upgrade across 28 floors, once with literally ZERO upgrades across 23 floors, and once in Run 70 where ZERO upgrades occurred until Floor 15 (both rest sites consumed by healing due to critically low HP from fights with unupgraded cards). All three runs died with decks that had adequate card quality but no upgraded cards to back it up.
 
-**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 50% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest.
+**The spiral is self-reinforcing:** unupgraded cards mean fights take longer and deal more damage, which forces resting instead of upgrading, which keeps cards unupgraded. In Run 70, the deck had good cards (Dropkick, Clothesline, Feel No Pain, Disarm, Burning Pact, Ghostly Armor) but zero upgrades made every fight drain more HP than necessary, creating the exact spiral described here.
+
+**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 50% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest. If FORCED to rest at the first rest site due to low HP, the deck is already in danger -- path to the next rest site urgently and upgrade there no matter what.
 
 ### Upgrade Priority
 
@@ -167,9 +169,10 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 ### Boss-Specific Requirements
 
 **Slime Boss needs:**
-- AOE for the split (Thunderclap, Whirlwind) -- MANDATORY
+- AOE for the split (Thunderclap, Whirlwind, Cleave) -- MANDATORY. If no AOE has been offered by Floor 12, actively seek it at shops or events. Without AOE, the Slime Boss fight is near-unwinnable because post-split enemies generate Slimed cards faster than single-target damage can clear them.
 - Burst single-target to kill one slime fast (Fiend Fire)
-- Exhaust for Slimed cards
+- Exhaust for Slimed cards (Burning Pact, Feel No Pain, True Grit+)
+- Manage pre-split damage: aim to trigger the split as close to 70 HP as possible. Excess damage past the threshold is wasted.
 
 **The Guardian needs:**
 - 32+ block capability in one turn (Impervious, double Metallicize + Weak)

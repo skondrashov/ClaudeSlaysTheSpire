@@ -6,4 +6,6 @@ WHEN IT'S A TRAP: In long fights (Shelled Parasite, scaling enemies) without exh
 DECISION POINTS: Is 15 block worth 2 dead draws in future hands? In long fights without exhaust tools, the Wounds accumulate and ruin draws. In short fights or with exhaust, the 15 block is worth it.
 SYNERGY -- FIRE BREATHING: The 2 Wounds added by Power Through trigger Fire Breathing when drawn, dealing 6-10 damage to all enemies per Wound drawn. With Evolve also active, each Wound drawn deals damage AND draws a replacement card. This transforms Power Through's downside (Wounds clogging hand) into pure upside (free AOE damage + card cycling).
 
+SLIME BOSS CAUTION: Power Through adds 2 Wounds to the hand on top of Slimed cards the boss is already adding. Without exhaust tools, Wound + Slimed accumulation can make 4 of 5 cards in a hand unplayable. If the deck has exhaust tools (Burning Pact, Feel No Pain), Power Through's 15 block is excellent for surviving the split transition. Without exhaust, it accelerates hand clog.
+
 DRAFT RULE: Do not take Power Through unless the deck has at least one exhaust tool (True Grit+, Fiend Fire, Second Wind, Burning Pact), Fire Breathing (converts Wounds to damage), or the deck is fast enough to end fights in 4-5 turns.
