@@ -2,7 +2,7 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK:** Act 2 HP sustain. We beat Act 1 bosses consistently but die in Act 2 to HP attrition. 19 of 22 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.
+**CURRENT BOTTLENECK:** Act 3 HP management. We beat Act 1 bosses consistently and have beaten the Act 2 boss (Collector). Act 3 enemies (Writhing Mass, Transient, Darklings) are severe HP drains -- Writhing Mass alone cost 38 HP in a single fight. The Collector fight itself costs 50-65 HP even when won. Entering Act 3 with a healing card (Reaper or Feed) is more important than ever, since there is no Pantograph-equivalent safety net for hallway fights. Without healing cards, conservative pathing and block density are the only defense against Act 3 HP attrition.
 
 ---
 
@@ -164,10 +164,11 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - No self-damage cards (Brutality, Berserk)
 
 **The Collector needs:**
-- HP entry at 70%+ -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Surviving the post-debuff turns requires a large HP buffer.
-- Strength scaling (Inflame, Limit Break) -- 279 HP boss with minions, fight lasts 8-12 turns
-- AOE damage (Immolate, Thunderclap, Reaper) -- Torch Head minions add 14 damage/turn combined
-- Reaper -- heals from all 3 targets (Collector + 2 Torch Heads), critical sustain
+- HP entry at 70%+ or Pantograph -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Pantograph heals to full at boss start, bypassing the threshold.
+- AOE damage (HIGHEST PRIORITY) -- Immolate+ is the single best card. Hits Collector + both Torch Heads. With Vulnerable: 42 damage to Collector per cast. Torch Heads respawn, so AOE is more valuable than single-target.
+- Mass debuff -- Shockwave+ (Weak 3 + Vuln 3 to ALL enemies) reduces combined incoming by 25% while boosting all damage by 50%. Second-highest priority.
+- Impervious -- 30 block absorbs post-debuff turns. Critical defensive card.
+- Disarm -- permanent Str reduction compounds over the 10-turn fight. Play Turn 1.
 - Block density for post-debuff turns -- Frail reduces block by 25%, need multiple sources
 
 **Bronze Automaton needs:**
@@ -176,6 +177,13 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - Burst damage -- Bludgeon, Blood for Blood, Double Tap. The fight is a DPS race against Strength scaling.
 - Redundant key cards -- Orb minions steal cards via Stasis. Do not rely on a single copy of any critical card (Double Tap, Inflame).
 - Intent visibility -- Runic Dome removes the ability to predict Hyper Beam. Avoid taking Runic Dome if Bronze Automaton is a possible Act 2 boss.
+
+**Donu and Deca needs (NOT YET ENCOUNTERED):**
+- AOE damage (Immolate+, Thunderclap+) -- two 250 HP enemies
+- Disarm -- reduce Donu's Strength before killing it
+- Shockwave+ -- mass Weak+Vulnerable on both
+- Block density for 10+ turn fight
+- Kill Donu first (prevents Strength scaling for both)
 
 ### Save One-Use Cards for Bosses
 
@@ -303,12 +311,50 @@ Reaper and Feed are uncommon cards -- they may not appear in card rewards at all
 
 The absence of healing cards does NOT mean the run is lost. It means the player must shift from "aggressive with healing to recover" to "conservative to avoid damage in the first place."
 
+---
+
+## Act 3 Preparation
+
+Act 3 enemies hit harder than Act 2 and have unique mechanics that punish specific strategies.
+
+### Enter Act 3 at Full HP
+
+Pantograph heals to full at the Act 2 boss, but the Collector fight itself drains 50-65 HP. Entering Act 3 at 14-20 HP (as observed) is extremely dangerous. The first hallway fight in Act 3 can drain 25-40 HP (Writhing Mass, Darklings). If possible, path through a rest site or event between the boss and Act 3.
+
+### Act 3 HP Thresholds
+
+| Fight Type | Minimum HP | Notes |
+|---|---|---|
+| Hallway (easy) | 40% | Spikers, Repulsors -- manageable but Thorns punish attacks |
+| Hallway (hard) | 60% | Writhing Mass (25-40 HP drain), Darklings (Life Link extends fight) |
+| The Transient | 50% | Pure survival check -- 5 turns of escalating damage, do not attack |
+| Elite | 70% | Act 3 elites are extremely dangerous at low HP |
+| Boss | 70% or Pantograph | Donu and Deca, Awakened One, or Time Eater |
+
+### Act 3 Key Enemies
+
+- **Writhing Mass**: Malleable gains block per hit. Use single large hits, NOT multi-hit (Whirlwind, Pummel). Expect 25-40 HP drain. Long fight (6-8 turns).
+- **The Transient**: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Disarm and Weak are essential. Enter at 50%+ HP.
+- **Darklings**: Life Link -- must kill all 3 in the same turn or they revive at half HP. AOE (Immolate+) is critical. Save AOE for the kill turn.
+- **Spikers**: Thorns damage per Attack played. Block before attacking. Use fewer, larger attacks.
+
+### What the Deck Needs for Act 3
+
+1. **Block density**: Impervious, Shrug It Off, Defend+. Act 3 fights are longer and hit harder.
+2. **AOE**: Immolate+ is the single best card. Darklings require simultaneous kills; Writhing Mass + allies require spread damage.
+3. **Disarm/Weak sources**: Transient and scaling enemies require Strength reduction and Weak application.
+4. **Healing cards**: Even more critical than Act 2. Writhing Mass drains 25-40 HP per fight. Without Reaper or Feed, consecutive fights will end the run.
+5. **Deck thinning**: A lean deck (18-22 cards) draws key cards more reliably in long fights.
+
+---
+
 ### Cross-Run Victory Pattern
 
-Across all boss victories (7 total), the differentiators are:
-1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions.
-2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block.
+Across all boss victories (8 total, including first Act 2 boss victory), the differentiators are:
+1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions. Collector victory used Immolate+ (AOE for Torch Heads), Shockwave+ (mass debuff), and Impervious (post-debuff survival).
+2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed to full).
 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.
 4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage.
-5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards.
-6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Two deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.
+5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.
+6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Collector victory relied on Immolate+ AOE (28 damage to all enemies) to manage both Collector HP and Torch Head respawns. Two Hexaghost deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.
+7. **Extra energy**: The Collector victory had 4 energy (Sozu). The extra card per turn allowed playing both offense and defense simultaneously, which is critical for multi-enemy fights.

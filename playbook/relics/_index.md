@@ -54,9 +54,11 @@
 
 ## Boss Relics / Special
 
+- [Sozu](sozu.md)
 - [Runic Dome](runic-dome.md)
 - [Ancient Tea Set](ancient-tea-set.md)
 - [Charon's Ashes](charon-s-ashes.md)
 - [Neow's Lament](neow-s-lament.md)
 - [Odd Mushroom](odd-mushroom.md)
 - [Maw Bank](maw-bank.md)
+- [Mutagenic Strength](mutagenic-strength.md)

@@ -59,6 +59,13 @@ CAUSE OF DEATH: Gremlin Leader elite at 28/86 HP (32%). Rally gave all enemies +
 KEY MOMENTS: (1) Hexaghost beaten cleanly at 44/80 with Evolve+Fire Breathing engine neutralizing Burns. (2) Feed used twice for +6 Max HP. (3) Runic Dome taken AGAIN despite explicit "refuse it" playbook guidance. (4) Zero upgrades the entire run. (5) Cultist+Chosen (F22) drained to 28/86 (32%), forced into elite path.
 LESSONS: Evolve+Fire Breathing confirmed as a Hexaghost counter. Runic Dome compliance failure (2nd time). Zero-upgrade runs are unwinnable in Act 2 -- upgraded cards needed for block/damage thresholds. Meat on the Bone provided supplementary healing (new relic documented).
 
+## Run 63 — Ironclad A0, Death Floor 39 (The Transient, Act 3) — NEW BEST FLOOR
+DECK: Strike x2, Bash+, Pommel Strike, Hemokinesis, Clothesline, Headbutt, Thunderclap+, Immolate+, Defend x4, Armaments+, Shrug It Off, Disarm, Disarm+, Impervious, Shockwave+, Rage, Fiend Fire, Dark Embrace+
+RELICS: Sozu, Pantograph, Toy Ornithopter (dead with Sozu), Mutagenic Strength, Red Mask
+CAUSE OF DEATH: Entered Transient at 15/80 HP (18%) after Writhing Mass drained 38 HP. No block cards drawn vs 38 incoming on Turn 2.
+KEY MOMENTS: (1) Beat The Guardian at 21/80 HP with Pantograph healing to full. (2) Beat The Collector at 14/80 HP -- FIRST ACT 2 BOSS VICTORY. Pantograph healed to full again. (3) Writhing Mass drained 38 HP (53->15) via Malleable + Reactive over 8 turns. (4) Reaper/Feed never offered in 39 floors. (5) Sozu + Toy Ornithopter anti-synergy (no potion use). (6) Zero Hard Rule compliance failures.
+LESSONS: Pantograph is the most impactful relic observed -- enabled both boss victories at sub-threshold HP. Writhing Mass Malleable mechanic punishes multi-hit attacks severely. Transient is a pure survival check (do not attack). Act 3 HP management is the new critical gap -- hallway fights drain 25-40 HP with no healing source. Sozu's 4th energy is powerful but losing potions removes the backup healing plan entirely.
+
 ## Run 57 — Ironclad A0, Death Floor 16 (The Guardian)
 DECK: Bash+, Uppercut, Pommel Strike, Hemokinesis, Sever Soul, Cleave, 2x Strike, 3x Defend
 RELICS: Burning Blood, Lantern, Question Card

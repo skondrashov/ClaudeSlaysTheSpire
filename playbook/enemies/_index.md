@@ -35,3 +35,8 @@
 - [Gremlin Leader](gremlin-leader.md)
 - [Book of Stabbing](book-of-stabbing.md)
 - [Slavers](slavers.md)
+
+## Act 3 Hallway
+
+- [Writhing Mass](writhing-mass.md)
+- [Transient](transient.md)

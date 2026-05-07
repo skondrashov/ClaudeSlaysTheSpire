@@ -8,3 +8,6 @@
 ## Act 2
 - [The Collector](the-collector.md)
 - [Bronze Automaton](bronze-automaton.md)
+
+## Act 3
+- [Donu and Deca](donu-and-deca.md)

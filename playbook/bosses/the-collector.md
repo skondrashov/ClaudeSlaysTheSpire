@@ -13,23 +13,32 @@ KEY MECHANICS:
 - **HP check boss**: Unlike The Guardian (long fight, sustained block needed) or Hexaghost (specific counter cards needed), the Collector is primarily an HP check. Entering at low HP means the STRONG_DEBUFF turn creates unwinnable math.
 
 PREPARATION CHECKLIST:
-1. **Enter at 70%+ HP** -- the STRONG_DEBUFF on Turn 4 creates a 3-turn window where incoming damage spikes by 50% and block is reduced by 25%. Low HP entry is fatal.
-2. **Strength scaling** -- Inflame, Limit Break. Collector has 279 HP -- the fight lasts 8-12 turns. Strength pays off enormously.
-3. **AOE damage** -- Immolate, Thunderclap, Cleave, Reaper. Torch Heads add 14 damage/turn combined. AOE damages all three enemies and Reaper heals from all three.
-4. **Reaper** -- heals from damage dealt to ALL enemies (Collector + 2 Torch Heads). With Strength and Vulnerable, Reaper can heal 12-18 HP in a single play. Essential sustain in a long fight.
-5. **Block density** -- After STRONG_DEBUFF, Frail reduces all block by 25%. Need multiple block sources to survive 40-50+ incoming.
-6. **Potions** -- Use aggressively. Gambler's Brew is excellent for finding block cards on critical turns.
+1. **Enter at 70%+ HP or have Pantograph** -- the STRONG_DEBUFF on Turn 4 creates a 3-turn window where incoming damage spikes by 50% and block is reduced by 25%. Pantograph heals to full at boss start, bypassing the HP threshold entirely. Without Pantograph, low HP entry is fatal.
+2. **AOE damage (HIGHEST PRIORITY)** -- Immolate+ is the MVP. Hits Collector + both Torch Heads simultaneously. With Vulnerable: 42 damage to Collector per cast. Thunderclap+ applies Vulnerable to all 3 targets. AOE is MORE important than single-target burst because Torch Heads respawn.
+3. **Mass debuff** -- Shockwave+ (Weak 3 + Vuln 3 to ALL enemies) is the second-highest-value card. Reduces combined incoming from 3 enemies by 25% for 3 turns while boosting all damage by 50%.
+4. **Impervious** -- 30 block absorbs an entire post-debuff turn. The single best defensive card for this fight.
+5. **Block density** -- After STRONG_DEBUFF, Frail reduces all block by 25%. Need multiple block sources to survive 40-50+ incoming. Armaments+ upgrading Defends mid-combat helps.
+6. **Disarm** -- Permanently reduces Collector Strength. Play on Turn 1 for maximum cumulative value across 10 turns.
+7. **Potions** -- Use aggressively if available. Gambler's Brew is excellent for finding block cards on critical turns.
 
 STRATEGY:
-- **Turn 1 (free/setup)**: Play Powers (Inflame, Rage+) and setup cards. Collector spawns Torch Heads but may not deal heavy damage yet.
-- **Turns 2-3**: Deal maximum damage to the Collector while blocking Torch Head attacks. Apply Vulnerable (Bash+, Thunderclap) to all enemies. Shockwave applies Weak to reduce incoming for 3 turns.
-- **Turn 4 (STRONG_DEBUFF)**: This turn deals no direct damage. Use it to play burst damage (Bludgeon with Vulnerable = 48+ damage) or setup. Treat it like a free turn for offense.
-- **Turns 5-7 (post-debuff crisis)**: Block is reduced by Frail, damage is reduced by Weak, and you take 50% more from Vulnerable. This is the survival gauntlet. Reaper is critical here -- heals from 3 targets.
+- **Turn 1 (spawn turn)**: Collector spawns 2 Torch Heads. Use this turn for AOE setup: Thunderclap+ applies Vulnerable to all 3 enemies. Disarm on Collector reduces Strength. Front-load damage while Mutagenic Strength (if available) is active.
+- **Turns 2-3**: Deal maximum damage to the Collector while blocking Torch Head attacks. Bash+ refreshes Vulnerable. Shockwave+ applies Weak to ALL enemies, reducing combined incoming by 25% for 3 turns -- this is the highest-value play in the fight.
+- **Turn 4 (STRONG_DEBUFF)**: This turn deals no direct damage. Use it to play burst damage (Immolate+ with Vulnerable = 42+ damage to Collector + kills/damages Torch Heads) or setup. Treat it like a free turn for offense.
+- **Turns 5-7 (post-debuff crisis)**: Block is reduced by Frail, damage is reduced by Weak, and you take 50% more from Vulnerable. This is the survival gauntlet. Impervious (30 block) is the best single card for surviving this window.
+- **Turns 8-10 (cleanup)**: If the Collector is still alive, re-apply Vulnerable and use AOE (Immolate+) to clear re-summoned Torch Heads while chipping at Collector HP. Headbutt can put Immolate+ on top of draw pile for guaranteed AOE on the killing turn.
+
+CONFIRMED WINNING APPROACH:
+- Deck: Bash+, Immolate+, Thunderclap+, Shockwave+, Impervious, Disarm, Clothesline, Hemokinesis, Headbutt, Armaments+, Rage, Pommel Strike, Shrug It Off, 2x Defend, 2x Strike.
+- Turn 1: Thunderclap+ (AOE Vuln) + Disarm (Collector -2 Str) + Hemokinesis + Strike for ~50 damage.
+- Turn 3: Rage + Immolate+ (42 vuln damage to Collector, kills/damages Torch Heads) + Impervious (30 block). This turn is the pivot -- massive AOE damage while absorbing all incoming.
+- Turn 4: Shockwave+ (Weak+Vuln all 3 enemies for 3 turns). Reduces post-debuff crisis damage significantly.
+- Turns 5-7: Immolate+ again to clear re-summoned Torch Heads. Headbutt to guarantee draw order.
+- Fight lasted 10 turns. Entered at full HP (Pantograph). Exited at 14/80 HP -- the fight IS an HP drain even when won.
 
 WHAT NOT TO DO:
 - Enter below 50% HP. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive.
 - Ignore Torch Heads entirely. Their combined 14 damage/turn adds up. AOE that hits all three targets is far more efficient than single-target.
 - Save potions for "later." The post-debuff turns (5-7) are the crisis -- potions should be used to survive this window.
-- Play Shockwave on Turn 1 before Torch Heads spawn. Wait until Turn 2+ when all enemies are present.
-
----
+- Play Shockwave+ on Turn 1 before Torch Heads spawn. Wait until Turn 2+ when all enemies are present.
+- Rely on single-target damage only. Immolate+ is the MVP of this fight -- AOE that damages all 3 targets simultaneously is critical for managing Torch Head respawns.

@@ -24,10 +24,19 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Horn Cleat block amount: Observed 14 block on turn 2. Is this always 14 or does it scale?
 - Slaver's Collar source: How is this relic obtained? Boss reward, shop, or event?
 - Block values sometimes higher than expected: Player noted block values exceeding card text. Possible relic interaction (Horn Cleat turn 2?) or Dexterity source not accounted for.
-- Wheel of Change full outcome table: Only observed "Lose 8 HP" as an outcome. Other possible outcomes unknown -- could include gold, card rewards, curses, healing, relics. Need more data points to build a complete decision framework.
+- Wheel of Change full outcome table: Observed "Lose 8 HP" and "Heal to full health" as outcomes. Other possible outcomes unknown -- could include gold, card rewards, curses, relics. Need more data points to build a complete decision framework.
 - Gremlin Horn exact trigger timing: Observed +1E and draw 1 on enemy death. Does it trigger on ALL enemy deaths including minion summons dying? Does it work with Torch Head deaths in Collector fight?
 - Whetstone upgrade targeting: Described as "2 random Attack cards." Are Strikes included in the pool? Can it upgrade already-upgraded cards (no effect)?
 - Heavy Blade exact damage formula: Confirmed 14 + Str*3 (unupgraded). At Str 1: 14+3=17. At Str 3: 14+9=23. Upgraded formula believed to be 14 + Str*5 but not yet observed in upgraded form.
+
+- Transient exact damage pattern: Turn 1 attack ~22, Turn 2 attack ~38 (with Str accumulation). Exact per-turn Strength gain unknown. Need more data points. Disarm (-2 Str) + Disarm+ (-3 Str) + Shockwave+ (Weak 3) reduced Turn 2 from ~38 to ~26 but still lethal at 15 HP.
+- Writhing Mass exact HP: Observed ~160 HP. Exact amount not confirmed.
+- Writhing Mass Malleable block scaling: Gains block per hit. Exact formula unknown. Single large hits (Hemokinesis, Immolate) are better than multi-hit. Need to confirm if Malleable resets each turn or accumulates.
+- Darklings Life Link exact mechanic: Observed that dead Darklings revive at half HP. Does this happen immediately or at end of turn? Must all 3 die in the same turn, or within the same turn cycle?
+- Spikers Thorns scaling: Observed Thorns 3 and Thorns 7 on different Spikers. Do Spikers start with different Thorns values or gain Thorns over time?
+- Donu and Deca: Not yet encountered. Boss identified from Act 3 plan screen. Need first encounter data.
+- Collector total HP: Player noted 282 HP on entry. Previous entry says 279. Need to confirm exact HP.
+- Hard Rules compliance: Zero failures in Run 63. This is the first run with zero compliance failures. Monitor if this continues.
 
 ## Prediction Errors (non-fatal, for monitoring)
 
@@ -52,6 +61,6 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Index shifting: ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #2. Four confirmed deaths (Runs 3, 21, 22, 57). Monitor future runs for compliance.
 - Potion hoarding partially fixed: Run 20 used potions aggressively. But Run 50 had Blessing of the Forge unused at death. Hard Rule #5 now addresses this.
 - Unknown rooms as combat: Runs 20 and 44 hit dangerous fights from Unknown rooms. Unknown rooms are NOT safe at low HP. Documented in strategy.md.
-- **Runic Dome compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #1. Two deaths from taking it. Monitor future runs.
-- **Zero-upgrade compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #3. Monitor future runs.
-- **Random exhaust compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #4. Havoc and unupgraded True Grit destroyed critical cards in Runs 44, 51.
+- **Runic Dome compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #1. Two deaths from taking it. Run 63: NO FAILURE (boss relic swap gave Sozu, not Runic Dome -- player correctly refused to take Runic Dome in prior runs). Monitor continues.
+- **Zero-upgrade compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #3. Run 63: Bash+ upgraded Floor 3, Armaments+ upgraded Floor 12, multiple cards upgraded via Armaments+ mid-combat, Immolate+ and Thunderclap+ at rest sites. COMPLIANT.
+- **Random exhaust compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #4. Run 63: Player correctly refused Havoc and unupgraded True Grit from card rewards. COMPLIANT.
