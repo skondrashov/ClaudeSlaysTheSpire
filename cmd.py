@@ -14,14 +14,12 @@ Usage from Claude Code:
     send("return")    # Skip/cancel/leave
 """
 
-import atexit
 import json
 import os
 import socket
 import sys
 import time
 import urllib.request
-import uuid
 
 from bot.state_formatter import format_state
 
@@ -30,92 +28,111 @@ PORT = 19284
 TIMEOUT = 120  # seconds — long timeout for slow animations
 STREAM_URL = "http://127.0.0.1:3002/decision"
 LOCK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "player.lock")
-LOCK_STALE_SECONDS = 300  # lock expires after 5 minutes of inactivity
+PLAYBOOK_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "playbook")
 
 # Direct event log — backup for when stream.py is down.
-# stream.py restarts during a run used to silently lose decisions.
-# Now cmd.py always writes to this file, so the full run log survives.
 EVENT_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "stream_events.jsonl")
 
-# Each import of cmd.py gets a unique session ID.
-# Two agents importing cmd.py = two sessions = lock conflict.
-_SESSION_ID = str(uuid.uuid4())
+# Session token: passed via PLAYER_SESSION env var by the orchestrator.
+# All bash calls from one agent use the same token. The lock checks this.
+_SESSION_ID = os.environ.get("PLAYER_SESSION", "")
+if not _SESSION_ID:
+    raise RuntimeError(
+        "PLAYER_SESSION env var not set.\n"
+        "Only the orchestrator can provide this token."
+    )
 
 
 def _acquire_lock():
-    """Acquire the player lock. Explodes if another session holds it."""
+    """Acquire the player lock at import time. Fails if another session holds it."""
     os.makedirs(os.path.dirname(LOCK_FILE), exist_ok=True)
 
     if os.path.exists(LOCK_FILE):
         try:
             with open(LOCK_FILE) as f:
-                lock = json.load(f)
-            other_id = lock.get("session_id", "")
-            lock_time = lock.get("timestamp", 0)
-
-            # Our lock — just refresh the timestamp
-            if other_id == _SESSION_ID:
-                lock["timestamp"] = time.time()
-                with open(LOCK_FILE, "w") as f:
-                    json.dump(lock, f)
-                return
-
-            age = time.time() - lock_time
-            if age < LOCK_STALE_SECONDS:
-                raise RuntimeError(
-                    f"\n{'='*60}\n"
-                    f"PLAYER LOCK CONFLICT\n"
-                    f"{'='*60}\n"
-                    f"Another player agent is already running!\n"
-                    f"  Session: {other_id[:12]}...\n"
-                    f"  Last active: {int(age)}s ago\n"
-                    f"\n"
-                    f"Only ONE player agent can run at a time.\n"
-                    f"Kill the other agent before starting a new one.\n"
-                    f"To force-break: from cmd import force_unlock; force_unlock()\n"
-                    f"{'='*60}\n"
-                )
-            else:
-                print(f"[cmd] Stale lock from {other_id[:12]}... ({int(age)}s old) — taking over",
-                      file=sys.stderr)
-        except (json.JSONDecodeError, OSError):
+                held_by = f.read().strip()
+            if held_by == _SESSION_ID:
+                return  # our lock from a previous call
+            raise RuntimeError(
+                f"PLAYER LOCK CONFLICT — lock held by {held_by[:12]}...\n"
+                f"Another player agent is running. Only one at a time.\n"
+                f"Orchestrator must delete data/player.lock before spawning a new agent."
+            )
+        except (OSError, ValueError):
             pass  # corrupted lock, take it
 
-    # Write our lock
     with open(LOCK_FILE, "w") as f:
-        json.dump({"session_id": _SESSION_ID, "timestamp": time.time()}, f)
+        f.write(_SESSION_ID)
 
 
-def _release_lock():
-    """Release our lock on exit (best-effort)."""
+# Acquire lock at import time.
+# Orchestrator deletes this file before spawning a new agent.
+_acquire_lock()
+
+
+# ---------------------------------------------------------------------------
+# Playbook loading utilities
+# ---------------------------------------------------------------------------
+
+def _name_to_filename(name: str) -> str:
+    """Convert a game entity name to its playbook filename (without extension).
+
+    "Shrug It Off+" -> "shrug-it-off"
+    "Charon's Ashes" -> "charon-s-ashes"
+    "3 Cultists" -> "3-cultists"
+    """
+    name = name.rstrip("+").strip()
+    name = name.lower()
+    name = name.replace("'", "-")
+    name = name.replace(" ", "-")
+    while "--" in name:
+        name = name.replace("--", "-")
+    return name
+
+
+def _load_playbook(category: str, name: str) -> str | None:
+    """Load a playbook file. Returns content or None if not found.
+
+    category: "cards", "enemies", "bosses", "events", "relics", "potions"
+    name: game entity name (e.g., "Shrug It Off", "Gremlin Nob")
+    """
+    filename = _name_to_filename(name) + ".md"
+    path = os.path.join(PLAYBOOK_DIR, category, filename)
     try:
-        if os.path.exists(LOCK_FILE):
-            with open(LOCK_FILE) as f:
-                lock = json.load(f)
-            if lock.get("session_id") == _SESSION_ID:
-                os.remove(LOCK_FILE)
-                print("[cmd] Player lock released", file=sys.stderr)
-    except Exception:
-        pass
-
-
-def force_unlock():
-    """Force-break the player lock. Use when a stale agent left a lock behind."""
-    try:
-        if os.path.exists(LOCK_FILE):
-            with open(LOCK_FILE) as f:
-                lock = json.load(f)
-            print(f"Removing lock from session {lock.get('session_id', '?')[:12]}...")
-        os.remove(LOCK_FILE)
-        print("Lock removed.")
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read().strip()
     except FileNotFoundError:
-        print("No lock file found.")
-    except Exception as e:
-        print(f"Error: {e}")
+        return None
 
 
-# Release lock when this process exits
-atexit.register(_release_lock)
+def _load_playbook_top(category: str, name: str) -> str | None:
+    """Load just the header + first summary line of a playbook file.
+
+    Returns the first non-empty line (title) + second non-empty line (summary),
+    or None if not found. Used for compact deck reports.
+    """
+    content = _load_playbook(category, name)
+    if content is None:
+        return None
+    lines = [l for l in content.split("\n") if l.strip()]
+    if len(lines) >= 2:
+        return lines[0] + "\n" + lines[1]
+    elif lines:
+        return lines[0]
+    return None
+
+
+def _load_playbook_root(filename: str) -> str | None:
+    """Load a root-level playbook file (strategy.md, mechanics.md)."""
+    path = os.path.join(PLAYBOOK_DIR, filename)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        return None
+
+
+_BASIC_CARDS = {"Strike", "Defend", "Strike+", "Defend+"}
 
 
 def _tcp_request(request: dict) -> dict:
@@ -148,7 +165,6 @@ def _tcp_request(request: dict) -> dict:
 
 def state() -> str:
     """Get current game state, formatted for reading."""
-    _acquire_lock()
     global _last_raw_state
     raw = _tcp_request({"type": "state"})
     _last_raw_state = raw
@@ -167,17 +183,43 @@ def state_raw() -> dict:
 _last_raw_state = None
 
 
+def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
+    """Resolve an enemy name to its absolute index in the monsters array.
+
+    CommunicationMod uses absolute indices into the full monsters array
+    (including dead/gone enemies). This resolves a name to that index.
+
+    Returns the index as a string, or None if no match.
+    """
+    name_lower = name_ref.lower()
+    # Exact match first
+    for i, m in enumerate(monsters):
+        if m.get("is_gone"):
+            continue
+        if m.get("name", "").lower() == name_lower:
+            return str(i)
+    # Substring match
+    for i, m in enumerate(monsters):
+        if m.get("is_gone"):
+            continue
+        if name_lower in m.get("name", "").lower():
+            return str(i)
+    return None
+
+
 def _resolve_card_name(raw_state: dict, action: str) -> str:
-    """Translate card names in play commands to indices at execution time.
+    """Translate card names and enemy names in play commands to indices.
 
-    If the action is a 'play' command with a card name instead of an index,
-    look up the card in the current hand and replace the name with its index.
+    Supports card names, enemy names, or both:
+        "play Bash Jaw Worm"    -> "play 2 0"   (card name + enemy name)
+        "play Bash 0"           -> "play 2 0"   (card name + numeric target)
+        "play Shrug It Off"     -> "play 3"     (card name, no target)
+        "play Bash+ 0"          -> "play 2 0"   (upgraded card + target)
+        "play 3 0"              -> "play 3 0"   (numeric, unchanged)
+        "play 3 Jaw Worm"       -> "play 3 0"   (numeric card + enemy name)
 
-    Examples:
-        "play Bash 0"       -> "play 2 0"   (if Bash is at index 2)
-        "play Shrug It Off"  -> "play 3"     (if Shrug It Off is at index 3)
-        "play Bash+ 0"      -> "play 2 0"   (matches upgraded Bash specifically)
-        "play 3 0"           -> "play 3 0"   (numeric index, unchanged)
+    Enemy names are resolved to absolute indices in the monsters array
+    (matching CommunicationMod's indexing which includes dead enemies).
     """
     if not action or not action.strip().lower().startswith("play "):
         return action
@@ -186,53 +228,101 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
     if len(parts) < 2:
         return action
 
-    # Extract everything after "play"
-    after_play = action.strip()[len("play "):].strip()
-
-    # Determine if the last token is a target (a digit)
-    tokens = after_play.split()
-    if tokens and tokens[-1].isdigit() and len(tokens) > 1:
-        target = tokens[-1]
-        card_ref = " ".join(tokens[:-1])
-    else:
-        target = None
-        card_ref = after_play
-
-    # If card_ref is a pure number, it's already an index — leave as-is
-    try:
-        int(card_ref)
-        return action  # backwards compatible
-    except ValueError:
-        pass
-
-    # Look up the card by name in the current hand
     if not raw_state:
         return action
     combat = (raw_state.get("game_state") or {}).get("combat_state")
     if not combat:
         return action
     hand = combat.get("hand", [])
-    if not hand:
-        return action
+    monsters = combat.get("monsters", [])
 
-    # Check if the name ends with '+' (upgrade-specific match)
-    require_upgrade = card_ref.endswith("+")
-    search_name = card_ref[:-1] if require_upgrade else card_ref
+    # Extract everything after "play"
+    after_play = action.strip()[len("play "):].strip()
+    tokens = after_play.split()
 
-    # Find first matching card (case-insensitive)
+    # --- Case 1: Card is a numeric index ---
+    if tokens[0].isdigit():
+        card_idx = tokens[0]
+        target_ref = " ".join(tokens[1:]) if len(tokens) > 1 else None
+        if target_ref:
+            # Already numeric?
+            try:
+                int(target_ref)
+                return action  # "play 3 0" — all numeric, unchanged
+            except ValueError:
+                pass
+            # Resolve enemy name
+            resolved_target = _resolve_enemy_name(monsters, target_ref)
+            if resolved_target is not None:
+                return f"play {card_idx} {resolved_target}"
+        return action  # "play 3" or unresolvable target
+
+    # --- Case 2: Card is a name — find it in hand ---
+    # Try matching hand card names against the token sequence (longest match wins).
+    # This handles multi-word card names like "Shrug It Off".
+    # When multiple cards match equally (e.g., two Strikes), pick the cheapest one.
+    # This matters with Snecko Oil or other cost-randomizing effects.
+    best_card_idx = None       # 1-indexed card position in hand
+    best_token_count = 0       # how many tokens the card name consumed
+    best_card_cost = float('inf')  # cost of the best match (prefer cheapest)
+
     for i, card in enumerate(hand):
         card_name = card.get("name", "")
-        if card_name.lower() == search_name.lower():
-            if require_upgrade and card.get("upgrades", 0) < 1:
-                continue
-            idx = i + 1  # 1-indexed
-            if target is not None:
-                return f"play {idx} {target}"
-            else:
-                return f"play {idx}"
+        upgraded = card.get("upgrades", 0) > 0
+        card_cost = card.get("cost", 99)
 
-    # No match found — return unchanged, let relay handle the error
-    return action
+        # Build candidate names to try
+        names_to_try = [card_name]
+        if upgraded:
+            names_to_try.append(card_name + "+")
+
+        for try_name in names_to_try:
+            try_tokens = try_name.lower().split()
+            tc = len(try_tokens)
+            if tc > len(tokens) or tc < best_token_count:
+                continue
+            # Same token count but more expensive — skip (keep cheapest)
+            if tc == best_token_count and card_cost >= best_card_cost:
+                continue
+            candidate = " ".join(tokens[:tc]).lower()
+            # Match against name (with or without +)
+            if candidate == try_name.lower():
+                best_card_idx = i + 1
+                best_token_count = tc
+                best_card_cost = card_cost
+            elif candidate == try_name.rstrip("+").lower():
+                # "play Bash" matches "Bash" even if upgraded
+                if try_name.endswith("+"):
+                    # Only match non-+ input to upgraded cards if no + specified
+                    # (don't require_upgrade if they didn't type +)
+                    pass  # handled by the base name in names_to_try[0]
+                best_card_idx = i + 1
+                best_token_count = tc
+                best_card_cost = card_cost
+
+    if best_card_idx is None:
+        return action  # No card match, return unchanged
+
+    # Whatever's left after the card name is the target
+    remaining = " ".join(tokens[best_token_count:]).strip() if best_token_count < len(tokens) else ""
+
+    if not remaining:
+        return f"play {best_card_idx}"
+
+    # Target is numeric?
+    try:
+        int(remaining)
+        return f"play {best_card_idx} {remaining}"
+    except ValueError:
+        pass
+
+    # Resolve enemy name to absolute index
+    resolved_target = _resolve_enemy_name(monsters, remaining)
+    if resolved_target is not None:
+        return f"play {best_card_idx} {resolved_target}"
+
+    # Couldn't resolve target — return with card resolved at least
+    return f"play {best_card_idx} {remaining}"
 
 
 def _translate_named_choose(name: str, screen: str) -> str:
@@ -265,7 +355,7 @@ def _translate_command(command: str) -> str:
         card = hand[card_idx] if 0 <= card_idx < len(hand) else None
         card_name = card["name"] if card else f"card {parts[1]}"
         if len(parts) > 2 and combat:
-            monsters = [m for m in combat.get("monsters", []) if not m.get("is_gone")]
+            monsters = combat.get("monsters", [])  # absolute index
             target_idx = int(parts[2])
             enemy = monsters[target_idx] if 0 <= target_idx < len(monsters) else None
             enemy_name = enemy["name"] if enemy else f"enemy {parts[2]}"
@@ -335,8 +425,6 @@ def _translate_command(command: str) -> str:
                 import re
                 text = options[idx].get("text", "?")
                 text = re.sub(r"<[^>]+>", "", text)[:50]
-                if event_name:
-                    return f"{event_name}: {text}"
                 return text
         elif screen == "GRID":
             cards = ss.get("cards", [])
@@ -484,7 +572,6 @@ def send(command: str, reason: str = "") -> str:
             "Example: send('play Bash 0', reason='Applying Vulnerable for damage amplification next turn')\n"
             "The stream overlay shows your reasoning to viewers — it cannot be empty."
         )
-    _acquire_lock()
     # Fetch pre-command state so translation has current hand/enemies
     global _last_raw_state
     _last_raw_state = _tcp_request({"type": "state"})
@@ -494,42 +581,10 @@ def send(command: str, reason: str = "") -> str:
     raw = _tcp_request({"type": "command", "command": resolved})
     _last_raw_state = raw  # Update cache
 
-    # Auto-handle mechanical transitions (shop, chest, gold collection)
+    # Auto-handle mechanical transitions (gold collection only)
     raw = _auto_handle_mechanical(raw)
 
     return format_state(raw)
-
-
-def _auto_proceed_shop(raw: dict) -> dict:
-    """If we landed on an empty SHOP_ROOM, auto-proceed to get the real shop screen."""
-    global _last_raw_state
-    if not raw.get("in_game"):
-        return raw
-    gs = raw.get("game_state", {})
-    if gs.get("screen_type") != "SHOP_ROOM":
-        return raw
-    ss = gs.get("screen_state", {})
-    # Only auto-proceed if shop inventory is empty (the transition state)
-    if ss.get("cards") or ss.get("relics") or ss.get("potions"):
-        return raw
-    # Auto-proceed to load the actual shop
-    raw = _tcp_request({"type": "command", "command": "proceed"})
-    _last_raw_state = raw
-    return raw
-
-
-def _auto_proceed_chest(raw: dict) -> dict:
-    """Auto-open chests — there's never a reason not to open them."""
-    global _last_raw_state
-    if not raw.get("in_game"):
-        return raw
-    gs = raw.get("game_state", {})
-    if gs.get("screen_type") != "CHEST":
-        return raw
-    # Chests always contain loot; opening is never a decision.
-    raw = _tcp_request({"type": "command", "command": "proceed"})
-    _last_raw_state = raw
-    return raw
 
 
 def _auto_collect_gold(raw: dict) -> dict:
@@ -566,9 +621,13 @@ def _auto_collect_gold(raw: dict) -> dict:
 
 
 def _auto_handle_mechanical(raw: dict) -> dict:
-    """Handle mechanical transitions that never involve a real decision."""
-    raw = _auto_proceed_shop(raw)
-    raw = _auto_proceed_chest(raw)
+    """Handle mechanical transitions that never involve a real decision.
+
+    NOTE: _auto_proceed_shop and _auto_proceed_chest were removed because
+    sending 'proceed' from SHOP_ROOM/CHEST exits those rooms entirely,
+    skipping past shops and treasure rooms without the agent ever seeing them.
+    The agent must handle these screens itself.
+    """
     raw = _auto_collect_gold(raw)
     return raw
 
@@ -616,16 +675,17 @@ def _validate_action(raw: dict, action: str) -> str | None:
             card_name = card.get("name", f"card {card_n}")
             return f"{card_name} is not playable (likely not enough energy)"
 
-        # Validate target if specified
+        # Validate target if specified (absolute index into full monsters array)
         if len(parts) > 2:
             try:
                 target_idx = int(parts[2])
             except ValueError:
                 return f"invalid target index: {parts[2]}"
             monsters = combat.get("monsters", [])
-            alive = [m for m in monsters if not m.get("is_gone")]
-            if target_idx < 0 or target_idx >= len(alive):
-                return f"target index {target_idx} out of range ({len(alive)} alive monsters)"
+            if target_idx < 0 or target_idx >= len(monsters):
+                return f"target index {target_idx} out of range ({len(monsters)} monsters)"
+            if monsters[target_idx].get("is_gone"):
+                return f"target {target_idx} ({monsters[target_idx].get('name', '?')}) is dead/gone"
 
         return None
 
@@ -676,7 +736,6 @@ def turn(actions: list, reason: str = "") -> str:
             "The stream overlay shows your reasoning to viewers — it cannot be empty."
         )
 
-    _acquire_lock()
     # Fetch pre-turn state for translation
     global _last_raw_state
     _last_raw_state = _tcp_request({"type": "state"})
@@ -686,12 +745,11 @@ def turn(actions: list, reason: str = "") -> str:
     translated_actions = [_translate_command(_resolve_card_name(_last_raw_state, a)) for a in actions]
     translated_summary = " → ".join(translated_actions)
 
-    # Post the full plan as one reasoning entry (skip the combined feed entry)
+    # Post the full plan as one entry in both reasoning and feed
     _post_decision(
         command="; ".join(actions),
         reasoning=reason,
         translated_override=translated_summary,
-        skip_feed=True,
     )
 
     total = len(actions)
@@ -715,8 +773,6 @@ def turn(actions: list, reason: str = "") -> str:
                 )
                 break
 
-        # Re-translate with resolved action for accurate feed display
-        _post_feed(_translate_command(resolved_action))
         raw = _tcp_request({"type": "command", "command": resolved_action.strip()})
         _last_raw_state = raw
         if "error" in raw:
@@ -777,6 +833,327 @@ def potion_use(slot: int, target: int = None, reason: str = "") -> str:
 def potion_discard(slot: int, reason: str = "") -> str:
     """Discard a potion. reason= is REQUIRED."""
     return send(f"potion discard {slot}", reason=reason)
+
+
+# ---------------------------------------------------------------------------
+# Playbook planning and reasoning
+# ---------------------------------------------------------------------------
+
+def plan() -> str:
+    """Load strategic context for the current situation.
+
+    Auto-detects mode based on game state:
+    - In combat: loads enemy files + hand card files + relevant relics
+    - Outside combat: loads strategy.md + boss file + full deck/relic/potion notes
+
+    Returns formatted playbook knowledge. Call at the start of each act
+    and at the start of each combat.
+    """
+    global _last_raw_state
+    raw = _tcp_request({"type": "state"})
+    _last_raw_state = raw
+
+    if not raw.get("in_game", False):
+        return "Not in game. Start a run first."
+
+    gs = raw.get("game_state", {})
+    combat = gs.get("combat_state")
+
+    if combat:
+        return _plan_combat(gs, combat)
+    else:
+        return _plan_act(gs)
+
+
+def _plan_combat(gs: dict, combat: dict) -> str:
+    """Combat plan: enemy patterns + hand card details + relic effects."""
+    lines = ["=== COMBAT PLAN ===", ""]
+
+    # Enemies — load playbook for each unique monster
+    monsters = combat.get("monsters", [])
+    alive = [m for m in monsters if not m.get("is_gone")]
+    enemy_names = []
+    seen = set()
+    for m in alive:
+        name = m.get("name", "?")
+        enemy_names.append(name)
+        if name in seen:
+            continue
+        seen.add(name)
+        # Try enemies/ first, then bosses/
+        entry = _load_playbook("enemies", name)
+        if entry is None:
+            entry = _load_playbook("bosses", name)
+        if entry:
+            lines.append(entry)
+            lines.append("")
+        else:
+            lines.append(f"[No playbook entry for enemy: {name}]")
+            lines.append("")
+
+    # Hand cards — full playbook entries
+    hand = combat.get("hand", [])
+    if hand:
+        lines.append("--- HAND CARD REFERENCE ---")
+        seen_cards = set()
+        for card in hand:
+            name = card.get("name", "?")
+            if card.get("upgrades", 0) > 0 and not name.endswith("+"):
+                name += "+"
+            base = name.rstrip("+")
+            if base in seen_cards or base in _BASIC_CARDS:
+                continue
+            seen_cards.add(base)
+            entry = _load_playbook("cards", name)
+            if entry:
+                lines.append(entry)
+                lines.append("")
+
+    # Relics — all of them (entries are short)
+    relics = gs.get("relics", [])
+    if relics:
+        lines.append("--- RELICS ---")
+        for r in relics:
+            name = r.get("name", "?")
+            counter = r.get("counter", -1)
+            entry = _load_playbook("relics", name)
+            if entry:
+                counter_note = f" [counter: {counter}]" if counter >= 0 else ""
+                lines.append(f"{entry}{counter_note}")
+                lines.append("")
+
+    summary = f"Combat: vs {' + '.join(enemy_names)}"
+    _post_feed(f"PLAN — {summary}", highlight=True)
+    _log_event({
+        "type": "plan",
+        "mode": "combat",
+        "summary": summary,
+        "timestamp": time.time(),
+    })
+
+    return "\n".join(lines)
+
+
+def _plan_act(gs: dict) -> str:
+    """Act plan: strategy + boss prep + deck/relic/potion report."""
+    act = gs.get("act", 1)
+    boss = gs.get("act_boss", "?")
+    deck = gs.get("deck", [])
+
+    lines = ["=== ACT PLAN ===", ""]
+
+    # Strategy overview
+    strat = _load_playbook_root("strategy.md")
+    if strat:
+        lines.append("--- STRATEGY ---")
+        lines.append(strat)
+        lines.append("")
+
+    # Boss file
+    boss_entry = _load_playbook("bosses", boss)
+    if boss_entry:
+        lines.append(f"--- BOSS: {boss} ---")
+        lines.append(boss_entry)
+        lines.append("")
+    else:
+        lines.append(f"[No playbook entry for boss: {boss}]")
+        lines.append("")
+
+    # Deck composition summary
+    attacks, skills, powers, statuses = 0, 0, 0, 0
+    total_cost = 0
+    card_count = 0
+    for c in deck:
+        ctype = c.get("type", "").upper()
+        cost = c.get("cost", 0)
+        if isinstance(cost, int) and cost >= 0:
+            total_cost += cost
+            card_count += 1
+        if ctype == "ATTACK":
+            attacks += 1
+        elif ctype == "SKILL":
+            skills += 1
+        elif ctype == "POWER":
+            powers += 1
+        else:
+            statuses += 1
+    avg_cost = round(total_cost / card_count, 1) if card_count > 0 else 0
+
+    lines.append(f"--- DECK ({len(deck)} cards) ---")
+    lines.append(f"Attacks: {attacks} | Skills: {skills} | Powers: {powers}" +
+                 (f" | Status/Curse: {statuses}" if statuses else ""))
+    lines.append(f"Avg cost: {avg_cost}E")
+    lines.append("")
+
+    # Card notes — compact (first 2 lines) for non-basic cards
+    missing_cards = []
+    lines.append("Card Notes:")
+    seen_cards = set()
+    for c in deck:
+        name = c.get("name", "?")
+        if c.get("upgrades", 0) > 0 and not name.endswith("+"):
+            name += "+"
+        base = name.rstrip("+")
+        if base in seen_cards or name in _BASIC_CARDS or base in _BASIC_CARDS:
+            continue
+        seen_cards.add(base)
+        top = _load_playbook_top("cards", name)
+        if top:
+            # Indent under "Card Notes:"
+            lines.append(f"  {top.replace(chr(10), chr(10) + '  ')}")
+        else:
+            missing_cards.append(name)
+    lines.append("")
+
+    # Relics
+    relics = gs.get("relics", [])
+    if relics:
+        lines.append(f"--- RELICS ({len(relics)}) ---")
+        for r in relics:
+            name = r.get("name", "?")
+            entry = _load_playbook("relics", name)
+            if entry:
+                counter = r.get("counter", -1)
+                counter_note = f" [counter: {counter}]" if counter >= 0 else ""
+                lines.append(f"  {entry}{counter_note}")
+                lines.append("")
+            else:
+                missing_cards.append(f"relic:{name}")
+
+    # Potions
+    potions = gs.get("potions", [])
+    active_potions = [p for p in potions if p.get("id") != "Potion Slot"]
+    if active_potions:
+        lines.append("--- POTIONS ---")
+        for p in active_potions:
+            name = p.get("name", "?")
+            entry = _load_playbook("potions", name)
+            if entry:
+                lines.append(f"  {entry}")
+                lines.append("")
+            else:
+                missing_cards.append(f"potion:{name}")
+
+    # Missing entries
+    if missing_cards:
+        lines.append("--- MISSING PLAYBOOK ENTRIES ---")
+        for m in missing_cards:
+            lines.append(f"  {m}")
+        lines.append("")
+
+    summary = f"Act {act}: {len(deck)} cards vs {boss}"
+    _post_feed(f"PLAN — {summary}", highlight=True)
+    _log_event({
+        "type": "plan",
+        "mode": "act",
+        "summary": summary,
+        "timestamp": time.time(),
+    })
+
+    return "\n".join(lines)
+
+
+def reason(topic: str) -> str:
+    """Look up a specific playbook entry by name.
+
+    Args:
+        topic: Name of a card, enemy, boss, event, relic, or potion.
+               Examples: "Shrug It Off", "Gremlin Nob", "Hexaghost",
+                         "Big Fish", "Pen Nib", "Flex Potion"
+
+    Returns the full playbook entry, or a helpful error if not found.
+    """
+    categories = ["cards", "enemies", "bosses", "events", "relics", "potions"]
+
+    # Try exact match in each category
+    for cat in categories:
+        entry = _load_playbook(cat, topic)
+        if entry:
+            _post_feed(f"LOOKUP — {topic}", highlight=False)
+            _log_event({
+                "type": "reason",
+                "topic": topic,
+                "category": cat,
+                "timestamp": time.time(),
+            })
+            return f"=== PLAYBOOK: {topic} ({cat}) ===\n\n{entry}"
+
+    # No exact match — try substring search across all categories
+    target = _name_to_filename(topic)
+    matches = []
+    for cat in categories:
+        cat_dir = os.path.join(PLAYBOOK_DIR, cat)
+        if not os.path.isdir(cat_dir):
+            continue
+        for fname in os.listdir(cat_dir):
+            if fname.startswith("_"):
+                continue
+            if target in fname.replace(".md", ""):
+                matches.append(f"{cat}/{fname}")
+
+    if matches:
+        # Load the first match
+        first = matches[0]
+        cat, fname = first.split("/", 1)
+        path = os.path.join(PLAYBOOK_DIR, cat, fname)
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+
+        display_name = fname.replace(".md", "").replace("-", " ").title()
+        _post_feed(f"LOOKUP — {display_name}", highlight=False)
+        _log_event({
+            "type": "reason",
+            "topic": topic,
+            "category": cat,
+            "found": first,
+            "timestamp": time.time(),
+        })
+
+        if len(matches) == 1:
+            return f"=== PLAYBOOK: {display_name} ({cat}) ===\n\n{content}"
+
+        result = f"Multiple matches for \"{topic}\":\n"
+        for m in matches:
+            result += f"  - {m}\n"
+        result += f"\nShowing: {first}\n\n{content}"
+        return result
+
+    return (
+        f"No playbook entry found for \"{topic}\".\n"
+        f"Try the exact game name (e.g., \"Shrug It Off\", \"Gremlin Nob\").\n"
+        f"Use reason(\"bash\") for cards, reason(\"hexaghost\") for bosses, etc."
+    )
+
+
+def think(reasoning: str, label: str = "Strategy") -> str:
+    """Post your strategic reasoning to the stream overlay.
+
+    Call this after plan() to share your analysis with viewers. The reasoning
+    appears in the thinking panel and the action feed.
+
+    This is how viewers see WHY you're making decisions — not just what
+    playbook entries were loaded, but your actual strategic synthesis.
+
+    Args:
+        reasoning: Your strategic analysis. This is the text viewers will read.
+                   For combat: your fight strategy (win condition, survival plan, key cards, risks).
+                   For act planning: your pathing logic, deck-building goals, boss prep.
+        label: Short label for the action feed (default: "Strategy").
+               Examples: "Fight Strategy", "Act Plan", "Boss Prep"
+
+    Example:
+        think('''
+        WIN CONDITION: Rampage+ scales each play. Play it every cycle.
+        SURVIVAL: 32-damage single hit is the threat. Need 3 Defends per cycle.
+        KEY CARDS: Rampage+ (scaling), Bash+ (Vulnerable), True Grit (block + thin)
+        RISKS: Over-exhausting block cards with True Grit.
+        ESTIMATED TURNS: 12-14.
+        ''', label="Fight Strategy")
+    """
+    if not reasoning or not reasoning.strip():
+        return "[ERROR] reasoning is required. Share your strategic analysis."
+    _post_decision("think", reasoning=reasoning.strip(), translated_override=label)
+    return f"[Reasoning posted to stream: {label}]"
 
 
 def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> str:

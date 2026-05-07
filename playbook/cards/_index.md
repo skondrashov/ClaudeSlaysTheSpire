@@ -70,5 +70,6 @@
 - [Rupture](rupture.md)
 - [Corruption](corruption.md)
 - [Rage](rage.md)
+- [Barricade](barricade.md)
 - [Evolve](evolve.md)
 - [Fire Breathing](fire-breathing.md)

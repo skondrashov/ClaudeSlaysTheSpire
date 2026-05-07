@@ -54,6 +54,10 @@
 - [Unceasing Top](unceasing-top.md)
 - [Stone Calendar](stone-calendar.md)
 
+## Shop Relics
+
+- [Lee's Waffle](lees-waffle.md)
+
 ## Boss Relics / Special
 
 - [Sozu](sozu.md)

@@ -8,7 +8,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-21 of 24 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
+22 of 25 documented deaths resulted from entering a fight below safe HP thresholds (one death occurred at full HP but self-damage from Brutality drained HP during the fight). The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
 
 ### HP Thresholds for Act 2
 
@@ -41,7 +41,7 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 8-12 turns. The primary Act 2 HP drain. Without Thunderclap (mass Flight stripping + Vulnerable), expect the upper end. Thunderclap is the single most important card for Act 2 Byrd survival.
 2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight. Often consumes Fairy in a Bottle.
 3. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Even with burst damage, drains 20-30 HP. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.
-3b. **Spheric Guardian + Sentry from Unknown rooms**: 29 combined damage/turn with Frail 5 reducing block. Spheric Guardian's Barricade block makes Reaper useless and chip damage futile. Two deaths confirmed from this encounter (at 26% and 43% HP entry). Unknown rooms are the most dangerous room type in Act 2 at low HP.
+3b. **Spheric Guardian + Sentry from Unknown rooms**: 29 combined damage/turn with Frail 5 reducing block. Spheric Guardian's Barricade block makes Reaper useless and chip damage futile. Three deaths confirmed from this encounter (at 26%, 43%, and 100% HP entry). The third death occurred at FULL HP -- even 87/87 was insufficient because Brutality self-damage and Rage+ expiring at end of turn left no survival path after 6 turns. Unknown rooms are the most dangerous room type in Act 2 at any HP level when this fight spawns.
 4. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
 5. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.
 6. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. With 2 Decays, that is 4 HP/turn lost regardless of block. Over a 5-turn fight, that is 20 free HP lost. Prioritize curse removal at shops or via exhaust (Fiend Fire).
@@ -355,7 +355,7 @@ Across all boss victories (8 total, including first Act 2 boss victory), the dif
 1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions. Collector victory used Immolate+ (AOE for Torch Heads), Shockwave+ (mass debuff), and Impervious (post-debuff survival).
 2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed to full).
 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.
-4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage.
+4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage. Brutality is now confirmed as a death cause in long fights even at full HP entry -- the 1 HP/turn drain is lethal in fights lasting 8+ turns (Spheric Guardian, Shelled Parasite with Plated Armor). Only play Brutality in fights expected to end within 4-5 turns.
 5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.
 6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Collector victory relied on Immolate+ AOE (28 damage to all enemies) to manage both Collector HP and Torch Head respawns. Two Hexaghost deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.
 7. **Extra energy**: The Collector victory had 4 energy (Sozu). The extra card per turn allowed playing both offense and defense simultaneously, which is critical for multi-enemy fights.
