@@ -2,7 +2,9 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK:** Act 3 HP management. We beat Act 1 bosses consistently and have beaten the Act 2 boss (Collector). Act 3 enemies (Writhing Mass, Transient, Darklings) are severe HP drains -- Writhing Mass alone cost 38 HP in a single fight. The Collector fight itself costs 50-65 HP even when won. Entering Act 3 with a healing card (Reaper or Feed) is more important than ever, since there is no Pantograph-equivalent safety net for hallway fights. Without healing cards, conservative pathing and block density are the only defense against Act 3 HP attrition.
+**CURRENT BOTTLENECK:** Act 2 hallway survival -- specifically Spheric Guardian fights. We beat Act 1 bosses consistently and have beaten the Act 2 boss (Collector) once. But 6 of the last 8 logged deaths were in Act 2 hallway fights or early Act 2 elites, and Spheric Guardian alone accounts for 3 of the last 4 deaths. The problem is not HP management alone -- it is that the player repeatedly self-sabotages in long fights by playing self-damage Powers (Brutality) and exhausting key cards (Spot Weakness, Shockwave+) that are needed to win attrition battles. Act 3 HP management remains the NEXT bottleneck once Act 2 is solved.
+
+**IMMEDIATE PRIORITY:** Stop losing to Spheric Guardian. Three deaths in the last 12 runs, including one at FULL HP. The fix is behavioral: (1) never play Brutality in fights expected to last 7+ turns, (2) never exhaust Strength-scaling cards like Spot Weakness, (3) kill Sentry first to reduce incoming damage, (4) have Strength scaling in the deck by Floor 20 (Inflame, Spot Weakness, or accumulated Strength from relics). If the deck has no Strength scaling by Act 2, Spheric Guardian is mathematically unwinnable -- take card picks that address this.
 
 ---
 
@@ -19,7 +21,7 @@ High-level strategic principles for Ironclad runs.
 | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
 
-**CRITICAL: 3 Cultists is the single most lethal encounter in the game -- responsible for three deaths (the most of any fight).** Triple independent +3 Str/turn = +9 combined Str/turn. Deaths occurred at 30%, 37%, and 39% HP entry. Even a deck with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage failed at 30% HP because slow scaling engines cannot kill fast enough to survive the combined damage. The 50% threshold for hard hallway fights is NON-NEGOTIABLE for this encounter.
+**CRITICAL: 3 Cultists and Spheric Guardian are tied for the most lethal encounter in the game -- each responsible for three deaths.** Triple independent +3 Str/turn = +9 combined Str/turn. Deaths occurred at 30%, 37%, and 39% HP entry. Even a deck with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage failed at 30% HP because slow scaling engines cannot kill fast enough to survive the combined damage. The 50% threshold for hard hallway fights is NON-NEGOTIABLE for this encounter.
 
 ### What to Do at Low HP
 
@@ -103,11 +105,29 @@ A card's value depends on what your deck needs RIGHT NOW.
 
 Before taking a card, ask:
 - Do I have a healing card? (If no, this is the #1 gap to fill)
+- Do I have Strength scaling? (If no, this is the #2 gap to fill -- see below)
 - What fights am I struggling with?
 - Do I have enough damage? Enough block? AOE?
 - Will this card dilute my draws (bigger deck = less likely to draw key cards)?
 
 A mediocre card that fills a gap is better than a strong card that duplicates what you already have.
+
+### Strength Scaling Is Mandatory for Act 2
+
+Spheric Guardian (the single most dangerous Act 2 hallway fight, 3 deaths confirmed) has Barricade -- its block never expires and grows 15-20 per defend cycle. At 0-1 Strength, Strikes deal 6-7 damage per play against 15-20 block gained per cycle. The fight is mathematically unwinnable without Strength scaling.
+
+**By Floor 15, the deck MUST have at least one Strength source:**
+- Inflame (+2 Str permanent, 1E) -- best standalone option
+- Spot Weakness (+3/+4 Str when enemy attacks, 1E) -- excellent but conditional
+- Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses
+- Limit Break (doubles current Str) -- requires a Str source to double
+- Vajra relic (+1 Str) -- passive, always on
+- Strength Potion (+2 Str) -- temporary but bridges the gap
+
+**Card reward priority when the deck has NO Strength scaling:**
+Inflame > Spot Weakness > Limit Break (if other Str source exists) > any other card.
+
+This is nearly as important as healing. A deck with block + healing but no Strength scaling will die to Spheric Guardian's Barricade every time.
 
 ### Deck Thinning
 
@@ -254,7 +274,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 - Prefer routes with a rest site in the last 1-2 floors before the boss.
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
 - If the path forces an elite at low HP, skip it entirely -- take any alternative path.
-- **Unknown rooms are NOT safe at low HP.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. Two deaths confirmed from Spheric Guardian spawning from Unknown rooms. Treat Unknown rooms as Monster rooms when below 40% HP.
+- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). The third death occurred at FULL HP -- even 87/87 was not enough. Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse.
 
 ### Elite Risk Assessment
 

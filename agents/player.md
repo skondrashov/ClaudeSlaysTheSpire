@@ -16,6 +16,10 @@ These rules have been validated across 60+ runs. Violating any of them has direc
 
 5. **USE ALL POTIONS when entering a fight below 40% HP.** Do not save potions at low HP. An unused potion on a death screen is a strategic failure. Use stat-boost potions on turn 1.
 
+6. **NEVER PLAY BRUTALITY against Spheric Guardian, Book of Stabbing, bosses with status damage (Hexaghost), or any fight expected to last 7+ turns.** Brutality's 1 HP/turn self-damage is lethal in long fights. One confirmed death at FULL HP (87/87) was caused by Brutality draining HP from 47 to 1 over a 6-turn Spheric Guardian fight. Before playing Brutality, ask: "Will this fight end in 4-5 turns?" If uncertain, do NOT play it.
+
+7. **NEVER EXHAUST Spot Weakness, Reaper, or your only Strength-scaling card in a fight where you need damage scaling.** Exhausting Spot Weakness on turn 1 of a Spheric Guardian fight removed the only way to break through Barricade block, directly causing death. Exhaust Strikes and Defends first. Situationally powerful cards are NOT safe exhaust targets.
+
 ## Setup
 
 ```python
