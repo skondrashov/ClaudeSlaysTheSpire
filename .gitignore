@@ -1,4 +1,4 @@
-data/
+data/*
 !data/run_stats.json
 *.log
 __pycache__/

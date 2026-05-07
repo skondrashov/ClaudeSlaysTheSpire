@@ -25,6 +25,7 @@
 - [Chosen](chosen.md)
 - [Centurion + Mystic](centurion-mystic.md)
 - [3 Cultists](3-cultists.md)
+- [Mugger](mugger.md)
 - [Snake Plant](snake-plant.md)
 - [Spheric Guardian](spheric-guardian.md)
 - [Snecko](snecko.md)

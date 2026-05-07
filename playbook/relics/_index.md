@@ -53,6 +53,8 @@
 - [Nilry's Codex](nilrys-codex.md)
 - [Unceasing Top](unceasing-top.md)
 - [Stone Calendar](stone-calendar.md)
+- [Dead Branch](dead-branch.md)
+- [Wing Boots](wing-boots.md)
 
 ## Shop Relics
 

@@ -12,4 +12,4 @@ ANTI-SYNERGIES: Low energy decks (3E cost is prohibitive without extra energy), 
 
 MATCHUPS: Spheric Guardian -- the ENEMY has Barricade, not you. If you have Barricade yourself, the fight still requires massive burst to break through the enemy's persistent block. Your own Barricade helps survive but does not solve the DPS problem.
 
-NOTE: This card was taken but never played in the fight where it was acquired. At 3E with 3E total energy per turn, it requires a completely free turn to deploy. In fights with constant incoming damage, the setup opportunity may never arrive.
+NOTE: This card was taken but never played in the fight where it was acquired. At 3E with 3E total energy per turn, it requires a completely free turn to deploy. In fights with constant incoming damage, the setup opportunity may never arrive. Barricade shares the same 3E setup cost problem as Corruption -- both consume an entire turn with no immediate block or damage. See Corruption entry for detailed analysis of the setup cost trap in multi-enemy fights.

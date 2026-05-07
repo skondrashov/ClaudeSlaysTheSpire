@@ -2,6 +2,15 @@
 
 Items pending confirmation or further investigation. Promote to playbook when confident.
 
+## Promoted from Run 73
+
+- Corruption + Dead Branch synergy: PROMOTED TO PLAYBOOK. Documented in cards/corruption.md and relics/dead-branch.md.
+- Corruption setup cost trap: PROMOTED TO PLAYBOOK. 3E unupgraded leaves zero block on setup turn. Documented in cards/corruption.md.
+- Mugger enemy: PROMOTED TO PLAYBOOK. Documented in enemies/mugger.md.
+- Looter + Mugger pairing: PROMOTED TO PLAYBOOK. Multi-enemy Act 2 fight with 20+ combined damage/turn. Documented in enemies/looter.md.
+- Dead Branch relic: PROMOTED TO PLAYBOOK. Documented in relics/dead-branch.md.
+- Wing Boots relic: PROMOTED TO PLAYBOOK. Documented in relics/wing-boots.md.
+
 ## Unconfirmed
 
 - Golden Idol effect: Believed to increase gold earned by 25%. Taken but effect never directly measured.
@@ -51,12 +60,20 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Blood for Blood cost reduction: PROMOTED TO PLAYBOOK. Confirmed: cost reduces by 1 per instance of HP loss, not per point of HP lost. Reached 0E in Guardian fight, 3 Cultists fight, and Shelled Parasite fight. Brutality counts as a damage instance for cost reduction.
 - Barricade (player card): PROMOTED TO PLAYBOOK. Documented at cards/barricade.md. 3E Power, block persists. Taken but never played in one run due to 3E cost consuming entire turn with no free turns available.
 
+- Mugger exact HP and damage values: Estimated ~48-52 HP, ~10-12 damage per attack. Exact values need confirmation from a future encounter where we survive long enough to observe multiple turns.
+- Mugger gold theft amount: Assumed similar to Looter (15 gold/turn). Exact amount unconfirmed.
+- Corruption + Dead Branch random card quality: The engine generates random cards. Are the random cards drawn from the player's class pool, all cards, or a specific subset? Need observation from a fight where the engine actually activates.
+- Corruption + Second Wind interaction: Does Second Wind exhaust itself under Corruption? Still unconfirmed (previously noted, still untested).
+- Corruption upgrade availability: Was Corruption offered at rest sites or shops before the fatal fight? If so, was the upgrade skipped? Need to verify whether the player had an opportunity to upgrade Corruption to 2E and missed it.
+
 ## Prediction Errors (non-fatal, for monitoring)
 
 - Weak multiplier applied incorrectly: Player calculated Strike+ damage as floor((9+9)*0.75) = 13 against Acid Slime (L), but Acid Slime does not apply Weak to the player. Correct damage should have been 18 (no multiplier reduction). The fight was won regardless, but this shows confusion about when the 0.75 Weak damage reduction applies. Weak reduces the PLAYER'S Attack damage when the player is Weakened, or reduces ENEMY Attack damage when the enemy is Weakened. If neither is Weakened, no 0.75 multiplier applies.
 - Spheric Guardian incoming damage miscalculation: Player wrote "10 incoming" in turn 6 reasoning when Spheric Guardian does 10x2=20 on attack turns. In context, the Spheric Guardian was actually on a defend turn (player took 0 damage), so the "10 incoming" may have been from a Sentry or the player may have been confused about the attack pattern. Non-fatal but worth monitoring for future Spheric Guardian encounters.
 - Rage+ misunderstood as permanent: Player played Rage+ on Turn 1 of Spheric Guardian fight and assumed it would provide 5 block per attack for the entire combat. On Turn 5, player explicitly planned around Rage block (wrote "Rage(5 from Strike) + Rage(5 from Iron Wave)"), but the block never appeared because Rage had expired on Turn 1. This directly caused the death -- 6 block vs 10 incoming at 1 HP. FATAL prediction error. CORRECTED in playbook: Rage+ expires at end of turn, documented in cards/rage.md.
 - True Grit+ exhausting Spot Weakness: Player exhausted Spot Weakness on Turn 1 of Spheric Guardian fight, reasoning "cant trigger this turn, deck thinning is valuable." This removed the only Strength scaling option for the entire fight. In hindsight, Spot Weakness's permanent +3 Str was critical for breaking through Barricade block. Strategic error -- exhaust Strikes and Defends before situational but powerful cards.
+
+- Corruption played into multi-enemy fight without block: FATAL prediction error. Player played Corruption (3E) on turn 1 against Looter + Mugger, leaving zero energy for Defend. Combined enemy damage was 20+ unblocked. The player likely assumed the Corruption + Dead Branch engine would generate enough value to compensate, but the engine requires at least one full turn of Skill plays to start generating cards. The setup turn is a pure tempo loss. This is the same category of error as playing Barricade (3E) into active enemies -- expensive Powers must wait for free turns or require energy surplus. ADDRESSED in playbook: corruption.md updated with SETUP COST TRAP section.
 
 - Frail interaction with Rage block: Does Frail reduce block gained from Rage (a Power triggering on Attack plays)? Frail says "Block gained from cards is reduced by 25%." Rage block is gained from a Power effect, not directly from a card play. This distinction may mean Rage block is NOT reduced by Frail. Needs confirmation -- the question was raised but never tested because Rage expired before the Frail turns.
 - Spheric Guardian Frail application: PROMOTED TO PLAYBOOK. Applies Frail 5 at start of fight. Confirmed in all 3 encounters. Documented in enemies/spheric-guardian.md.
@@ -86,3 +103,4 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - **Brutality in long fights:** ADDRESSED in Strategist Review 3 — moved to player.md Hard Rule #6. Confirmed death at full HP (Run 72) from Brutality self-damage over 6 turns. Also played vs Book of Stabbing in Run 65 (generated by Enchiridion). Monitor future runs for compliance.
 - **Exhausting key cards (Spot Weakness, Shockwave+):** ADDRESSED in Strategist Review 3 — moved to player.md Hard Rule #7. Run 72: Spot Weakness exhausted via True Grit+ on turn 1 of Spheric Guardian fight. Run 69: Second Wind exhausted Shockwave+, True Grit+, and Defend+. Both directly caused deaths. Monitor future runs.
 - **Spheric Guardian as top killer (3 deaths):** ADDRESSED in Strategist Review 3 — strategy.md updated with Strength scaling requirement. Spheric Guardian now tied with 3 Cultists for most lethal encounter. Unknown rooms in Act 2 are the primary spawn source (all 3 deaths from Unknown rooms). Monitor future encounters.
+- **3E Power setup deaths (Corruption, Barricade):** Run 73: Corruption (3E) played turn 1 into Looter + Mugger, zero block, died to 20+ unblocked. Run 72: Barricade (3E) taken but never played due to no free turns. Pattern: 3E Powers that provide no immediate block or damage are unplayable into active enemies without energy surplus. The player must either upgrade them to reduce cost, wait for a free turn, or have 4+ energy. This is now a recurring pattern across multiple cards. Consider adding a Hard Rule: "Never play a 3E Power on turn 1 unless the enemy intent is non-damaging."
