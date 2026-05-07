@@ -12,4 +12,4 @@ SYNERGIES:
 - **Multi-enemy fights**: Each enemy that attacks triggers counter damage. Against Slavers (3 attackers), Flame Barrier+ deals 18 counter damage (6 per attacker) while blocking 16.
 - **Gremlin fights**: Multiple small attackers each trigger 4-6 counter damage.
 
-MATCHUPS: Best-in-class vs Hexaghost. Strong in multi-enemy Act 2 fights. Moderate vs single large attackers (block is good but counter only triggers once).
+MATCHUPS: Best-in-class vs Hexaghost. Strong vs Book of Stabbing -- multi-hit attacks trigger counter damage on every hit, and hit count increases each turn (turn 4 = 5 hits x 4-6 counter = 20-30 free damage). Strong in multi-enemy Act 2 fights. Moderate vs single large attackers (block is good but counter only triggers once).

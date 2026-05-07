@@ -73,6 +73,13 @@ CAUSE OF DEATH: Chosen's 28-damage attack at 14 HP with 13 block available. Died
 KEY MOMENTS: (1) Centurion+Mystic drained to 31/96 HP over 10 turns. Stone Calendar dealt 52 damage to Centurion on turn 7. (2) Fiend Fire killed Cultist quickly but exhausted Uppercut, 2 Defends, and a Strike -- leaving no block sources for Chosen's follow-up 28-damage attack. (3) No Reaper/Feed offered entire run.
 LESSONS: 20th low-HP death. Fiend Fire in multi-enemy fights with Chosen is dangerous -- exhausting defensive cards against Cultist leaves nothing for Chosen's subsequent turns. Stone Calendar confirmed: 52 AOE damage on turn 7 (documented). Offering documented (0E, lose 6 HP, gain 2E + draw 3).
 
+## Run 65 — Ironclad A0, Death Floor 24 (Book of Stabbing Elite, Act 2)
+DECK: Bash+, Pommel Strike+, Intimidate+, Fiend Fire, Dark Embrace, Flame Barrier, Immolate, Sentinel+, Burning Pact, Cleave, Thunderclap, True Grit (unupgraded)
+RELICS: Burning Blood, Matryoshka [2], Enchiridion
+CAUSE OF DEATH: Book of Stabbing's escalating multi-hit (+1 hit/turn) overwhelmed defenses. Wounds clogged draw pile. Enchiridion generated Brutality, played vs elite = 1 HP/turn self-drain in a long fight.
+KEY MOMENTS: (1) Guardian clutch at 5 HP using Blessing of Forge for exact lethal through 9 block. (2) Dark Embrace + exhaust engine forming but never reached critical mass. (3) Hard Rule 4 correctly prevented True Grit (unupgraded) from being played, but also removed the only Wound exhaust option.
+LESSONS: Enchiridion-generated Powers must be evaluated per-fight, not autopiloted. Brutality vs scaling enemies is suicide. Knowing Skull event drained 12 HP before elite territory. True Grit unupgraded remains correctly banned by Hard Rule 4 even when its effect would help.
+
 ## Run 57 — Ironclad A0, Death Floor 16 (The Guardian)
 DECK: Bash+, Uppercut, Pommel Strike, Hemokinesis, Sever Soul, Cleave, 2x Strike, 3x Defend
 RELICS: Burning Blood, Lantern, Question Card

@@ -14,10 +14,10 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Torii damage threshold: Triggers at 5 or less unblocked damage, reducing to 1. Confirmed against Burns. Does it work on all damage sources or only attacks?
 - Molten Egg: Does it upgrade Attack cards from potions (Attack Potion, Skill Potion generating Attacks)?
 - Lizard Tail heal amount: Believed to heal to 50% Max HP. Observed once. Needs second data point.
-- Enchiridion Power pool: Can it generate any Power, or only class-specific?
+- Enchiridion Power pool: Confirmed to generate Brutality (Ironclad Power). Can it generate non-class Powers? Needs cross-class data point.
 - Dream Catcher card pool: Same as normal rewards or different/restricted?
 - Corruption + Second Wind interaction: Does Second Wind exhaust itself under Corruption? Needs confirmation.
-- Blessing of the Forge exact mechanic: Random card in deck vs random card in hand? Never used.
+- Blessing of the Forge exact mechanic: Used during Guardian fight. Appears to upgrade a random card. Provided exact lethal through 9 block. Still unclear if it upgrades hand or deck cards.
 - Vampires Max HP loss exact formula: Observed 80->56 (-24, 30% loss). Is it always 30% or a fixed amount? Needs second data point.
 - Bite upgrade: Does Bite have an upgraded version? If so, what are the improved stats?
 - Gremlin Leader summoning pattern: Does Leader re-summon immediately when gremlins die, or on specific turns? Rally confirmed to give +3 Str to ALL enemies. Re-summoning trigger still unconfirmed.
@@ -36,9 +36,11 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Spikers Thorns scaling: Observed Thorns 3 and Thorns 7 on different Spikers. Do Spikers start with different Thorns values or gain Thorns over time?
 - Donu and Deca: Not yet encountered. Boss identified from Act 3 plan screen. Need first encounter data.
 - Collector total HP: Player noted 282 HP on entry. Previous entry says 279. Need to confirm exact HP.
-- Hard Rules compliance: Zero failures in Run 63 and Run 64. Two consecutive runs with zero compliance failures. Monitor if this continues.
+- Hard Rules compliance: Zero failures in Runs 63, 64, and 65. Three consecutive runs with zero compliance failures. Hard Rule 4 actively shaped gameplay in Run 65 (prevented True Grit unupgraded play). Rules are working as intended.
 - Chosen 28-damage attack: Observed at 7x2 base with +3 Str accumulated and Vulnerable on player. Exact calculation: (7+3)*2 = 20, with Vulnerable: floor(20*1.5) = 30? Or 7x2=14 base, +Str scaling. Needs precise formula verification -- the 28 damage figure may include Vulnerable or may be a higher base attack pattern.
 - Fiend Fire in Cultist+Chosen multi-fights: Using Fiend Fire to kill Cultist exhausts the entire hand including defensive cards needed for Chosen. This is a strategic trap -- the correct play may be to kill Cultist with smaller attacks and preserve block cards for Chosen's high-damage turns.
+- Hard Rule 4 strategic tradeoff: Rule correctly prevented True Grit (unupgraded, random exhaust) from being played. However, in the Book of Stabbing fight, True Grit would have been the only Wound exhaust tool available. The rule prevents misplays but also removes options in fights where even random exhaust is better than Wound clog. The rule is still correct -- random exhaust of key cards is historically deadlier than Wound clog -- but this tradeoff is worth monitoring.
+- Knowing Skull HP cost scaling: Observed 12 HP loss from a single interaction. Exact scaling formula unknown -- does it cost a flat amount per ask, or does the cost increase per subsequent ask? Need more data points.
 
 ## Prediction Errors (non-fatal, for monitoring)
 

@@ -1,6 +1,6 @@
 # Book of Stabbing (elite, Act 2, HP: 161)
-PATTERN: Multi-hit attacks that INCREASE in hit count each turn. Turn 1: ~12 damage. Turn 2: ~18. Turn 3: ~21. Turn 4: ~24. Turn 5: ~28. Turn 6: ~30+. Each attack adds Wound status cards (Unplayable, persist in deck).
-KEY MECHANIC: Scaling multi-hit + Wound generation. The hit count increases every turn AND Wounds clog draws, preventing you from finding block or offense. This creates a death spiral.
+PATTERN: Multi-hit attacks that gain +1 hit every turn. Each hit deals ~6 damage. Turn 1: 2 hits (~12). Turn 2: 3 hits (~18). Turn 3: 4 hits (~24). Turn 4: 5 hits (~30). Turn 5: 6 hits (~36). Each attack adds Wound status cards (Unplayable, persist in deck).
+KEY MECHANIC: Scaling multi-hit + Wound generation. The hit count increases by 1 every turn AND Wounds clog draws, preventing you from finding block or offense. This creates a death spiral.
 
 THE WOUND CLOG PROBLEM: By turn 6-7, Wounds can comprise 60%+ of the deck. A 21-card deck accumulating 3+ Wounds per turn means that by mid-fight, you draw 3 Wounds and 2 playable cards per turn. This makes it impossible to find block AND offense in the same hand. Strong cards like Double Tap, Reaper, Inflame become buried under Wounds. The fight becomes unwinnable not because of raw damage scaling but because the deck stops functioning.
 
