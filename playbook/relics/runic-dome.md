@@ -6,11 +6,10 @@ WHEN IT'S GOOD: Almost never. The +1 Energy is powerful, but losing intent infor
 
 THE CRITICAL PROBLEM: Some boss and elite attacks are near-fatal if unblocked. Bronze Automaton's Hyper Beam, The Guardian's 32-damage attack, Hexaghost's Inferno (42 damage) -- these require specific block preparation on the exact turn they occur. Without intent, you cannot prepare. Missing a single Hyper Beam block is often lethal.
 
-DECISION FRAMEWORK: Refuse Runic Dome unless ALL of the following are true:
-1. The deck has reliable passive block (Metallicize, Barricade + block generation) that does not depend on intent prediction
-2. The deck has enough HP and healing to absorb surprise hits
-3. You know the boss/elite patterns well enough to count turns manually
+DECISION FRAMEWORK: **DO NOT TAKE RUNIC DOME. ALWAYS REFUSE IT.**
 
-In practice, the cost exceeds the benefit in nearly all situations. The +1 Energy from other boss relics (Snecko Eye, Cursed Key, etc.) comes with less punishing downsides. Skip Runic Dome.
+This is not conditional. Do not evaluate "unless the deck has passive block" or "unless we know the patterns." The downside has contributed to two deaths -- both times the player took it despite explicit guidance to refuse. Without intent visibility, every block/attack decision is a coin flip. The +1 Energy does not compensate for blind play against Rally, Hyper Beam, Inferno, or any multi-hit attack pattern.
+
+If Runic Dome is the only boss relic offered, skip the boss relic entirely. No boss relic is better than Runic Dome's downside.
 
 ---

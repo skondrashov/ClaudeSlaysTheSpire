@@ -35,6 +35,7 @@
 - [Mercury Hourglass](mercury-hourglass.md)
 - [Shuriken](shuriken.md)
 - [Gremlin Horn](gremlin-horn.md)
+- [Meat on the Bone](meat-on-the-bone.md)
 
 ## Uncommon Relics (continued)
 

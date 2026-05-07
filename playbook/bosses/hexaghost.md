@@ -25,10 +25,11 @@ If you have 0-1 of these, Hexaghost will likely kill you.
 DAMAGE OUTPUT MATTERS: Weak and block keep you alive, but insufficient damage is equally fatal. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone. Two runs died with Weak sources (Clothesline, Disarm) because they lacked the damage output to end the fight before Burns overwhelmed them. Damage scaling cards (Rampage, Inflame, Reaper) shorten the fight and reduce total Burns damage.
 
 WHAT WORKS:
+- **Evolve + Fire Breathing** -- the best anti-Burns engine. Evolve draws a replacement card when a Burn is drawn, neutralizing hand clog. Fire Breathing deals 6 (10 upgraded) damage to Hexaghost each time a Burn is drawn. Together, Burns become free damage with no downside. Confirmed to beat Hexaghost cleanly (44/80 HP remaining after the fight). Set up both Powers on Turn 1 (free turn). This combo alone can handle Burns entirely -- no other Burns management needed.
 - Demon Form (+2 Str/turn) -- the best scaling card for Hexaghost. By turn 5, every attack gains +8-10 damage. Combined with Anger (0E) and Shuriken (+1 Str per 3 attacks), the fight can be won in 7 turns instead of 13. Shorter fight = fewer Burns = less attrition.
 - Disarm (-2 Str permanently) -- reduces all Hexaghost attacks including each Inferno hit. Very effective.
 - Rampage+ -- scales over the long fight to 40-60+ damage per play. One of the best Hexaghost-killing cards.
-- Evolve -- draws a replacement card whenever a Burn is drawn. Neutralizes Burns hand-clogging completely. Play on Turn 1 (free turn) alongside other Powers.
+- Evolve (standalone) -- draws a replacement card whenever a Burn is drawn. Neutralizes Burns hand-clogging completely. Play on Turn 1 (free turn) alongside other Powers.
 - Flame Barrier+ -- 16 block + 42 counter damage (7 Inferno hits x 6 each). Single best defensive card for Inferno turns. Upgrade priority if facing Hexaghost.
 - Torii relic -- reduces each 2-damage Burn to 1 damage (halves Burns attrition). Does not save the fight alone but significantly extends survivability.
 

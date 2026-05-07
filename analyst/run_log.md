@@ -102,6 +102,13 @@ CAUSE OF DEATH: Sentry + Spheric Guardian at 21/80 HP (26%). Killed Sentry but s
 KEY MOMENTS: (1) Beat Slime Boss cleanly at 48/80 with Thunderclap + Duplication Potion. (2) Str engine: Vajra(+1) + Inflame(+2) + Spot Weakness(+3) + Limit Break+. (3) Reaper found Floor 20 from Library event, used once vs Chosen (healed 8 HP), then exhausted -- unavailable for fatal fight. (4) Wheel of Change cost 8 HP unnecessarily. (5) Chose upgrade over rest at 55% HP (F23), followed by Chosen fight that drained 23 HP (44->21).
 LESSONS: 19th low-HP death. Upgrading at 55% HP in Act 2 was a mistake -- rest would have provided ~12 HP buffer that could have prevented death. Raised Act 2 rest threshold from 45% to 50%. Reaper as sole healing source exhausts once per fight and is insufficient for consecutive Act 2 combat rooms. Wheel of Change event is a pure gamble -- 8 HP loss at 55% contributed to the death spiral. Sentry + Spheric Guardian confirmed as dangerous Act 2 hallway pairing.
 
+## Run 60 — Ironclad A0, Victory (Hexaghost), Death Floor 23 (Gremlin Leader Elite, Act 2)
+DECK: Bludgeon, Feed, Thunderclap, Uppercut, Clothesline, Evolve, Fire Breathing, Power Through, Dropkick, basics
+RELICS: Runic Dome, Kunai, Meat on the Bone
+CAUSE OF DEATH: Gremlin Leader elite at 28/86 HP (32%). Rally gave all enemies +3 Str. Turn 2 combined 36+ damage vs 19 block + 10 HP.
+KEY MOMENTS: (1) Hexaghost beaten cleanly at 44/80 with Evolve+Fire Breathing engine neutralizing Burns. (2) Feed used twice for +6 Max HP. (3) Runic Dome taken AGAIN despite explicit "refuse it" playbook guidance. (4) Zero upgrades the entire run. (5) Cultist+Chosen (F22) drained to 28/86 (32%), forced into elite path.
+LESSONS: Evolve+Fire Breathing confirmed as a Hexaghost counter. Runic Dome compliance failure (2nd time). Zero-upgrade runs are unwinnable in Act 2 -- upgraded cards needed for block/damage thresholds. Meat on the Bone provided supplementary healing (new relic documented).
+
 ## Run 57 — Ironclad A0, Death Floor 16 (The Guardian)
 DECK: Bash+, Uppercut, Pommel Strike, Hemokinesis, Sever Soul, Cleave, 2x Strike, 3x Defend
 RELICS: Burning Blood, Lantern, Question Card

@@ -2,13 +2,13 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK:** Act 2 HP sustain. We beat Act 1 bosses consistently but die in Act 2 to HP attrition. 18 of 21 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.
+**CURRENT BOTTLENECK:** Act 2 HP sustain. We beat Act 1 bosses consistently but die in Act 2 to HP attrition. 19 of 22 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.
 
 ---
 
 ## HP Management: The #1 Cause of Death
 
-18 of 21 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
+19 of 22 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
 
 ### HP Thresholds for Act 2
 
@@ -66,7 +66,9 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 
 ### The Upgrade Death Spiral
 
-Only upgrading once in 28 floors was the worst strategic error observed. Each missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. Break the cycle: upgrade at the FIRST rest site unless HP is critically low.
+Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed twice: once with only 1 upgrade across 28 floors, and once with literally ZERO upgrades across 23 floors. Both runs died in Act 2 with decks that had adequate card quality but no upgraded cards to back it up.
+
+**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 40% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest.
 
 ### Upgrade Priority
 

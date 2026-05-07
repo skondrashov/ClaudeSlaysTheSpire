@@ -20,7 +20,7 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Blessing of the Forge exact mechanic: Random card in deck vs random card in hand? Never used.
 - Vampires Max HP loss exact formula: Observed 80->56 (-24, 30% loss). Is it always 30% or a fixed amount? Needs second data point.
 - Bite upgrade: Does Bite have an upgraded version? If so, what are the improved stats?
-- Gremlin Leader summoning pattern: Does Leader re-summon immediately when gremlins die, or on specific turns? Need to observe the exact trigger.
+- Gremlin Leader summoning pattern: Does Leader re-summon immediately when gremlins die, or on specific turns? Rally confirmed to give +3 Str to ALL enemies. Re-summoning trigger still unconfirmed.
 - Horn Cleat block amount: Observed 14 block on turn 2. Is this always 14 or does it scale?
 - Slaver's Collar source: How is this relic obtained? Boss reward, shop, or event?
 - Block values sometimes higher than expected: Player noted block values exceeding card text. Possible relic interaction (Horn Cleat turn 2?) or Dexterity source not accounted for.
@@ -52,3 +52,5 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Index shifting: Despite documentation, player continues to use numeric indices. Four confirmed deaths (Runs 3, 21, 22, 57) directly caused by index shifting. Run 57 also had shop index confusion (bought Sever Soul instead of Flame Barrier). The playbook fix is clearly insufficient -- the player reads the rule but does not follow it. This is a SYSTEM-LEVEL problem that likely needs to be addressed in the player agent's system prompt or hard-coded into the command interface, not just documented in the playbook.
 - Potion hoarding partially fixed: Run 20 used potions aggressively. But Run 50 had Blessing of the Forge unused at death.
 - Unknown rooms as combat: Runs 20 and 44 hit dangerous fights from Unknown rooms. Unknown rooms are NOT safe at low HP.
+- **Runic Dome compliance failure (CRITICAL):** Player has now taken Runic Dome TWICE despite explicit playbook guidance saying "refuse it" / "skip Runic Dome." This is not a knowledge gap -- the playbook clearly states the downside. The player reads the guidance but does not follow it. Playbook language has been escalated to absolute prohibition ("DO NOT TAKE. ALWAYS REFUSE."). If this continues, it is a system-level compliance problem identical to the index shifting pattern.
+- **Zero-upgrade compliance failure:** Player completed an entire 23-floor run without a single upgrade. Strategy says upgrade at rest sites above 35% (Act 1) / 40% (Act 2). Either the player never visited rest sites, or visited them and chose to rest when HP was above threshold. This needs investigation in the event log. Language in strategy.md has been strengthened with a mandatory rule.

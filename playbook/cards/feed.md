@@ -6,6 +6,8 @@ DECISION POINTS: Is the enemy low enough for Feed to kill? With Vulnerable: floo
 
 CRITICAL: Feed exhausts on play regardless of whether it kills. If you play Feed and the enemy survives, you lose the card permanently with zero Max HP gained. Calculate exact damage before committing. Against enemies with block, factor block into the calculation.
 
+COMMON MISTAKE: Feed in the discard pile when an enemy dies. Feed only works if YOU play it as the killing blow. If Feed was played earlier in the fight (softening, not killing) it is already exhausted. If Feed is in the discard pile and an enemy is at killable HP, you cannot use it. Plan Feed kills in advance -- hold Feed in hand when an enemy is approaching kill range, or use Headbutt to place Feed on top of the draw pile.
+
 TAKE EARLY, USE EVERY FIGHT: Feed's value compounds over the run. Taking Feed after the Act 1 boss means 10-15 fights remain for kills. Each kill is +3-4 permanent Max HP. An unused Feed in the deck is wasted potential. In every multi-enemy fight, plan to Feed-kill at least one enemy. Even in single-enemy fights, soften with other attacks then Feed for the finish.
 
 WARNING: Do NOT save Feed for "the perfect moment." A Feed that never kills is worse than no Feed at all. If Feed+ was taken but the run ended with zero Feed kills, the card slot was wasted.
