@@ -61,12 +61,12 @@ def _load_stats():
         with open(STATS_FILE) as f:
             saved = json.load(f)
         # Merge with defaults so new fields don't break
-        defaults = {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0,
+        defaults = {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0, "best_ascension": 0,
                      "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?"}
         defaults.update(saved)
         return defaults
     except (FileNotFoundError, json.JSONDecodeError):
-        return {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0,
+        return {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0, "best_ascension": 0,
                 "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?"}
 
 def _save_stats():
@@ -124,15 +124,21 @@ async def ws_handler(websocket):
     clients.add(websocket)
     print(f"[stream] Overlay connected ({len(clients)} clients)")
     try:
-        # Send persistent feed to populate action panel
+        # Send persistent feed to populate action panel + reasoning
         for event in action_feed:
             await websocket.send(json.dumps(event))
-        # Send recent reasoning events
-        for event in recent_events:
-            if event.get("type") == "decision":
-                await websocket.send(json.dumps(event))
         # Send current stats
         await websocket.send(json.dumps({"type": "stats", **run_stats}))
+        # Send agent mode state if active
+        if agent_watch_path:
+            await websocket.send(json.dumps({
+                "type": "agent_mode",
+                "active": True,
+                "title": agent_watch_title or "ANALYSIS",
+                "run_summary": agent_run_summary or "",
+                "run_stats": dict(run_stats),
+                "timestamp": time.time(),
+            }))
 
         # Keep alive until disconnect
         async for _ in websocket:
@@ -202,8 +208,10 @@ async def state_watcher():
                         run_stats["current_hp"] = hp
                         run_stats["max_hp"] = max_hp
                         run_stats["current_class"] = cls
-                        if floor > run_stats["best_floor"]:
+                        current_asc = gs.get("ascension_level", 0)
+                        if (current_asc, floor) > (run_stats.get("best_ascension", 0), run_stats["best_floor"]):
                             run_stats["best_floor"] = floor
+                            run_stats["best_ascension"] = current_asc
                             _save_stats()
                             await _broadcast_stats()
 
@@ -329,6 +337,99 @@ async def event_consumer():
         await broadcast(event)
 
 
+# ---------------------------------------------------------------------------
+# Agent JSONL watcher — streams analyst/strategist output to overlay
+# ---------------------------------------------------------------------------
+
+agent_watch_path = None    # Path to JSONL file being watched
+agent_watch_title = None   # Title shown on overlay (e.g., "POST-GAME ANALYSIS")
+agent_watch_offset = 0     # Lines already processed
+agent_run_summary = None   # Run summary text to show in bottom bar during agent mode
+
+
+async def agent_watcher():
+    """Watch an agent's JSONL conversation file and broadcast text to overlay."""
+    global agent_watch_path, agent_watch_offset
+
+    while True:
+        if agent_watch_path and os.path.exists(agent_watch_path):
+            try:
+                with open(agent_watch_path, "r", encoding="utf-8") as f:
+                    lines = f.readlines()
+
+                new_lines = lines[agent_watch_offset:]
+                agent_watch_offset = len(lines)
+
+                for line in new_lines:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        entry = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
+
+                    entry_type = entry.get("type", "")
+                    msg = entry.get("message", {})
+                    if not isinstance(msg, dict):
+                        continue
+                    content = msg.get("content", "")
+
+                    if entry_type == "assistant" and isinstance(content, list):
+                        for block in content:
+                            if block.get("type") == "text":
+                                text = block.get("text", "").strip()
+                                if text:
+                                    await broadcast({
+                                        "type": "agent_text",
+                                        "text": text,
+                                        "timestamp": time.time(),
+                                    })
+                            elif block.get("type") == "tool_use":
+                                tool_name = block.get("name", "?")
+                                tool_input = block.get("input", {})
+                                # Show a brief summary of what the agent is doing
+                                summary = _summarize_tool_use(tool_name, tool_input)
+                                if summary:
+                                    await broadcast({
+                                        "type": "agent_tool",
+                                        "tool": tool_name,
+                                        "summary": summary,
+                                        "timestamp": time.time(),
+                                    })
+
+            except Exception as e:
+                print(f"[stream] Agent watcher error: {e}")
+
+        await asyncio.sleep(0.5)
+
+
+def _summarize_tool_use(tool_name: str, tool_input: dict) -> str:
+    """Create a brief human-readable summary of a tool call."""
+    if tool_name == "Read":
+        path = tool_input.get("file_path", "?")
+        fname = os.path.basename(path)
+        return f"Reading {fname}"
+    elif tool_name == "Edit":
+        path = tool_input.get("file_path", "?")
+        fname = os.path.basename(path)
+        return f"Editing {fname}"
+    elif tool_name == "Write":
+        path = tool_input.get("file_path", "?")
+        fname = os.path.basename(path)
+        return f"Writing {fname}"
+    elif tool_name == "Grep":
+        pattern = tool_input.get("pattern", "?")
+        return f'Searching for "{pattern[:40]}"'
+    elif tool_name == "Glob":
+        pattern = tool_input.get("pattern", "?")
+        return f"Finding {pattern}"
+    elif tool_name == "Bash":
+        cmd = tool_input.get("command", "?")
+        return f"Running: {cmd[:50]}"
+    return ""
+
+
 class DecisionHandler(BaseHTTPRequestHandler):
     """HTTP handler for decision posts from cmd.py."""
 
@@ -379,6 +480,50 @@ class DecisionHandler(BaseHTTPRequestHandler):
                 self.send_response(400)
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": str(e)}).encode())
+        elif self.path == "/agent":
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            try:
+                data = json.loads(body)
+                action = data.get("action", "")
+                if action == "start":
+                    global agent_watch_path, agent_watch_title, agent_watch_offset, agent_run_summary
+                    agent_watch_path = data.get("jsonl_path", "")
+                    agent_watch_title = data.get("title", "ANALYSIS")
+                    agent_watch_offset = 0
+                    agent_run_summary = data.get("run_summary", "")
+                    print(f"[stream] Agent mode ON: {agent_watch_title}")
+                    print(f"[stream]   Watching: {agent_watch_path}")
+                    asyncio.run_coroutine_threadsafe(
+                        broadcast({
+                            "type": "agent_mode",
+                            "active": True,
+                            "title": agent_watch_title,
+                            "run_summary": data.get("run_summary", ""),
+                            "run_stats": dict(run_stats),
+                            "timestamp": time.time(),
+                        }), loop
+                    )
+                elif action == "stop":
+                    agent_watch_path = None
+                    agent_watch_title = None
+                    agent_watch_offset = 0
+                    agent_run_summary = None
+                    print(f"[stream] Agent mode OFF")
+                    asyncio.run_coroutine_threadsafe(
+                        broadcast({
+                            "type": "agent_mode",
+                            "active": False,
+                            "timestamp": time.time(),
+                        }), loop
+                    )
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(b'{"ok":true}')
+            except Exception as e:
+                self.send_response(400)
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode())
         elif self.path == "/reload":
             asyncio.run_coroutine_threadsafe(
                 broadcast({"type": "reload"}), loop
@@ -418,6 +563,7 @@ async def main():
         await asyncio.gather(
             state_watcher(),
             event_consumer(),
+            agent_watcher(),
         )
 
 

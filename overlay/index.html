@@ -1,572 +1,821 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Claude Plays STS</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <title>Claude Plays STS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    width: 1920px;
-    height: 1080px;
-    background: transparent;
-    color: #f0f0f0;
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    overflow: hidden;
-  }
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: transparent;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow: hidden;
+    }
 
-  /* L-shaped overlay: right sidebar + bottom bar */
-  /* Top-left 1500x844 is transparent for the game */
+    /* L-shaped overlay: right sidebar + bottom bar */
+    /* Top-left 1500x844 is transparent for the game */
 
-  .sidebar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 420px;
-    height: 1080px;
-    background: rgba(8, 8, 12, 0.94);
-    border-left: 3px solid rgba(140, 70, 230, 0.5);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+    .sidebar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 420px;
+      height: 1080px;
+      background: rgba(8, 8, 12, 0.94);
+      border-left: 3px solid rgba(140, 70, 230, 0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
-  .bottom-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 1500px;
-    height: 236px;
-    background: rgba(8, 8, 12, 0.94);
-    border-top: 3px solid rgba(140, 70, 230, 0.5);
-    display: flex;
-    overflow: hidden;
-  }
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 1500px;
+      height: 236px;
+      background: rgba(8, 8, 12, 0.94);
+      border-top: 3px solid rgba(140, 70, 230, 0.5);
+      display: flex;
+      overflow: hidden;
+    }
 
-  /* === SIDEBAR: header + full reasoning log === */
+    /* === SIDEBAR: header + full reasoning log === */
 
-  .header {
-    background: linear-gradient(135deg, rgba(30,12,52,0.98), rgba(24,36,68,0.98));
-    padding: 18px 20px;
-    border-bottom: 3px solid #5a2a9a;
-    flex-shrink: 0;
-  }
+    .header {
+      background: linear-gradient(135deg, rgba(30, 12, 52, 0.98), rgba(24, 36, 68, 0.98));
+      padding: 18px 20px;
+      border-bottom: 3px solid #5a2a9a;
+      flex-shrink: 0;
+    }
 
-  .header h1 {
-    font-size: 26px;
-    font-weight: 800;
-    color: #d4a0ff;
-    letter-spacing: 2px;
-    text-align: center;
-  }
+    .header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #d4a0ff;
+      letter-spacing: 2px;
+      text-align: center;
+    }
 
-  .section {
-    padding: 16px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    flex-shrink: 0;
-  }
+    .section {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+    }
 
-  .section.grow {
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
+    .section.grow {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .section-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    flex-shrink: 0;
-  }
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      flex-shrink: 0;
+    }
 
-  /* Reasoning log — scrollable, fills sidebar */
-  .reasoning-log {
-    flex: 1;
-    overflow-y: auto;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
+    /* Reasoning log — scrollable, fills sidebar */
+    .reasoning-log {
+      flex: 1;
+      overflow-y: auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
-  .reasoning-entry {
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
+    .reasoning-entry {
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
 
-  .reasoning-entry:first-child {
-    font-size: 22px;
-    line-height: 1.55;
-    color: #eee;
-  }
+    .reasoning-entry:first-child {
+      font-size: 22px;
+      line-height: 1.55;
+      color: #eee;
+    }
 
-  .reasoning-entry:not(:first-child) {
-    font-size: 18px;
-    line-height: 1.45;
-    color: #999;
-  }
+    .reasoning-entry:not(:first-child) {
+      font-size: 18px;
+      line-height: 1.45;
+      color: #999;
+    }
 
-  .reasoning-entry .command-badge {
-    display: inline-block;
-    background: #5a2090;
-    color: #e8d0ff;
-    padding: 4px 14px;
-    border-radius: 5px;
-    font-size: 17px;
-    font-weight: 600;
-    font-family: 'Consolas', monospace;
-    margin-bottom: 6px;
-  }
+    .reasoning-entry .command-badge {
+      display: inline-block;
+      background: #5a2090;
+      color: #e8d0ff;
+      padding: 4px 14px;
+      border-radius: 5px;
+      font-size: 17px;
+      font-weight: 600;
+      font-family: 'Consolas', monospace;
+      margin-bottom: 6px;
+    }
 
-  .reasoning-entry:first-child .command-badge {
-    font-size: 20px;
-    padding: 5px 16px;
-    margin-bottom: 8px;
-  }
+    .reasoning-entry:first-child .command-badge {
+      font-size: 20px;
+      padding: 5px 16px;
+      margin-bottom: 8px;
+    }
 
-  .reasoning-entry .reason-text {
-    display: block;
-  }
+    .reasoning-entry .reason-text {
+      display: block;
+    }
 
-  .reasoning-empty {
-    color: #555;
-    font-style: italic;
-    font-size: 22px;
-  }
+    .reasoning-empty {
+      color: #555;
+      font-style: italic;
+      font-size: 22px;
+    }
 
-  /* === BOTTOM BAR === */
-  /* Layout: stats (narrow) | actions (3-col, wide) | changelog (right) */
+    /* === BOTTOM BAR === */
+    /* Layout: stats (narrow) | actions (3-col) | playbook | project state */
 
-  .bottom-section {
-    display: flex;
-    flex-direction: column;
-    padding: 14px 16px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    overflow: hidden;
-  }
+    .bottom-section {
+      display: flex;
+      flex-direction: column;
+      padding: 14px 16px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
 
-  .bottom-section.stats-section {
-    width: 130px;
-    flex-shrink: 0;
-    justify-content: center;
-    align-items: center;
-  }
+    .bottom-section.stats-section {
+      width: 120px;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .bottom-section.feed-section {
-    flex: 1;
-  }
+    .bottom-section.feed-section {
+      flex: 1;
+    }
 
-  .bottom-section.changelog-section {
-    width: 380px;
-    flex-shrink: 0;
-    border-right: none;
-  }
+    .bottom-section.playbook-section {
+      width: 130px;
+      flex-shrink: 0;
+      justify-content: center;
+    }
 
-  /* Run stats — compact column */
-  .run-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
+    .bottom-section.project-state-section {
+      width: 230px;
+      flex-shrink: 0;
+      border-right: none;
+      justify-content: center;
+    }
 
-  .run-stat {
-    font-size: 13px;
-    color: #888;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-  }
+    /* Run stats — compact column */
+    .run-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
 
-  .run-stat span {
-    display: block;
-    font-size: 28px;
-    color: #f0f0f0;
-    font-weight: 800;
-    margin-top: 2px;
-  }
+    .run-stat {
+      font-size: 13px;
+      color: #888;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+    }
 
-  /* Action feed — 3 columns, bottom-aligned (newest = bottom-right) */
-  .action-feed {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    gap: 0 16px;
-    overflow: hidden;
-    min-height: 0;
-  }
+    .run-stat span {
+      display: block;
+      font-size: 28px;
+      color: #f0f0f0;
+      font-weight: 800;
+      margin-top: 2px;
+    }
 
-  .feed-entry {
-    display: flex;
-    align-items: baseline;
-    padding: 3px 0;
-    width: calc(33.33% - 11px);
-  }
+    /* Action feed — 3 columns, bottom-aligned (newest = bottom-right) */
+    .action-feed {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 0 16px;
+      overflow: hidden;
+      min-height: 0;
+    }
 
-  .feed-action {
-    font-family: 'Consolas', monospace;
-    font-size: 17px;
-    font-weight: 600;
-    color: #d4a0ff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .feed-entry {
+      display: flex;
+      align-items: baseline;
+      padding: 3px 0;
+      width: calc(33.33% - 11px);
+    }
 
-  .feed-action.highlight {
-    color: #4ade80;
-  }
+    .feed-action {
+      font-family: 'Consolas', monospace;
+      font-size: 17px;
+      font-weight: 600;
+      color: #d4a0ff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-  /* State of the Game panel */
-  .state-content {
-    flex: 1;
-    overflow-y: auto;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
+    .feed-action.color-meta {
+      color: #4ade80;
+    }
 
-  .state-group-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 4px;
-  }
+    .feed-action.color-combat {
+      color: #e07070;
+    }
 
-  .state-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 2px 0;
-  }
+    .feed-action.color-event {
+      color: #c49aff;
+    }
 
-  .state-label {
-    font-size: 14px;
-    color: #777;
-  }
+    .feed-action.color-reward {
+      color: #f0c050;
+    }
 
-  .state-value {
-    font-size: 14px;
-    color: #ddd;
-    font-weight: 600;
-  }
+    /* State of the Game panel */
+    .state-content {
+      flex: 1;
+      overflow-y: auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
-  .state-divider {
-    border: none;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    margin: 2px 0;
-  }
+    .state-group-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
 
-  .loop-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+    .state-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 2px 0;
+    }
 
-  .loop-step {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: #aaa;
-    line-height: 1.35;
-  }
+    .state-label {
+      font-size: 14px;
+      color: #777;
+    }
 
-  .loop-step .step-num {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #5a2090;
-    color: #e8d0ff;
-    font-size: 12px;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
+    .state-value {
+      font-size: 14px;
+      color: #ddd;
+      font-weight: 600;
+    }
 
-  .knowledge-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px 12px;
-  }
+    .state-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin: 2px 0;
+    }
 
-  .knowledge-item {
-    font-size: 14px;
-    color: #999;
-    padding: 1px 0;
-  }
+    .loop-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-  .knowledge-item span {
-    color: #d4a0ff;
-    font-weight: 700;
-  }
+    .loop-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #aaa;
+      line-height: 1.35;
+    }
 
-  /* Hide all scrollbars */
-  ::-webkit-scrollbar { width: 0; height: 0; display: none; }
-  * { scrollbar-width: none; }
-</style>
+    .loop-step .step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #5a2090;
+      color: #e8d0ff;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .knowledge-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .knowledge-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      font-size: 16px;
+      color: #ccc;
+      padding: 1px 0;
+    }
+
+    .knowledge-item span {
+      color: #d4a0ff;
+      font-weight: 700;
+      display: inline-block;
+      width: 28px;
+      text-align: right;
+    }
+
+    /* === AGENT MODE PANEL (covers game area) === */
+
+    .agent-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1500px;
+      height: 844px;
+      background: rgba(8, 8, 12, 0.995);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border-right: 3px solid rgba(140, 70, 230, 0.5);
+      border-bottom: 3px solid rgba(140, 70, 230, 0.5);
+    }
+
+    .agent-panel.active {
+      display: flex;
+    }
+
+    .agent-header {
+      padding: 24px 32px 16px;
+      border-bottom: 2px solid rgba(140, 70, 230, 0.4);
+      flex-shrink: 0;
+    }
+
+    .agent-header h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #d4a0ff;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .agent-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 32px;
+      min-height: 0;
+    }
+
+    .agent-text-block {
+      margin-bottom: 16px;
+      font-size: 17px;
+      line-height: 1.5;
+      color: #e0e0e0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Consolas', 'Cascadia Code', 'Fira Code', monospace;
+    }
+
+    .agent-tool-block {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #8a8aaa;
+      font-family: 'Consolas', monospace;
+      padding: 4px 12px;
+      border-left: 3px solid rgba(140, 70, 230, 0.3);
+    }
+
+    /* Run summary shown in feed area during agent mode */
+    .run-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 0 8px;
+      font-family: 'Consolas', 'Cascadia Code', monospace;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #ccc;
+    }
+
+    .run-summary .summary-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #d4a0ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .run-summary .summary-line {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .run-summary .summary-line.result-death {
+      color: #e07070;
+    }
+
+    .run-summary .summary-line.result-victory {
+      color: #4ade80;
+    }
+
+    /* Hide all scrollbars */
+    ::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+
+    * {
+      scrollbar-width: none;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Right sidebar: reasoning history -->
-<div class="sidebar">
-  <div class="header">
-    <h1>CLAUDE SLAYS THE SPIRE</h1>
-  </div>
-
-  <div class="section grow">
-    <div class="reasoning-log" id="reasoningLog">
-      <div class="reasoning-empty">Waiting for first decision...</div>
+  <!-- Agent mode panel (covers game area when analyst/strategist running) -->
+  <div class="agent-panel" id="agentPanel">
+    <div class="agent-header">
+      <h2 id="agentTitle">ANALYSIS</h2>
     </div>
+    <div class="agent-body" id="agentBody"></div>
   </div>
-</div>
 
-<!-- Bottom bar: stats | actions (3-col) | changelog -->
-<div class="bottom-bar">
-  <div class="bottom-section stats-section">
-    <div class="run-stats" id="runStats">
-      <div class="run-stat">Runs<span id="totalRuns">0</span></div>
-      <div class="run-stat">Wins<span id="wins">0</span></div>
-      <div class="run-stat">Best<span id="bestFloor">0</span></div>
+  <!-- Right sidebar: reasoning history -->
+  <div class="sidebar">
+    <div class="header">
+      <h1>CLAUDE SLAYS THE SPIRE</h1>
+      <div style="text-align:center;margin-top:4px;">
+        <span style="color:#999;font-size:17px;letter-spacing:1px;">claudeslaysthespire.org</span>
+      </div>
     </div>
-  </div>
 
-  <div class="bottom-section feed-section">
-    <div class="section-title">Actions</div>
-    <div class="action-feed" id="actionFeed"></div>
-  </div>
-
-  <div class="bottom-section changelog-section">
-    <div class="section-title">Claude Haiku 4.5</div>
-    <div class="state-content">
-      <div style="font-size:13px;color:#888;line-height:1.4;">
-        Running on Haiku to save tokens while we iron out the pipeline.
-      </div>
-
-      <hr class="state-divider">
-
-      <div>
-        <div class="state-group-title">Knowledge Base</div>
-        <div class="knowledge-grid" id="knowledgeGrid">
-          <div class="knowledge-item"><span>40</span> cards</div>
-          <div class="knowledge-item"><span>22</span> enemies</div>
-          <div class="knowledge-item"><span>3</span> bosses</div>
-          <div class="knowledge-item"><span>21</span> events</div>
-          <div class="knowledge-item"><span>25</span> relics</div>
-          <div class="knowledge-item"><span>19</span> potions</div>
-        </div>
-      </div>
-
-      <hr class="state-divider">
-
-      <div style="text-align:center;">
-        <a href="https://claudeslaysthespire.org" style="color:#d4a0ff;font-size:13px;">claudeslaysthespire.org</a>
+    <div class="section grow">
+      <div class="reasoning-log" id="reasoningLog">
+        <div class="reasoning-empty">Waiting for first decision...</div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-const WS_URL = 'ws://127.0.0.1:3001';
-let ws = null;
-let reconnectDelay = 1000;
+  <!-- Bottom bar: stats | actions (3-col) | changelog -->
+  <div class="bottom-bar">
+    <div class="bottom-section stats-section">
+      <div class="run-stats" id="runStats">
+        <div class="run-stat">Runs<span id="totalRuns">0</span></div>
+        <div class="run-stat">Wins<span id="wins">0</span></div>
+        <div class="run-stat">Best<span id="bestFloor">0</span></div>
+      </div>
+    </div>
 
-// Last known game state for translating commands
-let lastState = null;
+    <div class="bottom-section playbook-section">
+      <div class="section-title">Playbook</div>
+      <div class="knowledge-grid" id="knowledgeGrid">
+        <div class="knowledge-item"><span>42</span> cards</div>
+        <div class="knowledge-item"><span>22</span> enemies</div>
+        <div class="knowledge-item"><span>3</span> bosses</div>
+        <div class="knowledge-item"><span>22</span> events</div>
+        <div class="knowledge-item"><span>30</span> relics</div>
+        <div class="knowledge-item"><span>20</span> potions</div>
+      </div>
+    </div>
 
-function connect() {
-  ws = new WebSocket(WS_URL);
+    <div class="bottom-section feed-section">
+      <div class="action-feed" id="actionFeed"></div>
+    </div>
 
-  ws.onopen = () => {
-    reconnectDelay = 1000;
-  };
+    <div class="bottom-section project-state-section">
+      <div style="font-size:15px;color:#ccc;line-height:1.5;">
+        Powered by Claude Opus 4.6. A player agent plays the game, an analyst reviews each run, and a strategist critiques the playbook every ~10 runs.
+      </div>
+    </div>
+  </div>
 
-  ws.onmessage = (e) => {
-    try {
-      const event = JSON.parse(e.data);
-      handleEvent(event);
-    } catch {}
-  };
+  <script>
+    const WS_URL = 'ws://127.0.0.1:3001';
+    let ws = null;
+    let reconnectDelay = 1000;
 
-  ws.onclose = () => {
-    setTimeout(connect, reconnectDelay);
-    reconnectDelay = Math.min(reconnectDelay * 1.5, 15000);
-  };
+    // Last known game state for translating commands
+    let lastState = null;
 
-  ws.onerror = () => ws.close();
-}
+    // Saved feed HTML so we can restore after agent mode
+    let savedFeedHTML = '';
 
-function handleEvent(event) {
-  switch (event.type) {
-    case 'state':
-      lastState = event;
-      break;
-    case 'decision':
-      addReasoning(event);
-      // skip_feed = true means individual feed entries are posted separately (batch turns)
-      if (!event.skip_feed) {
-        const cmd = event.command ? event.command.trim().split(/\s+/)[0] : '';
-        const isPhase = cmd === 'end' || cmd === 'proceed' || cmd === 'start';
-        const displayText = event.translated || translateCommand(event.command);
-        addFeedEntry(displayText, isPhase);
-      }
-      break;
-    case 'feed':
-      addFeedEntry(event.text, event.highlight);
-      break;
-    case 'run_start':
-      clearForNewRun();
-      addFeedEntry('RUN ' + (event.run_number || '?') + ' — ' + event.class, true);
-      if (event.run_number) {
-        document.getElementById('totalRuns').textContent = event.run_number;
-      }
-      break;
-    case 'run_end':
-      addFeedEntry(
-        (event.victory ? 'VICTORY' : 'DEFEAT') + ` — Floor ${event.floor}`,
-        true
-      );
-      if (event.stats) updateRunStats(event.stats);
-      break;
-    case 'stats':
-      updateRunStats(event);
-      break;
-    case 'reload':
-      location.reload();
-      break;
-  }
-}
+    function connect() {
+      ws = new WebSocket(WS_URL);
 
-// Translate raw commands into readable actions using last known state
-function translateCommand(cmd) {
-  if (!cmd) return cmd;
+      ws.onopen = () => {
+        reconnectDelay = 1000;
+      };
 
-  const parts = cmd.trim().split(/\s+/);
-  const verb = parts[0];
+      ws.onmessage = (e) => {
+        try {
+          const event = JSON.parse(e.data);
+          handleEvent(event);
+        } catch { }
+      };
 
-  if (verb === 'play' && lastState && lastState.hand) {
-    const cardIdx = parseInt(parts[1]);
-    const targetIdx = parts[2] !== undefined ? parseInt(parts[2]) : null;
-    const card = lastState.hand ? lastState.hand[cardIdx - 1] : null;
-    const cardName = card ? card.name : `card ${parts[1]}`;
+      ws.onclose = () => {
+        setTimeout(connect, reconnectDelay);
+        reconnectDelay = Math.min(reconnectDelay * 1.5, 15000);
+      };
 
-    if (targetIdx !== null && lastState.enemies) {
-      const enemy = lastState.enemies[targetIdx];
-      const enemyName = enemy ? enemy.name : `enemy ${parts[2]}`;
-      return `${cardName} → ${enemyName}`;
+      ws.onerror = () => ws.close();
     }
-    return cardName;
-  }
 
-  if (verb === 'choose' && lastState && lastState.choices) {
-    const idx = parseInt(parts[1]);
-    const choice = lastState.choices ? lastState.choices[idx] : null;
-    if (choice) return `Choose: ${choice}`;
-  }
+    function handleEvent(event) {
+      switch (event.type) {
+        case 'state':
+          lastState = event;
+          break;
+        case 'decision':
+          addReasoning(event);
+          // skip_feed = true means individual feed entries are posted separately (batch turns)
+          if (!event.skip_feed) {
+            const displayText = event.translated || translateCommand(event.command);
+            const color = categorizeAction(event.command);
+            addFeedEntry(displayText, color);
+          }
+          break;
+        case 'feed':
+          addFeedEntry(event.text, categorizeFeed(event.text));
+          break;
+        case 'run_start':
+          clearForNewRun();
+          addFeedEntry('RUN ' + (event.run_number || '?') + ' — ' + event.class, 'meta');
+          if (event.run_number) {
+            document.getElementById('totalRuns').textContent = event.run_number;
+          }
+          break;
+        case 'run_end':
+          addFeedEntry(
+            (event.victory ? 'VICTORY' : 'DEFEAT') + ` — Floor ${event.floor}`,
+            'meta'
+          );
+          if (event.stats) updateRunStats(event.stats);
+          break;
+        case 'stats':
+          updateRunStats(event);
+          break;
+        case 'agent_mode':
+          toggleAgentMode(event);
+          break;
+        case 'agent_text':
+          appendAgentText(event.text);
+          break;
+        case 'agent_tool':
+          appendAgentTool(event.summary);
+          break;
+        case 'reload':
+          location.reload();
+          break;
+      }
+    }
 
-  if (verb === 'end') return 'End Turn';
-  if (verb === 'proceed') return 'Proceed';
-  if (verb === 'skip' || verb === 'return') return 'Skip';
-  if (verb === 'leave') return 'Leave';
+    // --- Agent mode (analyst/strategist display) ---
 
-  if (verb === 'potion') {
-    const action = parts[1];
-    if (action === 'use') return `Use Potion ${parts[2]}`;
-    if (action === 'discard') return `Discard Potion ${parts[2]}`;
-  }
+    function toggleAgentMode(event) {
+      const panel = document.getElementById('agentPanel');
+      const feed = document.getElementById('actionFeed');
+      const feedSection = feed.closest('.feed-section');
+      const feedTitle = feedSection ? feedSection.querySelector('.section-title') : null;
 
-  if (verb === 'start') return `Start — ${parts[1] || 'IRONCLAD'}`;
+      if (event.active) {
+        // Show agent panel over game area
+        panel.classList.add('active');
+        document.getElementById('agentTitle').textContent = event.title || 'ANALYSIS';
+        document.getElementById('agentBody').innerHTML = '';
 
-  return cmd;
-}
+        // Save current action feed and replace with run summary
+        savedFeedHTML = feed.innerHTML;
+        const stats = event.run_stats || {};
+        const summary = event.run_summary || '';
+        const runNum = stats.total_runs || '?';
+        const cls = stats.current_class || '?';
+        const floor = stats.current_floor || '?';
+        const resultClass = floor > 50 ? 'result-victory' : 'result-death';
 
-function clearForNewRun() {
-  // Clear reasoning log
-  const log = document.getElementById('reasoningLog');
-  log.innerHTML = '<div class="reasoning-empty">New run starting...</div>';
+        let summaryHTML = `<div class="run-summary">`;
+        summaryHTML += `<div class="summary-title">Last Run</div>`;
+        summaryHTML += `<div class="summary-line">Run ${runNum} — ${cls}</div>`;
+        summaryHTML += `<div class="summary-line ${resultClass}">Floor ${floor}</div>`;
 
-  // Clear action feed
-  const feed = document.getElementById('actionFeed');
-  feed.innerHTML = '';
+        if (summary) {
+          const lines = summary.split('\n').filter(l => l.trim());
+          for (const line of lines) {
+            summaryHTML += `<div class="summary-line">${esc(line.trim())}</div>`;
+          }
+        }
 
-  // Reset client-side state
-  lastState = null;
-}
+        summaryHTML += `</div>`;
+        feed.innerHTML = summaryHTML;
+      } else {
+        // Hide agent panel, restore action feed
+        panel.classList.remove('active');
+        if (savedFeedHTML) {
+          feed.innerHTML = savedFeedHTML;
+          savedFeedHTML = '';
+        }
+      }
+    }
 
-function addReasoning(d) {
-  const log = document.getElementById('reasoningLog');
+    function appendAgentText(text) {
+      const body = document.getElementById('agentBody');
+      const block = document.createElement('div');
+      block.className = 'agent-text-block';
+      block.textContent = text;
+      body.appendChild(block);
+      body.scrollTop = body.scrollHeight;
+    }
 
-  // Clear empty state
-  const empty = log.querySelector('.reasoning-empty');
-  if (empty) empty.remove();
+    function appendAgentTool(summary) {
+      const body = document.getElementById('agentBody');
+      const block = document.createElement('div');
+      block.className = 'agent-tool-block';
+      block.textContent = '▸ ' + summary;
+      body.appendChild(block);
+      body.scrollTop = body.scrollHeight;
+    }
 
-  const entry = document.createElement('div');
-  entry.className = 'reasoning-entry';
-  let html = '';
-  if (d.command) {
-    const badgeText = d.translated || translateCommand(d.command);
-    html += `<div class="command-badge">${esc(badgeText)}</div>`;
-  }
-  if (d.reasoning) {
-    html += `<span class="reason-text">${esc(d.reasoning)}</span>`;
-  }
-  entry.innerHTML = html;
+    // Determine color category based on command + current game state
+    function categorizeAction(cmd) {
+      if (!cmd) return '';
+      const verb = cmd.trim().split(/\s+/)[0];
 
-  log.insertBefore(entry, log.firstChild);
+      // Meta actions
+      if (verb === 'start' || verb === 'proceed') return 'meta';
 
-  // Keep max 20
-  while (log.children.length > 20) {
-    log.removeChild(log.lastChild);
-  }
+      // Knowledge actions (plan/reason)
+      if (verb === 'plan' || verb === 'reason') return 'event';
 
-  log.scrollTop = 0;
-}
+      // Combat actions
+      if (verb === 'play' || verb === 'potion') return 'combat';
+      if (verb === 'end' && lastState && lastState.in_combat) return 'combat';
 
-// Actions: append to end (newest = bottom of last column)
-function addFeedEntry(text, highlight) {
-  const feed = document.getElementById('actionFeed');
+      // Use screen context for choose/skip
+      if (lastState) {
+        const screen = lastState.screen || '';
+        if (screen === 'MAP' || screen === 'BOSS') return 'meta';
+        if (screen === 'EVENT' || screen === 'SHOP_SCREEN' || screen === 'REST') return 'event';
+        if (screen === 'CARD_REWARD' || screen === 'COMBAT_REWARD' || screen === 'GRID') return 'reward';
+        if (lastState.in_combat) return 'combat';
+      }
 
-  const entry = document.createElement('div');
-  entry.className = 'feed-entry';
-  entry.innerHTML = `
-    <span class="feed-action${highlight ? ' highlight' : ''}">${esc(text || '')}</span>
+      return '';
+    }
+
+    // Categorize auto-generated feed events (from stream.py state_watcher)
+    function categorizeFeed(text) {
+      if (!text) return 'meta';
+      if (text.startsWith('COMBAT')) return 'combat';
+      if (text.startsWith('EVENT')) return 'event';
+      if (text.startsWith('RUN') || text.startsWith('VICTORY') || text.startsWith('DEFEAT')) return 'meta';
+      return 'meta';
+    }
+
+    // Translate raw commands into readable actions using last known state
+    function translateCommand(cmd) {
+      if (!cmd) return cmd;
+
+      const parts = cmd.trim().split(/\s+/);
+      const verb = parts[0];
+
+      if (verb === 'play' && lastState && lastState.hand) {
+        const cardIdx = parseInt(parts[1]);
+        const targetIdx = parts[2] !== undefined ? parseInt(parts[2]) : null;
+        const card = lastState.hand ? lastState.hand[cardIdx - 1] : null;
+        const cardName = card ? card.name : `card ${parts[1]}`;
+
+        if (targetIdx !== null && lastState.enemies) {
+          const enemy = lastState.enemies[targetIdx];
+          const enemyName = enemy ? enemy.name : `enemy ${parts[2]}`;
+          return `${cardName} → ${enemyName}`;
+        }
+        return cardName;
+      }
+
+      if (verb === 'choose' && lastState && lastState.choices) {
+        const idx = parseInt(parts[1]);
+        const choice = lastState.choices ? lastState.choices[idx] : null;
+        if (choice) return `Choose: ${choice}`;
+      }
+
+      if (verb === 'end') return 'End Turn';
+      if (verb === 'proceed') return 'Proceed';
+      if (verb === 'skip' || verb === 'return') return 'Skip';
+      if (verb === 'leave') return 'Leave';
+
+      if (verb === 'potion') {
+        const action = parts[1];
+        if (action === 'use') return `Use Potion ${parts[2]}`;
+        if (action === 'discard') return `Discard Potion ${parts[2]}`;
+      }
+
+      if (verb === 'start') return `Start — ${parts[1] || 'IRONCLAD'}`;
+
+      return cmd;
+    }
+
+    function clearForNewRun() {
+      // Clear reasoning log
+      const log = document.getElementById('reasoningLog');
+      log.innerHTML = '<div class="reasoning-empty">New run starting...</div>';
+
+      // Clear action feed
+      const feed = document.getElementById('actionFeed');
+      feed.innerHTML = '';
+
+      // Reset client-side state
+      lastState = null;
+    }
+
+    function addReasoning(d) {
+      const log = document.getElementById('reasoningLog');
+
+      // Clear empty state
+      const empty = log.querySelector('.reasoning-empty');
+      if (empty) empty.remove();
+
+      const entry = document.createElement('div');
+      entry.className = 'reasoning-entry';
+      let html = '';
+      if (d.command) {
+        const badgeText = d.translated || translateCommand(d.command);
+        html += `<div class="command-badge">${esc(badgeText)}</div>`;
+      }
+      if (d.reasoning) {
+        html += `<span class="reason-text">${esc(d.reasoning)}</span>`;
+      }
+      entry.innerHTML = html;
+
+      log.insertBefore(entry, log.firstChild);
+
+      // Keep max 20
+      while (log.children.length > 20) {
+        log.removeChild(log.lastChild);
+      }
+
+      log.scrollTop = 0;
+    }
+
+    // Actions: append to end (newest = bottom of last column)
+    function addFeedEntry(text, color) {
+      const feed = document.getElementById('actionFeed');
+
+      const entry = document.createElement('div');
+      entry.className = 'feed-entry';
+      const colorClass = color ? ` color-${color}` : '';
+      entry.innerHTML = `
+    <span class="feed-action${colorClass}">${esc(text || '')}</span>
   `;
 
-  feed.appendChild(entry);
+      feed.appendChild(entry);
 
-  // Remove oldest from the top when we overflow
-  const maxEntries = 24; // ~8 per column x 3 columns
-  while (feed.children.length > maxEntries) {
-    feed.removeChild(feed.firstChild);
-  }
-}
+      // Remove oldest — cap to 3 visible columns (7 per column at 236px bar height)
+      const maxEntries = 21;
+      while (feed.children.length > maxEntries) {
+        feed.removeChild(feed.firstChild);
+      }
+    }
 
-function updateRunStats(s) {
-  document.getElementById('totalRuns').textContent = s.total_runs || 0;
-  document.getElementById('wins').textContent = s.wins || 0;
-  document.getElementById('bestFloor').textContent = s.best_floor || 0;
-}
+    function updateRunStats(s) {
+      document.getElementById('totalRuns').textContent = s.total_runs || 0;
+      document.getElementById('wins').textContent = s.wins || 0;
+      const bestAsc = s.best_ascension || 0;
+      const bestFloor = s.best_floor || 0;
+      document.getElementById('bestFloor').textContent = bestFloor > 0 ? `A${bestAsc}F${bestFloor}` : '—';
+    }
 
-function esc(s) {
-  const d = document.createElement('div');
-  d.textContent = s;
-  return d.innerHTML;
-}
+    function esc(s) {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
 
-connect();
-</script>
+    connect();
+  </script>
 </body>
+
 </html>
