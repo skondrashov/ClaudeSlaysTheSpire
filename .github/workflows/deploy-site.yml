@@ -5,6 +5,8 @@ on:
     paths:
       - 'playbook/**'
       - 'site/**'
+      - 'analyst/**'
+      - 'data/run_stats.json'
     branches: [main]
   workflow_dispatch:
 

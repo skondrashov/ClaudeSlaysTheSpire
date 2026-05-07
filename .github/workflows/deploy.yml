@@ -7,6 +7,8 @@ on:
       - 'playbook/**'
       - 'knowledge/**'
       - 'site/**'
+      - 'analyst/**'
+      - 'data/run_stats.json'
   workflow_dispatch:
 
 permissions:

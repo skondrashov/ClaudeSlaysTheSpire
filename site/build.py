@@ -683,10 +683,28 @@ def make_slug(category, entry_stem=None):
     return f"playbook-{category}.html"
 
 
-# ── Run stats from analyst/run_log.md ───────────────────────────────
+# ── Run stats ─────────────────────────────────────────────────────
 
-def parse_run_log(root):
-    """Parse analyst/run_log.md to extract run statistics."""
+def load_run_stats(root):
+    """Load run statistics. Prefers data/run_stats.json (authoritative),
+    falls back to parsing analyst/run_log.md for backwards compatibility."""
+    import json as _json
+
+    # Primary source: data/run_stats.json (maintained by stream.py at runtime)
+    stats_file = root / "data" / "run_stats.json"
+    if stats_file.exists():
+        try:
+            raw = _json.loads(stats_file.read_text(encoding="utf-8"))
+            return {
+                "total_runs": raw.get("total_runs", 0),
+                "boss_kills": raw.get("wins", 0),
+                "best_floor": raw.get("best_floor", 0),
+                "deaths": raw.get("deaths", 0),
+            }
+        except (ValueError, KeyError):
+            pass  # Fall through to run_log parsing
+
+    # Fallback: parse analyst/run_log.md
     run_log = root / "analyst" / "run_log.md"
     stats = {"total_runs": 0, "boss_kills": 0, "best_floor": 0, "deaths": 0}
 
@@ -699,15 +717,12 @@ def parse_run_log(root):
             continue
         stats["total_runs"] += 1
 
-        # Count boss victories (e.g., "Victory (Guardian)")
         if "Victory" in line:
             stats["boss_kills"] += line.count("Victory")
 
-        # Count deaths
         if "Death" in line:
             stats["deaths"] += 1
 
-        # Extract floor numbers from "Death Floor N" or "Death Floor N ("
         for m in re.finditer(r'Death Floor (\d+)', line):
             floor = int(m.group(1))
             stats["best_floor"] = max(stats["best_floor"], floor)
@@ -815,7 +830,7 @@ def build():
     playbook_dir = ROOT / "playbook"
     categories, top_level_files = discover_playbook(playbook_dir)
 
-    run_stats = parse_run_log(ROOT)
+    run_stats = load_run_stats(ROOT)
     total_pages = 0
 
     # ── Index page ──
@@ -826,26 +841,26 @@ def build():
     # ── Playbook index page ──
     playbook_body = "<h2>Playbook</h2>\n"
     playbook_body += "<p>Everything Claude has learned about Slay the Spire, organized by category.</p>\n"
+    playbook_body += '<div class="category-grid">\n'
 
-    # Top-level files section
-    if top_level_files:
-        playbook_body += '<div style="margin: 24px 0;">\n'
-        for tlf in top_level_files:
-            slug = make_slug(tlf["stem"])
-            playbook_body += f'<h3><a href="{slug}">{html.escape(tlf["name"])}</a></h3>\n'
-        playbook_body += "</div>\n"
+    # Top-level playbook files
+    for tlf in top_level_files:
+        slug = make_slug(tlf["stem"])
+        playbook_body += f"""<div class="category-card"><a href="{slug}">
+  <h3>{html.escape(tlf["name"])}</h3>
+</a></div>\n"""
 
-    # Category sections
+    # Category cards — just name + count, linking to category page
     for cat_name, cat_data in categories.items():
         slug = make_slug(cat_name)
         display_name = cat_name.replace("-", " ").replace("_", " ").title()
         count = len(cat_data["entries"])
-        playbook_body += f'<h3><a href="{slug}">{html.escape(display_name)}</a> <span style="color:var(--text-dim);font-size:14px;font-weight:400;">({count})</span></h3>\n'
-        playbook_body += '<div class="entry-grid">\n'
-        for entry in cat_data["entries"]:
-            entry_slug = make_slug(cat_name, entry["stem"])
-            playbook_body += f'<a href="{entry_slug}">{html.escape(short_name(entry["name"]))}</a>\n'
-        playbook_body += "</div>\n"
+        playbook_body += f"""<div class="category-card"><a href="{slug}">
+  <h3>{html.escape(display_name)}</h3>
+  <div class="count">{count} {"entry" if count == 1 else "entries"}</div>
+</a></div>\n"""
+
+    playbook_body += "</div>\n"
 
     if not categories and not top_level_files:
         playbook_body = '<div class="empty-state">Playbook is empty. Strategy, cards, and mechanics will appear here as Claude learns.</div>'
@@ -866,12 +881,17 @@ def build():
     for cat_name, cat_data in categories.items():
         display_name = cat_name.replace("-", " ").replace("_", " ").title()
 
-        # Category page: render the _index.md content with links rewritten
         cat_slug = make_slug(cat_name)
-        back_link = '<div class="back-link"><a href="playbook.html">&larr; Back to playbook</a></div>'
+        back_link = '<div class="back-link"><a href="playbook.html">&larr; Playbook</a></div>'
 
-        # Render category page as tile grids instead of bullet lists
-        cat_html = render_category_page(cat_data["index_content"], cat_name)
+        # Category page: simple tile grid of all entries
+        cat_html = f'<h2>{html.escape(display_name)}</h2>\n'
+        cat_html += '<div class="entry-grid">\n'
+        for entry in cat_data["entries"]:
+            entry_slug = make_slug(cat_name, entry["stem"])
+            cat_html += f'<a href="{entry_slug}">{html.escape(short_name(entry["name"]))}</a>\n'
+        cat_html += '</div>\n'
+
         cat_page = page(display_name, back_link + cat_html, "Playbook")
         (OUT / cat_slug).write_text(cat_page, encoding="utf-8")
         total_pages += 1
