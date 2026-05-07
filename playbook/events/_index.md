@@ -28,3 +28,4 @@
 - [World of Goop](world-of-goop.md)
 - [Woman in Blue](woman-in-blue.md)
 - [The Nest](the-nest.md)
+- [Vampires](vampires.md)

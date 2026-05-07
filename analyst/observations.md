@@ -18,6 +18,12 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Dream Catcher card pool: Same as normal rewards or different/restricted?
 - Corruption + Second Wind interaction: Does Second Wind exhaust itself under Corruption? Needs confirmation.
 - Blessing of the Forge exact mechanic: Random card in deck vs random card in hand? Never used.
+- Vampires Max HP loss exact formula: Observed 80->56 (-24, 30% loss). Is it always 30% or a fixed amount? Needs second data point.
+- Bite upgrade: Does Bite have an upgraded version? If so, what are the improved stats?
+- Gremlin Leader summoning pattern: Does Leader re-summon immediately when gremlins die, or on specific turns? Need to observe the exact trigger.
+- Horn Cleat block amount: Observed 14 block on turn 2. Is this always 14 or does it scale?
+- Slaver's Collar source: How is this relic obtained? Boss reward, shop, or event?
+- Block values sometimes higher than expected: Player noted block values exceeding card text. Possible relic interaction (Horn Cleat turn 2?) or Dexterity source not accounted for.
 
 ## Open Questions
 

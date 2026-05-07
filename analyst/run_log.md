@@ -74,6 +74,13 @@ CAUSE OF DEATH: Slavers elite (3 enemies, 27+ combined damage/turn) at 21/77 HP 
 KEY MOMENTS: (1) Hexaghost killed in 7 turns with Demon Form + Shuriken + Anger scaling (combined +14 Str by turn 7). (2) Snecko navigated via Confusion -- Disarm at 0E and Demon Form at 2E were both "gifts" from randomized costs. (3) Entered Slavers at 21 HP after Centurion+Mystic drained from 27->8 HP (Burning Blood +6, shop Meal Ticket +15 = 29 HP, then Snecko drained to 21). (4) Zero healing cards in deck (no Reaper, no Feed). Only Burning Blood +6/fight and Meal Ticket +15 at shops.
 LESSONS: 17th low-HP death. Slavers elite is a new encounter -- 3 enemies with NO free turn, all attack immediately for 27+ combined. At 27% HP entry, even Flame Barrier+ (16 block) + Defend (5 block) = 21 block vs 27 incoming = 6 damage through. Turn 2 at 15 HP with 3 enemies still alive = unwinnable. The run confirms healing sustain is the critical gap: Burning Blood alone cannot sustain Act 2 through consecutive combat rooms.
 
+## Run 51 — Ironclad A0, Death Floor 24 (Gremlin Leader Elite, Act 2)
+DECK: 4x Defend, 5x Bite, Bash+, Thunderclap, Headbutt, Shrug It Off, Battle Trance, Pommel Strike, Rampage, Reaper + Burn
+RELICS: Slaver's Collar, Horn Cleat, Nilry's Codex
+CAUSE OF DEATH: Gremlin Leader elite at 14/56 HP (25%). Vampires event on Floor 20 removed 24 Max HP (80->56). Str scaling from Rally overwhelmed limited block at reduced HP pool.
+KEY MOMENTS: (1) Beat Slime Boss at 7 HP, took Reaper from boss reward (healing priority working). (2) Gambler's Brew misplay on Floor 19 (discarded Shrug It Off vs Chosen), forced Smoke Bomb escape -- lost both potions. (3) Vampires event Floor 20: gained 5 Bites but lost 24 Max HP. (4) Nilry's Codex from Cursed Tome generated Impervious and Immolate in final fight but insufficient at 14 HP entry. (5) Headbutt + Rampage synergy worked well as scaling engine.
+LESSONS: Vampires event Max HP loss is crippling -- 56 Max HP means every Act 2 elite is near-unwinnable. Gambler's Brew misplay (discarding block cards) cascaded into losing Smoke Bomb and entering late Act 2 with zero potions. Reaper was taken correctly from boss reward but deck lacked second healing source. Nilry's Codex confirmed to generate cards from any class (Impervious, Immolate observed).
+
 ## Run 48 — Ironclad A0, Death Floor 33 (The Collector) — NEW BEST FLOOR
 DECK: Bash+, Bludgeon, Immolate, Shockwave, Inflame, Reaper, Armaments+, Clothesline+, Thunderclap+, Shrug It Off+, Cleave, Rage+, Limit Break, Defend+x2, Strike+
 RELICS: Burning Blood, Pear, Mercury Hourglass

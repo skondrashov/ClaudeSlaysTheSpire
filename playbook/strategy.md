@@ -44,6 +44,7 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 4. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
 5. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.
 6. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. With 2 Decays, that is 4 HP/turn lost regardless of block. Over a 5-turn fight, that is 20 free HP lost. Prioritize curse removal at shops or via exhaust (Fiend Fire).
+7. **Vampires event Max HP loss**: Accepting the Vampires event removes ~30% of Max HP (observed: 80->56). At 56 Max HP, every HP threshold in the table above shifts drastically -- 60% for elites becomes 34 HP, which is nearly impossible to maintain through Act 2. The 5 Bite cards provide 2 HP healing per play but cannot compensate for the reduced HP ceiling against burst damage. Refuse this event unless desperate for healing with no alternatives.
 
 ---
 
@@ -275,7 +276,8 @@ Burning Blood (+6/fight) cannot compensate for 30-50 HP fights. Reaper and Feed 
 2. Feed (permanent +3-4 Max HP per kill, compounds over the run)
 3. Blood Potion / Regen Potion (one-time emergency heal)
 4. Toy Ornithopter relic (+5 HP per potion used)
-5. Rest sites (but spending rest on healing means no upgrades)
+5. Bite cards (2 HP per play -- sustained but small; comes at devastating Max HP cost from Vampires event)
+6. Rest sites (but spending rest on healing means no upgrades)
 
 **Minimum healing requirement:** At least TWO sources from the list above (not counting rest sites) by Act 2 Floor 5. A single Reaper or single Feed is not enough given that Act 2 hallway fights drain 25-50 HP each and often come in consecutive pairs.
 

@@ -32,6 +32,11 @@
 - [Mercury Hourglass](mercury-hourglass.md)
 - [Shuriken](shuriken.md)
 
+## Uncommon Relics (continued)
+
+- [Horn Cleat](horn-cleat.md)
+- [Slaver's Collar](slavers-collar.md)
+
 ## Rare Relics
 
 - [Pantograph](pantograph.md)
@@ -39,6 +44,7 @@
 - [Lizard Tail](lizard-tail.md)
 - [Molten Egg](molten-egg.md)
 - [Enchiridion](enchiridion.md)
+- [Nilry's Codex](nilrys-codex.md)
 - [Unceasing Top](unceasing-top.md)
 
 ## Boss Relics / Special

@@ -25,6 +25,7 @@
 - [Fiend Fire](fiend-fire.md)
 - [Feed](feed.md)
 - [Reaper](reaper.md)
+- [Bite](bite.md)
 - [Dropkick](dropkick.md)
 - [Rampage](rampage.md)
 - [Double Tap](double-tap.md)
