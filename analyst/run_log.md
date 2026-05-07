@@ -81,6 +81,13 @@ CAUSE OF DEATH: Gremlin Leader elite at 14/56 HP (25%). Vampires event on Floor 
 KEY MOMENTS: (1) Beat Slime Boss at 7 HP, took Reaper from boss reward (healing priority working). (2) Gambler's Brew misplay on Floor 19 (discarded Shrug It Off vs Chosen), forced Smoke Bomb escape -- lost both potions. (3) Vampires event Floor 20: gained 5 Bites but lost 24 Max HP. (4) Nilry's Codex from Cursed Tome generated Impervious and Immolate in final fight but insufficient at 14 HP entry. (5) Headbutt + Rampage synergy worked well as scaling engine.
 LESSONS: Vampires event Max HP loss is crippling -- 56 Max HP means every Act 2 elite is near-unwinnable. Gambler's Brew misplay (discarding block cards) cascaded into losing Smoke Bomb and entering late Act 2 with zero potions. Reaper was taken correctly from boss reward but deck lacked second healing source. Nilry's Codex confirmed to generate cards from any class (Impervious, Immolate observed).
 
+## Run 52 — Ironclad A0, Death Floor 33 (Bronze Automaton, Act 2 Boss)
+DECK: Bash+, Bludgeon, Blood for Blood, Double Tap+, Inflame x2 (one upgraded), Whirlwind, Thunderclap, Disarm, Pummel, Shrug It Off, Headbutt, basics (21 cards)
+RELICS: Runic Dome, Kunai
+CAUSE OF DEATH: Bronze Automaton at 49/85 HP (57%). Orbs stole Double Tap+ and Inflame via Stasis. Str scaling (+3/cycle) outpaced block by turn 6. Runic Dome prevented predicting Hyper Beam.
+KEY MOMENTS: Beat Hexaghost with Double Tap + Blood for Blood + Attack Potion. Two Snake Plant fights (F22, F31) drained 40+ HP total -- Malleable punished multi-hit cards (Whirlwind, Pummel). Artifact stripping executed correctly (Thunderclap + Bash+ + Disarm: 3->0). No Reaper or Feed offered the entire run.
+LESSONS: First Bronze Automaton encounter documented. Stasis mechanic steals critical cards. Runic Dome + Automaton is a terrible combination (cannot predict Hyper Beam). Snake Plant Malleable punishes multi-hit decks heavily. Healing card absence is RNG-dependent -- the priority rule works but cannot force card offers.
+
 ## Run 48 — Ironclad A0, Death Floor 33 (The Collector) — NEW BEST FLOOR
 DECK: Bash+, Bludgeon, Immolate, Shockwave, Inflame, Reaper, Armaments+, Clothesline+, Thunderclap+, Shrug It Off+, Cleave, Rage+, Limit Break, Defend+x2, Strike+
 RELICS: Burning Blood, Pear, Mercury Hourglass

@@ -6,3 +6,4 @@ DECISION POINTS: Play LAST -- it uses all remaining energy. Plan other plays fir
 UPGRADE: 5->8 per hit. Significant improvement.
 SYNERGIES: Extra energy (Lantern, Seeing Red+, Berserk), Strength (each hit gains bonus).
 MATCHUPS: Slime Boss split -- hits both slimes. Sentries -- 15 damage to all 3. Gremlin Leader -- clears summoned gremlins.
+ANTI-SYNERGY: **Snake Plant Malleable** -- each Whirlwind hit triggers Malleable, granting Snake Plant increasing block per hit. A 3-energy Whirlwind (3 hits) gives Snake Plant 3+4+5 = 12 block. Do NOT use Whirlwind against enemies with Malleable. Use single large hits instead.

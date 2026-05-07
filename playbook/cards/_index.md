@@ -29,7 +29,9 @@
 - [Dropkick](dropkick.md)
 - [Rampage](rampage.md)
 - [Double Tap](double-tap.md)
+- [Blood for Blood](blood-for-blood.md)
 - [Bludgeon](bludgeon.md)
+- [Pummel](pummel.md)
 - [Immolate](immolate.md)
 
 ## Skill Cards

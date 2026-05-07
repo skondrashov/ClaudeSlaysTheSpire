@@ -6,4 +6,6 @@ DECISION POINTS: Play BEFORE your strongest Attack card. The next Attack played 
 SYNERGIES: Rampage (double play = double scaling acceleration + massive damage), Pommel Strike+ (double = 20 damage + draw 4), any high-damage Attack.
 BASH+ INTERACTION: Double Tap + Bash+ = first hit deals 10 damage + applies 3 Vulnerable, second hit deals 15 damage (with Vulnerable now active) = 25 total. With +2 Strength: first hit 12, second hit 18 = 30 total. Excellent boss opener.
 
+MATCHUPS: Bronze Automaton -- Double Tap is a high-value Stasis target. Orbs can steal Double Tap from your hand, removing your best burst multiplier. If Double Tap is your only burst enabler, the Automaton matchup is risky. Consider playing Double Tap early before Orbs get a chance to steal it.
+
 ---

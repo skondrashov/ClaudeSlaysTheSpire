@@ -6,3 +6,4 @@ DECISION POINTS: Save for the enemy with the most dangerous Strength scaling. Ag
 MATCHUPS: Gremlin Leader -- reduces Rally effectiveness. Hexaghost -- -2 Str permanently reduces all attacks including each Inferno hit. Very effective in the long fight. Slavers -- play on the hardest-hitting Slaver to reduce incoming from the most dangerous source. Against multi-hit enemies generally.
 
 NOTE: Under Snecko's Confusion, Disarm can cost 0E (normally 1E). A 0E permanent -2 Str is exceptional value -- play immediately when this occurs.
+ARTIFACT INTERACTION: Against enemies with Artifact (e.g., Bronze Automaton starts with 3), Disarm strips 1 Artifact instead of applying -2 Str. Use Disarm alongside Thunderclap and Bash+ to strip Artifact stacks before applying real debuffs.

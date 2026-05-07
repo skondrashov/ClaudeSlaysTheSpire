@@ -23,6 +23,7 @@
 
 ## Uncommon Relics
 
+- [Kunai](kunai.md)
 - [Pen Nib](pen-nib.md)
 - [Letter Opener](letter-opener.md)
 - [Liquid Bronze](liquid-bronze.md)
@@ -49,6 +50,7 @@
 
 ## Boss Relics / Special
 
+- [Runic Dome](runic-dome.md)
 - [Ancient Tea Set](ancient-tea-set.md)
 - [Charon's Ashes](charon-s-ashes.md)
 - [Neow's Lament](neow-s-lament.md)

@@ -34,7 +34,10 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - The Joust odds: 70% win chance for Murderer accurate?
 - Confusion interaction with X-cost cards: Unconfirmed.
 - Frail block calculation under player reasoning: Player wrote "2x Defend (10 block w/ Frail)" but Frail should reduce 5 to 3. Possible miscalculation.
-- Is the player not being OFFERED healing cards, or skipping them? Critical question for the healing sustain gap.
+- Is the player not being OFFERED healing cards, or skipping them? Critical question for the healing sustain gap. Run 52 confirms at least one case where Reaper and Feed were never offered across the entire run. The healing priority rule is working (player would take them if offered) but card pool RNG can deny healing cards entirely.
+- Bronze Automaton Stasis targeting: Does Stasis preferentially steal Powers/Skills, or is it random? Observed stealing Double Tap+ (Skill) and Inflame (Power). Need more data points.
+- Bronze Automaton Hyper Beam exact damage: Not precisely measured. Believed to be very high single-hit. Need exact number.
+- Kunai trigger counting: Does Whirlwind count as 1 Attack or X Attacks for Kunai's 3-Attack threshold? Believed to count as 1 play regardless of hits. Needs confirmation.
 
 ## Recurring Patterns (for strategist review)
 

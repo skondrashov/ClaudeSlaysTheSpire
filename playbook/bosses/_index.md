@@ -7,3 +7,4 @@
 
 ## Act 2
 - [The Collector](the-collector.md)
+- [Bronze Automaton](bronze-automaton.md)

@@ -169,6 +169,13 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - Reaper -- heals from all 3 targets (Collector + 2 Torch Heads), critical sustain
 - Block density for post-debuff turns -- Frail reduces block by 25%, need multiple sources
 
+**Bronze Automaton needs:**
+- HP entry at 70%+ -- 300 HP boss with +3 Str/cycle scaling. Low HP entry means dying to scaling before killing it.
+- Artifact strippers -- Thunderclap, Bash+, Disarm. Automaton starts with Artifact 3 that blocks the first 3 debuff applications. Must strip all Artifact before Vulnerable/Weak take effect.
+- Burst damage -- Bludgeon, Blood for Blood, Double Tap. The fight is a DPS race against Strength scaling.
+- Redundant key cards -- Orb minions steal cards via Stasis. Do not rely on a single copy of any critical card (Double Tap, Inflame).
+- Intent visibility -- Runic Dome removes the ability to predict Hyper Beam. Avoid taking Runic Dome if Bronze Automaton is a possible Act 2 boss.
+
 ### Save One-Use Cards for Bosses
 
 Exhaust cards like Shockwave+ are single-use per combat. Don't waste them on hallway fights unless the fight is genuinely dangerous. The boss is almost always the hardest fight.
