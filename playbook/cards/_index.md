@@ -38,6 +38,7 @@
 
 ## Skill Cards
 
+- [Offering](offering.md)
 - [Havoc](havoc.md)
 - [Shrug It Off](shrug-it-off.md)
 - [True Grit](true-grit.md)

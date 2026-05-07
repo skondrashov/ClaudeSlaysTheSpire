@@ -8,7 +8,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-19 of 22 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
+20 of 23 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
 
 ### HP Thresholds for Act 2
 

@@ -36,7 +36,9 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Spikers Thorns scaling: Observed Thorns 3 and Thorns 7 on different Spikers. Do Spikers start with different Thorns values or gain Thorns over time?
 - Donu and Deca: Not yet encountered. Boss identified from Act 3 plan screen. Need first encounter data.
 - Collector total HP: Player noted 282 HP on entry. Previous entry says 279. Need to confirm exact HP.
-- Hard Rules compliance: Zero failures in Run 63. This is the first run with zero compliance failures. Monitor if this continues.
+- Hard Rules compliance: Zero failures in Run 63 and Run 64. Two consecutive runs with zero compliance failures. Monitor if this continues.
+- Chosen 28-damage attack: Observed at 7x2 base with +3 Str accumulated and Vulnerable on player. Exact calculation: (7+3)*2 = 20, with Vulnerable: floor(20*1.5) = 30? Or 7x2=14 base, +Str scaling. Needs precise formula verification -- the 28 damage figure may include Vulnerable or may be a higher base attack pattern.
+- Fiend Fire in Cultist+Chosen multi-fights: Using Fiend Fire to kill Cultist exhausts the entire hand including defensive cards needed for Chosen. This is a strategic trap -- the correct play may be to kill Cultist with smaller attacks and preserve block cards for Chosen's high-damage turns.
 
 ## Prediction Errors (non-fatal, for monitoring)
 

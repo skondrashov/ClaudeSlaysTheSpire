@@ -51,6 +51,7 @@
 - [Enchiridion](enchiridion.md)
 - [Nilry's Codex](nilrys-codex.md)
 - [Unceasing Top](unceasing-top.md)
+- [Stone Calendar](stone-calendar.md)
 
 ## Boss Relics / Special
 

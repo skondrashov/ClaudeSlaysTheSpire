@@ -66,6 +66,13 @@ CAUSE OF DEATH: Entered Transient at 15/80 HP (18%) after Writhing Mass drained 
 KEY MOMENTS: (1) Beat The Guardian at 21/80 HP with Pantograph healing to full. (2) Beat The Collector at 14/80 HP -- FIRST ACT 2 BOSS VICTORY. Pantograph healed to full again. (3) Writhing Mass drained 38 HP (53->15) via Malleable + Reactive over 8 turns. (4) Reaper/Feed never offered in 39 floors. (5) Sozu + Toy Ornithopter anti-synergy (no potion use). (6) Zero Hard Rule compliance failures.
 LESSONS: Pantograph is the most impactful relic observed -- enabled both boss victories at sub-threshold HP. Writhing Mass Malleable mechanic punishes multi-hit attacks severely. Transient is a pure survival check (do not attack). Act 3 HP management is the new critical gap -- hallway fights drain 25-40 HP with no healing source. Sozu's 4th energy is powerful but losing potions removes the backup healing plan entirely.
 
+## Run 64 — Ironclad A0, Death Floor 25 (Cultist + Chosen, Act 2)
+DECK: Fiend Fire, Armaments+, Metallicize, Bash+, Offering, Uppercut, Pommel Strike, Disarm, Thunderclap, basics
+RELICS: Burning Blood, Golden Idol, Stone Calendar, Unceasing Top
+CAUSE OF DEATH: Chosen's 28-damage attack at 14 HP with 13 block available. Died by 1 HP.
+KEY MOMENTS: (1) Centurion+Mystic drained to 31/96 HP over 10 turns. Stone Calendar dealt 52 damage to Centurion on turn 7. (2) Fiend Fire killed Cultist quickly but exhausted Uppercut, 2 Defends, and a Strike -- leaving no block sources for Chosen's follow-up 28-damage attack. (3) No Reaper/Feed offered entire run.
+LESSONS: 20th low-HP death. Fiend Fire in multi-enemy fights with Chosen is dangerous -- exhausting defensive cards against Cultist leaves nothing for Chosen's subsequent turns. Stone Calendar confirmed: 52 AOE damage on turn 7 (documented). Offering documented (0E, lose 6 HP, gain 2E + draw 3).
+
 ## Run 57 — Ironclad A0, Death Floor 16 (The Guardian)
 DECK: Bash+, Uppercut, Pommel Strike, Hemokinesis, Sever Soul, Cleave, 2x Strike, 3x Defend
 RELICS: Burning Blood, Lantern, Question Card
