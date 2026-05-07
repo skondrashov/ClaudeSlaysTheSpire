@@ -137,10 +137,14 @@ When you play a card by numeric index, all cards after it shift down by 1. This 
 - This eliminates the entire class of index shift errors
 
 **KNOWN KILLS FROM THIS BUG:**
-- Run 3: Played Defend instead of Strike due to shift. Chosen survived at 6 HP, killed player next turn.
-- Run 21: Final turn planned Fiend Fire (would have killed Cultist for 39 damage) but index shift caused Strike to play instead (only 12 damage). Could not kill second Cultist, died next turn.
+- Played Defend instead of Strike due to shift. Chosen survived at 6 HP, killed player next turn.
+- Final turn planned Fiend Fire (would have killed Cultist for 39 damage) but index shift caused Strike to play instead (only 12 damage). Could not kill second Cultist, died next turn.
+- Bought Sever Soul instead of Flame Barrier at shop due to index confusion. Sever Soul then exhausted 2 Defend cards during Guardian fight, directly reducing survivability.
+- Throughout an entire run, consistently played Defends when intending Strikes and vice versa due to numeric index usage. Four confirmed deaths caused by this bug across multiple runs.
 
 **RULE: NEVER use numeric indices in multi-card turn commands. Always use card names.** The only exception is when two copies of the same card are in hand and you need a specific one — in that case, use the index for ONLY that card and names for everything else.
+
+**THIS ALSO APPLIES TO SHOP PURCHASES.** Use card names when buying from shops, not numeric indices. Index confusion at shops has caused purchasing the wrong card, which cascaded into a boss death.
 
 ---
 
@@ -179,8 +183,9 @@ When you play a card by numeric index, all cards after it shift down by 1. This 
 
 ### Mode Shift (Guardian)
 - Damage counter in Attack Mode. When enough damage dealt, Guardian switches to Defensive Mode.
-- Counter starts at ~27-30, increases each cycle.
+- Counter values by cycle: 30 (first), 40 (second), 50 (third).
 - Tracks total HP damage, not damage to block.
+- Triggering Mode Shift mid-attack CANCELS the current attack -- this is the primary defensive tool against the 32-damage and 5x4=20 attacks.
 
 ### Sharp Hide (Guardian Defensive Mode)
 - Deals N damage (N=3 observed) to player per Attack card played.

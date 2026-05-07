@@ -33,6 +33,7 @@
 - [Bludgeon](bludgeon.md)
 - [Pummel](pummel.md)
 - [Immolate](immolate.md)
+- [Sever Soul](sever-soul.md)
 
 ## Skill Cards
 
@@ -51,6 +52,7 @@
 - [Armaments](armaments.md)
 - [Second Wind](second-wind.md)
 - [Flame Barrier](flame-barrier.md)
+- [Spot Weakness](spot-weakness.md)
 - [Limit Break](limit-break.md)
 
 ## Power Cards

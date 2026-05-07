@@ -8,7 +8,7 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Odd Mushroom relic effect: Acquired in Run 4. Possibly +1 Dex or modifies Vulnerable. Never confirmed.
 - Maw Bank relic effect: Acquired in Run 6. Likely gold-related. Never confirmed.
 - Blood Vial/Blood Potion formula: Observed 16 HP heal on 83 max HP. Inferred floor(maxHP * 0.2). Needs second data point.
-- Mode Shift initial value: Run 2 observed starting at 27 (not 10). Later cycle values (40, 50) need reconfirmation.
+
 - Flight damage halving rounding: Believed to be floor(damage/2). Not precisely confirmed.
 - Council of Ghosts Apparition power: Prevents ALL damage for 1 turn each, Ethereal. Never used -- refused at 79 Max HP. Value vs cost (-40 Max HP) untested.
 - Torii damage threshold: Triggers at 5 or less unblocked damage, reducing to 1. Confirmed against Burns. Does it work on all damage sources or only attacks?
@@ -41,6 +41,6 @@ Items pending confirmation or further investigation. Promote to playbook when co
 
 ## Recurring Patterns (for strategist review)
 
-- Index shifting: Despite documentation, player used numeric indices in Runs 21 and 22 against 3 Cultists. Both resulted in fatal misplays. The fix may need to be in the system prompt, not the playbook.
+- Index shifting: Despite documentation, player continues to use numeric indices. Four confirmed deaths (Runs 3, 21, 22, 57) directly caused by index shifting. Run 57 also had shop index confusion (bought Sever Soul instead of Flame Barrier). The playbook fix is clearly insufficient -- the player reads the rule but does not follow it. This is a SYSTEM-LEVEL problem that likely needs to be addressed in the player agent's system prompt or hard-coded into the command interface, not just documented in the playbook.
 - Potion hoarding partially fixed: Run 20 used potions aggressively. But Run 50 had Blessing of the Forge unused at death.
 - Unknown rooms as combat: Runs 20 and 44 hit dangerous fights from Unknown rooms. Unknown rooms are NOT safe at low HP.

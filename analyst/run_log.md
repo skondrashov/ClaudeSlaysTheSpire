@@ -94,3 +94,10 @@ RELICS: Burning Blood, Pear, Mercury Hourglass
 CAUSE OF DEATH: Entered Collector at 41/90 HP (45%). STRONG_DEBUFF on Turn 4 applied Vuln 3 + Frail 3 + Weak 3. Turn 5 incoming 47+ at 2 HP with Frail-reduced block = unwinnable.
 KEY MOMENTS: (1) Guardian victory at 43/90 HP. (2) Snecko fight escaped via Smoke Bomb at 16 HP. (3) Liquid Memories retrieved free Bludgeon to kill Centurion at 8 HP. (4) Gambler's Brew found exact block cards on Collector Turn 4. (5) Reaper healed 14 HP in Collector fight.
 LESSONS: First Collector encounter -- STRONG_DEBUFF mechanic documented. 45% HP entry below 70% boss threshold. Bludgeon is the best burst card for boss free turns.
+
+## Run 57 — Ironclad A0, Death Floor 16 (The Guardian)
+DECK: Bash+, Uppercut, Pommel Strike, Hemokinesis, Sever Soul, Cleave, 2x Strike, 3x Defend
+RELICS: Burning Blood, Lantern, Question Card
+CAUSE OF DEATH: Guardian at 34/240 HP. Fell 3 damage short of triggering Mode Shift 50 to cancel lethal 5x4=20 attack at 4 HP.
+KEY MOMENTS: (1) Bash+ from Neow, removed 2 Strikes for good deck thinning. (2) Shop index confusion: intended Flame Barrier, bought Sever Soul instead. (3) Sever Soul exhausted 2 Defend cards during Guardian fight, reducing block density. (4) Spot Weakness from Skill Potion gave permanent +3 STR (total +5 with Strength Potion). (5) Successfully used Mode Shift to cancel a 32-damage attack mid-fight. (6) Final turn: needed 50 damage for Mode Shift, dealt 47 -- 3 short. Took 20 damage at 4 HP.
+LESSONS: 18th low-HP-adjacent death. Mode Shift cycle values confirmed: 30, 40, 50. Sever Soul is dangerous in long fights -- exhausting Defend cards for damage is a bad tradeoff when you need block to survive later turns. Index shifting caused shop misplay (4th confirmed death from this bug). Spot Weakness is a strong Skill Potion result for boss fights with visible Attack intents.
