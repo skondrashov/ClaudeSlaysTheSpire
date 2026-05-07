@@ -1,130 +1,37 @@
 # Observations
 
-Items pending confirmation or further investigation. Promote to reference/ when confident.
+Items pending confirmation or further investigation. Promote to playbook when confident.
 
 ## Unconfirmed
 
-- Speed Potion exact Dexterity amount: PROMOTED to speed-potion.md. Confirmed +5 Dexterity. Second observation: Defend at 10 block (5+5) in 5-slime fight. Duration appears to be one turn only (not rest of combat).
-- Dazed mechanic details: Confirmed Unplayable + Ethereal (auto-exhausts at end of turn if in hand, but occupies a draw slot). Observed in Chosen fights: each Skill played under Hex adds one Dazed to draw pile. Over a 4-5 turn fight with 4-6 Skills played, draw quality degrades significantly.
-- Hex duration/stacking: Hex persists for the entire combat once applied. Each Skill played adds one Dazed to draw pile. CONFIRMED: Powers do NOT trigger Hex (only Skills). Run 23 confirmed Inflame was safe to play under Hex.
-- Golden Idol effect: Believed to increase gold earned by 25%. Taken in Runs 1 and 3 but effect never directly observed in gameplay.
-- Odd Mushroom relic effect: Acquired in Run 4. Player guessed "+1 Dex or modifies Vulnerable." Never directly confirmed.
-- Anchor relic effect: Inferred as "gain 10 block at start of each combat" from Run 5 combat patterns. Not directly confirmed.
-- Happy Flower relic: Believed to grant 1 energy every 3 turns. Acquired in Run 8, effect inferred from standard game knowledge.
-- Toy Ornithopter relic: Believed to heal 5 HP whenever a potion is used. Acquired in Run 8, effect inferred from standard game knowledge.
-- Liquid Bronze relic: Believed to deal 3 thorns damage when hit by attacks. Acquired in Run 7. Multi-hit thorns interaction (e.g., 7x Inferno = 21 thorns) assumed but not precisely confirmed.
-- Maw Bank relic: Acquired in Run 6 for 85 gold. Effect unknown, likely gold-related.
-- Blood Vial/Blood Potion formula: Observed 16 HP heal on 83 max HP in Run 6. Inferred floor(maxHP * 0.2). Needs second data point.
-- Mode Shift initial value: Run 2 observed starting at 27 (not 10 as previously thought). Later cycle values (40, 50) need reconfirmation.
-- Flight damage halving rounding: Believed to be floor(damage/2) but exact rounding not confirmed. Math example from Run 3 showed Pommel Strike (9 damage) dealing ~4-5 vs Flight 3 Byrd.
-- Council of Ghosts Apparition power: Apparitions prevent ALL damage for 1 turn each, Ethereal. Never actually used — refused in Run 4 at 79 Max HP. Value vs cost (-40 Max HP) untested.
-- Torii damage threshold: Believed to trigger at 5 or less unblocked damage, reducing to 1. Confirmed against Burns (2->1) in Runs 11 and 12. Does it work on all sources or only attacks? Hexaghost Inferno individual hits at 6 damage each may be above the threshold.
-- Molten Egg upgrade scope: Confirmed to auto-upgrade Attack cards obtained after acquiring it. Does it also upgrade Attack cards from potions (Attack Potion, Skill Potion generating Attacks)? Needs confirmation.
-- Lizard Tail heal amount: Believed to heal to 50% Max HP. Observed once in Run 13. Needs second observation to confirm exact percentage.
-- Enchiridion Power pool: What Powers can Enchiridion generate? Observed Corruption in Run 13. Can it generate any Power in the game, or only class-specific Powers?
-- Dream Catcher card pool: Does Dream Catcher at rest sites offer the same card pool as normal rewards? Or is it a different/restricted pool?
-
-- Potion use discipline failure pattern: Across deaths at low HP, potions are frequently unused. The strategy.md guidance says "use ALL potions aggressively" but the player still hoards them. Is the issue that the guidance isn't specific enough about WHEN the threshold triggers? Hypothesis: the player needs a hard rule like "below 35% HP = use every potion on turn 1, no exceptions" rather than the softer "use aggressively." NOTE: Run 20 used potions aggressively (Distilled Chaos, Speed Potion both used at critical HP) and this was a major improvement. Potion discipline may now be fixed.
-- Power Through deck-building trap: When taken without exhaust tools, creates a negative feedback loop in long fights. Wounds reduce block density, which increases damage taken, which makes the fight longer, which means more Wound cycling. Need to confirm whether this is unique to Power Through or applies to any status-generating card (Wild Strike Wounds, Reckless Charge Dazed).
-- Looter+Mugger fight HP cost: This fight drained from some higher HP to 18/72. What is the typical HP cost of Looter+Mugger? If consistently 20-30+ HP, it should be documented as a "drain fight" alongside Byrds and Centurion+Mystic.
-- Unceasing Top + Fiend Fire combo: Observed as extremely powerful in Run 20. How well does it work in practice as a sustained engine? The draw pile cycles after Fiend Fire exhausts hand, then Top draws, but energy becomes the limiting factor. With Bloodletting or Offering for extra energy, this may be the strongest combo in Ironclad. Needs more runs to confirm win rate with this combo.
-- Unknown rooms in Act 2 as combat: Run 20 hit Snake Plant from an Unknown room at 38 HP. Run 44 hit 3 Byrds from an Unknown room at 50 HP. Unknown rooms can resolve as ANY hallway fight, including the most dangerous ones (Byrds, Snake Plant). Unknown rooms are NOT safe alternatives to Monster rooms at low HP -- they carry the same combat risk with no advance warning of the enemy type.
-- Chosen 7x2 damage: Confirmed 7x2 base damage across Runs 20 and 23 (dealt 20 with Vulnerable on player: 7*1.5=10.5 rounded to 10, times 2 = 20). CONFIRMED: Chosen applies Vulnerable BEFORE the 7x2 attack (observed in both runs — Hex turn 1, then Vulnerable + 7x2 on subsequent turns). The combo of Hex + Vulnerable is Chosen's kill pattern.
-- Decay curse in Chosen fights: Fiend Fire can exhaust Decay from hand, removing 2/turn damage. In Run 20, exhausted Barricade (3E Power) alongside Decay to survive at 3 HP. Is there a priority list for what to keep vs exhaust when Fiend Fire must exhaust critical cards alongside curses?
-
-- Index shifting persists as fatal error: Despite player.md explicitly saying "Prefer card names over indices," the player used numeric indices in both Run 21 and Run 22 3-Cultists fights. Multiple plays resolved to wrong cards (Strike instead of Fiend Fire in both runs). In Run 22, the final turn intended Fiend Fire but Strike played instead — identical error pattern to Run 21. The documentation exists but is not being followed. Hypothesis: the player's turn-planning logic defaults to indices when reasoning about card positions. The fix may need to be in the system prompt phrasing, not just the playbook. This is now a CONFIRMED pattern across 2 consecutive runs against the same enemy.
-- Bloody Idol healing confirmation: Acquired in Run 21. Player entered Snecko fight at 28 HP, fought for 7 turns with no rest, yet somehow had 35 HP entering 3 Cultists. Burning Blood heals +6, and Bloody Idol heals +5 on gold gain = +11 per fight. This compounds significantly over multiple fights. Confirmed as a strong sustain relic.
-- Rampage damage formula in 3 Cultists: Player calculated "(8+5+2)*1.5=22" for Rampage play 2. Correct formula should be (16+2)*1.5=27. Player's arithmetic was wrong (used +5 instead of +8 per play) but still killed the 22 HP Cultist because actual damage (27) exceeded target. This miscalculation could lead to under-commitment errors in future fights where the margin is tighter.
-- Red Mask value assessment: 1 Weak to all enemies at combat start. Useless against enemies that buff turn 1 (Cultists, some Fungi Beasts). Useful against enemies that attack turn 1 (Chosen, Snecko, Looters). Net value is moderate — provides small defense every other fight but never game-changing.
-- Centennial Puzzle trigger timing: Confirmed triggers on first HP loss per combat. In Run 21 Looter fight, player intentionally took small hit to trigger draw 3. In fights where you block fully turn 1, trigger is delayed. With Metallicize providing passive block, the puzzle may trigger later than ideal.
-
-- Demon Form + Limit Break as a deck archetype weakness: Run 22 had this engine but died to 3 Cultists at 30% HP. The engine needs Turn 1 (Demon Form, 3E) + Turn 2-3 (Limit Break after Strength accumulates). Against 3 Cultists dealing 27-36 combined per turn, this setup time is lethal. PROMOTED to strategy.md as a known weakness pattern. The fix: decks with slow engines must ALSO have fast burst (Fiend Fire, Rampage) for emergency fights. Run 22 HAD Fiend Fire and Rampage but couldn't deploy them effectively at 30% HP because block density was insufficient to survive until burst turn.
-- Chosen as HP drain fight: Run 22 Chosen fight drained 34 HP (from 51 to 17) in a single fight. Opening hand had no block cards, taking full damage Turns 1-2. Even with a strong deck (Fiend Fire burst killed it Turn 4), the HP cost was severe enough to trigger death spiral next fight. PROMOTED to chosen.md with HP drain note.
-- Map pathing as root cause of death: Run 22's death was ultimately caused by map topology, not deck weakness. After Chosen drained to 17 HP, the map offered ONLY Monster path forward. No rest site, no event, no shop — only combat. The deck was strong enough to beat 3 Cultists at 50%+ HP but the map forced entry at 30%. This is the 3rd time map pathing has been identified as the actual root cause (Runs 20, 21, 22). The player cannot control map generation but CAN evaluate paths 2-3 floors ahead. Question: is the player evaluating map paths early enough in Act 2?
-
-- Fire Potion damage CONFIRMED: 20 damage to a single target. Run 23 used Fire Potion + Bash+ to kill Cultist turn 2 in Cultist+Chosen fight. PROMOTED to fire-potion.md.
-- Reaper exhaust limitation: CONFIRMED as critical weakness in Run 23. Reaper was the only healing source. It exhausted in the Centurion+Mystic fight (Floor 29), leaving no in-combat healing for subsequent fights. Burning Blood (+6) was insufficient to recover from 9 HP. The player entered Floor 31 at 7 HP with zero ability to heal. PROMOTED to strategy.md and reaper.md — minimum two healing sources required for Act 2.
-- The Nest event: Options are 99 Gold or Ritual Dagger (lose 6 HP). Run 23 correctly chose Gold at 15 HP (Ritual Dagger would have left at 9 HP going into Cultist+Chosen). PROMOTED to events/the-nest.md.
-- Best floor milestone: Floor 33 (Run 48). Previous best was Floor 31. Progress continues -- now reaching the Act 2 boss itself. The barrier has shifted from Act 2 hallway fights to the Act 2 boss. The persistent problem is HP management: entering the boss at less than 70% HP.
+- Golden Idol effect: Believed to increase gold earned by 25%. Taken but effect never directly measured.
+- Odd Mushroom relic effect: Acquired in Run 4. Possibly +1 Dex or modifies Vulnerable. Never confirmed.
+- Maw Bank relic effect: Acquired in Run 6. Likely gold-related. Never confirmed.
+- Blood Vial/Blood Potion formula: Observed 16 HP heal on 83 max HP. Inferred floor(maxHP * 0.2). Needs second data point.
+- Mode Shift initial value: Run 2 observed starting at 27 (not 10). Later cycle values (40, 50) need reconfirmation.
+- Flight damage halving rounding: Believed to be floor(damage/2). Not precisely confirmed.
+- Council of Ghosts Apparition power: Prevents ALL damage for 1 turn each, Ethereal. Never used -- refused at 79 Max HP. Value vs cost (-40 Max HP) untested.
+- Torii damage threshold: Triggers at 5 or less unblocked damage, reducing to 1. Confirmed against Burns. Does it work on all damage sources or only attacks?
+- Molten Egg: Does it upgrade Attack cards from potions (Attack Potion, Skill Potion generating Attacks)?
+- Lizard Tail heal amount: Believed to heal to 50% Max HP. Observed once. Needs second data point.
+- Enchiridion Power pool: Can it generate any Power, or only class-specific?
+- Dream Catcher card pool: Same as normal rewards or different/restricted?
+- Corruption + Second Wind interaction: Does Second Wind exhaust itself under Corruption? Needs confirmation.
+- Blessing of the Forge exact mechanic: Random card in deck vs random card in hand? Never used.
 
 ## Open Questions
 
-- Shop bug root cause: Recurring in 3/8 runs (37.5%). Is this a CommunicationMod issue, a state_formatter issue, or a cmd.py issue? The `choose` probe workaround has not been fully tested.
-- Face Trader event: Encountered in Run 3, player left at low HP. What are the actual options and outcomes?
-- Transmogrifier transform rules: Does it keep the same rarity? Run 4 transformed Strike into Headbutt (both Common). Need more data.
-- Ancient Writing second option: Player chose Simplicity (upgrade all Strikes/Defends). The other option ([Insight]) was not explored. What does it offer?
-- The Joust odds: Listed as 70% win chance for Murderer. Is this accurate? Run 5 appeared to lose. Expected value calculation needs verification.
-- Rampage+ starting damage: Run 13 observed 12->20->28->36->48->60 (Rampage+). Run 21 observed unupgraded Rampage: play 1 = 8, play 2 = 16 (confirmed in Guardian fight: (16+2)*1.5=27). Unupgraded Rampage starts at 8, gains +8 per play. Rampage+ likely starts at 12 and gains +8 per play (12, 20, 28, 36... matches Run 13 data). PARTIALLY CONFIRMED: base Rampage = 8 start, +8 per play. Rampage+ = 12 start, +8 per play.
-- Shelled Parasite mechanics: CONFIRMED. HP 68-71, Plated Armor 14, attacks for 13+ damage. Promoted to playbook/enemies/shelled-parasite.md with full details.
-- Snecko confusion mechanic: Snecko applies Confusion on turn 1 (randomizes card costs 0-3 for rest of combat). Confusion persists entire fight, costs re-randomize each turn. CONFIRMED: Snecko also applies Vulnerable to the player on later turns (observed turn 3 in a fight). The Confusion + Vulnerable combo is Snecko's kill pattern: randomized costs prevent efficient blocking while Vulnerable amplifies incoming damage by 50%. PROMOTED Vulnerable detail to snecko.md. Interaction with X-cost cards still unconfirmed.
-- Corruption interaction with Second Wind: Does Second Wind exhaust itself after use (since it's a Skill under Corruption)? If so, it becomes a one-time mass exhaust for block. Need confirmation.
-- Brutality HP threshold for multiple copies: Run 13 died playing 2 copies at 10 HP. What's the safe HP threshold for playing 2 Brutalities? Hypothesis: 40+ HP for 2 copies in a fight expected to last 5+ turns.
+- Shop bug root cause: Recurring in ~37% of runs. CommunicationMod, state_formatter, or cmd.py issue?
+- Face Trader event: What are the actual options and outcomes?
+- Transmogrifier transform rules: Does it keep the same rarity?
+- Ancient Writing second option (Insight): What does it offer?
+- The Joust odds: 70% win chance for Murderer accurate?
+- Confusion interaction with X-cost cards: Unconfirmed.
+- Frail block calculation under player reasoning: Player wrote "2x Defend (10 block w/ Frail)" but Frail should reduce 5 to 3. Possible miscalculation.
+- Is the player not being OFFERED healing cards, or skipping them? Critical question for the healing sustain gap.
 
-## Run 32 Findings
+## Recurring Patterns (for strategist review)
 
-- Exhaustion-heavy Guardian strategy is fatal: PROMOTED from unconfirmed to core playbook. Fiend Fire as primary damage engine (playing turns 3, 5, 7) exhausts 12+ cards by mid-fight. With only 8-10 cards remaining in deck, block sources (Defend, Shrug It Off) cannot generate 20+ block on late-fight 32-damage turns. The Guardian fight lasts 12-14 turns (longer than Act 1 elites). Front-loaded burst damage (turns 1-7) does not compensate for mid-fight sustainability collapse (turns 8-14). Fiend Fire is excellent on free turns (DEFEND/STRONG_DEBUFF intents) but should never be the deck's primary damage strategy against The Guardian. Unupgraded True Grit makes this worse: random exhaust removes Bash+ (primary Vulnerable source) while you're already thinning intentionally.
-- Guardian win conditions require bulk block: Impervious (30 block) or double Metallicize + Weak are the documented successful patterns. Fiend Fire + exhaust synergy (Dark Embrace, Charon's Ashes) is insufficient for the 32-damage turn in mid-fight with a thin deck. PROMOTED to the-guardian.md.
-- Deck density minimum for 12+ turn fights: Guardian taught that 12-14 turn fights require 12-15 cards minimum to maintain block density. Exhaustion that removes 3+ cards per turn causes unsustainable deck collapse by turn 8-10. Fiend Fire's exhaust all other cards is catastrophic if played multiple times.
-- True Grit unupgraded in boss fights: Random exhaust destroyed Bash+ (the primary Vulnerable source) in Round 32 Guardian fight. Unupgraded True Grit should NOT be played in any boss fight. Upgrade priority: mandatory before bringing to Guardian specifically, #1 upgrade overall in the game.
-- Lagavulin as 20 HP drain confirmed: Run 32 drained 20 HP (62 to 42) by round 5 of Lagavulin elite. Matches playbook range of 20-36 HP damage. Fight required permanent -1 Str/-1 Dex debuffs to be managed carefully.
-
-## Run 44 Findings
-
-- Havoc + irreplaceable cards is run-ending: PROMOTED to playbook. Havoc exhausted Rampage+ in Spheric Guardian fight. Card gone permanently. Deck lost its primary scaling source, contributing directly to death 2 fights later. Created havoc.md with full warning. Added anti-synergy notes to rampage.md.
-- Unupgraded True Grit: 3rd run where random exhaust caused or contributed to death (Run 2: Whirlwind/Bash/Pommel Strike; Run 32: Bash+; Run 44: Fiend Fire+). PROMOTED as a reinforced pattern. Updated true-grit.md with Fiend Fire+ anti-synergy note.
-- Feed+ upgrade values CONFIRMED: Feed+ deals 12 damage and gives +4 Max HP on kill (vs base 10 damage / +3 Max HP). PROMOTED to feed.md.
-- Mutagenic Strength relic: Gained from "Ingest Mutagens" event on Floor 20. Effect: +3 Strength at start of each combat, then lose 3 Strength at end of turn 1. Temporary Strength boost for turn 1 burst. Useful for first-turn kills or front-loaded damage.
-- Sentry + Spheric Guardian fight: Can appear together as a hallway fight in Act 2. Sentry attacks for 9-10 damage. Combined with Spheric Guardian's 10x2 attacks, this is a very high-damage hallway fight.
-- Feed+ never used for a kill: Player took Feed+ after Guardian boss but never managed to use it for a killing blow in the 5 remaining fights. Feed was played against Spheric Guardian (for damage, not kill) and possibly in Byrd fight. The card slot was effectively wasted. Need to prioritize Feed kills in every multi-enemy fight.
-- Thunderclap timing in deck building: Player had no Thunderclap during the Floor 19 Byrd fight (the most Thunderclap-dependent fight in the game). Thunderclap+ was taken AFTER the Byrd fight, from the Chosen card reward on Floor 17. If Thunderclap had been prioritized earlier (e.g., at the shop or from card rewards), the Byrd fight would have been significantly shorter and cheaper. Question: should Thunderclap be a mandatory pickup by mid-Act 1 if the deck lacks AOE?
-- Liquid Memories potion value confirmed: Used effectively in Guardian fight to retrieve Ghostly Armor from discard for 0 cost, providing critical block on a 16-damage turn. CONFIRMED as high-value potion. Already documented in playbook.
-- Rampage+ scaling in Guardian fight: Play 1 = 15 damage, play 2 = 18, play 3 = ~30, killing blow. Confirmed the card is excellent for Guardian's long fight. But losing it to Havoc random exhaust in the very next fight demonstrates how fragile the strategy is when random exhaust exists in the deck.
-
-## Run 50 Findings
-
-- Demon Form + Shuriken + Anger scaling engine CONFIRMED: Demon Form (+2 Str/turn) + Shuriken (+1 Str per 3 attacks) + Anger (0E Attack that copies itself) created a combined Str engine that killed Hexaghost in 7 turns instead of the typical 13. By turn 7, total Strength was approximately +14 (Demon Form) + +3 (Shuriken) = +17. Each Anger dealt 23+ damage for 0 energy. PROMOTED to demon-form.md, shuriken.md, anger.md, and hexaghost.md.
-- Slavers elite is a new encounter: 3 enemies (Slaver + Taskmaster + Slaver). All three attack on turn 1 for 27+ combined damage. No free setup turn. PROMOTED to slavers.md.
-- Slavers HP threshold: At 27% HP entry, death occurred by turn 3 despite having Demon Form, Flame Barrier+, Rage, Disarm, Uppercut, Rampage, and Shuriken. This is the strongest deck to die to low HP entry. The 60% elite threshold applies. PROMOTED to strategy.md HP table.
-- Confusion cost reduction interaction CONFIRMED: Under Snecko's Confusion, card costs are randomized 0-3 each turn. Bash+ (normally 2E) was assigned 0E, and Demon Form (normally 3E) was assigned 2E in separate turns. Disarm (normally 1E) was assigned 0E. These "gifts" were correctly exploited for massive tempo advantage. PROMOTED to snecko.md and disarm.md.
-- Blessing of the Forge: Upgrades a random card in the deck. Not usable in combat. Player acquired it but never used it before death. PROMOTED to blessing-of-the-forge.md.
-- Meal Ticket relic CONFIRMED: Heals 15 HP whenever entering a shop. Player entered shop at Floor 21 and healed from ~14 to ~29 HP. PROMOTED to meal-ticket.md.
-- Evolve + Sentries Dazed synergy: Player set up Evolve against Sentries. Dazed cards drawn triggered Evolve's replacement draw, then exhausted via Ethereal at end of turn. Effectively made Dazed cards cycle-neutral. PROMOTED to evolve.md.
-- Evolve + Hexaghost Burns synergy: Player set up Evolve on Hexaghost Turn 1 free turn. Burns drawn during the fight triggered replacement draws, maintaining hand quality. PROMOTED to evolve.md and hexaghost.md.
-- Flame Barrier+ against multi-enemy fights: Against Slavers (3 enemies), Flame Barrier+ dealt 6 counter damage to each attacker = 18 total counter damage in a single turn. Against Gremlins (4 enemies), similar scaling. PROMOTED to flame-barrier.md.
-- Rampage damage resets each fight: CONFIRMED. Rampage started at base damage in every new combat. The accumulated +8 per play is combat-only. PROMOTED to rampage.md.
-- Rage + Anger block generation: Rage (3 block per Attack) + Anger (0E Attack) = free block generation. In the Slavers fight, Rage + Anger + Uppercut generated 6 block for 0 energy (from Rage triggers). PROMOTED to rage.md.
-- Healing sustain pattern reinforced: This is the 4th run dying in Act 2 with Burning Blood as the ONLY healing source (no Reaper, Feed, or healing potions beyond Blood Potion). The pattern is now ironclad (pun intended): without at least 2 healing sources, Act 2 is unwinnable against consecutive combat rooms. Strategy.md already documents this, but the player still entered Act 2 with no healing cards. Question: is the player not being offered healing cards, or is it skipping them?
-- Blessing of the Forge exact mechanic: Player described it as "upgrades a random card" but never used it. Unknown whether it upgrades a random card in the entire deck or a random card in hand. Needs actual usage to confirm.
-
-## Run 48 Findings
-
-- Smoke Bomb confirmed working mid-combat: Used against Snecko at 16 HP to escape lethal combat. Immediately ends the fight with no rewards. PROMOTED to smoke-bomb.md.
-- Gambler's Brew mechanics confirmed: Discard any number of cards from hand, draw that many. Used at 2 HP against Collector to discard 3 attack cards and draw block cards (Rage+, Thunderclap). The exact redraw provided 15 block vs 14 incoming. PROMOTED to gamblers-brew.md.
-- Fear Potion confirmed: Applies Vulnerable 3 to a single enemy. Used against Guardian mid-fight to refresh Vulnerable. PROMOTED to fear-potion.md.
-- Bludgeon damage confirmed: 32 base damage for 3E. With +2 Str and Vulnerable: floor(34*1.5) = 51 damage. With +4 Str and Vulnerable: floor(36*1.5) = 54 damage. PROMOTED to bludgeon.md.
-- Immolate AOE damage confirmed: 21 damage to ALL enemies for 2E. Adds 1 Burn to discard pile. With +4 Str and Vulnerable: floor(25*1.5) = 37 AOE. PROMOTED to immolate.md.
-- Mercury Hourglass relic: Deals 3 damage to ALL enemies at start of each turn. Passive, free, every turn. PROMOTED to mercury-hourglass.md.
-- The Collector boss mechanics: 279 HP, spawns 2 Torch Heads (7 damage each). Turn 4 STRONG_DEBUFF applies Vuln 3 + Frail 3 + Weak 3 simultaneously. PROMOTED to the-collector.md.
-- Collector Turn 4 is a free turn: STRONG_DEBUFF deals no direct damage. Can be used for burst (Bludgeon for 48-54 damage with Vuln+Str). However, the debuffs applied make the FOLLOWING turns extremely dangerous.
-- Snecko applies Vulnerable to the player: Observed at turn 3 -- player was Vulnerable, making Snecko's 22 attack deal 33 effective damage. This is a separate debuff from Confusion. Snecko's attack pattern includes applying Vulnerability.
-- Liquid Memories clutch use confirmed again: Retrieved Bludgeon from discard for 0 cost against Centurion at 8 HP. Bludgeon dealt 34 damage to kill 33 HP Centurion. Second instance of Liquid Memories being a fight-winning potion (first in Guardian fight retrieving Ghostly Armor).
-- Reaper healing from multiple enemies: Against The Collector + 2 Torch Heads, Reaper healed 14 HP in one play. Multi-target healing scales with number of enemies present. Reaper is particularly strong against The Collector due to 3 targets.
-- Rage+ block value in Collector fight: At 0E cost, Rage+ provided 5 block per attack. Combined with Thunderclap (1 attack), provided 5 block that was the difference between survival and death on Turn 4 (15 block vs 14 incoming).
-- Armaments+ Guardian strategy: Playing Armaments+ on Guardian's free turns (DEFEND, STRONG_DEBUFF) to upgrade Defends to Defend+ provided the block density needed for the 16-damage turns. Over a 14-turn fight, Armaments+ upgraded nearly every card in the deck.
-- Best floor milestone: Floor 33 (previous best Floor 31). First Act 2 boss encounter. Progress continues -- the barrier has shifted from Act 2 hallway fights to the Act 2 boss itself.
-- HP management still the primary issue: Entered Collector at 45% HP (below 70% boss threshold). The Snecko fight drained HP even after escaping. Two Shelled Parasite fights (Floors 17 and 22) drained significant HP. The cumulative HP drain through Act 2 remains the core problem.
-
-## Run 45 Findings
-
-- Feel No Pain + Slime Boss synergy: PROMOTED to playbook. Created feel-no-pain.md. Feel No Pain (3 block per exhaust) converts Slimed card exhaustion from pure tempo loss into a defensive gain. 5 Slimed cards exhausted = 15 block over the fight. Also synergizes with True Grit+, Fiend Fire, Corruption, Second Wind.
-- Acid Slime (L) splits on death: PROMOTED to playbook. Updated acid-slime-l.md and slime-boss.md. Acid Slime (L) splits into 2x Acid Slime (M) on death, same as Spike Slime (L) splits into 2x Spike Slime (M). Previous playbook only documented Spike Slime (L) splitting.
-- Slime Boss split HP distribution: PROMOTED to playbook. Updated slime-boss.md. Each split slime spawns with HP equal to the boss's remaining HP at the split threshold. Overkill damage carries -- if boss goes from 87 to 63, both slimes have 63 HP.
-- Post-split damage spreading: PROMOTED to playbook. Updated slime-boss.md. Previous guidance said "focus fire one." New guidance: spread damage to both large slimes before killing either. Killing one creates a 3-enemy situation (1 large + 2 mediums). The run focused all post-split damage on Acid Slime (L) while Spike Slime (L) sat untouched at 63 HP, creating a 3-enemy scenario (Spike Slime L + 2x Acid Slime M) dealing 33 combined damage.
-- Snecko Oil randomizes existing hand: PROMOTED to snecko-oil.md. Cards already in hand before the draw get their costs randomized too. Double Tap became 0-cost, enabling a burst combo that killed the Slaver.
-- Speed Potion +5 Dex confirmed: Second observation. Defend at 10 block (5 base + 5 Dex). PROMOTED to speed-potion.md.
-- Speed Potion duration uncertainty: Appears to be one turn only, not rest of combat. In the 5-slime fight, turn 1 Defend gave 10 block with Speed Potion. Turn 2 Defends appear to give 5 block each (no Dex bonus referenced). Needs one more clear data point to confirm one-turn duration.
-- Flash of Steel from Colorless Potion: 0E colorless card, deals 3 damage + draw 1. Obtained via Colorless Potion. Good in draw-pile reshuffles since it's free. At +2 Str, deals 5; with Vulnerable = floor((3+2)*1.5) = 7 damage. Pure cycle card -- thin on value but free.
-- Colorless Potion: Lets you choose 1 colorless card to add to hand. Not currently documented in potions. Similar to Skill Potion / Attack Potion but for colorless cards.
-- 4 Gremlins fight HP cost: Lost 37 HP (from 44 to 7 after Burning Blood). Sneaky Gremlin (11 HP, 9 damage), Fat Gremlin (13 HP, 4 damage + Weak), 2x Mad Gremlin (20-24 HP, 5 damage + Angry). Mad Gremlins gain +1 Str when hit (Angry). This is a high-damage hallway fight in Act 1 when entered without AOE ready in hand.
-- Frail block calculation in player reasoning: Player consistently wrote "2x Defend (10 block w/ Frail)" during Slime Boss post-split, but mechanics.md says Frail reduces Defend from 5 to 3. If Frail was active, actual block should have been 6-8, not 10. Either Frail wasn't active those turns (possible -- Frail may not have been applied yet) or the player miscalculated. Could not confirm from event log alone. Needs closer monitoring in future Slime Boss fights.
-- Havoc correctly skipped: Player skipped Havoc twice in card rewards (Floors 7 and 11), citing "dangerous random exhaust" from the playbook. The Run 44 lesson about Havoc is being applied correctly.
+- Index shifting: Despite documentation, player used numeric indices in Runs 21 and 22 against 3 Cultists. Both resulted in fatal misplays. The fix may need to be in the system prompt, not the playbook.
+- Potion hoarding partially fixed: Run 20 used potions aggressively. But Run 50 had Blessing of the Forge unused at death.
+- Unknown rooms as combat: Runs 20 and 44 hit dangerous fights from Unknown rooms. Unknown rooms are NOT safe at low HP.

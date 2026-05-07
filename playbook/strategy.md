@@ -2,31 +2,13 @@
 
 High-level strategic principles for Ironclad runs.
 
+**CURRENT BOTTLENECK (Run 50 review):** Act 2 HP sustain. We beat Act 1 bosses consistently (7 victories in 50 runs) but die in Act 2 to HP attrition. 17 of 20 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.
+
 ---
 
 ## HP Management: The #1 Cause of Death
 
-Entering fights at critically low HP is the single most common cause of death across all runs. Seventeen of twenty deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
-
-| Run | Entry HP | % of Max | Fight | Result |
-|---|---|---|---|---|
-| 3 | 28 | 35% | Chosen | Died (Chosen at 6 HP) |
-| 4 | 42 | 50% | Centurion+Mystic | Died (at 1 HP) |
-| 5 | 11 | 13% | Gremlin Leader | Died (unwinnable) |
-| 6 | 6 | 7% | Book of Stabbing | Died (dealt 140 dmg, Book at 21 HP) |
-| 8 | 37 | 39% | 3 Cultists | Died (Shockwave+ timing + low HP) |
-| 10 | low | <50% | Slime Boss | Died (Hemokinesis self-damage post-split) |
-| 11 | 18 | ~22% | Chosen+Byrd | Died (HP drained through Act 2) |
-| 13 | 10 | ~12% | Fungi Beast+Shelled Parasite | Died (2x Brutality self-damage at 10 HP) |
-| 19 | 18 | 25% | Shelled Parasite+Fungi Beast | Died (no block cards, Offering -6 HP left at 6) |
-| 20 | 15 | 19% | Cultist+Chosen | Died (7x2 Vuln=20 vs 13 block, HP at 3) |
-| 21 | 35 | 39% | 3 Cultists | Died (index shift error + scaling overwhelmed block) |
-| 22 | 28 | 30% | 3 Cultists | Died (Demon Form+Limit Break too slow, scaling overwhelmed) |
-| 23 | 7 | 9% | Cultist+Chosen | Died (Hex+Vuln, 20 dmg vs max 8 block at 7 HP) |
-| 44 | 14 | 18% | Sentry+Spheric Guardian | Died (Byrd fight drained 36 HP, no healing, forced combat) |
-| 45 | 35 | 43% | Slime Boss | Died (split phase created 3 enemies at 12 HP, 33 dmg vs 10 block) |
-| 48 | 41 | 45% | The Collector | Died (STRONG_DEBUFF Turn 4 applied Vuln+Frail+Weak, 47+ incoming at 2 HP) |
-| 50 | 21 | 27% | Slavers (Elite) | Died (27+ combined dmg from 3 enemies, no free turn, 2 HP by turn 2) |
+17 of 20 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
 
 ### HP Thresholds for Act 2
 
@@ -101,11 +83,23 @@ Only upgrading once in 28 floors was the worst strategic error observed. Each mi
 
 ## Deck Building Philosophy
 
+### Healing Card Priority (THE CRITICAL GAP)
+
+The single biggest strategic failure across 50 runs: entering Act 2 without a healing card. Burning Blood (+6/fight) heals 6% of max HP per fight. Act 2 fights drain 25-50 HP (30-60% of max). The math does not work.
+
+**Card reward priority when offered a healing card:**
+- Reaper: TAKE IT. Even over good damage/block cards. It is the best card in the game for Ironclad.
+- Feed: TAKE IT in the first half of Act 1. +3-4 Max HP per kill compounds over 15+ fights. Less urgent in late Act 1.
+- If neither is offered by Floor 12, actively seek healing potions (Blood Potion, Regen Potion) and healing relics (Toy Ornithopter, Meal Ticket, Bloody Idol) at shops.
+
+**This is non-negotiable.** A deck with Reaper + adequate damage will reach Act 3. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30.
+
 ### Take Cards That Solve Problems
 
 A card's value depends on what your deck needs RIGHT NOW.
 
 Before taking a card, ask:
+- Do I have a healing card? (If no, this is the #1 gap to fill)
 - What fights am I struggling with?
 - Do I have enough damage? Enough block? AOE?
 - Will this card dilute my draws (bigger deck = less likely to draw key cards)?
@@ -238,10 +232,11 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 
 ### Core Principles
 
+- **Look 2-3 floors ahead, not just the next room.** At EVERY map node, trace paths forward. If a path leads to 2+ consecutive combat rooms with no rest/shop/event between them, that path is dangerous at any HP below 70%. Three deaths (Runs 20, 21, 22) were caused by map topology forcing combat after a drain fight.
 - Prefer routes with a rest site in the last 1-2 floors before the boss.
-- Don't take unnecessary damage from events when HP is limited.
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
 - If the path forces an elite at low HP, skip it entirely -- take any alternative path.
+- **Unknown rooms are NOT safe at low HP.** They can resolve as any hallway fight, including Byrds and Snake Plant. Treat Unknown rooms as Monster rooms when below 40% HP.
 
 ### Elite Risk Assessment
 
