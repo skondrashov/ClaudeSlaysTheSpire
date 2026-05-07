@@ -16,21 +16,24 @@ KEY MECHANICS:
 - **Turn 1 free**: Use this for setup: Thunderclap (Vulnerable ALL), Metallicize, Powers.
 
 PREPARATION CHECKLIST (must have at least 2 of 3):
-1. Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) -- reduces Inferno from 42 to 28. MANDATORY.
+1. Weak source (Shockwave, Clothesline, Intimidate, Uppercut, Weak Potion) -- reduces Inferno from 42 to 28. MANDATORY.
 2. HP above 70% OR Pantograph relic (heals to full at boss start).
-3. Passive block (Metallicize) OR Impervious for the Inferno turn.
+3. Passive block (Metallicize, Flame Barrier+) OR Impervious for the Inferno turn.
 
 If you have 0-1 of these, Hexaghost will likely kill you.
 
 DAMAGE OUTPUT MATTERS: Weak and block keep you alive, but insufficient damage is equally fatal. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone. Two runs died with Weak sources (Clothesline, Disarm) because they lacked the damage output to end the fight before Burns overwhelmed them. Damage scaling cards (Rampage, Inflame, Reaper) shorten the fight and reduce total Burns damage.
 
 WHAT WORKS:
+- Demon Form (+2 Str/turn) -- the best scaling card for Hexaghost. By turn 5, every attack gains +8-10 damage. Combined with Anger (0E) and Shuriken (+1 Str per 3 attacks), the fight can be won in 7 turns instead of 13. Shorter fight = fewer Burns = less attrition.
 - Disarm (-2 Str permanently) -- reduces all Hexaghost attacks including each Inferno hit. Very effective.
 - Rampage+ -- scales over the long fight to 40-60+ damage per play. One of the best Hexaghost-killing cards.
+- Evolve -- draws a replacement card whenever a Burn is drawn. Neutralizes Burns hand-clogging completely. Play on Turn 1 (free turn) alongside other Powers.
+- Flame Barrier+ -- 16 block + 42 counter damage (7 Inferno hits x 6 each). Single best defensive card for Inferno turns. Upgrade priority if facing Hexaghost.
 - Torii relic -- reduces each 2-damage Burn to 1 damage (halves Burns attrition). Does not save the fight alone but significantly extends survivability.
 
 STRATEGY:
-- **Turn 1 (free)**: Set up. Play Thunderclap for mass Vulnerable. Play Metallicize. Play Powers.
+- **Turn 1 (free)**: Set up. Demon Form (3E) is the ideal turn 1 play -- the entire fight is won by scaling. If Demon Form is not available, play Thunderclap for mass Vulnerable + Metallicize + Evolve. Play Powers before anything else on this free turn.
 - **Save Weak for Inferno**: Apply Shockwave/Clothesline/Intimidate on the first Inferno turn to reduce 42 to ~28.
 - **Play Metallicize early**: 3 block/turn over 13 turns = 39 free block. Set up as soon as possible.
 - **Reapply Vulnerable with Bash+**: Use DEFEND_BUFF (free) turns to refresh Vulnerable without spending block resources.

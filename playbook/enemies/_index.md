@@ -34,3 +34,4 @@
 
 - [Gremlin Leader](gremlin-leader.md)
 - [Book of Stabbing](book-of-stabbing.md)
+- [Slavers](slavers.md)

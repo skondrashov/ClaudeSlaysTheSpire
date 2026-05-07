@@ -5,6 +5,6 @@ WHEN IT'S GOOD: In attack-heavy decks. At 0 energy cost, it provides "free" bloc
 
 DECISION POINTS: Play at start of turn before any attacks. Since it costs 0, it never competes with other plays. Even 2 attacks = 6 block for free, which is better than most 1E block cards.
 
-SYNERGIES: Attack-heavy decks, Unceasing Top (draw attacks after Fiend Fire, each gives block), multi-attack turns (Offering + many attacks). Excellent vs Gremlin Leader where you want to both kill gremlins AND block incoming damage in the same turn.
+SYNERGIES: Attack-heavy decks, Unceasing Top (draw attacks after Fiend Fire, each gives block), multi-attack turns (Offering + many attacks). Excellent vs Gremlin Leader where you want to both kill gremlins AND block incoming damage in the same turn. **Anger**: Anger is a 0E Attack that triggers Rage for free block. Playing Rage + 3x Anger = 9 block for 0 energy. **Shuriken**: Both Rage and Shuriken reward playing many Attacks per turn -- Rage generates block while Shuriken generates Strength.
 
-MATCHUPS: Excellent vs Gremlin Leader (block while killing gremlins). Against The Collector, Rage+ (5 block per attack) combined with Thunderclap provided exactly the block needed to survive a lethal turn at 2 HP. At 0 energy, Rage/Rage+ is never a wasted play.
+MATCHUPS: Excellent vs Gremlin Leader (block while killing gremlins). Against The Collector, Rage+ (5 block per attack) combined with Thunderclap provided exactly the block needed to survive a lethal turn at 2 HP. Against Slavers (3 enemies, no free turn), Rage + Anger + Uppercut on turn 2 generated 6 block for free alongside damage and debuffs. At 0 energy, Rage/Rage+ is never a wasted play.

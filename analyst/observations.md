@@ -80,6 +80,22 @@ Items pending confirmation or further investigation. Promote to reference/ when 
 - Liquid Memories potion value confirmed: Used effectively in Guardian fight to retrieve Ghostly Armor from discard for 0 cost, providing critical block on a 16-damage turn. CONFIRMED as high-value potion. Already documented in playbook.
 - Rampage+ scaling in Guardian fight: Play 1 = 15 damage, play 2 = 18, play 3 = ~30, killing blow. Confirmed the card is excellent for Guardian's long fight. But losing it to Havoc random exhaust in the very next fight demonstrates how fragile the strategy is when random exhaust exists in the deck.
 
+## Run 50 Findings
+
+- Demon Form + Shuriken + Anger scaling engine CONFIRMED: Demon Form (+2 Str/turn) + Shuriken (+1 Str per 3 attacks) + Anger (0E Attack that copies itself) created a combined Str engine that killed Hexaghost in 7 turns instead of the typical 13. By turn 7, total Strength was approximately +14 (Demon Form) + +3 (Shuriken) = +17. Each Anger dealt 23+ damage for 0 energy. PROMOTED to demon-form.md, shuriken.md, anger.md, and hexaghost.md.
+- Slavers elite is a new encounter: 3 enemies (Slaver + Taskmaster + Slaver). All three attack on turn 1 for 27+ combined damage. No free setup turn. PROMOTED to slavers.md.
+- Slavers HP threshold: At 27% HP entry, death occurred by turn 3 despite having Demon Form, Flame Barrier+, Rage, Disarm, Uppercut, Rampage, and Shuriken. This is the strongest deck to die to low HP entry. The 60% elite threshold applies. PROMOTED to strategy.md HP table.
+- Confusion cost reduction interaction CONFIRMED: Under Snecko's Confusion, card costs are randomized 0-3 each turn. Bash+ (normally 2E) was assigned 0E, and Demon Form (normally 3E) was assigned 2E in separate turns. Disarm (normally 1E) was assigned 0E. These "gifts" were correctly exploited for massive tempo advantage. PROMOTED to snecko.md and disarm.md.
+- Blessing of the Forge: Upgrades a random card in the deck. Not usable in combat. Player acquired it but never used it before death. PROMOTED to blessing-of-the-forge.md.
+- Meal Ticket relic CONFIRMED: Heals 15 HP whenever entering a shop. Player entered shop at Floor 21 and healed from ~14 to ~29 HP. PROMOTED to meal-ticket.md.
+- Evolve + Sentries Dazed synergy: Player set up Evolve against Sentries. Dazed cards drawn triggered Evolve's replacement draw, then exhausted via Ethereal at end of turn. Effectively made Dazed cards cycle-neutral. PROMOTED to evolve.md.
+- Evolve + Hexaghost Burns synergy: Player set up Evolve on Hexaghost Turn 1 free turn. Burns drawn during the fight triggered replacement draws, maintaining hand quality. PROMOTED to evolve.md and hexaghost.md.
+- Flame Barrier+ against multi-enemy fights: Against Slavers (3 enemies), Flame Barrier+ dealt 6 counter damage to each attacker = 18 total counter damage in a single turn. Against Gremlins (4 enemies), similar scaling. PROMOTED to flame-barrier.md.
+- Rampage damage resets each fight: CONFIRMED. Rampage started at base damage in every new combat. The accumulated +8 per play is combat-only. PROMOTED to rampage.md.
+- Rage + Anger block generation: Rage (3 block per Attack) + Anger (0E Attack) = free block generation. In the Slavers fight, Rage + Anger + Uppercut generated 6 block for 0 energy (from Rage triggers). PROMOTED to rage.md.
+- Healing sustain pattern reinforced: This is the 4th run dying in Act 2 with Burning Blood as the ONLY healing source (no Reaper, Feed, or healing potions beyond Blood Potion). The pattern is now ironclad (pun intended): without at least 2 healing sources, Act 2 is unwinnable against consecutive combat rooms. Strategy.md already documents this, but the player still entered Act 2 with no healing cards. Question: is the player not being offered healing cards, or is it skipping them?
+- Blessing of the Forge exact mechanic: Player described it as "upgrades a random card" but never used it. Unknown whether it upgrades a random card in the entire deck or a random card in hand. Needs actual usage to confirm.
+
 ## Run 48 Findings
 
 - Smoke Bomb confirmed working mid-combat: Used against Snecko at 16 HP to escape lethal combat. Immediately ends the fight with no rewards. PROMOTED to smoke-bomb.md.

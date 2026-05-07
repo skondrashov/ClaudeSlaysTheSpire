@@ -9,6 +9,7 @@
 
 ## Attack Cards
 
+- [Anger](anger.md)
 - [Headbutt](headbutt.md)
 - [Pommel Strike](pommel-strike.md)
 - [Hemokinesis](hemokinesis.md)
@@ -38,6 +39,7 @@
 - [Shockwave](shockwave.md)
 - [Impervious](impervious.md)
 - [Burning Pact](burning-pact.md)
+- [Battle Trance](battle-trance.md)
 - [Disarm](disarm.md)
 - [Intimidate](intimidate.md)
 - [Ghostly Armor](ghostly-armor.md)
@@ -45,6 +47,7 @@
 - [Seeing Red+](seeing-red.md)
 - [Armaments](armaments.md)
 - [Second Wind](second-wind.md)
+- [Flame Barrier](flame-barrier.md)
 - [Limit Break](limit-break.md)
 
 ## Power Cards
@@ -59,3 +62,4 @@
 - [Rupture](rupture.md)
 - [Corruption](corruption.md)
 - [Rage](rage.md)
+- [Evolve](evolve.md)

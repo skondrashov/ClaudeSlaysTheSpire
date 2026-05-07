@@ -151,6 +151,13 @@ CAUSE OF DEATH: Entered Slime Boss at 35/80 (43%). Post-split, focused all damag
 KEY MOMENTS: (1) Feel No Pain from Neow generated 15 block from 5 Slimed exhausts. (2) Double Tap + Bash+ dealt 30 damage in one turn. (3) 4-Gremlin fight drained 37 HP (Floor 11). (4) Snecko Oil at 12 HP vs Slaver enabled 0-cost burst kill. (5) Havoc skipped twice (playbook lesson applied).
 LESSONS: Both large slimes split on death (not just Spike). Spread damage post-split instead of focus-firing one. HP management failure: 43% entry below 50% threshold. Feel No Pain is a strong Slime Boss card.
 
+## Run 50 — Ironclad A0, Victory (Hexaghost), Death Floor 23 (Slavers Elite, Act 2)
+DECK: 2x Strike, 4x Defend, Bash+, Demon Form, Evolve, Anger, Uppercut, Flame Barrier+, Disarm, Battle Trance, Thunderclap, Rampage, Rage
+RELICS: Burning Blood, Shuriken, Meal Ticket
+CAUSE OF DEATH: Slavers elite (3 enemies, 27+ combined damage/turn) at 21/77 HP (27%). Forced into mandatory elite with no alternative path.
+KEY MOMENTS: (1) Hexaghost killed in 7 turns with Demon Form + Shuriken + Anger scaling (combined +14 Str by turn 7). (2) Snecko navigated via Confusion -- Disarm at 0E and Demon Form at 2E were both "gifts" from randomized costs. (3) Entered Slavers at 21 HP after Centurion+Mystic drained from 27->8 HP (Burning Blood +6, shop Meal Ticket +15 = 29 HP, then Snecko drained to 21). (4) Zero healing cards in deck (no Reaper, no Feed). Only Burning Blood +6/fight and Meal Ticket +15 at shops.
+LESSONS: 17th low-HP death. Slavers elite is a new encounter -- 3 enemies with NO free turn, all attack immediately for 27+ combined. At 27% HP entry, even Flame Barrier+ (16 block) + Defend (5 block) = 21 block vs 27 incoming = 6 damage through. Turn 2 at 15 HP with 3 enemies still alive = unwinnable. The run confirms healing sustain is the critical gap: Burning Blood alone cannot sustain Act 2 through consecutive combat rooms.
+
 ## Run 48 — Ironclad A0, Death Floor 33 (The Collector) — NEW BEST FLOOR
 DECK: Bash+, Bludgeon, Immolate, Shockwave, Inflame, Reaper, Armaments+, Clothesline+, Thunderclap+, Shrug It Off+, Cleave, Rage+, Limit Break, Defend+x2, Strike+
 RELICS: Burning Blood, Pear, Mercury Hourglass

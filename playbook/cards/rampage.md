@@ -14,7 +14,7 @@ WITH STRENGTH AND VULNERABLE (example: +2 Str, target Vulnerable):
 - Play 3: (24+2)*1.5 = 39
 - Play 4: (32+2)*1.5 = 51
 
-IMPORTANT: The +8 accumulates on the BASE, then Strength and Vulnerable apply ON TOP. This makes Rampage scale multiplicatively with Strength/Vulnerable.
+IMPORTANT: The +8 accumulates on the BASE, then Strength and Vulnerable apply ON TOP. This makes Rampage scale multiplicatively with Strength/Vulnerable. The accumulated damage RESETS each fight -- Rampage always starts at base (8 or 12 upgraded) in a new combat.
 
 WHEN IT'S GOOD: Long fights (bosses, elites) where you can play it 3+ times. By the 3rd play it deals 24+ damage for 1E. By the 5th play: 40+ damage. Against Hexaghost (13-turn fight), Rampage scales to 48-60+ damage per play -- one of the best boss-killing cards available. Also strong in 3 Cultists when played on the free turn 1 (starts scaling immediately).
 DECISION POINTS: Play every turn you can afford it. Each play increases all future plays. In short fights (3 turns), Rampage only reaches 16-24 damage total, which is mediocre. In long fights, it becomes the highest damage-per-energy card in the deck. On free turns (enemies buffing), always play Rampage for the scaling even if targeting a full-HP enemy.

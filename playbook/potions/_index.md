@@ -32,3 +32,4 @@
 - [Smoke Bomb](smoke-bomb.md)
 - [Gambler's Brew](gamblers-brew.md)
 - [Fear Potion](fear-potion.md)
+- [Blessing of the Forge](blessing-of-the-forge.md)

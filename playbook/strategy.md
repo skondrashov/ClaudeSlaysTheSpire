@@ -6,7 +6,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-Entering fights at critically low HP is the single most common cause of death across all runs. Sixteen of nineteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
+Entering fights at critically low HP is the single most common cause of death across all runs. Seventeen of twenty deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
 
 | Run | Entry HP | % of Max | Fight | Result |
 |---|---|---|---|---|
@@ -26,6 +26,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 44 | 14 | 18% | Sentry+Spheric Guardian | Died (Byrd fight drained 36 HP, no healing, forced combat) |
 | 45 | 35 | 43% | Slime Boss | Died (split phase created 3 enemies at 12 HP, 33 dmg vs 10 block) |
 | 48 | 41 | 45% | The Collector | Died (STRONG_DEBUFF Turn 4 applied Vuln+Frail+Weak, 47+ incoming at 2 HP) |
+| 50 | 21 | 27% | Slavers (Elite) | Died (27+ combined dmg from 3 enemies, no free turn, 2 HP by turn 2) |
 
 ### HP Thresholds for Act 2
 
@@ -33,7 +34,7 @@ Entering fights at critically low HP is the single most common cause of death ac
 |---|---|---|
 | Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP |
 | Hallway (hard) | 50% | 3 Cultists, Centurion+Mystic, Snake Plant |
-| Elite | 60% | Gremlin Leader, Book of Stabbing |
+| Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
 
 **CRITICAL: 3 Cultists is the single most lethal encounter in the game -- responsible for three deaths (the most of any fight).** Triple independent +3 Str/turn = +9 combined Str/turn. Deaths occurred at 30%, 37%, and 39% HP entry. Even a deck with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage failed at 30% HP because slow scaling engines cannot kill fast enough to survive the combined damage. The 50% threshold for hard hallway fights is NON-NEGOTIABLE for this encounter.

@@ -21,3 +21,8 @@ WEAKNESSES:
 WHEN TO PLAY: Turn 1 of boss fights. Turn 1 of any fight where the enemy buffs (free turn). NEVER play when at low HP and facing immediate lethal damage next turn -- spending 3E on future scaling when you need block NOW is how decks die.
 
 DECK BUILDING NOTE: If Demon Form is your primary scaling, the deck still needs fast burst (Fiend Fire, Rampage, Immolate) for emergency hallway fights at low HP. Demon Form solves bosses but not the Act 2 death spiral.
+
+SYNERGIES:
+- **Shuriken + Anger**: Anger (0E) counts toward Shuriken's 3-Attack threshold. Demon Form Str stacks with Shuriken's passive Str. By turn 5-7, combined Str can reach +12-15 from both sources, making every attack devastating. This combo killed Hexaghost in 7 turns.
+- **Confusion (from Snecko)**: If Confusion randomizes Demon Form's cost below 3E, playing it becomes much easier. In one fight, Demon Form cost 2E under Confusion, enabling Disarm (0E) + Demon Form (2E) on the same turn -- impossible at normal costs.
+- **Evolve**: In long fights with Status cards (Hexaghost Burns), Evolve maintains hand quality while Demon Form provides the damage scaling to shorten the fight.

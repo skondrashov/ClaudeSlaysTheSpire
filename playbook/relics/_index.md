@@ -19,6 +19,7 @@
 - [Red Mask](red-mask.md)
 - [Centennial Puzzle](centennial-puzzle.md)
 - [Bloody Idol](bloody-idol.md)
+- [Meal Ticket](meal-ticket.md)
 
 ## Uncommon Relics
 
@@ -29,6 +30,7 @@
 - [Dream Catcher](dream-catcher.md)
 - [Potion Belt](potion-belt.md)
 - [Mercury Hourglass](mercury-hourglass.md)
+- [Shuriken](shuriken.md)
 
 ## Rare Relics
 
