@@ -6,7 +6,7 @@ High-level strategic principles for Ironclad runs.
 
 ## HP Management: The #1 Cause of Death
 
-Entering fights at critically low HP is the single most common cause of death across all runs. Thirteen of sixteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
+Entering fights at critically low HP is the single most common cause of death across all runs. Fifteen of eighteen deaths resulted from entering a fight below 50% HP or with fatal self-damage mechanics active.
 
 | Run | Entry HP | % of Max | Fight | Result |
 |---|---|---|---|---|
@@ -23,6 +23,8 @@ Entering fights at critically low HP is the single most common cause of death ac
 | 21 | 35 | 39% | 3 Cultists | Died (index shift error + scaling overwhelmed block) |
 | 22 | 28 | 30% | 3 Cultists | Died (Demon Form+Limit Break too slow, scaling overwhelmed) |
 | 23 | 7 | 9% | Cultist+Chosen | Died (Hex+Vuln, 20 dmg vs max 8 block at 7 HP) |
+| 44 | 14 | 18% | Sentry+Spheric Guardian | Died (Byrd fight drained 36 HP, no healing, forced combat) |
+| 45 | 35 | 43% | Slime Boss | Died (split phase created 3 enemies at 12 HP, 33 dmg vs 10 block) |
 
 ### HP Thresholds for Act 2
 
@@ -52,7 +54,7 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 
 ### What Causes the HP Drain
 
-1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 10-12 turns. The primary Act 2 HP drain.
+1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 8-12 turns. The primary Act 2 HP drain. Without Thunderclap (mass Flight stripping + Vulnerable), expect the upper end. Thunderclap is the single most important card for Act 2 Byrd survival.
 2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight. Often consumes Fairy in a Bottle.
 3. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Even with burst damage, drains 20-30 HP. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.
 4. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
@@ -196,6 +198,12 @@ Exhaust synergy (Dark Embrace draw + Charon's Ashes 3 AOE) is a strong engine. B
 1. Can my remaining deck survive the enemy's biggest attack? Calculate max block from remaining block cards.
 2. Is the card truly expendable? Strikes and Defends early -- yes. Core damage/block cards -- never.
 3. Am I in the first half of the fight (thin = good) or second half (thin = fatal)?
+
+### Random Exhaust Is Run-Ending
+
+Unupgraded True Grit and Havoc both cause RANDOM exhaust -- you cannot control which card is lost. In a deck with even one irreplaceable card (Rampage+, Fiend Fire+, Feed+, Bash+), random exhaust is a coin flip that can destroy the run. Havoc exhausted Rampage+ in one fight; unupgraded True Grit exhausted Fiend Fire+ in another -- both in the same run, directly causing death.
+
+**Rule: Never play Havoc or unupgraded True Grit when the deck contains cards you cannot afford to lose.** If you must take True Grit, upgrade it IMMEDIATELY. If you cannot upgrade it, do not play it. Havoc should not be taken in any deck with irreplaceable scaling cards.
 
 ### Safe Exhaust Targets
 - Strikes (once better attacks exist)

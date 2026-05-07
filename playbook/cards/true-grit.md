@@ -8,4 +8,5 @@ GUARDIAN WARNING: Unupgraded True Grit is particularly dangerous in the Guardian
 
 UPGRADE: 7->9 block, random->chosen exhaust. THE most important upgrade in the game. Random exhaust destroyed Whirlwind, Bash, and Pommel Strike in one fight, directly causing death. True Grit+ with chosen exhaust won the same boss fight in a different run. Upgrade priority: #1 whenever True Grit is in the deck, especially if Guardian is the next boss.
 SYNERGIES: Dark Embrace (draw on exhaust), Charon's Ashes (3 AOE on exhaust). But be careful of over-exhausting -- keep enough cards to survive the enemy's biggest attack.
+ANTI-SYNERGY: Unupgraded True Grit with Fiend Fire+ or any irreplaceable card. Random exhaust can destroy the deck's best card mid-combat with no recourse. Unupgraded True Grit randomly exhausted Fiend Fire+ during a Byrd fight, removing the deck's primary burst damage source and directly leading to death two fights later.
 MATCHUPS: Gremlin Nob -- do NOT play (Skill triggers Enrage).

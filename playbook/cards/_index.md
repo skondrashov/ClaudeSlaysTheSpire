@@ -30,6 +30,7 @@
 
 ## Skill Cards
 
+- [Havoc](havoc.md)
 - [Shrug It Off](shrug-it-off.md)
 - [True Grit](true-grit.md)
 - [Shockwave](shockwave.md)
@@ -50,6 +51,7 @@
 - [Metallicize](metallicize.md)
 - [Demon Form](demon-form.md)
 - [Dark Embrace](dark-embrace.md)
+- [Feel No Pain](feel-no-pain.md)
 - [Berserk](berserk.md)
 - [Brutality](brutality.md)
 - [Rupture](rupture.md)

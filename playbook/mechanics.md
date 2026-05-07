@@ -160,6 +160,7 @@ When you play a card by numeric index, all cards after it shift down by 1. This 
 - When planning with draw cards: play the draw card first, then reassess with the new card(s).
 - Brutality adds +1 card per turn (6 total) at the cost of 1 HP/turn.
 - Dark Embrace draws 1 card per exhaust.
+- **Draw pile reshuffle**: When a draw effect triggers and the draw pile is empty, the discard pile is shuffled and becomes the new draw pile. This happens mid-turn if a card draw (Pommel Strike, Flash of Steel, Shrug It Off) triggers with an empty draw pile. This means playing draw cards late in a turn can effectively cycle through the entire deck.
 
 ---
 
