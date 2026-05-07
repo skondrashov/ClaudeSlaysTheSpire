@@ -2,13 +2,13 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (Run 50 review):** Act 2 HP sustain. We beat Act 1 bosses consistently (7 victories in 50 runs) but die in Act 2 to HP attrition. 17 of 20 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.
+**CURRENT BOTTLENECK:** Act 2 HP sustain. We beat Act 1 bosses consistently but die in Act 2 to HP attrition. 18 of 21 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.
 
 ---
 
 ## HP Management: The #1 Cause of Death
 
-17 of 20 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
+18 of 21 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
 
 ### HP Thresholds for Act 2
 
@@ -53,15 +53,16 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 ### Upgrade vs Rest Framework
 
 **Upgrade** when:
-- HP is above 45%
-- Next room is unknown or normal monsters
-- A critical upgrade target exists (Bash, True Grit, key attack card)
+- HP is above 50% in Act 2 (above 45% in Act 1)
+- Next 2-3 rooms include a rest site, shop, or event (not consecutive combat)
+- A critical upgrade target exists (Bash, True Grit, Limit Break, key attack card)
 - Earlier is better: one upgrade on floor 8 benefits 20+ fights
 
 **Rest** when:
-- HP is below 35%
+- HP is below 40% in Act 2 (below 35% in Act 1)
 - Next room is a known elite or boss
-- At 35-45%, consider the specific next room -- elite/boss = rest, unknown = upgrade
+- The path ahead contains 2+ combat rooms before the next rest site
+- At 40-50% in Act 2, consider the specific path ahead -- if the next rooms are combat, rest. If the next room is a shop/event, upgrade is acceptable.
 
 ### The Upgrade Death Spiral
 

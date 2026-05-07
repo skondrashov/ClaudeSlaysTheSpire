@@ -7,6 +7,6 @@ DECISION POINTS: Only play when the enemy's intent is an Attack. On non-attack t
 
 UPGRADE: +3 STR -> +4 STR. Worth upgrading for scaling fights.
 
-SYNERGIES: Multi-hit attacks (Pummel, Twin Strike, Whirlwind) -- Strength applies per hit. Limit Break -- doubling Strength after Spot Weakness gives massive scaling. Long fights (bosses) where Strength compounds over many attack plays.
+SYNERGIES: Multi-hit attacks (Pummel, Twin Strike, Whirlwind) -- Strength applies per hit. Heavy Blade -- +3 Str becomes +9 damage (or +15 upgraded) due to the multiplier. Limit Break -- doubling Strength after Spot Weakness gives massive scaling. Long fights (bosses) where Strength compounds over many attack plays.
 
 MATCHUPS: Excellent vs Guardian (predictable attack turns, long fight). Good vs any boss with visible attack intents. Useless on turns where enemy is buffing/defending.

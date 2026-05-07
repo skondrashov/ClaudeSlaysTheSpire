@@ -34,6 +34,7 @@
 - [Pummel](pummel.md)
 - [Immolate](immolate.md)
 - [Sever Soul](sever-soul.md)
+- [Heavy Blade](heavy-blade.md)
 
 ## Skill Cards
 

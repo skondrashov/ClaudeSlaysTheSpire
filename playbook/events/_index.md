@@ -29,3 +29,5 @@
 - [Woman in Blue](woman-in-blue.md)
 - [The Nest](the-nest.md)
 - [Vampires](vampires.md)
+- [Wheel of Change](wheel-of-change.md)
+- [The Library](the-library.md)

@@ -7,7 +7,7 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Golden Idol effect: Believed to increase gold earned by 25%. Taken but effect never directly measured.
 - Odd Mushroom relic effect: Acquired in Run 4. Possibly +1 Dex or modifies Vulnerable. Never confirmed.
 - Maw Bank relic effect: Acquired in Run 6. Likely gold-related. Never confirmed.
-- Blood Vial/Blood Potion formula: Observed 16 HP heal on 83 max HP. Inferred floor(maxHP * 0.2). Needs second data point.
+
 
 - Flight damage halving rounding: Believed to be floor(damage/2). Not precisely confirmed.
 - Council of Ghosts Apparition power: Prevents ALL damage for 1 turn each, Ethereal. Never used -- refused at 79 Max HP. Value vs cost (-40 Max HP) untested.
@@ -24,6 +24,14 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Horn Cleat block amount: Observed 14 block on turn 2. Is this always 14 or does it scale?
 - Slaver's Collar source: How is this relic obtained? Boss reward, shop, or event?
 - Block values sometimes higher than expected: Player noted block values exceeding card text. Possible relic interaction (Horn Cleat turn 2?) or Dexterity source not accounted for.
+- Wheel of Change full outcome table: Only observed "Lose 8 HP" as an outcome. Other possible outcomes unknown -- could include gold, card rewards, curses, healing, relics. Need more data points to build a complete decision framework.
+- Gremlin Horn exact trigger timing: Observed +1E and draw 1 on enemy death. Does it trigger on ALL enemy deaths including minion summons dying? Does it work with Torch Head deaths in Collector fight?
+- Whetstone upgrade targeting: Described as "2 random Attack cards." Are Strikes included in the pool? Can it upgrade already-upgraded cards (no effect)?
+- Heavy Blade exact damage formula: Confirmed 14 + Str*3 (unupgraded). At Str 1: 14+3=17. At Str 3: 14+9=23. Upgraded formula believed to be 14 + Str*5 but not yet observed in upgraded form.
+
+## Prediction Errors (non-fatal, for monitoring)
+
+- Weak multiplier applied incorrectly: Player calculated Strike+ damage as floor((9+9)*0.75) = 13 against Acid Slime (L), but Acid Slime does not apply Weak to the player. Correct damage should have been 18 (no multiplier reduction). The fight was won regardless, but this shows confusion about when the 0.75 Weak damage reduction applies. Weak reduces the PLAYER'S Attack damage when the player is Weakened, or reduces ENEMY Attack damage when the enemy is Weakened. If neither is Weakened, no 0.75 multiplier applies.
 
 ## Open Questions
 

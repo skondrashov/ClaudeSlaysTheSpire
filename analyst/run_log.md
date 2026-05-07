@@ -95,6 +95,13 @@ CAUSE OF DEATH: Entered Collector at 41/90 HP (45%). STRONG_DEBUFF on Turn 4 app
 KEY MOMENTS: (1) Guardian victory at 43/90 HP. (2) Snecko fight escaped via Smoke Bomb at 16 HP. (3) Liquid Memories retrieved free Bludgeon to kill Centurion at 8 HP. (4) Gambler's Brew found exact block cards on Collector Turn 4. (5) Reaper healed 14 HP in Collector fight.
 LESSONS: First Collector encounter -- STRONG_DEBUFF mechanic documented. 45% HP entry below 70% boss threshold. Bludgeon is the best burst card for boss free turns.
 
+## Run 59 — Ironclad A0, Death Floor 27, Act 2
+DECK: Bash+, Heavy Blade, Twin Strike, Uppercut, Headbutt, Strike+x2, Strike, Defend x2, Inflame, Spot Weakness, Limit Break+, Double Tap, Thunderclap, Shrug It Off, Metallicize, Reaper (20 cards)
+RELICS: Burning Blood, Vajra, Whetstone, Gremlin Horn
+CAUSE OF DEATH: Sentry + Spheric Guardian at 21/80 HP (26%). Killed Sentry but survived at 1 HP. Spheric Guardian's 10 damage vs 9 available block (2x Defend at 3 each with Frail + Metallicize 3 = 9). Died 1 HP short.
+KEY MOMENTS: (1) Beat Slime Boss cleanly at 48/80 with Thunderclap + Duplication Potion. (2) Str engine: Vajra(+1) + Inflame(+2) + Spot Weakness(+3) + Limit Break+. (3) Reaper found Floor 20 from Library event, used once vs Chosen (healed 8 HP), then exhausted -- unavailable for fatal fight. (4) Wheel of Change cost 8 HP unnecessarily. (5) Chose upgrade over rest at 55% HP (F23), followed by Chosen fight that drained 23 HP (44->21).
+LESSONS: 19th low-HP death. Upgrading at 55% HP in Act 2 was a mistake -- rest would have provided ~12 HP buffer that could have prevented death. Raised Act 2 rest threshold from 45% to 50%. Reaper as sole healing source exhausts once per fight and is insufficient for consecutive Act 2 combat rooms. Wheel of Change event is a pure gamble -- 8 HP loss at 55% contributed to the death spiral. Sentry + Spheric Guardian confirmed as dangerous Act 2 hallway pairing.
+
 ## Run 57 — Ironclad A0, Death Floor 16 (The Guardian)
 DECK: Bash+, Uppercut, Pommel Strike, Hemokinesis, Sever Soul, Cleave, 2x Strike, 3x Defend
 RELICS: Burning Blood, Lantern, Question Card

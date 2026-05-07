@@ -18,6 +18,8 @@
 - [Paper Phrog](paper-phrog.md)
 - [Red Mask](red-mask.md)
 - [Centennial Puzzle](centennial-puzzle.md)
+- [Vajra](vajra.md)
+- [Whetstone](whetstone.md)
 - [Bloody Idol](bloody-idol.md)
 - [Meal Ticket](meal-ticket.md)
 
@@ -32,6 +34,7 @@
 - [Potion Belt](potion-belt.md)
 - [Mercury Hourglass](mercury-hourglass.md)
 - [Shuriken](shuriken.md)
+- [Gremlin Horn](gremlin-horn.md)
 
 ## Uncommon Relics (continued)
 

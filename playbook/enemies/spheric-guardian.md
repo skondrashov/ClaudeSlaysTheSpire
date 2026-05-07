@@ -5,3 +5,5 @@ WHAT THIS MEANS: Strip 3 Artifact charges first with cheap debuffs (Thunderclap 
 BENCHMARKS: 6-turn fight. Expect 30+ HP lost from Frail-reduced blocking vs 10x2 attacks.
 BRING: Thunderclap (strip Artifact), Pen Nib (double damage to break block), burst damage (Fiend Fire), Headbutt (find specific cards).
 AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it). Havoc (random exhaust can destroy key cards in a long DPS race). Random exhaust effects in general (this fight is long and you need every damage source).
+
+APPEARS WITH: Sentry (in Act 2 hallway fights). When paired, incoming damage is 9 (Sentry) + 10x2 (Spheric Guardian) = 29 per turn. Frail from Spheric Guardian reduces block by 25%, making Defend give only 3 instead of 5. At low HP, the combined damage is often unblockable. Kill the Sentry first (no block, lower HP), then focus Spheric Guardian with burst damage. Metallicize's passive 3 block/turn helps but is insufficient alone against 29 incoming.

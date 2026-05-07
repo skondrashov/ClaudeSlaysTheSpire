@@ -21,3 +21,5 @@ WEAKNESSES:
 WHEN TO PLAY: After Inflame or Demon Form has provided base Strength. Mid-fight when Strength is already 3+ for meaningful doubling. In boss fights after the scaling engine is online.
 
 DECK BUILDING NOTE: Demon Form + Limit Break is a powerful but SLOW engine. It dominates long fights (bosses) but requires a deck that can survive 3+ setup turns. Against 3 Cultists or other fast-scaling multi-enemy fights at low HP, this engine is irrelevant -- the player dies before it activates. Always pair with immediate damage/block sources.
+
+STRENGTH ENGINE PACKAGE: Vajra (+1) + Inflame (+2) + Spot Weakness (+3) = Str 6 base. Limit Break+ doubles to 12, then 24. Heavy Blade at Str 6 deals 32 damage (or 44 upgraded). This is the most reliable Strength engine for Ironclad -- each piece is independently useful and the combination is multiplicative. The weakness is that Limit Break+ requires a free turn to play (no block), so the engine demands entering fights with enough HP to absorb a turn of damage during setup.
