@@ -42,15 +42,16 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - The Joust odds: 70% win chance for Murderer accurate?
 - Confusion interaction with X-cost cards: Unconfirmed.
 - Frail block calculation under player reasoning: Player wrote "2x Defend (10 block w/ Frail)" but Frail should reduce 5 to 3. Possible miscalculation.
-- Is the player not being OFFERED healing cards, or skipping them? Critical question for the healing sustain gap. Run 52 confirms at least one case where Reaper and Feed were never offered across the entire run. The healing priority rule is working (player would take them if offered) but card pool RNG can deny healing cards entirely.
+- Healing card availability: PARTIALLY ANSWERED. Run 53 confirms Reaper/Feed can be denied by RNG entirely. Runs 51, 57 took Reaper when offered. Run 59 took Feed. The priority rule IS working when cards appear. The gap is now addressed with a backup healing plan in strategy.md.
 - Bronze Automaton Stasis targeting: Does Stasis preferentially steal Powers/Skills, or is it random? Observed stealing Double Tap+ (Skill) and Inflame (Power). Need more data points.
 - Bronze Automaton Hyper Beam exact damage: Not precisely measured. Believed to be very high single-hit. Need exact number.
 - Kunai trigger counting: Does Whirlwind count as 1 Attack or X Attacks for Kunai's 3-Attack threshold? Believed to count as 1 play regardless of hits. Needs confirmation.
 
 ## Recurring Patterns (for strategist review)
 
-- Index shifting: Despite documentation, player continues to use numeric indices. Four confirmed deaths (Runs 3, 21, 22, 57) directly caused by index shifting. Run 57 also had shop index confusion (bought Sever Soul instead of Flame Barrier). The playbook fix is clearly insufficient -- the player reads the rule but does not follow it. This is a SYSTEM-LEVEL problem that likely needs to be addressed in the player agent's system prompt or hard-coded into the command interface, not just documented in the playbook.
-- Potion hoarding partially fixed: Run 20 used potions aggressively. But Run 50 had Blessing of the Forge unused at death.
-- Unknown rooms as combat: Runs 20 and 44 hit dangerous fights from Unknown rooms. Unknown rooms are NOT safe at low HP.
-- **Runic Dome compliance failure (CRITICAL):** Player has now taken Runic Dome TWICE despite explicit playbook guidance saying "refuse it" / "skip Runic Dome." This is not a knowledge gap -- the playbook clearly states the downside. The player reads the guidance but does not follow it. Playbook language has been escalated to absolute prohibition ("DO NOT TAKE. ALWAYS REFUSE."). If this continues, it is a system-level compliance problem identical to the index shifting pattern.
-- **Zero-upgrade compliance failure:** Player completed an entire 23-floor run without a single upgrade. Strategy says upgrade at rest sites above 35% (Act 1) / 40% (Act 2). Either the player never visited rest sites, or visited them and chose to rest when HP was above threshold. This needs investigation in the event log. Language in strategy.md has been strengthened with a mandatory rule.
+- Index shifting: ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #2. Four confirmed deaths (Runs 3, 21, 22, 57). Monitor future runs for compliance.
+- Potion hoarding partially fixed: Run 20 used potions aggressively. But Run 50 had Blessing of the Forge unused at death. Hard Rule #5 now addresses this.
+- Unknown rooms as combat: Runs 20 and 44 hit dangerous fights from Unknown rooms. Unknown rooms are NOT safe at low HP. Documented in strategy.md.
+- **Runic Dome compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #1. Two deaths from taking it. Monitor future runs.
+- **Zero-upgrade compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #3. Monitor future runs.
+- **Random exhaust compliance failure:** ADDRESSED in Strategist Review 2 — moved to player.md Hard Rule #4. Havoc and unupgraded True Grit destroyed critical cards in Runs 44, 51.

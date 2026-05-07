@@ -53,22 +53,20 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 ### Upgrade vs Rest Framework
 
 **Upgrade** when:
-- HP is above 50% in Act 2 (above 45% in Act 1)
-- Next 2-3 rooms include a rest site, shop, or event (not consecutive combat)
+- HP is above 50% in Act 2 (above 35% in Act 1)
 - A critical upgrade target exists (Bash, True Grit, Limit Break, key attack card)
 - Earlier is better: one upgrade on floor 8 benefits 20+ fights
 
 **Rest** when:
-- HP is below 40% in Act 2 (below 35% in Act 1)
-- Next room is a known elite or boss
-- The path ahead contains 2+ combat rooms before the next rest site
-- At 40-50% in Act 2, consider the specific path ahead -- if the next rooms are combat, rest. If the next room is a shop/event, upgrade is acceptable.
+- HP is below 50% in Act 2 (below 35% in Act 1)
+- Next room is a known elite or boss AND you are below 60% HP
+- The path ahead contains 2+ combat rooms before the next rest site AND you are below 50%
 
 ### The Upgrade Death Spiral
 
 Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed twice: once with only 1 upgrade across 28 floors, and once with literally ZERO upgrades across 23 floors. Both runs died in Act 2 with decks that had adequate card quality but no upgraded cards to back it up.
 
-**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 40% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest.
+**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 50% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest.
 
 ### Upgrade Priority
 
@@ -273,7 +271,7 @@ Pantograph heals to full before the boss, but Act 2 hallway fights drain 30-60 H
 
 ### Upgrades Matter More
 
-Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 45%. The upgrade death spiral (no upgrades -> harder fights -> more HP loss -> forced resting -> no upgrades) must be avoided.
+Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 50%. The upgrade death spiral (no upgrades -> harder fights -> more HP loss -> forced resting -> no upgrades) must be avoided.
 
 ### Healing Sustain Is Critical
 
@@ -292,6 +290,18 @@ Burning Blood (+6/fight) cannot compensate for 30-50 HP fights. Reaper and Feed 
 **Minimum healing requirement:** At least TWO sources from the list above (not counting rest sites) by Act 2 Floor 5. A single Reaper or single Feed is not enough given that Act 2 hallway fights drain 25-50 HP each and often come in consecutive pairs.
 
 If by Floor 20 your only healing is Burning Blood, the run is in danger. Actively prioritize healing card picks in Act 1 when offered.
+
+### Backup Healing Plan (when Reaper/Feed are NOT offered)
+
+Reaper and Feed are uncommon cards -- they may not appear in card rewards at all (confirmed: Run 53 had neither offered across 33 floors). The healing priority rule works when cards are offered, but RNG can deny them entirely. When this happens, the player must actively pursue alternative healing:
+
+1. **Shop healing**: Buy Blood Potion or Regen Potion at every shop if no healing card exists. Buy Toy Ornithopter or Meal Ticket if offered.
+2. **Event healing**: The Cleric heals. Big Fish offers healing. Woman in Blue sells potions. Prioritize these events.
+3. **Map pathing for rest sites**: Without healing cards, rest sites become the primary healing source. Path through MORE rest sites, accept fewer upgrades. This is a degraded strategy but better than dying.
+4. **Potion management**: Treat Blood Potions and Regen Potions as precious resources. Do not use them in trivial fights.
+5. **Conservative play**: Without healing, EVERY point of HP matters more. Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.
+
+The absence of healing cards does NOT mean the run is lost. It means the player must shift from "aggressive with healing to recover" to "conservative to avoid damage in the first place."
 
 ### Cross-Run Victory Pattern
 
