@@ -325,15 +325,60 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
     return f"play {best_card_idx} {remaining}"
 
 
+def _build_shop_choice_list(gs: dict) -> list[tuple[str, str, dict | None]]:
+    """Build the ordered choice list matching CommunicationMod's getAvailableShopItems().
+
+    CommunicationMod orders shop items as:
+        1. Purge (if available AND affordable)
+        2. Affordable cards (colored then colorless — same order as screen_state)
+        3. Affordable relics
+        4. Affordable potions
+
+    Only items the player can afford appear in the choice list.
+    This matches CommunicationMod's internal indexing for "choose N".
+
+    Returns list of (category, name, item_dict) tuples.
+    """
+    ss = gs.get("screen_state", {})
+    gold = gs.get("gold", 0)
+    cards = ss.get("cards", [])
+    relics = ss.get("relics", [])
+    potions = ss.get("potions", [])
+    purge_available = ss.get("purge_available", False)
+    purge_cost = ss.get("purge_cost", 0)
+
+    items: list[tuple[str, str, dict | None]] = []
+
+    if purge_available and gold >= purge_cost:
+        items.append(("purge", "purge", None))
+
+    for card in cards:
+        if gold >= card.get("price", float("inf")):
+            items.append(("card", card.get("name", ""), card))
+
+    for relic in relics:
+        if gold >= relic.get("price", float("inf")):
+            items.append(("relic", relic.get("name", ""), relic))
+
+    for pot in potions:
+        if gold >= pot.get("price", float("inf")):
+            items.append(("potion", pot.get("name", ""), pot))
+
+    return items
+
+
 def _resolve_shop_choose(raw_state: dict, action: str) -> str:
     """Resolve card/relic/potion names in shop choose commands to indices.
 
     Supports:
         "choose Inflame"        -> "choose 3"  (finds Inflame in shop cards)
-        "choose purge"          -> "choose purge" (pass through)
+        "choose purge"          -> "choose 0"  (purge is always index 0 when affordable)
         "choose 3"              -> "choose 3"  (already numeric, pass through)
 
-    This prevents shop buy bugs where the player miscounts indices.
+    CommunicationMod indexes shop items as:
+        purge (if affordable) → affordable cards → affordable relics → affordable potions
+
+    This must match that ordering exactly, or the wrong item gets bought.
     """
     gs = raw_state.get("game_state", {}) if raw_state else {}
     screen = gs.get("screen_type", "")
@@ -344,45 +389,42 @@ def _resolve_shop_choose(raw_state: dict, action: str) -> str:
     if len(parts) < 2 or parts[0].lower() != "choose":
         return action
 
-    # Already numeric or a known keyword?
     remainder = " ".join(parts[1:])
+
+    # "return" leaves the shop — pass through
+    if remainder.lower() == "return":
+        return action
+
+    # Already numeric — pass through (caller knows the index)
     try:
         int(remainder)
-        return action  # Already an index
+        return action
     except ValueError:
         pass
 
-    if remainder.lower() in ("purge", "return"):
-        return action  # Known shop keywords
-
-    # Try to match against shop cards, relics, potions
-    ss = gs.get("screen_state", {})
-    cards = ss.get("cards", [])
-    relics = ss.get("relics", [])
-    potions = ss.get("potions", [])
+    # Build the choice list matching CommunicationMod's indexing
+    items = _build_shop_choice_list(gs)
+    if not items:
+        return action
 
     search_name = remainder.lower().rstrip("+")
+    search_clean = search_name.replace(" ", "").replace("'", "")
 
-    # Search cards first
-    for i, card in enumerate(cards):
-        card_name = card.get("name", "").lower()
-        if card_name == search_name:
-            return f"choose {i}"
+    # "choose purge" → find purge in the list
+    if search_name == "purge":
+        for idx, (cat, name, _) in enumerate(items):
+            if cat == "purge":
+                return f"choose {idx}"
+        return action  # Purge not available/affordable
 
-    # Search relics (CommunicationMod uses separate indexing for relics)
-    for i, relic in enumerate(relics):
-        relic_name = relic.get("name", "").lower().replace(" ", "").replace("'", "")
-        search_clean = search_name.replace(" ", "").replace("'", "")
-        if relic_name == search_clean or relic.get("name", "").lower() == search_name:
-            # Relics are indexed after cards in CommunicationMod
-            return f"choose {len(cards) + i}"
-
-    # Search potions
-    for i, pot in enumerate(potions):
-        pot_name = pot.get("name", "").lower()
-        if pot_name == search_name:
-            # Potions are indexed after cards + relics
-            return f"choose {len(cards) + len(relics) + i}"
+    # Search all items by name
+    for idx, (cat, name, item) in enumerate(items):
+        if cat == "purge":
+            continue
+        item_name = name.lower()
+        item_clean = item_name.replace(" ", "").replace("'", "")
+        if item_name == search_name or item_clean == search_clean:
+            return f"choose {idx}"
 
     return action  # No match found, pass through unchanged
 

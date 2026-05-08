@@ -99,11 +99,19 @@ def format_header(gs: dict) -> str:
     if pot_strs:
         lines.append(f"Potions: {', '.join(pot_strs)}")
 
-    # Relics (abbreviated)
+    # Relics (with counters where relevant)
     relics = gs.get("relics", [])
     if relics:
-        relic_names = [r.get("name", "?") for r in relics]
-        lines.append(f"Relics ({len(relics)}): {', '.join(relic_names)}")
+        relic_strs = []
+        for r in relics:
+            name = r.get("name", "?")
+            counter = r.get("counter", -1)
+            # counter of -1 or -2 means "not applicable" — don't show
+            if counter >= 0:
+                relic_strs.append(f"{name} [{counter}]")
+            else:
+                relic_strs.append(name)
+        lines.append(f"Relics ({len(relics)}): {', '.join(relic_strs)}")
 
     # Keys
     keys = []
@@ -145,7 +153,7 @@ def format_combat(gs: dict) -> str:
         orb_strs = [f"{o.get('name', '?')}({o.get('passive_amount', 0)}/{o.get('evoke_amount', 0)})" for o in orbs]
         lines.append(f"Orbs: {', '.join(orb_strs)}")
 
-    # Enemies
+    # Enemies (indices are absolute positions — matching CommunicationMod's targeting)
     lines.append("")
     lines.append("ENEMIES:")
     for i, m in enumerate(monsters):
@@ -257,12 +265,14 @@ def format_shop(gs: dict) -> str:
     purge_available = ss.get("purge_available", False)
     purge_cost = ss.get("purge_cost", 0)
 
-    # SHOP_ROOM is the "entering shop" state before items are populated.
-    # Need to proceed to get the actual SHOP_SCREEN with inventory.
+    # SHOP_ROOM is the "entering shop" transitional state — items may not be
+    # populated yet. Call state() again to get the full SHOP_SCREEN inventory.
+    # Do NOT send proceed — that leaves the shop without buying anything.
     screen = gs.get("screen_type", "")
     if screen == "SHOP_ROOM" and not cards and not relics and not potions:
         lines = ["\n=== SHOP (entering) ==="]
-        lines.append("Shop is loading. Use PROCEED to enter the shop.")
+        lines.append("Shop inventory loading. Call state() to refresh — items will appear shortly.")
+        lines.append("Do NOT use proceed here — that leaves the shop.")
         lines.append(f"\nGold: {gs.get('gold', 0)}")
         return "\n".join(lines)
 
@@ -273,29 +283,32 @@ def format_shop(gs: dict) -> str:
         for i, card in enumerate(cards):
             name = card.get("name", "?")
             price = card.get("price", "?")
+            affordable = " " if gs.get("gold", 0) >= (card.get("price", 0) or 0) else " (can't afford) "
             if card.get("upgrades", 0) > 0 and not name.endswith("+"):
                 name += "+"
-            lines.append(f"  [{i}] {name} — {price}g")
+            lines.append(f"  {name} — {price}g{affordable}")
 
     if relics:
         lines.append("Relics:")
         for i, relic in enumerate(relics):
             name = relic.get("name", "?")
             price = relic.get("price", "?")
-            lines.append(f"  [{i}] {name} — {price}g")
+            affordable = " " if gs.get("gold", 0) >= (relic.get("price", 0) or 0) else " (can't afford) "
+            lines.append(f"  {name} — {price}g{affordable}")
 
     if potions:
         lines.append("Potions:")
         for i, pot in enumerate(potions):
             name = pot.get("name", "?")
             price = pot.get("price", "?")
-            lines.append(f"  [{i}] {name} — {price}g")
+            affordable = " " if gs.get("gold", 0) >= (pot.get("price", 0) or 0) else " (can't afford) "
+            lines.append(f"  {name} — {price}g{affordable}")
 
     if purge_available:
-        lines.append(f"Card removal: {purge_cost}g (choose purge)")
+        lines.append(f"Card removal: {purge_cost}g")
 
     lines.append(f"\nGold: {gs.get('gold', 0)}")
-    lines.append("Use: choose <index> to buy, choose purge for removal, return to leave")
+    lines.append("Buy with: choose <Name> (e.g., choose Inflame, choose purge). Use return to leave.")
     return "\n".join(lines)
 
 
