@@ -2,19 +2,19 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (116-run milestone):** TWO distinct failure modes remain. (1) Entering the Act 2 boss at sufficient HP -- THREE consecutive Act 2 boss reaches (Runs 105, 110, 114, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Healing card RNG -- Run 116 died at Floor 21 (Act 2 hallway) with 3 of 4 readiness criteria met but NO healing card ever offered across 21 floors. The healing criterion is uniquely RNG-dependent: Strength, AOE, and block scaling all have 5+ cards that fill the slot, but healing has only 2 (Reaper, Feed). When neither is offered, the run enters an HP death spiral that conservative play alone cannot solve. Run 116 trajectory: 80 HP Act 2 entry -> 60 (Chosen) -> 22 (Spheric Guardian 38 HP drain) -> 1 (Snake Plant from Unknown room) -> dead F21 (Shelled Parasite+Fungi Beast at 7 HP). The fix: when no healing card exists by Act 2, the backup healing plan (shop potions, conservative pathing, rest-heavy routing) must activate IMMEDIATELY, not after HP is already critical.
+**CURRENT BOTTLENECK (118-run milestone):** TWO distinct failure modes remain. (1) Entering the Act 2 boss at sufficient HP -- THREE consecutive Act 2 boss reaches (Runs 105, 110, 114, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Criteria RNG denial -- both healing and block scaling can be denied by card-offer RNG. Run 116 died F21 with no healing card offered across 21 floors. Run 118 died F21 with no block scaling card offered -- had Reaper, Demon Form, Spot Weakness, Whirlwind, Thunderclap, Shockwave (strong offense+healing) but zero Shrug It Off/Impervious/Flame Barrier/Metallicize. Feel No Pain was counted as "partial" block scaling but produced only 3-6 block per fight, grossly insufficient vs Snake Plant 7x3=21. **Feel No Pain does NOT fulfill the block scaling criterion.** When a criterion cannot be filled, the backup plan (conservative pathing, rest-heavy routing) must activate IMMEDIATELY.
 
-**SCORECARD (runs 101-116):**
+**SCORECARD (runs 101-118):**
 - Act 1 boss wins: ~80% -- Run 103 died to Guardian F16 (Pandora's Box removed all Defends), Run 107 died to Guardian F16 (Corruption+ exhausted block Skills -- now Hard Rule #9)
 - Act 2 boss reaches: 3 (Runs 105, 110, 114, all Floor 33) -- STRONG TREND
-- Act 2 hallway deaths: Run 116 died F21 (Shelled Parasite+Fungi Beast at 7 HP after Spheric Guardian + Snake Plant HP drain). Healing never offered.
+- Act 2 hallway deaths: Run 116 died F21 (healing never offered). Run 118 died F21 (block scaling never offered; Feel No Pain insufficient).
 - Bronze Automaton: 2 deaths (Run 105 -- block scaling gap; Run 114 -- 45% HP entry despite having all tools including Dark Shackles)
 - The Collector: 1 death (Run 110 -- 57% HP entry, missing Impervious and Shockwave+)
 - Hard Rule violations: 0
 - Best floor: 39 (Run 63) -- unchanged but system is reliably reaching F33
 - **70% HP threshold violated: 3/3 boss fights (100%).** Run 105: N/A (Pantograph). Run 110: 57%. Run 114: 45%. This is the #1 problem to solve.
-- **Healing card RNG gap: Run 116 confirmed that neither Reaper nor Feed was offered across 21 floors.** The 4-criteria system has a structural weakness: healing has only 2 qualifying cards vs 5+ for each other criterion.
-- MILESTONE: Three consecutive Act 2 boss reaches confirm the 4-criteria readiness system works when all 4 criteria are met. Run 116 shows that the healing criterion is the most RNG-vulnerable and may need a backup plan built into the system.
+- **Criteria RNG denial: Run 116 (healing denied, 21 floors). Run 118 (block scaling denied, 21 floors).** The 4-criteria system has a structural weakness: any single criterion denied by card-offer RNG creates an unrecoverable spiral.
+- MILESTONE: Three consecutive Act 2 boss reaches confirm the 4-criteria readiness system works when all 4 criteria are met. Runs 116+118 show ANY criterion can be RNG-denied.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **Preserve HP in the last 5 floors before the Act 2 boss.** The 70% entry threshold has been violated in 3/3 boss fights (100% failure rate). This is now the #1 cause of death. New rules: no HP-for-reward trades, skip elites in the last 3 floors, rest over upgrade at every rest site if below 70%, prioritize paths with rest sites over combat/elite paths. See "Pre-boss HP preservation" section for full rules.
