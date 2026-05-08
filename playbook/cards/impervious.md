@@ -10,7 +10,7 @@ TIMING DISCIPLINE (CONFIRMED, Run 107): Impervious was played on a 16-damage Sha
 MATCHUPS: 
 - Guardian -- absorbs the 32-damage attack completely (upgraded takes 0).
 - Gremlin Leader -- turn 1 opener for 30-40 block safety.
-- Collector -- critical for surviving post-STRONG_DEBUFF turns (40-50+ incoming). Play it on Turn 3 or when Collector attacks hardest.
+- Collector -- critical for surviving post-STRONG_DEBUFF turns (37-50+ incoming). Play it on Turn 5, 6, or 7 when triple debuff is active. Run 110 died to Collector specifically because Impervious was not in the deck -- at 25 HP after Turn 4 debuff, 30 block from Impervious would have bought the survival turn needed. Impervious is the single most important defensive card for the Collector fight.
 - Transient -- absorbs an entire turn of escalating damage. Save for turn 2-3 when damage is highest.
 - Snake Plant -- 30-40 block completely absorbs the 9x3=27 multi-hit attack.
 - 3 Cultists -- absorbs combined Ritual-scaled attacks on a critical turn. At turn 4 (45 combined), Impervious+ blocks almost all of it.

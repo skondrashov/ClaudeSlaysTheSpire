@@ -492,12 +492,12 @@
     <div class="bottom-section playbook-section">
       <div class="section-title">Playbook</div>
       <div class="knowledge-grid" id="knowledgeGrid">
-        <div class="knowledge-item"><span>42</span> cards</div>
-        <div class="knowledge-item"><span>22</span> enemies</div>
-        <div class="knowledge-item"><span>3</span> bosses</div>
-        <div class="knowledge-item"><span>22</span> events</div>
-        <div class="knowledge-item"><span>30</span> relics</div>
-        <div class="knowledge-item"><span>20</span> potions</div>
+        <div class="knowledge-item"><span id="pb-cards">-</span> cards</div>
+        <div class="knowledge-item"><span id="pb-enemies">-</span> enemies</div>
+        <div class="knowledge-item"><span id="pb-bosses">-</span> bosses</div>
+        <div class="knowledge-item"><span id="pb-events">-</span> events</div>
+        <div class="knowledge-item"><span id="pb-relics">-</span> relics</div>
+        <div class="knowledge-item"><span id="pb-potions">-</span> potions</div>
       </div>
     </div>
 
@@ -522,6 +522,22 @@
 
     // Saved feed HTML so we can restore after agent mode
     let savedFeedHTML = '';
+
+    function fetchPlaybookStats() {
+      fetch('http://127.0.0.1:3002/playbook-stats')
+        .then(r => r.json())
+        .then(stats => {
+          const ids = {cards:'pb-cards', enemies:'pb-enemies', bosses:'pb-bosses',
+                       events:'pb-events', relics:'pb-relics', potions:'pb-potions'};
+          for (const [key, id] of Object.entries(ids)) {
+            const el = document.getElementById(id);
+            if (el && stats[key] !== undefined) el.textContent = stats[key];
+          }
+        })
+        .catch(() => {}); // Silently fail if server not running
+    }
+    fetchPlaybookStats();
+    setInterval(fetchPlaybookStats, 300000); // Refresh every 5 minutes
 
     function connect() {
       ws = new WebSocket(WS_URL);

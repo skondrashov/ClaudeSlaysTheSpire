@@ -4,18 +4,19 @@ High-level strategic principles for Ironclad runs.
 
 **CURRENT BOTTLENECK (105-run milestone):** Block scaling gap in Act 2 boss decks. Run 105 reached the Act 2 boss (Bronze Automaton) for the first time in recent memory -- all three Act 2 readiness criteria (AOE, Strength, Healing) were met. But the deck had only basic Defends for block (4x 5 block = 20 max). Hyper Beam dealt 38 damage, which is unsurvivable with basic Defends alone. The Act 2 readiness checklist now requires a 4th criterion: block scaling. Secondary bottleneck: Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting effective burst by ~17% in DPS-race fights.
 
-**SCORECARD (runs 81-105):**
+**SCORECARD (runs 81-110):**
 - Act 1 boss wins: ~97% -- Run 103 died to Guardian Floor 16 (Pandora's Box removed all Defends), Run 107 died to Guardian Floor 16 (Corruption+ exhausted all block Skills mid-fight)
-- Act 2 deaths: 10/10 logged deaths -- still the wall (floors 21-33)
-- Average death floor: 26.5 (Run 105 reached Floor 33 -- Act 2 boss! Best recent result)
+- Act 2 deaths: 10+ logged deaths -- still the wall (floors 21-33)
+- Average death floor: ~27 (Runs 105 and 110 both reached Floor 33 -- Act 2 boss!)
 - 3 Cultists: 2 deaths (at 52% and 53% HP -- threshold revised to 60%)
 - Book of Stabbing: 3 deaths (2 with Brimstone anti-synergy)
 - Gremlin Leader: 2 deaths (at 55% and 56% HP)
 - Bronze Automaton: 1 death (Run 105, Floor 33 -- block scaling gap, only basic Defends)
+- The Collector: 1 death (Run 110, Floor 33 -- entered at 57% HP, below 70% threshold. Missing Impervious and Shockwave+.)
 - Hard Rule violations: 0
 - Best floor: 39 (Run 63, Act 3 death) -- unchanged since run 63
 - Shop indexing bug: FIXED. Boss relic skip bug: UNRESOLVED (2 occurrences)
-- MILESTONE: Run 105 is the first Act 2 boss reach in recent runs. Act 2 readiness criteria (AOE, Str, Healing) worked. 4th criterion (block scaling) now added.
+- MILESTONE: Runs 105 and 110 are consecutive Act 2 boss reaches -- a TREND. Act 2 readiness criteria (AOE, Str, Healing, Block scaling) are working. The bottleneck is now boss fights themselves: Run 105 died to block gap vs Bronze Automaton, Run 110 died to HP threshold vs Collector. Both deaths had strong decks but failed specific boss requirements (block scaling, HP entry threshold).
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **Trace full paths before every map choice.** Before choosing any path, trace EVERY option forward to the next rest/shop. Count forced combats. Choose fewer combats. This is the #1 structural fix -- the majority of deaths result from entering fights at sub-threshold HP because the path forced consecutive combats. Say the count aloud: "Path A: 3 combats to rest. Path B: 1 combat to rest."
@@ -445,7 +446,7 @@ Pantograph heals 25 HP at the Act 2 boss start (NOT full HP). The Collector figh
 
 ### Cross-Run Victory Pattern
 
-Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory), the differentiators are:
+Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory) and 2 Act 2 boss deaths (Runs 105, 110), the differentiators are:
 1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions. Collector victory used Immolate+ (AOE for Torch Heads), Shockwave+ (mass debuff), and Impervious (post-debuff survival).
 2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed 25 HP to near-full).
 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.
@@ -454,11 +455,12 @@ Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory), the 
 6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm). Collector victory relied on Immolate+ AOE. Two Hexaghost deaths had Weak but no damage scaling.
 7. **Extra energy**: The Collector victory had 4 energy (Sozu). Extra energy enables offense + defense simultaneously.
 
-### Cross-Run Death Pattern (Act 2) -- Updated at 105 runs
+### Cross-Run Death Pattern (Act 2) -- Updated at 110 runs
 
-Across 30+ Act 2 deaths, the pattern has SHIFTED from "missing critical tools" to "HP attrition from pathing" -- but Run 105 reveals a NEW failure mode:
+Across 30+ Act 2 deaths, the pattern has SHIFTED from "missing critical tools" to "HP attrition from pathing" -- but Runs 105 and 110 reveal boss-specific failure modes:
 1. **HP attrition from consecutive combats (primary cause)**: The player enters Act 2 at healthy HP, loses 30-50 HP in one fight (Byrds, Snake Plant, Centurion+Mystic), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it is taking a second combat room immediately after. This is a MAP PATHING failure, not a deck building failure. The fix is mandatory path tracing before every map choice.
-2. **Block scaling gap at Act 2 boss (NEW, Run 105)**: Run 105 met all three original Act 2 readiness criteria (Thunderclap+ for AOE, Spot Weakness for Strength, Feed+ for healing) and reached the Act 2 boss for the first time. Died to Bronze Automaton Hyper Beam (38 damage) because the deck had only 4 basic Defends (5 block each = 20 max). Block scaling is now the 4th mandatory readiness criterion. Cards like Shrug It Off, Flame Barrier, Metallicize, or Impervious would have saved this run.
+2. **Block scaling gap at Act 2 boss (Run 105)**: Run 105 met all three original Act 2 readiness criteria (Thunderclap+ for AOE, Spot Weakness for Strength, Feed+ for healing) and reached the Act 2 boss for the first time. Died to Bronze Automaton Hyper Beam (38 damage) because the deck had only 4 basic Defends (5 block each = 20 max). Block scaling is now the 4th mandatory readiness criterion. Cards like Shrug It Off, Flame Barrier, Metallicize, or Impervious would have saved this run.
+2b. **HP entry threshold at Act 2 boss (Run 110)**: Run 110 had excellent deck quality (all 4 readiness criteria met: Whirlwind+ AOE, Spot Weakness+Inflame Str, Feed healing, Shrug It Off+Flame Barrier++Metallicize block). Died to The Collector at Floor 33 because HP entry was 57% (49/86) instead of the required 70%. The Colosseum event on the prior floor forced an unexpected combat that drained HP. Missing Impervious and Shockwave+ meant the post-debuff crisis was unsurvivable at 25 HP. Two consecutive boss reaches (Runs 105, 110) confirm the deck building is working -- the bottleneck is now boss-specific preparation (block scaling, HP management, key defensive cards like Impervious/Shockwave+).
 3. **Brimstone anti-synergy (2 deaths)**: Brimstone purchased at shop without evaluating Act 2 elite pool. Book of Stabbing with Brimstone deals quadratically scaling damage. Both deaths occurred with strong Str decks that would have survived without Brimstone's enemy buff.
 4. **3 Cultists + scaling hallway fights**: 5 deaths to 3 Cultists at 30-53% HP. This is a HALLWAY fight, not an elite. It cannot be avoided via pathing (it spawns on Monster nodes). The only defense is entering every Act 2 combat at 60%+ HP -- which requires better pathing between combats.
 5. **Book of Stabbing is the #1 elite killer**: 3 deaths. Wound clog + escalating multi-hit. Decks without exhaust tools cannot win. Decks with Brimstone cannot win.

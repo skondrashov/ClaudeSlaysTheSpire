@@ -29,6 +29,7 @@ STATE_FILE = os.path.join(DATA_DIR, "last_state.json")
 EVENT_LOG = os.path.join(DATA_DIR, "stream_events.jsonl")
 STATS_FILE = os.path.join(DATA_DIR, "run_stats.json")
 RUNS_DIR = os.path.join(DATA_DIR, "runs")
+PLAYBOOK_DIR = os.path.join(os.path.dirname(__file__), "playbook")
 
 # Connected overlay clients
 clients = set()
@@ -432,6 +433,30 @@ def _summarize_tool_use(tool_name: str, tool_input: dict) -> str:
 
 class DecisionHandler(BaseHTTPRequestHandler):
     """HTTP handler for decision posts from cmd.py."""
+
+    def do_GET(self):
+        if self.path == "/playbook-stats":
+            # Count .md files in each playbook subdirectory (excluding _index.md)
+            stats = {}
+            try:
+                for d in sorted(os.listdir(PLAYBOOK_DIR)):
+                    full = os.path.join(PLAYBOOK_DIR, d)
+                    if os.path.isdir(full):
+                        count = sum(
+                            1 for f in os.listdir(full)
+                            if f.endswith(".md") and f != "_index.md"
+                        )
+                        stats[d] = count
+            except FileNotFoundError:
+                pass
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps(stats).encode())
+        else:
+            self.send_response(404)
+            self.end_headers()
 
     def do_POST(self):
         if self.path == "/decision":

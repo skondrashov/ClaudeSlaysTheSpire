@@ -36,9 +36,24 @@ CONFIRMED WINNING APPROACH:
 - Turns 5-7: Immolate+ again to clear re-summoned Torch Heads. Headbutt to guarantee draw order.
 - Fight lasted 10 turns. Entered at full HP (Pantograph). Exited at 14/80 HP -- the fight IS an HP drain even when won.
 
+RUN 110 DEATH CASE STUDY (DEFEAT, Floor 33):
+- Entered at 49/86 (57%) -- below the 70% threshold. The Colosseum event on the previous floor forced an unexpected Slaver fight that drained HP. No upgrades in Act 2 (rested at both rest sites due to low HP entering them).
+- Deck was strong offensively: Fire Breathing+/Evolve engine, Whirlwind+ (AOE), Flame Barrier+, Metallicize, Inflame, Spot Weakness, Bash+, Feed, Offering. Had Bronze Scales (Thorns 3) and Red Skull (+3 Str <50%).
+- Turn 1 (spawn): Pommel Strike + Bash+ on Collector (Vulnerable applied). Solid start.
+- Turn 2: Offering (-6 HP to 43) for setup. Metallicize, Shrug It Off, Defend+, 2x Strike+ on Collector. Took 13 damage (43->30).
+- Turn 3: Flame Barrier+ + Defend+. Took 5 (30->25). Counter + Thorns dealt 27 passive damage.
+- Turn 4 (STRONG_DEBUFF): Pommel Strike + Iron Wave on Collector. No damage incoming (free turn).
+- Turn 5 (crisis): Used ALL 3 potions (Fire Potion on Torch Head, Dexterity +2, Speed +5). Killed one Torch Head with Strike+. 2x Defend+ with +7 Dex + Frail = 11 each = 25 total block vs 37 incoming. Took 12 (25->13 HP).
+- Turn 6: Flame Barrier+ + Inflame. 16 block vs 37+ incoming. Knew death was likely.
+- Turn 7: Shrug It Off + Feed (killed Torch Head 2) + Defend+. 17 block vs 37 incoming = take 20. Dead at 13 HP.
+- **ROOT CAUSE**: 57% HP entry. The math was unwinnable after Turn 4 debuff at only 25 HP. Even with correct potion usage and strong AOE/counter damage, 25 HP cannot survive 3 turns of 37+ incoming with Frail-reduced block.
+- **MISSING CARDS**: Impervious (30 block absorbs an entire crisis turn), Shockwave+ (mass Weak reduces 37 incoming to ~28 for 3 turns). Either card likely saves this run.
+- **LESSON**: The 70% HP entry threshold is validated. At 57%, the Collector's Turn 4 triple debuff creates mathematically unwinnable turns even with optimal play. Also: Colosseum event must be factored into pre-boss HP planning.
+
 WHAT NOT TO DO:
-- Enter below 50% HP. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive.
+- Enter below 70% HP without Pantograph. Run 110 entered at 57% and died despite strong deck and optimal play. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive. The 70% threshold is non-negotiable.
 - Ignore Torch Heads entirely. Their combined 14 damage/turn adds up. AOE that hits all three targets is far more efficient than single-target.
-- Save potions for "later." The post-debuff turns (5-7) are the crisis -- potions should be used to survive this window.
+- Save potions for "later." The post-debuff turns (5-7) are the crisis -- potions should be used to survive this window. Run 110 correctly used all 3 potions on Turn 5 but still died due to insufficient HP.
 - Play Shockwave+ on Turn 1 before Torch Heads spawn. Wait until Turn 2+ when all enemies are present.
 - Rely on single-target damage only. Immolate+ is the MVP of this fight -- AOE that damages all 3 targets simultaneously is critical for managing Torch Head respawns.
+- Enter Unknown rooms before the boss without accounting for Colosseum event (forces combat, drains HP). Juzu Bracelet does NOT prevent Colosseum -- it is an event, not a monster room.

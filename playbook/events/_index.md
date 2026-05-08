@@ -34,3 +34,4 @@
 - [Knowing Skull](knowing-skull.md)
 - [The Library](the-library.md)
 - [Masked Bandits](masked-bandits.md)
+- [Colosseum](colosseum.md)
