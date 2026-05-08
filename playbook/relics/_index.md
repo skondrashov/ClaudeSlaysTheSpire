@@ -49,6 +49,7 @@
 
 ## Rare Relics
 
+- [Calipers](calipers.md)
 - [Pantograph](pantograph.md)
 - [Golden Idol](golden-idol.md)
 - [Lizard Tail](lizard-tail.md)
