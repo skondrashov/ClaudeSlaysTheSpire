@@ -8,7 +8,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 ## Unconfirmed
 
-- Boss relic collection automation issue: In Run 71 and Run 77, a `proceed` command after Act 1 boss auto-collected the chest without showing boss relic selection options. Confirmed recurring (2 occurrences). CommunicationMod or automation bug. HIGH PRIORITY -- missing boss relic is a significant power loss each time.
+- Boss relic collection automation issue: In Run 71 and Run 77, a `proceed` command after Act 1 boss auto-collected the chest without showing boss relic selection options. Confirmed recurring (2 occurrences). CommunicationMod or automation bug. HIGH PRIORITY -- missing boss relic is a significant power loss each time. STILL UNRESOLVED AS OF RUN 100. Needs infrastructure investigation.
 - The Champ Execute exact HP threshold: Believed to be ~50% HP. Exact percentage unconfirmed.
 - The Champ Execute Metallicize value: Observed as Metallicize 5. Need second data point.
 - The Champ Execute Strength gain: Observed as +8 Strength. Need second data point.
@@ -69,10 +69,10 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Zero potion runs in Act 2: Run 75 had zero potions for entire Act 2. No drops, no purchases. Contributes directly to Spheric Guardian death -- a single Strength or Fire potion may have changed the outcome.
 - Battle Trance + `end` batching error: Turn 3 of Gremlin Leader fight, Battle Trance + Bloodletting + `end` were batched together. Drew cards and generated energy, then immediately ended turn. The drawn cards and energy were completely wasted. This cost an entire turn against a Rally-scaling enemy, contributing directly to death. This is a command/automation sequencing issue.
 - Snake Plant damage was documented as 7x3 but observed as 9x3 in Run 77. Playbook corrected. Previous HP drain estimates were understated.
-- Brimstone + Book of Stabbing anti-synergy: Brimstone gave Book of Stabbing +2 Str/turn, amplifying every escalating hit. With Brimstone equipped, Book of Stabbing's per-hit damage grows by +2 each turn in addition to the +1 hit/turn escalation. Double-scaling makes the fight significantly more dangerous.
+- Brimstone + Book of Stabbing anti-synergy: PROMOTED. Confirmed across 2 deaths (Runs 091, 100). Brimstone purchase checklist added to relics/brimstone.md. Strategy.md Act 2 elite ranking updated. Book of Stabbing elevated to #1 elite killer.
 - Headbutt grid interaction: Headbutt's discard-pile selection UI caused misplays in Run 78. Unknown mechanism -- possibly related to grid/list index confusion similar to shop bug. Needs investigation if it recurs.
 - Calipers + Impervious+ combo: Impervious+ (40 block) retains 25 block next turn with Calipers. Confirmed strong in Spheric Guardian fight (absorbed 10x2 attack turns with carried-over block). Single data point -- monitor for additional confirmation.
-- 3 Cultists at 53% HP: Death despite Impervious+, Calipers, Immolate. Entry was 45 HP. Fourth data point for this fight (deaths at 30%, 37%, 39%, 53%). The 50% threshold may need revision upward -- even 53% was insufficient with strong tools but no kill speed. Kill speed (AOE burst to eliminate one Cultist fast) may matter more than defensive tools.
+- 3 Cultists threshold revision: PROMOTED. Five deaths confirmed (30%, 37%, 39%, 52%, 53%). Threshold revised from 50% to 60% in strategy.md. Kill speed (AOE burst) matters more than block density against Ritual scaling.
 
 ## Recurring Patterns (for strategist review)
 
@@ -85,11 +85,11 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Brutality in long fights: ADDRESSED (Hard Rule #6). Monitor.
 - Exhausting key cards: ADDRESSED (Hard Rule #7). Monitor.
 - 3E Power setup deaths: ADDRESSED (Hard Rule #8). Two deaths (Run 72 Barricade unplayable, Run 73 Corruption fatal). Monitor.
-- Boss relic collection skipped (Run 71, Run 77): Confirmed recurring automation bug (2 occurrences). HIGH PRIORITY investigation needed.
+- Boss relic collection skipped (Run 71, Run 77): Confirmed recurring automation bug (2 occurrences). STILL UNRESOLVED as of Run 100. HIGH PRIORITY infrastructure investigation needed.
 
 ## Open Questions
 
-- Shop bug root cause: Recurring in ~40% of runs. CommunicationMod, state_formatter, or cmd.py issue? Latest instance: Run 75 accidental purchases of Sever Soul and Clash wasted gold and diluted deck quality. Previous: Run 74 bought 2 Havocs instead of intended Inflame due to shop index mismatch. This bug continues to produce tangible run damage -- wasted gold, dead cards, deck bloat.
+- Shop bug root cause: RESOLVED. CommunicationMod purge offset was identified and fixed. No longer affecting runs 99+. Monitor for recurrence.
 - Face Trader event: What are the actual options and outcomes?
 - Transmogrifier transform rules: Does it keep the same rarity?
 - Ancient Writing second option (Insight): What does it offer?

@@ -158,10 +158,12 @@ If missing any of these, PRIORITIZE filling that gap over taking a generically s
 - Which card benefits most from upgrading? Priority: Bash > Corruption (if in deck) > True Grit > Armaments > best damage card > best block card.
 
 ### Map Pathing
+- **MANDATORY: Before choosing any path, trace EVERY available path forward to the next rest site or shop.** Count forced combat rooms on each path. Choose the path with fewest forced combats to the next healing opportunity. Say "Path A: X combats to rest. Path B: Y combats to rest. Choosing [better]." This prevents the #1 cause of death: entering fights at sub-threshold HP because the path forces consecutive combats.
 - Consider your HP, deck strength, and what you need before the boss
 - Elites give relics but cost HP
 - Rest sites and shops are resources — path through them when you need them
 - Question marks (events) are variable — some heal, some hurt
+- In Act 2, treat Unknown rooms as Monster rooms when routing (3 deaths from Spheric Guardian spawning in Unknown rooms)
 
 ### Events
 - Read the options carefully. Many events have hidden costs or benefits.

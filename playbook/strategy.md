@@ -2,21 +2,25 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK:** Deck building for Act 2 readiness. Runs 72-76 averaged Floor 25.6 -- still dying mid-Act 2. Hard Rules are working (zero compliance failures in 10+ runs). Playbook accuracy is mostly fixed. The new problem is assembling the right tools BEFORE Act 2 demands them. Every recent death had a deck that was *close* but missing one critical piece: front-loaded Strength for Spheric Guardian, AOE for Gremlin Leader gremlins, or affordable Corruption (2E upgrade). The shop indexing bug continues to pollute decks with unwanted cards (~40% of runs affected).
+**CURRENT BOTTLENECK (100-run milestone):** HP attrition in Act 2. The playbook is comprehensive. Hard Rules have zero violations. Deck building is adequate. The problem is PATHING: the player enters fights at sub-threshold HP because map evaluation is too shallow. Consecutive combat rooms drain HP below survival thresholds before rest sites are reachable. Secondary bottleneck: Brimstone anti-synergy with multi-hit enemies (Book of Stabbing) caused 2 of 5 recent deaths.
 
-**SCORECARD (runs 72-76):**
-- Act 1 boss wins: 5/5 (100%) -- Act 1 is solved
-- Act 2 deaths: 5/5 -- still the wall
-- Spheric Guardian: 2 deaths, 1 survival (Corruption+FNP engine works)
-- Gremlin Leader: 2 deaths (emerging as co-#1 killer with SG)
-- Average floor: 25.6 (no improvement from runs 69-73 average of 24.6)
-- Hard Rule violations: 0 (rules are working)
+**SCORECARD (runs 81-100):**
+- Act 1 boss wins: ~100% -- Act 1 is solved
+- Act 2 deaths: 9/9 logged deaths -- still the wall (floors 21-33)
+- Average death floor: 26.2 (plateau from runs 63-78 average of 25.6)
+- 3 Cultists: 2 deaths (at 52% and 53% HP -- threshold revised to 60%)
+- Book of Stabbing: 3 deaths (2 with Brimstone anti-synergy)
+- Gremlin Leader: 2 deaths (at 55% and 56% HP)
+- Hard Rule violations: 0
+- Best floor: 39 (Run 63, Act 3 death) -- unchanged since run 63
+- Shop indexing bug: FIXED. Boss relic skip bug: UNRESOLVED (2 occurrences)
 
 **IMMEDIATE PRIORITIES (in order):**
-1. **Build Act 2-ready decks by Floor 15.** The deck needs ALL THREE: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Thunderclap, Cleave, Immolate, Whirlwind), (c) healing beyond Burning Blood. If missing any by Floor 12, actively seek it in remaining card rewards, shops, and events.
-2. **Gremlin Leader is now co-#1 killer.** Enter at 60%+ HP. Kill gremlins with AOE. Apply Shockwave early. Every wasted turn = +3 Str to ALL enemies. Do not end turn early after draw effects.
-3. **Upgrade Corruption to 2E before relying on it.** Unupgraded Corruption (3E) has killed the player. If Corruption is the engine piece, upgrade it FIRST at rest sites -- above Bash, above everything.
-4. **Have Strength scaling by Floor 15** (Inflame > Spot Weakness > Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.
+1. **Trace full paths before every map choice.** Before choosing any path, trace EVERY option forward to the next rest/shop. Count forced combats. Choose fewer combats. This is the #1 structural fix -- the majority of deaths result from entering fights at sub-threshold HP because the path forced consecutive combats. Say the count aloud: "Path A: 3 combats to rest. Path B: 1 combat to rest."
+2. **Do NOT buy Brimstone if Book of Stabbing is a possible Act 2 elite.** Brimstone + Book of Stabbing has killed the player twice. The anti-synergy makes Book of Stabbing damage grow quadratically (more hits * more damage per hit). If already holding Brimstone, AVOID Book of Stabbing entirely.
+3. **Build Act 2-ready decks by Floor 15.** The deck needs ALL THREE: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Thunderclap, Cleave, Immolate, Whirlwind), (c) healing beyond Burning Blood. If missing any by Floor 12, actively seek it in remaining card rewards, shops, and events.
+4. **3 Cultists threshold is 60%, not 50%.** Five deaths at 30-53% HP confirm that even strong block tools cannot survive Ritual scaling. Kill speed (AOE burst to remove one Cultist fast) matters more than defensive tools.
+5. **Have Strength scaling by Floor 15** (Inflame > Spot Weakness > Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.
 
 ---
 
@@ -29,11 +33,11 @@ High-level strategic principles for Ironclad runs.
 | Fight Type | Minimum HP | Notes |
 |---|---|---|
 | Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP |
-| Hallway (hard) | 50% | 3 Cultists, Centurion+Mystic, Snake Plant |
+| Hallway (hard) | 60% | 3 Cultists (5 deaths, even 53% was insufficient), Centurion+Mystic, Snake Plant |
 | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
 
-**CRITICAL: 3 Cultists and Spheric Guardian are tied for the most lethal encounter in the game -- each responsible for three deaths.** Triple independent +3 Str/turn = +9 combined Str/turn. Deaths occurred at 30%, 37%, and 39% HP entry. Even a deck with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage failed at 30% HP because slow scaling engines cannot kill fast enough to survive the combined damage. The 50% threshold for hard hallway fights is NON-NEGOTIABLE for this encounter.
+**CRITICAL: 3 Cultists is the most lethal hallway fight in the game (5 deaths confirmed at 30%, 37%, 39%, 52%, 53% HP entry).** Triple independent +3 Str/turn = +9 combined Str/turn. Even decks with Impervious+, Calipers, Immolate, Shockwave+ failed at 53% HP because Ritual scaling outpaces all defensive tools -- kill speed (AOE burst to eliminate one Cultist fast) matters more than block density. The 60% threshold for this encounter is NON-NEGOTIABLE.
 
 ### What to Do at Low HP
 
@@ -318,6 +322,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 
 ### Core Principles
 
+- **MANDATORY PATH TRACE: Before choosing ANY path, trace EVERY available option forward to the next rest site or shop.** Count the number of forced combat rooms on each path. Choose the path with the fewest forced combats between here and the next healing opportunity. This single practice prevents the majority of death-spiral entries. Do NOT just look at the next room -- trace the FULL path.
 - **Look 2-3 floors ahead, not just the next room.** At EVERY map node, trace paths forward. If a path leads to 2+ consecutive combat rooms with no rest/shop/event between them, that path is dangerous at any HP below 70%. Three deaths (Runs 20, 21, 22) were caused by map topology forcing combat after a drain fight.
 - Prefer routes with a rest site in the last 1-2 floors before the boss.
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
@@ -333,9 +338,18 @@ Before fighting an elite, check:
 4. **Path alternatives**: If a safer path exists with similar value, take it.
 
 **Act 2 Elite Threat Ranking:**
-- **Gremlin Leader** (2 deaths in 5 runs, co-#1 killer): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death).
-- **Book of Stabbing**: Escalating multi-hit (+1 per turn). Wounds clog draw pile. NEED: exhaust for Wounds, fast kill. Do NOT play Brutality.
+- **Book of Stabbing** (3 deaths, now #1 killer): Escalating multi-hit (+1 per turn). Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. Do NOT play Brutality. **CRITICAL: If you have Brimstone, DO NOT FIGHT Book of Stabbing. Brimstone gives it +2 Str/turn on top of +1 hit/turn -- damage grows quadratically. Two deaths confirmed from this anti-synergy (Runs 091, 100). Even at 75% HP with strong Str scaling, the fight is unwinnable by turn 5.**
+- **Gremlin Leader** (2 deaths in 5 runs): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death).
 - **Slavers**: 3 enemies, 27+ combined damage. NEED: AOE, mass debuff, 60%+ HP.
+
+### Brimstone Elite Avoidance
+
+If Brimstone is equipped, the Act 2 elite pool becomes asymmetrically dangerous:
+- **Book of Stabbing: HARD AVOID.** Brimstone + multi-hit + hit-count escalation = quadratic damage growth. Two deaths confirmed. No amount of player Strength compensates.
+- **Snake Plant: CAUTION.** Brimstone adds +2/turn to each of its 3 hits. 9x3 becomes 11x3 by turn 2. Combined with Frail, expect 40-60 HP drain.
+- **Gremlin Leader: MODERATE RISK.** Brimstone adds +2 to every gremlin. With Rally +3, combined scaling is +5 Str/turn to all enemies.
+
+When holding Brimstone, avoid elite paths entirely if HP is below 70%. The enemy Strength scaling makes every elite fight significantly harder.
 
 ### Fairy Management
 
@@ -433,10 +447,12 @@ Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory), the 
 6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm). Collector victory relied on Immolate+ AOE. Two Hexaghost deaths had Weak but no damage scaling.
 7. **Extra energy**: The Collector victory had 4 energy (Sozu). Extra energy enables offense + defense simultaneously.
 
-### Cross-Run Death Pattern (Act 2)
+### Cross-Run Death Pattern (Act 2) -- Updated at 100 runs
 
-Across Act 2 deaths (runs 72-76), the pattern is:
-1. **Missing one critical tool**: 5/5 deaths had decks that were close but missing a key piece. Inflame/Spot Weakness absent in SG fights. Zero AOE in GL fights. Unupgraded Corruption in multi-enemy fights.
-2. **Shop bug damage**: 2/5 runs had decks polluted by accidental shop purchases (Havoc x2, Sever Soul, Clash). This is infrastructure damage, not player error, but it adds 2-3 dead cards that dilute draws at the worst time.
-3. **Gremlin Leader + Spheric Guardian are the two killers**: Combined 4/5 Act 2 deaths. Both require specific answers (AOE + turn economy for GL, front-loaded Str + burst for SG). A deck that answers one may not answer the other -- need BOTH AOE and Str scaling.
-4. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling or AOE by Floor 12, the player must prioritize these over all other card choices.
+Across 30+ Act 2 deaths, the pattern has SHIFTED from "missing critical tools" to "HP attrition from pathing":
+1. **HP attrition from consecutive combats (primary cause)**: The player enters Act 2 at healthy HP, loses 30-50 HP in one fight (Byrds, Snake Plant, Centurion+Mystic), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it is taking a second combat room immediately after. This is a MAP PATHING failure, not a deck building failure. The fix is mandatory path tracing before every map choice.
+2. **Brimstone anti-synergy (new pattern, 2 deaths)**: Brimstone purchased at shop without evaluating Act 2 elite pool. Book of Stabbing with Brimstone deals quadratically scaling damage. Both deaths occurred with strong Str decks that would have survived without Brimstone's enemy buff.
+3. **3 Cultists + scaling hallway fights**: 5 deaths to 3 Cultists at 30-53% HP. This is a HALLWAY fight, not an elite. It cannot be avoided via pathing (it spawns on Monster nodes). The only defense is entering every Act 2 combat at 60%+ HP -- which requires better pathing between combats.
+4. **Book of Stabbing is the #1 elite killer**: 3 deaths. Wound clog + escalating multi-hit. Decks without exhaust tools cannot win. Decks with Brimstone cannot win.
+5. **Shop bug damage (RESOLVED)**: The shop indexing bug was fixed. No longer a factor for future runs.
+6. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling or AOE by Floor 12, the player must prioritize these over all other card choices.

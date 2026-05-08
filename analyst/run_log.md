@@ -123,3 +123,29 @@ RELICS: Burning Blood, Calipers, Paper Phrog
 CAUSE OF DEATH: 3 Cultists at 45 HP (~53% entry). Ritual scaling (+9 combined Str/turn) outpaced blocking despite Impervious+ and Calipers. No healing card found all run -- Burning Blood +6/fight insufficient for Act 2 HP attrition.
 KEY MOMENTS: (1) Beat Hexaghost in Act 1. (2) Second Spheric Guardian survival -- only 20 HP lost, using Immolate + Impervious+ + Calipers + Spot Weakness. SG playbook strategies now confirmed working. (3) Calipers + Impervious+ retained 25 block between turns, strong defensive combo. (4) Paper Phrog amplified Vulnerable damage (75% vs 50%). (5) Looter/Mugger fight drained 25 HP, combined with SG's 20 HP drain, entered 3 Cultists at 53%. (6) Headbutt caused grid interaction misplays (unknown UI issue). (7) No healing card (Reaper/Feed) offered entire run.
 LESSONS: 29th death. Confirms Burning Blood alone cannot sustain Act 2 (pattern holds across 10+ runs). SG survival now consistent (2 consecutive survivals). Calipers + Impervious+ is a strong defensive combo but cannot compensate for cumulative HP loss without healing. 3 Cultists Ritual scaling confirmed dangerous even with strong block tools -- kill speed is the bottleneck, not defense. New playbook entry: Calipers relic.
+
+## Runs 81-90 Summary
+
+5 logged deaths (Runs 81, 84, 87, 90, plus unlogged runs). Average death floor: 28.0. All deaths in Act 2.
+- Run 081 (F33): Best floor in this batch. Deck had Reaper from Neow. Guardian beaten cleanly.
+- Run 084 (F27): Guardian boss, died Act 2.
+- Run 087 (F28): Hexaghost boss, Neow Lament (1 HP enemies x3). Died Act 2.
+- Run 090 (F24): Slime Boss, Feed from Neow. Died Act 2.
+Shop indexing bug continued to affect some of these runs. Pattern unchanged: Act 1 solved, Act 2 is the wall.
+
+## Runs 91-100 Summary (100-RUN MILESTONE)
+
+5 logged deaths. Average death floor: 24.8. All deaths in Act 2 (floors 21-31).
+- Run 091 (F24): Reaper+, Thunderclap+, Metallicize, Demon Form, Brimstone. Died to Book of Stabbing elite at 28% HP. Brimstone anti-synergy made BoS damage unsurvivable. Snake Plant drained HP from 83% to 28% before elite.
+- Run 093 (F23): Duplicate log data with Run 091 (same Neow blessing, same boss, same events -- likely a log corruption or identical seed).
+- Run 096 (F21): Hexaghost boss, Bash+ from Neow. Immolate, Impervious+, Disarm, Iron Wave. Died to 3 Cultists hallway fight at 52% HP. Fifth confirmed death to this encounter. Threshold revised to 60%.
+- Run 098 (F25): Guardian boss. Died to Gremlin Leader elite at 55% HP. No Strength scaling, shop bug bought wrong card (Pummel instead of Pommel Strike). Eternal Feather healing not enough.
+- Run 100 (F31): Best floor in batch. Strong Str deck (Brimstone, Inflame+, Spot Weakness+, Rampage+, Flame Barrier+, Champion Belt). Beat Gremlin Leader elite. Died to Book of Stabbing at 75% HP -- Brimstone gave Book +2 Str/turn, making turn 5 damage ~102. Even strong Str scaling could not outrace quadratic enemy damage growth.
+
+KEY FINDINGS AT 100 RUNS:
+1. Floor average has plateaued at 25-26 for 40+ runs. System is not improving through knowledge alone.
+2. Brimstone anti-synergy with Book of Stabbing is the single most impactful new finding -- 2 of 5 recent deaths.
+3. 3 Cultists threshold proven insufficient at 50-53% HP -- revised to 60%.
+4. Shop indexing bug fixed (CommunicationMod purge offset). Should see cleaner decks going forward.
+5. Boss relic collection bug remains unresolved (2 occurrences in runs 71, 77).
+6. The bottleneck is no longer knowledge but EXECUTION -- specifically map pathing to avoid consecutive combats at low HP.
