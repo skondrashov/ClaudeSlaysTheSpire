@@ -51,6 +51,7 @@
 - [Intimidate](intimidate.md)
 - [Ghostly Armor](ghostly-armor.md)
 - [Power Through](power-through.md)
+- [Bloodletting](bloodletting.md)
 - [Seeing Red+](seeing-red.md)
 - [Armaments](armaments.md)
 - [Second Wind](second-wind.md)

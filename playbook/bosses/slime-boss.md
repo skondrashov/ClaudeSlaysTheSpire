@@ -15,6 +15,7 @@ PREPARATION CHECKLIST:
 1. AOE for the split (Thunderclap, Whirlwind, Cleave) -- MANDATORY. Without AOE, you must single-target each of 4+ enemies after both large slimes split. Confirmed death in Run 70: no AOE was ever offered, and single-target damage could not keep up with Slimed card generation from multiple enemies.
 2. Burst single-target to kill one slime fast (Fiend Fire, Carnage+)
 3. Exhaust tools for Slimed cards (Fiend Fire turns Slimed into 7 damage each, True Grit+, Burning Pact, Feel No Pain converts exhaust into 3 block each). Without exhaust tools, Slimed cards clog the hand (3 of 5 cards being Slimed observed), leaving only 2 playable cards per turn.
+3b. Feed+ for massive Max HP gain. Slime Boss split creates multiple kill-eligible enemies (large slimes, medium slimes). Feed+ on each kill = +4 Max HP per kill. Confirmed: +22 Max HP from a single Slime Boss fight with Feed+, reaching 98 Max HP from 80 base. This is the best Feed fight in Act 1.
 4. Enough block/HP to survive 2-3 turns of 25-36 combined damage
 5. At least 1 upgrade before the fight. Zero upgrades makes the fight dramatically harder -- unupgraded Bash provides only 2 turns of Vulnerable instead of 3, and all damage/block cards are weaker.
 

@@ -4,7 +4,7 @@ Items pending confirmation or further investigation. Promote to playbook when co
 
 ## Promoted (archived — already in playbook)
 
-Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshold, Disarm vs Slime Boss split, Corruption + Dead Branch synergy, Corruption setup cost trap, Mugger enemy, Looter + Mugger pairing, Dead Branch relic, Wing Boots relic, Pantograph 25 HP correction, The Champ boss + Execute mechanic, Dark Shackles card, Maw Bank relic, Spheric Guardian block growth rate, Spot Weakness+ upgrade, Rage+ per-turn expiration, Blood for Blood cost reduction, Barricade (player card), Fiend Fire in Cultist+Chosen multi-fights, Heavy Blade damage formula, Blessing of the Forge, Spheric Guardian Frail application, Eternal Feather relic, Oddly Smooth Stone relic, Masked Bandits event, Gremlin Leader Rally +3 Str ALL (2x confirmed), Uppercut+ upgrade (2 Weak + 2 Vuln confirmed), Spheric Guardian 4th death + Demon Form insufficient, Uppercut+ Artifact stripping vs SG confirmed.
+Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshold, Disarm vs Slime Boss split, Corruption + Dead Branch synergy, Corruption setup cost trap, Mugger enemy, Looter + Mugger pairing, Dead Branch relic, Wing Boots relic, Pantograph 25 HP correction, The Champ boss + Execute mechanic, Dark Shackles card, Maw Bank relic, Spheric Guardian block growth rate, Spot Weakness+ upgrade, Rage+ per-turn expiration, Blood for Blood cost reduction, Barricade (player card), Fiend Fire in Cultist+Chosen multi-fights, Heavy Blade damage formula, Blessing of the Forge, Spheric Guardian Frail application, Eternal Feather relic, Oddly Smooth Stone relic, Masked Bandits event, Gremlin Leader Rally +3 Str ALL (3x confirmed), Uppercut+ upgrade (2 Weak + 2 Vuln confirmed), Spheric Guardian 4th death + Demon Form insufficient, Uppercut+ Artifact stripping vs SG confirmed, Spheric Guardian first survival (Corruption + FNP engine), Feed+ multi-kill Max HP gain (+22 from Slime Boss), Bloodletting card, Battle Trance sequencing warning, Fairy in a Bottle elite consumption timing, Intimidate upgrade (2 Weak), Gremlin Leader turn economy + Rally scaling math.
 
 ## Unconfirmed
 
@@ -26,7 +26,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Corruption + Second Wind interaction: Does Second Wind exhaust itself under Corruption?
 - Vampires Max HP loss exact formula: Observed 80->56 (-24, 30% loss). Fixed amount or percentage?
 - Bite upgrade: Does Bite have an upgraded version?
-- Gremlin Leader summoning pattern: Re-summoning trigger unconfirmed. Rally +3 Str to ALL confirmed across two runs.
+- Gremlin Leader summoning pattern: Re-summoning trigger unconfirmed. Rally +3 Str to ALL confirmed across three runs. Third data point: at 56% HP entry, wasted turn 3 (Battle Trance sequencing error) allowed Rally to stack to +9 Str by turn 7-8, producing 44+ damage/turn.
 - Horn Cleat block amount: Observed 14 block on turn 2. Always 14 or scaling?
 - Slaver's Collar source: How is this relic obtained?
 - Wheel of Change full outcome table: Observed "Lose 8 HP" and "Heal to full." Other outcomes unknown.
@@ -48,6 +48,9 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Dark Embrace + Second Wind interaction: Draw happens after all exhausts resolve.
 - Match and Keep card pool: Class-specific or random?
 - Feel No Pain block and Frail interaction: Is FNP block reduced by Frail?
+- Spheric Guardian first survival: Corruption + FNP + burst damage won with 12 HP lost. Exact card sequence and turn count not logged. Need to confirm which specific burst cards broke through Barricade block.
+- Feed+ Max HP gain from Slime Boss: +22 Max HP confirmed (80->98). How many individual kills produced this? Slime Boss split yields up to 7 kill-eligible enemies (boss pre-split doesn't count since it splits, so: 2 large slimes + 4 medium slimes = 6 kills max at +4 each = +24). The +22 suggests 5-6 kills with Feed+.
+- Battle Trance + turn() sequencing: Batching draw effects with `end` wastes drawn cards. This is an automation/command issue, not a card evaluation issue. Applies to all draw effects (Pommel Strike draw, Shrug It Off draw) but most critical with Battle Trance (3-4 cards drawn = 3-4 cards wasted).
 - Frail interaction with Rage block: Is Rage block reduced by Frail?
 - Bronze Automaton Stasis targeting: Random or preferential?
 - Bronze Automaton Hyper Beam exact damage: Very high single-hit. Need exact number.
@@ -60,6 +63,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - True Grit+ exhausting Spot Weakness: Strategic error -- exhaust low-value cards first.
 - Demon Form too slow vs Spheric Guardian: Demon Form reached 13 Str by turn 9 but Barricade block was already 65+. Front-loaded Strength is required for this fight.
 - Zero potion runs in Act 2: Run 75 had zero potions for entire Act 2. No drops, no purchases. Contributes directly to Spheric Guardian death -- a single Strength or Fire potion may have changed the outcome.
+- Battle Trance + `end` batching error: Turn 3 of Gremlin Leader fight, Battle Trance + Bloodletting + `end` were batched together. Drew cards and generated energy, then immediately ended turn. The drawn cards and energy were completely wasted. This cost an entire turn against a Rally-scaling enemy, contributing directly to death. This is a command/automation sequencing issue.
 
 ## Recurring Patterns (for strategist review)
 
