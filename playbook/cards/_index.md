@@ -46,6 +46,7 @@
 - [Impervious](impervious.md)
 - [Burning Pact](burning-pact.md)
 - [Battle Trance](battle-trance.md)
+- [Dark Shackles](dark-shackles.md)
 - [Disarm](disarm.md)
 - [Intimidate](intimidate.md)
 - [Ghostly Armor](ghostly-armor.md)

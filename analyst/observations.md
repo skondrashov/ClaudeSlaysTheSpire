@@ -18,8 +18,20 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Dead Branch relic: PROMOTED TO PLAYBOOK. Documented in relics/dead-branch.md.
 - Wing Boots relic: PROMOTED TO PLAYBOOK. Documented in relics/wing-boots.md.
 
+## Promoted from Run 71
+
+- Pantograph heals 25 HP, not full HP: PROMOTED TO PLAYBOOK. Previous entry incorrectly stated "Heal to FULL HP." Corrected in relics/pantograph.md. Earlier runs where Pantograph appeared to fully heal were likely cases where the HP deficit was small enough that 25 HP brought the player near max.
+- The Champ boss: PROMOTED TO PLAYBOOK. New entry created at bosses/the-champ.md. Execute mechanic documented: at ~50% HP, cleanses all debuffs, gains +8 Str and Metallicize 5.
+- Dark Shackles card: PROMOTED TO PLAYBOOK. New entry created at cards/dark-shackles.md. 0E Skill, temporary Strength reduction, Exhaust.
+
 ## Unconfirmed
 
+- Boss relic collection automation issue: In Run 71, a `proceed` command after Act 1 boss auto-collected the chest without showing boss relic selection options. This potentially cost a run-defining boss relic. May be a CommunicationMod or automation issue. Needs investigation -- is the boss relic choice screen being skipped, or is it presenting and auto-selecting?
+- The Champ Execute exact HP threshold: Believed to be ~50% HP. Exact percentage or HP amount unconfirmed. Need more encounters to pin down the exact trigger.
+- The Champ Execute Metallicize value: Observed as Metallicize 5. Need second data point to confirm this is consistent.
+- The Champ Execute Strength gain: Observed as +8 Strength. Need second data point to confirm consistency.
+- The Champ total HP: Not precisely recorded. Need exact HP from a future encounter.
+- Dark Shackles exact Strength reduction amount: Reduces enemy Strength for 1 turn. Exact reduction amount not confirmed -- believed to match a fixed value or scale. Need precise observation.
 - Golden Idol effect: Believed to increase gold earned by 25%. Taken but effect never directly measured.
 - Odd Mushroom relic effect: Acquired in Run 4. Possibly +1 Dex or modifies Vulnerable. Never confirmed.
 - Maw Bank relic effect: PROMOTED TO PLAYBOOK. Confirmed: 12 gold per non-shop floor, disabled when spending gold at shop.
@@ -43,7 +55,7 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Wheel of Change full outcome table: Observed "Lose 8 HP" and "Heal to full health" as outcomes. Other possible outcomes unknown -- could include gold, card rewards, curses, relics. Need more data points to build a complete decision framework.
 - Gremlin Horn exact trigger timing: Observed +1E and draw 1 on enemy death. Does it trigger on ALL enemy deaths including minion summons dying? Does it work with Torch Head deaths in Collector fight?
 - Whetstone upgrade targeting: Described as "2 random Attack cards." Are Strikes included in the pool? Can it upgrade already-upgraded cards (no effect)?
-- Heavy Blade exact damage formula: Confirmed 14 + Str*3 (unupgraded). At Str 1: 14+3=17. At Str 3: 14+9=23. Upgraded formula believed to be 14 + Str*5 but not yet observed in upgraded form.
+- Heavy Blade exact damage formula: Confirmed 14 + Str*3 (unupgraded). At Str 1: 14+3=17. At Str 3: 14+9=23. Upgraded formula confirmed as 14 + Str*5 (used with Demon Form+ in Run 71 as core scaling engine against The Champ). PROMOTED TO PLAYBOOK: documented in cards/heavy-blade.md.
 
 - Transient exact damage pattern: Turn 1 attack ~22, Turn 2 attack ~38 (with Str accumulation). Exact per-turn Strength gain unknown. Need more data points. Disarm (-2 Str) + Disarm+ (-3 Str) + Shockwave+ (Weak 3) reduced Turn 2 from ~38 to ~26 but still lethal at 15 HP.
 - Writhing Mass exact HP: Observed ~160 HP. Exact amount not confirmed.
@@ -80,6 +92,8 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - Rage+ misunderstood as permanent: Player played Rage+ on Turn 1 of Spheric Guardian fight and assumed it would provide 5 block per attack for the entire combat. On Turn 5, player explicitly planned around Rage block (wrote "Rage(5 from Strike) + Rage(5 from Iron Wave)"), but the block never appeared because Rage had expired on Turn 1. This directly caused the death -- 6 block vs 10 incoming at 1 HP. FATAL prediction error. CORRECTED in playbook: Rage+ expires at end of turn, documented in cards/rage.md.
 - True Grit+ exhausting Spot Weakness: Player exhausted Spot Weakness on Turn 1 of Spheric Guardian fight, reasoning "cant trigger this turn, deck thinning is valuable." This removed the only Strength scaling option for the entire fight. In hindsight, Spot Weakness's permanent +3 Str was critical for breaking through Barricade block. Strategic error -- exhaust Strikes and Defends before situational but powerful cards.
 
+- Pantograph full heal assumption: FATAL prediction error. Playbook stated Pantograph "heals to FULL HP." Player entered The Champ at 49/87 HP expecting to heal to 87/87. Pantograph healed only 25 HP (to 74/87). The 13 HP shortfall (87-74=13) combined with The Champ's post-Execute damage caused death at 7 HP. If the player had known the actual heal amount, they could have prioritized healing before the boss or adjusted strategy. CORRECTED in playbook: relics/pantograph.md now states 25 HP. Previous "full heal" observations from Runs 63 were likely small deficits where 25 HP happened to bring HP near max (e.g., entering at 55/80 = 25 deficit = healed to 80).
+
 - Corruption played into multi-enemy fight without block: FATAL prediction error. Player played Corruption (3E) on turn 1 against Looter + Mugger, leaving zero energy for Defend. Combined enemy damage was 20+ unblocked. The player likely assumed the Corruption + Dead Branch engine would generate enough value to compensate, but the engine requires at least one full turn of Skill plays to start generating cards. The setup turn is a pure tempo loss. This is the same category of error as playing Barricade (3E) into active enemies -- expensive Powers must wait for free turns or require energy surplus. ADDRESSED in playbook: corruption.md updated with SETUP COST TRAP section.
 
 - Feel No Pain block and Frail interaction: Does Frail reduce FNP's 3 block per exhaust? FNP is a Power effect, not a card play. Frail says "block gained from cards is reduced by 25%." If FNP block is classified as "from a Power trigger" rather than "from a card," it would be unaffected by Frail. This matters in Slime Boss fights where Spike Slime L applies Frail. Needs in-game testing.
@@ -113,4 +127,5 @@ Items pending confirmation or further investigation. Promote to playbook when co
 - **Brutality in long fights:** ADDRESSED in Strategist Review 3 — moved to player.md Hard Rule #6. Confirmed death at full HP (Run 72) from Brutality self-damage over 6 turns. Also played vs Book of Stabbing in Run 65 (generated by Enchiridion). Monitor future runs for compliance.
 - **Exhausting key cards (Spot Weakness, Shockwave+):** ADDRESSED in Strategist Review 3 — moved to player.md Hard Rule #7. Run 72: Spot Weakness exhausted via True Grit+ on turn 1 of Spheric Guardian fight. Run 69: Second Wind exhausted Shockwave+, True Grit+, and Defend+. Both directly caused deaths. Monitor future runs.
 - **Spheric Guardian as top killer (3 deaths):** ADDRESSED in Strategist Review 3 — strategy.md updated with Strength scaling requirement. Spheric Guardian now tied with 3 Cultists for most lethal encounter. Unknown rooms in Act 2 are the primary spawn source (all 3 deaths from Unknown rooms). Monitor future encounters.
+- **Boss relic collection skipped (Run 71):** A `proceed` command after the Act 1 boss auto-collected the chest without presenting boss relic selection. This may be a CommunicationMod or command-handling issue. If the player is not offered a boss relic choice, every run after Act 1 misses a critical power spike. Needs investigation and possible fix in the automation layer.
 - **3E Power setup deaths (Corruption, Barricade):** Run 73: Corruption (3E) played turn 1 into Looter + Mugger, zero block, died to 20+ unblocked. Run 72: Barricade (3E) taken but never played due to no free turns. Pattern: 3E Powers that provide no immediate block or damage are unplayable into active enemies without energy surplus. The player must either upgrade them to reduce cost, wait for a free turn, or have 4+ energy. This is now a recurring pattern across multiple cards. Consider adding a Hard Rule: "Never play a 3E Power on turn 1 unless the enemy intent is non-damaging."

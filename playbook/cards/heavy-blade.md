@@ -9,6 +9,7 @@ DECISION POINTS: Only take when the deck already has or is building toward Stren
 UPGRADE PRIORITY: High in Strength decks. 3x to 5x Strength multiplier is transformative. At Strength 6: unupgraded = 32 damage, upgraded = 44 damage. The upgrade adds 12 damage at Str 6, scaling further with each additional Strength point.
 
 SYNERGIES:
+- **Demon Form+** -- the strongest sustained synergy. Demon Form+ adds +3 Str/turn. Heavy Blade+ multiplies Strength by 5x. By turn 4 of Demon Form+ (+12 Str), Heavy Blade+ deals 14 + 60 = 74. By turn 6 (+18 Str): 14 + 90 = 104. This is the core Ironclad boss-killing engine.
 - **Limit Break+** -- doubling Strength before Heavy Blade creates exponential damage. Str 3 -> Limit Break -> Str 6 -> Heavy Blade = 32 damage. Next cycle: Str 12 -> Heavy Blade = 50 damage.
 - **Double Tap** -- plays Heavy Blade twice for one card play. At Str 6: 32 x 2 = 64 damage for 3E total.
 - **Spot Weakness** -- +3 Str on attack turns directly feeds Heavy Blade's multiplier.
