@@ -5,6 +5,8 @@ UPGRADE: 30->40 block. High priority. The extra 10 block is the difference betwe
 
 WHEN IT'S GOOD: Against the biggest attack of the fight. Guardian's 32-damage attack (take only 2 unupgraded, 0 upgraded). Hexaghost Inferno. Transient's escalating attacks. Collector's post-debuff turns. Any fight where one turn has dramatically higher incoming damage than others.
 DECISION POINTS: Save for the biggest incoming hit. Using 30-40 block on a 16-damage turn is wasteful -- Defends handle that. One-time use means timing matters. Against Gremlin Nob, do NOT play (Skill triggers Enrage).
+
+TIMING DISCIPLINE (CONFIRMED, Run 107): Impervious was played on a 16-damage Sharp Hide turn (turn 6 of the Guardian fight). This wasted 14 block (30 - 16 = 14 surplus). Later, when the 32-damage attack came, Impervious was already exhausted. The player had to block with Corruption+-free Skills that then exhausted, contributing to the death at Guardian 10/240 HP. RULE: In the Guardian fight, NEVER play Impervious on Sharp Hide attacks (9-16 damage) or 5x4=20 attacks unless you would die otherwise. Save it for the 32-damage single hit. Calculate: "If I don't play Impervious now, will I die? If yes, play it. If no, save it." Regular Defends and Shrug It Off handle 16-damage turns adequately.
 MATCHUPS: 
 - Guardian -- absorbs the 32-damage attack completely (upgraded takes 0).
 - Gremlin Leader -- turn 1 opener for 30-40 block safety.

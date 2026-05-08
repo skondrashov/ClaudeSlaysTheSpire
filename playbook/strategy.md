@@ -5,7 +5,7 @@ High-level strategic principles for Ironclad runs.
 **CURRENT BOTTLENECK (105-run milestone):** Block scaling gap in Act 2 boss decks. Run 105 reached the Act 2 boss (Bronze Automaton) for the first time in recent memory -- all three Act 2 readiness criteria (AOE, Strength, Healing) were met. But the deck had only basic Defends for block (4x 5 block = 20 max). Hyper Beam dealt 38 damage, which is unsurvivable with basic Defends alone. The Act 2 readiness checklist now requires a 4th criterion: block scaling. Secondary bottleneck: Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting effective burst by ~17% in DPS-race fights.
 
 **SCORECARD (runs 81-105):**
-- Act 1 boss wins: ~99% -- Run 103 died to Guardian Floor 16 (Pandora's Box removed all Defends, no block cards available)
+- Act 1 boss wins: ~97% -- Run 103 died to Guardian Floor 16 (Pandora's Box removed all Defends), Run 107 died to Guardian Floor 16 (Corruption+ exhausted all block Skills mid-fight)
 - Act 2 deaths: 10/10 logged deaths -- still the wall (floors 21-33)
 - Average death floor: 26.5 (Run 105 reached Floor 33 -- Act 2 boss! Best recent result)
 - 3 Cultists: 2 deaths (at 52% and 53% HP -- threshold revised to 60%)
@@ -231,6 +231,7 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - Burst damage for Mode Shift (Bludgeon at 32-48, Carnage+ at 28-42)
 - Enough cards to last 12+ turns (do NOT over-exhaust)
 - **Avoid exhaustion-heavy strategies.** Fiend Fire + Dark Embrace creates a thin deck by mid-fight. Block density on 32-damage turns (turns 8-12) drops below survivable thresholds when the deck thins to 8-10 cards. Use Fiend Fire on free turns or for burst, never as the primary deck engine.
+- **Do NOT play Corruption/Corruption+ without Dead Branch or Feel No Pain.** Run 107: Corruption+ played turn 9, all Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards remaining. Corruption is a trap in 14-turn fights -- the energy savings do not compensate for losing all block in the second half. This is now the SECOND Guardian death from block-density collapse (Run 103: Pandora's Box, Run 107: Corruption+).
 
 **Hexaghost needs:**
 - Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) -- MANDATORY
