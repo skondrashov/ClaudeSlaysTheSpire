@@ -2,21 +2,18 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (105-run milestone):** Block scaling gap in Act 2 boss decks. Run 105 reached the Act 2 boss (Bronze Automaton) for the first time in recent memory -- all three Act 2 readiness criteria (AOE, Strength, Healing) were met. But the deck had only basic Defends for block (4x 5 block = 20 max). Hyper Beam dealt 38 damage, which is unsurvivable with basic Defends alone. The Act 2 readiness checklist now requires a 4th criterion: block scaling. Secondary bottleneck: Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting effective burst by ~17% in DPS-race fights.
+**CURRENT BOTTLENECK (110-run milestone):** Surviving Act 2 boss fights. The F25-26 plateau is BROKEN -- two consecutive Act 2 boss reaches (Runs 105 and 110, both Floor 33). The 4-criteria readiness checklist is working: decks are arriving at the boss well-prepared. The failures are now boss-specific: Run 105 died to Bronze Automaton (block scaling gap -- only basic Defends vs 38-damage Hyper Beam). Run 110 died to The Collector (57% HP entry vs required 70% -- Colosseum event drained HP before boss). Two key cards are disproportionately important for Act 2 boss survival: Impervious (absorbs the biggest hit of any boss fight) and Shockwave+ (mass debuff reduces combined incoming from multi-enemy bosses by 25%).
 
-**SCORECARD (runs 81-110):**
-- Act 1 boss wins: ~97% -- Run 103 died to Guardian Floor 16 (Pandora's Box removed all Defends), Run 107 died to Guardian Floor 16 (Corruption+ exhausted all block Skills mid-fight)
-- Act 2 deaths: 10+ logged deaths -- still the wall (floors 21-33)
-- Average death floor: ~27 (Runs 105 and 110 both reached Floor 33 -- Act 2 boss!)
-- 3 Cultists: 2 deaths (at 52% and 53% HP -- threshold revised to 60%)
-- Book of Stabbing: 3 deaths (2 with Brimstone anti-synergy)
-- Gremlin Leader: 2 deaths (at 55% and 56% HP)
-- Bronze Automaton: 1 death (Run 105, Floor 33 -- block scaling gap, only basic Defends)
-- The Collector: 1 death (Run 110, Floor 33 -- entered at 57% HP, below 70% threshold. Missing Impervious and Shockwave+.)
+**SCORECARD (runs 101-110):**
+- Act 1 boss wins: ~80% -- Run 103 died to Guardian F16 (Pandora's Box removed all Defends), Run 107 died to Guardian F16 (Corruption+ exhausted block Skills -- now Hard Rule #9)
+- Act 2 boss reaches: 2 (Runs 105 and 110, both Floor 33) -- BREAKTHROUGH
+- Act 2 hallway deaths: reduced from prior batches
+- Bronze Automaton: 1 death (Run 105 -- block scaling gap, only basic Defends)
+- The Collector: 1 death (Run 110 -- 57% HP entry, missing Impervious and Shockwave+)
 - Hard Rule violations: 0
-- Best floor: 39 (Run 63, Act 3 death) -- unchanged since run 63
-- Shop indexing bug: FIXED. Boss relic skip bug: UNRESOLVED (2 occurrences)
-- MILESTONE: Runs 105 and 110 are consecutive Act 2 boss reaches -- a TREND. Act 2 readiness criteria (AOE, Str, Healing, Block scaling) are working. The bottleneck is now boss fights themselves: Run 105 died to block gap vs Bronze Automaton, Run 110 died to HP threshold vs Collector. Both deaths had strong decks but failed specific boss requirements (block scaling, HP entry threshold).
+- Best floor: 39 (Run 63) -- unchanged but system is now reliably reaching F33
+- Shop indexing bug: FIXED. Boss relic skip bug: UNRESOLVED (2 occurrences, not seen in 101-110)
+- MILESTONE: Two consecutive Act 2 boss reaches confirm the 4-criteria readiness system works. Bottleneck has shifted from Act 2 hallways to Act 2 boss fights.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **Trace full paths before every map choice.** Before choosing any path, trace EVERY option forward to the next rest/shop. Count forced combats. Choose fewer combats. This is the #1 structural fix -- the majority of deaths result from entering fights at sub-threshold HP because the path forced consecutive combats. Say the count aloud: "Path A: 3 combats to rest. Path B: 1 combat to rest."
@@ -130,7 +127,7 @@ By the time the Act 1 boss is dead, the deck needs ALL FOUR of these or it will 
 1. **Front-loaded Strength**: Inflame, Spot Weakness, or Corruption+FNP engine. NOT Demon Form alone (too slow for hallway fights -- confirmed in 2 SG deaths). If no Strength source exists by Floor 12, take the next one offered over any other card.
 2. **AOE damage**: Thunderclap, Cleave, Immolate, or Whirlwind. Required for Gremlin Leader (gremlins re-summon, AOE clears them efficiently), Slime Boss split, and 3 Cultists. Two Gremlin Leader deaths had zero AOE.
 3. **Healing beyond Burning Blood**: Reaper, Feed, or multiple healing potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.
-4. **Block scaling beyond basic Defends**: Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, or True Grit+. Basic Defends provide only 5 block each (20 block from a full hand of 4). Act 2 boss Hyper Beam deals 38-45 damage -- unsurvivable with basic Defends alone. Even Act 2 hallway fights (Book of Stabbing turn 5: 6x6=36) outscale basic Defends. Run 105 had criteria 1-3 fully met but died to Hyper Beam because the deck's only block was 4 basic Defends. This is now confirmed as a mandatory criterion.
+4. **Block scaling beyond basic Defends**: Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, or True Grit+. Basic Defends provide only 5 block each (20 block from a full hand of 4). Act 2 boss Hyper Beam deals 38-45 damage -- unsurvivable with basic Defends alone. Even Act 2 hallway fights (Book of Stabbing turn 5: 6x6=36) outscale basic Defends. Run 105 had criteria 1-3 fully met but died to Hyper Beam because the deck's only block was 4 basic Defends. **Impervious is the highest-priority block scaling card** -- 30 block (40 upgraded) handles the biggest hit from ANY Act 2 boss. If Impervious is offered, take it.
 
 If missing 2+ of these entering Act 2, the run is in serious danger. Shift to conservative pathing (avoid elites, path through shops and rest sites, skip unknown rooms).
 
@@ -265,6 +262,21 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - Shockwave+ -- mass Weak+Vulnerable on both
 - Block density for 10+ turn fight
 - Kill Donu first (prevents Strength scaling for both)
+
+### Act 2 Boss Survival (THE NEW BOTTLENECK)
+
+The system now reliably reaches Act 2 bosses. The challenge is surviving them. Two deaths (Runs 105 and 110) reveal the requirements:
+
+**Key cards for Act 2 boss survival (prioritize in Act 2 card rewards and shops):**
+1. **Impervious** -- The single most impactful defensive card for Act 2 bosses. 30 block (40 upgraded) absorbs Hyper Beam (38 dmg), Collector post-debuff turns (37+ dmg), and Champ Execute burst. Both Act 2 boss deaths (Runs 105, 110) would have been different with Impervious in the deck. If offered in Act 2, TAKE IT over almost any other card.
+2. **Shockwave+** -- Mass Weak 3 + Vuln 3 to ALL enemies. Reduces combined incoming from multi-enemy bosses (Collector + Torch Heads, Automaton + Orbs) by 25% for 3 turns while boosting all damage by 50%. The highest-value single play in Act 2 boss fights.
+3. **Disarm** -- Permanent Strength reduction. Play Turn 1 against Collector or Champ for maximum cumulative value.
+
+**Pre-boss HP preservation (last 2-3 floors before Act 2 boss):**
+- The 70% HP threshold for Act 2 bosses is NON-NEGOTIABLE. Run 110 died because Colosseum event drained HP to 57% before the boss.
+- Treat Unknown rooms in the last 2-3 floors before the boss as potential HP drains (Colosseum forces combat, Juzu Bracelet does NOT prevent it).
+- Rest over upgrade if below 70% HP at the pre-boss rest site. The upgrade is worthless if you die to the boss.
+- Skip card rewards and event risks in the last 2-3 floors. HP preservation is the only priority.
 
 ### Save One-Use Cards for Bosses
 

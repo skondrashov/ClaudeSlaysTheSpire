@@ -69,10 +69,12 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Zero potion runs in Act 2: Run 75 had zero potions for entire Act 2. No drops, no purchases. Contributes directly to Spheric Guardian death -- a single Strength or Fire potion may have changed the outcome.
 - Battle Trance + `end` batching error: Turn 3 of Gremlin Leader fight, Battle Trance + Bloodletting + `end` were batched together. Drew cards and generated energy, then immediately ended turn. The drawn cards and energy were completely wasted. This cost an entire turn against a Rally-scaling enemy, contributing directly to death. This is a command/automation sequencing issue.
 - Snake Plant damage was documented as 7x3 but observed as 9x3 in Run 77. Playbook corrected. Previous HP drain estimates were understated.
-- Brimstone + Book of Stabbing anti-synergy: PROMOTED. Confirmed across 2 deaths (Runs 091, 100). Brimstone purchase checklist added to relics/brimstone.md. Strategy.md Act 2 elite ranking updated. Book of Stabbing elevated to #1 elite killer.
+- Brimstone + Book of Stabbing anti-synergy: PROMOTED. Confirmed across 2 deaths (Runs 091, 100). 
+- 3 Cultists threshold revision: PROMOTED. Five deaths confirmed. Threshold revised to 60%.
+- Calipers + Impervious+ combo: PROMOTED. Confirmed strong in Spheric Guardian fight. Documented in impervious.md.
+- Corruption vs Guardian trap: PROMOTED. Run 107 death confirmed. Now Hard Rule #9.
+- Impervious timing discipline (Guardian): PROMOTED. Run 107 wasted Impervious on 16-damage turn. Documented in impervious.md and guardian.md.
 - Headbutt grid interaction: Headbutt's discard-pile selection UI caused misplays in Run 78. Unknown mechanism -- possibly related to grid/list index confusion similar to shop bug. Needs investigation if it recurs.
-- Calipers + Impervious+ combo: Impervious+ (40 block) retains 25 block next turn with Calipers. Confirmed strong in Spheric Guardian fight (absorbed 10x2 attack turns with carried-over block). Single data point -- monitor for additional confirmation.
-- 3 Cultists threshold revision: PROMOTED. Five deaths confirmed (30%, 37%, 39%, 52%, 53%). Threshold revised from 50% to 60% in strategy.md. Kill speed (AOE burst) matters more than block density against Ritual scaling.
 
 ## Recurring Patterns (for strategist review)
 
@@ -85,6 +87,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Brutality in long fights: ADDRESSED (Hard Rule #6). Monitor.
 - Exhausting key cards: ADDRESSED (Hard Rule #7). Monitor.
 - 3E Power setup deaths: ADDRESSED (Hard Rule #8). Two deaths (Run 72 Barricade unplayable, Run 73 Corruption fatal). Monitor.
+- Corruption vs Guardian: ADDRESSED (Hard Rule #9). One death (Run 107). Monitor.
 - Boss relic collection skipped (Run 71, Run 77): Confirmed recurring automation bug (2 occurrences). STILL UNRESOLVED as of Run 100. HIGH PRIORITY infrastructure investigation needed.
 
 ## Open Questions

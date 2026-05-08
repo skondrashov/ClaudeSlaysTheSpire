@@ -22,6 +22,8 @@ These rules have been validated across 60+ runs. Violating any of them has direc
 
 8. **NEVER PLAY a 3-cost Power (Corruption, Barricade, Demon Form) on turn 1 when enemies are attacking UNLESS you have 4+ energy.** Spending 3 of 3 energy on a Power leaves zero energy for block. Combined incoming from multi-enemy fights is 20+ unblocked damage. One confirmed death from playing Corruption (3E) turn 1 into Looter + Mugger with zero block. Wait for a free turn (enemy buffing/defending) or upgrade the Power to reduce its cost. The only exception is Demon Form into a single enemy whose turn 1 attack is survivable at current HP.
 
+9. **NEVER PLAY Corruption or Corruption+ against The Guardian UNLESS Dead Branch or Feel No Pain is in play.** The Guardian fight lasts 14+ turns. Corruption exhausts every Skill you play. Run 107: Corruption+ played turn 9, all block Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards. The energy savings do not compensate for losing all block in the second half of a 14-turn fight. Dead Branch replaces exhausted cards. Feel No Pain generates 3 block per exhaust. Without either, Corruption is a death sentence against Guardian.
+
 ## Setup
 
 ```python
@@ -151,7 +153,8 @@ Think about what your deck needs, not just whether a card is generically "good."
 - Do I have front-loaded Strength? (Inflame, Spot Weakness -- NOT just Demon Form)
 - Do I have AOE? (Thunderclap, Cleave, Immolate, Whirlwind)
 - Do I have healing beyond Burning Blood? (Reaper, Feed)
-If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. Missing all three entering Act 2 has been the #1 cause of death in recent runs.
+- Do I have block scaling beyond basic Defends? (Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor, True Grit+)
+If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. The 4-criteria checklist has proven effective: two consecutive Act 2 boss reaches when all criteria were met.
 
 ### Rest Sites
 - **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is below 35% in Act 1 or below 50% in Act 2. See Hard Rule #3.

@@ -25,8 +25,18 @@ STRATEGY:
 - **Race the Strength scaling**: +3 Str/cycle means every turn the fight extends, incoming damage grows. By turn 6, attacks deal 15-20+ more than their base. Prioritize damage output over conservative blocking once Artifact is stripped and Vulnerable is applied.
 - **Post-Hyper Beam burst**: After Hyper Beam fires, the Automaton loses all block. This is the burst window. Bludgeon + Vulnerable = 48+ damage. Double Tap + Bludgeon = 96+. Maximize damage output on this turn.
 
+RUN 105 DEATH CASE STUDY (DEFEAT, Floor 33):
+- Entered at 92/92 (Pantograph healed to full). Deck met 3 of 4 readiness criteria: Thunderclap+ (AOE), Spot Weakness (Str), Feed+ (Healing). MISSING: block scaling beyond basic Defends.
+- Artifact stripping executed correctly: Thunderclap+ (x2) + Bash+ stripped all 3 Artifacts by turn 3. Shockwave+ applied Weak 3 + Vuln 3 on turn 4.
+- Hyper Beam dealt 38 damage on turn 6. With only basic Defends (4x5=20 max block), absorbed only 5 block. Dropped to 7 HP.
+- Post-Hyper Beam stun turn: dealt 37 damage to Automaton (300->200 HP) but at 7 HP with no recovery.
+- Turn 8: 24 incoming with only 5 block available. Dead.
+- **ROOT CAUSE**: Zero block scaling cards (no Shrug It Off, no Flame Barrier, no Metallicize, no Impervious). Basic Defends cannot survive Hyper Beam. This death directly caused block scaling to be added as the 4th mandatory readiness criterion.
+- **LESSON**: Impervious alone would have saved this run -- 30 block absorbs Hyper Beam (38-30=8 damage taken instead of 33). The deck's offensive preparation was excellent but defensive preparation was fatally inadequate.
+
 WHAT NOT TO DO:
 - Enter below 60% HP. The 300 HP + Str scaling creates a clock. Low entry HP means dying to scaling before killing the boss.
+- Enter without block scaling beyond basic Defends. Run 105 entered at full HP with correct Artifact stripping and died because 4 basic Defends (20 max block) cannot survive Hyper Beam (38 damage). Impervious, Shrug It Off, Flame Barrier, or Metallicize are mandatory.
 - Rely on a single irreplaceable card. Stasis WILL steal something important. If the entire strategy depends on one copy of Double Tap+ or Inflame, the strategy is fragile.
 - Take Runic Dome into this fight. Without intent visibility, you cannot predict Hyper Beam timing and will either waste block on non-attack turns or take full Hyper Beam damage unblocked.
 - Ignore Artifact. Applying Vulnerable or Weak before stripping 3 Artifact wastes the debuff application entirely.
