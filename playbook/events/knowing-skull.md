@@ -9,8 +9,12 @@ OPTIONS:
 
 DECISION FRAMEWORK: Every option costs HP. The HP cost scales -- each subsequent ask costs more. At low HP, the Knowing Skull is a trap that drains resources for marginal gains. At high HP (70%+), one ask for a card or potion may be worthwhile if you have a specific gap to fill.
 
-DEFAULT: Leave. The HP cost is rarely worth the reward, especially in Act 2 where HP is the scarcest resource. A 12 HP loss before elite territory can be the difference between winning and dying.
+**CRITICAL: Leaving also costs HP.** The "How do I leave?" option costs 6 HP. So even taking one ask (6 HP) and then leaving (6 HP) costs 12 HP total. This is NOT free information gathering -- entering the dialogue at all commits you to at least 6 HP loss.
 
-WHEN TO ENGAGE: Only at high HP (70%+) with a specific, critical deck gap (e.g., need exhaust tools before Book of Stabbing, need AOE before Byrds). Limit to one ask maximum. Never take multiple asks -- the escalating cost compounds into a death spiral.
+DEFAULT: Leave immediately (pay the 6 HP exit cost and nothing more). The HP cost is rarely worth the reward, especially in Act 2 where HP is the scarcest resource. A 12 HP loss before elite territory or boss can be the difference between winning and dying.
 
-CAUTION: This event appears as a "?" room, which means it can ambush low-HP runs expecting a safe floor. At low HP, always leave immediately.
+**HARD RULE: NEVER engage Knowing Skull in the last 3 floors before a boss.** Run 114 lost 12 HP (90g ask + leave cost) at 58% HP on Floor 27, 6 floors before the Act 2 boss. This contributed to entering the boss at 45% HP instead of the required 70%. The 90 gold gained was worthless -- the player died with gold unspent.
+
+WHEN TO ENGAGE: Only at high HP (70%+) with a specific, critical deck gap (e.g., need exhaust tools before Book of Stabbing, need AOE before Byrds) AND at least 5 floors before the boss. Limit to one ask maximum. Never take multiple asks -- the escalating cost compounds into a death spiral.
+
+CAUTION: This event appears as a "?" room, which means it can ambush low-HP runs expecting a safe floor. At low HP, always leave immediately (accept the 6 HP exit cost).

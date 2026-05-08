@@ -17,8 +17,12 @@ HP: 300. Starts with Artifact 3. Accompanied by 2 Orbs (50 HP each).
 
 ## What Kills You
 - **Insufficient block for Hyper Beam**: Run 105 died here. Deck had 4 basic Defends (5 block each = 20 max). Hyper Beam dealt 38+ unblocked damage. With no Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, or Impervious, the Hyper Beam was unsurvivable even with partial Weak reduction.
-- **Stasis stealing a key card**: If your only Fiend Fire or Shockwave+ is stolen, you lose your burst/debuff plan. Kill the stealing Orb or have redundant copies.
+- **Low HP entry**: Run 114 entered at 39/85 (45%) with all 4 readiness criteria met and Dark Shackles for Hyper Beam reduction. Dark Shackles reduced Hyper Beam from ~51 to ~42, but 42 + Orb damage (6) = 48 incoming against 13 block = 35 unblocked. At 31 HP, this was lethal. The deck had the tools (Metallicize, Ghostly Armor, Shrug It Off, Dark Shackles) but HP was too low to absorb even a partially-mitigated Hyper Beam. The 70% entry threshold exists because even GOOD block hands cannot fully absorb Hyper Beam + Orb damage.
+- **Stasis stealing a key card**: Orbs use Stasis to steal a card from your deck. Run 114: Stasis stole Metallicize (best passive block source), removing 3 block/turn for the rest of the fight. This made Hyper Beam survival math impossible. **Priority: Kill Stasis Orbs BEFORE they steal a critical card.** If an Orb has already stolen a card (visible in the Stasis tooltip), killing that Orb returns the card. Prioritize killing the Orb that stole your most important card. If Metallicize, Impervious, or your only Weak source is stolen, that Orb becomes kill priority #1 -- above dealing damage to the Automaton itself.
 - **Long fights**: +3 Str/cycle means Hyper Beam grows. By turn 10, Hyper Beam deals 50+. Kill before turn 10 if possible.
+
+## Dark Shackles Interaction
+Dark Shackles (0E, reduce enemy Str by 15 for 1 turn) is excellent for Hyper Beam survival but NOT sufficient alone. Run 114 math: Automaton had ~6 Str when Hyper Beam fired. Dark Shackles reduced to -9 Str, changing Hyper Beam from ~51 to ~42 damage. This is a ~9 damage reduction, NOT a full neutralization. You still need 30+ block on top of Dark Shackles. Dark Shackles + Metallicize + Ghostly Armor + 2 Defends = ~31 block vs 42 = take 11. At 70% HP (60/85), this is survivable. At 45% HP (39/85), it was not because prior turns had already chipped HP.
 
 ## Required Cards/Tools
 - **Artifact strippers** (MANDATORY): Thunderclap+, Bash+, any cheap debuff. Need 3+ applications.
@@ -31,4 +35,4 @@ HP: 300. Starts with Artifact 3. Accompanied by 2 Orbs (50 HP each).
 Odd Mushroom reduces Vulnerable multiplier from 1.5x to 1.25x. This significantly reduces damage output in a fight where DPS racing is critical. Run 105 had Odd Mushroom, reducing effective burst by ~17% on Vulnerable targets. With 300 HP to burn through, this anti-synergy extends the fight by 1-2 turns, which means facing another Hyper Beam cycle.
 
 ## HP Entry Threshold
-70%+ or Pantograph. Hyper Beam demands a large HP buffer. Run 105 entered at 92/92 (Pantograph) and still died because block cards were missing -- HP alone does not save you without block scaling.
+70%+ or Pantograph. Hyper Beam demands a large HP buffer. Run 105 entered at 92/92 (Pantograph) and still died because block cards were missing -- HP alone does not save you without block scaling. Run 114 entered at 39/85 (45%) with ALL block scaling tools (Metallicize, Ghostly Armor, Shrug It Off, Dark Shackles) and still died because HP was too low. Both HP AND block scaling are required -- neither alone is sufficient.

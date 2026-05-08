@@ -17,6 +17,8 @@ STRATEGY:
 
 HP THRESHOLD: Do NOT enter this fight below 50% HP. At 27% HP entry, even a deck with Demon Form, Flame Barrier+, Rage, Uppercut, Disarm, Rampage, and Shuriken died in 3 turns.
 
+**TIMING RULE: Do NOT fight Slavers within 2 floors of the Act 2 boss.** Run 114 fought Slavers at Floor 31 (2 floors before the boss). The fight drained HP from 36 to 14 despite a strong deck (Shockwave, Dark Shackles, True Grit+, Reaper, Inflame). Only 1 rest site remained before the boss, healing to 39/85 (45%) -- far below the 70% threshold. When Slavers appears on a forced path close to the boss, the HP drain from this fight almost guarantees entering the boss at sub-threshold HP. If the map offers ANY alternative path in the last 3 floors, take it even if it means missing the elite relic.
+
 BRING: AOE (Thunderclap, Whirlwind, Immolate), Flame Barrier+ (block + punishes all 3 attackers), Weak sources, high block density.
 
-AVOID: Entering at low HP. This fight has no free turns and no way to stall.
+AVOID: Entering at low HP. This fight has no free turns and no way to stall. Avoid this elite within 2 floors of the boss -- the HP drain is too severe to recover from.
