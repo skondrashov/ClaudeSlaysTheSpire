@@ -26,7 +26,8 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Corruption + Second Wind interaction: Does Second Wind exhaust itself under Corruption?
 - Vampires Max HP loss exact formula: Observed 80->56 (-24, 30% loss). Fixed amount or percentage?
 - Bite upgrade: Does Bite have an upgraded version?
-- Gremlin Leader summoning pattern: Re-summoning trigger unconfirmed. Rally +3 Str to ALL confirmed across three runs. Third data point: at 56% HP entry, wasted turn 3 (Battle Trance sequencing error) allowed Rally to stack to +9 Str by turn 7-8, producing 44+ damage/turn.
+- Gremlin Leader summoning pattern: Re-summoning trigger unconfirmed. Rally +3 Str to ALL confirmed across four runs. Fourth data point: at 52% HP entry with Inflame+ and 3 potions, Impervious+Inflame on Turn 1 (zero damage) allowed 4 Rallies (+12 Str total) by turn 5. Leader attack became 18x3=54, gremlins added 14 = 68 total incoming by turn 9. Turn economy confirmed as the decisive factor -- setup turns that deal zero damage extend the fight into unwinnable Rally territory.
+- Healing card RNG denial streak: Third consecutive run (Runs 121-124 at minimum) with no Reaper or Feed offered. The backup healing plan (potions, events, conservative pathing) is activated but produces insufficient healing to offset 30+ HP drain fights like Spheric Guardian. The Regen Potion acquired from an Unknown room in Run 124 provided 25 HP over 5 turns (critical for Spheric Guardian survival), suggesting potion-based healing is the most reliable backup. Monitor whether the streak continues.
 - Horn Cleat block amount: Observed 14 block on turn 2. Always 14 or scaling?
 - Slaver's Collar source: How is this relic obtained?
 - Wheel of Change full outcome table: Observed "Lose 8 HP" and "Heal to full." Other outcomes unknown.
@@ -62,6 +63,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 ## Prediction Errors (non-fatal, for monitoring)
 
+- Weak multiplier direction error (SYSTEMATIC, PROMOTED): Player systematically applied 0.75 Weak multiplier to own attacks when ENEMIES were Weakened (from Shockwave/Intimidate). Observed in Gremlin Leader fight (4+ calculations affected): Rampage calculated as "(8+3)*0.75=8" instead of correct 11, Strike+ calculated as "(9+3)*0.75*1.5=13" instead of correct 16. Player underestimated own damage by 25-35% in critical turns. This caused the player to choose defensive plays when aggressive plays would have been sufficient. Correction added to mechanics.md Weak section with explicit warning. DIFFERENT from Run 63 error below -- Run 63 was about timing, this is about direction (who is Weakened).
 - Weak multiplier applied incorrectly (Run 63): Player confused about when 0.75 multiplier applies.
 - Spheric Guardian incoming damage miscalculation: Confused attack pattern timing.
 - True Grit+ exhausting Spot Weakness: Strategic error -- exhaust low-value cards first.

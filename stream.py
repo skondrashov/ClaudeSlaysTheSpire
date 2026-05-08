@@ -63,12 +63,14 @@ def _load_stats():
             saved = json.load(f)
         # Merge with defaults so new fields don't break
         defaults = {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0, "best_ascension": 0,
-                     "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?"}
+                     "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?",
+                     "floor_history": []}
         defaults.update(saved)
         return defaults
     except (FileNotFoundError, json.JSONDecodeError):
         return {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0, "best_ascension": 0,
-                "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?"}
+                "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?",
+                "floor_history": []}
 
 def _save_stats():
     os.makedirs(os.path.dirname(STATS_FILE), exist_ok=True)
@@ -252,6 +254,17 @@ async def state_watcher():
                                 run_stats["wins"] += 1
                             else:
                                 run_stats["deaths"] += 1
+                            # Track floor history for the graph
+                            if "floor_history" not in run_stats:
+                                run_stats["floor_history"] = []
+                            seed = gs.get("seed", None)
+                            run_stats["floor_history"].append({
+                                "run": run_stats["total_runs"],
+                                "floor": floor,
+                                "victory": victory,
+                                "seed": seed,
+                                "class": cls,
+                            })
                             _save_stats()
                             await broadcast({
                                 "type": "run_end",
@@ -454,6 +467,14 @@ class DecisionHandler(BaseHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(json.dumps(stats).encode())
+        elif self.path == "/run-history":
+            # Return last 20 run floor results for the overlay graph
+            history = run_stats.get("floor_history", [])[-20:]
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps(history).encode())
         else:
             self.send_response(404)
             self.end_headers()

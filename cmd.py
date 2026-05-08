@@ -168,6 +168,8 @@ def state() -> str:
     global _last_raw_state
     raw = _tcp_request({"type": "state"})
     _last_raw_state = raw
+    # Auto-wait for SHOP_ROOM → SHOP_SCREEN transition
+    raw = _auto_wait_shop_screen(raw)
     return format_state(raw)
 
 
@@ -726,6 +728,41 @@ def _auto_collect_gold(raw: dict) -> dict:
     return raw
 
 
+def _auto_wait_shop_screen(raw: dict) -> dict:
+    """Wait for SHOP_ROOM → SHOP_SCREEN transition.
+
+    When entering a shop, CommunicationMod briefly shows SHOP_ROOM (no items)
+    before transitioning to SHOP_SCREEN (full inventory). This auto-retries
+    state() to avoid the agent thrashing on the empty transitional state.
+    """
+    global _last_raw_state
+    if not raw.get("in_game"):
+        return raw
+    gs = raw.get("game_state", {})
+    if gs.get("screen_type") != "SHOP_ROOM":
+        return raw
+    ss = gs.get("screen_state", {})
+    # If SHOP_ROOM already has items, return as-is
+    if ss.get("cards") or ss.get("relics") or ss.get("potions"):
+        return raw
+
+    # Poll for SHOP_SCREEN (up to 3 seconds, 15 × 200ms)
+    import time as _time
+    for _ in range(15):
+        _time.sleep(0.2)
+        raw = _tcp_request({"type": "state"})
+        _last_raw_state = raw
+        if not raw.get("in_game"):
+            return raw
+        gs = raw.get("game_state", {})
+        if gs.get("screen_type") != "SHOP_ROOM":
+            return raw
+        ss = gs.get("screen_state", {})
+        if ss.get("cards") or ss.get("relics") or ss.get("potions"):
+            return raw
+    return raw
+
+
 def _auto_handle_mechanical(raw: dict) -> dict:
     """Handle mechanical transitions that never involve a real decision.
 
@@ -735,6 +772,7 @@ def _auto_handle_mechanical(raw: dict) -> dict:
     The agent must handle these screens itself.
     """
     raw = _auto_collect_gold(raw)
+    raw = _auto_wait_shop_screen(raw)
     return raw
 
 

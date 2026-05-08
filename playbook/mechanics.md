@@ -45,9 +45,10 @@ Order of operations:
 - Affected entity deals 25% less attack damage.
 - Duration: N turns.
 - Formula: `floor((base + strength) * 0.75)` -- Strength is added BEFORE the Weak multiplier.
-- When on enemies (from Shockwave, Clothesline): THEIR attacks deal 25% less.
-- When on YOU (from enemy debuffs): YOUR attacks deal 25% less.
-- Direction matters: Weak on enemy = they deal less. Weak on you = you deal less.
+- When on enemies (from Shockwave, Clothesline, Intimidate): THEIR attacks deal 25% less. YOUR attacks are UNAFFECTED.
+- When on YOU (from enemy debuffs like Acid Slime Corrosive Spit): YOUR attacks deal 25% less.
+- Direction matters: Weak on enemy = they deal less, you deal normal. Weak on you = you deal less.
+- **CRITICAL: Applying Weak to enemies does NOT reduce YOUR damage.** After playing Shockwave or Intimidate, your attacks deal FULL damage. The 0.75 multiplier applies ONLY to the Weakened entity's own attacks. Do not apply 0.75 to your own damage calculations when enemies are Weakened -- this is a recurring prediction error that causes underestimation of player damage output.
 
 ### Frail
 - Block gained from cards is reduced by 25%.

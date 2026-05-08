@@ -5,4 +5,4 @@ HOW IT CHANGES DECISIONS: This is a DOUBLE-EDGED relic. Defensively, it reduces 
 
 WHEN TO TAKE: Good if your deck relies on block/defense and rarely applies Vulnerable offensively. BAD if your deck relies on Bash+/Thunderclap+ Vulnerable for burst damage (most Ironclad decks). The Mushroom event fight reward is the Odd Mushroom -- consider taking the 22 HP heal (Eat option) instead if your deck is Vulnerable-dependent.
 
-ANTI-SYNERGIES: Bash+ (Vuln 3 is your primary damage amp), Thunderclap+ (mass Vuln for burst), any DPS-race fight (Bronze Automaton Hyper Beam, Book of Stabbing). Confirmed detrimental in Run 105.
+ANTI-SYNERGIES: Bash+ (Vuln 3 is your primary damage amp), Thunderclap+ (mass Vuln for burst), any DPS-race fight (Bronze Automaton Hyper Beam, Book of Stabbing), Hexaghost (extended fight = more Burns accumulation, confirmed lethal). Confirmed detrimental across multiple deaths. Against Hexaghost specifically, the ~17% damage reduction extends the fight by 1-2 turns, adding 1-2 more Burns to the deck. In a fight where Burns attrition is the primary kill mechanism, this relic directly causes death.

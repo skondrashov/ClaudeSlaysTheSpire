@@ -76,3 +76,15 @@ KEY FINDINGS AT 110 RUNS:
 4. Impervious and Shockwave+ identified as disproportionately important for Act 2 boss survival.
 5. Hard Rule #9 added: no Corruption vs Guardian without Dead Branch/FNP.
 6. Guardian "solved" status has two known exceptions: Pandora's Box and Corruption without exhaust payoffs.
+
+## Runs 111-123 (GAP -- not analyzed)
+
+Runs 111-123 were not individually analyzed. Known death floors from run_stats: Run 112 (F25), Run 114 (F33), Run 116 (F21), Run 118 (F21), Run 121 (F16), Run 123 (F16). Some findings from these runs were already incorporated into playbook updates (strategy.md scorecard, Spheric Guardian third survival, 3 Cultists threshold, etc.) based on partial analysis during those runs.
+
+## Run 124 — Ironclad A0, Death Floor 23
+
+DECK: Whirlwind, Inflame+, Bash+, Impervious, Barricade, Shockwave, Rampage, Thunderclap, Shrug It Off x3, Intimidate, Demon Form, Strike+ x2, Defend x2
+RELICS: Burning Blood, Gambling Chip, others
+CAUSE OF DEATH: Gremlin Leader elite at Floor 23. Entered at 42/80 HP (52%), below 60% threshold. Rally scaled to +12 Str (4 Rallies). By Turn 9, incoming was 68/turn (Leader 18x3 + gremlins 14) vs 10 HP with 13 block.
+KEY MOMENTS: (1) Barricade+Impervious combo dominated Guardian fight -- 30 permanent block wall led to clean boss kill. (2) Spheric Guardian survived with Barricade+Impervious+Regen Potion but drained 32 HP (80->48). (3) Impervious wasted on Turn 1 of Gremlin Leader for 30 block against 22 incoming, zero damage dealt. (4) Systematic Weak multiplier misapplication -- player applied 0.75 to own damage when enemies were Weakened (not player), underestimating own damage output throughout Act 2.
+LESSONS: (1) Impervious Turn 1 against Gremlin Leader is wrong -- use for Turn 4-5 when Rally damage peaks. (2) Weak direction confusion is a recurring mechanics error that needs correction. (3) Third consecutive run with no Reaper/Feed offered -- backup healing plan exists but wasn't enough. (4) Barricade+Impervious is a confirmed strong combo for Guardian.

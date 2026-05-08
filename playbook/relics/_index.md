@@ -44,6 +44,7 @@
 
 ## Uncommon Relics (continued)
 
+- [Gambling Chip](gambling-chip.md)
 - [Horn Cleat](horn-cleat.md)
 - [Slaver's Collar](slavers-collar.md)
 

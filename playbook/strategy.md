@@ -2,19 +2,20 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (118-run milestone):** TWO distinct failure modes remain. (1) Entering the Act 2 boss at sufficient HP -- THREE consecutive Act 2 boss reaches (Runs 105, 110, 114, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Criteria RNG denial -- both healing and block scaling can be denied by card-offer RNG. Run 116 died F21 with no healing card offered across 21 floors. Run 118 died F21 with no block scaling card offered -- had Reaper, Demon Form, Spot Weakness, Whirlwind, Thunderclap, Shockwave (strong offense+healing) but zero Shrug It Off/Impervious/Flame Barrier/Metallicize. Feel No Pain was counted as "partial" block scaling but produced only 3-6 block per fight, grossly insufficient vs Snake Plant 7x3=21. **Feel No Pain does NOT fulfill the block scaling criterion.** When a criterion cannot be filled, the backup plan (conservative pathing, rest-heavy routing) must activate IMMEDIATELY.
+**CURRENT BOTTLENECK (125-run milestone):** THREE distinct failure modes. (1) Entering the Act 2 boss at sufficient HP -- THREE consecutive Act 2 boss reaches (Runs 105, 110, 114, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Criteria RNG denial -- healing and block scaling can be denied by card-offer RNG. Run 116 died F21 with no healing card offered across 21 floors. Run 118 died F21 with no block scaling card offered. **Feel No Pain does NOT fulfill the block scaling criterion.** When a criterion cannot be filled, the backup plan (conservative pathing, rest-heavy routing) must activate IMMEDIATELY. (3) **Mechanics prediction errors** -- the player systematically applies the Weak damage reduction multiplier to its OWN attacks when enemies are Weakened. This causes 25-35% underestimation of damage output, leading to overly defensive decisions in critical fights. The Weak direction rule has been clarified in mechanics.md.
 
-**SCORECARD (runs 101-118):**
-- Act 1 boss wins: ~80% -- Run 103 died to Guardian F16 (Pandora's Box removed all Defends), Run 107 died to Guardian F16 (Corruption+ exhausted block Skills -- now Hard Rule #9)
-- Act 2 boss reaches: 3 (Runs 105, 110, 114, all Floor 33) -- STRONG TREND
-- Act 2 hallway deaths: Run 116 died F21 (healing never offered). Run 118 died F21 (block scaling never offered; Feel No Pain insufficient).
-- Bronze Automaton: 2 deaths (Run 105 -- block scaling gap; Run 114 -- 45% HP entry despite having all tools including Dark Shackles)
+**SCORECARD (runs 101-125):**
+- Act 1 boss wins: ~80% -- Run 103 died to Guardian F16 (Pandora's Box), Run 107 died to Guardian F16 (Corruption+), Run 121 died F16, Run 123 died F16. Guardian regression: 4 deaths in last 25 runs.
+- Act 2 boss reaches: 3 (Runs 105, 110, 114, all Floor 33) -- STRONG TREND but no new boss reach in runs 115-125
+- Act 2 elite/hallway deaths: Run 116 (F21), Run 118 (F21), Run 112 (F25), Run 124 (F23 Gremlin Leader)
+- Bronze Automaton: 2 deaths (Run 105 -- block scaling gap; Run 114 -- 45% HP entry despite having all tools)
 - The Collector: 1 death (Run 110 -- 57% HP entry, missing Impervious and Shockwave+)
 - Hard Rule violations: 0
-- Best floor: 39 (Run 63) -- unchanged but system is reliably reaching F33
-- **70% HP threshold violated: 3/3 boss fights (100%).** Run 105: N/A (Pantograph). Run 110: 57%. Run 114: 45%. This is the #1 problem to solve.
-- **Criteria RNG denial: Run 116 (healing denied, 21 floors). Run 118 (block scaling denied, 21 floors).** The 4-criteria system has a structural weakness: any single criterion denied by card-offer RNG creates an unrecoverable spiral.
-- MILESTONE: Three consecutive Act 2 boss reaches confirm the 4-criteria readiness system works when all 4 criteria are met. Runs 116+118 show ANY criterion can be RNG-denied.
+- Best floor: 39 (Run 63) -- unchanged
+- **70% HP threshold violated: 3/3 boss fights (100%).** Unchanged.
+- **Criteria RNG denial: healing denied in 3+ consecutive runs (121-124 minimum).** Backup plan activated but insufficient -- Regen Potion was the best substitute found.
+- **Weak direction prediction error: NEWLY IDENTIFIED.** Player applies 0.75 to own damage when enemies are Weakened. Causes systematic damage underestimation. Correction added to mechanics.md.
+- MILESTONE: Three consecutive Act 2 boss reaches confirm the 4-criteria readiness system works when all 4 criteria are met. Recent regression (4 Guardian deaths + 4 Act 2 deaths in runs 111-125) suggests floor average has dropped.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **Preserve HP in the last 5 floors before the Act 2 boss.** The 70% entry threshold has been violated in 3/3 boss fights (100% failure rate). This is now the #1 cause of death. New rules: no HP-for-reward trades, skip elites in the last 3 floors, rest over upgrade at every rest site if below 70%, prioritize paths with rest sites over combat/elite paths. See "Pre-boss HP preservation" section for full rules.
@@ -374,7 +375,7 @@ Before fighting an elite, check:
 
 **Act 2 Elite Threat Ranking:**
 - **Book of Stabbing** (3 deaths, now #1 killer): Escalating multi-hit (+1 per turn). Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. Do NOT play Brutality. **CRITICAL: If you have Brimstone, DO NOT FIGHT Book of Stabbing. Brimstone gives it +2 Str/turn on top of +1 hit/turn -- damage grows quadratically. Two deaths confirmed from this anti-synergy (Runs 091, 100). Even at 75% HP with strong Str scaling, the fight is unwinnable by turn 5.**
-- **Gremlin Leader** (2 deaths in 5 runs): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death).
+- **Gremlin Leader** (3 deaths): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death). Do NOT play Impervious Turn 1 -- use it Turn 4-5 when Rally-scaled damage peaks. Confirmed: Inflame+ + Impervious Turn 1 (zero damage) at 42 HP led to 9-turn fight and death.
 - **Slavers**: 3 enemies, 27+ combined damage. NEED: AOE, mass debuff, 60%+ HP.
 
 ### Brimstone Elite Avoidance
