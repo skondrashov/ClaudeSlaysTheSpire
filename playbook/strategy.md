@@ -2,18 +2,19 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (114-run milestone):** Entering the Act 2 boss at sufficient HP. THREE consecutive Act 2 boss reaches (Runs 105, 110, 114, all Floor 33) confirm the 4-criteria readiness system WORKS -- the decks are ready. The bottleneck is now purely HP management in the last 5 floors before the boss. Run 105: died to Hyper Beam (block scaling gap, since fixed). Run 110: 57% HP entry (Colosseum event drained HP). Run 114: 45% HP entry (Slavers elite at F31 + Knowing Skull HP drain + 6 consecutive combats). The 70% HP threshold has been violated in ALL THREE boss fights. This is not bad luck -- it is a systematic pathing failure in the last 5 floors of Act 2.
+**CURRENT BOTTLENECK (116-run milestone):** TWO distinct failure modes remain. (1) Entering the Act 2 boss at sufficient HP -- THREE consecutive Act 2 boss reaches (Runs 105, 110, 114, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Healing card RNG -- Run 116 died at Floor 21 (Act 2 hallway) with 3 of 4 readiness criteria met but NO healing card ever offered across 21 floors. The healing criterion is uniquely RNG-dependent: Strength, AOE, and block scaling all have 5+ cards that fill the slot, but healing has only 2 (Reaper, Feed). When neither is offered, the run enters an HP death spiral that conservative play alone cannot solve. Run 116 trajectory: 80 HP Act 2 entry -> 60 (Chosen) -> 22 (Spheric Guardian 38 HP drain) -> 1 (Snake Plant from Unknown room) -> dead F21 (Shelled Parasite+Fungi Beast at 7 HP). The fix: when no healing card exists by Act 2, the backup healing plan (shop potions, conservative pathing, rest-heavy routing) must activate IMMEDIATELY, not after HP is already critical.
 
-**SCORECARD (runs 101-114):**
+**SCORECARD (runs 101-116):**
 - Act 1 boss wins: ~80% -- Run 103 died to Guardian F16 (Pandora's Box removed all Defends), Run 107 died to Guardian F16 (Corruption+ exhausted block Skills -- now Hard Rule #9)
 - Act 2 boss reaches: 3 (Runs 105, 110, 114, all Floor 33) -- STRONG TREND
-- Act 2 hallway deaths: reduced from prior batches
+- Act 2 hallway deaths: Run 116 died F21 (Shelled Parasite+Fungi Beast at 7 HP after Spheric Guardian + Snake Plant HP drain). Healing never offered.
 - Bronze Automaton: 2 deaths (Run 105 -- block scaling gap; Run 114 -- 45% HP entry despite having all tools including Dark Shackles)
 - The Collector: 1 death (Run 110 -- 57% HP entry, missing Impervious and Shockwave+)
 - Hard Rule violations: 0
 - Best floor: 39 (Run 63) -- unchanged but system is reliably reaching F33
 - **70% HP threshold violated: 3/3 boss fights (100%).** Run 105: N/A (Pantograph). Run 110: 57%. Run 114: 45%. This is the #1 problem to solve.
-- MILESTONE: Three consecutive Act 2 boss reaches confirm the 4-criteria readiness system works. Bottleneck has shifted from deck building to HP preservation in the final 5 floors before the boss.
+- **Healing card RNG gap: Run 116 confirmed that neither Reaper nor Feed was offered across 21 floors.** The 4-criteria system has a structural weakness: healing has only 2 qualifying cards vs 5+ for each other criterion.
+- MILESTONE: Three consecutive Act 2 boss reaches confirm the 4-criteria readiness system works when all 4 criteria are met. Run 116 shows that the healing criterion is the most RNG-vulnerable and may need a backup plan built into the system.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **Preserve HP in the last 5 floors before the Act 2 boss.** The 70% entry threshold has been violated in 3/3 boss fights (100% failure rate). This is now the #1 cause of death. New rules: no HP-for-reward trades, skip elites in the last 3 floors, rest over upgrade at every rest site if below 70%, prioritize paths with rest sites over combat/elite paths. See "Pre-boss HP preservation" section for full rules.
@@ -59,8 +60,8 @@ Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the play
 
 1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 8-12 turns. The primary Act 2 HP drain. Without Thunderclap (mass Flight stripping + Vulnerable), expect the upper end. Thunderclap is the single most important card for Act 2 Byrd survival.
 2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight. Often consumes Fairy in a Bottle.
-3. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Drains 20-42 HP depending on Strength scaling (Run 112: 42 HP drained with zero Strength scaling despite correct play -- single large hits, Bash+ Vulnerable). Without Strength scaling, the fight extends to 7 turns and Weak+Malleable reduce each hit to 3-6 effective damage. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.
-3b. **Spheric Guardian + Sentry from Unknown rooms**: 29 combined damage/turn with Frail 5 reducing block. Spheric Guardian's Barricade block makes Reaper useless and chip damage futile. Three deaths confirmed from this encounter (at 26%, 43%, and 100% HP entry). The third death occurred at FULL HP -- even 87/87 was insufficient because Brutality self-damage and Rage+ expiring at end of turn left no survival path after 6 turns. Unknown rooms are the most dangerous room type in Act 2 at any HP level when this fight spawns.
+3. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Drains 15-42 HP depending on Strength scaling. Run 112: 42 HP drained with zero Strength scaling. Run 116: 15 HP drained with Inflame (+4 Str), Bash+, Thorns, and correct play -- but entered at 22 HP (27%) and survived at 1 HP, making the next combat lethal. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.
+3b. **Spheric Guardian (solo or with Sentry)**: 30-38 HP drain even with correct play and Strength scaling. Run 116: Spheric Guardian solo drained 38 HP over 14 turns (60->22 HP) despite Inflame, Thunderclap x3 for Artifact stripping, Bash+ for Vulnerable, and Offering for draw. Barricade block makes Reaper useless and chip damage futile. Four deaths confirmed from this encounter (at 26%, 43%, 47%, and 100% HP entry). Unknown rooms are the most dangerous room type in Act 2 at any HP level when this fight spawns.
 4. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
 5. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.
 6. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. With 2 Decays, that is 4 HP/turn lost regardless of block. Over a 5-turn fight, that is 20 free HP lost. Prioritize curse removal at shops or via exhaust (Fiend Fire).
@@ -119,7 +120,7 @@ The single biggest strategic failure across 50 runs: entering Act 2 without a he
 - Feed: TAKE IT in the first half of Act 1. +3-4 Max HP per kill compounds over 15+ fights. Less urgent in late Act 1.
 - If neither is offered by Floor 12, actively seek healing potions (Blood Potion, Regen Potion) and healing relics (Toy Ornithopter, Meal Ticket, Bloody Idol) at shops.
 
-**This is non-negotiable.** A deck with Reaper + adequate damage will reach Act 3. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30.
+**This is non-negotiable.** A deck with Reaper + adequate damage will reach Act 3. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30. Run 116 confirmed: deck had 3 of 4 criteria (Inflame, Thunderclap, Shrug It Off + Flame Barrier+) but neither Reaper nor Feed was ever offered across 21 floors. The healing gap was the sole cause of the HP death spiral.
 
 ### Act 2 Readiness Checklist (verify before Floor 17)
 
@@ -361,7 +362,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 - Prefer routes with a rest site in the last 1-2 floors before the boss.
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
 - If the path forces an elite at low HP, skip it entirely -- take any alternative path.
-- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). The third death occurred at FULL HP -- even 87/87 was not enough. Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse.
+- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). The third death occurred at FULL HP -- even 87/87 was not enough. Run 116: Unknown room at F20 spawned Snake Plant at 22 HP (27% of max) -- survived at 1 HP but was doomed for the next mandatory combat. Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal -- the player chose Unknown at 22 HP hoping for a non-combat outcome and got Snake Plant instead.**
 
 ### Elite Risk Assessment
 
@@ -423,7 +424,7 @@ If by Floor 20 your only healing is Burning Blood, the run is in danger. Activel
 
 ### Backup Healing Plan (when Reaper/Feed are NOT offered)
 
-Reaper and Feed are uncommon cards -- they may not appear in card rewards at all (confirmed: Run 53 had neither offered across 33 floors). The healing priority rule works when cards are offered, but RNG can deny them entirely. When this happens, the player must actively pursue alternative healing:
+Reaper and Feed are uncommon cards -- they may not appear in card rewards at all (confirmed: Run 53 had neither offered across 33 floors; Run 116 had neither offered across 21 floors, directly causing death at F21). The healing priority rule works when cards are offered, but RNG can deny them entirely. **Activate this backup plan by Floor 17 if no healing card has been acquired** -- do not wait until HP is critical. When this happens, the player must actively pursue alternative healing:
 
 1. **Shop healing**: Buy Blood Potion or Regen Potion at every shop if no healing card exists. Buy Toy Ornithopter or Meal Ticket if offered.
 2. **Event healing**: The Cleric heals. Big Fish offers healing. Woman in Blue sells potions. Prioritize these events.
@@ -481,10 +482,10 @@ Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory) and 3
 6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm). Collector victory relied on Immolate+ AOE. Two Hexaghost deaths had Weak but no damage scaling.
 7. **Extra energy**: The Collector victory had 4 energy (Sozu). Extra energy enables offense + defense simultaneously.
 
-### Cross-Run Death Pattern (Act 2) -- Updated at 114 runs
+### Cross-Run Death Pattern (Act 2) -- Updated at 116 runs
 
-Across 30+ Act 2 deaths, the pattern has SHIFTED decisively. Deck building is solved (4-criteria readiness works). The remaining killer is **HP management in the last 5 floors before the boss:**
-1. **HP attrition from consecutive combats (primary cause)**: The player enters Act 2 at healthy HP, loses 30-50 HP in one fight (Byrds, Snake Plant, Centurion+Mystic), then enters the NEXT fight at critical HP and dies. This is a MAP PATHING failure. The fix is mandatory path tracing before every map choice.
+Across 30+ Act 2 deaths, the pattern has SHIFTED decisively. Deck building is solved (4-criteria readiness works). Two remaining killers: (A) **HP management in the last 5 floors before the boss** and (B) **healing card RNG denial** creating unrecoverable HP spirals even from full HP entry:
+1. **HP attrition from consecutive combats (primary cause)**: The player enters Act 2 at healthy HP, loses 30-50 HP in one fight (Byrds, Snake Plant, Centurion+Mystic, Spheric Guardian), then enters the NEXT fight at critical HP and dies. This is a MAP PATHING failure. The fix is mandatory path tracing before every map choice. Run 116: entered Act 2 at 80/80 HP but Spheric Guardian drained 38 HP (to 22), then Unknown room spawned Snake Plant (to 1 HP), then forced combat killed the run. Without healing cards, even 100% HP entry provides only ~3 fight buffer before death.
 1b. **HP threshold violation at Act 2 boss (3/3 boss fights, 100% failure rate)**: Run 105 had Pantograph (special case). Run 110 entered at 57%. Run 114 entered at 45%. ALL THREE RUNS had decks ready to win -- the boss killed them because they arrived too damaged. Run 114 is the clearest example: all 4 readiness criteria met, Dark Shackles for Hyper Beam, Shockwave for mass debuff, Bottled Inflame for guaranteed Strength -- and still died because 6 consecutive combats + 1 event HP drain in the last 7 floors left only 39/85 HP. The fix is aggressive HP preservation pathing in the last 5 floors (new rules added to Pre-boss HP preservation section).
 2. **Block scaling gap at Act 2 boss (Run 105)**: Fixed by adding block scaling as 4th readiness criterion. Run 114 confirmed: Metallicize + Ghostly Armor + Shrug It Off provided adequate block scaling. This is no longer the bottleneck.
 2b. **Elite timing near boss (Run 114, NEW)**: Taking Slavers at Floor 31 (2 floors from boss) drained HP from 36 to 14. Only 1 rest site remained, healing to 39/85 (45%). New rule: skip elites in the last 3 floors before the boss.

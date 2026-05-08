@@ -5,6 +5,6 @@ WHAT THIS MEANS: Apply Vulnerable first, then use large single hits (not multipl
 BRING: Burst damage (Carnage, Heavy Blade), Vulnerable application (Bash, Uppercut). Strength scaling (Inflame, Strength Potion) helps every hit break through the armor threshold.
 AVOID: Small multi-hit attacks (Whirlwind with low energy), decks that rely on chip damage, entering this fight below 40% HP.
 DANGER: This enemy has killed across multiple runs specifically because the long fight duration amplifies any HP deficit. At 13 damage/turn over 8+ turns, that's 100+ total incoming damage. Do NOT enter this fight below 40% HP. Use potions immediately if forced into this fight at low HP -- a Strength Potion shortens the fight by 2-3 turns.
-PAIRED WITH: Often appears with Fungi Beast. The combination deals high damage and the Fungi Beast's spore debuff (Vulnerable) makes the Shelled Parasite's attacks even more dangerous.
+PAIRED WITH: Often appears with Fungi Beast. The combination deals high damage and the Fungi Beast's spore debuff (Vulnerable) makes the Shelled Parasite's attacks even more dangerous. Run 116: entered this pairing at 7 HP after Spheric Guardian (38 HP) + Snake Plant (to 1 HP) HP drain. With Inflame (+4 Str), Bash+, Flame Barrier+, the player blocked correctly but 19 combined incoming on turn 3 exceeded available block (10) by 9, killing at 5 HP. At 7 HP, the fight was mathematically unwinnable -- the death was sealed 2 floors earlier by the Unknown room Snake Plant spawn.
 
 ---
