@@ -930,7 +930,16 @@ def skip(reason: str = "Skipping") -> str:
 
 
 def potion_use(slot: int, target: int = None, reason: str = "") -> str:
-    """Use a potion. reason= is REQUIRED."""
+    """Use a potion. reason= is REQUIRED.
+
+    Automatically strips target for non-targeted potions (Block Potion, etc.)
+    to prevent silent CommunicationMod failures.
+    """
+    # Check if this potion actually requires a target
+    if target is not None and _last_raw_state:
+        potions = (_last_raw_state.get("game_state") or {}).get("potions", [])
+        if slot < len(potions) and not potions[slot].get("requires_target", False):
+            target = None  # Strip invalid target for non-targeted potions
     if target is not None:
         return send(f"potion use {slot} {target}", reason=reason)
     return send(f"potion use {slot}", reason=reason)
