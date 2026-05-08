@@ -73,7 +73,9 @@ Order of operations:
 - Block expires at the start of your turn (resets to 0).
 - Exception: Barricade (enemy passive) -- block does NOT expire. Accumulates turn over turn.
 - Metallicize and Plated Armor add block at end of turn (before enemy attacks resolve).
-- Plated Armor decreases by 1 each time you take unblocked damage.
+- Plated Armor decreases by 1 each time you take unblocked HP damage (damage that gets through block). Multiple hits in one attack (e.g., Book of Stabbing 7x4) each count separately -- if block runs out mid-attack, each subsequent hit that deals HP damage reduces Plated Armor by 1. Plated Armor from multiple sources stacks additively (e.g., two Plated Armor 3 = 6 block/turn).
+- Flame Barrier / Thorns: Counter damage triggers AFTER each individual hit that strikes you (whether blocked or hitting HP). Against multi-hit attacks, counter fires once per hit. Example: Book of Stabbing 7x4 with Flame Barrier+ active = 4 triggers of 6 counter damage = 24 total counter damage dealt to the attacker. Counter damage ignores the attacker's block -- it deals direct HP damage. Flame Barrier's block is applied once at play time and absorbs across all hits; the counter triggers per hit regardless of whether the hit was blocked or not.
+- Pen Nib: Tracks total Attack cards played across ALL combats. Every 10th Attack card deals double damage. The counter persists between fights and does NOT reset. The counter is visible on the relic tooltip. Track it by counting Attack card plays (Strikes, Bash, Rampage, Cleave, Immolate, etc. -- any card with the Attack type). Skills and Powers do not increment the counter. Double Tap causes the repeated attack to count as a separate play for Pen Nib.
 
 ---
 

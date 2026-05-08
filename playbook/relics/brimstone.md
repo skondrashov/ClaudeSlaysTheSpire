@@ -12,4 +12,12 @@ SYNERGIES: Demon Form (+4 Str/turn combined), Reaper (heals more as Strength gro
 
 ANTI-SYNERGIES: Slow decks, long fights, enemies with multi-hit attacks (Book of Stabbing, Snake Plant). The enemy Strength gain compounds the danger of every additional turn.
 
+CRITICAL DANGER -- BOOK OF STABBING: Brimstone + Book of Stabbing is one of the most lethal relic-enemy combinations in the game. Book's multi-hit attacks gain +1 hit per turn AND +2 damage per hit per turn from Brimstone. The math escalates catastrophically:
+- Turn 1: (7+2)x2 = 18 (vs 14 without Brimstone)
+- Turn 2: (7+4)x3 = 33 (vs 21)
+- Turn 3: (7+6)x4 = 52 (vs 28)
+- Turn 4: (7+8)x5 = 75 (vs 35)
+- Turn 5: (7+10)x6 = 102 (vs 42)
+By turn 5, incoming is 102 vs 42 without Brimstone -- a 143% increase. This is unsurvivable. In run 100, entered at 57 HP and died on turn 5 despite strong Strength scaling (Brimstone + Inflame+ + Spot Weakness+). If you have Brimstone, AVOID Book of Stabbing entirely. If forced into the fight, you must kill it in 3 turns or die.
+
 ---
