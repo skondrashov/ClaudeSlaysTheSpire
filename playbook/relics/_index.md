@@ -22,6 +22,8 @@
 - [Whetstone](whetstone.md)
 - [Bloody Idol](bloody-idol.md)
 - [Meal Ticket](meal-ticket.md)
+- [Oddly Smooth Stone](oddly-smooth-stone.md)
+- [Eternal Feather](eternal-feather.md)
 
 ## Uncommon Relics
 

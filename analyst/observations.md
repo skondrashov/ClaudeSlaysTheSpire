@@ -4,7 +4,7 @@ Items pending confirmation or further investigation. Promote to playbook when co
 
 ## Promoted (archived — already in playbook)
 
-Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshold, Disarm vs Slime Boss split, Corruption + Dead Branch synergy, Corruption setup cost trap, Mugger enemy, Looter + Mugger pairing, Dead Branch relic, Wing Boots relic, Pantograph 25 HP correction, The Champ boss + Execute mechanic, Dark Shackles card, Maw Bank relic, Spheric Guardian block growth rate, Spot Weakness+ upgrade, Rage+ per-turn expiration, Blood for Blood cost reduction, Barricade (player card), Fiend Fire in Cultist+Chosen multi-fights, Heavy Blade damage formula, Blessing of the Forge, Spheric Guardian Frail application.
+Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshold, Disarm vs Slime Boss split, Corruption + Dead Branch synergy, Corruption setup cost trap, Mugger enemy, Looter + Mugger pairing, Dead Branch relic, Wing Boots relic, Pantograph 25 HP correction, The Champ boss + Execute mechanic, Dark Shackles card, Maw Bank relic, Spheric Guardian block growth rate, Spot Weakness+ upgrade, Rage+ per-turn expiration, Blood for Blood cost reduction, Barricade (player card), Fiend Fire in Cultist+Chosen multi-fights, Heavy Blade damage formula, Blessing of the Forge, Spheric Guardian Frail application, Eternal Feather relic, Oddly Smooth Stone relic, Masked Bandits event, Gremlin Leader Rally +3 Str ALL (2x confirmed).
 
 ## Unconfirmed
 
@@ -26,7 +26,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Corruption + Second Wind interaction: Does Second Wind exhaust itself under Corruption?
 - Vampires Max HP loss exact formula: Observed 80->56 (-24, 30% loss). Fixed amount or percentage?
 - Bite upgrade: Does Bite have an upgraded version?
-- Gremlin Leader summoning pattern: Re-summoning trigger unconfirmed.
+- Gremlin Leader summoning pattern: Re-summoning trigger unconfirmed. Rally +3 Str to ALL confirmed across two runs.
 - Horn Cleat block amount: Observed 14 block on turn 2. Always 14 or scaling?
 - Slaver's Collar source: How is this relic obtained?
 - Wheel of Change full outcome table: Observed "Lose 8 HP" and "Heal to full." Other outcomes unknown.
@@ -74,7 +74,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 ## Open Questions
 
-- Shop bug root cause: Recurring in ~37% of runs. CommunicationMod, state_formatter, or cmd.py issue?
+- Shop bug root cause: Recurring in ~37% of runs. CommunicationMod, state_formatter, or cmd.py issue? Latest instance: Run 74 bought 2 Havocs instead of intended Inflame due to shop index mismatch. This is the most damaging shop bug instance yet -- 2 dead cards that diluted a bloated deck.
 - Face Trader event: What are the actual options and outcomes?
 - Transmogrifier transform rules: Does it keep the same rarity?
 - Ancient Writing second option (Insight): What does it offer?

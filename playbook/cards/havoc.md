@@ -16,3 +16,5 @@ SYNERGIES: Headbutt (place a specific card on top, then Havoc plays it for free 
 ANTI-SYNERGY: Any deck with irreplaceable scaling cards (Rampage, Fiend Fire, Feed). The random exhaust risk outweighs the 0-energy benefit. DO NOT take Havoc if the deck depends on specific cards surviving to future fights.
 
 MATCHUPS: Gremlin Nob -- Havoc is a Skill, triggers Enrage. Do NOT play.
+
+SHOP BUG WARNING: In one run, a shop index mismatch caused 2 copies of Havoc to be purchased instead of the intended Inflame. This is a cmd.py infrastructure bug, not a player decision error, but the result was a deck polluted with 2 unwanted Havocs. If Havoc appears in the deck unexpectedly, treat it as a dead card -- do NOT play it in fights with irreplaceable cards in the draw pile.

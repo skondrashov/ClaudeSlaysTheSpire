@@ -33,3 +33,4 @@
 - [Wheel of Change](wheel-of-change.md)
 - [Knowing Skull](knowing-skull.md)
 - [The Library](the-library.md)
+- [Masked Bandits](masked-bandits.md)
