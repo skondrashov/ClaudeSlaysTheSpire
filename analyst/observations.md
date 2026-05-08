@@ -4,11 +4,11 @@ Items pending confirmation or further investigation. Promote to playbook when co
 
 ## Promoted (archived — already in playbook)
 
-Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshold, Disarm vs Slime Boss split, Corruption + Dead Branch synergy, Corruption setup cost trap, Mugger enemy, Looter + Mugger pairing, Dead Branch relic, Wing Boots relic, Pantograph 25 HP correction, The Champ boss + Execute mechanic, Dark Shackles card, Maw Bank relic, Spheric Guardian block growth rate, Spot Weakness+ upgrade, Rage+ per-turn expiration, Blood for Blood cost reduction, Barricade (player card), Fiend Fire in Cultist+Chosen multi-fights, Heavy Blade damage formula, Blessing of the Forge, Spheric Guardian Frail application, Eternal Feather relic, Oddly Smooth Stone relic, Masked Bandits event, Gremlin Leader Rally +3 Str ALL (3x confirmed), Uppercut+ upgrade (2 Weak + 2 Vuln confirmed), Spheric Guardian 4th death + Demon Form insufficient, Uppercut+ Artifact stripping vs SG confirmed, Spheric Guardian first survival (Corruption + FNP engine), Feed+ multi-kill Max HP gain (+22 from Slime Boss), Bloodletting card, Battle Trance sequencing warning, Fairy in a Bottle elite consumption timing, Intimidate upgrade (2 Weak), Gremlin Leader turn economy + Rally scaling math.
+Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshold, Disarm vs Slime Boss split, Corruption + Dead Branch synergy, Corruption setup cost trap, Mugger enemy, Looter + Mugger pairing, Dead Branch relic, Wing Boots relic, Pantograph 25 HP correction, The Champ boss + Execute mechanic, Dark Shackles card, Maw Bank relic, Spheric Guardian block growth rate, Spot Weakness+ upgrade, Rage+ per-turn expiration, Blood for Blood cost reduction, Barricade (player card), Fiend Fire in Cultist+Chosen multi-fights, Heavy Blade damage formula, Blessing of the Forge, Spheric Guardian Frail application, Eternal Feather relic, Oddly Smooth Stone relic, Masked Bandits event, Gremlin Leader Rally +3 Str ALL (3x confirmed), Uppercut+ upgrade (2 Weak + 2 Vuln confirmed), Spheric Guardian 4th death + Demon Form insufficient, Uppercut+ Artifact stripping vs SG confirmed, Spheric Guardian first survival (Corruption + FNP engine), Feed+ multi-kill Max HP gain (+22 from Slime Boss), Bloodletting card, Battle Trance sequencing warning, Fairy in a Bottle elite consumption timing, Intimidate upgrade (2 Weak), Gremlin Leader turn economy + Rally scaling math, Brimstone relic, Sword Boomerang card, Snake Plant 9x3 damage correction, Brimstone + Demon Form combo (+4 Str/turn).
 
 ## Unconfirmed
 
-- Boss relic collection automation issue: In Run 71, a `proceed` command after Act 1 boss auto-collected the chest without showing boss relic selection options. May be a CommunicationMod or automation issue. Needs investigation.
+- Boss relic collection automation issue: In Run 71 and Run 77, a `proceed` command after Act 1 boss auto-collected the chest without showing boss relic selection options. Confirmed recurring (2 occurrences). CommunicationMod or automation bug. HIGH PRIORITY -- missing boss relic is a significant power loss each time.
 - The Champ Execute exact HP threshold: Believed to be ~50% HP. Exact percentage unconfirmed.
 - The Champ Execute Metallicize value: Observed as Metallicize 5. Need second data point.
 - The Champ Execute Strength gain: Observed as +8 Strength. Need second data point.
@@ -55,6 +55,10 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Bronze Automaton Stasis targeting: Random or preferential?
 - Bronze Automaton Hyper Beam exact damage: Very high single-hit. Need exact number.
 - Kunai trigger counting: Does Whirlwind count as 1 or X attacks for Kunai?
+- Snake Plant Malleable stacking behavior: Does Malleable block reset each turn or accumulate across turns? Observed increasing block per hit within a turn, but cross-turn behavior unconfirmed.
+- Treasure chest display bug: Treasure chests gave no visible rewards in Run 77. Possible display/automation issue or chests may only contain gold (which is auto-collected without explicit display).
+- Brimstone enemy Strength interaction with Weak: Does Weak reduce the effective damage of enemy attacks AFTER Brimstone Strength is applied? Assumed yes (standard Weak formula) but not directly measured.
+- Book of Stabbing per-hit damage: Previously documented as ~6 per hit, Run 77 observed 7 per hit. Need more data points to confirm exact base damage.
 
 ## Prediction Errors (non-fatal, for monitoring)
 
@@ -64,6 +68,8 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Demon Form too slow vs Spheric Guardian: Demon Form reached 13 Str by turn 9 but Barricade block was already 65+. Front-loaded Strength is required for this fight.
 - Zero potion runs in Act 2: Run 75 had zero potions for entire Act 2. No drops, no purchases. Contributes directly to Spheric Guardian death -- a single Strength or Fire potion may have changed the outcome.
 - Battle Trance + `end` batching error: Turn 3 of Gremlin Leader fight, Battle Trance + Bloodletting + `end` were batched together. Drew cards and generated energy, then immediately ended turn. The drawn cards and energy were completely wasted. This cost an entire turn against a Rally-scaling enemy, contributing directly to death. This is a command/automation sequencing issue.
+- Snake Plant damage was documented as 7x3 but observed as 9x3 in Run 77. Playbook corrected. Previous HP drain estimates were understated.
+- Brimstone + Book of Stabbing anti-synergy: Brimstone gave Book of Stabbing +2 Str/turn, amplifying every escalating hit. With Brimstone equipped, Book of Stabbing's per-hit damage grows by +2 each turn in addition to the +1 hit/turn escalation. Double-scaling makes the fight significantly more dangerous.
 
 ## Recurring Patterns (for strategist review)
 
@@ -76,7 +82,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Brutality in long fights: ADDRESSED (Hard Rule #6). Monitor.
 - Exhausting key cards: ADDRESSED (Hard Rule #7). Monitor.
 - 3E Power setup deaths: ADDRESSED (Hard Rule #8). Two deaths (Run 72 Barricade unplayable, Run 73 Corruption fatal). Monitor.
-- Boss relic collection skipped (Run 71): Possible automation bug. Needs investigation.
+- Boss relic collection skipped (Run 71, Run 77): Confirmed recurring automation bug (2 occurrences). HIGH PRIORITY investigation needed.
 
 ## Open Questions
 

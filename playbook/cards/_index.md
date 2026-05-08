@@ -32,6 +32,7 @@
 - [Blood for Blood](blood-for-blood.md)
 - [Bludgeon](bludgeon.md)
 - [Pummel](pummel.md)
+- [Sword Boomerang](sword-boomerang.md)
 - [Immolate](immolate.md)
 - [Sever Soul](sever-soul.md)
 - [Heavy Blade](heavy-blade.md)

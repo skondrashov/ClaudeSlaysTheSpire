@@ -27,6 +27,7 @@
 
 ## Uncommon Relics
 
+- [Brimstone](brimstone.md)
 - [Kunai](kunai.md)
 - [Pen Nib](pen-nib.md)
 - [Letter Opener](letter-opener.md)

@@ -325,6 +325,68 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
     return f"play {best_card_idx} {remaining}"
 
 
+def _resolve_shop_choose(raw_state: dict, action: str) -> str:
+    """Resolve card/relic/potion names in shop choose commands to indices.
+
+    Supports:
+        "choose Inflame"        -> "choose 3"  (finds Inflame in shop cards)
+        "choose purge"          -> "choose purge" (pass through)
+        "choose 3"              -> "choose 3"  (already numeric, pass through)
+
+    This prevents shop buy bugs where the player miscounts indices.
+    """
+    gs = raw_state.get("game_state", {}) if raw_state else {}
+    screen = gs.get("screen_type", "")
+    if screen not in ("SHOP_ROOM", "SHOP_SCREEN"):
+        return action  # Not in shop, pass through
+
+    parts = action.strip().split()
+    if len(parts) < 2 or parts[0].lower() != "choose":
+        return action
+
+    # Already numeric or a known keyword?
+    remainder = " ".join(parts[1:])
+    try:
+        int(remainder)
+        return action  # Already an index
+    except ValueError:
+        pass
+
+    if remainder.lower() in ("purge", "return"):
+        return action  # Known shop keywords
+
+    # Try to match against shop cards, relics, potions
+    ss = gs.get("screen_state", {})
+    cards = ss.get("cards", [])
+    relics = ss.get("relics", [])
+    potions = ss.get("potions", [])
+
+    search_name = remainder.lower().rstrip("+")
+
+    # Search cards first
+    for i, card in enumerate(cards):
+        card_name = card.get("name", "").lower()
+        if card_name == search_name:
+            return f"choose {i}"
+
+    # Search relics (CommunicationMod uses separate indexing for relics)
+    for i, relic in enumerate(relics):
+        relic_name = relic.get("name", "").lower().replace(" ", "").replace("'", "")
+        search_clean = search_name.replace(" ", "").replace("'", "")
+        if relic_name == search_clean or relic.get("name", "").lower() == search_name:
+            # Relics are indexed after cards in CommunicationMod
+            return f"choose {len(cards) + i}"
+
+    # Search potions
+    for i, pot in enumerate(potions):
+        pot_name = pot.get("name", "").lower()
+        if pot_name == search_name:
+            # Potions are indexed after cards + relics
+            return f"choose {len(cards) + len(relics) + i}"
+
+    return action  # No match found, pass through unchanged
+
+
 def _translate_named_choose(name: str, screen: str) -> str:
     """Translate named choose commands like 'choose rest'."""
     name_map = {
@@ -577,6 +639,8 @@ def send(command: str, reason: str = "") -> str:
     _last_raw_state = _tcp_request({"type": "state"})
     # Resolve card names to indices using current hand state
     resolved = _resolve_card_name(_last_raw_state, command)
+    # Resolve shop card/relic names to indices
+    resolved = _resolve_shop_choose(_last_raw_state, resolved)
     _post_decision(resolved, reason)
     raw = _tcp_request({"type": "command", "command": resolved})
     _last_raw_state = raw  # Update cache

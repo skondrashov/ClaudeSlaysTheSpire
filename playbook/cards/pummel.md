@@ -10,6 +10,6 @@ SYNERGIES: Inflame/Demon Form (Strength multiplied across 4-5 hits), Vulnerable 
 
 ANTI-SYNERGY: **Snake Plant Malleable** -- each of the 4-5 hits triggers Malleable, causing Snake Plant to gain increasing block. A 4-hit Pummel can give Snake Plant 3+4+5+6 = 18 block in a single play. Avoid playing Pummel against enemies with Malleable.
 
-WEAKNESSES: 2 base damage per hit is negligible without Strength. Exhausts, so it is a one-use card. Poor against enemies with per-hit block mechanics (Malleable, Thorns).
+WEAKNESSES: 2 base damage per hit is negligible without Strength. Exhausts, so it is a one-use card. Poor against enemies with per-hit block mechanics (Malleable, Thorns). Compare with Sword Boomerang (3x3/3x4, does NOT exhaust) -- Sword Boomerang has higher base damage per hit and repeatable use, but Pummel has more hits for better Strength scaling in single-target burst.
 
 ---
