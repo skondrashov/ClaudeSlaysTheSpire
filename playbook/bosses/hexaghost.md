@@ -17,7 +17,7 @@ KEY MECHANICS:
 
 PREPARATION CHECKLIST (must have at least 2 of 3):
 1. Weak source (Shockwave, Clothesline, Intimidate, Uppercut, Weak Potion) -- reduces Inferno from 42 to 28. MANDATORY.
-2. HP above 70% OR Pantograph relic (heals to full at boss start).
+2. HP above 70% OR Pantograph relic (heals 25 HP at boss start -- NOT full HP).
 3. Passive block (Metallicize, Flame Barrier+) OR Impervious for the Inferno turn.
 
 If you have 0-1 of these, Hexaghost will likely kill you.
@@ -46,5 +46,5 @@ WHAT NOT TO DO:
 - Fight without a Weak source. Inferno at full power (42) is near-unsurvivable.
 - Play Brutality. Burns + Brutality self-damage = 3-5 HP/turn death spiral.
 - Play Berserk. Self-Vulnerable + Inferno = death.
-- Enter below 70% HP without Pantograph. The 250 HP + Inferno + Burns demands a large HP buffer.
+- Enter below 70% HP without Pantograph. Pantograph only heals 25 HP, not full -- plan accordingly. The 250 HP + Inferno + Burns demands a large HP buffer.
 - Waste Shockwave on a non-Inferno turn.

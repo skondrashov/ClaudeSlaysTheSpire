@@ -2,15 +2,19 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK:** Act 2 hallway survival -- specifically Spheric Guardian fights. We beat Act 1 bosses consistently and have beaten the Act 2 boss (Collector) once. But 6 of the last 8 logged deaths were in Act 2 hallway fights or early Act 2 elites, and Spheric Guardian alone accounts for 3 of the last 4 deaths. The problem is not HP management alone -- it is that the player repeatedly self-sabotages in long fights by playing self-damage Powers (Brutality) and exhausting key cards (Spot Weakness, Shockwave+) that are needed to win attrition battles. Act 3 HP management remains the NEXT bottleneck once Act 2 is solved.
+**CURRENT BOTTLENECK:** Execution discipline and playbook accuracy. Runs 69-73 averaged Floor 24.6 -- a REGRESSION from the F30+ average of Runs 63-68. The regression has multiple causes: (1) stale playbook errors (Pantograph "heals to full" -- FIXED), (2) expensive Power setup deaths (Corruption 3E into enemies -- NEW Hard Rule #8 added), (3) Act 1 boss deaths from upgrade death spirals (Run 70), and (4) continued Spheric Guardian attrition losses. We beat Act 1 bosses consistently when we upgrade, and have beaten the Act 2 boss once. The Hard Rules from Strategist #2-3 ARE working when followed -- zero compliance failures in the last 5 runs. The problem is upstream: deck building decisions and card/relic knowledge errors that put the player in unwinnable situations.
 
-**IMMEDIATE PRIORITY:** Stop losing to Spheric Guardian. Three deaths in the last 12 runs, including one at FULL HP. The fix is behavioral: (1) never play Brutality in fights expected to last 7+ turns, (2) never exhaust Strength-scaling cards like Spot Weakness, (3) kill Sentry first to reduce incoming damage, (4) have Strength scaling in the deck by Floor 20 (Inflame, Spot Weakness, or accumulated Strength from relics). If the deck has no Strength scaling by Act 2, Spheric Guardian is mathematically unwinnable -- take card picks that address this.
+**IMMEDIATE PRIORITIES (in order):**
+1. **Stop playing 3E Powers into attacking enemies** (Hard Rule #8). Corruption and Barricade setup kills are preventable.
+2. **Upgrade Bash by Floor 8** (Hard Rule #3). The upgrade death spiral is still triggering.
+3. **Have Strength scaling by Floor 15** (Inflame > Spot Weakness > Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.
+4. **Treat Pantograph as +25 HP, not full heal.** Plan boss HP thresholds accordingly.
 
 ---
 
 ## HP Management: The #1 Cause of Death
 
-23 of 26 documented deaths resulted from entering a fight below safe HP thresholds (one death occurred at full HP but self-damage from Brutality drained HP during the fight). The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.
+24+ of 30+ documented deaths resulted from entering a fight below safe HP thresholds or making a fatal tempo error (playing a 3E Power with no block). The pattern is always the same: a drain fight takes 30-50 HP, the next room is combat, and the player dies. Or: the player spends all energy on a Power and takes full unblocked damage.
 
 ### HP Thresholds for Act 2
 
@@ -147,6 +151,25 @@ Demon Form (+2 Str/turn) and Limit Break (double Strength) are powerful scaling 
 
 **Rule:** If your primary damage scaling is Demon Form or Limit Break, you MUST have an alternative fast-burst plan for emergencies. Do not enter fights below 50% HP relying solely on a slow engine.
 
+### 3-Cost Power Setup Trap
+
+Corruption (3E), Barricade (3E), and Demon Form (3E) are all powerful cards that consume ALL energy on a 3-energy turn. Playing them on turn 1 against attacking enemies leaves zero energy for block. Two deaths and one near-miss confirm this pattern:
+- Run 73: Corruption (3E) into Looter + Mugger. Zero block. 20+ unblocked damage. Dead.
+- Run 72: Barricade (3E) was never played because no turn was safe enough to spend all energy.
+
+**When to play 3E Powers:**
+- Enemy is buffing/defending (free turn with no incoming damage)
+- You have 4+ energy (from relics like Lantern, Sozu, or cards like Offering)
+- You have enough HP to absorb the full unblocked hit AND still survive subsequent turns
+- You upgraded the Power to 2E (Corruption+ is 2E, leaving 1E for Defend)
+
+**When NOT to play 3E Powers:**
+- Turn 1 against multi-enemy fights (combined damage 15-25+)
+- Any turn where blocking is survival-critical
+- When you cannot afford to take a full unblocked hit
+
+This is now Hard Rule #8.
+
 ### Unknown Card Evaluation
 
 - **Skip** unknown cards with self-damage, self-debuff, or suspicious keywords ("lose," "take damage," "Vulnerable to self," curses).
@@ -188,7 +211,7 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - No self-damage cards (Brutality, Berserk)
 
 **The Collector needs:**
-- HP entry at 70%+ or Pantograph -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Pantograph heals to full at boss start, bypassing the threshold.
+- HP entry at 70%+ or Pantograph -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Pantograph heals 25 HP at boss start, which helps but does NOT bypass the threshold if you enter more than 25 HP below max.
 - AOE damage (HIGHEST PRIORITY) -- Immolate+ is the single best card. Hits Collector + both Torch Heads. With Vulnerable: 42 damage to Collector per cast. Torch Heads respawn, so AOE is more valuable than single-target.
 - Mass debuff -- Shockwave+ (Weak 3 + Vuln 3 to ALL enemies) reduces combined incoming by 25% while boosting all damage by 50%. Second-highest priority.
 - Impervious -- 30 block absorbs post-debuff turns. Critical defensive card.
@@ -299,7 +322,7 @@ Act 2 enemies hit significantly harder than Act 1.
 
 ### Enter Act 2 at Full HP
 
-Pantograph heals to full before the boss, but Act 2 hallway fights drain 30-60 HP. Enter with maximum possible HP.
+Pantograph heals 25 HP at boss start (NOT full HP). Act 2 hallway fights drain 30-60 HP. Enter with maximum possible HP. If you enter the boss 40 HP below max, Pantograph only recovers 25 of that deficit.
 
 ### Upgrades Matter More
 
@@ -343,7 +366,7 @@ Act 3 enemies hit harder than Act 2 and have unique mechanics that punish specif
 
 ### Enter Act 3 at Full HP
 
-Pantograph heals to full at the Act 2 boss, but the Collector fight itself drains 50-65 HP. Entering Act 3 at 14-20 HP (as observed) is extremely dangerous. The first hallway fight in Act 3 can drain 25-40 HP (Writhing Mass, Darklings). If possible, path through a rest site or event between the boss and Act 3.
+Pantograph heals 25 HP at the Act 2 boss start (NOT full HP). The Collector fight itself drains 50-65 HP. Entering Act 3 at 14-20 HP (as observed) is extremely dangerous. The first hallway fight in Act 3 can drain 25-40 HP (Writhing Mass, Darklings). If possible, path through a rest site or event between the boss and Act 3.
 
 ### Act 3 HP Thresholds
 
@@ -376,7 +399,7 @@ Pantograph heals to full at the Act 2 boss, but the Collector fight itself drain
 
 Across all boss victories (8 total, including first Act 2 boss victory), the differentiators are:
 1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions. Collector victory used Immolate+ (AOE for Torch Heads), Shockwave+ (mass debuff), and Impervious (post-debuff survival).
-2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed to full).
+2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed 25 HP to near-full).
 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.
 4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage. Brutality is now confirmed as a death cause in long fights even at full HP entry -- the 1 HP/turn drain is lethal in fights lasting 8+ turns (Spheric Guardian, Shelled Parasite with Plated Armor). Only play Brutality in fights expected to end within 4-5 turns.
 5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.

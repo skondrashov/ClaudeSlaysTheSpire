@@ -20,6 +20,8 @@ These rules have been validated across 60+ runs. Violating any of them has direc
 
 7. **NEVER EXHAUST Spot Weakness, Reaper, or your only Strength-scaling card in a fight where you need damage scaling.** Exhausting Spot Weakness on turn 1 of a Spheric Guardian fight removed the only way to break through Barricade block, directly causing death. Exhaust Strikes and Defends first. Situationally powerful cards are NOT safe exhaust targets.
 
+8. **NEVER PLAY a 3-cost Power (Corruption, Barricade, Demon Form) on turn 1 when enemies are attacking UNLESS you have 4+ energy.** Spending 3 of 3 energy on a Power leaves zero energy for block. Combined incoming from multi-enemy fights is 20+ unblocked damage. One confirmed death from playing Corruption (3E) turn 1 into Looter + Mugger with zero block. Wait for a free turn (enemy buffing/defending) or upgrade the Power to reduce its cost. The only exception is Demon Form into a single enemy whose turn 1 attack is survivable at current HP.
+
 ## Setup
 
 ```python

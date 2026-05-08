@@ -13,7 +13,7 @@ KEY MECHANICS:
 - **HP check boss**: Unlike The Guardian (long fight, sustained block needed) or Hexaghost (specific counter cards needed), the Collector is primarily an HP check. Entering at low HP means the STRONG_DEBUFF turn creates unwinnable math.
 
 PREPARATION CHECKLIST:
-1. **Enter at 70%+ HP or have Pantograph** -- the STRONG_DEBUFF on Turn 4 creates a 3-turn window where incoming damage spikes by 50% and block is reduced by 25%. Pantograph heals to full at boss start, bypassing the HP threshold entirely. Without Pantograph, low HP entry is fatal.
+1. **Enter at 70%+ HP or have Pantograph** -- the STRONG_DEBUFF on Turn 4 creates a 3-turn window where incoming damage spikes by 50% and block is reduced by 25%. Pantograph heals 25 HP at boss start, which helps but does NOT bypass the threshold if you enter more than 25 HP below max. Without Pantograph, low HP entry is fatal.
 2. **AOE damage (HIGHEST PRIORITY)** -- Immolate+ is the MVP. Hits Collector + both Torch Heads simultaneously. With Vulnerable: 42 damage to Collector per cast. Thunderclap+ applies Vulnerable to all 3 targets. AOE is MORE important than single-target burst because Torch Heads respawn.
 3. **Mass debuff** -- Shockwave+ (Weak 3 + Vuln 3 to ALL enemies) is the second-highest-value card. Reduces combined incoming from 3 enemies by 25% for 3 turns while boosting all damage by 50%.
 4. **Impervious** -- 30 block absorbs an entire post-debuff turn. The single best defensive card for this fight.
