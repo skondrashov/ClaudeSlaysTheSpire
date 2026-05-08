@@ -2,23 +2,25 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (100-run milestone):** HP attrition in Act 2. The playbook is comprehensive. Hard Rules have zero violations. Deck building is adequate. The problem is PATHING: the player enters fights at sub-threshold HP because map evaluation is too shallow. Consecutive combat rooms drain HP below survival thresholds before rest sites are reachable. Secondary bottleneck: Brimstone anti-synergy with multi-hit enemies (Book of Stabbing) caused 2 of 5 recent deaths.
+**CURRENT BOTTLENECK (105-run milestone):** Block scaling gap in Act 2 boss decks. Run 105 reached the Act 2 boss (Bronze Automaton) for the first time in recent memory -- all three Act 2 readiness criteria (AOE, Strength, Healing) were met. But the deck had only basic Defends for block (4x 5 block = 20 max). Hyper Beam dealt 38 damage, which is unsurvivable with basic Defends alone. The Act 2 readiness checklist now requires a 4th criterion: block scaling. Secondary bottleneck: Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting effective burst by ~17% in DPS-race fights.
 
-**SCORECARD (runs 81-100):**
+**SCORECARD (runs 81-105):**
 - Act 1 boss wins: ~99% -- Run 103 died to Guardian Floor 16 (Pandora's Box removed all Defends, no block cards available)
-- Act 2 deaths: 9/9 logged deaths -- still the wall (floors 21-33)
-- Average death floor: 26.2 (plateau from runs 63-78 average of 25.6)
+- Act 2 deaths: 10/10 logged deaths -- still the wall (floors 21-33)
+- Average death floor: 26.5 (Run 105 reached Floor 33 -- Act 2 boss! Best recent result)
 - 3 Cultists: 2 deaths (at 52% and 53% HP -- threshold revised to 60%)
 - Book of Stabbing: 3 deaths (2 with Brimstone anti-synergy)
 - Gremlin Leader: 2 deaths (at 55% and 56% HP)
+- Bronze Automaton: 1 death (Run 105, Floor 33 -- block scaling gap, only basic Defends)
 - Hard Rule violations: 0
 - Best floor: 39 (Run 63, Act 3 death) -- unchanged since run 63
 - Shop indexing bug: FIXED. Boss relic skip bug: UNRESOLVED (2 occurrences)
+- MILESTONE: Run 105 is the first Act 2 boss reach in recent runs. Act 2 readiness criteria (AOE, Str, Healing) worked. 4th criterion (block scaling) now added.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **Trace full paths before every map choice.** Before choosing any path, trace EVERY option forward to the next rest/shop. Count forced combats. Choose fewer combats. This is the #1 structural fix -- the majority of deaths result from entering fights at sub-threshold HP because the path forced consecutive combats. Say the count aloud: "Path A: 3 combats to rest. Path B: 1 combat to rest."
 2. **Do NOT buy Brimstone if Book of Stabbing is a possible Act 2 elite.** Brimstone + Book of Stabbing has killed the player twice. The anti-synergy makes Book of Stabbing damage grow quadratically (more hits * more damage per hit). If already holding Brimstone, AVOID Book of Stabbing entirely.
-3. **Build Act 2-ready decks by Floor 15.** The deck needs ALL THREE: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Thunderclap, Cleave, Immolate, Whirlwind), (c) healing beyond Burning Blood. If missing any by Floor 12, actively seek it in remaining card rewards, shops, and events.
+3. **Build Act 2-ready decks by Floor 15.** The deck needs ALL FOUR: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Thunderclap, Cleave, Immolate, Whirlwind), (c) healing beyond Burning Blood, (d) block scaling beyond basic Defends (Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, or True Grit+). Run 105 proved that (a)+(b)+(c) alone is insufficient -- Hyper Beam (38+ damage) is unsurvivable with only basic Defends (4x5=20 block). If missing any by Floor 12, actively seek it in remaining card rewards, shops, and events.
 4. **3 Cultists threshold is 60%, not 50%.** Five deaths at 30-53% HP confirm that even strong block tools cannot survive Ritual scaling. Kill speed (AOE burst to remove one Cultist fast) matters more than defensive tools.
 5. **Have Strength scaling by Floor 15** (Inflame > Spot Weakness > Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.
 
@@ -122,11 +124,12 @@ The single biggest strategic failure across 50 runs: entering Act 2 without a he
 
 ### Act 2 Readiness Checklist (verify before Floor 17)
 
-By the time the Act 1 boss is dead, the deck needs ALL THREE of these or it will die in Act 2:
+By the time the Act 1 boss is dead, the deck needs ALL FOUR of these or it will die in Act 2:
 
 1. **Front-loaded Strength**: Inflame, Spot Weakness, or Corruption+FNP engine. NOT Demon Form alone (too slow for hallway fights -- confirmed in 2 SG deaths). If no Strength source exists by Floor 12, take the next one offered over any other card.
 2. **AOE damage**: Thunderclap, Cleave, Immolate, or Whirlwind. Required for Gremlin Leader (gremlins re-summon, AOE clears them efficiently), Slime Boss split, and 3 Cultists. Two Gremlin Leader deaths had zero AOE.
 3. **Healing beyond Burning Blood**: Reaper, Feed, or multiple healing potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.
+4. **Block scaling beyond basic Defends**: Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, or True Grit+. Basic Defends provide only 5 block each (20 block from a full hand of 4). Act 2 boss Hyper Beam deals 38-45 damage -- unsurvivable with basic Defends alone. Even Act 2 hallway fights (Book of Stabbing turn 5: 6x6=36) outscale basic Defends. Run 105 had criteria 1-3 fully met but died to Hyper Beam because the deck's only block was 4 basic Defends. This is now confirmed as a mandatory criterion.
 
 If missing 2+ of these entering Act 2, the run is in serious danger. Shift to conservative pathing (avoid elites, path through shops and rest sites, skip unknown rooms).
 
@@ -138,8 +141,8 @@ Before taking a card, ask:
 - Do I have a healing card? (If no, this is the #1 gap to fill)
 - Do I have Strength scaling? (If no, this is the #2 gap to fill -- see below)
 - Do I have AOE? (If no, this is the #3 gap -- Gremlin Leader and 3 Cultists will kill you)
+- Do I have block scaling beyond basic Defends? (If no, this is the #4 gap -- Hyper Beam and late Book of Stabbing will kill you. Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, True Grit+)
 - What fights am I struggling with?
-- Do I have enough damage? Enough block?
 - Will this card dilute my draws (bigger deck = less likely to draw key cards)?
 
 A mediocre card that fills a gap is better than a strong card that duplicates what you already have.
@@ -245,11 +248,14 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - Block density for post-debuff turns -- Frail reduces block by 25%, need multiple sources
 
 **Bronze Automaton needs:**
-- HP entry at 70%+ -- 300 HP boss with +3 Str/cycle scaling. Low HP entry means dying to scaling before killing it.
-- Artifact strippers -- Thunderclap, Bash+, Disarm. Automaton starts with Artifact 3 that blocks the first 3 debuff applications. Must strip all Artifact before Vulnerable/Weak take effect.
-- Burst damage -- Bludgeon, Blood for Blood, Double Tap. The fight is a DPS race against Strength scaling.
-- Redundant key cards -- Orb minions steal cards via Stasis. Do not rely on a single copy of any critical card (Double Tap, Inflame).
+- HP entry at 70%+ or Pantograph -- 300 HP boss with +3 Str/cycle scaling. Run 105 entered at 92/92 (Pantograph) and still died -- HP alone is insufficient without block scaling.
+- **Block scaling (MANDATORY)** -- Hyper Beam deals 38-45 damage. Basic Defends (4x5=20 block) are NOT enough. Need Shrug It Off, Flame Barrier, Metallicize, Impervious, or Ghostly Armor. Run 105 died specifically because the deck had zero block scaling cards. This is the #1 requirement.
+- Artifact strippers -- Thunderclap+, Bash+, Shockwave+. Automaton starts with Artifact 3. Run 105 stripped all 3 Artifacts by turn 3 using Thunderclap+ (x2) + Bash+. Shockwave+ then applied Weak 3 + Vuln 3 successfully on turn 4.
+- Burst damage -- Fiend Fire+, Rampage, Bludgeon. The fight is a DPS race against Strength scaling. Kill before turn 10 if possible.
+- Weak source -- Shockwave+ reduces Hyper Beam by 25% (38->28). Critical for survival. Must land AFTER Artifact is stripped.
+- Redundant key cards -- Orb minions steal cards via Stasis. Do not rely on a single copy of any critical card (Fiend Fire, Shockwave+).
 - Intent visibility -- Runic Dome removes the ability to predict Hyper Beam. Avoid taking Runic Dome if Bronze Automaton is a possible Act 2 boss.
+- **Odd Mushroom anti-synergy** -- Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting burst by ~17%. In a DPS race against 300 HP + Strength scaling, this extends the fight by 1-2 turns, potentially forcing survival through an extra Hyper Beam cycle.
 
 **Donu and Deca needs (NOT YET ENCOUNTERED):**
 - AOE damage (Immolate+, Thunderclap+) -- two 250 HP enemies
@@ -447,12 +453,13 @@ Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory), the 
 6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm). Collector victory relied on Immolate+ AOE. Two Hexaghost deaths had Weak but no damage scaling.
 7. **Extra energy**: The Collector victory had 4 energy (Sozu). Extra energy enables offense + defense simultaneously.
 
-### Cross-Run Death Pattern (Act 2) -- Updated at 100 runs
+### Cross-Run Death Pattern (Act 2) -- Updated at 105 runs
 
-Across 30+ Act 2 deaths, the pattern has SHIFTED from "missing critical tools" to "HP attrition from pathing":
+Across 30+ Act 2 deaths, the pattern has SHIFTED from "missing critical tools" to "HP attrition from pathing" -- but Run 105 reveals a NEW failure mode:
 1. **HP attrition from consecutive combats (primary cause)**: The player enters Act 2 at healthy HP, loses 30-50 HP in one fight (Byrds, Snake Plant, Centurion+Mystic), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it is taking a second combat room immediately after. This is a MAP PATHING failure, not a deck building failure. The fix is mandatory path tracing before every map choice.
-2. **Brimstone anti-synergy (new pattern, 2 deaths)**: Brimstone purchased at shop without evaluating Act 2 elite pool. Book of Stabbing with Brimstone deals quadratically scaling damage. Both deaths occurred with strong Str decks that would have survived without Brimstone's enemy buff.
-3. **3 Cultists + scaling hallway fights**: 5 deaths to 3 Cultists at 30-53% HP. This is a HALLWAY fight, not an elite. It cannot be avoided via pathing (it spawns on Monster nodes). The only defense is entering every Act 2 combat at 60%+ HP -- which requires better pathing between combats.
-4. **Book of Stabbing is the #1 elite killer**: 3 deaths. Wound clog + escalating multi-hit. Decks without exhaust tools cannot win. Decks with Brimstone cannot win.
-5. **Shop bug damage (RESOLVED)**: The shop indexing bug was fixed. No longer a factor for future runs.
-6. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling or AOE by Floor 12, the player must prioritize these over all other card choices.
+2. **Block scaling gap at Act 2 boss (NEW, Run 105)**: Run 105 met all three original Act 2 readiness criteria (Thunderclap+ for AOE, Spot Weakness for Strength, Feed+ for healing) and reached the Act 2 boss for the first time. Died to Bronze Automaton Hyper Beam (38 damage) because the deck had only 4 basic Defends (5 block each = 20 max). Block scaling is now the 4th mandatory readiness criterion. Cards like Shrug It Off, Flame Barrier, Metallicize, or Impervious would have saved this run.
+3. **Brimstone anti-synergy (2 deaths)**: Brimstone purchased at shop without evaluating Act 2 elite pool. Book of Stabbing with Brimstone deals quadratically scaling damage. Both deaths occurred with strong Str decks that would have survived without Brimstone's enemy buff.
+4. **3 Cultists + scaling hallway fights**: 5 deaths to 3 Cultists at 30-53% HP. This is a HALLWAY fight, not an elite. It cannot be avoided via pathing (it spawns on Monster nodes). The only defense is entering every Act 2 combat at 60%+ HP -- which requires better pathing between combats.
+5. **Book of Stabbing is the #1 elite killer**: 3 deaths. Wound clog + escalating multi-hit. Decks without exhaust tools cannot win. Decks with Brimstone cannot win.
+6. **Odd Mushroom anti-synergy (contributing factor, Run 105)**: Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting burst output by ~17%. In DPS-race fights (Bronze Automaton, Book of Stabbing), this extends fights by 1-2 turns, forcing survival through additional damage cycles. Consider refusing Odd Mushroom when the deck is Vulnerable-dependent.
+7. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling, AOE, or block scaling by Floor 12, the player must prioritize these over all other card choices.
