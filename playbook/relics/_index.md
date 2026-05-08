@@ -67,6 +67,7 @@
 
 ## Boss Relics / Special
 
+- [Pandora's Box](pandoras-box.md)
 - [Sozu](sozu.md)
 - [Runic Dome](runic-dome.md)
 - [Ancient Tea Set](ancient-tea-set.md)

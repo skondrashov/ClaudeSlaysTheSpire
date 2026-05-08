@@ -5,7 +5,7 @@ High-level strategic principles for Ironclad runs.
 **CURRENT BOTTLENECK (100-run milestone):** HP attrition in Act 2. The playbook is comprehensive. Hard Rules have zero violations. Deck building is adequate. The problem is PATHING: the player enters fights at sub-threshold HP because map evaluation is too shallow. Consecutive combat rooms drain HP below survival thresholds before rest sites are reachable. Secondary bottleneck: Brimstone anti-synergy with multi-hit enemies (Book of Stabbing) caused 2 of 5 recent deaths.
 
 **SCORECARD (runs 81-100):**
-- Act 1 boss wins: ~100% -- Act 1 is solved
+- Act 1 boss wins: ~99% -- Run 103 died to Guardian Floor 16 (Pandora's Box removed all Defends, no block cards available)
 - Act 2 deaths: 9/9 logged deaths -- still the wall (floors 21-33)
 - Average death floor: 26.2 (plateau from runs 63-78 average of 25.6)
 - 3 Cultists: 2 deaths (at 52% and 53% HP -- threshold revised to 60%)
