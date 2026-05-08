@@ -2,13 +2,21 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK:** Execution discipline and playbook accuracy. Runs 69-73 averaged Floor 24.6 -- a REGRESSION from the F30+ average of Runs 63-68. The regression has multiple causes: (1) stale playbook errors (Pantograph "heals to full" -- FIXED), (2) expensive Power setup deaths (Corruption 3E into enemies -- NEW Hard Rule #8 added), (3) Act 1 boss deaths from upgrade death spirals (Run 70), and (4) continued Spheric Guardian attrition losses. We beat Act 1 bosses consistently when we upgrade, and have beaten the Act 2 boss once. The Hard Rules from Strategist #2-3 ARE working when followed -- zero compliance failures in the last 5 runs. The problem is upstream: deck building decisions and card/relic knowledge errors that put the player in unwinnable situations.
+**CURRENT BOTTLENECK:** Deck building for Act 2 readiness. Runs 72-76 averaged Floor 25.6 -- still dying mid-Act 2. Hard Rules are working (zero compliance failures in 10+ runs). Playbook accuracy is mostly fixed. The new problem is assembling the right tools BEFORE Act 2 demands them. Every recent death had a deck that was *close* but missing one critical piece: front-loaded Strength for Spheric Guardian, AOE for Gremlin Leader gremlins, or affordable Corruption (2E upgrade). The shop indexing bug continues to pollute decks with unwanted cards (~40% of runs affected).
+
+**SCORECARD (runs 72-76):**
+- Act 1 boss wins: 5/5 (100%) -- Act 1 is solved
+- Act 2 deaths: 5/5 -- still the wall
+- Spheric Guardian: 2 deaths, 1 survival (Corruption+FNP engine works)
+- Gremlin Leader: 2 deaths (emerging as co-#1 killer with SG)
+- Average floor: 25.6 (no improvement from runs 69-73 average of 24.6)
+- Hard Rule violations: 0 (rules are working)
 
 **IMMEDIATE PRIORITIES (in order):**
-1. **Stop playing 3E Powers into attacking enemies** (Hard Rule #8). Corruption and Barricade setup kills are preventable.
-2. **Upgrade Bash by Floor 8** (Hard Rule #3). The upgrade death spiral is still triggering.
-3. **Have Strength scaling by Floor 15** (Inflame > Spot Weakness > Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.
-4. **Treat Pantograph as +25 HP, not full heal.** Plan boss HP thresholds accordingly.
+1. **Build Act 2-ready decks by Floor 15.** The deck needs ALL THREE: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Thunderclap, Cleave, Immolate, Whirlwind), (c) healing beyond Burning Blood. If missing any by Floor 12, actively seek it in remaining card rewards, shops, and events.
+2. **Gremlin Leader is now co-#1 killer.** Enter at 60%+ HP. Kill gremlins with AOE. Apply Shockwave early. Every wasted turn = +3 Str to ALL enemies. Do not end turn early after draw effects.
+3. **Upgrade Corruption to 2E before relying on it.** Unupgraded Corruption (3E) has killed the player. If Corruption is the engine piece, upgrade it FIRST at rest sites -- above Bash, above everything.
+4. **Have Strength scaling by Floor 15** (Inflame > Spot Weakness > Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.
 
 ---
 
@@ -80,15 +88,18 @@ Zero upgrades in an entire run is a death sentence. Even one missed upgrade make
 ### Upgrade Priority
 
 1. Bash (3 Vulnerable vs 2 is massive)
-2. True Grit (CHOSEN exhaust vs RANDOM is game-deciding)
-3. Armaments (upgrade 1 card -> upgrade ALL cards in hand -- transformative)
-4. Carnage (28 vs 20 damage)
-5. Iron Wave (7/7 vs 5/5)
-6. Pommel Strike (10 damage + draw 2 vs 9 + draw 1)
-7. Thunderclap (7 vs 4 AOE)
-8. Shrug It Off (11 vs 8 block)
-9. Headbutt (12 vs 9 damage)
-10. Defend (8 vs 5 block -- low individual priority but Ancient Writing mass upgrade is excellent)
+2. Corruption (3E -> 2E is life-or-death -- one confirmed kill from unupgraded Corruption setup)
+3. True Grit (CHOSEN exhaust vs RANDOM is game-deciding)
+4. Armaments (upgrade 1 card -> upgrade ALL cards in hand -- transformative)
+5. Carnage (28 vs 20 damage)
+6. Iron Wave (7/7 vs 5/5)
+7. Pommel Strike (10 damage + draw 2 vs 9 + draw 1)
+8. Thunderclap (7 vs 4 AOE)
+9. Shrug It Off (11 vs 8 block)
+10. Headbutt (12 vs 9 damage)
+11. Defend (8 vs 5 block -- low individual priority but Ancient Writing mass upgrade is excellent)
+
+**Context-dependent overrides:** If Corruption is your engine piece, upgrade it above Bash. If you already have Bash+, move to the next unupgraded priority. The list is a default -- always upgrade the card that will save the most HP in the next 5 fights.
 
 ---
 
@@ -105,6 +116,16 @@ The single biggest strategic failure across 50 runs: entering Act 2 without a he
 
 **This is non-negotiable.** A deck with Reaper + adequate damage will reach Act 3. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30.
 
+### Act 2 Readiness Checklist (verify before Floor 17)
+
+By the time the Act 1 boss is dead, the deck needs ALL THREE of these or it will die in Act 2:
+
+1. **Front-loaded Strength**: Inflame, Spot Weakness, or Corruption+FNP engine. NOT Demon Form alone (too slow for hallway fights -- confirmed in 2 SG deaths). If no Strength source exists by Floor 12, take the next one offered over any other card.
+2. **AOE damage**: Thunderclap, Cleave, Immolate, or Whirlwind. Required for Gremlin Leader (gremlins re-summon, AOE clears them efficiently), Slime Boss split, and 3 Cultists. Two Gremlin Leader deaths had zero AOE.
+3. **Healing beyond Burning Blood**: Reaper, Feed, or multiple healing potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.
+
+If missing 2+ of these entering Act 2, the run is in serious danger. Shift to conservative pathing (avoid elites, path through shops and rest sites, skip unknown rooms).
+
 ### Take Cards That Solve Problems
 
 A card's value depends on what your deck needs RIGHT NOW.
@@ -112,8 +133,9 @@ A card's value depends on what your deck needs RIGHT NOW.
 Before taking a card, ask:
 - Do I have a healing card? (If no, this is the #1 gap to fill)
 - Do I have Strength scaling? (If no, this is the #2 gap to fill -- see below)
+- Do I have AOE? (If no, this is the #3 gap -- Gremlin Leader and 3 Cultists will kill you)
 - What fights am I struggling with?
-- Do I have enough damage? Enough block? AOE?
+- Do I have enough damage? Enough block?
 - Will this card dilute my draws (bigger deck = less likely to draw key cards)?
 
 A mediocre card that fills a gap is better than a strong card that duplicates what you already have.
@@ -310,6 +332,11 @@ Before fighting an elite, check:
 3. **Potions available**: Potions compensate for bad matchups.
 4. **Path alternatives**: If a safer path exists with similar value, take it.
 
+**Act 2 Elite Threat Ranking:**
+- **Gremlin Leader** (2 deaths in 5 runs, co-#1 killer): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death).
+- **Book of Stabbing**: Escalating multi-hit (+1 per turn). Wounds clog draw pile. NEED: exhaust for Wounds, fast kill. Do NOT play Brutality.
+- **Slavers**: 3 enemies, 27+ combined damage. NEED: AOE, mass debuff, 60%+ HP.
+
 ### Fairy Management
 
 Fairy in a Bottle is often consumed in Centurion+Mystic fights. If Fairy is your only death insurance, avoid fights that might trigger it before the elite/boss. Plan paths so Fairy is available for the most dangerous fight.
@@ -397,11 +424,19 @@ Pantograph heals 25 HP at the Act 2 boss start (NOT full HP). The Collector figh
 
 ### Cross-Run Victory Pattern
 
-Across all boss victories (8 total, including first Act 2 boss victory), the differentiators are:
+Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory), the differentiators are:
 1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions. Collector victory used Immolate+ (AOE for Torch Heads), Shockwave+ (mass debuff), and Impervious (post-debuff survival).
 2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed 25 HP to near-full).
 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.
-4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage. Brutality is now confirmed as a death cause in long fights even at full HP entry -- the 1 HP/turn drain is lethal in fights lasting 8+ turns (Spheric Guardian, Shelled Parasite with Plated Armor). Only play Brutality in fights expected to end within 4-5 turns.
-5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.
-6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Collector victory relied on Immolate+ AOE (28 damage to all enemies) to manage both Collector HP and Torch Head respawns. Two Hexaghost deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.
-7. **Extra energy**: The Collector victory had 4 energy (Sozu). The extra card per turn allowed playing both offense and defense simultaneously, which is critical for multi-enemy fights.
+4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality is confirmed as a death cause in long fights even at full HP entry -- the 1 HP/turn drain is lethal in fights lasting 8+ turns. Only play Brutality in fights expected to end within 4-5 turns.
+5. **Upgrade discipline**: Victories had 1-4 key upgrades. Zero-upgrade runs are unwinnable (3x confirmed).
+6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm). Collector victory relied on Immolate+ AOE. Two Hexaghost deaths had Weak but no damage scaling.
+7. **Extra energy**: The Collector victory had 4 energy (Sozu). Extra energy enables offense + defense simultaneously.
+
+### Cross-Run Death Pattern (Act 2)
+
+Across Act 2 deaths (runs 72-76), the pattern is:
+1. **Missing one critical tool**: 5/5 deaths had decks that were close but missing a key piece. Inflame/Spot Weakness absent in SG fights. Zero AOE in GL fights. Unupgraded Corruption in multi-enemy fights.
+2. **Shop bug damage**: 2/5 runs had decks polluted by accidental shop purchases (Havoc x2, Sever Soul, Clash). This is infrastructure damage, not player error, but it adds 2-3 dead cards that dilute draws at the worst time.
+3. **Gremlin Leader + Spheric Guardian are the two killers**: Combined 4/5 Act 2 deaths. Both require specific answers (AOE + turn economy for GL, front-loaded Str + burst for SG). A deck that answers one may not answer the other -- need BOTH AOE and Str scaling.
+4. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling or AOE by Floor 12, the player must prioritize these over all other card choices.

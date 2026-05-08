@@ -41,3 +41,5 @@
 
 - [Writhing Mass](writhing-mass.md)
 - [Transient](transient.md)
+
+NOTE: Darklings and Spikers are documented in strategy.md (Act 3 Key Enemies) but do not yet have individual playbook entries. Create entries when first encountered and survived.

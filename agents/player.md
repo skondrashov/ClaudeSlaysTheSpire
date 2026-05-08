@@ -147,9 +147,15 @@ Think about what your deck needs, not just whether a card is generically "good."
 - Will this card make your deck worse by diluting it?
 - How does it interact with your relics and other cards?
 
+**Act 2 Readiness Check (ask before every card reward in Act 1):**
+- Do I have front-loaded Strength? (Inflame, Spot Weakness -- NOT just Demon Form)
+- Do I have AOE? (Thunderclap, Cleave, Immolate, Whirlwind)
+- Do I have healing beyond Burning Blood? (Reaper, Feed)
+If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. Missing all three entering Act 2 has been the #1 cause of death in recent runs.
+
 ### Rest Sites
 - **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is below 35% in Act 1 or below 50% in Act 2. See Hard Rule #3.
-- Which card benefits most from upgrading? Priority: Bash > True Grit > Armaments > best damage card > best block card.
+- Which card benefits most from upgrading? Priority: Bash > Corruption (if in deck) > True Grit > Armaments > best damage card > best block card.
 
 ### Map Pathing
 - Consider your HP, deck strength, and what you need before the boss
