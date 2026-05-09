@@ -106,3 +106,6 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Ancient Writing second option (Insight): What does it offer?
 - The Joust odds: 70% win chance for Murderer accurate?
 - Confusion interaction with X-cost cards: Unconfirmed.
+- Louse Curl Up block residual calculation: Player computed "Strike 2 deals 4" against remaining Curl Up block, suggesting 6-7+6=4 through. Actual math with Curl Up 7: first Strike 6 vs 7 block = 0 through (1 block remaining), second Strike 6 vs 1 block = 5 through. The 4 vs 5 discrepancy is 1 HP -- needs verification of whether Curl Up block values vary (3-7 range observed).
+- HP tracking drift across multi-turn fights: In Run 126 Shelled Parasite + Fungi Beast fight, HP values drifted by 2-3 HP from expected calculations. Pain curse (1 HP per draw when drawn) may account for this. Needs explicit tracking.
+- Was AOE offered in Run 126 or RNG-denied the entire run? If AOE was offered and skipped, that is a decision error. If never offered across 21 floors, that is RNG denial.

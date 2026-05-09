@@ -22,6 +22,8 @@ WHEN TO PLAY: Turn 1 of boss fights. Turn 1 of any fight where the enemy buffs (
 
 DECK BUILDING NOTE: If Demon Form is your primary scaling, the deck still needs fast burst (Fiend Fire, Rampage, Immolate) for emergency hallway fights at low HP. Demon Form solves bosses but not the Act 2 death spiral.
 
+REAPER SYNERGY WARNING: Demon Form as the ONLY Strength source makes Reaper healing too slow in early turns. Reaper heals for unblocked damage dealt to all enemies. At 0 Str (turn 1) or +2 Str (turn 2), Reaper heals very little -- often 4-8 HP total against Act 2 enemies with block or Plated Armor. By the time Demon Form ramps to meaningful Strength (+6-8, turn 3-4), you may already be at critical HP. If Reaper is in the deck, pair Demon Form with a front-loaded Strength source (Inflame, Spot Weakness, or even a Strength Potion) so Reaper provides meaningful healing from the first play. Demon Form + Reaper without front-loaded Str is a healing engine that comes online too late for Act 2 hallway fights.
+
 SYNERGIES:
 - **Heavy Blade+**: The premier damage payoff for Demon Form Strength. Heavy Blade+ applies 5x Strength bonus. At +12 Str (turn 4 of Demon Form+), Heavy Blade+ deals 14 + 60 = 74 damage. At +18 Str (turn 6), it deals 14 + 90 = 104. This combination is a core Ironclad scaling engine for boss fights.
 - **Shuriken + Anger**: Anger (0E) counts toward Shuriken's 3-Attack threshold. Demon Form Str stacks with Shuriken's passive Str. By turn 5-7, combined Str can reach +12-15 from both sources, making every attack devastating. This combo killed Hexaghost in 7 turns.
