@@ -35,31 +35,14 @@
 - Shop indexing bug fixed (CommunicationMod purge offset)
 
 
-## Runs 81-90 Summary
+## Runs 81-100 Summary (archived)
 
-5 logged deaths (Runs 81, 84, 87, 90, plus unlogged runs). Average death floor: 28.0. All deaths in Act 2.
-- Run 081 (F33): Best floor in this batch. Deck had Reaper from Neow. Guardian beaten cleanly.
-- Run 084 (F27): Guardian boss, died Act 2.
-- Run 087 (F28): Hexaghost boss, Neow Lament (1 HP enemies x3). Died Act 2.
-- Run 090 (F24): Slime Boss, Feed from Neow. Died Act 2.
-Shop indexing bug continued to affect some of these runs. Pattern unchanged: Act 1 solved, Act 2 is the wall.
-
-## Runs 91-100 Summary (100-RUN MILESTONE)
-
-5 logged deaths. Average death floor: 24.8. All deaths in Act 2 (floors 21-31).
-- Run 091 (F24): Reaper+, Thunderclap+, Metallicize, Demon Form, Brimstone. Died to Book of Stabbing elite at 28% HP. Brimstone anti-synergy made BoS damage unsurvivable. Snake Plant drained HP from 83% to 28% before elite.
-- Run 093 (F23): Duplicate log data with Run 091 (same Neow blessing, same boss, same events -- likely a log corruption or identical seed).
-- Run 096 (F21): Hexaghost boss, Bash+ from Neow. Immolate, Impervious+, Disarm, Iron Wave. Died to 3 Cultists hallway fight at 52% HP. Fifth confirmed death to this encounter. Threshold revised to 60%.
-- Run 098 (F25): Guardian boss. Died to Gremlin Leader elite at 55% HP. No Strength scaling, shop bug bought wrong card (Pummel instead of Pommel Strike). Eternal Feather healing not enough.
-- Run 100 (F31): Best floor in batch. Strong Str deck (Brimstone, Inflame+, Spot Weakness+, Rampage+, Flame Barrier+, Champion Belt). Beat Gremlin Leader elite. Died to Book of Stabbing at 75% HP -- Brimstone gave Book +2 Str/turn, making turn 5 damage ~102. Even strong Str scaling could not outrace quadratic enemy damage growth.
-
-KEY FINDINGS AT 100 RUNS:
-1. Floor average plateaued at 25-26 for 40+ runs.
-2. Brimstone + Book of Stabbing anti-synergy caused 2 deaths.
-3. 3 Cultists threshold revised to 60%.
-4. Shop indexing bug fixed.
-5. Boss relic collection bug unresolved (2 occurrences).
-6. Bottleneck shifted from knowledge to execution (map pathing).
+10 logged deaths. Average death floor: 26.2. All deaths in Act 2. Key lessons absorbed into playbook:
+- Brimstone + Book of Stabbing anti-synergy caused 2 deaths (Runs 91, 100) -- quadratic damage growth
+- 3 Cultists threshold revised to 60% (5th death at 52% HP, Run 96)
+- Shop indexing bug fixed (CommunicationMod purge offset)
+- Boss relic collection bug unresolved (2 occurrences, Runs 71, 77)
+- Floor average plateaued at 25-26 for 40+ runs at the 100-run milestone
 
 ## Runs 101-110 Summary (BREAKTHROUGH -- Act 2 boss reached twice)
 

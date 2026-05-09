@@ -2,28 +2,54 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (127-run milestone):** FOUR distinct failure modes. (1) Entering the Act 2 boss at sufficient HP -- FOUR consecutive Act 2 boss reaches (Runs 105, 110, 114, 125, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Criteria RNG denial -- healing and block scaling can be denied by card-offer RNG. Healing denied in 5 of last 7 runs. **Feel No Pain does NOT fulfill the block scaling criterion.** When a criterion cannot be filled, the backup plan (conservative pathing, rest-heavy routing) must activate IMMEDIATELY. (3) **Tactical sequencing errors** -- the player uses exhausting Weak sources (Intimidate) for Artifact stripping instead of saving them for Hyper Beam. The player also chooses damage over block at critical HP (Pommel Strike instead of Defend at 19 HP vs 3 attackers). Weak direction rule clarified in mechanics.md; Intimidate timing rule added to bronze-automaton.md and intimidate.md. (4) **Demon Form as sole Strength source + missing AOE** -- Demon Form is too slow for hallway fights and makes Reaper healing ineffective in early turns. When Demon Form is the only Str source acquired, treat criteria 1 (front-loaded Str) as STILL UNMET and prioritize Inflame/Spot Weakness at the next card reward or shop. (5) **Block-first at critical HP** -- at sub-30% HP, every energy point spent on damage instead of block risks immediate death. Two Slavers deaths confirm: mass Weak alone cannot compensate for zero block when HP is critical.
+**CURRENT BOTTLENECK (130-run milestone):** The system has TWO distinct failure layers. **Layer 1: Mechanics execution errors** -- the player keeps misapplying basic game mechanics despite documented corrections. Weak direction confusion (Run 124), SIO+ block miscalculation (Run 125), Flame Barrier+ block vs counter confusion (Run 125), Armaments+ block value forgotten (Run 126), Strength carryover between combats (Run 127), Hexaghost Turn 2 multi-hit undocumented until after death (Run 129). Six different mechanics errors in six consecutive runs. The playbook documents the correct values, but the player does not reliably consult or apply them during combat. **Layer 2: HP attrition without healing** -- healing card RNG denial (7 of last 9 runs with no Reaper/Feed offered) forces reliance on potions and rest sites, which cannot offset 30-50 HP Act 2 fights. The backup healing plan is documented but produces death spirals anyway.
 
-**SCORECARD (runs 101-129):**
-- Act 1 boss wins: ~80% -- Guardian regression: 4 deaths in last 29 runs. Hexaghost regression: Run 129 death at F16.
-- Act 2 boss reaches: 4 (Runs 105, 110, 114, 125, all Floor 33) -- STRONGEST TREND YET
-- Act 2 elite/hallway deaths: Run 116 (F21), Run 118 (F21), Run 112 (F25), Run 124 (F23 Gremlin Leader), Run 126 (F21 Shelled Parasite + Fungi Beast), Run 127 (F23 Slavers elite at 23% HP), Run 128 (F24 Shelled Parasite + Fungi Beast at 46% HP)
-- Bronze Automaton: 3 deaths (Run 105 -- block scaling gap; Run 114 -- 45% HP entry; Run 125 -- Weak source wasted on Artifact stripping, Hyper Beam kill by exactly 1 HP)
-- The Collector: 1 death (Run 110 -- 57% HP entry, missing Impervious and Shockwave+)
-- Hard Rule violations: 0
-- Best floor: 39 (Run 63) -- unchanged
-- **70% HP threshold met: 1/4 boss fights (Run 125 entered at 75%).** First time meeting the threshold. Still died -- Weak timing, not HP, was the issue.
-- **Criteria RNG denial: healing denied in 6 of last 8 runs (121-124, 127, 128).** Backup plan activated but insufficient. The healing gap is now the single most persistent RNG-driven failure.
-- **Tactical sequencing errors (CONFIRMED PATTERN):** (A) Exhausted Intimidate for Artifact stripping, unavailable for Hyper Beam. (B) Chose Pommel Strike over Defend at 19 HP vs Slavers -- block-first at critical HP is now a documented rule. (C) Spent all 3E on setup Turn 2 vs Hexaghost with minimal block against 30-damage multi-hit -- 20 unblocked damage became the lethal margin when Burns accumulated.
-- MILESTONE: Four Act 2 boss reaches confirm the 4-criteria readiness system works. Run 125 is the CLOSEST to beating an Act 2 boss (died by exactly 1 HP). The bottleneck has shifted from deck building to tactical sequencing within boss fights.
+**THE REAL PROBLEM:** Layer 1 is more addressable than Layer 2. Every mechanics error costs 3-20 HP. Across a run, 3-5 such errors compound to 15-60 lost HP -- equivalent to an entire fight's worth of damage. Fixing execution would effectively add one free fight's worth of HP to every run, partially compensating for healing denial. The player needs a combat arithmetic checklist, not more strategic documentation.
+
+**SCORECARD (runs 101-137):**
+- Act 1 boss wins: ~75% -- Guardian regression (4 deaths in 36 runs). Hexaghost regression (Run 129 F16, Run 137 F16).
+- Act 2 boss reaches: 4 (Runs 105, 110, 114, 125). No new Act 2 boss reach since Run 125.
+- Act 2 hallway/elite deaths (Runs 124-137): F23 Gremlin Leader, F21 Shelled Parasite, F23 Slavers, F24 Shelled Parasite, F16 Hexaghost, F23, F21, F23, F24, F16.
+- Best floor: 39 (Run 63) -- unchanged for 70+ runs.
+- Hard Rule violations: 0.
+- **Floor average (last 20 tracked runs): 23.1.** Down from 25-26 plateau at Run 100. This is REGRESSION, not progress.
+- **Mechanics errors: 6 distinct errors in runs 124-129.** Weak direction, SIO+ value, Flame Barrier+ block vs counter, Armaments+ value, Str carryover, Hexaghost Turn 2 damage. Each error cost 3-20 HP. Combined, these errors account for more HP loss than any single strategic gap.
+- **Healing RNG denial: 7 of last 9 runs.** Backup plan insufficient. However, this is NOT addressable -- RNG denial cannot be fixed. Focus on what CAN be fixed: mechanics execution.
+- **Hexaghost regression: 2 deaths at F16 in last 16 runs** despite extensive playbook. The playbook is not being applied.
 
 **IMMEDIATE PRIORITIES (in order):**
-1. **Preserve HP in the last 5 floors before the Act 2 boss.** The 70% entry threshold has been violated in 3/3 boss fights (100% failure rate). This is now the #1 cause of death. New rules: no HP-for-reward trades, skip elites in the last 3 floors, rest over upgrade at every rest site if below 70%, prioritize paths with rest sites over combat/elite paths. See "Pre-boss HP preservation" section for full rules.
-2. **Trace full paths before every map choice.** Before choosing any path, trace EVERY option forward to the next rest/shop. Count forced combats. Choose fewer combats. Say the count aloud: "Path A: 3 combats to rest. Path B: 1 combat to rest." This is especially critical in the last 5 floors -- count total combats remaining before the boss on each path.
-3. **Build Act 2-ready decks by Floor 15.** The deck needs ALL FOUR: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Thunderclap, Cleave, Immolate, Whirlwind), (c) healing beyond Burning Blood, (d) block scaling beyond basic Defends (Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, or True Grit+). Run 114 proved this system works -- the deck met all 4 criteria and had the tools to beat the boss. The failure was HP, not deck quality.
-4. **Do NOT buy Brimstone if Book of Stabbing is a possible Act 2 elite.** Brimstone + Book of Stabbing has killed the player twice. The anti-synergy makes Book of Stabbing damage grow quadratically (more hits * more damage per hit). If already holding Brimstone, AVOID Book of Stabbing entirely.
-5. **3 Cultists threshold is 60%, not 50%.** Six deaths at 5-53% HP confirm that even strong block tools cannot survive Ritual scaling. Kill speed (AOE burst to remove one Cultist fast) matters more than defensive tools.
-6. **Have Strength scaling by Floor 15** (Inflame > Spot Weakness > Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.
+1. **STOP MAKING ARITHMETIC ERRORS.** This is the #1 addressable cause of death. Before EVERY damage/block calculation in combat, verify: (a) Is Weak on ME or on the ENEMY? Weak on enemy = their attacks weaker, MY attacks normal. (b) Am I using UPGRADED card values? Check the + suffix. SIO+ = 11, not 8. Flame Barrier+ = 16 block + 6 counter (two separate numbers). (c) Does Strength carry over from last combat? NO. Inflame, Spot Weakness, Demon Form all reset. Only relic Str (Vajra) persists. See the COMBAT ARITHMETIC CHECKLIST below.
+2. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE, (c) healing beyond Burning Blood, (d) block scaling beyond basic Defends.
+3. **Trace full paths before every map choice.** Count forced combats to the next rest/shop on each path. Choose fewer combats. In the last 5 floors before the Act 2 boss, path selection priority: Rest > Shop > Event > Monster > Elite.
+4. **Block before setup on attack turns.** Budget at least 1E for block when enemies attack. Hexaghost Turn 2 (30 multi-hit), Slavers Turn 1 (27+ combined), any multi-enemy fight. Setup greed (spending all 3E on Powers/Strength) has killed directly in Runs 127 and 129.
+5. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
+6. **3 Cultists threshold is 60%.** Six deaths at 5-53% HP confirm.
+
+---
+
+## COMBAT ARITHMETIC CHECKLIST (read every fight)
+
+Before calculating damage or block, answer these THREE questions:
+
+**1. WHO has Weak?** 
+- Weak on ENEMY (from Bash, Shockwave, Intimidate, Thunderclap) = THEIR attacks deal 25% less. YOUR damage is UNAFFECTED.
+- Weak on YOU (from enemy debuffs) = YOUR attacks deal 25% less.
+- NEVER apply 0.75 to your own damage when enemies are Weakened. This error has occurred in 3+ runs.
+
+**2. Am I using UPGRADED values?**
+- Check the + suffix on every card before calculating. Common errors:
+  - SIO+ = 11 block (not 8)
+  - Flame Barrier+ = 16 block AND 6 counter damage (two separate effects, do not confuse them)
+  - Armaments+ = 5 block (not 0, it still blocks) AND upgrades ALL cards in hand
+  - Bash+ = 10 damage, 3 Vulnerable (not 2)
+  - Intimidate+ = 2 Weak (not 1)
+
+**3. Does my Strength reset?**
+- Inflame, Spot Weakness, Demon Form: Strength is PER-COMBAT. Resets to 0 each new fight.
+- Vajra relic: permanent, persists across combats.
+- Strength Potion: temporary within one combat only.
+- Rampage counter: also resets each combat.
+- NEVER carry Strength values from the previous fight into calculations.
 
 ---
 
@@ -270,32 +296,22 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - Block density for 10+ turn fight
 - Kill Donu first (prevents Strength scaling for both)
 
-### Act 2 Boss Survival (THE CORE BOTTLENECK)
+### Act 2 Boss Survival
 
-The system now reliably reaches Act 2 bosses (3 in a row). The challenge is arriving with enough HP. Three deaths (Runs 105, 110, 114) reveal:
+**Top 3 cards for Act 2 boss fights** (take over almost anything if offered in Act 2):
+1. **Impervious** -- 30/40 block handles the biggest hit from any Act 2 boss.
+2. **Shockwave+** -- mass Weak 3 + Vuln 3 to ALL enemies for 3 turns.
+3. **Disarm** -- permanent Str reduction, play Turn 1.
 
-**Key cards for Act 2 boss survival (prioritize in Act 2 card rewards and shops):**
-1. **Impervious** -- The single most impactful defensive card for Act 2 bosses. 30 block (40 upgraded) absorbs Hyper Beam (38 dmg), Collector post-debuff turns (37+ dmg), and Champ Execute burst. Both Act 2 boss deaths (Runs 105, 110) would have been different with Impervious in the deck. If offered in Act 2, TAKE IT over almost any other card.
-2. **Shockwave+** -- Mass Weak 3 + Vuln 3 to ALL enemies. Reduces combined incoming from multi-enemy bosses (Collector + Torch Heads, Automaton + Orbs) by 25% for 3 turns while boosting all damage by 50%. The highest-value single play in Act 2 boss fights.
-3. **Disarm** -- Permanent Strength reduction. Play Turn 1 against Collector or Champ for maximum cumulative value.
+See individual boss files (bronze-automaton.md, the-collector.md, the-champ.md) for boss-specific strategies.
 
-**Pre-boss HP preservation (last 5 floors before Act 2 boss) -- THE #1 UNSOLVED PROBLEM:**
-
-The 70% HP threshold has been violated in ALL THREE Act 2 boss fights (Runs 105, 110, 114). This is not variance -- it is a systematic failure. Root cause analysis across all three runs:
-
-**WHY the threshold keeps being violated:**
-1. **HP drain accumulates over floors 26-32, not just the last 2.** Run 114 traced: F26 Cultist+Chosen (58->52 HP), F27 Knowing Skull (-12 HP, 52->40), F28 Shelled Parasite+Fungi Beast (-6 HP, 44->38), F29 Centurion+Mystic (-16 HP, 38->23, rest to 48), F30 Byrd+Chosen (50->44), F31 3 Cultists (50->42, then took True Grit+), F31 Slavers elite (36->14, rest to 39). Six consecutive combats with only 1 rest site = impossible to maintain 70%.
-2. **Events drain HP when they should preserve it.** Run 114: Knowing Skull cost 12 HP for 90g (useless). Run 110: Colosseum forced combat. Events in the last 5 floors are HP traps.
-3. **Elites in the last 3 floors are too costly.** Run 114: Slavers at F31 drained 22 HP with only 1 rest site remaining. No recovery possible.
-4. **The player takes gold/reward trades when HP preservation should be the ONLY priority.** Run 114: Knowing Skull gold trade at 58% HP. Also the Golden Idol trade on F13 lost 11 HP. These small drains compound.
-
-**NEW RULES for last 5 floors before Act 2 boss (Floors ~28-33):**
-- **HARD RULE: No HP-for-reward trades.** Do not spend HP at Knowing Skull, Golden Idol, or any event that costs HP. Zero exceptions in the last 5 floors.
-- **HARD RULE: Skip elites in the last 3 floors.** The relic is not worth the HP drain. If the only path contains an elite, accept the suboptimal path. A relic at 14 HP is worth less than entering the boss at 70%.
-- **HARD RULE: Rest over upgrade at EVERY rest site in the last 5 floors if below 70% HP.** Run 114 correctly rested instead of upgrading Shockwave, but the single rest site was insufficient to compensate for 6 consecutive combats.
-- **Path selection priority in last 5 floors: Rest > Shop > Event > Monster > Elite.** Invert the normal priority. The goal is HP, not cards/relics/gold.
-- Treat Unknown rooms in the last 5 floors as Monster rooms (potential Snake Plant, Spheric Guardian, or Chosen+Byrd). If an alternative path with a rest site exists, take it.
-- Count total forced combats on each path from current floor to boss. If ALL paths force 4+ combats before the boss, the run may already be in danger -- use all potions aggressively in each fight to minimize HP loss.
+**Pre-boss HP preservation (last 5 floors before Act 2 boss):**
+- **No HP-for-reward trades.** No Knowing Skull, Golden Idol, or HP-cost events. Zero exceptions.
+- **Skip elites in the last 3 floors.** Relic value < boss HP threshold.
+- **Rest over upgrade at every rest site if below 70% HP.**
+- **Path priority: Rest > Shop > Event > Monster > Elite.** Invert normal priority.
+- **Treat Unknown rooms as Monster rooms.** Potential Snake Plant, Spheric Guardian.
+- Count forced combats on each path to the boss. If ALL paths force 4+ combats, use potions aggressively in each fight.
 
 ### Save One-Use Cards for Bosses
 
@@ -476,26 +492,15 @@ Pantograph heals 25 HP at the Act 2 boss start (NOT full HP). The Collector figh
 
 ---
 
-### Cross-Run Victory Pattern
+### What Wins and What Kills (Summary)
 
-Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory) and 3 Act 2 boss deaths (Runs 105, 110, 114), the differentiators are:
-1. **Boss-specific answer cards**: Every victory had at least one card for the boss's main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions. Collector victory used Immolate+ (AOE for Torch Heads), Shockwave+ (mass debuff), and Impervious (post-debuff survival).
-2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed 25 HP to near-full).
-3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.
-4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality is confirmed as a death cause in long fights even at full HP entry -- the 1 HP/turn drain is lethal in fights lasting 8+ turns. Only play Brutality in fights expected to end within 4-5 turns.
-5. **Upgrade discipline**: Victories had 1-4 key upgrades. Zero-upgrade runs are unwinnable (3x confirmed).
-6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm). Collector victory relied on Immolate+ AOE. Two Hexaghost deaths had Weak but no damage scaling.
-7. **Extra energy**: The Collector victory had 4 energy (Sozu). Extra energy enables offense + defense simultaneously.
+**Every boss victory** had: (1) a card that addressed the boss's main threat, (2) passive block/sustain, (3) entry HP above 50% or Pantograph, (4) at least 1 key upgrade, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.
 
-### Cross-Run Death Pattern (Act 2) -- Updated at 116 runs
-
-Across 30+ Act 2 deaths, the pattern has SHIFTED decisively. Deck building is solved (4-criteria readiness works). Two remaining killers: (A) **HP management in the last 5 floors before the boss** and (B) **healing card RNG denial** creating unrecoverable HP spirals even from full HP entry:
-1. **HP attrition from consecutive combats (primary cause)**: The player enters Act 2 at healthy HP, loses 30-50 HP in one fight (Byrds, Snake Plant, Centurion+Mystic, Spheric Guardian), then enters the NEXT fight at critical HP and dies. This is a MAP PATHING failure. The fix is mandatory path tracing before every map choice. Run 116: entered Act 2 at 80/80 HP but Spheric Guardian drained 38 HP (to 22), then Unknown room spawned Snake Plant (to 1 HP), then forced combat killed the run. Without healing cards, even 100% HP entry provides only ~3 fight buffer before death.
-1b. **HP threshold violation at Act 2 boss (3/4 boss fights, 75% failure rate)**: Run 105 had Pantograph (special case). Run 110 entered at 57%. Run 114 entered at 45%. Run 125 entered at 75% (FIRST TIME meeting the 70% threshold). The first three runs had decks ready to win but arrived too damaged. Run 125 proved that meeting the HP threshold is achievable and shifted the bottleneck: the death was from tactical sequencing (Weak source exhausted on Artifact stripping, unavailable for Hyper Beam), not HP entry.
-2. **Block scaling gap at Act 2 boss (Run 105)**: Fixed by adding block scaling as 4th readiness criterion. Run 114 confirmed: Metallicize + Ghostly Armor + Shrug It Off provided adequate block scaling. This is no longer the bottleneck.
-2b. **Elite timing near boss (Run 114, NEW)**: Taking Slavers at Floor 31 (2 floors from boss) drained HP from 36 to 14. Only 1 rest site remained, healing to 39/85 (45%). New rule: skip elites in the last 3 floors before the boss.
-3. **Brimstone anti-synergy (2 deaths)**: Brimstone purchased at shop without evaluating Act 2 elite pool. Book of Stabbing with Brimstone deals quadratically scaling damage. Both deaths occurred with strong Str decks that would have survived without Brimstone's enemy buff.
-4. **3 Cultists + scaling hallway fights**: 6 deaths to 3 Cultists at 5-53% HP. This is a HALLWAY fight, not an elite. It cannot be avoided via pathing (it spawns on Monster nodes). The only defense is entering every Act 2 combat at 60%+ HP -- which requires better pathing between combats. Run 112 entered at 5% HP after Snake Plant drained 42 HP on the prior floor -- the death cascade was Snake Plant (no Strength scaling, 7-turn fight) into 3 Cultists at lethal HP.
-5. **Book of Stabbing is the #1 elite killer**: 3 deaths. Wound clog + escalating multi-hit. Decks without exhaust tools cannot win. Decks with Brimstone cannot win.
-6. **Odd Mushroom anti-synergy (contributing factor, Run 105)**: Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting burst output by ~17%. In DPS-race fights (Bronze Automaton, Book of Stabbing), this extends fights by 1-2 turns, forcing survival through additional damage cycles. Consider refusing Odd Mushroom when the deck is Vulnerable-dependent.
-7. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling, AOE, or block scaling by Floor 12, the player must prioritize these over all other card choices.
+**Act 2 death causes (ranked by frequency, 35+ deaths):**
+1. **HP attrition from consecutive combats** -- the player enters Act 2 healthy, one drain fight (30-50 HP), next room is combat at critical HP, death. This is a pathing failure. Solved by mandatory path tracing.
+2. **3 Cultists at low HP** -- 6 deaths at 5-53% HP entry. Hallway fight, not avoidable. Only defense: enter every Act 2 combat at 60%+ HP.
+3. **Book of Stabbing** -- 3 deaths. #1 elite killer. Needs exhaust tools. Brimstone makes it unwinnable.
+4. **Mechanics execution errors** -- arithmetic mistakes that waste 3-20 HP per error, compounding into lethal HP deficits. See COMBAT ARITHMETIC CHECKLIST above.
+5. **Healing RNG denial** -- 7 of last 9 runs with no Reaper/Feed offered. Not addressable. Backup plan (potions, rest sites, conservative pathing) is documented but insufficient alone.
+6. **Brimstone anti-synergy** -- 2 deaths from Brimstone + Book of Stabbing.
+7. **Deck building window closes at Floor 15** -- missing criteria after F15 cannot be filled. Prioritize gaps over "good" cards.
