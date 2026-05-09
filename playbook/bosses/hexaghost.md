@@ -2,7 +2,8 @@
 
 PATTERN:
 - **Turn 1**: Does NOT attack. Intent UNKNOWN. Free setup turn.
-- **Inferno**: 7x6 = 42 damage (multi-hit). Weak reduces each hit: floor(6*0.75)=4 per hit = 28 total. This is the most dangerous attack.
+- **Turn 2**: Multi-hit attack, ~5x6=30 damage. This is the FIRST big attack. Must have block on this turn -- spending all energy on setup with zero block is a common fatal mistake (see "Turn 2 blocking" below).
+- **Inferno**: 7x6 = 42 damage (multi-hit). Weak reduces each hit: floor(6*0.75)=4 per hit = 28 total. This is the most dangerous attack. Occurs later in the fight, not Turn 2.
 - **ATTACK_DEBUFF**: Moderate damage + adds Burn status cards to deck.
 - **DEFEND_BUFF**: Gains block and +Strength. No attack. Free turn for damage and Vulnerable refresh.
 - **Medium attacks**: 4-8 and 14-24 damage on non-Inferno attack turns.
@@ -17,13 +18,13 @@ KEY MECHANICS:
 
 PREPARATION CHECKLIST (must have at least 3 of 4):
 1. Weak source (Shockwave, Clothesline, Intimidate, Uppercut, Weak Potion) -- reduces Inferno from 42 to 28. MANDATORY.
-2. HP above 70% OR Pantograph relic (heals 25 HP at boss start -- NOT full HP). THREE deaths at 35-50% HP entry confirm that even good decks cannot absorb Burns + Inferno at low HP.
+2. HP above 70% OR Pantograph relic (heals 25 HP at boss start -- NOT full HP). Multiple deaths at 35-50% HP entry confirm that even good decks cannot absorb Burns + Inferno at low HP. One death at 76% HP entry also occurred when Turn 2 blocking was insufficient (20 HP lost immediately), effectively reducing the HP advantage.
 3. Passive block (Metallicize, Flame Barrier+) OR Impervious for the Inferno turn.
 4. Burns management OR damage scaling to end the fight before Burns overwhelm. See "Burns management" section below.
 
 If you have 0-2 of these, Hexaghost will likely kill you. Weak + passive block is NOT enough without damage scaling or Burns management -- the fight drags to 13+ turns and Burns attrition becomes unsurvivable.
 
-DAMAGE OUTPUT MATTERS -- THE #1 CAUSE OF HEXAGHOST DEATH: Three consecutive deaths confirm the pattern. Weak and block keep you alive temporarily, but insufficient damage is the actual killer. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone PLUS clogging your hand so you draw fewer real cards. The death spiral is: more turns -> more Burns -> less hand quality -> less damage -> even more turns -> even more Burns. Three runs died with Weak sources but no damage scaling because they could not kill Hexaghost before Burns overwhelmed them. The most recent death had Hexaghost at 59/250 HP (24% remaining) when 4 Burns in hand dealt 8 damage at end of turn, dropping from 11 HP to 3 HP, and the next attack finished the run. Damage scaling cards (Rampage, Inflame, Spot Weakness, Demon Form, Reaper) shorten the fight and reduce total Burns damage. Without at least one of these, the fight is near-unwinnable even with perfect Weak timing and Metallicize.
+DAMAGE OUTPUT MATTERS -- THE #1 CAUSE OF HEXAGHOST DEATH: Four deaths confirm the pattern. Weak and block keep you alive temporarily, but insufficient damage is the actual killer. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone PLUS clogging your hand so you draw fewer real cards. The death spiral is: more turns -> more Burns -> less hand quality -> less damage -> even more turns -> even more Burns. Four deaths occurred with Weak sources but no way to handle Burns or end the fight quickly. One death had Hexaghost at 59/250 HP (24% remaining) when 4 Burns in hand dealt 8 damage at end of turn. Another death had Hexaghost at ~43/250 HP (17% remaining) with 5+ Burns dealing 4 damage each (Burns+) -- the deck had strong Str scaling (Inflame+ + Spot Weakness = 9 Str) but Turn 2 HP loss (20 damage from insufficient blocking) left no margin for the Burns attrition that accumulated over 12 turns. Damage scaling cards (Rampage, Inflame, Spot Weakness, Demon Form, Reaper) shorten the fight and reduce total Burns damage. Without at least one of these, the fight is near-unwinnable even with perfect Weak timing and Metallicize.
 
 WHAT WORKS:
 - **Evolve + Fire Breathing** -- the best anti-Burns engine. Evolve draws a replacement card when a Burn is drawn, neutralizing hand clog. Fire Breathing deals 6 (10 upgraded) damage to Hexaghost each time a Burn is drawn. Together, Burns become free damage with no downside. Confirmed across two clean Hexaghost victories (44/80 and 36/80 HP remaining after the fight). Set up both Powers on Turn 1 (free turn). This combo alone can handle Burns entirely -- no other Burns management needed. Even without Strength scaling, the engine shortens the fight significantly via passive damage.
@@ -35,9 +36,11 @@ WHAT WORKS:
 - Flame Barrier+ -- 16 block + 42 counter damage (7 Inferno hits x 6 each). Single best defensive card for Inferno turns. Upgrade priority if facing Hexaghost.
 - Torii relic -- reduces each 2-damage Burn to 1 damage (halves Burns attrition). Does not save the fight alone but significantly extends survivability.
 
-BURNS MANAGEMENT (CRITICAL -- three consecutive deaths from Burns accumulation):
+BURNS MANAGEMENT (CRITICAL -- four deaths from Burns accumulation):
 
-Burns deal 2 damage per Burn in hand at end of turn AND reduce hand quality by replacing real cards. By turn 8-10, a typical hand contains 3-4 Burns and only 1-2 real cards. The fight becomes unwinnable not because of Hexaghost's attacks but because the deck can no longer generate meaningful damage or block.
+Burns deal 2 damage per Burn in hand at end of turn AND reduce hand quality by replacing real cards. By turn 8-10, a typical hand contains 3-4 Burns and only 1-2 real cards. The fight becomes unwinnable not because of Hexaghost's attacks but because the deck can no longer generate meaningful damage or block. Burns+ (upgraded Burns from later ATTACK_DEBUFF turns) deal 4 damage each instead of 2 -- they are significantly more dangerous than regular Burns.
+
+**Burns damage is DOUBLE-LETHAL**: Burns eat block at end of turn (reducing your block to zero or near-zero), AND THEN the next Hexaghost attack hits you with no block remaining. A player at 25 HP with 10 block and 4 Burns in hand will lose 8 HP from Burns (leaving 2 block), then take a 24-damage attack minus 2 block = 22 HP lost. The effective incoming is Burns + attack combined, not either one alone. Plan block for the SUM of Burns + next attack.
 
 **Burns management tools (priority order):**
 1. **Evolve + Fire Breathing** -- the best anti-Burns engine (see "WHAT WORKS"). Burns become free damage with no downside.
@@ -47,10 +50,11 @@ Burns deal 2 damage per Burn in hand at end of turn AND reduce hand quality by r
 5. **Second Wind** -- exhaust all non-Attack cards in hand including Burns, gaining block for each. Mass Burns removal in one play.
 6. **Damage scaling** (Inflame, Spot Weakness, Demon Form, Rampage) -- not Burns management per se, but shortens the fight from 13 turns to 8-9, reducing total Burns accumulated from 4-5 to 2-3.
 
-**If the deck has NO Burns management AND NO damage scaling by Floor 15, the Hexaghost fight is near-unwinnable.** Metallicize + Weak + basic damage cannot outrace Burns accumulation in a 13-turn fight. Actively seek Evolve, Fire Breathing, True Grit+, or Inflame/Spot Weakness before the boss.
+**If the deck has NO Burns management AND NO damage scaling by Floor 15, the Hexaghost fight is near-unwinnable.** Metallicize + Weak + basic damage cannot outrace Burns accumulation in a 13-turn fight. Even WITH damage scaling (Inflame+ + Spot Weakness = +9 Str), the fight can still be lost if HP is wasted on Turn 2 from insufficient blocking -- the damage scaling shortens the fight from 13 to 12 turns, but Burns+ (4 damage each) in the final turns are still lethal at low HP. Actively seek Evolve, Fire Breathing, True Grit+, or Inflame/Spot Weakness before the boss.
 
 STRATEGY:
 - **Turn 1 (free)**: Set up. Demon Form (3E) is the ideal turn 1 play -- the entire fight is won by scaling. If Demon Form is not available, play Thunderclap for mass Vulnerable + Metallicize + Evolve. Play Powers before anything else on this free turn.
+- **Turn 2 (MUST BLOCK)**: Turn 2 is a ~30 damage multi-hit. Spending all 3E on setup (Powers, Spot Weakness) with zero or minimal block is a fatal mistake. Every HP lost on Turn 2 compounds with Burns damage later. Budget at LEAST 1E for block on Turn 2. If choosing between playing a second setup card and playing a block card, play the block card. One death confirmed from spending 3E on Inflame+ + Spot Weakness + Ghostly Armor (10 block vs 30 incoming = 20 unblocked) -- the 20 HP lost here was the exact margin that made Burns lethal by Turn 12.
 - **Save Weak for Inferno**: Apply Shockwave/Clothesline/Intimidate on the first Inferno turn to reduce 42 to ~28.
 - **Play Metallicize early**: 3 block/turn over 13 turns = 39 free block. Set up as soon as possible.
 - **Reapply Vulnerable with Bash+**: Use DEFEND_BUFF (free) turns to refresh Vulnerable without spending block resources.
@@ -58,8 +62,9 @@ STRATEGY:
 - **Kill speed matters**: Shorter fight = fewer Burns accumulated = less attrition damage. Inflame (+2 Str) on turn 1 shortens the fight by 2-3 turns. This is not optional -- without damage scaling, Burns WILL overwhelm even a well-blocked deck.
 
 WHAT NOT TO DO:
+- Spend all energy on setup Turn 2 with minimal block. Turn 2 is a ~30 damage multi-hit. Even 5 more block (one Defend) reduces damage from 20 to 15, which can be the difference between surviving Burns in the final turns and dying. Setup is important, but not at the cost of 20+ unblocked damage.
 - Fight without a Weak source. Inferno at full power (42) is near-unsurvivable.
-- Fight without Burns management OR damage scaling. Three consecutive deaths had Weak + passive block but no way to handle Burns or end the fight quickly. Metallicize alone cannot save you from 4 Burns dealing 8+ damage/turn.
+- Fight without Burns management OR damage scaling. Four deaths had Weak + passive block but no way to handle Burns or end the fight quickly. Metallicize alone cannot save you from 4 Burns dealing 8+ damage/turn.
 - Play Brutality. Burns + Brutality self-damage = 3-5 HP/turn death spiral.
 - Play Berserk. Self-Vulnerable + Inferno = death.
 - Enter below 70% HP without Pantograph. Pantograph only heals 25 HP, not full -- plan accordingly. The 250 HP + Inferno + Burns demands a large HP buffer. At the pre-boss rest site, REST if below 70% HP -- do not upgrade. An upgrade is worthless if you die on the boss.
