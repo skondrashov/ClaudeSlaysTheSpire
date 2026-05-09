@@ -4,7 +4,7 @@ PATTERN: All three enemies attack on turn 1 for combined 27+ damage. No free set
 
 KEY MECHANIC: Three-enemy pressure from the very first turn. Unlike most multi-enemy fights, there is NO free turn -- all three attack immediately. Combined damage of 27+ per turn makes this fight extremely HP-dependent.
 
-HP: Individual enemy HP TBD (Slavers ~40-50, Taskmaster ~60).
+HP: Slavers ~36-46 HP each (one observed at 36 HP with Preserved Insect -25% reduction, suggesting base ~48). Taskmaster ~60.
 
 WHAT THIS MEANS: This fight is unwinnable at low HP. Entering at 21/77 HP (27%) resulted in death by turn 3 despite having Demon Form, Flame Barrier+, Rage, Disarm, Uppercut, and Rampage in the deck. The math is simple: 27+ incoming per turn, maximum ~21 block available per turn with good draws, means 6+ unblocked damage per turn. At 21 HP, that's 3-4 turns before death, and 3-4 turns is not enough to kill any of the three enemies.
 
@@ -15,7 +15,11 @@ STRATEGY:
 - **Debuffs**: Uppercut's Weak on the hardest-hitting enemy is critical. Disarm (-2 Str) on the highest attacker compounds savings.
 - **AOE is limited**: Thunderclap is the only common AOE in most Ironclad decks. Single-target heavy decks struggle badly.
 
-HP THRESHOLD: Do NOT enter this fight below 50% HP. At 27% HP entry, even a deck with Demon Form, Flame Barrier+, Rage, Uppercut, Disarm, Rampage, and Shuriken died in 3 turns.
+HP THRESHOLD: Do NOT enter this fight below 50% HP. Two confirmed deaths at low HP entry:
+- At 27% HP (21/77) with Demon Form, Flame Barrier+, Rage, Uppercut, Disarm, Rampage -- died in 3 turns.
+- At 23% HP (19/80) with Shockwave, Whirlwind+, Flame Barrier+, Inflame+, Bash+ -- died turn 1 despite mass Weak+Vuln from Shockwave. Three enemies dealt lethal combined damage through Weak reduction with zero block played.
+
+**CRITICAL: At sub-25% HP, even mass Weak (Shockwave) cannot save you. Block is mandatory Turn 1.** If Shockwave costs 2E, the remaining 1E MUST go to Defend (5 block), not Pommel Strike or any damage card. At critical HP, 5 block is worth more than 13 damage because survival to Turn 2 is the only win condition.
 
 **TIMING RULE: Do NOT fight Slavers within 2 floors of the Act 2 boss.** Run 114 fought Slavers at Floor 31 (2 floors before the boss). The fight drained HP from 36 to 14 despite a strong deck (Shockwave, Dark Shackles, True Grit+, Reaper, Inflame). Only 1 rest site remained before the boss, healing to 39/85 (45%) -- far below the 70% threshold. When Slavers appears on a forced path close to the boss, the HP drain from this fight almost guarantees entering the boss at sub-threshold HP. If the map offers ANY alternative path in the last 3 floors, take it even if it means missing the elite relic.
 

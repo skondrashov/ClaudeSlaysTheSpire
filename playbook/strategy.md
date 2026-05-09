@@ -2,19 +2,19 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (126-run milestone):** THREE distinct failure modes. (1) Entering the Act 2 boss at sufficient HP -- FOUR consecutive Act 2 boss reaches (Runs 105, 110, 114, 125, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Criteria RNG denial -- healing and block scaling can be denied by card-offer RNG. Run 116 died F21 with no healing card offered across 21 floors. Run 118 died F21 with no block scaling card offered. **Feel No Pain does NOT fulfill the block scaling criterion.** When a criterion cannot be filled, the backup plan (conservative pathing, rest-heavy routing) must activate IMMEDIATELY. (3) **Tactical sequencing errors** -- the player uses exhausting Weak sources (Intimidate) for Artifact stripping instead of saving them for Hyper Beam. This is the newest identified failure mode: the deck has the tools to survive, but plays them at the wrong time. Weak direction rule clarified in mechanics.md; Intimidate timing rule added to bronze-automaton.md and intimidate.md. (4) **Demon Form as sole Strength source + missing AOE** -- Run 126 died F21 with Demon Form as the only Str scaling (no Inflame/Spot Weakness) and zero AOE. Demon Form is too slow for hallway fights and makes Reaper healing ineffective in early turns. Missing AOE compounds the problem against multi-enemy fights. When Demon Form is the only Str source acquired, treat criteria 1 (front-loaded Str) as STILL UNMET and prioritize Inflame/Spot Weakness at the next card reward or shop.
+**CURRENT BOTTLENECK (127-run milestone):** FOUR distinct failure modes. (1) Entering the Act 2 boss at sufficient HP -- FOUR consecutive Act 2 boss reaches (Runs 105, 110, 114, 125, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Criteria RNG denial -- healing and block scaling can be denied by card-offer RNG. Healing denied in 5 of last 7 runs. **Feel No Pain does NOT fulfill the block scaling criterion.** When a criterion cannot be filled, the backup plan (conservative pathing, rest-heavy routing) must activate IMMEDIATELY. (3) **Tactical sequencing errors** -- the player uses exhausting Weak sources (Intimidate) for Artifact stripping instead of saving them for Hyper Beam. The player also chooses damage over block at critical HP (Pommel Strike instead of Defend at 19 HP vs 3 attackers). Weak direction rule clarified in mechanics.md; Intimidate timing rule added to bronze-automaton.md and intimidate.md. (4) **Demon Form as sole Strength source + missing AOE** -- Demon Form is too slow for hallway fights and makes Reaper healing ineffective in early turns. When Demon Form is the only Str source acquired, treat criteria 1 (front-loaded Str) as STILL UNMET and prioritize Inflame/Spot Weakness at the next card reward or shop. (5) **Block-first at critical HP** -- at sub-30% HP, every energy point spent on damage instead of block risks immediate death. Two Slavers deaths confirm: mass Weak alone cannot compensate for zero block when HP is critical.
 
-**SCORECARD (runs 101-125):**
-- Act 1 boss wins: ~80% -- Run 103 died to Guardian F16 (Pandora's Box), Run 107 died to Guardian F16 (Corruption+), Run 121 died F16, Run 123 died F16. Guardian regression: 4 deaths in last 25 runs.
+**SCORECARD (runs 101-127):**
+- Act 1 boss wins: ~80% -- Guardian regression: 4 deaths in last 27 runs.
 - Act 2 boss reaches: 4 (Runs 105, 110, 114, 125, all Floor 33) -- STRONGEST TREND YET
-- Act 2 elite/hallway deaths: Run 116 (F21), Run 118 (F21), Run 112 (F25), Run 124 (F23 Gremlin Leader), Run 126 (F21 Shelled Parasite + Fungi Beast)
+- Act 2 elite/hallway deaths: Run 116 (F21), Run 118 (F21), Run 112 (F25), Run 124 (F23 Gremlin Leader), Run 126 (F21 Shelled Parasite + Fungi Beast), Run 127 (F23 Slavers elite at 23% HP)
 - Bronze Automaton: 3 deaths (Run 105 -- block scaling gap; Run 114 -- 45% HP entry; Run 125 -- Weak source wasted on Artifact stripping, Hyper Beam kill by exactly 1 HP)
 - The Collector: 1 death (Run 110 -- 57% HP entry, missing Impervious and Shockwave+)
 - Hard Rule violations: 0
 - Best floor: 39 (Run 63) -- unchanged
 - **70% HP threshold met: 1/4 boss fights (Run 125 entered at 75%).** First time meeting the threshold. Still died -- Weak timing, not HP, was the issue.
-- **Criteria RNG denial: healing denied in 3+ consecutive runs (121-124 minimum).** Backup plan activated but insufficient -- Regen Potion was the best substitute found. Run 125 had Reaper (healing crisis resolved for that run).
-- **Tactical sequencing error: NEWLY IDENTIFIED.** Player exhausted Intimidate for Artifact stripping Turn 1, leaving no Weak source for Hyper Beam Turn 6. Weak would have reduced damage by 13, saving the run by exactly 13 HP. Correction added to intimidate.md, bronze-automaton.md.
+- **Criteria RNG denial: healing denied in 5 of last 7 runs (121-124, 127).** Backup plan activated but insufficient. The healing gap is now the single most persistent RNG-driven failure.
+- **Tactical sequencing errors (CONFIRMED PATTERN):** (A) Exhausted Intimidate for Artifact stripping, unavailable for Hyper Beam. (B) Chose Pommel Strike over Defend at 19 HP vs Slavers -- block-first at critical HP is now a documented rule.
 - MILESTONE: Four Act 2 boss reaches confirm the 4-criteria readiness system works. Run 125 is the CLOSEST to beating an Act 2 boss (died by exactly 1 HP). The bottleneck has shifted from deck building to tactical sequencing within boss fights.
 
 **IMMEDIATE PRIORITIES (in order):**
@@ -48,6 +48,7 @@ High-level strategic principles for Ironclad runs.
 - If forced into a fight below threshold, use ALL potions aggressively on turn 1. Don't save them for "later" -- there may not be a later. This includes Strength Potions: +2 damage per attack over a 5-turn fight is 10-20 extra damage, which is 2-4 fewer turns of incoming damage. An unused potion on a death screen is a strategic failure.
 - If there's a rest site before an elite, REST (don't upgrade). HP > upgrades when below threshold.
 - After any fight that drops you below 30% HP, the next room MUST be a rest site, shop, or event -- not combat.
+- **BLOCK-FIRST RULE at sub-30% HP:** When HP is below 30%, every energy point not spent on block must be justified. If you have 1E remaining and the choice is between a damage card and Defend, play Defend. Surviving to Turn 2 enables everything; dying on Turn 1 with 13 extra damage dealt is meaningless. Mass Weak (Shockwave) reduces incoming by 25% but does NOT replace block -- even Weakened multi-enemy damage can be lethal at critical HP.
 
 ### The Act 2 Death Spiral Is Predictable
 
@@ -377,7 +378,7 @@ Before fighting an elite, check:
 **Act 2 Elite Threat Ranking:**
 - **Book of Stabbing** (3 deaths, now #1 killer): Escalating multi-hit (+1 per turn). Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. Do NOT play Brutality. **CRITICAL: If you have Brimstone, DO NOT FIGHT Book of Stabbing. Brimstone gives it +2 Str/turn on top of +1 hit/turn -- damage grows quadratically. Two deaths confirmed from this anti-synergy (Runs 091, 100). Even at 75% HP with strong Str scaling, the fight is unwinnable by turn 5.**
 - **Gremlin Leader** (3 deaths): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death). Do NOT play Impervious Turn 1 -- use it Turn 4-5 when Rally-scaled damage peaks. Confirmed: Inflame+ + Impervious Turn 1 (zero damage) at 42 HP led to 9-turn fight and death.
-- **Slavers**: 3 enemies, 27+ combined damage. NEED: AOE, mass debuff, 60%+ HP.
+- **Slavers** (2 deaths): 3 enemies, 27+ combined damage from Turn 1 (no free setup turn). NEED: AOE, mass debuff, block density, 60%+ HP. At sub-25% HP, even mass Weak (Shockwave) cannot save you -- block is mandatory Turn 1. Confirmed: Shockwave + damage (zero block) at 19 HP = Turn 1 death.
 
 ### Brimstone Elite Avoidance
 

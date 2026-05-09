@@ -103,3 +103,10 @@ RELICS: Burning Blood, Toy Ornithopter, (chest relic)
 CAUSE OF DEATH: Shelled Parasite + Fungi Beast at 7 HP with no potions. Unwinnable at that HP.
 KEY MOMENTS: Beat Guardian using Mode Shift cancellation (cancelled both 32-hit and 5x4=20). Beat Spheric Guardian with Demon Form scaling (41 HP drain). Chosen fight drained 32 HP (39->7), setting up lethal next fight.
 LESSONS: (1) Demon Form as sole Str source leaves Reaper healing too slow -- need front-loaded Str (Inflame/Spot Weakness) to make Reaper effective. (2) Armaments+ block value (5 block) was forgotten in survival calculations -- documented prominently. (3) Missing AOE for entire run (criterion 2 unmet). (4) Chosen is a reliable death spiral trigger in Act 2 (30-40 HP drain even with good cards).
+
+## Run 127 — Ironclad A0, Defeat Floor 23
+DECK: Inflame+, Whirlwind+, Flame Barrier+, Shockwave, Offering, Bash+, Thunderclap, Intimidate, Pommel Strike, Headbutt, Shrug It Off, 4 Strikes, 4 Defends
+RELICS: Burning Blood, Preserved Insect, Regal Pillow, others
+CAUSE OF DEATH: Slavers elite at Floor 23, entered at 19/80 HP (23%) with zero potions. Three enemies dealt lethal damage Turn 1 despite mass Weak+Vuln from Shockwave.
+KEY MOMENTS: (1) Strong Act 1 -- beat Slime Boss cleanly with Whirlwind+ AOE, met 3/4 readiness criteria (Str, AOE, block scaling). (2) Snecko fight at F22 drained HP to 19 via Confusion + Vulnerable combo; smart Duplication Potion play on 0-cost Strike under Confusion saved the fight. (3) Forced elite at F23 with no potions and 23% HP. Turn 1 played Shockwave (2E) + Pommel Strike (1E) for damage instead of Shockwave + Defend for 5 block. Died to combined Weakened damage. (4) No healing card (Reaper/Feed) offered entire run -- 5th run in 7 with healing RNG denial.
+LESSONS: (1) Block-first at critical HP -- Defend over damage when sub-30% HP. (2) Healing RNG denial is the most persistent failure pattern. (3) Confusion + Duplication Potion synergy confirmed (target 0-cost cards). (4) Slavers HP data: ~36 HP per Slaver (with Preserved Insect -25%, base ~48).
