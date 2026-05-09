@@ -4,16 +4,16 @@ High-level strategic principles for Ironclad runs.
 
 **CURRENT BOTTLENECK (127-run milestone):** FOUR distinct failure modes. (1) Entering the Act 2 boss at sufficient HP -- FOUR consecutive Act 2 boss reaches (Runs 105, 110, 114, 125, all Floor 33) confirm the 4-criteria readiness system WORKS when all 4 criteria are met. (2) Criteria RNG denial -- healing and block scaling can be denied by card-offer RNG. Healing denied in 5 of last 7 runs. **Feel No Pain does NOT fulfill the block scaling criterion.** When a criterion cannot be filled, the backup plan (conservative pathing, rest-heavy routing) must activate IMMEDIATELY. (3) **Tactical sequencing errors** -- the player uses exhausting Weak sources (Intimidate) for Artifact stripping instead of saving them for Hyper Beam. The player also chooses damage over block at critical HP (Pommel Strike instead of Defend at 19 HP vs 3 attackers). Weak direction rule clarified in mechanics.md; Intimidate timing rule added to bronze-automaton.md and intimidate.md. (4) **Demon Form as sole Strength source + missing AOE** -- Demon Form is too slow for hallway fights and makes Reaper healing ineffective in early turns. When Demon Form is the only Str source acquired, treat criteria 1 (front-loaded Str) as STILL UNMET and prioritize Inflame/Spot Weakness at the next card reward or shop. (5) **Block-first at critical HP** -- at sub-30% HP, every energy point spent on damage instead of block risks immediate death. Two Slavers deaths confirm: mass Weak alone cannot compensate for zero block when HP is critical.
 
-**SCORECARD (runs 101-127):**
-- Act 1 boss wins: ~80% -- Guardian regression: 4 deaths in last 27 runs.
+**SCORECARD (runs 101-128):**
+- Act 1 boss wins: ~80% -- Guardian regression: 4 deaths in last 28 runs.
 - Act 2 boss reaches: 4 (Runs 105, 110, 114, 125, all Floor 33) -- STRONGEST TREND YET
-- Act 2 elite/hallway deaths: Run 116 (F21), Run 118 (F21), Run 112 (F25), Run 124 (F23 Gremlin Leader), Run 126 (F21 Shelled Parasite + Fungi Beast), Run 127 (F23 Slavers elite at 23% HP)
+- Act 2 elite/hallway deaths: Run 116 (F21), Run 118 (F21), Run 112 (F25), Run 124 (F23 Gremlin Leader), Run 126 (F21 Shelled Parasite + Fungi Beast), Run 127 (F23 Slavers elite at 23% HP), Run 128 (F24 Shelled Parasite + Fungi Beast at 46% HP)
 - Bronze Automaton: 3 deaths (Run 105 -- block scaling gap; Run 114 -- 45% HP entry; Run 125 -- Weak source wasted on Artifact stripping, Hyper Beam kill by exactly 1 HP)
 - The Collector: 1 death (Run 110 -- 57% HP entry, missing Impervious and Shockwave+)
 - Hard Rule violations: 0
 - Best floor: 39 (Run 63) -- unchanged
 - **70% HP threshold met: 1/4 boss fights (Run 125 entered at 75%).** First time meeting the threshold. Still died -- Weak timing, not HP, was the issue.
-- **Criteria RNG denial: healing denied in 5 of last 7 runs (121-124, 127).** Backup plan activated but insufficient. The healing gap is now the single most persistent RNG-driven failure.
+- **Criteria RNG denial: healing denied in 6 of last 8 runs (121-124, 127, 128).** Backup plan activated but insufficient. The healing gap is now the single most persistent RNG-driven failure.
 - **Tactical sequencing errors (CONFIRMED PATTERN):** (A) Exhausted Intimidate for Artifact stripping, unavailable for Hyper Beam. (B) Chose Pommel Strike over Defend at 19 HP vs Slavers -- block-first at critical HP is now a documented rule.
 - MILESTONE: Four Act 2 boss reaches confirm the 4-criteria readiness system works. Run 125 is the CLOSEST to beating an Act 2 boss (died by exactly 1 HP). The bottleneck has shifted from deck building to tactical sequencing within boss fights.
 
@@ -345,6 +345,7 @@ Unupgraded True Grit and Havoc both cause RANDOM exhaust -- you cannot control w
 - Last copy of your best damage card
 - Last copy of a high-block card
 - Core combo pieces (Bash+ when Vulnerable matters)
+- Synergy engines: Fire Breathing+ when Immolate is in the deck (Burns from Immolate trigger 10 free damage per draw, bypassing Plated Armor)
 
 ### The Long Fight Problem
 

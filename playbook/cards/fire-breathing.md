@@ -13,6 +13,8 @@ OTHER SYNERGIES:
 
 DECISION POINTS: Play on free turns (enemy buff turns, setup turns). At 1E, it competes with block and damage on attack turns. Best set up early when Status cards are expected to accumulate. In fights with no Status cards, Fire Breathing does nothing -- it is a dead card.
 
+**DO NOT EXHAUST Fire Breathing+ when Immolate is in the deck.** Immolate adds Burns to the discard pile. When those Burns are subsequently drawn, Fire Breathing+ deals 10 damage to ALL enemies per Burn -- and this damage bypasses Plated Armor entirely (it is not an attack, it is triggered damage). Against high-armor enemies like Shelled Parasite, this free passive damage is critical for shortening the fight. With Evolve also active, Burns draw replacement cards AND deal 10 damage, making them pure upside. Exhausting Fire Breathing+ in a fight where Immolate will be played multiple times throws away 30-50+ free damage over the remaining turns.
+
 MATCHUPS: Excellent vs Hexaghost (neutralizes Burns), excellent vs Sentries (Dazed triggers damage), good vs Slime Boss (Slimed triggers), good alongside Power Through. Excellent vs Book of Stabbing (Wounds trigger 10 damage each + Evolve draws replacements -- Run 110 used this engine to kill Book of Stabbing cleanly). Good vs Chosen (Dazed from Hex triggers both Fire Breathing damage and Evolve draw). Irrelevant in fights with no Status cards.
 
 UPGRADE: 6 to 10 damage per trigger. Significant upgrade -- 67% more damage per Status drawn. Worth upgrading when the deck generates multiple Status cards per cycle.
