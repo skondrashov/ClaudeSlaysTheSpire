@@ -3,16 +3,16 @@ HP: 300. Starts with Artifact 3. Accompanied by 2 Orbs (50 HP each).
 
 ## Key Mechanics
 - **Artifact 3**: First 3 debuff applications are negated. Must strip all Artifact before Vulnerable/Weak will stick. Thunderclap+ strips 1 per enemy per cast. Bash+ strips 1. Shockwave+ strips 1 per debuff type (Weak + Vuln = 2 charges consumed). Plan 3 debuff applications minimum before relying on Vulnerable/Weak.
-- **Hyper Beam**: 45 raw damage (observed 38-45 depending on buffs). Automaton is stunned the turn AFTER Hyper Beam. This is the most dangerous attack in the fight -- basic Defends (4x5=20 block) cannot survive it. Requires block scaling (Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor) or significant Weak uptime.
+- **Hyper Beam**: 45 raw base damage, observed 38-51 depending on accumulated Strength. At turn 6, with +3 Str per cycle, Hyper Beam can reach 51 damage. Automaton is stunned the turn AFTER Hyper Beam. This is the most dangerous attack in the fight -- basic Defends (4x5=20 block) cannot survive it. Requires block scaling (Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor) AND Weak active on the Hyper Beam turn.
 - **Stasis (Orbs)**: Orbs steal a card from your deck via Stasis. Killing the Orb returns the stolen card. Do not rely on a single copy of any critical card. If Fiend Fire or Shockwave+ is stolen, kill that Orb to recover it.
 - **Strength scaling**: +3 Str per buff cycle. Fight is a DPS race -- long fights become unsurvivable as Hyper Beam damage scales.
 - **Stun turn**: After Hyper Beam, Automaton is stunned for 1 turn. This is a free damage window. Use it for burst (Fiend Fire+, Rampage, Spot Weakness setup).
 
 ## Fight Phases
-1. **Artifact Strip (Turns 1-3)**: Use cheap debuffs to strip Artifact 3. Thunderclap+ (1E, strips 1 from all enemies) is ideal. Bash+ strips 1. Goal: all Artifact gone by turn 3-4.
+1. **Artifact Strip (Turns 1-3)**: Use cheap, non-exhausting debuffs to strip Artifact 3. Thunderclap (1E, strips 1 from all enemies) is ideal. Bash+ strips 1. Red Mask strips 1 automatically at combat start. **Do NOT use Intimidate or Shockwave for Artifact stripping** -- they exhaust and are needed for Hyper Beam survival. Goal: all Artifact gone by turn 3-4.
 2. **Debuff Window (Turn 3-4)**: Once Artifact is 0, apply Shockwave+ (Weak 3 + Vuln 3). This is the pivot point of the fight.
 3. **Burst Phase (Turns 4-7)**: With Vuln active, unload burst damage. Fiend Fire+, Rampage scaling, Hemokinesis. Goal: deal 150+ damage in 3-4 turns.
-4. **Hyper Beam Survival (Turn 6-8)**: Hyper Beam hits for 38-45. MUST have 30+ block or Weak active. Basic Defends (5 each) are NOT sufficient. Need block scaling cards or relic-based block (Calipers retained block, Metallicize, etc).
+4. **Hyper Beam Survival (Turn 6-8)**: Hyper Beam hits for 38-51 (scales with accumulated Strength). MUST have 30+ block AND Weak active. Basic Defends (5 each) are NOT sufficient. Need block scaling cards AND a Weak source saved specifically for this turn. Intimidate or Shockwave must be held until Hyper Beam -- Weak reduces 51 to 38, which is the difference between death and survival.
 5. **Stun Window**: After Hyper Beam, Automaton is stunned. Free damage turn. Use Spot Weakness, Fiend Fire, or Rampage here.
 
 ## What Kills You
