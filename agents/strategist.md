@@ -12,6 +12,7 @@ Every ~10 completed runs (or when things feel stuck). You have access to:
 - `playbook/` — the full knowledge base (200+ files)
 - `data/run_stats.json` — win/death/floor stats
 - `data/runs/` — full event logs from past runs (if you need raw data)
+- `HUMAN_ADVICE.md` — **READ THIS FIRST.** Contains human-provided heuristics and web research that must be incorporated into the playbook. Check for new entries since your last run.
 
 ## What You Ask
 
