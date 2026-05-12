@@ -8,8 +8,8 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 ## Unconfirmed
 
-- **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Runs 143-146.** Four consecutive clean runs. Bug appears resolved. Continue monitoring but downgrading priority.
-- **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Runs 143-146.** Four consecutive clean runs. Bug appears resolved.
+- **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Runs 143-147.** Five consecutive clean runs including first VICTORY. Bug resolved. Both boss relics collected in Run 147 (Busted Crown Act 1, Snecko Eye Act 2). Removing from active monitoring.
+- **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Runs 143-147.** Five consecutive clean runs. Bug resolved.
 - Fungi Beast HP range: Playbook had ~19 HP. Run 141 showed one at 24 HP, other possibly 22 HP. Need more data to confirm Act 1 paired Fungi Beast HP range (22-28 suspected). May vary by ascension or Act.
 - Sentry Metallicize value: Confirmed 4 block/turn (from effective damage calculations in Run 141). Already in updated sentry.md, but only 1 observation. Monitor for consistency.
 - Headbutt selection UI confusion: Player attempted to select 2 cards for Headbutt (which only selects 1). Not a bug -- player misunderstood the interface. The `choose 0` then `choose 1` on lines 124-125 suggests the first `choose` completed the Headbutt selection, and the second was interpreted as a different action. Monitor for recurrence.
@@ -34,7 +34,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Frail + Rage block: Is Rage block reduced by Frail?
 - Kunai + Whirlwind: Does each hit count as a separate attack for Kunai?
 - Book of Stabbing per-hit damage: 6 or 7 per hit? Need confirmation.
-- Donu and Deca: Not yet encountered. Run 145 showed them as Act 3 boss but died to Transient before reaching them.
+- Donu and Deca: PROMOTED. Encountered and DEFEATED in Run 147. Full boss entry created in donu-and-deca.md. 250 HP each, Artifact 1 each. Kill Donu first. AOE + Str scaling is the winning formula. Defeated in 6 turns.
 - Mummified Hand + Power-heavy decks: Observed generating 2-4 free plays per turn in a 5-Power deck (Barricade+, 2x Metallicize, Inflame+, Evolve+). The relic's value scales multiplicatively with Power count. One observation -- monitor for consistency.
 - Bird-Faced Urn relic: Heals 2 HP per Power played. Obtained from Sentries elite. Playbook entry created. Only 1 observation -- monitor for exact trigger conditions (does it work with Powers played from potions? from Distilled Chaos?).
 - Sentries Plated Armor interaction: Essence of Steel (4 Plated Armor) reduced damage per Sentry attack turn by 4. Over 14 turns, this is ~28-56 block total. But Plated Armor decays by 1 when hit (confirmed -- player's notes show Plated dropping from 4 to 3 to 2 across hits). Need more data on exact decay mechanic.
@@ -78,10 +78,24 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card/relic playbook entries where it's contextually relevant. Remaining recurring patterns:
 - **Arithmetic errors in combat** — Seven different errors in runs 124-144. Runs 140-143 showed significant improvement with Full Block Algorithm enforcing explicit math. But Run 144 introduced a new fatal error type: basic comparison failure ("13 > 20") on a kill turn with `end` chained in the same command. Checklist item #4 added to address this.
-- **Boss relic collection skipped** (Run 71, Run 77, Run 142): Automation bug. 3 confirmed occurrences. Did NOT occur in Runs 143-146 (four consecutive clean runs). Bug appears resolved. Downgrading priority.
+- **Boss relic collection skipped** (Run 71, Run 77, Run 142): Automation bug. 3 confirmed occurrences. Did NOT occur in Runs 143-147 (five consecutive clean runs including VICTORY). Bug resolved. Both boss relics collected in Run 147 (Busted Crown + Snecko Eye). Removing from active monitoring.
 - **Act 2 first-fight death spiral** — Byrd/SG fights as first Act 2 room drain 30-73 HP. If map forces consecutive Monster rooms with no recovery, the run dies regardless of skill. Route planning must prioritize early non-combat rooms.
 - **Elite readiness = deck quality, not just HP** — Run 141 entered Sentries at 95% HP but with a starter-quality deck (Strikes/Defends/Bash/Headbutt/SIO). The fight took 20 turns and drained 56 HP. Elite decision should evaluate DECK vs MATCHUP, not just HP. Neow's Lament exacerbates this by creating full HP with an undeveloped deck. Documented in sentry.md, neow-s-lament.md, strategy.md.
 - **Playbook accuracy gaps** — Mushrooms Eat option was documented as "Heal 22 HP" but actually heals 21 HP + Parasite curse. Fungi Beast buff turns were documented as "free damage windows" but are actually +3 Str per buff (scaling to 12-15 damage by Turn 5-6). These errors directly contributed to a death. Other playbook entries may have similar omissions from early runs when observation was less rigorous.
+
+- Snecko Eye + high-cost deck: FIRST OBSERVATION of Snecko Eye. Draw 7 cards/turn with random costs 0-3. In the victory run, Snecko Eye enabled multiple 0-cost plays of Immolate+ (2E), Heavy Blade (2E), and Spot Weakness+ (1E) in critical boss fights. The relic was the single biggest enabler of the win. Promoted to snecko-eye.md. Monitor for consistency -- one observation of extremely favorable cost rolls. Could have been partly lucky RNG. Over many turns, the average should be favorable for 2E+ cards.
+- Dual Wield+ on Immolate+: FIRST OBSERVATION. Created 2 copies of Immolate+ in hand (3 total). Under Snecko Eye, each copy got a new cost roll. All three were playable in one turn for 102 AOE. Promoted to dual-wield.md. Only 1 observation -- monitor for consistency.
+- Donu and Deca Artifact count: Each boss appeared to have Artifact 1 (not higher). Bash+ Vulnerable on one boss was not blocked, suggesting Artifact had already been consumed by an earlier debuff (possibly Bag of Marbles Vulnerable at combat start stripped it). Need more data to confirm exact Artifact count.
+- Donu and Deca block patterns: Both bosses had intermittent block (8-16 observed). The block pattern is not well understood. Donu had 16 block when killed by Heavy Blade. Deca had block on some turns. Need more observations.
+- Donu Strength buff amount: Donu buffs Strength for both enemies. The exact amount per buff turn was not precisely tracked. Incoming damage grew from 20 Turn 1 to 32 Turn 5. Need more data on the exact Str gain per Donu buff.
+- Blessing of the Forge + Snecko Eye: Upgraded all 7 drawn cards for one combat. Heavy Blade became Heavy Blade+ (5x Str multiplier instead of 3x). Critical for the Automaton kill. One observation -- need to confirm the interaction is consistent.
+- Regal Pillow rest healing: Confirmed +15 HP per rest (24 base + 15 = 39 total). Enabled full HP recovery before Donu and Deca (53 + 39 = 92, capped at 80/80). Promoted to regal-pillow.md. One observation.
+- Nunchaku counter persistence: Counter appears to persist across combats. In the victory run, Nunchaku triggered multiple times per boss fight. Need to confirm the counter does not reset between fights.
+- Champion Belt Vulnerable -> Weak: Confirmed applying 1 Weak whenever Vulnerable is applied. Promoted to champion-belt.md. Only 1 observation.
+- Bag of Marbles Turn 1 Vulnerable: Confirmed applying 1 Vulnerable to ALL enemies at combat start. With Paper Phrog = 1.75x damage on Turn 1 attacks for free. Promoted to bag-of-marbles.md. One observation.
+- Sling of Courage +2 Str at boss/elite start: Confirmed. Promoted to sling-of-courage.md. One observation.
+- Omamori curse negation: Used twice in the victory run. (1) Scrap Ooze event at F7 -- Omamori negated the curse from reaching inside, getting a free relic (Omamori itself). Wait -- Omamori was obtained FROM Scrap Ooze? Need to verify. (2) Coffin event at F31 -- Omamori negated Curse from opening coffin, getting Paper Phrog for free. (3) Big Fish Eat event at F14 -- Omamori negated Parasite curse, getting 20 HP heal for free. Omamori is S-tier when events with curse downsides are encountered.
+- Maw Bank gold accumulation: 12g per floor. Accumulated substantial gold for Act 2 shop purchases (Toy Ornithopter 155g, Sling of Courage 153g, card removal 100g, Flame Barrier 69g, Blessing of the Forge 52g, Essence of Steel 74g). Already documented. Confirmed strong value in runs with shops.
 
 ## Open Questions
 

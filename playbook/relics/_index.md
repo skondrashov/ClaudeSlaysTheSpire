@@ -24,6 +24,9 @@
 - [Meal Ticket](meal-ticket.md)
 - [Oddly Smooth Stone](oddly-smooth-stone.md)
 - [Eternal Feather](eternal-feather.md)
+- [Bag of Marbles](bag-of-marbles.md)
+- [Nunchaku](nunchaku.md)
+- [Regal Pillow](regal-pillow.md)
 
 ## Common Relics (continued)
 
@@ -47,6 +50,7 @@
 - [Meat on the Bone](meat-on-the-bone.md)
 - [Matryoshka](matryoshka.md)
 - [Preserved Insect](preserved-insect.md)
+- [Champion Belt](champion-belt.md)
 
 ## Uncommon Relics (continued)
 
@@ -78,8 +82,14 @@
 
 - [Lee's Waffle](lees-waffle.md)
 
+## Shop Relics (continued)
+
+- [Sling of Courage](sling-of-courage.md)
+
 ## Boss Relics / Special
 
+- [Snecko Eye](snecko-eye.md)
+- [Busted Crown](busted-crown.md)
 - [Pandora's Box](pandoras-box.md)
 - [Sozu](sozu.md)
 - [Runic Dome](runic-dome.md)

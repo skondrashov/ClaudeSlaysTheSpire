@@ -35,3 +35,7 @@
 - [The Library](the-library.md)
 - [Masked Bandits](masked-bandits.md)
 - [Colosseum](colosseum.md)
+
+## Act 3 Events
+
+- [Mind Bloom](mind-bloom.md)

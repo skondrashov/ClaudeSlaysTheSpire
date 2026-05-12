@@ -11,4 +11,6 @@ MATH EXAMPLES (with Paper Phrog):
 
 SYNERGIES: Bash+ (3 turns of amplified Vulnerable), Thunderclap (mass Vulnerable), Dropkick (conditional on Vulnerable already), any high-damage attack card.
 
-EVALUATION: One of the best common relics for Ironclad. Since Bash+ applies Vulnerable in every fight, this relic provides permanent damage amplification. Stronger than most uncommon relics.
+VICTORY PERFORMANCE: In the first win, Paper Phrog amplified Immolate+ from 28 to floor(28*1.75) = 49 AOE (and higher with Strength). Against Donu and Deca, every Immolate+ with Vulnerable active dealt 49-59 AOE damage instead of 42-51. Over 5+ Immolate+ plays, Paper Phrog contributed an estimated 35-50 extra damage across both bosses.
+
+EVALUATION: One of the best common relics for Ironclad. Since Bash+ applies Vulnerable in every fight, this relic provides permanent damage amplification. Stronger than most uncommon relics. In boss fights with extended Vulnerable windows, the cumulative damage bonus can exceed 50+ additional damage over the fight.

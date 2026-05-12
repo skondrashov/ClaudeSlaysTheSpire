@@ -2,26 +2,31 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (146 runs, 0 wins, best floor 44):** Regression -- died Floor 12 in Act 1 to Gremlin Nob after Sentries drained 52 HP. Root cause was pathing: committed to elite at F6 with only 2 monster rooms beforehand, giving no time to build a deck. Sentries + Nob back-to-back with a near-starter deck was unwinnable. Previous run (145) reached Act 3 for the first time (Floor 44). **Fourth consecutive clean run with no UI misplays** -- treasure chest opened, shops browsed, events evaluated. Golden Idol Smash cost 20 HP before the elite, compounding the HP crisis.
+**CURRENT STATUS (147 runs, 1 WIN, best floor 51 -- VICTORY):** FIRST WIN on Run 147. Defeated Donu and Deca (Act 3 Boss) at Floor 51. Beat Slime Boss (Act 1), Bronze Automaton (Act 2), and Donu and Deca (Act 3) in a single run. Final HP 31/80. Score 652. The winning formula: Snecko Eye + Immolate+ + Spot Weakness+ + Limit Break + Heavy Blade+ + Dual Wield+. Strength scaling to 12, triple Immolate+ for 102 AOE, Heavy Blade 50-damage finisher.
 
-**SCORECARD (runs 101-146):**
-- Act 1 boss wins: ~73%. Guardian and Collector BOTH beaten in a single run (Run 145).
-- Act 2 boss kills: 1 (The Collector, Run 145). Act 2 boss reaches: 6 (Runs 105, 110, 114, 125, 143, 145).
-- **Act 3 reached for the first time (Run 145).** Died to The Transient at Floor 44.
-- **Best floor: 44 (Run 145).** Run 146 was a regression to Floor 12 (Act 1 elite death).
-- **Floor average (last 20 tracked runs): ~22.** Run 146 F12 pulls average down.
-- **No UI misplays in Run 146.** Fourth consecutive clean run. Treasure chest opened, shops browsed, events evaluated.
-- **Mechanics errors in Run 146: NONE.** Death was strategic (pathing), not mechanical. Combat arithmetic was correct throughout.
-- **Boss relic/chest skip bug: NOT triggered in Run 146** (fourth consecutive clean run). Bug appears resolved.
+**SCORECARD (runs 101-147):**
+- Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
+- Act 2 boss kills: 2 (The Collector Run 145, Bronze Automaton Run 147). Act 2 boss reaches: 7.
+- **Act 3 reached twice (Runs 145, 147).** Run 145 died to Transient. Run 147 WON.
+- **Best floor: 51 -- VICTORY (Run 147).** Previous best was 44 (Run 145).
+- **1 win in 147 runs (0.68% win rate).** First win at Ascension 0.
+- **No UI misplays in Run 147.** Fifth consecutive clean run. Both boss relics collected (Busted Crown + Snecko Eye), all treasure chests opened, shops browsed, events evaluated.
+- **Mechanics errors in Run 147: NONE.** Combat arithmetic correct throughout. No prediction errors detected.
+- **Boss relic/chest skip bug: NOT triggered in Run 147** (fifth consecutive clean run). Bug resolved.
+
+**THE WINNING FORMULA (confirmed by first victory):**
+The first win used this core engine: Immolate+ (AOE), Spot Weakness+ (front-loaded Str), Limit Break (Str doubler), Heavy Blade (Str multiplier), Dual Wield+ (copy Immolate+), Snecko Eye (draw 7, cost randomization). Key enablers: Busted Crown (4E in Acts 1-2), Snecko Eye (Act 2 boss relic, 7 draws in Act 3), Paper Phrog (75% Vuln), Champion Belt (free Weak on Vuln), Toy Ornithopter (healing from potions), Regal Pillow (39 HP rest heal). Full HP entry at every boss. Zero arithmetic errors. Fifth consecutive clean run with no UI misplays.
 
 **IMMEDIATE PRIORITIES (in order):**
-1. **FULL BLOCK EVERY HALLWAY FIGHT.** This is the new combat algorithm. The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md. This single change addresses both the arithmetic errors (forces explicit damage/block math every turn) and the HP attrition problem (prevents the HP drain that causes death spirals).
-2. **PLAN FULL ACT ROUTES BEFORE FLOOR 1.** Read the entire map at act start. Count elites, shops, campfires on every viable path. Choose a route and follow it. Re-route only when HP forces it. This replaces room-by-room pathing.
-3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE, (c) healing beyond Burning Blood, (d) block scaling beyond basic Defends.
-4. **Use the Act 1 tier list for card evaluation.** Stop reasoning from first principles about Act 1 picks. The starting deck is the same every run. Know the tier list, draft for the visible boss.
-5. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first. See COMBAT ARITHMETIC CHECKLIST below.
-6. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
-7. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed > block.
+1. **FULL BLOCK EVERY HALLWAY FIGHT.** The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md.
+2. **PLAN FULL ACT ROUTES BEFORE FLOOR 1.** Read the entire map at act start. Count elites, shops, campfires on every viable path. Choose a route and follow it. Re-route only when HP forces it.
+3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Immolate is the highest-impact card), (c) healing beyond Burning Blood (Toy Ornithopter + potions is a valid backup), (d) block scaling beyond basic Defends.
+4. **Pursue the Strength scaling engine.** The proven winning combination: Spot Weakness+ for base Str, Limit Break to double it, Heavy Blade to multiply it. Dual Wield+ on Immolate+ for AOE burst. Snecko Eye as Act 2 boss relic to enable the high-cost deck. Every component is independently good and multiplicatively powerful together.
+5. **Use the Act 1 tier list for card evaluation.** The starting deck is the same every run. Know the tier list, draft for the visible boss.
+6. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first.
+7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
+8. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed > block.
+9. **Enter every boss at full HP.** The first victory entered Slime Boss, Bronze Automaton, and Donu and Deca all at 80/80. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enabled this. Full HP entry provides the buffer needed when boss fights go long.
 
 ---
 
@@ -319,12 +324,15 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - **Odd Mushroom anti-synergy** -- Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting burst by ~17%. In a DPS race against 300 HP + Strength scaling, this extends the fight by 1-2 turns, potentially forcing survival through an extra Hyper Beam cycle.
 - **Dark Shackles**: Excellent but not sufficient alone. Reduces Hyper Beam by ~9 damage (from ~51 to ~42 with 6 Str). Still need 30+ block on top of the reduction.
 
-**Donu and Deca needs (NOT YET ENCOUNTERED):**
-- AOE damage (Immolate+, Thunderclap+) -- two 250 HP enemies
-- Disarm -- reduce Donu's Strength before killing it
-- Shockwave+ -- mass Weak+Vulnerable on both
-- Block density for 10+ turn fight
-- Kill Donu first (prevents Strength scaling for both)
+**Donu and Deca needs (DEFEATED -- Run 147 VICTORY):**
+- **AOE damage (HIGHEST PRIORITY)** -- Immolate+ is the best card in this fight. Every AOE play hits BOTH 250 HP bosses. Triple Immolate+ dealt 102 AOE in one turn. Cleave, Thunderclap+ also contribute.
+- **Strength scaling** -- Spot Weakness+ (+4 Str) into Limit Break (double) into Heavy Blade (3-5x multiplier) is the confirmed winning finisher. Str 12 + Heavy Blade+ = 50 damage single target.
+- **Kill Donu first** -- Donu buffs Strength for both enemies. Stopping the scaling is mandatory. All single-target goes to Donu; AOE handles Deca passively.
+- **Snecko Eye is exceptional** -- draw 7 cards/turn with random costs. High-cost cards (Immolate+, Heavy Blade, Impervious) frequently cost 0-1E. This relic was the single biggest enabler of the victory.
+- **Dual Wield+ on Immolate+** -- copies Immolate+ twice for three copies in hand. If costs are favorable, 100+ AOE damage in a single turn.
+- Block density for 6-10 turn fight. Flame Barrier, Impervious, Metallicize all useful.
+- Enter at 70%+ HP (ideally full). Combined incoming 20-32/turn.
+- **Potion timing matters**: Strength Potion early (compounds), Duplication on Flame Barrier for peak block, Liquid Memories to retrieve Immolate+ from discard.
 
 ### Act 2 Boss Survival
 
@@ -520,7 +528,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 
 ### What the Deck Needs for Act 3
 
-1. **Barricade + Metallicize engine**: The single strongest combination for Act 3. Block carries over and stacks with passive Metallicize gains. With 2x Metallicize (7 block/turn) + Barricade, most Act 3 hallway fights take zero damage. This engine dominates The Maw (300 HP), The Transient (escalating damage), and multi-enemy fights (Exploders + Spikers). If Barricade and at least one Metallicize are in the deck entering Act 3, survival is dramatically easier.
+1. **Strength scaling engine OR Barricade + Metallicize engine**: Two proven winning approaches. The first victory used Spot Weakness+ + Limit Break + Heavy Blade + Snecko Eye as a burst-damage engine. The Barricade + Metallicize approach (from Run 145) is the single strongest sustained combination for Act 3. Block carries over and stacks with passive Metallicize gains. Both approaches work. The key is having a complete engine, not individual strong cards. The first victory also included Metallicize as a supplementary block source alongside the Strength engine.
 2. **Block density beyond Barricade**: Impervious, Shrug It Off, Defend+. Barricade needs block cards to feed into the snowball. Without block cards to play, Barricade only accumulates Metallicize's passive block (slow). Impervious + Barricade = 30-40 permanent block in one play.
 3. **AOE**: Immolate+ is the single best card. Darklings require simultaneous kills; Exploders can be cleared with single Immolate+.
 4. **Disarm/Weak sources**: Transient and scaling enemies require Strength reduction and Weak application. Save for Transient and boss fights -- do not waste on hallway fights that the Barricade engine can handle.
@@ -531,6 +539,8 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 ---
 
 ### What Wins and What Kills (Summary)
+
+**The first full-game victory (Run 147) had:** (1) Immolate+ addressing every boss's AOE needs, (2) Impervious x2 + Flame Barrier + Metallicize for block, (3) full HP entry at every boss fight (80/80 at Slime Boss, 80/80 at Bronze Automaton, 80/80 at Donu and Deca), (4) key upgrades (Bash+, Spot Weakness+, Immolate+, Headbutt+ from Whetstone, Heavy Blade+ from Blessing of the Forge), (5) no self-damage cards, (6) Snecko Eye enabling massive card throughput with cost randomization, (7) Toy Ornithopter patching the healing gap with 3 potion uses in the final boss fight.
 
 **Every boss victory** had: (1) a card that addressed the boss's main threat, (2) passive block/sustain, (3) entry HP above 50% or Pantograph, (4) at least 1 key upgrade, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.
 

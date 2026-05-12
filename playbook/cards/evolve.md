@@ -7,7 +7,7 @@ DECISION POINTS: Play on free turns (enemy buff turns). At 1E, it competes with 
 
 SYNERGIES:
 - **Mark of Pain + Evolve+**: Mark of Pain gives 4 energy but adds Wounds to draw pile when attacks are played. Evolve+ draws 2 cards per Wound drawn, converting the downside into massive card advantage. This combination was confirmed effective: 4E + bonus draws meant playing 5-7 cards per turn reliably. The Wounds are Status cards, so they trigger Evolve. This is one of the strongest boss relic + card synergies for Ironclad.
-- **Hexaghost Burns**: Burns draw replacement cards, so accumulating Burns does not reduce hand size. Combined with the draw, Evolve effectively makes Burns cycle-neutral.
+- **Hexaghost Burns / Immolate Burns**: Burns draw replacement cards, so accumulating Burns does not reduce hand size. Combined with the draw, Evolve effectively makes Burns cycle-neutral. When Immolate+ is played repeatedly (as in the Donu and Deca boss fight with Dual Wield+ copies), multiple Burns enter the discard pile. Evolve converts each subsequent Burns draw into a fresh card, preventing the deck from clogging over long fights.
 - **Sentries Dazed**: Dazed draws replacement. Since Dazed is Ethereal (exhausts end of turn), the Evolve draw is pure upside -- you get a real card, Dazed exhausts itself.
 - **Slimed cards**: Draw replacement when Slimed is drawn. Still costs 1E to exhaust Slimed, but hand quality is maintained.
 - **Fire Breathing**: If both Powers are active, drawing Status cards both deals damage (Fire Breathing) and draws replacements (Evolve).

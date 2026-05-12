@@ -18,3 +18,7 @@ SYNERGIES:
 - **Vulnerable** -- 50% damage bonus applies to the full total, not just base. At Str 6 vs Vulnerable: floor(32 * 1.5) = 48.
 
 MATCHUPS: Excellent in boss fights where Strength has time to build. Strong against any single high-HP target (Spheric Guardian's block, Chosen). Less effective in quick hallway fights where 2E for a single target is too slow without setup.
+
+VICTORY PERFORMANCE: In the first win, Heavy Blade+ at Str 16 dealt 94 damage to Bronze Automaton (14 + 80 from 5x16 Str), reducing it from 97 to 3 HP in a single play. Against Donu and Deca, Heavy Blade at Str 6 killed Donu through 16 block (32 total damage), and Heavy Blade at Str 12 dealt 50 damage to finish Deca. With Snecko Eye, Heavy Blade frequently costs 0E, making it a free 30-94 damage play. This card is the single best finisher in the game for Strength-scaling decks.
+
+SNECKO EYE SYNERGY: At 2E base cost, Heavy Blade has a 25% chance of costing 0E under Confusion. Since it already scales with Strength, getting it for free is pure upside. In the victory run, Heavy Blade cost 0E on the kill turns for both Donu and Deca (killing Donu through block) and the Bronze Automaton.

@@ -10,4 +10,10 @@ SYNERGIES: Inflame (Strength adds to every hit), Thunderclap (applies Vulnerable
 
 MATCHUPS: Excellent vs Byrds (Flight strips from AOE), Slime Boss split (damages both large slimes), 3 Cultists (31 damage each with Vuln). Against Guardian, strong single-target when timed on free turns. Against The Collector, damages Collector + both Torch Heads.
 
-UPGRADE: 21 -> 28 AOE damage. Significant increase. With Vulnerable: floor(28 * 1.5) = 42 AOE damage. High-priority upgrade if Immolate is a key damage source.
+UPGRADE: 21 -> 28 AOE damage. Significant increase. With Vulnerable: floor(28 * 1.5) = 42 AOE damage. With Paper Phrog Vulnerable (75%): floor(28 * 1.75) = 49 AOE. With Strength 6 and Paper Phrog: floor(34 * 1.75) = 59 AOE. High-priority upgrade -- Immolate+ is the most impactful card in multi-enemy boss fights.
+
+VICTORY PERFORMANCE: Immolate+ was the most-played card in the first-ever victory. Against Slime Boss, it cleared the split phase. Against Bronze Automaton, it dealt 37 AOE at Str 16 during the stun phase. Against Donu and Deca, triple Immolate+ (via Dual Wield+) dealt 102 AOE in a single turn, and 5+ total plays across 6 turns carried the fight. With Snecko Eye, Immolate+ frequently cost 0-1E instead of 2E, enabling multiple plays per turn.
+
+DUAL WIELD+ SYNERGY: Dual Wield+ on Immolate+ creates 2 copies in hand (3 total Immolate+). At 28-34 AOE each, this is 84-102 damage to ALL enemies in one turn. Under Snecko Eye, the copies get new cost rolls -- any that cost 0-1E are effectively free massive AOE. This is the single strongest offensive combo observed.
+
+HEADBUTT SYNERGY: Headbutt top-decks Immolate+ from discard pile to guarantee drawing it next turn. Under Snecko Eye, the top-decked card gets a new cost roll. This was used repeatedly in the victory to ensure Immolate+ was available on critical turns.

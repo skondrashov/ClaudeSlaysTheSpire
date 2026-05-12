@@ -36,6 +36,7 @@
 - [Immolate](immolate.md)
 - [Sever Soul](sever-soul.md)
 - [Heavy Blade](heavy-blade.md)
+- [Dual Wield](dual-wield.md)
 
 ## Skill Cards
 

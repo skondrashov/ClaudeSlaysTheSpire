@@ -69,4 +69,17 @@ WHAT NOT TO DO:
 
 MULTI-HIT WARNING: Whirlwind and Pummel trigger Stasis on Orbs the same as any other attack but are not specifically penalized. However, these cards are better directed at the Automaton itself for raw damage rather than Orbs.
 
+CASE STUDY — FIRST VICTORY (Run 147, Defeated):
+- Entered at 80/80 (100% HP). Deck met all 4 readiness criteria plus Strength scaling. 19-card deck with Immolate+, Impervious, Spot Weakness+, Limit Break, Heavy Blade, Flame Barrier, Evolve, Headbutt, Bash+, Rampage, Anger, Cleave, Shrug It Off.
+- Relics: Busted Crown (4E), Sling of Courage (+2 Str at boss start), Anchor (10 block T1), Toy Ornithopter, Nunchaku, Champion Belt, Paper Phrog.
+- Potions: Regen Potion, Blessing of the Forge, Essence of Steel.
+- **Turn 1**: Free turn (Spawn Orbs). Essence of Steel for 4 Plated Armor + 5 HP heal (Toy Ornithopter). Heavy Blade + Rampage for 22 damage. Automaton at 278.
+- **Turns 2-4**: Artifact stripping with Bash+. Spot Weakness+ for +4 Str (x2 across two turns = +8 Str). Headbutt recycled Heavy Blade and Bash+ repeatedly.
+- **Turn 5**: Stasis stole Limit Break into an Orb. Needed to kill Orb to recover it.
+- **Turn 6 (Hyper Beam)**: Regen Potion + Blessing of the Forge used before cards. Killed Orb 0 with Strike+ to free stasis card. Limit Break doubled Str 8 to 16. Took 59 damage (67 incoming - 8 remaining block). Survived at 7 HP with Regen ticking.
+- **Turn 7 (Stun phase)**: Cleave killed Orb 2 (releasing Immolate+). Immolate+ dealt 37 to stunned Automaton. Rampage 29. Total 90 damage in one turn. Automaton at 119.
+- **Turn 8**: Impervious 30 block for safety at 16 HP. Anger 22 + Heavy Blade+ 94 = 116 damage. Automaton at 3 HP.
+- **Turn 9**: Any attack kills. Anger 22 overkill. VICTORY.
+- **ROOT CAUSE OF SUCCESS**: (1) Full HP entry. (2) Str scaling to 16 via Spot Weakness+ x2 + Limit Break double. (3) Essence of Steel's 4 Plated Armor accumulated 32+ block over 8 turns. (4) Blessing of the Forge upgraded Heavy Blade to 5x multiplier on the turn it mattered most. (5) Headbutt recycling ensured key cards were always available.
+
 ---
