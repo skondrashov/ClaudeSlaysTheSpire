@@ -8,21 +8,21 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 ## Unconfirmed
 
-- **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Run 143.** Run 143 successfully collected Mark of Pain as boss relic. The `proceed` then `choose 2` sequence worked correctly. Bug may be intermittent or partially fixed. Continue monitoring -- 3 prior skips remain on record.
-- **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Run 143.** Run 143 successfully opened both treasure chests (Horn Cleat in Act 1, Toy Ornithopter in Act 2). Continue monitoring.
+- **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Runs 143-144.** Two consecutive clean runs. Bug may be resolved or intermittent. Continue monitoring -- 3 prior skips remain on record.
+- **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Runs 143-144.** Two consecutive clean runs (Run 143: 2 chests opened, Run 144: 1 chest opened). Continue monitoring.
 - Fungi Beast HP range: Playbook had ~19 HP. Run 141 showed one at 24 HP, other possibly 22 HP. Need more data to confirm Act 1 paired Fungi Beast HP range (22-28 suspected). May vary by ascension or Act.
 - Sentry Metallicize value: Confirmed 4 block/turn (from effective damage calculations in Run 141). Already in updated sentry.md, but only 1 observation. Monitor for consistency.
 - Headbutt selection UI confusion: Player attempted to select 2 cards for Headbutt (which only selects 1). Not a bug -- player misunderstood the interface. The `choose 0` then `choose 1` on lines 124-125 suggests the first `choose` completed the Headbutt selection, and the second was interpreted as a different action. Monitor for recurrence.
 - Ceramic Fish relic: Gives 9 gold per card added. Observed twice. Need to confirm value.
 - Centurion 10x3 multi-hit attack: Run 142 death caused by 30 damage from 10x3 attack. Previously documented only as 12-18 single hits. Playbook updated. Need more data on attack pattern rotation (when does 10x3 appear vs 12 single hit?).
 - Sundial relic: Every 3 shuffles, gain 2 energy. Confirmed from Run 142: 5E on Turn 4 of 3 Cultists fight (3 base + 2 bonus). Playbook entry created. Monitor for consistency.
-- Healing card RNG denial streak: 9 of last 11 runs with no Reaper/Feed offered (Run 143 continues the streak). Backup healing plan insufficient. Not addressable through playbook changes -- this is variance. Player should take Feed even in late Act 1 (floor 12+) and buy Blood/Regen Potions at every shop when no healing card exists.
+- Healing card RNG denial streak: 10 of last 12 runs with no Reaper/Feed offered (Run 144 continues the streak). Backup healing plan insufficient. Not addressable through playbook changes -- this is variance. Player should take Feed even in late Act 1 (floor 12+) and buy Blood/Regen Potions at every shop when no healing card exists.
 - Mark of Pain + Evolve+ synergy confirmed: Promoted to evolve.md and mark-of-pain.md. Strong engine (4E + 2 draws per Wound = 5-7 cards/turn). One observation. Monitor for consistency across multiple runs.
 - Mark of Pain Wound dilution: Wounds added to draw pile by attacks reduce probability of drawing specific cards on critical turns. In Run 143, 2x Impervious+ in a 15-card deck (plus accumulating Wounds) meant neither was drawn on either Hyper Beam turn. The card advantage from Evolve+ may not compensate for the draw dilution when specific cards are needed. Need more data.
 - Bronze Automaton Strength can reach +12 by turn 12. Hyper Beam #2 at 57 damage (45 base + 12 Str). Previous maximum was 51 (turn 6). Promoted to bronze-automaton.md.
 - Bronze Automaton fires TWO Hyper Beams in long fights (turn ~6 and ~12). Confirmed. Must plan block for both. Promoted to bronze-automaton.md and enemies/bronze-automaton.md.
 - Clothesline as non-exhausting Weak source for Automaton: confirmed useful on both Hyper Beam turns. Promoted to clothesline.md.
-- Hexaghost multi-hit attack variants: Turn 2 appears to be 5x6=30 (not Inferno). Later turns have 4x6=24 variant. Need more data points with exact hit counts.
+- Hexaghost multi-hit attack variants: Conflicting Turn 2 data. Previous observation: 5x6=30. Run 144 observed 4x6=24 on Turn 2. The difference (24 vs 30) is significant for block planning. Playbook currently says "~5x6=30." Need more data to determine if Turn 2 is always 4x6 or variable.
 - Burns+ timing: Burns+ (4 damage each) appear from later ATTACK_DEBUFF turns. Exact transition turn unknown.
 - Horn Cleat: Observed 14 block on turn 2. Fixed or scaling?
 - Gremlin Horn: Works on ALL enemy deaths including minions?
@@ -37,6 +37,8 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Donu and Deca: Not yet encountered.
 - Byrd Flight regain timing: Player observed "Byrds regained Flight to 3" on buff turns. Byrd.md documents "Byrds regain Flight 3 on buff turns." But how does Flight interact with Vulnerable/Weak duration? Does Vulnerable applied by TC+ last the stated number of turns, or does Flight regain reset interaction? Need more observations to confirm Vuln wears off as documented.
 - Byrd combined Str growth: All 3 Byrds gained +1 Str on buff turns. By Turn 4-5, individual Byrds had Str 1-2. Combined with Flight 3 regaining on buff turns, this means late-fight all-attack turns can deal 38+ damage. 5 rounds of buffs observed across 8-turn fight.
+- Incense Burner counter persistence: Counter increments across combats. Promoted to incense-burner.md. Need to confirm: does the counter increment on turns where you have Intangible, or does it reset? Monitor.
+- Cultist Potion Ritual value: Confirmed +1 Str/turn. Promoted to cultist-potion.md. Need more data: is the Ritual value always 1, or can it be higher?
 - Full heal between acts: Confirmed HP is restored to max between Act 1 and Act 2. Player went from 3 HP (post-Slime Boss + Burning Blood = 9) to 74/74 at Act 2 start.
 - Shop buy confusion: Recurring shop translation mismatches. Run 142: intended Evolve, translated "Buy Bandage Up." Run 143: intended Evolve (76g), translated "Buy Finesse" (line 37); intended card removal (100g), translated "Buy Cleave" (line 342). In all cases the correct card/action was obtained (deck contained Evolve, card was removed). The `translated` field appears to display incorrect card names but the actual purchase executes correctly. This is a display/logging issue, not a gameplay bug. Low priority.
 
@@ -50,6 +52,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Rampage counter carryover: self-corrected mid-reasoning (Run 125). Monitor.
 - Hexaghost HP tracking drift: lost count of boss HP mid-fight (Run 129). Monitor.
 - Spot Weakness upgraded value confusion: described SW as "+4 Str" during Byrd fight Turn 1 planning but card was unupgraded (+3 Str). Game state showed correct Str of 3. PROMOTED to strategy.md arithmetic checklist. Monitor for recurrence.
+- **FATAL: Basic comparison error "13 > 20" (Run 144).** PROMOTED to strategy.md checklist item #4. Player wrote "Iron Wave deals 5+8=13 damage > 20 HP" -- basic numeric comparison failure. The command was already submitted with `end` chained on the same line, so the error could not be corrected. New rule: never chain `end` with attacks on kill turns.
 
 **Strategic errors (promoted to relevant playbook files):**
 - Fire Breathing+ exhaust synergy blindness: PROMOTED to fire-breathing.md
@@ -61,8 +64,8 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 ## Recurring Patterns
 
 Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card/relic playbook entries where it's contextually relevant. Remaining recurring patterns:
-- **Arithmetic errors in combat** — Six different errors in runs 124-129. Now addressed by COMBAT ARITHMETIC CHECKLIST in strategy.md. Runs 140-141 showed significant improvement. Full Block Algorithm is enforcing explicit math.
-- **Boss relic collection skipped** (Run 71, Run 77, Run 142): Automation bug. 3 confirmed occurrences. Did NOT occur in Run 143 (Mark of Pain collected successfully). Bug may be intermittent. Continue monitoring.
+- **Arithmetic errors in combat** — Seven different errors in runs 124-144. Runs 140-143 showed significant improvement with Full Block Algorithm enforcing explicit math. But Run 144 introduced a new fatal error type: basic comparison failure ("13 > 20") on a kill turn with `end` chained in the same command. Checklist item #4 added to address this.
+- **Boss relic collection skipped** (Run 71, Run 77, Run 142): Automation bug. 3 confirmed occurrences. Did NOT occur in Runs 143-144 (two consecutive clean runs). Bug may be resolved. Continue monitoring.
 - **Act 2 first-fight death spiral** — Byrd/SG fights as first Act 2 room drain 30-73 HP. If map forces consecutive Monster rooms with no recovery, the run dies regardless of skill. Route planning must prioritize early non-combat rooms.
 - **Elite readiness = deck quality, not just HP** — Run 141 entered Sentries at 95% HP but with a starter-quality deck (Strikes/Defends/Bash/Headbutt/SIO). The fight took 20 turns and drained 56 HP. Elite decision should evaluate DECK vs MATCHUP, not just HP. Neow's Lament exacerbates this by creating full HP with an undeveloped deck. Documented in sentry.md, neow-s-lament.md, strategy.md.
 - **Playbook accuracy gaps** — Mushrooms Eat option was documented as "Heal 22 HP" but actually heals 21 HP + Parasite curse. Fungi Beast buff turns were documented as "free damage windows" but are actually +3 Str per buff (scaling to 12-15 damage by Turn 5-6). These errors directly contributed to a death. Other playbook entries may have similar omissions from early runs when observation was less rigorous.

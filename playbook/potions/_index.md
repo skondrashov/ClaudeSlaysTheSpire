@@ -27,6 +27,10 @@
 - [Attack Potion](attack-potion.md)
 - [Elixir](elixir.md)
 
+## Scaling Potions
+
+- [Cultist Potion](cultist-potion.md)
+
 ## Utility Potions
 
 - [Smoke Bomb](smoke-bomb.md)

@@ -54,6 +54,7 @@
 - [Horn Cleat](horn-cleat.md)
 - [Slaver's Collar](slavers-collar.md)
 - [Self-Forming Clay](self-forming-clay.md)
+- [Incense Burner](incense-burner.md)
 
 ## Rare Relics
 

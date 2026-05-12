@@ -2,25 +2,24 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (143 runs, 0 wins, best floor 39):** Major reasoning rework completed. The player now operates on three human-provided heuristics: (1) Full Block Algorithm — zero damage in hallway fights is the default, with kill paths preferred over pure block. (2) Full Act Pathing — read the entire map and plan elites/shops/campfires before the first fight. (3) Act 1 Tier List — card evaluation is lookup-based, not reasoning from scratch. Hard Rules abolished — guidance distributed to individual card/relic playbook entries. Run 143 reached Bronze Automaton at 90% HP with boss relic collected successfully (no UI misplays). Death at Automaton 7/300 HP -- closest Act 2 boss kill yet. New bottleneck: Impervious+ timing discipline and sustained damage output against 300 HP boss. **INFRASTRUCTURE BUG UPDATE: Boss relic skip occurred 3 times (Runs 71, 77, 142) but did NOT occur in Run 143. Chest skip occurred once (Run 142 Floor 9) but did NOT occur in Run 143. Bug may be intermittent -- continue monitoring.**
+**CURRENT STATUS (144 runs, 0 wins, best floor 39):** Major reasoning rework completed. The player now operates on three human-provided heuristics: (1) Full Block Algorithm — zero damage in hallway fights is the default, with kill paths preferred over pure block. (2) Full Act Pathing — read the entire map and plan elites/shops/campfires before the first fight. (3) Act 1 Tier List — card evaluation is lookup-based, not reasoning from scratch. Hard Rules abolished — guidance distributed to individual card/relic playbook entries. Run 144 died to Hexaghost at 7/250 HP -- a single arithmetic error cost the run. The player wrote "13 > 20" in reasoning, played Iron Wave alone (13 damage) against a 20 HP Hexaghost with Headbutt (17 damage) available and 2E remaining. Either additional card play would have killed the boss. **NEW CRITICAL ERROR TYPE: "commit before verify" -- the player submitted the end-turn command in the same line as the play command, before finishing the kill calculation.** See COMBAT ARITHMETIC CHECKLIST item #4. **INFRASTRUCTURE BUG UPDATE: No UI misplays in Run 144 (second consecutive clean run). Boss relic skip bug (3 prior occurrences) and chest skip bug (1 prior occurrence) did NOT trigger. Bug may be resolved or intermittent -- continue monitoring.**
 
-**SCORECARD (runs 101-143):**
-- Act 1 boss wins: ~75% -- Guardian regression (4 deaths in 36 runs). Hexaghost regression (2 in last 16). Run 143: clean Slime Boss kill at 54/80 HP with Fear Potion and Evolve+.
-- Act 2 boss reaches: 5 (Runs 105, 110, 114, 125, 143). Run 143 is the first Act 2 boss reach since Run 125 (18 runs gap).
-- Run 143: Bronze Automaton died at 7/300 HP -- CLOSEST Act 2 boss kill ever. Entered at 90% HP with all 4 readiness criteria partially met. Death caused by draw RNG (neither Impervious+ in hand on Hyper Beam #2) and insufficient sustained damage scaling (only Inflame+ vs 300 HP).
-- Best floor: 39 (Run 63) -- unchanged for 80 runs.
-- **Floor average (last 20 tracked runs): ~22.** Run 143 F33 pulls the average up.
-- **No UI misplays in Run 143.** Boss relic (Mark of Pain) collected successfully. Both treasure chests opened. All shops browsed. All events evaluated. First clean run since the UI skip bugs were identified.
-- **Mechanics errors minimal in Runs 140-143.** Full Block Algorithm applied correctly. Run 143 hallway fights had zero or near-zero damage taken (Snake Plant: zero damage, Shelled Parasite: 15 damage, Jaw Worm: 1 damage, 3x Louse: 10 damage).
-- **Healing RNG denial continues.** Run 143 had no Reaper or Feed offered. Backup healing: Toy Ornithopter (+5 HP per potion), Burning Blood only. Healing gap was a contributing factor to the boss death.
-- **Boss relic/chest skip bug: NOT triggered in Run 143.** Bug may be intermittent. 3 boss relic skips (Runs 71, 77, 142) and 1 chest skip (Run 142) remain on record. Continue monitoring.
+**SCORECARD (runs 101-144):**
+- Act 1 boss wins: ~75% -- Guardian regression (4 deaths in 37 runs). Hexaghost: 3rd death at boss HP 7/250 (arithmetic error, not strategy).
+- Act 2 boss reaches: 5 (Runs 105, 110, 114, 125, 143). No new Act 2 boss reach in Run 144.
+- Best floor: 39 (Run 63) -- unchanged for 81 runs.
+- **Floor average (last 20 tracked runs): ~22.** Run 144 F16 pulls the average down.
+- **No UI misplays in Run 144.** Second consecutive clean run. Treasure chest opened. Shop browsed. Events evaluated. Boss relic N/A (died to Act 1 boss).
+- **Mechanics errors in Run 144: ONE FATAL.** Full Block Algorithm applied correctly in hallway fights (zero or near-zero damage). But a single arithmetic error on the boss kill turn cost the run: played Iron Wave (13 damage) against 20 HP Hexaghost and ended turn, despite having Headbutt (17 damage) in hand with 2E remaining. The player wrote "13 > 20" in reasoning before self-correcting mid-thought -- but the end-turn command had already been submitted in the same line.
+- **Healing RNG denial continues.** Run 144 had no Reaper or Feed offered. 10th of last 12 runs with no healing card. Backup healing: Burning Blood only.
+- **Boss relic/chest skip bug: NOT triggered in Run 144** (second consecutive clean run). Continue monitoring.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **FULL BLOCK EVERY HALLWAY FIGHT.** This is the new combat algorithm. The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md. This single change addresses both the arithmetic errors (forces explicit damage/block math every turn) and the HP attrition problem (prevents the HP drain that causes death spirals).
 2. **PLAN FULL ACT ROUTES BEFORE FLOOR 1.** Read the entire map at act start. Count elites, shops, campfires on every viable path. Choose a route and follow it. Re-route only when HP forces it. This replaces room-by-room pathing.
 3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE, (c) healing beyond Burning Blood, (d) block scaling beyond basic Defends.
 4. **Use the Act 1 tier list for card evaluation.** Stop reasoning from first principles about Act 1 picks. The starting deck is the same every run. Know the tier list, draft for the visible boss.
-5. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. See COMBAT ARITHMETIC CHECKLIST below.
+5. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first. See COMBAT ARITHMETIC CHECKLIST below.
 6. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
 7. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed > block.
 
@@ -28,7 +27,7 @@ High-level strategic principles for Ironclad runs.
 
 ## COMBAT ARITHMETIC CHECKLIST (read every fight)
 
-Before calculating damage or block, answer these THREE questions:
+Before calculating damage or block, answer these FOUR questions:
 
 **1. WHO has Weak?** 
 - Weak on ENEMY (from Bash, Shockwave, Intimidate, Thunderclap) = THEIR attacks deal 25% less. YOUR damage is UNAFFECTED.
@@ -50,6 +49,12 @@ Before calculating damage or block, answer these THREE questions:
 - Strength Potion: temporary within one combat only.
 - Rampage counter: also resets each combat.
 - NEVER carry Strength values from the previous fight into calculations.
+
+**4. VERIFY KILL MATH BEFORE ENDING TURN.**
+- On any turn where the enemy could die, calculate total damage from ALL playable cards BEFORE submitting the end-turn command.
+- Do NOT chain `play X; end` in a single command when the enemy is near death. Play cards one at a time, verify the enemy's remaining HP after each play, then play additional cards or end turn.
+- Confirmed fatal error: player played Iron Wave (13 damage) against 20 HP Hexaghost and submitted `end` in the same command line. Headbutt (17 damage) was in hand with 2E remaining. The combined 30 damage would have killed. The player wrote "13 > 20" in reasoning -- a basic comparison error that went unnoticed because the command was already committed.
+- **RULE: On kill turns, NEVER include `end` in the same command as the attack. Play the attack, verify the kill, THEN end turn separately.**
 
 ---
 
