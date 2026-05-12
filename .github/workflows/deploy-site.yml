@@ -7,6 +7,7 @@ on:
       - 'site/**'
       - 'analyst/**'
       - 'data/run_stats.json'
+      - 'HUMAN_ADVICE.md'
     branches: [main]
   workflow_dispatch:
 

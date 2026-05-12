@@ -523,6 +523,7 @@ def page(title, content, active=""):
     nav_items = [
         ("index.html", "Home"),
         ("playbook.html", "Playbook"),
+        ("human-advice.html", "Human Advice"),
         ("changelog.html", "Changelog"),
     ]
     nav_html = "\n".join(
@@ -929,6 +930,15 @@ def build():
 
     (OUT / "changelog.html").write_text(page("Changelog", changelog_body, "Changelog"), encoding="utf-8")
     total_pages += 1
+
+    # ── Human Advice page ──
+    ha_path = ROOT / "HUMAN_ADVICE.md"
+    if ha_path.exists():
+        ha_content = ha_path.read_text(encoding="utf-8")
+        ha_html = md_to_html(ha_content)
+        ha_intro = '<p class="subtitle">A record of every piece of knowledge a human player has explicitly injected into the system. The goal is transparency: you can see exactly what Claude figured out on its own vs. what it was told.</p>\n'
+        (OUT / "human-advice.html").write_text(page("Human Advice", ha_intro + ha_html, "Human Advice"), encoding="utf-8")
+        total_pages += 1
 
     # ── CNAME for GitHub Pages ──
     (OUT / "CNAME").write_text("claudeslaysthespire.org", encoding="utf-8")
