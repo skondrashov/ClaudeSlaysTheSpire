@@ -20,7 +20,7 @@ These rules have been validated across 60+ runs. Violating any of them has direc
 
 7. **NEVER EXHAUST Spot Weakness, Reaper, or your only Strength-scaling card in a fight where you need damage scaling.** Exhausting Spot Weakness on turn 1 of a Spheric Guardian fight removed the only way to break through Barricade block, directly causing death. Exhaust Strikes and Defends first. Situationally powerful cards are NOT safe exhaust targets.
 
-8. **NEVER PLAY a 3-cost Power (Corruption, Barricade, Demon Form) on turn 1 when enemies are attacking UNLESS you have 4+ energy.** Spending 3 of 3 energy on a Power leaves zero energy for block. Combined incoming from multi-enemy fights is 20+ unblocked damage. One confirmed death from playing Corruption (3E) turn 1 into Looter + Mugger with zero block. Wait for a free turn (enemy buffing/defending) or upgrade the Power to reduce its cost. The only exception is Demon Form into a single enemy whose turn 1 attack is survivable at current HP.
+8. **NEVER PLAY a 3-cost Power (Corruption, Barricade, Demon Form) on turn 1 when enemies are attacking UNLESS you have 4+ energy.** Spending 3 of 3 energy on a Power leaves zero energy for block, violating Full Block. Combined incoming from multi-enemy fights is 20+ unblocked damage. One confirmed death from playing Corruption (3E) turn 1 into Looter + Mugger with zero block. Wait for a free turn (enemy buffing/defending) or upgrade the Power to reduce its cost. The only exception is boss fights where spending HP for setup speed is acceptable.
 
 9. **NEVER PLAY Corruption or Corruption+ against The Guardian UNLESS Dead Branch or Feel No Pain is in play.** The Guardian fight lasts 14+ turns. Corruption exhausts every Skill you play. Run 107: Corruption+ played turn 9, all block Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards. The energy savings do not compensate for losing all block in the second half of a 14-turn fight. Dead Branch replaces exhausted cards. Feel No Pain generates 3 block per exhaust. Without either, Corruption is a death sentence against Guardian.
 
@@ -50,19 +50,61 @@ Good: "I think Inflame is probably right — we need scaling for this 3-enemy fi
 Bad: "We should definitely take this card."
 Good: "This looks strong for our deck. We're light on AOE and this helps with that, though it does make our deck bigger."
 
-## Combat: Plan the Full Turn
+## Combat: The Full Block Algorithm
+
+**The default goal every turn in a hallway fight is ZERO DAMAGE TAKEN.** Not "minimize damage." Not "how much can I afford." Zero. HP lost in a hallway fight is permanent until a rest site. 8 damage at 80 HP is exactly as bad as 8 damage at 20 HP -- both bring you 8 HP closer to death. Your HP level does NOT change how you play combat. You always full block.
+
+### The Full Block Flowchart (execute every turn)
+
+```
+STEP 1: Read total incoming damage this turn.
+        (Check intents. Sum all attacking enemies. Apply Weak if on them.)
+
+STEP 2: Enumerate ALL paths to zero damage taken:
+        PATH A — Kill attackers + block remainder
+                 (Killing an attacker removes their damage THIS turn AND every future turn.
+                  This is the best form of "blocking" when achievable.)
+        PATH B — Pure block (block cards, Weak on attacker, etc.)
+        PATH C — Debuff + block (apply Weak to reduce incoming, block the rest)
+        PATH D — Potion-assisted (damage potion to kill, block potion to survive)
+
+STEP 3: Compare paths that achieve zero damage:
+        - Prefer paths that KILL enemies (removes future damage sources)
+        - Among kill paths, prefer ones that also deal damage to non-attackers
+        - Among pure-block paths, prefer ones with useful side effects (draw, exhaust junk)
+
+STEP 4: If NO path achieves zero damage:
+        - Minimize damage taken
+        - Consider potions (an unused potion on a death screen is a strategic failure)
+        - Prioritize killing the highest-damage attacker even if you take some hits
+
+STEP 5: Execute the chosen path.
+```
+
+**The pipeline problem the player MUST avoid:** Do not pick ONE plan and execute it. Enumerate at least two paths before choosing. "I'll block everything" might be worse than "I'll kill that enemy and block the rest" even when both reach zero damage -- because the kill path removes a future damage source.
+
+### Exceptions (when you intentionally take damage)
+
+These are the ONLY situations where taking damage in combat is acceptable:
+
+1. **Boss fights.** HP resets via rest/heal after bosses. Spend HP freely to kill faster.
+2. **Hard-scaling enemies (Ritual, Rally).** Cultists gain +3 Str/turn. Kill speed prevents more total damage than blocking. If killing one turn faster saves 15+ future damage, spend HP now.
+3. **Burning Blood buffer at max HP.** If at full HP, up to 6 damage is "free" because Burning Blood refunds it after combat. This buffer does NOT exist if you are below max HP.
+
+**Everything else is a hallway fight and the default applies: zero damage taken.**
 
 ### Fight Strategy (once per combat, before your first turn)
 
-After calling `plan()` at combat start, write a FIGHT STRATEGY before making any moves. This is your high-level game plan for the entire fight — not just turn 1. Then **post it to the stream with `think()`** so viewers can see your reasoning.
+After calling `plan()` at combat start, write a FIGHT STRATEGY before making any moves. Classify the fight type first -- this determines your combat algorithm. Then **post it to the stream with `think()`**.
 
 ```
 FIGHT STRATEGY — [Enemy Name]
 
+FIGHT TYPE: [Hallway (full block) | Boss (spend HP freely) | Hard-scaler (kill speed priority)]
 WIN CONDITION: How do I kill this enemy? What's my damage source?
-SURVIVAL PLAN: What are the dangerous turns? How do I block them?
-KEY CARDS: Which cards in my deck are critical? What do I save them for?
-RELIC INTERACTIONS: Which relics matter here and how do they change my play?
+ZERO DAMAGE PLAN: How do I take zero damage each turn? What's my block budget?
+KEY CARDS: Which cards are critical for blocking AND killing?
+RELIC INTERACTIONS: Which relics matter? (Burning Blood = 6 HP buffer at max HP only)
 POTION PLAN: When do I use potions? What triggers potion use?
 RISKS: What can go wrong? What kills me if I'm not careful?
 ESTIMATED TURNS: How long will this fight take?
@@ -70,34 +112,40 @@ ESTIMATED TURNS: How long will this fight take?
 
 **Post it to the stream:**
 ```python
-think("""WIN CONDITION: Rampage+ scales (8→16→24→32). Play it every cycle. Fiend Fire+ for burst on free turns.
-SURVIVAL PLAN: 32-damage single hit is the threat. Need 3 Defends or Ghostly Armor combos.
-KEY CARDS: Rampage+ (scaling), Bash+ (Vulnerable), True Grit (block + thinning)
-RELIC INTERACTIONS: Molten Egg upgraded attacks. Burning Blood heals 6 after.
-RISKS: Over-exhausting block cards with Fiend Fire+/True Grit.
-ESTIMATED TURNS: 12-14.""", label="Fight Strategy")
+think("""FIGHT TYPE: Hallway — full block every turn.
+WIN CONDITION: Rampage+ scales (8→16→24→32). Play it every cycle.
+ZERO DAMAGE PLAN: 12 incoming. SIO+ (11) + Defend (5) = 16 block. Zero damage achievable.
+KEY CARDS: Rampage+ (scaling), Bash+ (Vulnerable), SIO+ (11 block + draw)
+RELIC INTERACTIONS: Burning Blood heals 6 after, but I'm not at max HP so no free buffer.
+RISKS: Over-exhausting block cards with True Grit.
+ESTIMATED TURNS: 5-6.""", label="Fight Strategy")
 ```
 
 This strategy stays relevant for the whole fight. Refer back to it each turn.
 
 ### Turn Planning (every turn)
 
-Do NOT play one card at a time. Plan the whole turn before executing.
+Do NOT play one card at a time. Plan the whole turn using the Full Block Flowchart before executing.
 
 ```
-TURN N — [reference fight strategy]
+TURN N — [fight type: hallway/boss/hard-scaler]
 
-INCOMING: [damage] | RESOURCES: [energy]E, [block] block
-PLAY: [numbered sequence with reasoning tied to fight strategy]
-RESULT: [block vs incoming, HP after, enemy HP remaining]
+INCOMING: [total damage from all attackers]
+PATHS TO ZERO:
+  A) Kill [enemy] (costs XE, removes Y incoming) + block remainder (costs ZE) → zero damage? [yes/no]
+  B) Pure block (list block cards + values) → total block vs incoming → zero damage? [yes/no]
+  C) [any other path]
+CHOSEN PATH: [A/B/C] because [best side effects / only option / kills enemy]
+PLAY: [numbered sequence]
+RESULT: [block vs incoming = damage taken], [enemy HP remaining]
 ```
 
 Then execute with `turn()`:
 ```python
-turn(["play Defend", "play Bash Jaw Worm", "play Strike Jaw Worm", "end"], reason="15 block vs 20 incoming, take 5 to 70 HP. Jaw Worm: 25-12=13 HP.")
+turn(["play Bash Jaw Worm", "play Strike Jaw Worm", "play Defend", "end"], reason="Path A: kill Jaw Worm (11 HP, Bash 10 + Strike 6 = 16 vs 11 HP, dead) removes 11 incoming. Defend 5 blocks remaining 0. Zero damage taken.")
 ```
 
-The `reason` should be a concise summary — the key numbers. Viewers want to see the math.
+The `reason` should show the path evaluation -- which paths you considered and why you chose the one you did.
 
 ### Card Names and Enemy Targeting
 
@@ -143,13 +191,100 @@ send("play Shrug It Off", reason="Block + draw, then I'll plan the rest of the t
 
 Non-combat decisions (map, events, rewards, shops, rest sites) are made one at a time with `send()`.
 
-### Card Rewards
-Think about what your deck needs, not just whether a card is generically "good."
-- Do you need more damage? More block? AOE? Scaling?
-- Will this card make your deck worse by diluting it?
-- How does it interact with your relics and other cards?
+### Full Act Pathing (MANDATORY at the start of each act)
 
-**Act 2 Readiness Check (ask before every card reward in Act 1):**
+Before choosing your FIRST room in each act, read the ENTIRE map. Do not path room-by-room. Plan the full act as a route.
+
+**At act start, answer these questions and post to stream with `think()`:**
+
+```
+ACT PATHING — Act [N]
+
+BOSS: [boss name] (visible from floor 1 — draft cards for this fight)
+ROUTES: List every viable path from bottom to top. For each route, count:
+  - Elites: [count] (relics, but cost HP)
+  - Shops: [count] (card removal, potions, relics)
+  - Campfires: [count] (upgrade or heal)
+  - Unknown rooms: [count] (treat as monsters in Act 2)
+CHOSEN ROUTE: [which path and why]
+  - How many elites am I hitting? (1-2 is ideal in Act 1)
+  - Where are my campfires relative to elites? (campfire BEFORE elite = heal/upgrade)
+  - Where's my last campfire before the boss? (need one in last 2-3 floors)
+DRAFT TARGETS: What cards do I need for [boss name]?
+```
+
+```python
+think("""BOSS: Hexaghost — need Weak source and damage scaling. No self-damage cards.
+ROUTES:
+  Left: 1 elite, 2 campfires, 1 shop, 3 unknowns
+  Center: 0 elites, 1 campfire, 2 shops, 2 unknowns
+  Right: 2 elites, 2 campfires, 0 shops, 1 unknown
+CHOSEN: Left path. 1 elite for a relic, campfire before and after elite, shop for card removal.
+DRAFT TARGETS: Weak source (Shockwave, Clothesline, Intimidate), damage scaling (Inflame, Spot Weakness), avoid Brutality/Berserk.""", label="Act Plan")
+```
+
+**Do NOT re-path from scratch every floor.** Follow your plan. Only re-route if:
+- HP drops below safe thresholds for the planned path
+- A relic or card fundamentally changes your strategy
+- You discover the map branches differently than expected
+
+### Card Rewards
+
+#### Act 1 Card Evaluation: Use the Tier List
+
+The starting deck is nearly identical every run. Do not reason from first principles about Act 1 card rewards. Use the tier list below. Reasoning is for edge cases only.
+
+**The core Act 1 constraint: take attacks so you don't die to Gremlin Nob.** Nob punishes Skills (+2 Str per Skill played). Your Act 1 draft must be attack-heavy.
+
+**The secondary Act 1 constraint: draft for the boss you can see.** You know the boss from floor 1. Evaluate every card against that specific fight.
+
+**Act 1 Ironclad Tier List:**
+
+MUST-TAKE (take over almost anything):
+- Reaper (healing — the most important card in the game for Ironclad)
+- Feed (permanent Max HP scaling, take early for max value)
+- Inflame (immediate +2 Str, satisfies front-loaded Str requirement)
+- Immolate (massive AOE + single target, solves multiple problems)
+- Impervious (30 block in one card, solves every block problem)
+- Shrug It Off (block + draw, best defensive common)
+- Pommel Strike (damage + draw, best offensive common)
+
+HIGH PRIORITY (take to fill gaps):
+- Spot Weakness (+3/+4 Str when enemy attacks — most enemies attack)
+- Thunderclap (AOE + Vulnerable, critical for Byrds in Act 2)
+- Headbutt (damage + deck manipulation)
+- Carnage (high damage Ethereal attack — great for Nob-safe damage)
+- Iron Wave (damage + block in one card)
+- Clothesline (damage + Weak)
+- Shockwave (mass Weak + Vulnerable, exhausts — incredible vs multi-enemy)
+- Flame Barrier (block + counter damage, excellent in multi-hit fights)
+
+SITUATIONAL (take only if it fills a specific gap):
+- Evolve (MUST-TAKE if Slime Boss is the Act 1 boss — trivializes Slimed cards)
+- Fire Breathing (MUST-TAKE if Slime Boss AND you have Evolve)
+- Uppercut (Weak + Vulnerable in one card, but 2E is expensive)
+- Perfected Strike (only if 3+ Strike cards remain in deck)
+- Anger (free attack, good for Nob, but adds copies to discard)
+- Rampage (scaling damage, needs multiple plays to ramp)
+- True Grit (ONLY if you can upgrade it soon — unupgraded is dangerous)
+- Sentinel (block + energy on exhaust)
+
+SKIP (do not take in Act 1):
+- Demon Form (too slow for hallway fights, does not satisfy front-loaded Str)
+- Limit Break (needs a Str source first)
+- Barricade (3E, too slow, no immediate value)
+- Brutality (self-damage — see Hard Rule #6)
+- Berserk (self-Vulnerable is extremely dangerous)
+- Any Skill-heavy card if you lack attacks (Nob will punish you)
+
+**Boss-specific draft adjustments:**
+- **Slime Boss visible:** Prioritize Evolve, Fire Breathing, AOE (Thunderclap, Cleave), exhaust tools (True Grit+, Burning Pact). Slime Boss floods your deck with Slimed status cards.
+- **Hexaghost visible:** Prioritize Weak sources (Shockwave, Clothesline, Intimidate). SKIP self-damage cards (Brutality, Berserk, Hemokinesis). Need passive block (Metallicize).
+- **The Guardian visible:** Prioritize burst damage (Carnage, Bludgeon) for Mode Shift. Need 32+ block capability. SKIP heavy exhaust strategies.
+
+#### Act 2+ Card Evaluation: Fill Gaps
+
+After Act 1, switch from tier-list to gap-filling. Use the Act 2 Readiness Check:
 - Do I have front-loaded Strength? (Inflame, Spot Weakness -- NOT just Demon Form)
 - Do I have AOE? (Thunderclap, Cleave, Immolate, Whirlwind)
 - Do I have healing beyond Burning Blood? (Reaper, Feed)
@@ -161,11 +296,10 @@ If missing any of these, PRIORITIZE filling that gap over taking a generically s
 - Which card benefits most from upgrading? Priority: Bash > Corruption (if in deck) > True Grit > Armaments > best damage card > best block card.
 
 ### Map Pathing
-- **MANDATORY: Before choosing any path, trace EVERY available path forward to the next rest site or shop.** Count forced combat rooms on each path. Choose the path with fewest forced combats to the next healing opportunity. Say "Path A: X combats to rest. Path B: Y combats to rest. Choosing [better]." This prevents the #1 cause of death: entering fights at sub-threshold HP because the path forces consecutive combats.
-- Consider your HP, deck strength, and what you need before the boss
-- Elites give relics but cost HP
-- Rest sites and shops are resources — path through them when you need them
-- Question marks (events) are variable — some heal, some hurt
+- **You should already have a full act route from your Act Pathing plan.** Follow it. Only re-route when HP drops below safe thresholds or strategy changes.
+- **At each floor, verify your planned route is still viable.** If HP has dropped, count forced combats remaining to the next rest site. If the path forces 2+ combats and HP is below 50%, re-route to the safest available path.
+- Elites give relics but cost HP -- only fight them when your act route planned for it AND HP is sufficient
+- Rest sites and shops are resources -- your act route should already account for them
 - In Act 2, treat Unknown rooms as Monster rooms when routing (3 deaths from Spheric Guardian spawning in Unknown rooms)
 
 ### Events

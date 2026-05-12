@@ -18,12 +18,13 @@ High-level strategic principles for Ironclad runs.
 - **Hexaghost regression: 2 deaths at F16 in last 16 runs** despite extensive playbook. The playbook is not being applied.
 
 **IMMEDIATE PRIORITIES (in order):**
-1. **STOP MAKING ARITHMETIC ERRORS.** This is the #1 addressable cause of death. Before EVERY damage/block calculation in combat, verify: (a) Is Weak on ME or on the ENEMY? Weak on enemy = their attacks weaker, MY attacks normal. (b) Am I using UPGRADED card values? Check the + suffix. SIO+ = 11, not 8. Flame Barrier+ = 16 block + 6 counter (two separate numbers). (c) Does Strength carry over from last combat? NO. Inflame, Spot Weakness, Demon Form all reset. Only relic Str (Vajra) persists. See the COMBAT ARITHMETIC CHECKLIST below.
-2. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE, (c) healing beyond Burning Blood, (d) block scaling beyond basic Defends.
-3. **Trace full paths before every map choice.** Count forced combats to the next rest/shop on each path. Choose fewer combats. In the last 5 floors before the Act 2 boss, path selection priority: Rest > Shop > Event > Monster > Elite.
-4. **Block before setup on attack turns.** Budget at least 1E for block when enemies attack. Hexaghost Turn 2 (30 multi-hit), Slavers Turn 1 (27+ combined), any multi-enemy fight. Setup greed (spending all 3E on Powers/Strength) has killed directly in Runs 127 and 129.
-5. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
-6. **3 Cultists threshold is 60%.** Six deaths at 5-53% HP confirm.
+1. **FULL BLOCK EVERY HALLWAY FIGHT.** This is the new combat algorithm. The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md. This single change addresses both the arithmetic errors (forces explicit damage/block math every turn) and the HP attrition problem (prevents the HP drain that causes death spirals).
+2. **PLAN FULL ACT ROUTES BEFORE FLOOR 1.** Read the entire map at act start. Count elites, shops, campfires on every viable path. Choose a route and follow it. Re-route only when HP forces it. This replaces room-by-room pathing.
+3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE, (c) healing beyond Burning Blood, (d) block scaling beyond basic Defends.
+4. **Use the Act 1 tier list for card evaluation.** Stop reasoning from first principles about Act 1 picks. The starting deck is the same every run. Know the tier list, draft for the visible boss.
+5. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. See COMBAT ARITHMETIC CHECKLIST below.
+6. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
+7. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed > block.
 
 ---
 
@@ -53,48 +54,54 @@ Before calculating damage or block, answer these THREE questions:
 
 ---
 
-## HP Management: The #1 Cause of Death
+## HP Management: Full Block Is the Solution
 
-24+ of 30+ documented deaths resulted from entering a fight below safe HP thresholds or making a fatal tempo error (playing a 3E Power with no block). The pattern is always the same: a drain fight takes 30-50 HP, the next room is combat, and the player dies. Or: the player spends all energy on a Power and takes full unblocked damage.
+The #1 cause of death (24+ of 30+ documented) is entering fights at low HP. But the ROOT cause is taking unnecessary damage in previous fights. Every point of HP lost in a hallway fight is permanent until a rest site. The solution is not complex HP threshold management -- it is the Full Block Algorithm described in player.md.
 
-### HP Thresholds for Act 2
+**The fundamental insight: HP is an act-level resource, not a per-fight resource.** There is no "I can afford to take 8 damage here" in a hallway fight. 8 damage at 80 HP and 8 damage at 20 HP are equally bad -- both bring you 8 closer to death. The goal in EVERY hallway fight is zero damage taken. HP thresholds below are for MAP PATHING decisions (when to avoid combat rooms), not for changing how you play combat.
 
-| Fight Type | Minimum HP | Notes |
+### HP Thresholds for Map Pathing (NOT combat behavior)
+
+These thresholds determine which MAP PATHS are safe, not how to play combat. Combat behavior is always the same: Full Block Algorithm, zero damage target.
+
+| Fight Type | Minimum HP to Enter | Notes |
 |---|---|---|
-| Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP |
+| Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP if you fail to full block |
 | Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic, Snake Plant |
 | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
 
-**CRITICAL: 3 Cultists is the most lethal hallway fight in the game (6 deaths confirmed at 5%, 30%, 37%, 39%, 52%, 53% HP entry).** Triple independent +3 Str/turn = +9 combined Str/turn. Even decks with Impervious+, Calipers, Immolate, Shockwave+ failed at 53% HP because Ritual scaling outpaces all defensive tools -- kill speed (AOE burst to eliminate one Cultist fast) matters more than block density. The 60% threshold for this encounter is NON-NEGOTIABLE. Run 112's death at 5% HP was caused by Snake Plant draining 42 HP on the prior floor -- the fight was lost at map pathing, not in combat.
+**CRITICAL: 3 Cultists is the most lethal hallway fight in the game (6 deaths confirmed at 5%, 30%, 37%, 39%, 52%, 53% HP entry).** Triple independent +3 Str/turn = +9 combined Str/turn. This is a hard-scaler exception to full block -- kill speed matters more than blocking. AOE burst to eliminate one Cultist fast is the correct play. The 60% HP ENTRY threshold for this encounter is NON-NEGOTIABLE.
 
 ### What to Do at Low HP
 
 - Below the threshold for the next fight? Take a DIFFERENT PATH. Event rooms, rest sites, shops -- anything but combat.
-- If forced into a fight below threshold, use ALL potions aggressively on turn 1. Don't save them for "later" -- there may not be a later. This includes Strength Potions: +2 damage per attack over a 5-turn fight is 10-20 extra damage, which is 2-4 fewer turns of incoming damage. An unused potion on a death screen is a strategic failure.
+- If forced into a fight below threshold, use ALL potions aggressively on turn 1. An unused potion on a death screen is a strategic failure.
 - If there's a rest site before an elite, REST (don't upgrade). HP > upgrades when below threshold.
 - After any fight that drops you below 30% HP, the next room MUST be a rest site, shop, or event -- not combat.
-- **BLOCK-FIRST RULE at sub-30% HP:** When HP is below 30%, every energy point not spent on block must be justified. If you have 1E remaining and the choice is between a damage card and Defend, play Defend. Surviving to Turn 2 enables everything; dying on Turn 1 with 13 extra damage dealt is meaningless. Mass Weak (Shockwave) reduces incoming by 25% but does NOT replace block -- even Weakened multi-enemy damage can be lethal at critical HP.
+- **Low HP does NOT change combat behavior.** You should already be full blocking at any HP level. If you find yourself thinking "I'm at low HP, I should block more" -- that means you were NOT full blocking at high HP, which is the real mistake.
 
 ### The Act 2 Death Spiral Is Predictable
 
-The pattern across 10 low-HP deaths: the player enters Act 2 at reasonable HP, loses 30-50 HP in one brutal fight (Byrds, Centurion+Mystic, Chosen solo, Cultist+Chosen, Looter+Mugger), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it's taking a second combat room immediately after. After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. If the map doesn't offer this, the run was lost at map selection, not at the fight.
+The pattern across 10 low-HP deaths: the player enters Act 2 at reasonable HP, takes unnecessary damage in a hallway fight (NOT full blocking), then enters the NEXT fight at critical HP and dies. The mistake is twofold: (1) not full blocking in the first fight, and (2) taking a combat room after losing HP.
 
-Even "hallway" fights in Act 2 can be run-ending: 3 Cultists has killed the player three times at 30-39% HP entry. These are not elites -- they appear on normal Monster nodes. The only defense is entering with sufficient HP or having a path that avoids consecutive combat rooms.
+After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. If the map doesn't offer this, the run was lost at map selection, not at the fight.
 
-**Act 2 decision point:** After each fight, if HP is below 35%, evaluate the ENTIRE remaining path. If it contains 2+ consecutive combat rooms before a rest site, consider abandoning elites and taking the safest available path even if it means missing rewards.
+**Act 2 decision point:** After each fight, if HP is below 35%, evaluate the ENTIRE remaining path. If it contains 2+ consecutive combat rooms before a rest site, re-route to the safest available path even if it means missing rewards.
 
 ### What Causes the HP Drain
 
-1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 8-12 turns. The primary Act 2 HP drain. Without Thunderclap (mass Flight stripping + Vulnerable), expect the upper end. Thunderclap is the single most important card for Act 2 Byrd survival.
-2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight. Often consumes Fairy in a Bottle.
-3. **Chosen (solo or paired)**: 30-40 HP drained even with strong decks. Hex punishes Skills (Dazed clog), Vulnerable on player amplifies incoming damage to 20+/turn, and +3 Str scaling makes the fight progressively more dangerous. A confirmed death spiral trigger: 39 HP entry with Carnage+, Bash+, Headbutt, Dropkick, Demon Form resulted in exiting at 7 HP (32 HP drain over 7 turns). The next fight was unwinnable at 7 HP.
-4. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Drains 15-42 HP depending on Strength scaling. Run 112: 42 HP drained with zero Strength scaling. Run 116: 15 HP drained with Inflame (+4 Str), Bash+, Thorns, and correct play -- but entered at 22 HP (27%) and survived at 1 HP, making the next combat lethal. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.
-5. **Spheric Guardian (solo or with Sentry)**: 30-41 HP drain even with correct play and Strength scaling. Barricade block makes Reaper useless and chip damage futile. Four deaths confirmed from this encounter (at 26%, 43%, 47%, and 100% HP entry). One survival with Demon Form + Carnage+ still cost 41 HP (80->39). Unknown rooms are the most dangerous room type in Act 2 at any HP level when this fight spawns.
-6. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.
-7. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.
-8. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. With 2 Decays, that is 4 HP/turn lost regardless of block. Over a 5-turn fight, that is 20 free HP lost. Prioritize curse removal at shops or via exhaust (Fiend Fire).
-9. **Vampires event Max HP loss**: Accepting the Vampires event removes ~30% of Max HP (observed: 80->56). At 56 Max HP, every HP threshold in the table above shifts drastically -- 60% for elites becomes 34 HP, which is nearly impossible to maintain through Act 2. The 5 Bite cards provide 2 HP healing per play but cannot compensate for the reduced HP ceiling against burst damage. Refuse this event unless desperate for healing with no alternatives.
+The underlying cause is almost always failure to full block. The fights below are especially punishing when full block fails:
+
+1. **Byrd fights**: 36-58 HP lost per fight when full block fails. Flight makes fights 8-12 turns, compounding small per-turn leaks. Thunderclap is critical (strips Flight + applies Vulnerable).
+2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight, giving more turns to leak damage.
+3. **Chosen (solo or paired)**: 30-40 HP drained. Hex punishes Skills (Dazed clog), but you still must block -- Hex adds Dazed to draw pile, not hand.
+4. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Drains 15-42 HP. Frail makes full block harder but NOT impossible -- account for the 25% block reduction.
+5. **Spheric Guardian**: 30-41 HP drain even with correct play. Barricade block accumulates. Requires Strength scaling to break through -- this is a DPS race, not a full block fight.
+6. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights. This is why full blocking matters -- the only way to avoid HP drain when Reaper/Feed aren't available.
+7. **Fairy consumed in wrong fight**: Save Fairy for elites/bosses when possible.
+8. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. Prioritize curse removal at shops or via exhaust.
+9. **Vampires event Max HP loss**: Accepting removes ~30% of Max HP. Refuse unless desperate for healing.
 
 ---
 
@@ -162,16 +169,35 @@ By the time the Act 1 boss is dead, the deck needs ALL FOUR of these or it will 
 
 If missing 2+ of these entering Act 2, the run is in serious danger. Shift to conservative pathing (avoid elites, path through shops and rest sites, skip unknown rooms).
 
+### Draft for Known Encounters
+
+You can see the boss from floor 1. You know which elites exist in each act. Evaluate cards against fights you are GUARANTEED or LIKELY to face, not generically.
+
+**Act 1 uses a TIER LIST, not reasoning.** The starting deck is nearly identical every run. An experienced player doesn't reason about Act 1 picks from first principles -- they know the tier list. See player.md "Act 1 Card Evaluation: Use the Tier List" for the full list. The core constraint: take attacks so Gremlin Nob doesn't kill you.
+
+**Boss-specific drafting examples:**
+- Slime Boss visible: Evolve and Fire Breathing become MUST-TAKES (Slimed status floods the deck, Evolve draws on status draw, Fire Breathing deals damage per status drawn)
+- Hexaghost visible: Weak sources (Shockwave, Clothesline, Intimidate) become MUST-TAKES. Skip self-damage cards.
+- The Guardian visible: Burst damage for Mode Shift (Carnage, Bludgeon). Skip heavy exhaust strategies.
+
+**Elite-specific drafting:**
+- Gremlin Nob in Act 1: Take attacks, not skills. Nob gains +2 Str per Skill you play.
+- Slavers in Act 2: AOE and mass debuff are critical for 3-enemy fight.
+- Book of Stabbing in Act 2: Exhaust tools for Wound removal.
+
+After Act 1, switch from tier-list to gap-filling (see Act 2 Readiness Checklist above).
+
 ### Take Cards That Solve Problems
 
-A card's value depends on what your deck needs RIGHT NOW.
+A card's value depends on what your deck needs RIGHT NOW and what fights you're about to face.
 
 Before taking a card, ask:
 - Do I have a healing card? (If no, this is the #1 gap to fill)
 - Do I have Strength scaling? (If no, this is the #2 gap to fill -- see below)
 - Do I have AOE? (If no, this is the #3 gap -- Gremlin Leader and 3 Cultists will kill you)
 - Do I have block scaling beyond basic Defends? (If no, this is the #4 gap -- Hyper Beam and late Book of Stabbing will kill you. Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, True Grit+)
-- What fights am I struggling with?
+- Does this card help against the SPECIFIC boss I'm facing?
+- Does this card counter a SPECIFIC enemy I'm likely to encounter?
 - Will this card dilute my draws (bigger deck = less likely to draw key cards)?
 
 A mediocre card that fills a gap is better than a strong card that duplicates what you already have.
@@ -205,9 +231,9 @@ The winning formula across all victories: cards that do two things. Block+draw (
 
 Demon Form (+2 Str/turn) and Limit Break (double Strength) are powerful scaling cards in long fights -- but they require 2-3 free setup turns before providing meaningful value. Against fast-scaling enemies at low HP (3 Cultists, multi-enemy fights), this setup time does not exist. The player is dead before the engine comes online.
 
-**Pattern:** A deck built around Demon Form + Limit Break can beat bosses comfortably but die to hallway fights when entered at low HP. The fix is NOT to avoid these cards -- it is to recognize that they solve long fights (bosses) but do NOT solve emergency situations. The deck still needs immediate burst (Fiend Fire, Rampage, Immolate) and block density for fights where you cannot afford 2 turns of setup.
+**Pattern:** A deck built around Demon Form + Limit Break can beat bosses comfortably but die to hallway fights because setup time costs HP (violating Full Block). The fix is NOT to avoid these cards -- it is to recognize that they solve long fights (bosses) but do NOT solve hallway fights where Full Block requires immediate block + kill capability.
 
-**Rule:** If your primary damage scaling is Demon Form or Limit Break, you MUST have an alternative fast-burst plan for emergencies. Do not enter fights below 50% HP relying solely on a slow engine.
+**Rule:** If your primary damage scaling is Demon Form or Limit Break, you MUST have an alternative fast-burst plan for hallway fights. Slow engines are for bosses. Hallway fights need cards that contribute to Full Block paths on the turn they're drawn.
 
 ### 3-Cost Power Setup Trap
 
@@ -215,16 +241,16 @@ Corruption (3E), Barricade (3E), and Demon Form (3E) are all powerful cards that
 - Run 73: Corruption (3E) into Looter + Mugger. Zero block. 20+ unblocked damage. Dead.
 - Run 72: Barricade (3E) was never played because no turn was safe enough to spend all energy.
 
-**When to play 3E Powers:**
-- Enemy is buffing/defending (free turn with no incoming damage)
-- You have 4+ energy (from relics like Lantern, Sozu, or cards like Offering)
-- You have enough HP to absorb the full unblocked hit AND still survive subsequent turns
+**When to play 3E Powers (hallway fights):**
+- Enemy is buffing/defending (free turn with no incoming damage) -- this is the ONLY safe time
+- You have 4+ energy (from relics like Lantern, Sozu, or cards like Offering), leaving energy for block
 - You upgraded the Power to 2E (Corruption+ is 2E, leaving 1E for Defend)
+- In a boss fight where spending HP for setup speed is acceptable
 
 **When NOT to play 3E Powers:**
+- Any turn with incoming damage in a hallway fight (violates Full Block -- you take the full hit)
 - Turn 1 against multi-enemy fights (combined damage 15-25+)
-- Any turn where blocking is survival-critical
-- When you cannot afford to take a full unblocked hit
+- When the Full Block Flowchart shows no path to zero damage after spending 3E
 
 This is now Hard Rule #8.
 
@@ -378,12 +404,13 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 
 ### Core Principles
 
-- **MANDATORY PATH TRACE: Before choosing ANY path, trace EVERY available option forward to the next rest site or shop.** Count the number of forced combat rooms on each path. Choose the path with the fewest forced combats between here and the next healing opportunity. This single practice prevents the majority of death-spiral entries. Do NOT just look at the next room -- trace the FULL path.
-- **Look 2-3 floors ahead, not just the next room.** At EVERY map node, trace paths forward. If a path leads to 2+ consecutive combat rooms with no rest/shop/event between them, that path is dangerous at any HP below 70%. Three deaths (Runs 20, 21, 22) were caused by map topology forcing combat after a drain fight.
+- **FULL ACT PATHING: At the START of each act, read the ENTIRE map.** Count elites, shops, campfires, and unknowns on every viable route. Choose a full route before floor 1. This replaces room-by-room pathing. See player.md "Full Act Pathing" section for the template.
+- **Re-route only when forced.** Follow your act plan. Only deviate if HP drops below safe thresholds, making the planned route dangerous.
+- **At each floor, verify the planned route is still viable.** Count remaining forced combats to the next rest site. If the path forces 2+ combats and HP is below 50%, re-route.
 - Prefer routes with a rest site in the last 1-2 floors before the boss.
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
 - If the path forces an elite at low HP, skip it entirely -- take any alternative path.
-- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). The third death occurred at FULL HP -- even 87/87 was not enough. Run 116: Unknown room at F20 spawned Snake Plant at 22 HP (27% of max) -- survived at 1 HP but was doomed for the next mandatory combat. Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal -- the player chose Unknown at 22 HP hoping for a non-combat outcome and got Snake Plant instead.**
+- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.**
 
 ### Elite Risk Assessment
 
@@ -451,9 +478,9 @@ Reaper and Feed are uncommon cards -- they may not appear in card rewards at all
 2. **Event healing**: The Cleric heals. Big Fish offers healing. Woman in Blue sells potions. Prioritize these events.
 3. **Map pathing for rest sites**: Without healing cards, rest sites become the primary healing source. Path through MORE rest sites, accept fewer upgrades. This is a degraded strategy but better than dying.
 4. **Potion management**: Treat Blood Potions and Regen Potions as precious resources. Do not use them in trivial fights.
-5. **Conservative play**: Without healing, EVERY point of HP matters more. Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.
+5. **Conservative pathing**: Without healing, the margin for error is thinner. Full Block is already the default, so combat behavior doesn't change -- but MAP decisions must be more conservative. Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.
 
-The absence of healing cards does NOT mean the run is lost. It means the player must shift from "aggressive with healing to recover" to "conservative to avoid damage in the first place."
+The absence of healing cards does NOT mean the run is lost. It means Full Block discipline becomes even more critical (zero wasted HP) and map pathing must be more conservative (fewer combat rooms).
 
 ---
 
@@ -497,10 +524,11 @@ Pantograph heals 25 HP at the Act 2 boss start (NOT full HP). The Collector figh
 **Every boss victory** had: (1) a card that addressed the boss's main threat, (2) passive block/sustain, (3) entry HP above 50% or Pantograph, (4) at least 1 key upgrade, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.
 
 **Act 2 death causes (ranked by frequency, 35+ deaths):**
-1. **HP attrition from consecutive combats** -- the player enters Act 2 healthy, one drain fight (30-50 HP), next room is combat at critical HP, death. This is a pathing failure. Solved by mandatory path tracing.
-2. **3 Cultists at low HP** -- 6 deaths at 5-53% HP entry. Hallway fight, not avoidable. Only defense: enter every Act 2 combat at 60%+ HP.
-3. **Book of Stabbing** -- 3 deaths. #1 elite killer. Needs exhaust tools. Brimstone makes it unwinnable.
-4. **Mechanics execution errors** -- arithmetic mistakes that waste 3-20 HP per error, compounding into lethal HP deficits. See COMBAT ARITHMETIC CHECKLIST above.
-5. **Healing RNG denial** -- 7 of last 9 runs with no Reaper/Feed offered. Not addressable. Backup plan (potions, rest sites, conservative pathing) is documented but insufficient alone.
-6. **Brimstone anti-synergy** -- 2 deaths from Brimstone + Book of Stabbing.
-7. **Deck building window closes at Floor 15** -- missing criteria after F15 cannot be filled. Prioritize gaps over "good" cards.
+1. **HP attrition from failure to full block** -- the player takes unnecessary damage in hallway fights, then enters the next fight at critical HP and dies. Root cause: not executing the Full Block Algorithm. Solved by making zero-damage-taken the explicit default for every hallway turn.
+2. **Bad map pathing** -- taking combat rooms after HP-draining fights. Solved by Full Act Pathing (plan the whole route before floor 1, re-route when HP drops).
+3. **3 Cultists at low HP** -- 6 deaths at 5-53% HP entry. Hard-scaler exception: kill speed > block. 60% entry threshold non-negotiable.
+4. **Book of Stabbing** -- 3 deaths. #1 elite killer. Needs exhaust tools. Brimstone makes it unwinnable.
+5. **Mechanics execution errors** -- arithmetic mistakes that waste 3-20 HP per error. Full Block Flowchart forces explicit math every turn, which should reduce these.
+6. **Healing RNG denial** -- 7 of last 9 runs with no Reaper/Feed offered. Not directly addressable, but Full Block reduces the need for healing by preventing HP loss in the first place.
+7. **Brimstone anti-synergy** -- 2 deaths from Brimstone + Book of Stabbing.
+8. **Deck building window closes at Floor 15** -- missing criteria after F15 cannot be filled. Act 1 tier list + boss drafting should improve card selection.
