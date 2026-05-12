@@ -3,8 +3,8 @@
 PATTERN:
 - **Turn 1**: Spawns 2 Orb minions (~50 HP each). Orbs use **Stasis** to steal a card from the player's hand, removing it from combat entirely.
 - **Subsequent turns**: Cycles between attacks, Strength gain (+3 Str per cycle), and Hyper Beam (a massive single-hit attack). Orbs continue stealing cards via Stasis.
-- **Hyper Beam**: Extremely high single-hit damage (observed 38-51 depending on accumulated Strength). Fires around turn 6. After firing, Automaton loses all block (vulnerability window). Without intent visibility (e.g. Runic Dome), this turn is impossible to predict and prepare for.
-- **Strength scaling**: Gains +3 Strength per cycle. By turn 6-7, all attacks hit significantly harder than their base values. Hyper Beam at turn 6 with accumulated Strength can reach 51 damage. The fight becomes unwinnable if it goes too long.
+- **Hyper Beam**: Extremely high single-hit damage (observed 38-57 depending on accumulated Strength). First Hyper Beam fires around turn 6. Second fires around turn 12. After firing, Automaton loses all block and is stunned for one turn (vulnerability window). Without intent visibility (e.g. Runic Dome), this turn is impossible to predict and prepare for.
+- **Strength scaling**: Gains +3 Strength per cycle. By turn 6-7, all attacks hit significantly harder than their base values. First Hyper Beam (turn 6) reaches 45-51 damage. Second Hyper Beam (turn 12) reaches 57+ damage. The fight becomes unwinnable if it goes too long.
 - **Artifact 3**: Starts with 3 stacks of Artifact, which negate the first 3 debuff applications. Must strip all Artifact before Vulnerable, Weak, or Disarm take effect. Red Mask relic applies Weak at combat start, which strips 1 Artifact automatically (3->2) before the player's first turn.
 
 KEY MECHANICS:
@@ -15,7 +15,7 @@ KEY MECHANICS:
 PREPARATION CHECKLIST:
 1. **Enter at 70%+ HP** -- 300 HP boss with Strength scaling demands a large HP buffer. 75% HP entry is achievable and was first reached successfully.
 2. **Artifact strippers (non-exhausting)** -- Thunderclap, Bash+. Use ONLY non-exhausting debuffs for Artifact stripping. Do NOT use Intimidate or Shockwave for stripping -- they exhaust and are needed for Hyper Beam.
-3. **Weak source saved for Hyper Beam** -- Intimidate, Shockwave+, or Weak Potion. MUST be available when Hyper Beam fires (~Turn 6). Weak reduces Hyper Beam by 25% (51 -> 38). This is the survival margin. If the only Weak source is Intimidate, do NOT play it before the Hyper Beam turn.
+3. **Weak source saved for Hyper Beam** -- Intimidate, Shockwave+, or Weak Potion. MUST be available when Hyper Beam fires (~Turn 6 and ~Turn 12). Weak reduces Hyper Beam by 25% (51 -> 38, or 57 -> 42). This is the survival margin. If the only Weak source is Intimidate, do NOT play it before the Hyper Beam turn.
 4. **Block scaling** -- Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor. Hyper Beam at 51 damage demands 30+ block. Basic Defends are not enough even with Weak active.
 5. **Burst damage** -- Bludgeon, Blood for Blood, Double Tap + Attacks, Rampage. The fight must end before Strength scaling (+3/cycle) outpaces your block capacity.
 6. **Redundant key cards** -- Stasis steals cards. If your strategy depends on a single copy of Double Tap or Inflame, Stasis can destroy the plan. Multiple copies of key effects or alternative win conditions provide resilience.
@@ -37,6 +37,16 @@ CASE STUDY — BLOCK SCALING GAP (DEFEAT, Floor 33):
 - **ROOT CAUSE**: Zero block scaling cards (no Shrug It Off, no Flame Barrier, no Metallicize, no Impervious). Basic Defends cannot survive Hyper Beam. This death directly caused block scaling to be added as the 4th mandatory readiness criterion.
 - **LESSON**: Impervious alone would have saved this run -- 30 block absorbs Hyper Beam (38-30=8 damage taken instead of 33). The deck's offensive preparation was excellent but defensive preparation was fatally inadequate.
 
+CASE STUDY — DRAW RNG AND DAMAGE SCALING (DEFEAT, Floor 33):
+- Entered at 79/87 HP (90%). Deck met 3 of 4 readiness criteria: Cleave (AOE), Inflame+ (Str), 2x Impervious+ (Block). MISSING: healing beyond Burning Blood.
+- Mark of Pain gave 4 energy per turn. Evolve+ converted Wounds into card draw -- strong engine.
+- **Hyper Beam #1 (Turn 6, ~44 incoming)**: Neither Impervious+ was in hand. Distilled Chaos potion randomly played Impervious+ from draw pile for 40 block -- survived via lucky RNG. Without this potion, Hyper Beam #1 would have been lethal.
+- **Hyper Beam #2 (Turn 12, 57 damage + 16 Orbs = 73 total incoming)**: Neither Impervious+ was in hand again (both exhausted from prior turns in the fight). Clothesline applied Weak (57->42). Shrug It Off + Defend = 13 block. Took 45 damage (54->9 HP).
+- Final 2 turns: needed 93 damage to kill (41 HP + Automaton block) but maximum output over 2 turns was ~86. Automaton survived at 7 HP.
+- **ROOT CAUSE**: Insufficient sustained damage against 300 HP. Only Inflame+ (+3 Str) for damage scaling. A 15-card deck with +3 Str produces ~25-35 net damage per turn after enemy block. At that rate, killing 300 HP takes 12-13 turns, forcing survival through 2 Hyper Beams. The deck could survive Hyper Beam #1 (via Distilled Chaos RNG) but had no answer for Hyper Beam #2 when Impervious+ was exhausted.
+- **SECONDARY CAUSE**: Draw RNG -- 2 copies of Impervious+ in a 15-card deck, but neither was in hand on either Hyper Beam turn. Deck dilution from Wounds (Mark of Pain) reduces the probability of drawing specific cards despite Evolve+ cycling.
+- **LESSON**: Against Bronze Automaton, Inflame+ alone is not enough damage scaling to kill before Hyper Beam #2. Need a second Strength source (Spot Weakness, Demon Form, Strength Potion) or burst damage (Bludgeon, Fiend Fire+) to shorten the fight to under 10 turns. Clothesline (non-exhausting Weak) is essential for surviving both Hyper Beams -- confirmed effective on both turns.
+
 CASE STUDY — WEAK TIMING (DEFEAT, Floor 33):
 - Entered at 60/80 (75%). Deck met all 4 readiness criteria: Immolate (AOE), Inflame+Demon Form (Str), Reaper (Healing), Shrug It Off++Flame Barrier+ (Block scaling). Red Mask relic for free Weak turn 1.
 - **Artifact stripping used Intimidate on Turn 1** to strip Artifact. Intimidate exhausted. This consumed the deck's only Weak source. Bash+ and Thunderclap were also used for stripping (correct). Red Mask stripped 1 automatically.
@@ -49,7 +59,8 @@ CASE STUDY — WEAK TIMING (DEFEAT, Floor 33):
 
 WHAT NOT TO DO:
 - Enter below 60% HP. The 300 HP + Str scaling creates a clock. Low entry HP means dying to scaling before killing the boss.
-- Enter without block scaling beyond basic Defends. Basic Defends (20 max block) cannot survive Hyper Beam (38-51 damage). Impervious, Shrug It Off, Flame Barrier, or Metallicize are mandatory.
+- Enter without block scaling beyond basic Defends. Basic Defends (20 max block) cannot survive Hyper Beam (38-57 damage). Impervious, Shrug It Off, Flame Barrier, or Metallicize are mandatory.
+- **Play Impervious on non-Hyper-Beam turns when Hyper Beam is approaching.** Impervious exhausts after use. If played on a 16-damage Orb turn, it cannot block Hyper Beam (45-57 incoming). Block moderate turns with Defends and SIO. Reserve Impervious for Hyper Beam turns whenever possible. If you have 2 copies, save both -- there are 2 Hyper Beams in a long fight. However, if Impervious is in hand and the alternative is taking massive unblocked damage (30+), playing it is correct even outside Hyper Beam turns.
 - **Use Intimidate or Shockwave for Artifact stripping.** These cards exhaust and are the primary Weak sources for surviving Hyper Beam. Wasting them on Artifact stripping leaves no Weak available when Hyper Beam fires. Use Bash+ and Thunderclap (non-exhausting) for Artifact stripping instead.
 - Rely on a single irreplaceable card. Stasis WILL steal something important. If the entire strategy depends on one copy of Double Tap+ or Inflame, the strategy is fragile.
 - Take Runic Dome into this fight. Without intent visibility, you cannot predict Hyper Beam timing and will either waste block on non-attack turns or take full Hyper Beam damage unblocked.

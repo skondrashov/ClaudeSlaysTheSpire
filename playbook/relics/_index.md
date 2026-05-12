@@ -53,6 +53,7 @@
 - [Gambling Chip](gambling-chip.md)
 - [Horn Cleat](horn-cleat.md)
 - [Slaver's Collar](slavers-collar.md)
+- [Self-Forming Clay](self-forming-clay.md)
 
 ## Rare Relics
 
@@ -83,3 +84,4 @@
 - [Odd Mushroom](odd-mushroom.md)
 - [Maw Bank](maw-bank.md)
 - [Mutagenic Strength](mutagenic-strength.md)
+- [Mark of Pain](mark-of-pain.md)
