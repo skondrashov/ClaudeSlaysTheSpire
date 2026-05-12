@@ -13,9 +13,21 @@ Damage taken in a hallway fight is permanent until a rest site. There is no "I c
 - Pantograph (25 HP before boss if equipped)
 
 ### 2. Full block is the default combat algorithm
-If you can block all incoming damage this turn, do it. Attack with leftover energy only. On A0, you should almost never voluntarily take damage in hallway fights.
+The goal every turn in a hallway fight is **zero damage taken**. "Full block" doesn't just mean "play block cards" — it means finding ANY path to taking zero damage. On A0, you should almost never voluntarily take damage in hallway fights.
 
-**Exceptions:**
+**The full block flowchart:**
+1. What's total incoming damage this turn?
+2. Can I **kill** any attacking enemies? What incoming remains after?
+3. Can I **block** whatever remains? (block cards, Weak on attacker, etc.)
+4. If kill + block = zero damage → **best line** (took zero AND removed future damage)
+5. If pure block = zero damage → do that
+6. If neither achieves zero → minimize damage, consider potions
+
+Killing an attacker IS a form of blocking — it removes their damage this turn AND every future turn. Kill + partial block is almost always better than pure block when both achieve zero damage taken. The player must enumerate alternatives, not just pick one plan.
+
+**The pipeline problem:** The player currently picks ONE plan and executes. It doesn't consider "what if I kill that enemy instead of blocking?" Good play requires evaluating multiple paths to zero damage and choosing the one with the best side effects (enemy killed, damage dealt, cards drawn).
+
+**Exceptions (where you spend HP intentionally):**
 - Boss fights (HP is free to spend — kill fast)
 - Hard-scaling enemies (Cultists with Ritual) where kill speed prevents more total damage than blocking
 - At full HP, up to 6 damage is "free" (Burning Blood)
