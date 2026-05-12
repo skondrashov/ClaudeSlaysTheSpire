@@ -2,20 +2,18 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT BOTTLENECK (130-run milestone):** The system has TWO distinct failure layers. **Layer 1: Mechanics execution errors** -- the player keeps misapplying basic game mechanics despite documented corrections. Weak direction confusion (Run 124), SIO+ block miscalculation (Run 125), Flame Barrier+ block vs counter confusion (Run 125), Armaments+ block value forgotten (Run 126), Strength carryover between combats (Run 127), Hexaghost Turn 2 multi-hit undocumented until after death (Run 129). Six different mechanics errors in six consecutive runs. The playbook documents the correct values, but the player does not reliably consult or apply them during combat. **Layer 2: HP attrition without healing** -- healing card RNG denial (7 of last 9 runs with no Reaper/Feed offered) forces reliance on potions and rest sites, which cannot offset 30-50 HP Act 2 fights. The backup healing plan is documented but produces death spirals anyway.
+**CURRENT STATUS (140 runs, 0 wins, best floor 39):** Major reasoning rework completed. The player now operates on three human-provided heuristics: (1) Full Block Algorithm — zero damage in hallway fights is the default, with kill paths preferred over pure block. (2) Full Act Pathing — read the entire map and plan elites/shops/campfires before the first fight. (3) Act 1 Tier List — card evaluation is lookup-based, not reasoning from scratch. Hard Rules abolished — guidance distributed to individual card/relic playbook entries. First run with new heuristics (Run 140) showed strong Act 1 execution (Slime Boss kill at 3 HP) but Act 2 death at F19 from Byrd fight drain (73 HP) into forced combat at 7 HP. Heuristics are being applied but do not prevent worst-case Byrd fight RNG.
 
-**THE REAL PROBLEM:** Layer 1 is more addressable than Layer 2. Every mechanics error costs 3-20 HP. Across a run, 3-5 such errors compound to 15-60 lost HP -- equivalent to an entire fight's worth of damage. Fixing execution would effectively add one free fight's worth of HP to every run, partially compensating for healing denial. The player needs a combat arithmetic checklist, not more strategic documentation.
-
-**SCORECARD (runs 101-137):**
-- Act 1 boss wins: ~75% -- Guardian regression (4 deaths in 36 runs). Hexaghost regression (Run 129 F16, Run 137 F16).
+**SCORECARD (runs 101-140):**
+- Act 1 boss wins: ~75% -- Guardian regression (4 deaths in 36 runs). Hexaghost regression (2 in last 16). Run 140 Slime Boss clean kill.
 - Act 2 boss reaches: 4 (Runs 105, 110, 114, 125). No new Act 2 boss reach since Run 125.
-- Act 2 hallway/elite deaths (Runs 124-137): F23 Gremlin Leader, F21 Shelled Parasite, F23 Slavers, F24 Shelled Parasite, F16 Hexaghost, F23, F21, F23, F24, F16.
-- Best floor: 39 (Run 63) -- unchanged for 70+ runs.
-- Hard Rule violations: 0.
-- **Floor average (last 20 tracked runs): 23.1.** Down from 25-26 plateau at Run 100. This is REGRESSION, not progress.
-- **Mechanics errors: 6 distinct errors in runs 124-129.** Weak direction, SIO+ value, Flame Barrier+ block vs counter, Armaments+ value, Str carryover, Hexaghost Turn 2 damage. Each error cost 3-20 HP. Combined, these errors account for more HP loss than any single strategic gap.
-- **Healing RNG denial: 7 of last 9 runs.** Backup plan insufficient. However, this is NOT addressable -- RNG denial cannot be fixed. Focus on what CAN be fixed: mechanics execution.
-- **Hexaghost regression: 2 deaths at F16 in last 16 runs** despite extensive playbook. The playbook is not being applied.
+- Act 2 hallway deaths continue: Run 140 F19 (Looter+Mugger at 7 HP after 73 HP Byrd drain).
+- Best floor: 39 (Run 63) -- unchanged for 75+ runs.
+- Known mistake patterns: addressed by distributing guidance to individual card/relic playbook entries.
+- **Floor average (last 20 tracked runs): ~22.** Down from 25-26 plateau at Run 100. New heuristics need more data.
+- **Mechanics errors reduced in Run 140.** Only 1 minor error (Spot Weakness +4 vs +3 confusion). Full Block Algorithm forced explicit math every turn.
+- **Healing RNG denial: 8 of last 10 runs.** Run 140 had no healing card. Still not addressable -- pure variance.
+- **New failure mode: Byrd fight HP drain into forced combat.** Map layout can force lethal sequences with no recovery option. Act 2 route planning must prioritize early non-combat rooms.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **FULL BLOCK EVERY HALLWAY FIGHT.** This is the new combat algorithm. The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md. This single change addresses both the arithmetic errors (forces explicit damage/block math every turn) and the HP attrition problem (prevents the HP drain that causes death spirals).
@@ -44,6 +42,7 @@ Before calculating damage or block, answer these THREE questions:
   - Armaments+ = 5 block (not 0, it still blocks) AND upgrades ALL cards in hand
   - Bash+ = 10 damage, 3 Vulnerable (not 2)
   - Intimidate+ = 2 Weak (not 1)
+  - Spot Weakness = +3 Str unupgraded, +4 Str upgraded (do not use +4 for the base card)
 
 **3. Does my Strength reset?**
 - Inflame, Spot Weakness, Demon Form: Strength is PER-COMBAT. Resets to 0 each new fight.
@@ -66,7 +65,7 @@ These thresholds determine which MAP PATHS are safe, not how to play combat. Com
 
 | Fight Type | Minimum HP to Enter | Notes |
 |---|---|---|
-| Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP if you fail to full block |
+| Hallway (easy) | 25% | Byrds/Chosen can drain 40-73 HP even with correct play and TC+ in deck |
 | Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic, Snake Plant |
 | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
@@ -93,7 +92,7 @@ After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. 
 
 The underlying cause is almost always failure to full block. The fights below are especially punishing when full block fails:
 
-1. **Byrd fights**: 36-58 HP lost per fight when full block fails. Flight makes fights 8-12 turns, compounding small per-turn leaks. Thunderclap is critical (strips Flight + applies Vulnerable).
+1. **Byrd fights**: 36-73 HP lost per fight when full block fails. Worst case: all 3 Byrds attack same turn for 38+ combined damage with insufficient block cards in hand. Flight makes fights 8-12 turns, compounding per-turn leaks. Thunderclap is critical (strips Flight + applies Vulnerable).
 2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight, giving more turns to leak damage.
 3. **Chosen (solo or paired)**: 30-40 HP drained. Hex punishes Skills (Dazed clog), but you still must block -- Hex adds Dazed to draw pile, not hand.
 4. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Drains 15-42 HP. Frail makes full block harder but NOT impossible -- account for the 25% block reduction.
@@ -252,7 +251,7 @@ Corruption (3E), Barricade (3E), and Demon Form (3E) are all powerful cards that
 - Turn 1 against multi-enemy fights (combined damage 15-25+)
 - When the Full Block Flowchart shows no path to zero damage after spending 3E
 
-This is now Hard Rule #8.
+This is a direct application of the Full Block Algorithm — if spending 3E leaves no path to zero damage, don't spend 3E.
 
 ### Unknown Card Evaluation
 
@@ -410,6 +409,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 - Prefer routes with a rest site in the last 1-2 floors before the boss.
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
 - If the path forces an elite at low HP, skip it entirely -- take any alternative path.
+- **Act 2 route must include a non-combat room in the first 2-3 floors.** The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), Spheric Guardian (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. When choosing Act 2 entry points, prefer routes where a rest site, shop, or event appears by floor 2-3, even if it means giving up other rewards. A route of M-M-M before a rest site is a death trap.
 - **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.**
 
 ### Elite Risk Assessment

@@ -4,12 +4,12 @@ Items pending confirmation or further investigation. Promote to playbook when co
 
 ## Promoted (archived — already in playbook)
 
-Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshold, Disarm vs Slime Boss split, Corruption + Dead Branch synergy, Corruption setup cost trap, Mugger enemy, Looter + Mugger pairing, Dead Branch relic, Wing Boots relic, Pantograph 25 HP correction, The Champ boss + Execute mechanic, Dark Shackles card, Maw Bank relic, Spheric Guardian block growth rate, Spot Weakness+ upgrade, Rage+ per-turn expiration, Blood for Blood cost reduction, Barricade (player card), Fiend Fire in Cultist+Chosen multi-fights, Heavy Blade damage formula, Blessing of the Forge, Spheric Guardian Frail application, Eternal Feather relic, Oddly Smooth Stone relic, Masked Bandits event, Gremlin Leader Rally +3 Str ALL (3x confirmed), Uppercut+ upgrade (2 Weak + 2 Vuln confirmed), Spheric Guardian 4th death + Demon Form insufficient, Uppercut+ Artifact stripping vs SG confirmed, Spheric Guardian first survival (Corruption + FNP engine), Feed+ multi-kill Max HP gain (+22 from Slime Boss), Bloodletting card, Battle Trance sequencing warning, Fairy in a Bottle elite consumption timing, Intimidate upgrade (2 Weak), Gremlin Leader turn economy + Rally scaling math, Brimstone relic, Sword Boomerang card, Snake Plant 9x3 damage correction, Brimstone + Demon Form combo (+4 Str/turn), Calipers relic, Impervious+ upgrade (40 block), Spheric Guardian second survival (Immolate+Impervious++Calipers+Spot Weakness), Weak multiplier direction error (systematic, 3+ runs), Liquid Memories exhaust/discard confusion, Block-first at critical HP rule, Fire Breathing+ exhaust synergy blindness (Immolate Burns), Bronze Automaton Stasis targeting (Powers/Skills), Bronze Automaton Hyper Beam scaling (38-51), Brimstone + Book of Stabbing anti-synergy (2 deaths), 3 Cultists 60% threshold (6 deaths), Corruption vs Guardian trap (Hard Rule #9), Hexaghost Turn 2 blocking mandatory, SIO+ upgraded value (11 not 8), Strength/Rampage reset between combats, Confusion + X-cost cards interaction.
+Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshold, Disarm vs Slime Boss split, Corruption + Dead Branch synergy, Corruption setup cost trap, Mugger enemy, Looter + Mugger pairing, Dead Branch relic, Wing Boots relic, Pantograph 25 HP correction, The Champ boss + Execute mechanic, Dark Shackles card, Maw Bank relic, Spheric Guardian block growth rate, Spot Weakness+ upgrade, Rage+ per-turn expiration, Blood for Blood cost reduction, Barricade (player card), Fiend Fire in Cultist+Chosen multi-fights, Heavy Blade damage formula, Blessing of the Forge, Spheric Guardian Frail application, Eternal Feather relic, Oddly Smooth Stone relic, Masked Bandits event, Gremlin Leader Rally +3 Str ALL (3x confirmed), Uppercut+ upgrade (2 Weak + 2 Vuln confirmed), Spheric Guardian 4th death + Demon Form insufficient, Uppercut+ Artifact stripping vs SG confirmed, Spheric Guardian first survival (Corruption + FNP engine), Feed+ multi-kill Max HP gain (+22 from Slime Boss), Bloodletting card, Battle Trance sequencing warning, Fairy in a Bottle elite consumption timing, Intimidate upgrade (2 Weak), Gremlin Leader turn economy + Rally scaling math, Brimstone relic, Sword Boomerang card, Snake Plant 9x3 damage correction, Brimstone + Demon Form combo (+4 Str/turn), Calipers relic, Impervious+ upgrade (40 block), Spheric Guardian second survival (Immolate+Impervious++Calipers+Spot Weakness), Weak multiplier direction error (systematic, 3+ runs), Liquid Memories exhaust/discard confusion, Block-first at critical HP rule, Fire Breathing+ exhaust synergy blindness (Immolate Burns), Bronze Automaton Stasis targeting (Powers/Skills), Bronze Automaton Hyper Beam scaling (38-51), Brimstone + Book of Stabbing anti-synergy (2 deaths), 3 Cultists 60% threshold (6 deaths), Corruption vs Guardian trap (in corruption.md), Hexaghost Turn 2 blocking mandatory, SIO+ upgraded value (11 not 8), Strength/Rampage reset between combats, Confusion + X-cost cards interaction, Byrd fight 73 HP drain worst case (promoted to byrd.md), Evolve vs Slime Boss confirmed excellent (promoted to evolve.md and slime-boss.md), Spot Weakness +3/+4 value confusion (promoted to strategy.md arithmetic checklist), Act 2 first-floor safety valve routing (promoted to strategy.md and byrd.md).
 
 ## Unconfirmed
 
 - Boss relic collection automation issue: In Run 71 and Run 77, a `proceed` command after Act 1 boss auto-collected the chest without showing boss relic selection options. Confirmed recurring (2 occurrences). CommunicationMod or automation bug. STILL UNRESOLVED. Needs infrastructure investigation.
-- Healing card RNG denial streak: 7 of last 9 runs with no Reaper/Feed offered. Backup healing plan insufficient. Not addressable through playbook changes -- this is variance. Player should take Feed even in late Act 1 (floor 12+) and buy Blood/Regen Potions at every shop when no healing card exists.
+- Healing card RNG denial streak: 8 of last 10 runs with no Reaper/Feed offered. Backup healing plan insufficient. Not addressable through playbook changes -- this is variance. Player should take Feed even in late Act 1 (floor 12+) and buy Blood/Regen Potions at every shop when no healing card exists.
 - Hexaghost multi-hit attack variants: Turn 2 appears to be 5x6=30 (not Inferno). Later turns have 4x6=24 variant. Need more data points with exact hit counts.
 - Burns+ timing: Burns+ (4 damage each) appear from later ATTACK_DEBUFF turns. Exact transition turn unknown.
 - Horn Cleat: Observed 14 block on turn 2. Fixed or scaling?
@@ -23,6 +23,10 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Kunai + Whirlwind: Does each hit count as a separate attack for Kunai?
 - Book of Stabbing per-hit damage: 6 or 7 per hit? Need confirmation.
 - Donu and Deca: Not yet encountered.
+- Byrd Flight regain timing: Player observed "Byrds regained Flight to 3" on buff turns. Byrd.md documents "Byrds regain Flight 3 on buff turns." But how does Flight interact with Vulnerable/Weak duration? Does Vulnerable applied by TC+ last the stated number of turns, or does Flight regain reset interaction? Need more observations to confirm Vuln wears off as documented.
+- Byrd combined Str growth: All 3 Byrds gained +1 Str on buff turns. By Turn 4-5, individual Byrds had Str 1-2. Combined with Flight 3 regaining on buff turns, this means late-fight all-attack turns can deal 38+ damage. 5 rounds of buffs observed across 8-turn fight.
+- Full heal between acts: Confirmed HP is restored to max between Act 1 and Act 2. Player went from 3 HP (post-Slime Boss + Burning Blood = 9) to 74/74 at Act 2 start.
+- Shop buy confusion: Player intended to buy Evolve (73g) but translated command showed "Buy Bandage Up." The deck at boss fight included Evolve, so either the translation was wrong or the purchase worked despite display. Monitor for shop index misalignment.
 
 ## Prediction Errors (non-fatal, monitoring)
 
@@ -33,6 +37,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Strength carryover between combats: calculated damage with Str from previous fight (Run 127)
 - Rampage counter carryover: self-corrected mid-reasoning (Run 125). Monitor.
 - Hexaghost HP tracking drift: lost count of boss HP mid-fight (Run 129). Monitor.
+- Spot Weakness upgraded value confusion: described SW as "+4 Str" during Byrd fight Turn 1 planning but card was unupgraded (+3 Str). Game state showed correct Str of 3. PROMOTED to strategy.md arithmetic checklist. Monitor for recurrence.
 
 **Strategic errors (promoted to relevant playbook files):**
 - Fire Breathing+ exhaust synergy blindness: PROMOTED to fire-breathing.md
@@ -41,11 +46,12 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Red Mask strips 1 Artifact at combat start. Documented in bronze-automaton.md and red-mask.md.
 - Headbutt grid interaction: UI misplay in Run 78. Not recurred. Low priority.
 
-## Recurring Patterns (all addressed by Hard Rules, monitoring only)
+## Recurring Patterns
 
-Hard Rules 1-9 all have zero violations since implementation. No new Hard Rule needed at this time. The recurring patterns that are NOT addressed by Hard Rules:
-- **Arithmetic errors in combat** -- NOT a Hard Rule issue. Six different errors in runs 124-129. Now addressed by COMBAT ARITHMETIC CHECKLIST in strategy.md.
+Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card/relic playbook entries where it's contextually relevant. Remaining recurring patterns:
+- **Arithmetic errors in combat** — Six different errors in runs 124-129. Now addressed by COMBAT ARITHMETIC CHECKLIST in strategy.md. Run 140 showed significant improvement: only 1 minor error (SW +4 vs +3). Full Block Algorithm is enforcing explicit math.
 - **Boss relic collection skipped** (Run 71, Run 77): Automation bug. STILL UNRESOLVED. Needs infrastructure investigation.
+- **Act 2 first-fight death spiral** — Byrd/SG fights as first Act 2 room drain 30-73 HP. If map forces consecutive Monster rooms with no recovery, the run dies regardless of skill. Route planning must prioritize early non-combat rooms.
 
 ## Open Questions
 

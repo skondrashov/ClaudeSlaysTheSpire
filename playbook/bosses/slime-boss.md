@@ -19,6 +19,8 @@ PREPARATION CHECKLIST:
 4. Enough block/HP to survive 2-3 turns of 25-36 combined damage
 5. At least 1 upgrade before the fight. Zero upgrades makes the fight dramatically harder -- unupgraded Bash provides only 2 turns of Vulnerable instead of 3, and all damage/block cards are weaker.
 
+CONFIRMED WINNING COMBINATION: Evolve + Thunderclap+ + Spot Weakness + Shuriken. Evolve neutralizes Slimed clog. Thunderclap+ applies AOE Vulnerable on split slimes. Spot Weakness + Shuriken provide Strength scaling that compounds across multi-enemy phase. With 6+ Str, Strikes deal 12-18 each (with Vuln), enabling fast kills even at low HP. Survived split phase at 3 HP through precise kill sequencing: killed Large Spike Slime, killed split Acid Medium, finished last enemy with exact lethal.
+
 STRATEGY:
 - **Pre-split**: Use debuff turns (free turns) to deal damage. Apply Vulnerable with Bash+. Don't worry about killing fast -- prepare for the split. **Manage damage near the 70 HP threshold**: on the turn the boss will cross 70 HP, calculate exact damage to avoid massive overkill. Spending energy on block instead of excess damage past the threshold is often correct.
 - **At split**: Use Thunderclap for mass Vulnerable on both slimes. AOE with Whirlwind or Cleave.
