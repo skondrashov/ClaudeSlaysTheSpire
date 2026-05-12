@@ -8,15 +8,15 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 ## Unconfirmed
 
-- **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Runs 143-144.** Two consecutive clean runs. Bug may be resolved or intermittent. Continue monitoring -- 3 prior skips remain on record.
-- **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Runs 143-144.** Two consecutive clean runs (Run 143: 2 chests opened, Run 144: 1 chest opened). Continue monitoring.
+- **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Runs 143-145.** Three consecutive clean runs. Run 145 collected boss relics after BOTH boss kills (Ectoplasm after Guardian, Fusion Hammer after Collector). Bug appears resolved. Continue monitoring but downgrading priority.
+- **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Runs 143-145.** Three consecutive clean runs (Run 143: 2 chests, Run 144: 1 chest, Run 145: 3 chests). Bug appears resolved.
 - Fungi Beast HP range: Playbook had ~19 HP. Run 141 showed one at 24 HP, other possibly 22 HP. Need more data to confirm Act 1 paired Fungi Beast HP range (22-28 suspected). May vary by ascension or Act.
 - Sentry Metallicize value: Confirmed 4 block/turn (from effective damage calculations in Run 141). Already in updated sentry.md, but only 1 observation. Monitor for consistency.
 - Headbutt selection UI confusion: Player attempted to select 2 cards for Headbutt (which only selects 1). Not a bug -- player misunderstood the interface. The `choose 0` then `choose 1` on lines 124-125 suggests the first `choose` completed the Headbutt selection, and the second was interpreted as a different action. Monitor for recurrence.
 - Ceramic Fish relic: Gives 9 gold per card added. Observed twice. Need to confirm value.
 - Centurion 10x3 multi-hit attack: Run 142 death caused by 30 damage from 10x3 attack. Previously documented only as 12-18 single hits. Playbook updated. Need more data on attack pattern rotation (when does 10x3 appear vs 12 single hit?).
 - Sundial relic: Every 3 shuffles, gain 2 energy. Confirmed from Run 142: 5E on Turn 4 of 3 Cultists fight (3 base + 2 bonus). Playbook entry created. Monitor for consistency.
-- Healing card RNG denial streak: 10 of last 12 runs with no Reaper/Feed offered (Run 144 continues the streak). Backup healing plan insufficient. Not addressable through playbook changes -- this is variance. Player should take Feed even in late Act 1 (floor 12+) and buy Blood/Regen Potions at every shop when no healing card exists.
+- Healing card RNG denial streak BROKEN: Feed obtained from Guardian boss card reward in Run 145. Streak was 10 of 12 runs with no healing card. Feed+ gave +3 max HP on Orb Walker kill (77 max HP total). Promoted note: Feed from boss card rewards is a reliable source since boss rewards always include a rare card option.
 - Mark of Pain + Evolve+ synergy confirmed: Promoted to evolve.md and mark-of-pain.md. Strong engine (4E + 2 draws per Wound = 5-7 cards/turn). One observation. Monitor for consistency across multiple runs.
 - Mark of Pain Wound dilution: Wounds added to draw pile by attacks reduce probability of drawing specific cards on critical turns. In Run 143, 2x Impervious+ in a 15-card deck (plus accumulating Wounds) meant neither was drawn on either Hyper Beam turn. The card advantage from Evolve+ may not compensate for the draw dilution when specific cards are needed. Need more data.
 - Bronze Automaton Strength can reach +12 by turn 12. Hyper Beam #2 at 57 damage (45 base + 12 Str). Previous maximum was 51 (turn 6). Promoted to bronze-automaton.md.
@@ -27,19 +27,29 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Horn Cleat: Observed 14 block on turn 2. Fixed or scaling?
 - Gremlin Horn: Works on ALL enemy deaths including minions?
 - Whetstone: Can upgrade already-upgraded cards?
-- Collector total HP: 279 or 282? Conflicting observations.
+- Collector total HP: CONFIRMED 282 (from Run 145 Rampage+ opening hit at 282 HP). Updated the-collector.md.
 - Knowing Skull HP cost: Flat or increasing per interaction?
 - Corruption + Second Wind: Does Second Wind exhaust itself under Corruption?
 - Feel No Pain + Frail: Is FNP block reduced by Frail?
 - Frail + Rage block: Is Rage block reduced by Frail?
 - Kunai + Whirlwind: Does each hit count as a separate attack for Kunai?
 - Book of Stabbing per-hit damage: 6 or 7 per hit? Need confirmation.
-- Donu and Deca: Not yet encountered.
+- Donu and Deca: Not yet encountered. Run 145 showed them as Act 3 boss but died to Transient before reaching them.
+- Mummified Hand + Power-heavy decks: Observed generating 2-4 free plays per turn in a 5-Power deck (Barricade+, 2x Metallicize, Inflame+, Evolve+). The relic's value scales multiplicatively with Power count. One observation -- monitor for consistency.
+- The Maw HP: Observed at approximately 300 HP (player noted 272 after 28 damage Turn 1, starting at ~300). Need exact confirmation.
+- The Maw pattern: STRONG_DEBUFF Turn 1, then alternating BUFF/ATTACK with escalating damage (5/16/33/56). Only 1 observation. Monitor for consistency.
+- Orb Walker HP: Observed at 93. Only 1 observation.
+- Orb Walker Str scaling: +3 Str per turn observed. Only 1 observation.
+- Exploder + Spiker fight composition: Exploders (~30 HP each) deal AoE on death, Spiker has Thorns 3. Only 1 observation.
+- Ectoplasm + Maw Bank anti-synergy: Maw Bank gives 12g/floor but Ectoplasm blocks all gold gain. Maw Bank became completely useless. Both are relics that cannot be discarded.
+- Card index shifting bug (Maw fight): Impervious was played instead of Headbutt due to card index shifting after Bash was played. Player noted "Impervious was accidentally played due to card index shift." This is the 5th+ documented index shifting incident. Infrastructure issue, not strategy.
+- Barricade+ (2E) from Frozen Egg auto-upgrade: Barricade was obtained as a boss card reward and auto-upgraded to Barricade+ (2E instead of 3E) by Frozen Egg. This 1E saving is critical -- at 5E base, Barricade+ costs 2E leaving 3E for block, vs Barricade at 3E leaving only 2E.
+- Ancient Writing event (Simplicity option): Upgrades ALL Strikes and Defends in the deck. Massive value (9 free upgrades in Run 145). Previously an open question about what options it offers. The "Simplicity" option is confirmed to mass-upgrade Strikes and Defends.
 - Byrd Flight regain timing: Player observed "Byrds regained Flight to 3" on buff turns. Byrd.md documents "Byrds regain Flight 3 on buff turns." But how does Flight interact with Vulnerable/Weak duration? Does Vulnerable applied by TC+ last the stated number of turns, or does Flight regain reset interaction? Need more observations to confirm Vuln wears off as documented.
 - Byrd combined Str growth: All 3 Byrds gained +1 Str on buff turns. By Turn 4-5, individual Byrds had Str 1-2. Combined with Flight 3 regaining on buff turns, this means late-fight all-attack turns can deal 38+ damage. 5 rounds of buffs observed across 8-turn fight.
 - Incense Burner counter persistence: Counter increments across combats. Promoted to incense-burner.md. Need to confirm: does the counter increment on turns where you have Intangible, or does it reset? Monitor.
 - Cultist Potion Ritual value: Confirmed +1 Str/turn. Promoted to cultist-potion.md. Need more data: is the Ritual value always 1, or can it be higher?
-- Full heal between acts: Confirmed HP is restored to max between Act 1 and Act 2. Player went from 3 HP (post-Slime Boss + Burning Blood = 9) to 74/74 at Act 2 start.
+- Full heal between acts: DOUBLE CONFIRMED. HP restored to max between Act 1 and Act 2 (Run 140: 3->74, Run 145: ~15->74/74 after Guardian). Also confirmed between Act 2 and Act 3 (Run 145: 5->77/77 after Collector + Burning Blood). This means entering the boss at low HP is acceptable if you can survive the fight -- the next act starts at full HP regardless.
 - Shop buy confusion: Recurring shop translation mismatches. Run 142: intended Evolve, translated "Buy Bandage Up." Run 143: intended Evolve (76g), translated "Buy Finesse" (line 37); intended card removal (100g), translated "Buy Cleave" (line 342). In all cases the correct card/action was obtained (deck contained Evolve, card was removed). The `translated` field appears to display incorrect card names but the actual purchase executes correctly. This is a display/logging issue, not a gameplay bug. Low priority.
 
 ## Prediction Errors (non-fatal, monitoring)
@@ -65,7 +75,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card/relic playbook entries where it's contextually relevant. Remaining recurring patterns:
 - **Arithmetic errors in combat** — Seven different errors in runs 124-144. Runs 140-143 showed significant improvement with Full Block Algorithm enforcing explicit math. But Run 144 introduced a new fatal error type: basic comparison failure ("13 > 20") on a kill turn with `end` chained in the same command. Checklist item #4 added to address this.
-- **Boss relic collection skipped** (Run 71, Run 77, Run 142): Automation bug. 3 confirmed occurrences. Did NOT occur in Runs 143-144 (two consecutive clean runs). Bug may be resolved. Continue monitoring.
+- **Boss relic collection skipped** (Run 71, Run 77, Run 142): Automation bug. 3 confirmed occurrences. Did NOT occur in Runs 143-145 (three consecutive clean runs). Bug appears resolved. Downgrading priority.
 - **Act 2 first-fight death spiral** — Byrd/SG fights as first Act 2 room drain 30-73 HP. If map forces consecutive Monster rooms with no recovery, the run dies regardless of skill. Route planning must prioritize early non-combat rooms.
 - **Elite readiness = deck quality, not just HP** — Run 141 entered Sentries at 95% HP but with a starter-quality deck (Strikes/Defends/Bash/Headbutt/SIO). The fight took 20 turns and drained 56 HP. Elite decision should evaluate DECK vs MATCHUP, not just HP. Neow's Lament exacerbates this by creating full HP with an undeveloped deck. Documented in sentry.md, neow-s-lament.md, strategy.md.
 - **Playbook accuracy gaps** — Mushrooms Eat option was documented as "Heal 22 HP" but actually heals 21 HP + Parasite curse. Fungi Beast buff turns were documented as "free damage windows" but are actually +3 Str per buff (scaling to 12-15 damage by Turn 5-6). These errors directly contributed to a death. Other playbook entries may have similar omissions from early runs when observation was less rigorous.
@@ -74,7 +84,7 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 
 - Face Trader event options and outcomes
 - Transmogrifier: does it keep the same rarity?
-- Ancient Writing: what does the Insight option offer?
+- Ancient Writing: "Simplicity" option upgrades ALL Strikes and Defends (confirmed Run 145, 9 free upgrades). "Insight" option still unknown.
 - The Joust: 70% win chance for Murderer accurate?
 - Offering self-damage at sub-30% HP: 6 HP cost was exactly lethal margin in Run 128. Monitor whether Offering at critical HP causes deaths.
 - Dual RNG denial: Run 128 had both healing AND Strength scaling denied across 24 floors despite Prayer Wheel. Two criteria denied simultaneously makes runs near-unwinnable. No fix possible -- pure variance.

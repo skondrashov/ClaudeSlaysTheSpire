@@ -55,6 +55,9 @@
 - [Slaver's Collar](slavers-collar.md)
 - [Self-Forming Clay](self-forming-clay.md)
 - [Incense Burner](incense-burner.md)
+- [Mummified Hand](mummified-hand.md)
+- [Frozen Egg](frozen-egg.md)
+- [Omamori](omamori.md)
 
 ## Rare Relics
 
@@ -86,3 +89,5 @@
 - [Maw Bank](maw-bank.md)
 - [Mutagenic Strength](mutagenic-strength.md)
 - [Mark of Pain](mark-of-pain.md)
+- [Ectoplasm](ectoplasm.md)
+- [Fusion Hammer](fusion-hammer.md)

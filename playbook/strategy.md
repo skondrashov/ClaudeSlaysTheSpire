@@ -2,17 +2,18 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (144 runs, 0 wins, best floor 39):** Major reasoning rework completed. The player now operates on three human-provided heuristics: (1) Full Block Algorithm — zero damage in hallway fights is the default, with kill paths preferred over pure block. (2) Full Act Pathing — read the entire map and plan elites/shops/campfires before the first fight. (3) Act 1 Tier List — card evaluation is lookup-based, not reasoning from scratch. Hard Rules abolished — guidance distributed to individual card/relic playbook entries. Run 144 died to Hexaghost at 7/250 HP -- a single arithmetic error cost the run. The player wrote "13 > 20" in reasoning, played Iron Wave alone (13 damage) against a 20 HP Hexaghost with Headbutt (17 damage) available and 2E remaining. Either additional card play would have killed the boss. **NEW CRITICAL ERROR TYPE: "commit before verify" -- the player submitted the end-turn command in the same line as the play command, before finishing the kill calculation.** See COMBAT ARITHMETIC CHECKLIST item #4. **INFRASTRUCTURE BUG UPDATE: No UI misplays in Run 144 (second consecutive clean run). Boss relic skip bug (3 prior occurrences) and chest skip bug (1 prior occurrence) did NOT trigger. Bug may be resolved or intermittent -- continue monitoring.**
+**CURRENT STATUS (145 runs, 0 wins, best floor 44):** BREAKTHROUGH -- first time reaching Act 3. Beat The Guardian (Act 1) and The Collector (Act 2) in the same run. Died to The Transient on Floor 44 due to Impervious misallocation (played on Turn 1 against 30 damage instead of saving for Turn 3 against 50 damage). The deck was strong: Barricade+ + 2x Metallicize (7 block/turn stacking) + Inflame+ engine with Mummified Hand enabling free Power plays. The Maw (300 HP Act 3 hallway) was defeated at full HP with zero damage taken. Feed gave +3 max HP on Orb Walker kill (77 max HP). **Third consecutive clean run with no UI misplays.** Boss relics collected after both boss kills, all treasure chests opened, shops browsed, events properly evaluated.
 
-**SCORECARD (runs 101-144):**
-- Act 1 boss wins: ~75% -- Guardian regression (4 deaths in 37 runs). Hexaghost: 3rd death at boss HP 7/250 (arithmetic error, not strategy).
-- Act 2 boss reaches: 5 (Runs 105, 110, 114, 125, 143). No new Act 2 boss reach in Run 144.
-- Best floor: 39 (Run 63) -- unchanged for 81 runs.
-- **Floor average (last 20 tracked runs): ~22.** Run 144 F16 pulls the average down.
-- **No UI misplays in Run 144.** Second consecutive clean run. Treasure chest opened. Shop browsed. Events evaluated. Boss relic N/A (died to Act 1 boss).
-- **Mechanics errors in Run 144: ONE FATAL.** Full Block Algorithm applied correctly in hallway fights (zero or near-zero damage). But a single arithmetic error on the boss kill turn cost the run: played Iron Wave (13 damage) against 20 HP Hexaghost and ended turn, despite having Headbutt (17 damage) in hand with 2E remaining. The player wrote "13 > 20" in reasoning before self-correcting mid-thought -- but the end-turn command had already been submitted in the same line.
-- **Healing RNG denial continues.** Run 144 had no Reaper or Feed offered. 10th of last 12 runs with no healing card. Backup healing: Burning Blood only.
-- **Boss relic/chest skip bug: NOT triggered in Run 144** (second consecutive clean run). Continue monitoring.
+**SCORECARD (runs 101-145):**
+- Act 1 boss wins: ~75%. Guardian and Collector BOTH beaten in a single run for the first time.
+- Act 2 boss kills: 1 (The Collector, Run 145). Act 2 boss reaches: 6 (Runs 105, 110, 114, 125, 143, 145).
+- **Act 3 reached for the first time.** Died to The Transient at Floor 44.
+- **Best floor: 44 (Run 145)** -- new record, up from 39. First Act 3 entry.
+- **Floor average (last 20 tracked runs): ~23.** Run 145 F44 is a strong outlier.
+- **No UI misplays in Run 145.** Third consecutive clean run. Both boss relics collected, all 3 treasure chests opened, 3 shops entered and browsed, all events properly evaluated.
+- **Mechanics errors in Run 145: ONE FATAL (Impervious timing).** Impervious played on Turn 1 of the Transient fight against 30 incoming (wasted). Turn 3 had 50 incoming with only 11 block available. If Impervious had been saved, 41 block vs 50 = survived with 28 HP.
+- **Healing RNG denial BROKEN.** Feed obtained from Guardian boss card reward. Feed+ gave +3 max HP on Orb Walker kill (77 max HP total). Healing card drought lasted 10 of 12 runs, now ended.
+- **Boss relic/chest skip bug: NOT triggered in Run 145** (third consecutive clean run). Bug appears resolved.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **FULL BLOCK EVERY HALLWAY FIGHT.** This is the new combat algorithm. The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md. This single change addresses both the arithmetic errors (forces explicit damage/block math every turn) and the HP attrition problem (prevents the HP drain that causes death spirals).
@@ -495,32 +496,38 @@ Act 3 enemies hit harder than Act 2 and have unique mechanics that punish specif
 
 ### Enter Act 3 at Full HP
 
-Pantograph heals 25 HP at the Act 2 boss start (NOT full HP). The Collector fight itself drains 50-65 HP. Entering Act 3 at 14-20 HP (as observed) is extremely dangerous. The first hallway fight in Act 3 can drain 25-40 HP (Writhing Mass, Darklings). If possible, path through a rest site or event between the boss and Act 3.
+HP is fully restored between acts (confirmed). After beating the Act 2 boss at any HP, Act 3 starts at full HP. The first hallway fight in Act 3 can drain 25-40 HP (Writhing Mass, Darklings, Orb Walker), but starting at full HP provides a comfortable buffer. Use early rest sites in Act 3 for healing (Fusion Hammer forces rest-only) and Ancient Tea Set triggers.
 
 ### Act 3 HP Thresholds
 
 | Fight Type | Minimum HP | Notes |
 |---|---|---|
-| Hallway (easy) | 40% | Spikers, Repulsors -- manageable but Thorns punish attacks |
-| Hallway (hard) | 60% | Writhing Mass (25-40 HP drain), Darklings (Life Link extends fight) |
+| Hallway (easy) | 40% | Exploders + Spikers -- Thorns 3 punish multi-hit attacks, Exploders deal AoE on death |
+| Hallway (hard) | 60% | Writhing Mass (25-40 HP drain), Darklings (Life Link extends fight), Orb Walker (Str scales +3/turn) |
 | The Transient | 50% | Pure survival check -- 5 turns of escalating damage, do not attack |
+| The Maw | 60% | 300 HP, STRONG_DEBUFF turn 1, escalating damage. Barricade + Metallicize dominates. |
 | Elite | 70% | Act 3 elites are extremely dangerous at low HP |
 | Boss | 70% or Pantograph | Donu and Deca, Awakened One, or Time Eater |
 
 ### Act 3 Key Enemies
 
 - **Writhing Mass**: Malleable gains block per hit. Use single large hits, NOT multi-hit (Whirlwind, Pummel). Expect 25-40 HP drain. Long fight (6-8 turns).
-- **The Transient**: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Disarm and Weak are essential. Enter at 50%+ HP.
+- **The Transient**: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Save Impervious for Turn 3+ (50-70 damage). Disarm and Weak are essential. Enter at 50%+ HP. See transient.md for detailed block priority by turn.
+- **The Maw**: ~300 HP. Turn 1 STRONG_DEBUFF (Weak + Frail + Vuln). Alternates BUFF (free turns) and ATTACK. Damage escalates (5 -> 16 -> 33 -> 56). Barricade + Metallicize makes this fight trivial -- block stacking handles escalation. With Barricade + 2x Metallicize (7/turn) + Inflame+, the Maw was defeated at zero damage taken. Long fight (8-9 turns) rewards defensive setup.
+- **Orb Walker**: ~93 HP. Scales +3 Str per turn. Must burst down fast before damage becomes unsurvivable. Kill target for Feed (+3 max HP).
+- **Exploder + Spiker**: Exploders (~30 HP) deal AoE damage on death. Spikers have Thorns 3 (retaliate 3 per Attack played). Use AOE (Immolate+) to clear Exploders, use single large hits against Spikers. Barricade handles Thorns chip damage.
 - **Darklings**: Life Link -- must kill all 3 in the same turn or they revive at half HP. AOE (Immolate+) is critical. Save AOE for the kill turn.
 - **Spikers**: Thorns damage per Attack played. Block before attacking. Use fewer, larger attacks.
 
 ### What the Deck Needs for Act 3
 
-1. **Block density**: Impervious, Shrug It Off, Defend+. Act 3 fights are longer and hit harder.
-2. **AOE**: Immolate+ is the single best card. Darklings require simultaneous kills; Writhing Mass + allies require spread damage.
-3. **Disarm/Weak sources**: Transient and scaling enemies require Strength reduction and Weak application.
-4. **Healing cards**: Even more critical than Act 2. Writhing Mass drains 25-40 HP per fight. Without Reaper or Feed, consecutive fights will end the run.
-5. **Deck thinning**: A lean deck (18-22 cards) draws key cards more reliably in long fights.
+1. **Barricade + Metallicize engine**: The single strongest combination for Act 3. Block carries over and stacks with passive Metallicize gains. With 2x Metallicize (7 block/turn) + Barricade, most Act 3 hallway fights take zero damage. This engine dominates The Maw (300 HP), The Transient (escalating damage), and multi-enemy fights (Exploders + Spikers). If Barricade and at least one Metallicize are in the deck entering Act 3, survival is dramatically easier.
+2. **Block density beyond Barricade**: Impervious, Shrug It Off, Defend+. Barricade needs block cards to feed into the snowball. Without block cards to play, Barricade only accumulates Metallicize's passive block (slow). Impervious + Barricade = 30-40 permanent block in one play.
+3. **AOE**: Immolate+ is the single best card. Darklings require simultaneous kills; Exploders can be cleared with single Immolate+.
+4. **Disarm/Weak sources**: Transient and scaling enemies require Strength reduction and Weak application. Save for Transient and boss fights -- do not waste on hallway fights that the Barricade engine can handle.
+5. **Healing cards**: Even more critical than Act 2. Writhing Mass drains 25-40 HP per fight. Without Reaper or Feed, consecutive fights will end the run. Feed from boss card rewards is a reliable source.
+6. **Deck thinning**: A lean deck (18-23 cards) draws key cards more reliably in long fights. Removes dilution from Strikes.
+7. **High energy base**: 5E (from Ectoplasm, Fusion Hammer, or similar) transforms Barricade from a liability (3E = entire turn) to a strong Turn 1 play (2-3E with energy left for block). Mummified Hand further offsets the setup cost.
 
 ---
 

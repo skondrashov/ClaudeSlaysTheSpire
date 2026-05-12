@@ -12,7 +12,7 @@ MATCHUPS:
 - Guardian -- absorbs the 32-damage attack completely (upgraded takes 0).
 - Gremlin Leader -- do NOT play Turn 1. Save for Turn 4-5 when Rally-scaled damage reaches 34+ per turn. Using 2E on block Turn 1 wastes the most valuable damage turn against Rally scaling. Confirmed: Impervious Turn 1 at 42 HP extended a Gremlin Leader fight to 9 turns and death. Turn economy matters more than early safety in this fight.
 - Collector -- critical for surviving post-STRONG_DEBUFF turns (37-50+ incoming). Play it on Turn 5, 6, or 7 when triple debuff is active. Run 110 died to Collector specifically because Impervious was not in the deck -- at 25 HP after Turn 4 debuff, 30 block from Impervious would have bought the survival turn needed. Impervious is the single most important defensive card for the Collector fight.
-- Transient -- absorbs an entire turn of escalating damage. Save for turn 2-3 when damage is highest.
+- Transient -- absorbs an entire turn of escalating damage. Save for Turn 3 (50 damage) or later. Do NOT play on Turn 1 (30 damage) -- Defend+ and Shrug It Off handle that. Playing Impervious on Turn 1 is the single most costly misplay in this fight because the 50-70 damage turns become unsurvivable without it.
 - Snake Plant -- 30-40 block completely absorbs the 9x3=27 multi-hit attack.
 - 3 Cultists -- absorbs combined Ritual-scaled attacks on a critical turn. At turn 4 (45 combined), Impervious+ blocks almost all of it.
 

@@ -1,4 +1,4 @@
-# The Collector (Act 2, HP: 279)
+# The Collector (Act 2, HP: 282)
 
 PATTERN:
 - **Turn 1**: Spawns 2 Torch Head minions (30-40 HP each, attack for 7 damage each).

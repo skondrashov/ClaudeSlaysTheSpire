@@ -3,8 +3,12 @@
 The Transient disappears after 5 turns (Fading 5 loses 1 per turn, dies at 0). The fight is a pure survival check -- outlast 5 turns of escalating damage.
 
 PATTERN:
-- **Turn 1**: Attacks for ~22 damage. Gains Strength each turn.
-- **Turn 2+**: Damage escalates as Strength accumulates. Turn 2 attacks for ~30-38.
+- **Turn 1**: Attacks for 30 damage.
+- **Turn 2**: Attacks for 40 damage.
+- **Turn 3**: Attacks for 50 damage.
+- **Turn 4**: Attacks for 60 damage.
+- **Turn 5**: Attacks for 70 damage.
+- **Total damage over 5 turns: 250.** Damage increases by 10 per turn.
 - **Shifting**: Gains block when attacked. Attacking the Transient is generally wasteful -- it has 999 HP and cannot be killed through damage in practice.
 
 KEY MECHANICS:
@@ -16,10 +20,22 @@ STRATEGY:
 - **Do not attack.** Focus entirely on defense. Attacks trigger Shifting (block) and waste energy that should go to block cards.
 - **Disarm is excellent.** Permanent Strength reduction compounds over all 5 turns. Two Disarms (-4 to -5 Str total) makes the fight trivial.
 - **Shockwave+ is excellent.** Weak 3 reduces damage for 3 of the 5 turns.
-- **Impervious is the best card for this fight.** 30 block absorbs an entire turn of damage.
+- **Impervious is the best card for this fight.** 30/40 block absorbs an entire turn of damage. Save for Turn 3+ (50-70 incoming) where basic block cards cannot cover the gap.
+- **Barricade is exceptional.** Block from early turns carries over, creating an accumulating wall. Combined with Metallicize, the escalating damage is handled automatically by turns 4-5.
 - **HP entry matters enormously.** At 15/80 HP (18%), even perfect block draws cannot survive turns 2-3 with 30+ incoming per turn. This fight requires 50%+ HP entry or exceptional block density.
 
 WHAT NOT TO DO:
 - Attack the Transient (triggers Shifting, wastes energy).
 - Enter below 40% HP without Impervious or multiple Disarms.
 - Exhaust block cards in prior fights when Transient is a possible upcoming enemy.
+- **Play Impervious on Turn 1 (30 damage).** Turn 1 is the LOWEST damage turn. Defend+ (8) + Shrug It Off (8-11) + Metallicize (3-4) can handle 30 incoming. Impervious is irreplaceable for turns 3-5 (50-70 damage) where basic block cards fall far short. Playing Impervious on Turn 1 wastes it and leaves Turn 3+ fatally underblocked.
+- **Exhaust Impervious in the fight before Transient.** Impervious exhausts permanently per combat, but resets between combats. However, if Impervious is accidentally played in the prior fight (e.g., due to card index shifting bugs), it will still be available for the Transient fight. The real risk is playing it early within the Transient fight itself.
+
+BLOCK PRIORITY FOR TRANSIENT:
+- **Turn 1 (30 dmg)**: Defend+, Shrug It Off, Armaments+ block. DO NOT use Impervious. If Barricade is in hand and you have 4+ energy, play Barricade here -- the 30 damage is survivable and the carry-over block wins the fight.
+- **Turn 2 (40 dmg)**: Medium block cards. Barricade setup if not done on Turn 1. Metallicize stacking begins.
+- **Turn 3 (50 dmg)**: Impervious here. This is the critical turn -- 50 incoming exceeds what most block hands can produce. With Barricade, carried block from turns 1-2 plus Impervious makes this comfortable.
+- **Turn 4 (60 dmg)**: Metallicize + Barricade carry-over + any block card. The accumulated block wall should handle this.
+- **Turn 5 (70 dmg)**: Barricade block stack should be massive by now. One more turn of Metallicize stacking usually covers this.
+
+BARRICADE + METALLICIZE ENGINE: With Barricade active and 2x Metallicize (7 block/turn stacking), turns 1-2 build a block wall that compounds. By turn 3, the passive block alone covers a large portion of the 50 incoming. This engine makes the Transient fight comfortable even without Impervious -- but Impervious as insurance on Turn 3 guarantees survival.
