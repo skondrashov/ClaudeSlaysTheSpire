@@ -2,18 +2,17 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (145 runs, 0 wins, best floor 44):** BREAKTHROUGH -- first time reaching Act 3. Beat The Guardian (Act 1) and The Collector (Act 2) in the same run. Died to The Transient on Floor 44 due to Impervious misallocation (played on Turn 1 against 30 damage instead of saving for Turn 3 against 50 damage). The deck was strong: Barricade+ + 2x Metallicize (7 block/turn stacking) + Inflame+ engine with Mummified Hand enabling free Power plays. The Maw (300 HP Act 3 hallway) was defeated at full HP with zero damage taken. Feed gave +3 max HP on Orb Walker kill (77 max HP). **Third consecutive clean run with no UI misplays.** Boss relics collected after both boss kills, all treasure chests opened, shops browsed, events properly evaluated.
+**CURRENT STATUS (146 runs, 0 wins, best floor 44):** Regression -- died Floor 12 in Act 1 to Gremlin Nob after Sentries drained 52 HP. Root cause was pathing: committed to elite at F6 with only 2 monster rooms beforehand, giving no time to build a deck. Sentries + Nob back-to-back with a near-starter deck was unwinnable. Previous run (145) reached Act 3 for the first time (Floor 44). **Fourth consecutive clean run with no UI misplays** -- treasure chest opened, shops browsed, events evaluated. Golden Idol Smash cost 20 HP before the elite, compounding the HP crisis.
 
-**SCORECARD (runs 101-145):**
-- Act 1 boss wins: ~75%. Guardian and Collector BOTH beaten in a single run for the first time.
+**SCORECARD (runs 101-146):**
+- Act 1 boss wins: ~73%. Guardian and Collector BOTH beaten in a single run (Run 145).
 - Act 2 boss kills: 1 (The Collector, Run 145). Act 2 boss reaches: 6 (Runs 105, 110, 114, 125, 143, 145).
-- **Act 3 reached for the first time.** Died to The Transient at Floor 44.
-- **Best floor: 44 (Run 145)** -- new record, up from 39. First Act 3 entry.
-- **Floor average (last 20 tracked runs): ~23.** Run 145 F44 is a strong outlier.
-- **No UI misplays in Run 145.** Third consecutive clean run. Both boss relics collected, all 3 treasure chests opened, 3 shops entered and browsed, all events properly evaluated.
-- **Mechanics errors in Run 145: ONE FATAL (Impervious timing).** Impervious played on Turn 1 of the Transient fight against 30 incoming (wasted). Turn 3 had 50 incoming with only 11 block available. If Impervious had been saved, 41 block vs 50 = survived with 28 HP.
-- **Healing RNG denial BROKEN.** Feed obtained from Guardian boss card reward. Feed+ gave +3 max HP on Orb Walker kill (77 max HP total). Healing card drought lasted 10 of 12 runs, now ended.
-- **Boss relic/chest skip bug: NOT triggered in Run 145** (third consecutive clean run). Bug appears resolved.
+- **Act 3 reached for the first time (Run 145).** Died to The Transient at Floor 44.
+- **Best floor: 44 (Run 145).** Run 146 was a regression to Floor 12 (Act 1 elite death).
+- **Floor average (last 20 tracked runs): ~22.** Run 146 F12 pulls average down.
+- **No UI misplays in Run 146.** Fourth consecutive clean run. Treasure chest opened, shops browsed, events evaluated.
+- **Mechanics errors in Run 146: NONE.** Death was strategic (pathing), not mechanical. Combat arithmetic was correct throughout.
+- **Boss relic/chest skip bug: NOT triggered in Run 146** (fourth consecutive clean run). Bug appears resolved.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **FULL BLOCK EVERY HALLWAY FIGHT.** This is the new combat algorithm. The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md. This single change addresses both the arithmetic errors (forces explicit damage/block math every turn) and the HP attrition problem (prevents the HP drain that causes death spirals).
@@ -422,7 +421,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 
 Before fighting an elite, check:
 1. **HP threshold**: Below 30 HP for Act 1 elites is dangerous. Below 60% for Act 2 elites is dangerous.
-2. **Deck vs elite matchup**: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling -- a starter-quality deck (Strikes/Defends/Bash + 1-2 commons) will take 50-60 HP damage in a 20-turn Sentry fight. Do NOT take an elite path at Floor 5 unless the deck has at least one damage card beyond Strikes (Inflame, Carnage, Pommel Strike, Thunderclap, etc.) or the elite is Gremlin Nob/Lagavulin where Strikes are adequate.
+2. **Deck vs elite matchup**: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling -- a starter-quality deck (Strikes/Defends/Bash + 1-2 commons) will take 50-60 HP damage in a 20-turn Sentry fight. Do NOT take an elite path at Floor 5-6 unless the deck has at least one damage card beyond Strikes (Inflame, Carnage, Pommel Strike, Thunderclap, etc.) or the elite is Lagavulin where Strikes are adequate. **Even Gremlin Nob requires Attack-heavy composition** -- a deck with more Skills than Attacks (7 Skills vs 4 Attacks) draws 3-4 Skills per hand, making Nob near-unwinnable. Count your Attack/Skill ratio before committing to an elite path. **Minimum 3 monster rooms before first elite** -- 0-2 fights are not enough to build a deck that can handle any Act 1 elite.
 3. **Potions available**: Potions compensate for bad matchups.
 4. **Path alternatives**: If a safer path exists with similar value, take it.
 

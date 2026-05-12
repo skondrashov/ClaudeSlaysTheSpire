@@ -17,6 +17,7 @@ WEAKNESSES:
 - Combined with Demon Form, the full engine needs 2-3 turns of setup before meaningful output
 - A Skill card -- triggers Hex (Chosen) and Gremlin Nob's Enrage
 - At low HP vs fast enemies, the 2-3 turn setup window does not exist
+- As a Neow random rare, Limit Break is a dead card until a Str source is found. It occupies a deck slot and contributes nothing to early fights. If the Str source never appears (RNG denial), Limit Break remains dead weight for the entire run.
 
 WHEN TO PLAY: After Inflame or Demon Form has provided base Strength. Mid-fight when Strength is already 3+ for meaningful doubling. In boss fights after the scaling engine is online.
 

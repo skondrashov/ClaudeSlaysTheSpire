@@ -172,6 +172,17 @@ When you play a card by numeric index, all cards after it shift down by 1. This 
 
 ---
 
+## Enemy Intent Display
+
+Enemy intent numbers show the FINAL damage the player will take, including all modifiers:
+- **Vulnerable on player**: The displayed damage already includes the 1.5x multiplier from player Vulnerable. Do NOT multiply the displayed number by 1.5 again.
+- **Weak on enemy**: The displayed damage already includes the 0.75x reduction from enemy Weak.
+- **Enemy Strength**: The displayed damage already includes enemy Strength.
+
+**RULE: Use the displayed intent number directly for block calculations.** Do not recalculate modifiers on top of it. The displayed number is the exact damage that will be dealt if unblocked.
+
+---
+
 ## Enemy Mechanics
 
 ### Artifact

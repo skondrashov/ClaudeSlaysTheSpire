@@ -55,6 +55,7 @@
 - [Slaver's Collar](slavers-collar.md)
 - [Self-Forming Clay](self-forming-clay.md)
 - [Incense Burner](incense-burner.md)
+- [Bird-Faced Urn](bird-faced-urn.md)
 - [Mummified Hand](mummified-hand.md)
 - [Frozen Egg](frozen-egg.md)
 - [Omamori](omamori.md)

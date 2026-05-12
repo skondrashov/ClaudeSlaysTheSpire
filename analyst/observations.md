@@ -8,8 +8,8 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 ## Unconfirmed
 
-- **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Runs 143-145.** Three consecutive clean runs. Run 145 collected boss relics after BOTH boss kills (Ectoplasm after Guardian, Fusion Hammer after Collector). Bug appears resolved. Continue monitoring but downgrading priority.
-- **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Runs 143-145.** Three consecutive clean runs (Run 143: 2 chests, Run 144: 1 chest, Run 145: 3 chests). Bug appears resolved.
+- **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Runs 143-146.** Four consecutive clean runs. Bug appears resolved. Continue monitoring but downgrading priority.
+- **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Runs 143-146.** Four consecutive clean runs. Bug appears resolved.
 - Fungi Beast HP range: Playbook had ~19 HP. Run 141 showed one at 24 HP, other possibly 22 HP. Need more data to confirm Act 1 paired Fungi Beast HP range (22-28 suspected). May vary by ascension or Act.
 - Sentry Metallicize value: Confirmed 4 block/turn (from effective damage calculations in Run 141). Already in updated sentry.md, but only 1 observation. Monitor for consistency.
 - Headbutt selection UI confusion: Player attempted to select 2 cards for Headbutt (which only selects 1). Not a bug -- player misunderstood the interface. The `choose 0` then `choose 1` on lines 124-125 suggests the first `choose` completed the Headbutt selection, and the second was interpreted as a different action. Monitor for recurrence.
@@ -36,6 +36,9 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Book of Stabbing per-hit damage: 6 or 7 per hit? Need confirmation.
 - Donu and Deca: Not yet encountered. Run 145 showed them as Act 3 boss but died to Transient before reaching them.
 - Mummified Hand + Power-heavy decks: Observed generating 2-4 free plays per turn in a 5-Power deck (Barricade+, 2x Metallicize, Inflame+, Evolve+). The relic's value scales multiplicatively with Power count. One observation -- monitor for consistency.
+- Bird-Faced Urn relic: Heals 2 HP per Power played. Obtained from Sentries elite. Playbook entry created. Only 1 observation -- monitor for exact trigger conditions (does it work with Powers played from potions? from Distilled Chaos?).
+- Sentries Plated Armor interaction: Essence of Steel (4 Plated Armor) reduced damage per Sentry attack turn by 4. Over 14 turns, this is ~28-56 block total. But Plated Armor decays by 1 when hit (confirmed -- player's notes show Plated dropping from 4 to 3 to 2 across hits). Need more data on exact decay mechanic.
+- Gremlin Nob displayed intent includes player Vulnerable: Player noted T4 "9 base * 1.5 Vuln on me = 13" but displayed intent already showed 13 (or higher). The run summary confirms "displayed enemy intent already includes player Vulnerable in the damage number." If true, the player should use the displayed number directly, not recalculate Vulnerable on top. Need more observations to confirm consistently.
 - The Maw HP: Observed at approximately 300 HP (player noted 272 after 28 damage Turn 1, starting at ~300). Need exact confirmation.
 - The Maw pattern: STRONG_DEBUFF Turn 1, then alternating BUFF/ATTACK with escalating damage (5/16/33/56). Only 1 observation. Monitor for consistency.
 - Orb Walker HP: Observed at 93. Only 1 observation.
@@ -75,7 +78,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card/relic playbook entries where it's contextually relevant. Remaining recurring patterns:
 - **Arithmetic errors in combat** — Seven different errors in runs 124-144. Runs 140-143 showed significant improvement with Full Block Algorithm enforcing explicit math. But Run 144 introduced a new fatal error type: basic comparison failure ("13 > 20") on a kill turn with `end` chained in the same command. Checklist item #4 added to address this.
-- **Boss relic collection skipped** (Run 71, Run 77, Run 142): Automation bug. 3 confirmed occurrences. Did NOT occur in Runs 143-145 (three consecutive clean runs). Bug appears resolved. Downgrading priority.
+- **Boss relic collection skipped** (Run 71, Run 77, Run 142): Automation bug. 3 confirmed occurrences. Did NOT occur in Runs 143-146 (four consecutive clean runs). Bug appears resolved. Downgrading priority.
 - **Act 2 first-fight death spiral** — Byrd/SG fights as first Act 2 room drain 30-73 HP. If map forces consecutive Monster rooms with no recovery, the run dies regardless of skill. Route planning must prioritize early non-combat rooms.
 - **Elite readiness = deck quality, not just HP** — Run 141 entered Sentries at 95% HP but with a starter-quality deck (Strikes/Defends/Bash/Headbutt/SIO). The fight took 20 turns and drained 56 HP. Elite decision should evaluate DECK vs MATCHUP, not just HP. Neow's Lament exacerbates this by creating full HP with an undeveloped deck. Documented in sentry.md, neow-s-lament.md, strategy.md.
 - **Playbook accuracy gaps** — Mushrooms Eat option was documented as "Heal 22 HP" but actually heals 21 HP + Parasite curse. Fungi Beast buff turns were documented as "free damage windows" but are actually +3 Str per buff (scaling to 12-15 damage by Turn 5-6). These errors directly contributed to a death. Other playbook entries may have similar omissions from early runs when observation was less rigorous.
