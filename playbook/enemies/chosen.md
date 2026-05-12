@@ -1,4 +1,4 @@
-# Chosen (hallway, Act 2, HP: 95-97)
+# Chosen (hallway, Act 2, HP: 95-98)
 PATTERN: Turn 1 applies Hex (adds Dazed to draw pile when you play Skills). Applies Vulnerable to player. Has a 7x2 multi-attack (14 raw, 20 with Vulnerable on player). Gains +3 Strength over the fight. Attacks escalate from ~10 to 14 (7x2) to 20+ as Strength stacks.
 KEY MECHANIC: Hex. Every Skill card played adds a Dazed to draw pile. Blocking is actively costly -- each Defend clogs the deck. Also applies Vulnerable to player, making its 7x2 hit deal 20 effective damage.
 WHAT THIS MEANS: Minimize Skill usage. Front-load damage with Attacks. Bash+ is safe (Attack). Kill before Strength buffs make 7x2 lethal. With Vulnerable on you, even 7x2 base becomes 20 damage per turn. At low HP (<20), the 7x2 with Vulnerable is a death sentence.

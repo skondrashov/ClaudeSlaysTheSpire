@@ -25,6 +25,12 @@
 - [Oddly Smooth Stone](oddly-smooth-stone.md)
 - [Eternal Feather](eternal-feather.md)
 
+## Common Relics (continued)
+
+- [Ceramic Fish](ceramic-fish.md)
+- [Juzu Bracelet](juzu-bracelet.md)
+- [Sundial](sundial.md)
+
 ## Uncommon Relics
 
 - [Brimstone](brimstone.md)

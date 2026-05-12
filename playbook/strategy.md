@@ -2,19 +2,19 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (141 runs, 0 wins, best floor 39):** Major reasoning rework completed. The player now operates on three human-provided heuristics: (1) Full Block Algorithm — zero damage in hallway fights is the default, with kill paths preferred over pure block. (2) Full Act Pathing — read the entire map and plan elites/shops/campfires before the first fight. (3) Act 1 Tier List — card evaluation is lookup-based, not reasoning from scratch. Hard Rules abolished — guidance distributed to individual card/relic playbook entries. Heuristics are being applied but do not prevent worst-case encounter RNG. New failure mode identified: elite readiness is about deck quality, not just HP -- Sentries with a starter-quality deck is a 20-turn, 56-HP death trap even at 95% HP.
+**CURRENT STATUS (142 runs, 0 wins, best floor 39):** Major reasoning rework completed. The player now operates on three human-provided heuristics: (1) Full Block Algorithm — zero damage in hallway fights is the default, with kill paths preferred over pure block. (2) Full Act Pathing — read the entire map and plan elites/shops/campfires before the first fight. (3) Act 1 Tier List — card evaluation is lookup-based, not reasoning from scratch. Hard Rules abolished — guidance distributed to individual card/relic playbook entries. Heuristics are being applied but do not prevent worst-case encounter RNG. New failure mode identified: elite readiness is about deck quality, not just HP -- Sentries with a starter-quality deck is a 20-turn, 56-HP death trap even at 95% HP. **CRITICAL INFRASTRUCTURE BUG: Boss relics and treasure chest relics are being skipped by `proceed` commands (3 boss relic skips, 1 chest skip confirmed). This must be fixed before further progress is possible.**
 
-**SCORECARD (runs 101-141):**
-- Act 1 boss wins: ~75% -- Guardian regression (4 deaths in 36 runs). Hexaghost regression (2 in last 16). Run 141: never reached boss (death F8).
+**SCORECARD (runs 101-142):**
+- Act 1 boss wins: ~75% -- Guardian regression (4 deaths in 36 runs). Hexaghost regression (2 in last 16). Run 142: clean Slime Boss kill at 46/80 HP, Feed obtained from boss card reward.
 - Act 2 boss reaches: 4 (Runs 105, 110, 114, 125). No new Act 2 boss reach since Run 125.
-- Act 2 hallway deaths continue. Run 141: Act 1 death at F8 from Sentries HP drain + Fungi Beast scaling.
+- Act 2 hallway deaths continue. Run 142: death F24 from Centurion+Mystic (10x3 multi-hit attack).
 - Best floor: 39 (Run 63) -- unchanged for 75+ runs.
 - Known mistake patterns: addressed by distributing guidance to individual card/relic playbook entries.
-- **Floor average (last 20 tracked runs): ~21.** Run 141 F8 death pulls average down. New heuristics need more data.
-- **Mechanics errors reduced in Runs 140-141.** Full Block Algorithm forced explicit math every turn. Run 141 had accurate per-turn damage calculations. Main error was strategic (elite readiness), not arithmetic.
-- **Healing RNG denial: 8 of last 10 runs.** Still not addressable -- pure variance.
-- **New failure mode: elite readiness vs deck quality.** Sentries with starter-quality deck at 95% HP still drains 56 HP in 20 turns. HP threshold alone is insufficient for elite decision-making -- deck must have AOE or damage scaling.
-- **Playbook accuracy issue found: Mushrooms event Eat option omitted Parasite curse.** Corrected. Other playbook entries may have similar omissions.
+- **Floor average (last 20 tracked runs): ~21.** Run 142 F24 is above average but still well short of Act 2 boss.
+- **Mechanics errors reduced in Runs 140-142.** Full Block Algorithm forced explicit math every turn. Run 142 had accurate per-turn damage calculations throughout. Death was strategic (potion misallocation + unknown Centurion multi-hit), not arithmetic.
+- **Healing RNG denial: 8 of last 10 runs.** Run 142 obtained Feed from Slime Boss card reward, breaking the streak. Feed successfully used for 3 kills (+9 Max HP, 80->89).
+- **CRITICAL BUG: Boss relic + chest relic skipping.** Now 3 confirmed boss relic skips (Runs 71, 77, 142) and 1 chest skip (Run 142 Floor 9). This is the single most impactful issue. A boss relic is worth more than any single card or strategic improvement. Must be fixed at the infrastructure level.
+- **Playbook accuracy issue found: Centurion attack pattern.** Previously documented as 12-18 single hits. Centurion has a 10x3 = 30 multi-hit attack. Corrected in centurion-mystic.md.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **FULL BLOCK EVERY HALLWAY FIGHT.** This is the new combat algorithm. The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md. This single change addresses both the arithmetic errors (forces explicit damage/block math every turn) and the HP attrition problem (prevents the HP drain that causes death spirals).
@@ -67,7 +67,7 @@ These thresholds determine which MAP PATHS are safe, not how to play combat. Com
 | Fight Type | Minimum HP to Enter | Notes |
 |---|---|---|
 | Hallway (easy) | 25% | Byrds/Chosen can drain 40-73 HP even with correct play and TC+ in deck |
-| Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic, Snake Plant |
+| Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic (10x3 multi-hit can drain 61 HP, death at 71% entry confirmed), Snake Plant |
 | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
 
@@ -94,7 +94,7 @@ After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. 
 The underlying cause is almost always failure to full block. The fights below are especially punishing when full block fails:
 
 1. **Byrd fights**: 36-73 HP lost per fight when full block fails. Worst case: all 3 Byrds attack same turn for 38+ combined damage with insufficient block cards in hand. Flight makes fights 8-12 turns, compounding per-turn leaks. Thunderclap is critical (strips Flight + applies Vulnerable).
-2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic's healing extends the fight, giving more turns to leak damage.
+2. **Centurion+Mystic**: 25-61+ HP lost per fight. Centurion has a 10x3 = 30 damage multi-hit attack (not just 12-18 single hits). Mystic's healing extends the fight, giving more turns to leak damage. The Centurion solo phase after killing Mystic is still dangerous -- do not exhaust all potions on the Mystic kill.
 3. **Chosen (solo or paired)**: 30-40 HP drained. Hex punishes Skills (Dazed clog), but you still must block -- Hex adds Dazed to draw pile, not hand.
 4. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Drains 15-42 HP. Frail makes full block harder but NOT impossible -- account for the 25% block reduction.
 5. **Spheric Guardian**: 30-41 HP drain even with correct play. Barricade block accumulates. Requires Strength scaling to break through -- this is a DPS race, not a full block fight.
