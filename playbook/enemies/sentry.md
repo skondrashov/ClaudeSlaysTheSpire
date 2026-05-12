@@ -1,9 +1,12 @@
 # Sentry (elite, Act 1, HP: ~40 each, appears as group of 3)
-PATTERN: Two Sentries attack (9 damage each = 18 total) while one adds Dazed status cards to deck. The attacking pair rotates each turn. Each starts with 1 Artifact.
-KEY MECHANIC: Dazed card generation + Artifact protection. Dazed cards (Unplayable, Ethereal) clog draws. Artifact blocks first debuff application.
+PATTERN: Two Sentries attack (9 damage each = 18 total) while one adds Dazed status cards to deck. The attacking pair rotates each turn. Each starts with 1 Artifact. Each has Metallicize 4 (gains 4 block every turn automatically).
+KEY MECHANIC: Dazed card generation + Artifact protection + Metallicize 4. Dazed cards (Unplayable, Ethereal) clog draws. Artifact blocks first debuff application. Metallicize 4 means every Sentry gains 4 block/turn, requiring 4 extra damage to break through before HP damage.
 WHAT THIS MEANS: AOE is king -- Whirlwind for 15 damage to all 3 (45 total) is the best turn 1. Focus fire one at a time. Strip Artifact with Thunderclap before real debuffs. Kill before Dazed overwhelms draws.
-BENCHMARKS: 7-turn fight. ~22 HP damage. Block on 2-Sentry attack turns (18 damage).
-BRING: AOE (Whirlwind, Thunderclap). Focus fire.
-AVOID: Slow play (Dazed accumulation cripples draws).
+
+**ELITE READINESS GATE:** Do NOT fight Sentries with a starter-quality deck (Strikes, Defends, Bash, 0-1 other cards). Without AOE or meaningful damage scaling, the fight takes 20 turns because: (1) Metallicize 4 absorbs 4 damage from every Strike, reducing effective damage to 2/hit; (2) Dazed clogging gives multiple turns with zero playable attack or block cards; (3) each Sentry kill takes 6-8 turns at 2 effective damage/hit. A 20-turn Sentry fight drains 56+ HP even with perfect blocking discipline. Confirmed: a deck with Strikes/Defends/Bash/Headbutt/SIO spent 20 turns and took 56 damage (76->20 HP), making the rest of the run unwinnable. The Sentries fight requires at least one of: AOE (Thunderclap, Whirlwind, Cleave), damage scaling (Inflame, Spot Weakness), or a strong attack card (Carnage, Pommel Strike+) to be winnable without catastrophic HP loss.
+
+BENCHMARKS (WITH AOE): 7-turn fight, ~22 HP damage. WITHOUT AOE: 18-20 turns, 50-60 HP damage. The AOE benchmark is the only acceptable outcome.
+BRING: AOE (Whirlwind, Thunderclap, Cleave). Damage scaling (Inflame, Spot Weakness). Focus fire.
+AVOID: Slow play (Dazed accumulation cripples draws). Fighting with a starter-quality deck.
 
 ACT 2 APPEARANCE: Sentries also appear in Act 2 hallway fights paired with other enemies (e.g., Sentry + Spheric Guardian). In these pairings, the Sentry still generates Dazed and attacks for ~9 damage per turn. Combined with Spheric Guardian's 10x2 attacks and Frail debuff, this is one of the most dangerous Act 2 hallway fights. Kill the Sentry first (no block to break through, lower HP) to reduce incoming damage count and stop Dazed generation. Gremlin Horn triggers on Sentry death, providing energy and draw to handle the Spheric Guardian.
