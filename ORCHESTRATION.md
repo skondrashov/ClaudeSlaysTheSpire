@@ -75,7 +75,7 @@ Stop-Process -Id <PID> -Force
 Use the Agent tool with `run_in_background: true`. The agent imports cmd.py once at startup and plays the game in a loop.
 
 Key points for the agent prompt:
-- Import from cmd: `from cmd import state, send, play, end, choose, proceed, skip, potion_use, start`
+- Import from cmd: `from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, start`
 - Always call `state()` first to see the game
 - Use the `reason` parameter on `send()` — it shows on the overlay for stream viewers
 - Card indices are 1-indexed, enemy indices are 0-indexed
@@ -146,12 +146,12 @@ The player/analyst/strategist loop. Follow these steps exactly — every time, n
 1. Read the agent's result — note victory/defeat, floor, cause of death, key lessons
 2. Clear the player lock:
    ```python
-   python3 -c "import os; f='data/player.lock'; os.path.exists(f) and os.remove(f); print('lock cleared')"
+   python -c "import os; f='data/player.lock'; os.path.exists(f) and os.remove(f); print('lock cleared')"
    ```
 3. Read `data/run_stats.json` — note total_runs for strategist scheduling
 4. **ACTIVATE OVERLAY** for the analyst (do this BEFORE spawning):
    ```python
-   python3 -c "
+   python -c "
    import json, urllib.request
    data = json.dumps({
        'action': 'start',
@@ -170,7 +170,7 @@ The player/analyst/strategist loop. Follow these steps exactly — every time, n
 
 1. **STOP OVERLAY:**
    ```python
-   python3 -c "
+   python -c "
    import json, urllib.request
    data = json.dumps({'action': 'stop'}).encode('utf-8')
    req = urllib.request.Request('http://127.0.0.1:3002/agent', data=data, headers={'Content-Type': 'application/json'})
@@ -196,7 +196,7 @@ The player/analyst/strategist loop. Follow these steps exactly — every time, n
 
 1. Generate new session token and clear old lock:
    ```python
-   python3 -c "
+   python -c "
    import uuid, os
    token = str(uuid.uuid4())
    lock = 'data/player.lock'

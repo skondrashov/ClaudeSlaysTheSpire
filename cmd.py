@@ -431,7 +431,7 @@ def _resolve_shop_choose(raw_state: dict, action: str) -> str:
     return action  # No match found, pass through unchanged
 
 
-def _translate_named_choose(name: str, screen: str) -> str:
+def _translate_named_choose(name: str) -> str:
     """Translate named choose commands like 'choose rest'."""
     name_map = {
         "rest": "Rest",
@@ -475,7 +475,7 @@ def _translate_command(command: str) -> str:
             idx = int(parts[1])
         except ValueError:
             # Named choice like "choose rest" or "choose smith"
-            return _translate_named_choose(parts[1], screen)
+            return _translate_named_choose(parts[1])
 
         if screen == "MAP":
             nodes = ss.get("next_nodes", [])
@@ -747,9 +747,8 @@ def _auto_wait_shop_screen(raw: dict) -> dict:
         return raw
 
     # Poll for SHOP_SCREEN (up to 3 seconds, 15 × 200ms)
-    import time as _time
     for _ in range(15):
-        _time.sleep(0.2)
+        time.sleep(0.2)
         raw = _tcp_request({"type": "state"})
         _last_raw_state = raw
         if not raw.get("in_game"):
@@ -764,13 +763,7 @@ def _auto_wait_shop_screen(raw: dict) -> dict:
 
 
 def _auto_handle_mechanical(raw: dict) -> dict:
-    """Handle mechanical transitions that never involve a real decision.
-
-    NOTE: _auto_proceed_shop and _auto_proceed_chest were removed because
-    sending 'proceed' from SHOP_ROOM/CHEST exits those rooms entirely,
-    skipping past shops and treasure rooms without the agent ever seeing them.
-    The agent must handle these screens itself.
-    """
+    """Handle mechanical transitions that never involve a real decision."""
     raw = _auto_collect_gold(raw)
     raw = _auto_wait_shop_screen(raw)
     return raw

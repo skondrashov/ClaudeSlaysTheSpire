@@ -629,51 +629,6 @@ def short_name(full_name):
     return full_name
 
 
-def render_category_page(index_md, cat_name):
-    """Render category _index.md as section headers + tile grids.
-
-    Instead of rendering markdown lists as <ul><li>, this parses the
-    section structure and renders link lists as entry-grid tiles.
-    """
-    lines = index_md.split("\n")
-    html_parts = []
-    pending_links = []
-
-    def flush_grid():
-        nonlocal pending_links
-        if pending_links:
-            html_parts.append('<div class="entry-grid">')
-            for text, href in pending_links:
-                html_parts.append(f'<a href="{href}">{html.escape(text)}</a>')
-            html_parts.append('</div>')
-            pending_links = []
-
-    for line in lines:
-        stripped = line.strip()
-
-        # Headers
-        if m := re.match(r'^(#{1,6})\s+(.+)', stripped):
-            flush_grid()
-            level = len(m.group(1))
-            content = inline(m.group(2))
-            slug = re.sub(r'[^a-z0-9]+', '-', m.group(2).lower()).strip('-')
-            html_parts.append(f'<h{level} id="{slug}">{content}</h{level}>')
-
-        # List items with links -> tile entries
-        elif (stripped.startswith("- ") or stripped.startswith("* ")):
-            item = stripped[2:]
-            if link_m := re.match(r'\[(.+?)\]\((.+?)\)', item):
-                link_text = link_m.group(1)
-                link_target = link_m.group(2)
-                if link_target.endswith(".md"):
-                    entry_stem = link_target[:-3]
-                    href = make_slug(cat_name, entry_stem)
-                    pending_links.append((link_text, href))
-
-    flush_grid()
-    return "\n".join(html_parts)
-
-
 def make_slug(category, entry_stem=None):
     """Generate the output HTML filename for a playbook page.
 

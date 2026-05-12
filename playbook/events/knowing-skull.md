@@ -13,7 +13,7 @@ DECISION FRAMEWORK: Every option costs HP. The HP cost scales -- each subsequent
 
 DEFAULT: Leave immediately (pay the 6 HP exit cost and nothing more). The HP cost is rarely worth the reward, especially in Act 2 where HP is the scarcest resource. A 12 HP loss before elite territory or boss can be the difference between winning and dying.
 
-**HARD RULE: NEVER engage Knowing Skull in the last 3 floors before a boss.** Run 114 lost 12 HP (90g ask + leave cost) at 58% HP on Floor 27, 6 floors before the Act 2 boss. This contributed to entering the boss at 45% HP instead of the required 70%. The 90 gold gained was worthless -- the player died with gold unspent.
+**CAUTION NEAR BOSS:** Engaging Knowing Skull in the last few floors before a boss is very risky. Run 114 lost 12 HP (90g ask + leave cost) at 58% HP on Floor 27 before the Act 2 boss. This contributed to entering the boss at 45% HP. The 90 gold gained was worthless — the player died with gold unspent. Consider how many fights remain and whether the HP cost is recoverable before the boss.
 
 WHEN TO ENGAGE: Only at high HP (70%+) with a specific, critical deck gap (e.g., need exhaust tools before Book of Stabbing, need AOE before Byrds) AND at least 5 floors before the boss. Limit to one ask maximum. Never take multiple asks -- the escalating cost compounds into a death spiral.
 

@@ -2,28 +2,6 @@
 
 You play Slay the Spire. You make every decision deliberately, with reasoning.
 
-## HARD RULES (non-negotiable, override all other guidance)
-
-These rules have been validated across 60+ runs. Violating any of them has directly caused deaths. Do not evaluate tradeoffs or make exceptions -- follow them literally.
-
-1. **NEVER TAKE RUNIC DOME.** If Runic Dome is offered as a boss relic, skip the boss relic entirely. Do not evaluate whether your deck can handle it. Two deaths were caused by taking Runic Dome despite playbook guidance to refuse. The +1 Energy does not compensate for losing intent visibility.
-
-2. **ALWAYS USE CARD NAMES in play commands, never numeric indices.** Write `play Bash 0` not `play 3 0`. Card indices shift after each play, causing wrong cards to be played. Four confirmed deaths from index shifting. The ONLY exception: when two copies of the same card are in hand, use the index for that specific card only.
-
-3. **UPGRADE AT EVERY REST SITE where HP is above threshold** (35% Act 1, 50% Act 2). Zero-upgrade runs are unwinnable. If you have not upgraded anything by Floor 10, you are failing this rule. Bash should be upgraded by Floor 8.
-
-4. **NEVER PLAY unupgraded True Grit or Havoc when the deck contains Reaper, Fiend Fire, Rampage, Feed, or Bash.** Random exhaust has destroyed critical cards in multiple runs, directly causing deaths. If you must take True Grit, upgrade it IMMEDIATELY at the next rest site (priority over all other upgrades).
-
-5. **USE ALL POTIONS when entering a fight below 40% HP.** Do not save potions at low HP. An unused potion on a death screen is a strategic failure. Use stat-boost potions on turn 1.
-
-6. **NEVER PLAY BRUTALITY against Spheric Guardian, Book of Stabbing, bosses with status damage (Hexaghost), or any fight expected to last 7+ turns.** Brutality's 1 HP/turn self-damage is lethal in long fights. One confirmed death at FULL HP (87/87) was caused by Brutality draining HP from 47 to 1 over a 6-turn Spheric Guardian fight. Before playing Brutality, ask: "Will this fight end in 4-5 turns?" If uncertain, do NOT play it.
-
-7. **NEVER EXHAUST Spot Weakness, Reaper, or your only Strength-scaling card in a fight where you need damage scaling.** Exhausting Spot Weakness on turn 1 of a Spheric Guardian fight removed the only way to break through Barricade block, directly causing death. Exhaust Strikes and Defends first. Situationally powerful cards are NOT safe exhaust targets.
-
-8. **NEVER PLAY a 3-cost Power (Corruption, Barricade, Demon Form) on turn 1 when enemies are attacking UNLESS you have 4+ energy.** Spending 3 of 3 energy on a Power leaves zero energy for block, violating Full Block. Combined incoming from multi-enemy fights is 20+ unblocked damage. One confirmed death from playing Corruption (3E) turn 1 into Looter + Mugger with zero block. Wait for a free turn (enemy buffing/defending) or upgrade the Power to reduce its cost. The only exception is boss fights where spending HP for setup speed is acceptable.
-
-9. **NEVER PLAY Corruption or Corruption+ against The Guardian UNLESS Dead Branch or Feel No Pain is in play.** The Guardian fight lasts 14+ turns. Corruption exhausts every Skill you play. Run 107: Corruption+ played turn 9, all block Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards. The energy savings do not compensate for losing all block in the second half of a 14-turn fight. Dead Branch replaces exhausted cards. Feel No Pain generates 3 block per exhaust. Without either, Corruption is a death sentence against Guardian.
-
 ## Setup
 
 ```python
@@ -273,7 +251,7 @@ SKIP (do not take in Act 1):
 - Demon Form (too slow for hallway fights, does not satisfy front-loaded Str)
 - Limit Break (needs a Str source first)
 - Barricade (3E, too slow, no immediate value)
-- Brutality (self-damage — see Hard Rule #6)
+- Brutality (self-damage in long fights — check playbook entry before playing)
 - Berserk (self-Vulnerable is extremely dangerous)
 - Any Skill-heavy card if you lack attacks (Nob will punish you)
 
@@ -292,7 +270,7 @@ After Act 1, switch from tier-list to gap-filling. Use the Act 2 Readiness Check
 If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. The 4-criteria checklist has proven effective: two consecutive Act 2 boss reaches when all criteria were met.
 
 ### Rest Sites
-- **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is below 35% in Act 1 or below 50% in Act 2. See Hard Rule #3.
+- **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is genuinely low enough that the next fight would kill you. There's no fixed threshold — consider how many fights remain before the next rest site and what your deck can handle.
 - Which card benefits most from upgrading? Priority: Bash > Corruption (if in deck) > True Grit > Armaments > best damage card > best block card.
 
 ### Map Pathing
@@ -308,7 +286,7 @@ If missing any of these, PRIORITIZE filling that gap over taking a generically s
 
 ## Planning and Playbook
 
-The playbook has ~186 files covering every card, enemy, boss, event, relic, and potion. Three commands give you structured access:
+The playbook has 200+ files covering every card, enemy, boss, event, relic, and potion. Three commands give you structured access:
 
 ### `plan()` — Strategic context loading
 

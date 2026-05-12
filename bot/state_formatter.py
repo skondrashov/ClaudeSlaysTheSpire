@@ -6,6 +6,8 @@ what it needs to reason about, with card indices matching what CommunicationMod
 expects (1-indexed for play commands).
 """
 
+import re
+
 
 def format_state(state: dict) -> str:
     """Main entry point. Dispatches to screen-specific formatter."""
@@ -238,7 +240,6 @@ def format_event(gs: dict) -> str:
     lines = [f"\n=== EVENT: {event_name} ==="]
     if body:
         # Strip HTML tags from body text
-        import re
         clean = re.sub(r"<[^>]+>", "", body)
         lines.append(clean)
 
@@ -248,7 +249,6 @@ def format_event(gs: dict) -> str:
         disabled = opt.get("disabled", False)
         label = opt.get("label", "")
         # Strip HTML
-        import re
         text = re.sub(r"<[^>]+>", "", text)
         status = " (DISABLED)" if disabled else ""
         lines.append(f"  [{i}] {text}{status}")

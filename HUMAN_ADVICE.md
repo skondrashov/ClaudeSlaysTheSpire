@@ -1,6 +1,6 @@
 # Human Advice Log
 
-Historical record of knowledge explicitly injected into the system by a human player. This file is NOT read by the pipeline — it exists purely for provenance tracking. Everything here has been incorporated into the player system through heuristics.md and subsequent strategist reworks.
+Historical record of knowledge explicitly injected into the system by a human player. This file is NOT read by the pipeline — it exists purely for provenance tracking. Everything here has been incorporated into the player system through player.md and strategy.md.
 
 ---
 
@@ -42,7 +42,43 @@ Historical record of knowledge explicitly injected into the system by a human pl
 - "In general the pipeline is not good at considering alternatives"
 - "It's basically a template you would fill out to determine the paths toward full block, and you'd obviously prefer to kill something and then full block if you can"
 
-**Human's decision to prioritize stream quality:**
-- "I kind of want to start using these heuristics so that the stream looks more impressive"
-- "Initially it's more important to have a bot that plays well to impress people rather than a bot that slowly learns"
-- "If anything we'll scale back later and see if we can't deduce the heuristics from first principles in a later run"
+## 2026-05-12 — Session 3: Hard Rules Abolished
+
+**Context:** The player had accumulated 9 "Hard Rules" — NEVER-do prohibitions added after specific deaths. The human identified this as a fundamentally wrong approach for games.
+
+**Human's key insight:** "Hard rules in general just aren't how games work. If the player doesn't understand how to use something it's something they need to explore, not just write a rule about with like one or two runs of data."
+
+### Feedback on each hard rule:
+
+**1. "NEVER TAKE RUNIC DOME"**
+- "It's not like runic dome is something the developers put in to trick the player."
+- "Realistically, what it means is we can't use runic dome until we've memorized all of the attack patterns in the game."
+- Human says this guidance belongs under the Runic Dome playbook entry, not as a blanket prohibition.
+
+**2. "ALWAYS USE CARD NAMES"**
+- "It's not a gameplay rule, it's how to interact with the game, and ideally the player doesn't have to worry about it because the system makes it easy."
+- Infrastructure issue, not gameplay. The system (cmd.py) already handles name→index resolution transparently.
+
+**3. "UPGRADE AT EVERY REST SITE where HP is above threshold"**
+- "Why is that a rule? Obviously you upgrade at a rest site if you don't need to rest. There's no 'HP threshold', everything is situational in games."
+
+**4. "NEVER PLAY unupgraded True Grit with key cards"**
+- "Kind of true but... never? Everything is situational."
+
+**5. "USE ALL POTIONS below 40% HP"**
+- "The only rule I kinda like, though again optimal potion use is much more complicated than that, and 40% is an arbitrary threshold."
+
+**6. "NEVER PLAY BRUTALITY in long fights"**
+- "Useless, how do you know if the fight is long?"
+
+**7. "NEVER EXHAUST Spot Weakness/Reaper"**
+- "Doesn't make sense on a lot of levels."
+
+**8. "NEVER PLAY 3-cost Power turn 1 when attacked"**
+- "Kind of reasonable but it belongs to the specific powers in question, and also again 'never' is stupid."
+
+**9. "NEVER PLAY Corruption vs Guardian without Dead Branch/FNP"**
+- "Specific to the point of being useless even aside from saying 'never'. Obviously you sometimes want to play corruption and sometimes you don't, and what does the guardian have to do with anything?"
+
+### Resolution:
+Hard Rules section removed from player.md entirely. Relevant guidance distributed as soft context to individual card/relic playbook entries (runic-dome.md, corruption.md, true-grit.md, brutality.md, etc.). Card name usage retained in the "Card Names and Enemy Targeting" section as infrastructure guidance, not a gameplay rule.

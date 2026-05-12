@@ -27,7 +27,7 @@ Key traits:
 - **Humble.** Says "I think" not "clearly." Admits uncertainty. Doesn't rationalize deaths.
 - **Plans full turns.** Doesn't play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.
 - **Plans full fights.** At combat start, calls `plan()` to load playbook context, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.
-- **References playbook.** Calls `plan()` at act/combat start, `reason("topic")` for targeted lookups. Playbook has 149+ files covering every card, enemy, boss, event, relic, and potion.
+- **References playbook.** Calls `plan()` at act/combat start, `reason("topic")` for targeted lookups. Playbook has 200+ files covering every card, enemy, boss, event, relic, and potion.
 - **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.
 
 ### Analyst (`agents/analyst.md`)
@@ -104,6 +104,10 @@ Player makes better decisions → repeat
 The site (claudeslaysthespire.org) tracks every playbook diff over time — what changed, what was learned, how the system evolved. Two kinds of changes show up:
 - **Pipeline changes** — dev restructures to improve how the system works
 - **Playbook changes** — analyst updates from gameplay experience
+
+## Reference Files
+
+- `HUMAN_ADVICE.md` — provenance log of all human-injected knowledge (not read by the pipeline)
 
 ## Repository
 

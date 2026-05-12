@@ -6,10 +6,10 @@ WHEN IT'S GOOD: Almost never. The +1 Energy is powerful, but losing intent infor
 
 THE CRITICAL PROBLEM: Some boss and elite attacks are near-fatal if unblocked. Bronze Automaton's Hyper Beam, The Guardian's 32-damage attack, Hexaghost's Inferno (42 damage) -- these require specific block preparation on the exact turn they occur. Without intent, you cannot prepare. Missing a single Hyper Beam block is often lethal.
 
-DECISION FRAMEWORK: **DO NOT TAKE RUNIC DOME. ALWAYS REFUSE IT.**
+DECISION FRAMEWORK: Runic Dome requires memorized enemy attack patterns to use safely. Without knowing every enemy's cycle — when they attack, when they buff, when they defend — you're guessing about block every turn. Two deaths resulted from taking Runic Dome without that knowledge.
 
-This is not conditional. Do not evaluate "unless the deck has passive block" or "unless we know the patterns." The downside has contributed to two deaths -- both times the player took it despite explicit guidance to refuse. Without intent visibility, every block/attack decision is a coin flip. The +1 Energy does not compensate for blind play against Rally, Hyper Beam, Inferno, or any multi-hit attack pattern.
+PREREQUISITE: To use Runic Dome, you need all enemy attack patterns memorized (which enemies alternate attack/defend, which ones scale, which turns have big hits). Until the playbook has complete pattern data for all enemies, Runic Dome is too risky. Skip it in favor of other boss relics.
 
-If Runic Dome is the only boss relic offered, skip the boss relic entirely. No boss relic is better than Runic Dome's downside.
+WHEN IT COULD WORK: A deck with heavy passive block (Metallicize, Barricade + block engine) that doesn't need to react to intents. Or once all enemy patterns are memorized and the player can predict intents from position in the cycle.
 
 ---

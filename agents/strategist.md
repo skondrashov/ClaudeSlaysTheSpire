@@ -9,7 +9,7 @@ Cleanup and hygiene are part of your job, but they're in service of the bigger q
 Every ~10 completed runs (or when things feel stuck). You have access to:
 - `analyst/run_log.md` — brief structured summaries of every run
 - `analyst/observations.md` — uncertain items the analyst hasn't promoted
-- `playbook/` — the full knowledge base (130+ files)
+- `playbook/` — the full knowledge base (200+ files)
 - `data/run_stats.json` — win/death/floor stats
 - `data/runs/` — full event logs from past runs (if you need raw data)
 
@@ -28,7 +28,7 @@ The playbook exists so the player makes better decisions. Evaluate whether it's 
 - **Dead weight**: Are there entries the player probably never loads? (e.g., cards we never see, events we always skip)
 - **Missing coverage**: Are there decisions the player keeps getting wrong that the playbook doesn't address?
 - **Signal-to-noise**: Are entries concise and actionable, or bloated with hedging and history?
-- **Structure**: Is 130+ individual files the right shape? Would some topics be better consolidated? Are the index files useful or just lists?
+- **Structure**: Is 200+ individual files the right shape? Would some topics be better consolidated? Are the index files useful or just lists?
 - **strategy.md coherence**: Is it a coherent document or a pile of disconnected paragraphs from different runs?
 
 ### 3. Are there patterns the analyst is missing?
