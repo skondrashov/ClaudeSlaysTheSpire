@@ -219,13 +219,17 @@ async def state_watcher():
                             await _broadcast_stats()
 
                         # Detect new game session (in_game transitions true)
+                        # Only reset run_counted if game_over was already handled
+                        # (meaning we went through: game over → main menu → new run).
+                        # This prevents in_game flickers during Neow from double-counting.
                         if not was_in_game:
-                            run_counted = False
-                            game_over_handled = False
-                            # Clear feed for the new run
-                            action_feed.clear()
-                            _save_feed()
-                            recent_events.clear()
+                            if game_over_handled or not run_counted:
+                                run_counted = False
+                                game_over_handled = False
+                                # Clear feed for the new run
+                                action_feed.clear()
+                                _save_feed()
+                                recent_events.clear()
 
                         # Count the run when Neow event appears — every STS run
                         # starts with Neow, so this is the definitive signal.

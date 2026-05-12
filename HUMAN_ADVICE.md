@@ -151,3 +151,28 @@ The following was gathered from expert guides (Jorbs, Baalorlord, Reddit r/slayt
 - Slime Boss: Ideal is to get close to 50% then burst past to trigger split at low HP. Slam (35 dmg) comes turn 2 — need 40+ HP entering.
 - Hexaghost: Divider turn 1 scales with current HP (80 HP = 6x6 = 36 damage). Long fight (~8-9 turns), needs sustained ~28-30 damage/turn. Burns upgrade to 4 damage after first Inferno — soft timer.
 - The Guardian: Mode Shift at 30 damage (increases by 10 each cycle). In Defensive Mode, Sharp Hide deals 3 Thorns per attack played — do NOT play attacks. Play Skills and Powers during Defensive Mode, unleash attacks during Offensive Mode. Few large hits > many small hits (Bludgeon ideal).
+
+## 2026-05-12 — Session 5: Potion Management
+
+**Context:** Run 140 had Potion Belt (5 slots) with 0 potions at death. Run 141 also had no potions. The player is not acquiring or using potions effectively.
+
+**Human's insight:** "If you have full potions... use your potions. If a potion is going to drop and you have full potions that's a misplay generally."
+
+### Potion drop mechanics (from wiki research):
+- **Base drop rate: 40%**, resets at start of each act
+- After a potion drops: chance decreases by 10% (next fight: 30%)
+- After no potion drops: chance increases by 10% (next fight: 50%)
+- **Potions do NOT drop if all slots are full.** The chance adjusts but the potion is simply lost.
+- White Beast Statue relic: 100% potion drop rate (overrides the variable system)
+
+### Implications for the player:
+- You're statistically likely to get a potion every 2-3 fights
+- Full potion slots = wasted value every fight. Over an act that's potentially 3-5 lost potions.
+- **Before a fight with full slots: use or discard your weakest potion** to open a slot for a potential drop
+- Potions are meant to be used, not hoarded. A potion used in a hallway fight to prevent 15 HP damage is worth more than saving it "for the boss" and never using it.
+- Exception: save one high-impact potion (Strength, Fairy in a Bottle) for bosses/elites if you have the slot space.
+
+### Strategist should incorporate:
+- Add potion management section to strategy.md
+- Update the potion playbook entries with usage timing guidance
+- Add "use potions with full slots" to the player's pre-fight checklist
