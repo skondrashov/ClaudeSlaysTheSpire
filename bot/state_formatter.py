@@ -49,7 +49,8 @@ def format_state(state: dict) -> str:
     elif screen == "COMPLETE":
         parts.append(format_complete(gs))
     elif screen == "CHEST":
-        parts.append("CHEST — Use PROCEED to open.")
+        parts.append("CHEST — Use 'choose open' to open the chest and collect the relic.")
+        parts.append("WARNING: Do NOT use proceed here — it will skip the chest entirely.")
     else:
         parts.append(f"SCREEN: {screen} (no specific formatter)")
 
@@ -430,7 +431,8 @@ def format_boss_reward(gs: dict) -> str:
         name = relic.get("name", "?")
         lines.append(f"  [{i}] {name}")
 
-    lines.append("\nUse: choose <index> to take, return to skip")
+    lines.append("\nYou MUST choose a boss relic — use: choose <index>")
+    lines.append("WARNING: Skipping a boss relic is almost never correct. Boss relics are extremely powerful.")
     return "\n".join(lines)
 
 

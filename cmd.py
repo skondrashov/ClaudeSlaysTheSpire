@@ -168,8 +168,8 @@ def state() -> str:
     global _last_raw_state
     raw = _tcp_request({"type": "state"})
     _last_raw_state = raw
-    # Auto-wait for SHOP_ROOM → SHOP_SCREEN transition
-    raw = _auto_wait_shop_screen(raw)
+    # Auto-handle mechanical transitions before returning state
+    raw = _auto_handle_mechanical(raw)
     return format_state(raw)
 
 
@@ -681,6 +681,18 @@ def send(command: str, reason: str = "") -> str:
     # Fetch pre-command state so translation has current hand/enemies
     global _last_raw_state
     _last_raw_state = _tcp_request({"type": "state"})
+
+    # Guard: prevent proceed on BOSS_REWARD (must choose a relic first)
+    gs = _last_raw_state.get("game_state") or {}
+    screen = gs.get("screen_type", "")
+    cmd_verb = command.strip().split()[0].lower() if command.strip() else ""
+    if cmd_verb == "proceed" and screen == "BOSS_REWARD":
+        return (
+            "[ERROR] Cannot proceed on BOSS_REWARD — you must choose a relic first!\n"
+            "Use: send('choose 0', reason='...') to pick a boss relic.\n"
+            "Skipping a boss relic is a devastating misplay."
+        )
+
     # Resolve card names to indices using current hand state
     resolved = _resolve_card_name(_last_raw_state, command)
     # Resolve shop card/relic names to indices
@@ -689,7 +701,7 @@ def send(command: str, reason: str = "") -> str:
     raw = _tcp_request({"type": "command", "command": resolved})
     _last_raw_state = raw  # Update cache
 
-    # Auto-handle mechanical transitions (gold collection only)
+    # Auto-handle mechanical transitions (gold, chests, shop wait)
     raw = _auto_handle_mechanical(raw)
 
     return format_state(raw)
@@ -762,9 +774,30 @@ def _auto_wait_shop_screen(raw: dict) -> dict:
     return raw
 
 
+def _auto_open_chest(raw: dict) -> dict:
+    """Auto-open chests — there is never a reason not to open a chest.
+
+    CommunicationMod shows CHEST screen for both treasure room chests and
+    boss treasure chests.  The only available choice is "open".  After opening,
+    the screen transitions to the relic reward (or BOSS_REWARD for boss chests).
+    Calling proceed on a CHEST screen skips it entirely — a devastating bug.
+    """
+    global _last_raw_state
+    if not raw.get("in_game"):
+        return raw
+    gs = raw.get("game_state", {})
+    if gs.get("screen_type") != "CHEST":
+        return raw
+    # Send "choose 0" which corresponds to "open"
+    raw = _tcp_request({"type": "command", "command": "choose 0"})
+    _last_raw_state = raw
+    return raw
+
+
 def _auto_handle_mechanical(raw: dict) -> dict:
     """Handle mechanical transitions that never involve a real decision."""
     raw = _auto_collect_gold(raw)
+    raw = _auto_open_chest(raw)
     raw = _auto_wait_shop_screen(raw)
     return raw
 
