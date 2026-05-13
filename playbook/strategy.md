@@ -2,26 +2,31 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (148 runs, 2 WINS -- BACK TO BACK):** Two consecutive victories (Runs 147-148), both defeating Donu and Deca (Act 3 Boss). Run 148: Floor 51, Score 703, Final HP 4/85. The consistent winning formula across both victories: Snecko Eye (Act 2 boss relic) + Immolate+ (AOE) + Limit Break (Str doubling) + Heavy Blade / high-Str finishers. Zero UI misplays.
+**CURRENT STATUS (150 runs, 3 WINS):** Three victories in the last four runs (Runs 147, 148, 150). Run 149 died at Floor 41 (Giant Head elite). Run 150: defeated Time Eater at Floor 51, Score TBD, Final HP 26/87. TWO proven winning formulas now exist: (1) Snecko Eye + Immolate+ + Limit Break engine (Runs 147-148), and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine (Run 150). Both formulas share Immolate+ as primary AOE but differ completely in their scaling mechanism.
 
-**SCORECARD (runs 101-148):**
+**SCORECARD (runs 101-150):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
-- Act 2 boss kills: 3. Act 2 boss reaches: 8.
-- **Act 3 reached three times (Runs 145, 147, 148).** Run 145 died to Transient. Runs 147-148 both WON.
-- **Best floor: 51 -- VICTORY (Runs 147, 148 both reached Floor 51).**
-- **2 wins in 148 runs (1.4% win rate). Back-to-back wins.** Ascension 0.
-- **No UI misplays in Runs 147-148.** Six consecutive clean runs. All boss relics collected, all treasure chests opened, shops browsed, events evaluated.
-- **Mechanics errors in Runs 147-148: NONE.** Combat arithmetic correct throughout. No prediction errors detected.
-- **Boss relic/chest skip bug: NOT triggered in Runs 147-148** (six consecutive clean runs). Bug resolved.
+- Act 2 boss kills: 4. Act 2 boss reaches: 9+.
+- **Act 3 reached five times (Runs 145, 147, 148, 149, 150).** Run 145 died to Transient. Run 149 died to Giant Head elite. Runs 147, 148, 150 all WON.
+- **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**
+- **3 wins in 150 runs (2.0% win rate).** Ascension 0. Three wins in last four runs (75% win rate in Runs 147-150).
+- **No UI misplays in Runs 147-150.** Eight+ consecutive clean runs. All boss relics collected, all treasure chests opened, shops browsed, events evaluated.
+- **Mechanics errors in Runs 147-150: NONE in victories.** Combat arithmetic correct throughout winning runs. No prediction errors detected.
+- **Two distinct winning formulas confirmed.** See THE WINNING FORMULAS below.
 
-**THE WINNING FORMULA (confirmed by 2 consecutive victories):**
-Both wins used this core engine: Snecko Eye (Act 2 boss relic, draw 7, cost randomization) + Immolate+ (AOE) + Limit Break (Str doubler) + Heavy Blade / high-Str finishers. Consistent across both victories: (1) Snecko Eye as Act 2 boss relic, (2) Immolate+ as primary AOE, (3) Limit Break for Strength scaling, (4) high HP at Act 1 and Act 2 boss entries (Run 148 entered Donu and Deca at 49% and survived at 4 HP -- full HP is preferred but deck power can compensate), (5) zero UI misplays. The second win additionally featured: Limit Break+ (upgraded at F40 campfire, enabling infinite Str doubling without exhaust), Gambling Chip (mulligan bad Snecko Eye draws), Flex+ into Limit Break+ (4 temporary Str doubled to 10 permanent Str), Duplication Potion on 0-cost Immolate+ (60 AOE), Snecko Oil Turn 1 of boss fight (expanded hand to 10 cards), and Bronze Scales delivering the killing blow on Deca (6 damage from its own attacks at 4 HP).
+**THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**
+
+**Formula 1: Snecko Eye + Strength Scaling (Runs 147-148).** Snecko Eye (Act 2 boss relic, draw 7, cost randomization) + Immolate+ (AOE) + Limit Break (Str doubler) + Heavy Blade / high-Str finishers. Key components: Snecko Eye as Act 2 boss relic, Immolate+ as primary AOE, Limit Break for Strength scaling. Works by rolling cheap costs on expensive cards and doubling Strength for massive finisher damage.
+
+**Formula 2: Barricade + Corruption Engine (Run 150).** Barricade (block persists) + Corruption (all Skills free but exhaust) + Feel No Pain (block per exhaust) + Entrench (double block) + Body Slam+ (damage = block). Key components: Barricade as the foundation (block persists between turns), Corruption making Skills free (and triggering FNP on exhaust), Entrench doubling accumulated block, Body Slam+ converting block to damage for 0E. This engine builds an impenetrable block wall (100-200+ block) while dealing massive damage through Body Slam+. Apotheosis is critical when Fusion Hammer prevents normal upgrades -- upgrading everything in one play (Barricade 3E to 2E, FNP 3 to 4, Impervious 30 to 40).
+
+**What both formulas share:** (1) Immolate+ as primary AOE, (2) zero UI misplays, (3) zero arithmetic errors, (4) strong Act 1 elite fights, (5) proper map pathing. The key insight: two completely different scaling mechanisms both work at A0. The player should pursue whichever engine the card/relic offerings support, not force one formula over the other.
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **FULL BLOCK EVERY HALLWAY FIGHT.** The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md.
 2. **PLAN FULL ACT ROUTES BEFORE FLOOR 1.** Read the entire map at act start. Count elites, shops, campfires on every viable path. Choose a route and follow it. Re-route only when HP forces it.
 3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Immolate is the highest-impact card), (c) healing beyond Burning Blood (Toy Ornithopter + potions is a valid backup), (d) block scaling beyond basic Defends.
-4. **Pursue the Strength scaling engine.** The proven winning combination (2 consecutive victories): Snecko Eye as Act 2 boss relic, Immolate+ for AOE, Limit Break for Str doubling (upgrade to Limit Break+ at last campfire before Act 3 boss -- this was the most impactful decision of the second win), Heavy Blade or other Str finishers. Gambling Chip dramatically improves Turn 1 consistency with Snecko Eye. Every component is independently good and multiplicatively powerful together.
+4. **Pursue one of the two proven scaling engines.** (A) **Strength engine**: Snecko Eye as Act 2 boss relic, Immolate+ for AOE, Limit Break for Str doubling, Heavy Blade or other Str finishers. (B) **Block engine**: Barricade + Corruption + Feel No Pain + Entrench + Body Slam+. Immolate+ is the primary AOE in both. Do not force one engine -- pursue whichever the card/relic offerings support. If Barricade + Corruption + FNP are all available by mid-Act 2, commit to the block engine. If Snecko Eye is offered as Act 2 boss relic and Limit Break exists, commit to the Str engine. Either engine can defeat any Act 3 boss.
 5. **Use the Act 1 tier list for card evaluation.** The starting deck is the same every run. Know the tier list, draft for the visible boss.
 6. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first.
 7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
@@ -527,7 +532,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 
 ### What the Deck Needs for Act 3
 
-1. **Strength scaling engine OR Barricade + Metallicize engine**: Two proven winning approaches. The first victory used Spot Weakness+ + Limit Break + Heavy Blade + Snecko Eye as a burst-damage engine. The Barricade + Metallicize approach (from Run 145) is the single strongest sustained combination for Act 3. Block carries over and stacks with passive Metallicize gains. Both approaches work. The key is having a complete engine, not individual strong cards. The first victory also included Metallicize as a supplementary block source alongside the Strength engine.
+1. **Strength scaling engine OR Barricade + Corruption engine**: Two proven winning approaches with three victories between them. (A) Snecko Eye + Limit Break + Heavy Blade (Runs 147-148): burst-damage engine using cost randomization and Strength doubling. (B) Barricade + Corruption + Feel No Pain + Entrench + Body Slam (Run 150): block accumulation engine that converts persistent block to damage via Body Slam+. Both approaches work against all Act 3 bosses. The key is having a COMPLETE engine -- individual strong cards without the supporting pieces are insufficient. The Barricade engine additionally benefits from Metallicize (passive block per turn), Apotheosis (mass upgrade when Fusion Hammer prevents smithing), and Second Wind+ (mass exhaust for block + FNP triggers).
 2. **Block density beyond Barricade**: Impervious, Shrug It Off, Defend+. Barricade needs block cards to feed into the snowball. Without block cards to play, Barricade only accumulates Metallicize's passive block (slow). Impervious + Barricade = 30-40 permanent block in one play.
 3. **AOE**: Immolate+ is the single best card. Darklings require simultaneous kills; Exploders can be cleared with single Immolate+.
 4. **Disarm/Weak sources**: Transient and scaling enemies require Strength reduction and Weak application. Save for Transient and boss fights -- do not waste on hallway fights that the Barricade engine can handle.
@@ -539,7 +544,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 
 ### What Wins and What Kills (Summary)
 
-**Both victories had:** (1) Immolate+ as primary AOE, (2) Snecko Eye as Act 2 boss relic enabling massive card throughput with cost randomization, (3) Limit Break for Strength doubling (unupgraded in the first win, upgraded to Limit Break+ in the second -- the upgrade was the most impactful decision of the second win), (4) high HP entry at Act 1 and Act 2 bosses, (5) Heavy Blade or high-Str finishers to close out bosses, (6) zero UI misplays, (7) zero arithmetic errors. Note: the first win entered all bosses at full 80/80 HP. The second win entered Donu and Deca at only 49% HP (42/85) and survived at 4 HP -- full HP entry is strongly preferred but a powerful enough deck can compensate. The second win also featured: Gambling Chip for Turn 1 consistency under Snecko Eye, Flex+ into Limit Break+ for permanent Str gain from temporary Str, Bronze Scales delivering the final blow on Deca, and Fairy in a Bottle saving the run against Spikers + Spheric Guardian in Act 3.
+**All three victories had:** (1) Immolate+ as primary AOE, (2) a complete scaling engine (Snecko Eye + Limit Break in Runs 147-148, Barricade + Corruption + FNP + Entrench + Body Slam in Run 150), (3) zero UI misplays, (4) zero arithmetic errors, (5) strong Act 1 performance with 2 elites fought. The third win (Run 150) used a completely different formula from the first two: Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine, built around block accumulation rather than Strength scaling. Fusion Hammer (no upgrades) was compensated by Apotheosis (mass upgrade) and Blessing of the Forge potions. Cursed Key provided 5E base, enabling Barricade + block plays in a single turn. The engine generated 100-200 block per fight and dealt damage through Body Slam+ (0E, damage = block). Fairy in a Bottle x2 provided death insurance at the boss. Feed+ gained +7 Max HP across the run (80 to 87). White Beast Statue guaranteed potion drops after every fight.
 
 **Every boss victory** had: (1) a card that addressed the boss's main threat, (2) passive block/sustain, (3) entry HP above 50% or Pantograph, (4) at least 1 key upgrade, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.
 

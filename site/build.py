@@ -507,6 +507,46 @@ tr:nth-child(even) td {
   font-size: 18px;
 }
 
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
 footer {
   margin-top: 60px;
   padding-top: 20px;
@@ -651,18 +691,33 @@ def load_run_stats(root):
     if stats_file.exists():
         try:
             raw = _json.loads(stats_file.read_text(encoding="utf-8"))
+            # Per-character stats from floor_history
+            char_stats = {}
+            for entry in raw.get("floor_history", []):
+                cls = entry.get("class", "IRONCLAD")
+                if cls not in char_stats:
+                    char_stats[cls] = {"wins": 0, "best_floor": 0, "runs_tracked": 0}
+                char_stats[cls]["runs_tracked"] += 1
+                if entry.get("victory"):
+                    char_stats[cls]["wins"] += 1
+                char_stats[cls]["best_floor"] = max(char_stats[cls]["best_floor"], entry.get("floor", 0))
+
             return {
                 "total_runs": raw.get("total_runs", 0),
-                "boss_kills": raw.get("wins", 0),
+                "wins": raw.get("wins", 0),
                 "best_floor": raw.get("best_floor", 0),
                 "deaths": raw.get("deaths", 0),
+                "current_class": raw.get("current_class", "IRONCLAD"),
+                "best_ascension": raw.get("best_ascension", 0),
+                "character_stats": char_stats,
             }
         except (ValueError, KeyError):
             pass  # Fall through to run_log parsing
 
     # Fallback: parse analyst/run_log.md
     run_log = root / "analyst" / "run_log.md"
-    stats = {"total_runs": 0, "boss_kills": 0, "best_floor": 0, "deaths": 0}
+    stats = {"total_runs": 0, "wins": 0, "best_floor": 0, "deaths": 0,
+             "current_class": "IRONCLAD", "best_ascension": 0, "character_stats": {}}
 
     if not run_log.exists():
         return stats
@@ -673,15 +728,30 @@ def load_run_stats(root):
             continue
         stats["total_runs"] += 1
 
+        # Parse character from run header
+        char = "IRONCLAD"
+        if "Silent" in line:
+            char = "THE_SILENT"
+        elif "Defect" in line:
+            char = "DEFECT"
+        elif "Watcher" in line:
+            char = "WATCHER"
+        if char not in stats["character_stats"]:
+            stats["character_stats"][char] = {"wins": 0, "best_floor": 0, "runs_tracked": 0}
+        stats["character_stats"][char]["runs_tracked"] += 1
+
         if "Victory" in line:
-            stats["boss_kills"] += line.count("Victory")
+            stats["wins"] += 1
+            stats["character_stats"][char]["wins"] += 1
 
         if "Death" in line:
             stats["deaths"] += 1
 
-        for m in re.finditer(r'Death Floor (\d+)', line):
+        for m in re.finditer(r'(?:Death |Victory )Floor (\d+)', line):
             floor = int(m.group(1))
             stats["best_floor"] = max(stats["best_floor"], floor)
+            stats["character_stats"][char]["best_floor"] = max(
+                stats["character_stats"][char]["best_floor"], floor)
 
     return stats
 
@@ -692,6 +762,10 @@ def build_landing(categories, top_level_files, run_stats):
     """Build the index/landing page content."""
 
     total_entries = sum(len(c["entries"]) for c in categories.values())
+
+    # Character display name
+    _char_names = {"IRONCLAD": "Ironclad", "THE_SILENT": "Silent", "DEFECT": "Defect", "WATCHER": "Watcher"}
+    char_name = _char_names.get(run_stats.get("current_class", "IRONCLAD"), "Unknown")
 
     # Twitch embed
     twitch_html = f"""
@@ -710,7 +784,7 @@ def build_landing(categories, top_level_files, run_stats):
     stats_html = f"""
 <div class="stats-grid">
   <div class="stat"><div class="stat-value">{run_stats['total_runs']}</div><div class="stat-label">Runs</div></div>
-  <div class="stat"><div class="stat-value">{run_stats['boss_kills']}</div><div class="stat-label">Boss Kills</div></div>
+  <div class="stat"><div class="stat-value">{run_stats['wins']}</div><div class="stat-label">Wins</div></div>
   <div class="stat"><div class="stat-value">{run_stats['best_floor']}</div><div class="stat-label">Best Floor</div></div>
   <div class="stat"><div class="stat-value">{total_entries}</div><div class="stat-label">Playbook Entries</div></div>
 </div>
@@ -719,7 +793,7 @@ def build_landing(categories, top_level_files, run_stats):
   <div class="state-card">
     <h3>System</h3>
     <p><strong>Model:</strong> Claude Opus 4.6 via Claude Code</p>
-    <p><strong>Character:</strong> Ironclad, Ascension 0</p>
+    <p><strong>Character:</strong> {char_name}, Ascension {run_stats.get('best_ascension', 0)}</p>
     <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
   </div>
   <div class="state-card">
@@ -728,6 +802,36 @@ def build_landing(categories, top_level_files, run_stats):
   </div>
 </div>
 """
+
+    # Journey section — character progress
+    _cstats = run_stats.get("character_stats", {})
+    _ccls = run_stats.get("current_class", "IRONCLAD")
+    _jcards = []
+    for _cls in ["IRONCLAD", "THE_SILENT", "DEFECT", "WATCHER"]:
+        _s = _cstats.get(_cls)
+        _cur = (_cls == _ccls)
+        if not _s and not _cur:
+            continue
+        _dn = _char_names[_cls]
+        _w = _s["wins"] if _s else 0
+        _bf = _s["best_floor"] if _s else 0
+        if _w > 0:
+            _jcards.append(
+                '<div class="journey-card completed">'
+                '<div class="journey-badge">A0 COMPLETE</div>'
+                f'<div class="journey-name">{_dn}</div>'
+                f'<div class="journey-stats">{run_stats["total_runs"]} runs &middot; {_w} wins &middot; Best floor {_bf}</div>'
+                '</div>')
+        elif _cur:
+            _jcards.append(
+                '<div class="journey-card active">'
+                '<div class="journey-badge">NOW PLAYING</div>'
+                f'<div class="journey-name">{_dn}</div>'
+                f'<div class="journey-stats">Ascension {run_stats.get("best_ascension", 0)}</div>'
+                '</div>')
+    journey_html = ""
+    if _jcards:
+        journey_html = '<h2>Journey</h2>\n<div class="journey-grid">\n' + '\n'.join(_jcards) + '\n</div>\n'
 
     # Condensed intro
     intro_html = """
@@ -771,7 +875,7 @@ evaluations, enemy patterns, boss strategies, event guides. The
 
         content_html += "</div>\n"
 
-    return twitch_html + stats_html + intro_html + content_html
+    return twitch_html + stats_html + journey_html + intro_html + content_html
 
 
 # ── Build ────────────────────────────────────────────────────────────

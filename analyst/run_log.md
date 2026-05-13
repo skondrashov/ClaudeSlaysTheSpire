@@ -166,6 +166,14 @@ VICTORY: Donu and Deca (Act 3 Boss), Floor 51, Score 703, Final HP 4/85
 KEY MOMENTS: (1) Snecko Eye again as Act 2 boss relic -- 2nd consecutive win with it. (2) Limit Break+ upgrade at F40 campfire was the most impactful decision -- enabled infinite Str doubling. (3) Flex+ into Limit Break+ gave 10 Str on Turn 4 of boss fight. (4) Duplication Potion on 0-cost Immolate+ dealt 60 AOE Turn 3. (5) Snecko Oil Turn 1 expanded hand to 10 cards. (6) Bronze Scales killed Deca at 4 HP from its own attacks. (7) Fairy in a Bottle saved the run vs Spikers/Guardians. (8) Darklings killed with simultaneous AOE. (9) Gambling Chip improved Turn 1 hands by mulliganing expensive Snecko Eye draws.
 LESSONS: (1) Snecko Eye + Immolate+ + Limit Break is the confirmed winning formula (2 consecutive wins). (2) Limit Break+ upgrade is the #1 campfire priority approaching Act 3 boss. (3) Flex+ has real value with Limit Break+ (temporary Str gets doubled into permanent). (4) Gambling Chip + Snecko Eye is a powerful consistency combo. (5) Bronze Scales can deliver killing blows at very low HP. (6) Zero UI misplays -- sixth consecutive clean run.
 
+## Run 150 — Ironclad A0, VICTORY Floor 51 (THIRD WIN -- Barricade Engine)
+
+DECK: 24 cards — Bash, Immolate (upgraded via Blessing of the Forge), Iron Wave, Carnage+, Offering, Feed, Barricade, Corruption, Feel No Pain, Metallicize, Evolve, Disarm, Spot Weakness, Shrug It Off, Second Wind+, Entrench+, 2x Impervious, Body Slam+, Apotheosis, 3 Defend, 1 Strike
+RELICS: Fusion Hammer (Neow swap), White Beast Statue, Anchor, Blood Vial, Preserved Insect, Ornamental Fan, Cursed Key (Act 1 boss), Empty Cage (Act 2 boss), Frozen Egg, Molten Egg, Toxic Egg, The Boot
+VICTORY: Time Eater (Act 3 Boss), Floor 51, Final HP 26/87
+KEY MOMENTS: (1) Neow swapped Burning Blood for Fusion Hammer. Blessing of the Forge x2 upgraded key cards early. (2) Immolate on F3. Barricade+Corruption+FNP engine assembled by F21. (3) Apotheosis from Sensory Stone event solved upgrade problem. (4) Body Slam+ from Nemesis elite completed the damage loop. (5) Time Eater defeated via Entrench+ doubling block to 138, Body Slam+ for 146 damage.
+LESSONS: (1) Barricade+Corruption+FNP+Entrench+Body Slam is a second winning formula. (2) Fusion Hammer as Neow swap viable with Apotheosis. (3) Three wins in four runs confirms A0 competence.
+
 ## Run 145 — Ironclad A0, Defeat Floor 44 (NEW BEST FLOOR -- FIRST ACT 3!)
 DECK: 23 cards — Bash+, Impervious, Wild Strike+, Whirlwind+, Immolate+, Armaments+, Inflame+, Rampage+, Feed+, Barricade+, Evolve+, 2x Metallicize(3+4), Bloodletting+, Headbutt, 3x Strike+, 3x Defend+
 RELICS: Burning Blood, Golden Idol, Ancient Tea Set, Mummified Hand, Sundial, Ectoplasm, Frozen Egg, Pantograph, Maw Bank, Omamori, Ceramic Fish, Gremlin Horn, Fusion Hammer

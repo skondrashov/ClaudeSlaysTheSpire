@@ -37,6 +37,11 @@
 - [Sever Soul](sever-soul.md)
 - [Heavy Blade](heavy-blade.md)
 - [Dual Wield](dual-wield.md)
+- [Body Slam](body-slam.md)
+
+## Colorless Cards
+
+- [Apotheosis](apotheosis.md)
 
 ## Skill Cards
 
@@ -62,6 +67,7 @@
 - [Flex](flex.md)
 - [Spot Weakness](spot-weakness.md)
 - [Limit Break](limit-break.md)
+- [Entrench](entrench.md)
 
 ## Power Cards
 

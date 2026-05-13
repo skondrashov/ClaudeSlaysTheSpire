@@ -104,9 +104,27 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - Duplication Potion on 0-cost Immolate+: PROMOTED. 60 AOE for 0E. Best observed Duplication Potion play. Promoted to duplication-potion.md.
 - Darklings simultaneous AOE kill: CONFIRMED. All 3 Darklings killed in same turn bypasses Life Link. Promoted to darklings.md (new entry).
 - Fairy in a Bottle saved the run vs Spikers/Guardians in Act 3. Confirms Fairy is critical safety net for Act 3 fights with Thorns mechanics. Promoted to fairy-in-a-bottle.md.
-- **Consistent winning formula across 2 consecutive victories**: Snecko Eye (Act 2 boss relic) + Immolate+ (primary AOE) + Limit Break (Str doubling) + zero UI misplays. Different Act 2 bosses (Bronze Automaton in Run 147, The Champ in Run 148) -- same formula worked against both. Different Act 1 bosses (Slime Boss both times). Same Act 3 boss (Donu and Deca both times). Boss HP entry varied: Run 147 entered full HP (80/80) at every boss; Run 148 entered Donu and Deca at only 49% (42/85) and survived at 4 HP. The formula is robust enough to work even with suboptimal HP entry. Promoted to strategy.md.
+- **TWO winning formulas confirmed across 3 victories**: PROMOTED. (A) Snecko Eye + Immolate+ + Limit Break (Runs 147-148, vs Donu and Deca). (B) Barricade + Corruption + FNP + Entrench + Body Slam (Run 150, vs Time Eater). Both share Immolate+ as primary AOE. Both require zero UI misplays. Promoted to strategy.md as THE WINNING FORMULAS. New playbook entries created: body-slam.md, entrench.md, apotheosis.md, time-eater.md, cursed-key.md, ornamental-fan.md.
 - **The Champ Act 2 boss**: Defeated in Run 148 at 11 HP. 9-turn fight, Duplication Potion on Immolate+ (0-cost from Snecko Eye) delivered the killing blow. Immolate+ was the MVP again. The Champ had no playbook entry update needed -- existing entry is sufficient.
 - **Slaver's Collar relic**: +1 energy at elite/boss starts. Combined with Busted Crown (+1E), gave 5E in hallway fights and 6E in boss fights. The energy advantage from double boss-relic energy was significant. Two energy boss relics stacking is a powerful combination. Only 1 observation.
+
+- **Barricade + Corruption + FNP + Entrench + Body Slam engine**: PROMOTED to strategy.md, barricade.md, corruption.md, feel-no-pain.md, second-wind.md. New entries: body-slam.md, entrench.md, apotheosis.md, time-eater.md. Fully confirmed victory engine.
+- **Fusion Hammer as Neow swap**: Viable when Apotheosis or Blessing of the Forge compensate for lost upgrades. Promoted to fusion-hammer.md. Run 150 won all 3 bosses without a single rest-site upgrade.
+- **Apotheosis + Fusion Hammer synergy**: PROMOTED to fusion-hammer.md and apotheosis.md (new entry). The sole upgrade path when Fusion Hammer prevents smithing. Under Corruption, costs 0E and exhausts (free mass upgrade + FNP trigger).
+- **Second Wind+ exhaust of Normality curse**: PROMOTED to second-wind.md. Under Corruption, SW+ exhausts Normality permanently from the deck during combat. High-priority play.
+- **Body Slam+ as primary damage source**: PROMOTED to body-slam.md (new entry). 0E, damage = current block. With 100-200 block from Barricade engine, deals 100-200 damage per play. The highest damage-per-energy card in the game when paired with Barricade.
+- Time Eater 12-card mechanic: Confirmed every 12 cards played triggers Time Warp (heal 32, +2 Str, end turn). Promoted to time-eater.md (new entry). Need more observations on exact mechanics (does the counter persist across turns or reset?).
+- Time Eater HP: Observed at 480. Only 1 observation. Monitor.
+- Writhing Mass HP: Previously listed as ~160. Run 150 fight lasted long but HP not precisely tracked. Monitor.
+- Writhing Mass Reactive mechanic: Confirmed changes intent based on card type played. Spot Weakness should be played BEFORE attacks to check intent while it's still Attack-type. Only 1 detailed observation.
+- White Beast Statue potion guarantee: Confirmed 100% potion drop after every combat. Combined with no Burning Blood (Fusion Hammer swap), potions were the primary sustain source. Excellent relic when Burning Blood is unavailable.
+- Blood Vial relic: Heals 2 HP at combat start. Minor passive healing. One observation. Confirmed value from Run 150.
+- Empty Cage boss relic: Remove 2 cards. Excellent deck thinning. Used to remove 2 Strikes after Act 2 boss. One observation.
+- Toxic Egg + Molten Egg + Frozen Egg: All three Eggs obtained in one run (Frozen from event, Molten from chest, Toxic from Giant Head elite). With all three, every new card auto-upgrades. Extremely powerful but rare to have all three.
+- The Boot relic: Attacks deal minimum 5 damage. Good vs Intangible enemies (Nemesis). One observation.
+- Ornamental Fan: +4 block per 3 attacks. PROMOTED to ornamental-fan.md (new entry). Minor value in Corruption engine decks. One observation.
+- Normality curse from Cursed Key: The most dangerous curse in the game for Corruption engine decks. Limits plays to 3/turn, crippling skill exhaust chains. Prioritize removal at shop (100-125g). PROMOTED to cursed-key.md (new entry).
+- Sensory Stone event "Recall" option: Grants 1 free Colorless card pick. Apotheosis was available as one of the options. Need more data on what Colorless cards can appear.
 
 ## Open Questions
 

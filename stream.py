@@ -151,8 +151,8 @@ async def ws_handler(websocket):
         print(f"[stream] Overlay disconnected ({len(clients)} clients)")
 
 
-# Event queue for cross-thread communication (HTTP -> async)
-event_queue = asyncio.Queue()
+# No event queue needed — HTTP handlers call broadcast() directly via
+# asyncio.run_coroutine_threadsafe (same pattern as /agent and /reload).
 
 
 async def _broadcast_stats():
@@ -349,10 +349,8 @@ async def state_watcher():
 
 
 async def event_consumer():
-    """Consume events posted by cmd.py via HTTP."""
-    while True:
-        event = await event_queue.get()
-        await broadcast(event)
+    """No-op — kept as placeholder. Events now go directly to broadcast()."""
+    await asyncio.Event().wait()  # sleep forever
 
 
 # ---------------------------------------------------------------------------
@@ -497,8 +495,8 @@ class DecisionHandler(BaseHTTPRequestHandler):
                     "skip_feed": data.get("skip_feed", False),
                     "timestamp": time.time(),
                 }
-                # Put into async queue for live overlay broadcast
-                asyncio.run_coroutine_threadsafe(event_queue.put(event), loop)
+                # Broadcast directly to overlay clients
+                asyncio.run_coroutine_threadsafe(broadcast(event), loop)
                 # Note: cmd.py now writes to stream_events.jsonl directly,
                 # so we don't duplicate the file write here.
 
@@ -520,7 +518,7 @@ class DecisionHandler(BaseHTTPRequestHandler):
                     "highlight": data.get("highlight", False),
                     "timestamp": time.time(),
                 }
-                asyncio.run_coroutine_threadsafe(event_queue.put(event), loop)
+                asyncio.run_coroutine_threadsafe(broadcast(event), loop)
                 # Note: cmd.py now writes feed events to stream_events.jsonl
                 # directly, so we don't duplicate the file write here.
                 self.send_response(200)

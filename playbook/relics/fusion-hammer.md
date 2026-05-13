@@ -21,4 +21,6 @@ SYNERGIES:
 - Blessing of the Forge potion (one-time all-hand upgrade).
 - Regal Pillow (14 extra healing from rest since you always rest).
 
-CONFIRMED: Taken after Collector kill with 5 key cards already upgraded (Bash+, Armaments+, Immolate+, Evolve+, Inflame+). 5E base enabled Barricade+(2E) + 3 more plays on setup turns, dominating Act 3 hallway fights.
+CONFIRMED VICTORY: Taken as Neow swap (lost Burning Blood). The 4E to 5E upgrade enabled Barricade (3E) + 2E for block on setup turns. Apotheosis (from Sensory Stone event) solved the upgrade problem completely -- upgrading all cards in combat. Blessing of the Forge potions provided 2 early upgrades (Immolate to Immolate+, Defend to Defend+). The Barricade + Corruption + FNP engine defeated all three bosses (Hexaghost, The Collector, Time Eater) without ever upgrading at a rest site.
+
+APOTHEOSIS SYNERGY: With Fusion Hammer, Apotheosis becomes the single most valuable card in the game. It provides the ONLY way to upgrade cards. Under Corruption, Apotheosis costs 0E and exhausts -- free mass upgrade + FNP trigger. Actively seek Apotheosis from colorless card events (Sensory Stone) when Fusion Hammer is equipped.

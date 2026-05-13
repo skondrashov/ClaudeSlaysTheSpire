@@ -21,4 +21,6 @@ WHAT NOT TO DO:
 - Enter below 40% HP. This fight drains 25-40 HP even with strong play.
 - Expect a quick kill. Plan for 6-8 turns minimum.
 
-DANGER: This enemy is a major HP drain in Act 3. The Malleable mechanic means even strong offensive decks take many turns to kill it, accumulating damage the entire time. Entering the next fight at low HP after Writhing Mass is the real danger.
+BARRICADE ENGINE: The Barricade + Corruption + FNP engine handles Writhing Mass effectively. Block accumulation makes the fight survivable, and Immolate+ (single large hit) bypasses Malleable efficiently. Spot Weakness works on Attack turns (check intent before Reactive changes it). However, the fight is still a significant HP drain (25-35 HP) due to its length and debuffs (Frail, Weak, Vulnerable). With Normality curse in the deck, the 3-play limit severely hampers the engine -- prioritize exhausting Normality via Second Wind+ under Corruption.
+
+DANGER: This enemy is a major HP drain in Act 3. The Malleable mechanic means even strong offensive decks take many turns to kill it, accumulating damage the entire time. Entering the next fight at low HP after Writhing Mass is the real danger. In Run 150, the Writhing Mass fight drained HP from 53 to ~10 (entering boss rest site at 10/87 = 11%), making the subsequent Time Eater boss fight extremely tight.

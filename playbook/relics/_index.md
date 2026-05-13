@@ -103,3 +103,6 @@
 - [Mark of Pain](mark-of-pain.md)
 - [Ectoplasm](ectoplasm.md)
 - [Fusion Hammer](fusion-hammer.md)
+- [Cursed Key](cursed-key.md)
+- [Empty Cage](empty-cage.md)
+- [Ornamental Fan](ornamental-fan.md)
