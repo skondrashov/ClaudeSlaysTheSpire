@@ -27,6 +27,7 @@
 - [Bag of Marbles](bag-of-marbles.md)
 - [Nunchaku](nunchaku.md)
 - [Regal Pillow](regal-pillow.md)
+- [Bronze Scales](bronze-scales.md)
 
 ## Common Relics (continued)
 

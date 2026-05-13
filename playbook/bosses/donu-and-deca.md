@@ -1,6 +1,6 @@
 # Donu and Deca (Act 3 Boss)
 
-Two enemies. Donu has 250 HP. Deca has 250 HP. Combined 500 HP. Each starts with Artifact 1 (blocks first debuff applied to that enemy). Fight won in 6 turns on first encounter.
+Two enemies. Donu has 250 HP. Deca has 250 HP. Combined 500 HP. Each starts with Artifact 1 (blocks first debuff applied to that enemy). Defeated twice in consecutive victories. Both wins used Snecko Eye + Immolate+ + Limit Break + Str finishers.
 
 ## Mechanics
 
@@ -20,28 +20,32 @@ Two enemies. Donu has 250 HP. Deca has 250 HP. Combined 500 HP. Each starts with
 
 ## Key Cards
 
-- **Immolate+**: Best card in the fight. 28-34 AOE per play. Played 5+ times across 6 turns.
-- **Heavy Blade+**: 5x Str multiplier finisher. At Str 6: 44 damage. At Str 12: 74 damage. Killed Donu through 16 block.
-- **Dual Wield+**: Copies Immolate+ for triple AOE turns. The card that broke the fight open on Turn 4.
-- **Limit Break**: Doubled Str from 6 to 12 on the kill turn. Worth saving for the final push.
+- **Immolate+**: Best card in the fight. 28-34 AOE per play. Duplication Potion on a 0-cost Immolate+ produces 60 AOE for 0E.
+- **Heavy Blade+**: 5x Str multiplier finisher. At Str 6: 44 damage. At Str 12: 74 damage. Killed Donu through 16 block in the first win.
+- **Dual Wield+**: Copies Immolate+ for triple AOE turns.
+- **Limit Break / Limit Break+**: Doubles Str at the critical moment. **Limit Break+ (no exhaust) is the most impactful upgrade for this fight** -- enables repeated Str doubling for infinite scaling. Upgrading Limit Break at the last campfire before the boss was the single most impactful decision of the second win.
+- **Flex+**: Normally weak (temporary Str), but with Limit Break+ it becomes a powerful combo. 4 temporary Str doubled by Limit Break+ effectively converts to 10 permanent Str. This interaction was key in the second win.
 - **Spot Weakness+**: +4 Str on attacking enemies. Deca's attack turns are the window.
 - **Flame Barrier**: 12 block + 4 return damage per hit. Good against multi-hit attack patterns.
 - **Evolve**: Converts Burns from Immolate into card draws. Essential in a long fight with repeated Immolate plays.
+- **Bronze Scales** (relic): 3 Thorns damage per hit received. At very low HP, enemy attacks trigger Bronze Scales for the killing blow. Delivered the final 6 damage to Deca at 4 HP in the second win.
 
 ## Preparation Checklist
 
 1. AOE damage -- Immolate+ is the single best card. Thunderclap+ and Cleave contribute.
 2. Strength scaling -- Spot Weakness+, Inflame, Limit Break. Heavy Blade to leverage it.
-3. Enter at 70%+ HP (ideally full 80/80). Combined incoming is 20-32/turn.
+3. Enter at 70%+ HP (ideally full). Combined incoming is 20-32/turn. The second win entered at only 49% HP (42/85) and survived at 4 HP -- the margin was razor-thin. Higher HP entry is strongly preferred, but a powerful enough deck can compensate.
 4. Block density for 6-10 turns. Impervious, Flame Barrier, Metallicize all useful.
-5. Potions: Strength Potion compounds with Limit Break. Duplication Potion on Flame Barrier doubles block. Liquid Memories retrieves Immolate+ from discard for another play.
+5. Potions: Snecko Oil Turn 1 for massive hand expansion. Duplication Potion on 0-cost Immolate+ for 60 AOE. Strength Potion compounds with Limit Break. Liquid Memories retrieves Immolate+ from discard.
+6. Gambling Chip -- mulligan bad Snecko Eye draws Turn 1. Discard high-cost cards and draw replacements for better opening hands.
 
 ## Potion Timing
 
+- **Snecko Oil Turn 1**: Draws 5 cards and randomizes all hand costs. Expands hand to 10 cards for a massive burst opening. With Snecko Eye already active, this is pure upside -- already Confused, so the cost randomization is no additional downside.
 - **Strength Potion Turn 2**: +2 Str permanent for combat. Compounds with every attack for remaining turns.
-- **Duplication Potion Turn 5**: Double Flame Barrier for 24 block when incoming peaks.
-- **Liquid Memories Turn 5**: Retrieve Immolate+ from discard at 0E from Snecko.
-- **Toy Ornithopter**: Each potion use heals 5 HP. Three potions = 15 HP healed during the fight.
+- **Duplication Potion on 0-cost Immolate+**: Wait for a favorable Snecko Eye roll on Immolate+. Duplicating a 0-cost Immolate+ produces 60 AOE for 0E -- devastating. In the second win, this dealt 60 AOE to both bosses on Turn 3.
+- **Liquid Memories**: Retrieve Immolate+ from discard at a new Snecko cost roll.
+- **Toy Ornithopter**: Each potion use heals 5 HP. Multiple potions = significant healing during the fight.
 
 ## Turn-by-Turn Reference (from first victory)
 

@@ -59,6 +59,7 @@
 - [Second Wind](second-wind.md)
 - [Flame Barrier](flame-barrier.md)
 - [Sentinel](sentinel.md)
+- [Flex](flex.md)
 - [Spot Weakness](spot-weakness.md)
 - [Limit Break](limit-break.md)
 

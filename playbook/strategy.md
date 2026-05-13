@@ -2,31 +2,31 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (147 runs, 1 WIN, best floor 51 -- VICTORY):** FIRST WIN on Run 147. Defeated Donu and Deca (Act 3 Boss) at Floor 51. Beat Slime Boss (Act 1), Bronze Automaton (Act 2), and Donu and Deca (Act 3) in a single run. Final HP 31/80. Score 652. The winning formula: Snecko Eye + Immolate+ + Spot Weakness+ + Limit Break + Heavy Blade+ + Dual Wield+. Strength scaling to 12, triple Immolate+ for 102 AOE, Heavy Blade 50-damage finisher.
+**CURRENT STATUS (148 runs, 2 WINS -- BACK TO BACK):** Two consecutive victories (Runs 147-148), both defeating Donu and Deca (Act 3 Boss). Run 148: Floor 51, Score 703, Final HP 4/85. The consistent winning formula across both victories: Snecko Eye (Act 2 boss relic) + Immolate+ (AOE) + Limit Break (Str doubling) + Heavy Blade / high-Str finishers. Zero UI misplays.
 
-**SCORECARD (runs 101-147):**
+**SCORECARD (runs 101-148):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
-- Act 2 boss kills: 2 (The Collector Run 145, Bronze Automaton Run 147). Act 2 boss reaches: 7.
-- **Act 3 reached twice (Runs 145, 147).** Run 145 died to Transient. Run 147 WON.
-- **Best floor: 51 -- VICTORY (Run 147).** Previous best was 44 (Run 145).
-- **1 win in 147 runs (0.68% win rate).** First win at Ascension 0.
-- **No UI misplays in Run 147.** Fifth consecutive clean run. Both boss relics collected (Busted Crown + Snecko Eye), all treasure chests opened, shops browsed, events evaluated.
-- **Mechanics errors in Run 147: NONE.** Combat arithmetic correct throughout. No prediction errors detected.
-- **Boss relic/chest skip bug: NOT triggered in Run 147** (fifth consecutive clean run). Bug resolved.
+- Act 2 boss kills: 3. Act 2 boss reaches: 8.
+- **Act 3 reached three times (Runs 145, 147, 148).** Run 145 died to Transient. Runs 147-148 both WON.
+- **Best floor: 51 -- VICTORY (Runs 147, 148 both reached Floor 51).**
+- **2 wins in 148 runs (1.4% win rate). Back-to-back wins.** Ascension 0.
+- **No UI misplays in Runs 147-148.** Six consecutive clean runs. All boss relics collected, all treasure chests opened, shops browsed, events evaluated.
+- **Mechanics errors in Runs 147-148: NONE.** Combat arithmetic correct throughout. No prediction errors detected.
+- **Boss relic/chest skip bug: NOT triggered in Runs 147-148** (six consecutive clean runs). Bug resolved.
 
-**THE WINNING FORMULA (confirmed by first victory):**
-The first win used this core engine: Immolate+ (AOE), Spot Weakness+ (front-loaded Str), Limit Break (Str doubler), Heavy Blade (Str multiplier), Dual Wield+ (copy Immolate+), Snecko Eye (draw 7, cost randomization). Key enablers: Busted Crown (4E in Acts 1-2), Snecko Eye (Act 2 boss relic, 7 draws in Act 3), Paper Phrog (75% Vuln), Champion Belt (free Weak on Vuln), Toy Ornithopter (healing from potions), Regal Pillow (39 HP rest heal). Full HP entry at every boss. Zero arithmetic errors. Fifth consecutive clean run with no UI misplays.
+**THE WINNING FORMULA (confirmed by 2 consecutive victories):**
+Both wins used this core engine: Snecko Eye (Act 2 boss relic, draw 7, cost randomization) + Immolate+ (AOE) + Limit Break (Str doubler) + Heavy Blade / high-Str finishers. Consistent across both victories: (1) Snecko Eye as Act 2 boss relic, (2) Immolate+ as primary AOE, (3) Limit Break for Strength scaling, (4) high HP at Act 1 and Act 2 boss entries (Run 148 entered Donu and Deca at 49% and survived at 4 HP -- full HP is preferred but deck power can compensate), (5) zero UI misplays. The second win additionally featured: Limit Break+ (upgraded at F40 campfire, enabling infinite Str doubling without exhaust), Gambling Chip (mulligan bad Snecko Eye draws), Flex+ into Limit Break+ (4 temporary Str doubled to 10 permanent Str), Duplication Potion on 0-cost Immolate+ (60 AOE), Snecko Oil Turn 1 of boss fight (expanded hand to 10 cards), and Bronze Scales delivering the killing blow on Deca (6 damage from its own attacks at 4 HP).
 
 **IMMEDIATE PRIORITIES (in order):**
 1. **FULL BLOCK EVERY HALLWAY FIGHT.** The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md.
 2. **PLAN FULL ACT ROUTES BEFORE FLOOR 1.** Read the entire map at act start. Count elites, shops, campfires on every viable path. Choose a route and follow it. Re-route only when HP forces it.
 3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Immolate is the highest-impact card), (c) healing beyond Burning Blood (Toy Ornithopter + potions is a valid backup), (d) block scaling beyond basic Defends.
-4. **Pursue the Strength scaling engine.** The proven winning combination: Spot Weakness+ for base Str, Limit Break to double it, Heavy Blade to multiply it. Dual Wield+ on Immolate+ for AOE burst. Snecko Eye as Act 2 boss relic to enable the high-cost deck. Every component is independently good and multiplicatively powerful together.
+4. **Pursue the Strength scaling engine.** The proven winning combination (2 consecutive victories): Snecko Eye as Act 2 boss relic, Immolate+ for AOE, Limit Break for Str doubling (upgrade to Limit Break+ at last campfire before Act 3 boss -- this was the most impactful decision of the second win), Heavy Blade or other Str finishers. Gambling Chip dramatically improves Turn 1 consistency with Snecko Eye. Every component is independently good and multiplicatively powerful together.
 5. **Use the Act 1 tier list for card evaluation.** The starting deck is the same every run. Know the tier list, draft for the visible boss.
 6. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first.
 7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
 8. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed > block.
-9. **Enter every boss at full HP.** The first victory entered Slime Boss, Bronze Automaton, and Donu and Deca all at 80/80. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enabled this. Full HP entry provides the buffer needed when boss fights go long.
+9. **Enter every boss at as high HP as possible.** The first victory entered all three bosses at 80/80. The second victory entered Act 1 and Act 2 bosses at high HP but entered Donu and Deca at only 49% (42/85) and survived at 4 HP -- a razor-thin margin. Full HP entry provides the buffer needed when boss fights go long. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enable full HP entry. A powerful deck (Snecko Eye + Immolate+ + Limit Break+) can compensate for low HP entry, but the margin of error is minimal.
 
 ---
 
@@ -150,7 +150,7 @@ Zero upgrades in an entire run is a death sentence. Even one missed upgrade make
 10. Headbutt (12 vs 9 damage)
 11. Defend (8 vs 5 block -- low individual priority but Ancient Writing mass upgrade is excellent)
 
-**Context-dependent overrides:** If Corruption is your engine piece, upgrade it above Bash. If you already have Bash+, move to the next unupgraded priority. The list is a default -- always upgrade the card that will save the most HP in the next 5 fights.
+**Context-dependent overrides:** If Corruption is your engine piece, upgrade it above Bash. If you already have Bash+, move to the next unupgraded priority. **Limit Break is the #1 upgrade in a Str-scaling deck approaching the Act 3 boss** -- Limit Break+ (no exhaust) enables infinite Str doubling and was the most impactful single decision of the second victory. The list above is a default for Act 1 -- always upgrade the card that will save the most HP in the next 5 fights.
 
 ---
 
@@ -324,15 +324,14 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - **Odd Mushroom anti-synergy** -- Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting burst by ~17%. In a DPS race against 300 HP + Strength scaling, this extends the fight by 1-2 turns, potentially forcing survival through an extra Hyper Beam cycle.
 - **Dark Shackles**: Excellent but not sufficient alone. Reduces Hyper Beam by ~9 damage (from ~51 to ~42 with 6 Str). Still need 30+ block on top of the reduction.
 
-**Donu and Deca needs (DEFEATED -- Run 147 VICTORY):**
-- **AOE damage (HIGHEST PRIORITY)** -- Immolate+ is the best card in this fight. Every AOE play hits BOTH 250 HP bosses. Triple Immolate+ dealt 102 AOE in one turn. Cleave, Thunderclap+ also contribute.
-- **Strength scaling** -- Spot Weakness+ (+4 Str) into Limit Break (double) into Heavy Blade (3-5x multiplier) is the confirmed winning finisher. Str 12 + Heavy Blade+ = 50 damage single target.
+**Donu and Deca needs (DEFEATED TWICE -- back-to-back victories):**
+- **AOE damage (HIGHEST PRIORITY)** -- Immolate+ is the best card in this fight. Every AOE play hits BOTH 250 HP bosses. Duplication Potion on 0-cost Immolate+ deals 60 AOE for free. Cleave, Thunderclap+ also contribute.
+- **Strength scaling** -- Limit Break (ideally Limit Break+) is the key card. Upgrade Limit Break at the last campfire before the boss if possible -- this was the most impactful decision of the second win. Flex+ into Limit Break+ converts temporary Str into permanent Str (4 temporary doubled to 10). Heavy Blade (3-5x multiplier) is the finisher.
 - **Kill Donu first** -- Donu buffs Strength for both enemies. Stopping the scaling is mandatory. All single-target goes to Donu; AOE handles Deca passively.
-- **Snecko Eye is exceptional** -- draw 7 cards/turn with random costs. High-cost cards (Immolate+, Heavy Blade, Impervious) frequently cost 0-1E. This relic was the single biggest enabler of the victory.
-- **Dual Wield+ on Immolate+** -- copies Immolate+ twice for three copies in hand. If costs are favorable, 100+ AOE damage in a single turn.
-- Block density for 6-10 turn fight. Flame Barrier, Impervious, Metallicize all useful.
+- **Snecko Eye is the relic that makes this fight winnable** -- draw 7 cards/turn with random costs. Present in both victories. High-cost cards (Immolate+, Heavy Blade, Impervious) frequently cost 0-1E. Gambling Chip improves Turn 1 by mulliganing bad cost rolls.
+- Block density for 6-10 turn fight. Flame Barrier, Impervious, Metallicize all useful. Bronze Scales provides free Thorns damage and can deliver the killing blow at very low HP.
 - Enter at 70%+ HP (ideally full). Combined incoming 20-32/turn.
-- **Potion timing matters**: Strength Potion early (compounds), Duplication on Flame Barrier for peak block, Liquid Memories to retrieve Immolate+ from discard.
+- **Potion timing matters**: Snecko Oil Turn 1 for 10-card hand, Duplication Potion on 0-cost Immolate+ for 60 AOE, Strength Potion early (compounds), Liquid Memories to retrieve Immolate+ from discard.
 
 ### Act 2 Boss Survival
 
@@ -540,7 +539,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 
 ### What Wins and What Kills (Summary)
 
-**The first full-game victory (Run 147) had:** (1) Immolate+ addressing every boss's AOE needs, (2) Impervious x2 + Flame Barrier + Metallicize for block, (3) full HP entry at every boss fight (80/80 at Slime Boss, 80/80 at Bronze Automaton, 80/80 at Donu and Deca), (4) key upgrades (Bash+, Spot Weakness+, Immolate+, Headbutt+ from Whetstone, Heavy Blade+ from Blessing of the Forge), (5) no self-damage cards, (6) Snecko Eye enabling massive card throughput with cost randomization, (7) Toy Ornithopter patching the healing gap with 3 potion uses in the final boss fight.
+**Both victories had:** (1) Immolate+ as primary AOE, (2) Snecko Eye as Act 2 boss relic enabling massive card throughput with cost randomization, (3) Limit Break for Strength doubling (unupgraded in the first win, upgraded to Limit Break+ in the second -- the upgrade was the most impactful decision of the second win), (4) high HP entry at Act 1 and Act 2 bosses, (5) Heavy Blade or high-Str finishers to close out bosses, (6) zero UI misplays, (7) zero arithmetic errors. Note: the first win entered all bosses at full 80/80 HP. The second win entered Donu and Deca at only 49% HP (42/85) and survived at 4 HP -- full HP entry is strongly preferred but a powerful enough deck can compensate. The second win also featured: Gambling Chip for Turn 1 consistency under Snecko Eye, Flex+ into Limit Break+ for permanent Str gain from temporary Str, Bronze Scales delivering the final blow on Deca, and Fairy in a Bottle saving the run against Spikers + Spheric Guardian in Act 3.
 
 **Every boss victory** had: (1) a card that addressed the boss's main threat, (2) passive block/sustain, (3) entry HP above 50% or Pantograph, (4) at least 1 key upgrade, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.
 

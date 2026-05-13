@@ -13,4 +13,6 @@ DECISION POINTS: What to discard depends entirely on the fight:
 
 SYNERGIES: Lean decks (15-17 cards) -- fewer cards means the mulligan is more likely to find specific answers. Cards with fight-specific value (Shockwave, Intimidate, Barricade) can be safely included in the deck because they can be discarded in fights where they're not needed.
 
-VALUE: High. Consistently useful in every combat. One of the best uncommon relics for deck consistency.
+**SNECKO EYE SYNERGY**: Gambling Chip becomes even more valuable with Snecko Eye. When Snecko Eye assigns expensive costs (3E) to key cards, Gambling Chip lets you discard those cards and draw replacements with new random cost rolls. This significantly improves Turn 1 consistency -- the primary weakness of Snecko Eye (bad cost rolls on critical cards) is mitigated by the mulligan. Present in the second victory alongside Snecko Eye.
+
+VALUE: High. Consistently useful in every combat. One of the best uncommon relics for deck consistency. With Snecko Eye, becomes S-tier for Turn 1 quality.

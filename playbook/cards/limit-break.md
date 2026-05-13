@@ -7,9 +7,10 @@ ROLE: Strength multiplier. Converts existing Strength into exponential scaling. 
 
 STRENGTHS:
 - Exponential Strength growth when combined with Strength sources
-- Limit Break+ (no exhaust) enables repeated doubling for infinite scaling
+- Limit Break+ (no exhaust) enables repeated doubling for infinite scaling -- the most impactful upgrade in the game for Str-scaling decks. Upgrading Limit Break at the last campfire before the Act 3 boss was the single most impactful decision of the second victory.
 - Pairs with Demon Form for massive late-fight damage
 - Only 1E cost (cheap to play)
+- **Flex+ combo**: Limit Break+ doubles ALL current Str including temporary Str from Flex+. Playing Flex+ (4 temporary Str) then Limit Break+ converts it into permanent Str by doubling the total. Example: 1 base Str + 4 from Flex+ = 5 total, Limit Break+ doubles to 10 permanent Str (the Flex Str loss at end of turn reduces by 4, leaving 6 permanent). This makes Flex+ a legitimate combo piece in Limit Break+ decks.
 
 WEAKNESSES:
 - Does NOTHING without existing Strength -- if Strength is 0, doubling 0 = 0
@@ -25,9 +26,8 @@ DECK BUILDING NOTE: Demon Form + Limit Break is a powerful but SLOW engine. It d
 
 STRENGTH ENGINE PACKAGE: Vajra (+1) + Inflame (+2) + Spot Weakness (+3) = Str 6 base. Limit Break+ doubles to 12, then 24. Heavy Blade at Str 6 deals 32 damage (or 44 upgraded). This is the most reliable Strength engine for Ironclad -- each piece is independently useful and the combination is multiplicative. The weakness is that Limit Break+ requires a free turn to play (no block), so the engine demands entering fights with enough HP to absorb a turn of damage during setup.
 
-VICTORY PERFORMANCE: In the first win, Limit Break (unupgraded, exhaust) was used strategically in three key fights:
-- **Bronze Automaton**: Doubled Str 8 to 16 before the stun phase. Heavy Blade+ then dealt 94 damage (14 + 80). Worth sacrificing 29 damage that turn for the exponential scaling on the stunned free turn.
-- **Donu and Deca**: Doubled Str 6 to 12 on the kill turn (Turn 6). Heavy Blade at Str 12 dealt 50 damage to finish Deca. Anger+ at Str 12 dealt 20 damage to break through block first.
-- Even unupgraded (exhaust), Limit Break was game-winning because it was timed for the decisive turn in each boss fight. The key insight: save Limit Break for when the doubled Strength will kill within 1-2 turns, not as an early setup play.
+VICTORY PERFORMANCE: Present in both consecutive victories. In both wins, Limit Break was the card that enabled the finishing blow against Act 3 bosses.
+- **First win (unupgraded, exhaust)**: Doubled Str 8 to 16 for Heavy Blade+ (94 damage) vs Bronze Automaton. Doubled Str 6 to 12 for the kill turn vs Donu and Deca. Even unupgraded, it was game-winning when timed for the decisive turn.
+- **Second win (upgraded to Limit Break+ at F40 campfire)**: The upgrade was the most impactful decision of the run. Limit Break+ (no exhaust) enabled infinite Str doubling. Flex+ (4 temporary Str) into Limit Break+ gave 10 Str, then Immolate+ killed Donu through Vulnerable. The key insight: upgrading Limit Break should be the #1 campfire priority when the deck has a Str source and the Act 3 boss is approaching.
 
 BLESSING OF THE FORGE INTERACTION: Blessing of the Forge potion upgrades all hand cards for one combat. If Limit Break is in the opening hand when Blessing is used, it becomes Limit Break+ (no exhaust) for that fight. This was the plan against Bronze Automaton, though draw RNG meant it did not appear in the opening hand.

@@ -17,4 +17,8 @@ KEY INTERACTIONS:
 
 BOSS FIGHT VALUE: In the Donu and Deca victory, Snecko Eye enabled: Immolate+ at 0E on Turn 1, Heavy Blade at 0E on Turn 5 (killing Donu through block), Spot Weakness+ at 0E on Turn 3, Dual Wield+ at 0E on Turn 4, and Liquid Memories into Immolate+ at 0E on Turn 5. Without these 0-cost rolls, the fight would have taken 10+ turns instead of 6.
 
-EVALUATION: One of the strongest boss relics for Ironclad when the deck has 4+ cards costing 2E. The extra draws solve consistency problems (always find key cards) and the cost randomization provides massive energy efficiency on high rolls. S-tier in Strength-scaling decks with expensive power cards.
+KEY INTERACTION -- GAMBLING CHIP: Gambling Chip's mulligan at combat start synergizes strongly with Snecko Eye. When Snecko Eye assigns bad costs (3E) to key cards, Gambling Chip lets you discard them and draw replacements with new cost rolls. This dramatically improves Turn 1 consistency. Present in the second victory.
+
+KEY INTERACTION -- SNECKO OIL: With Snecko Eye already active (Confused), Snecko Oil's cost randomization is redundant -- all cards are already randomized. But the draw 5 effect is pure upside. Using Snecko Oil Turn 1 of a boss fight expands the hand to 10 cards for a massive burst opening. No additional downside since Confusion is already in effect.
+
+EVALUATION: The strongest boss relic for Ironclad when the deck has 4+ cards costing 2E. Present in both consecutive victories (the only boss relic appearing in both wins). The extra draws solve consistency problems (always find key cards) and the cost randomization provides massive energy efficiency on high rolls. S-tier in Strength-scaling decks with expensive power cards. Take Snecko Eye as Act 2 boss relic whenever the deck has high-cost cards. Two wins confirm it is the single most important relic in the winning formula.
