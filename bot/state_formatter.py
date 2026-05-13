@@ -397,6 +397,10 @@ def format_combat_reward(gs: dict) -> str:
     ss = gs.get("screen_state", {})
     rewards = ss.get("rewards", [])
 
+    # Check if potion slots are full
+    potions = gs.get("potions", [])
+    has_empty_slot = any(p.get("id") == "Potion Slot" for p in potions)
+
     lines = ["\n=== COMBAT REWARDS ==="]
     for i, reward in enumerate(rewards):
         rtype = reward.get("reward_type", "?")
@@ -405,7 +409,11 @@ def format_combat_reward(gs: dict) -> str:
         elif rtype == "CARD":
             lines.append(f"  [{i}] Card reward")
         elif rtype == "POTION":
-            lines.append(f"  [{i}] Potion: {reward.get('potion', {}).get('name', '?')}")
+            potion_name = reward.get('potion', {}).get('name', '?')
+            if has_empty_slot:
+                lines.append(f"  [{i}] Potion: {potion_name}")
+            else:
+                lines.append(f"  [{i}] Potion: {potion_name} [CANNOT TAKE — potion slots full!]")
         elif rtype == "RELIC":
             lines.append(f"  [{i}] Relic: {reward.get('relic', {}).get('name', '?')}")
         elif rtype == "STOLEN_GOLD":
@@ -416,6 +424,9 @@ def format_combat_reward(gs: dict) -> str:
             lines.append(f"  [{i}] Sapphire Key (linked relic: {reward.get('relic', {}).get('name', '?')})")
         else:
             lines.append(f"  [{i}] {rtype}")
+
+    if not has_empty_slot and any(r.get("reward_type") == "POTION" for r in rewards):
+        lines.append("\nWARNING: Potion slots full. Discard a potion first to pick up a new one.")
 
     lines.append("\nUse: choose <index> to collect, proceed when done")
     return "\n".join(lines)

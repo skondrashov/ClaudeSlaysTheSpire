@@ -693,6 +693,31 @@ def send(command: str, reason: str = "") -> str:
             "Skipping a boss relic is a devastating misplay."
         )
 
+    # Guard: prevent choosing a potion reward when all potion slots are full.
+    # CommunicationMod hangs/crashes if you try to pick up a potion with no empty slots.
+    if cmd_verb == "choose" and screen == "COMBAT_REWARD":
+        parts = command.strip().split()
+        if len(parts) >= 2:
+            try:
+                reward_idx = int(parts[1])
+                ss = gs.get("screen_state", {})
+                rewards = ss.get("rewards", [])
+                if 0 <= reward_idx < len(rewards):
+                    reward = rewards[reward_idx]
+                    if reward.get("reward_type") == "POTION":
+                        potions = gs.get("potions", [])
+                        has_empty = any(p.get("id") == "Potion Slot" for p in potions)
+                        if not has_empty:
+                            potion_name = reward.get("potion", {}).get("name", "potion")
+                            return (
+                                f"[ERROR] Cannot pick up {potion_name} — all potion slots are full!\n"
+                                f"Current potions: {', '.join(p.get('name', '?') for p in potions)}\n"
+                                f"Use potion_discard(slot, reason='...') to free a slot first, "
+                                f"or use proceed to leave rewards."
+                            )
+            except ValueError:
+                pass  # Non-numeric choose argument, pass through
+
     # Resolve card names to indices using current hand state
     resolved = _resolve_card_name(_last_raw_state, command)
     # Resolve shop card/relic names to indices
