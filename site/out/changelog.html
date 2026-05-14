@@ -374,6 +374,1597 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 156 analysis + enemy encyclopedia: wiki-verified mechanics for all enemies/bosses</div>
+      <div class="changelog-sha">58d85ca9</div>
+    </div>
+    <div class="changelog-date">2026-05-14</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/bosses/_index.md</div>
+<div class="diff-hunk">@@ -1,16 +1,16 @@</div>
+<div class="diff-ctx"> # Bosses</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 1</div>
+<div class="diff-del">-- [Slime Boss](slime-boss.md)</div>
+<div class="diff-del">-- [The Guardian](the-guardian.md)</div>
+<div class="diff-del">-- [Hexaghost](hexaghost.md)</div>
+<div class="diff-add">+- [Slime Boss](slime-boss.md) — HP: 140. Splits at 50% into Acid Slime L + Spike Slime L.</div>
+<div class="diff-add">+- [The Guardian](the-guardian.md) — HP: 240. Mode Shift between offensive/defensive. Sharp Hide in defensive mode.</div>
+<div class="diff-add">+- [Hexaghost](hexaghost.md) — HP: 250. Burns accumulation. Inferno multi-hit. Long fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 2</div>
+<div class="diff-del">-- [The Collector](the-collector.md)</div>
+<div class="diff-del">-- [Bronze Automaton](bronze-automaton.md)</div>
+<div class="diff-del">-- [The Champ](the-champ.md)</div>
+<div class="diff-add">+- [The Collector](the-collector.md) — HP: 282. Spawns Torch Head minions. Turn 4 triple debuff.</div>
+<div class="diff-add">+- [Bronze Automaton](bronze-automaton.md) — HP: 300. Hyper Beam (45 damage). Orb Stasis steals cards. Artifact 3.</div>
+<div class="diff-add">+- [The Champ](the-champ.md) — HP: 420. Two-phase fight. Anger clears debuffs + gains 6 Str at 50% HP.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 3</div>
+<div class="diff-del">-- [Awakened One](awakened-one.md)</div>
+<div class="diff-del">-- [Donu and Deca](donu-and-deca.md)</div>
+<div class="diff-del">-- [Time Eater](time-eater.md)</div>
+<div class="diff-add">+- [Awakened One](awakened-one.md) — HP: 300+300. Two phases. Curiosity (+2 Str per Power played). Regenerate 10 in Phase 2.</div>
+<div class="diff-add">+- [Donu and Deca](donu-and-deca.md) — HP: 250+250. Donu buffs Str, Deca adds Dazed + Block. Artifact 2 each.</div>
+<div class="diff-add">+- [Time Eater](time-eater.md) — HP: 456. Time Warp every 12 cards played. Haste heals at 50% HP.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/awakened-one.md</div>
+<div class="diff-hunk">@@ -1,6 +1,17 @@</div>
+<div class="diff-ctx"> # Awakened One (Act 3 Boss)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-HP: Phase 1 ~320, Phase 2 300. Two-phase fight. The Power-punishing boss.</div>
+<div class="diff-add">+HP: Phase 1 = 300 (320 at A9). Phase 2 = 300. Regenerate 10 HP/turn in Phase 2. Two-phase fight. The Power-punishing boss.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Slash: 20 damage</div>
+<div class="diff-add">+- Soul Strike: 6x4 = 24 damage</div>
+<div class="diff-add">+- Dark Echo: 40 damage (Phase 2 opener)</div>
+<div class="diff-add">+- Tackle: 10x3 = 30 damage (Phase 2)</div>
+<div class="diff-add">+- Sludge: 18 damage + adds Void card to deck (Phase 2)</div>
+<div class="diff-add">+- Rebirth: Full heal to 300 HP, removes player debuffs on boss, loses Curiosity</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN (Phase 1): Opens with Slash. Then 75% Slash / 25% Soul Strike. Cannot use Slash 3x in a row or Soul Strike 2x in a row.</div>
+<div class="diff-add">+PATTERN (Phase 2): Opens with Dark Echo (40 damage). Then 50% Tackle / 50% Sludge. Cannot use either 3x in a row.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## THE CENTRAL MECHANIC: CURIOSITY</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/bronze-automaton.md</div>
+<div class="diff-hunk">@@ -1,11 +1,16 @@</div>
+<div class="diff-ctx"> # Bronze Automaton (Act 2, HP: 300)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+HP: 300 at A0, 320 at A9.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> PATTERN:</div>
+<div class="diff-del">-- **Turn 1**: Spawns 2 Orb minions (~50 HP each). Orbs use **Stasis** to steal a card from the player&#x27;s hand, removing it from combat entirely.</div>
+<div class="diff-del">-- **Subsequent turns**: Cycles between attacks, Strength gain (+3 Str per cycle), and Hyper Beam (a massive single-hit attack). Orbs continue stealing cards via Stasis.</div>
+<div class="diff-del">-- **Hyper Beam**: Extremely high single-hit damage (observed 38-57 depending on accumulated Strength). First Hyper Beam fires around turn 6. Second fires around turn 12. After firing, Automaton loses all block and is stunned for one turn (vulnerability window). Without intent visibility (e.g. Runic Dome), this turn is impossible to predict and prepare for.</div>
+<div class="diff-del">-- **Strength scaling**: Gains +3 Strength per cycle. By turn 6-7, all attacks hit significantly harder than their base values. First Hyper Beam (turn 6) reaches 45-51 damage. Second Hyper Beam (turn 12) reaches 57+ damage. The fight becomes unwinnable if it goes too long.</div>
+<div class="diff-del">-- **Artifact 3**: Starts with 3 stacks of Artifact, which negate the first 3 debuff applications. Must strip all Artifact before Vulnerable, Weak, or Disarm take effect. Red Mask relic applies Weak at combat start, which strips 1 Artifact automatically (3-&gt;2) before the player&#x27;s first turn.</div>
+<div class="diff-add">+- **Turn 1**: Always Spawn Orbs -- summons 2 Bronze Orbs (HP: 52-58).</div>
+<div class="diff-add">+- **Subsequent turns**: Fixed repeating cycle: Flail -&gt; Boost -&gt; Flail -&gt; Boost -&gt; HYPER BEAM -&gt; Stunned.</div>
+<div class="diff-add">+- **Flail**: 7x2 = 14 damage (8x2 = 16 at A4)</div>
+<div class="diff-add">+- **Boost**: Gains 3 Strength + 9 Block</div>
+<div class="diff-add">+- **HYPER BEAM**: 45 damage (50 at A4). After Hyper Beam, Automaton is Stunned for 1 turn (free damage window).</div>
+<div class="diff-add">+- **Bronze Orbs**: 52-58 HP. Stasis (75% chance each turn until used, once per combat): steals highest-rarity card from draw pile. After Stasis: 70% Support Beam (Automaton gains 12 Block), 30% Beam (8 damage). Cannot use same attack 3x in a row. Killing an Orb returns the stolen card.</div>
+<div class="diff-add">+- **Strength scaling**: +3 Str per Boost cycle. First Hyper Beam (turn 6): ~45-51 damage. Second (turn 12): ~57+ damage.</div>
+<div class="diff-add">+- **Artifact 3**: Starts with 3 stacks of Artifact. Must strip all before debuffs stick. Red Mask relic strips 1 at combat start.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **Stasis (Orbs)**: Each Orb steals one card from the player&#x27;s hand and holds it. The stolen card is completely removed from combat -- it cannot be drawn, played, or retrieved until the Orb is killed. Stasis targets Power and Skill cards preferentially. Observed stolen: Demon Form (Power), Flame Barrier+ (Skill), Metallicize (Power). Losing key cards to Stasis can cripple the deck mid-fight. This is the Automaton&#x27;s most disruptive mechanic. Killing the Orb returns the stolen card to the player&#x27;s hand.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/donu-and-deca.md</div>
+<div class="diff-hunk">@@ -1,13 +1,24 @@</div>
+<div class="diff-ctx"> # Donu and Deca (Act 3 Boss)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Two enemies. Donu has 250 HP. Deca has 250 HP. Combined 500 HP. Each starts with Artifact 1 (blocks first debuff applied to that enemy). Defeated twice in consecutive victories. Both wins used Snecko Eye + Immolate+ + Limit Break + Str finishers.</div>
+<div class="diff-add">+Two enemies. Donu has 250 HP. Deca has 250 HP. Combined 500 HP. Each starts with Artifact 2. Defeated twice in consecutive victories. Both wins used Snecko Eye + Immolate+ + Limit Break + Str finishers.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Donu Circle of Power: 0 damage, all enemies gain 3 Strength</div>
+<div class="diff-add">+- Donu Beam: 10x2 = 20 damage</div>
+<div class="diff-add">+- Deca Beam: 10x2 = 20 damage + adds 2 Dazed to discard</div>
+<div class="diff-add">+- Deca Square of Protection: 0 damage, all enemies gain 16 Block</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN:</div>
+<div class="diff-add">+- Donu: Alternates Circle of Power and Beam (Circle -&gt; Beam -&gt; Circle -&gt; Beam...)</div>
+<div class="diff-add">+- Deca: Alternates Beam and Square of Protection (Beam -&gt; Square -&gt; Beam -&gt; Square...)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Mechanics</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- **Donu** buffs Strength for both enemies. Kill Donu FIRST to stop Strength scaling.</div>
+<div class="diff-del">-- **Deca** applies debuffs (block-based, Dazed). Lower priority kill target.</div>
+<div class="diff-add">+- **Donu** buffs Strength for both enemies (+3 Str every other turn). Kill Donu FIRST to stop Strength scaling.</div>
+<div class="diff-add">+- **Deca** applies Dazed cards and gives both enemies 16 Block. Lower priority kill target.</div>
+<div class="diff-add">+- **Artifact 2** on each: first 2 debuffs per enemy are negated.</div>
+<div class="diff-ctx"> - Combined incoming damage starts around 20/turn and scales as Donu buffs Strength.</div>
+<div class="diff-del">-- Both enemies can have block (observed 8-16 block on various turns).</div>
+<div class="diff-add">+- Both enemies can have 16 block from Square of Protection.</div>
+<div class="diff-ctx"> - Fight length: 6-10 turns depending on deck power. With Snecko Eye and Strength scaling, 6 turns is achievable.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Winning Strategy (confirmed)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/hexaghost.md</div>
+<div class="diff-hunk">@@ -1,14 +1,18 @@</div>
+<div class="diff-ctx"> # Hexaghost (Act 1, HP: 250)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-PATTERN:</div>
+<div class="diff-del">-- **Turn 1**: Does NOT attack. Intent UNKNOWN. Free setup turn.</div>
+<div class="diff-del">-- **Turn 2**: Multi-hit attack, ~5x6=30 damage. This is the FIRST big attack. Must have block on this turn -- spending all energy on setup with zero block is a common fatal mistake (see &quot;Turn 2 blocking&quot; below).</div>
+<div class="diff-del">-- **Inferno**: 7x6 = 42 damage (multi-hit). Weak reduces each hit: floor(6*0.75)=4 per hit = 28 total. This is the most dangerous attack. Occurs later in the fight, not Turn 2.</div>
+<div class="diff-del">-- **ATTACK_DEBUFF**: Moderate damage + adds Burn status cards to deck.</div>
+<div class="diff-del">-- **DEFEND_BUFF**: Gains block and +Strength. No attack. Free turn for damage and Vulnerable refresh.</div>
+<div class="diff-del">-- **Medium attacks**: 4-8 and 14-24 damage on non-Inferno attack turns.</div>
+<div class="diff-del">-- **Block**: Can gain 12+ block.</div>
+<div class="diff-del">-- **Fight length**: ~13 turns with adequate damage. Can extend to 23+ turns without damage scaling. Long fight.</div>
+<div class="diff-add">+HP: 250 at A0, 264 at A9.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Always starts with Activate (no damage, setup), then Divider. After that, repeats a 7-move cycle: Sear -&gt; Tackle -&gt; Sear -&gt; Inflame -&gt; Tackle -&gt; Sear -&gt; Inferno.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Activate: 0 damage (setup turn)</div>
+<div class="diff-add">+- Divider: (player max HP / 12 + 1) x 6 damage. At 80 max HP = 7x6 = 42. At 70 max HP = 6x6 = 36.</div>
+<div class="diff-add">+- Sear: 6 damage + 1 Burn to discard (6 + 2 Burns at A19)</div>
+<div class="diff-add">+- Tackle: 5x2 = 10 damage (6x2 = 12 at A4)</div>
+<div class="diff-add">+- Inflame: 0 damage, gains 12 Block + 2 Strength (3 Str at A19)</div>
+<div class="diff-add">+- Inferno: 2x6 = 12 damage + 3 Burns to discard (3x6 = 18 at A4). Upgrades all existing Burns to Burns+. After Inferno, subsequent Sears create Burns+ (4 damage each instead of 2).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Fight length: ~13 turns with adequate damage. Can extend to 23+ turns without damage scaling. Long fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **Inferno (42 damage)**: Multi-hit means each hit is checked against block individually. Without Weak, this is near-impossible to survive. With Weak: 28 total, which is survivable.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/slime-boss.md</div>
+<div class="diff-hunk">@@ -1,8 +1,17 @@</div>
+<div class="diff-del">-# Slime Boss (Act 1, HP: ~140)</div>
+<div class="diff-add">+# Slime Boss (Act 1, HP: 140)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-PATTERN:</div>
+<div class="diff-del">-- Pre-split: Alternates between STRONG_DEBUFF turns (no attack, safe to go all-in) and high-damage ATTACK turns (35 damage). Debuff turns are safe windows for damage.</div>
+<div class="diff-del">-- Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss&#x27;s remaining HP at split. **Excess damage past 70 HP is wasted AND makes the fight harder** -- if the boss goes from 87 to 63, both slimes spawn with 63 HP each instead of 70 HP. This sounds helpful but you already dealt 17 &quot;free&quot; damage that could have been blocked instead; the real cost is that you overkilled by 7 HP on a hit that could have been split across two turns. Manage damage carefully: aim to trigger the split at exactly 70 HP or as close as possible.</div>
+<div class="diff-add">+HP: 140 at A0, 150 at A9.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Fixed repeating cycle: Goop Spray -&gt; Preparing -&gt; Slam. Splits at 50% HP or below.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Goop Spray: 0 damage, adds 3 Slimed cards to discard pile (5 at A19)</div>
+<div class="diff-add">+- Preparing: 0 damage (does nothing)</div>
+<div class="diff-add">+- Slam: 35 damage (38 at A4)</div>
+<div class="diff-add">+- Split: At 50% HP (70 HP at A0), disappears and spawns 1 Acid Slime (L) + 1 Spike Slime (L), each with the boss&#x27;s current HP</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Pre-split: Alternates between debuff turns (Goop Spray + Preparing = safe to go all-in) and Slam (35 damage). Debuff turns are safe windows for damage.</div>
+<div class="diff-add">+Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss&#x27;s remaining HP at split. **Excess damage past 70 HP is wasted AND makes the fight harder** -- if the boss goes from 87 to 63, both slimes spawn with 63 HP each instead of 70 HP.</div>
+<div class="diff-ctx"> - Post-split: Two enemies each with significant HP and damage. Spike Slime (L) attacks for ~16 and applies Frail. Acid Slime (L) attacks for ~11-12 and applies Weak. Combined 25-36 damage per turn. Both add Slimed cards to deck.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/the-champ.md</div>
+<div class="diff-hunk">@@ -1,18 +1,21 @@</div>
+<div class="diff-del">-# The Champ</div>
+<div class="diff-add">+# The Champ (Act 2, HP: 420)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Act 2 Boss. Single target. High HP. Two-phase fight with a dangerous transition.</div>
+<div class="diff-add">+HP: 420 at A0, 440 at A9. Single target. Two-phase fight with a dangerous transition.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## Phase 1 (Above ~50% HP)</div>
+<div class="diff-del">-Attacks with moderate damage. Applies debuffs. Manageable if you have block and scaling.</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Heavy Slash: 16 damage (18 at A4)</div>
+<div class="diff-add">+- Face Slap: 12 damage + 2 Frail + 2 Vulnerable (14 at A4)</div>
+<div class="diff-add">+- Defensive Stance: 0 damage, gains 15 Block + 5 Metallicize</div>
+<div class="diff-add">+- Gloat: 0 damage, gains 2 Strength (3 at A4, 4 at A19)</div>
+<div class="diff-add">+- Taunt: 0 damage, applies 2 Weak + 2 Vulnerable</div>
+<div class="diff-add">+- Execute: 10x2 = 20 damage</div>
+<div class="diff-add">+- Anger: 0 damage, removes ALL debuffs, gains 6 Strength (9 at A4, 12 at A19)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## Phase 2 — Execute (Below ~50% HP)</div>
+<div class="diff-del">-When The Champ drops below approximately 50% HP, he performs Execute: cleanses ALL debuffs from himself, gains +8 Strength, and gains Metallicize 5 (5 block per turn permanently). This is a massive power spike.</div>
+<div class="diff-add">+## Phase 1 (Above 50% HP)</div>
+<div class="diff-add">+Uses Taunt every 4 turns. On other turns: 15% Defensive Stance, 15% Gloat, 25% Face Slap, 45% Heavy Slash. No move used consecutively.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-EXECUTE DETAILS:</div>
+<div class="diff-del">-- Removes ALL player-applied debuffs (Weak, Vulnerable, Strength Down) instantly</div>
+<div class="diff-del">-- Gains +8 Strength permanently — subsequent attacks hit extremely hard</div>
+<div class="diff-del">-- Gains Metallicize 5 — passive 5 block every turn makes chip damage less effective</div>
+<div class="diff-del">-- Occurs once when crossing the ~50% HP threshold</div>
+<div class="diff-add">+## Phase 2 — Anger Transition (Below 50% HP)</div>
+<div class="diff-add">+When The Champ drops below 50% HP, he performs Anger: removes ALL debuffs, gains 6 Strength (+9 at A4, +12 at A19). Then repeats: Random Move -&gt; Random Move -&gt; Execute (10x2 = 20 damage).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Strategy</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/the-collector.md</div>
+<div class="diff-hunk">@@ -1,16 +1,20 @@</div>
+<div class="diff-ctx"> # The Collector (Act 2, HP: 282)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+HP: 282 at A0, 300 at A9.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> PATTERN:</div>
+<div class="diff-del">-- **Turn 1**: Spawns 2 Torch Head minions (30-40 HP each, attack for 7 damage each).</div>
+<div class="diff-del">-- **Turn 2-3**: Attacks for ~15-20 damage while Torch Heads also attack.</div>
+<div class="diff-del">-- **Turn 4**: Uses STRONG_DEBUFF -- applies Vulnerable 3, Frail 3, and Weakened 3 simultaneously. No damage on this turn.</div>
+<div class="diff-del">-- **Turn 5+**: Attacks while player is fully debuffed. Combined damage from Collector + 2 Torch Heads is 40-50+ raw, amplified by Vulnerable on player. Frail cuts block cards by 25%. Weakened cuts player&#x27;s attack damage by 25%.</div>
+<div class="diff-del">-- **Minion respawn**: The Collector can resummon Torch Heads if they die. Killing Torch Heads is not a permanent solution.</div>
+<div class="diff-add">+- **Turn 1**: Always Spawn -- summons 2 Torch Head minions (HP: 38-40, attack for 7 damage each).</div>
+<div class="diff-add">+- **Turn 2-3**: Fireball (18 damage) or Buff (all enemies gain 3 Str, Collector gains 15 Block).</div>
+<div class="diff-add">+- **Turn 4**: Always Mega Debuff -- applies 3 Weak + 3 Vulnerable + 3 Frail simultaneously. No damage.</div>
+<div class="diff-add">+- **Turn 5+**: With 0-1 minions: Spawn 25% / Fireball 45% / Buff 30%. With 2 minions: Fireball 70% / Buff 30%. Cannot use Buff 2x in a row. Cannot use Fireball 3x in a row.</div>
+<div class="diff-add">+- **Torch Heads**: 38-40 HP. Tackle for 7 damage every turn. Minion tag.</div>
+<div class="diff-add">+- **Minion respawn**: The Collector can resummon Torch Heads if they die. Max 2 active at a time.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **STRONG_DEBUFF (Turn 4)**: The most dangerous mechanic. Applies ALL THREE debuffs at once -- Vulnerable 3 (take 50% more damage), Frail 3 (block cards give 25% less), Weakened 3 (deal 25% less damage). This single turn makes the following 3 turns nearly unwinnable at low HP. Must have sufficient HP buffer to survive post-debuff turns.</div>
+<div class="diff-del">-- **Torch Heads**: Each deals 7 damage per turn. Combined with the Collector&#x27;s own attacks, total incoming damage is 25-35+ per turn normally, and 40-50+ when Vulnerable is on the player.</div>
+<div class="diff-del">-- **HP check boss**: Unlike The Guardian (long fight, sustained block needed) or Hexaghost (specific counter cards needed), the Collector is primarily an HP check. Entering at low HP means the STRONG_DEBUFF turn creates unwinnable math.</div>
+<div class="diff-add">+- **DEFEND_BUFF Strength scaling**: Each time the Collector uses Buff (DEFEND_BUFF), ALL enemies gain +3 Str and the Collector gains 15 Block. The Collector starts at Str 3. Over a long fight with 4+ DEFEND_BUFF uses, Str escalates to 9-14+. By Turn 15-19, Fireball hits for 30+ instead of 18. Combined with Torch Heads that also gain +3 Str per buff, total incoming per attack turn can exceed 50-60 in extended fights. This makes long fights exponentially more dangerous -- the Collector is not just an HP check but a DPS race.</div>
+<div class="diff-add">+- **Torch Heads**: Each deals 7 damage per turn (base). Combined with the Collector&#x27;s own attacks, total incoming damage is 25-35+ per turn normally, and 40-50+ when Vulnerable is on the player. Torch Heads also gain +3 Str from each DEFEND_BUFF, so late-fight Torch Heads hit for 13-16+ each.</div>
+<div class="diff-add">+- **HP check boss AND DPS race**: The Collector punishes both low HP entry (STRONG_DEBUFF creates unwinnable math at low HP) and slow kill speed (DEFEND_BUFF Str scaling makes late-fight attacks devastating). Entering at low HP means the STRONG_DEBUFF turn creates unwinnable math. Extending the fight means DEFEND_BUFF Str scaling compounds to lethal levels.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> PREPARATION CHECKLIST:</div>
+<div class="diff-ctx"> 1. **Enter at 70%+ HP or have Pantograph** -- the STRONG_DEBUFF on Turn 4 creates a 3-turn window where incoming damage spikes by 50% and block is reduced by 25%. Pantograph heals 25 HP at boss start, which helps but does NOT bypass the threshold if you enter more than 25 HP below max. Without Pantograph, low HP entry is fatal.</div>
+<div class="diff-hunk">@@ -52,9 +56,11 @@ RUN 110 DEATH CASE STUDY (DEFEAT, Floor 33):</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> SILENT-SPECIFIC STRATEGY:</div>
+<div class="diff-ctx"> - **Play defensive powers (After Image, Footwork+) IMMEDIATELY -- do not wait.** These powers must be active before Turn 4&#x27;s triple debuff. After Image provides 1 block per card played (crucial when Frail reduces all other block). Footwork+ provides Dex that partially offsets Frail. If these powers sit in discard unplayed when the debuff lands, the post-debuff turns become unsurvivable.</div>
+<div class="diff-del">-- **Poison (Noxious Fumes+) is the primary win condition for Silent.** Noxious Fumes+ applies 3 poison/turn to ALL enemies (Collector + both Torch Heads). Poison ignores block, bypasses Frail/Weak debuffs on the player, and scales passively. Set it up Turn 1 above all else.</div>
+<div class="diff-add">+- **Poison (Noxious Fumes+) is the primary win condition for Silent.** Noxious Fumes+ applies 3 poison/turn to ALL enemies (Collector + both Torch Heads). Poison ignores block, bypasses Frail/Weak debuffs on the player, and scales passively. Set it up Turn 1 above all else. Poison is especially important because it is the only damage source unaffected by the Weakened debuff from Turn 4.</div>
+<div class="diff-ctx"> - **Piercing Wail+ is the Silent&#x27;s Shockwave equivalent.** Reduces ALL enemy Str by 8 for 1 turn. Against Collector + 2 Torch Heads, this can reduce combined incoming by 20+ damage. Use it on high-damage turns (post-debuff or when multiple enemies attack).</div>
+<div class="diff-ctx"> - **Prioritize killing Torch Heads with Shivs.** After Image + Shivs (0E each) generates block while dealing damage to Torch Heads. Each Shiv played = 1 free block + 4 damage. Two Shivs from Cloak and Dagger+ = 8 damage + 2 free block on top of C&amp;D+&#x27;s base block.</div>
+<div class="diff-add">+- **Wraith Form timing is critical.** Do NOT play Wraith Form early in this fight. The Collector fight lasts 15-20 turns due to DEFEND_BUFF turns and Torch Head respawns extending the fight. Playing Wraith Form on Turn 2 means Dex is -17 or worse by Turn 19, making all Skill-based block 0. After Image (~7-8 block/turn) cannot survive 50-60 incoming from Str-scaled attacks. Hold Wraith Form until the Collector is below 50 HP or the fight will end within 5-6 turns. See wraith-form.md for detailed timing rules.</div>
+<div class="diff-add">+- **The Collector&#x27;s DEFEND_BUFF Str scaling punishes slow kills.** Each DEFEND_BUFF gives all enemies +3 Str. In a 19-turn fight with 4+ DEFEND_BUFF uses, the Collector&#x27;s Fireball scales from 18 to 30+ and Torch Heads hit for 13-16 each instead of 7. Poison scaling (Noxious Fumes+) is the answer -- it kills passively without extending the fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> WHAT NOT TO DO:</div>
+<div class="diff-ctx"> - Enter below 70% HP without Pantograph. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive. The 70% threshold is non-negotiable.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/the-guardian.md</div>
+<div class="diff-hunk">@@ -1,8 +1,11 @@</div>
+<div class="diff-ctx"> # The Guardian (Act 1, HP: 240)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+HP: 240 at A0, 250 at A9.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> PATTERN:</div>
+<div class="diff-del">-- **Attack Mode**: Cycles through ATTACK (5x4=20), ATTACK (32 single hit), ATTACK_BUFF (8x2=16), DEFEND (gains block, no damage), STRONG_DEBUFF (no damage). Mode Shift counter tracks total damage dealt to Guardian. When counter reaches 0, switches to Defensive Mode. Counter values by cycle: 30 (first), 40 (second), 50 (third). Triggering Mode Shift mid-attack CANCELS the current attack.</div>
+<div class="diff-del">-- **Defensive Mode (Sharp Hide)**: Guardian gains Sharp Hide 3 -- deals 3 damage to player per Attack card played. Has its own attacks (9 damage, 8x2=16). After some turns, switches back to Attack Mode with higher Mode Shift counter.</div>
+<div class="diff-add">+- **Offensive Mode** (repeating cycle): Charging Up (9 Block) -&gt; Fierce Bash (32 damage) -&gt; Vent Steam (2 Weak + 2 Vulnerable) -&gt; Whirlwind (5x4 = 20 damage).</div>
+<div class="diff-add">+- **Mode Shift**: After taking 30 HP of damage (first cycle; 40 second, 50 third, +10 each), gains 20 Block and switches to Defensive Mode. Triggering Mode Shift mid-attack CANCELS the current attack.</div>
+<div class="diff-add">+- **Defensive Mode**: Sharp Hide 3 (deal 3 damage to player per Attack card played) -&gt; Roll Attack (9 damage) -&gt; Twin Slam (8x2 = 16 damage, removes Sharp Hide, resets Mode Shift counter to 30/40/50+10) -&gt; returns to Offensive Mode.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **32-damage attack**: The Guardian&#x27;s biggest single hit. Must have 32+ block capability in one turn or you die. Impervious (30 block) handles this. Double Metallicize (6/turn) + Intimidate (Weak, reduces to 24) also works.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/time-eater.md</div>
+<div class="diff-hunk">@@ -1,14 +1,22 @@</div>
+<div class="diff-ctx"> # Time Eater (Act 3 Boss)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-HP: 480. Single target. The card-count boss.</div>
+<div class="diff-add">+HP: 456 at A0, 480 at A9. Single target. The card-count boss.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Reverberate: 7x3 = 21 damage (8x3 = 24 at A4)</div>
+<div class="diff-add">+- Head Slam: 26 damage + 1 Draw Reduction (32 at A4; adds 2 Slimed at A19)</div>
+<div class="diff-add">+- Ripple: 0 damage, gains 20 Block + applies 1 Vulnerable + 1 Weak (adds 1 Frail at A19)</div>
+<div class="diff-add">+- Haste (at 50% HP, once): Removes all debuffs, heals to 50% HP, gains 32 Block</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 45% Reverberate, 35% Head Slam, 20% Ripple. Cannot use Reverberate 3x in a row. Cannot use Head Slam or Ripple 2x in a row.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANIC: **Time Warp** -- every 12 cards played, Time Eater heals 32 HP, gains +2 Strength, and ends your turn immediately. This is a real test of intelligence. You must track exactly where you are in the 12-card cycle at all times -- not approximately, EXACTLY. Every card play counts, including 0-cost cards, Shivs, Powers, and cards generated mid-turn.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Deliberate card counting is mandatory.** Before playing any card, know the current count (e.g., &quot;I am at 9/12&quot;). Plan your turn around the count: if you are at 10/12, you have exactly 2 plays before Time Warp triggers. Use those 2 plays for maximum impact (block + damage), not throwaway cards. If you are at 8/12 with a hand of 5 cards, you know playing all 5 will trigger Time Warp at card 12 and waste 1 card play on the auto-ended turn -- so either play 4 high-impact cards and save the 5th, or play all 5 and accept the trigger on your terms.</div>
+<div class="diff-add">+**Haste** triggers once when HP drops below 50%: removes all debuffs, heals back to 50% HP (228 at A0), gains 32 Block. This effectively means you must deal ~684 total damage (456 * 1.5) to kill the Time Eater. Re-apply debuffs after Haste triggers.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Intentional phasing means choosing WHEN Time Warp triggers.** Do not let Time Warp catch you mid-turn with important plays left. Plan to trigger it at a moment that minimizes waste: ideally your last 1-2 plays of a turn should be the ones that push past 12, so the forced turn-end costs you nothing. Triggering Time Warp after playing a big block card (so the block carries into the next turn under Barricade) is excellent. Triggering it with 2 unplayed attack cards in hand is terrible.</div>
+<div class="diff-add">+**Deliberate card counting is mandatory.** Before playing any card, know the current count (e.g., &quot;I am at 9/12&quot;). Plan your turn around the count: if you are at 10/12, you have exactly 2 plays before Time Warp triggers. Use those 2 plays for maximum impact (block + damage), not throwaway cards.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-ATTACK PATTERN: Alternates between attacks (~22-30 damage, scaling with Str) and debuff/buff turns. Applies Vulnerable, draws cards, gains block. Damage escalates as Time Warp stacks Strength (+2 per trigger).</div>
+<div class="diff-add">+**Intentional phasing means choosing WHEN Time Warp triggers.** Do not let Time Warp catch you mid-turn with important plays left. Plan to trigger it at a moment that minimizes waste: ideally your last 1-2 plays of a turn should be the ones that push past 12, so the forced turn-end costs you nothing.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> STRATEGY:</div>
+<div class="diff-ctx"> - **Track the 12-card count explicitly every turn.** State your count before and after each play. &quot;Count is 7/12, playing Entrench+ makes it 8/12, playing Body Slam+ makes it 9/12, ending turn.&quot; This is not optional -- losing track of the count leads to wasted turns and unplanned Time Warp triggers.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
+<div class="diff-hunk">@@ -43,6 +43,15 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Masterful Stab](masterful-stab.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Silent Skill Cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Blur](blur.md)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Silent Power Cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [After Image](after-image.md)</div>
+<div class="diff-add">+- [Wraith Form](wraith-form.md)</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Colorless Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Apotheosis](apotheosis.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/after-image.md</div>
+<div class="diff-hunk">@@ -0,0 +1,38 @@</div>
+<div class="diff-add">+# After Image</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Power, 1E.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Whenever you play a card, gain 1 Block.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** 1 block per card played.</div>
+<div class="diff-add">+**Upgraded:** 1 block per card played (no change to block amount; upgrade may make it Innate or reduce cost -- verify).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+After Image provides flat block per card played that is **not affected by Dexterity or Frail**. This makes it uniquely valuable in two scenarios:</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. **When Frail is active:** Frail reduces block from Skills by 25%, but After Image&#x27;s 1 block per card is unaffected. Against the Collector&#x27;s Turn 4 triple debuff (Frail 3), After Image is the only block source that operates at full value.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+2. **When Dexterity is negative:** If Wraith Form has drained Dex to -5 or worse, all block from Defend/Survivor/Backflip becomes 0. After Image still provides 1 block per card played. With 7-8 cards per turn, this gives ~7-8 block -- insufficient against heavy attacks but the ONLY block available.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Combat Value</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Playing 5 cards/turn = 5 free block/turn</div>
+<div class="diff-add">+- Playing 8 cards/turn (with Pocketwatch, Acrobatics) = 8 free block/turn</div>
+<div class="diff-add">+- Shivs from Cloak and Dagger+ are 0E cards that each trigger After Image, making them block + damage simultaneously</div>
+<div class="diff-add">+- Over a 10-turn fight, After Image generates 50-80 total block for a 1E investment</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## When to Play</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Turn 1 or Turn 2 of every fight.** After Image is a Power that provides value every subsequent turn. The earlier it is played, the more total block it generates. Every turn it sits in discard unplayed is block lost.</div>
+<div class="diff-add">+- **Before the Collector&#x27;s Turn 4 debuff.** After Image MUST be active before the triple debuff lands. It is the Silent&#x27;s primary tool for surviving post-debuff turns.</div>
+<div class="diff-add">+- **Priority over other Powers except Noxious Fumes+.** In boss fights, play Noxious Fumes+ first (poison scaling is the win condition), then After Image second (block scaling is the survival condition).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Silent Boss Fights: Setup Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. Noxious Fumes+ (poison = win condition)</div>
+<div class="diff-add">+2. After Image (block per card = survival)</div>
+<div class="diff-add">+3. Footwork+ (Dex scaling = block multiplier)</div>
+<div class="diff-add">+4. Other powers</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Do not delay After Image setup for damage plays. The passive block generation pays for itself within 2-3 turns.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/blur.md</div>
+<div class="diff-hunk">@@ -0,0 +1,33 @@</div>
+<div class="diff-add">+# Blur</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Skill, 1E.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Gain 5 Block (8 upgraded). Block is not removed at the start of your next turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** 5 block + block retention.</div>
+<div class="diff-add">+**Upgraded:** 8 block + block retention.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic: Block Retention</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Blur allows block to carry over to the next turn. This is critical in two scenarios:</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. **Free turns (enemy buffing/debuffing):** When the enemy is not attacking, any block generated is normally wasted. With Blur, block from a free turn carries into the next attack turn. Against the Collector&#x27;s DEFEND_BUFF turns, this means block generated during the buff turn persists to the next attack turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+2. **Wraith Form Intangible turns:** During Intangible, you take only 1 damage regardless of the attack value. Any block generated is wasted unless Blur is active. With Blur, block from Intangible turns carries over to post-Intangible turns when the Dex penalty makes generating new block difficult or impossible.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Wraith Form Synergy</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Blur is the critical companion card to Wraith Form:</div>
+<div class="diff-add">+- Intangible turns: Generate block freely (enemy damage reduced to 1). Blur carries this block to the next turn.</div>
+<div class="diff-add">+- Post-Intangible turns: Dex penalty means new block is minimal. Carried-over block from the Intangible phase covers the gap.</div>
+<div class="diff-add">+- Without Blur, Wraith Form&#x27;s Intangible turns provide defense but the transition to post-Intangible is a cliff -- block drops from &quot;infinite&quot; to near-zero.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## When to Play</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **On free turns (DEFEND_BUFF, setup turns):** Generate block and carry it forward.</div>
+<div class="diff-add">+- **On the last Intangible turn:** Maximize block on the final safe turn so it carries into the first dangerous turn.</div>
+<div class="diff-add">+- **When After Image is generating excess block:** If After Image + card plays generate more block than needed this turn, Blur preserves the surplus.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Draft Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Blur is a mid-priority card for the Silent. It becomes high-priority when the deck includes Wraith Form, as the two cards form a strong defensive package together. Without Wraith Form, Blur is a decent but not essential block card (5/8 block for 1E is below average, but the retention effect adds conditional value).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/wraith-form.md</div>
+<div class="diff-hunk">@@ -0,0 +1,51 @@</div>
+<div class="diff-add">+# Wraith Form</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Power, 3E (2E upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Gain 2 Intangible (3 upgraded). At the end of each turn, lose 1 Dexterity (permanent, cumulative).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** 2 Intangible, -1 Dex/turn.</div>
+<div class="diff-add">+**Upgraded:** 3 Intangible, -1 Dex/turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic: Permanent Dex Drain</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The -1 Dex/turn penalty is **permanent and cumulative** for the rest of combat. It does not expire when Intangible wears off. This means:</div>
+<div class="diff-add">+- Turn played: Dex -1</div>
+<div class="diff-add">+- 5 turns later: Dex -5</div>
+<div class="diff-add">+- 10 turns later: Dex -10</div>
+<div class="diff-add">+- Turn 19: Dex -17 or worse (depending on when played)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+At high negative Dex, all block from Skills becomes 0 (block cannot go below 0). The ONLY block sources that still work are:</div>
+<div class="diff-add">+- **After Image** (1 block per card played, not affected by Dex)</div>
+<div class="diff-add">+- **Plated Armor** (flat block per turn, not affected by Dex)</div>
+<div class="diff-add">+- **Metallicize** (flat block per turn, not affected by Dex)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## When to Play</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Short fights (hallway, 4-6 turns):** Play freely. 2-3 turns of Intangible trivializes most hallway fights. The Dex penalty barely matters because the fight ends before it accumulates.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Medium fights (elites, 8-12 turns):** Play mid-fight (Turn 3-5) to cover the highest-damage turns. Accept that Dex will be -4 to -7 by fight end, requiring non-Dex block sources for the final turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Long fights (bosses, 15+ turns):** EXTREME CAUTION. Playing Wraith Form early in a boss fight is potentially fatal:</div>
+<div class="diff-add">+- Playing Turn 2 means Dex is -11 by Turn 13, -17 by Turn 19.</div>
+<div class="diff-add">+- At -11 Dex, Defend gives 0 block. Footwork+ gives 0 block. Survivor gives 0 block.</div>
+<div class="diff-add">+- The only block comes from After Image (~7-8 block/turn from card plays), which is insufficient against 24+ damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Boss fight timing rule:** In fights expected to last 15+ turns, delay Wraith Form until the final 5-6 turns. Use it as a finisher when the enemy is near death, not as early defense. If the fight will last 20 turns and you play Wraith Form on Turn 2, you will have 18 turns of Dex drain -- the last 10+ turns will have zero effective block from Skills.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Interactions</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **After Image:** Becomes the ONLY reliable block source at high negative Dex. After Image gives flat 1 block per card played regardless of Dex. With 7-8 cards played per turn, this is ~7-8 block -- often insufficient against boss damage.</div>
+<div class="diff-add">+- **Blur:** Critical companion card. Blur lets block carry over between turns. During Intangible turns (minimal damage taken), excess block from After Image or other sources carries over to post-Intangible turns when the Dex penalty makes new block generation impossible.</div>
+<div class="diff-add">+- **Footwork+:** Partially offsets the Dex drain. Starting with Dex +3 from Footwork+ means the penalty takes 3 extra turns to reach 0. But in a 19-turn fight, this only delays the crisis.</div>
+<div class="diff-add">+- **The Transient:** Wraith Form+ covers turns 1-3 via Intangible, but -1 Dex/turn makes turns 4-5 extremely tight. Enter with 25+ HP minimum.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## The Collector Boss Warning</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Collector fight can last 15-20 turns due to Torch Head respawning and DEFEND_BUFF turns that extend the fight. Playing Wraith Form early against the Collector means:</div>
+<div class="diff-add">+- Intangible covers 2-3 turns</div>
+<div class="diff-add">+- Dex drain makes all subsequent turns unsurvivable</div>
+<div class="diff-add">+- The Collector&#x27;s +3 Str per DEFEND_BUFF turn compounds while your block output drops to zero</div>
+<div class="diff-add">+- Death typically occurs with the Collector at very low HP (5-10 remaining) because you dealt enough damage but could not block the final attacks</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Against the Collector, hold Wraith Form until the Collector is below 50 HP** or until you are confident the fight will end within 5-6 more turns.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/3-cultists.md</div>
+<div class="diff-hunk">@@ -1,4 +1,4 @@</div>
+<div class="diff-del">-# 3 Cultists (hallway, Act 2, 3 Cultists with Ritual 3 each, ~50 HP each)</div>
+<div class="diff-add">+# 3 Cultists (hallway, Act 2, 3 Cultists with Ritual 3 each, HP: 48-54 each)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THIS IS THE MOST LETHAL HALLWAY FIGHT IN THE GAME. Six deaths across all runs -- more than any other single encounter. A hallway fight that scales like an elite and has killed at 5%, 30%, 37%, 39%, 52%, and 53% HP entry.**</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/3-shapes.md</div>
+<div class="diff-hunk">@@ -0,0 +1,32 @@</div>
+<div class="diff-add">+# 3 Shapes (hallway, Act 3)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Three randomly selected Shapes from the pool: 2x Repulsor, 2x Exploder, 2x Spiker. The encounter picks 3 of these 6.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Possible compositions include any combination of Exploders, Repulsors, and Spikers. See individual entries for each type:</div>
+<div class="diff-add">+- [Exploder](exploder.md) — 30 HP, explodes Turn 3 for 30 damage</div>
+<div class="diff-add">+- [Repulsor](repulsor.md) — 29-35 HP, adds Dazed to draw pile</div>
+<div class="diff-add">+- [Spiker](spiker.md) — 42-56 HP, Thorns that scale each turn</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Kill Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. **Exploders FIRST** — They detonate on Turn 3 for 30 damage each. Must die before detonation. This is non-negotiable.</div>
+<div class="diff-add">+2. **Repulsors SECOND** — Dazed clogging degrades hand quality. Low HP makes them easy kills.</div>
+<div class="diff-add">+3. **Spikers LAST** — Thorns are annoying but Spikers&#x27; direct damage (7 per turn) is low. Poison bypasses Thorns entirely.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Strategy</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Check composition at fight start and prioritize Exploders</div>
+<div class="diff-add">+- AOE is excellent here -- all Shapes have relatively low HP</div>
+<div class="diff-add">+- If no Exploders are present: kill Repulsors first (stop Dazed generation), then Spikers (use poison if possible)</div>
+<div class="diff-add">+- If 2 Exploders: split damage to kill both before Turn 3 or accept 30 damage from one while killing the other</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## SILENT-SPECIFIC</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Poison is the Silent&#x27;s best tool here. It kills Spikers without triggering Thorns and provides passive damage on all targets</div>
+<div class="diff-add">+- Blade Dance / Dagger Spray for fast Exploder kills</div>
+<div class="diff-add">+- Noxious Fumes hits all 3 targets passively</div>
+<div class="diff-add">+- Avoid using Shivs on Spikers with high Thorns</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Danger Level</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Medium. Exploders are the primary threat. Without them, the fight is low-risk. With 2 Exploders, the Turn 3 timer creates urgency.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/_index.md</div>
+<div class="diff-hunk">@@ -5,46 +5,60 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Jaw Worm](jaw-worm.md)</div>
+<div class="diff-ctx"> - [Cultist](cultist.md)</div>
+<div class="diff-del">-- [Louse](louse.md)</div>
+<div class="diff-add">+- [Louse](louse.md) (Red Louse + Green Louse)</div>
+<div class="diff-add">+- [Small Slimes](small-slimes.md) (Acid Slime S + Spike Slime S, or medium variants)</div>
+<div class="diff-add">+- [Acid Slime L](acid-slime-l.md)</div>
+<div class="diff-add">+- [Spike Slime L](spike-slime-l.md)</div>
+<div class="diff-add">+- [Spike Slime M](spike-slime-m.md)</div>
+<div class="diff-add">+- [Blue Slaver](blue-slaver.md)</div>
+<div class="diff-ctx"> - [Red Slaver](red-slaver.md)</div>
+<div class="diff-ctx"> - [Looter](looter.md)</div>
+<div class="diff-ctx"> - [Fungi Beast](fungi-beast.md)</div>
+<div class="diff-del">-- [Spike Slime M](spike-slime-m.md)</div>
+<div class="diff-del">-- [Spike Slime L](spike-slime-l.md)</div>
+<div class="diff-del">-- [Acid Slime L](acid-slime-l.md)</div>
+<div class="diff-ctx"> - [Gremlin Gang](gremlin-gang.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 1 Elites</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Lagavulin](lagavulin.md)</div>
+<div class="diff-ctx"> - [Gremlin Nob](gremlin-nob.md)</div>
+<div class="diff-del">-- [Sentry](sentry.md)</div>
+<div class="diff-add">+- [Sentry](sentry.md) (3x Sentries)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 2 Hallway</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- [Byrd](byrd.md)</div>
+<div class="diff-ctx"> - [Chosen](chosen.md)</div>
+<div class="diff-add">+- [Byrd](byrd.md) (appears as 3x Byrds)</div>
+<div class="diff-ctx"> - [Centurion + Mystic](centurion-mystic.md)</div>
+<div class="diff-del">-- [3 Cultists](3-cultists.md)</div>
+<div class="diff-del">-- [Mugger](mugger.md)</div>
+<div class="diff-ctx"> - [Snake Plant](snake-plant.md)</div>
+<div class="diff-del">-- [Spheric Guardian](spheric-guardian.md)</div>
+<div class="diff-ctx"> - [Snecko](snecko.md)</div>
+<div class="diff-ctx"> - [Shelled Parasite](shelled-parasite.md)</div>
+<div class="diff-add">+- [Spheric Guardian](spheric-guardian.md)</div>
+<div class="diff-add">+- [Mugger](mugger.md)</div>
+<div class="diff-add">+- [3 Cultists](3-cultists.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 2 Elites</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Gremlin Leader](gremlin-leader.md)</div>
+<div class="diff-ctx"> - [Book of Stabbing](book-of-stabbing.md)</div>
+<div class="diff-del">-- [Slavers](slavers.md)</div>
+<div class="diff-add">+- [Slavers](slavers.md) (Blue Slaver + Red Slaver + Taskmaster)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 3 Hallway</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- [Writhing Mass](writhing-mass.md)</div>
+<div class="diff-del">-- [Transient](transient.md)</div>
+<div class="diff-del">-- [The Maw](the-maw.md)</div>
+<div class="diff-del">-- [Orb Walker](orb-walker.md)</div>
+<div class="diff-add">+- [Darklings](darklings.md) (3x Darklings with Life Link)</div>
+<div class="diff-add">+- [Transient](transient.md) (999 HP, Fading 5)</div>
+<div class="diff-add">+- [The Maw](the-maw.md) (300 HP, escalating damage)</div>
+<div class="diff-add">+- [Orb Walker](orb-walker.md) (Strength Up scaling + Burns)</div>
+<div class="diff-add">+- [Writhing Mass](writhing-mass.md) (Malleable + Reactive)</div>
+<div class="diff-add">+- [Spiker](spiker.md) (Thorns scaling)</div>
+<div class="diff-add">+- [Exploder](exploder.md) (30 damage detonation timer)</div>
+<div class="diff-add">+- [Repulsor](repulsor.md) (Dazed generation)</div>
+<div class="diff-add">+- [3 Shapes](3-shapes.md) (random mix of Spikers/Exploders/Repulsors)</div>
+<div class="diff-add">+- [Jaw Worm Horde](jaw-worm-horde.md) (3x Jaw Worms with pre-applied Bellow)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Act 3 Elites</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Giant Head](giant-head.md) (500 HP, Slow, escalating damage)</div>
+<div class="diff-add">+- [Nemesis](nemesis.md) (185 HP, Intangible every other turn)</div>
+<div class="diff-add">+- [Reptomancer](reptomancer.md) (180-190 HP, summons exploding Daggers)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- [Darklings](darklings.md)</div>
+<div class="diff-add">+## Cross-Reference</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-NOTE: Spikers and Exploders are documented in strategy.md (Act 3 Key Enemies) but do not yet have individual playbook entries. Create entries when first encountered in more detail.</div>
+<div class="diff-add">+- [Bronze Automaton](bronze-automaton.md) — duplicate entry for Act 2 boss (see [bosses/bronze-automaton.md](../bosses/bronze-automaton.md) for primary entry)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/acid-slime-l.md</div>
+<div class="diff-hunk">@@ -1,8 +1,16 @@</div>
+<div class="diff-del">-# Acid Slime L (hallway/boss split, Act 1, HP: equal to Slime Boss&#x27;s remaining HP at split, max 70)</div>
+<div class="diff-del">-PATTERN: Attacks for ~11-12 damage. Applies Weak. Adds Slimed cards. Splits into 2x Acid Slime (M) on death.</div>
+<div class="diff-del">-KEY MECHANIC: Weak + Split on death + Slimed.</div>
+<div class="diff-add">+# Acid Slime L (hallway/boss split, Act 1, HP: 65-69 standalone, or equal to Slime Boss&#x27;s remaining HP at split)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 30% Corrosive Spit, 40% Tackle, 30% Lick. Cannot use Tackle twice in a row; other moves cannot repeat three times in a row. Splits into 2x Acid Slime (M) when HP drops to 50% or below.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Corrosive Spit: 11 damage + 2 Slimed cards to discard pile (12 at A2)</div>
+<div class="diff-add">+- Tackle: 16 damage (18 at A2)</div>
+<div class="diff-add">+- Lick: Applies 2 Weak (no damage)</div>
+<div class="diff-add">+- Split: At 50% HP or below, spawns 2 Acid Slime (M) with current HP each</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Weak 2 + Split at 50% HP + Slimed card generation. Tackle is the dangerous move at 16 damage.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Killing this enemy creates 2 Acid Slime (M) enemies. In the Slime Boss fight, this means going from 2 enemies to 3 unless you kill both large slimes in quick succession. Weak reduces YOUR damage output, making it harder to finish off remaining enemies.</div>
+<div class="diff-del">-BRING: Burst to kill before Weak stacks become crippling. AOE for the medium slimes that spawn on death.</div>
+<div class="diff-add">+BRING: Burst to kill before Weak stacks become crippling. AOE for the medium slimes that spawn on split.</div>
+<div class="diff-ctx"> AVOID: Killing this while the other large slime is at full HP. Spread damage first.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+DANGER LEVEL: Medium. Tackle hits hard (16 damage) but Lick turns are free.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/blue-slaver.md</div>
+<div class="diff-hunk">@@ -0,0 +1,26 @@</div>
+<div class="diff-add">+# Blue Slaver (hallway, Act 1, HP: 46-50)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Each turn, 60% chance to use Stab, 40% chance to use Rake. Cannot use the same attack three times in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Applies Weak via Rake. Moderate sustained damage with no free turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Stab: 12 damage (13 at A2)</div>
+<div class="diff-add">+- Rake: 7 damage + 1 Weak (8 damage + 1 Weak at A2)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEBUFFS: Weak (from Rake)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: 46-50 at A0</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: Straightforward damage dealer. Slightly less dangerous than Red Slaver (no Entangle, lower Stab damage). Weak from Rake reduces your damage output, extending the fight slightly.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- Apply Vulnerable, burst down. Standard 3-4 turn kill</div>
+<div class="diff-add">+- Block on Stab turns (12 damage), damage on Rake turns (only 7 damage)</div>
+<div class="diff-add">+- No special mechanics to worry about</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC: Straightforward fight. Neutralize for Weak on Turn 1, then burst with Strikes. Poison handles this efficiently.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Low. Below-average threat for Act 1.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+APPEARS WITH: Can appear solo in Act 1 Hard Pool. Also appears in the Act 2 Slavers elite (alongside Red Slaver + Taskmaster).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/book-of-stabbing.md</div>
+<div class="diff-hunk">@@ -1,6 +1,16 @@</div>
+<div class="diff-del">-# Book of Stabbing (elite, Act 2, HP: 161)</div>
+<div class="diff-del">-PATTERN: Multi-hit attacks that gain +1 hit every turn AND gain +3 Str every turn. The double scaling (more hits AND more damage per hit) means incoming damage grows quadratically, not linearly. Each attack adds Wound status cards (Unplayable, persist in deck).</div>
+<div class="diff-del">-KEY MECHANIC: Double scaling -- hit count increases by 1 every turn AND Str increases by +3 every turn. This means damage per turn grows much faster than a single scaling mechanic. Example observed (with Str 3 start): T1: 24, T2: 18 (with Piercing Wail Str reduction), T3: 27, T4: 36 (Weakened), T5: 30 (Weakened), T6: 54 (unmitigated). Without debuffs, raw damage escalates to 50+ by turn 5-6. Combined with Wound draw clog, this creates a rapid death spiral.</div>
+<div class="diff-add">+# Book of Stabbing (elite, Act 2, HP: 160-164)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 85% Multi Stab, 15% Single Stab. Cannot use Multi Stab 3x in a row or Single Stab 2x in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Multi Stab: 6xN damage (N = times used this combat + 2). Turn 1: 6x2=12, Turn 2: 6x3=18, Turn 3: 6x4=24, etc. (7xN at A3)</div>
+<div class="diff-add">+- Single Stab: 21 damage (24 at A3)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BUFFS: Painful Stabs -- whenever you receive attack damage, adds Wounds to your discard pile.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: 160-164 at A0</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Multi Stab gains +1 hit every time it is used. Unlike what was previously documented, the scaling is from hit count increasing, not from Strength. Each Multi Stab adds more hits: 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6. By turn 5-6, Multi Stab deals 6x6=36 or more. Combined with Wound draw clog from Painful Stabs, this creates a rapid death spiral.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> THE WOUND CLOG PROBLEM: By turn 6-7, Wounds can comprise 60%+ of the deck. A 21-card deck accumulating 3+ Wounds per turn means that by mid-fight, you draw 3 Wounds and 2 playable cards per turn. This makes it impossible to find block AND offense in the same hand. Strong cards like Double Tap, Reaper, Inflame become buried under Wounds. The fight becomes unwinnable not because of raw damage scaling but because the deck stops functioning.</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/byrd.md</div>
+<div class="diff-hunk">@@ -1,6 +1,16 @@</div>
+<div class="diff-del">-# Byrd (hallway, Act 2, HP: ~25-30 each, appears in groups of 3)</div>
+<div class="diff-del">-PATTERN: Attacks for 5-15 damage each (base 5-10, scales with Strength gained on buff turns). Has buff turns where they gain +1 Strength AND regain Flight 3. Attack types include Peck (1x5 multi-hit, 2x5, or 3x5) and Headbutt (single hit). By turn 4-5, individual Byrds can have Str 1-2, increasing Peck from 5 to 2x6=12 or 3x7=21. Late-fight all-attack turns can deal 28-38+ combined damage from 2-3 Byrds.</div>
+<div class="diff-del">-KEY MECHANIC: Flight N. All damage is halved while Flight &gt; 0. Each hit reduces Flight by 1. Multi-hit and AOE attacks strip Flight faster. Twin Strike+ strips 2 Flight in one play. Cleave strips 1 Flight from each Byrd.</div>
+<div class="diff-add">+# Byrd (hallway, Act 2, HP: 25-31 each, appears in groups of 3)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN (while airborne): 50% Peck (1x5 damage), 30% Caw (+1 Strength), 20% Swoop (12 damage). Cannot use Caw or Swoop twice in a row. Cannot use Peck three times in a row.</div>
+<div class="diff-add">+WHEN GROUNDED (Flight removed): Stunned -&gt; Headbutt (3 damage) -&gt; Go Airborne (gains 3 Flying) -&gt; returns to normal pattern.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Peck: 1x5 = 5 damage (each hit is 1, halved by Flight on other Byrds)</div>
+<div class="diff-add">+- Swoop: 12 damage</div>
+<div class="diff-add">+- Caw: 0 damage, gains 1 Strength</div>
+<div class="diff-add">+- Headbutt: 3 damage (only when grounded)</div>
+<div class="diff-add">+- Go Airborne: gains 3 Flying</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Flight 3. Takes 50% less attack damage while Flying. Each attack hit removes 1 Flight charge. Resets at start of next turn if not fully removed. Multi-hit and AOE attacks strip Flight faster. Indirect damage (poison, orbs) ignores Flight entirely.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Use Thunderclap to strip 1 Flight from ALL Byrds and apply Vulnerable simultaneously. Focus fire one Byrd at a time -- going from 3 to 2 removes 33% of incoming damage. Once Flight is at 0, burst with Vulnerable attacks to kill. Expect 7-12 turn fights and 20-73 HP lost.</div>
+<div class="diff-ctx"> BENCHMARKS: With Thunderclap + burst: 7-turn fight, ~20 HP lost. Without AOE: 8-10 turns, 36+ HP lost. Worst case observed: 8-turn fight with TC+ and Spot Weakness present, 73 HP lost (74 to 1) -- all 3 Byrds attacked on turn 2 for 38 combined damage with only 1 Defend in hand. This fight is the primary Act 2 HP drain and a leading cause of death spirals.</div>
+<div class="diff-ctx"> WARNING: If the map forces a Monster room immediately after a Byrd fight with no rest/shop/event option, the run may be lost. 3 Byrds can drain 50-73 HP even with correct play, and Burning Blood (+6) cannot compensate. When planning Act 2 routes, ensure the first 2-3 floors include at least one non-combat room (rest site, shop, event) as a safety valve after potential Byrd encounters.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/centurion-mystic.md</div>
+<div class="diff-hunk">@@ -1,6 +1,19 @@</div>
+<div class="diff-del">-# Centurion + Mystic (hallway, Act 2, Centurion HP: ~76-80, Mystic HP: ~50)</div>
+<div class="diff-del">-PATTERN: Mystic heals Centurion ~12 HP/turn and gains ~15 block. Centurion attacks for 12 damage on normal turns, but has a **10x3 = 30 damage multi-hit attack** on some turns. Both can have buff/defend turns (free damage windows).</div>
+<div class="diff-del">-KEY MECHANIC: Mystic heals Centurion. Centurion is unkillable while Mystic lives.</div>
+<div class="diff-add">+# Centurion + Mystic (hallway, Act 2, Centurion HP: 76-80, Mystic HP: 48-56)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN:</div>
+<div class="diff-add">+- Centurion (Mystic alive): 65% Slash (12 damage), 35% Protect (gives Mystic 15 Block). Cannot use any move 3x in a row.</div>
+<div class="diff-add">+- Centurion (Mystic dead): 65% Slash (12 damage), 35% Fury (6x3 = 18 damage). Cannot use any move 3x in a row.</div>
+<div class="diff-add">+- Mystic: Heals if any enemy missing 16+ HP (heals all enemies 16 HP, up to 2x in a row). Otherwise: 60% Attack (8 damage + 2 Frail), 40% Buff (all enemies gain 2 Strength). Cannot use Attack or Buff 3x in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Centurion Slash: 12 damage (13 at A2)</div>
+<div class="diff-add">+- Centurion Fury: 6x3 = 18 damage (only used after Mystic dies)</div>
+<div class="diff-add">+- Centurion Protect: Gives Mystic 15 Block</div>
+<div class="diff-add">+- Mystic Attack: 8 damage + 2 Frail</div>
+<div class="diff-add">+- Mystic Buff: All enemies gain 2 Strength</div>
+<div class="diff-add">+- Mystic Heal: All enemies heal 16 HP</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Mystic heals all enemies 16 HP when any enemy is hurt enough. Centurion is unkillable while Mystic lives. Once Mystic dies, Centurion replaces Protect with Fury (6x3).</div>
+<div class="diff-ctx"> WHAT THIS MEANS: KILL MYSTIC FIRST. Non-negotiable. If you attack Centurion while Mystic is alive, you&#x27;re in an unwinnable attrition war. Focus all damage on Mystic despite Centurion being the bigger per-turn threat. Apply Weak to Centurion to reduce incoming while you kill Mystic. Expect 6-12 turns.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **CENTURION SOLO PHASE IS DANGEROUS.** Once Mystic is dead, Centurion still has the 10x3 multi-hit attack (30 damage). If you are at low HP after killing Mystic, this attack is lethal without strong block (Flame Barrier, Impervious, multiple Defends + Iron Wave). Do NOT spend all potions and exhaust cards on the Mystic kill -- save at least one defensive resource for the Centurion solo phase. Confirmed: death at 3 HP from 10x3 = 30 attack with no block cards or potions remaining.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/chosen.md</div>
+<div class="diff-hunk">@@ -1,6 +1,15 @@</div>
+<div class="diff-del">-# Chosen (hallway, Act 2, HP: 95-98)</div>
+<div class="diff-del">-PATTERN: Turn 1 applies Hex (adds Dazed to draw pile when you play Skills). Applies Vulnerable to player. Has a 7x2 multi-attack (14 raw, 20 with Vulnerable on player). Gains +3 Strength over the fight. Attacks escalate from ~10 to 14 (7x2) to 20+ as Strength stacks.</div>
+<div class="diff-del">-KEY MECHANIC: Hex. Every Skill card played adds a Dazed to draw pile. Blocking is actively costly -- each Defend clogs the deck. Also applies Vulnerable to player, making its 7x2 hit deal 20 effective damage.</div>
+<div class="diff-add">+# Chosen (hallway, Act 2, HP: 95-99)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Always starts with Poke, then Hex. After that, repeats: (Debilitate 50% / Drain 50%) followed by (Poke 60% / Zap 40%).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Poke: 5x2 = 10 damage (6x2 = 12 at A2)</div>
+<div class="diff-add">+- Zap: 18 damage (21 at A2)</div>
+<div class="diff-add">+- Debilitate: 10 damage + 2 Vulnerable (12 at A2)</div>
+<div class="diff-add">+- Drain: 0 damage, applies 3 Weak + gains 3 Strength</div>
+<div class="diff-add">+- Hex: Applies Hex debuff (whenever you play a non-Attack card, shuffle 1 Dazed into draw pile)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Hex. Every non-Attack card played adds a Dazed to draw pile. Blocking is actively costly -- each Defend clogs the deck. Also applies Vulnerable to player, making Zap (18) and Poke (10) hit harder.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Minimize Skill usage. Front-load damage with Attacks. Bash+ is safe (Attack). Kill before Strength buffs make 7x2 lethal. With Vulnerable on you, even 7x2 base becomes 20 damage per turn. At low HP (&lt;20), the 7x2 with Vulnerable is a death sentence.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> HP DRAIN: This fight routinely drains 30-40 HP even with a strong deck. If opening hand lacks block cards, the first 1-2 turns of unblocked 10-14 damage create immediate danger. At 50 HP entry, leaving at 17 HP is a realistic outcome -- which then makes the NEXT fight lethal (the death spiral pattern). Confirmed: 39 HP entry with Carnage+, Bash+, Headbutt, Dropkick, Demon Form, and Ghostly Armor resulted in 32 HP drain (39-&gt;7 HP) over 7 turns. Even with Demon Form scaling, the Chosen&#x27;s Hex penalty on Skills and Vulnerable on the player made every turn painful. The fight is a reliable death spiral trigger in Act 2.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/cultist.md</div>
+<div class="diff-hunk">@@ -1,6 +1,11 @@</div>
+<div class="diff-del">-# Cultist (hallway, Act 1, HP: ~50-53)</div>
+<div class="diff-del">-PATTERN: Turn 1: Ritual/Incantation (gains +3 Strength, does NOT attack). Subsequent turns: attacks with escalating damage (base 6 + 3 per turn of Ritual).</div>
+<div class="diff-del">-KEY MECHANIC: Ritual +3 Strength per turn. Turn 1 is completely free.</div>
+<div class="diff-add">+# Cultist (hallway, Act 1, HP: 48-54)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Always starts with Incantation (gains 3 Ritual, does NOT attack). Subsequent turns: uses Dark Strike every turn (6 damage + accumulated Ritual Strength).</div>
+<div class="diff-add">+KEY MECHANIC: Ritual 3 -- gains +3 Strength per turn permanently. Turn 1 is completely free.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Dark Strike: 6 damage (base, increases by 3 per turn from Ritual)</div>
+<div class="diff-add">+- Turn 2: 9 damage. Turn 3: 12. Turn 4: 15. Turn 5: 18.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Go all-in turn 1 (Bash + Strikes for 17+ damage). Kill by turn 3-4 before attacks become dangerous. By turn 4, Cultist attacks for 15+.</div>
+<div class="diff-ctx"> BENCHMARKS: Kill in 3-4 turns. Turn 1 free damage: 17-21.</div>
+<div class="diff-ctx"> BRING: Bash for turn 1 Vulnerable setup, burst attacks.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/darklings.md</div>
+<div class="diff-hunk">@@ -1,12 +1,21 @@</div>
+<div class="diff-del">-# Darklings (Act 3 Hallway)</div>
+<div class="diff-add">+# Darklings (Act 3 Hallway, HP: 48-56 each)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Three enemies. Each has moderate HP. Life Link mechanic: if any Darkling is killed while others survive, the killed Darkling revives at half HP at the start of the next turn.</div>
+<div class="diff-add">+Three enemies. Life Link mechanic: if any Darkling is killed while others survive, the killed Darkling enters &quot;Regrowing&quot; state (cannot be targeted) for one turn, then revives at 50% HP.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Mechanics</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- **Life Link**: Must kill all 3 Darklings simultaneously (same turn) or they revive at half HP. This is the defining mechanic -- partial kills are wasted damage.</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Nip: N damage (N = random 7-11, set at combat start; 9-13 at A2)</div>
+<div class="diff-add">+- Chomp: 8x2 = 16 damage (9x2 = 18 at A2) -- only used by outer Darklings</div>
+<div class="diff-add">+- Harden: Gains 12 Block (17 Block + 2 Str at A2)</div>
+<div class="diff-add">+- Reincarnate: Revives at 50% HP</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN (outer Darklings): Turn 1: 50/50 Nip or Harden. Other turns: 30% Nip, 40% Chomp, 30% Harden. Cannot use Harden or Chomp consecutively; Nip cannot repeat 3x.</div>
+<div class="diff-add">+PATTERN (middle Darkling): Same as outer but cannot use Chomp.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Life Link**: Must kill all 3 Darklings in the same turn or they revive at half HP. Partial kills are wasted unless all die simultaneously.</div>
+<div class="diff-ctx"> - Each Darkling attacks independently. Combined incoming can reach 25-35 damage/turn.</div>
+<div class="diff-del">-- Darklings can buff and debuff on non-attack turns.</div>
+<div class="diff-add">+- Darklings can gain Block and Strength on Harden turns.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Strategy</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/exploder.md</div>
+<div class="diff-hunk">@@ -0,0 +1,26 @@</div>
+<div class="diff-add">+# Exploder (hallway, Act 3, HP: 30)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Fixed sequence: Slam -&gt; Slam -&gt; Explode. Uses Slam twice, then detonates on Turn 3. The Explosive timer starts at 3 and decreases by 1 at end of each turn. When it reaches 0, Exploder uses Explode and dies.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Explode deals 30 damage and kills the Exploder. This is a hard timer -- if you cannot kill the Exploder in 2 turns, you take 30 damage on turn 3. Explosion damage does NOT ignore block.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Slam: 9 damage (11 at A2)</div>
+<div class="diff-add">+- Explode: 30 damage (kills self)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BUFFS: Explosive 3 (countdown timer, decreases by 1 each turn)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: You have exactly 2 turns to kill the Exploder or eat 30 damage. At 30 HP, this is extremely dangerous. Kill priority is highest among the Shapes -- Spikers and Repulsors are annoying but not immediately lethal.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- KILL FIRST in any multi-enemy fight. 30 HP is very low -- most decks can kill in 1-2 turns</div>
+<div class="diff-add">+- Front-load all damage on Exploders. Even at the cost of taking Slam damage (9), preventing the 30 explosion is correct</div>
+<div class="diff-add">+- Poison can handle Exploders if applied heavily on Turn 1 (need 30+ total poison ticks in 2 turns)</div>
+<div class="diff-add">+- AOE can efficiently damage Exploders alongside other enemies</div>
+<div class="diff-add">+- Block the Explosion if you cannot kill in time -- it does NOT bypass block</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC: Deadly Poison+ (12 poison) on Turn 1 kills the Exploder before detonation (12 + 11 = 23 by end of Turn 2... need supplemental damage). Noxious Fumes alone is too slow (2 + 3 = 5 poison by Turn 2). Best approach: direct attacks + Backstab for burst.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: High if not killed quickly. The 30-damage explosion can end runs at low HP. Low if you have burst damage or AOE.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+APPEARS WITH: Other Shapes (Spikers, Repulsors) in the 3 Shapes encounter.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/fungi-beast.md</div>
+<div class="diff-hunk">@@ -1,6 +1,15 @@</div>
+<div class="diff-ctx"> # Fungi Beast (hallway, Act 1-2, HP: 22-28, appears in pairs or with Shelled Parasite)</div>
+<div class="diff-del">-PATTERN: Alternates between attacking (~6 base damage) and buffing (+3 Strength per buff turn). On death, applies Spore Cloud: 2 Vulnerable to the player.</div>
+<div class="diff-del">-KEY MECHANIC: Strength scaling from buff turns + Spore Cloud on death. Each buff turn gives +3 Str, so attacks escalate: Turn 1 buff (free), Turn 2 attack for 6+3=9, Turn 3 buff (free), Turn 4 attack for 6+6=12, Turn 5 buff (free), Turn 6 attack for 6+9=15. Two Fungi Beasts that both attack on the same turn deal combined 18 (early) to 27+ (late). The fight becomes lethal if it drags past Turn 5-6 due to compounding Strength.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Each turn, 60% chance Bite, 40% chance Grow. Cannot use Bite 3 times in a row. Cannot use Grow twice in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Strength scaling from Grow (+3 Str per use) + Spore Cloud 2 on death (applies 2 Vulnerable to player).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Bite: 6 damage (base, scales with accumulated Strength)</div>
+<div class="diff-add">+- Grow: Gains 3 Strength</div>
+<div class="diff-add">+- Spore Cloud 2: On death, applies 2 Vulnerable to player</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Strength scaling example: After 1 Grow = 9 Bite, after 2 Grows = 12 Bite, after 3 Grows = 15 Bite. Two Fungi Beasts that both attack on the same turn deal combined 18 (early) to 27+ (late). The fight becomes lethal if it drags past Turn 5-6 due to compounding Strength.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Kill fast. Unlike static enemies, Fungi Beasts scale with time. A 6-turn fight against 2 Fungi Beasts faces 27 combined damage on the final turn. Kill one when the other is NOT attacking to avoid Spore Cloud Vulnerability + attack in the same turn.</div>
+<div class="diff-ctx"> BENCHMARKS: Must kill within 5-6 turns or Str scaling makes incoming unblockable. HP is higher than documented in some pairings (observed 22-28 HP range in Act 1).</div>
+<div class="diff-ctx"> BRING: Enough burst to kill one in 3-4 turns. Block for the escalating later turns. AOE is excellent (both are low-HP, AOE shortens the fight before scaling gets dangerous).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/giant-head.md</div>
+<div class="diff-hunk">@@ -1,16 +1,21 @@</div>
+<div class="diff-del">-# Giant Head (Elite, Act 3)</div>
+<div class="diff-add">+# Giant Head (Elite, Act 3, HP: 500)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-HP: 625. Single target. Very long fight.</div>
+<div class="diff-add">+Single target. Very long fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-KEY MECHANIC: **Slow** -- each card played in a turn increases a counter. Attack damage is reduced based on how many cards you&#x27;ve played that turn. This punishes wide turns with many card plays. Play fewer, bigger cards.</div>
+<div class="diff-add">+POWER: **Slow** -- whenever you play a card, the Giant Head receives 10% more damage from Attacks this turn. This actually REWARDS playing many cards per turn -- more plays = more damage dealt to it.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-ATTACK PATTERN: Giant Head starts with low attacks (~13) but escalates by +5 every attack turn. By turn 8-10, attacks reach 50-60+, making the fight a DPS race.</div>
+<div class="diff-add">+PATTERN: For the first 4 turns, uses Count (13 damage) or Glare (1 Weak) with 50/50 chance (cannot repeat either 3x in a row). After 4 turns, exclusively uses &quot;It Is Time&quot; for the rest of combat.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-DEBUFF TURN: Giant Head alternates attacks with a debuff turn (applies Weak, possibly status cards). This is a free damage turn with no incoming attack.</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Count: 13 damage</div>
+<div class="diff-add">+- Glare: 0 damage, applies 1 Weak</div>
+<div class="diff-add">+- It Is Time: 30 damage base, increases by 5 per use (30 -&gt; 35 -&gt; 40 -&gt; 45 -&gt; 50 -&gt; 55 -&gt; 60 max)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: It Is Time escalates by +5 per use. After 4 turns of Count/Glare, every subsequent turn deals 30+ and growing. The fight is a DPS race -- kill before It Is Time reaches 50+.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> STRATEGY:</div>
+<div class="diff-del">-- **Demon Form is critical.** Must be played Turn 1-2. At 625 HP, you need exponential Strength scaling to kill Giant Head before its attacks become unsurvivable. Delaying Demon Form by even 2-3 turns can be fatal.</div>
+<div class="diff-del">-- **Minimize card plays per turn** due to Slow. Play 1-2 big attacks rather than 3-4 small ones.</div>
+<div class="diff-add">+- **Demon Form is critical.** Must be played Turn 1-2. At 500 HP, you need exponential Strength scaling to kill Giant Head before its attacks become unsurvivable. Delaying Demon Form by even 2-3 turns can be fatal.</div>
+<div class="diff-add">+- **Slow HELPS you** -- each card played makes Giant Head take 10% more damage from attacks this turn. Play many cards per turn to maximize damage. Shivs and multi-card turns are rewarded.</div>
+<div class="diff-ctx"> - **Immolate+ with high Strength** is the best damage card -- single play, massive damage.</div>
+<div class="diff-ctx"> - **Entrench+ is essential** for surviving high-damage turns. Double your block to keep pace with escalating attacks.</div>
+<div class="diff-ctx"> - **Impervious** gives 30 block but exhausts. Save for the turn attacks spike past your normal block capacity.</div>
+<div class="diff-hunk">@@ -18,10 +23,10 @@ STRATEGY:</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> HP THRESHOLD: Enter this fight above 60% HP. The fight lasts 10+ turns with increasing damage. Even with good block, expect to take chip damage from turns where attacks exceed your block capacity.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-DEATH PATTERN (Run 149): Entered at 53/80 (66%). Accidentally exhausted Reaper+ Turn 1 due to index shifting. Demon Form delayed to Turn 4. By Turn 10, Giant Head was dealing 55+ damage/turn but had only lost ~250 of 625 HP. Fairy in a Bottle triggered Turn 10 (revive to 24 HP). Died Turn 11 to 60 damage with only 27 block. Lost the DPS race because Reaper and Demon Form were both unavailable early.</div>
+<div class="diff-add">+DEATH PATTERN (Run 149): Entered at 53/80 (66%). Accidentally exhausted Reaper+ Turn 1 due to index shifting. Demon Form delayed to Turn 4. By Turn 10, Giant Head was dealing 55+ damage/turn but had only lost ~250 of 500 HP. Fairy in a Bottle triggered Turn 10 (revive to 24 HP). Died Turn 11 to 60 damage with only 27 block. Lost the DPS race because Reaper and Demon Form were both unavailable early.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> LESSON: **Never use turn() sequences with cards that shift indices.** Play one card at a time with state() checks between plays. A single index-shift error can exhaust a critical card and lose the fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-BARRICADE ENGINE APPROACH (CONFIRMED WIN): The Barricade + Corruption + FNP + Entrench + Body Slam engine can defeat Giant Head without Demon Form or Strength scaling. Body Slam+ with 66-83 accumulated block deals massive single-card damage (bypasses Slow penalty since it is one card play). Apotheosis on the setup turn upgrades all cards. Entrench+ doubles block from 63 to 126, then Body Slam+ delivers the killing blow. With Preserved Insect reducing HP by 25%, the effective HP is ~469. The engine completed the kill in 8 turns with zero HP lost after the block wall was established. The key advantage: Body Slam+ is a SINGLE card play per turn, so Slow penalty is minimal.</div>
+<div class="diff-add">+BARRICADE ENGINE APPROACH (CONFIRMED WIN): The Barricade + Corruption + FNP + Entrench + Body Slam engine can defeat Giant Head without Demon Form or Strength scaling. Body Slam+ with 66-83 accumulated block deals massive single-card damage (bypasses Slow penalty since it is one card play). Apotheosis on the setup turn upgrades all cards. Entrench+ doubles block from 63 to 126, then Body Slam+ delivers the killing blow. With Preserved Insect reducing HP by 25%, the effective HP is ~375. The engine completed the kill in 8 turns with zero HP lost after the block wall was established. The key advantage: Body Slam+ is a SINGLE card play per turn, so Slow penalty is minimal.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> NOTE: Demon Form is NOT required to kill Giant Head. Either Demon Form (Strength scaling) or Barricade + Body Slam (block scaling) works. The fight is unwinnable only when NEITHER scaling engine is available.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-gang.md</div>
+<div class="diff-hunk">@@ -1,18 +1,18 @@</div>
+<div class="diff-ctx"> # Gremlin Gang (Act 1 Hallway)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-A mixed group of 4 gremlins drawn from different types. Not to be confused with Gremlin Leader (an Act 2 elite with a distinct Rally mechanic).</div>
+<div class="diff-add">+A mixed group of 4 gremlins randomly selected from: 2 Fat, 2 Sneaky, 2 Mad, 1 Shield, 1 Wizard. Not to be confused with Gremlin Leader (an Act 2 elite with a distinct Rally mechanic).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> GREMLIN TYPES (kill priority order):</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-1. **Sneaky Gremlin** -- KILL FIRST. Glass cannon. Attacks for 9-10 damage per turn with low HP (~10-13). Left alive for multiple turns, cumulative damage is devastating (25+ damage observed from a single Sneaky Gremlin that survived 3 turns). Always attacks -- never buffs or defends. The highest single-target damage output of any gremlin type.</div>
+<div class="diff-add">+1. **Sneaky Gremlin** (HP: 10-14) -- KILL FIRST. Glass cannon. Puncture: 9 damage every turn. Always attacks -- never buffs or defends. The highest single-target damage output of any gremlin type.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-2. **Gremlin Wizard** -- KILL SECOND. Charges a large attack over multiple turns (UNKNOWN intent while charging, then a big hit of 25-30). If the charge completes, the single hit can be lethal at low HP. Kill before the charge finishes. Lower priority than Sneaky Gremlin because the damage is delayed.</div>
+<div class="diff-add">+2. **Gremlin Wizard** (HP: 21-25) -- KILL SECOND. Charges for 2 turns (Charging: no effect), then fires Ultimate Blast (25 damage). After first cycle, charges for 3 turns before each subsequent Ultimate Blast. Kill before the charge completes.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-3. **Fat Gremlin** -- MEDIUM PRIORITY. Attacks for 4-5 damage and applies Weak or Frail. Lower damage per turn than Sneaky Gremlin but the debuffs reduce your effectiveness.</div>
+<div class="diff-add">+3. **Fat Gremlin** (HP: 13-17) -- MEDIUM PRIORITY. Smash: 4 damage + 1 Weak every turn. Lower damage but debuff reduces your effectiveness.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-4. **Shield Gremlin** -- LOWEST PRIORITY. Gives block to other gremlins. Annoying but not directly threatening. Kill last.</div>
+<div class="diff-add">+4. **Mad Gremlin** (HP: 20-24) -- MEDIUM PRIORITY. Scratch: 4 damage every turn. Has Angry 1 (gains 1 Strength when taking damage). Do not spread incidental damage to it -- either commit to killing it or ignore it.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-5. **Mad Gremlin** -- MEDIUM PRIORITY. Attacks with moderate damage. Has Angry (gains Str when hit). Do not spread incidental damage to it -- either commit to killing it or ignore it.</div>
+<div class="diff-add">+5. **Shield Gremlin** (HP: 12-15) -- LOWEST PRIORITY. Protect: gives 7 Block to a random ally every turn. Uses Shield Bash (6 damage) when alone. Annoying but not directly threatening. Kill last.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> STRATEGY:</div>
+<div class="diff-ctx"> - **Turn 1**: Neutralize or Weak the highest-damage attacking gremlin (usually Sneaky Gremlin). Kill it with remaining energy if possible. Block the rest.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-leader.md</div>
+<div class="diff-hunk">@@ -1,5 +1,20 @@</div>
+<div class="diff-del">-# Gremlin Leader (elite, Act 2, HP: ~131)</div>
+<div class="diff-del">-PATTERN: Starts with 2 gremlins of varying types (Fat Gremlin, Shield Gremlin, Sneaky Gremlin, Mad Gremlin, etc.). Uses DEFEND_BUFF (Rally): gives ALL enemies +3 Strength permanently and stacking. Gremlins attack for base damage + accumulated Str. Leader itself attacks for 6x3 base (18 damage) when not rallying. Leader re-summons gremlins when they die -- killing gremlins is temporary relief, not permanent removal.</div>
+<div class="diff-add">+# Gremlin Leader (elite, Act 2, HP: 140-148)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Move selection depends on gremlin count:</div>
+<div class="diff-add">+- 0 gremlins: Rally! 75% / Stab 25%</div>
+<div class="diff-add">+- 1 gremlin (last was Encourage): Rally! 50% / Stab 50%</div>
+<div class="diff-add">+- 1 gremlin (last was Stab): Rally! 62.5% / Encourage 37.5%</div>
+<div class="diff-add">+- 2+ gremlins: Encourage 66% / Stab 34%</div>
+<div class="diff-add">+Cannot use any intent twice in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Stab: 6x3 = 18 damage</div>
+<div class="diff-add">+- Encourage: All enemies gain 3 Strength + other gremlins gain 6 Block (Str scales to 4-5, Block to 10-18 at higher Ascensions)</div>
+<div class="diff-add">+- Rally!: Summons 2 random Gremlins (max 3 small gremlins at a time)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: 140-148 at A0, 145-155 at A8</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Starts with 2 gremlins already present. Leader re-summons gremlins when they die -- killing gremlins is temporary relief, not permanent removal.</div>
+<div class="diff-ctx"> KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight&#x27;s damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader&#x27;s own attacks.</div>
+<div class="diff-ctx"> RALLY SCALING MATH: Rally fires roughly every other turn. By turn 3, all enemies have +3 Str. By turn 5, all enemies have +6 Str. By turn 7, all enemies have +9 Str. With 2 gremlins alive at +9 Str, gremlins alone deal (9+9)*2 = 36, plus the Leader&#x27;s own attacks. Total incoming by turn 7-8 exceeds 50 per turn. Every wasted turn is effectively +3 Str to the entire board -- a single lost turn (e.g., ending turn early after Battle Trance draw without playing drawn cards) can be the difference between winning and losing.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: TURN ECONOMY IS EVERYTHING. Every turn must deal maximum damage or apply critical debuffs. Wasting even one turn (misplaying end-of-turn, failing to use drawn cards) allows Rally to stack once more, which compounds across all gremlins. KILL GREMLINS FAST to reduce per-turn damage, but prioritize Leader damage when possible because gremlins get re-summoned. AOE is critical for clearing gremlins efficiently. Apply Shockwave early for mass Weak + Vulnerable. The fight becomes mathematically unwinnable once Strength stacks too high (by turn 3-4 with multiple gremlins alive, incoming damage is 40+).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-nob.md</div>
+<div class="diff-hunk">@@ -1,6 +1,15 @@</div>
+<div class="diff-del">-# Gremlin Nob (elite, Act 1, HP: 85)</div>
+<div class="diff-del">-PATTERN: Turn 1: buffs (no attack). Subsequent turns: attacks for 14+ damage, scaling with Enrage stacks. When player plays a Skill card, gains +2 Strength (permanent, stacking).</div>
+<div class="diff-del">-KEY MECHANIC: Enrage. Every Skill card played gives Nob +2 Strength permanently. Powers do NOT trigger Enrage.</div>
+<div class="diff-add">+# Gremlin Nob (elite, Act 1, HP: 82-86)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Always starts with Bellow (gains Enrage 2). After that: 33% Skull Bash, 67% Rush. Cannot use Rush three times in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Bellow: Gains Enrage 2 (whenever you play a Skill, Nob gains 2 Strength)</div>
+<div class="diff-add">+- Skull Bash: 6 damage + 2 Vulnerable (8 at A2)</div>
+<div class="diff-add">+- Rush (Bull Rush): 14 damage (16 at A2)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: 82-86 at A0, 85-90 at A8</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Enrage 2. Every Skill card played gives Nob +2 Strength permanently. Powers do NOT trigger Enrage.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Play ZERO Skills. No Defend, no True Grit, no Shrug It Off, no Shockwave, no Impervious. Only Attacks and Powers. Use potions for block instead of Skill cards. Turn 1 is free -- go all-in on damage.</div>
+<div class="diff-ctx"> BENCHMARKS: 3-4 turn kill with zero Skills. Strength Potion on free turn 1 maximizes value. Playing 3 Skills gives Nob +6 Str, turning a manageable fight into near-death.</div>
+<div class="diff-ctx"> BRING: Attack-heavy hand. Bash (Attack, safe). Potions for block/survival instead of Skills.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/jaw-worm-horde.md</div>
+<div class="diff-hunk">@@ -0,0 +1,34 @@</div>
+<div class="diff-add">+# Jaw Worm Horde (hallway, Act 3, HP: 40-44 each, 3 enemies)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Three Jaw Worms that start combat with the effects of Bellow already applied (+3 Strength and 6 Block each). This is an Act 3 Hard Pool encounter.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Unlike Act 1 Jaw Worm (which always opens with Chomp), Act 3 Jaw Worms start with Bellow effects pre-applied and their first action is randomized: 45% Bellow, 30% Thrash, 25% Chomp.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+MOVES (same as regular Jaw Worm):</div>
+<div class="diff-add">+- Chomp: 11 damage (12 at A2)</div>
+<div class="diff-add">+- Bellow: Gains 3 Strength + 6 Block (4 Str + 6 Block at A2)</div>
+<div class="diff-add">+- Thrash: 7 damage + 5 Block</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Starting state: Each Jaw Worm begins with +3 Strength (from pre-applied Bellow). So Turn 1 Chomp deals 14, Thrash deals 10.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+AI after first action:</div>
+<div class="diff-add">+- After Chomp: 59% Bellow, 41% Thrash</div>
+<div class="diff-add">+- After Bellow: 56% Thrash, 44% Chomp</div>
+<div class="diff-add">+- After Thrash: 45% Bellow, 30% Thrash, 25% Chomp (cannot Thrash 3x in a row: 64% Bellow, 36% Chomp)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Triple independent Strength scaling. Each Jaw Worm gains Strength independently. Starting at +3 each, a single Bellow round pushes them to +6 each. Combined damage escalates rapidly: Turn 1 with all attacking = 30-42 combined, Turn 3 = 40-60+ depending on Bellow count.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: This is a DPS race against triple scaling. AOE is critical for managing three 40-44 HP targets. Focus fire kills one quickly to reduce incoming by 33%.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- AOE is mandatory. Die Die Die, Blade Dance + Accuracy, Dagger Spray, Corpse Explosion</div>
+<div class="diff-add">+- Focus fire one Jaw Worm while AOE chips the others</div>
+<div class="diff-add">+- Apply Weak or Piercing Wail to reduce combined incoming on big attack turns</div>
+<div class="diff-add">+- Kill order: whichever has lowest HP first, then next lowest</div>
+<div class="diff-add">+- The fight becomes unmanageable after 4-5 turns if all 3 are still alive and scaling</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC: Noxious Fumes applies poison to all 3 simultaneously. Piercing Wail reduces all 3 enemies&#x27; Strength. Die Die Die+ for burst AOE. Blade Dance provides multi-target damage. Wraith Form for emergency Intangible if scaling gets out of control.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: High. Triple Strength scaling makes this one of the most dangerous Act 3 hallway fights. Combined Turn 1 damage can be 30+ with no free setup turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+APPEARS WITH: Solo encounter (3 Jaw Worms only).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/jaw-worm.md</div>
+<div class="diff-hunk">@@ -1,7 +1,17 @@</div>
+<div class="diff-del">-# Jaw Worm (hallway, Act 1, HP: ~40-44)</div>
+<div class="diff-del">-PATTERN: Turn 1 uncertain (may attack or buff). Has buff/defend turns where it curls up (gains ~5 block) and/or buffs Strength. Attacks for 7-11 damage, increasing over time from Strength buffs.</div>
+<div class="diff-del">-KEY MECHANIC: Strength scaling. Damage increases each turn the fight goes on.</div>
+<div class="diff-del">-WHAT THIS MEANS: Kill fast. Apply Vulnerable turn 1-2, burst during buff turns.</div>
+<div class="diff-add">+# Jaw Worm (hallway, Act 1, HP: 40-44)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Always starts with Chomp (11 damage). After Chomp: 59% Bellow, 41% Thrash. After Bellow: 56% Thrash, 44% Chomp. After Thrash: 45% Bellow, 30% Thrash, 25% Chomp (if Thrash used twice in a row: 64% Bellow, 36% Chomp).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Strength scaling from Bellow. Each Bellow gives +3 Str and 6 Block. Damage increases each turn the fight goes on.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Chomp: 11 damage (12 at A2)</div>
+<div class="diff-add">+- Bellow: Gains 3 Strength + 6 Block (4 Str at A2, 5 Str + 9 Block at A17)</div>
+<div class="diff-add">+- Thrash: 7 damage + 5 Block</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: Turn 1 is always Chomp (11 damage) -- block for it. Turn 2 is likely Bellow (free turn, 0 damage). Kill fast before Strength accumulates. Apply Vulnerable turn 1-2, burst during Bellow turns.</div>
+<div class="diff-ctx"> BENCHMARKS: 4-turn kill typical. 10-17 damage per turn with Vulnerable.</div>
+<div class="diff-ctx"> BRING: Bash for Vulnerable, Strikes for follow-up.</div>
+<div class="diff-ctx"> AVOID: Slow decks that let Strength accumulate.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Low. Standard Act 1 opener.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/lagavulin.md</div>
+<div class="diff-hunk">@@ -1,6 +1,14 @@</div>
+<div class="diff-del">-# Lagavulin (elite, Act 1, HP: 110)</div>
+<div class="diff-del">-PATTERN: Starts asleep with 8 block/turn. Wakes when attacked or after 3 turns. After waking: alternates between attack (18 damage) and debuff (-1 Strength, -1 Dexterity permanently).</div>
+<div class="diff-del">-KEY MECHANIC: Permanent -1 Str/-1 Dex debuffs. These stack and never go away. Each debuff turn makes all your attacks and block cards permanently worse.</div>
+<div class="diff-add">+# Lagavulin (elite, Act 1, HP: 109-111)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Starts asleep with Metallicize 8 (gains 8 Block every turn). Wakes when it takes any damage (stunned for 1 turn, then attacks) or after 3 turns of no damage (immediately attacks). After waking, Metallicize is removed. Repeating cycle: Attack -&gt; Attack -&gt; Siphon Soul.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Attack: 18 damage (20 at A3)</div>
+<div class="diff-add">+- Siphon Soul: Applies -1 Strength and -1 Dexterity permanently (-2 each at A18)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: 109-111 at A0, 112-115 at A8</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Permanent -1 Str/-1 Dex debuffs from Siphon Soul. These stack and never go away. Each Siphon Soul makes all your attacks and block cards permanently worse.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Wake it immediately with Bash (Vulnerable &gt; chipping through 8 block). Front-load damage on debuff turns (free turns). Kill before Strength debuffs accumulate. After 2+ debuff turns, recalculate all damage values: Strike goes from 6 to 5 to 4.</div>
+<div class="diff-ctx"> BENCHMARKS: 7-turn fight typical. Expect 20-36 HP damage. Use Weak Potion to reduce 18 to 13.</div>
+<div class="diff-ctx"> BRING: Bash+ for Vulnerable, Headbutt+ (top-deck Bash+ for Vulnerable refresh), burst damage, Weak source.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/looter.md</div>
+<div class="diff-hunk">@@ -1,9 +1,18 @@</div>
+<div class="diff-del">-# Looter (hallway, Act 1, HP: ~44-48)</div>
+<div class="diff-del">-PATTERN: Steals 15 gold per turn. Attacks for 10+ damage. May try to escape after stealing enough.</div>
+<div class="diff-del">-KEY MECHANIC: Gold theft. Each turn it lives costs 15 gold.</div>
+<div class="diff-del">-WHAT THIS MEANS: Kill fast to minimize gold loss. Prioritize over non-stealing enemies in multi-enemy fights.</div>
+<div class="diff-del">-BENCHMARKS: Kill in 3-4 turns to limit theft.</div>
+<div class="diff-add">+# Looter (hallway, Act 1, HP: 44-48)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Turns 1-2: Mug (10 damage + steals gold). Turn 3+: 50% Lunge (12 damage) or 50% Smoke Bomb (6 Block). After Smoke Bomb, uses Escape next turn (flees with stolen gold, combat ends). If Lunge on Turn 3, Smoke Bomb follows on Turn 4, then Escape Turn 5.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Thievery -- steals gold whenever it attacks. Stolen gold is returned if the Looter is killed. If it escapes, gold is lost permanently.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Mug: 10 damage (steals gold)</div>
+<div class="diff-add">+- Lunge: 12 damage</div>
+<div class="diff-add">+- Smoke Bomb: 0 damage, gains 6 Block</div>
+<div class="diff-add">+- Escape: Flees combat with stolen gold</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: Kill by Turn 3-4 to prevent escape and recover stolen gold. If Smoke Bomb intent appears, you have one turn left before it flees.</div>
+<div class="diff-add">+BENCHMARKS: Kill in 3-4 turns to limit theft and prevent escape.</div>
+<div class="diff-ctx"> BRING: Burst damage.</div>
+<div class="diff-del">-AVOID: Slow play (hemorrhages gold).</div>
+<div class="diff-add">+AVOID: Slow play (hemorrhages gold and risks escape).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ACT 2 PAIRING: Looter appears alongside Mugger in an Act 2 hallway fight (Looter + Mugger). Combined damage is 20+ per turn with no free setup turns. This pairing punishes expensive setup cards (Corruption at 3E, Barricade at 3E) because you cannot afford a turn without block against two enemies attacking simultaneously. AOE and fast kills are critical.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/louse.md</div>
+<div class="diff-hunk">@@ -1,7 +1,23 @@</div>
+<div class="diff-del">-# Louse (hallway, Act 1, HP: ~11-17, appears in groups of 2-3)</div>
+<div class="diff-del">-PATTERN: Attacks for ~5-7 damage per turn. Has Curl Up passive (gains 5-7 block when first attacked).</div>
+<div class="diff-del">-KEY MECHANIC: Curl Up absorbs first hit. In groups, combined damage adds up.</div>
+<div class="diff-del">-WHAT THIS MEANS: Focus fire one at a time. The first attack triggers Curl Up block, so follow up with more attacks that turn.</div>
+<div class="diff-add">+# Louse (hallway, Act 1, appears in groups of 2)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Two types: Red Louse and Green Louse (the game calls Green Louse what the wiki calls &quot;Green Louse&quot; -- it applies Weak).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Red Louse — HP: 10-15</div>
+<div class="diff-add">+- Bite: Deals N damage (N = random 5-7, set at combat start). 75% chance per turn.</div>
+<div class="diff-add">+- Grow: Gains 3 Strength. 25% chance per turn.</div>
+<div class="diff-add">+- Cannot use same move three times in a row.</div>
+<div class="diff-add">+- Curl Up: Gains 3-7 Block when first hit by an attack.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Green Louse — HP: 11-17</div>
+<div class="diff-add">+- Bite: Deals N damage (N = random 5-7, set at combat start). 75% chance per turn.</div>
+<div class="diff-add">+- Spit Web: Applies 2 Weak. 25% chance per turn.</div>
+<div class="diff-add">+- Cannot use same move three times in a row.</div>
+<div class="diff-add">+- Curl Up: Gains 3-7 Block when first hit by an attack.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Curl Up absorbs first hit. In groups, combined damage adds up. Red Louse&#x27;s Grow (+3 Str) makes it scale if left alive.</div>
+<div class="diff-add">+WHAT THIS MEANS: Focus fire one at a time. The first attack triggers Curl Up block, so follow up with more attacks that turn. Kill Red Louse first if it uses Grow (Strength scaling is more dangerous than Weak application).</div>
+<div class="diff-ctx"> BENCHMARKS: Kill one per turn with Vulnerable.</div>
+<div class="diff-ctx"> BRING: AOE if facing 3. Focus fire.</div>
+<div class="diff-ctx"> AVOID: Splitting damage across all Louses.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Low. Standard Act 1 encounter.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/mugger.md</div>
+<div class="diff-hunk">@@ -1,8 +1,14 @@</div>
+<div class="diff-del">-# Mugger (hallway, Act 2, HP: ~48-52)</div>
+<div class="diff-add">+# Mugger (hallway, Act 2, HP: 48-52)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Act 2 version of the Looter. Steals gold and deals significant damage.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-PATTERN: Steals gold on some turns. Attacks for moderate damage (10-12+). May attempt to escape after stealing.</div>
+<div class="diff-add">+PATTERN: Turns 1-2: Mug (10 damage + steals gold). Turn 3+: 50% Lunge (16 damage) or 50% Smoke Bomb (11 Block). After Smoke Bomb, uses Escape next turn (flees with stolen gold). Same sequence as Looter but higher damage and block values.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Mug: 10 damage (steals gold)</div>
+<div class="diff-add">+- Lunge: 16 damage</div>
+<div class="diff-add">+- Smoke Bomb: 0 damage, gains 11 Block</div>
+<div class="diff-add">+- Escape: Flees combat with stolen gold</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANIC: Gold theft, similar to Looter but appears in Act 2 where enemy damage is higher overall.</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/nemesis.md</div>
+<div class="diff-hunk">@@ -0,0 +1,31 @@</div>
+<div class="diff-add">+# Nemesis (elite, Act 3, HP: 185)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: First turn has 50/50 chance of Scorch (Burns) or Attack. Subsequent turns: ~35% Scorch, ~35% Attack, ~30% Scythe. Cannot use Scorch or Scythe twice in a row. Cannot use Attack three times in a row. Every other turn starting from Turn 2, gains Intangible (all damage reduced to 1 for that turn).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Intangible. On Intangible turns, ALL damage dealt to Nemesis is reduced to 1 -- including poison ticks, Thorns, everything. This means half your turns deal essentially zero damage. You must maximize damage on non-Intangible turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Attack (multi-hit): 6x3 = 18 damage (7x3 = 21 at A3)</div>
+<div class="diff-add">+- Scythe: 45 damage (single massive hit)</div>
+<div class="diff-add">+- Scorch: 0 damage, adds 3 Burns to discard pile (5 Burns at A18)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEBUFFS: Burns added to discard pile (Unplayable, deal 2 damage at end of turn if in hand)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: 185 at A0, 200 at A8</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: The fight has a rhythm -- non-Intangible turns are your damage windows, Intangible turns are for setup/blocking. Scythe (45 damage) is extremely dangerous and requires serious block (Impervious or Weak + multiple block cards). Burns accumulate and clog hand quality over a long fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- Track the Intangible pattern: Turn 1 (no Intangible), Turn 2 (Intangible), Turn 3 (no), Turn 4 (Intangible), etc.</div>
+<div class="diff-add">+- On non-Intangible turns: deal maximum damage. Front-load burst here</div>
+<div class="diff-add">+- On Intangible turns: do NOT waste damage cards. Use the turn for block, setup, Powers, or applying debuffs</div>
+<div class="diff-add">+- Poison is partially countered -- each tick only deals 1 on Intangible turns. Poison still works but takes twice as long</div>
+<div class="diff-add">+- Block for Scythe (45 damage). Impervious is ideal. Weak reduces it to 33</div>
+<div class="diff-add">+- Burns management matters in long fights. Exhaust tools or kill speed to end before Burns overwhelm</div>
+<div class="diff-add">+- Apply Weak to survive Scythe turns. Without Weak, 45 damage is near-unsurvivable</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC: Poison is less efficient than usual due to Intangible halving effective poison damage (ticks reduced to 1 every other turn). High-burst poison (Catalyst+) on a non-Intangible turn is still strong. Wraith Form+ provides Intangible for YOU on the dangerous Scythe turns. Piercing Wail reduces the 6x3 multi-hit. Malaise reduces Strength for multiple turns. Well-Laid Plans+ can save burst damage for non-Intangible turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: High. Scythe (45 damage) can one-shot at low HP. Intangible doubles effective fight length. Burns clog draws.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+APPEARS WITH: Solo encounter.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/orb-walker.md</div>
+<div class="diff-hunk">@@ -1,13 +1,18 @@</div>
+<div class="diff-del">-# Orb Walker (Act 3 Hallway, HP: ~93)</div>
+<div class="diff-add">+# Orb Walker (Act 3 Hallway, HP: 90-96)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Fast-scaling enemy. Gains +3 Strength per turn. Must burst down before damage becomes unsurvivable. Can appear as a single enemy or as a pair (2 Orb Walkers).</div>
+<div class="diff-add">+Fast-scaling enemy. Gains +3 Strength at end of each turn (Strength Up 3). Must burst down before damage becomes unsurvivable. Can appear as a single enemy or as a pair (2 Orb Walkers).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-PATTERN:</div>
+<div class="diff-del">-- Attacks every turn with increasing damage as Strength accumulates.</div>
+<div class="diff-del">-- Turn 1: ~10 damage per Orb Walker (20 combined for 2).</div>
+<div class="diff-del">-- Turn 2+: Damage increases by 3 per Orb Walker per turn (+3 Str per buff cycle).</div>
+<div class="diff-del">-- Generates Burns that clog the hand and deal end-of-turn damage.</div>
+<div class="diff-del">-- No free turns -- blocks or attacks every turn.</div>
+<div class="diff-add">+PATTERN: Each turn: 60% Laser, 40% Claw. Cannot use either move 3x in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Laser: 10 damage + adds 1 Burn to draw pile + 1 Burn to discard pile (11 at A2)</div>
+<div class="diff-add">+- Claw: 15 damage (16 at A2)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BUFFS: Strength Up 3 -- gains 3 Strength at end of each turn (5 at A17)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: 90-96 at A0, 92-102 at A7</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Attacks every turn with increasing damage as Strength accumulates. Turn 1: 10-15 damage. Turn 2: 13-18. Turn 3: 16-21. Generates Burns that clog the hand and deal end-of-turn damage. No free turns.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **Strength scaling (+3/turn per Orb Walker)**: By Turn 3, a single OW attacks for 19+. With 2 Orb Walkers, combined incoming reaches 38+ by Turn 3 and 50+ by Turn 5. This makes the fight a DPS race.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/red-slaver.md</div>
+<div class="diff-hunk">@@ -1,7 +1,24 @@</div>
+<div class="diff-del">-# Red Slaver (hallway, Act 1, HP: ~50)</div>
+<div class="diff-del">-PATTERN: Attacks for 12-13 damage. Has debuff turns (Entangle or similar). Straightforward fight.</div>
+<div class="diff-del">-KEY MECHANIC: Moderate damage per turn with occasional debuffs.</div>
+<div class="diff-del">-WHAT THIS MEANS: Apply Vulnerable, burst down. 3-turn kill typical.</div>
+<div class="diff-del">-BENCHMARKS: 3 turns with Vulnerable.</div>
+<div class="diff-del">-BRING: Standard Bash + attacks.</div>
+<div class="diff-del">-AVOID: Nothing special -- straightforward fight.</div>
+<div class="diff-add">+# Red Slaver (hallway, Act 1, HP: 46-50)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Always starts with Stab. Then repeats Scrape -&gt; Scrape -&gt; Stab until Entangle is used. Has 25% chance per turn to use Entangle instead of the normal pattern. After Entangle (used only once per combat): 55% Stab, 45% Scrape (cannot use same move 3x in a row).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Entangle -- prevents playing ALL Attack cards for one turn. The only source of Entangled in the game. Can only be used once per combat.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Stab: 13 damage (14 at A2)</div>
+<div class="diff-add">+- Scrape: 8 damage + 1 Vulnerable (9 + 1 Vuln at A2, 9 + 2 Vuln at A17)</div>
+<div class="diff-add">+- Entangle: Applies Entangled (cannot play Attack cards this turn)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEBUFFS: Vulnerable (from Scrape), Entangled (from Entangle -- once per combat)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: Entangle can be devastating if it hits on a turn where you need to deal damage. After Entangle, you can only play Skills and Powers. Plan for this by having block Skills ready. Scrape&#x27;s Vulnerable makes subsequent attacks hit harder.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- Apply Vulnerable, burst down. 3-4 turn kill typical</div>
+<div class="diff-add">+- Block on Stab turns (13 damage)</div>
+<div class="diff-add">+- When Entangled: play only Skills (Defend, block cards). Do NOT waste the turn -- use it for setup</div>
+<div class="diff-add">+- Kill before Entangle if possible (25% chance per turn means it usually fires by turn 3-4)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Low-Medium. Entangle is annoying but not lethal for decks with adequate block cards.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+APPEARS WITH: Solo in Act 1. With Blue Slaver + Taskmaster in Act 2 elite Slavers fight.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/reptomancer.md</div>
+<div class="diff-hunk">@@ -0,0 +1,34 @@</div>
+<div class="diff-add">+# Reptomancer (elite, Act 3, HP: 180-190)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Always opens with Summon Dagger. Afterward uses approximately equal distribution of Snake Strike, Big Bite, and Summon Dagger. Cannot use Snake Strike or Big Bite twice in a row. Cannot use Summon Dagger three times in a row. If Summon Dagger is chosen with 4 Daggers already in play, uses Snake Strike instead. Maximum 4 Daggers active at any time.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Dagger minions. Daggers are summoned with 20-25 HP and follow a fixed pattern: Stab (9 damage + adds Wound to discard) -&gt; Explode (25 damage, Dagger dies). Each Dagger is a 2-turn time bomb. If not killed before Explode, it deals 25 damage. Multiple Daggers exploding on the same turn is lethal.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Big Bite: 30 damage (34 at A3)</div>
+<div class="diff-add">+- Snake Strike: 13x2 = 26 damage + 1 Weak (16x2 = 32 at A3)</div>
+<div class="diff-add">+- Dagger Stab: 9 damage + 1 Wound to discard</div>
+<div class="diff-add">+- Dagger Explode: 25 damage (Dagger dies)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: Reptomancer 180-190. Daggers 20-25 each.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEBUFFS: Weak from Snake Strike. Wound cards from Dagger Stab.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+COMBAT SETUP: Fight starts with Reptomancer + 2 Daggers (3 enemies total).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: This is one of the most dangerous fights in the game. The starting 2 Daggers will Stab Turn 1 (9 damage each + Wounds) then Explode Turn 2 (25 damage each = 50 total from Daggers alone). Meanwhile Reptomancer herself deals 26-30 damage. Total incoming Turn 2 can exceed 75 damage. You MUST kill Daggers before they Explode.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- KILL DAGGERS IMMEDIATELY. Each Dagger that explodes deals 25 damage. Kill them on their Stab turn before Explode</div>
+<div class="diff-add">+- AOE is critical. Die Die Die, Blade Dance + Accuracy, Dagger Spray all hit multiple targets. Cards that damage all enemies are the highest priority</div>
+<div class="diff-add">+- After clearing initial Daggers, focus damage on Reptomancer. She resummons, but reducing her HP means fewer total Dagger waves</div>
+<div class="diff-add">+- Big Bite (30 damage) requires serious block. Track her pattern to anticipate Big Bite turns</div>
+<div class="diff-add">+- Weak from Snake Strike reduces your damage -- re-apply Vulnerable to compensate</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC: This is the Silent&#x27;s best elite matchup in Act 3. Die Die Die+ (17x3 AOE) can kill all Daggers in one play. Blade Dance + Accuracy provides cheap multi-target damage. Piercing Wail reduces all enemy damage (critical for surviving multi-Dagger turns). Corpse Explosion turns killed Daggers into AOE damage against Reptomancer. Poison on Reptomancer ticks while you manage Daggers.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KILL PRIORITY: Daggers about to Explode &gt; Daggers that just Stabbed &gt; Reptomancer</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Extreme. Combined burst from Dagger Explodes + Reptomancer attacks can deal 75+ in a single turn. Without AOE or fast Dagger removal, this fight ends runs.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+APPEARS WITH: Solo encounter (Reptomancer + her summoned Daggers).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/repulsor.md</div>
+<div class="diff-hunk">@@ -0,0 +1,24 @@</div>
+<div class="diff-add">+# Repulsor (hallway, Act 3, HP: 29-35)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Each turn, 80% chance to use Bash (adds 2 Dazed to draw pile), 20% chance to use Repulse (attack). Cannot use Repulse twice in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Dazed card generation. Dazed cards are Unplayable + Ethereal status cards that clog your draw pile. Each Bash adds 2 Dazed, rapidly degrading hand quality. Over 4 turns, 6-8 Dazed cards can be added, making it impossible to draw meaningful hands.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Repulse: 11 damage (13 at A2)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEBUFFS: Adds 2 Dazed cards to draw pile per Bash use</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: Repulsors are not directly dangerous (low attack damage, low HP) but they degrade your deck quality, making OTHER enemies more dangerous. In multi-enemy fights, Repulsors make it harder to draw block and damage cards when you need them.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- Kill after Exploders but before Spikers in the 3 Shapes encounter</div>
+<div class="diff-add">+- Low HP (29-35) means they die quickly to any focused damage</div>
+<div class="diff-add">+- Evolve converts Dazed into card draws (if available)</div>
+<div class="diff-add">+- The fight is a minor annoyance for strong decks but can cripple thin decks that rely on specific card draws</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC: Dazed clogging is extra painful for the Silent since key combo pieces (Catalyst+, Wraith Form) need to be drawn at the right time. Tools of the Trade helps filter Dazed cards. Well-Laid Plans+ retains key cards across turns. Poison ignores deck clogging once applied.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Low. Direct threat is minimal. Danger is indirect -- Dazed clogging makes companion enemies harder to deal with.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+APPEARS WITH: Other Shapes (Spikers, Exploders) in the 3 Shapes encounter.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/sentry.md</div>
+<div class="diff-hunk">@@ -1,6 +1,17 @@</div>
+<div class="diff-del">-# Sentry (elite, Act 1, HP: ~40 each, appears as group of 3)</div>
+<div class="diff-del">-PATTERN: Two Sentries attack (9 damage each = 18 total) while one adds Dazed status cards to deck. The attacking pair rotates each turn. Each starts with 1 Artifact. Each has Metallicize 4 (gains 4 block every turn automatically).</div>
+<div class="diff-del">-KEY MECHANIC: Dazed card generation + Artifact protection + Metallicize 4. Dazed cards (Unplayable, Ethereal) clog draws. Artifact blocks first debuff application. Metallicize 4 means every Sentry gains 4 block/turn, requiring 4 extra damage to break through before HP damage.</div>
+<div class="diff-add">+# Sentry (elite, Act 1, HP: 38-42 each, appears as group of 3)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Outer two Sentries start with Bolt, middle Sentry starts with Beam. They alternate: Bolt -&gt; Beam -&gt; Bolt -&gt; Beam.</div>
+<div class="diff-add">+- Bolt: Adds 2 Dazed to discard pile (no damage)</div>
+<div class="diff-add">+- Beam: 9 damage (10 at A2)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Each Sentry starts with 1 Artifact.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Beam: 9 damage per Sentry (10 at A2). Two Sentries on Beam = 18-20 total.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEBUFFS: Dazed cards (Unplayable, Ethereal) added to discard via Bolt.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Dazed card generation + Artifact protection. Dazed cards clog draws. Artifact blocks first debuff application per Sentry.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: AOE is king -- Whirlwind for 15 damage to all 3 (45 total) is the best turn 1. Focus fire one at a time. Strip Artifact with Thunderclap before real debuffs. Kill before Dazed overwhelms draws.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **ELITE READINESS GATE:** Do NOT fight Sentries with a starter-quality deck (Strikes, Defends, Bash, 0-1 other cards). Without AOE or meaningful damage scaling, the fight takes 14-20 turns because: (1) Metallicize 4 absorbs 4 damage from every Strike, reducing effective damage to 2/hit; (2) Dazed clogging gives multiple turns with zero playable attack or block cards; (3) each Sentry kill takes 6-8 turns at 2 effective damage/hit. A 14-20 turn Sentry fight drains 52-56+ HP even with perfect blocking discipline. Two confirmed cases: (1) a deck with Strikes/Defends/Bash/Headbutt/SIO spent 20 turns and took 56 damage (76-&gt;20 HP); (2) a 10-card deck with Bash+/Shockwave/Limit Break but no AOE or Str scaling spent 14 turns and took 52 damage (60-&gt;8 HP) with Essence of Steel active. Even with Plated Armor 4 and correct play, the math is unsurvivable without damage scaling. The Sentries fight requires at least one of: AOE (Thunderclap, Whirlwind, Cleave), damage scaling (Inflame, Spot Weakness), or a strong attack card (Carnage, Pommel Strike+) to be winnable without catastrophic HP loss.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/shelled-parasite.md</div>
+<div class="diff-hunk">@@ -1,6 +1,15 @@</div>
+<div class="diff-del">-# Shelled Parasite (hallway, Act 2, HP: 68-71)</div>
+<div class="diff-del">-PATTERN: Attacks for 13+ damage per turn. Has Plated Armor 14 (blocks 14 damage per turn passively). Creates extremely long fights unless burst damage is available.</div>
+<div class="diff-del">-KEY MECHANIC: Plated Armor 14 means the first 14 damage dealt each turn is absorbed. Only damage exceeding 14 actually reduces HP. This makes fights last 8-12+ turns, which is lethal at low HP.</div>
+<div class="diff-add">+# Shelled Parasite (hallway, Act 2, HP: 68-72)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Cannot use Fell on first turn. 40% Double Strike, 40% Life Suck, 20% Fell. Cannot use Double Strike or Life Suck 3x in a row. Cannot use Fell 2x in a row. At A17: always starts with Fell.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Double Strike: 6x2 = 12 damage (7x2 = 14 at A2)</div>
+<div class="diff-add">+- Life Suck: 10 damage, heals equal to unblocked damage (12 at A2)</div>
+<div class="diff-add">+- Fell: 18 damage + 2 Frail (21 at A2)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BUFFS: Plated Armor 14 -- reduces incoming damage by 14 per turn (each attack that deals damage reduces Plated Armor by 1). If all Plated Armor is broken, Shelled Parasite is Stunned for one turn (happens once per combat).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Plated Armor 14 absorbs damage from each attack. Each hit reduces Plated Armor by 1, regardless of damage dealt. Multi-hit attacks strip Plated Armor faster (Double Strike removes 2 stacks). Life Suck heals the Shelled Parasite for unblocked damage, creating an attrition problem.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Apply Vulnerable first, then use large single hits (not multiple small hits). Each hit must exceed 14 to make progress. Vulnerable reduces this effective threshold significantly.</div>
+<div class="diff-ctx"> BRING: Burst damage (Carnage, Heavy Blade), Vulnerable application (Bash, Uppercut). Strength scaling (Inflame, Strength Potion) helps every hit break through the armor threshold.</div>
+<div class="diff-ctx"> AVOID: Small multi-hit attacks (Whirlwind with low energy), decks that rely on chip damage, entering this fight below 40% HP.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/slavers.md</div>
+<div class="diff-hunk">@@ -1,10 +1,15 @@</div>
+<div class="diff-del">-# Slavers (Elite, Act 2, 3 enemies: Slaver + Taskmaster + Slaver)</div>
+<div class="diff-add">+# Slavers (Elite, Act 2, 3 enemies: Blue Slaver + Red Slaver + Taskmaster)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> PATTERN: All three enemies attack on turn 1 for combined 27+ damage. No free setup turn. Subsequent turns continue with high combined damage from three independent attackers.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANIC: Three-enemy pressure from the very first turn. Unlike most multi-enemy fights, there is NO free turn -- all three attack immediately. Combined damage of 27+ per turn makes this fight extremely HP-dependent.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-HP: Slavers ~36-46 HP each (one observed at 36 HP with Preserved Insect -25% reduction, suggesting base ~48). Taskmaster ~60.</div>
+<div class="diff-add">+HP:</div>
+<div class="diff-add">+- Blue Slaver: 46-50 (Stab 12, Rake 7 + 1 Weak. 60% Stab / 40% Rake, no 3x same)</div>
+<div class="diff-add">+- Red Slaver: 46-50 (Stab 13, Scrape 8 + 1 Vuln, Entangle once. Opens with Stab, then Scrape/Scrape/Stab until Entangle fires at 25% per turn)</div>
+<div class="diff-add">+- Taskmaster: 54-60 (Scouring Whip: 7 damage + shuffles 1 Wound into discard pile)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KILL PRIORITY: Red Slaver first (highest damage at 13 per Stab, applies Vulnerable which amplifies ALL incoming, Entangle can lock you out of attacks). Then Blue Slaver (Weak debuff is annoying but less dangerous than Vulnerable). Taskmaster last (only 7 damage and Wounds are manageable).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> WHAT THIS MEANS: This fight is unwinnable at low HP. Entering at 21/77 HP (27%) resulted in death by turn 3 despite having Demon Form, Flame Barrier+, Rage, Disarm, Uppercut, and Rampage in the deck. The math is simple: 27+ incoming per turn, maximum ~21 block available per turn with good draws, means 6+ unblocked damage per turn. At 21 HP, that&#x27;s 3-4 turns before death, and 3-4 turns is not enough to kill any of the three enemies.</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/small-slimes.md</div>
+<div class="diff-hunk">@@ -0,0 +1,43 @@</div>
+<div class="diff-add">+# Small Slimes (hallway, Act 1)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Encounter consists of an Acid Slime (S) + Spike Slime (S), or variants with medium slimes. This is an Easy Pool encounter.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Acid Slime (S) — HP: 8-12</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+MOVES:</div>
+<div class="diff-add">+- Lick: Applies 1 Weak (no damage)</div>
+<div class="diff-add">+- Tackle: 3 damage</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 50/50 between Lick and Tackle. Cannot use same move three times in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Spike Slime (S) — HP: 10-14</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+MOVES:</div>
+<div class="diff-add">+- Tackle: 5 damage</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Uses Tackle every turn. No alternate moves.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Acid Slime (M) — HP: 28-32</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+MOVES:</div>
+<div class="diff-add">+- Corrosive Spit: 7 damage + 1 Slimed to discard</div>
+<div class="diff-add">+- Lick: Applies 1 Weak</div>
+<div class="diff-add">+- Tackle: 10 damage</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 30% Corrosive Spit, 40% Tackle, 30% Lick. Cannot use Tackle twice in a row; other moves cannot repeat three times in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Spike Slime (M) — HP: 28-32</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+MOVES:</div>
+<div class="diff-add">+- Flame Tackle: 8 damage + 1 Slimed to discard</div>
+<div class="diff-add">+- Lick: Applies 1 Frail</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 30% Flame Tackle, 70% Lick. Cannot use same move three times in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- Trivial encounter. Small slimes have very low HP and damage</div>
+<div class="diff-add">+- Kill the Acid Slime first to avoid Weak stacking</div>
+<div class="diff-add">+- No special preparation needed</div>
+<div class="diff-add">+- Good fight for preserving HP early in Act 1</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Low. One of the easiest encounters in the game.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/snake-plant.md</div>
+<div class="diff-hunk">@@ -1,6 +1,14 @@</div>
+<div class="diff-del">-# Snake Plant (hallway, Act 2, HP: ~67-75)</div>
+<div class="diff-del">-PATTERN: Attacks for 9x3=27 damage per turn (multi-attack). Has turns where it applies Frail and Weak as debuffs instead of attacking. Has Malleable mechanic. Can appear in Unknown rooms.</div>
+<div class="diff-del">-KEY MECHANIC: **Malleable** -- gains increasing block each time it is attacked in a single turn. First hit in a turn: gains ~3 block. Second hit: more block. This punishes multi-hit strategies and rewards single large hits per turn. Also applies Frail (block reduced 25%) and Weak (damage reduced 25%), making the fight harder over time. The Frail + Weak combination with 9x3 multi-attacks is devastating: Frail cripples your block while 27 incoming overwhelms weakened defenses. This can drain 40+ HP in a single fight even from high HP.</div>
+<div class="diff-add">+# Snake Plant (hallway, Act 2, HP: 75-79)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 65% Chomp (7x3 = 21 damage), 35% Enfeebling Spores (applies 2 Frail + 2 Weak). Cannot use Chomp 3x in a row, cannot use Enfeebling Spores 2x in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Chomp: 7x3 = 21 damage (8x3 = 24 at A2)</div>
+<div class="diff-add">+- Enfeebling Spores: 0 damage, applies 2 Frail + 2 Weak</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BUFFS: Malleable 3 -- upon receiving attack damage, gains 3 Block (increases by 1 each time triggered in the same turn, resets at start of your turn).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: **Malleable 3** -- gains increasing block each time it is attacked in a single turn. First hit: gains 3 block. Second hit: 4 block. Third hit: 5 block. This punishes multi-hit strategies and rewards single large hits per turn. Also applies Frail (block reduced 25%) and Weak (damage reduced 25%), making the fight harder over time. The Frail + Weak combination with 7x3 multi-attacks is devastating: Frail cripples your block while 21-24 incoming overwhelms weakened defenses. This can drain 40+ HP in a single fight even from high HP.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Use single large attacks rather than many small hits per turn. Apply Vulnerable early. Clothesline/Uppercut for Weak reduces 9x3=27 to 6x3=18. Kill in 4-5 turns before debuffs stack. The debuff turn is a free turn for offense.</div>
+<div class="diff-ctx"> BRING: Burst damage (Immolate+, Carnage+, Rampage), Clothesline/Uppercut for Weak, single large hits. Bloodletting for extra energy on burst turns. **Strength scaling is critical** -- without Inflame or similar, even correct play (single large hits, Vulnerable applied) results in a 7-turn fight draining 40+ HP. With Strength scaling, the fight shortens to 4-5 turns and HP loss drops to 15-25.</div>
+<div class="diff-ctx"> AVOID: Multi-hit attacks which trigger Malleable block repeatedly. Whirlwind, Twin Strike, Sword Boomerang, and especially Pummel (4-5 hits at 2 base damage each) are the worst offenders. Pummel against Snake Plant generates 3+4+5+6 = 18 block from Malleable alone, making its 8-10 damage effectively zero. Two Snake Plant encounters with Whirlwind and Pummel in the deck can drain 40+ HP total if multi-hit cards are played carelessly. Use single large hits (Bludgeon, Carnage, Hemokinesis) instead. Entering at low HP -- 27 damage/turn with Frail making block weaker is a death spiral.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/snecko.md</div>
+<div class="diff-hunk">@@ -1,6 +1,13 @@</div>
+<div class="diff-del">-# Snecko (hallway, Act 2, HP: ~114-120)</div>
+<div class="diff-del">-PATTERN: Turn 1 applies Confusion debuff (randomizes card costs). Subsequent turns: alternates between attacks (13-22 damage) and debuff turns. Can apply Vulnerable to the player, making subsequent attacks deal 50% more damage. The Confusion + Vulnerable combo is Snecko&#x27;s kill pattern.</div>
+<div class="diff-del">-KEY MECHANIC: Confusion debuff. When applied, all cards in hand are randomly assigned costs of 0-3 each turn for the rest of combat. This can make expensive cards free or cheap cards unplayable. Persists until combat ends.</div>
+<div class="diff-add">+# Snecko (hallway, Act 2, HP: 114-120)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Always starts with Perplexing Glare (Confused debuff). Then each turn: 60% Bite, 40% Tail Whip. Cannot use Bite 3x in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Bite: 15 damage (18 at A2)</div>
+<div class="diff-add">+- Tail Whip: 8 damage + 2 Vulnerable (10 + 2 Vuln at A2; 10 + 2 Weak + 2 Vuln at A17)</div>
+<div class="diff-add">+- Perplexing Glare: 0 damage, applies Confused</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Confusion debuff. When applied, all cards in hand are randomly assigned costs of 0-3 each turn for the rest of combat. This can make expensive cards free or cheap cards unplayable. Persists until combat ends. Tail Whip&#x27;s Vulnerable makes subsequent Bite attacks hit for 22+ damage.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Kill fast before cost confusion ruins multiple turns. With good RNG, confused turns can be better than normal (0-cost Bash+, 0-cost Fiend Fire, 2-cost Demon Form). With bad RNG, entire turns are wasted on unplayable 3-cost cards. Apply Vulnerable early to maximize every successful attack turn. Metallicize is excellent here since Powers are played once (before or after Confusion) and provide guaranteed value every turn regardless of cost rolls. Demon Form is particularly strong: if drawn at reduced cost under Confusion, play it immediately for guaranteed scaling regardless of future cost rolls.</div>
+<div class="diff-ctx"> HP IS HIGH (~114-120): Despite being a hallway fight, Snecko is tanky. Plan for a 5-7 turn fight even with good damage.</div>
+<div class="diff-ctx"> BRING: Burst damage, Vulnerable, Powers (guaranteed value regardless of cost rolls), Metallicize (passive block every turn), Duplication Potion (duplicate a card that Confusion set to 0-cost for guaranteed free value), Gambler&#x27;s Brew (redraws hand with new randomized costs -- effectively re-rolls Confusion RNG. Confirmed lifesaver at 7 HP when initial Confusion hand was unplayable).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/spheric-guardian.md</div>
+<div class="diff-hunk">@@ -1,5 +1,14 @@</div>
+<div class="diff-del">-# Spheric Guardian (hallway, Act 2, HP: ~20, effectively 60+)</div>
+<div class="diff-del">-PATTERN: Starts with 40 block + Barricade (block persists) + 3 Artifact + applies Frail 5. Alternates between attacking (10x2 = 20 damage) and defending (gains 15-20 block that persists due to Barricade). On attack turns, it deals 10x2=20. On defend turns, it deals 0 damage and adds block to its existing total.</div>
+<div class="diff-add">+# Spheric Guardian (hallway, Act 2, HP: 20, effectively 60+)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STARTS WITH: Artifact 3, Block 40, Barricade (block never expires).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Fixed sequence: Activate (25 Block) -&gt; Slam (10 damage + 5 Frail) -&gt; then alternates Slam (10x2 = 20 damage) and Harden (10 damage + 15 Block) for rest of combat.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Activate: 0 damage, gains 25 Block</div>
+<div class="diff-add">+- Slam (first): 10 damage + applies 5 Frail</div>
+<div class="diff-add">+- Slam (subsequent): 10x2 = 20 damage</div>
+<div class="diff-add">+- Harden: 10 damage + gains 15 Block</div>
+<div class="diff-ctx"> KEY MECHANIC: Barricade means block never expires. The Spheric Guardian GAINS block on defend turns (observed 15-20 block gained per action), and since block persists via Barricade, it stacks indefinitely. Combined with alternating attack/defend, the block grows faster than chip damage can remove it. At low Strength (0-1), Strikes deal 6-7 per play vs 15-20 block gained per defend cycle. The block will grow every other turn even while being attacked on the off turns.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: This is a DPS check disguised as a hallway fight. At 1 Strength, Strikes deal 6-7 damage per play. The Spheric Guardian gains 15-20 block on defend turns and retains leftover block. After 5-6 turns, its block reaches 40-64 and never comes down. The fight becomes mathematically unwinnable without sufficient Strength scaling or burst damage. Strip 3 Artifact charges first with cheap debuffs (Thunderclap ideal). Then apply Vulnerable. Then burst through remaining block + HP.</div>
+<div class="diff-ctx"> BENCHMARKS: Must kill within 6-8 turns or block becomes insurmountable. Expect 30-50+ HP lost from Frail-reduced blocking vs 10x2 attacks. At low Strength without burst, this fight is a guaranteed loss through attrition.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/spike-slime-l.md</div>
+<div class="diff-hunk">@@ -1,6 +1,15 @@</div>
+<div class="diff-del">-# Spike Slime L (hallway/boss split, Act 1, HP: equal to Slime Boss&#x27;s remaining HP at split, max 70)</div>
+<div class="diff-del">-PATTERN: Attacks for ~16 damage. Applies Frail. Adds Slimed cards. Splits into 2x Spike Slime (M) on death.</div>
+<div class="diff-del">-KEY MECHANIC: Split on death. Creates 2 medium slimes, extending the fight significantly. Frail reduces block gained from cards by 25%.</div>
+<div class="diff-del">-WHAT THIS MEANS: Prepare for the split -- have enough HP and resources to handle 2 medium slimes after killing the large one. In the Slime Boss fight, killing this while Acid Slime (L) is at full HP creates a 3-enemy nightmare.</div>
+<div class="diff-add">+# Spike Slime L (hallway/boss split, Act 1, HP: 64-70 standalone, or equal to Slime Boss&#x27;s remaining HP at split)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 30% Flame Tackle, 70% Lick. Cannot use same move three times in a row. Splits into 2x Spike Slime (M) when HP drops to 50% or below.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Flame Tackle: 16 damage + 2 Slimed cards to discard pile (18 at A2)</div>
+<div class="diff-add">+- Lick: Applies 2 Frail (no damage)</div>
+<div class="diff-add">+- Split: At 50% HP or below, spawns 2 Spike Slime (M) with current HP each</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Split at 50% HP. Creates 2 medium slimes with current HP, extending the fight significantly. Frail 2 reduces block gained from cards by 25%.</div>
+<div class="diff-add">+WHAT THIS MEANS: Prepare for the split -- have enough HP and resources to handle 2 medium slimes after the split. In the Slime Boss fight, killing this while Acid Slime (L) is at full HP creates a 3-enemy nightmare.</div>
+<div class="diff-ctx"> BRING: AOE for post-split. Exhaust for Slimed.</div>
+<div class="diff-ctx"> AVOID: Long attrition fights (8+ turns drain HP badly). Killing this before softening the other large slime.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Medium.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/spike-slime-m.md</div>
+<div class="diff-hunk">@@ -1,7 +1,15 @@</div>
+<div class="diff-del">-# Spike Slime M (hallway, Act 1, HP: ~28)</div>
+<div class="diff-del">-PATTERN: Attacks for ~8 damage. Has debuff turns (applies Frail instead of attacking). Adds Slimed status cards to deck.</div>
+<div class="diff-del">-KEY MECHANIC: Frail + Slimed card generation.</div>
+<div class="diff-del">-WHAT THIS MEANS: Exhaust Slimed cards when possible. Block is reduced by Frail.</div>
+<div class="diff-add">+# Spike Slime M (hallway, Act 1, HP: 28-32)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: 30% Flame Tackle, 70% Lick. Cannot use same move three times in a row.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Flame Tackle: 8 damage + 1 Slimed card to discard pile (10 at A2)</div>
+<div class="diff-add">+- Lick: Applies 1 Frail (no damage)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Frail (reduces block by 25%) + Slimed card generation (clogs deck).</div>
+<div class="diff-add">+WHAT THIS MEANS: Mostly uses Lick (70% of turns), so blocking needs are moderate. Exhaust Slimed cards when possible. Frail reduces block effectiveness.</div>
+<div class="diff-ctx"> BENCHMARKS: Standard fight. Kill in 3-4 turns.</div>
+<div class="diff-ctx"> BRING: Exhaust tools for Slimed cards.</div>
+<div class="diff-ctx"> AVOID: Long fights where Slimed cards accumulate.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Low.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/spiker.md</div>
+<div class="diff-hunk">@@ -0,0 +1,25 @@</div>
+<div class="diff-add">+# Spiker (hallway, Act 3, HP: 42-56)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PATTERN: Each turn, 50/50 chance of using Cut (attack) or Spike (buff Thorns). Cannot use Cut twice in a row. Cannot use Spike after it has been used 6 times (forces Cut instead).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY MECHANIC: Thorns. Starts with Thorns 3. Each Spike adds +2 Thorns. Every time you deal attack damage to a Spiker, you take damage equal to its current Thorns. As Thorns stack (3 -&gt; 5 -&gt; 7 -&gt; 9 -&gt; 11 -&gt; 13 -&gt; 15), attacking becomes increasingly costly. After 6 Spikes, Thorns reach 15 -- every attack card played costs 15 HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Cut: 7 damage (9 at A2)</div>
+<div class="diff-add">+- Thorns retaliation: starts at 3 per attack hit, grows by 2 per Spike turn</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BUFFS: Thorns 3 (innate), gains +2 Thorns per Spike use</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT THIS MEANS: Poison is the ideal damage source -- it bypasses Thorns entirely. Multi-hit attacks (Blade Dance, Dagger Spray) are extremely punished since each hit triggers Thorns separately. A 4-hit Blade Dance against Thorns 9 costs 36 HP. Single large attacks are better than many small ones if you must use attacks. Kill Spikers before Thorns stack too high.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- Poison is king. Noxious Fumes, Deadly Poison, Bouncing Flask all deal damage without triggering Thorns</div>
+<div class="diff-add">+- If you must attack, use single large hits (Dash+, Predator) not multi-hit attacks</div>
+<div class="diff-add">+- Kill Spikers early before Thorns compound. At Thorns 3-5, attacks are tolerable. At 9+, every attack card is a significant HP loss</div>
+<div class="diff-add">+- In multi-enemy fights (3 Shapes), kill the Spiker first to stop Thorns from scaling</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC: Poison completely solves Spikers. Noxious Fumes + any poison source kills without ever taking Thorns damage. Shivs and Blade Dance are TRAPS -- each hit triggers Thorns. If Shivs are the only damage source, accept the Thorns cost but prioritize killing Spikers fast. Piercing Wail does nothing useful here (Spikers&#x27; Cut damage is low; Thorns is the real threat).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DANGER LEVEL: Medium. Low direct damage but the Thorns mechanic punishes attack-heavy decks severely. Poison decks trivialize this fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+APPEARS WITH: Other Shapes (Exploders, Repulsors) in the 3 Shapes encounter. Can also appear in mixed Act 3 hallway fights.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/the-maw.md</div>
+<div class="diff-hunk">@@ -1,11 +1,18 @@</div>
+<div class="diff-del">-# The Maw (Act 3 Hallway, HP: ~300)</div>
+<div class="diff-add">+# The Maw (Act 3 Hallway, HP: 300)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Tanky single-target enemy with STRONG_DEBUFF on Turn 1 and escalating damage. Long fight (8-9 turns) that rewards defensive setup over burst.</div>
+<div class="diff-add">+Tanky single-target enemy with Roar on Turn 1 and escalating damage. Long fight (8-9 turns) that rewards defensive setup over burst. HP does NOT change with Ascension.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> PATTERN:</div>
+<div class="diff-del">-- **Turn 1**: STRONG_DEBUFF (Weak + Frail + Vulnerable applied to player). No damage.</div>
+<div class="diff-del">-- **Turns 2+**: Alternates between BUFF (free turns, no damage) and ATTACK. Damage escalates: ~5 -&gt; 16 -&gt; 33 -&gt; 56+.</div>
+<div class="diff-del">-- Multiple free turns (BUFF intent) allow Power setup without HP loss.</div>
+<div class="diff-add">+- **Turn 1**: Roar (applies 3 Weak + 3 Frail). No damage.</div>
+<div class="diff-add">+- **Turns 2+**: After Drool -&gt; 50/50 Slam or Nom Nom. After Slam -&gt; 50/50 Nom Nom or Drool. After Nom Nom -&gt; always Drool.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Roar: 0 damage, applies 3 Weak + 3 Frail</div>
+<div class="diff-add">+- Slam: 25 damage (30 at A2)</div>
+<div class="diff-add">+- Nom Nom: 5xN damage (N increases -- roughly current turn / 2 rounded up)</div>
+<div class="diff-add">+- Drool: 0 damage, gains 3 Strength (5 at A5)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Multiple free turns (Drool and Roar intents) allow Power setup without HP loss.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **STRONG_DEBUFF Turn 1**: Applies Weak, Frail, and Vulnerable simultaneously. Frail reduces block by 25%, Weak reduces attack by 25%, Vulnerable increases damage taken by 50%. Lasts 2-3 turns. Plan to block through Frail-reduced values.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/transient.md</div>
+<div class="diff-hunk">@@ -2,14 +2,17 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> The Transient disappears after 5 turns (Fading 5 loses 1 per turn, dies at 0). The fight is a pure survival check -- outlast 5 turns of escalating damage.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-PATTERN:</div>
+<div class="diff-del">-- **Turn 1**: Attacks for 30 damage.</div>
+<div class="diff-del">-- **Turn 2**: Attacks for 40 damage.</div>
+<div class="diff-del">-- **Turn 3**: Attacks for 50 damage.</div>
+<div class="diff-del">-- **Turn 4**: Attacks for 60 damage.</div>
+<div class="diff-del">-- **Turn 5**: Attacks for 70 damage.</div>
+<div class="diff-del">-- **Total damage over 5 turns: 250.** Damage increases by 10 per turn.</div>
+<div class="diff-del">-- **Shifting**: Gains block when attacked. Attacking the Transient is generally wasteful -- it has 999 HP and cannot be killed through damage in practice.</div>
+<div class="diff-add">+PATTERN: Attacks every turn with escalating damage.</div>
+<div class="diff-add">+- **Turn 1**: 30 damage (40 at A2)</div>
+<div class="diff-add">+- **Turn 2**: 40 damage (50 at A2)</div>
+<div class="diff-add">+- **Turn 3**: 50 damage (60 at A2)</div>
+<div class="diff-add">+- **Turn 4**: 60 damage (70 at A2)</div>
+<div class="diff-add">+- **Turn 5**: 70 damage (80 at A2)</div>
+<div class="diff-add">+- **Total damage over 5 turns: 250 at A0.** Damage increases by 10 per turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+POWERS:</div>
+<div class="diff-add">+- **Fading 5**: Loses 1 per turn, dies at 0 (6 at A17)</div>
+<div class="diff-add">+- **Shifting**: Upon losing HP, loses that much Strength until end of turn. This means dealing damage DOES reduce its attack for that turn -- but the Strength resets next turn. Attacking is NOT pointless if you need to reduce incoming damage this turn.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **Fading 5**: The Transient loses 1 Fading per turn and dies when Fading reaches 0. You do NOT need to deal 999 damage. Just survive 5 turns. **CRITICAL: The Transient attacks BEFORE it fades.** On Fading 1 (the last turn), the Transient delivers its final attack and then vanishes at end of turn. You must survive this last attack -- you cannot &quot;almost&quot; outlast it.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/writhing-mass.md</div>
+<div class="diff-hunk">@@ -1,10 +1,18 @@</div>
+<div class="diff-del">-# Writhing Mass (Act 3 Hallway, HP: ~160)</div>
+<div class="diff-add">+# Writhing Mass (Act 3 Hallway, HP: 160)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-A tanky enemy with two synergistic defensive mechanics that make it a significant HP drain even with a strong deck.</div>
+<div class="diff-add">+A tanky enemy with two synergistic defensive mechanics that make it a significant HP drain even with a strong deck. HP increases to 175 at A7.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> PATTERN:</div>
+<div class="diff-del">-- Alternates between attacks (single-hit and multi-hit) and debuff turns (STRONG_DEBUFF applying Vulnerable, Frail, Weakened).</div>
+<div class="diff-del">-- Multi-hit attacks (e.g., 4x3, 6x3) are the primary damage source.</div>
+<div class="diff-add">+- First turn: equal random chance among Multi Hit, Big Hit, or Debuff Attack</div>
+<div class="diff-add">+- Subsequent turns: 30% Multi Hit, 10% Big Hit, 20% Debuff Attack, 30% Block Attack, 10% Parasite</div>
+<div class="diff-add">+- Parasite can only be used once. Same move cannot be used (or rerolled via Reactive) twice in a row</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAMAGE:</div>
+<div class="diff-add">+- Multi Hit: 7x3 = 21 damage (9x3 = 27 at A2)</div>
+<div class="diff-add">+- Big Hit: 32 damage (38 at A2)</div>
+<div class="diff-add">+- Debuff Attack: 10 damage + 2 Weak + 2 Vulnerable (12 at A2)</div>
+<div class="diff-add">+- Block Attack: 15 damage + gains 16 Block (16 at A2)</div>
+<div class="diff-add">+- Parasite: Permanently adds Parasite curse to your deck (once per combat)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **Reactive**: Changes the Writhing Mass&#x27;s weakness/intent when you play certain card types. Unpredictable -- you cannot reliably plan around its intent shifts.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,20 +2,21 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (155 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Five Silent runs (Runs 151-155). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. Run 154 died to Hexaghost (Act 1 boss) at Floor 16 -- defensive-heavy deck with Dex 6 from 2x Footwork+ blocked perfectly but had insufficient damage output (23-turn fight, Burns overwhelmed). Run 155 died to Book of Stabbing (Act 2 elite) at Floor 23 -- entered at 47% HP with no potions, no exhaust tools. Dex stacking + Shiv damage dealt 137 of 161 HP but Book&#x27;s +3 Str/turn overwhelmed defenses by Turn 6. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison engine dominated Act 3 hallway fights, card retention engine (WLP+ + TotT+ + Tactician+) was excellent, but Mind Bloom &quot;I am Awake&quot; choice (Mark of the Bloom) and fighting Mysterious Sphere before the boss were critical strategic errors. Hexaghost punishes the Silent&#x27;s lack of Burns management -- kill speed through poison scaling (Deadly Poison + Catalyst+) is mandatory. Book of Stabbing punishes the Silent&#x27;s lack of exhaust tools -- Dex stacking alone cannot keep pace with +3 Str/turn.</div>
+<div class="diff-add">+**CURRENT STATUS (156 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Six Silent runs (Runs 151-156). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. Run 154 died to Hexaghost (Act 1 boss) at Floor 16 -- defensive-heavy deck with Dex 6 from 2x Footwork+ blocked perfectly but had insufficient damage output (23-turn fight, Burns overwhelmed). Run 155 died to Book of Stabbing (Act 2 elite) at Floor 23 -- entered at 47% HP with no potions, no exhaust tools. Run 156 died to The Collector (Act 2 boss) at Floor 33 -- Wraith Form played too early in a 19-turn fight caused -17 Dex by endgame, making all Skill block 0. Collector at 5/282 HP when player died (5 HP short). TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- Wraith Form timing is the critical lesson from Run 156: in 15+ turn boss fights, delay Wraith Form until the final 5-6 turns. Poison engine + After Image + Blur is the defensive package for long Collector fights. The Collector&#x27;s DEFEND_BUFF +3 Str scaling makes long fights exponentially more dangerous.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-155):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 4. Act 2 boss reaches: 9+.</div>
+<div class="diff-ctx"> - **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**</div>
+<div class="diff-del">-- **3 wins in 155 runs (1.9% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (5 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23).</div>
+<div class="diff-add">+- **3 wins in 156 runs (1.9% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (6 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 156 reached Act 2 boss Floor 33).</div>
+<div class="diff-ctx"> - **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.</div>
+<div class="diff-ctx"> - **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.</div>
+<div class="diff-ctx"> - **Run 152: Silent died to Collector at F33.** Defensive powers (After Image, Footwork+) not played early enough. Card index confusion on Turn 1 caused suboptimal command execution. Post-debuff incoming was unsurvivable without defensive powers active. Poison strategy was highly effective against block-based enemies (Spheric Guardian crushed).</div>
+<div class="diff-ctx"> - **Run 153: Silent died to Transient at F45.** Best Silent floor yet. Strong poison engine + card retention engine dominated Act 3 hallways. Two critical strategic errors: (1) Mind Bloom &quot;I am Awake&quot; gave Mark of the Bloom (no healing), then (2) Mysterious Sphere fight (2 Orb Walkers) drained 66 HP with no recovery possible. Entered Transient at 3 HP. Died 7 damage short of surviving the final turn.</div>
+<div class="diff-ctx"> - **Run 154: Silent died to Hexaghost at F16.** Defensive-heavy deck with 2x Footwork+ (Dex 6), Dash+, Masterful Stab. Took zero damage in 5/6 pre-boss fights. But damage output was only ~10/turn average -- fight lasted 23 turns, Burns accumulated to 12+ per turn, and second Inferno (8x6=48) hit with a hand of all Burns. Hexaghost at 24/250 HP when killed. The problem was entirely damage, not defense.</div>
+<div class="diff-ctx"> - **Run 155: Silent died to Book of Stabbing at F23.** Dex 6 + Accuracy Shiv deck with Piercing Wail, TotT, Sacred Bark. Beat Slime Boss near-zero damage. Act 2 Sentry+Spheric Guardian drained 26 HP (59-&gt;33). Entered Book of Stabbing at 47% HP with zero potions. Dealt 137/161 damage but Book&#x27;s +3 Str/turn overwhelmed Dex block by Turn 6. Died with 24 HP remaining on Book.</div>
+<div class="diff-add">+- **Run 156: Silent died to Collector at F33.** Wraith Form played too early in a 19-turn fight. Dex dropped to -17 by Turn 19, making all Skill-based block 0. After Image provided ~7-8 block/turn (only block source at negative Dex) but insufficient against Collector&#x27;s Str-scaled attacks (Str 14+ from repeated DEFEND_BUFF). Collector at 5/282 HP when player died -- 5 HP short. Blur carried block from Intangible turns but was insufficient to bridge the full Dex gap. Key lesson: Wraith Form must be delayed until the final 5-6 turns in boss fights expected to last 15+ turns. Created wraith-form.md, after-image.md, blur.md.</div>
+<div class="diff-ctx"> - **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**</div>
+<div class="diff-hunk">@@ -339,8 +340,9 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re</div>
+<div class="diff-ctx"> - AOE damage (HIGHEST PRIORITY) -- Immolate+ is the single best card. Hits Collector + both Torch Heads. With Vulnerable: 42 damage to Collector per cast. Torch Heads respawn, so AOE is more valuable than single-target.</div>
+<div class="diff-ctx"> - Mass debuff -- Shockwave+ (Weak 3 + Vuln 3 to ALL enemies) reduces combined incoming by 25% while boosting all damage by 50%. Second-highest priority.</div>
+<div class="diff-ctx"> - Impervious -- 30 block absorbs post-debuff turns. Critical defensive card.</div>
+<div class="diff-del">-- Disarm -- permanent Str reduction compounds over the 10-turn fight. Play Turn 1.</div>
+<div class="diff-add">+- Disarm -- permanent Str reduction compounds over the 10-turn fight. Play Turn 1. Especially important because DEFEND_BUFF gives the Collector +3 Str per use -- Disarm partially offsets this scaling.</div>
+<div class="diff-ctx"> - Block density for post-debuff turns -- Frail reduces block by 25%, need multiple sources</div>
+<div class="diff-add">+- Kill speed matters -- DEFEND_BUFF gives ALL enemies +3 Str per use. In fights lasting 15+ turns, the Collector scales from Str 3 to Str 14+, making late-fight attacks devastating. Do not allow the fight to drag.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Bronze Automaton needs:**</div>
+<div class="diff-ctx"> - HP entry at 70%+ or Pantograph -- 300 HP boss with +3 Str/cycle scaling. HP alone is insufficient without block scaling. Block alone is insufficient without HP. Both are required.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 155 analysis: Silent F22 Book of Stabbing, Spheric Guardian mode shift</div>
       <div class="changelog-sha">239e4a3c</div>
     </div>
@@ -8551,164 +10142,6 @@ footer {
 <div class="diff-ctx"> 5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.</div>
 <div class="diff-ctx"> 6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Collector victory relied on Immolate+ AOE (28 damage to all enemies) to manage both Collector HP and Torch Head respawns. Two Hexaghost deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.</div>
 <div class="diff-ctx"> 7. **Extra energy**: The Collector victory had 4 energy (Sozu). The extra card per turn allowed playing both offense and defense simultaneously, which is critical for multi-enemy fights.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 67 analysis: Spheric Guardian Barricade, Match and Keep event, Reaper matchups</div>
-      <div class="changelog-sha">5613dad8</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/bosses/hexaghost.md</div>
-<div class="diff-hunk">@@ -28,6 +28,7 @@ WHAT WORKS:</div>
-<div class="diff-ctx"> - **Evolve + Fire Breathing** -- the best anti-Burns engine. Evolve draws a replacement card when a Burn is drawn, neutralizing hand clog. Fire Breathing deals 6 (10 upgraded) damage to Hexaghost each time a Burn is drawn. Together, Burns become free damage with no downside. Confirmed to beat Hexaghost cleanly (44/80 HP remaining after the fight). Set up both Powers on Turn 1 (free turn). This combo alone can handle Burns entirely -- no other Burns management needed.</div>
-<div class="diff-ctx"> - Demon Form (+2 Str/turn) -- the best scaling card for Hexaghost. By turn 5, every attack gains +8-10 damage. Combined with Anger (0E) and Shuriken (+1 Str per 3 attacks), the fight can be won in 7 turns instead of 13. Shorter fight = fewer Burns = less attrition.</div>
-<div class="diff-ctx"> - Disarm (-2 Str permanently) -- reduces all Hexaghost attacks including each Inferno hit. Very effective.</div>
-<div class="diff-add">+- Spot Weakness+ -- +4 Str on each Attack intent turn. Hexaghost&#x27;s attack turns are frequent enough to trigger this reliably. In a 12-turn fight, two applications give +8 Str permanently. Combined with Vajra (+1 Str), this reached 9 Str for 22+ damage per Strike against Vulnerable Hexaghost. Strong alternative to Demon Form for Strength scaling.</div>
-<div class="diff-ctx"> - Rampage+ -- scales over the long fight to 40-60+ damage per play. One of the best Hexaghost-killing cards.</div>
-<div class="diff-ctx"> - Evolve (standalone) -- draws a replacement card whenever a Burn is drawn. Neutralizes Burns hand-clogging completely. Play on Turn 1 (free turn) alongside other Powers.</div>
-<div class="diff-ctx"> - Flame Barrier+ -- 16 block + 42 counter damage (7 Inferno hits x 6 each). Single best defensive card for Inferno turns. Upgrade priority if facing Hexaghost.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/reaper.md</div>
-<div class="diff-hunk">@@ -6,4 +6,6 @@ DECISION POINTS: Reaper heals based on UNBLOCKED damage -- enemies with block re</div>
-<div class="diff-ctx"> CRITICAL LIMITATION: Reaper exhausts after one use per fight. It cannot sustain across consecutive combat rooms. A deck relying solely on Reaper for healing will lose 25-40 HP per fight in Act 2 and recover only 6 from Burning Blood between fights. Reaper is necessary but not sufficient as a lone healing source -- pair with Feed, Blood Potion, Regen Potion, or Toy Ornithopter.</div>
-<div class="diff-ctx"> EXHAUST WARNING: Reaper can be permanently lost mid-combat through random exhaust effects (unupgraded True Grit, Havoc) or other exhaust interactions. Losing Reaper removes the deck&#x27;s entire healing engine for the rest of that fight AND all subsequent fights. Protect Reaper from random exhaust at all costs -- never play unupgraded True Grit or Havoc when Reaper is in the deck.</div>
-<div class="diff-ctx"> SYNERGIES: Inflame (+2 Str boosts damage to all enemies = more healing), Vulnerable (bonus damage = bonus healing), multi-enemy fights (heal from sum of all damage dealt).</div>
-<div class="diff-del">-MATCHUPS: The Collector -- 3 targets (Collector + 2 Torch Heads). With +4 Str and Vulnerable on all, Reaper healed 14 HP in a single play. One of the best Reaper fights due to guaranteed 3 targets for the entire fight.</div>
-<div class="diff-add">+MATCHUPS:</div>
-<div class="diff-add">+- The Collector -- 3 targets (Collector + 2 Torch Heads). With +4 Str and Vulnerable on all, Reaper healed 14 HP in a single play. One of the best Reaper fights due to guaranteed 3 targets for the entire fight.</div>
-<div class="diff-add">+- Spheric Guardian -- WORST MATCHUP. Spheric Guardian has Barricade (block persists) and accumulates 40-64+ block. Reaper heals only for UNBLOCKED damage. Against 60+ block, Reaper deals zero HP damage and heals zero. Reaper is completely useless in this fight.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/second-wind.md</div>
-<div class="diff-hunk">@@ -3,6 +3,7 @@ Mass exhaust for block. Clears status cards while gaining significant block.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: When hand is full of status cards (Burns, Wounds, Slimed, Dazed) -- each one exhausted becomes 5-7 block. Also exhausts Defends and other Skills for block. Excellent in fights that generate status cards (Hexaghost Burns, Slime Boss Slimed).</div>
-<div class="diff-ctx"> DECISION POINTS: Exhausts ALL non-Attack cards including useful Skills. Check what you&#x27;re losing before playing. If hand has 3 status cards + 1 useful Skill, the 20 block from exhausting 4 cards may not be worth losing the Skill. Best when the non-Attack cards are expendable.</div>
-<div class="diff-add">+CRITICAL WARNING: In long attrition fights (Spheric Guardian, bosses), Second Wind can exhaust irreplaceable Skills like Shockwave+, True Grit+, and block cards. Once exhausted, these cards are gone for the rest of the fight. Against Spheric Guardian specifically, exhausting Shockwave+ and True Grit+ sealed a loss because the remaining deck had no way to apply debuffs or manage status cards. Only play Second Wind when you are certain the exhausted Skills are no longer needed.</div>
-<div class="diff-ctx"> SYNERGIES: Corruption (Skills cost 0 but exhaust -- Second Wind exhausts them for block value instead). Status-heavy fights. Dark Embrace (draw per exhaust).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ---</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/spot-weakness.md</div>
-<div class="diff-hunk">@@ -9,4 +9,4 @@ UPGRADE: +3 STR -&gt; +4 STR. Worth upgrading for scaling fights.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> SYNERGIES: Multi-hit attacks (Pummel, Twin Strike, Whirlwind) -- Strength applies per hit. Heavy Blade -- +3 Str becomes +9 damage (or +15 upgraded) due to the multiplier. Limit Break -- doubling Strength after Spot Weakness gives massive scaling. Long fights (bosses) where Strength compounds over many attack plays.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-MATCHUPS: Excellent vs Guardian (predictable attack turns, long fight). Good vs any boss with visible attack intents. Useless on turns where enemy is buffing/defending.</div>
-<div class="diff-add">+MATCHUPS: Excellent vs Guardian (predictable attack turns, long fight). Excellent vs Hexaghost (frequent attack turns in a long fight -- two applications of Spot Weakness+ gave +8 Str that scaled all remaining attacks). Good vs any boss with visible attack intents. Useless on turns where enemy is buffing/defending. Marginally useful vs Spheric Guardian (enemy alternates attack/defend, so triggers every other turn, but the Str gain may still be insufficient to break through Barricade block).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/spheric-guardian.md</div>
-<div class="diff-hunk">@@ -1,9 +1,11 @@</div>
-<div class="diff-ctx"> # Spheric Guardian (hallway, Act 2, HP: ~20, effectively 60+)</div>
-<div class="diff-del">-PATTERN: Starts with 40 block + Barricade (block persists) + 3 Artifact + applies Frail 5. Attacks 10x2 = 20 per turn. Gains more block each turn.</div>
-<div class="diff-del">-KEY MECHANIC: Barricade means block never expires. 40 starting block + 3 Artifact + Frail 5. A DPS check disguised as a hallway fight.</div>
-<div class="diff-del">-WHAT THIS MEANS: Strip 3 Artifact charges first with cheap debuffs (Thunderclap ideal -- 1 charge per enemy). Then apply Vulnerable. Then burst through remaining block + HP. With Frail 5, your block cards give 25% less for 5 turns (Defend gives 3 instead of 5).</div>
-<div class="diff-del">-BENCHMARKS: 6-turn fight. Expect 30+ HP lost from Frail-reduced blocking vs 10x2 attacks.</div>
-<div class="diff-del">-BRING: Thunderclap (strip Artifact), Pen Nib (double damage to break block), burst damage (Fiend Fire), Headbutt (find specific cards).</div>
-<div class="diff-del">-AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it). Havoc (random exhaust can destroy key cards in a long DPS race). Random exhaust effects in general (this fight is long and you need every damage source).</div>
-<div class="diff-add">+PATTERN: Starts with 40 block + Barricade (block persists) + 3 Artifact + applies Frail 5. Alternates between attacking (10x2 = 20 damage) and defending (gains 15-20 block that persists due to Barricade). On attack turns, it deals 10x2=20. On defend turns, it deals 0 damage and adds block to its existing total.</div>
-<div class="diff-add">+KEY MECHANIC: Barricade means block never expires. The Spheric Guardian GAINS block on defend turns (observed 15-20 block gained per action), and since block persists via Barricade, it stacks indefinitely. Combined with alternating attack/defend, the block grows faster than chip damage can remove it. At low Strength (0-1), Strikes deal 6-7 per play vs 15-20 block gained per defend cycle. The block will grow every other turn even while being attacked on the off turns.</div>
-<div class="diff-add">+WHAT THIS MEANS: This is a DPS check disguised as a hallway fight. At 1 Strength, Strikes deal 6-7 damage per play. The Spheric Guardian gains 15-20 block on defend turns and retains leftover block. After 5-6 turns, its block reaches 40-64 and never comes down. The fight becomes mathematically unwinnable without sufficient Strength scaling or burst damage. Strip 3 Artifact charges first with cheap debuffs (Thunderclap ideal). Then apply Vulnerable. Then burst through remaining block + HP.</div>
-<div class="diff-add">+BENCHMARKS: Must kill within 6-8 turns or block becomes insurmountable. Expect 30-50+ HP lost from Frail-reduced blocking vs 10x2 attacks. At low Strength without burst, this fight is a guaranteed loss through attrition.</div>
-<div class="diff-add">+BRING: Thunderclap (strip Artifact), Pen Nib (double damage to break block), burst damage (Fiend Fire, Immolate, Bludgeon), Strength scaling (Inflame, Spot Weakness), Headbutt (find specific cards).</div>
-<div class="diff-add">+AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it at low Strength). Havoc (random exhaust can destroy key cards in a long DPS race). Random exhaust effects in general. Exhausting your own key cards with Second Wind (observed: Second Wind exhausted Shockwave+, True Grit+, and block cards, sealing a loss). Entering at low HP (&lt;50%) -- this fight routinely drains 30-50 HP.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-APPEARS WITH: Sentry (in Act 2 hallway fights). When paired, incoming damage is 9 (Sentry) + 10x2 (Spheric Guardian) = 29 per turn. Frail from Spheric Guardian reduces block by 25%, making Defend give only 3 instead of 5. At low HP, the combined damage is often unblockable. Kill the Sentry first (no block, lower HP), then focus Spheric Guardian with burst damage. Metallicize&#x27;s passive 3 block/turn helps but is insufficient alone against 29 incoming.</div>
-<div class="diff-add">+APPEARS WITH: Sentry (in Act 2 hallway fights). When paired, incoming damage is 9 (Sentry) + 10x2 (Spheric Guardian) = 29 per turn. Frail from Spheric Guardian reduces block by 25%, making Defend give only 3 instead of 5. At low HP, the combined damage is often unblockable. Kill the Sentry first (no block, lower HP) to reduce incoming damage and stop Dazed generation. Then focus Spheric Guardian with burst damage. Metallicize&#x27;s passive 3-4 block/turn helps but is insufficient alone against 20 incoming.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WARNING: This is one of the most dangerous Act 2 hallway fights. Two deaths confirmed against this enemy (at 26% and 43% HP entry). Even with Reaper+, Immolate, Metallicize+, and Shockwave+ in the deck, the fight was lost because Reaper heals nothing through 60+ block (all damage absorbed by block = zero healing), and chip damage cannot break through Barricade block faster than it regenerates. Reaper is useless in this fight. Only massive single-turn burst or sustained Strength scaling can win.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/events/_index.md</div>
-<div class="diff-hunk">@@ -27,6 +27,7 @@</div>
-<div class="diff-ctx"> - [Purifier](purifier.md)</div>
-<div class="diff-ctx"> - [World of Goop](world-of-goop.md)</div>
-<div class="diff-ctx"> - [Woman in Blue](woman-in-blue.md)</div>
-<div class="diff-add">+- [Match and Keep](match-and-keep.md)</div>
-<div class="diff-ctx"> - [The Nest](the-nest.md)</div>
-<div class="diff-ctx"> - [Vampires](vampires.md)</div>
-<div class="diff-ctx"> - [Wheel of Change](wheel-of-change.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/events/match-and-keep.md</div>
-<div class="diff-hunk">@@ -0,0 +1,15 @@</div>
-<div class="diff-add">+# Match and Keep (Act 2)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+A card-matching memory game. Cards are face-down in pairs. Flip two at a time -- if they match, you add that card to your deck. If not, they flip back. You get a limited number of attempts.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+OPTIONS:</div>
-<div class="diff-add">+- [Play] Play the matching game and obtain matched cards.</div>
-<div class="diff-add">+- [Leave] Skip the event. Nothing happens.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION FRAMEWORK: The matched cards are added to your deck whether you want them or not. You cannot choose which pairs to match -- you match what you find. This means the event can ADD UNWANTED CARDS to your deck (observed: Bash and Perfected Strike added to a deck that did not want them). Deck dilution from bad matches is a real downside.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN TO PLAY: Only when the deck is small enough that a few mediocre additions are tolerable, or when you are desperate for any card quality. If the deck is already well-tuned and lean, the risk of dilution outweighs the chance of finding a good card.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN TO LEAVE: When the deck is already at a good size (14-18 cards) and adding random cards would dilute draws of key cards. This is the safer default choice.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WARNING: Unlike card rewards where you can skip, matched cards are automatically added to your deck. There is no way to refuse a match once made. This makes the event a gamble -- potentially helpful if you match a strong card, but actively harmful if you match mediocre ones like extra Strikes, Bash, or Perfected Strike.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/events/shining-light.md</div>
-<div class="diff-hunk">@@ -1,7 +1,7 @@</div>
-<div class="diff-ctx"> # Shining Light (Act 1)</div>
-<div class="diff-ctx"> OPTIONS:</div>
-<div class="diff-del">-- [Enter] Take 17 damage, upgrade 2 random cards.</div>
-<div class="diff-add">+- [Enter] Take 16 damage, upgrade 2 random cards.</div>
-<div class="diff-ctx"> - [Leave] Nothing.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-DECISION FRAMEWORK: Only enter at high HP (60%+). Two random upgrades are valuable but 17 damage before a boss could be fatal.</div>
-<div class="diff-add">+DECISION FRAMEWORK: Only enter at high HP (60%+). Two random upgrades are valuable but 16 damage before a boss could be fatal.</div>
-<div class="diff-ctx"> PRIORITY: Enter (high HP, no boss imminent) &gt; Leave (low HP or boss coming).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/potions/blessing-of-the-forge.md</div>
-<div class="diff-hunk">@@ -5,4 +5,4 @@ WHEN TO USE: Use before a fight, not during. The upgrade is permanent and applie</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> VALUE: Moderate. The random targeting means it could upgrade a Strike (low value) or a key card like Bash (high value). Most valuable when the deck has many unupgraded cards, least valuable when most cards are already upgraded.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-NOTE: This is a utility potion, not a combat potion. Cannot be used mid-combat for any benefit. The exact targeting (random card in deck vs random card in hand) is unconfirmed -- the potion was acquired but never used. Needs confirmation in a future run.</div>
-<div class="diff-add">+NOTE: This is a utility potion, not a combat potion. Can be used at rest sites to get an extra upgrade on top of the normal Smith action (confirmed: used at rest site to upgrade one card, then Smithed to upgrade a second). Can also be used before boss fights for a last-minute upgrade. Confirmed to upgrade a card in the deck (not hand).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/maw-bank.md</div>
-<div class="diff-hunk">@@ -1,3 +1,5 @@</div>
-<div class="diff-del">-# Maw Bank</div>
-<div class="diff-del">-EFFECT: Unconfirmed. Likely gains gold each floor (12 gold/floor observed pattern in other games). Loses effect when you spend gold at a shop.</div>
-<div class="diff-del">-HOW IT CHANGES DECISIONS: Effect unknown. Do not rely on it for decision-making until confirmed.</div>
-<div class="diff-add">+# Maw Bank (Common Relic)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Gain 12 gold after each non-shop floor. Spending gold at a shop disables the effect permanently.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+HOW IT CHANGES DECISIONS: Generates significant gold over time (12 gold x 10 floors = 120 gold). Best taken early for maximum accumulation. Consider skipping shops or only using shop card removal to preserve the gold generation. Most valuable when the run does not need shop purchases urgently.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -8,7 +8,7 @@ High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## HP Management: The #1 Cause of Death</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-20 of 23 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-add">+21 of 24 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### HP Thresholds for Act 2</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -41,6 +41,7 @@ Even &quot;hallway&quot; fights in Act 2 can be run-ending: 3 Cultists has killed the play</div>
-<div class="diff-ctx"> 1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 8-12 turns. The primary Act 2 HP drain. Without Thunderclap (mass Flight stripping + Vulnerable), expect the upper end. Thunderclap is the single most important card for Act 2 Byrd survival.</div>
-<div class="diff-ctx"> 2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic&#x27;s healing extends the fight. Often consumes Fairy in a Bottle.</div>
-<div class="diff-ctx"> 3. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Even with burst damage, drains 20-30 HP. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.</div>
-<div class="diff-add">+3b. **Spheric Guardian + Sentry from Unknown rooms**: 29 combined damage/turn with Frail 5 reducing block. Spheric Guardian&#x27;s Barricade block makes Reaper useless and chip damage futile. Two deaths confirmed from this encounter (at 26% and 43% HP entry). Unknown rooms are the most dangerous room type in Act 2 at low HP.</div>
-<div class="diff-ctx"> 4. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.</div>
-<div class="diff-ctx"> 5. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.</div>
-<div class="diff-ctx"> 6. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. With 2 Decays, that is 4 HP/turn lost regardless of block. Over a 5-turn fight, that is 20 free HP lost. Prioritize curse removal at shops or via exhaust (Fiend Fire).</div>
-<div class="diff-hunk">@@ -253,7 +254,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai</div>
-<div class="diff-ctx"> - Prefer routes with a rest site in the last 1-2 floors before the boss.</div>
-<div class="diff-ctx"> - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.</div>
-<div class="diff-ctx"> - If the path forces an elite at low HP, skip it entirely -- take any alternative path.</div>
-<div class="diff-del">-- **Unknown rooms are NOT safe at low HP.** They can resolve as any hallway fight, including Byrds and Snake Plant. Treat Unknown rooms as Monster rooms when below 40% HP.</div>
-<div class="diff-add">+- **Unknown rooms are NOT safe at low HP.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. Two deaths confirmed from Spheric Guardian spawning from Unknown rooms. Treat Unknown rooms as Monster rooms when below 40% HP.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Elite Risk Assessment</div>
-<div class="diff-ctx"> </div>
 <div class="diff-ctx"></div>
 </div>
   </div>

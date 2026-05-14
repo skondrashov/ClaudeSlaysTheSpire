@@ -26,13 +26,26 @@ STRATEGY:
 - **Corruption + Feel No Pain is excellent but be card-count conscious.** Every Skill played under Corruption counts toward the 12-card limit AND exhausts. The block generation is enormous but the card count adds up fast. Sequence carefully: play all free Skills in one burst, accept the Time Warp trigger, then use the accumulated block with Body Slam+ on the next cycle.
 - **Second Wind+ under Corruption can exhaust status cards (Burns, Normality curse) for block AND remove them from the deck permanently.** Using Second Wind+ to exhaust Normality is a high-priority play.
 
-DEFEATED WITH: Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Key sequence: accumulate 69 block through Barricade + FNP exhaust chain, Entrench to 138, Body Slam+ for 146 damage. Two Time Warps triggered (boss healed 64 total, gained +4 Str) but the block wall absorbed all damage. Final kill: Body Slam+ with 119 block at 26/87 HP. 2 Fairy in a Bottle potions provided safety margin.
+DEFEATED WITH (Ironclad): Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Key sequence: accumulate 69 block through Barricade + FNP exhaust chain, Entrench to 138, Body Slam+ for 146 damage. Two Time Warps triggered (boss healed 64 total, gained +4 Str) but the block wall absorbed all damage. Final kill: Body Slam+ with 119 block at 26/87 HP. 2 Fairy in a Bottle potions provided safety margin.
+
+DEFEATED WITH (Silent -- FIRST SILENT WIN): Accuracy x2 (+8 Shiv damage) + After Image (innate) + Wraith Form+ + Phantasmal Killer + Malaise + Blade Dance + Finisher. Key sequence: Turn 1 Cultist Potion for Ritual 1, After Image + Blur + Blade Dance setup. Turn 3 Phantasmal Killer + Fear Potion (Vuln) -- Shivs dealt 36 each (doubled, Vulnerable), 72 burst in 2 plays. Turn 5 Wraith Form+ at 19 HP for 3 Intangible. Turn 7 Phantasmal Killer triggered Time Warp on a free turn, setting up Double Damage for Turn 8. Turn 8 Malaise X=5 (-5 Str, 5 Weak). Turn 9 Lizard Tail revival at 35 HP, Snecko Oil for cards. Turn 10 Str 11 + Accuracy 8 = Shivs dealing 23 each, 4 Shivs + Finisher killed from 139 HP. Three Time Warps triggered but the Str scaling from Ritual outpaced Time Eater's healing (32 per Warp vs 23 damage per Shiv).
+
+**SILENT-SPECIFIC STRATEGY vs Time Eater:**
+- **Shivs are excellent despite the 12-card counter.** Each Shiv is 1 card play but deals massive damage with Accuracy + Str stacking. 12 card plays per cycle can output 200+ damage.
+- **Accuracy is the key card.** 2x Accuracy = +8 per Shiv. This turns 0-cost throwaway cards into 12+ damage each.
+- **Phantasmal Killer timing:** Play the turn BEFORE a big burst turn. Double Damage makes Shivs devastating (36+ each with Accuracy + Str + Vuln).
+- **Wraith Form+ timing:** Save for crisis moments (sub-20% HP). 3 Intangible buys time for Str scaling via Ritual or other sources.
+- **Malaise is the best Silent boss debuff.** X=5 applies -5 Str AND 5 Weak, crippling Time Eater's offense for the final turns.
+- **Cultist Potion Turn 1** is optimal -- Ritual 1 compounds across the entire fight. By Turn 10, Str reaches 10-11, making Shivs deal 20+ each.
+- **Finisher** scales with attacks played this turn. After 4 Shivs, Finisher deals 24+ damage for 1E.
+- **Track Time Warp count precisely.** Trigger Time Warp intentionally on low-value plays (Phantasmal Killer on a free turn, last Shiv of a burst) to minimize wasted card plays.
 
 WHAT NOT TO DO:
-- Play many small cards per turn (accelerates Time Warp).
+- Play many small cards per turn without purpose (accelerates Time Warp with low damage output).
 - Exhaust Impervious early -- save for high-damage turns after Str has stacked.
 - Enter below 40% HP. Time Warp + escalating damage means even with strong block, some damage leaks through.
+- Waste Malaise on Artifact stripping -- use Neutralize or Crippling Cloud for that.
 
-POTION TIMING: Energy Potion on the setup turn (Barricade + Corruption in one turn). Save Fairy in a Bottle as death insurance.
+POTION TIMING: Cultist Potion Turn 1 (maximum Str scaling). Fear Potion on Phantasmal Killer burst turns. Snecko Oil as emergency draw. Save Lizard Tail / Fairy in a Bottle as death insurance.
 
 ENTER AT: 50%+ HP. The fight is long (10-15 turns) with escalating damage from Time Warp Str stacks.

@@ -42,15 +42,19 @@
 ## Silent Attack Cards
 
 - [Masterful Stab](masterful-stab.md)
+- [Finisher](finisher.md)
 
 ## Silent Skill Cards
 
 - [Blur](blur.md)
+- [Malaise](malaise.md)
 
 ## Silent Power Cards
 
 - [After Image](after-image.md)
 - [Wraith Form](wraith-form.md)
+- [Accuracy](accuracy.md)
+- [Phantasmal Killer](phantasmal-killer.md)
 
 ## Colorless Cards
 

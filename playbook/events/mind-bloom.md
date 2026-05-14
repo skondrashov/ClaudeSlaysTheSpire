@@ -14,8 +14,17 @@ Three options:
 
 **I am Rich is a trap with Snecko Eye.** Normality limits the hand to 3 cards per turn. With Snecko Eye drawing 7 cards, 4 are immediately wasted. The 999 gold is useless in late Act 3 (few shops remaining). Avoid.
 
+## I am Healthy (Option 3 -- SITUATIONALLY EXCELLENT)
+
+**[I am Healthy]** -- Heal to full HP. Obtain Doubt curse (1 Weak at end of each turn).
+
+This option is normally mediocre (Doubt applying Weak every turn degrades defense), but becomes the BEST choice when **Ginger relic is equipped**. Ginger prevents the Weakened debuff entirely, making Doubt's effect completely harmless. The result: a free full heal with only a minor deck dilution cost (one dead card). Remove Doubt at the next shop for a clean deck.
+
+**Choose "I am Healthy" when Ginger is equipped.** This was a key decision in the first Silent victory -- healing from 55 to 70 HP for free with zero downside.
+
 ## Decision Framework
 
+- **Ginger equipped:** **Healthy** (free full heal, Doubt curse is harmless, remove at shop)
 - Strong deck that can beat Act 1 boss trivially: **War** (free Rare Relic, no downside)
 - **Awake: Almost never.** Only consider if ALL of the following are true: (1) the deck has multiple unupgraded cards where upgrades are transformative, (2) the path from here to the boss contains ZERO remaining combat encounters (no hallway fights, no events that could resolve as combat, no Mysterious Sphere), AND (3) current HP is near max. If any fights remain on the path, choose War instead.
 - Never: **Rich** (Normality curses are devastating)

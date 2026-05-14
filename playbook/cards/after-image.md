@@ -28,10 +28,14 @@ After Image provides flat block per card played that is **not affected by Dexter
 - **Before the Collector's Turn 4 debuff.** After Image MUST be active before the triple debuff lands. It is the Silent's primary tool for surviving post-debuff turns.
 - **Priority over other Powers except Noxious Fumes+.** In boss fights, play Noxious Fumes+ first (poison scaling is the win condition), then After Image second (block scaling is the survival condition).
 
+## Bottled Tornado Synergy (VICTORY-PROVEN)
+
+Making After Image innate via Bottled Tornado guarantees it starts in hand every combat. This was a key decision in the first Silent victory: After Image was active from Turn 1 of every fight for the entire run, providing guaranteed block generation without spending a draw on it. When choosing what to bottle with Bottled Tornado, After Image is the top pick for Silent decks -- it is the most universally valuable Power to have Turn 1 of every combat.
+
 ## Silent Boss Fights: Setup Priority
 
 1. Noxious Fumes+ (poison = win condition)
-2. After Image (block per card = survival)
+2. After Image (block per card = survival) -- ideally innate via Bottled Tornado
 3. Footwork+ (Dex scaling = block multiplier)
 4. Other powers
 

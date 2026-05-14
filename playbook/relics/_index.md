@@ -64,6 +64,8 @@
 - [Mummified Hand](mummified-hand.md)
 - [Frozen Egg](frozen-egg.md)
 - [Omamori](omamori.md)
+- [Ginger](ginger.md)
+- [Bottled Tornado](bottled-tornado.md)
 
 ## Rare Relics
 

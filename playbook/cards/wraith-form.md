@@ -35,10 +35,11 @@ At high negative Dex, all block from Skills becomes 0 (block cannot go below 0).
 
 ## Interactions
 
-- **After Image:** Becomes the ONLY reliable block source at high negative Dex. After Image gives flat 1 block per card played regardless of Dex. With 7-8 cards played per turn, this is ~7-8 block -- often insufficient against boss damage.
+- **After Image:** Becomes the ONLY reliable block source at high negative Dex. After Image gives flat 1 block per card played regardless of Dex. With 7-8 cards played per turn, this is ~7-8 block -- often insufficient against boss damage but the only option.
 - **Blur:** Critical companion card. Blur lets block carry over between turns. During Intangible turns (minimal damage taken), excess block from After Image or other sources carries over to post-Intangible turns when the Dex penalty makes new block generation impossible.
 - **Footwork+:** Partially offsets the Dex drain. Starting with Dex +3 from Footwork+ means the penalty takes 3 extra turns to reach 0. But in a 19-turn fight, this only delays the crisis.
 - **The Transient:** Wraith Form+ covers turns 1-3 via Intangible, but -1 Dex/turn makes turns 4-5 extremely tight. Enter with 25+ HP minimum.
+- **Time Eater:** Wraith Form+ is excellent as an EMERGENCY play at low HP. In the first Silent victory, WF+ was played Turn 5 at 19 HP via Acrobatics draw, buying 3 Intangible turns that bridged the gap until Malaise could neuter Time Eater's offense. The fight ended on Turn 10 -- only 5 turns of Dex drain, manageable.
 
 ## The Collector Boss Warning
 
