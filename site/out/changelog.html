@@ -374,6 +374,260 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 153 analysis: Silent F45 Transient, Mind Bloom trap, Orb Walker scaling</div>
+      <div class="changelog-sha">2d06407f</div>
+    </div>
+    <div class="changelog-date">2026-05-14</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
+<div class="diff-hunk">@@ -54,11 +54,12 @@ Has authority to reshape the playbook structure — consolidate files, rewrite s</div>
+<div class="diff-ctx"> ## Commands (cmd.py)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ```python</div>
+<div class="diff-del">-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, start</div>
+<div class="diff-add">+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, deck, start</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> state()                          # See current game state</div>
+<div class="diff-ctx"> plan()                           # Load strategic context (auto-detects combat vs act)</div>
+<div class="diff-ctx"> think(reasoning, label)          # Post strategic analysis to stream overlay</div>
+<div class="diff-add">+deck()                           # View full deck (use after transforms, adds, removes)</div>
+<div class="diff-ctx"> reason(&quot;topic&quot;)                  # Look up a specific playbook entry</div>
+<div class="diff-ctx"> send(&quot;play Bash 0&quot;, reason=&quot;...&quot;) # Single action — reason= is REQUIRED</div>
+<div class="diff-ctx"> turn([&quot;play Bash Jaw Worm&quot;, &quot;play Strike Jaw Worm&quot;, &quot;play Defend&quot;, &quot;end&quot;],</div>
+<div class="diff-hunk">@@ -233,3 +234,26 @@ In every Bash call, before importing cmd, set:</div>
+<div class="diff-ctx"> - Orchestrator deletes lock file before spawning a new agent. That&#x27;s the handoff.</div>
+<div class="diff-ctx"> - If the agent forgets to set the env var → import fails → agent dies. Orchestrator spawns a new one.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+### Coaching notes</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Human feedback for the analyst goes in `data/coaching_notes.md`. When the user gives coaching during a run (e.g., &quot;the player should have done X&quot;), append it to this file. Include the file path in the analyst prompt so the analyst incorporates the feedback into playbook updates. The analyst marks notes as addressed after processing them.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Git gotchas</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- `site/out/` is gitignored — always use `git add -f site/out/` when committing site changes</div>
+<div class="diff-add">+- `data/coaching_notes.md` is gitignored — use `git add -f` for it too</div>
+<div class="diff-add">+- Rebuild site before committing: `python site/build.py` then `git add -f site/out/`</div>
+<div class="diff-add">+- **Never create a CLAUDE.md file.** All project context lives in this file (AGENTS.md).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### cmd.py safety features</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- `turn()` detects draw cards automatically — if hand size doesn&#x27;t shrink after playing a card, the sequence stops and tells the player to re-plan with the new cards</div>
+<div class="diff-add">+- `choose` resolves card names on HAND_SELECT, CARD_REWARD, and GRID screens (not just `play`)</div>
+<div class="diff-add">+- Stream.py deduplicates floor_history by seed+floor, and detects GAME_OVER on startup to prevent recounting on restart</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Current state</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Playing **The Silent** at Ascension 0</div>
+<div class="diff-add">+- Strategist runs every 10 runs</div>
+<div class="diff-add">+- 76 total runs (74 Ironclad, 2 Silent). Ironclad has 3 A0 wins.</div>
+<div class="diff-add">+</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/orb-walker.md</div>
+<div class="diff-hunk">@@ -1,23 +1,30 @@</div>
+<div class="diff-ctx"> # Orb Walker (Act 3 Hallway, HP: ~93)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Fast-scaling single enemy. Gains +3 Strength per turn. Must burst down before damage becomes unsurvivable.</div>
+<div class="diff-add">+Fast-scaling enemy. Gains +3 Strength per turn. Must burst down before damage becomes unsurvivable. Can appear as a single enemy or as a pair (2 Orb Walkers).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> PATTERN:</div>
+<div class="diff-ctx"> - Attacks every turn with increasing damage as Strength accumulates.</div>
+<div class="diff-del">-- Turn 1: ~15 damage.</div>
+<div class="diff-del">-- Turn 2+: Damage increases by 3 per turn (+3 Str per buff cycle).</div>
+<div class="diff-add">+- Turn 1: ~10 damage per Orb Walker (20 combined for 2).</div>
+<div class="diff-add">+- Turn 2+: Damage increases by 3 per Orb Walker per turn (+3 Str per buff cycle).</div>
+<div class="diff-add">+- Generates Burns that clog the hand and deal end-of-turn damage.</div>
+<div class="diff-ctx"> - No free turns -- blocks or attacks every turn.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-del">-- **Strength scaling (+3/turn)**: By Turn 3, attacks deal 21+. By Turn 5, attacks deal 27+. This makes the fight a DPS race -- every extra turn costs significantly more HP.</div>
+<div class="diff-del">-- **Moderate HP (~93)**: Killable in 2-3 turns with Strength scaling and Immolate+ burst.</div>
+<div class="diff-add">+- **Strength scaling (+3/turn per Orb Walker)**: By Turn 3, a single OW attacks for 19+. With 2 Orb Walkers, combined incoming reaches 38+ by Turn 3 and 50+ by Turn 5. This makes the fight a DPS race.</div>
+<div class="diff-add">+- **Burns**: Orb Walkers add Burns to the draw pile. Burns clog the hand, reduce effective draws, and deal 2 damage each at end of turn (4 damage for upgraded Burns). In long fights, 4+ Burns in hand can deal 8-16 end-of-turn damage on top of the Orb Walker attacks.</div>
+<div class="diff-add">+- **Moderate HP (~93 each)**: A single OW is killable in 2-3 turns. Two OWs require focused fire (kill one fast to halve incoming).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+TWO ORB WALKER FIGHT (DANGEROUS):</div>
+<div class="diff-add">+The 2-OW variant is one of the most dangerous Act 3 hallway fights. Combined Str scaling is +6/turn, and combined incoming grows from 20 (Turn 1) to 44+ (Turn 4). With Burns clogging draws, block density drops as incoming damage rises. Confirmed: 2 Orb Walkers drained 66 HP (69 to 3) in a fight where the deck had After Image+, Footwork+, Piercing Wail+ x2, and strong block cards.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> STRATEGY:</div>
+<div class="diff-del">-- **Kill fast.** This is a DPS race, not a block fight. Inflame+ + Immolate+ + Strike+ can kill in 2 turns.</div>
+<div class="diff-del">-- **Bloodletting+ enables Turn 1 burst.** Extra energy on Turn 1 allows massive front-loaded damage (Evolve+ + Immolate+ + multiple attacks).</div>
+<div class="diff-del">-- **Headbutt + Immolate+ guarantees a Turn 2 kill.** Headbutt places Immolate+ on top of draw pile for 28-31 guaranteed damage on Turn 2.</div>
+<div class="diff-add">+- **Kill one Orb Walker fast.** Focus all damage on one OW to halve incoming damage as soon as possible. Poison (Deadly Poison+, Catalyst+) can handle one OW while you block against the other.</div>
+<div class="diff-add">+- **Ironclad**: Kill fast. Inflame+ + Immolate+ + Strike+ can kill a single OW in 2 turns. Headbutt + Immolate+ guarantees a Turn 2 kill. Bloodletting+ enables Turn 1 burst.</div>
+<div class="diff-add">+- **Silent**: Poison engine handles OWs well -- Deadly Poison+ plus Noxious Fumes+ ticks kill one OW in 3-4 turns. Piercing Wail+ is critical for reducing combined incoming (-8 per OW per turn). After Image+ provides passive block scaling. **Do NOT use Catalyst+ on Orb Walkers unless you have another copy or do not need it for the boss.** Catalyst+ exhausts after one use and is the primary tool for defeating Regenerate 10 on Awakened One.</div>
+<div class="diff-ctx"> - **Feed kills are valuable.** At ~93 HP, Feed can land the killing blow for +3 max HP. Prioritize Feed as the last hit.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> WHAT NOT TO DO:</div>
+<div class="diff-del">-- Set up Powers on Turn 1. Barricade, Metallicize, and Evolve waste energy that should go to damage. The fight is too short for setup to pay off.</div>
+<div class="diff-del">-- Let the fight go past Turn 4. By then, incoming damage exceeds 24+ and HP drain accelerates.</div>
+<div class="diff-add">+- Set up slow Powers on Turn 1 (Barricade, Metallicize, Evolve). The fight is too short for setup to pay off.</div>
+<div class="diff-add">+- Let the fight go past Turn 5. By then, incoming damage exceeds 30+ per OW and Burns overwhelm the hand.</div>
+<div class="diff-add">+- **Spend Catalyst+ here if the Act 3 boss is Awakened One.** Catalyst+ is irreplaceable for defeating the boss&#x27;s Regenerate 10. The Orb Walker fight is survivable without it; the boss fight may not be.</div>
+<div class="diff-add">+- Enter the fight at low HP when Mark of the Bloom is active. With no healing available, even a &quot;safe&quot; 69 HP entry can become 3 HP exit. Avoid optional combat (Mysterious Sphere, Unknown rooms) when Mark of the Bloom prevents recovery.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/transient.md</div>
+<div class="diff-hunk">@@ -12,7 +12,7 @@ PATTERN:</div>
+<div class="diff-ctx"> - **Shifting**: Gains block when attacked. Attacking the Transient is generally wasteful -- it has 999 HP and cannot be killed through damage in practice.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-del">-- **Fading 5**: The Transient loses 1 Fading per turn and dies when Fading reaches 0. You do NOT need to deal 999 damage. Just survive 5 turns.</div>
+<div class="diff-add">+- **Fading 5**: The Transient loses 1 Fading per turn and dies when Fading reaches 0. You do NOT need to deal 999 damage. Just survive 5 turns. **CRITICAL: The Transient attacks BEFORE it fades.** On Fading 1 (the last turn), the Transient delivers its final attack and then vanishes at end of turn. You must survive this last attack -- you cannot &quot;almost&quot; outlast it.</div>
+<div class="diff-ctx"> - **Shifting**: Gains block when you Attack it. This makes attacking counterproductive -- save energy for block.</div>
+<div class="diff-ctx"> - **Escalating Strength**: Each turn the Transient hits harder. Turn 1 is manageable; turns 3-5 can be lethal without serious block.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -22,7 +22,7 @@ STRATEGY:</div>
+<div class="diff-ctx"> - **Shockwave+ is excellent.** Weak 3 reduces damage for 3 of the 5 turns.</div>
+<div class="diff-ctx"> - **Impervious is the best card for this fight.** 30/40 block absorbs an entire turn of damage. Save for Turn 3+ (50-70 incoming) where basic block cards cannot cover the gap.</div>
+<div class="diff-ctx"> - **Barricade is exceptional.** Block from early turns carries over, creating an accumulating wall. Combined with Metallicize, the escalating damage is handled automatically by turns 4-5.</div>
+<div class="diff-del">-- **HP entry matters enormously.** At 15/80 HP (18%), even perfect block draws cannot survive turns 2-3 with 30+ incoming per turn. This fight requires 50%+ HP entry or exceptional block density.</div>
+<div class="diff-add">+- **HP entry matters enormously.** At 15/80 HP (18%), even perfect block draws cannot survive turns 2-3 with 30+ incoming per turn. This fight requires 50%+ HP entry or exceptional block density. For Silent with Wraith Form+, the minimum is 25+ HP -- Intangible covers turns 1-3 (3 damage total) but turns 4-5 will leak 10-20 damage each through the Dex penalty.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> WHAT NOT TO DO:</div>
+<div class="diff-ctx"> - Attack the Transient (triggers Shifting, wastes energy).</div>
+<div class="diff-hunk">@@ -39,3 +39,16 @@ BLOCK PRIORITY FOR TRANSIENT:</div>
+<div class="diff-ctx"> - **Turn 5 (70 dmg)**: Barricade block stack should be massive by now. One more turn of Metallicize stacking usually covers this.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> BARRICADE + METALLICIZE ENGINE: With Barricade active and 2x Metallicize (7 block/turn stacking), turns 1-2 build a block wall that compounds. By turn 3, the passive block alone covers a large portion of the 50 incoming. This engine makes the Transient fight comfortable even without Impervious -- but Impervious as insurance on Turn 3 guarantees survival.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC STRATEGY:</div>
+<div class="diff-add">+- **Wraith Form+ is the centerpiece.** 3 turns of Intangible covers turns 1-3 (1 damage each = 3 total). But the -1 Dex/turn penalty is devastating: by turn 4, Dex is at -3 (or worse if started at 0), meaning Defend+ produces only 5 block instead of 8. Plan for the Dex penalty when calculating turns 4-5 block.</div>
+<div class="diff-add">+- **Piercing Wail+ is excellent.** Reduces the Transient&#x27;s attack by 8 for one turn. Stack two Piercing Wails on turn 4 or 5 to reduce 60-70 incoming to 44-54. Well-Laid Plans+ can retain Piercing Wails for the critical turns.</div>
+<div class="diff-add">+- **Malaise+ reduces Strength permanently.** X energy for -X Str and X Weak. At high energy (5E), Malaise+ removes 5 Str and applies 5 Weak -- massive damage reduction for multiple turns.</div>
+<div class="diff-add">+- **After Image+ provides passive block.** 1 block per card played adds up across a 5-turn fight. With 5+ cards per turn, that is 5+ free block per turn.</div>
+<div class="diff-add">+- **Noxious Fumes is wasted.** The Transient fades on its own. Poison does not accelerate the kill. Do not waste energy or card slots on poison application.</div>
+<div class="diff-add">+- **Do not use Catalyst+ on the Transient.** Catalyst+ is a one-use exhaust card. Save it for the Act 3 boss where it triples poison to defeat Regenerate 10.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SURVIVAL MATH (SILENT, TURNS 4-5):</div>
+<div class="diff-add">+The critical survival window is turns 4-5 when Intangible from Wraith Form+ has worn off but Dex is deeply negative. Example at Dex -2: Defend+ produces 6 block, Deflect+ produces 4 block, Survivor+ produces 10 block, Backflip+ produces 9 block. With After Image+ adding 1 per card, a full 5-card hand produces roughly 35-40 block -- but the Transient attacks for 48-60 (after debuffs). The gap must be closed by Piercing Wail+, Malaise+, or Plated Armor.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**HP ENTRY IS CRITICAL FOR SILENT.** Wraith Form+ guarantees survival for turns 1-3 (3 damage total). But turns 4-5 will leak 10-20 damage each even with optimal block plays. Enter this fight at 25+ HP minimum. At 3-4 HP (as confirmed in a death), there is no survival path on turns 4-5.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/_index.md</div>
+<div class="diff-hunk">@@ -40,3 +40,4 @@</div>
+<div class="diff-ctx"> ## Act 3 Events</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Mind Bloom](mind-bloom.md)</div>
+<div class="diff-add">+- [Mysterious Sphere](mysterious-sphere.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/mind-bloom.md</div>
+<div class="diff-hunk">@@ -3,19 +3,19 @@</div>
+<div class="diff-ctx"> Three options:</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> 1. **[I am War]** -- Fight a random Act 1 boss. Obtain a Rare Relic on victory.</div>
+<div class="diff-del">-2. **[I am Awake]** -- Upgrade ALL cards in your deck. Heal to 1 HP and cannot heal for the rest of the act.</div>
+<div class="diff-add">+2. **[I am Awake]** -- Upgrade ALL cards in your deck. Obtain **Mark of the Bloom** relic (you can no longer heal for the rest of the run).</div>
+<div class="diff-ctx"> 3. **[I am Rich]** -- Gain 999 gold. Obtain 2 Normality curses (limit hand to 3 cards per turn).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Recommendations</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **I am War is the safest choice for a strong deck.** An Act 1 boss (Guardian, Slime Boss, Hexaghost) is trivial with an Act 3 deck. The Rare Relic reward is guaranteed and can be game-changing. Champion Belt was obtained this way and provided free Weak on every Vulnerable application for the rest of the run.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**I am Awake is tempting but extremely risky.** Upgrading ALL cards (including Limit Break to non-exhaust) is transformative, but healing to 1 HP with no further healing for the act means a single unlucky hand draw or enemy attack can end the run. Only consider if the deck can full block every fight without healing.</div>
+<div class="diff-add">+**I am Awake is a TRAP -- do not choose this option.** Upgrading all cards is tempting, but **Mark of the Bloom prevents ALL healing for the rest of the run** -- rest sites cannot heal, potions cannot heal, Burning Blood does nothing, Feed does nothing. Every point of damage taken from this moment forward is permanent. Any remaining fights before the boss (hallway fights, events with combat, Mysterious Sphere) become potentially lethal because there is zero recovery. Even entering a fight at near-full HP, a single hard fight (2 Orb Walkers dealt 66 damage in one fight) can leave you at single-digit HP with no way to recover. The upgrade value rarely compensates for the loss of all healing when any fights remain on the path to the boss.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **I am Rich is a trap with Snecko Eye.** Normality limits the hand to 3 cards per turn. With Snecko Eye drawing 7 cards, 4 are immediately wasted. The 999 gold is useless in late Act 3 (few shops remaining). Avoid.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Decision Framework</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - Strong deck that can beat Act 1 boss trivially: **War** (free Rare Relic, no downside)</div>
+<div class="diff-del">-- Weak deck desperately needing upgrades, with Barricade+Metallicize defense: **Awake** (risky but transformative)</div>
+<div class="diff-add">+- **Awake: Almost never.** Only consider if ALL of the following are true: (1) the deck has multiple unupgraded cards where upgrades are transformative, (2) the path from here to the boss contains ZERO remaining combat encounters (no hallway fights, no events that could resolve as combat, no Mysterious Sphere), AND (3) current HP is near max. If any fights remain on the path, choose War instead.</div>
+<div class="diff-ctx"> - Never: **Rich** (Normality curses are devastating)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/mysterious-sphere.md</div>
+<div class="diff-hunk">@@ -0,0 +1,25 @@</div>
+<div class="diff-add">+# Mysterious Sphere (Act 3 Event)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Two options:</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. **[Open Sphere]** -- Fight a combat encounter. Reward: Rare Relic.</div>
+<div class="diff-add">+2. **[Leave]** -- Walk away. No reward, no risk.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## The Fight</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The combat encounter spawns 2 Orb Walkers. See orb-walker.md for mechanics. Key threat: combined Str scaling of +6/turn, plus Burns clogging draws and dealing end-of-turn damage. Even with a strong deck, this fight can drain 40-70 HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Decision Framework</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Open Sphere when:**</div>
+<div class="diff-add">+- HP is above 70% AND healing is available (rest sites ahead, no Mark of the Bloom)</div>
+<div class="diff-add">+- The deck can handle 2 Orb Walkers without using irreplaceable boss resources (Catalyst+)</div>
+<div class="diff-add">+- A Rare Relic could meaningfully improve the boss fight</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Leave when:**</div>
+<div class="diff-add">+- Mark of the Bloom is active (any damage taken is permanent -- confirmed 66 HP drain from this fight under Mark of the Bloom, leaving 3 HP with no recovery)</div>
+<div class="diff-add">+- HP is below 50%</div>
+<div class="diff-add">+- The boss fight is imminent and Catalyst+ would need to be spent here</div>
+<div class="diff-add">+- The deck already has strong relics and the marginal value of another is low</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Rare Relic is not worth the risk if any damage taken here cannot be recovered before the boss. A dead run gets zero value from a Rare Relic.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,17 +2,18 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (152 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Two Silent runs (Runs 151-152). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison-through-block works well (Spheric Guardian, Slime Boss), but power setup speed against bosses needs improvement.</div>
+<div class="diff-add">+**CURRENT STATUS (153 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Three Silent runs (Runs 151-153). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison engine dominated Act 3 hallway fights, card retention engine (WLP+ + TotT+ + Tactician+) was excellent, but Mind Bloom &quot;I am Awake&quot; choice (Mark of the Bloom) and fighting Mysterious Sphere before the boss were critical strategic errors.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-151):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 4. Act 2 boss reaches: 9+.</div>
+<div class="diff-ctx"> - **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**</div>
+<div class="diff-del">-- **3 wins in 152 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (2 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss).</div>
+<div class="diff-add">+- **3 wins in 153 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (3 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45).</div>
+<div class="diff-ctx"> - **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.</div>
+<div class="diff-ctx"> - **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.</div>
+<div class="diff-ctx"> - **Run 152: Silent died to Collector at F33.** Defensive powers (After Image, Footwork+) not played early enough. Card index confusion on Turn 1 caused suboptimal command execution. Post-debuff incoming was unsurvivable without defensive powers active. Poison strategy was highly effective against block-based enemies (Spheric Guardian crushed).</div>
+<div class="diff-add">+- **Run 153: Silent died to Transient at F45.** Best Silent floor yet. Strong poison engine + card retention engine dominated Act 3 hallways. Two critical strategic errors: (1) Mind Bloom &quot;I am Awake&quot; gave Mark of the Bloom (no healing), then (2) Mysterious Sphere fight (2 Orb Walkers) drained 66 HP with no recovery possible. Entered Transient at 3 HP. Died 7 damage short of surviving the final turn.</div>
+<div class="diff-ctx"> - **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**</div>
+<div class="diff-hunk">@@ -105,6 +106,14 @@ After ANY fight that leaves you below 30% HP, the next room MUST be non-combat.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Act 2 decision point:** After each fight, if HP is below 35%, evaluate the ENTIRE remaining path. If it contains 2+ consecutive combat rooms before a rest site, re-route to the safest available path even if it means missing rewards.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+### Mark of the Bloom = No Optional Combat</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+If Mark of the Bloom is active (from Mind Bloom &quot;I am Awake&quot;), every point of damage is permanent. No rest sites, no potions, no healing cards can recover HP. Under this condition:</div>
+<div class="diff-add">+- **Do NOT fight Mysterious Sphere** (2 Orb Walkers, confirmed 66 HP drain).</div>
+<div class="diff-add">+- **Do NOT take Unknown rooms** that could resolve as combat.</div>
+<div class="diff-add">+- **Do NOT fight elites** unless the path forces it.</div>
+<div class="diff-add">+- Take only the safest possible route to the boss: shops, rest sites (for upgrades only), events with known non-combat outcomes. Any combat HP loss is now a direct reduction of your boss fight survivability.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ### What Causes the HP Drain</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> The underlying cause is almost always failure to full block. The fights below are especially punishing when full block fails:</div>
+<div class="diff-hunk">@@ -527,7 +536,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> |---|---|---|</div>
+<div class="diff-ctx"> | Hallway (easy) | 40% | Exploders + Spikers -- Thorns 3 punish multi-hit attacks, Exploders deal AoE on death |</div>
+<div class="diff-ctx"> | Hallway (hard) | 60% | Writhing Mass (25-40 HP drain), Darklings (Life Link extends fight), Orb Walker (Str scales +3/turn) |</div>
+<div class="diff-del">-| The Transient | 50% | Pure survival check -- 5 turns of escalating damage, do not attack |</div>
+<div class="diff-add">+| The Transient | 50% (25+ HP for Silent) | Pure survival check -- 5 turns of escalating damage, do not attack. Silent with Wraith Form+ needs 25+ HP to survive turns 4-5 after Intangible wears off. |</div>
+<div class="diff-ctx"> | The Maw | 60% | 300 HP, STRONG_DEBUFF turn 1, escalating damage. Barricade + Metallicize dominates. |</div>
+<div class="diff-ctx"> | Elite | 70% | Act 3 elites are extremely dangerous at low HP |</div>
+<div class="diff-ctx"> | Boss | 70% or Pantograph | Donu and Deca, Awakened One, or Time Eater |</div>
+<div class="diff-hunk">@@ -535,9 +544,9 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> ### Act 3 Key Enemies</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - **Writhing Mass**: Malleable gains block per hit. Use single large hits, NOT multi-hit (Whirlwind, Pummel). Expect 25-40 HP drain. Long fight (6-8 turns).</div>
+<div class="diff-del">-- **The Transient**: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Save Impervious for Turn 3+ (50-70 damage). Disarm and Weak are essential. Enter at 50%+ HP. See transient.md for detailed block priority by turn.</div>
+<div class="diff-add">+- **The Transient**: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Save Impervious for Turn 3+ (50-70 damage). Disarm and Weak are essential. Enter at 50%+ HP (25+ HP minimum for Silent with Wraith Form+). Wraith Form+ covers turns 1-3 via Intangible but the -1 Dex/turn penalty makes turns 4-5 extremely tight. See transient.md for detailed block priority by turn.</div>
+<div class="diff-ctx"> - **The Maw**: ~300 HP. Turn 1 STRONG_DEBUFF (Weak + Frail + Vuln). Alternates BUFF (free turns) and ATTACK. Damage escalates (5 -&gt; 16 -&gt; 33 -&gt; 56). Barricade + Metallicize makes this fight trivial -- block stacking handles escalation. With Barricade + 2x Metallicize (7/turn) + Inflame+, the Maw was defeated at zero damage taken. Long fight (8-9 turns) rewards defensive setup.</div>
+<div class="diff-del">-- **Orb Walker**: ~93 HP. Scales +3 Str per turn. Must burst down fast before damage becomes unsurvivable. Kill target for Feed (+3 max HP).</div>
+<div class="diff-add">+- **Orb Walker**: ~93 HP each. Scales +3 Str per turn per enemy. Can appear as a pair (2 Orb Walkers). The 2-OW variant is extremely dangerous: combined Str scaling is +6/turn and Burns clog the hand. Confirmed 66 HP drain from a 2-OW fight. Must burst down one fast before combined damage becomes unsurvivable. Kill target for Feed (+3 max HP). **Do NOT fight Mysterious Sphere (which spawns 2 Orb Walkers) when Mark of the Bloom is active -- the HP drain is unrecoverable.**</div>
+<div class="diff-ctx"> - **Exploder + Spiker**: Exploders (~30 HP) deal AoE damage on death. Spikers have Thorns 3 (retaliate 3 per Attack played). Use AOE (Immolate+) to clear Exploders, use single large hits against Spikers. Barricade handles Thorns chip damage.</div>
+<div class="diff-ctx"> - **Darklings**: Life Link -- must kill all 3 in the same turn or they revive at half HP. AOE (Immolate+) is critical. Save AOE for the kill turn.</div>
+<div class="diff-ctx"> - **Spikers**: Thorns damage per Attack played. Block before attacking. Use fewer, larger attacks.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 152 analysis: Silent vs Collector F33, fix run dedup</div>
       <div class="changelog-sha">63c48f09</div>
     </div>
@@ -8445,375 +8699,6 @@ footer {
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> ### HP Thresholds for Act 2</div>
 <div class="diff-ctx"> </div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 61 analysis: NEW BEST F39, first Act 3! Collector beaten</div>
-      <div class="changelog-sha">6bc93208</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/bosses/_index.md</div>
-<div class="diff-hunk">@@ -8,3 +8,6 @@</div>
-<div class="diff-ctx"> ## Act 2</div>
-<div class="diff-ctx"> - [The Collector](the-collector.md)</div>
-<div class="diff-ctx"> - [Bronze Automaton](bronze-automaton.md)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Act 3</div>
-<div class="diff-add">+- [Donu and Deca](donu-and-deca.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/bosses/donu-and-deca.md</div>
-<div class="diff-hunk">@@ -0,0 +1,17 @@</div>
-<div class="diff-add">+# Donu and Deca (Act 3 Boss)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+NOT YET ENCOUNTERED. Placeholder based on pre-fight knowledge.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+KNOWN:</div>
-<div class="diff-add">+- Two enemies, each with ~250 HP.</div>
-<div class="diff-add">+- Donu buffs Strength for both enemies. Kill Donu first to prevent Strength scaling.</div>
-<div class="diff-add">+- Deca applies debuffs (Dazed cards, possibly Vulnerable/Frail).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+PREPARATION (THEORETICAL):</div>
-<div class="diff-add">+1. AOE damage (Immolate+) to damage both simultaneously.</div>
-<div class="diff-add">+2. Disarm on Donu to reduce Strength before killing it.</div>
-<div class="diff-add">+3. Shockwave+ for mass Weak+Vulnerable.</div>
-<div class="diff-add">+4. Block density for 250+ HP boss fight (expect 10+ turns).</div>
-<div class="diff-add">+5. Enter at 70%+ HP or have Pantograph.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+This entry will be updated after the first encounter.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/bosses/the-collector.md</div>
-<div class="diff-hunk">@@ -13,23 +13,32 @@ KEY MECHANICS:</div>
-<div class="diff-ctx"> - **HP check boss**: Unlike The Guardian (long fight, sustained block needed) or Hexaghost (specific counter cards needed), the Collector is primarily an HP check. Entering at low HP means the STRONG_DEBUFF turn creates unwinnable math.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> PREPARATION CHECKLIST:</div>
-<div class="diff-del">-1. **Enter at 70%+ HP** -- the STRONG_DEBUFF on Turn 4 creates a 3-turn window where incoming damage spikes by 50% and block is reduced by 25%. Low HP entry is fatal.</div>
-<div class="diff-del">-2. **Strength scaling** -- Inflame, Limit Break. Collector has 279 HP -- the fight lasts 8-12 turns. Strength pays off enormously.</div>
-<div class="diff-del">-3. **AOE damage** -- Immolate, Thunderclap, Cleave, Reaper. Torch Heads add 14 damage/turn combined. AOE damages all three enemies and Reaper heals from all three.</div>
-<div class="diff-del">-4. **Reaper** -- heals from damage dealt to ALL enemies (Collector + 2 Torch Heads). With Strength and Vulnerable, Reaper can heal 12-18 HP in a single play. Essential sustain in a long fight.</div>
-<div class="diff-del">-5. **Block density** -- After STRONG_DEBUFF, Frail reduces all block by 25%. Need multiple block sources to survive 40-50+ incoming.</div>
-<div class="diff-del">-6. **Potions** -- Use aggressively. Gambler&#x27;s Brew is excellent for finding block cards on critical turns.</div>
-<div class="diff-add">+1. **Enter at 70%+ HP or have Pantograph** -- the STRONG_DEBUFF on Turn 4 creates a 3-turn window where incoming damage spikes by 50% and block is reduced by 25%. Pantograph heals to full at boss start, bypassing the HP threshold entirely. Without Pantograph, low HP entry is fatal.</div>
-<div class="diff-add">+2. **AOE damage (HIGHEST PRIORITY)** -- Immolate+ is the MVP. Hits Collector + both Torch Heads simultaneously. With Vulnerable: 42 damage to Collector per cast. Thunderclap+ applies Vulnerable to all 3 targets. AOE is MORE important than single-target burst because Torch Heads respawn.</div>
-<div class="diff-add">+3. **Mass debuff** -- Shockwave+ (Weak 3 + Vuln 3 to ALL enemies) is the second-highest-value card. Reduces combined incoming from 3 enemies by 25% for 3 turns while boosting all damage by 50%.</div>
-<div class="diff-add">+4. **Impervious** -- 30 block absorbs an entire post-debuff turn. The single best defensive card for this fight.</div>
-<div class="diff-add">+5. **Block density** -- After STRONG_DEBUFF, Frail reduces all block by 25%. Need multiple block sources to survive 40-50+ incoming. Armaments+ upgrading Defends mid-combat helps.</div>
-<div class="diff-add">+6. **Disarm** -- Permanently reduces Collector Strength. Play on Turn 1 for maximum cumulative value across 10 turns.</div>
-<div class="diff-add">+7. **Potions** -- Use aggressively if available. Gambler&#x27;s Brew is excellent for finding block cards on critical turns.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> STRATEGY:</div>
-<div class="diff-del">-- **Turn 1 (free/setup)**: Play Powers (Inflame, Rage+) and setup cards. Collector spawns Torch Heads but may not deal heavy damage yet.</div>
-<div class="diff-del">-- **Turns 2-3**: Deal maximum damage to the Collector while blocking Torch Head attacks. Apply Vulnerable (Bash+, Thunderclap) to all enemies. Shockwave applies Weak to reduce incoming for 3 turns.</div>
-<div class="diff-del">-- **Turn 4 (STRONG_DEBUFF)**: This turn deals no direct damage. Use it to play burst damage (Bludgeon with Vulnerable = 48+ damage) or setup. Treat it like a free turn for offense.</div>
-<div class="diff-del">-- **Turns 5-7 (post-debuff crisis)**: Block is reduced by Frail, damage is reduced by Weak, and you take 50% more from Vulnerable. This is the survival gauntlet. Reaper is critical here -- heals from 3 targets.</div>
-<div class="diff-add">+- **Turn 1 (spawn turn)**: Collector spawns 2 Torch Heads. Use this turn for AOE setup: Thunderclap+ applies Vulnerable to all 3 enemies. Disarm on Collector reduces Strength. Front-load damage while Mutagenic Strength (if available) is active.</div>
-<div class="diff-add">+- **Turns 2-3**: Deal maximum damage to the Collector while blocking Torch Head attacks. Bash+ refreshes Vulnerable. Shockwave+ applies Weak to ALL enemies, reducing combined incoming by 25% for 3 turns -- this is the highest-value play in the fight.</div>
-<div class="diff-add">+- **Turn 4 (STRONG_DEBUFF)**: This turn deals no direct damage. Use it to play burst damage (Immolate+ with Vulnerable = 42+ damage to Collector + kills/damages Torch Heads) or setup. Treat it like a free turn for offense.</div>
-<div class="diff-add">+- **Turns 5-7 (post-debuff crisis)**: Block is reduced by Frail, damage is reduced by Weak, and you take 50% more from Vulnerable. This is the survival gauntlet. Impervious (30 block) is the best single card for surviving this window.</div>
-<div class="diff-add">+- **Turns 8-10 (cleanup)**: If the Collector is still alive, re-apply Vulnerable and use AOE (Immolate+) to clear re-summoned Torch Heads while chipping at Collector HP. Headbutt can put Immolate+ on top of draw pile for guaranteed AOE on the killing turn.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+CONFIRMED WINNING APPROACH:</div>
-<div class="diff-add">+- Deck: Bash+, Immolate+, Thunderclap+, Shockwave+, Impervious, Disarm, Clothesline, Hemokinesis, Headbutt, Armaments+, Rage, Pommel Strike, Shrug It Off, 2x Defend, 2x Strike.</div>
-<div class="diff-add">+- Turn 1: Thunderclap+ (AOE Vuln) + Disarm (Collector -2 Str) + Hemokinesis + Strike for ~50 damage.</div>
-<div class="diff-add">+- Turn 3: Rage + Immolate+ (42 vuln damage to Collector, kills/damages Torch Heads) + Impervious (30 block). This turn is the pivot -- massive AOE damage while absorbing all incoming.</div>
-<div class="diff-add">+- Turn 4: Shockwave+ (Weak+Vuln all 3 enemies for 3 turns). Reduces post-debuff crisis damage significantly.</div>
-<div class="diff-add">+- Turns 5-7: Immolate+ again to clear re-summoned Torch Heads. Headbutt to guarantee draw order.</div>
-<div class="diff-add">+- Fight lasted 10 turns. Entered at full HP (Pantograph). Exited at 14/80 HP -- the fight IS an HP drain even when won.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WHAT NOT TO DO:</div>
-<div class="diff-ctx"> - Enter below 50% HP. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive.</div>
-<div class="diff-ctx"> - Ignore Torch Heads entirely. Their combined 14 damage/turn adds up. AOE that hits all three targets is far more efficient than single-target.</div>
-<div class="diff-ctx"> - Save potions for &quot;later.&quot; The post-debuff turns (5-7) are the crisis -- potions should be used to survive this window.</div>
-<div class="diff-del">-- Play Shockwave on Turn 1 before Torch Heads spawn. Wait until Turn 2+ when all enemies are present.</div>
-<div class="diff-del">-</div>
-<div class="diff-add">+- Play Shockwave+ on Turn 1 before Torch Heads spawn. Wait until Turn 2+ when all enemies are present.</div>
-<div class="diff-add">+- Rely on single-target damage only. Immolate+ is the MVP of this fight -- AOE that damages all 3 targets simultaneously is critical for managing Torch Head respawns.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/dark-embrace.md</div>
-<div class="diff-hunk">@@ -3,4 +3,4 @@ Draw engine for exhaust-heavy decks.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: With multiple exhaust sources (True Grit+, status cards, Ethereal cards). Every exhaust replaces itself in hand.</div>
-<div class="diff-ctx"> DECISION POINTS: At 2E, it&#x27;s expensive to set up. Play on free turns. Powers do NOT trigger Gremlin Nob Enrage. WARNING: encourages over-exhausting, which can thin the deck dangerously.</div>
-<div class="diff-del">-SYNERGIES: True Grit+ (exhaust + draw every turn), Charon&#x27;s Ashes (exhaust = draw + 3 AOE damage), status cards (exhausting Slimed/Dazed draws a real card).</div>
-<div class="diff-add">+SYNERGIES: True Grit+ (exhaust + draw every turn), Charon&#x27;s Ashes (exhaust = draw + 3 AOE damage), Fiend Fire (exhaust entire hand = draw many cards, enabling a second wave of plays), status cards (exhausting Slimed/Dazed draws a real card), Disarm/Disarm+ (exhaust on play = free draw).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/disarm.md</div>
-<div class="diff-hunk">@@ -3,7 +3,7 @@ Permanent Strength reduction. Extremely powerful against scaling enemies.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Against enemies that gain Strength over time (Gremlin Leader, Cultist). Unlike Weak (temporary 25% reduction), Disarm permanently removes 2 damage from every attack.</div>
-<div class="diff-ctx"> DECISION POINTS: Save for the enemy with the most dangerous Strength scaling. Against multi-hit enemies, the value compounds (5-hit attack loses 10 total damage). Against Gremlin Nob and Chosen, do NOT play (Skill triggers Enrage/Hex).</div>
-<div class="diff-del">-MATCHUPS: Gremlin Leader -- reduces Rally effectiveness. Hexaghost -- -2 Str permanently reduces all attacks including each Inferno hit. Very effective in the long fight. Slavers -- play on the hardest-hitting Slaver to reduce incoming from the most dangerous source. Against multi-hit enemies generally.</div>
-<div class="diff-add">+MATCHUPS: Gremlin Leader -- reduces Rally effectiveness. Hexaghost -- -2 Str permanently reduces all attacks including each Inferno hit. Very effective in the long fight. Slavers -- play on the hardest-hitting Slaver to reduce incoming from the most dangerous source. Collector -- play Turn 1 for maximum cumulative value across 10-turn fight. Transient -- essential for survival. Permanent Str reduction compounds over all 5 turns of escalating damage; two Disarms (-4 to -5 total) makes the fight trivial. Against multi-hit enemies generally.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> NOTE: Under Snecko&#x27;s Confusion, Disarm can cost 0E (normally 1E). A 0E permanent -2 Str is exceptional value -- play immediately when this occurs.</div>
-<div class="diff-ctx"> ARTIFACT INTERACTION: Against enemies with Artifact (e.g., Bronze Automaton starts with 3), Disarm strips 1 Artifact instead of applying -2 Str. Use Disarm alongside Thunderclap and Bash+ to strip Artifact stacks before applying real debuffs.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/impervious.md</div>
-<div class="diff-hunk">@@ -1,6 +1,11 @@</div>
-<div class="diff-ctx"> # Impervious (2E, Skill, 30 block, Exhaust)</div>
-<div class="diff-ctx"> Best single-card block in the game. 30 block for 2E.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WHEN IT&#x27;S GOOD: Against the biggest attack of the fight. Guardian&#x27;s 32-damage attack (take only 2). Hexaghost Inferno.</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: Against the biggest attack of the fight. Guardian&#x27;s 32-damage attack (take only 2). Hexaghost Inferno. Transient&#x27;s escalating attacks. Collector&#x27;s post-debuff turns.</div>
-<div class="diff-ctx"> DECISION POINTS: Save for the biggest incoming hit. Using 30 block on a 16-damage turn is wasteful -- Defends handle that. One-time use means timing matters. Against Gremlin Nob, do NOT play (Skill triggers Enrage).</div>
-<div class="diff-del">-MATCHUPS: Guardian -- absorbs the 32-damage attack (take only 2). Gremlin Leader -- turn 1 opener for 30 block safety.</div>
-<div class="diff-add">+MATCHUPS: </div>
-<div class="diff-add">+- Guardian -- absorbs the 32-damage attack (take only 2).</div>
-<div class="diff-add">+- Gremlin Leader -- turn 1 opener for 30 block safety.</div>
-<div class="diff-add">+- Collector -- critical for surviving post-STRONG_DEBUFF turns (40-50+ incoming). Play it on Turn 3 or when Collector attacks hardest.</div>
-<div class="diff-add">+- Transient -- absorbs an entire turn of escalating damage. Save for turn 2-3 when damage is highest.</div>
-<div class="diff-add">+- Snake Plant -- 30 block completely absorbs the 7x3=21 multi-hit attack.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/_index.md</div>
-<div class="diff-hunk">@@ -35,3 +35,8 @@</div>
-<div class="diff-ctx"> - [Gremlin Leader](gremlin-leader.md)</div>
-<div class="diff-ctx"> - [Book of Stabbing](book-of-stabbing.md)</div>
-<div class="diff-ctx"> - [Slavers](slavers.md)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Act 3 Hallway</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- [Writhing Mass](writhing-mass.md)</div>
-<div class="diff-add">+- [Transient](transient.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/transient.md</div>
-<div class="diff-hunk">@@ -0,0 +1,25 @@</div>
-<div class="diff-add">+# The Transient (Act 3 Hallway, HP: 999, Fading 5)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The Transient disappears after 5 turns (Fading 5 loses 1 per turn, dies at 0). The fight is a pure survival check -- outlast 5 turns of escalating damage.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+PATTERN:</div>
-<div class="diff-add">+- **Turn 1**: Attacks for ~22 damage. Gains Strength each turn.</div>
-<div class="diff-add">+- **Turn 2+**: Damage escalates as Strength accumulates. Turn 2 attacks for ~30-38.</div>
-<div class="diff-add">+- **Shifting**: Gains block when attacked. Attacking the Transient is generally wasteful -- it has 999 HP and cannot be killed through damage in practice.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+KEY MECHANICS:</div>
-<div class="diff-add">+- **Fading 5**: The Transient loses 1 Fading per turn and dies when Fading reaches 0. You do NOT need to deal 999 damage. Just survive 5 turns.</div>
-<div class="diff-add">+- **Shifting**: Gains block when you Attack it. This makes attacking counterproductive -- save energy for block.</div>
-<div class="diff-add">+- **Escalating Strength**: Each turn the Transient hits harder. Turn 1 is manageable; turns 3-5 can be lethal without serious block.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+STRATEGY:</div>
-<div class="diff-add">+- **Do not attack.** Focus entirely on defense. Attacks trigger Shifting (block) and waste energy that should go to block cards.</div>
-<div class="diff-add">+- **Disarm is excellent.** Permanent Strength reduction compounds over all 5 turns. Two Disarms (-4 to -5 Str total) makes the fight trivial.</div>
-<div class="diff-add">+- **Shockwave+ is excellent.** Weak 3 reduces damage for 3 of the 5 turns.</div>
-<div class="diff-add">+- **Impervious is the best card for this fight.** 30 block absorbs an entire turn of damage.</div>
-<div class="diff-add">+- **HP entry matters enormously.** At 15/80 HP (18%), even perfect block draws cannot survive turns 2-3 with 30+ incoming per turn. This fight requires 50%+ HP entry or exceptional block density.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHAT NOT TO DO:</div>
-<div class="diff-add">+- Attack the Transient (triggers Shifting, wastes energy).</div>
-<div class="diff-add">+- Enter below 40% HP without Impervious or multiple Disarms.</div>
-<div class="diff-add">+- Exhaust block cards in prior fights when Transient is a possible upcoming enemy.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/writhing-mass.md</div>
-<div class="diff-hunk">@@ -0,0 +1,24 @@</div>
-<div class="diff-add">+# Writhing Mass (Act 3 Hallway, HP: ~160)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+A tanky enemy with two synergistic defensive mechanics that make it a significant HP drain even with a strong deck.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+PATTERN:</div>
-<div class="diff-add">+- Alternates between attacks (single-hit and multi-hit) and debuff turns (STRONG_DEBUFF applying Vulnerable, Frail, Weakened).</div>
-<div class="diff-add">+- Multi-hit attacks (e.g., 4x3, 6x3) are the primary damage source.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+KEY MECHANICS:</div>
-<div class="diff-add">+- **Reactive**: Changes the Writhing Mass&#x27;s weakness/intent when you play certain card types. Unpredictable -- you cannot reliably plan around its intent shifts.</div>
-<div class="diff-add">+- **Malleable**: Gains block each time it is hit. Multi-hit attacks (Whirlwind, Pummel) are punished severely -- each hit gives it more block. Prefer single large hits (Hemokinesis, Immolate, Bludgeon) over many small ones.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+STRATEGY:</div>
-<div class="diff-add">+- **Use single large hits, not multi-hit attacks.** Malleable gains block per hit. Hemokinesis (15 damage, 1 hit) is far better than Pummel (2x4, gives 2 stacks of Malleable block).</div>
-<div class="diff-add">+- **Apply Weak early.** Multi-hit attacks at 75% damage are much more survivable.</div>
-<div class="diff-add">+- **Expect a long fight (6-8 turns).** Malleable block extends the fight significantly. Budget for 25-40 HP drain.</div>
-<div class="diff-add">+- **Disarm helps but does not solve the fight.** Reducing Strength helps against individual hits but the fight length is the real problem.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHAT NOT TO DO:</div>
-<div class="diff-add">+- Play Whirlwind, Pummel, or other multi-hit attacks (Malleable punishes each hit with more block).</div>
-<div class="diff-add">+- Enter below 40% HP. This fight drains 25-40 HP even with strong play.</div>
-<div class="diff-add">+- Expect a quick kill. Plan for 6-8 turns minimum.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DANGER: This enemy is a major HP drain in Act 3. The Malleable mechanic means even strong offensive decks take many turns to kill it, accumulating damage the entire time. Entering the next fight at low HP after Writhing Mass is the real danger.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/events/wheel-of-change.md</div>
-<div class="diff-hunk">@@ -1,13 +1,13 @@</div>
-<div class="diff-ctx"> # Wheel of Change</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Act 2 event. Spin a wheel for a random outcome.</div>
-<div class="diff-add">+Act 2/3 event. Spin a wheel for a random outcome.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> OPTIONS:</div>
-<div class="diff-ctx"> - [Play] Spin the wheel -- random outcome, includes both positive and negative possibilities.</div>
-<div class="diff-del">-- Outcomes observed: Lose 8 HP (negative). Other outcomes unknown.</div>
-<div class="diff-add">+- Outcomes observed: Lose 8 HP (negative), Heal to full health (positive). Other outcomes unknown.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> DECISION FRAMEWORK:</div>
-<div class="diff-del">-- Below 60% HP: SKIP. The 8 HP loss outcome is potentially lethal in Act 2. One observed HP loss from this event directly contributed to a death spiral (Run 59).</div>
-<div class="diff-del">-- Above 60% HP: Acceptable to spin. Even the worst known outcome (-8 HP) leaves a buffer.</div>
-<div class="diff-add">+- Below 60% HP: Risky. The 8 HP loss outcome is potentially lethal in Act 2. One observed HP loss from this event directly contributed to a death spiral.</div>
-<div class="diff-add">+- Above 60% HP: Acceptable to spin. Even the worst known outcome (-8 HP) leaves a buffer, and the best known outcome (full heal) is extremely valuable.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-This event offers an Unknown room node, so the player has already committed to entering it. If the wheel is mandatory (no leave option), spinning is forced. But if a &quot;Leave&quot; option exists, take it below 60% HP.</div>
-<div class="diff-add">+This event appears in both Act 2 and Act 3. The full outcome table is still partially unknown.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
-<div class="diff-hunk">@@ -54,9 +54,11 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Boss Relics / Special</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+- [Sozu](sozu.md)</div>
-<div class="diff-ctx"> - [Runic Dome](runic-dome.md)</div>
-<div class="diff-ctx"> - [Ancient Tea Set](ancient-tea-set.md)</div>
-<div class="diff-ctx"> - [Charon&#x27;s Ashes](charon-s-ashes.md)</div>
-<div class="diff-ctx"> - [Neow&#x27;s Lament](neow-s-lament.md)</div>
-<div class="diff-ctx"> - [Odd Mushroom](odd-mushroom.md)</div>
-<div class="diff-ctx"> - [Maw Bank](maw-bank.md)</div>
-<div class="diff-add">+- [Mutagenic Strength](mutagenic-strength.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/mutagenic-strength.md</div>
-<div class="diff-hunk">@@ -0,0 +1,6 @@</div>
-<div class="diff-add">+# Mutagenic Strength (Event Relic)</div>
-<div class="diff-add">+EFFECT: Gain 3 Strength at the start of each combat. Lose 3 Strength at the end of your first turn.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+VALUE: Provides a powerful turn-1 burst window. With +3 Strength, Immolate+ deals 31 instead of 28, Thunderclap+ deals 10 instead of 7, and Hemokinesis deals 18 instead of 15. The combined effect across multiple cards on turn 1 can add 10-20 extra damage. After turn 1, the Strength disappears and has no further effect.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+HOW IT CHANGES DECISIONS: Front-load damage on turn 1. Play as many Attack cards as possible before the Strength expires. Pairs especially well with AOE attacks (Immolate, Thunderclap) where the bonus applies to each enemy hit. The free relic is always worth taking from the event.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/pantograph.md</div>
-<div class="diff-hunk">@@ -1,3 +1,7 @@</div>
-<div class="diff-ctx"> # Pantograph</div>
-<div class="diff-ctx"> EFFECT: Heal to FULL HP at the start of boss fights.</div>
-<div class="diff-ctx"> HOW IT CHANGES DECISIONS: Game-changing. Removes the need to conserve HP before the boss -- take risky elite fights, spend HP at events, and still enter the boss at full. Changes rest site calculus: ALWAYS Smith (upgrade) before boss when you have Pantograph, since HP doesn&#x27;t matter. One of the best relics in the game.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+CONFIRMED VALUE: Pantograph enabled the first Act 2 boss victory. The player entered the Guardian fight at 31% HP and healed to full; entered the Collector fight at 57% HP and healed to full. Without Pantograph, both boss fights would have been entered below the 70% HP threshold and likely lost. Pantograph single-handedly bridges the HP sustain gap that kills most runs in Act 2.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+INTERACTION: With Sozu (no potions), Pantograph becomes even MORE critical -- it is the only reliable full heal in the run. Pantograph + Sozu is a viable combination because the energy from Sozu makes fights faster (less HP drain) and Pantograph recovers all HP at the two most dangerous fights.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/sozu.md</div>
-<div class="diff-hunk">@@ -0,0 +1,18 @@</div>
-<div class="diff-add">+# Sozu (Boss Relic)</div>
-<div class="diff-add">+EFFECT: Gain 1 additional Energy each turn. You can no longer obtain potions.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+VALUE: The extra energy (3 -&gt; 4 per turn) is extremely powerful -- it enables playing one additional card every turn, which compounds across every fight in the run. However, the potion lockout is a severe tradeoff. Potions provide emergency healing (Blood Potion, Regen Potion), burst damage (Strength Potion), and clutch saves (Fairy in a Bottle). Losing ALL potion access means no safety net for bad draws and no supplemental healing.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+ANTI-SYNERGIES:</div>
-<div class="diff-add">+- **Toy Ornithopter**: Heals 5 HP per potion used. With Sozu, no potions can be obtained, so Toy Ornithopter is completely dead. Do NOT take Toy Ornithopter if you have Sozu.</div>
-<div class="diff-add">+- **Potion Belt**: Extra potion slots are worthless.</div>
-<div class="diff-add">+- **White Beast Statue**: Extra potion drops are worthless.</div>
-<div class="diff-add">+- **Woman in Blue event**: Cannot buy potions.</div>
-<div class="diff-add">+- **Healing potions as sustain plan**: With Sozu, the backup healing plan (buy Blood Potions at shops) is unavailable. Healing cards (Reaper, Feed) become even MORE critical.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+HOW IT CHANGES DECISIONS:</div>
-<div class="diff-add">+- Skip all potion-related relics and events.</div>
-<div class="diff-add">+- Healing cards (Reaper, Feed) become absolutely essential since potions cannot supplement healing.</div>
-<div class="diff-add">+- Conservative play is more important -- no potions means no emergency saves.</div>
-<div class="diff-add">+- The extra energy partially compensates by enabling more block cards per turn, reducing damage taken.</div>
-<div class="diff-add">+- When offered as a boss relic swap from Neow, it is a strong pick IF you are confident in finding healing cards. The 4th energy transforms every fight.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/toy-ornithopter.md</div>
-<div class="diff-hunk">@@ -1,3 +1,5 @@</div>
-<div class="diff-ctx"> # Toy Ornithopter</div>
-<div class="diff-ctx"> EFFECT: Whenever you use a potion, heal 5 HP.</div>
-<div class="diff-ctx"> HOW IT CHANGES DECISIONS: Turns potion usage into healing. Each potion heals an extra 5 HP. With 3 potion uses in a run: +15 HP total. Minor but free. Consider using potions slightly more aggressively when this relic is active.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+ANTI-SYNERGY: Completely dead with Sozu (which prevents obtaining potions). Do NOT take Toy Ornithopter if you have Sozu. If offered from an event and Sozu is already held, skip it.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -2,7 +2,7 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**CURRENT BOTTLENECK:** Act 2 HP sustain. We beat Act 1 bosses consistently but die in Act 2 to HP attrition. 19 of 22 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.</div>
-<div class="diff-add">+**CURRENT BOTTLENECK:** Act 3 HP management. We beat Act 1 bosses consistently and have beaten the Act 2 boss (Collector). Act 3 enemies (Writhing Mass, Transient, Darklings) are severe HP drains -- Writhing Mass alone cost 38 HP in a single fight. The Collector fight itself costs 50-65 HP even when won. Entering Act 3 with a healing card (Reaper or Feed) is more important than ever, since there is no Pantograph-equivalent safety net for hallway fights. Without healing cards, conservative pathing and block density are the only defense against Act 3 HP attrition.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ---</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -164,10 +164,11 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re</div>
-<div class="diff-ctx"> - No self-damage cards (Brutality, Berserk)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **The Collector needs:**</div>
-<div class="diff-del">-- HP entry at 70%+ -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Surviving the post-debuff turns requires a large HP buffer.</div>
-<div class="diff-del">-- Strength scaling (Inflame, Limit Break) -- 279 HP boss with minions, fight lasts 8-12 turns</div>
-<div class="diff-del">-- AOE damage (Immolate, Thunderclap, Reaper) -- Torch Head minions add 14 damage/turn combined</div>
-<div class="diff-del">-- Reaper -- heals from all 3 targets (Collector + 2 Torch Heads), critical sustain</div>
-<div class="diff-add">+- HP entry at 70%+ or Pantograph -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Pantograph heals to full at boss start, bypassing the threshold.</div>
-<div class="diff-add">+- AOE damage (HIGHEST PRIORITY) -- Immolate+ is the single best card. Hits Collector + both Torch Heads. With Vulnerable: 42 damage to Collector per cast. Torch Heads respawn, so AOE is more valuable than single-target.</div>
-<div class="diff-add">+- Mass debuff -- Shockwave+ (Weak 3 + Vuln 3 to ALL enemies) reduces combined incoming by 25% while boosting all damage by 50%. Second-highest priority.</div>
-<div class="diff-add">+- Impervious -- 30 block absorbs post-debuff turns. Critical defensive card.</div>
-<div class="diff-add">+- Disarm -- permanent Str reduction compounds over the 10-turn fight. Play Turn 1.</div>
-<div class="diff-ctx"> - Block density for post-debuff turns -- Frail reduces block by 25%, need multiple sources</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **Bronze Automaton needs:**</div>
-<div class="diff-hunk">@@ -177,6 +178,13 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re</div>
-<div class="diff-ctx"> - Redundant key cards -- Orb minions steal cards via Stasis. Do not rely on a single copy of any critical card (Double Tap, Inflame).</div>
-<div class="diff-ctx"> - Intent visibility -- Runic Dome removes the ability to predict Hyper Beam. Avoid taking Runic Dome if Bronze Automaton is a possible Act 2 boss.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+**Donu and Deca needs (NOT YET ENCOUNTERED):**</div>
-<div class="diff-add">+- AOE damage (Immolate+, Thunderclap+) -- two 250 HP enemies</div>
-<div class="diff-add">+- Disarm -- reduce Donu&#x27;s Strength before killing it</div>
-<div class="diff-add">+- Shockwave+ -- mass Weak+Vulnerable on both</div>
-<div class="diff-add">+- Block density for 10+ turn fight</div>
-<div class="diff-add">+- Kill Donu first (prevents Strength scaling for both)</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ### Save One-Use Cards for Bosses</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Exhaust cards like Shockwave+ are single-use per combat. Don&#x27;t waste them on hallway fights unless the fight is genuinely dangerous. The boss is almost always the hardest fight.</div>
-<div class="diff-hunk">@@ -303,12 +311,50 @@ Reaper and Feed are uncommon cards -- they may not appear in card rewards at all</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> The absence of healing cards does NOT mean the run is lost. It means the player must shift from &quot;aggressive with healing to recover&quot; to &quot;conservative to avoid damage in the first place.&quot;</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+---</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Act 3 Preparation</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Act 3 enemies hit harder than Act 2 and have unique mechanics that punish specific strategies.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Enter Act 3 at Full HP</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Pantograph heals to full at the Act 2 boss, but the Collector fight itself drains 50-65 HP. Entering Act 3 at 14-20 HP (as observed) is extremely dangerous. The first hallway fight in Act 3 can drain 25-40 HP (Writhing Mass, Darklings). If possible, path through a rest site or event between the boss and Act 3.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Act 3 HP Thresholds</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+| Fight Type | Minimum HP | Notes |</div>
-<div class="diff-add">+|---|---|---|</div>
-<div class="diff-add">+| Hallway (easy) | 40% | Spikers, Repulsors -- manageable but Thorns punish attacks |</div>
-<div class="diff-add">+| Hallway (hard) | 60% | Writhing Mass (25-40 HP drain), Darklings (Life Link extends fight) |</div>
-<div class="diff-add">+| The Transient | 50% | Pure survival check -- 5 turns of escalating damage, do not attack |</div>
-<div class="diff-add">+| Elite | 70% | Act 3 elites are extremely dangerous at low HP |</div>
-<div class="diff-add">+| Boss | 70% or Pantograph | Donu and Deca, Awakened One, or Time Eater |</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Act 3 Key Enemies</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- **Writhing Mass**: Malleable gains block per hit. Use single large hits, NOT multi-hit (Whirlwind, Pummel). Expect 25-40 HP drain. Long fight (6-8 turns).</div>
-<div class="diff-add">+- **The Transient**: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Disarm and Weak are essential. Enter at 50%+ HP.</div>
-<div class="diff-add">+- **Darklings**: Life Link -- must kill all 3 in the same turn or they revive at half HP. AOE (Immolate+) is critical. Save AOE for the kill turn.</div>
-<div class="diff-add">+- **Spikers**: Thorns damage per Attack played. Block before attacking. Use fewer, larger attacks.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### What the Deck Needs for Act 3</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+1. **Block density**: Impervious, Shrug It Off, Defend+. Act 3 fights are longer and hit harder.</div>
-<div class="diff-add">+2. **AOE**: Immolate+ is the single best card. Darklings require simultaneous kills; Writhing Mass + allies require spread damage.</div>
-<div class="diff-add">+3. **Disarm/Weak sources**: Transient and scaling enemies require Strength reduction and Weak application.</div>
-<div class="diff-add">+4. **Healing cards**: Even more critical than Act 2. Writhing Mass drains 25-40 HP per fight. Without Reaper or Feed, consecutive fights will end the run.</div>
-<div class="diff-add">+5. **Deck thinning**: A lean deck (18-22 cards) draws key cards more reliably in long fights.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+---</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ### Cross-Run Victory Pattern</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Across all boss victories (7 total), the differentiators are:</div>
-<div class="diff-del">-1. **Boss-specific answer cards**: Every victory had at least one card for the boss&#x27;s main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions.</div>
-<div class="diff-del">-2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block.</div>
-<div class="diff-add">+Across all boss victories (8 total, including first Act 2 boss victory), the differentiators are:</div>
-<div class="diff-add">+1. **Boss-specific answer cards**: Every victory had at least one card for the boss&#x27;s main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions. Collector victory used Immolate+ (AOE for Torch Heads), Shockwave+ (mass debuff), and Impervious (post-debuff survival).</div>
-<div class="diff-add">+2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed to full).</div>
-<div class="diff-ctx"> 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.</div>
-<div class="diff-ctx"> 4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage.</div>
-<div class="diff-del">-5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards.</div>
-<div class="diff-del">-6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Two deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.</div>
-<div class="diff-add">+5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.</div>
-<div class="diff-add">+6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Collector victory relied on Immolate+ AOE (28 damage to all enemies) to manage both Collector HP and Torch Head respawns. Two Hexaghost deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.</div>
-<div class="diff-add">+7. **Extra energy**: The Collector victory had 4 energy (Sozu). The extra card per turn allowed playing both offense and defense simultaneously, which is critical for multi-enemy fights.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

@@ -2,18 +2,19 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (153 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Three Silent runs (Runs 151-153). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison engine dominated Act 3 hallway fights, card retention engine (WLP+ + TotT+ + Tactician+) was excellent, but Mind Bloom "I am Awake" choice (Mark of the Bloom) and fighting Mysterious Sphere before the boss were critical strategic errors.
+**CURRENT STATUS (154 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Four Silent runs (Runs 151-154). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. Run 154 died to Hexaghost (Act 1 boss) at Floor 16 -- defensive-heavy deck with Dex 6 from 2x Footwork+ blocked perfectly but had insufficient damage output (23-turn fight, Burns overwhelmed). TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison engine dominated Act 3 hallway fights, card retention engine (WLP+ + TotT+ + Tactician+) was excellent, but Mind Bloom "I am Awake" choice (Mark of the Bloom) and fighting Mysterious Sphere before the boss were critical strategic errors. Hexaghost punishes the Silent's lack of Burns management -- kill speed through poison scaling (Deadly Poison + Catalyst+) is mandatory.
 
 **SCORECARD (runs 101-151):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 4. Act 2 boss reaches: 9+.
 - **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**
-- **3 wins in 153 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (3 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45).
+- **3 wins in 154 runs (1.9% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (4 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16).
 - **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.
 - **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.
 - **Run 152: Silent died to Collector at F33.** Defensive powers (After Image, Footwork+) not played early enough. Card index confusion on Turn 1 caused suboptimal command execution. Post-debuff incoming was unsurvivable without defensive powers active. Poison strategy was highly effective against block-based enemies (Spheric Guardian crushed).
 - **Run 153: Silent died to Transient at F45.** Best Silent floor yet. Strong poison engine + card retention engine dominated Act 3 hallways. Two critical strategic errors: (1) Mind Bloom "I am Awake" gave Mark of the Bloom (no healing), then (2) Mysterious Sphere fight (2 Orb Walkers) drained 66 HP with no recovery possible. Entered Transient at 3 HP. Died 7 damage short of surviving the final turn.
+- **Run 154: Silent died to Hexaghost at F16.** Defensive-heavy deck with 2x Footwork+ (Dex 6), Dash+, Masterful Stab. Took zero damage in 5/6 pre-boss fights. But damage output was only ~10/turn average -- fight lasted 23 turns, Burns accumulated to 12+ per turn, and second Inferno (8x6=48) hit with a hand of all Burns. Hexaghost at 24/250 HP when killed. The problem was entirely damage, not defense.
 - **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.
 
 **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**
@@ -324,12 +325,13 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 - **Do NOT play Corruption/Corruption+ without Dead Branch or Feel No Pain.** Run 107: Corruption+ played turn 9, all Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards remaining. Corruption is a trap in 14-turn fights -- the energy savings do not compensate for losing all block in the second half. This is now the SECOND Guardian death from block-density collapse (Run 103: Pandora's Box, Run 107: Corruption+).
 
 **Hexaghost needs:**
-- Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) -- MANDATORY
-- Damage scaling (Rampage, Inflame, Spot Weakness) -- kill before Burns overwhelm (insufficient damage killed 2 runs despite having Weak). Even with strong Str scaling (Inflame+ + Spot Weakness = +9 Str), Turn 2 HP loss from insufficient blocking can make Burns lethal by Turn 12.
-- Passive block (Metallicize) for the 13-turn fight
-- Turn 1 setup (Thunderclap for Vulnerable)
+- Weak source (Shockwave, Clothesline, Intimidate, Weak Potion; Silent: Neutralize+, Crippling Cloud, Leg Sweep, Malaise) -- MANDATORY
+- Damage scaling (Rampage, Inflame, Spot Weakness; Silent: Deadly Poison + Catalyst+, Noxious Fumes) -- kill before Burns overwhelm (insufficient damage killed 5 runs despite having Weak). Even with strong block scaling (Dex 6 from 2x Footwork+), the fight lasts 23 turns without damage output and Burns accumulate to lethal levels. Even with strong Str scaling (Inflame+ + Spot Weakness = +9 Str), Turn 2 HP loss from insufficient blocking can make Burns lethal by Turn 12.
+- Passive block (Metallicize; Silent: Footwork+) for the 13-turn fight
+- Turn 1 setup (Thunderclap for Vulnerable; Silent: Footwork+ for Dex)
 - Turn 2 block discipline -- Turn 2 is a ~30 damage multi-hit. Budget at least 1E for block.
 - No self-damage cards (Brutality, Berserk)
+- **Silent-specific: Do NOT take Masterful Stab when Hexaghost is the boss** -- Burns chip damage raises its cost from 0E to unplayable within 10 turns. See masterful-stab.md.
 
 **The Collector needs:**
 - HP entry at 70%+ or Pantograph -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Pantograph heals 25 HP at boss start, which helps but does NOT bypass the threshold if you enter more than 25 HP below max.

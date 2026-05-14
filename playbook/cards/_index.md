@@ -39,6 +39,10 @@
 - [Dual Wield](dual-wield.md)
 - [Body Slam](body-slam.md)
 
+## Silent Attack Cards
+
+- [Masterful Stab](masterful-stab.md)
+
 ## Colorless Cards
 
 - [Apotheosis](apotheosis.md)
