@@ -374,6 +374,227 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 151 analysis, overlay redesign, philosophy page, draw detection</div>
+      <div class="changelog-sha">738e3b06</div>
+    </div>
+    <div class="changelog-date">2026-05-14</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
+<div class="diff-hunk">@@ -7,7 +7,7 @@ You play Slay the Spire. You make every decision deliberately, with reasoning.</div>
+<div class="diff-ctx"> ```python</div>
+<div class="diff-ctx"> import sys</div>
+<div class="diff-ctx"> sys.path.insert(0, r&quot;C:\Users\tkond\projects\autoplay\games\sts1&quot;)</div>
+<div class="diff-del">-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think</div>
+<div class="diff-add">+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, deck</div>
+<div class="diff-ctx"> ```</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Call `state()` to see the game. One decision at a time outside combat. In combat, plan your full turn, then execute with `turn()`.</div>
+<div class="diff-hunk">@@ -156,15 +156,27 @@ turn([&quot;play Bash Blue Slaver&quot;, &quot;play Strike Red Slaver&quot;, &quot;end&quot;], reason=&quot;...&quot;)</div>
+<div class="diff-ctx"> ```</div>
+<div class="diff-ctx"> When enemies share a name (Byrds, Cultists, etc.), use the numeric index.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-### Draw Effects</div>
+<div class="diff-add">+### Draw Effects — CRITICAL RULE</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-If a card draws more cards (e.g., Shrug It Off, Pommel Strike, Battle Trance), you can&#x27;t fully plan the turn. Play the draw card first, read the new state, then plan the rest:</div>
+<div class="diff-add">+**NEVER include cards after a draw card in a `turn()` sequence.** If any card in your hand draws cards (Backflip, Acrobatics, Shrug It Off, Pommel Strike, Battle Trance, Prepared, Offering, Dagger Throw, etc.), it MUST be the last card before `&quot;end&quot;` in the sequence, or you must play it via `send()` and re-read state before continuing.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+The drawn cards might be playable and change your entire plan. Pre-planning past a draw is always wrong — you&#x27;re deciding to ignore cards you haven&#x27;t seen yet.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Correct — draw card ends the sequence:**</div>
+<div class="diff-add">+```python</div>
+<div class="diff-add">+turn([&quot;play Defend&quot;, &quot;play Backflip&quot;, &quot;end&quot;], reason=&quot;Block first, Backflip for block + draw. Will plan remaining cards after seeing what I draw.&quot;)</div>
+<div class="diff-add">+# Read new state, see drawn cards, then plan the rest</div>
+<div class="diff-add">+```</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**WRONG — planning past a draw:**</div>
+<div class="diff-ctx"> ```python</div>
+<div class="diff-del">-send(&quot;play Shrug It Off&quot;, reason=&quot;Block + draw, then I&#x27;ll plan the rest of the turn&quot;)</div>
+<div class="diff-del">-# Now read new state and plan remaining cards</div>
+<div class="diff-add">+# NEVER DO THIS:</div>
+<div class="diff-add">+turn([&quot;play Backflip&quot;, &quot;play Strike 0&quot;, &quot;play Defend&quot;, &quot;end&quot;], reason=&quot;...&quot;)</div>
+<div class="diff-add">+# You don&#x27;t know what you&#x27;ll draw from Backflip! The drawn cards might be better than Strike/Defend.</div>
+<div class="diff-ctx"> ```</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+The `turn()` function will automatically stop your sequence if it detects a draw happened, but don&#x27;t rely on that — plan correctly from the start.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Outside Combat</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Non-combat decisions (map, events, rewards, shops, rest sites) are made one at a time with `send()`.</div>
+<div class="diff-hunk">@@ -284,6 +296,15 @@ If missing any of these, PRIORITIZE filling that gap over taking a generically s</div>
+<div class="diff-ctx"> - Read the options carefully. Many events have hidden costs or benefits.</div>
+<div class="diff-ctx"> - If you don&#x27;t know an event, be cautious — say so and pick the safe option.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+### Deck Review with `deck()`</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Call `deck()` after any event that changes your deck composition:</div>
+<div class="diff-add">+- **After Astrolabe** or other transform effects — review what you got and think about how it changes your strategy</div>
+<div class="diff-add">+- **After adding or removing cards** at key moments</div>
+<div class="diff-add">+- **After shop visits** where you bought/removed multiple cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+This is your chance to step back and think holistically about deck composition rather than just evaluating cards one at a time. Post your assessment with `think()`.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Planning and Playbook</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> The playbook has 200+ files covering every card, enemy, boss, event, relic, and potion. Three commands give you structured access:</div>
+<div class="diff-hunk">@@ -355,6 +376,7 @@ reason(&quot;Flex Potion&quot;)      # Potion timing</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ```</div>
+<div class="diff-ctx"> state()                          — Read current game state</div>
+<div class="diff-add">+deck()                           — View full deck (use after transforms, adds, removes)</div>
+<div class="diff-ctx"> plan()                           — Load strategic context (auto-detects combat vs act mode)</div>
+<div class="diff-ctx"> think(reasoning, label)          — Post your strategic analysis to the stream overlay</div>
+<div class="diff-ctx"> reason(&quot;topic&quot;)                  — Look up a specific playbook entry</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/_index.md</div>
+<div class="diff-hunk">@@ -11,5 +11,6 @@</div>
+<div class="diff-ctx"> - [The Champ](the-champ.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 3</div>
+<div class="diff-add">+- [Awakened One](awakened-one.md)</div>
+<div class="diff-ctx"> - [Donu and Deca](donu-and-deca.md)</div>
+<div class="diff-ctx"> - [Time Eater](time-eater.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/awakened-one.md</div>
+<div class="diff-hunk">@@ -0,0 +1,75 @@</div>
+<div class="diff-add">+# Awakened One (Act 3 Boss)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: Phase 1 ~320, Phase 2 300. Two-phase fight. The Power-punishing boss.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## THE CENTRAL MECHANIC: CURIOSITY</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Every time you play a Power card, the Awakened One gains +2 Strength.** This is not a footnote. This is the defining mechanic of the fight. It is the reason this boss exists. The developers created this boss specifically to punish Power-heavy decks.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Do not rationalize playing Powers freely.** &quot;My Powers are essential&quot; is not an argument -- the mechanic exists precisely because Powers are good. The question is never &quot;is this Power worth playing in a vacuum?&quot; but &quot;is this Power worth +2 Strength on a boss that already hits hard?&quot; The answer is usually NO.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Each Power played adds +2 to every attack the Awakened One makes for the rest of that phase. Playing 3 Powers means +6 Strength. Playing 6 Powers means +12 Strength, turning a survivable 10x3 multi-attack into a lethal 22x3 = 66 damage hit. The Strength compounds across every remaining turn -- the earlier you play Powers, the more total damage you take.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## PHASE 1</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Awakened One starts with two Cultist minions (~48 HP each). Phase 1 has approximately 320 HP. After Phase 1 HP reaches 0, the Awakened One enters Phase 2 with full HP (300). All your Powers, buffs, and poison are REMOVED when Phase 2 begins.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Phase 1 priorities:**</div>
+<div class="diff-add">+- Kill the Cultists quickly. They scale with Ritual (+1 Str/turn) and deal increasing damage if left alive.</div>
+<div class="diff-add">+- Damage the Awakened One to end Phase 1, but conserve HP for Phase 2.</div>
+<div class="diff-add">+- **Minimize Power plays.** Every Power played in Phase 1 makes Phase 1 harder by giving the AO more Strength. And all your Powers are stripped at the phase transition anyway, so their long-term value is zero.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**When to play Powers in Phase 1:**</div>
+<div class="diff-add">+- Playing 0 Powers is the ideal. Win Phase 1 with attacks, skills, and potions.</div>
+<div class="diff-add">+- Playing 1 Power may be acceptable if it is game-defining (e.g., a Power that enables your entire win condition and you cannot survive Phase 1 without it).</div>
+<div class="diff-add">+- Playing 2+ Powers in Phase 1 is almost always wrong. You are paying +4 or more Strength to the boss for buffs that get stripped at the phase transition.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## PHASE 2</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HP: 300. Gains Regenerate 10 (heals 10 HP per turn). Curiosity resets -- Strength gains from Phase 1 Powers are gone, but the mechanic is ACTIVE AGAIN. Every Power you play in Phase 2 permanently buffs the boss for the rest of the fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Phase 2 attack pattern:**</div>
+<div class="diff-add">+- Multi-attacks are the primary threat. A 10x3 base multi-attack becomes 16x3 = 48 with +6 Str, or 22x3 = 66 with +12 Str.</div>
+<div class="diff-add">+- The boss also uses single large attacks and debuff/buff turns.</div>
+<div class="diff-add">+- Regenerate 10 heals the boss every turn, so the fight has a clock -- you must out-damage the regeneration or you lose to attrition.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Phase 2 Power discipline:**</div>
+<div class="diff-add">+- **0 Powers is still ideal.** If your deck can kill a 300 HP boss with Regenerate 10 using only attacks and skills, play zero Powers.</div>
+<div class="diff-add">+- **1 Power is the absolute maximum in most situations.** Only play it if it is your sole path to victory and you understand the Strength cost.</div>
+<div class="diff-add">+- **Every Power beyond the first makes the fight dramatically harder.** 2 Powers = +4 Str = roughly +12 extra damage per multi-attack turn. 3 Powers = +6 Str = +18 per multi-attack. This adds up across every remaining turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## HOW TO WIN WITHOUT POWERS</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Poison (Silent):** Deadly Poison, Noxious Fumes (note: Noxious Fumes IS a Power -- consider whether the passive poison is worth +2 Str), Poison Stab, Bouncing Flask, Corpse Explosion. Catalyst+ triples poison, which defeats Regenerate 10. Prioritize poison applied by Skills and Attacks, not Powers.</div>
+<div class="diff-add">+- **Strength scaling (Ironclad):** Inflame, Spot Weakness (both are non-Power Str sources). Limit Break doubles existing Str. Heavy Blade leverages Str.</div>
+<div class="diff-add">+- **Front-loaded damage:** High-damage attacks (Immolate+, Carnage+, Glass Knife) applied early before the boss scales.</div>
+<div class="diff-add">+- **Block without Powers:** Impervious, Defend, Backflip, Blur, Leg Sweep, Footwork (Footwork IS a Power -- weigh the Dexterity against the Str cost).</div>
+<div class="diff-add">+- **Weak application:** Neutralize, Leg Sweep, Sucker Punch. Reducing the boss&#x27;s damage by 25% is often worth more than a Power that adds 2 Str.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## WHAT KILLED US (Run 151)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Died Phase 2, Turn 14, 6 HP vs 16x3 = 48 multi-attack with only 28 block. The 16 per hit was 10 base + 6 Strength from Curiosity. Six Powers were played over the course of the fight, split across both phases. The Awakened One&#x27;s Phase 2 Strength of 6 means 3 Powers were played in Phase 2 alone. Without those Phase 2 Powers, the multi-attack would have been 10x3 = 30, and 28 block would have left only 2 unblocked damage -- survivable at 6 HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The deck contained 7 Power cards: After Image+, Infinite Blades, Well-Laid Plans, Tools of the Trade, Accuracy, Footwork, Noxious Fumes. The player declared the Powers &quot;essential&quot; and played them freely. This is exactly the wrong approach. The Powers played in Phase 1 were also harmful: they gave the AO Strength during Phase 1 (dealing more damage before the transition), and they were stripped at the phase transition anyway -- providing zero carry-over benefit.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## DECK BUILDING FOR THIS FIGHT</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+When the Act 3 boss is Awakened One (you can see this on the map):</div>
+<div class="diff-add">+- **Deprioritize Power cards during drafting.** Every Power in the deck is a card you must discipline yourself not to play, wasting a draw.</div>
+<div class="diff-add">+- **Prioritize Skill-based and Attack-based scaling.** Catalyst (Skill), Leg Sweep (Skill), Backflip (Skill) are all better picks than Power equivalents.</div>
+<div class="diff-add">+- **If your deck is Power-heavy, this is the hardest Act 3 boss.** A deck with 5+ Powers that relies on those Powers to function will struggle badly.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## PREPARATION CHECKLIST</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. Damage source that works without Powers -- poison via Skills/Attacks, Strength from non-Power sources, raw attack damage.</div>
+<div class="diff-add">+2. Block density -- Impervious, Leg Sweep, Backflip, Defend+ all work without triggering Curiosity.</div>
+<div class="diff-add">+3. Weak application -- Neutralize, Leg Sweep reduce the multi-attack threat significantly.</div>
+<div class="diff-add">+4. Sustain vs Regenerate 10 -- must deal &gt;10 net damage per turn averaged across the fight. Catalyst+ on poison solves this. High Str + multi-hit solves this.</div>
+<div class="diff-add">+5. Enter at 70%+ HP. Phase 2 is a long fight (10-15 turns) with escalating damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## POTION TIMING</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Save at least 1 potion for Phase 2. Phase 2 is the harder phase -- do not spend everything in Phase 1.</div>
+<div class="diff-add">+- Weak Potion on multi-attack turns reduces lethal hits.</div>
+<div class="diff-add">+- Block Potion on lethal turns provides emergency survival.</div>
+<div class="diff-add">+- Poison-applying potions bypass the Power restriction entirely.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/time-eater.md</div>
+<div class="diff-hunk">@@ -2,11 +2,16 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> HP: 480. Single target. The card-count boss.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-KEY MECHANIC: **Time Warp** -- every 12 cards played, Time Eater heals 32 HP, gains +2 Strength, and ends your turn immediately. This means: (1) every card play counts, even 0-cost cards and Powers, (2) wide turns with many card plays accelerate Time Warp triggers, (3) the boss effectively punishes decks that play many cheap cards.</div>
+<div class="diff-add">+KEY MECHANIC: **Time Warp** -- every 12 cards played, Time Eater heals 32 HP, gains +2 Strength, and ends your turn immediately. This is a real test of intelligence. You must track exactly where you are in the 12-card cycle at all times -- not approximately, EXACTLY. Every card play counts, including 0-cost cards, Shivs, Powers, and cards generated mid-turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Deliberate card counting is mandatory.** Before playing any card, know the current count (e.g., &quot;I am at 9/12&quot;). Plan your turn around the count: if you are at 10/12, you have exactly 2 plays before Time Warp triggers. Use those 2 plays for maximum impact (block + damage), not throwaway cards. If you are at 8/12 with a hand of 5 cards, you know playing all 5 will trigger Time Warp at card 12 and waste 1 card play on the auto-ended turn -- so either play 4 high-impact cards and save the 5th, or play all 5 and accept the trigger on your terms.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Intentional phasing means choosing WHEN Time Warp triggers.** Do not let Time Warp catch you mid-turn with important plays left. Plan to trigger it at a moment that minimizes waste: ideally your last 1-2 plays of a turn should be the ones that push past 12, so the forced turn-end costs you nothing. Triggering Time Warp after playing a big block card (so the block carries into the next turn under Barricade) is excellent. Triggering it with 2 unplayed attack cards in hand is terrible.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ATTACK PATTERN: Alternates between attacks (~22-30 damage, scaling with Str) and debuff/buff turns. Applies Vulnerable, draws cards, gains block. Damage escalates as Time Warp stacks Strength (+2 per trigger).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> STRATEGY:</div>
+<div class="diff-add">+- **Track the 12-card count explicitly every turn.** State your count before and after each play. &quot;Count is 7/12, playing Entrench+ makes it 8/12, playing Body Slam+ makes it 9/12, ending turn.&quot; This is not optional -- losing track of the count leads to wasted turns and unplanned Time Warp triggers.</div>
+<div class="diff-ctx"> - **Play high-impact cards, minimize card count per turn.** Body Slam+ (0E, damage = block) is ideal -- one card, massive damage. Immolate+ (one card, 28+ AOE) is excellent. Avoid playing multiple small attacks when one big attack suffices.</div>
+<div class="diff-ctx"> - **Barricade is the best card in this fight.** Block persists through Time Warp turn resets. After Time Warp ends your turn, all accumulated block carries over. This means block invested before Time Warp is NOT wasted.</div>
+<div class="diff-ctx"> - **Entrench+ doubles block for Body Slam+ scaling.** One Entrench+ play followed by one Body Slam+ play = 2 cards for massive damage.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,17 +2,17 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (150 runs, 3 WINS):** Three victories in the last four runs (Runs 147, 148, 150). Run 149 died at Floor 41 (Giant Head elite). Run 150: defeated Time Eater at Floor 51, Score TBD, Final HP 26/87. TWO proven winning formulas now exist: (1) Snecko Eye + Immolate+ + Limit Break engine (Runs 147-148), and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine (Run 150). Both formulas share Immolate+ as primary AOE but differ completely in their scaling mechanism.</div>
+<div class="diff-add">+**CURRENT STATUS (151 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). First Silent run (Run 151) reached Act 3 boss (Awakened One) but died in Phase 2 at Floor 50. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is still developing -- first run revealed critical boss mechanic misunderstanding (Awakened One Curiosity).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**SCORECARD (runs 101-150):**</div>
+<div class="diff-add">+**SCORECARD (runs 101-151):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 4. Act 2 boss reaches: 9+.</div>
+<div class="diff-del">-- **Act 3 reached five times (Runs 145, 147, 148, 149, 150).** Run 145 died to Transient. Run 149 died to Giant Head elite. Runs 147, 148, 150 all WON.</div>
+<div class="diff-add">+- **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**</div>
+<div class="diff-del">-- **3 wins in 150 runs (2.0% win rate).** Ascension 0. Three wins in last four runs (75% win rate in Runs 147-150).</div>
+<div class="diff-del">-- **No UI misplays in Runs 147-150.** Eight+ consecutive clean runs. All boss relics collected, all treasure chests opened, shops browsed, events evaluated.</div>
+<div class="diff-del">-- **Mechanics errors in Runs 147-150: NONE in victories.** Combat arithmetic correct throughout winning runs. No prediction errors detected.</div>
+<div class="diff-del">-- **Two distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-add">+- **3 wins in 151 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (1 attempt, reached Act 3 boss).</div>
+<div class="diff-add">+- **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.</div>
+<div class="diff-add">+- **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.</div>
+<div class="diff-add">+- **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -32,6 +32,7 @@ High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> 7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.</div>
+<div class="diff-ctx"> 8. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed &gt; block.</div>
+<div class="diff-ctx"> 9. **Enter every boss at as high HP as possible.** The first victory entered all three bosses at 80/80. The second victory entered Act 1 and Act 2 bosses at high HP but entered Donu and Deca at only 49% (42/85) and survived at 4 HP -- a razor-thin margin. Full HP entry provides the buffer needed when boss fights go long. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enable full HP entry. A powerful deck (Snecko Eye + Immolate+ + Limit Break+) can compensate for low HP entry, but the margin of error is minimal.</div>
+<div class="diff-add">+10. **KNOW YOUR ACT 3 BOSS MECHANIC AND BUILD AROUND IT.** The Act 3 boss is visible on the map from Act 1. Each Act 3 boss punishes a specific playstyle: (a) **Awakened One** punishes Power cards (+2 Str per Power played -- see awakened-one.md). If the boss is Awakened One, deprioritize Powers during drafting and plan to win with Attacks and Skills. (b) **Time Eater** punishes high card-count turns (12-card Time Warp -- see time-eater.md). Track card count exactly. (c) **Donu and Deca** is a raw stats check (500 combined HP). The boss you see should influence every card pick, relic choice, and deck-building decision from Floor 1 onward.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 150 analysis (3rd victory!) + site character progress + stream cleanup</div>
       <div class="changelog-sha">33d241b8</div>
     </div>
@@ -8784,163 +9005,6 @@ footer {
 <div class="diff-ctx"> ### Cross-Run Victory Pattern</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> Across all boss victories (7 total), the differentiators are:</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 59 analysis: Fire Breathing entry, Runic Dome absolute ban</div>
-      <div class="changelog-sha">58380ede</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/bosses/hexaghost.md</div>
-<div class="diff-hunk">@@ -25,10 +25,11 @@ If you have 0-1 of these, Hexaghost will likely kill you.</div>
-<div class="diff-ctx"> DAMAGE OUTPUT MATTERS: Weak and block keep you alive, but insufficient damage is equally fatal. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone. Two runs died with Weak sources (Clothesline, Disarm) because they lacked the damage output to end the fight before Burns overwhelmed them. Damage scaling cards (Rampage, Inflame, Reaper) shorten the fight and reduce total Burns damage.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WHAT WORKS:</div>
-<div class="diff-add">+- **Evolve + Fire Breathing** -- the best anti-Burns engine. Evolve draws a replacement card when a Burn is drawn, neutralizing hand clog. Fire Breathing deals 6 (10 upgraded) damage to Hexaghost each time a Burn is drawn. Together, Burns become free damage with no downside. Confirmed to beat Hexaghost cleanly (44/80 HP remaining after the fight). Set up both Powers on Turn 1 (free turn). This combo alone can handle Burns entirely -- no other Burns management needed.</div>
-<div class="diff-ctx"> - Demon Form (+2 Str/turn) -- the best scaling card for Hexaghost. By turn 5, every attack gains +8-10 damage. Combined with Anger (0E) and Shuriken (+1 Str per 3 attacks), the fight can be won in 7 turns instead of 13. Shorter fight = fewer Burns = less attrition.</div>
-<div class="diff-ctx"> - Disarm (-2 Str permanently) -- reduces all Hexaghost attacks including each Inferno hit. Very effective.</div>
-<div class="diff-ctx"> - Rampage+ -- scales over the long fight to 40-60+ damage per play. One of the best Hexaghost-killing cards.</div>
-<div class="diff-del">-- Evolve -- draws a replacement card whenever a Burn is drawn. Neutralizes Burns hand-clogging completely. Play on Turn 1 (free turn) alongside other Powers.</div>
-<div class="diff-add">+- Evolve (standalone) -- draws a replacement card whenever a Burn is drawn. Neutralizes Burns hand-clogging completely. Play on Turn 1 (free turn) alongside other Powers.</div>
-<div class="diff-ctx"> - Flame Barrier+ -- 16 block + 42 counter damage (7 Inferno hits x 6 each). Single best defensive card for Inferno turns. Upgrade priority if facing Hexaghost.</div>
-<div class="diff-ctx"> - Torii relic -- reduces each 2-damage Burn to 1 damage (halves Burns attrition). Does not save the fight alone but significantly extends survivability.</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
-<div class="diff-hunk">@@ -69,3 +69,4 @@</div>
-<div class="diff-ctx"> - [Corruption](corruption.md)</div>
-<div class="diff-ctx"> - [Rage](rage.md)</div>
-<div class="diff-ctx"> - [Evolve](evolve.md)</div>
-<div class="diff-add">+- [Fire Breathing](fire-breathing.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/feed.md</div>
-<div class="diff-hunk">@@ -6,6 +6,8 @@ DECISION POINTS: Is the enemy low enough for Feed to kill? With Vulnerable: floo</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> CRITICAL: Feed exhausts on play regardless of whether it kills. If you play Feed and the enemy survives, you lose the card permanently with zero Max HP gained. Calculate exact damage before committing. Against enemies with block, factor block into the calculation.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+COMMON MISTAKE: Feed in the discard pile when an enemy dies. Feed only works if YOU play it as the killing blow. If Feed was played earlier in the fight (softening, not killing) it is already exhausted. If Feed is in the discard pile and an enemy is at killable HP, you cannot use it. Plan Feed kills in advance -- hold Feed in hand when an enemy is approaching kill range, or use Headbutt to place Feed on top of the draw pile.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> TAKE EARLY, USE EVERY FIGHT: Feed&#x27;s value compounds over the run. Taking Feed after the Act 1 boss means 10-15 fights remain for kills. Each kill is +3-4 permanent Max HP. An unused Feed in the deck is wasted potential. In every multi-enemy fight, plan to Feed-kill at least one enemy. Even in single-enemy fights, soften with other attacks then Feed for the finish.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WARNING: Do NOT save Feed for &quot;the perfect moment.&quot; A Feed that never kills is worse than no Feed at all. If Feed+ was taken but the run ended with zero Feed kills, the card slot was wasted.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/fire-breathing.md</div>
-<div class="diff-hunk">@@ -0,0 +1,18 @@</div>
-<div class="diff-add">+# Fire Breathing (1E, Power, deal 6 damage to ALL enemies when a Status or Curse is drawn | +: 10 damage)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Passive AOE damage triggered by drawing Status cards (Burns, Wounds, Dazed, Slimed) or Curses. Each Status drawn deals 6 (10 upgraded) damage to every enemy.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: Against any enemy that adds Status cards to your deck. Hexaghost Burns become a damage SOURCE rather than a liability. Power Through Wounds trigger damage on draw. Chosen&#x27;s Hex Dazed cards trigger it. The more Status cards in the deck, the more damage Fire Breathing deals passively.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+KEY SYNERGY -- EVOLVE + FIRE BREATHING: The strongest anti-Status engine in the game. Evolve draws a replacement card when a Status is drawn. Fire Breathing deals damage when a Status is drawn. Together, every Status card drawn both deals damage AND replaces itself with a real card. Status cards become pure upside: free damage with no hand clog. This is a confirmed Hexaghost counter -- Burns deal 6-10 damage to Hexaghost on draw while cycling into real cards via Evolve.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+OTHER SYNERGIES:</div>
-<div class="diff-add">+- **Power Through**: Adds 2 Wounds to hand. When these Wounds are drawn in subsequent turns, Fire Breathing triggers.</div>
-<div class="diff-add">+- **Second Wind**: Exhausts Status cards, but Fire Breathing triggers on DRAW, not exhaust. Both can coexist -- Fire Breathing gets value on draw, Second Wind cleans them up.</div>
-<div class="diff-add">+- **Corruption**: Makes Skills cost 0 and exhaust, but does not directly synergize. However, if Corruption leads to playing more Power Through / status-generating cards, Fire Breathing benefits.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION POINTS: Play on free turns (enemy buff turns, setup turns). At 1E, it competes with block and damage on attack turns. Best set up early when Status cards are expected to accumulate. In fights with no Status cards, Fire Breathing does nothing -- it is a dead card.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+MATCHUPS: Excellent vs Hexaghost (neutralizes Burns), excellent vs Sentries (Dazed triggers damage), good vs Slime Boss (Slimed triggers), good alongside Power Through. Irrelevant in fights with no Status cards.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+UPGRADE: 6 to 10 damage per trigger. Significant upgrade -- 67% more damage per Status drawn. Worth upgrading when the deck generates multiple Status cards per cycle.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/power-through.md</div>
-<div class="diff-hunk">@@ -4,4 +4,6 @@ Massive block (triple Defend) but pollutes hand with 2 unplayable Wounds.</div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Must-survive turns with massive incoming damage. When you have exhaust tools (True Grit+, Fiend Fire, Second Wind) to remove the Wounds afterward. Short fights (3-4 turns) where the Wounds won&#x27;t cycle back.</div>
-<div class="diff-ctx"> WHEN IT&#x27;S A TRAP: In long fights (Shelled Parasite, scaling enemies) without exhaust tools. The Wounds reduce effective hand size, meaning fewer block AND fewer damage cards per turn. Over an 8+ turn fight, playing Power Through twice adds 4 Wounds to the deck, reducing block density for all subsequent turns. This creates a paradox: you took Power Through for block, but the Wounds reduce your future blocking ability.</div>
-<div class="diff-ctx"> DECISION POINTS: Is 15 block worth 2 dead draws in future hands? In long fights without exhaust tools, the Wounds accumulate and ruin draws. In short fights or with exhaust, the 15 block is worth it.</div>
-<div class="diff-del">-DRAFT RULE: Do not take Power Through unless the deck has at least one exhaust tool (True Grit+, Fiend Fire, Second Wind, Burning Pact) or the deck is fast enough to end fights in 4-5 turns.</div>
-<div class="diff-add">+SYNERGY -- FIRE BREATHING: The 2 Wounds added by Power Through trigger Fire Breathing when drawn, dealing 6-10 damage to all enemies per Wound drawn. With Evolve also active, each Wound drawn deals damage AND draws a replacement card. This transforms Power Through&#x27;s downside (Wounds clogging hand) into pure upside (free AOE damage + card cycling).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DRAFT RULE: Do not take Power Through unless the deck has at least one exhaust tool (True Grit+, Fiend Fire, Second Wind, Burning Pact), Fire Breathing (converts Wounds to damage), or the deck is fast enough to end fights in 4-5 turns.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-leader.md</div>
-<div class="diff-hunk">@@ -1,6 +1,6 @@</div>
-<div class="diff-ctx"> # Gremlin Leader (elite, Act 2, HP: ~131)</div>
-<div class="diff-ctx"> PATTERN: Summons Sneaky Gremlins (~10-12 HP each). Uses DEFEND_BUFF (Rally): gives ALL enemies +3 Strength permanently and stacking. Gremlins attack for ~9 base + accumulated Str. Leader itself attacks for significant damage when not rallying. Leader re-summons gremlins when they die -- killing gremlins is temporary relief, not permanent removal.</div>
-<div class="diff-del">-KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight&#x27;s damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader&#x27;s own attacks.</div>
-<div class="diff-add">+KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight&#x27;s damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader&#x27;s own attacks. Confirmed: at 32% HP entry (28/86), Rally + 2 gremlins attacking dealt 36+ combined damage on turn 2, overwhelming 19 block + 10 HP remaining. The fight is unwinnable at low HP because there is no time to set up before Rally scaling makes incoming damage lethal.</div>
-<div class="diff-ctx"> WHAT THIS MEANS: KILL GREMLINS FAST to reduce per-turn damage, but prioritize Leader damage when possible because gremlins get re-summoned. AOE is critical for clearing gremlins efficiently. Apply Shockwave early for mass Weak + Vulnerable. The fight becomes mathematically unwinnable once Strength stacks too high (by turn 8+, incoming damage is 49+).</div>
-<div class="diff-ctx"> BENCHMARKS: Must win by turn 6-7 or exhaust cards run out and scaling overwhelms you. Enter with 60%+ HP minimum. At 25% HP (14/56), the fight is unwinnable even with Nilry&#x27;s Codex generating Impervious and Immolate.</div>
-<div class="diff-ctx"> BRING: AOE (Thunderclap, Whirlwind, Immolate+), Shockwave+ (mass debuff), Disarm (reduce Leader Str). Non-exhaust damage cards for sustained fighting. Rage (0E power that generates block per attack -- excellent value in multi-attack turns). Potions -- this fight demands aggressive potion use.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
-<div class="diff-hunk">@@ -35,6 +35,7 @@</div>
-<div class="diff-ctx"> - [Mercury Hourglass](mercury-hourglass.md)</div>
-<div class="diff-ctx"> - [Shuriken](shuriken.md)</div>
-<div class="diff-ctx"> - [Gremlin Horn](gremlin-horn.md)</div>
-<div class="diff-add">+- [Meat on the Bone](meat-on-the-bone.md)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Uncommon Relics (continued)</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/meat-on-the-bone.md</div>
-<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
-<div class="diff-add">+# Meat on the Bone (Uncommon Relic, heal 12 HP at end of combat if HP is at or below 50%)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Conditional end-of-combat healing. If HP is at or below 50% when a fight ends, heal 12 HP. Otherwise, nothing.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: In Act 2, where fights routinely drain 30-50 HP and leave the player below 50%. Meat on the Bone provides double the healing of Burning Blood (12 vs 6) when it triggers. Combined with Burning Blood, a fight that ends below 50% HP heals 18 HP total -- meaningful recovery between consecutive combat rooms.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+LIMITATIONS: Does not trigger when HP is above 50% at fight end. This means efficient fights where block prevents most damage get zero value. The relic rewards taking damage, which creates a tension: you want to be healthy, but the relic only helps when you are not. It also does not help DURING combat -- only after.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+STRATEGIC VALUE: Partially addresses the Act 2 HP sustain problem. Burning Blood alone provides +6/fight. Meat on the Bone adds +12 when triggered. Together, post-fight healing becomes 18 HP when below 50%, which partially offsets 30-40 HP drain fights. Not a replacement for in-combat healing (Reaper, Feed) but a solid supplementary healing source.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+ALWAYS TAKE when offered. Unconditional upside with no drawback.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/runic-dome.md</div>
-<div class="diff-hunk">@@ -6,11 +6,10 @@ WHEN IT&#x27;S GOOD: Almost never. The +1 Energy is powerful, but losing intent infor</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> THE CRITICAL PROBLEM: Some boss and elite attacks are near-fatal if unblocked. Bronze Automaton&#x27;s Hyper Beam, The Guardian&#x27;s 32-damage attack, Hexaghost&#x27;s Inferno (42 damage) -- these require specific block preparation on the exact turn they occur. Without intent, you cannot prepare. Missing a single Hyper Beam block is often lethal.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-DECISION FRAMEWORK: Refuse Runic Dome unless ALL of the following are true:</div>
-<div class="diff-del">-1. The deck has reliable passive block (Metallicize, Barricade + block generation) that does not depend on intent prediction</div>
-<div class="diff-del">-2. The deck has enough HP and healing to absorb surprise hits</div>
-<div class="diff-del">-3. You know the boss/elite patterns well enough to count turns manually</div>
-<div class="diff-add">+DECISION FRAMEWORK: **DO NOT TAKE RUNIC DOME. ALWAYS REFUSE IT.**</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-In practice, the cost exceeds the benefit in nearly all situations. The +1 Energy from other boss relics (Snecko Eye, Cursed Key, etc.) comes with less punishing downsides. Skip Runic Dome.</div>
-<div class="diff-add">+This is not conditional. Do not evaluate &quot;unless the deck has passive block&quot; or &quot;unless we know the patterns.&quot; The downside has contributed to two deaths -- both times the player took it despite explicit guidance to refuse. Without intent visibility, every block/attack decision is a coin flip. The +1 Energy does not compensate for blind play against Rally, Hyper Beam, Inferno, or any multi-hit attack pattern.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+If Runic Dome is the only boss relic offered, skip the boss relic entirely. No boss relic is better than Runic Dome&#x27;s downside.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ---</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -2,13 +2,13 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**CURRENT BOTTLENECK:** Act 2 HP sustain. We beat Act 1 bosses consistently but die in Act 2 to HP attrition. 18 of 21 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.</div>
-<div class="diff-add">+**CURRENT BOTTLENECK:** Act 2 HP sustain. We beat Act 1 bosses consistently but die in Act 2 to HP attrition. 19 of 22 documented deaths were from entering fights below safe HP thresholds. The root cause is NOT tactical (decks are strong enough) -- it is that Burning Blood (+6/fight) cannot sustain through Act 2 fights that drain 25-50 HP each. Until the player consistently enters Act 2 with a healing card (Reaper or Feed), Act 2 will remain a wall. Healing cards must be prioritized ABOVE damage and block cards in Act 1 card rewards when offered.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ---</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## HP Management: The #1 Cause of Death</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-18 of 21 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-add">+19 of 22 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### HP Thresholds for Act 2</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -66,7 +66,9 @@ Even &quot;hallway&quot; fights in Act 2 can be run-ending: 3 Cultists has killed the play</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### The Upgrade Death Spiral</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Only upgrading once in 28 floors was the worst strategic error observed. Each missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. Break the cycle: upgrade at the FIRST rest site unless HP is critically low.</div>
-<div class="diff-add">+Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed twice: once with only 1 upgrade across 28 floors, and once with literally ZERO upgrades across 23 floors. Both runs died in Act 2 with decks that had adequate card quality but no upgraded cards to back it up.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 40% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Upgrade Priority</div>
-<div class="diff-ctx"> </div>
 <div class="diff-ctx"></div>
 </div>
   </div>

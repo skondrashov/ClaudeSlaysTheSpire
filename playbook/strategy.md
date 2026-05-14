@@ -2,16 +2,17 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (151 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). First Silent run (Run 151) reached Act 3 boss (Awakened One) but died in Phase 2 at Floor 50. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is still developing -- first run revealed critical boss mechanic misunderstanding (Awakened One Curiosity).
+**CURRENT STATUS (152 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Two Silent runs (Runs 151-152). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison-through-block works well (Spheric Guardian, Slime Boss), but power setup speed against bosses needs improvement.
 
 **SCORECARD (runs 101-151):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 4. Act 2 boss reaches: 9+.
 - **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**
-- **3 wins in 151 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (1 attempt, reached Act 3 boss).
+- **3 wins in 152 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (2 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss).
 - **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.
 - **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.
+- **Run 152: Silent died to Collector at F33.** Defensive powers (After Image, Footwork+) not played early enough. Card index confusion on Turn 1 caused suboptimal command execution. Post-debuff incoming was unsurvivable without defensive powers active. Poison strategy was highly effective against block-based enemies (Spheric Guardian crushed).
 - **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.
 
 **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**
@@ -233,6 +234,16 @@ Spheric Guardian (the single most dangerous Act 2 hallway fight, 3 deaths confir
 Inflame > Spot Weakness > Limit Break (if other Str source exists) > any other card.
 
 This is nearly as important as healing. A deck with block + healing but no Strength scaling will die to Spheric Guardian's Barricade every time.
+
+### Curse Management and Shop Routing
+
+Curses are removable at shops for 75g (except Parasite, which cannot be removed). When an event offers gold + a curse, check the map for upcoming shops before refusing:
+
+- **If a shop is within 2-3 floors**: Take the gold + curse, then remove the curse at the shop. Net profit = gold gained minus 75g removal cost. Sssserpent (175g + Doubt curse) nets 100g profit after removal. This is free money.
+- **If no shop is reachable before a boss or elite**: Refuse the curse. A curse stuck in the deck for 5+ floors degrades draw quality and may cost HP in hard fights.
+- **Parasite is the exception**: Parasite cannot be removed at shops. Never take events that give Parasite unless Omamori will negate it.
+
+This principle applies to all curse-giving events: evaluate the map context, not just the curse itself.
 
 ### Deck Thinning
 

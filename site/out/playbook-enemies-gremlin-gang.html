@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home — Claude Slays the Spire</title>
+<title>Gremlin Gang (Act 1 Hallway) — Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 <style>
@@ -365,94 +365,41 @@ footer {
 <body>
 <h1>Claude Slays the Spire</h1>
 <div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
-<nav><a href="index.html" class="active">Home</a>
-<a href="playbook.html" class="">Playbook</a>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
 <a href="philosophy.html" class="">Philosophy</a>
 <a href="human-advice.html" class="">Human Advice</a>
 <a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="gremlin-gang-act-1-hallway">Gremlin Gang (Act 1 Hallway)</h1>
 
-<div style="margin: 24px 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
-  <iframe
-    src="https://player.twitch.tv/?channel=ClaudeSlaysTheSpire&parent=claudeslaysthespire.org&muted=true"
-    height="360"
-    width="100%"
-    allowfullscreen
-    style="border: none; display: block;">
-  </iframe>
-</div>
+<p>A mixed group of 4 gremlins drawn from different types. Not to be confused with Gremlin Leader (an Act 2 elite with a distinct Rally mechanic).</p>
 
-<div class="stats-grid">
-  <div class="stat"><div class="stat-value">76</div><div class="stat-label">Runs</div></div>
-  <div class="stat"><div class="stat-value">3</div><div class="stat-label">Wins</div></div>
-  <div class="stat"><div class="stat-value">51</div><div class="stat-label">Best Floor</div></div>
-  <div class="stat"><div class="stat-value">244</div><div class="stat-label">Playbook Entries</div></div>
-</div>
+<p>GREMLIN TYPES (kill priority order):</p>
 
-<div class="state-details">
-  <div class="state-card">
-    <h3>System</h3>
-    <p><strong>Model:</strong> Claude Opus 4.6 via Claude Code</p>
-    <p><strong>Character:</strong> Silent, Ascension 0</p>
-    <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
-  </div>
-  <div class="state-card">
-    <h3>The Loop</h3>
-    <p>A <strong>player agent</strong> plays a run with visible reasoning. When it ends, an <strong>analyst agent</strong> reviews what went wrong and updates the <a href="playbook.html">playbook</a>. Next run reads the updated knowledge. Repeat.</p>
-  </div>
-</div>
-<h2>Journey</h2>
-<div class="journey-grid">
-<div class="journey-card completed"><div class="journey-badge">A0 COMPLETE</div><div class="journey-name">Ironclad</div><div class="journey-stats">76 runs &middot; 3 wins &middot; Best floor 51</div></div>
-<div class="journey-card active"><div class="journey-badge">NOW PLAYING</div><div class="journey-name">Silent</div><div class="journey-stats">Ascension 0</div></div>
-</div>
+<p>1. <strong>Sneaky Gremlin</strong> -- KILL FIRST. Glass cannon. Attacks for 9-10 damage per turn with low HP (~10-13). Left alive for multiple turns, cumulative damage is devastating (25+ damage observed from a single Sneaky Gremlin that survived 3 turns). Always attacks -- never buffs or defends. The highest single-target damage output of any gremlin type.</p>
 
-<div style="margin-bottom: 40px;">
-<p>
-Claude plays <a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>,
-makes decisions one at a time with explicit reasoning, and then reviews its own runs afterward to
-figure out what went wrong. No hardcoded strategy. Everything it knows comes from playing and
-self-review.
-</p>
+<p>2. <strong>Gremlin Wizard</strong> -- KILL SECOND. Charges a large attack over multiple turns (UNKNOWN intent while charging, then a big hit of 25-30). If the charge completes, the single hit can be lethal at low HP. Kill before the charge finishes. Lower priority than Sneaky Gremlin because the damage is delayed.</p>
 
-<p>
-The <a href="playbook.html">Playbook</a> is everything Claude has learned so far &mdash; card
-evaluations, enemy patterns, boss strategies, event guides. The
-<a href="changelog.html">Changelog</a> shows every update: what changed, what was learned, and when.
-</p>
-</div>
-<h2>Playbook</h2>
-<div class="category-grid">
-<div class="category-card"><a href="playbook-mechanics.html">
-  <h3>Game Mechanics</h3>
-</a></div>
-<div class="category-card"><a href="playbook-strategy.html">
-  <h3>Strategy</h3>
-</a></div>
-<div class="category-card"><a href="playbook-bosses.html">
-  <h3>Bosses</h3>
-  <div class="count">9 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-cards.html">
-  <h3>Cards</h3>
-  <div class="count">69 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-enemies.html">
-  <h3>Enemies</h3>
-  <div class="count">32 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-events.html">
-  <h3>Events</h3>
-  <div class="count">31 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-potions.html">
-  <h3>Potions</h3>
-  <div class="count">25 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-relics.html">
-  <h3>Relics</h3>
-  <div class="count">78 entries</div>
-</a></div>
-</div>
+<p>3. <strong>Fat Gremlin</strong> -- MEDIUM PRIORITY. Attacks for 4-5 damage and applies Weak or Frail. Lower damage per turn than Sneaky Gremlin but the debuffs reduce your effectiveness.</p>
+
+<p>4. <strong>Shield Gremlin</strong> -- LOWEST PRIORITY. Gives block to other gremlins. Annoying but not directly threatening. Kill last.</p>
+
+<p>5. <strong>Mad Gremlin</strong> -- MEDIUM PRIORITY. Attacks with moderate damage. Has Angry (gains Str when hit). Do not spread incidental damage to it -- either commit to killing it or ignore it.</p>
+
+<p>STRATEGY:</p>
+<ul>
+<li><strong>Turn 1</strong>: Neutralize or Weak the highest-damage attacking gremlin (usually Sneaky Gremlin). Kill it with remaining energy if possible. Block the rest.</li>
+<li><strong>AOE is excellent</strong>: All-Out Attack, Dagger Spray, Thunderclap, or similar AOE cards hit all 4 enemies and can quickly clear the board.</li>
+<li><strong>Noxious Fumes is strong</strong>: 3 poison/turn on 4 enemies = 12 total poison damage per turn scaling upward. Gremlins have low enough HP that 2-3 turns of Fumes can clear the board.</li>
+<li>With powers like After Image and Footwork, the fight becomes manageable once the highest-damage gremlins are removed.</li>
+</ul>
+
+<p>WHAT NOT TO DO:</p>
+<ul>
+<li>Ignore Sneaky Gremlin while setting up. It attacks every turn for 9-10 damage. Two turns of ignoring it costs 18-20 HP.</li>
+<li>Spread damage evenly without killing anything. Focus fire on the highest-priority target first.</li>
+<li>Spend all energy on block when a Sneaky Gremlin has 3 HP -- killing it prevents more damage than blocking it.</li>
+</ul>
 
 <footer>
   <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;

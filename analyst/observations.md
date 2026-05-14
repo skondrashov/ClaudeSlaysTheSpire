@@ -8,6 +8,13 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 
 ## Unconfirmed
 
+- **Silent Collector Turn 1 command confusion (Run 152)**: Player attempted to play Noxious Fumes+, Neutralize, and Defend on Turn 1 via a multi-card command, but the game parsed the commands differently than intended -- Survivor was played instead of Noxious Fumes+, and subsequent commands targeted wrong indices. This caused After Image and Footwork+ to not be played until Turns 2-3 (or later), leaving the player without defensive powers when the Turn 4 triple debuff landed. Likely a card indexing issue (indices shift after each card play). The player may need to play cards one at a time, verifying indices after each play.
+- **Necronomicon + Sneaky Strike interaction**: Necronomicon doubles the first 2+ cost attack per turn. Sneaky Strike costs 2E normally but 0E if a card was discarded this turn. If played at 0E, does Necronomicon still trigger (since the base cost is 2E)? Or does it check the paid cost? Not tested in Run 152 -- player died before confirming. Need observation.
+- **Collector Torch Head HP**: Playbook says 30-40 HP. Run 152 showed Torch Heads at ~24 HP (killed by Explosive Potion 10 + poison + Shiv 4). Need more data on exact Torch Head HP range.
+- **Slime Boss split check timing**: Run 152 player believed split happens at start of boss turn when HP is at or below 50%, not immediately on damage. The player dealt heavy damage in a single turn (75 to 35 HP) without the boss splitting mid-turn. This is consistent with "split checks at start of boss turn" not "split on damage." Need more observations to confirm definitively.
+- **Astrolabe boss relic for Silent**: Run 152 took Astrolabe to transform 3 Strikes into Concentrate+, Phantasmal Killer+, and Flechettes+. All three were strong additions. Astrolabe may be the best boss relic for Silent when Strikes are dead weight. One observation.
+- **Bloody Idol relic**: Heals 5 HP when gaining gold in combat. Obtained by trading Golden Idol at Forgotten Altar. One observation of the healing mechanic. Need confirmation of exact trigger conditions.
+
 - **Boss relic collection SKIPPED (3 occurrences: Run 71, Run 77, Run 142) -- but NOT in Runs 143-148.** Six consecutive clean runs including both VICTORIES. Bug resolved. Removing from active monitoring.
 - **Treasure chest relic SKIPPED (1 occurrence: Run 142 Floor 9) -- but NOT in Runs 143-148.** Six consecutive clean runs. Bug resolved.
 - Fungi Beast HP range: Playbook had ~19 HP. Run 141 showed one at 24 HP, other possibly 22 HP. Need more data to confirm Act 1 paired Fungi Beast HP range (22-28 suspected). May vary by ascension or Act.

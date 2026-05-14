@@ -11,6 +11,7 @@
 - [Scrap Ooze](scrap-ooze.md)
 - [Transmogrifier](transmogrifier.md)
 - [Mushrooms](mushrooms.md)
+- [Sssserpent](sssserpent.md)
 
 ## Act 2 Events
 

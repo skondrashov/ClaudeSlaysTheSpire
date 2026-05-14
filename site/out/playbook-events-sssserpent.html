@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home — Claude Slays the Spire</title>
+<title>Sssserpent (Act 1 Event) — Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 <style>
@@ -365,94 +365,34 @@ footer {
 <body>
 <h1>Claude Slays the Spire</h1>
 <div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
-<nav><a href="index.html" class="active">Home</a>
-<a href="playbook.html" class="">Playbook</a>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
 <a href="philosophy.html" class="">Philosophy</a>
 <a href="human-advice.html" class="">Human Advice</a>
 <a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-events.html">&larr; Back to Events</a></div><h1 id="sssserpent-act-1-event">Sssserpent (Act 1 Event)</h1>
 
-<div style="margin: 24px 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
-  <iframe
-    src="https://player.twitch.tv/?channel=ClaudeSlaysTheSpire&parent=claudeslaysthespire.org&muted=true"
-    height="360"
-    width="100%"
-    allowfullscreen
-    style="border: none; display: block;">
-  </iframe>
-</div>
+<p>OPTIONS:</p>
+<ul>
+<li><strong>[Agree]</strong>: Gain 175 gold. Receive Doubt curse (gain Weak each turn in combat).</li>
+<li><strong>[Disagree]</strong>: Nothing happens.</li>
+</ul>
 
-<div class="stats-grid">
-  <div class="stat"><div class="stat-value">76</div><div class="stat-label">Runs</div></div>
-  <div class="stat"><div class="stat-value">3</div><div class="stat-label">Wins</div></div>
-  <div class="stat"><div class="stat-value">51</div><div class="stat-label">Best Floor</div></div>
-  <div class="stat"><div class="stat-value">244</div><div class="stat-label">Playbook Entries</div></div>
-</div>
+<p>DECISION FRAMEWORK:</p>
+<ul>
+<li><strong>Check the map for upcoming shops before deciding.</strong> If a shop is within 2-3 floors, TAKE THE GOLD. Curse removal costs 75g at a shop. Net profit: 175 - 75 = 100 gold for free.</li>
+<li><strong>Refuse only if:</strong> (a) no shop is reachable before a dangerous fight, or (b) the curse cannot be removed before a boss/elite.</li>
+<li>Doubt is a manageable curse -- Weak on yourself reduces your attack damage by 25%, but does not affect block. If the curse gets stuck in hand for 1-2 fights before removal, the cost is reduced damage output, not death.</li>
+</ul>
 
-<div class="state-details">
-  <div class="state-card">
-    <h3>System</h3>
-    <p><strong>Model:</strong> Claude Opus 4.6 via Claude Code</p>
-    <p><strong>Character:</strong> Silent, Ascension 0</p>
-    <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
-  </div>
-  <div class="state-card">
-    <h3>The Loop</h3>
-    <p>A <strong>player agent</strong> plays a run with visible reasoning. When it ends, an <strong>analyst agent</strong> reviews what went wrong and updates the <a href="playbook.html">playbook</a>. Next run reads the updated knowledge. Repeat.</p>
-  </div>
-</div>
-<h2>Journey</h2>
-<div class="journey-grid">
-<div class="journey-card completed"><div class="journey-badge">A0 COMPLETE</div><div class="journey-name">Ironclad</div><div class="journey-stats">76 runs &middot; 3 wins &middot; Best floor 51</div></div>
-<div class="journey-card active"><div class="journey-badge">NOW PLAYING</div><div class="journey-name">Silent</div><div class="journey-stats">Ascension 0</div></div>
-</div>
+<p>KEY INSIGHT:</p>
+<p>Many events that offer gold + curse are designed with the expectation that you can route to a shop to remove the curse. The correct play is often: take the gold, route to a shop, remove the curse, net profit. This applies to Sssserpent and similar curse-giving events. The exception is Parasite, which cannot be removed at shops.</p>
 
-<div style="margin-bottom: 40px;">
-<p>
-Claude plays <a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>,
-makes decisions one at a time with explicit reasoning, and then reviews its own runs afterward to
-figure out what went wrong. No hardcoded strategy. Everything it knows comes from playing and
-self-review.
-</p>
-
-<p>
-The <a href="playbook.html">Playbook</a> is everything Claude has learned so far &mdash; card
-evaluations, enemy patterns, boss strategies, event guides. The
-<a href="changelog.html">Changelog</a> shows every update: what changed, what was learned, and when.
-</p>
-</div>
-<h2>Playbook</h2>
-<div class="category-grid">
-<div class="category-card"><a href="playbook-mechanics.html">
-  <h3>Game Mechanics</h3>
-</a></div>
-<div class="category-card"><a href="playbook-strategy.html">
-  <h3>Strategy</h3>
-</a></div>
-<div class="category-card"><a href="playbook-bosses.html">
-  <h3>Bosses</h3>
-  <div class="count">9 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-cards.html">
-  <h3>Cards</h3>
-  <div class="count">69 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-enemies.html">
-  <h3>Enemies</h3>
-  <div class="count">32 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-events.html">
-  <h3>Events</h3>
-  <div class="count">31 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-potions.html">
-  <h3>Potions</h3>
-  <div class="count">25 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-relics.html">
-  <h3>Relics</h3>
-  <div class="count">78 entries</div>
-</a></div>
-</div>
+<p>WHAT NOT TO DO:</p>
+<ul>
+<li>Refuse the gold reflexively because &quot;curses are bad.&quot; Evaluate the map first.</li>
+<li>Take the gold when no shop is reachable and the next fight is an elite or boss.</li>
+</ul>
 
 <footer>
   <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;

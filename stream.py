@@ -184,8 +184,12 @@ async def state_watcher():
                 init_state = json.load(f)
             was_in_game = init_state.get("in_game", False)
             if was_in_game:
-                print(f"[stream] Game already in progress on startup (floor {init_state.get('game_state', {}).get('floor', '?')})")
+                init_gs = init_state.get("game_state", {})
+                init_screen = init_gs.get("screen_type", "")
+                print(f"[stream] Game already in progress on startup (floor {init_gs.get('floor', '?')}, screen {init_screen})")
                 run_counted = True  # Don't count the in-progress run again
+                if init_screen == "GAME_OVER":
+                    game_over_handled = True  # Don't re-process game over on restart
     except Exception:
         pass
 
@@ -267,9 +271,9 @@ async def state_watcher():
                                 run_stats["floor_history"] = []
                             seed = gs.get("seed", None)
                             asc = gs.get("ascension_level", 0)
-                            # Dedupe: don't re-log same run+seed on restart
+                            # Dedupe: don't re-log same seed (each seed is unique per run)
                             already_logged = any(
-                                e.get("run") == run_stats["total_runs"] and e.get("seed") == seed
+                                e.get("seed") == seed and e.get("floor") == floor
                                 for e in run_stats["floor_history"]
                             )
                             if not already_logged:

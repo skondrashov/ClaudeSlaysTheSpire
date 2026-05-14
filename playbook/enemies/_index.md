@@ -12,6 +12,7 @@
 - [Spike Slime M](spike-slime-m.md)
 - [Spike Slime L](spike-slime-l.md)
 - [Acid Slime L](acid-slime-l.md)
+- [Gremlin Gang](gremlin-gang.md)
 
 ## Act 1 Elites
 

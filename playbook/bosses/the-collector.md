@@ -50,8 +50,14 @@ RUN 110 DEATH CASE STUDY (DEFEAT, Floor 33):
 - **MISSING CARDS**: Impervious (30 block absorbs an entire crisis turn), Shockwave+ (mass Weak reduces 37 incoming to ~28 for 3 turns). Either card likely saves this run.
 - **LESSON**: The 70% HP entry threshold is validated. At 57%, the Collector's Turn 4 triple debuff creates mathematically unwinnable turns even with optimal play. Also: Colosseum event must be factored into pre-boss HP planning.
 
+SILENT-SPECIFIC STRATEGY:
+- **Play defensive powers (After Image, Footwork+) IMMEDIATELY -- do not wait.** These powers must be active before Turn 4's triple debuff. After Image provides 1 block per card played (crucial when Frail reduces all other block). Footwork+ provides Dex that partially offsets Frail. If these powers sit in discard unplayed when the debuff lands, the post-debuff turns become unsurvivable.
+- **Poison (Noxious Fumes+) is the primary win condition for Silent.** Noxious Fumes+ applies 3 poison/turn to ALL enemies (Collector + both Torch Heads). Poison ignores block, bypasses Frail/Weak debuffs on the player, and scales passively. Set it up Turn 1 above all else.
+- **Piercing Wail+ is the Silent's Shockwave equivalent.** Reduces ALL enemy Str by 8 for 1 turn. Against Collector + 2 Torch Heads, this can reduce combined incoming by 20+ damage. Use it on high-damage turns (post-debuff or when multiple enemies attack).
+- **Prioritize killing Torch Heads with Shivs.** After Image + Shivs (0E each) generates block while dealing damage to Torch Heads. Each Shiv played = 1 free block + 4 damage. Two Shivs from Cloak and Dagger+ = 8 damage + 2 free block on top of C&D+'s base block.
+
 WHAT NOT TO DO:
-- Enter below 70% HP without Pantograph. Run 110 entered at 57% and died despite strong deck and optimal play. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive. The 70% threshold is non-negotiable.
+- Enter below 70% HP without Pantograph. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive. The 70% threshold is non-negotiable.
 - Ignore Torch Heads entirely. Their combined 14 damage/turn adds up. AOE that hits all three targets is far more efficient than single-target.
 - Save potions for "later." The post-debuff turns (5-7) are the crisis -- potions should be used to survive this window. Run 110 correctly used all 3 potions on Turn 5 but still died due to insufficient HP.
 - Play Shockwave+ on Turn 1 before Torch Heads spawn. Wait until Turn 2+ when all enemies are present.
