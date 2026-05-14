@@ -1,18 +1,14 @@
 # Philosophy
 
-## Why Not Self-Play?
+## How Humans Actually Learn
 
-The default assumption in AI game-playing is self-play: let the model play thousands of games, learn from wins and losses, converge on good strategy. It works for chess engines and Go bots. It does not resemble how humans actually learn complex games.
+The default assumption in AI game-playing is self-play: let the model play thousands of games, learn from wins and losses, converge on good strategy. Self-play works, and this project uses it — but it's not the only way humans learn, and it's not even the primary way.
 
 When a human picks up Slay the Spire for the first time, they don't play 10,000 runs in silence. They read a guide. They watch a streamer. They ask a friend "what does this relic do?" They get stomped by a boss, look up the mechanic, and come back with a plan. They develop *intuitions* from a handful of experiences, not *statistics* from a mountain of data.
 
 Self-play produces competence through volume. Human learning produces competence through *understanding* — and understanding transfers. A human who deeply learns one deckbuilder will be decent at a second one on day one. A self-play agent trained on one game knows nothing about the next.
 
-This project is an attempt to isolate the strategies humans use to learn, implement them for LLMs, and see if the resulting knowledge transfers.
-
-## How Humans Actually Learn
-
-We've identified several learning strategies that self-play doesn't naturally replicate:
+This project is an attempt to isolate the strategies humans use to learn, implement them for LLMs alongside self-play, and see if the resulting knowledge transfers. We've identified several learning strategies that self-play alone doesn't naturally replicate:
 
 - **Guided instruction.** Humans read guides, watch tutorials, and absorb distilled wisdom from experts. This project uses human coaching — explicit advice about mechanics, priorities, and common mistakes — alongside self-play.
 - **Structured review.** After a loss, humans don't just "try again." They analyze *what specifically went wrong*, update their mental model, and change their approach. Our analyst agent does exactly this: reads the run log, identifies mistakes, and updates the playbook with corrections.

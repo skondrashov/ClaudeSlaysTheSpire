@@ -372,19 +372,15 @@ footer {
 <a href="changelog.html" class="">Changelog</a></nav>
 <h1 id="philosophy">Philosophy</h1>
 
-<h2 id="why-not-self-play">Why Not Self-Play?</h2>
+<h2 id="how-humans-actually-learn">How Humans Actually Learn</h2>
 
-<p>The default assumption in AI game-playing is self-play: let the model play thousands of games, learn from wins and losses, converge on good strategy. It works for chess engines and Go bots. It does not resemble how humans actually learn complex games.</p>
+<p>The default assumption in AI game-playing is self-play: let the model play thousands of games, learn from wins and losses, converge on good strategy. Self-play works, and this project uses it — but it&#x27;s not the only way humans learn, and it&#x27;s not even the primary way.</p>
 
 <p>When a human picks up Slay the Spire for the first time, they don&#x27;t play 10,000 runs in silence. They read a guide. They watch a streamer. They ask a friend &quot;what does this relic do?&quot; They get stomped by a boss, look up the mechanic, and come back with a plan. They develop <em>intuitions</em> from a handful of experiences, not <em>statistics</em> from a mountain of data.</p>
 
 <p>Self-play produces competence through volume. Human learning produces competence through <em>understanding</em> — and understanding transfers. A human who deeply learns one deckbuilder will be decent at a second one on day one. A self-play agent trained on one game knows nothing about the next.</p>
 
-<p>This project is an attempt to isolate the strategies humans use to learn, implement them for LLMs, and see if the resulting knowledge transfers.</p>
-
-<h2 id="how-humans-actually-learn">How Humans Actually Learn</h2>
-
-<p>We&#x27;ve identified several learning strategies that self-play doesn&#x27;t naturally replicate:</p>
+<p>This project is an attempt to isolate the strategies humans use to learn, implement them for LLMs alongside self-play, and see if the resulting knowledge transfers. We&#x27;ve identified several learning strategies that self-play alone doesn&#x27;t naturally replicate:</p>
 
 <ul>
 <li><strong>Guided instruction.</strong> Humans read guides, watch tutorials, and absorb distilled wisdom from experts. This project uses human coaching — explicit advice about mechanics, priorities, and common mistakes — alongside self-play.</li>
