@@ -1,8 +1,17 @@
-# Slime Boss (Act 1, HP: ~140)
+# Slime Boss (Act 1, HP: 140)
 
-PATTERN:
-- Pre-split: Alternates between STRONG_DEBUFF turns (no attack, safe to go all-in) and high-damage ATTACK turns (35 damage). Debuff turns are safe windows for damage.
-- Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss's remaining HP at split. **Excess damage past 70 HP is wasted AND makes the fight harder** -- if the boss goes from 87 to 63, both slimes spawn with 63 HP each instead of 70 HP. This sounds helpful but you already dealt 17 "free" damage that could have been blocked instead; the real cost is that you overkilled by 7 HP on a hit that could have been split across two turns. Manage damage carefully: aim to trigger the split at exactly 70 HP or as close as possible.
+HP: 140 at A0, 150 at A9.
+
+PATTERN: Fixed repeating cycle: Goop Spray -> Preparing -> Slam. Splits at 50% HP or below.
+
+DAMAGE:
+- Goop Spray: 0 damage, adds 3 Slimed cards to discard pile (5 at A19)
+- Preparing: 0 damage (does nothing)
+- Slam: 35 damage (38 at A4)
+- Split: At 50% HP (70 HP at A0), disappears and spawns 1 Acid Slime (L) + 1 Spike Slime (L), each with the boss's current HP
+
+Pre-split: Alternates between debuff turns (Goop Spray + Preparing = safe to go all-in) and Slam (35 damage). Debuff turns are safe windows for damage.
+Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss's remaining HP at split. **Excess damage past 70 HP is wasted AND makes the fight harder** -- if the boss goes from 87 to 63, both slimes spawn with 63 HP each instead of 70 HP.
 - Post-split: Two enemies each with significant HP and damage. Spike Slime (L) attacks for ~16 and applies Frail. Acid Slime (L) attacks for ~11-12 and applies Weak. Combined 25-36 damage per turn. Both add Slimed cards to deck.
 
 KEY MECHANICS:

@@ -1,14 +1,18 @@
 # Hexaghost (Act 1, HP: 250)
 
-PATTERN:
-- **Turn 1**: Does NOT attack. Intent UNKNOWN. Free setup turn.
-- **Turn 2**: Multi-hit attack, ~5x6=30 damage. This is the FIRST big attack. Must have block on this turn -- spending all energy on setup with zero block is a common fatal mistake (see "Turn 2 blocking" below).
-- **Inferno**: 7x6 = 42 damage (multi-hit). Weak reduces each hit: floor(6*0.75)=4 per hit = 28 total. This is the most dangerous attack. Occurs later in the fight, not Turn 2.
-- **ATTACK_DEBUFF**: Moderate damage + adds Burn status cards to deck.
-- **DEFEND_BUFF**: Gains block and +Strength. No attack. Free turn for damage and Vulnerable refresh.
-- **Medium attacks**: 4-8 and 14-24 damage on non-Inferno attack turns.
-- **Block**: Can gain 12+ block.
-- **Fight length**: ~13 turns with adequate damage. Can extend to 23+ turns without damage scaling. Long fight.
+HP: 250 at A0, 264 at A9.
+
+PATTERN: Always starts with Activate (no damage, setup), then Divider. After that, repeats a 7-move cycle: Sear -> Tackle -> Sear -> Inflame -> Tackle -> Sear -> Inferno.
+
+DAMAGE:
+- Activate: 0 damage (setup turn)
+- Divider: (player max HP / 12 + 1) x 6 damage. At 80 max HP = 7x6 = 42. At 70 max HP = 6x6 = 36.
+- Sear: 6 damage + 1 Burn to discard (6 + 2 Burns at A19)
+- Tackle: 5x2 = 10 damage (6x2 = 12 at A4)
+- Inflame: 0 damage, gains 12 Block + 2 Strength (3 Str at A19)
+- Inferno: 2x6 = 12 damage + 3 Burns to discard (3x6 = 18 at A4). Upgrades all existing Burns to Burns+. After Inferno, subsequent Sears create Burns+ (4 damage each instead of 2).
+
+Fight length: ~13 turns with adequate damage. Can extend to 23+ turns without damage scaling. Long fight.
 
 KEY MECHANICS:
 - **Inferno (42 damage)**: Multi-hit means each hit is checked against block individually. Without Weak, this is near-impossible to survive. With Weak: 28 total, which is survivable.

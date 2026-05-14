@@ -1,5 +1,20 @@
-# Gremlin Leader (elite, Act 2, HP: ~131)
-PATTERN: Starts with 2 gremlins of varying types (Fat Gremlin, Shield Gremlin, Sneaky Gremlin, Mad Gremlin, etc.). Uses DEFEND_BUFF (Rally): gives ALL enemies +3 Strength permanently and stacking. Gremlins attack for base damage + accumulated Str. Leader itself attacks for 6x3 base (18 damage) when not rallying. Leader re-summons gremlins when they die -- killing gremlins is temporary relief, not permanent removal.
+# Gremlin Leader (elite, Act 2, HP: 140-148)
+
+PATTERN: Move selection depends on gremlin count:
+- 0 gremlins: Rally! 75% / Stab 25%
+- 1 gremlin (last was Encourage): Rally! 50% / Stab 50%
+- 1 gremlin (last was Stab): Rally! 62.5% / Encourage 37.5%
+- 2+ gremlins: Encourage 66% / Stab 34%
+Cannot use any intent twice in a row.
+
+DAMAGE:
+- Stab: 6x3 = 18 damage
+- Encourage: All enemies gain 3 Strength + other gremlins gain 6 Block (Str scales to 4-5, Block to 10-18 at higher Ascensions)
+- Rally!: Summons 2 random Gremlins (max 3 small gremlins at a time)
+
+HP: 140-148 at A0, 145-155 at A8
+
+Starts with 2 gremlins already present. Leader re-summons gremlins when they die -- killing gremlins is temporary relief, not permanent removal.
 KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight's damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader's own attacks.
 RALLY SCALING MATH: Rally fires roughly every other turn. By turn 3, all enemies have +3 Str. By turn 5, all enemies have +6 Str. By turn 7, all enemies have +9 Str. With 2 gremlins alive at +9 Str, gremlins alone deal (9+9)*2 = 36, plus the Leader's own attacks. Total incoming by turn 7-8 exceeds 50 per turn. Every wasted turn is effectively +3 Str to the entire board -- a single lost turn (e.g., ending turn early after Battle Trance draw without playing drawn cards) can be the difference between winning and losing.
 WHAT THIS MEANS: TURN ECONOMY IS EVERYTHING. Every turn must deal maximum damage or apply critical debuffs. Wasting even one turn (misplaying end-of-turn, failing to use drawn cards) allows Rally to stack once more, which compounds across all gremlins. KILL GREMLINS FAST to reduce per-turn damage, but prioritize Leader damage when possible because gremlins get re-summoned. AOE is critical for clearing gremlins efficiently. Apply Shockwave early for mass Weak + Vulnerable. The fight becomes mathematically unwinnable once Strength stacks too high (by turn 3-4 with multiple gremlins alive, incoming damage is 40+).

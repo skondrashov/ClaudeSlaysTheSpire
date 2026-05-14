@@ -1,11 +1,16 @@
 # Bronze Automaton (Act 2, HP: 300)
 
+HP: 300 at A0, 320 at A9.
+
 PATTERN:
-- **Turn 1**: Spawns 2 Orb minions (~50 HP each). Orbs use **Stasis** to steal a card from the player's hand, removing it from combat entirely.
-- **Subsequent turns**: Cycles between attacks, Strength gain (+3 Str per cycle), and Hyper Beam (a massive single-hit attack). Orbs continue stealing cards via Stasis.
-- **Hyper Beam**: Extremely high single-hit damage (observed 38-57 depending on accumulated Strength). First Hyper Beam fires around turn 6. Second fires around turn 12. After firing, Automaton loses all block and is stunned for one turn (vulnerability window). Without intent visibility (e.g. Runic Dome), this turn is impossible to predict and prepare for.
-- **Strength scaling**: Gains +3 Strength per cycle. By turn 6-7, all attacks hit significantly harder than their base values. First Hyper Beam (turn 6) reaches 45-51 damage. Second Hyper Beam (turn 12) reaches 57+ damage. The fight becomes unwinnable if it goes too long.
-- **Artifact 3**: Starts with 3 stacks of Artifact, which negate the first 3 debuff applications. Must strip all Artifact before Vulnerable, Weak, or Disarm take effect. Red Mask relic applies Weak at combat start, which strips 1 Artifact automatically (3->2) before the player's first turn.
+- **Turn 1**: Always Spawn Orbs -- summons 2 Bronze Orbs (HP: 52-58).
+- **Subsequent turns**: Fixed repeating cycle: Flail -> Boost -> Flail -> Boost -> HYPER BEAM -> Stunned.
+- **Flail**: 7x2 = 14 damage (8x2 = 16 at A4)
+- **Boost**: Gains 3 Strength + 9 Block
+- **HYPER BEAM**: 45 damage (50 at A4). After Hyper Beam, Automaton is Stunned for 1 turn (free damage window).
+- **Bronze Orbs**: 52-58 HP. Stasis (75% chance each turn until used, once per combat): steals highest-rarity card from draw pile. After Stasis: 70% Support Beam (Automaton gains 12 Block), 30% Beam (8 damage). Cannot use same attack 3x in a row. Killing an Orb returns the stolen card.
+- **Strength scaling**: +3 Str per Boost cycle. First Hyper Beam (turn 6): ~45-51 damage. Second (turn 12): ~57+ damage.
+- **Artifact 3**: Starts with 3 stacks of Artifact. Must strip all before debuffs stick. Red Mask relic strips 1 at combat start.
 
 KEY MECHANICS:
 - **Stasis (Orbs)**: Each Orb steals one card from the player's hand and holds it. The stolen card is completely removed from combat -- it cannot be drawn, played, or retrieved until the Orb is killed. Stasis targets Power and Skill cards preferentially. Observed stolen: Demon Form (Power), Flame Barrier+ (Skill), Metallicize (Power). Losing key cards to Stasis can cripple the deck mid-fight. This is the Automaton's most disruptive mechanic. Killing the Orb returns the stolen card to the player's hand.

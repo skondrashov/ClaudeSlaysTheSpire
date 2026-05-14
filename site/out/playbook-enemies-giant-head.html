@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giant Head (Elite, Act 3) — Claude Slays the Spire</title>
+<title>Giant Head (Elite, Act 3, HP: 500) — Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 <style>
@@ -370,20 +370,27 @@ footer {
 <a href="philosophy.html" class="">Philosophy</a>
 <a href="human-advice.html" class="">Human Advice</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="giant-head-elite-act-3">Giant Head (Elite, Act 3)</h1>
+<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="giant-head-elite-act-3-hp-500">Giant Head (Elite, Act 3, HP: 500)</h1>
 
-<p>HP: 625. Single target. Very long fight.</p>
+<p>Single target. Very long fight.</p>
 
-<p>KEY MECHANIC: <strong>Slow</strong> -- each card played in a turn increases a counter. Attack damage is reduced based on how many cards you&#x27;ve played that turn. This punishes wide turns with many card plays. Play fewer, bigger cards.</p>
+<p>POWER: <strong>Slow</strong> -- whenever you play a card, the Giant Head receives 10% more damage from Attacks this turn. This actually REWARDS playing many cards per turn -- more plays = more damage dealt to it.</p>
 
-<p>ATTACK PATTERN: Giant Head starts with low attacks (~13) but escalates by +5 every attack turn. By turn 8-10, attacks reach 50-60+, making the fight a DPS race.</p>
+<p>PATTERN: For the first 4 turns, uses Count (13 damage) or Glare (1 Weak) with 50/50 chance (cannot repeat either 3x in a row). After 4 turns, exclusively uses &quot;It Is Time&quot; for the rest of combat.</p>
 
-<p>DEBUFF TURN: Giant Head alternates attacks with a debuff turn (applies Weak, possibly status cards). This is a free damage turn with no incoming attack.</p>
+<p>DAMAGE:</p>
+<ul>
+<li>Count: 13 damage</li>
+<li>Glare: 0 damage, applies 1 Weak</li>
+<li>It Is Time: 30 damage base, increases by 5 per use (30 -&gt; 35 -&gt; 40 -&gt; 45 -&gt; 50 -&gt; 55 -&gt; 60 max)</li>
+</ul>
+
+<p>KEY MECHANIC: It Is Time escalates by +5 per use. After 4 turns of Count/Glare, every subsequent turn deals 30+ and growing. The fight is a DPS race -- kill before It Is Time reaches 50+.</p>
 
 <p>STRATEGY:</p>
 <ul>
-<li><strong>Demon Form is critical.</strong> Must be played Turn 1-2. At 625 HP, you need exponential Strength scaling to kill Giant Head before its attacks become unsurvivable. Delaying Demon Form by even 2-3 turns can be fatal.</li>
-<li><strong>Minimize card plays per turn</strong> due to Slow. Play 1-2 big attacks rather than 3-4 small ones.</li>
+<li><strong>Demon Form is critical.</strong> Must be played Turn 1-2. At 500 HP, you need exponential Strength scaling to kill Giant Head before its attacks become unsurvivable. Delaying Demon Form by even 2-3 turns can be fatal.</li>
+<li><strong>Slow HELPS you</strong> -- each card played makes Giant Head take 10% more damage from attacks this turn. Play many cards per turn to maximize damage. Shivs and multi-card turns are rewarded.</li>
 <li><strong>Immolate+ with high Strength</strong> is the best damage card -- single play, massive damage.</li>
 <li><strong>Entrench+ is essential</strong> for surviving high-damage turns. Double your block to keep pace with escalating attacks.</li>
 <li><strong>Impervious</strong> gives 30 block but exhausts. Save for the turn attacks spike past your normal block capacity.</li>
@@ -392,11 +399,11 @@ footer {
 
 <p>HP THRESHOLD: Enter this fight above 60% HP. The fight lasts 10+ turns with increasing damage. Even with good block, expect to take chip damage from turns where attacks exceed your block capacity.</p>
 
-<p>DEATH PATTERN (Run 149): Entered at 53/80 (66%). Accidentally exhausted Reaper+ Turn 1 due to index shifting. Demon Form delayed to Turn 4. By Turn 10, Giant Head was dealing 55+ damage/turn but had only lost ~250 of 625 HP. Fairy in a Bottle triggered Turn 10 (revive to 24 HP). Died Turn 11 to 60 damage with only 27 block. Lost the DPS race because Reaper and Demon Form were both unavailable early.</p>
+<p>DEATH PATTERN (Run 149): Entered at 53/80 (66%). Accidentally exhausted Reaper+ Turn 1 due to index shifting. Demon Form delayed to Turn 4. By Turn 10, Giant Head was dealing 55+ damage/turn but had only lost ~250 of 500 HP. Fairy in a Bottle triggered Turn 10 (revive to 24 HP). Died Turn 11 to 60 damage with only 27 block. Lost the DPS race because Reaper and Demon Form were both unavailable early.</p>
 
 <p>LESSON: <strong>Never use turn() sequences with cards that shift indices.</strong> Play one card at a time with state() checks between plays. A single index-shift error can exhaust a critical card and lose the fight.</p>
 
-<p>BARRICADE ENGINE APPROACH (CONFIRMED WIN): The Barricade + Corruption + FNP + Entrench + Body Slam engine can defeat Giant Head without Demon Form or Strength scaling. Body Slam+ with 66-83 accumulated block deals massive single-card damage (bypasses Slow penalty since it is one card play). Apotheosis on the setup turn upgrades all cards. Entrench+ doubles block from 63 to 126, then Body Slam+ delivers the killing blow. With Preserved Insect reducing HP by 25%, the effective HP is ~469. The engine completed the kill in 8 turns with zero HP lost after the block wall was established. The key advantage: Body Slam+ is a SINGLE card play per turn, so Slow penalty is minimal.</p>
+<p>BARRICADE ENGINE APPROACH (CONFIRMED WIN): The Barricade + Corruption + FNP + Entrench + Body Slam engine can defeat Giant Head without Demon Form or Strength scaling. Body Slam+ with 66-83 accumulated block deals massive single-card damage (bypasses Slow penalty since it is one card play). Apotheosis on the setup turn upgrades all cards. Entrench+ doubles block from 63 to 126, then Body Slam+ delivers the killing blow. With Preserved Insect reducing HP by 25%, the effective HP is ~375. The engine completed the kill in 8 turns with zero HP lost after the block wall was established. The key advantage: Body Slam+ is a SINGLE card play per turn, so Slow penalty is minimal.</p>
 
 <p>NOTE: Demon Form is NOT required to kill Giant Head. Either Demon Form (Strength scaling) or Barricade + Body Slam (block scaling) works. The fight is unwinnable only when NEITHER scaling engine is available.</p>
 

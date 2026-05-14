@@ -1,6 +1,15 @@
-# Shelled Parasite (hallway, Act 2, HP: 68-71)
-PATTERN: Attacks for 13+ damage per turn. Has Plated Armor 14 (blocks 14 damage per turn passively). Creates extremely long fights unless burst damage is available.
-KEY MECHANIC: Plated Armor 14 means the first 14 damage dealt each turn is absorbed. Only damage exceeding 14 actually reduces HP. This makes fights last 8-12+ turns, which is lethal at low HP.
+# Shelled Parasite (hallway, Act 2, HP: 68-72)
+
+PATTERN: Cannot use Fell on first turn. 40% Double Strike, 40% Life Suck, 20% Fell. Cannot use Double Strike or Life Suck 3x in a row. Cannot use Fell 2x in a row. At A17: always starts with Fell.
+
+DAMAGE:
+- Double Strike: 6x2 = 12 damage (7x2 = 14 at A2)
+- Life Suck: 10 damage, heals equal to unblocked damage (12 at A2)
+- Fell: 18 damage + 2 Frail (21 at A2)
+
+BUFFS: Plated Armor 14 -- reduces incoming damage by 14 per turn (each attack that deals damage reduces Plated Armor by 1). If all Plated Armor is broken, Shelled Parasite is Stunned for one turn (happens once per combat).
+
+KEY MECHANIC: Plated Armor 14 absorbs damage from each attack. Each hit reduces Plated Armor by 1, regardless of damage dealt. Multi-hit attacks strip Plated Armor faster (Double Strike removes 2 stacks). Life Suck heals the Shelled Parasite for unblocked damage, creating an attrition problem.
 WHAT THIS MEANS: Apply Vulnerable first, then use large single hits (not multiple small hits). Each hit must exceed 14 to make progress. Vulnerable reduces this effective threshold significantly.
 BRING: Burst damage (Carnage, Heavy Blade), Vulnerable application (Bash, Uppercut). Strength scaling (Inflame, Strength Potion) helps every hit break through the armor threshold.
 AVOID: Small multi-hit attacks (Whirlwind with low energy), decks that rely on chip damage, entering this fight below 40% HP.

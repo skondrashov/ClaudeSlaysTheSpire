@@ -1,6 +1,15 @@
-# Gremlin Nob (elite, Act 1, HP: 85)
-PATTERN: Turn 1: buffs (no attack). Subsequent turns: attacks for 14+ damage, scaling with Enrage stacks. When player plays a Skill card, gains +2 Strength (permanent, stacking).
-KEY MECHANIC: Enrage. Every Skill card played gives Nob +2 Strength permanently. Powers do NOT trigger Enrage.
+# Gremlin Nob (elite, Act 1, HP: 82-86)
+
+PATTERN: Always starts with Bellow (gains Enrage 2). After that: 33% Skull Bash, 67% Rush. Cannot use Rush three times in a row.
+
+DAMAGE:
+- Bellow: Gains Enrage 2 (whenever you play a Skill, Nob gains 2 Strength)
+- Skull Bash: 6 damage + 2 Vulnerable (8 at A2)
+- Rush (Bull Rush): 14 damage (16 at A2)
+
+HP: 82-86 at A0, 85-90 at A8
+
+KEY MECHANIC: Enrage 2. Every Skill card played gives Nob +2 Strength permanently. Powers do NOT trigger Enrage.
 WHAT THIS MEANS: Play ZERO Skills. No Defend, no True Grit, no Shrug It Off, no Shockwave, no Impervious. Only Attacks and Powers. Use potions for block instead of Skill cards. Turn 1 is free -- go all-in on damage.
 BENCHMARKS: 3-4 turn kill with zero Skills. Strength Potion on free turn 1 maximizes value. Playing 3 Skills gives Nob +6 Str, turning a manageable fight into near-death.
 BRING: Attack-heavy hand. Bash (Attack, safe). Potions for block/survival instead of Skills.

@@ -1,6 +1,15 @@
-# Chosen (hallway, Act 2, HP: 95-98)
-PATTERN: Turn 1 applies Hex (adds Dazed to draw pile when you play Skills). Applies Vulnerable to player. Has a 7x2 multi-attack (14 raw, 20 with Vulnerable on player). Gains +3 Strength over the fight. Attacks escalate from ~10 to 14 (7x2) to 20+ as Strength stacks.
-KEY MECHANIC: Hex. Every Skill card played adds a Dazed to draw pile. Blocking is actively costly -- each Defend clogs the deck. Also applies Vulnerable to player, making its 7x2 hit deal 20 effective damage.
+# Chosen (hallway, Act 2, HP: 95-99)
+
+PATTERN: Always starts with Poke, then Hex. After that, repeats: (Debilitate 50% / Drain 50%) followed by (Poke 60% / Zap 40%).
+
+DAMAGE:
+- Poke: 5x2 = 10 damage (6x2 = 12 at A2)
+- Zap: 18 damage (21 at A2)
+- Debilitate: 10 damage + 2 Vulnerable (12 at A2)
+- Drain: 0 damage, applies 3 Weak + gains 3 Strength
+- Hex: Applies Hex debuff (whenever you play a non-Attack card, shuffle 1 Dazed into draw pile)
+
+KEY MECHANIC: Hex. Every non-Attack card played adds a Dazed to draw pile. Blocking is actively costly -- each Defend clogs the deck. Also applies Vulnerable to player, making Zap (18) and Poke (10) hit harder.
 WHAT THIS MEANS: Minimize Skill usage. Front-load damage with Attacks. Bash+ is safe (Attack). Kill before Strength buffs make 7x2 lethal. With Vulnerable on you, even 7x2 base becomes 20 damage per turn. At low HP (<20), the 7x2 with Vulnerable is a death sentence.
 
 HP DRAIN: This fight routinely drains 30-40 HP even with a strong deck. If opening hand lacks block cards, the first 1-2 turns of unblocked 10-14 damage create immediate danger. At 50 HP entry, leaving at 17 HP is a realistic outcome -- which then makes the NEXT fight lethal (the death spiral pattern). Confirmed: 39 HP entry with Carnage+, Bash+, Headbutt, Dropkick, Demon Form, and Ghostly Armor resulted in 32 HP drain (39->7 HP) over 7 turns. Even with Demon Form scaling, the Chosen's Hex penalty on Skills and Vulnerable on the player made every turn painful. The fight is a reliable death spiral trigger in Act 2.

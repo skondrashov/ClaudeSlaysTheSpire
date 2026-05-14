@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Darklings (Act 3 Hallway) — Claude Slays the Spire</title>
+<title>Darklings (Act 3 Hallway, HP: 48-56 each) — Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 <style>
@@ -370,16 +370,27 @@ footer {
 <a href="philosophy.html" class="">Philosophy</a>
 <a href="human-advice.html" class="">Human Advice</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="darklings-act-3-hallway">Darklings (Act 3 Hallway)</h1>
+<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="darklings-act-3-hallway-hp-48-56-each">Darklings (Act 3 Hallway, HP: 48-56 each)</h1>
 
-<p>Three enemies. Each has moderate HP. Life Link mechanic: if any Darkling is killed while others survive, the killed Darkling revives at half HP at the start of the next turn.</p>
+<p>Three enemies. Life Link mechanic: if any Darkling is killed while others survive, the killed Darkling enters &quot;Regrowing&quot; state (cannot be targeted) for one turn, then revives at 50% HP.</p>
 
 <h2 id="mechanics">Mechanics</h2>
 
+<p>DAMAGE:</p>
 <ul>
-<li><strong>Life Link</strong>: Must kill all 3 Darklings simultaneously (same turn) or they revive at half HP. This is the defining mechanic -- partial kills are wasted damage.</li>
+<li>Nip: N damage (N = random 7-11, set at combat start; 9-13 at A2)</li>
+<li>Chomp: 8x2 = 16 damage (9x2 = 18 at A2) -- only used by outer Darklings</li>
+<li>Harden: Gains 12 Block (17 Block + 2 Str at A2)</li>
+<li>Reincarnate: Revives at 50% HP</li>
+</ul>
+
+<p>PATTERN (outer Darklings): Turn 1: 50/50 Nip or Harden. Other turns: 30% Nip, 40% Chomp, 30% Harden. Cannot use Harden or Chomp consecutively; Nip cannot repeat 3x.</p>
+<p>PATTERN (middle Darkling): Same as outer but cannot use Chomp.</p>
+
+<ul>
+<li><strong>Life Link</strong>: Must kill all 3 Darklings in the same turn or they revive at half HP. Partial kills are wasted unless all die simultaneously.</li>
 <li>Each Darkling attacks independently. Combined incoming can reach 25-35 damage/turn.</li>
-<li>Darklings can buff and debuff on non-attack turns.</li>
+<li>Darklings can gain Block and Strength on Harden turns.</li>
 </ul>
 
 <h2 id="strategy">Strategy</h2>

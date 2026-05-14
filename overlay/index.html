@@ -45,6 +45,11 @@
       background: rgba(8, 8, 12, 0.94);
       border-top: 3px solid rgba(140, 70, 230, 0.5);
       overflow: hidden;
+      transition: height 0.4s ease, background 0.4s ease;
+    }
+
+    .bottom-bar.strategy-expanded {
+      background: rgba(8, 8, 12, 0.99);
     }
 
     /* === CYCLING PANELS === */
@@ -636,17 +641,30 @@
     let currentPanel = 1;
     const panels = ['panelGameplay', 'panelContext', 'panelStrategy'];
     let cycleStart = Date.now();
+    let cycleTimer = null;
 
     // --- Bottom bar cycling with countdown bar ---
 
     function cyclePanel() {
+      // Collapse expanded strategy when leaving that panel
+      if (panels[currentPanel] === 'panelStrategy') {
+        const bar = document.querySelector('.bottom-bar');
+        bar.classList.remove('strategy-expanded');
+        bar.style.height = '';
+      }
       document.getElementById(panels[currentPanel]).classList.remove('active');
       currentPanel = (currentPanel + 1) % panels.length;
       document.getElementById(panels[currentPanel]).classList.add('active');
       cycleStart = Date.now();
     }
 
-    setInterval(cyclePanel, CYCLE_INTERVAL);
+    function resetCycleTimer() {
+      if (cycleTimer) clearInterval(cycleTimer);
+      cycleStart = Date.now();
+      cycleTimer = setInterval(cyclePanel, CYCLE_INTERVAL);
+    }
+
+    resetCycleTimer();
 
     // Animate the countdown bar — shrinks right-to-left, resets on cycle
     function updateCountdownBar() {
@@ -1061,8 +1079,15 @@
     function updateStrategy(label, reasoning) {
       document.getElementById('strategyTitle').textContent = 'Latest Strategy Reasoning';
       const el = document.getElementById('strategyContent');
-      el.textContent = reasoning;
-      fitStrategyText();
+
+      // Collapse consecutive blank lines and trim
+      const cleaned = reasoning.replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
+      el.textContent = cleaned;
+
+      // Reset any previous expansion
+      const bottomBar = document.querySelector('.bottom-bar');
+      bottomBar.classList.remove('strategy-expanded');
+      bottomBar.style.height = '';
 
       // Force-switch to strategy panel and reset cycle timer
       const stratIdx = panels.indexOf('panelStrategy');
@@ -1070,29 +1095,74 @@
         document.getElementById(panels[currentPanel]).classList.remove('active');
         currentPanel = stratIdx;
         document.getElementById(panels[currentPanel]).classList.add('active');
-        cycleStart = Date.now();
+        resetCycleTimer();
       }
+
+      // Fit text after layout settles
+      requestAnimationFrame(() => fitStrategyText());
     }
 
     function fitStrategyText() {
       const el = document.getElementById('strategyContent');
       const tile = el.closest('.strategy-tile');
       if (!tile) return;
-      const maxFontSize = 16;
-      const minFontSize = 9;
+      const bottomBar = document.querySelector('.bottom-bar');
+      const maxFontSize = 19;
+      const minFontSize = 15;
+      const defaultBarHeight = 236;
+      const maxBarHeight = 500;
+
+      // Reset to single column, default size
+      el.style.columnCount = '';
+      el.style.columnGap = '';
       let fontSize = maxFontSize;
       el.style.fontSize = fontSize + 'px';
 
-      // Available height = tile height minus title and padding
-      const titleEl = document.getElementById('strategyTitle');
-      const tileStyle = getComputedStyle(tile);
-      const tileHeight = tile.clientHeight
-        - parseFloat(tileStyle.paddingTop) - parseFloat(tileStyle.paddingBottom);
-      const availableHeight = tileHeight - titleEl.offsetHeight - 4;
+      function getAvailableHeight() {
+        const titleEl = document.getElementById('strategyTitle');
+        const tileStyle = getComputedStyle(tile);
+        const tileH = tile.clientHeight
+          - parseFloat(tileStyle.paddingTop) - parseFloat(tileStyle.paddingBottom);
+        return tileH - titleEl.offsetHeight - 4;
+      }
 
+      // Phase 1: shrink font to min at default bar height
+      let availableHeight = getAvailableHeight();
       while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
         fontSize -= 0.5;
         el.style.fontSize = fontSize + 'px';
+      }
+
+      // Phase 2: if still overflowing at min font, grow the bar to fit
+      if (el.scrollHeight > availableHeight) {
+        const overflow = el.scrollHeight - availableHeight;
+        const newHeight = Math.min(defaultBarHeight + overflow + 16, maxBarHeight);
+        bottomBar.classList.add('strategy-expanded');
+        bottomBar.style.height = newHeight + 'px';
+
+        // Re-fit with the extra space — try to get font back up
+        requestAnimationFrame(() => {
+          availableHeight = getAvailableHeight();
+          fontSize = maxFontSize;
+          el.style.fontSize = fontSize + 'px';
+          while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
+            fontSize -= 0.5;
+            el.style.fontSize = fontSize + 'px';
+          }
+
+          // Phase 3: if STILL overflowing, two columns as last resort
+          if (el.scrollHeight > availableHeight) {
+            el.style.columnCount = '2';
+            el.style.columnGap = '24px';
+            el.style.columnFill = 'auto';
+            fontSize = maxFontSize;
+            el.style.fontSize = fontSize + 'px';
+            while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
+              fontSize -= 0.5;
+              el.style.fontSize = fontSize + 'px';
+            }
+          }
+        });
       }
     }
 

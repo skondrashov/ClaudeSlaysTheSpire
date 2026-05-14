@@ -43,6 +43,15 @@
 
 - [Masterful Stab](masterful-stab.md)
 
+## Silent Skill Cards
+
+- [Blur](blur.md)
+
+## Silent Power Cards
+
+- [After Image](after-image.md)
+- [Wraith Form](wraith-form.md)
+
 ## Colorless Cards
 
 - [Apotheosis](apotheosis.md)

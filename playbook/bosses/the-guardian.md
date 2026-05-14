@@ -1,8 +1,11 @@
 # The Guardian (Act 1, HP: 240)
 
+HP: 240 at A0, 250 at A9.
+
 PATTERN:
-- **Attack Mode**: Cycles through ATTACK (5x4=20), ATTACK (32 single hit), ATTACK_BUFF (8x2=16), DEFEND (gains block, no damage), STRONG_DEBUFF (no damage). Mode Shift counter tracks total damage dealt to Guardian. When counter reaches 0, switches to Defensive Mode. Counter values by cycle: 30 (first), 40 (second), 50 (third). Triggering Mode Shift mid-attack CANCELS the current attack.
-- **Defensive Mode (Sharp Hide)**: Guardian gains Sharp Hide 3 -- deals 3 damage to player per Attack card played. Has its own attacks (9 damage, 8x2=16). After some turns, switches back to Attack Mode with higher Mode Shift counter.
+- **Offensive Mode** (repeating cycle): Charging Up (9 Block) -> Fierce Bash (32 damage) -> Vent Steam (2 Weak + 2 Vulnerable) -> Whirlwind (5x4 = 20 damage).
+- **Mode Shift**: After taking 30 HP of damage (first cycle; 40 second, 50 third, +10 each), gains 20 Block and switches to Defensive Mode. Triggering Mode Shift mid-attack CANCELS the current attack.
+- **Defensive Mode**: Sharp Hide 3 (deal 3 damage to player per Attack card played) -> Roll Attack (9 damage) -> Twin Slam (8x2 = 16 damage, removes Sharp Hide, resets Mode Shift counter to 30/40/50+10) -> returns to Offensive Mode.
 
 KEY MECHANICS:
 - **32-damage attack**: The Guardian's biggest single hit. Must have 32+ block capability in one turn or you die. Impervious (30 block) handles this. Double Metallicize (6/turn) + Intimidate (Weak, reduces to 24) also works.

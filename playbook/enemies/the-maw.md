@@ -1,11 +1,18 @@
-# The Maw (Act 3 Hallway, HP: ~300)
+# The Maw (Act 3 Hallway, HP: 300)
 
-Tanky single-target enemy with STRONG_DEBUFF on Turn 1 and escalating damage. Long fight (8-9 turns) that rewards defensive setup over burst.
+Tanky single-target enemy with Roar on Turn 1 and escalating damage. Long fight (8-9 turns) that rewards defensive setup over burst. HP does NOT change with Ascension.
 
 PATTERN:
-- **Turn 1**: STRONG_DEBUFF (Weak + Frail + Vulnerable applied to player). No damage.
-- **Turns 2+**: Alternates between BUFF (free turns, no damage) and ATTACK. Damage escalates: ~5 -> 16 -> 33 -> 56+.
-- Multiple free turns (BUFF intent) allow Power setup without HP loss.
+- **Turn 1**: Roar (applies 3 Weak + 3 Frail). No damage.
+- **Turns 2+**: After Drool -> 50/50 Slam or Nom Nom. After Slam -> 50/50 Nom Nom or Drool. After Nom Nom -> always Drool.
+
+DAMAGE:
+- Roar: 0 damage, applies 3 Weak + 3 Frail
+- Slam: 25 damage (30 at A2)
+- Nom Nom: 5xN damage (N increases -- roughly current turn / 2 rounded up)
+- Drool: 0 damage, gains 3 Strength (5 at A5)
+
+Multiple free turns (Drool and Roar intents) allow Power setup without HP loss.
 
 KEY MECHANICS:
 - **STRONG_DEBUFF Turn 1**: Applies Weak, Frail, and Vulnerable simultaneously. Frail reduces block by 25%, Weak reduces attack by 25%, Vulnerable increases damage taken by 50%. Lasts 2-3 turns. Plan to block through Frail-reduced values.

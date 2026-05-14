@@ -1,18 +1,18 @@
 # Gremlin Gang (Act 1 Hallway)
 
-A mixed group of 4 gremlins drawn from different types. Not to be confused with Gremlin Leader (an Act 2 elite with a distinct Rally mechanic).
+A mixed group of 4 gremlins randomly selected from: 2 Fat, 2 Sneaky, 2 Mad, 1 Shield, 1 Wizard. Not to be confused with Gremlin Leader (an Act 2 elite with a distinct Rally mechanic).
 
 GREMLIN TYPES (kill priority order):
 
-1. **Sneaky Gremlin** -- KILL FIRST. Glass cannon. Attacks for 9-10 damage per turn with low HP (~10-13). Left alive for multiple turns, cumulative damage is devastating (25+ damage observed from a single Sneaky Gremlin that survived 3 turns). Always attacks -- never buffs or defends. The highest single-target damage output of any gremlin type.
+1. **Sneaky Gremlin** (HP: 10-14) -- KILL FIRST. Glass cannon. Puncture: 9 damage every turn. Always attacks -- never buffs or defends. The highest single-target damage output of any gremlin type.
 
-2. **Gremlin Wizard** -- KILL SECOND. Charges a large attack over multiple turns (UNKNOWN intent while charging, then a big hit of 25-30). If the charge completes, the single hit can be lethal at low HP. Kill before the charge finishes. Lower priority than Sneaky Gremlin because the damage is delayed.
+2. **Gremlin Wizard** (HP: 21-25) -- KILL SECOND. Charges for 2 turns (Charging: no effect), then fires Ultimate Blast (25 damage). After first cycle, charges for 3 turns before each subsequent Ultimate Blast. Kill before the charge completes.
 
-3. **Fat Gremlin** -- MEDIUM PRIORITY. Attacks for 4-5 damage and applies Weak or Frail. Lower damage per turn than Sneaky Gremlin but the debuffs reduce your effectiveness.
+3. **Fat Gremlin** (HP: 13-17) -- MEDIUM PRIORITY. Smash: 4 damage + 1 Weak every turn. Lower damage but debuff reduces your effectiveness.
 
-4. **Shield Gremlin** -- LOWEST PRIORITY. Gives block to other gremlins. Annoying but not directly threatening. Kill last.
+4. **Mad Gremlin** (HP: 20-24) -- MEDIUM PRIORITY. Scratch: 4 damage every turn. Has Angry 1 (gains 1 Strength when taking damage). Do not spread incidental damage to it -- either commit to killing it or ignore it.
 
-5. **Mad Gremlin** -- MEDIUM PRIORITY. Attacks with moderate damage. Has Angry (gains Str when hit). Do not spread incidental damage to it -- either commit to killing it or ignore it.
+5. **Shield Gremlin** (HP: 12-15) -- LOWEST PRIORITY. Protect: gives 7 Block to a random ally every turn. Uses Shield Bash (6 damage) when alone. Annoying but not directly threatening. Kill last.
 
 STRATEGY:
 - **Turn 1**: Neutralize or Weak the highest-damage attacking gremlin (usually Sneaky Gremlin). Kill it with remaining energy if possible. Block the rest.

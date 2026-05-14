@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Champ — Claude Slays the Spire</title>
+<title>The Champ (Act 2, HP: 420) — Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 <style>
@@ -370,23 +370,26 @@ footer {
 <a href="philosophy.html" class="">Philosophy</a>
 <a href="human-advice.html" class="">Human Advice</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="the-champ">The Champ</h1>
+<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="the-champ-act-2-hp-420">The Champ (Act 2, HP: 420)</h1>
 
-<p>Act 2 Boss. Single target. High HP. Two-phase fight with a dangerous transition.</p>
+<p>HP: 420 at A0, 440 at A9. Single target. Two-phase fight with a dangerous transition.</p>
 
-<h2 id="phase-1-above-50-hp">Phase 1 (Above ~50% HP)</h2>
-<p>Attacks with moderate damage. Applies debuffs. Manageable if you have block and scaling.</p>
-
-<h2 id="phase-2-execute-below-50-hp">Phase 2 — Execute (Below ~50% HP)</h2>
-<p>When The Champ drops below approximately 50% HP, he performs Execute: cleanses ALL debuffs from himself, gains +8 Strength, and gains Metallicize 5 (5 block per turn permanently). This is a massive power spike.</p>
-
-<p>EXECUTE DETAILS:</p>
+<p>DAMAGE:</p>
 <ul>
-<li>Removes ALL player-applied debuffs (Weak, Vulnerable, Strength Down) instantly</li>
-<li>Gains +8 Strength permanently — subsequent attacks hit extremely hard</li>
-<li>Gains Metallicize 5 — passive 5 block every turn makes chip damage less effective</li>
-<li>Occurs once when crossing the ~50% HP threshold</li>
+<li>Heavy Slash: 16 damage (18 at A4)</li>
+<li>Face Slap: 12 damage + 2 Frail + 2 Vulnerable (14 at A4)</li>
+<li>Defensive Stance: 0 damage, gains 15 Block + 5 Metallicize</li>
+<li>Gloat: 0 damage, gains 2 Strength (3 at A4, 4 at A19)</li>
+<li>Taunt: 0 damage, applies 2 Weak + 2 Vulnerable</li>
+<li>Execute: 10x2 = 20 damage</li>
+<li>Anger: 0 damage, removes ALL debuffs, gains 6 Strength (9 at A4, 12 at A19)</li>
 </ul>
+
+<h2 id="phase-1-above-50-hp">Phase 1 (Above 50% HP)</h2>
+<p>Uses Taunt every 4 turns. On other turns: 15% Defensive Stance, 15% Gloat, 25% Face Slap, 45% Heavy Slash. No move used consecutively.</p>
+
+<h2 id="phase-2-anger-transition-below-50-hp">Phase 2 — Anger Transition (Below 50% HP)</h2>
+<p>When The Champ drops below 50% HP, he performs Anger: removes ALL debuffs, gains 6 Strength (+9 at A4, +12 at A19). Then repeats: Random Move -&gt; Random Move -&gt; Execute (10x2 = 20 damage).</p>
 
 <h2 id="strategy">Strategy</h2>
 

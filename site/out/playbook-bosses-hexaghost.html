@@ -372,17 +372,21 @@ footer {
 <a href="changelog.html" class="">Changelog</a></nav>
 <div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="hexaghost-act-1-hp-250">Hexaghost (Act 1, HP: 250)</h1>
 
-<p>PATTERN:</p>
+<p>HP: 250 at A0, 264 at A9.</p>
+
+<p>PATTERN: Always starts with Activate (no damage, setup), then Divider. After that, repeats a 7-move cycle: Sear -&gt; Tackle -&gt; Sear -&gt; Inflame -&gt; Tackle -&gt; Sear -&gt; Inferno.</p>
+
+<p>DAMAGE:</p>
 <ul>
-<li><strong>Turn 1</strong>: Does NOT attack. Intent UNKNOWN. Free setup turn.</li>
-<li><strong>Turn 2</strong>: Multi-hit attack, ~5x6=30 damage. This is the FIRST big attack. Must have block on this turn -- spending all energy on setup with zero block is a common fatal mistake (see &quot;Turn 2 blocking&quot; below).</li>
-<li><strong>Inferno</strong>: 7x6 = 42 damage (multi-hit). Weak reduces each hit: floor(6*0.75)=4 per hit = 28 total. This is the most dangerous attack. Occurs later in the fight, not Turn 2.</li>
-<li><strong>ATTACK_DEBUFF</strong>: Moderate damage + adds Burn status cards to deck.</li>
-<li><strong>DEFEND_BUFF</strong>: Gains block and +Strength. No attack. Free turn for damage and Vulnerable refresh.</li>
-<li><strong>Medium attacks</strong>: 4-8 and 14-24 damage on non-Inferno attack turns.</li>
-<li><strong>Block</strong>: Can gain 12+ block.</li>
-<li><strong>Fight length</strong>: ~13 turns with adequate damage. Can extend to 23+ turns without damage scaling. Long fight.</li>
+<li>Activate: 0 damage (setup turn)</li>
+<li>Divider: (player max HP / 12 + 1) x 6 damage. At 80 max HP = 7x6 = 42. At 70 max HP = 6x6 = 36.</li>
+<li>Sear: 6 damage + 1 Burn to discard (6 + 2 Burns at A19)</li>
+<li>Tackle: 5x2 = 10 damage (6x2 = 12 at A4)</li>
+<li>Inflame: 0 damage, gains 12 Block + 2 Strength (3 Str at A19)</li>
+<li>Inferno: 2x6 = 12 damage + 3 Burns to discard (3x6 = 18 at A4). Upgrades all existing Burns to Burns+. After Inferno, subsequent Sears create Burns+ (4 damage each instead of 2).</li>
 </ul>
+
+<p>Fight length: ~13 turns with adequate damage. Can extend to 23+ turns without damage scaling. Long fight.</p>
 
 <p>KEY MECHANICS:</p>
 <ul>

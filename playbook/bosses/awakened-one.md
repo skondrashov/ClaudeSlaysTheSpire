@@ -1,6 +1,17 @@
 # Awakened One (Act 3 Boss)
 
-HP: Phase 1 ~320, Phase 2 300. Two-phase fight. The Power-punishing boss.
+HP: Phase 1 = 300 (320 at A9). Phase 2 = 300. Regenerate 10 HP/turn in Phase 2. Two-phase fight. The Power-punishing boss.
+
+DAMAGE:
+- Slash: 20 damage
+- Soul Strike: 6x4 = 24 damage
+- Dark Echo: 40 damage (Phase 2 opener)
+- Tackle: 10x3 = 30 damage (Phase 2)
+- Sludge: 18 damage + adds Void card to deck (Phase 2)
+- Rebirth: Full heal to 300 HP, removes player debuffs on boss, loses Curiosity
+
+PATTERN (Phase 1): Opens with Slash. Then 75% Slash / 25% Soul Strike. Cannot use Slash 3x in a row or Soul Strike 2x in a row.
+PATTERN (Phase 2): Opens with Dark Echo (40 damage). Then 50% Tackle / 50% Sludge. Cannot use either 3x in a row.
 
 ## THE CENTRAL MECHANIC: CURIOSITY
 

@@ -1,4 +1,4 @@
-# 3 Cultists (hallway, Act 2, 3 Cultists with Ritual 3 each, ~50 HP each)
+# 3 Cultists (hallway, Act 2, 3 Cultists with Ritual 3 each, HP: 48-54 each)
 
 **THIS IS THE MOST LETHAL HALLWAY FIGHT IN THE GAME. Six deaths across all runs -- more than any other single encounter. A hallway fight that scales like an elite and has killed at 5%, 30%, 37%, 39%, 52%, and 53% HP entry.**
 

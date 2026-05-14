@@ -1,12 +1,21 @@
-# Darklings (Act 3 Hallway)
+# Darklings (Act 3 Hallway, HP: 48-56 each)
 
-Three enemies. Each has moderate HP. Life Link mechanic: if any Darkling is killed while others survive, the killed Darkling revives at half HP at the start of the next turn.
+Three enemies. Life Link mechanic: if any Darkling is killed while others survive, the killed Darkling enters "Regrowing" state (cannot be targeted) for one turn, then revives at 50% HP.
 
 ## Mechanics
 
-- **Life Link**: Must kill all 3 Darklings simultaneously (same turn) or they revive at half HP. This is the defining mechanic -- partial kills are wasted damage.
+DAMAGE:
+- Nip: N damage (N = random 7-11, set at combat start; 9-13 at A2)
+- Chomp: 8x2 = 16 damage (9x2 = 18 at A2) -- only used by outer Darklings
+- Harden: Gains 12 Block (17 Block + 2 Str at A2)
+- Reincarnate: Revives at 50% HP
+
+PATTERN (outer Darklings): Turn 1: 50/50 Nip or Harden. Other turns: 30% Nip, 40% Chomp, 30% Harden. Cannot use Harden or Chomp consecutively; Nip cannot repeat 3x.
+PATTERN (middle Darkling): Same as outer but cannot use Chomp.
+
+- **Life Link**: Must kill all 3 Darklings in the same turn or they revive at half HP. Partial kills are wasted unless all die simultaneously.
 - Each Darkling attacks independently. Combined incoming can reach 25-35 damage/turn.
-- Darklings can buff and debuff on non-attack turns.
+- Darklings can gain Block and Strength on Harden turns.
 
 ## Strategy
 

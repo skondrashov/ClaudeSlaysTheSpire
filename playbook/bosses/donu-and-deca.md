@@ -1,13 +1,24 @@
 # Donu and Deca (Act 3 Boss)
 
-Two enemies. Donu has 250 HP. Deca has 250 HP. Combined 500 HP. Each starts with Artifact 1 (blocks first debuff applied to that enemy). Defeated twice in consecutive victories. Both wins used Snecko Eye + Immolate+ + Limit Break + Str finishers.
+Two enemies. Donu has 250 HP. Deca has 250 HP. Combined 500 HP. Each starts with Artifact 2. Defeated twice in consecutive victories. Both wins used Snecko Eye + Immolate+ + Limit Break + Str finishers.
+
+DAMAGE:
+- Donu Circle of Power: 0 damage, all enemies gain 3 Strength
+- Donu Beam: 10x2 = 20 damage
+- Deca Beam: 10x2 = 20 damage + adds 2 Dazed to discard
+- Deca Square of Protection: 0 damage, all enemies gain 16 Block
+
+PATTERN:
+- Donu: Alternates Circle of Power and Beam (Circle -> Beam -> Circle -> Beam...)
+- Deca: Alternates Beam and Square of Protection (Beam -> Square -> Beam -> Square...)
 
 ## Mechanics
 
-- **Donu** buffs Strength for both enemies. Kill Donu FIRST to stop Strength scaling.
-- **Deca** applies debuffs (block-based, Dazed). Lower priority kill target.
+- **Donu** buffs Strength for both enemies (+3 Str every other turn). Kill Donu FIRST to stop Strength scaling.
+- **Deca** applies Dazed cards and gives both enemies 16 Block. Lower priority kill target.
+- **Artifact 2** on each: first 2 debuffs per enemy are negated.
 - Combined incoming damage starts around 20/turn and scales as Donu buffs Strength.
-- Both enemies can have block (observed 8-16 block on various turns).
+- Both enemies can have 16 block from Square of Protection.
 - Fight length: 6-10 turns depending on deck power. With Snecko Eye and Strength scaling, 6 turns is achievable.
 
 ## Winning Strategy (confirmed)

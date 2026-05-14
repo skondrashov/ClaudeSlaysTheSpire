@@ -1,10 +1,18 @@
-# Writhing Mass (Act 3 Hallway, HP: ~160)
+# Writhing Mass (Act 3 Hallway, HP: 160)
 
-A tanky enemy with two synergistic defensive mechanics that make it a significant HP drain even with a strong deck.
+A tanky enemy with two synergistic defensive mechanics that make it a significant HP drain even with a strong deck. HP increases to 175 at A7.
 
 PATTERN:
-- Alternates between attacks (single-hit and multi-hit) and debuff turns (STRONG_DEBUFF applying Vulnerable, Frail, Weakened).
-- Multi-hit attacks (e.g., 4x3, 6x3) are the primary damage source.
+- First turn: equal random chance among Multi Hit, Big Hit, or Debuff Attack
+- Subsequent turns: 30% Multi Hit, 10% Big Hit, 20% Debuff Attack, 30% Block Attack, 10% Parasite
+- Parasite can only be used once. Same move cannot be used (or rerolled via Reactive) twice in a row
+
+DAMAGE:
+- Multi Hit: 7x3 = 21 damage (9x3 = 27 at A2)
+- Big Hit: 32 damage (38 at A2)
+- Debuff Attack: 10 damage + 2 Weak + 2 Vulnerable (12 at A2)
+- Block Attack: 15 damage + gains 16 Block (16 at A2)
+- Parasite: Permanently adds Parasite curse to your deck (once per combat)
 
 KEY MECHANICS:
 - **Reactive**: Changes the Writhing Mass's weakness/intent when you play certain card types. Unpredictable -- you cannot reliably plan around its intent shifts.

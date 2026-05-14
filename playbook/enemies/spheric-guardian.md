@@ -1,5 +1,14 @@
-# Spheric Guardian (hallway, Act 2, HP: ~20, effectively 60+)
-PATTERN: Starts with 40 block + Barricade (block persists) + 3 Artifact + applies Frail 5. Alternates between attacking (10x2 = 20 damage) and defending (gains 15-20 block that persists due to Barricade). On attack turns, it deals 10x2=20. On defend turns, it deals 0 damage and adds block to its existing total.
+# Spheric Guardian (hallway, Act 2, HP: 20, effectively 60+)
+
+STARTS WITH: Artifact 3, Block 40, Barricade (block never expires).
+
+PATTERN: Fixed sequence: Activate (25 Block) -> Slam (10 damage + 5 Frail) -> then alternates Slam (10x2 = 20 damage) and Harden (10 damage + 15 Block) for rest of combat.
+
+DAMAGE:
+- Activate: 0 damage, gains 25 Block
+- Slam (first): 10 damage + applies 5 Frail
+- Slam (subsequent): 10x2 = 20 damage
+- Harden: 10 damage + gains 15 Block
 KEY MECHANIC: Barricade means block never expires. The Spheric Guardian GAINS block on defend turns (observed 15-20 block gained per action), and since block persists via Barricade, it stacks indefinitely. Combined with alternating attack/defend, the block grows faster than chip damage can remove it. At low Strength (0-1), Strikes deal 6-7 per play vs 15-20 block gained per defend cycle. The block will grow every other turn even while being attacked on the off turns.
 WHAT THIS MEANS: This is a DPS check disguised as a hallway fight. At 1 Strength, Strikes deal 6-7 damage per play. The Spheric Guardian gains 15-20 block on defend turns and retains leftover block. After 5-6 turns, its block reaches 40-64 and never comes down. The fight becomes mathematically unwinnable without sufficient Strength scaling or burst damage. Strip 3 Artifact charges first with cheap debuffs (Thunderclap ideal). Then apply Vulnerable. Then burst through remaining block + HP.
 BENCHMARKS: Must kill within 6-8 turns or block becomes insurmountable. Expect 30-50+ HP lost from Frail-reduced blocking vs 10x2 attacks. At low Strength without burst, this fight is a guaranteed loss through attrition.

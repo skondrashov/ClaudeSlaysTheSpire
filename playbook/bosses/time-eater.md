@@ -1,14 +1,22 @@
 # Time Eater (Act 3 Boss)
 
-HP: 480. Single target. The card-count boss.
+HP: 456 at A0, 480 at A9. Single target. The card-count boss.
+
+DAMAGE:
+- Reverberate: 7x3 = 21 damage (8x3 = 24 at A4)
+- Head Slam: 26 damage + 1 Draw Reduction (32 at A4; adds 2 Slimed at A19)
+- Ripple: 0 damage, gains 20 Block + applies 1 Vulnerable + 1 Weak (adds 1 Frail at A19)
+- Haste (at 50% HP, once): Removes all debuffs, heals to 50% HP, gains 32 Block
+
+PATTERN: 45% Reverberate, 35% Head Slam, 20% Ripple. Cannot use Reverberate 3x in a row. Cannot use Head Slam or Ripple 2x in a row.
 
 KEY MECHANIC: **Time Warp** -- every 12 cards played, Time Eater heals 32 HP, gains +2 Strength, and ends your turn immediately. This is a real test of intelligence. You must track exactly where you are in the 12-card cycle at all times -- not approximately, EXACTLY. Every card play counts, including 0-cost cards, Shivs, Powers, and cards generated mid-turn.
 
-**Deliberate card counting is mandatory.** Before playing any card, know the current count (e.g., "I am at 9/12"). Plan your turn around the count: if you are at 10/12, you have exactly 2 plays before Time Warp triggers. Use those 2 plays for maximum impact (block + damage), not throwaway cards. If you are at 8/12 with a hand of 5 cards, you know playing all 5 will trigger Time Warp at card 12 and waste 1 card play on the auto-ended turn -- so either play 4 high-impact cards and save the 5th, or play all 5 and accept the trigger on your terms.
+**Haste** triggers once when HP drops below 50%: removes all debuffs, heals back to 50% HP (228 at A0), gains 32 Block. This effectively means you must deal ~684 total damage (456 * 1.5) to kill the Time Eater. Re-apply debuffs after Haste triggers.
 
-**Intentional phasing means choosing WHEN Time Warp triggers.** Do not let Time Warp catch you mid-turn with important plays left. Plan to trigger it at a moment that minimizes waste: ideally your last 1-2 plays of a turn should be the ones that push past 12, so the forced turn-end costs you nothing. Triggering Time Warp after playing a big block card (so the block carries into the next turn under Barricade) is excellent. Triggering it with 2 unplayed attack cards in hand is terrible.
+**Deliberate card counting is mandatory.** Before playing any card, know the current count (e.g., "I am at 9/12"). Plan your turn around the count: if you are at 10/12, you have exactly 2 plays before Time Warp triggers. Use those 2 plays for maximum impact (block + damage), not throwaway cards.
 
-ATTACK PATTERN: Alternates between attacks (~22-30 damage, scaling with Str) and debuff/buff turns. Applies Vulnerable, draws cards, gains block. Damage escalates as Time Warp stacks Strength (+2 per trigger).
+**Intentional phasing means choosing WHEN Time Warp triggers.** Do not let Time Warp catch you mid-turn with important plays left. Plan to trigger it at a moment that minimizes waste: ideally your last 1-2 plays of a turn should be the ones that push past 12, so the forced turn-end costs you nothing.
 
 STRATEGY:
 - **Track the 12-card count explicitly every turn.** State your count before and after each play. "Count is 7/12, playing Entrench+ makes it 8/12, playing Body Slam+ makes it 9/12, ending turn." This is not optional -- losing track of the count leads to wasted turns and unplanned Time Warp triggers.

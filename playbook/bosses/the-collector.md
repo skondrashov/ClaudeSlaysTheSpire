@@ -1,16 +1,20 @@
 # The Collector (Act 2, HP: 282)
 
+HP: 282 at A0, 300 at A9.
+
 PATTERN:
-- **Turn 1**: Spawns 2 Torch Head minions (30-40 HP each, attack for 7 damage each).
-- **Turn 2-3**: Attacks for ~15-20 damage while Torch Heads also attack.
-- **Turn 4**: Uses STRONG_DEBUFF -- applies Vulnerable 3, Frail 3, and Weakened 3 simultaneously. No damage on this turn.
-- **Turn 5+**: Attacks while player is fully debuffed. Combined damage from Collector + 2 Torch Heads is 40-50+ raw, amplified by Vulnerable on player. Frail cuts block cards by 25%. Weakened cuts player's attack damage by 25%.
-- **Minion respawn**: The Collector can resummon Torch Heads if they die. Killing Torch Heads is not a permanent solution.
+- **Turn 1**: Always Spawn -- summons 2 Torch Head minions (HP: 38-40, attack for 7 damage each).
+- **Turn 2-3**: Fireball (18 damage) or Buff (all enemies gain 3 Str, Collector gains 15 Block).
+- **Turn 4**: Always Mega Debuff -- applies 3 Weak + 3 Vulnerable + 3 Frail simultaneously. No damage.
+- **Turn 5+**: With 0-1 minions: Spawn 25% / Fireball 45% / Buff 30%. With 2 minions: Fireball 70% / Buff 30%. Cannot use Buff 2x in a row. Cannot use Fireball 3x in a row.
+- **Torch Heads**: 38-40 HP. Tackle for 7 damage every turn. Minion tag.
+- **Minion respawn**: The Collector can resummon Torch Heads if they die. Max 2 active at a time.
 
 KEY MECHANICS:
 - **STRONG_DEBUFF (Turn 4)**: The most dangerous mechanic. Applies ALL THREE debuffs at once -- Vulnerable 3 (take 50% more damage), Frail 3 (block cards give 25% less), Weakened 3 (deal 25% less damage). This single turn makes the following 3 turns nearly unwinnable at low HP. Must have sufficient HP buffer to survive post-debuff turns.
-- **Torch Heads**: Each deals 7 damage per turn. Combined with the Collector's own attacks, total incoming damage is 25-35+ per turn normally, and 40-50+ when Vulnerable is on the player.
-- **HP check boss**: Unlike The Guardian (long fight, sustained block needed) or Hexaghost (specific counter cards needed), the Collector is primarily an HP check. Entering at low HP means the STRONG_DEBUFF turn creates unwinnable math.
+- **DEFEND_BUFF Strength scaling**: Each time the Collector uses Buff (DEFEND_BUFF), ALL enemies gain +3 Str and the Collector gains 15 Block. The Collector starts at Str 3. Over a long fight with 4+ DEFEND_BUFF uses, Str escalates to 9-14+. By Turn 15-19, Fireball hits for 30+ instead of 18. Combined with Torch Heads that also gain +3 Str per buff, total incoming per attack turn can exceed 50-60 in extended fights. This makes long fights exponentially more dangerous -- the Collector is not just an HP check but a DPS race.
+- **Torch Heads**: Each deals 7 damage per turn (base). Combined with the Collector's own attacks, total incoming damage is 25-35+ per turn normally, and 40-50+ when Vulnerable is on the player. Torch Heads also gain +3 Str from each DEFEND_BUFF, so late-fight Torch Heads hit for 13-16+ each.
+- **HP check boss AND DPS race**: The Collector punishes both low HP entry (STRONG_DEBUFF creates unwinnable math at low HP) and slow kill speed (DEFEND_BUFF Str scaling makes late-fight attacks devastating). Entering at low HP means the STRONG_DEBUFF turn creates unwinnable math. Extending the fight means DEFEND_BUFF Str scaling compounds to lethal levels.
 
 PREPARATION CHECKLIST:
 1. **Enter at 70%+ HP or have Pantograph** -- the STRONG_DEBUFF on Turn 4 creates a 3-turn window where incoming damage spikes by 50% and block is reduced by 25%. Pantograph heals 25 HP at boss start, which helps but does NOT bypass the threshold if you enter more than 25 HP below max. Without Pantograph, low HP entry is fatal.
@@ -52,9 +56,11 @@ RUN 110 DEATH CASE STUDY (DEFEAT, Floor 33):
 
 SILENT-SPECIFIC STRATEGY:
 - **Play defensive powers (After Image, Footwork+) IMMEDIATELY -- do not wait.** These powers must be active before Turn 4's triple debuff. After Image provides 1 block per card played (crucial when Frail reduces all other block). Footwork+ provides Dex that partially offsets Frail. If these powers sit in discard unplayed when the debuff lands, the post-debuff turns become unsurvivable.
-- **Poison (Noxious Fumes+) is the primary win condition for Silent.** Noxious Fumes+ applies 3 poison/turn to ALL enemies (Collector + both Torch Heads). Poison ignores block, bypasses Frail/Weak debuffs on the player, and scales passively. Set it up Turn 1 above all else.
+- **Poison (Noxious Fumes+) is the primary win condition for Silent.** Noxious Fumes+ applies 3 poison/turn to ALL enemies (Collector + both Torch Heads). Poison ignores block, bypasses Frail/Weak debuffs on the player, and scales passively. Set it up Turn 1 above all else. Poison is especially important because it is the only damage source unaffected by the Weakened debuff from Turn 4.
 - **Piercing Wail+ is the Silent's Shockwave equivalent.** Reduces ALL enemy Str by 8 for 1 turn. Against Collector + 2 Torch Heads, this can reduce combined incoming by 20+ damage. Use it on high-damage turns (post-debuff or when multiple enemies attack).
 - **Prioritize killing Torch Heads with Shivs.** After Image + Shivs (0E each) generates block while dealing damage to Torch Heads. Each Shiv played = 1 free block + 4 damage. Two Shivs from Cloak and Dagger+ = 8 damage + 2 free block on top of C&D+'s base block.
+- **Wraith Form timing is critical.** Do NOT play Wraith Form early in this fight. The Collector fight lasts 15-20 turns due to DEFEND_BUFF turns and Torch Head respawns extending the fight. Playing Wraith Form on Turn 2 means Dex is -17 or worse by Turn 19, making all Skill-based block 0. After Image (~7-8 block/turn) cannot survive 50-60 incoming from Str-scaled attacks. Hold Wraith Form until the Collector is below 50 HP or the fight will end within 5-6 turns. See wraith-form.md for detailed timing rules.
+- **The Collector's DEFEND_BUFF Str scaling punishes slow kills.** Each DEFEND_BUFF gives all enemies +3 Str. In a 19-turn fight with 4+ DEFEND_BUFF uses, the Collector's Fireball scales from 18 to 30+ and Torch Heads hit for 13-16 each instead of 7. Poison scaling (Noxious Fumes+) is the answer -- it kills passively without extending the fight.
 
 WHAT NOT TO DO:
 - Enter below 70% HP without Pantograph. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive. The 70% threshold is non-negotiable.

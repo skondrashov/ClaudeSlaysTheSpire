@@ -1,10 +1,15 @@
-# Slavers (Elite, Act 2, 3 enemies: Slaver + Taskmaster + Slaver)
+# Slavers (Elite, Act 2, 3 enemies: Blue Slaver + Red Slaver + Taskmaster)
 
 PATTERN: All three enemies attack on turn 1 for combined 27+ damage. No free setup turn. Subsequent turns continue with high combined damage from three independent attackers.
 
 KEY MECHANIC: Three-enemy pressure from the very first turn. Unlike most multi-enemy fights, there is NO free turn -- all three attack immediately. Combined damage of 27+ per turn makes this fight extremely HP-dependent.
 
-HP: Slavers ~36-46 HP each (one observed at 36 HP with Preserved Insect -25% reduction, suggesting base ~48). Taskmaster ~60.
+HP:
+- Blue Slaver: 46-50 (Stab 12, Rake 7 + 1 Weak. 60% Stab / 40% Rake, no 3x same)
+- Red Slaver: 46-50 (Stab 13, Scrape 8 + 1 Vuln, Entangle once. Opens with Stab, then Scrape/Scrape/Stab until Entangle fires at 25% per turn)
+- Taskmaster: 54-60 (Scouring Whip: 7 damage + shuffles 1 Wound into discard pile)
+
+KILL PRIORITY: Red Slaver first (highest damage at 13 per Stab, applies Vulnerable which amplifies ALL incoming, Entangle can lock you out of attacks). Then Blue Slaver (Weak debuff is annoying but less dangerous than Vulnerable). Taskmaster last (only 7 damage and Wounds are manageable).
 
 WHAT THIS MEANS: This fight is unwinnable at low HP. Entering at 21/77 HP (27%) resulted in death by turn 3 despite having Demon Form, Flame Barrier+, Rage, Disarm, Uppercut, and Rampage in the deck. The math is simple: 27+ incoming per turn, maximum ~21 block available per turn with good draws, means 6+ unblocked damage per turn. At 21 HP, that's 3-4 turns before death, and 3-4 turns is not enough to kill any of the three enemies.
 

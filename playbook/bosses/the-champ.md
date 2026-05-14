@@ -1,18 +1,21 @@
-# The Champ
+# The Champ (Act 2, HP: 420)
 
-Act 2 Boss. Single target. High HP. Two-phase fight with a dangerous transition.
+HP: 420 at A0, 440 at A9. Single target. Two-phase fight with a dangerous transition.
 
-## Phase 1 (Above ~50% HP)
-Attacks with moderate damage. Applies debuffs. Manageable if you have block and scaling.
+DAMAGE:
+- Heavy Slash: 16 damage (18 at A4)
+- Face Slap: 12 damage + 2 Frail + 2 Vulnerable (14 at A4)
+- Defensive Stance: 0 damage, gains 15 Block + 5 Metallicize
+- Gloat: 0 damage, gains 2 Strength (3 at A4, 4 at A19)
+- Taunt: 0 damage, applies 2 Weak + 2 Vulnerable
+- Execute: 10x2 = 20 damage
+- Anger: 0 damage, removes ALL debuffs, gains 6 Strength (9 at A4, 12 at A19)
 
-## Phase 2 — Execute (Below ~50% HP)
-When The Champ drops below approximately 50% HP, he performs Execute: cleanses ALL debuffs from himself, gains +8 Strength, and gains Metallicize 5 (5 block per turn permanently). This is a massive power spike.
+## Phase 1 (Above 50% HP)
+Uses Taunt every 4 turns. On other turns: 15% Defensive Stance, 15% Gloat, 25% Face Slap, 45% Heavy Slash. No move used consecutively.
 
-EXECUTE DETAILS:
-- Removes ALL player-applied debuffs (Weak, Vulnerable, Strength Down) instantly
-- Gains +8 Strength permanently — subsequent attacks hit extremely hard
-- Gains Metallicize 5 — passive 5 block every turn makes chip damage less effective
-- Occurs once when crossing the ~50% HP threshold
+## Phase 2 — Anger Transition (Below 50% HP)
+When The Champ drops below 50% HP, he performs Anger: removes ALL debuffs, gains 6 Strength (+9 at A4, +12 at A19). Then repeats: Random Move -> Random Move -> Execute (10x2 = 20 damage).
 
 ## Strategy
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slime Boss (Act 1, HP: ~140) — Claude Slays the Spire</title>
+<title>Slime Boss (Act 1, HP: 140) — Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 <style>
@@ -370,12 +370,23 @@ footer {
 <a href="philosophy.html" class="">Philosophy</a>
 <a href="human-advice.html" class="">Human Advice</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="slime-boss-act-1-hp-140">Slime Boss (Act 1, HP: ~140)</h1>
+<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="slime-boss-act-1-hp-140">Slime Boss (Act 1, HP: 140)</h1>
 
-<p>PATTERN:</p>
+<p>HP: 140 at A0, 150 at A9.</p>
+
+<p>PATTERN: Fixed repeating cycle: Goop Spray -&gt; Preparing -&gt; Slam. Splits at 50% HP or below.</p>
+
+<p>DAMAGE:</p>
 <ul>
-<li>Pre-split: Alternates between STRONG_DEBUFF turns (no attack, safe to go all-in) and high-damage ATTACK turns (35 damage). Debuff turns are safe windows for damage.</li>
-<li>Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss&#x27;s remaining HP at split. <strong>Excess damage past 70 HP is wasted AND makes the fight harder</strong> -- if the boss goes from 87 to 63, both slimes spawn with 63 HP each instead of 70 HP. This sounds helpful but you already dealt 17 &quot;free&quot; damage that could have been blocked instead; the real cost is that you overkilled by 7 HP on a hit that could have been split across two turns. Manage damage carefully: aim to trigger the split at exactly 70 HP or as close as possible.</li>
+<li>Goop Spray: 0 damage, adds 3 Slimed cards to discard pile (5 at A19)</li>
+<li>Preparing: 0 damage (does nothing)</li>
+<li>Slam: 35 damage (38 at A4)</li>
+<li>Split: At 50% HP (70 HP at A0), disappears and spawns 1 Acid Slime (L) + 1 Spike Slime (L), each with the boss&#x27;s current HP</li>
+</ul>
+
+<p>Pre-split: Alternates between debuff turns (Goop Spray + Preparing = safe to go all-in) and Slam (35 damage). Debuff turns are safe windows for damage.</p>
+<p>Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss&#x27;s remaining HP at split. <strong>Excess damage past 70 HP is wasted AND makes the fight harder</strong> -- if the boss goes from 87 to 63, both slimes spawn with 63 HP each instead of 70 HP.</p>
+<ul>
 <li>Post-split: Two enemies each with significant HP and damage. Spike Slime (L) attacks for ~16 and applies Frail. Acid Slime (L) attacks for ~11-12 and applies Weak. Combined 25-36 damage per turn. Both add Slimed cards to deck.</li>
 </ul>
 

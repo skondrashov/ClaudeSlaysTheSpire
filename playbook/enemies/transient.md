@@ -2,14 +2,17 @@
 
 The Transient disappears after 5 turns (Fading 5 loses 1 per turn, dies at 0). The fight is a pure survival check -- outlast 5 turns of escalating damage.
 
-PATTERN:
-- **Turn 1**: Attacks for 30 damage.
-- **Turn 2**: Attacks for 40 damage.
-- **Turn 3**: Attacks for 50 damage.
-- **Turn 4**: Attacks for 60 damage.
-- **Turn 5**: Attacks for 70 damage.
-- **Total damage over 5 turns: 250.** Damage increases by 10 per turn.
-- **Shifting**: Gains block when attacked. Attacking the Transient is generally wasteful -- it has 999 HP and cannot be killed through damage in practice.
+PATTERN: Attacks every turn with escalating damage.
+- **Turn 1**: 30 damage (40 at A2)
+- **Turn 2**: 40 damage (50 at A2)
+- **Turn 3**: 50 damage (60 at A2)
+- **Turn 4**: 60 damage (70 at A2)
+- **Turn 5**: 70 damage (80 at A2)
+- **Total damage over 5 turns: 250 at A0.** Damage increases by 10 per turn.
+
+POWERS:
+- **Fading 5**: Loses 1 per turn, dies at 0 (6 at A17)
+- **Shifting**: Upon losing HP, loses that much Strength until end of turn. This means dealing damage DOES reduce its attack for that turn -- but the Strength resets next turn. Attacking is NOT pointless if you need to reduce incoming damage this turn.
 
 KEY MECHANICS:
 - **Fading 5**: The Transient loses 1 Fading per turn and dies when Fading reaches 0. You do NOT need to deal 999 damage. Just survive 5 turns. **CRITICAL: The Transient attacks BEFORE it fades.** On Fading 1 (the last turn), the Transient delivers its final attack and then vanishes at end of turn. You must survive this last attack -- you cannot "almost" outlast it.

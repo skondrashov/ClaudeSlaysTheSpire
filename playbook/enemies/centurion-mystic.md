@@ -1,6 +1,19 @@
-# Centurion + Mystic (hallway, Act 2, Centurion HP: ~76-80, Mystic HP: ~50)
-PATTERN: Mystic heals Centurion ~12 HP/turn and gains ~15 block. Centurion attacks for 12 damage on normal turns, but has a **10x3 = 30 damage multi-hit attack** on some turns. Both can have buff/defend turns (free damage windows).
-KEY MECHANIC: Mystic heals Centurion. Centurion is unkillable while Mystic lives.
+# Centurion + Mystic (hallway, Act 2, Centurion HP: 76-80, Mystic HP: 48-56)
+
+PATTERN:
+- Centurion (Mystic alive): 65% Slash (12 damage), 35% Protect (gives Mystic 15 Block). Cannot use any move 3x in a row.
+- Centurion (Mystic dead): 65% Slash (12 damage), 35% Fury (6x3 = 18 damage). Cannot use any move 3x in a row.
+- Mystic: Heals if any enemy missing 16+ HP (heals all enemies 16 HP, up to 2x in a row). Otherwise: 60% Attack (8 damage + 2 Frail), 40% Buff (all enemies gain 2 Strength). Cannot use Attack or Buff 3x in a row.
+
+DAMAGE:
+- Centurion Slash: 12 damage (13 at A2)
+- Centurion Fury: 6x3 = 18 damage (only used after Mystic dies)
+- Centurion Protect: Gives Mystic 15 Block
+- Mystic Attack: 8 damage + 2 Frail
+- Mystic Buff: All enemies gain 2 Strength
+- Mystic Heal: All enemies heal 16 HP
+
+KEY MECHANIC: Mystic heals all enemies 16 HP when any enemy is hurt enough. Centurion is unkillable while Mystic lives. Once Mystic dies, Centurion replaces Protect with Fury (6x3).
 WHAT THIS MEANS: KILL MYSTIC FIRST. Non-negotiable. If you attack Centurion while Mystic is alive, you're in an unwinnable attrition war. Focus all damage on Mystic despite Centurion being the bigger per-turn threat. Apply Weak to Centurion to reduce incoming while you kill Mystic. Expect 6-12 turns.
 
 **CENTURION SOLO PHASE IS DANGEROUS.** Once Mystic is dead, Centurion still has the 10x3 multi-hit attack (30 damage). If you are at low HP after killing Mystic, this attack is lethal without strong block (Flame Barrier, Impervious, multiple Defends + Iron Wave). Do NOT spend all potions and exhaust cards on the Mystic kill -- save at least one defensive resource for the Centurion solo phase. Confirmed: death at 3 HP from 10x3 = 30 attack with no block cards or potions remaining.

@@ -1,6 +1,16 @@
-# Book of Stabbing (elite, Act 2, HP: 161)
-PATTERN: Multi-hit attacks that gain +1 hit every turn AND gain +3 Str every turn. The double scaling (more hits AND more damage per hit) means incoming damage grows quadratically, not linearly. Each attack adds Wound status cards (Unplayable, persist in deck).
-KEY MECHANIC: Double scaling -- hit count increases by 1 every turn AND Str increases by +3 every turn. This means damage per turn grows much faster than a single scaling mechanic. Example observed (with Str 3 start): T1: 24, T2: 18 (with Piercing Wail Str reduction), T3: 27, T4: 36 (Weakened), T5: 30 (Weakened), T6: 54 (unmitigated). Without debuffs, raw damage escalates to 50+ by turn 5-6. Combined with Wound draw clog, this creates a rapid death spiral.
+# Book of Stabbing (elite, Act 2, HP: 160-164)
+
+PATTERN: 85% Multi Stab, 15% Single Stab. Cannot use Multi Stab 3x in a row or Single Stab 2x in a row.
+
+DAMAGE:
+- Multi Stab: 6xN damage (N = times used this combat + 2). Turn 1: 6x2=12, Turn 2: 6x3=18, Turn 3: 6x4=24, etc. (7xN at A3)
+- Single Stab: 21 damage (24 at A3)
+
+BUFFS: Painful Stabs -- whenever you receive attack damage, adds Wounds to your discard pile.
+
+HP: 160-164 at A0
+
+KEY MECHANIC: Multi Stab gains +1 hit every time it is used. Unlike what was previously documented, the scaling is from hit count increasing, not from Strength. Each Multi Stab adds more hits: 2 -> 3 -> 4 -> 5 -> 6. By turn 5-6, Multi Stab deals 6x6=36 or more. Combined with Wound draw clog from Painful Stabs, this creates a rapid death spiral.
 
 THE WOUND CLOG PROBLEM: By turn 6-7, Wounds can comprise 60%+ of the deck. A 21-card deck accumulating 3+ Wounds per turn means that by mid-fight, you draw 3 Wounds and 2 playable cards per turn. This makes it impossible to find block AND offense in the same hand. Strong cards like Double Tap, Reaper, Inflame become buried under Wounds. The fight becomes unwinnable not because of raw damage scaling but because the deck stops functioning.
 

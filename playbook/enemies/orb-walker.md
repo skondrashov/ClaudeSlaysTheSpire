@@ -1,13 +1,18 @@
-# Orb Walker (Act 3 Hallway, HP: ~93)
+# Orb Walker (Act 3 Hallway, HP: 90-96)
 
-Fast-scaling enemy. Gains +3 Strength per turn. Must burst down before damage becomes unsurvivable. Can appear as a single enemy or as a pair (2 Orb Walkers).
+Fast-scaling enemy. Gains +3 Strength at end of each turn (Strength Up 3). Must burst down before damage becomes unsurvivable. Can appear as a single enemy or as a pair (2 Orb Walkers).
 
-PATTERN:
-- Attacks every turn with increasing damage as Strength accumulates.
-- Turn 1: ~10 damage per Orb Walker (20 combined for 2).
-- Turn 2+: Damage increases by 3 per Orb Walker per turn (+3 Str per buff cycle).
-- Generates Burns that clog the hand and deal end-of-turn damage.
-- No free turns -- blocks or attacks every turn.
+PATTERN: Each turn: 60% Laser, 40% Claw. Cannot use either move 3x in a row.
+
+DAMAGE:
+- Laser: 10 damage + adds 1 Burn to draw pile + 1 Burn to discard pile (11 at A2)
+- Claw: 15 damage (16 at A2)
+
+BUFFS: Strength Up 3 -- gains 3 Strength at end of each turn (5 at A17)
+
+HP: 90-96 at A0, 92-102 at A7
+
+Attacks every turn with increasing damage as Strength accumulates. Turn 1: 10-15 damage. Turn 2: 13-18. Turn 3: 16-21. Generates Burns that clog the hand and deal end-of-turn damage. No free turns.
 
 KEY MECHANICS:
 - **Strength scaling (+3/turn per Orb Walker)**: By Turn 3, a single OW attacks for 19+. With 2 Orb Walkers, combined incoming reaches 38+ by Turn 3 and 50+ by Turn 5. This makes the fight a DPS race.
