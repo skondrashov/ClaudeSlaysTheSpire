@@ -153,7 +153,6 @@
     }
 
     .deck-card {
-      font-size: 14px;
       color: #bbb;
       white-space: nowrap;
       padding: 1px 0;
@@ -754,6 +753,12 @@
 
       const container = document.getElementById('deckList');
       container.innerHTML = '';
+
+      // Scale font: 18px at 10 cards, down to 12px at 35+ cards
+      const uniqueCount = sorted.length;
+      const fontSize = Math.max(12, Math.min(18, 22 - uniqueCount * 0.3));
+      container.style.fontSize = fontSize + 'px';
+
       for (const [name, count] of sorted) {
         const div = document.createElement('div');
         const typeClass = getCardTypeClass(name);

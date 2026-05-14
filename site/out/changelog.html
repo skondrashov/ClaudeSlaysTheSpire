@@ -374,6 +374,163 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 154 analysis: Silent F16 Hexaghost, block without damage is fatal</div>
+      <div class="changelog-sha">5f1c7049</div>
+    </div>
+    <div class="changelog-date">2026-05-14</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/bosses/hexaghost.md</div>
+<div class="diff-hunk">@@ -8,7 +8,7 @@ PATTERN:</div>
+<div class="diff-ctx"> - **DEFEND_BUFF**: Gains block and +Strength. No attack. Free turn for damage and Vulnerable refresh.</div>
+<div class="diff-ctx"> - **Medium attacks**: 4-8 and 14-24 damage on non-Inferno attack turns.</div>
+<div class="diff-ctx"> - **Block**: Can gain 12+ block.</div>
+<div class="diff-del">-- **Fight length**: ~13 turns. Long fight.</div>
+<div class="diff-add">+- **Fight length**: ~13 turns with adequate damage. Can extend to 23+ turns without damage scaling. Long fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY MECHANICS:</div>
+<div class="diff-ctx"> - **Inferno (42 damage)**: Multi-hit means each hit is checked against block individually. Without Weak, this is near-impossible to survive. With Weak: 28 total, which is survivable.</div>
+<div class="diff-hunk">@@ -22,9 +22,9 @@ PREPARATION CHECKLIST (must have at least 3 of 4):</div>
+<div class="diff-ctx"> 3. Passive block (Metallicize, Flame Barrier+) OR Impervious for the Inferno turn.</div>
+<div class="diff-ctx"> 4. Burns management OR damage scaling to end the fight before Burns overwhelm. See &quot;Burns management&quot; section below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-If you have 0-2 of these, Hexaghost will likely kill you. Weak + passive block is NOT enough without damage scaling or Burns management -- the fight drags to 13+ turns and Burns attrition becomes unsurvivable. However, strong scaling (Cultist Potion Ritual + Rampage) combined with Incense Burner Intangible can compensate for missing Weak -- one fight reached Hexaghost 20/250 HP (92% damage dealt) in 8 turns with zero Weak sources. The fight was lost to an arithmetic error, not the missing Weak. Scaling that kills in 8-9 turns reduces Burns accumulation enough to survive without Weak.</div>
+<div class="diff-add">+If you have 0-2 of these, Hexaghost will likely kill you. Weak + passive block (or passive Dex) is NOT enough without damage scaling or Burns management -- the fight drags to 13+ turns (23 turns in worst case) and Burns attrition becomes unsurvivable. However, strong scaling (Cultist Potion Ritual + Rampage) combined with Incense Burner Intangible can compensate for missing Weak -- one fight reached Hexaghost 20/250 HP (92% damage dealt) in 8 turns with zero Weak sources. The fight was lost to an arithmetic error, not the missing Weak. Scaling that kills in 8-9 turns reduces Burns accumulation enough to survive without Weak.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-DAMAGE OUTPUT MATTERS -- THE #1 CAUSE OF HEXAGHOST DEATH: Four deaths confirm the pattern. Weak and block keep you alive temporarily, but insufficient damage is the actual killer. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone PLUS clogging your hand so you draw fewer real cards. The death spiral is: more turns -&gt; more Burns -&gt; less hand quality -&gt; less damage -&gt; even more turns -&gt; even more Burns. Four deaths occurred with Weak sources but no way to handle Burns or end the fight quickly. One death had Hexaghost at 59/250 HP (24% remaining) when 4 Burns in hand dealt 8 damage at end of turn. Another death had Hexaghost at ~43/250 HP (17% remaining) with 5+ Burns dealing 4 damage each (Burns+) -- the deck had strong Str scaling (Inflame+ + Spot Weakness = 9 Str) but Turn 2 HP loss (20 damage from insufficient blocking) left no margin for the Burns attrition that accumulated over 12 turns. Damage scaling cards (Rampage, Inflame, Spot Weakness, Demon Form, Reaper) shorten the fight and reduce total Burns damage. Without at least one of these, the fight is near-unwinnable even with perfect Weak timing and Metallicize.</div>
+<div class="diff-add">+DAMAGE OUTPUT MATTERS -- THE #1 CAUSE OF HEXAGHOST DEATH: Five deaths confirm the pattern. Weak and block keep you alive temporarily, but insufficient damage is the actual killer. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone PLUS clogging your hand so you draw fewer real cards. The death spiral is: more turns -&gt; more Burns -&gt; less hand quality -&gt; less damage -&gt; even more turns -&gt; even more Burns. Four deaths occurred with Weak sources but no way to handle Burns or end the fight quickly. One death had Hexaghost at 59/250 HP (24% remaining) when 4 Burns in hand dealt 8 damage at end of turn. Another death had Hexaghost at ~43/250 HP (17% remaining) with 5+ Burns dealing 4 damage each (Burns+) -- the deck had strong Str scaling (Inflame+ + Spot Weakness = 9 Str) but Turn 2 HP loss (20 damage from insufficient blocking) left no margin for the Burns attrition that accumulated over 12 turns. A fifth death (Silent) had Hexaghost at 24/250 HP (10% remaining) after 23 turns -- the deck had Dex 6 from 2x Footwork+ making blocking trivial but only ~10 damage/turn average. The fight lasted so long that 12+ Burns/Burns+ accumulated, dealing 12+ damage/turn from Burns alone, and the second Inferno (8x6=48) hit with a hand of ALL Burns. Damage scaling cards (Rampage, Inflame, Spot Weakness, Demon Form, Reaper) shorten the fight and reduce total Burns damage. Without at least one of these, the fight is near-unwinnable even with perfect Weak timing and Metallicize.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> WHAT WORKS:</div>
+<div class="diff-ctx"> - **Evolve + Fire Breathing** -- the best anti-Burns engine. Evolve draws a replacement card when a Burn is drawn, neutralizing hand clog. Fire Breathing deals 6 (10 upgraded) damage to Hexaghost each time a Burn is drawn. Together, Burns become free damage with no downside. Confirmed across two clean Hexaghost victories (44/80 and 36/80 HP remaining after the fight). Set up both Powers on Turn 1 (free turn). This combo alone can handle Burns entirely -- no other Burns management needed. Even without Strength scaling, the engine shortens the fight significantly via passive damage.</div>
+<div class="diff-hunk">@@ -52,7 +52,7 @@ Burns deal 2 damage per Burn in hand at end of turn AND reduce hand quality by r</div>
+<div class="diff-ctx"> 5. **Second Wind** -- exhaust all non-Attack cards in hand including Burns, gaining block for each. Mass Burns removal in one play.</div>
+<div class="diff-ctx"> 6. **Damage scaling** (Inflame, Spot Weakness, Demon Form, Rampage) -- not Burns management per se, but shortens the fight from 13 turns to 8-9, reducing total Burns accumulated from 4-5 to 2-3.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**If the deck has NO Burns management AND NO damage scaling by Floor 15, the Hexaghost fight is near-unwinnable.** Metallicize + Weak + basic damage cannot outrace Burns accumulation in a 13-turn fight. Even WITH damage scaling (Inflame+ + Spot Weakness = +9 Str), the fight can still be lost if HP is wasted on Turn 2 from insufficient blocking -- the damage scaling shortens the fight from 13 to 12 turns, but Burns+ (4 damage each) in the final turns are still lethal at low HP. Actively seek Evolve, Fire Breathing, True Grit+, or Inflame/Spot Weakness before the boss.</div>
+<div class="diff-add">+**If the deck has NO Burns management AND NO damage scaling by Floor 15, the Hexaghost fight is near-unwinnable.** Metallicize + Weak + basic damage cannot outrace Burns accumulation in a 13-turn fight. Even WITH damage scaling (Inflame+ + Spot Weakness = +9 Str), the fight can still be lost if HP is wasted on Turn 2 from insufficient blocking -- the damage scaling shortens the fight from 13 to 12 turns, but Burns+ (4 damage each) in the final turns are still lethal at low HP. Actively seek Evolve, Fire Breathing, True Grit+, or Inflame/Spot Weakness before the boss. **The Silent has NO native Burns management tools** (no Evolve, Fire Breathing, True Grit, Second Wind). The Silent&#x27;s only solution is kill speed: poison scaling (Deadly Poison + Catalyst+, Noxious Fumes) or high attack density to end the fight before Burns accumulate.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> STRATEGY:</div>
+<div class="diff-ctx"> - **Turn 1 (free)**: Set up. Demon Form (3E) is the ideal turn 1 play -- the entire fight is won by scaling. If Demon Form is not available, play Thunderclap for mass Vulnerable + Metallicize + Evolve. Play Powers before anything else on this free turn.</div>
+<div class="diff-hunk">@@ -63,13 +63,32 @@ STRATEGY:</div>
+<div class="diff-ctx"> - **Burns management**: Exhaust Burns with True Grit+ if available. Play Evolve on Turn 1 to neutralize hand clog. Burns deal cumulative damage -- 3 Burns = 6 damage/turn + 3 fewer real cards.</div>
+<div class="diff-ctx"> - **Kill speed matters**: Shorter fight = fewer Burns accumulated = less attrition damage. Inflame (+2 Str) on turn 1 shortens the fight by 2-3 turns. This is not optional -- without damage scaling, Burns WILL overwhelm even a well-blocked deck.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+SILENT-SPECIFIC STRATEGY (confirmed in one defeat):</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Silent&#x27;s primary challenge against Hexaghost is damage output, not defense. Footwork+ stacking (Dex 6) makes blocking trivial -- zero damage taken in hallway fights and most boss turns. But without poison scaling, Noxious Fumes, or burst attacks, the fight drags 20+ turns. Burns accumulate faster than the Silent can kill.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**The Silent kill condition for Hexaghost requires one of:**</div>
+<div class="diff-add">+1. **Poison scaling**: Deadly Poison + Catalyst+ (triple poison for massive guaranteed damage). This can kill Hexaghost in ~10 turns from poison alone, avoiding the Burns death spiral.</div>
+<div class="diff-add">+2. **Noxious Fumes**: Passive 2 poison/turn to all enemies. Over 13 turns = 182 guaranteed damage. Combined with other poison sources, shortens the fight enough.</div>
+<div class="diff-add">+3. **Burst attack density**: Dash+, Predator, Backstab, Blade Dance provide immediate damage. The Silent&#x27;s base attacks (Strikes) are weaker than Ironclad&#x27;s -- need multiple upgraded attack cards to kill in reasonable time.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Without at least one strong damage source, the Silent cannot kill Hexaghost before Burns overwhelm.** A deck with 2x Footwork+ (Dex 6), Dash+, Quick Slash, one Strike, and Masterful Stab reached Hexaghost 24/250 HP in 23 turns but died to the second Inferno (8x6=48) with a hand of all Burns. The defensive core was excellent (zero damage taken in 5/6 pre-boss fights), but damage output was ~10/turn average, far too slow.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Masterful Stab is a trap against Hexaghost.** Its cost increases by 1E for each HP lost in combat. Even chip damage from Burns (2-4 HP/turn) raises the cost from 0E to 4-7E within 10 turns, making it unplayable. By Turn 15, the player was using Setup+ to reset Masterful Stab to 0E, wasting a play. In short fights where zero damage is taken, Masterful Stab is excellent (free 12 damage). In the Hexaghost fight where Burns deal unavoidable chip damage, it becomes dead weight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Burns+ (upgraded Burns from ATTACK_DEBUFF turns) deal 4 damage each at end of turn.** By Turn 12, a hand of 3 Burn+ cards deals 12 unblockable damage per turn, eating through block and draining HP even when Hexaghost attacks are fully blocked. Silent has no native Burns management (no Evolve, Fire Breathing, True Grit). The only solution is kill speed.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Crippling Cloud** is a good Silent Weak source for Hexaghost (2 Weak + 4 Poison for 2E, exhausts). Combined with Neutralize+ (2 Weak), the Silent has exactly 2 Weak applications -- enough for 2 separate Inferno turns. **Save Crippling Cloud for an Inferno turn, NOT for poison damage on a non-attack turn.** Confirmed error: player used Crippling Cloud on a DEFEND_BUFF turn (Turn 13) for 4 poison, wasting the 2 Weak. The first Inferno came on Turn 16 without Weak, dealing full 6x6=36 damage instead of 6x4=24. The 12 extra damage (36 vs 24) was a significant portion of the player&#x27;s remaining HP. The poison from Crippling Cloud (10 total damage over 4 turns) was far less valuable than the 12 damage prevented by Weak on Inferno.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Art of War relic** has anti-synergy with the Silent&#x27;s damage needs here. Gaining +1E on turns with no attacks encourages all-block turns, but the fight demands mixed offense+defense turns. Playing zero attacks for the Art of War bonus extends the fight by several turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> WHAT NOT TO DO:</div>
+<div class="diff-ctx"> - **End turn before verifying the kill.** When Hexaghost is near death, calculate total damage from ALL playable cards before ending turn. A confirmed death occurred at Hexaghost 7/250 HP remaining because the player played Iron Wave (13 damage) against 20 HP and ended turn, despite having Headbutt (17 damage) in hand with 2E remaining. Combined damage (30) would have killed. The error was writing &quot;13 &gt; 20&quot; in reasoning -- a basic arithmetic mistake. On kill turns, play attacks one at a time and verify the kill before ending.</div>
+<div class="diff-ctx"> - Spend all energy on setup Turn 2 with minimal block. Turn 2 is a ~30 damage multi-hit. Even 5 more block (one Defend) reduces damage from 20 to 15, which can be the difference between surviving Burns in the final turns and dying. Setup is important, but not at the cost of 20+ unblocked damage.</div>
+<div class="diff-ctx"> - Fight without a Weak source. Inferno at full power (42) is near-unsurvivable.</div>
+<div class="diff-del">-- Fight without Burns management OR damage scaling. Four deaths had Weak + passive block but no way to handle Burns or end the fight quickly. Metallicize alone cannot save you from 4 Burns dealing 8+ damage/turn.</div>
+<div class="diff-add">+- Fight without Burns management OR damage scaling. Five deaths had Weak + passive block but no way to handle Burns or end the fight quickly. Metallicize alone cannot save you from 4 Burns dealing 8+ damage/turn. Footwork+ Dex scaling alone cannot save you either -- Dex 6 blocks every attack perfectly but zero Burns management + low damage output = 23-turn fight where Burns overwhelm.</div>
+<div class="diff-ctx"> - Play Brutality. Burns + Brutality self-damage = 3-5 HP/turn death spiral.</div>
+<div class="diff-ctx"> - Play Berserk. Self-Vulnerable + Inferno = death.</div>
+<div class="diff-ctx"> - Enter below 70% HP without Pantograph. Pantograph only heals 25 HP, not full -- plan accordingly. The 250 HP + Inferno + Burns demands a large HP buffer. At the pre-boss rest site, REST if below 70% HP -- do not upgrade. An upgrade is worthless if you die on the boss.</div>
+<div class="diff-del">-- Waste Shockwave on a non-Inferno turn.</div>
+<div class="diff-add">+- Waste Shockwave on a non-Inferno turn. Same applies to Crippling Cloud (Silent): do not use on a DEFEND_BUFF turn for poison when the Weak is needed for Inferno.</div>
+<div class="diff-ctx"> - Take Odd Mushroom from the Mushrooms event when Hexaghost is the Act 1 boss. Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting all Vulnerable-amplified damage by ~17%. In a fight where kill speed determines whether Burns overwhelm you, 17% less damage extends the fight by 1-2 turns and adds 1-2 more Burns to the deck. Confirmed as a contributing factor in a death where Hexaghost reached 24% HP remaining but Burns attrition finished the run.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
+<div class="diff-hunk">@@ -39,6 +39,10 @@</div>
+<div class="diff-ctx"> - [Dual Wield](dual-wield.md)</div>
+<div class="diff-ctx"> - [Body Slam](body-slam.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Silent Attack Cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Masterful Stab](masterful-stab.md)</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Colorless Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Apotheosis](apotheosis.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/masterful-stab.md</div>
+<div class="diff-hunk">@@ -0,0 +1,20 @@</div>
+<div class="diff-add">+# Masterful Stab (Silent Attack, 0E base)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+12 damage for 0 energy. Cost increases by 1 for each HP lost in combat. Upgraded: 16 damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EVALUATION: Excellent in decks that take zero damage. Dead weight in long fights with chip damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SYNERGIES:</div>
+<div class="diff-add">+- **Footwork+ / high Dex builds**: When every fight is zero damage taken, Masterful Stab stays at 0E permanently. Free 12 damage per deck cycle is outstanding.</div>
+<div class="diff-add">+- **Setup+**: Can reset Masterful Stab&#x27;s cost to 0E by putting it into draw pile. Useful recovery when cost has escalated, but wastes a card play.</div>
+<div class="diff-add">+- **Short fights**: Hallway fights where zero damage is maintained throughout. Confirmed: multiple hallway fights with free 12 damage per cycle.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+ANTI-SYNERGIES:</div>
+<div class="diff-add">+- **Hexaghost**: Burns deal 2-4 unblockable damage per turn at end of turn. Even with perfect blocking against Hexaghost&#x27;s attacks, Burns raise Masterful Stab&#x27;s cost by 2-4 per turn. By Turn 12, the cost reached 4-7E, completely unplayable. In a 23-turn fight, the card contributed damage only in the first 10 turns before becoming dead weight.</div>
+<div class="diff-add">+- **Any fight with unavoidable chip damage**: Poison on the player, Burns, Decay curse, Thorns reflection, Brutality self-damage. Each point of self-damage raises the cost permanently for that combat.</div>
+<div class="diff-add">+- **Long fights generally**: Even 1-2 damage per turn over 10 turns raises the cost to 10-12E.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION FRAMEWORK:</div>
+<div class="diff-add">+- Take Masterful Stab when the deck reliably achieves zero damage taken in hallway fights AND the Act 1 boss is NOT Hexaghost.</div>
+<div class="diff-add">+- If Hexaghost is the boss, Masterful Stab is a trap -- it will contribute for the first few turns but become unplayable as Burns accumulate. Prefer cards with fixed energy costs.</div>
+<div class="diff-add">+- If already holding Masterful Stab against Hexaghost, do not rely on it as a primary damage source. Budget damage from other attack cards.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,18 +2,19 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (153 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Three Silent runs (Runs 151-153). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison engine dominated Act 3 hallway fights, card retention engine (WLP+ + TotT+ + Tactician+) was excellent, but Mind Bloom &quot;I am Awake&quot; choice (Mark of the Bloom) and fighting Mysterious Sphere before the boss were critical strategic errors.</div>
+<div class="diff-add">+**CURRENT STATUS (154 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Four Silent runs (Runs 151-154). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. Run 154 died to Hexaghost (Act 1 boss) at Floor 16 -- defensive-heavy deck with Dex 6 from 2x Footwork+ blocked perfectly but had insufficient damage output (23-turn fight, Burns overwhelmed). TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison engine dominated Act 3 hallway fights, card retention engine (WLP+ + TotT+ + Tactician+) was excellent, but Mind Bloom &quot;I am Awake&quot; choice (Mark of the Bloom) and fighting Mysterious Sphere before the boss were critical strategic errors. Hexaghost punishes the Silent&#x27;s lack of Burns management -- kill speed through poison scaling (Deadly Poison + Catalyst+) is mandatory.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-151):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 4. Act 2 boss reaches: 9+.</div>
+<div class="diff-ctx"> - **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**</div>
+<div class="diff-del">-- **3 wins in 153 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (3 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45).</div>
+<div class="diff-add">+- **3 wins in 154 runs (1.9% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (4 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16).</div>
+<div class="diff-ctx"> - **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.</div>
+<div class="diff-ctx"> - **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.</div>
+<div class="diff-ctx"> - **Run 152: Silent died to Collector at F33.** Defensive powers (After Image, Footwork+) not played early enough. Card index confusion on Turn 1 caused suboptimal command execution. Post-debuff incoming was unsurvivable without defensive powers active. Poison strategy was highly effective against block-based enemies (Spheric Guardian crushed).</div>
+<div class="diff-ctx"> - **Run 153: Silent died to Transient at F45.** Best Silent floor yet. Strong poison engine + card retention engine dominated Act 3 hallways. Two critical strategic errors: (1) Mind Bloom &quot;I am Awake&quot; gave Mark of the Bloom (no healing), then (2) Mysterious Sphere fight (2 Orb Walkers) drained 66 HP with no recovery possible. Entered Transient at 3 HP. Died 7 damage short of surviving the final turn.</div>
+<div class="diff-add">+- **Run 154: Silent died to Hexaghost at F16.** Defensive-heavy deck with 2x Footwork+ (Dex 6), Dash+, Masterful Stab. Took zero damage in 5/6 pre-boss fights. But damage output was only ~10/turn average -- fight lasted 23 turns, Burns accumulated to 12+ per turn, and second Inferno (8x6=48) hit with a hand of all Burns. Hexaghost at 24/250 HP when killed. The problem was entirely damage, not defense.</div>
+<div class="diff-ctx"> - **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**</div>
+<div class="diff-hunk">@@ -324,12 +325,13 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re</div>
+<div class="diff-ctx"> - **Do NOT play Corruption/Corruption+ without Dead Branch or Feel No Pain.** Run 107: Corruption+ played turn 9, all Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards remaining. Corruption is a trap in 14-turn fights -- the energy savings do not compensate for losing all block in the second half. This is now the SECOND Guardian death from block-density collapse (Run 103: Pandora&#x27;s Box, Run 107: Corruption+).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Hexaghost needs:**</div>
+<div class="diff-del">-- Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) -- MANDATORY</div>
+<div class="diff-del">-- Damage scaling (Rampage, Inflame, Spot Weakness) -- kill before Burns overwhelm (insufficient damage killed 2 runs despite having Weak). Even with strong Str scaling (Inflame+ + Spot Weakness = +9 Str), Turn 2 HP loss from insufficient blocking can make Burns lethal by Turn 12.</div>
+<div class="diff-del">-- Passive block (Metallicize) for the 13-turn fight</div>
+<div class="diff-del">-- Turn 1 setup (Thunderclap for Vulnerable)</div>
+<div class="diff-add">+- Weak source (Shockwave, Clothesline, Intimidate, Weak Potion; Silent: Neutralize+, Crippling Cloud, Leg Sweep, Malaise) -- MANDATORY</div>
+<div class="diff-add">+- Damage scaling (Rampage, Inflame, Spot Weakness; Silent: Deadly Poison + Catalyst+, Noxious Fumes) -- kill before Burns overwhelm (insufficient damage killed 5 runs despite having Weak). Even with strong block scaling (Dex 6 from 2x Footwork+), the fight lasts 23 turns without damage output and Burns accumulate to lethal levels. Even with strong Str scaling (Inflame+ + Spot Weakness = +9 Str), Turn 2 HP loss from insufficient blocking can make Burns lethal by Turn 12.</div>
+<div class="diff-add">+- Passive block (Metallicize; Silent: Footwork+) for the 13-turn fight</div>
+<div class="diff-add">+- Turn 1 setup (Thunderclap for Vulnerable; Silent: Footwork+ for Dex)</div>
+<div class="diff-ctx"> - Turn 2 block discipline -- Turn 2 is a ~30 damage multi-hit. Budget at least 1E for block.</div>
+<div class="diff-ctx"> - No self-damage cards (Brutality, Berserk)</div>
+<div class="diff-add">+- **Silent-specific: Do NOT take Masterful Stab when Hexaghost is the boss** -- Burns chip damage raises its cost from 0E to unplayable within 10 turns. See masterful-stab.md.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **The Collector needs:**</div>
+<div class="diff-ctx"> - HP entry at 70%+ or Pantograph -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Pantograph heals 25 HP at boss start, which helps but does NOT bypass the threshold if you enter more than 25 HP below max.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 153 analysis: Silent F45 Transient, Mind Bloom trap, Orb Walker scaling</div>
       <div class="changelog-sha">2d06407f</div>
     </div>
@@ -8581,124 +8738,6 @@ footer {
 <div class="diff-add">+HOW IT CHANGES DECISIONS: Pure value relic with no downside. Doubles relic rewards from the next two treasure chests. Makes treasure room pathing slightly more attractive -- if choosing between a path with a chest and one without, the chest path gains extra value. No gameplay impact during combat.</div>
 <div class="diff-add">+</div>
 <div class="diff-add">+NOTES: Has a charge counter (starts at 2, decrements per chest opened). Once both charges are spent, the relic is inert but remains in the relic bar. Does not affect elite relic drops or boss relic choices -- only treasure chests.</div>
-<div class="diff-ctx"></div>
-<div class="diff-ctx">defbe0a515b53afc5b406998916574b84f5a7dca|2026-05-07 14:07:40 -0400|Run 63 analysis: Stone Calendar, Offering, Fiend Fire Chosen trap</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
-<div class="diff-hunk">@@ -38,6 +38,7 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Skill Cards</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+- [Offering](offering.md)</div>
-<div class="diff-ctx"> - [Havoc](havoc.md)</div>
-<div class="diff-ctx"> - [Shrug It Off](shrug-it-off.md)</div>
-<div class="diff-ctx"> - [True Grit](true-grit.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/disarm.md</div>
-<div class="diff-hunk">@@ -2,7 +2,7 @@</div>
-<div class="diff-ctx"> Permanent Strength reduction. Extremely powerful against scaling enemies.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Against enemies that gain Strength over time (Gremlin Leader, Cultist). Unlike Weak (temporary 25% reduction), Disarm permanently removes 2 damage from every attack.</div>
-<div class="diff-del">-DECISION POINTS: Save for the enemy with the most dangerous Strength scaling. Against multi-hit enemies, the value compounds (5-hit attack loses 10 total damage). Against Gremlin Nob and Chosen, do NOT play (Skill triggers Enrage/Hex).</div>
-<div class="diff-add">+DECISION POINTS: Save for the enemy with the most dangerous Strength scaling. Against multi-hit enemies, the value compounds (5-hit attack loses 10 total damage). Against Gremlin Nob, do NOT play (Skill triggers Enrage). Against Chosen, playing Disarm adds a Dazed via Hex -- weigh the permanent -2 Str against the deck clog. If the fight will last 4+ more turns, the Str reduction is usually worth one Dazed.</div>
-<div class="diff-ctx"> MATCHUPS: Gremlin Leader -- reduces Rally effectiveness. Hexaghost -- -2 Str permanently reduces all attacks including each Inferno hit. Very effective in the long fight. Slavers -- play on the hardest-hitting Slaver to reduce incoming from the most dangerous source. Collector -- play Turn 1 for maximum cumulative value across 10-turn fight. Transient -- essential for survival. Permanent Str reduction compounds over all 5 turns of escalating damage; two Disarms (-4 to -5 total) makes the fight trivial. Against multi-hit enemies generally.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> NOTE: Under Snecko&#x27;s Confusion, Disarm can cost 0E (normally 1E). A 0E permanent -2 Str is exceptional value -- play immediately when this occurs.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/fiend-fire.md</div>
-<div class="diff-hunk">@@ -9,9 +9,9 @@ SYNERGIES:</div>
-<div class="diff-ctx"> - Vulnerable (each hit gets 50% bonus)</div>
-<div class="diff-ctx"> - **Unceasing Top** (CRITICAL COMBO): After Fiend Fire empties hand, Unceasing Top draws a card. If that card is playable and you have energy, play it, hand empties again, Top draws again. Creates a draw engine that can cycle through entire draw pile in one turn.</div>
-<div class="diff-ctx"> - Snecko Oil: Randomize costs before Fiend Fire -- if Fiend Fire costs 0, massive burst with energy left for drawn cards.</div>
-<div class="diff-del">-MATCHUPS: Slime Boss -- burst + Slimed exhaust. Mystic -- burst through block. Spheric Guardian -- exhaust Artifacts turn then burst. Chosen -- exhaust Dazed cards while dealing damage.</div>
-<div class="diff-del">-CAUTION: Exhausting key cards (Barricade, Clothesline) is permanent. In Run 20, exhausted Barricade to exhaust Decay curse at 3 HP -- survival &gt; future value. At low HP, exhausting everything for survival is correct.</div>
-<div class="diff-add">+MATCHUPS: Slime Boss -- burst + Slimed exhaust. Mystic -- burst through block. Spheric Guardian -- exhaust Artifacts turn then burst. Chosen -- can exhaust Dazed cards while dealing damage, BUT exhausting defensive cards (Uppercut, Defend) leaves you with no block for subsequent turns. If Chosen survives the Fiend Fire turn, the remaining turns have zero block sources. Only use Fiend Fire against Chosen when the burst will kill, or when the exhausted cards are genuinely expendable (Strikes, Dazed, status cards).</div>
-<div class="diff-add">+CAUTION: Exhausting key cards (Barricade, Clothesline) is permanent. At critically low HP, exhausting everything for survival is correct -- survival &gt; future value. Example: exhausting Barricade to remove a Decay curse at 3 HP is the right call.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> GUARDIAN WARNING: Fiend Fire as a primary engine drains the deck unsustainably. Playing Fiend Fire multiple times (turns 3, 5, 7) exhausts 12+ cards by mid-fight, leaving only 8-10 cards in the deck. The Guardian is a 12-14 turn fight requiring 20+ block on 32-damage turns (turns 8-12). With a thin deck, block sources (Defend, Shrug It Off) appear too infrequently. Use Fiend Fire on free turns (DEFEND/STRONG_DEBUFF intents) for burst damage without paying the hand cost. Never plan the deck around Fiend Fire as the sole damage engine -- pair it with immediate-damage cards (Bludgeon, Rampage, Carnage) that don&#x27;t exhaust the hand.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-INDEX SHIFTING DANGER: Fiend Fire is commonly the last card in a multi-card turn plan. If earlier cards shift indices, Fiend Fire may not play. In Run 21, the player planned Iron Wave + Fiend Fire but index shift caused Strike to play instead of Fiend Fire, costing the run. ALWAYS reference Fiend Fire by name (&quot;play Fiend Fire 0&quot;) rather than by index number.</div>
-<div class="diff-add">+INDEX SHIFTING DANGER: Fiend Fire is commonly the last card in a multi-card turn plan. If earlier cards shift indices, Fiend Fire may not play. A confirmed death occurred when Iron Wave + Fiend Fire was planned but index shift caused Strike to play instead of Fiend Fire. ALWAYS reference Fiend Fire by name (&quot;play Fiend Fire 0&quot;) rather than by index number.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/offering.md</div>
-<div class="diff-hunk">@@ -0,0 +1,15 @@</div>
-<div class="diff-add">+# Offering (0E, Skill, lose 6 HP, gain 2 energy, draw 3 cards, Exhaust)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Trade HP for a massive tempo burst. One of the best cards in the game.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: Turn 1 of any fight where you need to set up quickly (play a Power + attack in the same turn). Excellent with expensive cards (Bludgeon, Fiend Fire, Demon Form) that normally consume your entire energy budget. The 3 extra draws also dig for key cards.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION POINTS: The 6 HP cost is real. At 15 HP, Offering drops you to 9 -- potentially lethal if the enemy attacks for 10+. At high HP (50+), the cost is negligible. Never play Offering when the 6 HP loss would put you below the enemy&#x27;s incoming damage minus your available block.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SYNERGIES:</div>
-<div class="diff-add">+- **Unceasing Top**: Offering draws 3 and gives 2 energy. If you can play down to an empty hand, Top triggers for additional draws. The energy surplus makes this very achievable.</div>
-<div class="diff-add">+- **Fiend Fire**: 2 extra energy means Fiend Fire still leaves energy for cards drawn via Unceasing Top.</div>
-<div class="diff-add">+- **Expensive cards**: Makes 3E cards (Bludgeon, Demon Form, Impervious) playable alongside other cards in the same turn.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+UPGRADE: Not typically a priority -- the base version already provides maximum value.</div>
-<div class="diff-add">+CAUTION: Exhausts after one use per fight. Plan the turn you play it to maximize the energy and card advantage.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/centurion-mystic.md</div>
-<div class="diff-hunk">@@ -6,5 +6,7 @@ WHAT THIS MEANS: KILL MYSTIC FIRST. Non-negotiable. If you attack Centurion whil</div>
-<div class="diff-ctx"> THE DRAIN PATTERN: This fight reliably drains 20-30+ HP even with correct target priority and debuffs applied. Centurion&#x27;s sustained damage over the 6-12 turns needed to kill Mystic through its block accumulates to lethal levels at low HP. The fight functions as an HP attrition check -- if you enter below 50%, the cumulative Centurion damage will leave you dead or at critical HP for the next fight. Observed drains: 29 HP to 9 HP (20 HP lost) with Shockwave+ and Reaper available.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> BENCHMARKS: Kill Mystic in 5-6 turns. Expect 25-42 HP lost even with correct play. Enter with 50+ HP. Fairy in a Bottle is often consumed in this fight -- save it for elites if possible.</div>
-<div class="diff-del">-BRING: Burst damage for Mystic (need to break through 15 block/turn). Weak for Centurion. Double Metallicize is excellent. Headbutt+ (12+ damage, 13 Vuln through block).</div>
-<div class="diff-add">+BRING: Burst damage for Mystic (need to break through 15 block/turn). Weak for Centurion. Double Metallicize is excellent. Headbutt+ (12+ damage, 13 Vuln through block). Stone Calendar is ideal here -- the fight naturally lasts 7+ turns, and the 52 damage nuke lands automatically on Centurion after Mystic is dead.</div>
-<div class="diff-ctx"> AVOID: Attacking Centurion while Mystic lives. Entering below 50% HP. Wasting Fairy here when elites are ahead.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+OBSERVED FIGHT LENGTHS: This fight can extend to 10 turns with insufficient burst for Mystic. At 10 turns, even Metallicize and Weak on Centurion cannot prevent 30-65 HP drain. Stone Calendar (52 damage on turn 7) helps close out the fight before attrition becomes lethal.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/chosen.md</div>
-<div class="diff-hunk">@@ -6,8 +6,10 @@ WHAT THIS MEANS: Minimize Skill usage. Front-load damage with Attacks. Bash+ is</div>
-<div class="diff-ctx"> HP DRAIN: This fight routinely drains 30-40 HP even with a strong deck. If opening hand lacks block cards, the first 1-2 turns of unblocked 10-14 damage create immediate danger. At 50 HP entry, leaving at 17 HP is a realistic outcome -- which then makes the NEXT fight lethal (the death spiral pattern).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> BENCHMARKS: Kill in 4-5 turns. Damage output drops from Weak -- plan accordingly. Must enter with 40+ HP minimum.</div>
-<div class="diff-del">-BRING: Attack-heavy deck. Iron Wave (Attack that blocks). Inflame (Strength overcomes Weak penalty). Bash+ (Attack, applies Vulnerable). Fiend Fire (exhausts Dazed cards while dealing burst).</div>
-<div class="diff-add">+BRING: Attack-heavy deck. Iron Wave (Attack that blocks). Inflame (Strength overcomes Weak penalty). Bash+ (Attack, applies Vulnerable). Metallicize (passive block without triggering Hex -- Power, not a Skill).</div>
-<div class="diff-ctx"> AVOID: Playing Defend unless absolutely necessary (each one adds Dazed). Slow kill (Strength scaling is lethal). Entering below 30 HP (7x2 + Vulnerable = 20/turn is often unblockable at low card density).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+FIEND FIRE WARNING: Fiend Fire can exhaust Dazed cards for damage, but it also exhausts ALL other cards in hand -- including defensive cards like Uppercut and Defend. If Fiend Fire does not kill the Chosen, the remaining turns have no block sources. At 14 HP, a single 28-damage attack with only 13 block available is lethal. Only use Fiend Fire when the burst will kill, or when the hand contains only expendable cards.</div>
-<div class="diff-ctx"> APPEARS WITH: Cultist (in multi-enemy fights). When paired, Cultist buffs turn 1 while Chosen applies Hex -- the combined threat is extreme. Kill Cultist first (lower HP, faster to remove, reduces incoming damage count). Once Cultist dies, Chosen alone is manageable with focused damage. Fire Potion or burst cards on Cultist turn 2 can eliminate it before combined scaling overwhelms.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> HEX DETAILS: Hex is applied turn 1. Each Skill played (Defend, Shrug It Off, etc.) adds one Dazed card to the draw pile. Dazed is Unplayable + Ethereal (exhausts at end of turn if in hand, but still takes up a draw slot). Over a 4-5 turn fight, playing 4-6 Skills adds 4-6 Dazed to the draw pile, significantly diluting future hands. This makes sustained blocking impossible -- the deck clogs with dead draws. Powers (Inflame, Rage) do NOT trigger Hex. Attacks are safe.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
-<div class="diff-hunk">@@ -51,6 +51,7 @@</div>
-<div class="diff-ctx"> - [Enchiridion](enchiridion.md)</div>
-<div class="diff-ctx"> - [Nilry&#x27;s Codex](nilrys-codex.md)</div>
-<div class="diff-ctx"> - [Unceasing Top](unceasing-top.md)</div>
-<div class="diff-add">+- [Stone Calendar](stone-calendar.md)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Boss Relics / Special</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/stone-calendar.md</div>
-<div class="diff-hunk">@@ -0,0 +1,13 @@</div>
-<div class="diff-add">+# Stone Calendar (Rare Relic)</div>
-<div class="diff-add">+At the end of turn 7, deals 52 damage to ALL enemies.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHY IT&#x27;S GOOD: Free 52 AOE damage with no energy or card investment. In long fights (7+ turns), this is a massive damage spike that can finish weakened enemies or push through block. Centurion+Mystic is the ideal fight for this relic -- the fight naturally lasts 7+ turns while you kill Mystic through its block, and the 52 damage nuke lands on Centurion (who should be the last target standing).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT MATTERS: Only fires once per fight, only on turn 7. In fights that end in 4-5 turns, the relic does nothing. Evaluate Stone Calendar as a long-fight finisher, not a general damage source.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+KEY INTERACTIONS:</div>
-<div class="diff-add">+- **Centurion+Mystic**: Observed 52 damage to Centurion after 7 turns of focusing Mystic. This is the best Act 2 matchup for Stone Calendar.</div>
-<div class="diff-add">+- **Boss fights**: Most boss fights last 10+ turns, so the turn 7 nuke always fires. 52 free damage is significant.</div>
-<div class="diff-add">+- **Short fights**: Useless against enemies that die in 3-5 turns (Cultist, Louse, etc.).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+EVALUATION: Strong in decks that expect long fights (defensive/block-heavy builds). Weak in burst-focused decks that aim to kill quickly.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -8,7 +8,7 @@ High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## HP Management: The #1 Cause of Death</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-19 of 22 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-add">+20 of 23 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### HP Thresholds for Act 2</div>
-<div class="diff-ctx"> </div>
 <div class="diff-ctx"></div>
 </div>
   </div>
