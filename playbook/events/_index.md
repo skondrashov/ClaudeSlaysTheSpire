@@ -40,3 +40,4 @@
 ## Act 3 Events
 
 - [Mind Bloom](mind-bloom.md)
+- [Mysterious Sphere](mysterious-sphere.md)

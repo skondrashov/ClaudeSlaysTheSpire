@@ -12,7 +12,7 @@ PATTERN:
 - **Shifting**: Gains block when attacked. Attacking the Transient is generally wasteful -- it has 999 HP and cannot be killed through damage in practice.
 
 KEY MECHANICS:
-- **Fading 5**: The Transient loses 1 Fading per turn and dies when Fading reaches 0. You do NOT need to deal 999 damage. Just survive 5 turns.
+- **Fading 5**: The Transient loses 1 Fading per turn and dies when Fading reaches 0. You do NOT need to deal 999 damage. Just survive 5 turns. **CRITICAL: The Transient attacks BEFORE it fades.** On Fading 1 (the last turn), the Transient delivers its final attack and then vanishes at end of turn. You must survive this last attack -- you cannot "almost" outlast it.
 - **Shifting**: Gains block when you Attack it. This makes attacking counterproductive -- save energy for block.
 - **Escalating Strength**: Each turn the Transient hits harder. Turn 1 is manageable; turns 3-5 can be lethal without serious block.
 
@@ -22,7 +22,7 @@ STRATEGY:
 - **Shockwave+ is excellent.** Weak 3 reduces damage for 3 of the 5 turns.
 - **Impervious is the best card for this fight.** 30/40 block absorbs an entire turn of damage. Save for Turn 3+ (50-70 incoming) where basic block cards cannot cover the gap.
 - **Barricade is exceptional.** Block from early turns carries over, creating an accumulating wall. Combined with Metallicize, the escalating damage is handled automatically by turns 4-5.
-- **HP entry matters enormously.** At 15/80 HP (18%), even perfect block draws cannot survive turns 2-3 with 30+ incoming per turn. This fight requires 50%+ HP entry or exceptional block density.
+- **HP entry matters enormously.** At 15/80 HP (18%), even perfect block draws cannot survive turns 2-3 with 30+ incoming per turn. This fight requires 50%+ HP entry or exceptional block density. For Silent with Wraith Form+, the minimum is 25+ HP -- Intangible covers turns 1-3 (3 damage total) but turns 4-5 will leak 10-20 damage each through the Dex penalty.
 
 WHAT NOT TO DO:
 - Attack the Transient (triggers Shifting, wastes energy).
@@ -39,3 +39,16 @@ BLOCK PRIORITY FOR TRANSIENT:
 - **Turn 5 (70 dmg)**: Barricade block stack should be massive by now. One more turn of Metallicize stacking usually covers this.
 
 BARRICADE + METALLICIZE ENGINE: With Barricade active and 2x Metallicize (7 block/turn stacking), turns 1-2 build a block wall that compounds. By turn 3, the passive block alone covers a large portion of the 50 incoming. This engine makes the Transient fight comfortable even without Impervious -- but Impervious as insurance on Turn 3 guarantees survival.
+
+SILENT-SPECIFIC STRATEGY:
+- **Wraith Form+ is the centerpiece.** 3 turns of Intangible covers turns 1-3 (1 damage each = 3 total). But the -1 Dex/turn penalty is devastating: by turn 4, Dex is at -3 (or worse if started at 0), meaning Defend+ produces only 5 block instead of 8. Plan for the Dex penalty when calculating turns 4-5 block.
+- **Piercing Wail+ is excellent.** Reduces the Transient's attack by 8 for one turn. Stack two Piercing Wails on turn 4 or 5 to reduce 60-70 incoming to 44-54. Well-Laid Plans+ can retain Piercing Wails for the critical turns.
+- **Malaise+ reduces Strength permanently.** X energy for -X Str and X Weak. At high energy (5E), Malaise+ removes 5 Str and applies 5 Weak -- massive damage reduction for multiple turns.
+- **After Image+ provides passive block.** 1 block per card played adds up across a 5-turn fight. With 5+ cards per turn, that is 5+ free block per turn.
+- **Noxious Fumes is wasted.** The Transient fades on its own. Poison does not accelerate the kill. Do not waste energy or card slots on poison application.
+- **Do not use Catalyst+ on the Transient.** Catalyst+ is a one-use exhaust card. Save it for the Act 3 boss where it triples poison to defeat Regenerate 10.
+
+SURVIVAL MATH (SILENT, TURNS 4-5):
+The critical survival window is turns 4-5 when Intangible from Wraith Form+ has worn off but Dex is deeply negative. Example at Dex -2: Defend+ produces 6 block, Deflect+ produces 4 block, Survivor+ produces 10 block, Backflip+ produces 9 block. With After Image+ adding 1 per card, a full 5-card hand produces roughly 35-40 block -- but the Transient attacks for 48-60 (after debuffs). The gap must be closed by Piercing Wail+, Malaise+, or Plated Armor.
+
+**HP ENTRY IS CRITICAL FOR SILENT.** Wraith Form+ guarantees survival for turns 1-3 (3 damage total). But turns 4-5 will leak 10-20 damage each even with optimal block plays. Enter this fight at 25+ HP minimum. At 3-4 HP (as confirmed in a death), there is no survival path on turns 4-5.

@@ -54,11 +54,12 @@ Has authority to reshape the playbook structure — consolidate files, rewrite s
 ## Commands (cmd.py)
 
 ```python
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, start
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, deck, start
 
 state()                          # See current game state
 plan()                           # Load strategic context (auto-detects combat vs act)
 think(reasoning, label)          # Post strategic analysis to stream overlay
+deck()                           # View full deck (use after transforms, adds, removes)
 reason("topic")                  # Look up a specific playbook entry
 send("play Bash 0", reason="...") # Single action — reason= is REQUIRED
 turn(["play Bash Jaw Worm", "play Strike Jaw Worm", "play Defend", "end"],
@@ -232,4 +233,27 @@ In every Bash call, before importing cmd, set:
 - Same token → proceed. Different token → crash immediately.
 - Orchestrator deletes lock file before spawning a new agent. That's the handoff.
 - If the agent forgets to set the env var → import fails → agent dies. Orchestrator spawns a new one.
+
+### Coaching notes
+
+Human feedback for the analyst goes in `data/coaching_notes.md`. When the user gives coaching during a run (e.g., "the player should have done X"), append it to this file. Include the file path in the analyst prompt so the analyst incorporates the feedback into playbook updates. The analyst marks notes as addressed after processing them.
+
+### Git gotchas
+
+- `site/out/` is gitignored — always use `git add -f site/out/` when committing site changes
+- `data/coaching_notes.md` is gitignored — use `git add -f` for it too
+- Rebuild site before committing: `python site/build.py` then `git add -f site/out/`
+- **Never create a CLAUDE.md file.** All project context lives in this file (AGENTS.md).
+
+### cmd.py safety features
+
+- `turn()` detects draw cards automatically — if hand size doesn't shrink after playing a card, the sequence stops and tells the player to re-plan with the new cards
+- `choose` resolves card names on HAND_SELECT, CARD_REWARD, and GRID screens (not just `play`)
+- Stream.py deduplicates floor_history by seed+floor, and detects GAME_OVER on startup to prevent recounting on restart
+
+### Current state
+
+- Playing **The Silent** at Ascension 0
+- Strategist runs every 10 runs
+- 76 total runs (74 Ironclad, 2 Silent). Ironclad has 3 A0 wins.
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home — Claude Slays the Spire</title>
+<title>Mysterious Sphere (Act 3 Event) — Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 <style>
@@ -365,94 +365,40 @@ footer {
 <body>
 <h1>Claude Slays the Spire</h1>
 <div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
-<nav><a href="index.html" class="active">Home</a>
-<a href="playbook.html" class="">Playbook</a>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
 <a href="philosophy.html" class="">Philosophy</a>
 <a href="human-advice.html" class="">Human Advice</a>
 <a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-events.html">&larr; Back to Events</a></div><h1 id="mysterious-sphere-act-3-event">Mysterious Sphere (Act 3 Event)</h1>
 
-<div style="margin: 24px 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
-  <iframe
-    src="https://player.twitch.tv/?channel=ClaudeSlaysTheSpire&parent=claudeslaysthespire.org&muted=true"
-    height="360"
-    width="100%"
-    allowfullscreen
-    style="border: none; display: block;">
-  </iframe>
-</div>
+<p>Two options:</p>
 
-<div class="stats-grid">
-  <div class="stat"><div class="stat-value">77</div><div class="stat-label">Runs</div></div>
-  <div class="stat"><div class="stat-value">3</div><div class="stat-label">Wins</div></div>
-  <div class="stat"><div class="stat-value">51</div><div class="stat-label">Best Floor</div></div>
-  <div class="stat"><div class="stat-value">245</div><div class="stat-label">Playbook Entries</div></div>
-</div>
+<p>1. <strong>[Open Sphere]</strong> -- Fight a combat encounter. Reward: Rare Relic.</p>
+<p>2. <strong>[Leave]</strong> -- Walk away. No reward, no risk.</p>
 
-<div class="state-details">
-  <div class="state-card">
-    <h3>System</h3>
-    <p><strong>Model:</strong> Claude Opus 4.6 via Claude Code</p>
-    <p><strong>Character:</strong> Silent, Ascension 0</p>
-    <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
-  </div>
-  <div class="state-card">
-    <h3>The Loop</h3>
-    <p>A <strong>player agent</strong> plays a run with visible reasoning. When it ends, an <strong>analyst agent</strong> reviews what went wrong and updates the <a href="playbook.html">playbook</a>. Next run reads the updated knowledge. Repeat.</p>
-  </div>
-</div>
-<h2>Journey</h2>
-<div class="journey-grid">
-<div class="journey-card completed"><div class="journey-badge">A0 COMPLETE</div><div class="journey-name">Ironclad</div><div class="journey-stats">77 runs &middot; 3 wins &middot; Best floor 51</div></div>
-<div class="journey-card active"><div class="journey-badge">NOW PLAYING</div><div class="journey-name">Silent</div><div class="journey-stats">Ascension 0</div></div>
-</div>
+<h2 id="the-fight">The Fight</h2>
 
-<div style="margin-bottom: 40px;">
-<p>
-Claude plays <a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>,
-makes decisions one at a time with explicit reasoning, and then reviews its own runs afterward to
-figure out what went wrong. No hardcoded strategy. Everything it knows comes from playing and
-self-review.
-</p>
+<p>The combat encounter spawns 2 Orb Walkers. See orb-walker.md for mechanics. Key threat: combined Str scaling of +6/turn, plus Burns clogging draws and dealing end-of-turn damage. Even with a strong deck, this fight can drain 40-70 HP.</p>
 
-<p>
-The <a href="playbook.html">Playbook</a> is everything Claude has learned so far &mdash; card
-evaluations, enemy patterns, boss strategies, event guides. The
-<a href="changelog.html">Changelog</a> shows every update: what changed, what was learned, and when.
-</p>
-</div>
-<h2>Playbook</h2>
-<div class="category-grid">
-<div class="category-card"><a href="playbook-mechanics.html">
-  <h3>Game Mechanics</h3>
-</a></div>
-<div class="category-card"><a href="playbook-strategy.html">
-  <h3>Strategy</h3>
-</a></div>
-<div class="category-card"><a href="playbook-bosses.html">
-  <h3>Bosses</h3>
-  <div class="count">9 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-cards.html">
-  <h3>Cards</h3>
-  <div class="count">69 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-enemies.html">
-  <h3>Enemies</h3>
-  <div class="count">32 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-events.html">
-  <h3>Events</h3>
-  <div class="count">32 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-potions.html">
-  <h3>Potions</h3>
-  <div class="count">25 entries</div>
-</a></div>
-<div class="category-card"><a href="playbook-relics.html">
-  <h3>Relics</h3>
-  <div class="count">78 entries</div>
-</a></div>
-</div>
+<h2 id="decision-framework">Decision Framework</h2>
+
+<p><strong>Open Sphere when:</strong></p>
+<ul>
+<li>HP is above 70% AND healing is available (rest sites ahead, no Mark of the Bloom)</li>
+<li>The deck can handle 2 Orb Walkers without using irreplaceable boss resources (Catalyst+)</li>
+<li>A Rare Relic could meaningfully improve the boss fight</li>
+</ul>
+
+<p><strong>Leave when:</strong></p>
+<ul>
+<li>Mark of the Bloom is active (any damage taken is permanent -- confirmed 66 HP drain from this fight under Mark of the Bloom, leaving 3 HP with no recovery)</li>
+<li>HP is below 50%</li>
+<li>The boss fight is imminent and Catalyst+ would need to be spent here</li>
+<li>The deck already has strong relics and the marginal value of another is low</li>
+</ul>
+
+<p>The Rare Relic is not worth the risk if any damage taken here cannot be recovered before the boss. A dead run gets zero value from a Rare Relic.</p>
 
 <footer>
   <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;

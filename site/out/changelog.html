@@ -374,6 +374,154 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 152 analysis: Silent vs Collector F33, fix run dedup</div>
+      <div class="changelog-sha">63c48f09</div>
+    </div>
+    <div class="changelog-date">2026-05-14</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/bosses/slime-boss.md</div>
+<div class="diff-hunk">@@ -23,6 +23,7 @@ CONFIRMED WINNING COMBINATION: Evolve + Thunderclap+ + Spot Weakness + Shuriken.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> STRATEGY:</div>
+<div class="diff-ctx"> - **Pre-split**: Use debuff turns (free turns) to deal damage. Apply Vulnerable with Bash+. Don&#x27;t worry about killing fast -- prepare for the split. **Manage damage near the 70 HP threshold**: on the turn the boss will cross 70 HP, calculate exact damage to avoid massive overkill. Spending energy on block instead of excess damage past the threshold is often correct.</div>
+<div class="diff-add">+- **SPLITTING A SLIME THAT IS ABOUT TO ATTACK IS YOUR BLOCK.** When a large or medium slime is about to deal damage and is close to its split threshold, prioritize damage to split it over blocking the incoming hit. Splitting the slime removes it from the board and replaces it with smaller slimes that act on future turns -- the incoming attack is completely prevented. Example: a Spike Slime (M) about to deal 16 damage has 8 HP remaining. Playing Dagger Throw (9 dmg) + Sneaky Strike (12 dmg) kills it, preventing 16 damage entirely. Spending 2E on block instead only mitigates 14 of the 16. Offensive plays that remove a threat are strictly better than defensive plays that partially absorb it.</div>
+<div class="diff-ctx"> - **At split**: Use Thunderclap for mass Vulnerable on both slimes. AOE with Whirlwind or Cleave.</div>
+<div class="diff-ctx"> - **Post-split**: SPREAD DAMAGE to both large slimes before killing either one. Killing one creates a 3-enemy situation (2 mediums + 1 large). Ideally, reduce both to low HP, then kill them in quick succession to minimize turns spent fighting 3+ enemies. If forced to kill one first, kill the one you can follow up on immediately -- do NOT leave a full-HP large slime alive while dealing with mediums.</div>
+<div class="diff-ctx"> - **Slimed management**: Exhaust Slimed cards as priority. Each one exhausted is one fewer dead draw for the rest of combat. Fiend Fire is ideal -- converts Slimed cards to 7 damage each. Feel No Pain turns each Slimed exhaust into 3 block, making the tempo cost much more bearable.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/the-collector.md</div>
+<div class="diff-hunk">@@ -50,8 +50,14 @@ RUN 110 DEATH CASE STUDY (DEFEAT, Floor 33):</div>
+<div class="diff-ctx"> - **MISSING CARDS**: Impervious (30 block absorbs an entire crisis turn), Shockwave+ (mass Weak reduces 37 incoming to ~28 for 3 turns). Either card likely saves this run.</div>
+<div class="diff-ctx"> - **LESSON**: The 70% HP entry threshold is validated. At 57%, the Collector&#x27;s Turn 4 triple debuff creates mathematically unwinnable turns even with optimal play. Also: Colosseum event must be factored into pre-boss HP planning.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+SILENT-SPECIFIC STRATEGY:</div>
+<div class="diff-add">+- **Play defensive powers (After Image, Footwork+) IMMEDIATELY -- do not wait.** These powers must be active before Turn 4&#x27;s triple debuff. After Image provides 1 block per card played (crucial when Frail reduces all other block). Footwork+ provides Dex that partially offsets Frail. If these powers sit in discard unplayed when the debuff lands, the post-debuff turns become unsurvivable.</div>
+<div class="diff-add">+- **Poison (Noxious Fumes+) is the primary win condition for Silent.** Noxious Fumes+ applies 3 poison/turn to ALL enemies (Collector + both Torch Heads). Poison ignores block, bypasses Frail/Weak debuffs on the player, and scales passively. Set it up Turn 1 above all else.</div>
+<div class="diff-add">+- **Piercing Wail+ is the Silent&#x27;s Shockwave equivalent.** Reduces ALL enemy Str by 8 for 1 turn. Against Collector + 2 Torch Heads, this can reduce combined incoming by 20+ damage. Use it on high-damage turns (post-debuff or when multiple enemies attack).</div>
+<div class="diff-add">+- **Prioritize killing Torch Heads with Shivs.** After Image + Shivs (0E each) generates block while dealing damage to Torch Heads. Each Shiv played = 1 free block + 4 damage. Two Shivs from Cloak and Dagger+ = 8 damage + 2 free block on top of C&amp;D+&#x27;s base block.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> WHAT NOT TO DO:</div>
+<div class="diff-del">-- Enter below 70% HP without Pantograph. Run 110 entered at 57% and died despite strong deck and optimal play. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive. The 70% threshold is non-negotiable.</div>
+<div class="diff-add">+- Enter below 70% HP without Pantograph. The STRONG_DEBUFF on Turn 4 creates incoming damage spikes that require 30-40+ HP buffer to survive. The 70% threshold is non-negotiable.</div>
+<div class="diff-ctx"> - Ignore Torch Heads entirely. Their combined 14 damage/turn adds up. AOE that hits all three targets is far more efficient than single-target.</div>
+<div class="diff-ctx"> - Save potions for &quot;later.&quot; The post-debuff turns (5-7) are the crisis -- potions should be used to survive this window. Run 110 correctly used all 3 potions on Turn 5 but still died due to insufficient HP.</div>
+<div class="diff-ctx"> - Play Shockwave+ on Turn 1 before Torch Heads spawn. Wait until Turn 2+ when all enemies are present.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/_index.md</div>
+<div class="diff-hunk">@@ -12,6 +12,7 @@</div>
+<div class="diff-ctx"> - [Spike Slime M](spike-slime-m.md)</div>
+<div class="diff-ctx"> - [Spike Slime L](spike-slime-l.md)</div>
+<div class="diff-ctx"> - [Acid Slime L](acid-slime-l.md)</div>
+<div class="diff-add">+- [Gremlin Gang](gremlin-gang.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 1 Elites</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-gang.md</div>
+<div class="diff-hunk">@@ -0,0 +1,26 @@</div>
+<div class="diff-add">+# Gremlin Gang (Act 1 Hallway)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+A mixed group of 4 gremlins drawn from different types. Not to be confused with Gremlin Leader (an Act 2 elite with a distinct Rally mechanic).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+GREMLIN TYPES (kill priority order):</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. **Sneaky Gremlin** -- KILL FIRST. Glass cannon. Attacks for 9-10 damage per turn with low HP (~10-13). Left alive for multiple turns, cumulative damage is devastating (25+ damage observed from a single Sneaky Gremlin that survived 3 turns). Always attacks -- never buffs or defends. The highest single-target damage output of any gremlin type.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+2. **Gremlin Wizard** -- KILL SECOND. Charges a large attack over multiple turns (UNKNOWN intent while charging, then a big hit of 25-30). If the charge completes, the single hit can be lethal at low HP. Kill before the charge finishes. Lower priority than Sneaky Gremlin because the damage is delayed.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+3. **Fat Gremlin** -- MEDIUM PRIORITY. Attacks for 4-5 damage and applies Weak or Frail. Lower damage per turn than Sneaky Gremlin but the debuffs reduce your effectiveness.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+4. **Shield Gremlin** -- LOWEST PRIORITY. Gives block to other gremlins. Annoying but not directly threatening. Kill last.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+5. **Mad Gremlin** -- MEDIUM PRIORITY. Attacks with moderate damage. Has Angry (gains Str when hit). Do not spread incidental damage to it -- either commit to killing it or ignore it.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+STRATEGY:</div>
+<div class="diff-add">+- **Turn 1**: Neutralize or Weak the highest-damage attacking gremlin (usually Sneaky Gremlin). Kill it with remaining energy if possible. Block the rest.</div>
+<div class="diff-add">+- **AOE is excellent**: All-Out Attack, Dagger Spray, Thunderclap, or similar AOE cards hit all 4 enemies and can quickly clear the board.</div>
+<div class="diff-add">+- **Noxious Fumes is strong**: 3 poison/turn on 4 enemies = 12 total poison damage per turn scaling upward. Gremlins have low enough HP that 2-3 turns of Fumes can clear the board.</div>
+<div class="diff-add">+- With powers like After Image and Footwork, the fight becomes manageable once the highest-damage gremlins are removed.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT NOT TO DO:</div>
+<div class="diff-add">+- Ignore Sneaky Gremlin while setting up. It attacks every turn for 9-10 damage. Two turns of ignoring it costs 18-20 HP.</div>
+<div class="diff-add">+- Spread damage evenly without killing anything. Focus fire on the highest-priority target first.</div>
+<div class="diff-add">+- Spend all energy on block when a Sneaky Gremlin has 3 HP -- killing it prevents more damage than blocking it.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/_index.md</div>
+<div class="diff-hunk">@@ -11,6 +11,7 @@</div>
+<div class="diff-ctx"> - [Scrap Ooze](scrap-ooze.md)</div>
+<div class="diff-ctx"> - [Transmogrifier](transmogrifier.md)</div>
+<div class="diff-ctx"> - [Mushrooms](mushrooms.md)</div>
+<div class="diff-add">+- [Sssserpent](sssserpent.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 2 Events</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/sssserpent.md</div>
+<div class="diff-hunk">@@ -0,0 +1,17 @@</div>
+<div class="diff-add">+# Sssserpent (Act 1 Event)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+OPTIONS:</div>
+<div class="diff-add">+- **[Agree]**: Gain 175 gold. Receive Doubt curse (gain Weak each turn in combat).</div>
+<div class="diff-add">+- **[Disagree]**: Nothing happens.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION FRAMEWORK:</div>
+<div class="diff-add">+- **Check the map for upcoming shops before deciding.** If a shop is within 2-3 floors, TAKE THE GOLD. Curse removal costs 75g at a shop. Net profit: 175 - 75 = 100 gold for free.</div>
+<div class="diff-add">+- **Refuse only if:** (a) no shop is reachable before a dangerous fight, or (b) the curse cannot be removed before a boss/elite.</div>
+<div class="diff-add">+- Doubt is a manageable curse -- Weak on yourself reduces your attack damage by 25%, but does not affect block. If the curse gets stuck in hand for 1-2 fights before removal, the cost is reduced damage output, not death.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY INSIGHT:</div>
+<div class="diff-add">+Many events that offer gold + curse are designed with the expectation that you can route to a shop to remove the curse. The correct play is often: take the gold, route to a shop, remove the curse, net profit. This applies to Sssserpent and similar curse-giving events. The exception is Parasite, which cannot be removed at shops.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHAT NOT TO DO:</div>
+<div class="diff-add">+- Refuse the gold reflexively because &quot;curses are bad.&quot; Evaluate the map first.</div>
+<div class="diff-add">+- Take the gold when no shop is reachable and the next fight is an elite or boss.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,16 +2,17 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (151 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). First Silent run (Run 151) reached Act 3 boss (Awakened One) but died in Phase 2 at Floor 50. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is still developing -- first run revealed critical boss mechanic misunderstanding (Awakened One Curiosity).</div>
+<div class="diff-add">+**CURRENT STATUS (152 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Two Silent runs (Runs 151-152). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison-through-block works well (Spheric Guardian, Slime Boss), but power setup speed against bosses needs improvement.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-151):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 4. Act 2 boss reaches: 9+.</div>
+<div class="diff-ctx"> - **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**</div>
+<div class="diff-del">-- **3 wins in 151 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (1 attempt, reached Act 3 boss).</div>
+<div class="diff-add">+- **3 wins in 152 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (2 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss).</div>
+<div class="diff-ctx"> - **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.</div>
+<div class="diff-ctx"> - **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.</div>
+<div class="diff-add">+- **Run 152: Silent died to Collector at F33.** Defensive powers (After Image, Footwork+) not played early enough. Card index confusion on Turn 1 caused suboptimal command execution. Post-debuff incoming was unsurvivable without defensive powers active. Poison strategy was highly effective against block-based enemies (Spheric Guardian crushed).</div>
+<div class="diff-ctx"> - **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**</div>
+<div class="diff-hunk">@@ -234,6 +235,16 @@ Inflame &gt; Spot Weakness &gt; Limit Break (if other Str source exists) &gt; any other c</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> This is nearly as important as healing. A deck with block + healing but no Strength scaling will die to Spheric Guardian&#x27;s Barricade every time.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+### Curse Management and Shop Routing</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Curses are removable at shops for 75g (except Parasite, which cannot be removed). When an event offers gold + a curse, check the map for upcoming shops before refusing:</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **If a shop is within 2-3 floors**: Take the gold + curse, then remove the curse at the shop. Net profit = gold gained minus 75g removal cost. Sssserpent (175g + Doubt curse) nets 100g profit after removal. This is free money.</div>
+<div class="diff-add">+- **If no shop is reachable before a boss or elite**: Refuse the curse. A curse stuck in the deck for 5+ floors degrades draw quality and may cost HP in hard fights.</div>
+<div class="diff-add">+- **Parasite is the exception**: Parasite cannot be removed at shops. Never take events that give Parasite unless Omamori will negate it.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+This principle applies to all curse-giving events: evaluate the map context, not just the curse itself.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ### Deck Thinning</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Remove Strikes at shops and events. A 10-12 card deck draws key cards much more reliably than a 15+ card deck. Remove Strikes before Defends (Strikes get outclassed faster; Defend&#x27;s 5 block stays relevant).</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 151 analysis, overlay redesign, philosophy page, draw detection</div>
       <div class="changelog-sha">738e3b06</div>
     </div>
@@ -8666,345 +8814,6 @@ footer {
 <div class="diff-add">+5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.</div>
 <div class="diff-add">+6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Collector victory relied on Immolate+ AOE (28 damage to all enemies) to manage both Collector HP and Torch Head respawns. Two Hexaghost deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.</div>
 <div class="diff-add">+7. **Extra energy**: The Collector victory had 4 energy (Sozu). The extra card per turn allowed playing both offense and defense simultaneously, which is critical for multi-enemy fights.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Strategist review #2: HARD RULES in player prompt, compliance fixes</div>
-      <div class="changelog-sha">fb5b43b3</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
-<div class="diff-hunk">@@ -2,12 +2,26 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> You play Slay the Spire. You make every decision deliberately, with reasoning.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+## HARD RULES (non-negotiable, override all other guidance)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+These rules have been validated across 60+ runs. Violating any of them has directly caused deaths. Do not evaluate tradeoffs or make exceptions -- follow them literally.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+1. **NEVER TAKE RUNIC DOME.** If Runic Dome is offered as a boss relic, skip the boss relic entirely. Do not evaluate whether your deck can handle it. Two deaths were caused by taking Runic Dome despite playbook guidance to refuse. The +1 Energy does not compensate for losing intent visibility.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+2. **ALWAYS USE CARD NAMES in play commands, never numeric indices.** Write `play Bash 0` not `play 3 0`. Card indices shift after each play, causing wrong cards to be played. Four confirmed deaths from index shifting. The ONLY exception: when two copies of the same card are in hand, use the index for that specific card only.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+3. **UPGRADE AT EVERY REST SITE where HP is above threshold** (35% Act 1, 50% Act 2). Zero-upgrade runs are unwinnable. If you have not upgraded anything by Floor 10, you are failing this rule. Bash should be upgraded by Floor 8.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+4. **NEVER PLAY unupgraded True Grit or Havoc when the deck contains Reaper, Fiend Fire, Rampage, Feed, or Bash.** Random exhaust has destroyed critical cards in multiple runs, directly causing deaths. If you must take True Grit, upgrade it IMMEDIATELY at the next rest site (priority over all other upgrades).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+5. **USE ALL POTIONS when entering a fight below 40% HP.** Do not save potions at low HP. An unused potion on a death screen is a strategic failure. Use stat-boost potions on turn 1.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ## Setup</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```python</div>
-<div class="diff-ctx"> import sys</div>
-<div class="diff-ctx"> sys.path.insert(0, r&quot;C:\Users\tkond\projects\autoplay\games\sts1&quot;)</div>
-<div class="diff-del">-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard</div>
-<div class="diff-add">+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Call `state()` to see the game. One decision at a time outside combat. In combat, plan your full turn, then execute with `turn()`.</div>
-<div class="diff-hunk">@@ -30,65 +44,83 @@ Good: &quot;This looks strong for our deck. We&#x27;re light on AOE and this helps with th</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Combat: Plan the Full Turn</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-In combat, do NOT play one card at a time. You can see your entire hand — plan the whole turn before executing anything.</div>
-<div class="diff-add">+### Fight Strategy (once per combat, before your first turn)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Fill out this template before acting. You MUST complete every section — especially PREDICTED STATE. The prediction is how you catch mistakes before they happen.</div>
-<div class="diff-add">+After calling `plan()` at combat start, write a FIGHT STRATEGY before making any moves. This is your high-level game plan for the entire fight — not just turn 1. Then **post it to the stream with `think()`** so viewers can see your reasoning.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-del">-COMBAT PLAN — Turn N</div>
-<div class="diff-add">+FIGHT STRATEGY — [Enemy Name]</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WIN CONDITION: How do I kill this enemy? What&#x27;s my damage source?</div>
-<div class="diff-add">+SURVIVAL PLAN: What are the dangerous turns? How do I block them?</div>
-<div class="diff-add">+KEY CARDS: Which cards in my deck are critical? What do I save them for?</div>
-<div class="diff-add">+RELIC INTERACTIONS: Which relics matter here and how do they change my play?</div>
-<div class="diff-add">+POTION PLAN: When do I use potions? What triggers potion use?</div>
-<div class="diff-add">+RISKS: What can go wrong? What kills me if I&#x27;m not careful?</div>
-<div class="diff-add">+ESTIMATED TURNS: How long will this fight take?</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Post it to the stream:**</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+think(&quot;&quot;&quot;WIN CONDITION: Rampage+ scales (8→16→24→32). Play it every cycle. Fiend Fire+ for burst on free turns.</div>
-<div class="diff-add">+SURVIVAL PLAN: 32-damage single hit is the threat. Need 3 Defends or Ghostly Armor combos.</div>
-<div class="diff-add">+KEY CARDS: Rampage+ (scaling), Bash+ (Vulnerable), True Grit (block + thinning)</div>
-<div class="diff-add">+RELIC INTERACTIONS: Molten Egg upgraded attacks. Burning Blood heals 6 after.</div>
-<div class="diff-add">+RISKS: Over-exhausting block cards with Fiend Fire+/True Grit.</div>
-<div class="diff-add">+ESTIMATED TURNS: 12-14.&quot;&quot;&quot;, label=&quot;Fight Strategy&quot;)</div>
-<div class="diff-add">+```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-INCOMING DAMAGE:</div>
-<div class="diff-del">-- [Enemy A]: [intent] → [damage] (modified by Vulnerable/Weak/powers: [actual])</div>
-<div class="diff-del">-- [Enemy B]: [intent] → [damage] (modified by: [actual])</div>
-<div class="diff-del">-- Total incoming: [sum]</div>
-<div class="diff-add">+This strategy stays relevant for the whole fight. Refer back to it each turn.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-RESOURCES: [energy]E, [block] block, [hand size] cards</div>
-<div class="diff-add">+### Turn Planning (every turn)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-SEQUENCE:</div>
-<div class="diff-del">-1. [Card] → [target/effect] (energy: N→N-cost)</div>
-<div class="diff-del">-2. [Card] → [target/effect] (energy: N→N-cost)</div>
-<div class="diff-del">-3. [Card] → [target/effect] (energy: N→N-cost)</div>
-<div class="diff-del">-4. End turn</div>
-<div class="diff-add">+Do NOT play one card at a time. Plan the whole turn before executing.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-PREDICTED STATE after this turn:</div>
-<div class="diff-del">-- My block: [total block from cards played]</div>
-<div class="diff-del">-- Incoming damage: [total from all enemies]</div>
-<div class="diff-del">-- Unblocked damage: max(0, incoming - block) = [X]</div>
-<div class="diff-del">-- My HP: [current] - [X] = [new HP]</div>
-<div class="diff-del">-- Enemy A: [current HP] - [damage dealt] = [remaining HP] [DEAD if ≤ 0]</div>
-<div class="diff-del">-- Enemy B: [current HP] - [damage dealt] = [remaining HP] [DEAD if ≤ 0]</div>
-<div class="diff-del">-- Cards left in hand: [list, and why not played]</div>
-<div class="diff-del">-- Energy remaining: [N]</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-add">+TURN N — [reference fight strategy]</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-The prediction forces you to do the math. If the numbers don&#x27;t work out (you die, you waste energy, you leave damage on the table), revise the plan before executing.</div>
-<div class="diff-add">+INCOMING: [damage] | RESOURCES: [energy]E, [block] block</div>
-<div class="diff-add">+PLAY: [numbered sequence with reasoning tied to fight strategy]</div>
-<div class="diff-add">+RESULT: [block vs incoming, HP after, enemy HP remaining]</div>
-<div class="diff-add">+```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Then execute with `turn()`:</div>
-<div class="diff-ctx"> ```python</div>
-<div class="diff-del">-turn([&quot;play Defend&quot;, &quot;play Bash 0&quot;, &quot;play Strike 0&quot;, &quot;end&quot;], reason=&quot;15 block vs 20 incoming, take 5 to 70 HP. Jaw Worm: 25-12=13 HP.&quot;)</div>
-<div class="diff-add">+turn([&quot;play Defend&quot;, &quot;play Bash Jaw Worm&quot;, &quot;play Strike Jaw Worm&quot;, &quot;end&quot;], reason=&quot;15 block vs 20 incoming, take 5 to 70 HP. Jaw Worm: 25-12=13 HP.&quot;)</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-The `reason` should be a concise summary of the prediction — the key numbers. Viewers want to see the math.</div>
-<div class="diff-add">+The `reason` should be a concise summary — the key numbers. Viewers want to see the math.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-### Card Names vs. Indices</div>
-<div class="diff-add">+### Card Names and Enemy Targeting</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Prefer card names over indices to avoid shift errors:**</div>
-<div class="diff-add">+**ALWAYS use card names instead of card indices:**</div>
-<div class="diff-ctx"> ```python</div>
-<div class="diff-ctx"> turn([&quot;play Bash 0&quot;, &quot;play Strike 0&quot;, &quot;play Defend&quot;, &quot;end&quot;], reason=&quot;...&quot;)</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> Card names are resolved against the current hand at execution time, so they&#x27;re</div>
-<div class="diff-ctx"> always correct regardless of what was played before.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-When you play a card, remaining cards shift down. If your hand is:</div>
-<div class="diff-add">+**Enemy targeting — use the displayed index number.** Enemy indices are absolute</div>
-<div class="diff-add">+positions that DON&#x27;T change when other enemies die. If the display shows:</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-del">-[1] Strike  [2] Defend  [3] Bash  [4] Strike  [5] Defend</div>
-<div class="diff-add">+ENEMIES:</div>
-<div class="diff-add">+  [0] Byrd — HP: 25/25</div>
-<div class="diff-add">+  [1] Byrd — HP: 25/25</div>
-<div class="diff-add">+  [2] Byrd — HP: 25/25</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-del">-And you play card 3 (Bash), the hand becomes:</div>
-<div class="diff-add">+And Byrd [0] dies, the remaining enemies keep their indices:</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-del">-[1] Strike  [2] Defend  [3] Strike  [4] Defend</div>
-<div class="diff-add">+ENEMIES:</div>
-<div class="diff-add">+  [1] Byrd — HP: 20/25</div>
-<div class="diff-add">+  [2] Byrd — HP: 15/25</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-add">+Target them as `play Strike 1` and `play Strike 2` — NOT 0 and 1.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-If you use numeric indices, plan them for the sequence, not the original hand. But card names avoid this problem entirely.</div>
-<div class="diff-add">+**Enemy names work when enemies have distinct names:**</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+turn([&quot;play Bash Blue Slaver&quot;, &quot;play Strike Red Slaver&quot;, &quot;end&quot;], reason=&quot;...&quot;)</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+When enemies share a name (Byrds, Cultists, etc.), use the numeric index.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Draw Effects</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -110,8 +142,8 @@ Think about what your deck needs, not just whether a card is generically &quot;good.&quot;</div>
-<div class="diff-ctx"> - How does it interact with your relics and other cards?</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Rest Sites</div>
-<div class="diff-del">-- Upgrade a key card (smith) unless you&#x27;re dangerously low on HP</div>
-<div class="diff-del">-- Which card benefits most from upgrading? Usually your best damage or best block card.</div>
-<div class="diff-add">+- **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is below 35% in Act 1 or below 50% in Act 2. See Hard Rule #3.</div>
-<div class="diff-add">+- Which card benefits most from upgrading? Priority: Bash &gt; True Grit &gt; Armaments &gt; best damage card &gt; best block card.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Map Pathing</div>
-<div class="diff-ctx"> - Consider your HP, deck strength, and what you need before the boss</div>
-<div class="diff-hunk">@@ -123,21 +155,65 @@ Think about what your deck needs, not just whether a card is generically &quot;good.&quot;</div>
-<div class="diff-ctx"> - Read the options carefully. Many events have hidden costs or benefits.</div>
-<div class="diff-ctx"> - If you don&#x27;t know an event, be cautious — say so and pick the safe option.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-## Playbook</div>
-<div class="diff-add">+## Planning and Playbook</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-The `playbook/` directory contains everything you need to make good decisions — mechanics, strategy, and decision prompts for every card, enemy, and situation. Each card, enemy, boss, event, relic, and potion has its own file. Load the RELEVANT file(s) for your current decision:</div>
-<div class="diff-add">+The playbook has ~186 files covering every card, enemy, boss, event, relic, and potion. Three commands give you structured access:</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-- **Start of run**: Read `playbook/strategy.md` for high-level principles. Note which boss is coming.</div>
-<div class="diff-del">-- **Combat start**: Read the specific enemy file `playbook/enemies/&lt;enemy-name&gt;.md` or `playbook/bosses/&lt;boss-name&gt;.md`. For key cards in your hand, read `playbook/cards/&lt;card-name&gt;.md`.</div>
-<div class="diff-del">-- **Card rewards**: Read each offered card file from `playbook/cards/`. Consider what your deck needs and what the upcoming boss requires.</div>
-<div class="diff-del">-- **Events**: Read `playbook/events/&lt;event-name&gt;.md`.</div>
-<div class="diff-del">-- **Shop**: Read relevant files from `playbook/relics/` and `playbook/potions/`.</div>
-<div class="diff-del">-- **Rest sites**: `playbook/strategy.md` has the upgrade-vs-rest framework and upgrade priority.</div>
-<div class="diff-del">-- **Map pathing**: `playbook/strategy.md` has HP thresholds and pathing principles.</div>
-<div class="diff-add">+### `plan()` — Strategic context loading</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-File naming convention: lowercase, hyphens for spaces. `Shrug It Off` -&gt; `shrug-it-off.md`. `Gremlin Nob` -&gt; `gremlin-nob.md`.</div>
-<div class="diff-add">+Call `plan()` and it auto-detects what you need:</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- **Outside combat**: Loads strategy.md, the boss file for the current act, a summary of every card in your deck, all your relics, and all your potions. This is your full strategic picture.</div>
-<div class="diff-add">+- **In combat**: Loads the enemy/boss playbook entry, full details for each card in your hand, and your relic effects.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**When to call plan():**</div>
-<div class="diff-add">+- **Start of each act** (after Neow, after beating a boss) — mandatory</div>
-<div class="diff-add">+- **Start of each combat** — mandatory</div>
-<div class="diff-add">+- **Before boss fights** — mandatory (even if you already planned this act)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+This is not optional. Call `plan()` at these moments every time. The output contains the strategy and matchup knowledge you need to make good decisions.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### `think(reasoning, label)` — Post your analysis to the stream</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+After reading `plan()` output, formulate your strategy and **post it with `think()`**. This is how viewers see your reasoning — not just what data was loaded, but your actual analysis.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+# After plan() in combat:</div>
-<div class="diff-add">+think(&quot;&quot;&quot;WIN CONDITION: Rampage+ scales. Play it every cycle.</div>
-<div class="diff-add">+SURVIVAL: Need 32+ block for the big hit. Don&#x27;t exhaust block cards.</div>
-<div class="diff-add">+KEY CARDS: Rampage+ (damage scaling), Bash+ (Vulnerable), True Grit (block + thin)</div>
-<div class="diff-add">+RISKS: Over-exhausting leaves too few block cards.&quot;&quot;&quot;, label=&quot;Fight Strategy&quot;)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+# After plan() for act planning:</div>
-<div class="diff-add">+think(&quot;&quot;&quot;GOAL: Build toward Hexaghost — need AOE and scaling.</div>
-<div class="diff-add">+PATH: Elite on floor 6 for relic, rest site on 12, shop on 14.</div>
-<div class="diff-add">+DECK NEEDS: More block, one good scaling card. Skip low-impact attacks.</div>
-<div class="diff-add">+BOSS PREP: Hexaghost does multi-hit — Metallicize or Flame Barrier would be huge.&quot;&quot;&quot;, label=&quot;Act Plan&quot;)</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**When to call think():**</div>
-<div class="diff-add">+- **After every plan()** — always post your strategic synthesis</div>
-<div class="diff-add">+- **Before major decisions** — boss relic picks, key card choices, risky paths</div>
-<div class="diff-add">+- Keep it concise but specific — viewers want to see the reasoning, not an essay</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### `reason(topic)` — Quick targeted lookup</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Call `reason(&quot;Card Name&quot;)` to look up any specific playbook entry:</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+reason(&quot;Shrug It Off&quot;)     # Card details</div>
-<div class="diff-add">+reason(&quot;Gremlin Nob&quot;)      # Enemy pattern</div>
-<div class="diff-add">+reason(&quot;Hexaghost&quot;)        # Boss guide</div>
-<div class="diff-add">+reason(&quot;Big Fish&quot;)         # Event options</div>
-<div class="diff-add">+reason(&quot;Pen Nib&quot;)          # Relic effect</div>
-<div class="diff-add">+reason(&quot;Flex Potion&quot;)      # Potion timing</div>
-<div class="diff-add">+```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Don&#x27;t load all files at once. Load what&#x27;s relevant to the decision in front of you. The playbook files are designed so that loading the right entry naturally brings the context you need to reason well.</div>
-<div class="diff-add">+**When to call reason():**</div>
-<div class="diff-add">+- **Card rewards**: Look up each offered card before deciding</div>
-<div class="diff-add">+- **Events**: Look up the event before choosing</div>
-<div class="diff-add">+- **Shop**: Look up relics/potions you&#x27;re considering</div>
-<div class="diff-add">+- **Anytime you&#x27;re unsure**: If you don&#x27;t know what a card or relic does, look it up</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Potions</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -150,6 +226,9 @@ Don&#x27;t load all files at once. Load what&#x27;s relevant to the decision in front of y</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> state()                          — Read current game state</div>
-<div class="diff-add">+plan()                           — Load strategic context (auto-detects combat vs act mode)</div>
-<div class="diff-add">+think(reasoning, label)          — Post your strategic analysis to the stream overlay</div>
-<div class="diff-add">+reason(&quot;topic&quot;)                  — Look up a specific playbook entry</div>
-<div class="diff-ctx"> send(command, reason=&quot;...&quot;)      — Single action with reasoning</div>
-<div class="diff-ctx"> turn([actions], reason=&quot;...&quot;)    — Full combat turn as batch</div>
-<div class="diff-ctx"> play(card, target)               — Play card (1-indexed) at target (0-indexed)</div>
-<div class="diff-hunk">@@ -161,7 +240,7 @@ potion_use(slot, target)         — Use potion</div>
-<div class="diff-ctx"> potion_discard(slot)             — Discard potion</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Card indices are 1-indexed. Enemy indices are 0-indexed.</div>
-<div class="diff-add">+Use card names and enemy names when possible. Card indices are 1-indexed, enemy indices are 0-indexed absolute (don&#x27;t shift when enemies die).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **ALWAYS provide `reason=` to `send()` and `turn()` calls.** This is critical for the stream overlay — viewers need to see WHY each decision is made. Without reasoning, the overlay thinking panel is empty.</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/events/wheel-of-change.md</div>
-<div class="diff-hunk">@@ -4,8 +4,10 @@ Act 2 event. Spin a wheel for a random outcome.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> OPTIONS:</div>
-<div class="diff-ctx"> - [Play] Spin the wheel -- random outcome, includes both positive and negative possibilities.</div>
-<div class="diff-del">-- Outcomes observed: Lose 8 HP (negative).</div>
-<div class="diff-add">+- Outcomes observed: Lose 8 HP (negative). Other outcomes unknown.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-DECISION FRAMEWORK: This is a gamble with uncontrolled variance. At low HP, losing 8 HP can be the difference between surviving the next fight and dying. At high HP (70%+), the risk is acceptable since even the worst outcome leaves enough buffer.</div>
-<div class="diff-add">+DECISION FRAMEWORK:</div>
-<div class="diff-add">+- Below 60% HP: SKIP. The 8 HP loss outcome is potentially lethal in Act 2. One observed HP loss from this event directly contributed to a death spiral (Run 59).</div>
-<div class="diff-add">+- Above 60% HP: Acceptable to spin. Even the worst known outcome (-8 HP) leaves a buffer.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-CAUTION: At below 50% HP, the downside of losing 8 HP is disproportionately dangerous. In Act 2 where every point of HP matters, an unnecessary 8 HP loss can push you below survival thresholds for the next hallway fight. Consider whether the potential upside justifies the risk at your current HP.</div>
-<div class="diff-add">+This event offers an Unknown room node, so the player has already committed to entering it. If the wheel is mandatory (no leave option), spinning is forced. But if a &quot;Leave&quot; option exists, take it below 60% HP.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -53,22 +53,20 @@ Even &quot;hallway&quot; fights in Act 2 can be run-ending: 3 Cultists has killed the play</div>
-<div class="diff-ctx"> ### Upgrade vs Rest Framework</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **Upgrade** when:</div>
-<div class="diff-del">-- HP is above 50% in Act 2 (above 45% in Act 1)</div>
-<div class="diff-del">-- Next 2-3 rooms include a rest site, shop, or event (not consecutive combat)</div>
-<div class="diff-add">+- HP is above 50% in Act 2 (above 35% in Act 1)</div>
-<div class="diff-ctx"> - A critical upgrade target exists (Bash, True Grit, Limit Break, key attack card)</div>
-<div class="diff-ctx"> - Earlier is better: one upgrade on floor 8 benefits 20+ fights</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **Rest** when:</div>
-<div class="diff-del">-- HP is below 40% in Act 2 (below 35% in Act 1)</div>
-<div class="diff-del">-- Next room is a known elite or boss</div>
-<div class="diff-del">-- The path ahead contains 2+ combat rooms before the next rest site</div>
-<div class="diff-del">-- At 40-50% in Act 2, consider the specific path ahead -- if the next rooms are combat, rest. If the next room is a shop/event, upgrade is acceptable.</div>
-<div class="diff-add">+- HP is below 50% in Act 2 (below 35% in Act 1)</div>
-<div class="diff-add">+- Next room is a known elite or boss AND you are below 60% HP</div>
-<div class="diff-add">+- The path ahead contains 2+ combat rooms before the next rest site AND you are below 50%</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### The Upgrade Death Spiral</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed twice: once with only 1 upgrade across 28 floors, and once with literally ZERO upgrades across 23 floors. Both runs died in Act 2 with decks that had adequate card quality but no upgraded cards to back it up.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 40% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest.</div>
-<div class="diff-add">+**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 50% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Upgrade Priority</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -273,7 +271,7 @@ Pantograph heals to full before the boss, but Act 2 hallway fights drain 30-60 H</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Upgrades Matter More</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 45%. The upgrade death spiral (no upgrades -&gt; harder fights -&gt; more HP loss -&gt; forced resting -&gt; no upgrades) must be avoided.</div>
-<div class="diff-add">+Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 50%. The upgrade death spiral (no upgrades -&gt; harder fights -&gt; more HP loss -&gt; forced resting -&gt; no upgrades) must be avoided.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Healing Sustain Is Critical</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -293,6 +291,18 @@ Burning Blood (+6/fight) cannot compensate for 30-50 HP fights. Reaper and Feed</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> If by Floor 20 your only healing is Burning Blood, the run is in danger. Actively prioritize healing card picks in Act 1 when offered.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+### Backup Healing Plan (when Reaper/Feed are NOT offered)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Reaper and Feed are uncommon cards -- they may not appear in card rewards at all (confirmed: Run 53 had neither offered across 33 floors). The healing priority rule works when cards are offered, but RNG can deny them entirely. When this happens, the player must actively pursue alternative healing:</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+1. **Shop healing**: Buy Blood Potion or Regen Potion at every shop if no healing card exists. Buy Toy Ornithopter or Meal Ticket if offered.</div>
-<div class="diff-add">+2. **Event healing**: The Cleric heals. Big Fish offers healing. Woman in Blue sells potions. Prioritize these events.</div>
-<div class="diff-add">+3. **Map pathing for rest sites**: Without healing cards, rest sites become the primary healing source. Path through MORE rest sites, accept fewer upgrades. This is a degraded strategy but better than dying.</div>
-<div class="diff-add">+4. **Potion management**: Treat Blood Potions and Regen Potions as precious resources. Do not use them in trivial fights.</div>
-<div class="diff-add">+5. **Conservative play**: Without healing, EVERY point of HP matters more. Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The absence of healing cards does NOT mean the run is lost. It means the player must shift from &quot;aggressive with healing to recover&quot; to &quot;conservative to avoid damage in the first place.&quot;</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ### Cross-Run Victory Pattern</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Across all boss victories (7 total), the differentiators are:</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

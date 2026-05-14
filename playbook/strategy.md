@@ -2,17 +2,18 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (152 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Two Silent runs (Runs 151-152). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison-through-block works well (Spheric Guardian, Slime Boss), but power setup speed against bosses needs improvement.
+**CURRENT STATUS (153 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Three Silent runs (Runs 151-153). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- poison engine dominated Act 3 hallway fights, card retention engine (WLP+ + TotT+ + Tactician+) was excellent, but Mind Bloom "I am Awake" choice (Mark of the Bloom) and fighting Mysterious Sphere before the boss were critical strategic errors.
 
 **SCORECARD (runs 101-151):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 4. Act 2 boss reaches: 9+.
 - **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**
-- **3 wins in 152 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (2 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss).
+- **3 wins in 153 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (3 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45).
 - **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.
 - **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.
 - **Run 152: Silent died to Collector at F33.** Defensive powers (After Image, Footwork+) not played early enough. Card index confusion on Turn 1 caused suboptimal command execution. Post-debuff incoming was unsurvivable without defensive powers active. Poison strategy was highly effective against block-based enemies (Spheric Guardian crushed).
+- **Run 153: Silent died to Transient at F45.** Best Silent floor yet. Strong poison engine + card retention engine dominated Act 3 hallways. Two critical strategic errors: (1) Mind Bloom "I am Awake" gave Mark of the Bloom (no healing), then (2) Mysterious Sphere fight (2 Orb Walkers) drained 66 HP with no recovery possible. Entered Transient at 3 HP. Died 7 damage short of surviving the final turn.
 - **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.
 
 **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**
@@ -104,6 +105,14 @@ The pattern across 10 low-HP deaths: the player enters Act 2 at reasonable HP, t
 After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. If the map doesn't offer this, the run was lost at map selection, not at the fight.
 
 **Act 2 decision point:** After each fight, if HP is below 35%, evaluate the ENTIRE remaining path. If it contains 2+ consecutive combat rooms before a rest site, re-route to the safest available path even if it means missing rewards.
+
+### Mark of the Bloom = No Optional Combat
+
+If Mark of the Bloom is active (from Mind Bloom "I am Awake"), every point of damage is permanent. No rest sites, no potions, no healing cards can recover HP. Under this condition:
+- **Do NOT fight Mysterious Sphere** (2 Orb Walkers, confirmed 66 HP drain).
+- **Do NOT take Unknown rooms** that could resolve as combat.
+- **Do NOT fight elites** unless the path forces it.
+- Take only the safest possible route to the boss: shops, rest sites (for upgrades only), events with known non-combat outcomes. Any combat HP loss is now a direct reduction of your boss fight survivability.
 
 ### What Causes the HP Drain
 
@@ -527,7 +536,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 |---|---|---|
 | Hallway (easy) | 40% | Exploders + Spikers -- Thorns 3 punish multi-hit attacks, Exploders deal AoE on death |
 | Hallway (hard) | 60% | Writhing Mass (25-40 HP drain), Darklings (Life Link extends fight), Orb Walker (Str scales +3/turn) |
-| The Transient | 50% | Pure survival check -- 5 turns of escalating damage, do not attack |
+| The Transient | 50% (25+ HP for Silent) | Pure survival check -- 5 turns of escalating damage, do not attack. Silent with Wraith Form+ needs 25+ HP to survive turns 4-5 after Intangible wears off. |
 | The Maw | 60% | 300 HP, STRONG_DEBUFF turn 1, escalating damage. Barricade + Metallicize dominates. |
 | Elite | 70% | Act 3 elites are extremely dangerous at low HP |
 | Boss | 70% or Pantograph | Donu and Deca, Awakened One, or Time Eater |
@@ -535,9 +544,9 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 ### Act 3 Key Enemies
 
 - **Writhing Mass**: Malleable gains block per hit. Use single large hits, NOT multi-hit (Whirlwind, Pummel). Expect 25-40 HP drain. Long fight (6-8 turns).
-- **The Transient**: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Save Impervious for Turn 3+ (50-70 damage). Disarm and Weak are essential. Enter at 50%+ HP. See transient.md for detailed block priority by turn.
+- **The Transient**: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Save Impervious for Turn 3+ (50-70 damage). Disarm and Weak are essential. Enter at 50%+ HP (25+ HP minimum for Silent with Wraith Form+). Wraith Form+ covers turns 1-3 via Intangible but the -1 Dex/turn penalty makes turns 4-5 extremely tight. See transient.md for detailed block priority by turn.
 - **The Maw**: ~300 HP. Turn 1 STRONG_DEBUFF (Weak + Frail + Vuln). Alternates BUFF (free turns) and ATTACK. Damage escalates (5 -> 16 -> 33 -> 56). Barricade + Metallicize makes this fight trivial -- block stacking handles escalation. With Barricade + 2x Metallicize (7/turn) + Inflame+, the Maw was defeated at zero damage taken. Long fight (8-9 turns) rewards defensive setup.
-- **Orb Walker**: ~93 HP. Scales +3 Str per turn. Must burst down fast before damage becomes unsurvivable. Kill target for Feed (+3 max HP).
+- **Orb Walker**: ~93 HP each. Scales +3 Str per turn per enemy. Can appear as a pair (2 Orb Walkers). The 2-OW variant is extremely dangerous: combined Str scaling is +6/turn and Burns clog the hand. Confirmed 66 HP drain from a 2-OW fight. Must burst down one fast before combined damage becomes unsurvivable. Kill target for Feed (+3 max HP). **Do NOT fight Mysterious Sphere (which spawns 2 Orb Walkers) when Mark of the Bloom is active -- the HP drain is unrecoverable.**
 - **Exploder + Spiker**: Exploders (~30 HP) deal AoE damage on death. Spikers have Thorns 3 (retaliate 3 per Attack played). Use AOE (Immolate+) to clear Exploders, use single large hits against Spikers. Barricade handles Thorns chip damage.
 - **Darklings**: Life Link -- must kill all 3 in the same turn or they revive at half HP. AOE (Immolate+) is critical. Save AOE for the kill turn.
 - **Spikers**: Thorns damage per Attack played. Block before attacking. Use fewer, larger attacks.
