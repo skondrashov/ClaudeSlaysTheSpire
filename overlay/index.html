@@ -44,8 +44,292 @@
       height: 236px;
       background: rgba(8, 8, 12, 0.94);
       border-top: 3px solid rgba(140, 70, 230, 0.5);
-      display: flex;
       overflow: hidden;
+    }
+
+    /* === CYCLING PANELS === */
+
+    .panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    .panel.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Countdown bar — thin line at very bottom of bottom-bar */
+    .countdown-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.06);
+      z-index: 10;
+    }
+
+    .countdown-bar-fill {
+      height: 100%;
+      width: 100%;
+      background: rgba(212, 160, 255, 0.45);
+      transform-origin: left;
+    }
+
+    /* === PANEL A: GAMEPLAY (action log + deck) === */
+
+    .tile {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 16px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+
+    .tile:last-child {
+      border-right: none;
+    }
+
+    .tile.feed-tile {
+      flex: 1;
+    }
+
+    .tile.deck-tile {
+      width: 420px;
+      flex-shrink: 0;
+    }
+
+    /* Action feed — 3 columns */
+    .action-feed {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 0 16px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .feed-entry {
+      display: flex;
+      align-items: baseline;
+      padding: 3px 0;
+      width: calc(33.33% - 11px);
+    }
+
+    .feed-action {
+      font-family: 'Consolas', monospace;
+      font-size: 17px;
+      font-weight: 600;
+      color: #d4a0ff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .feed-action.color-meta { color: #4ade80; }
+    .feed-action.color-combat { color: #e07070; }
+    .feed-action.color-event { color: #c49aff; }
+    .feed-action.color-reward { color: #f0c050; }
+
+    /* Deck display */
+    .deck-list {
+      flex: 1;
+      overflow: hidden;
+      column-width: 160px;
+      column-gap: 16px;
+      column-fill: auto;
+      min-height: 0;
+    }
+
+    .deck-card {
+      font-size: 14px;
+      color: #bbb;
+      white-space: nowrap;
+      padding: 1px 0;
+      break-inside: avoid;
+    }
+
+    .deck-card .card-count {
+      color: #d4a0ff;
+      font-weight: 700;
+    }
+
+    .deck-card.type-attack { color: #e07070; }
+    .deck-card.type-skill { color: #6ec6ff; }
+    .deck-card.type-power { color: #f0c050; }
+    .deck-card.type-curse { color: #888; }
+    .deck-card.type-status { color: #888; }
+
+    /* === PANEL B: CONTEXT (stats + notes + playbook) === */
+
+    .tile.overview-tile {
+      width: 280px;
+      flex-shrink: 0;
+    }
+
+    .tile.run-history-tile {
+      width: 300px;
+      flex-shrink: 0;
+    }
+
+    .tile.notes-tile {
+      flex: 1;
+    }
+
+    .tile.playbook-tile {
+      width: 160px;
+      flex-shrink: 0;
+    }
+
+    /* Shared context panel title */
+    .ctx-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+
+    .char-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .char-table th {
+      font-size: 12px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: left;
+      padding: 0 0 6px 0;
+    }
+
+    .char-table th:first-child {
+      width: 90px;
+    }
+
+    .char-table td {
+      font-size: 17px;
+      padding: 3px 0;
+      color: #aaa;
+    }
+
+    .char-table td.char-name {
+      font-weight: 700;
+      color: #d4a0ff;
+    }
+
+    .char-table td.char-best .char-wins {
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    .char-table td.char-best .char-floor {
+      color: #f0c050;
+    }
+
+    .char-table tr.total-row td {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 5px;
+    }
+
+    .char-table tr.total-row td.char-name {
+      color: #eee;
+    }
+
+    .char-table tr.dimmed td {
+      color: #888;
+    }
+
+    .char-table tr.dimmed td.char-name {
+      color: #999;
+    }
+
+    .notes-content {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #ccc;
+      overflow: hidden;
+    }
+
+    .notes-content .note-line {
+      padding: 1px 0;
+    }
+
+    /* Strategy panel */
+
+    .tile.strategy-tile {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .strategy-content {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #ccc;
+      overflow: hidden;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* Overview section */
+
+    .knowledge-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 14px;
+    }
+
+    .knowledge-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 16px;
+      color: #ccc;
+      padding: 2px 0;
+    }
+
+    .knowledge-item span {
+      color: #d4a0ff;
+      font-weight: 700;
+      display: inline-block;
+      width: 30px;
+      text-align: right;
+    }
+
+    .project-url {
+      font-size: 19px;
+      color: #d4a0ff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    .overview-content {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.55;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .overview-content .note-line {
+      padding: 1px 0;
     }
 
     /* === SIDEBAR: header + full reasoning log === */
@@ -65,13 +349,13 @@
       text-align: center;
     }
 
-    .section {
+    .sidebar-section {
       padding: 16px 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       flex-shrink: 0;
     }
 
-    .section.grow {
+    .sidebar-section.grow {
       flex: 1;
       min-height: 0;
       overflow: hidden;
@@ -109,17 +393,7 @@
       display: block;
     }
 
-    .section-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ccc;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      flex-shrink: 0;
-    }
-
-    /* Reasoning log — scrollable, fills sidebar */
+    /* Reasoning log */
     .reasoning-log {
       flex: 1;
       overflow-y: auto;
@@ -169,212 +443,12 @@
     }
 
     .reasoning-empty {
-      color: #555;
+      color: #999;
       font-style: italic;
       font-size: 22px;
     }
 
-    /* === BOTTOM BAR === */
-    /* Layout: stats (narrow) | actions (3-col) | playbook | project state */
-
-    .bottom-section {
-      display: flex;
-      flex-direction: column;
-      padding: 14px 16px;
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-    }
-
-    .bottom-section.stats-section {
-      width: 120px;
-      flex-shrink: 0;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .bottom-section.feed-section {
-      flex: 1;
-    }
-
-    .bottom-section.playbook-section {
-      width: 130px;
-      flex-shrink: 0;
-      justify-content: center;
-    }
-
-    .bottom-section.project-state-section {
-      width: 230px;
-      flex-shrink: 0;
-      border-right: none;
-      justify-content: center;
-    }
-
-    /* Run stats — compact column */
-    .run-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .run-stat {
-      font-size: 13px;
-      color: #888;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-align: center;
-    }
-
-    .run-stat span {
-      display: block;
-      font-size: 28px;
-      color: #f0f0f0;
-      font-weight: 800;
-      margin-top: 2px;
-    }
-
-    /* Action feed — 3 columns, bottom-aligned (newest = bottom-right) */
-    .action-feed {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-content: flex-start;
-      gap: 0 16px;
-      overflow: hidden;
-      min-height: 0;
-    }
-
-    .feed-entry {
-      display: flex;
-      align-items: baseline;
-      padding: 3px 0;
-      width: calc(33.33% - 11px);
-    }
-
-    .feed-action {
-      font-family: 'Consolas', monospace;
-      font-size: 17px;
-      font-weight: 600;
-      color: #d4a0ff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .feed-action.color-meta {
-      color: #4ade80;
-    }
-
-    .feed-action.color-combat {
-      color: #e07070;
-    }
-
-    .feed-action.color-event {
-      color: #c49aff;
-    }
-
-    .feed-action.color-reward {
-      color: #f0c050;
-    }
-
-    /* State of the Game panel */
-    .state-content {
-      flex: 1;
-      overflow-y: auto;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .state-group-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 4px;
-    }
-
-    .state-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 2px 0;
-    }
-
-    .state-label {
-      font-size: 14px;
-      color: #777;
-    }
-
-    .state-value {
-      font-size: 14px;
-      color: #ddd;
-      font-weight: 600;
-    }
-
-    .state-divider {
-      border: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      margin: 2px 0;
-    }
-
-    .loop-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .loop-step {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: #aaa;
-      line-height: 1.35;
-    }
-
-    .loop-step .step-num {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #5a2090;
-      color: #e8d0ff;
-      font-size: 12px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .knowledge-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .knowledge-item {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      font-size: 16px;
-      color: #ccc;
-      padding: 1px 0;
-    }
-
-    .knowledge-item span {
-      color: #d4a0ff;
-      font-weight: 700;
-      display: inline-block;
-      width: 28px;
-      text-align: right;
-    }
-
-    /* === AGENT MODE PANEL (covers game area) === */
+    /* === AGENT MODE PANEL === */
 
     .agent-panel {
       position: absolute;
@@ -390,9 +464,7 @@
       border-bottom: 3px solid rgba(140, 70, 230, 0.5);
     }
 
-    .agent-panel.active {
-      display: flex;
-    }
+    .agent-panel.active { display: flex; }
 
     .agent-header {
       padding: 24px 32px 16px;
@@ -434,7 +506,6 @@
       border-left: 3px solid rgba(140, 70, 230, 0.3);
     }
 
-    /* Run summary shown in feed area during agent mode */
     .run-summary {
       display: flex;
       flex-direction: column;
@@ -462,30 +533,18 @@
       text-overflow: ellipsis;
     }
 
-    .run-summary .summary-line.result-death {
-      color: #e07070;
-    }
-
-    .run-summary .summary-line.result-victory {
-      color: #4ade80;
-    }
+    .run-summary .summary-line.result-death { color: #e07070; }
+    .run-summary .summary-line.result-victory { color: #4ade80; }
 
     /* Hide all scrollbars */
-    ::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-      display: none;
-    }
-
-    * {
-      scrollbar-width: none;
-    }
+    ::-webkit-scrollbar { width: 0; height: 0; display: none; }
+    * { scrollbar-width: none; }
   </style>
 </head>
 
 <body>
 
-  <!-- Agent mode panel (covers game area when analyst/strategist running) -->
+  <!-- Agent mode panel -->
   <div class="agent-panel" id="agentPanel">
     <div class="agent-header">
       <h2 id="agentTitle">ANALYSIS</h2>
@@ -497,66 +556,110 @@
   <div class="sidebar">
     <div class="header">
       <h1>CLAUDE SLAYS THE SPIRE</h1>
-      <div style="text-align:center;margin-top:4px;">
-        <span style="color:#999;font-size:17px;letter-spacing:1px;">claudeslaysthespire.org</span>
-      </div>
     </div>
 
-    <div class="section grow">
+    <div class="sidebar-section grow">
       <div class="reasoning-log" id="reasoningLog">
         <div class="reasoning-empty">Waiting for first decision...</div>
       </div>
     </div>
 
     <div class="floor-graph" id="floorGraphContainer">
-      <div class="floor-graph-label">History</div>
+      <div class="floor-graph-label">Previous Runs</div>
       <svg id="floorGraph" viewBox="0 0 380 112"></svg>
     </div>
   </div>
 
-  <!-- Bottom bar: stats | actions (3-col) | changelog -->
+  <!-- Bottom bar: cycles between gameplay and context -->
   <div class="bottom-bar">
-    <div class="bottom-section stats-section">
-      <div class="run-stats" id="runStats">
-        <div class="run-stat">Runs<span id="totalRuns">0</span></div>
-        <div class="run-stat">Wins<span id="wins">0</span></div>
-        <div class="run-stat">Best<span id="bestFloor">0</span></div>
+    <!-- Panel A: Gameplay (action log + deck) -->
+    <div class="panel" id="panelGameplay">
+      <div class="tile feed-tile">
+        <div class="ctx-title">Actions</div>
+        <div class="action-feed" id="actionFeed"></div>
+      </div>
+      <div class="tile deck-tile">
+        <div class="ctx-title">Deck (<span id="deckCount">0</span>)</div>
+        <div class="deck-list" id="deckList"></div>
       </div>
     </div>
 
-    <div class="bottom-section playbook-section">
-      <div class="section-title">Playbook</div>
-      <div class="knowledge-grid" id="knowledgeGrid">
-        <div class="knowledge-item"><span id="pb-cards">-</span> cards</div>
-        <div class="knowledge-item"><span id="pb-enemies">-</span> enemies</div>
-        <div class="knowledge-item"><span id="pb-bosses">-</span> bosses</div>
-        <div class="knowledge-item"><span id="pb-events">-</span> events</div>
-        <div class="knowledge-item"><span id="pb-relics">-</span> relics</div>
-        <div class="knowledge-item"><span id="pb-potions">-</span> potions</div>
+    <!-- Panel B: Context (overview + playbook + run history + notes) -->
+    <div class="panel active" id="panelContext">
+      <div class="tile overview-tile">
+        <div class="project-url">claudeslaysthespire.org</div>
+        <div class="overview-content" id="overviewContent"></div>
+      </div>
+      <div class="tile playbook-tile">
+        <div class="ctx-title">Playbook</div>
+        <div class="knowledge-grid" id="knowledgeGrid">
+          <div class="knowledge-item"><span id="pb-cards">-</span> cards</div>
+          <div class="knowledge-item"><span id="pb-enemies">-</span> enemies</div>
+          <div class="knowledge-item"><span id="pb-bosses">-</span> bosses</div>
+          <div class="knowledge-item"><span id="pb-events">-</span> events</div>
+          <div class="knowledge-item"><span id="pb-relics">-</span> relics</div>
+          <div class="knowledge-item"><span id="pb-potions">-</span> potions</div>
+        </div>
+      </div>
+      <div class="tile run-history-tile">
+        <div class="ctx-title">Run History</div>
+        <div id="charStats"></div>
+      </div>
+      <div class="tile notes-tile">
+        <div class="ctx-title">Notes</div>
+        <div class="notes-content" id="notes"></div>
       </div>
     </div>
 
-    <div class="bottom-section feed-section">
-      <div class="action-feed" id="actionFeed"></div>
+    <!-- Panel C: Strategy (last think() output) -->
+    <div class="panel" id="panelStrategy">
+      <div class="tile strategy-tile">
+        <div class="ctx-title" id="strategyTitle">Latest Strategy Reasoning</div>
+        <div class="strategy-content" id="strategyContent">
+          <div class="reasoning-empty">No strategy posted yet...</div>
+        </div>
+      </div>
     </div>
 
-    <div class="bottom-section project-state-section">
-      <div style="font-size:15px;color:#ccc;line-height:1.5;">
-        Powered by Claude Opus 4.6. A player agent plays the game, an analyst reviews each run, and a strategist critiques the playbook every ~10 runs. Running with extra human heuristics since run 140.
-      </div>
+    <!-- Countdown bar -->
+    <div class="countdown-bar">
+      <div class="countdown-bar-fill" id="countdownBar"></div>
     </div>
   </div>
 
   <script>
     const WS_URL = 'ws://127.0.0.1:3001';
+    const CYCLE_INTERVAL = 30000; // 30 seconds
     let ws = null;
     let reconnectDelay = 1000;
-
-    // Last known game state for translating commands
     let lastState = null;
-
-    // Saved feed HTML so we can restore after agent mode
     let savedFeedHTML = '';
+    let currentPanel = 1;
+    const panels = ['panelGameplay', 'panelContext', 'panelStrategy'];
+    let cycleStart = Date.now();
+
+    // --- Bottom bar cycling with countdown bar ---
+
+    function cyclePanel() {
+      document.getElementById(panels[currentPanel]).classList.remove('active');
+      currentPanel = (currentPanel + 1) % panels.length;
+      document.getElementById(panels[currentPanel]).classList.add('active');
+      cycleStart = Date.now();
+    }
+
+    setInterval(cyclePanel, CYCLE_INTERVAL);
+
+    // Animate the countdown bar — shrinks right-to-left, resets on cycle
+    function updateCountdownBar() {
+      const elapsed = Date.now() - cycleStart;
+      const remaining = Math.max(1 - elapsed / CYCLE_INTERVAL, 0);
+      const bar = document.getElementById('countdownBar');
+      if (bar) bar.style.transform = `scaleX(${remaining})`;
+      requestAnimationFrame(updateCountdownBar);
+    }
+    requestAnimationFrame(updateCountdownBar);
+
+    // --- Data fetching ---
 
     function fetchPlaybookStats() {
       fetch('http://127.0.0.1:3002/playbook-stats')
@@ -571,11 +674,106 @@
         })
         .catch(() => {});
     }
+
+    function fetchCharacterStats() {
+      fetch('http://127.0.0.1:3002/character-stats')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(data => {
+          const container = document.getElementById('charStats');
+          const stats = data.characters || {};
+          const totalRuns = data.total_runs || 0;
+          const order = ['IRONCLAD', 'THE_SILENT', 'DEFECT', 'WATCHER'];
+          const names = {IRONCLAD: 'Ironclad', THE_SILENT: 'Silent', DEFECT: 'Defect', WATCHER: 'Watcher'};
+
+          let rows = '';
+          for (const cls of order) {
+            const s = stats[cls];
+            if (s) {
+              let best = `A${s.best_asc} `;
+              best += s.best_win ? '<span class="char-wins">WIN</span>' : `<span class="char-floor">F${s.best_floor}</span>`;
+              if (s.best_count > 1) best += ` x${s.best_count}`;
+              rows += `<tr><td class="char-name">${names[cls]}</td><td>${s.runs}</td><td class="char-best">${best}</td></tr>`;
+            } else {
+              rows += `<tr class="dimmed"><td class="char-name">${names[cls]}</td><td>0</td><td>—</td></tr>`;
+            }
+          }
+          rows += `<tr class="total-row"><td class="char-name">Total</td><td>${totalRuns}</td><td></td></tr>`;
+
+          container.innerHTML = `<table class="char-table"><thead><tr><th></th><th>Runs</th><th>Best</th></tr></thead><tbody>${rows}</tbody></table>`;
+        })
+        .catch(() => {});
+    }
+
+    function fetchNotes() {
+      fetch('http://127.0.0.1:3002/notes')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(text => {
+          const container = document.getElementById('notes');
+          const lines = text.split('\n').filter(l => l.trim());
+          container.innerHTML = lines.map(l => `<div class="note-line">${esc(l)}</div>`).join('');
+        })
+        .catch(() => {});
+    }
+
+    function fetchOverview() {
+      fetch('http://127.0.0.1:3002/overview')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(text => {
+          const container = document.getElementById('overviewContent');
+          const lines = text.split('\n').filter(l => l.trim());
+          container.innerHTML = lines.map(l => `<div class="note-line">${esc(l)}</div>`).join('');
+        })
+        .catch(() => {});
+    }
+
+    // Fetch all context data on load and periodically
     fetchPlaybookStats();
-    setInterval(fetchPlaybookStats, 60000); // Refresh every minute
+    fetchCharacterStats();
+    fetchNotes();
+    fetchOverview();
+    setInterval(fetchPlaybookStats, 60000);
+    setInterval(fetchCharacterStats, 60000);
+    setInterval(fetchNotes, 30000);
+    setInterval(fetchOverview, 30000);
+
+    // --- Deck display ---
+
+    function updateDeck(deckCards) {
+      if (!deckCards || deckCards.length === 0) return;
+
+      document.getElementById('deckCount').textContent = deckCards.length;
+
+      // Count duplicates and sort
+      const counts = {};
+      for (const name of deckCards) {
+        counts[name] = (counts[name] || 0) + 1;
+      }
+
+      // Sort: attacks, skills, powers, curses
+      const sorted = Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0]));
+
+      const container = document.getElementById('deckList');
+      container.innerHTML = '';
+      for (const [name, count] of sorted) {
+        const div = document.createElement('div');
+        const typeClass = getCardTypeClass(name);
+        div.className = 'deck-card' + (typeClass ? ' ' + typeClass : '');
+        div.textContent = count > 1 ? `${name} x${count}` : name;
+        container.appendChild(div);
+      }
+    }
+
+    function getCardTypeClass(name) {
+      // Known curses/statuses
+      const curses = ['Parasite', 'Decay', 'Injury', 'Doubt', 'Shame', 'Regret', 'Pain', 'Normality', 'Writhe', 'Clumsy', 'Necronomicurse', 'Curse of the Bell', 'AscendersBane'];
+      const statuses = ['Wound', 'Burn', 'Dazed', 'Slimed', 'Void'];
+      if (curses.includes(name) || name.endsWith(' Curse')) return 'type-curse';
+      if (statuses.includes(name)) return 'type-status';
+      return ''; // Let CSS default handle it
+    }
 
     // --- Floor history graph ---
-    const FLOOR_MAX = 62; // Headroom above Act 3 boss (floor 56) for dots/labels
+    const FLOOR_MAX = 62;
 
     function fetchFloorHistory() {
       fetch('http://127.0.0.1:3002/run-history')
@@ -602,18 +800,15 @@
 
       let html = '';
 
-      // Horizontal reference lines at act boundaries + final boss
       const refFloors = [act1End, act2End, act3End];
       const tickH = 6;
       for (const f of refFloors) {
         const y = yScale(f);
         html += `<line x1="${pad.left}" y1="${y}" x2="${W - pad.right}" y2="${y}" stroke="rgba(255,255,255,0.8)" stroke-width="0.5" stroke-dasharray="3,4"/>`;
-        // Sideways T ticks on left and right
         html += `<line x1="${pad.left}" y1="${y - tickH/2}" x2="${pad.left}" y2="${y + tickH/2}" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>`;
         html += `<line x1="${W - pad.right}" y1="${y - tickH/2}" x2="${W - pad.right}" y2="${y + tickH/2}" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>`;
       }
 
-      // Build points
       const points = data.map((d, i) => ({
         x: xScale(i),
         y: yScale(d.floor),
@@ -622,13 +817,11 @@
         color: d.victory ? '#4ade80' : (d.floor > act2End ? '#d4a0ff' : (d.floor > act1End ? '#f0c050' : '#e07070')),
       }));
 
-      // Connecting lines
       for (let i = 0; i < points.length - 1; i++) {
         const a = points[i], b = points[i + 1];
         html += `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="rgba(212,160,255,0.25)" stroke-width="1.5"/>`;
       }
 
-      // Dots and floor labels
       for (let i = 0; i < points.length; i++) {
         const p = points[i];
         const r = (i === points.length - 1) ? 3.5 : 2.5;
@@ -641,6 +834,8 @@
 
     fetchFloorHistory();
     setInterval(fetchFloorHistory, 60000);
+
+    // --- WebSocket ---
 
     function connect() {
       ws = new WebSocket(WS_URL);
@@ -666,12 +861,18 @@
 
     function handleEvent(event) {
       switch (event.type) {
+        case 'reload':
+          location.reload();
+          return;
         case 'state':
           lastState = event;
+          if (event.deck) updateDeck(event.deck);
           break;
         case 'decision':
           addReasoning(event);
-          // skip_feed = true means individual feed entries are posted separately (batch turns)
+          if (event.command === 'think' && event.reasoning) {
+            updateStrategy(event.translated || 'Strategy', event.reasoning);
+          }
           if (!event.skip_feed) {
             const displayText = event.translated || translateCommand(event.command);
             const color = categorizeAction(event.command);
@@ -685,7 +886,7 @@
           clearForNewRun();
           addFeedEntry('RUN ' + (event.run_number || '?') + ' — ' + event.class, 'meta');
           if (event.run_number) {
-            document.getElementById('totalRuns').textContent = event.run_number;
+            fetchCharacterStats();
           }
           break;
         case 'run_end':
@@ -694,8 +895,9 @@
             'meta'
           );
           if (event.stats) updateRunStats(event.stats);
-          fetchFloorHistory(); // Refresh graph
-          fetchPlaybookStats(); // Refresh playbook counts
+          fetchFloorHistory();
+          fetchPlaybookStats();
+          fetchCharacterStats();
           break;
         case 'stats':
           updateRunStats(event);
@@ -715,21 +917,17 @@
       }
     }
 
-    // --- Agent mode (analyst/strategist display) ---
+    // --- Agent mode ---
 
     function toggleAgentMode(event) {
       const panel = document.getElementById('agentPanel');
       const feed = document.getElementById('actionFeed');
-      const feedSection = feed.closest('.feed-section');
-      const feedTitle = feedSection ? feedSection.querySelector('.section-title') : null;
 
       if (event.active) {
-        // Show agent panel over game area
         panel.classList.add('active');
         document.getElementById('agentTitle').textContent = event.title || 'ANALYSIS';
         document.getElementById('agentBody').innerHTML = '';
 
-        // Save current action feed and replace with run summary
         savedFeedHTML = feed.innerHTML;
         const stats = event.run_stats || {};
         const summary = event.run_summary || '';
@@ -753,7 +951,6 @@
         summaryHTML += `</div>`;
         feed.innerHTML = summaryHTML;
       } else {
-        // Hide agent panel, restore action feed
         panel.classList.remove('active');
         if (savedFeedHTML) {
           feed.innerHTML = savedFeedHTML;
@@ -780,22 +977,15 @@
       body.scrollTop = body.scrollHeight;
     }
 
-    // Determine color category based on command + current game state
+    // --- Action categorization ---
+
     function categorizeAction(cmd) {
       if (!cmd) return '';
       const verb = cmd.trim().split(/\s+/)[0];
-
-      // Meta actions
       if (verb === 'start' || verb === 'proceed') return 'meta';
-
-      // Knowledge actions (plan/reason)
       if (verb === 'plan' || verb === 'reason') return 'event';
-
-      // Combat actions
       if (verb === 'play' || verb === 'potion') return 'combat';
       if (verb === 'end' && lastState && lastState.in_combat) return 'combat';
-
-      // Use screen context for choose/skip
       if (lastState) {
         const screen = lastState.screen || '';
         if (screen === 'MAP' || screen === 'BOSS') return 'meta';
@@ -803,11 +993,9 @@
         if (screen === 'CARD_REWARD' || screen === 'COMBAT_REWARD' || screen === 'GRID') return 'reward';
         if (lastState.in_combat) return 'combat';
       }
-
       return '';
     }
 
-    // Categorize auto-generated feed events (from stream.py state_watcher)
     function categorizeFeed(text) {
       if (!text) return 'meta';
       if (text.startsWith('COMBAT')) return 'combat';
@@ -816,10 +1004,8 @@
       return 'meta';
     }
 
-    // Translate raw commands into readable actions using last known state
     function translateCommand(cmd) {
       if (!cmd) return cmd;
-
       const parts = cmd.trim().split(/\s+/);
       const verb = parts[0];
 
@@ -828,7 +1014,6 @@
         const targetIdx = parts[2] !== undefined ? parseInt(parts[2]) : null;
         const card = lastState.hand ? lastState.hand[cardIdx - 1] : null;
         const cardName = card ? card.name : `card ${parts[1]}`;
-
         if (targetIdx !== null && lastState.enemies) {
           const enemy = lastState.enemies[targetIdx];
           const enemyName = enemy ? enemy.name : `enemy ${parts[2]}`;
@@ -847,35 +1032,67 @@
       if (verb === 'proceed') return 'Proceed';
       if (verb === 'skip' || verb === 'return') return 'Skip';
       if (verb === 'leave') return 'Leave';
-
       if (verb === 'potion') {
         const action = parts[1];
         if (action === 'use') return `Use Potion ${parts[2]}`;
         if (action === 'discard') return `Discard Potion ${parts[2]}`;
       }
-
       if (verb === 'start') return `Start — ${parts[1] || 'IRONCLAD'}`;
-
       return cmd;
     }
 
+    // --- UI updates ---
+
     function clearForNewRun() {
-      // Clear reasoning log
       const log = document.getElementById('reasoningLog');
       log.innerHTML = '<div class="reasoning-empty">New run starting...</div>';
-
-      // Clear action feed
       const feed = document.getElementById('actionFeed');
       feed.innerHTML = '';
-
-      // Reset client-side state
+      document.getElementById('strategyTitle').textContent = 'Latest Strategy Reasoning';
+      document.getElementById('strategyContent').innerHTML = '<div class="reasoning-empty">No strategy posted yet...</div>';
       lastState = null;
+    }
+
+    function updateStrategy(label, reasoning) {
+      document.getElementById('strategyTitle').textContent = 'Latest Strategy Reasoning';
+      const el = document.getElementById('strategyContent');
+      el.textContent = reasoning;
+      fitStrategyText();
+
+      // Force-switch to strategy panel and reset cycle timer
+      const stratIdx = panels.indexOf('panelStrategy');
+      if (stratIdx !== -1 && currentPanel !== stratIdx) {
+        document.getElementById(panels[currentPanel]).classList.remove('active');
+        currentPanel = stratIdx;
+        document.getElementById(panels[currentPanel]).classList.add('active');
+        cycleStart = Date.now();
+      }
+    }
+
+    function fitStrategyText() {
+      const el = document.getElementById('strategyContent');
+      const tile = el.closest('.strategy-tile');
+      if (!tile) return;
+      const maxFontSize = 16;
+      const minFontSize = 9;
+      let fontSize = maxFontSize;
+      el.style.fontSize = fontSize + 'px';
+
+      // Available height = tile height minus title and padding
+      const titleEl = document.getElementById('strategyTitle');
+      const tileStyle = getComputedStyle(tile);
+      const tileHeight = tile.clientHeight
+        - parseFloat(tileStyle.paddingTop) - parseFloat(tileStyle.paddingBottom);
+      const availableHeight = tileHeight - titleEl.offsetHeight - 4;
+
+      while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
+        fontSize -= 0.5;
+        el.style.fontSize = fontSize + 'px';
+      }
     }
 
     function addReasoning(d) {
       const log = document.getElementById('reasoningLog');
-
-      // Clear empty state
       const empty = log.querySelector('.reasoning-empty');
       if (empty) empty.remove();
 
@@ -886,35 +1103,27 @@
         const badgeText = d.translated || translateCommand(d.command);
         html += `<div class="command-badge">${esc(badgeText)}</div>`;
       }
-      if (d.reasoning) {
+      // For think events, only show the badge — full text goes to strategy panel
+      if (d.reasoning && d.command !== 'think') {
         html += `<span class="reason-text">${esc(d.reasoning)}</span>`;
       }
       entry.innerHTML = html;
-
       log.insertBefore(entry, log.firstChild);
 
-      // Keep max 20
       while (log.children.length > 20) {
         log.removeChild(log.lastChild);
       }
-
       log.scrollTop = 0;
     }
 
-    // Actions: append to end (newest = bottom of last column)
     function addFeedEntry(text, color) {
       const feed = document.getElementById('actionFeed');
-
       const entry = document.createElement('div');
       entry.className = 'feed-entry';
       const colorClass = color ? ` color-${color}` : '';
-      entry.innerHTML = `
-    <span class="feed-action${colorClass}">${esc(text || '')}</span>
-  `;
-
+      entry.innerHTML = `<span class="feed-action${colorClass}">${esc(text || '')}</span>`;
       feed.appendChild(entry);
 
-      // Remove oldest — cap to 3 visible columns (7 per column at 236px bar height)
       const maxEntries = 21;
       while (feed.children.length > maxEntries) {
         feed.removeChild(feed.firstChild);
@@ -922,11 +1131,8 @@
     }
 
     function updateRunStats(s) {
-      document.getElementById('totalRuns').textContent = s.total_runs || 0;
-      document.getElementById('wins').textContent = s.wins || 0;
-      const bestAsc = s.best_ascension || 0;
-      const bestFloor = s.best_floor || 0;
-      document.getElementById('bestFloor').textContent = bestFloor > 0 ? `A${bestAsc}F${bestFloor}` : '—';
+      // Stats are now shown via character stats panel
+      fetchCharacterStats();
     }
 
     function esc(s) {

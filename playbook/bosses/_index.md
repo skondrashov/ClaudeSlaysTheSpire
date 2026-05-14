@@ -11,5 +11,6 @@
 - [The Champ](the-champ.md)
 
 ## Act 3
+- [Awakened One](awakened-one.md)
 - [Donu and Deca](donu-and-deca.md)
 - [Time Eater](time-eater.md)

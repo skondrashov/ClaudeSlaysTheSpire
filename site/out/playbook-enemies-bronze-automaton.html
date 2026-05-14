@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bronze Automaton (Act 2 Boss) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="bronze-automaton-act-2-boss">Bronze Automaton (Act 2 Boss)</h1>
+<p>HP: 300. Starts with Artifact 3. Accompanied by 2 Orbs (50 HP each).</p>
+
+<h2 id="key-mechanics">Key Mechanics</h2>
+<ul>
+<li><strong>Artifact 3</strong>: First 3 debuff applications are negated. Must strip all Artifact before Vulnerable/Weak will stick. Thunderclap+ strips 1 per enemy per cast. Bash+ strips 1. Shockwave+ strips 1 per debuff type (Weak + Vuln = 2 charges consumed). Plan 3 debuff applications minimum before relying on Vulnerable/Weak.</li>
+<li><strong>Hyper Beam</strong>: 45 raw base damage, observed 38-57 depending on accumulated Strength. First Hyper Beam (turn ~6) deals 45-51. Second Hyper Beam (turn ~12) deals 57+ as Strength reaches 12. Automaton is stunned the turn AFTER each Hyper Beam. This is the most dangerous attack in the fight -- basic Defends (4x5=20 block) cannot survive it. Requires block scaling (Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor) AND Weak active on the Hyper Beam turn. The fight has TWO Hyper Beams if it lasts 12+ turns -- must plan block for both.</li>
+<li><strong>Stasis (Orbs)</strong>: Orbs steal a card from your deck via Stasis. Killing the Orb returns the stolen card. Do not rely on a single copy of any critical card. If Fiend Fire or Shockwave+ is stolen, kill that Orb to recover it.</li>
+<li><strong>Strength scaling</strong>: +3 Str per buff cycle. Fight is a DPS race -- long fights become unsurvivable as Hyper Beam damage scales.</li>
+<li><strong>Stun turn</strong>: After Hyper Beam, Automaton is stunned for 1 turn. This is a free damage window. Use it for burst (Fiend Fire+, Rampage, Spot Weakness setup).</li>
+</ul>
+
+<h2 id="fight-phases">Fight Phases</h2>
+<p>1. <strong>Artifact Strip (Turns 1-3)</strong>: Use cheap, non-exhausting debuffs to strip Artifact 3. Thunderclap (1E, strips 1 from all enemies) is ideal. Bash+ strips 1. Red Mask strips 1 automatically at combat start. <strong>Do NOT use Intimidate or Shockwave for Artifact stripping</strong> -- they exhaust and are needed for Hyper Beam survival. Goal: all Artifact gone by turn 3-4.</p>
+<p>2. <strong>Debuff Window (Turn 3-4)</strong>: Once Artifact is 0, apply Shockwave+ (Weak 3 + Vuln 3). This is the pivot point of the fight.</p>
+<p>3. <strong>Burst Phase (Turns 4-7)</strong>: With Vuln active, unload burst damage. Fiend Fire+, Rampage scaling, Hemokinesis. Goal: deal 150+ damage in 3-4 turns.</p>
+<p>4. <strong>Hyper Beam #1 Survival (Turn 6-8)</strong>: Hyper Beam hits for 45-51 (scales with accumulated Strength). MUST have 30+ block AND Weak active. Basic Defends (5 each) are NOT sufficient. Need block scaling cards AND a Weak source saved specifically for this turn. Impervious+ (40 block) covers Hyper Beam #1 cleanly. Clothesline (non-exhausting Weak, 2E) is the best Weak source because it survives for Hyper Beam #2.</p>
+<p>5. <strong>Stun Window #1</strong>: After Hyper Beam, Automaton is stunned. Free damage turn. Use Spot Weakness, Fiend Fire, or Rampage here.</p>
+<p>6. <strong>Hyper Beam #2 Survival (Turn 12-13)</strong>: If the fight lasts this long, Automaton has +12 Str. Hyper Beam deals 57+ damage. MUST have a second source of massive block (second Impervious+, or Weak + multiple block cards). If both Impervious+ copies were exhausted before this turn, survival requires 40+ block from Weak + SIO + Defends, which is extremely difficult.</p>
+<p>7. <strong>Stun Window #2</strong>: Same as #1. This is the kill-or-die window. If Automaton is not dead after this stun turn, Str scaling makes the fight nearly unwinnable.</p>
+
+<h2 id="what-kills-you">What Kills You</h2>
+<ul>
+<li><strong>Insufficient block for Hyper Beam</strong>: Run 105 died here. Deck had 4 basic Defends (5 block each = 20 max). Hyper Beam dealt 38+ unblocked damage. With no Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, or Impervious, the Hyper Beam was unsurvivable even with partial Weak reduction.</li>
+<li><strong>Low HP entry</strong>: Run 114 entered at 39/85 (45%) with all 4 readiness criteria met and Dark Shackles for Hyper Beam reduction. Dark Shackles reduced Hyper Beam from ~51 to ~42, but 42 + Orb damage (6) = 48 incoming against 13 block = 35 unblocked. At 31 HP, this was lethal. The deck had the tools (Metallicize, Ghostly Armor, Shrug It Off, Dark Shackles) but HP was too low to absorb even a partially-mitigated Hyper Beam. The 70% entry threshold exists because even GOOD block hands cannot fully absorb Hyper Beam + Orb damage.</li>
+<li><strong>Stasis stealing a key card</strong>: Orbs use Stasis to steal a card from your deck. Run 114: Stasis stole Metallicize (best passive block source), removing 3 block/turn for the rest of the fight. This made Hyper Beam survival math impossible. <strong>Priority: Kill Stasis Orbs BEFORE they steal a critical card.</strong> If an Orb has already stolen a card (visible in the Stasis tooltip), killing that Orb returns the card. Prioritize killing the Orb that stole your most important card. If Metallicize, Impervious, or your only Weak source is stolen, that Orb becomes kill priority #1 -- above dealing damage to the Automaton itself.</li>
+<li><strong>Long fights</strong>: +3 Str/cycle means Hyper Beam grows. By turn 12, Hyper Beam deals 57+. Confirmed death at Automaton 7/300 HP on turn 13 because Impervious+ was exhausted and Str had scaled to 12. Kill before turn 10 if possible; if the fight extends past turn 12, only massive block (Impervious+ or 40+ from card combos) survives Hyper Beam #2.</li>
+</ul>
+
+<h2 id="dark-shackles-interaction">Dark Shackles Interaction</h2>
+<p>Dark Shackles (0E, reduce enemy Str by 15 for 1 turn) is excellent for Hyper Beam survival but NOT sufficient alone. Run 114 math: Automaton had ~6 Str when Hyper Beam fired. Dark Shackles reduced to -9 Str, changing Hyper Beam from ~51 to ~42 damage. This is a ~9 damage reduction, NOT a full neutralization. You still need 30+ block on top of Dark Shackles. Dark Shackles + Metallicize + Ghostly Armor + 2 Defends = ~31 block vs 42 = take 11. At 70% HP (60/85), this is survivable. At 45% HP (39/85), it was not because prior turns had already chipped HP.</p>
+
+<h2 id="required-cards-tools">Required Cards/Tools</h2>
+<ul>
+<li><strong>Artifact strippers</strong> (MANDATORY): Thunderclap+, Bash+, any cheap debuff. Need 3+ applications.</li>
+<li><strong>Block scaling</strong> (MANDATORY): Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor. Basic Defends are NOT enough for Hyper Beam. Need 30+ block capability in a single turn.</li>
+<li><strong>Burst damage</strong>: Fiend Fire+, Rampage, Bludgeon. DPS race against Strength scaling.</li>
+<li><strong>Strength source</strong>: Spot Weakness, Inflame. Needed to race the damage check.</li>
+<li><strong>Weak source</strong>: Shockwave+ reduces Hyper Beam by 25%. Critical for survival.</li>
+</ul>
+
+<h2 id="odd-mushroom-anti-synergy">Odd Mushroom Anti-Synergy</h2>
+<p>Odd Mushroom reduces Vulnerable multiplier from 1.5x to 1.25x. This significantly reduces damage output in a fight where DPS racing is critical. Run 105 had Odd Mushroom, reducing effective burst by ~17% on Vulnerable targets. With 300 HP to burn through, this anti-synergy extends the fight by 1-2 turns, which means facing another Hyper Beam cycle.</p>
+
+<h2 id="hp-entry-threshold">HP Entry Threshold</h2>
+<p>70%+ or Pantograph. Hyper Beam demands a large HP buffer. Run 105 entered at 92/92 (Pantograph) and still died because block cards were missing -- HP alone does not save you without block scaling. Run 114 entered at 39/85 (45%) with ALL block scaling tools (Metallicize, Ghostly Armor, Shrug It Off, Dark Shackles) and still died because HP was too low. Both HP AND block scaling are required -- neither alone is sufficient.</p>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

@@ -431,6 +431,69 @@ def _resolve_shop_choose(raw_state: dict, action: str) -> str:
     return action  # No match found, pass through unchanged
 
 
+def _resolve_choose_card_name(raw_state: dict, action: str) -> str:
+    """Resolve card names in choose commands to indices for card-selection screens.
+
+    Supports HAND_SELECT, CARD_REWARD, and GRID screens:
+        "choose Sneaky Strike"  -> "choose 2"  (finds Sneaky Strike in the card list)
+        "choose 3"              -> "choose 3"  (already numeric, pass through)
+    """
+    gs = raw_state.get("game_state", {}) if raw_state else {}
+    screen = gs.get("screen_type", "")
+    ss = gs.get("screen_state", {})
+
+    # Determine which card list to search based on screen type
+    if screen == "HAND_SELECT":
+        cards = ss.get("hand", [])
+    elif screen in ("CARD_REWARD", "GRID"):
+        cards = ss.get("cards", [])
+    else:
+        return action  # Not a card-selection screen
+
+    parts = action.strip().split()
+    if len(parts) < 2 or parts[0].lower() != "choose":
+        return action
+
+    remainder = " ".join(parts[1:])
+
+    # Already numeric — pass through
+    try:
+        int(remainder)
+        return action
+    except ValueError:
+        pass
+
+    # Search for card name match (case-insensitive, handles upgraded names)
+    search = remainder.lower().strip()
+    search_no_plus = search.rstrip("+")
+
+    best_idx = None
+    best_token_count = 0
+
+    for i, card in enumerate(cards):
+        card_name = card.get("name", "")
+        card_name_lower = card_name.lower()
+        upgraded = card.get("upgrades", 0) > 0
+
+        # Try matching with and without +
+        candidates = [card_name_lower]
+        if upgraded:
+            candidates.append(card_name_lower + "+")
+
+        for candidate in candidates:
+            tc = len(candidate.split())
+            if tc <= best_token_count:
+                continue
+            if search == candidate or search_no_plus == candidate or search == candidate.rstrip("+"):
+                best_idx = i
+                best_token_count = tc
+
+    if best_idx is not None:
+        return f"choose {best_idx}"
+
+    return action  # No match found
+
+
 def _translate_named_choose(name: str) -> str:
     """Translate named choose commands like 'choose rest'."""
     name_map = {
@@ -720,6 +783,8 @@ def send(command: str, reason: str = "") -> str:
 
     # Resolve card names to indices using current hand state
     resolved = _resolve_card_name(_last_raw_state, command)
+    # Resolve card names in choose commands (HAND_SELECT, CARD_REWARD, GRID)
+    resolved = _resolve_choose_card_name(_last_raw_state, resolved)
     # Resolve shop card/relic names to indices
     resolved = _resolve_shop_choose(_last_raw_state, resolved)
     _post_decision(resolved, reason)
@@ -968,12 +1033,37 @@ def turn(actions: list, reason: str = "") -> str:
                 )
                 break
 
+        # Capture hand size before action to detect draws
+        pre_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+        pre_hand_size = len(pre_combat.get("hand", [])) if pre_combat else None
+
         raw = _tcp_request({"type": "command", "command": resolved_action.strip()})
         _last_raw_state = raw
         if "error" in raw:
             # Auto-handle mechanical transitions even on error
             _last_raw_state = _auto_handle_mechanical(_last_raw_state)
             return format_state(_last_raw_state)
+
+        # Detect draw: if we played a card but hand size didn't shrink, cards were drawn.
+        # Stop the sequence so the player can see the new cards and re-plan.
+        if (pre_hand_size is not None
+                and resolved_action.startswith("play ")
+                and i < total - 1  # more actions remain
+                and actions[i + 1] != "end"  # next action isn't just "end" -- that's harmless to stop before
+                ):
+            post_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+            if post_combat:
+                post_hand_size = len(post_combat.get("hand", []))
+                if post_hand_size >= pre_hand_size:
+                    # Hand didn't shrink — draw happened. Stop sequence.
+                    remaining_actions = actions[i + 1:]
+                    stopped_msg = (
+                        f"[DRAW DETECTED after playing {resolved_action}: "
+                        f"hand went from {pre_hand_size} to {post_hand_size} cards. "
+                        f"Remaining actions skipped: {remaining_actions}. "
+                        f"You drew new cards — read the state and plan the rest of your turn.]"
+                    )
+                    break
 
     # Auto-handle mechanical transitions after the turn completes
     _last_raw_state = _auto_handle_mechanical(_last_raw_state)
@@ -1327,6 +1417,46 @@ def reason(topic: str) -> str:
         f"Try the exact game name (e.g., \"Shrug It Off\", \"Gremlin Nob\").\n"
         f"Use reason(\"bash\") for cards, reason(\"hexaghost\") for bosses, etc."
     )
+
+
+def deck() -> str:
+    """View your full deck. Use after transforming, adding, or removing cards
+    to assess how the deck changed holistically.
+
+    Returns the full deck sorted by type (Attacks, Skills, Powers, Curses/Status),
+    with costs and upgrade status.
+    """
+    global _last_raw_state
+    _last_raw_state = _tcp_request({"type": "state"})
+    gs = _last_raw_state.get("game_state", {})
+    cards = gs.get("deck", [])
+
+    if not cards:
+        return "[No deck found — are you in a run?]"
+
+    # Group by type
+    groups = {"ATTACK": [], "SKILL": [], "POWER": [], "STATUS": [], "CURSE": []}
+    for c in cards:
+        ctype = c.get("type", "UNKNOWN").upper()
+        name = c.get("name", "?")
+        cost = c.get("cost", "?")
+        upgraded = c.get("upgrades", 0) > 0
+        display = f"{name}+" if upgraded else name
+        groups.setdefault(ctype, []).append(f"  {display} ({cost}E)")
+
+    lines = [f"=== DECK ({len(cards)} cards) ==="]
+    for gtype in ["ATTACK", "SKILL", "POWER", "CURSE", "STATUS"]:
+        group = groups.get(gtype, [])
+        if group:
+            lines.append(f"\n{gtype}S ({len(group)}):")
+            lines.extend(sorted(group))
+
+    # Summary stats
+    costs = [c.get("cost", 0) for c in cards if isinstance(c.get("cost"), int) and c.get("cost", 0) >= 0]
+    avg_cost = sum(costs) / len(costs) if costs else 0
+    lines.append(f"\nAvg cost: {avg_cost:.1f}E | Total: {len(cards)} cards")
+
+    return "\n".join(lines)
 
 
 def think(reasoning: str, label: str = "Strategy") -> str:

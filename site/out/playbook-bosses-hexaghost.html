@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hexaghost (Act 1, HP: 250) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="hexaghost-act-1-hp-250">Hexaghost (Act 1, HP: 250)</h1>
+
+<p>PATTERN:</p>
+<ul>
+<li><strong>Turn 1</strong>: Does NOT attack. Intent UNKNOWN. Free setup turn.</li>
+<li><strong>Turn 2</strong>: Multi-hit attack, ~5x6=30 damage. This is the FIRST big attack. Must have block on this turn -- spending all energy on setup with zero block is a common fatal mistake (see &quot;Turn 2 blocking&quot; below).</li>
+<li><strong>Inferno</strong>: 7x6 = 42 damage (multi-hit). Weak reduces each hit: floor(6*0.75)=4 per hit = 28 total. This is the most dangerous attack. Occurs later in the fight, not Turn 2.</li>
+<li><strong>ATTACK_DEBUFF</strong>: Moderate damage + adds Burn status cards to deck.</li>
+<li><strong>DEFEND_BUFF</strong>: Gains block and +Strength. No attack. Free turn for damage and Vulnerable refresh.</li>
+<li><strong>Medium attacks</strong>: 4-8 and 14-24 damage on non-Inferno attack turns.</li>
+<li><strong>Block</strong>: Can gain 12+ block.</li>
+<li><strong>Fight length</strong>: ~13 turns. Long fight.</li>
+</ul>
+
+<p>KEY MECHANICS:</p>
+<ul>
+<li><strong>Inferno (42 damage)</strong>: Multi-hit means each hit is checked against block individually. Without Weak, this is near-impossible to survive. With Weak: 28 total, which is survivable.</li>
+<li><strong>Burn cards</strong>: Unplayable status cards. Deal 2 damage per Burn in hand at end of turn AND clog hand (fewer real cards). Burns accumulate over the fight and create a death spiral.</li>
+<li><strong>Strength scaling</strong>: Hexaghost gains Strength on DEFEND_BUFF turns, making subsequent attacks stronger. Long fight = more Strength = more dangerous.</li>
+<li><strong>Turn 1 free</strong>: Use this for setup: Thunderclap (Vulnerable ALL), Metallicize, Powers.</li>
+</ul>
+
+<p>PREPARATION CHECKLIST (must have at least 3 of 4):</p>
+<p>1. Weak source (Shockwave, Clothesline, Intimidate, Uppercut, Weak Potion) -- reduces Inferno from 42 to 28. MANDATORY.</p>
+<p>2. HP above 70% OR Pantograph relic (heals 25 HP at boss start -- NOT full HP). Multiple deaths at 35-50% HP entry confirm that even good decks cannot absorb Burns + Inferno at low HP. One death at 76% HP entry also occurred when Turn 2 blocking was insufficient (20 HP lost immediately), effectively reducing the HP advantage.</p>
+<p>3. Passive block (Metallicize, Flame Barrier+) OR Impervious for the Inferno turn.</p>
+<p>4. Burns management OR damage scaling to end the fight before Burns overwhelm. See &quot;Burns management&quot; section below.</p>
+
+<p>If you have 0-2 of these, Hexaghost will likely kill you. Weak + passive block is NOT enough without damage scaling or Burns management -- the fight drags to 13+ turns and Burns attrition becomes unsurvivable. However, strong scaling (Cultist Potion Ritual + Rampage) combined with Incense Burner Intangible can compensate for missing Weak -- one fight reached Hexaghost 20/250 HP (92% damage dealt) in 8 turns with zero Weak sources. The fight was lost to an arithmetic error, not the missing Weak. Scaling that kills in 8-9 turns reduces Burns accumulation enough to survive without Weak.</p>
+
+<p>DAMAGE OUTPUT MATTERS -- THE #1 CAUSE OF HEXAGHOST DEATH: Four deaths confirm the pattern. Weak and block keep you alive temporarily, but insufficient damage is the actual killer. In 13+ turn fights, Burns accumulate to 3-5 cards dealing 6-10 HP/turn in self-damage alone PLUS clogging your hand so you draw fewer real cards. The death spiral is: more turns -&gt; more Burns -&gt; less hand quality -&gt; less damage -&gt; even more turns -&gt; even more Burns. Four deaths occurred with Weak sources but no way to handle Burns or end the fight quickly. One death had Hexaghost at 59/250 HP (24% remaining) when 4 Burns in hand dealt 8 damage at end of turn. Another death had Hexaghost at ~43/250 HP (17% remaining) with 5+ Burns dealing 4 damage each (Burns+) -- the deck had strong Str scaling (Inflame+ + Spot Weakness = 9 Str) but Turn 2 HP loss (20 damage from insufficient blocking) left no margin for the Burns attrition that accumulated over 12 turns. Damage scaling cards (Rampage, Inflame, Spot Weakness, Demon Form, Reaper) shorten the fight and reduce total Burns damage. Without at least one of these, the fight is near-unwinnable even with perfect Weak timing and Metallicize.</p>
+
+<p>WHAT WORKS:</p>
+<ul>
+<li><strong>Evolve + Fire Breathing</strong> -- the best anti-Burns engine. Evolve draws a replacement card when a Burn is drawn, neutralizing hand clog. Fire Breathing deals 6 (10 upgraded) damage to Hexaghost each time a Burn is drawn. Together, Burns become free damage with no downside. Confirmed across two clean Hexaghost victories (44/80 and 36/80 HP remaining after the fight). Set up both Powers on Turn 1 (free turn). This combo alone can handle Burns entirely -- no other Burns management needed. Even without Strength scaling, the engine shortens the fight significantly via passive damage.</li>
+<li><strong>Cultist Potion + Rampage</strong> -- devastating scaling engine. Cultist Potion grants Ritual (+1 Str/turn permanent). Combined with Rampage&#x27;s per-play scaling, damage grows multiplicatively. Confirmed: Rampage 3rd play with +6 Str and Vulnerable dealt 45 damage. By Turn 7 the fight was nearly won (Hexaghost at 20/250 HP). This combination can kill Hexaghost in 9 turns even without a Weak source. If Cultist Potion is available, use it Turn 1 (free turn) for maximum scaling.</li>
+<li>Demon Form (+2 Str/turn) -- the best scaling card for Hexaghost. By turn 5, every attack gains +8-10 damage. Combined with Anger (0E) and Shuriken (+1 Str per 3 attacks), the fight can be won in 7 turns instead of 13. Shorter fight = fewer Burns = less attrition.</li>
+<li>Disarm (-2 Str permanently) -- reduces all Hexaghost attacks including each Inferno hit. Very effective.</li>
+<li>Spot Weakness+ -- +4 Str on each Attack intent turn. Hexaghost&#x27;s attack turns are frequent enough to trigger this reliably. In a 12-turn fight, two applications give +8 Str permanently. Combined with Vajra (+1 Str), this reached 9 Str for 22+ damage per Strike against Vulnerable Hexaghost. Strong alternative to Demon Form for Strength scaling.</li>
+<li>Rampage+ -- scales over the long fight to 40-60+ damage per play. One of the best Hexaghost-killing cards.</li>
+<li>Evolve (standalone) -- draws a replacement card whenever a Burn is drawn. Neutralizes Burns hand-clogging completely. Play on Turn 1 (free turn) alongside other Powers.</li>
+<li>Flame Barrier+ -- 16 block + 42 counter damage (7 Inferno hits x 6 each). Single best defensive card for Inferno turns. Upgrade priority if facing Hexaghost.</li>
+<li>Torii relic -- reduces each 2-damage Burn to 1 damage (halves Burns attrition). Does not save the fight alone but significantly extends survivability.</li>
+<li>Incense Burner -- Intangible every 6 turns. In a 12-turn fight, triggers twice. Intangible on an Inferno turn reduces 42 damage to 1. Even without a Weak source, Incense Burner can substitute for one by negating the most dangerous attacks entirely. Combined with Rampage scaling, enables all-offense turns on Intangible without needing block.</li>
+</ul>
+
+<p>BURNS MANAGEMENT (CRITICAL -- four deaths from Burns accumulation):</p>
+
+<p>Burns deal 2 damage per Burn in hand at end of turn AND reduce hand quality by replacing real cards. By turn 8-10, a typical hand contains 3-4 Burns and only 1-2 real cards. The fight becomes unwinnable not because of Hexaghost&#x27;s attacks but because the deck can no longer generate meaningful damage or block. Burns+ (upgraded Burns from later ATTACK_DEBUFF turns) deal 4 damage each instead of 2 -- they are significantly more dangerous than regular Burns.</p>
+
+<p><strong>Burns damage is DOUBLE-LETHAL</strong>: Burns eat block at end of turn (reducing your block to zero or near-zero), AND THEN the next Hexaghost attack hits you with no block remaining. A player at 25 HP with 10 block and 4 Burns in hand will lose 8 HP from Burns (leaving 2 block), then take a 24-damage attack minus 2 block = 22 HP lost. The effective incoming is Burns + attack combined, not either one alone. Plan block for the SUM of Burns + next attack.</p>
+
+<p><strong>Burns management tools (priority order):</strong></p>
+<p>1. <strong>Evolve + Fire Breathing</strong> -- the best anti-Burns engine (see &quot;WHAT WORKS&quot;). Burns become free damage with no downside.</p>
+<p>2. <strong>Evolve (standalone)</strong> -- neutralizes hand clog. Burns still deal end-of-turn damage, but you draw real cards to replace them.</p>
+<p>3. <strong>True Grit+</strong> -- exhaust Burns for 9 block. Removes Burns permanently from the deck. Each exhausted Burn is -2 HP/turn and +1 real card per draw cycle.</p>
+<p>4. <strong>Fire Breathing (standalone)</strong> -- each Burn drawn deals 6-10 damage to Hexaghost. Does not stop hand clog, but turns Burns into a damage source.</p>
+<p>5. <strong>Second Wind</strong> -- exhaust all non-Attack cards in hand including Burns, gaining block for each. Mass Burns removal in one play.</p>
+<p>6. <strong>Damage scaling</strong> (Inflame, Spot Weakness, Demon Form, Rampage) -- not Burns management per se, but shortens the fight from 13 turns to 8-9, reducing total Burns accumulated from 4-5 to 2-3.</p>
+
+<p><strong>If the deck has NO Burns management AND NO damage scaling by Floor 15, the Hexaghost fight is near-unwinnable.</strong> Metallicize + Weak + basic damage cannot outrace Burns accumulation in a 13-turn fight. Even WITH damage scaling (Inflame+ + Spot Weakness = +9 Str), the fight can still be lost if HP is wasted on Turn 2 from insufficient blocking -- the damage scaling shortens the fight from 13 to 12 turns, but Burns+ (4 damage each) in the final turns are still lethal at low HP. Actively seek Evolve, Fire Breathing, True Grit+, or Inflame/Spot Weakness before the boss.</p>
+
+<p>STRATEGY:</p>
+<ul>
+<li><strong>Turn 1 (free)</strong>: Set up. Demon Form (3E) is the ideal turn 1 play -- the entire fight is won by scaling. If Demon Form is not available, play Thunderclap for mass Vulnerable + Metallicize + Evolve. Play Powers before anything else on this free turn.</li>
+<li><strong>Turn 2 (MUST BLOCK)</strong>: Turn 2 is a ~30 damage multi-hit. Spending all 3E on setup (Powers, Spot Weakness) with zero or minimal block is a fatal mistake. Every HP lost on Turn 2 compounds with Burns damage later. Budget at LEAST 1E for block on Turn 2. If choosing between playing a second setup card and playing a block card, play the block card. One death confirmed from spending 3E on Inflame+ + Spot Weakness + Ghostly Armor (10 block vs 30 incoming = 20 unblocked) -- the 20 HP lost here was the exact margin that made Burns lethal by Turn 12.</li>
+<li><strong>Save Weak for Inferno</strong>: Apply Shockwave/Clothesline/Intimidate on the first Inferno turn to reduce 42 to ~28.</li>
+<li><strong>Play Metallicize early</strong>: 3 block/turn over 13 turns = 39 free block. Set up as soon as possible.</li>
+<li><strong>Reapply Vulnerable with Bash+</strong>: Use DEFEND_BUFF (free) turns to refresh Vulnerable without spending block resources.</li>
+<li><strong>Burns management</strong>: Exhaust Burns with True Grit+ if available. Play Evolve on Turn 1 to neutralize hand clog. Burns deal cumulative damage -- 3 Burns = 6 damage/turn + 3 fewer real cards.</li>
+<li><strong>Kill speed matters</strong>: Shorter fight = fewer Burns accumulated = less attrition damage. Inflame (+2 Str) on turn 1 shortens the fight by 2-3 turns. This is not optional -- without damage scaling, Burns WILL overwhelm even a well-blocked deck.</li>
+</ul>
+
+<p>WHAT NOT TO DO:</p>
+<ul>
+<li><strong>End turn before verifying the kill.</strong> When Hexaghost is near death, calculate total damage from ALL playable cards before ending turn. A confirmed death occurred at Hexaghost 7/250 HP remaining because the player played Iron Wave (13 damage) against 20 HP and ended turn, despite having Headbutt (17 damage) in hand with 2E remaining. Combined damage (30) would have killed. The error was writing &quot;13 &gt; 20&quot; in reasoning -- a basic arithmetic mistake. On kill turns, play attacks one at a time and verify the kill before ending.</li>
+<li>Spend all energy on setup Turn 2 with minimal block. Turn 2 is a ~30 damage multi-hit. Even 5 more block (one Defend) reduces damage from 20 to 15, which can be the difference between surviving Burns in the final turns and dying. Setup is important, but not at the cost of 20+ unblocked damage.</li>
+<li>Fight without a Weak source. Inferno at full power (42) is near-unsurvivable.</li>
+<li>Fight without Burns management OR damage scaling. Four deaths had Weak + passive block but no way to handle Burns or end the fight quickly. Metallicize alone cannot save you from 4 Burns dealing 8+ damage/turn.</li>
+<li>Play Brutality. Burns + Brutality self-damage = 3-5 HP/turn death spiral.</li>
+<li>Play Berserk. Self-Vulnerable + Inferno = death.</li>
+<li>Enter below 70% HP without Pantograph. Pantograph only heals 25 HP, not full -- plan accordingly. The 250 HP + Inferno + Burns demands a large HP buffer. At the pre-boss rest site, REST if below 70% HP -- do not upgrade. An upgrade is worthless if you die on the boss.</li>
+<li>Waste Shockwave on a non-Inferno turn.</li>
+<li>Take Odd Mushroom from the Mushrooms event when Hexaghost is the Act 1 boss. Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting all Vulnerable-amplified damage by ~17%. In a fight where kill speed determines whether Burns overwhelm you, 17% less damage extends the fight by 1-2 turns and adds 1-2 more Burns to the deck. Confirmed as a contributing factor in a death where Hexaghost reached 24% HP remaining but Burns attrition finished the run.</li>
+</ul>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

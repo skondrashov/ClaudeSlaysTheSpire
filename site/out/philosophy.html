@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philosophy — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="">Playbook</a>
+<a href="philosophy.html" class="active">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<h1 id="philosophy">Philosophy</h1>
+
+<h2 id="why-not-self-play">Why Not Self-Play?</h2>
+
+<p>The default assumption in AI game-playing is self-play: let the model play thousands of games, learn from wins and losses, converge on good strategy. It works for chess engines and Go bots. It does not resemble how humans actually learn complex games.</p>
+
+<p>When a human picks up Slay the Spire for the first time, they don&#x27;t play 10,000 runs in silence. They read a guide. They watch a streamer. They ask a friend &quot;what does this relic do?&quot; They get stomped by a boss, look up the mechanic, and come back with a plan. They develop <em>intuitions</em> from a handful of experiences, not <em>statistics</em> from a mountain of data.</p>
+
+<p>Self-play produces competence through volume. Human learning produces competence through <em>understanding</em> — and understanding transfers. A human who deeply learns one deckbuilder will be decent at a second one on day one. A self-play agent trained on one game knows nothing about the next.</p>
+
+<p>This project is an attempt to isolate the strategies humans use to learn, implement them for LLMs, and see if the resulting knowledge transfers.</p>
+
+<h2 id="how-humans-actually-learn">How Humans Actually Learn</h2>
+
+<p>We&#x27;ve identified several learning strategies that self-play doesn&#x27;t naturally replicate:</p>
+
+<ul>
+<li><strong>Guided instruction.</strong> Humans read guides, watch tutorials, and absorb distilled wisdom from experts. This project uses human coaching — explicit advice about mechanics, priorities, and common mistakes — alongside self-play.</li>
+<li><strong>Structured review.</strong> After a loss, humans don&#x27;t just &quot;try again.&quot; They analyze <em>what specifically went wrong</em>, update their mental model, and change their approach. Our analyst agent does exactly this: reads the run log, identifies mistakes, and updates the playbook with corrections.</li>
+<li><strong>Conceptual frameworks.</strong> Humans build abstract models — &quot;this is a scaling fight,&quot; &quot;I need to kill the high-damage enemy first,&quot; &quot;this boss punishes X so avoid X.&quot; These frameworks transfer across encounters. Our playbook entries include decision prompts and strategic frameworks, not just raw data.</li>
+<li><strong>Deliberate practice.</strong> Humans focus on weaknesses. They don&#x27;t just play — they practice specific skills. A human who keeps dying to Act 2 elites will specifically study those fights.</li>
+<li><strong>Social learning.</strong> Humans learn from each other — from streams, forums, tier lists, and discussion. The human coaching component of this project simulates this channel.</li>
+</ul>
+
+<h2 id="the-playbook-as-transferable-knowledge">The Playbook as Transferable Knowledge</h2>
+
+<p>The playbook isn&#x27;t just a strategy guide for Slay the Spire. It&#x27;s an experiment in knowledge representation. Each entry contains:</p>
+
+<ul>
+<li><strong>Mechanics</strong> — what something does (objective facts)</li>
+<li><strong>Strategy</strong> — how to use it well (learned wisdom)</li>
+<li><strong>Decision prompts</strong> — questions to ask yourself when encountering this thing</li>
+</ul>
+
+<p>The hypothesis is that this format — mechanics + strategy + decision prompts — is a transferable structure. A Balatro playbook could use the same format. An entirely different domain could use the same format. The <em>content</em> changes, but the <em>structure of how you organize and retrieve knowledge</em> stays the same.</p>
+
+<h2 id="the-grand-experiment">The Grand Experiment</h2>
+
+<p>The first phase of this project is to push through Slay the Spire using every learning strategy available: guides, coaching, structured analysis, deliberate practice. Build up a comprehensive playbook. Win at high ascension levels.</p>
+
+<p>The second phase is the interesting one: take the <em>learning strategies</em> we&#x27;ve refined — not the Slay the Spire knowledge, but the meta-strategies for how an LLM acquires and applies game knowledge — and apply them to a new game with a blank playbook. Balatro is the obvious candidate (another card roguelike), but the real question is whether the strategies extend further.</p>
+
+<p>Can the same analyst/player/strategist loop that learns Slay the Spire also learn a fundamentally different kind of game? Can the playbook format that works for card evaluations also work for, say, puzzle-solving heuristics? These are open questions, and this project exists to answer them.</p>
+
+<h2 id="related-projects">Related Projects</h2>
+
+<p>We&#x27;re not the only ones exploring this space. Several projects tackle LLM game-playing with a focus on learning and knowledge accumulation:</p>
+
+<ul>
+<li><strong>Gemini Plays Pokemon</strong> (Google DeepMind, 2025) — Gemini 2.5 Pro plays Pokemon Red with specialized sub-agents and an XML map model. Their most interesting finding: <em>larger context windows actually degraded performance</em>. With 100k+ tokens of history, the model repeated past actions instead of synthesizing new plans. Context control design mattered more than raw model capability. Walkthrough knowledge from training data was a double-edged sword — it helped with strategy but caused version confusion (Fire Red items vs. original Blue). Completed a fully autonomous run in ~406 hours.</li>
+</ul>
+
+<ul>
+<li><strong>Claude Plays Pokemon</strong> (Anthropic, 2025) — Claude plays Pokemon Red with a self-managed persistent knowledge base the model can add to, edit, and reference across thousands of actions. The prompt explicitly tells Claude to trust only screenshots and its own knowledge base, not training data. This is the closest analog to our playbook system — the model curates what it remembers. Became a valuable internal eval at Anthropic because unlike MMLU-style benchmarks, it tests long-horizon reasoning, adaptation, and information accumulation. Performance leaped between model versions — 3.0 Sonnet couldn&#x27;t leave the first room; 3.7 Sonnet beat three gym leaders.</li>
+</ul>
+
+<ul>
+<li><strong>Voyager</strong> (NVIDIA / MineDojo, 2023) — An LLM agent for Minecraft that builds an ever-growing skill library of executable code. Skills compound across sessions — true lifelong learning. The skill library is the clearest example of persistent, accumulating knowledge that&#x27;s reusable and transferable. Their three components (automatic curriculum, skill library, iterative self-verification) map surprisingly well onto our player/analyst/strategist loop.</li>
+</ul>
+
+<ul>
+<li><strong>ExpeL</strong> (UC Berkeley, 2023) — Contrasts successful and failed trajectories, extracts &quot;rules of thumb,&quot; and stores them as reusable heuristics. This is the closest to human-style post-game reflection — distilling experience into transferable strategic principles. Very similar in spirit to our analyst agent&#x27;s post-run reviews.</li>
+</ul>
+
+<ul>
+<li><strong>LPLH — Learning to Play Like Humans</strong> (ACL 2025) — Explicitly models how human players learn interactive fiction, drawing on cognitive science principles: structured map building, action learning, and feedback-driven experience analysis. The name says it all — they&#x27;re asking the same question we are.</li>
+</ul>
+
+<p>The common thread: LLMs benefit enormously from structured, persistent knowledge that accumulates over time. Pure in-context reasoning hits a ceiling. The interesting question — the one all these projects are circling — is <em>how</em> to structure that knowledge so it transfers across games, across domains, and across model versions.</p>
+
+<h2 id="what-we-want-to-learn">What We Want to Learn</h2>
+
+<p>By the end of this project, we want to answer:</p>
+
+<p>1. <strong>Which human learning strategies are most effective for LLMs?</strong> Is coaching more valuable than self-play? How much does structured review matter compared to raw experience?</p>
+<p>2. <strong>What knowledge representation transfers across domains?</strong> Does the playbook format work for any game, or is it specific to card games?</p>
+<p>3. <strong>Can meta-learning strategies be distilled and reused?</strong> If we figure out the right analyst/player/strategist loop for one game, does the same loop work for a second game with zero game-specific tuning?</p>
+
+<p>These aren&#x27;t rhetorical questions. We&#x27;re running the experiments to find out.</p>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

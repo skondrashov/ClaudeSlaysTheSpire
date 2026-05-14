@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spheric Guardian (hallway, Act 2, HP: ~20, effectively 60+) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="spheric-guardian-hallway-act-2-hp-20-effectively-60">Spheric Guardian (hallway, Act 2, HP: ~20, effectively 60+)</h1>
+<p>PATTERN: Starts with 40 block + Barricade (block persists) + 3 Artifact + applies Frail 5. Alternates between attacking (10x2 = 20 damage) and defending (gains 15-20 block that persists due to Barricade). On attack turns, it deals 10x2=20. On defend turns, it deals 0 damage and adds block to its existing total.</p>
+<p>KEY MECHANIC: Barricade means block never expires. The Spheric Guardian GAINS block on defend turns (observed 15-20 block gained per action), and since block persists via Barricade, it stacks indefinitely. Combined with alternating attack/defend, the block grows faster than chip damage can remove it. At low Strength (0-1), Strikes deal 6-7 per play vs 15-20 block gained per defend cycle. The block will grow every other turn even while being attacked on the off turns.</p>
+<p>WHAT THIS MEANS: This is a DPS check disguised as a hallway fight. At 1 Strength, Strikes deal 6-7 damage per play. The Spheric Guardian gains 15-20 block on defend turns and retains leftover block. After 5-6 turns, its block reaches 40-64 and never comes down. The fight becomes mathematically unwinnable without sufficient Strength scaling or burst damage. Strip 3 Artifact charges first with cheap debuffs (Thunderclap ideal). Then apply Vulnerable. Then burst through remaining block + HP.</p>
+<p>BENCHMARKS: Must kill within 6-8 turns or block becomes insurmountable. Expect 30-50+ HP lost from Frail-reduced blocking vs 10x2 attacks. At low Strength without burst, this fight is a guaranteed loss through attrition.</p>
+<p>BRING: Uppercut+ (strips 2 Artifact charges in one play, best single-card Artifact solution), Thunderclap (strip remaining Artifact), Pen Nib (double damage to break block), burst damage (Fiend Fire, Immolate, Bludgeon), FAST Strength scaling (Inflame, Spot Weakness, Limit Break -- NOT Demon Form), Headbutt (find specific cards), potions (Strength Potion, Fire Potion -- any supplemental damage matters).</p>
+<p>AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it at low Strength). Demon Form as sole Strength source (too slow -- 13 Str by turn 9 still lost to 65+ block). Havoc (random exhaust can destroy key cards in a long DPS race). Random exhaust effects in general. Exhausting your own key cards with Second Wind (observed: Second Wind exhausted Shockwave+, True Grit+, and block cards, sealing a loss). Playing Brutality (1 HP/turn self-damage over an 8-13 turn fight is 8-13 HP lost -- confirmed to cause death in this fight). Playing Rage+ expecting persistent block (Rage expires at end of turn, does NOT carry over). Exhausting Spot Weakness (permanent Strength gain is one of the few ways to break through Barricade block). Entering at low HP (&lt;50%) -- this fight routinely drains 30-50 HP, and even full HP entry resulted in death. Entering with zero potions -- potions are the only way to supplement insufficient scaling in this fight.</p>
+
+<p>APPEARS WITH: Sentry (in Act 2 hallway fights). Spikers (in Act 3 hallway fights -- confirmed: Spikers + Spheric Guardian appeared in Act 3 of the second victory. Thorns from Spikers adds chip damage on top of Guardian&#x27;s 10x2 attacks. Fairy in a Bottle + Bronze Scales saved that fight). When paired, incoming damage is 9 (Sentry) + 10x2 (Spheric Guardian) = 29 per turn. Frail from Spheric Guardian reduces block by 25%, making Defend give only 3 instead of 5. At low HP, the combined damage is often unblockable. Kill the Sentry first (no block, lower HP) to reduce incoming damage and stop Dazed generation. Then focus Spheric Guardian with burst damage. Metallicize&#x27;s passive 3-4 block/turn helps but is insufficient alone against 20 incoming.</p>
+
+<p>ARTIFACT STRIPPING: Spheric Guardian starts with 3 Artifact charges. Uppercut+ is the best single-card Artifact stripper -- it applies Weak 2 and Vulnerable 2, consuming 2 Artifact charges in one play. Follow with any single debuff (Bash, Thunderclap) to strip the 3rd. Once Artifact is gone, Vulnerable massively increases kill speed through the Barricade block.</p>
+
+<p>FRAIL 5 INTERACTION: Frail 5 reduces block from ALL sources by 25%. Defend gives 3 instead of 5. Shrug It Off gives 6 instead of 8. This lasts 5 turns and cannot be removed while Artifact charges remain. Combined with 10x2 attacks, the effective damage per attack turn is ~24+ (20 damage minus reduced block). This is the primary reason low-Strength decks lose -- block is insufficient AND damage is insufficient simultaneously.</p>
+
+<p>DEMON FORM IS TOO SLOW (USUALLY): Even 13 Str by turn 9 lost to 65+ Barricade block in one encounter. By the time Demon Form ramps, block is often insurmountable. Front-loaded Strength (Inflame, Spot Weakness, Limit Break) or burst damage is strongly preferred. Exception: Demon Form CAN work if paired with very high burst damage (Carnage+ at 28 base) that breaks through Barricade in the mid-fight window (turns 5-7 when Str reaches +8-10). One survival with Demon Form + Carnage+ + Headbutt took ~41 HP drain over 7 turns (80-&gt;39 HP). This is survivable only at high HP entry -- at 50% HP or below, the 40+ HP drain is fatal. Do NOT rely on Demon Form for this fight unless HP is above 70% AND the deck has burst cards (Carnage+, Heavy Blade) to capitalize on the Str once it ramps.</p>
+
+<p>WINNING FORMULA: Corruption + Feel No Pain engine (first survival, only 12 HP lost). Free Skills + FNP block generation + burst damage broke through Barricade before it stacked. Second survival: Immolate (AOE burst) + Impervious+ (40 block) + Calipers (block retention) + Spot Weakness (front-loaded Str) -- only 20 HP lost. The common thread: front-loaded damage output that breaks through Barricade block before it stacks to 60+. Alternatively: front-loaded Str (Inflame/Spot Weakness) + burst (Fiend Fire, Bludgeon) + potions.</p>
+
+<p>CALIPERS INTERACTION: Calipers retains 15 block between turns, partially countering the Frail-reduced blocking problem. Impervious+ (40 block) retains 25 next turn with Calipers, providing substantial defense even under Frail. This combination significantly reduces HP loss from the 10x2 attack turns.</p>
+
+<p>WARNING: Single most dangerous Act 2 hallway fight. 4 deaths confirmed (at 26%, 43%, 47%, and 100% HP entry). 4 survivals: (1) Corruption+FNP engine (12 HP lost), (2) Immolate+Impervious++Calipers+Spot Weakness (20 HP lost), (3) Run 116: Inflame+Thunderclap+Bash++Flame Barrier++Armaments+ (38 HP lost over 14 turns, 60-&gt;22 HP). The third survival used Offering for early card draw, stripped all 3 Artifacts with 3 Thunderclap plays, then ground through Barricade block with Inflame (+4 Str total) and Vulnerable cycling. (4) Barricade+Impervious+Regen Potion+Bash++Rampage+Shockwave+Thunderclap (~32 HP lost over 8 turns, 80-&gt;48). Used Shockwave to strip 2 Artifacts, Intimidate to strip 3rd, then Barricade for permanent block and burst damage through Vulnerable. Regen Potion (5 HP/turn for 5 turns = 25 HP) was critical for sustaining through the HP drain. Even with correct play and front-loaded Strength, expect 30-40 HP drain. Key death causes: Demon Form too slow, Brutality self-damage in long fight, Rage+ expiring at end of turn, zero potions, Reaper useless (all damage absorbed by block = zero healing). Potions are critical -- entering with zero potions at any HP is near-certain death without Corruption+FNP engine or equivalent burst+defense combo.</p>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

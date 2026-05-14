@@ -563,6 +563,7 @@ def page(title, content, active=""):
     nav_items = [
         ("index.html", "Home"),
         ("playbook.html", "Playbook"),
+        ("philosophy.html", "Philosophy"),
         ("human-advice.html", "Human Advice"),
         ("changelog.html", "Changelog"),
     ]
@@ -989,6 +990,14 @@ def build():
 
     (OUT / "changelog.html").write_text(page("Changelog", changelog_body, "Changelog"), encoding="utf-8")
     total_pages += 1
+
+    # ── Philosophy page ──
+    phil_path = Path(__file__).parent / "philosophy.md"
+    if phil_path.exists():
+        phil_content = phil_path.read_text(encoding="utf-8")
+        phil_html = md_to_html(phil_content)
+        (OUT / "philosophy.html").write_text(page("Philosophy", phil_html, "Philosophy"), encoding="utf-8")
+        total_pages += 1
 
     # ── Human Advice page ──
     ha_path = ROOT / "HUMAN_ADVICE.md"

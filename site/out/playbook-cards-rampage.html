@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rampage (1E, Attack, 8 damage, gains +8 damage each time played this combat | +: 8 damage, gains +8 each play) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-cards.html">&larr; Back to Cards</a></div><h1 id="rampage-1e-attack-8-damage-gains-8-damage-each-time-played-this-combat-8-damage-gains-8-each-play">Rampage (1E, Attack, 8 damage, gains +8 damage each time played this combat | +: 8 damage, gains +8 each play)</h1>
+<p>Scaling attack that gets stronger every time you play it. Base damage increases by 8 per play (cumulative).</p>
+
+<p>SCALING TABLE (unupgraded, no Strength):</p>
+<ul>
+<li>Play 1: 8 damage</li>
+<li>Play 2: 16 damage</li>
+<li>Play 3: 24 damage</li>
+<li>Play 4: 32 damage</li>
+<li>Play 5: 40 damage</li>
+</ul>
+
+<p>WITH STRENGTH AND VULNERABLE (example: +2 Str, target Vulnerable):</p>
+<ul>
+<li>Play 1: (8+2)*1.5 = 15</li>
+<li>Play 2: (16+2)*1.5 = 27</li>
+<li>Play 3: (24+2)*1.5 = 39</li>
+<li>Play 4: (32+2)*1.5 = 51</li>
+</ul>
+
+<p>IMPORTANT: The +8 accumulates on the BASE, then Strength and Vulnerable apply ON TOP. This makes Rampage scale multiplicatively with Strength/Vulnerable. The accumulated damage RESETS each fight -- Rampage always starts at base (8 or 12 upgraded) in a new combat.</p>
+
+<p>WHEN IT&#x27;S GOOD: Long fights (bosses, elites) where you can play it 3+ times. By the 3rd play it deals 24+ damage for 1E. By the 5th play: 40+ damage. Against Hexaghost (13-turn fight), Rampage scales to 48-60+ damage per play -- one of the best boss-killing cards available. Also strong in 3 Cultists when played on the free turn 1 (starts scaling immediately).</p>
+<p>DECISION POINTS: Play every turn you can afford it. Each play increases all future plays. In short fights (3 turns), Rampage only reaches 16-24 damage total, which is mediocre. In long fights, it becomes the highest damage-per-energy card in the deck. On free turns (enemies buffing), always play Rampage for the scaling even if targeting a full-HP enemy.</p>
+<p>UPGRADE: Rampage+ likely starts at 12 damage (vs 8 base) and gains +8 per play. Observed in Run 13: 12-&gt;20-&gt;28-&gt;36-&gt;48-&gt;60. This makes the upgrade a solid +4 damage on every play, compounding with Strength and Vulnerable. Moderate upgrade priority.</p>
+<p>OBSERVED IN COMBAT: Guardian fight -- play 1: 15 dmg ((8+2)<em>1.5), play 2: 27 dmg ((16+2)</em>1.5), play 3: 26 dmg ((24+2) no Vuln), play 4: 34 dmg ((32+2) no Vuln). Killed Guardian on play 4. 3 Cultists fight -- play 2 with +2 Str and Vulnerable killed Cultist at 22 HP (actual damage (16+2)*1.5=27, overkill by 5).</p>
+<p>SYNERGIES: Double Tap (play Rampage twice in one turn -- each counts as a separate play, accelerating the scaling). Headbutt (top-deck Rampage for next turn to keep the scaling going). Vulnerable (50% bonus on already-high damage is devastating). Inflame (+2 Str compounds with scaling base).</p>
+<p>ANTI-SYNERGY: Havoc (can randomly exhaust Rampage permanently, destroying the deck&#x27;s scaling engine). Unupgraded True Grit (random exhaust risk). Any random-exhaust effect is devastating because Rampage&#x27;s value is cumulative -- losing it mid-combat means all prior plays were wasted and future damage drops catastrophically.</p>
+<p>MATCHUPS: Hexaghost -- exceptional. The 13-turn fight lets Rampage scale to 60+ damage. With Vulnerable: 90+ damage per play. With Cultist Potion Ritual (+1 Str/turn): Rampage 3rd play with +6 Str and Vulnerable dealt 45 damage (floor((24+6)*1.5)=45). This combo can kill Hexaghost in 8-9 turns even without a Weak source. Guardian -- strong for the 10+ turn fight. 3 Cultists -- play on turn 1 (free) to start scaling, kills first Cultist by play 3-4.</p>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

@@ -126,6 +126,18 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - Normality curse from Cursed Key: The most dangerous curse in the game for Corruption engine decks. Limits plays to 3/turn, crippling skill exhaust chains. Prioritize removal at shop (100-125g). PROMOTED to cursed-key.md (new entry).
 - Sensory Stone event "Recall" option: Grants 1 free Colorless card pick. Apotheosis was available as one of the options. Need more data on what Colorless cards can appear.
 
+- **Awakened One Curiosity mechanic -- +2 Str per Power played**: PROMOTED to awakened-one.md (new entry). First observation but mechanic is definitive (game rules). Player played 6 Powers, AO gained at least +6 Str, turning a survivable 30 multi-attack into lethal 48. The Str cost of Powers directly caused the death. No further observation needed -- this is a game mechanic, not a hypothesis.
+- **Awakened One Phase 1 HP**: Approximately 320 (not precisely tracked). Phase 2 HP confirmed 300 from last_state.json. Need more observations for exact Phase 1 HP.
+- **Awakened One Phase 2 Regenerate 10**: Confirmed from game state. Heals 10 HP per turn. Need to determine if this is reduced by artifact or other mechanics.
+- **Awakened One Phase transition strips all player Powers**: Confirmed from the fight. All Powers played in Phase 1 provide zero carry-over to Phase 2. This makes Phase 1 Power plays even worse -- you pay the Str cost but lose the benefit.
+- **Awakened One Phase 2 multi-attack pattern**: 10x3 base damage confirmed from game state (move_base_damage: 10, move_hits: 3). With Str scaling, this is the primary lethal threat. Need more data on the full attack rotation.
+- **Sozu relic danger in boss fights**: Blocks all potion use. In a fight where emergency Weak Potion or Block Potion could save you, Sozu removes that safety net. Particularly dangerous in long fights (Awakened One Phase 2). One observation.
+- **Bird-Faced Urn + Power-heavy deck vs Awakened One anti-synergy**: Bird-Faced Urn heals 2 HP per Power played. This creates a perverse incentive to play Powers for healing in a fight where Powers give the boss Strength. The 2 HP heal is vastly outweighed by the +2 Str cost. Monitor for whether this incentive confuses future decision-making.
+- **Silent poison + shiv archetype vs Awakened One**: Poison is excellent against Phase 2 Regenerate (Catalyst+ triples poison to overwhelm Regen 10). But poison scaling through Noxious Fumes (Power) triggers Curiosity. Shivs (0-cost Attacks) are safe plays. Deck contained 7 Powers, too many for this boss. Need to test a low-Power Silent build vs AO.
+- **Enchiridion relic**: Adds a random Power to hand at combat start. Against Awakened One, this is actively dangerous -- a free Power in hand tempts you to play it, giving AO +2 Str. Need to confirm this relic's behavior.
+- **Letter Opener relic**: Deals 4 damage per 3 Skills played. Good value in Skill-heavy Silent decks. One observation.
+- **Void status card**: Costs -2 energy (drains energy when drawn). In the Awakened One fight, Void reduced effective energy on the lethal turn. Where does Void come from in this fight? Need to determine the source.
+
 ## Open Questions
 
 - Face Trader event options and outcomes
@@ -134,3 +146,6 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - The Joust: 70% win chance for Murderer accurate?
 - Offering self-damage at sub-30% HP: 6 HP cost was exactly lethal margin in Run 128. Monitor whether Offering at critical HP causes deaths.
 - Dual RNG denial: Run 128 had both healing AND Strength scaling denied across 24 floors despite Prayer Wheel. Two criteria denied simultaneously makes runs near-unwinnable. No fix possible -- pure variance.
+- Awakened One exact Phase 1 HP: Need precise data. Estimated ~320.
+- Awakened One full attack rotation: Only observed multi-attack (10x3) and inferred other moves from move_id data. Need complete pattern documentation.
+- Does Awakened One Curiosity activate on Powers played from relics (Enchiridion) or only hand-played Powers?

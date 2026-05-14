@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awakened One (Act 3 Boss) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="awakened-one-act-3-boss">Awakened One (Act 3 Boss)</h1>
+
+<p>HP: Phase 1 ~320, Phase 2 300. Two-phase fight. The Power-punishing boss.</p>
+
+<h2 id="the-central-mechanic-curiosity">THE CENTRAL MECHANIC: CURIOSITY</h2>
+
+<p><strong>Every time you play a Power card, the Awakened One gains +2 Strength.</strong> This is not a footnote. This is the defining mechanic of the fight. It is the reason this boss exists. The developers created this boss specifically to punish Power-heavy decks.</p>
+
+<p><strong>Do not rationalize playing Powers freely.</strong> &quot;My Powers are essential&quot; is not an argument -- the mechanic exists precisely because Powers are good. The question is never &quot;is this Power worth playing in a vacuum?&quot; but &quot;is this Power worth +2 Strength on a boss that already hits hard?&quot; The answer is usually NO.</p>
+
+<p>Each Power played adds +2 to every attack the Awakened One makes for the rest of that phase. Playing 3 Powers means +6 Strength. Playing 6 Powers means +12 Strength, turning a survivable 10x3 multi-attack into a lethal 22x3 = 66 damage hit. The Strength compounds across every remaining turn -- the earlier you play Powers, the more total damage you take.</p>
+
+<h2 id="phase-1">PHASE 1</h2>
+
+<p>The Awakened One starts with two Cultist minions (~48 HP each). Phase 1 has approximately 320 HP. After Phase 1 HP reaches 0, the Awakened One enters Phase 2 with full HP (300). All your Powers, buffs, and poison are REMOVED when Phase 2 begins.</p>
+
+<p><strong>Phase 1 priorities:</strong></p>
+<ul>
+<li>Kill the Cultists quickly. They scale with Ritual (+1 Str/turn) and deal increasing damage if left alive.</li>
+<li>Damage the Awakened One to end Phase 1, but conserve HP for Phase 2.</li>
+<li><strong>Minimize Power plays.</strong> Every Power played in Phase 1 makes Phase 1 harder by giving the AO more Strength. And all your Powers are stripped at the phase transition anyway, so their long-term value is zero.</li>
+</ul>
+
+<p><strong>When to play Powers in Phase 1:</strong></p>
+<ul>
+<li>Playing 0 Powers is the ideal. Win Phase 1 with attacks, skills, and potions.</li>
+<li>Playing 1 Power may be acceptable if it is game-defining (e.g., a Power that enables your entire win condition and you cannot survive Phase 1 without it).</li>
+<li>Playing 2+ Powers in Phase 1 is almost always wrong. You are paying +4 or more Strength to the boss for buffs that get stripped at the phase transition.</li>
+</ul>
+
+<h2 id="phase-2">PHASE 2</h2>
+
+<p>HP: 300. Gains Regenerate 10 (heals 10 HP per turn). Curiosity resets -- Strength gains from Phase 1 Powers are gone, but the mechanic is ACTIVE AGAIN. Every Power you play in Phase 2 permanently buffs the boss for the rest of the fight.</p>
+
+<p><strong>Phase 2 attack pattern:</strong></p>
+<ul>
+<li>Multi-attacks are the primary threat. A 10x3 base multi-attack becomes 16x3 = 48 with +6 Str, or 22x3 = 66 with +12 Str.</li>
+<li>The boss also uses single large attacks and debuff/buff turns.</li>
+<li>Regenerate 10 heals the boss every turn, so the fight has a clock -- you must out-damage the regeneration or you lose to attrition.</li>
+</ul>
+
+<p><strong>Phase 2 Power discipline:</strong></p>
+<ul>
+<li><strong>0 Powers is still ideal.</strong> If your deck can kill a 300 HP boss with Regenerate 10 using only attacks and skills, play zero Powers.</li>
+<li><strong>1 Power is the absolute maximum in most situations.</strong> Only play it if it is your sole path to victory and you understand the Strength cost.</li>
+<li><strong>Every Power beyond the first makes the fight dramatically harder.</strong> 2 Powers = +4 Str = roughly +12 extra damage per multi-attack turn. 3 Powers = +6 Str = +18 per multi-attack. This adds up across every remaining turn.</li>
+</ul>
+
+<h2 id="how-to-win-without-powers">HOW TO WIN WITHOUT POWERS</h2>
+
+<ul>
+<li><strong>Poison (Silent):</strong> Deadly Poison, Noxious Fumes (note: Noxious Fumes IS a Power -- consider whether the passive poison is worth +2 Str), Poison Stab, Bouncing Flask, Corpse Explosion. Catalyst+ triples poison, which defeats Regenerate 10. Prioritize poison applied by Skills and Attacks, not Powers.</li>
+<li><strong>Strength scaling (Ironclad):</strong> Inflame, Spot Weakness (both are non-Power Str sources). Limit Break doubles existing Str. Heavy Blade leverages Str.</li>
+<li><strong>Front-loaded damage:</strong> High-damage attacks (Immolate+, Carnage+, Glass Knife) applied early before the boss scales.</li>
+<li><strong>Block without Powers:</strong> Impervious, Defend, Backflip, Blur, Leg Sweep, Footwork (Footwork IS a Power -- weigh the Dexterity against the Str cost).</li>
+<li><strong>Weak application:</strong> Neutralize, Leg Sweep, Sucker Punch. Reducing the boss&#x27;s damage by 25% is often worth more than a Power that adds 2 Str.</li>
+</ul>
+
+<h2 id="what-killed-us-run-151">WHAT KILLED US (Run 151)</h2>
+
+<p>Died Phase 2, Turn 14, 6 HP vs 16x3 = 48 multi-attack with only 28 block. The 16 per hit was 10 base + 6 Strength from Curiosity. Six Powers were played over the course of the fight, split across both phases. The Awakened One&#x27;s Phase 2 Strength of 6 means 3 Powers were played in Phase 2 alone. Without those Phase 2 Powers, the multi-attack would have been 10x3 = 30, and 28 block would have left only 2 unblocked damage -- survivable at 6 HP.</p>
+
+<p>The deck contained 7 Power cards: After Image+, Infinite Blades, Well-Laid Plans, Tools of the Trade, Accuracy, Footwork, Noxious Fumes. The player declared the Powers &quot;essential&quot; and played them freely. This is exactly the wrong approach. The Powers played in Phase 1 were also harmful: they gave the AO Strength during Phase 1 (dealing more damage before the transition), and they were stripped at the phase transition anyway -- providing zero carry-over benefit.</p>
+
+<h2 id="deck-building-for-this-fight">DECK BUILDING FOR THIS FIGHT</h2>
+
+<p>When the Act 3 boss is Awakened One (you can see this on the map):</p>
+<ul>
+<li><strong>Deprioritize Power cards during drafting.</strong> Every Power in the deck is a card you must discipline yourself not to play, wasting a draw.</li>
+<li><strong>Prioritize Skill-based and Attack-based scaling.</strong> Catalyst (Skill), Leg Sweep (Skill), Backflip (Skill) are all better picks than Power equivalents.</li>
+<li><strong>If your deck is Power-heavy, this is the hardest Act 3 boss.</strong> A deck with 5+ Powers that relies on those Powers to function will struggle badly.</li>
+</ul>
+
+<h2 id="preparation-checklist">PREPARATION CHECKLIST</h2>
+
+<p>1. Damage source that works without Powers -- poison via Skills/Attacks, Strength from non-Power sources, raw attack damage.</p>
+<p>2. Block density -- Impervious, Leg Sweep, Backflip, Defend+ all work without triggering Curiosity.</p>
+<p>3. Weak application -- Neutralize, Leg Sweep reduce the multi-attack threat significantly.</p>
+<p>4. Sustain vs Regenerate 10 -- must deal &gt;10 net damage per turn averaged across the fight. Catalyst+ on poison solves this. High Str + multi-hit solves this.</p>
+<p>5. Enter at 70%+ HP. Phase 2 is a long fight (10-15 turns) with escalating damage.</p>
+
+<h2 id="potion-timing">POTION TIMING</h2>
+
+<ul>
+<li>Save at least 1 potion for Phase 2. Phase 2 is the harder phase -- do not spend everything in Phase 1.</li>
+<li>Weak Potion on multi-attack turns reduces lethal hits.</li>
+<li>Block Potion on lethal turns provides emergency survival.</li>
+<li>Poison-applying potions bypass the Power restriction entirely.</li>
+</ul>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

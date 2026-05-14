@@ -9,8 +9,11 @@ Also accepts HTTP POSTs from cmd.py to log reasoning:
 """
 
 import asyncio
+import atexit
 import json
 import os
+import re
+import signal
 import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import threading
@@ -29,6 +32,7 @@ STATE_FILE = os.path.join(DATA_DIR, "last_state.json")
 EVENT_LOG = os.path.join(DATA_DIR, "stream_events.jsonl")
 STATS_FILE = os.path.join(DATA_DIR, "run_stats.json")
 RUNS_DIR = os.path.join(DATA_DIR, "runs")
+PID_FILE = os.path.join(DATA_DIR, "stream.pid")
 PLAYBOOK_DIR = os.path.join(os.path.dirname(__file__), "playbook")
 
 # Connected overlay clients
@@ -262,13 +266,21 @@ async def state_watcher():
                             if "floor_history" not in run_stats:
                                 run_stats["floor_history"] = []
                             seed = gs.get("seed", None)
-                            run_stats["floor_history"].append({
-                                "run": run_stats["total_runs"],
-                                "floor": floor,
-                                "victory": victory,
-                                "seed": seed,
-                                "class": cls,
-                            })
+                            asc = gs.get("ascension_level", 0)
+                            # Dedupe: don't re-log same run+seed on restart
+                            already_logged = any(
+                                e.get("run") == run_stats["total_runs"] and e.get("seed") == seed
+                                for e in run_stats["floor_history"]
+                            )
+                            if not already_logged:
+                                run_stats["floor_history"].append({
+                                    "run": run_stats["total_runs"],
+                                    "floor": floor,
+                                    "victory": victory,
+                                    "seed": seed,
+                                    "class": cls,
+                                    "ascension": asc,
+                                })
                             _save_stats()
                             await broadcast({
                                 "type": "run_end",
@@ -325,6 +337,12 @@ async def state_watcher():
                                 if not m.get("is_gone"):
                                     enemies.append({"name": m.get("name"), "hp": m.get("current_hp"), "max_hp": m.get("max_hp"), "intent": m.get("intent")})
                         choices = gs.get("choice_list", [])
+
+                        # Deck summary for overlay
+                        deck = []
+                        for c in gs.get("deck", []):
+                            deck.append(c.get("name", "?"))
+
                         await broadcast({
                             "type": "state",
                             "floor": floor,
@@ -338,6 +356,7 @@ async def state_watcher():
                             "enemies": enemies,
                             "hand": hand,
                             "choices": choices,
+                            "deck": deck,
                         })
 
                     was_in_game = in_game
@@ -477,6 +496,89 @@ class DecisionHandler(BaseHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(json.dumps(history).encode())
+        elif self.path == "/character-stats":
+            # Per-character breakdown from run log filenames + floor_history
+            # Build ascension lookup from floor_history (keyed by run number)
+            asc_lookup = {}
+            for entry in run_stats.get("floor_history", []):
+                asc_lookup[entry.get("run")] = entry.get("ascension", 0)
+
+            chars = {}
+            seen_runs = set()
+            pattern = re.compile(r"^run_(\d+)_(.+?)_(death_f(\d+)|win)\.jsonl$")
+            try:
+                for fname in sorted(os.listdir(RUNS_DIR)):
+                    m = pattern.match(fname)
+                    if not m:
+                        continue
+                    run_num = int(m.group(1))
+                    if run_num in seen_runs:
+                        continue  # dedupe: only count each run number once (keep first/lowest floor)
+                    seen_runs.add(run_num)
+                    cls = m.group(2).upper().replace(" ", "_")
+                    is_win = m.group(3) == "win"
+                    floor = int(m.group(4)) if m.group(4) else 0
+                    asc = asc_lookup.get(run_num, 0)
+
+                    if cls not in chars:
+                        chars[cls] = {"runs": 0, "best_asc": 0, "best_win": False, "best_floor": 0, "best_count": 0}
+
+                    chars[cls]["runs"] += 1
+                    c = chars[cls]
+
+                    # Compare: higher ascension > win > higher floor
+                    cur = (asc, is_win, floor if not is_win else 999)
+                    prev = (c["best_asc"], c["best_win"], c["best_floor"] if not c["best_win"] else 999)
+                    if cur > prev:
+                        c["best_asc"] = asc
+                        c["best_win"] = is_win
+                        c["best_floor"] = floor if not is_win else 0
+                        c["best_count"] = 1
+                    elif cur == prev:
+                        c["best_count"] += 1
+            except FileNotFoundError:
+                pass
+            total = sum(c["runs"] for c in chars.values())
+            result = {"characters": chars, "total_runs": total}
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps(result).encode())
+        elif self.path == "/overview":
+            notes_path = os.path.join(DATA_DIR, "overview.md")
+            try:
+                with open(notes_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+            except FileNotFoundError:
+                content = ""
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(content.encode("utf-8"))
+        elif self.path == "/notes":
+            # Read static dev notes file
+            notes_path = os.path.join(DATA_DIR, "notes.md")
+            try:
+                with open(notes_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+            except FileNotFoundError:
+                content = "No dev notes yet."
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(content.encode("utf-8"))
+        elif self.path == "/reload":
+            # Broadcast reload to all overlay clients
+            if loop:
+                asyncio.run_coroutine_threadsafe(broadcast({"type": "reload"}), loop)
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(b'{"ok":true}')
         else:
             self.send_response(404)
             self.end_headers()
@@ -615,5 +717,48 @@ async def main():
         )
 
 
+def _kill_previous():
+    """If a previous stream.py is still running, kill it."""
+    try:
+        with open(PID_FILE) as f:
+            old_pid = int(f.read().strip())
+    except (FileNotFoundError, ValueError):
+        return
+
+    if old_pid == os.getpid():
+        return
+
+    try:
+        os.kill(old_pid, signal.SIGTERM)
+        print(f"[stream] Killed previous instance (PID {old_pid})")
+        # Give it a moment to release ports
+        for _ in range(20):
+            try:
+                os.kill(old_pid, 0)  # Check if still alive
+                time.sleep(0.15)
+            except OSError:
+                break  # Process is gone
+    except OSError:
+        pass  # Already dead
+
+
+def _write_pid():
+    os.makedirs(os.path.dirname(PID_FILE), exist_ok=True)
+    with open(PID_FILE, "w") as f:
+        f.write(str(os.getpid()))
+
+
+def _cleanup_pid():
+    try:
+        with open(PID_FILE) as f:
+            if int(f.read().strip()) == os.getpid():
+                os.remove(PID_FILE)
+    except Exception:
+        pass
+
+
 if __name__ == "__main__":
+    _kill_previous()
+    _write_pid()
+    atexit.register(_cleanup_pid)
     asyncio.run(main())

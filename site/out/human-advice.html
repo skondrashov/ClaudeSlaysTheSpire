@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Advice — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="active">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<p class="subtitle">A record of every piece of knowledge a human player has explicitly injected into the system. The goal is transparency: you can see exactly what Claude figured out on its own vs. what it was told.</p>
+<h1 id="human-advice-log">Human Advice Log</h1>
+
+<p>Historical record of knowledge explicitly injected into the system by a human player. This file is NOT read by the pipeline — it exists purely for provenance tracking. Everything here has been incorporated into the player system through player.md and strategy.md.</p>
+
+<hr>
+
+<h2 id="2026-05-09-session-1-the-reasoning-rework">2026-05-09 — Session 1: The Reasoning Rework</h2>
+
+<p><strong>Context:</strong> 130+ runs, 0 wins, floor average regressing from 25-26 to 23.1. The self-learning loop (analyst/strategist) had stalled. The strategist identified arithmetic errors as the bottleneck, but the human identified a deeper issue: the player&#x27;s fundamental reasoning model was wrong.</p>
+
+<p><strong>Human&#x27;s key insight:</strong> &quot;One of the most consistent mistakes is thinking of fights with low health as different from fights with high health. It doesn&#x27;t actually make any sense to take more or less damage in either scenario — health is a resource that carries through the whole act.&quot;</p>
+
+<h3 id="heuristics-provided">Heuristics provided:</h3>
+
+<p><strong>1. HP is an act-level resource (not per-fight)</strong></p>
+<ul>
+<li>&quot;The only time you can spend it shamelessly is if you&#x27;re in a boss fight&quot;</li>
+<li>&quot;You can also afford to take 6 damage if you&#x27;re at full health because of burning blood&quot;</li>
+<li>&quot;Or 25 damage before a boss cause of pantograph if you have it&quot;</li>
+</ul>
+
+<p><strong>2. Full block is the default combat algorithm</strong></p>
+<ul>
+<li>&quot;The basic combat strategy is really as simple as &#x27;full block if you can&#x27; a lot of the time&quot;</li>
+<li>&quot;There&#x27;s some exceptions like cultists because they scale so aggressively&quot;</li>
+<li>&quot;You eventually have to make tradeoffs and let 1 or 2 hp through, but not in A0&quot;</li>
+</ul>
+
+<p><strong>3. Full act pathing before the first fight</strong></p>
+<ul>
+<li>&quot;You&#x27;re supposed to know how many elites, shops, and campfires you&#x27;re hitting before you select the first fight in every act. We&#x27;ve simply never done that&quot;</li>
+</ul>
+
+<p><strong>4. Act 1 card evaluation is a tier list</strong></p>
+<ul>
+<li>&quot;You nearly always have the same deck when you start a run, so a memorized tier list is just really good in the first act&quot;</li>
+<li>&quot;That tier list generally looks like &#x27;take attacks so you don&#x27;t die to gremlin nob&#x27;&quot;</li>
+<li>&quot;They&#x27;re not always identical because of neow but yes&quot; (re: starting deck)</li>
+</ul>
+
+<p><strong>5. Draft for known encounters</strong></p>
+<ul>
+<li>&quot;You can beat the slime boss for free if you just take any cards that say &#x27;when you draw a status card&#x27; on them&quot;</li>
+<li>&quot;Knowing what fights are guaranteed to happen and picking cards and relics accordingly&quot;</li>
+<li>&quot;It&#x27;s a very deep set of rules and you don&#x27;t need any of them in a0 but it&#x27;s important to understand that category of heuristic&quot;</li>
+</ul>
+
+<h2 id="2026-05-12-session-2-full-block-refinement">2026-05-12 — Session 2: Full Block Refinement</h2>
+
+<p><strong>Human&#x27;s addition to full block:</strong></p>
+<ul>
+<li>&quot;Killing something that&#x27;s attacking is always something you look into. So there&#x27;s alternatives.&quot;</li>
+<li>&quot;In general the pipeline is not good at considering alternatives&quot;</li>
+<li>&quot;It&#x27;s basically a template you would fill out to determine the paths toward full block, and you&#x27;d obviously prefer to kill something and then full block if you can&quot;</li>
+</ul>
+
+<h2 id="2026-05-12-session-3-hard-rules-abolished">2026-05-12 — Session 3: Hard Rules Abolished</h2>
+
+<p><strong>Context:</strong> The player had accumulated 9 &quot;Hard Rules&quot; — NEVER-do prohibitions added after specific deaths. The human identified this as a fundamentally wrong approach for games.</p>
+
+<p><strong>Human&#x27;s key insight:</strong> &quot;Hard rules in general just aren&#x27;t how games work. If the player doesn&#x27;t understand how to use something it&#x27;s something they need to explore, not just write a rule about with like one or two runs of data.&quot;</p>
+
+<h3 id="feedback-on-each-hard-rule">Feedback on each hard rule:</h3>
+
+<p><strong>1. &quot;NEVER TAKE RUNIC DOME&quot;</strong></p>
+<ul>
+<li>&quot;It&#x27;s not like runic dome is something the developers put in to trick the player.&quot;</li>
+<li>&quot;Realistically, what it means is we can&#x27;t use runic dome until we&#x27;ve memorized all of the attack patterns in the game.&quot;</li>
+<li>Human says this guidance belongs under the Runic Dome playbook entry, not as a blanket prohibition.</li>
+</ul>
+
+<p><strong>2. &quot;ALWAYS USE CARD NAMES&quot;</strong></p>
+<ul>
+<li>&quot;It&#x27;s not a gameplay rule, it&#x27;s how to interact with the game, and ideally the player doesn&#x27;t have to worry about it because the system makes it easy.&quot;</li>
+<li>Infrastructure issue, not gameplay. The system (cmd.py) already handles name→index resolution transparently.</li>
+</ul>
+
+<p><strong>3. &quot;UPGRADE AT EVERY REST SITE where HP is above threshold&quot;</strong></p>
+<ul>
+<li>&quot;Why is that a rule? Obviously you upgrade at a rest site if you don&#x27;t need to rest. There&#x27;s no &#x27;HP threshold&#x27;, everything is situational in games.&quot;</li>
+</ul>
+
+<p><strong>4. &quot;NEVER PLAY unupgraded True Grit with key cards&quot;</strong></p>
+<ul>
+<li>&quot;Kind of true but... never? Everything is situational.&quot;</li>
+</ul>
+
+<p><strong>5. &quot;USE ALL POTIONS below 40% HP&quot;</strong></p>
+<ul>
+<li>&quot;The only rule I kinda like, though again optimal potion use is much more complicated than that, and 40% is an arbitrary threshold.&quot;</li>
+</ul>
+
+<p><strong>6. &quot;NEVER PLAY BRUTALITY in long fights&quot;</strong></p>
+<ul>
+<li>&quot;Useless, how do you know if the fight is long?&quot;</li>
+</ul>
+
+<p><strong>7. &quot;NEVER EXHAUST Spot Weakness/Reaper&quot;</strong></p>
+<ul>
+<li>&quot;Doesn&#x27;t make sense on a lot of levels.&quot;</li>
+</ul>
+
+<p><strong>8. &quot;NEVER PLAY 3-cost Power turn 1 when attacked&quot;</strong></p>
+<ul>
+<li>&quot;Kind of reasonable but it belongs to the specific powers in question, and also again &#x27;never&#x27; is stupid.&quot;</li>
+</ul>
+
+<p><strong>9. &quot;NEVER PLAY Corruption vs Guardian without Dead Branch/FNP&quot;</strong></p>
+<ul>
+<li>&quot;Specific to the point of being useless even aside from saying &#x27;never&#x27;. Obviously you sometimes want to play corruption and sometimes you don&#x27;t, and what does the guardian have to do with anything?&quot;</li>
+</ul>
+
+<h3 id="resolution">Resolution:</h3>
+<p>Hard Rules section removed from player.md entirely. Relevant guidance distributed as soft context to individual card/relic playbook entries (runic-dome.md, corruption.md, true-grit.md, brutality.md, etc.). Card name usage retained in the &quot;Card Names and Enemy Targeting&quot; section as infrastructure guidance, not a gameplay rule.</p>
+
+<h2 id="2026-05-12-session-4-elite-readiness-act-1-attack-aggression">2026-05-12 — Session 4: Elite Readiness + Act 1 Attack Aggression</h2>
+
+<p><strong>Context:</strong> Run 141 died Floor 8 after taking Sentries elite with a starter-quality deck. Run 140 skipped Wild Strike early. The human identified a critical missing heuristic: you must be aggressive about taking attacks in early Act 1 to prepare for elites.</p>
+
+<h3 id="human-s-key-insights">Human&#x27;s key insights:</h3>
+
+<p><strong>1. Elites on purpose is correct, but you need attacks first</strong></p>
+<ul>
+<li>&quot;Running into elites on purpose is correct, but you also have to be really aggressive about taking attacks.&quot;</li>
+<li>&quot;You need to have a few attacks better than strikes in your deck by the middle of act 1&quot; — this is a fundamental requirement, not optional.</li>
+<li>Skipping Wild Strike in Run 140 was a mistake: &quot;it&#x27;s a massive 1 [energy] damage card&quot; (12 damage for 1 energy, double Strike&#x27;s 6). In early Act 1, raw damage to beat elites matters more than Wound downside.</li>
+</ul>
+
+<p><strong>2. Specific elite fight strategies are needed — detailed tactical plans, not just &quot;needs AOE&quot;</strong></p>
+
+<p><strong>Gremlin Nob:</strong></p>
+<ul>
+<li>&quot;Simplest in a way — you just have to have good attacks before you get there and not too many skills.&quot;</li>
+<li>&quot;After you&#x27;ve seen the Nob you can grab other stuff (elites don&#x27;t repeat twice in a row).&quot;</li>
+<li>Implication: pre-Nob, bias toward attacks. Post-Nob, safe to pick up Skills.</li>
+</ul>
+
+<p><strong>Lagavulin:</strong></p>
+<ul>
+<li>&quot;Partly obvious — you get setup turns while it&#x27;s asleep.&quot;</li>
+<li>&quot;But in practice you also have to know that you need to hit it hard because the scaling is really rough otherwise — the debuffs are killer.&quot;</li>
+<li>The -1 Str/-1 Dex per Siphon Soul cycle makes the fight unwinnable if it goes long.</li>
+</ul>
+
+<p><strong>Sentries:</strong></p>
+<ul>
+<li>&quot;By far the most tactical.&quot;</li>
+<li>&quot;You have to plan out attacks in such a way that you&#x27;re hitting the correct target.&quot;</li>
+<li>&quot;You rarely if ever kill the middle first so you avoid 20hp damage turns since first and last are synced.&quot;</li>
+<li>&quot;Once you have 2 sentries left you have to kinda guess which one you&#x27;re gonna be able to kill on the turn it&#x27;s attacking.&quot;</li>
+<li>&quot;You have to decide if it&#x27;ll take you 2 or 3 or 4 turns to kill one of them and target appropriately, so you get to skip block on the turn that you kill one of them ideally.&quot;</li>
+<li>Key tactic: time your kill of a Sentry to coincide with its attack turn — killing it removes that turn&#x27;s damage, effectively giving you a free turn.</li>
+</ul>
+
+<p><strong>3. Strategist instructions (for next strategist run at ~150)</strong></p>
+<ul>
+<li>Work through exact mechanics of ALL Act 1 elite fights</li>
+<li>Make sure playbook entries for Nob, Lagavulin, and Sentries have really in-depth tactical plans</li>
+<li>Incorporate the &quot;need attacks better than Strikes by mid Act 1&quot; heuristic into strategy.md</li>
+<li>Address the tension between &quot;take attacks aggressively early&quot; and &quot;don&#x27;t bloat deck&quot;</li>
+</ul>
+
+<h3 id="web-research-act-1-ironclad-expert-heuristics">Web Research: Act 1 Ironclad Expert Heuristics</h3>
+
+<p>The following was gathered from expert guides (Jorbs, Baalorlord, Reddit r/slaythespire, Steam guides, wiki) to supplement the human&#x27;s advice:</p>
+
+<p><strong>Card Drafting:</strong></p>
+<ul>
+<li>Offering is widely considered the single best Ironclad card — take whenever offered</li>
+<li>Bludgeon (32 damage for 3E) removes the need to pick up mediocre attack commons — &quot;like taking 3 Twin Strikes that only cost one draw&quot;</li>
+<li>Battle Trance (draw 3-4 for 0E) is outstanding Act 1 tempo</li>
+<li>Uppercut (13 dmg + Weak 1 + Vuln 1 for 2E) can replace Bash as Vuln source, freeing Bash from needing first upgrade</li>
+<li>Anger (0E for 6 damage, copies itself) can solo the Hexaghost fight by turn 6-7 with 3-4 copies</li>
+<li>Iron Wave trap: taking 3+ Iron Waves is a common mistake — they&#x27;re fine as first pickup but bloat the deck</li>
+<li>Wild Strike: research says &quot;generally avoid unless exhaust synergy&quot; but human overrides this for early Act 1 — raw damage to beat elites outweighs Wound cost</li>
+</ul>
+
+<p><strong>Elite Tactics (research confirms human advice + adds numbers):</strong></p>
+<ul>
+<li>Gremlin Nob: 82-86 HP. Gains +2 Str per Skill played. Need ~20-25 damage/turn over 4 turns. Bash is the ONE Skill worth playing turn 1 (Vuln amplifies all attacks 50%, worth the +2 Str). Inflame is a Skill — do NOT play vs Nob (+2 Str you gain is exactly canceled by +2 Nob gains). Flame Barrier is one of few defensive Skills worth considering (deals damage back).</li>
+<li>Lagavulin: 109-115 HP. 8 Metallicize while asleep. 3 free setup turns. Do NOT attack during sleep unless you deal &gt;8 per hit (Metallicize blocks it). Siphon Soul: -1 Dex then -1 Str, repeats every 3 turns. Must kill before 2nd Siphon Soul or fight becomes unwinnable. Demon Form on sleep turn 1 = +6 Str by wakeup.</li>
+<li>Sentries: 38-42 HP each, 1 Artifact each. Outer two start by shuffling Dazed, middle attacks (9 dmg). They alternate each turn. Kill OUTER first (not middle) — killing middle means both outers attack same turn (18 dmg). First deck cycle (turns 1-3) is your best damage window before Dazed pollutes draws. Evolve completely neutralizes Sentries&#x27; gimmick.</li>
+</ul>
+
+<p><strong>Strategic Principles:</strong></p>
+<ul>
+<li>Fight 2-3 elites in Act 1, not 0-1. Each elite = relic + better cards + gold. Dodging elites = arriving at boss with starter-quality deck.</li>
+<li>Take first 1-2 damage cards aggressively (floors 1-3), then become selective. Starter deck deals ~15 damage/turn, need ~20-25 for elites.</li>
+<li>Elites don&#x27;t repeat back-to-back — after fighting Nob, safe to take Skills.</li>
+<li>Never rest at campfires in Act 1 (almost never). Burning Blood heals 6/fight. Upgrading Bash &gt; 30% HP heal.</li>
+<li>HP is a resource to spend: 10 HP in a hallway fight to save a campfire rest (upgrade instead) is profitable.</li>
+<li>Target Act 1 ending deck: 12-18 cards. 25+ is bloated.</li>
+<li>Skipping card rewards is one of the most important &quot;picks&quot; — if nothing helps upcoming fights, skip.</li>
+</ul>
+
+<p><strong>Boss-specific research additions:</strong></p>
+<ul>
+<li>Slime Boss: Ideal is to get close to 50% then burst past to trigger split at low HP. Slam (35 dmg) comes turn 2 — need 40+ HP entering.</li>
+<li>Hexaghost: Divider turn 1 scales with current HP (80 HP = 6x6 = 36 damage). Long fight (~8-9 turns), needs sustained ~28-30 damage/turn. Burns upgrade to 4 damage after first Inferno — soft timer.</li>
+<li>The Guardian: Mode Shift at 30 damage (increases by 10 each cycle). In Defensive Mode, Sharp Hide deals 3 Thorns per attack played — do NOT play attacks. Play Skills and Powers during Defensive Mode, unleash attacks during Offensive Mode. Few large hits &gt; many small hits (Bludgeon ideal).</li>
+</ul>
+
+<h2 id="2026-05-12-session-5-potion-management">2026-05-12 — Session 5: Potion Management</h2>
+
+<p><strong>Context:</strong> Run 140 had Potion Belt (5 slots) with 0 potions at death. Run 141 also had no potions. The player is not acquiring or using potions effectively.</p>
+
+<p><strong>Human&#x27;s insight:</strong> &quot;If you have full potions... use your potions. If a potion is going to drop and you have full potions that&#x27;s a misplay generally.&quot;</p>
+
+<h3 id="potion-drop-mechanics-from-wiki-research">Potion drop mechanics (from wiki research):</h3>
+<ul>
+<li><strong>Base drop rate: 40%</strong>, resets at start of each act</li>
+<li>After a potion drops: chance decreases by 10% (next fight: 30%)</li>
+<li>After no potion drops: chance increases by 10% (next fight: 50%)</li>
+<li><strong>Potions do NOT drop if all slots are full.</strong> The chance adjusts but the potion is simply lost.</li>
+<li>White Beast Statue relic: 100% potion drop rate (overrides the variable system)</li>
+</ul>
+
+<h3 id="implications-for-the-player">Implications for the player:</h3>
+<ul>
+<li>You&#x27;re statistically likely to get a potion every 2-3 fights</li>
+<li>Full potion slots = wasted value every fight. Over an act that&#x27;s potentially 3-5 lost potions.</li>
+<li><strong>Before a fight with full slots: use or discard your weakest potion</strong> to open a slot for a potential drop</li>
+<li>Potions are meant to be used, not hoarded. A potion used in a hallway fight to prevent 15 HP damage is worth more than saving it &quot;for the boss&quot; and never using it.</li>
+<li>Exception: save one high-impact potion (Strength, Fairy in a Bottle) for bosses/elites if you have the slot space.</li>
+</ul>
+
+<h3 id="strategist-should-incorporate">Strategist should incorporate:</h3>
+<ul>
+<li>Add potion management section to strategy.md</li>
+<li>Update the potion playbook entries with usage timing guidance</li>
+<li>Add &quot;use potions with full slots&quot; to the player&#x27;s pre-fight checklist</li>
+</ul>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

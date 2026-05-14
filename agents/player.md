@@ -7,7 +7,7 @@ You play Slay the Spire. You make every decision deliberately, with reasoning.
 ```python
 import sys
 sys.path.insert(0, r"C:\Users\tkond\projects\autoplay\games\sts1")
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, deck
 ```
 
 Call `state()` to see the game. One decision at a time outside combat. In combat, plan your full turn, then execute with `turn()`.
@@ -156,14 +156,26 @@ turn(["play Bash Blue Slaver", "play Strike Red Slaver", "end"], reason="...")
 ```
 When enemies share a name (Byrds, Cultists, etc.), use the numeric index.
 
-### Draw Effects
+### Draw Effects — CRITICAL RULE
 
-If a card draws more cards (e.g., Shrug It Off, Pommel Strike, Battle Trance), you can't fully plan the turn. Play the draw card first, read the new state, then plan the rest:
+**NEVER include cards after a draw card in a `turn()` sequence.** If any card in your hand draws cards (Backflip, Acrobatics, Shrug It Off, Pommel Strike, Battle Trance, Prepared, Offering, Dagger Throw, etc.), it MUST be the last card before `"end"` in the sequence, or you must play it via `send()` and re-read state before continuing.
 
+The drawn cards might be playable and change your entire plan. Pre-planning past a draw is always wrong — you're deciding to ignore cards you haven't seen yet.
+
+**Correct — draw card ends the sequence:**
 ```python
-send("play Shrug It Off", reason="Block + draw, then I'll plan the rest of the turn")
-# Now read new state and plan remaining cards
+turn(["play Defend", "play Backflip", "end"], reason="Block first, Backflip for block + draw. Will plan remaining cards after seeing what I draw.")
+# Read new state, see drawn cards, then plan the rest
 ```
+
+**WRONG — planning past a draw:**
+```python
+# NEVER DO THIS:
+turn(["play Backflip", "play Strike 0", "play Defend", "end"], reason="...")
+# You don't know what you'll draw from Backflip! The drawn cards might be better than Strike/Defend.
+```
+
+The `turn()` function will automatically stop your sequence if it detects a draw happened, but don't rely on that — plan correctly from the start.
 
 ## Outside Combat
 
@@ -284,6 +296,15 @@ If missing any of these, PRIORITIZE filling that gap over taking a generically s
 - Read the options carefully. Many events have hidden costs or benefits.
 - If you don't know an event, be cautious — say so and pick the safe option.
 
+### Deck Review with `deck()`
+
+Call `deck()` after any event that changes your deck composition:
+- **After Astrolabe** or other transform effects — review what you got and think about how it changes your strategy
+- **After adding or removing cards** at key moments
+- **After shop visits** where you bought/removed multiple cards
+
+This is your chance to step back and think holistically about deck composition rather than just evaluating cards one at a time. Post your assessment with `think()`.
+
 ## Planning and Playbook
 
 The playbook has 200+ files covering every card, enemy, boss, event, relic, and potion. Three commands give you structured access:
@@ -355,6 +376,7 @@ reason("Flex Potion")      # Potion timing
 
 ```
 state()                          — Read current game state
+deck()                           — View full deck (use after transforms, adds, removes)
 plan()                           — Load strategic context (auto-detects combat vs act mode)
 think(reasoning, label)          — Post your strategic analysis to the stream overlay
 reason("topic")                  — Look up a specific playbook entry

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Guardian (Act 1, HP: 240) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="the-guardian-act-1-hp-240">The Guardian (Act 1, HP: 240)</h1>
+
+<p>PATTERN:</p>
+<ul>
+<li><strong>Attack Mode</strong>: Cycles through ATTACK (5x4=20), ATTACK (32 single hit), ATTACK_BUFF (8x2=16), DEFEND (gains block, no damage), STRONG_DEBUFF (no damage). Mode Shift counter tracks total damage dealt to Guardian. When counter reaches 0, switches to Defensive Mode. Counter values by cycle: 30 (first), 40 (second), 50 (third). Triggering Mode Shift mid-attack CANCELS the current attack.</li>
+<li><strong>Defensive Mode (Sharp Hide)</strong>: Guardian gains Sharp Hide 3 -- deals 3 damage to player per Attack card played. Has its own attacks (9 damage, 8x2=16). After some turns, switches back to Attack Mode with higher Mode Shift counter.</li>
+</ul>
+
+<p>KEY MECHANICS:</p>
+<ul>
+<li><strong>32-damage attack</strong>: The Guardian&#x27;s biggest single hit. Must have 32+ block capability in one turn or you die. Impervious (30 block) handles this. Double Metallicize (6/turn) + Intimidate (Weak, reduces to 24) also works.</li>
+<li><strong>Sharp Hide 3</strong>: 3 damage to player per Attack card in Defensive Mode. Either block before playing Attacks to absorb retaliation, or play only Skills.</li>
+<li><strong>Mode Shift counter</strong>: Cycle values are 30, 40, 50. Triggering Mode Shift mid-attack cancels the attack -- this is the primary way to survive the 32-damage and 5x4=20 attacks. Fast burst (Carnage+ at 28-42 damage) triggers Mode Shift quickly. Plan damage output to trigger Mode Shift on lethal attack turns, not on free turns where it is wasted. Only HP damage counts toward Mode Shift -- damage absorbed by block does NOT reduce the counter. Mode Shift cancellation is reliable and repeatable -- successfully used to cancel both the 32-damage attack and the 5x4=20 attack in a single fight (Carnage+ burst through the first Mode Shift threshold cancelled the 32 hit, and Strike+Strike+Headbutt through the second threshold cancelled the 5x4=20). Strength Potion (+2 Str) makes Mode Shift triggers faster and should be used at fight start if available.</li>
+<li><strong>Long fight</strong>: 240 HP means 12-14 turns minimum. Strength scaling and passive block pay off enormously.</li>
+<li><strong>Free turns</strong>: DEFEND and STRONG_DEBUFF intents deal no damage. Use these for Bash+ (refresh Vulnerable), Inflame, Metallicize setup.</li>
+</ul>
+
+<p>PREPARATION CHECKLIST:</p>
+<p>1. One big block source for the 32-damage turn (Impervious, double Metallicize + Weak, or mass block cards)</p>
+<p>2. Burst damage for fast Mode Shift triggering (Bludgeon at 32-48, Carnage+ at 28-42, Headbutt+ loops)</p>
+<p>3. Passive block for the long fight (Metallicize is the best card; double Metallicize is exceptional)</p>
+<p>4. Safety net (Fairy in a Bottle) -- not required but very helpful</p>
+<p>5. Deck manipulation (Headbutt+ to guarantee key cards when needed)</p>
+<p>6. Enough cards in deck to last 12+ turns -- do NOT over-exhaust</p>
+
+<p>STRATEGY:</p>
+<ul>
+<li><strong>Turn 1 setup</strong>: Play Metallicize, Inflame, or other Powers on the first free turn.</li>
+<li><strong>Attack Mode</strong>: Block on attack turns (especially the 32-damage turn). Damage on free turns. Refresh Vulnerable with Bash+ on free turns.</li>
+<li><strong>Defensive Mode</strong>: Block first to absorb Sharp Hide retaliation, then play Attacks. Or play only Skills for pure block. Powers are safe (no Sharp Hide trigger).</li>
+<li><strong>Headbutt loops</strong>: Headbutt places key cards on top of draw pile. Guarantee Carnage+ for burst turns, Bash+ for Vulnerable refresh, or Impervious for the 32-damage turn.</li>
+<li><strong>Know your block ceiling</strong>: Calculate maximum block your remaining cards can produce. If that&#x27;s less than 32, stop exhausting immediately.</li>
+</ul>
+
+<p>WHAT NOT TO DO:</p>
+<ul>
+<li>Over-exhaust. A 3-card deck cannot block 32 damage. Keep enough cards to survive.</li>
+<li>Play unupgraded True Grit. Random exhaust can destroy key cards. True Grit+ (chosen exhaust) is mandatory.</li>
+<li>Ignore Sharp Hide. Playing 3 Attack cards in Sharp Hide mode costs 9 HP. Block first.</li>
+<li>Enter without a plan for the 32-damage turn. If your maximum block is under 25, you will die.</li>
+<li>Use Fiend Fire as your primary exhaust engine. Fiend Fire exhausts 4+ cards (28+ damage) but thins the deck catastrophically. In Defensive Mode with Sharp Hide, the 9-card hand shrinks after one Fiend Fire, leaving insufficient block cards for 32-damage turns. Fiend Fire is excellent on free turns or for burst, but building the deck around it causes thin-deck syndrome mid-fight.</li>
+<li>Play Sever Soul. It exhausts ALL non-Attack cards in hand, including Defend cards. In a 12-14 turn fight, losing Defend cards permanently is catastrophic for block density on later turns. Even using Sever Soul to trigger Mode Shift is a bad trade if it costs 2+ Defend cards.</li>
+<li>Enter with fewer than 2 reliable block cards. Run 103: Pandora&#x27;s Box removed all Defends, deck had only Iron Wave (5 block) and Flame Barrier (12 block, 2E) as block sources. Maximum block per turn was ~12, which cannot survive the 32-damage attack or sustain over 12+ turns. Disarm (-2 Str) and Dark Shackles (-9 Str, 1 turn) are damage reduction, not block -- they help but cannot substitute for actual block cards. If block density is this low before the boss, the run is likely unwinnable against Guardian.</li>
+<li><strong>Play Corruption or Corruption+ without Dead Branch or Feel No Pain.</strong> Run 107: Corruption+ played on turn 9. Every Skill played after that point exhausted. By turn 14, ALL block Skills were gone -- zero Defends, zero Shrug It Off, zero Ghostly Armor, Impervious already used. Only Iron Wave (5 block) remained. Guardian was at 10/240 HP but the player died unable to block in the final turns. Corruption is a TRAP in this fight because the Guardian fight lasts 14+ turns and Corruption burns through all Skills in 5-6 turns. Without exhaust payoffs (Dead Branch replaces exhausted cards, Feel No Pain generates block per exhaust), Corruption leaves you defenseless for the second half of the fight.</li>
+<li><strong>Waste Impervious on small attacks.</strong> Run 107: Impervious (30 block) was played on a 16-damage Sharp Hide turn (turn 6). This wasted 14 block. When the 32-damage turn came later, Impervious was already exhausted and unavailable. Save Impervious exclusively for the 32-damage attack or the 5x4=20 attack. Playing it against Sharp Hide attacks (9-16 damage) is a misallocation that can cost the fight.</li>
+</ul>
+
+<p>CRITICAL DECK DENSITY WARNING:</p>
+<p>The Guardian is a 12-14 turn fight. An exhaustion-heavy deck (Fiend Fire, Dark Embrace, Charon&#x27;s Ashes) front-loads power into turns 1-5, but leaves a thin deck for turns 6-12. When the deck is reduced to 9-10 cards by turn 7, you cannot generate 20+ block on 32-damage turns. Fiend Fire + True Grit (unupgraded) is particularly dangerous: True Grit&#x27;s random exhaust removes key cards, Fiend Fire exhausts the remainder, and the mid-fight deck becomes unplayable. Entered at 62 HP with Bash+, True Grit (unupgraded), and Fiend Fire. By turn 7, True Grit had randomly exhausted Bash+, and Fiend Fire had exhausted 3+ cards. On a 32-damage turn with only 5 playable cards left, maximum block was 9 (Defend + Shrug It Off). Died at 5 HP unable to block the final 32.</p>
+
+<p>CORRUPTION DECK DENSITY DEATH (Run 107): Corruption+ played on turn 9 at 46 HP. The deck had 7 Skills (4 Defend, Shrug It Off, Ghostly Armor, Impervious -- Shockwave+ already used). Over turns 9-13, all Skills were played for free and exhausted. By turn 14, zero block Skills remained in the deck. Guardian was at 10/240 HP -- the closest near-win yet -- but the player had only Attacks and Iron Wave (5 block) left. Took 18+ unblocked damage per turn and died. KEY LESSON: Corruption is a different exhaustion mechanism than Fiend Fire but produces the same result -- no block cards in the second half. The player recognized the danger (reasoning: &quot;DO NOT play Defends on free turn - they would exhaust for no value under Corruption!&quot;) but still ran out of Skills because the fight lasted longer than the Skill supply. This is now the SECOND Guardian death from deck-thinning (Run 103: Pandora&#x27;s Box, Run 107: Corruption+).</p>
+
+<p>TWO-DEATH GUARDIAN PATTERN (Runs 103, 107): Both Guardian deaths share the same root cause -- insufficient block density in the second half of the fight. Run 103: Pandora&#x27;s Box removed Defends before the fight started. Run 107: Corruption+ exhausted all Skills mid-fight. The Guardian punishes ANY mechanism that reduces block card count below sustainable levels for a 14-turn fight.</p>
+
+<hr>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

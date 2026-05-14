@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slime Boss (Act 1, HP: ~140) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="slime-boss-act-1-hp-140">Slime Boss (Act 1, HP: ~140)</h1>
+
+<p>PATTERN:</p>
+<ul>
+<li>Pre-split: Alternates between STRONG_DEBUFF turns (no attack, safe to go all-in) and high-damage ATTACK turns (35 damage). Debuff turns are safe windows for damage.</li>
+<li>Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss&#x27;s remaining HP at split. <strong>Excess damage past 70 HP is wasted AND makes the fight harder</strong> -- if the boss goes from 87 to 63, both slimes spawn with 63 HP each instead of 70 HP. This sounds helpful but you already dealt 17 &quot;free&quot; damage that could have been blocked instead; the real cost is that you overkilled by 7 HP on a hit that could have been split across two turns. Manage damage carefully: aim to trigger the split at exactly 70 HP or as close as possible.</li>
+<li>Post-split: Two enemies each with significant HP and damage. Spike Slime (L) attacks for ~16 and applies Frail. Acid Slime (L) attacks for ~11-12 and applies Weak. Combined 25-36 damage per turn. Both add Slimed cards to deck.</li>
+</ul>
+
+<p>KEY MECHANICS:</p>
+<ul>
+<li><strong>Split transition</strong>: Going from 1 enemy to 2 with combined 25-36 damage/turn is the hardest moment.</li>
+<li><strong>Slimed cards</strong>: Cost 1E to exhaust, do nothing. Clog hand badly (3 of 5 cards being Slimed observed).</li>
+<li><strong>Dual debuffs</strong>: Frail (block reduced 25%) + Weak (damage reduced 25%) simultaneously is devastating.</li>
+<li><strong>Large slimes split on death</strong>: Both Spike Slime (L) and Acid Slime (L) split into 2 medium slimes when killed. Spike Slime (L) splits into 2x Spike Slime (M). Acid Slime (L) splits into 2x Acid Slime (M). This means killing one large slime creates a 3-enemy situation (1 large + 2 mediums), which can be worse than the 2-enemy state.</li>
+</ul>
+
+<p>PREPARATION CHECKLIST:</p>
+<p>1. AOE for the split (Thunderclap, Whirlwind, Cleave) -- MANDATORY. Without AOE, you must single-target each of 4+ enemies after both large slimes split. Confirmed death in Run 70: no AOE was ever offered, and single-target damage could not keep up with Slimed card generation from multiple enemies.</p>
+<p>2. Burst single-target to kill one slime fast (Fiend Fire, Carnage+)</p>
+<p>3. Exhaust tools for Slimed cards (Fiend Fire turns Slimed into 7 damage each, True Grit+, Burning Pact, Feel No Pain converts exhaust into 3 block each). Without exhaust tools, Slimed cards clog the hand (3 of 5 cards being Slimed observed), leaving only 2 playable cards per turn.</p>
+<p>3b. Feed+ for massive Max HP gain. Slime Boss split creates multiple kill-eligible enemies (large slimes, medium slimes). Feed+ on each kill = +4 Max HP per kill. Confirmed: +22 Max HP from a single Slime Boss fight with Feed+, reaching 98 Max HP from 80 base. This is the best Feed fight in Act 1.</p>
+<p>4. Enough block/HP to survive 2-3 turns of 25-36 combined damage</p>
+<p>5. At least 1 upgrade before the fight. Zero upgrades makes the fight dramatically harder -- unupgraded Bash provides only 2 turns of Vulnerable instead of 3, and all damage/block cards are weaker.</p>
+
+<p>CONFIRMED WINNING COMBINATION: Evolve + Thunderclap+ + Spot Weakness + Shuriken. Evolve neutralizes Slimed clog. Thunderclap+ applies AOE Vulnerable on split slimes. Spot Weakness + Shuriken provide Strength scaling that compounds across multi-enemy phase. With 6+ Str, Strikes deal 12-18 each (with Vuln), enabling fast kills even at low HP. Survived split phase at 3 HP through precise kill sequencing: killed Large Spike Slime, killed split Acid Medium, finished last enemy with exact lethal.</p>
+
+<p>STRATEGY:</p>
+<ul>
+<li><strong>Pre-split</strong>: Use debuff turns (free turns) to deal damage. Apply Vulnerable with Bash+. Don&#x27;t worry about killing fast -- prepare for the split. <strong>Manage damage near the 70 HP threshold</strong>: on the turn the boss will cross 70 HP, calculate exact damage to avoid massive overkill. Spending energy on block instead of excess damage past the threshold is often correct.</li>
+<li><strong>At split</strong>: Use Thunderclap for mass Vulnerable on both slimes. AOE with Whirlwind or Cleave.</li>
+<li><strong>Post-split</strong>: SPREAD DAMAGE to both large slimes before killing either one. Killing one creates a 3-enemy situation (2 mediums + 1 large). Ideally, reduce both to low HP, then kill them in quick succession to minimize turns spent fighting 3+ enemies. If forced to kill one first, kill the one you can follow up on immediately -- do NOT leave a full-HP large slime alive while dealing with mediums.</li>
+<li><strong>Slimed management</strong>: Exhaust Slimed cards as priority. Each one exhausted is one fewer dead draw for the rest of combat. Fiend Fire is ideal -- converts Slimed cards to 7 damage each. Feel No Pain turns each Slimed exhaust into 3 block, making the tempo cost much more bearable.</li>
+</ul>
+
+<p>WHAT NOT TO DO:</p>
+<ul>
+<li>Enter without AOE. Single-target damage cannot handle the split. If no AOE was offered in card rewards, consider the run compromised against Slime Boss -- path aggressively through shops and events to find Thunderclap or Cleave before Floor 16.</li>
+<li>Enter with 0 upgrades. The upgrade death spiral (low HP forces resting at every rest site, which means no upgrades, which means fights are harder, which means more HP loss) was confirmed fatal in Run 70. Both rest sites were spent healing because HP was critically low from fights with unupgraded cards.</li>
+<li>Enter below 60% HP. 50/85 HP (58%) entry contributed to death in Run 70.</li>
+<li>Ignore Slimed cards. They accumulate and destroy hand quality.</li>
+<li>Play Berserk. Self-Vulnerable against 2 enemies doing 25-36 combined is suicidal.</li>
+<li>Focus all damage on one large slime while ignoring the other. Killing Acid Slime (L) at 63 HP while Spike Slime (L) sits untouched at 63 HP creates a 3-enemy nightmare (Spike Slime L + 2x Acid Slime M dealing 33+ combined damage). Spread damage to both large slimes before killing either.</li>
+<li>Use Hemokinesis at low HP during split phase. The 2 HP self-damage compounds with split damage.</li>
+</ul>
+
+<hr>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

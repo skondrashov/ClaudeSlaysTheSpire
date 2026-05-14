@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donu and Deca (Act 3 Boss) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-bosses.html">&larr; Back to Bosses</a></div><h1 id="donu-and-deca-act-3-boss">Donu and Deca (Act 3 Boss)</h1>
+
+<p>Two enemies. Donu has 250 HP. Deca has 250 HP. Combined 500 HP. Each starts with Artifact 1 (blocks first debuff applied to that enemy). Defeated twice in consecutive victories. Both wins used Snecko Eye + Immolate+ + Limit Break + Str finishers.</p>
+
+<h2 id="mechanics">Mechanics</h2>
+
+<ul>
+<li><strong>Donu</strong> buffs Strength for both enemies. Kill Donu FIRST to stop Strength scaling.</li>
+<li><strong>Deca</strong> applies debuffs (block-based, Dazed). Lower priority kill target.</li>
+<li>Combined incoming damage starts around 20/turn and scales as Donu buffs Strength.</li>
+<li>Both enemies can have block (observed 8-16 block on various turns).</li>
+<li>Fight length: 6-10 turns depending on deck power. With Snecko Eye and Strength scaling, 6 turns is achievable.</li>
+</ul>
+
+<h2 id="winning-strategy-confirmed">Winning Strategy (confirmed)</h2>
+
+<p>1. <strong>AOE is king.</strong> Immolate+ (28-34 with Str) hits BOTH bosses every cast. Three Immolate+ in one turn dealt 102 AOE damage. Cleave and other AOE cards contribute meaningfully because every point of AOE does double duty.</p>
+<p>2. <strong>Focus fire Donu.</strong> All single-target attacks go to Donu. AOE handles Deca passively. Donu dies first, stopping the Strength scaling that would make the fight unwinnable in long games.</p>
+<p>3. <strong>Strength scaling is the finisher.</strong> Spot Weakness+ (+4 Str) into Limit Break (double to 12 Str) enables Heavy Blade (14 + 36 = 50 damage) as a lethal finisher. The Str investment pays off in turns 5-6 when both enemies are in kill range.</p>
+<p>4. <strong>Snecko Eye is exceptional.</strong> Drawing 7 cards/turn with random costs means high-cost power cards (Immolate+ at 2E, Heavy Blade at 2E, Impervious at 2E) frequently cost 0-1E. Multiple 0-cost Immolate+ plays in the boss fight were the difference between winning and losing.</p>
+<p>5. <strong>Dual Wield+ on Immolate+ is devastating.</strong> Copying Immolate+ twice creates three copies in hand. If Snecko gives favorable costs, playing all three deals 100+ AOE in a single turn.</p>
+
+<h2 id="key-cards">Key Cards</h2>
+
+<ul>
+<li><strong>Immolate+</strong>: Best card in the fight. 28-34 AOE per play. Duplication Potion on a 0-cost Immolate+ produces 60 AOE for 0E.</li>
+<li><strong>Heavy Blade+</strong>: 5x Str multiplier finisher. At Str 6: 44 damage. At Str 12: 74 damage. Killed Donu through 16 block in the first win.</li>
+<li><strong>Dual Wield+</strong>: Copies Immolate+ for triple AOE turns.</li>
+<li><strong>Limit Break / Limit Break+</strong>: Doubles Str at the critical moment. <strong>Limit Break+ (no exhaust) is the most impactful upgrade for this fight</strong> -- enables repeated Str doubling for infinite scaling. Upgrading Limit Break at the last campfire before the boss was the single most impactful decision of the second win.</li>
+<li><strong>Flex+</strong>: Normally weak (temporary Str), but with Limit Break+ it becomes a powerful combo. 4 temporary Str doubled by Limit Break+ effectively converts to 10 permanent Str. This interaction was key in the second win.</li>
+<li><strong>Spot Weakness+</strong>: +4 Str on attacking enemies. Deca&#x27;s attack turns are the window.</li>
+<li><strong>Flame Barrier</strong>: 12 block + 4 return damage per hit. Good against multi-hit attack patterns.</li>
+<li><strong>Evolve</strong>: Converts Burns from Immolate into card draws. Essential in a long fight with repeated Immolate plays.</li>
+<li><strong>Bronze Scales</strong> (relic): 3 Thorns damage per hit received. At very low HP, enemy attacks trigger Bronze Scales for the killing blow. Delivered the final 6 damage to Deca at 4 HP in the second win.</li>
+</ul>
+
+<h2 id="preparation-checklist">Preparation Checklist</h2>
+
+<p>1. AOE damage -- Immolate+ is the single best card. Thunderclap+ and Cleave contribute.</p>
+<p>2. Strength scaling -- Spot Weakness+, Inflame, Limit Break. Heavy Blade to leverage it.</p>
+<p>3. Enter at 70%+ HP (ideally full). Combined incoming is 20-32/turn. The second win entered at only 49% HP (42/85) and survived at 4 HP -- the margin was razor-thin. Higher HP entry is strongly preferred, but a powerful enough deck can compensate.</p>
+<p>4. Block density for 6-10 turns. Impervious, Flame Barrier, Metallicize all useful.</p>
+<p>5. Potions: Snecko Oil Turn 1 for massive hand expansion. Duplication Potion on 0-cost Immolate+ for 60 AOE. Strength Potion compounds with Limit Break. Liquid Memories retrieves Immolate+ from discard.</p>
+<p>6. Gambling Chip -- mulligan bad Snecko Eye draws Turn 1. Discard high-cost cards and draw replacements for better opening hands.</p>
+
+<h2 id="potion-timing">Potion Timing</h2>
+
+<ul>
+<li><strong>Snecko Oil Turn 1</strong>: Draws 5 cards and randomizes all hand costs. Expands hand to 10 cards for a massive burst opening. With Snecko Eye already active, this is pure upside -- already Confused, so the cost randomization is no additional downside.</li>
+<li><strong>Strength Potion Turn 2</strong>: +2 Str permanent for combat. Compounds with every attack for remaining turns.</li>
+<li><strong>Duplication Potion on 0-cost Immolate+</strong>: Wait for a favorable Snecko Eye roll on Immolate+. Duplicating a 0-cost Immolate+ produces 60 AOE for 0E -- devastating. In the second win, this dealt 60 AOE to both bosses on Turn 3.</li>
+<li><strong>Liquid Memories</strong>: Retrieve Immolate+ from discard at a new Snecko cost roll.</li>
+<li><strong>Toy Ornithopter</strong>: Each potion use heals 5 HP. Multiple potions = significant healing during the fight.</li>
+</ul>
+
+<h2 id="turn-by-turn-reference-from-first-victory">Turn-by-Turn Reference (from first victory)</h2>
+
+<ul>
+<li>Turn 1: Immolate+ (0E!) for 28 AOE. Setup Evolve. Focus Donu with single-target. 56 to Donu, 28 to Deca.</li>
+<li>Turn 2: Strength Potion (+2 Str). Headbutt+ to top-deck Immolate+. Heavy Blade 20 to Donu.</li>
+<li>Turn 3: Spot Weakness+ (+4 Str = 6 total). Immolate+ 34 AOE.</li>
+<li>Turn 4: Dual Wield+ copied Immolate+ twice. THREE Immolate+ for 102 AOE. Rampage 19. Donu at 5 HP.</li>
+<li>Turn 5: Heavy Blade (0E!) killed Donu through 16 block. Duplication Potion doubled Flame Barrier. Liquid Memories retrieved Immolate+ at 0E. 69 total to Deca.</li>
+<li>Turn 6: Limit Break doubled Str to 12. Anger+ 20. Heavy Blade 50. Deca dead. VICTORY.</li>
+</ul>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

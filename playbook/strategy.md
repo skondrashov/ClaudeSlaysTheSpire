@@ -2,17 +2,17 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (150 runs, 3 WINS):** Three victories in the last four runs (Runs 147, 148, 150). Run 149 died at Floor 41 (Giant Head elite). Run 150: defeated Time Eater at Floor 51, Score TBD, Final HP 26/87. TWO proven winning formulas now exist: (1) Snecko Eye + Immolate+ + Limit Break engine (Runs 147-148), and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine (Run 150). Both formulas share Immolate+ as primary AOE but differ completely in their scaling mechanism.
+**CURRENT STATUS (151 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). First Silent run (Run 151) reached Act 3 boss (Awakened One) but died in Phase 2 at Floor 50. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is still developing -- first run revealed critical boss mechanic misunderstanding (Awakened One Curiosity).
 
-**SCORECARD (runs 101-150):**
+**SCORECARD (runs 101-151):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 4. Act 2 boss reaches: 9+.
-- **Act 3 reached five times (Runs 145, 147, 148, 149, 150).** Run 145 died to Transient. Run 149 died to Giant Head elite. Runs 147, 148, 150 all WON.
+- **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**
-- **3 wins in 150 runs (2.0% win rate).** Ascension 0. Three wins in last four runs (75% win rate in Runs 147-150).
-- **No UI misplays in Runs 147-150.** Eight+ consecutive clean runs. All boss relics collected, all treasure chests opened, shops browsed, events evaluated.
-- **Mechanics errors in Runs 147-150: NONE in victories.** Combat arithmetic correct throughout winning runs. No prediction errors detected.
-- **Two distinct winning formulas confirmed.** See THE WINNING FORMULAS below.
+- **3 wins in 151 runs (2.0% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (1 attempt, reached Act 3 boss).
+- **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.
+- **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.
+- **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.
 
 **THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**
 
@@ -32,6 +32,7 @@ High-level strategic principles for Ironclad runs.
 7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.
 8. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed > block.
 9. **Enter every boss at as high HP as possible.** The first victory entered all three bosses at 80/80. The second victory entered Act 1 and Act 2 bosses at high HP but entered Donu and Deca at only 49% (42/85) and survived at 4 HP -- a razor-thin margin. Full HP entry provides the buffer needed when boss fights go long. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enable full HP entry. A powerful deck (Snecko Eye + Immolate+ + Limit Break+) can compensate for low HP entry, but the margin of error is minimal.
+10. **KNOW YOUR ACT 3 BOSS MECHANIC AND BUILD AROUND IT.** The Act 3 boss is visible on the map from Act 1. Each Act 3 boss punishes a specific playstyle: (a) **Awakened One** punishes Power cards (+2 Str per Power played -- see awakened-one.md). If the boss is Awakened One, deprioritize Powers during drafting and plan to win with Attacks and Skills. (b) **Time Eater** punishes high card-count turns (12-card Time Warp -- see time-eater.md). Track card count exactly. (c) **Donu and Deca** is a raw stats check (500 combined HP). The boss you see should influence every card pick, relic choice, and deck-building decision from Floor 1 onward.
 
 ---
 

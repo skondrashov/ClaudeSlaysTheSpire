@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook.html">&larr; Back to playbook</a></div><h1 id="strategy">Strategy</h1>
+
+<p>High-level strategic principles for Ironclad runs.</p>
+
+<p><strong>CURRENT STATUS (151 runs, 3 WINS):</strong> Three Ironclad victories in four runs (Runs 147, 148, 150). First Silent run (Run 151) reached Act 3 boss (Awakened One) but died in Phase 2 at Floor 50. TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is still developing -- first run revealed critical boss mechanic misunderstanding (Awakened One Curiosity).</p>
+
+<p><strong>SCORECARD (runs 101-151):</strong></p>
+<ul>
+<li>Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</li>
+<li>Act 2 boss kills: 4. Act 2 boss reaches: 9+.</li>
+<li><strong>Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).</strong> Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.</li>
+<li><strong>Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).</strong></li>
+<li><strong>3 wins in 151 runs (2.0% win rate).</strong> Ascension 0. Three Ironclad wins. Zero Silent wins (1 attempt, reached Act 3 boss).</li>
+<li><strong>No UI misplays in Runs 147-151.</strong> Nine+ consecutive clean runs.</li>
+<li><strong>Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.</strong> Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.</li>
+<li><strong>Two distinct Ironclad winning formulas confirmed.</strong> See THE WINNING FORMULAS below.</li>
+</ul>
+
+<p><strong>THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):</strong></p>
+
+<p><strong>Formula 1: Snecko Eye + Strength Scaling (Runs 147-148).</strong> Snecko Eye (Act 2 boss relic, draw 7, cost randomization) + Immolate+ (AOE) + Limit Break (Str doubler) + Heavy Blade / high-Str finishers. Key components: Snecko Eye as Act 2 boss relic, Immolate+ as primary AOE, Limit Break for Strength scaling. Works by rolling cheap costs on expensive cards and doubling Strength for massive finisher damage.</p>
+
+<p><strong>Formula 2: Barricade + Corruption Engine (Run 150).</strong> Barricade (block persists) + Corruption (all Skills free but exhaust) + Feel No Pain (block per exhaust) + Entrench (double block) + Body Slam+ (damage = block). Key components: Barricade as the foundation (block persists between turns), Corruption making Skills free (and triggering FNP on exhaust), Entrench doubling accumulated block, Body Slam+ converting block to damage for 0E. This engine builds an impenetrable block wall (100-200+ block) while dealing massive damage through Body Slam+. Apotheosis is critical when Fusion Hammer prevents normal upgrades -- upgrading everything in one play (Barricade 3E to 2E, FNP 3 to 4, Impervious 30 to 40).</p>
+
+<p><strong>What both formulas share:</strong> (1) Immolate+ as primary AOE, (2) zero UI misplays, (3) zero arithmetic errors, (4) strong Act 1 elite fights, (5) proper map pathing. The key insight: two completely different scaling mechanisms both work at A0. The player should pursue whichever engine the card/relic offerings support, not force one formula over the other.</p>
+
+<p><strong>IMMEDIATE PRIORITIES (in order):</strong></p>
+<p>1. <strong>FULL BLOCK EVERY HALLWAY FIGHT.</strong> The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md.</p>
+<p>2. <strong>PLAN FULL ACT ROUTES BEFORE FLOOR 1.</strong> Read the entire map at act start. Count elites, shops, campfires on every viable path. Choose a route and follow it. Re-route only when HP forces it.</p>
+<p>3. <strong>Build Act 2-ready decks by Floor 15.</strong> ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Immolate is the highest-impact card), (c) healing beyond Burning Blood (Toy Ornithopter + potions is a valid backup), (d) block scaling beyond basic Defends.</p>
+<p>4. <strong>Pursue one of the two proven scaling engines.</strong> (A) <strong>Strength engine</strong>: Snecko Eye as Act 2 boss relic, Immolate+ for AOE, Limit Break for Str doubling, Heavy Blade or other Str finishers. (B) <strong>Block engine</strong>: Barricade + Corruption + Feel No Pain + Entrench + Body Slam+. Immolate+ is the primary AOE in both. Do not force one engine -- pursue whichever the card/relic offerings support. If Barricade + Corruption + FNP are all available by mid-Act 2, commit to the block engine. If Snecko Eye is offered as Act 2 boss relic and Limit Break exists, commit to the Str engine. Either engine can defeat any Act 3 boss.</p>
+<p>5. <strong>Use the Act 1 tier list for card evaluation.</strong> The starting deck is the same every run. Know the tier list, draft for the visible boss.</p>
+<p>6. <strong>STOP MAKING ARITHMETIC ERRORS.</strong> Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain <code>end</code> with the attack -- verify the kill first.</p>
+<p>7. <strong>Brimstone + Book of Stabbing = death.</strong> Do NOT buy Brimstone if Book of Stabbing is possible. Two deaths confirmed.</p>
+<p>8. <strong>3 Cultists entry threshold is 60%.</strong> Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed &gt; block.</p>
+<p>9. <strong>Enter every boss at as high HP as possible.</strong> The first victory entered all three bosses at 80/80. The second victory entered Act 1 and Act 2 bosses at high HP but entered Donu and Deca at only 49% (42/85) and survived at 4 HP -- a razor-thin margin. Full HP entry provides the buffer needed when boss fights go long. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enable full HP entry. A powerful deck (Snecko Eye + Immolate+ + Limit Break+) can compensate for low HP entry, but the margin of error is minimal.</p>
+<p>10. <strong>KNOW YOUR ACT 3 BOSS MECHANIC AND BUILD AROUND IT.</strong> The Act 3 boss is visible on the map from Act 1. Each Act 3 boss punishes a specific playstyle: (a) <strong>Awakened One</strong> punishes Power cards (+2 Str per Power played -- see awakened-one.md). If the boss is Awakened One, deprioritize Powers during drafting and plan to win with Attacks and Skills. (b) <strong>Time Eater</strong> punishes high card-count turns (12-card Time Warp -- see time-eater.md). Track card count exactly. (c) <strong>Donu and Deca</strong> is a raw stats check (500 combined HP). The boss you see should influence every card pick, relic choice, and deck-building decision from Floor 1 onward.</p>
+
+<hr>
+
+<h2 id="combat-arithmetic-checklist-read-every-fight">COMBAT ARITHMETIC CHECKLIST (read every fight)</h2>
+
+<p>Before calculating damage or block, answer these FOUR questions:</p>
+
+<p><strong>1. WHO has Weak?</strong></p>
+<ul>
+<li>Weak on ENEMY (from Bash, Shockwave, Intimidate, Thunderclap) = THEIR attacks deal 25% less. YOUR damage is UNAFFECTED.</li>
+<li>Weak on YOU (from enemy debuffs) = YOUR attacks deal 25% less.</li>
+<li>NEVER apply 0.75 to your own damage when enemies are Weakened. This error has occurred in 3+ runs.</li>
+</ul>
+
+<p><strong>2. Am I using UPGRADED values?</strong></p>
+<ul>
+<li>Check the + suffix on every card before calculating. Common errors:</li>
+<li>SIO+ = 11 block (not 8)</li>
+<li>Flame Barrier+ = 16 block AND 6 counter damage (two separate effects, do not confuse them)</li>
+<li>Armaments+ = 5 block (not 0, it still blocks) AND upgrades ALL cards in hand</li>
+<li>Bash+ = 10 damage, 3 Vulnerable (not 2)</li>
+<li>Intimidate+ = 2 Weak (not 1)</li>
+<li>Spot Weakness = +3 Str unupgraded, +4 Str upgraded (do not use +4 for the base card)</li>
+</ul>
+
+<p><strong>3. Does my Strength reset?</strong></p>
+<ul>
+<li>Inflame, Spot Weakness, Demon Form: Strength is PER-COMBAT. Resets to 0 each new fight.</li>
+<li>Vajra relic: permanent, persists across combats.</li>
+<li>Strength Potion: temporary within one combat only.</li>
+<li>Rampage counter: also resets each combat.</li>
+<li>NEVER carry Strength values from the previous fight into calculations.</li>
+</ul>
+
+<p><strong>4. VERIFY KILL MATH BEFORE ENDING TURN.</strong></p>
+<ul>
+<li>On any turn where the enemy could die, calculate total damage from ALL playable cards BEFORE submitting the end-turn command.</li>
+<li>Do NOT chain <code>play X; end</code> in a single command when the enemy is near death. Play cards one at a time, verify the enemy&#x27;s remaining HP after each play, then play additional cards or end turn.</li>
+<li>Confirmed fatal error: player played Iron Wave (13 damage) against 20 HP Hexaghost and submitted <code>end</code> in the same command line. Headbutt (17 damage) was in hand with 2E remaining. The combined 30 damage would have killed. The player wrote &quot;13 &gt; 20&quot; in reasoning -- a basic comparison error that went unnoticed because the command was already committed.</li>
+<li><strong>RULE: On kill turns, NEVER include <code>end</code> in the same command as the attack. Play the attack, verify the kill, THEN end turn separately.</strong></li>
+</ul>
+
+<hr>
+
+<h2 id="hp-management-full-block-is-the-solution">HP Management: Full Block Is the Solution</h2>
+
+<p>The #1 cause of death (24+ of 30+ documented) is entering fights at low HP. But the ROOT cause is taking unnecessary damage in previous fights. Every point of HP lost in a hallway fight is permanent until a rest site. The solution is not complex HP threshold management -- it is the Full Block Algorithm described in player.md.</p>
+
+<p><strong>The fundamental insight: HP is an act-level resource, not a per-fight resource.</strong> There is no &quot;I can afford to take 8 damage here&quot; in a hallway fight. 8 damage at 80 HP and 8 damage at 20 HP are equally bad -- both bring you 8 closer to death. The goal in EVERY hallway fight is zero damage taken. HP thresholds below are for MAP PATHING decisions (when to avoid combat rooms), not for changing how you play combat.</p>
+
+<h3 id="hp-thresholds-for-map-pathing-not-combat-behavior">HP Thresholds for Map Pathing (NOT combat behavior)</h3>
+
+<p>These thresholds determine which MAP PATHS are safe, not how to play combat. Combat behavior is always the same: Full Block Algorithm, zero damage target.</p>
+
+<table><thead><tr>
+<th>Fight Type</th>
+<th>Minimum HP to Enter</th>
+<th>Notes</th>
+</tr></thead><tbody>
+<tr>
+<td>Hallway (easy)</td>
+<td>25%</td>
+<td>Byrds/Chosen can drain 40-73 HP even with correct play and TC+ in deck</td>
+</tr>
+<tr>
+<td>Hallway (hard)</td>
+<td>60%</td>
+<td>3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic (10x3 multi-hit can drain 61 HP, death at 71% entry confirmed), Snake Plant</td>
+</tr>
+<tr>
+<td>Elite</td>
+<td>60%</td>
+<td>Gremlin Leader, Book of Stabbing, Slavers</td>
+</tr>
+<tr>
+<td>Boss</td>
+<td>70% or Pantograph</td>
+<td>Act 2 boss has massive damage</td>
+</tr>
+</tbody></table>
+
+<p><strong>CRITICAL: 3 Cultists is the most lethal hallway fight in the game (6 deaths confirmed at 5%, 30%, 37%, 39%, 52%, 53% HP entry).</strong> Triple independent +3 Str/turn = +9 combined Str/turn. This is a hard-scaler exception to full block -- kill speed matters more than blocking. AOE burst to eliminate one Cultist fast is the correct play. The 60% HP ENTRY threshold for this encounter is NON-NEGOTIABLE.</p>
+
+<h3 id="what-to-do-at-low-hp">What to Do at Low HP</h3>
+
+<ul>
+<li>Below the threshold for the next fight? Take a DIFFERENT PATH. Event rooms, rest sites, shops -- anything but combat.</li>
+<li>If forced into a fight below threshold, use ALL potions aggressively on turn 1. An unused potion on a death screen is a strategic failure.</li>
+<li>If there&#x27;s a rest site before an elite, REST (don&#x27;t upgrade). HP &gt; upgrades when below threshold.</li>
+<li>After any fight that drops you below 30% HP, the next room MUST be a rest site, shop, or event -- not combat.</li>
+<li><strong>Low HP does NOT change combat behavior.</strong> You should already be full blocking at any HP level. If you find yourself thinking &quot;I&#x27;m at low HP, I should block more&quot; -- that means you were NOT full blocking at high HP, which is the real mistake.</li>
+</ul>
+
+<h3 id="the-act-2-death-spiral-is-predictable">The Act 2 Death Spiral Is Predictable</h3>
+
+<p>The pattern across 10 low-HP deaths: the player enters Act 2 at reasonable HP, takes unnecessary damage in a hallway fight (NOT full blocking), then enters the NEXT fight at critical HP and dies. The mistake is twofold: (1) not full blocking in the first fight, and (2) taking a combat room after losing HP.</p>
+
+<p>After ANY fight that leaves you below 30% HP, the next room MUST be non-combat. If the map doesn&#x27;t offer this, the run was lost at map selection, not at the fight.</p>
+
+<p><strong>Act 2 decision point:</strong> After each fight, if HP is below 35%, evaluate the ENTIRE remaining path. If it contains 2+ consecutive combat rooms before a rest site, re-route to the safest available path even if it means missing rewards.</p>
+
+<h3 id="what-causes-the-hp-drain">What Causes the HP Drain</h3>
+
+<p>The underlying cause is almost always failure to full block. The fights below are especially punishing when full block fails:</p>
+
+<p>1. <strong>Byrd fights</strong>: 36-73 HP lost per fight when full block fails. Worst case: all 3 Byrds attack same turn for 38+ combined damage with insufficient block cards in hand. Flight makes fights 8-12 turns, compounding per-turn leaks. Thunderclap is critical (strips Flight + applies Vulnerable).</p>
+<p>2. <strong>Centurion+Mystic</strong>: 25-61+ HP lost per fight. Centurion has a 10x3 = 30 damage multi-hit attack (not just 12-18 single hits). Mystic&#x27;s healing extends the fight, giving more turns to leak damage. The Centurion solo phase after killing Mystic is still dangerous -- do not exhaust all potions on the Mystic kill.</p>
+<p>3. <strong>Chosen (solo or paired)</strong>: 30-40 HP drained. Hex punishes Skills (Dazed clog), but you still must block -- Hex adds Dazed to draw pile, not hand.</p>
+<p>4. <strong>Snake Plant in Unknown rooms</strong>: 21 HP/turn with Frail debuff. Drains 15-42 HP. Frail makes full block harder but NOT impossible -- account for the 25% block reduction.</p>
+<p>5. <strong>Spheric Guardian</strong>: 30-41 HP drain even with correct play. Barricade block accumulates. Requires Strength scaling to break through -- this is a DPS race, not a full block fight.</p>
+<p>6. <strong>No healing between fights</strong>: Burning Blood (+6) cannot compensate for 30-50 HP fights. This is why full blocking matters -- the only way to avoid HP drain when Reaper/Feed aren&#x27;t available.</p>
+<p>7. <strong>Fairy consumed in wrong fight</strong>: Save Fairy for elites/bosses when possible.</p>
+<p>8. <strong>Decay curse compound damage</strong>: Each Decay in hand deals 2 unblockable damage per turn. Prioritize curse removal at shops or via exhaust.</p>
+<p>9. <strong>Vampires event Max HP loss</strong>: Accepting removes ~30% of Max HP. Refuse unless desperate for healing.</p>
+
+<hr>
+
+<h2 id="rest-site-decisions">Rest Site Decisions</h2>
+
+<h3 id="upgrade-vs-rest-framework">Upgrade vs Rest Framework</h3>
+
+<p><strong>Upgrade</strong> when:</p>
+<ul>
+<li>HP is above 50% in Act 2 (above 35% in Act 1)</li>
+<li>A critical upgrade target exists (Bash, True Grit, Limit Break, key attack card)</li>
+<li>Earlier is better: one upgrade on floor 8 benefits 20+ fights</li>
+</ul>
+
+<p><strong>Rest</strong> when:</p>
+<ul>
+<li>HP is below 50% in Act 2 (below 35% in Act 1)</li>
+<li>Next room is a known elite or boss AND you are below 60% HP</li>
+<li>The path ahead contains 2+ combat rooms before the next rest site AND you are below 50%</li>
+</ul>
+
+<h3 id="the-upgrade-death-spiral">The Upgrade Death Spiral</h3>
+
+<p>Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed three times: once with only 1 upgrade across 28 floors, once with literally ZERO upgrades across 23 floors, and once in Run 70 where ZERO upgrades occurred until Floor 15 (both rest sites consumed by healing due to critically low HP from fights with unupgraded cards). All three runs died with decks that had adequate card quality but no upgraded cards to back it up.</p>
+
+<p><strong>The spiral is self-reinforcing:</strong> unupgraded cards mean fights take longer and deal more damage, which forces resting instead of upgrading, which keeps cards unupgraded. In Run 70, the deck had good cards (Dropkick, Clothesline, Feel No Pain, Disarm, Burning Pact, Ghostly Armor) but zero upgrades made every fight drain more HP than necessary, creating the exact spiral described here.</p>
+
+<p><strong>MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 50% Act 2).</strong> If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest. If FORCED to rest at the first rest site due to low HP, the deck is already in danger -- path to the next rest site urgently and upgrade there no matter what.</p>
+
+<h3 id="upgrade-priority">Upgrade Priority</h3>
+
+<p>1. Bash (3 Vulnerable vs 2 is massive)</p>
+<p>2. Corruption (3E -&gt; 2E is life-or-death -- one confirmed kill from unupgraded Corruption setup)</p>
+<p>3. True Grit (CHOSEN exhaust vs RANDOM is game-deciding)</p>
+<p>4. Armaments (upgrade 1 card -&gt; upgrade ALL cards in hand -- transformative)</p>
+<p>5. Carnage (28 vs 20 damage)</p>
+<p>6. Iron Wave (7/7 vs 5/5)</p>
+<p>7. Pommel Strike (10 damage + draw 2 vs 9 + draw 1)</p>
+<p>8. Thunderclap (7 vs 4 AOE)</p>
+<p>9. Shrug It Off (11 vs 8 block)</p>
+<p>10. Headbutt (12 vs 9 damage)</p>
+<p>11. Defend (8 vs 5 block -- low individual priority but Ancient Writing mass upgrade is excellent)</p>
+
+<p><strong>Context-dependent overrides:</strong> If Corruption is your engine piece, upgrade it above Bash. If you already have Bash+, move to the next unupgraded priority. <strong>Limit Break is the #1 upgrade in a Str-scaling deck approaching the Act 3 boss</strong> -- Limit Break+ (no exhaust) enables infinite Str doubling and was the most impactful single decision of the second victory. The list above is a default for Act 1 -- always upgrade the card that will save the most HP in the next 5 fights.</p>
+
+<hr>
+
+<h2 id="deck-building-philosophy">Deck Building Philosophy</h2>
+
+<h3 id="healing-card-priority-the-critical-gap">Healing Card Priority (THE CRITICAL GAP)</h3>
+
+<p>The single biggest strategic failure across 50 runs: entering Act 2 without a healing card. Burning Blood (+6/fight) heals 6% of max HP per fight. Act 2 fights drain 25-50 HP (30-60% of max). The math does not work.</p>
+
+<p><strong>Card reward priority when offered a healing card:</strong></p>
+<ul>
+<li>Reaper: TAKE IT. Even over good damage/block cards. It is the best card in the game for Ironclad.</li>
+<li>Feed: TAKE IT in the first half of Act 1. +3-4 Max HP per kill compounds over 15+ fights. Less urgent in late Act 1.</li>
+<li>If neither is offered by Floor 12, actively seek healing potions (Blood Potion, Regen Potion) and healing relics (Toy Ornithopter, Meal Ticket, Bloody Idol) at shops.</li>
+</ul>
+
+<p><strong>This is non-negotiable.</strong> A deck with Reaper + adequate damage will reach Act 3. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30. Run 116 confirmed: deck had 3 of 4 criteria (Inflame, Thunderclap, Shrug It Off + Flame Barrier+) but neither Reaper nor Feed was ever offered across 21 floors. The healing gap was the sole cause of the HP death spiral.</p>
+
+<h3 id="act-2-readiness-checklist-verify-before-floor-17">Act 2 Readiness Checklist (verify before Floor 17)</h3>
+
+<p>By the time the Act 1 boss is dead, the deck needs ALL FOUR of these or it will die in Act 2:</p>
+
+<p>1. <strong>Front-loaded Strength</strong>: Inflame, Spot Weakness, or Corruption+FNP engine. NOT Demon Form alone (too slow for hallway fights -- confirmed in 2 SG deaths and 1 Act 2 hallway death at F21). Demon Form fills the boss scaling role but does NOT satisfy this criterion. If Demon Form is the only Str source, treat this criterion as UNMET and continue prioritizing Inflame or Spot Weakness. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it&#x27;s played, not 3 turns later). If no front-loaded Strength source exists by Floor 12, take the next one offered over any other card.</p>
+<p>2. <strong>AOE damage</strong>: Thunderclap, Cleave, Immolate, or Whirlwind. Required for Gremlin Leader (gremlins re-summon, AOE clears them efficiently), Slime Boss split, and 3 Cultists. Two Gremlin Leader deaths had zero AOE.</p>
+<p>3. <strong>Healing beyond Burning Blood</strong>: Reaper, Feed, or multiple healing potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.</p>
+<p>4. <strong>Block scaling beyond basic Defends</strong>: Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, or True Grit+. Basic Defends provide only 5 block each (20 block from a full hand of 4). Act 2 boss Hyper Beam deals 45-57 damage -- unsurvivable with basic Defends alone. Even Act 2 hallway fights (Book of Stabbing turn 5: 6x6=36) outscale basic Defends. Run 105 had criteria 1-3 fully met but died to Hyper Beam because the deck&#x27;s only block was 4 basic Defends. <strong>Impervious is the highest-priority block scaling card</strong> -- 30 block (40 upgraded) handles the biggest hit from ANY Act 2 boss. If Impervious is offered, take it. <strong>Important</strong>: Impervious exhausts. Against Bronze Automaton (2 Hyper Beams in a long fight), a single copy of Impervious covers only ONE Hyper Beam. Two copies, or Impervious + Clothesline Weak, are needed to survive both.</p>
+
+<p>If missing 2+ of these entering Act 2, the run is in serious danger. Shift to conservative pathing (avoid elites, path through shops and rest sites, skip unknown rooms).</p>
+
+<h3 id="draft-for-known-encounters">Draft for Known Encounters</h3>
+
+<p>You can see the boss from floor 1. You know which elites exist in each act. Evaluate cards against fights you are GUARANTEED or LIKELY to face, not generically.</p>
+
+<p><strong>Act 1 uses a TIER LIST, not reasoning.</strong> The starting deck is nearly identical every run. An experienced player doesn&#x27;t reason about Act 1 picks from first principles -- they know the tier list. See player.md &quot;Act 1 Card Evaluation: Use the Tier List&quot; for the full list. The core constraint: take attacks so Gremlin Nob doesn&#x27;t kill you.</p>
+
+<p><strong>Boss-specific drafting examples:</strong></p>
+<ul>
+<li>Slime Boss visible: Evolve and Fire Breathing become MUST-TAKES (Slimed status floods the deck, Evolve draws on status draw, Fire Breathing deals damage per status drawn)</li>
+<li>Hexaghost visible: Weak sources (Shockwave, Clothesline, Intimidate) become MUST-TAKES. Skip self-damage cards.</li>
+<li>The Guardian visible: Burst damage for Mode Shift (Carnage, Bludgeon). Skip heavy exhaust strategies.</li>
+</ul>
+
+<p><strong>Elite-specific drafting:</strong></p>
+<ul>
+<li>Gremlin Nob in Act 1: Take attacks, not skills. Nob gains +2 Str per Skill you play.</li>
+<li>Slavers in Act 2: AOE and mass debuff are critical for 3-enemy fight.</li>
+<li>Book of Stabbing in Act 2: Exhaust tools for Wound removal.</li>
+</ul>
+
+<p>After Act 1, switch from tier-list to gap-filling (see Act 2 Readiness Checklist above).</p>
+
+<h3 id="take-cards-that-solve-problems">Take Cards That Solve Problems</h3>
+
+<p>A card&#x27;s value depends on what your deck needs RIGHT NOW and what fights you&#x27;re about to face.</p>
+
+<p>Before taking a card, ask:</p>
+<ul>
+<li>Do I have a healing card? (If no, this is the #1 gap to fill)</li>
+<li>Do I have Strength scaling? (If no, this is the #2 gap to fill -- see below)</li>
+<li>Do I have AOE? (If no, this is the #3 gap -- Gremlin Leader and 3 Cultists will kill you)</li>
+<li>Do I have block scaling beyond basic Defends? (If no, this is the #4 gap -- Hyper Beam and late Book of Stabbing will kill you. Shrug It Off, Flame Barrier, Metallicize, Ghostly Armor, Impervious, True Grit+)</li>
+<li>Does this card help against the SPECIFIC boss I&#x27;m facing?</li>
+<li>Does this card counter a SPECIFIC enemy I&#x27;m likely to encounter?</li>
+<li>Will this card dilute my draws (bigger deck = less likely to draw key cards)?</li>
+</ul>
+
+<p>A mediocre card that fills a gap is better than a strong card that duplicates what you already have.</p>
+
+<h3 id="strength-scaling-is-mandatory-for-act-2">Strength Scaling Is Mandatory for Act 2</h3>
+
+<p>Spheric Guardian (the single most dangerous Act 2 hallway fight, 3 deaths confirmed) has Barricade -- its block never expires and grows 15-20 per defend cycle. At 0-1 Strength, Strikes deal 6-7 damage per play against 15-20 block gained per cycle. The fight is mathematically unwinnable without Strength scaling.</p>
+
+<p><strong>By Floor 15, the deck MUST have at least one Strength source:</strong></p>
+<ul>
+<li>Inflame (+2 Str permanent, 1E) -- best standalone option</li>
+<li>Spot Weakness (+3/+4 Str when enemy attacks, 1E) -- excellent but conditional</li>
+<li>Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses</li>
+<li>Limit Break (doubles current Str) -- requires a Str source to double</li>
+<li>Vajra relic (+1 Str) -- passive, always on</li>
+<li>Strength Potion (+2 Str) -- temporary but bridges the gap</li>
+</ul>
+
+<p><strong>Card reward priority when the deck has NO Strength scaling:</strong></p>
+<p>Inflame &gt; Spot Weakness &gt; Limit Break (if other Str source exists) &gt; any other card.</p>
+
+<p>This is nearly as important as healing. A deck with block + healing but no Strength scaling will die to Spheric Guardian&#x27;s Barricade every time.</p>
+
+<h3 id="deck-thinning">Deck Thinning</h3>
+
+<p>Remove Strikes at shops and events. A 10-12 card deck draws key cards much more reliably than a 15+ card deck. Remove Strikes before Defends (Strikes get outclassed faster; Defend&#x27;s 5 block stays relevant).</p>
+
+<h3 id="multi-purpose-cards-win">Multi-Purpose Cards Win</h3>
+
+<p>The winning formula across all victories: cards that do two things. Block+draw (Shrug It Off), damage+draw (Pommel Strike), damage+block (Iron Wave), damage+heal (Reaper), damage+deck manipulation (Headbutt). Single-purpose cards (Strike, Defend) are the weakest cards in the deck.</p>
+
+<h3 id="slow-scaling-engines-are-a-deck-weakness">Slow Scaling Engines Are a Deck Weakness</h3>
+
+<p>Demon Form (+2 Str/turn) and Limit Break (double Strength) are powerful scaling cards in long fights -- but they require 2-3 free setup turns before providing meaningful value. Against fast-scaling enemies at low HP (3 Cultists, multi-enemy fights), this setup time does not exist. The player is dead before the engine comes online.</p>
+
+<p><strong>Pattern:</strong> A deck built around Demon Form + Limit Break can beat bosses comfortably but die to hallway fights because setup time costs HP (violating Full Block). The fix is NOT to avoid these cards -- it is to recognize that they solve long fights (bosses) but do NOT solve hallway fights where Full Block requires immediate block + kill capability.</p>
+
+<p><strong>Rule:</strong> If your primary damage scaling is Demon Form or Limit Break, you MUST have an alternative fast-burst plan for hallway fights. Slow engines are for bosses. Hallway fights need cards that contribute to Full Block paths on the turn they&#x27;re drawn.</p>
+
+<h3 id="3-cost-power-setup-trap">3-Cost Power Setup Trap</h3>
+
+<p>Corruption (3E), Barricade (3E), and Demon Form (3E) are all powerful cards that consume ALL energy on a 3-energy turn. Playing them on turn 1 against attacking enemies leaves zero energy for block. Two deaths and one near-miss confirm this pattern:</p>
+<ul>
+<li>Run 73: Corruption (3E) into Looter + Mugger. Zero block. 20+ unblocked damage. Dead.</li>
+<li>Run 72: Barricade (3E) was never played because no turn was safe enough to spend all energy.</li>
+</ul>
+
+<p><strong>When to play 3E Powers (hallway fights):</strong></p>
+<ul>
+<li>Enemy is buffing/defending (free turn with no incoming damage) -- this is the ONLY safe time</li>
+<li>You have 4+ energy (from relics like Lantern, Sozu, or cards like Offering), leaving energy for block</li>
+<li>You upgraded the Power to 2E (Corruption+ is 2E, leaving 1E for Defend)</li>
+<li>In a boss fight where spending HP for setup speed is acceptable</li>
+</ul>
+
+<p><strong>When NOT to play 3E Powers:</strong></p>
+<ul>
+<li>Any turn with incoming damage in a hallway fight (violates Full Block -- you take the full hit)</li>
+<li>Turn 1 against multi-enemy fights (combined damage 15-25+)</li>
+<li>When the Full Block Flowchart shows no path to zero damage after spending 3E</li>
+</ul>
+
+<p>This is a direct application of the Full Block Algorithm — if spending 3E leaves no path to zero damage, don&#x27;t spend 3E.</p>
+
+<h3 id="unknown-card-evaluation">Unknown Card Evaluation</h3>
+
+<ul>
+<li><strong>Skip</strong> unknown cards with self-damage, self-debuff, or suspicious keywords (&quot;lose,&quot; &quot;take damage,&quot; &quot;Vulnerable to self,&quot; curses).</li>
+<li><strong>Take</strong> unknown cards that seem purely beneficial (damage + heal, damage + draw, block + effect). The upside outweighs the risk.</li>
+<li><strong>Especially take</strong> unknown cards that fill a known gap in your deck.</li>
+</ul>
+
+<hr>
+
+<h2 id="boss-preparation">Boss Preparation</h2>
+
+<h3 id="pre-boss-checklist-verify-by-floor-12-15">Pre-Boss Checklist (Verify by Floor 12-15)</h3>
+
+<p>Before the Act 1 boss, verify ALL THREE:</p>
+<p>1. A card that addresses the specific boss threat</p>
+<p>2. A sustain/passive defense source (Metallicize, Plated Armor, Pantograph, or high HP)</p>
+<p>3. Enough HP (60%+ without Pantograph)</p>
+
+<p>If you have 0-1 of these, the boss will likely kill you. Adjust card picks in remaining floors.</p>
+
+<h3 id="boss-specific-requirements">Boss-Specific Requirements</h3>
+
+<p><strong>Slime Boss needs:</strong></p>
+<ul>
+<li>AOE for the split (Thunderclap, Whirlwind, Cleave) -- MANDATORY. If no AOE has been offered by Floor 12, actively seek it at shops or events. Without AOE, the Slime Boss fight is near-unwinnable because post-split enemies generate Slimed cards faster than single-target damage can clear them.</li>
+<li>Burst single-target to kill one slime fast (Fiend Fire)</li>
+<li>Exhaust for Slimed cards (Burning Pact, Feel No Pain, True Grit+)</li>
+<li>Manage pre-split damage: aim to trigger the split as close to 70 HP as possible. Excess damage past the threshold is wasted.</li>
+</ul>
+
+<p><strong>The Guardian needs:</strong></p>
+<ul>
+<li>32+ block capability in one turn (Impervious, double Metallicize + Weak)</li>
+<li>Burst damage for Mode Shift (Bludgeon at 32-48, Carnage+ at 28-42)</li>
+<li>Enough cards to last 12+ turns (do NOT over-exhaust)</li>
+<li><strong>Avoid exhaustion-heavy strategies.</strong> Fiend Fire + Dark Embrace creates a thin deck by mid-fight. Block density on 32-damage turns (turns 8-12) drops below survivable thresholds when the deck thins to 8-10 cards. Use Fiend Fire on free turns or for burst, never as the primary deck engine.</li>
+<li><strong>Do NOT play Corruption/Corruption+ without Dead Branch or Feel No Pain.</strong> Run 107: Corruption+ played turn 9, all Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards remaining. Corruption is a trap in 14-turn fights -- the energy savings do not compensate for losing all block in the second half. This is now the SECOND Guardian death from block-density collapse (Run 103: Pandora&#x27;s Box, Run 107: Corruption+).</li>
+</ul>
+
+<p><strong>Hexaghost needs:</strong></p>
+<ul>
+<li>Weak source (Shockwave, Clothesline, Intimidate, Weak Potion) -- MANDATORY</li>
+<li>Damage scaling (Rampage, Inflame, Spot Weakness) -- kill before Burns overwhelm (insufficient damage killed 2 runs despite having Weak). Even with strong Str scaling (Inflame+ + Spot Weakness = +9 Str), Turn 2 HP loss from insufficient blocking can make Burns lethal by Turn 12.</li>
+<li>Passive block (Metallicize) for the 13-turn fight</li>
+<li>Turn 1 setup (Thunderclap for Vulnerable)</li>
+<li>Turn 2 block discipline -- Turn 2 is a ~30 damage multi-hit. Budget at least 1E for block.</li>
+<li>No self-damage cards (Brutality, Berserk)</li>
+</ul>
+
+<p><strong>The Collector needs:</strong></p>
+<ul>
+<li>HP entry at 70%+ or Pantograph -- STRONG_DEBUFF on Turn 4 applies Vulnerable 3, Frail 3, Weakened 3 simultaneously. Pantograph heals 25 HP at boss start, which helps but does NOT bypass the threshold if you enter more than 25 HP below max.</li>
+<li>AOE damage (HIGHEST PRIORITY) -- Immolate+ is the single best card. Hits Collector + both Torch Heads. With Vulnerable: 42 damage to Collector per cast. Torch Heads respawn, so AOE is more valuable than single-target.</li>
+<li>Mass debuff -- Shockwave+ (Weak 3 + Vuln 3 to ALL enemies) reduces combined incoming by 25% while boosting all damage by 50%. Second-highest priority.</li>
+<li>Impervious -- 30 block absorbs post-debuff turns. Critical defensive card.</li>
+<li>Disarm -- permanent Str reduction compounds over the 10-turn fight. Play Turn 1.</li>
+<li>Block density for post-debuff turns -- Frail reduces block by 25%, need multiple sources</li>
+</ul>
+
+<p><strong>Bronze Automaton needs:</strong></p>
+<ul>
+<li>HP entry at 70%+ or Pantograph -- 300 HP boss with +3 Str/cycle scaling. HP alone is insufficient without block scaling. Block alone is insufficient without HP. Both are required.</li>
+<li><strong>Block scaling (MANDATORY)</strong> -- Hyper Beam deals 45-57 damage (scales with Str; observed 57 at turn 12 with +12 Str). Basic Defends (4x5=20 block) are NOT enough. Need Shrug It Off, Flame Barrier, Metallicize, Impervious, or Ghostly Armor. Even SIO+ + Defend (27 block) is not enough to survive Hyper Beam 57 without Weak. The fight has TWO Hyper Beams -- must survive both.</li>
+<li><strong>Weak source saved for Hyper Beam (MANDATORY)</strong> -- Weak reduces Hyper Beam by 25% (57-&gt;42, 51-&gt;38). This reduction is often the survival margin. <strong>Do NOT exhaust Weak sources (Intimidate, Shockwave) for Artifact stripping.</strong> Use Bash+ and Thunderclap for Artifact stripping instead. Save Intimidate/Shockwave for after Artifact is gone, ideally for the Hyper Beam turn. Red Mask strips 1 Artifact automatically at combat start. Clothesline (non-exhausting, 2 Weak) is ideal because it can be used on BOTH Hyper Beam turns.</li>
+<li>Artifact strippers -- Thunderclap, Bash+. Use NON-EXHAUSTING debuffs for this. Automaton starts with Artifact 3. Red Mask strips 1 (to 2). Bash+ strips 1 (to 1). Thunderclap strips 1 (to 0). Then save Intimidate/Shockwave for Hyper Beam.</li>
+<li>Burst damage -- Fiend Fire+, Rampage, Bludgeon. The fight is a DPS race against Strength scaling. Kill before turn 10 if possible. Inflame+ alone (+3 Str) provides only marginal sustained damage against 300 HP -- the fight extends to 13+ turns and forces survival through 2 Hyper Beams. Ideally pair Inflame+ with a second Str source (Spot Weakness, Strength Potion) or high burst (Bludgeon, Fiend Fire+).</li>
+<li><strong>Kill Stasis Orbs early</strong> -- Orb minions steal cards via Stasis. Stasis targets Power and Skill cards preferentially. Demon Form and Flame Barrier+ are high-value steal targets. Prioritize killing any Orb that steals a block scaling or Weak source card. If Metallicize, Impervious, or Shockwave is stolen, that Orb becomes kill priority #1.</li>
+<li>Intent visibility -- Runic Dome removes the ability to predict Hyper Beam. Avoid taking Runic Dome if Bronze Automaton is a possible Act 2 boss.</li>
+<li><strong>Odd Mushroom anti-synergy</strong> -- Odd Mushroom reduces Vulnerable from 1.5x to 1.25x, cutting burst by ~17%. In a DPS race against 300 HP + Strength scaling, this extends the fight by 1-2 turns, potentially forcing survival through an extra Hyper Beam cycle.</li>
+<li><strong>Dark Shackles</strong>: Excellent but not sufficient alone. Reduces Hyper Beam by ~9 damage (from ~51 to ~42 with 6 Str). Still need 30+ block on top of the reduction.</li>
+</ul>
+
+<p><strong>Donu and Deca needs (DEFEATED TWICE -- back-to-back victories):</strong></p>
+<ul>
+<li><strong>AOE damage (HIGHEST PRIORITY)</strong> -- Immolate+ is the best card in this fight. Every AOE play hits BOTH 250 HP bosses. Duplication Potion on 0-cost Immolate+ deals 60 AOE for free. Cleave, Thunderclap+ also contribute.</li>
+<li><strong>Strength scaling</strong> -- Limit Break (ideally Limit Break+) is the key card. Upgrade Limit Break at the last campfire before the boss if possible -- this was the most impactful decision of the second win. Flex+ into Limit Break+ converts temporary Str into permanent Str (4 temporary doubled to 10). Heavy Blade (3-5x multiplier) is the finisher.</li>
+<li><strong>Kill Donu first</strong> -- Donu buffs Strength for both enemies. Stopping the scaling is mandatory. All single-target goes to Donu; AOE handles Deca passively.</li>
+<li><strong>Snecko Eye is the relic that makes this fight winnable</strong> -- draw 7 cards/turn with random costs. Present in both victories. High-cost cards (Immolate+, Heavy Blade, Impervious) frequently cost 0-1E. Gambling Chip improves Turn 1 by mulliganing bad cost rolls.</li>
+<li>Block density for 6-10 turn fight. Flame Barrier, Impervious, Metallicize all useful. Bronze Scales provides free Thorns damage and can deliver the killing blow at very low HP.</li>
+<li>Enter at 70%+ HP (ideally full). Combined incoming 20-32/turn.</li>
+<li><strong>Potion timing matters</strong>: Snecko Oil Turn 1 for 10-card hand, Duplication Potion on 0-cost Immolate+ for 60 AOE, Strength Potion early (compounds), Liquid Memories to retrieve Immolate+ from discard.</li>
+</ul>
+
+<h3 id="act-2-boss-survival">Act 2 Boss Survival</h3>
+
+<p><strong>Top 3 cards for Act 2 boss fights</strong> (take over almost anything if offered in Act 2):</p>
+<p>1. <strong>Impervious</strong> -- 30/40 block handles the biggest hit from any Act 2 boss.</p>
+<p>2. <strong>Shockwave+</strong> -- mass Weak 3 + Vuln 3 to ALL enemies for 3 turns.</p>
+<p>3. <strong>Disarm</strong> -- permanent Str reduction, play Turn 1.</p>
+
+<p>See individual boss files (bronze-automaton.md, the-collector.md, the-champ.md) for boss-specific strategies.</p>
+
+<p><strong>Pre-boss HP preservation (last 5 floors before Act 2 boss):</strong></p>
+<ul>
+<li><strong>No HP-for-reward trades.</strong> No Knowing Skull, Golden Idol, or HP-cost events. Zero exceptions.</li>
+<li><strong>Skip elites in the last 3 floors.</strong> Relic value &lt; boss HP threshold.</li>
+<li><strong>Rest over upgrade at every rest site if below 70% HP.</strong></li>
+<li><strong>Path priority: Rest &gt; Shop &gt; Event &gt; Monster &gt; Elite.</strong> Invert normal priority.</li>
+<li><strong>Treat Unknown rooms as Monster rooms.</strong> Potential Snake Plant, Spheric Guardian.</li>
+<li>Count forced combats on each path to the boss. If ALL paths force 4+ combats, use potions aggressively in each fight.</li>
+</ul>
+
+<h3 id="save-one-use-cards-for-bosses">Save One-Use Cards for Bosses</h3>
+
+<p>Exhaust cards like Shockwave+ are single-use per combat. Don&#x27;t waste them on hallway fights unless the fight is genuinely dangerous. The boss is almost always the hardest fight.</p>
+
+<h3 id="use-potions-at-boss-start">Use Potions at Boss Start</h3>
+
+<p>Stat-boost potions (Strength, Speed, Essence of Steel) provide maximum value when used turn 1 of a boss fight. Powers from Power Potion are permanent for the combat. Don&#x27;t hoard potions -- use them.</p>
+
+<hr>
+
+<h2 id="shockwave-timing-rule">Shockwave+ Timing Rule</h2>
+
+<p><strong>Play Shockwave+ on the FIRST ATTACK TURN of multi-enemy fights.</strong></p>
+
+<ul>
+<li>Turn 1 is NOT always right: if all enemies are buffing (Cultists turn 1), Weak is wasted.</li>
+<li>Turn 2 is usually correct: attacks start here for most multi-enemy fights.</li>
+<li>NEVER save for turn 4+: enemies have already accumulated Strength by then. Early Weak saves more HP than late Weak.</li>
+</ul>
+
+<p>Priority on first attack turn: Shockwave+ (mass Weak+Vuln) &gt; Reaper (healing) &gt; single-target damage. Preventing damage with Weak &gt; healing damage already taken.</p>
+
+<hr>
+
+<h2 id="exhaust-strategy">Exhaust Strategy</h2>
+
+<h3 id="the-power-and-the-limit">The Power and the Limit</h3>
+
+<p>Exhaust synergy (Dark Embrace draw + Charon&#x27;s Ashes 3 AOE) is a strong engine. But there&#x27;s a critical breakpoint: once the deck is too thin, you can&#x27;t survive big attacks.</p>
+
+<h3 id="before-exhausting-ask">Before Exhausting, Ask:</h3>
+
+<p>1. Can my remaining deck survive the enemy&#x27;s biggest attack? Calculate max block from remaining block cards.</p>
+<p>2. Is the card truly expendable? Strikes and Defends early -- yes. Core damage/block cards -- never.</p>
+<p>3. Am I in the first half of the fight (thin = good) or second half (thin = fatal)?</p>
+
+<h3 id="random-exhaust-is-run-ending">Random Exhaust Is Run-Ending</h3>
+
+<p>Unupgraded True Grit and Havoc both cause RANDOM exhaust -- you cannot control which card is lost. In a deck with even one irreplaceable card (Rampage+, Fiend Fire+, Feed+, Bash+), random exhaust is a coin flip that can destroy the run. Havoc exhausted Rampage+ in one fight; unupgraded True Grit exhausted Fiend Fire+ in another -- both in the same run, directly causing death.</p>
+
+<p><strong>Rule: Never play Havoc or unupgraded True Grit when the deck contains cards you cannot afford to lose.</strong> If you must take True Grit, upgrade it IMMEDIATELY. If you cannot upgrade it, do not play it. Havoc should not be taken in any deck with irreplaceable scaling cards.</p>
+
+<h3 id="safe-exhaust-targets">Safe Exhaust Targets</h3>
+<ul>
+<li>Strikes (once better attacks exist)</li>
+<li>Extra Defends</li>
+<li>Status cards (Slimed, Wound, Burn, Dazed)</li>
+</ul>
+
+<h3 id="never-exhaust">Never Exhaust</h3>
+<ul>
+<li>Last copy of your best damage card</li>
+<li>Last copy of a high-block card</li>
+<li>Core combo pieces (Bash+ when Vulnerable matters)</li>
+<li>Synergy engines: Fire Breathing+ when Immolate is in the deck (Burns from Immolate trigger 10 free damage per draw, bypassing Plated Armor)</li>
+</ul>
+
+<h3 id="the-long-fight-problem">The Long Fight Problem</h3>
+
+<p>Exhaust cards front-load power into the first 5 turns. After that, the deck plays like a basic starter deck. Against scaling enemies (Gremlin Leader rallies, Cultist Ritual), the first 5 turns aren&#x27;t enough, and the remaining deck can&#x27;t handle scaled enemies. If 30%+ of the deck exhausts/is Ethereal, the fight MUST be won in 5-6 turns.</p>
+
+<h3 id="fiend-fire-unceasing-top-engine">Fiend Fire + Unceasing Top Engine</h3>
+
+<p>Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustained draw engine. After Fiend Fire exhausts hand, Top draws a card. Play it, hand empties, draw again. This cycles through the draw pile in one mega-turn. With energy from Bloodletting/Offering, this can deal 50-100+ damage in a single turn while generating block from Rage. This is currently the strongest combo observed for Ironclad.</p>
+
+<hr>
+
+<h2 id="map-pathing">Map Pathing</h2>
+
+<h3 id="core-principles">Core Principles</h3>
+
+<ul>
+<li><strong>FULL ACT PATHING: At the START of each act, read the ENTIRE map.</strong> Count elites, shops, campfires, and unknowns on every viable route. Choose a full route before floor 1. This replaces room-by-room pathing. See player.md &quot;Full Act Pathing&quot; section for the template.</li>
+<li><strong>Re-route only when forced.</strong> Follow your act plan. Only deviate if HP drops below safe thresholds, making the planned route dangerous.</li>
+<li><strong>At each floor, verify the planned route is still viable.</strong> Count remaining forced combats to the next rest site. If the path forces 2+ combats and HP is below 50%, re-route.</li>
+<li>Prefer routes with a rest site in the last 1-2 floors before the boss.</li>
+<li>After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.</li>
+<li>If the path forces an elite at low HP, skip it entirely -- take any alternative path.</li>
+<li><strong>Act 2 route must include a non-combat room in the first 2-3 floors.</strong> The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), Spheric Guardian (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. When choosing Act 2 entry points, prefer routes where a rest site, shop, or event appears by floor 2-3, even if it means giving up other rewards. A route of M-M-M before a rest site is a death trap.</li>
+<li><strong>Unknown rooms are NOT safe in Act 2.</strong> They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. <strong>At below 30% HP, Unknown rooms are lethal.</strong></li>
+</ul>
+
+<h3 id="elite-risk-assessment">Elite Risk Assessment</h3>
+
+<p>Before fighting an elite, check:</p>
+<p>1. <strong>HP threshold</strong>: Below 30 HP for Act 1 elites is dangerous. Below 60% for Act 2 elites is dangerous.</p>
+<p>2. <strong>Deck vs elite matchup</strong>: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling -- a starter-quality deck (Strikes/Defends/Bash + 1-2 commons) will take 50-60 HP damage in a 20-turn Sentry fight. Do NOT take an elite path at Floor 5-6 unless the deck has at least one damage card beyond Strikes (Inflame, Carnage, Pommel Strike, Thunderclap, etc.) or the elite is Lagavulin where Strikes are adequate. <strong>Even Gremlin Nob requires Attack-heavy composition</strong> -- a deck with more Skills than Attacks (7 Skills vs 4 Attacks) draws 3-4 Skills per hand, making Nob near-unwinnable. Count your Attack/Skill ratio before committing to an elite path. <strong>Minimum 3 monster rooms before first elite</strong> -- 0-2 fights are not enough to build a deck that can handle any Act 1 elite.</p>
+<p>3. <strong>Potions available</strong>: Potions compensate for bad matchups.</p>
+<p>4. <strong>Path alternatives</strong>: If a safer path exists with similar value, take it.</p>
+
+<p><strong>Act 2 Elite Threat Ranking:</strong></p>
+<ul>
+<li><strong>Book of Stabbing</strong> (3 deaths, now #1 killer): Escalating multi-hit (+1 per turn). Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. Do NOT play Brutality. <strong>CRITICAL: If you have Brimstone, DO NOT FIGHT Book of Stabbing. Brimstone gives it +2 Str/turn on top of +1 hit/turn -- damage grows quadratically. Two deaths confirmed from this anti-synergy (Runs 091, 100). Even at 75% HP with strong Str scaling, the fight is unwinnable by turn 5.</strong></li>
+<li><strong>Gremlin Leader</strong> (3 deaths): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death). Do NOT play Impervious Turn 1 -- use it Turn 4-5 when Rally-scaled damage peaks. Confirmed: Inflame+ + Impervious Turn 1 (zero damage) at 42 HP led to 9-turn fight and death.</li>
+<li><strong>Slavers</strong> (2 deaths): 3 enemies, 27+ combined damage from Turn 1 (no free setup turn). NEED: AOE, mass debuff, block density, 60%+ HP. At sub-25% HP, even mass Weak (Shockwave) cannot save you -- block is mandatory Turn 1. Confirmed: Shockwave + damage (zero block) at 19 HP = Turn 1 death.</li>
+</ul>
+
+<h3 id="brimstone-elite-avoidance">Brimstone Elite Avoidance</h3>
+
+<p>If Brimstone is equipped, the Act 2 elite pool becomes asymmetrically dangerous:</p>
+<ul>
+<li><strong>Book of Stabbing: HARD AVOID.</strong> Brimstone + multi-hit + hit-count escalation = quadratic damage growth. Two deaths confirmed. No amount of player Strength compensates.</li>
+<li><strong>Snake Plant: CAUTION.</strong> Brimstone adds +2/turn to each of its 3 hits. 9x3 becomes 11x3 by turn 2. Combined with Frail, expect 40-60 HP drain.</li>
+<li><strong>Gremlin Leader: MODERATE RISK.</strong> Brimstone adds +2 to every gremlin. With Rally +3, combined scaling is +5 Str/turn to all enemies.</li>
+</ul>
+
+<p>When holding Brimstone, avoid elite paths entirely if HP is below 70%. The enemy Strength scaling makes every elite fight significantly harder.</p>
+
+<h3 id="fairy-management">Fairy Management</h3>
+
+<p>Fairy in a Bottle is often consumed in Centurion+Mystic fights. If Fairy is your only death insurance, avoid fights that might trigger it before the elite/boss. Plan paths so Fairy is available for the most dangerous fight.</p>
+
+<hr>
+
+<h2 id="act-2-preparation">Act 2 Preparation</h2>
+
+<p>Act 2 enemies hit significantly harder than Act 1.</p>
+
+<h3 id="enter-act-2-at-full-hp">Enter Act 2 at Full HP</h3>
+
+<p>Pantograph heals 25 HP at boss start (NOT full HP). Act 2 hallway fights drain 30-60 HP. Enter with maximum possible HP. If you enter the boss 40 HP below max, Pantograph only recovers 25 of that deficit.</p>
+
+<h3 id="upgrades-matter-more">Upgrades Matter More</h3>
+
+<p>Unupgraded cards are much weaker against Act 2 enemies. Prioritize upgrading at rest sites over resting when HP is above 50%. The upgrade death spiral (no upgrades -&gt; harder fights -&gt; more HP loss -&gt; forced resting -&gt; no upgrades) must be avoided.</p>
+
+<h3 id="healing-sustain-is-critical">Healing Sustain Is Critical</h3>
+
+<p>Burning Blood (+6/fight) cannot compensate for 30-50 HP fights. Reaper and Feed are the only reliable in-combat healing. Feed provides permanent Max HP scaling (12-18+ Max HP over a full run). Take healing cards early for maximum value.</p>
+
+<p><strong>Reaper alone is NOT sufficient healing sustain.</strong> Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. A deck with Reaper as its only healing source lost 20 HP in Centurion+Mystic (29 to 9), recovered only 6 via Burning Blood, then died two floors later with no way to heal back. Multiple healing sources are required for Act 2 survival.</p>
+
+<p><strong>Healing source priority for Act 2 survival:</strong></p>
+<p>1. Reaper (heals for damage dealt to ALL enemies -- scales with Strength and Vulnerable)</p>
+<p>2. Feed (permanent +3-4 Max HP per kill, compounds over the run)</p>
+<p>3. Blood Potion / Regen Potion (one-time emergency heal)</p>
+<p>4. Toy Ornithopter relic (+5 HP per potion used)</p>
+<p>5. Bite cards (2 HP per play -- sustained but small; comes at devastating Max HP cost from Vampires event)</p>
+<p>6. Rest sites (but spending rest on healing means no upgrades)</p>
+
+<p><strong>Minimum healing requirement:</strong> At least TWO sources from the list above (not counting rest sites) by Act 2 Floor 5. A single Reaper or single Feed is not enough given that Act 2 hallway fights drain 25-50 HP each and often come in consecutive pairs.</p>
+
+<p>If by Floor 20 your only healing is Burning Blood, the run is in danger. Actively prioritize healing card picks in Act 1 when offered.</p>
+
+<h3 id="backup-healing-plan-when-reaper-feed-are-not-offered">Backup Healing Plan (when Reaper/Feed are NOT offered)</h3>
+
+<p>Reaper and Feed are uncommon cards -- they may not appear in card rewards at all (confirmed: Run 53 had neither offered across 33 floors; Run 116 had neither offered across 21 floors, directly causing death at F21). The healing priority rule works when cards are offered, but RNG can deny them entirely. <strong>Activate this backup plan by Floor 17 if no healing card has been acquired</strong> -- do not wait until HP is critical. When this happens, the player must actively pursue alternative healing:</p>
+
+<p>1. <strong>Shop healing</strong>: Buy Blood Potion or Regen Potion at every shop if no healing card exists. Buy Toy Ornithopter or Meal Ticket if offered.</p>
+<p>2. <strong>Event healing</strong>: The Cleric heals. Big Fish offers healing. Woman in Blue sells potions. Prioritize these events.</p>
+<p>3. <strong>Map pathing for rest sites</strong>: Without healing cards, rest sites become the primary healing source. Path through MORE rest sites, accept fewer upgrades. This is a degraded strategy but better than dying.</p>
+<p>4. <strong>Potion management</strong>: Treat Blood Potions and Regen Potions as precious resources. Do not use them in trivial fights.</p>
+<p>5. <strong>Conservative pathing</strong>: Without healing, the margin for error is thinner. Full Block is already the default, so combat behavior doesn&#x27;t change -- but MAP decisions must be more conservative. Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.</p>
+
+<p>The absence of healing cards does NOT mean the run is lost. It means Full Block discipline becomes even more critical (zero wasted HP) and map pathing must be more conservative (fewer combat rooms).</p>
+
+<hr>
+
+<h2 id="act-3-preparation">Act 3 Preparation</h2>
+
+<p>Act 3 enemies hit harder than Act 2 and have unique mechanics that punish specific strategies.</p>
+
+<h3 id="enter-act-3-at-full-hp">Enter Act 3 at Full HP</h3>
+
+<p>HP is fully restored between acts (confirmed). After beating the Act 2 boss at any HP, Act 3 starts at full HP. The first hallway fight in Act 3 can drain 25-40 HP (Writhing Mass, Darklings, Orb Walker), but starting at full HP provides a comfortable buffer. Use early rest sites in Act 3 for healing (Fusion Hammer forces rest-only) and Ancient Tea Set triggers.</p>
+
+<h3 id="act-3-hp-thresholds">Act 3 HP Thresholds</h3>
+
+<table><thead><tr>
+<th>Fight Type</th>
+<th>Minimum HP</th>
+<th>Notes</th>
+</tr></thead><tbody>
+<tr>
+<td>Hallway (easy)</td>
+<td>40%</td>
+<td>Exploders + Spikers -- Thorns 3 punish multi-hit attacks, Exploders deal AoE on death</td>
+</tr>
+<tr>
+<td>Hallway (hard)</td>
+<td>60%</td>
+<td>Writhing Mass (25-40 HP drain), Darklings (Life Link extends fight), Orb Walker (Str scales +3/turn)</td>
+</tr>
+<tr>
+<td>The Transient</td>
+<td>50%</td>
+<td>Pure survival check -- 5 turns of escalating damage, do not attack</td>
+</tr>
+<tr>
+<td>The Maw</td>
+<td>60%</td>
+<td>300 HP, STRONG_DEBUFF turn 1, escalating damage. Barricade + Metallicize dominates.</td>
+</tr>
+<tr>
+<td>Elite</td>
+<td>70%</td>
+<td>Act 3 elites are extremely dangerous at low HP</td>
+</tr>
+<tr>
+<td>Boss</td>
+<td>70% or Pantograph</td>
+<td>Donu and Deca, Awakened One, or Time Eater</td>
+</tr>
+</tbody></table>
+
+<h3 id="act-3-key-enemies">Act 3 Key Enemies</h3>
+
+<ul>
+<li><strong>Writhing Mass</strong>: Malleable gains block per hit. Use single large hits, NOT multi-hit (Whirlwind, Pummel). Expect 25-40 HP drain. Long fight (6-8 turns).</li>
+<li><strong>The Transient</strong>: 999 HP, Fading 5. Survive 5 turns. Do NOT attack (Shifting gives it block). Save Impervious for Turn 3+ (50-70 damage). Disarm and Weak are essential. Enter at 50%+ HP. See transient.md for detailed block priority by turn.</li>
+<li><strong>The Maw</strong>: ~300 HP. Turn 1 STRONG_DEBUFF (Weak + Frail + Vuln). Alternates BUFF (free turns) and ATTACK. Damage escalates (5 -&gt; 16 -&gt; 33 -&gt; 56). Barricade + Metallicize makes this fight trivial -- block stacking handles escalation. With Barricade + 2x Metallicize (7/turn) + Inflame+, the Maw was defeated at zero damage taken. Long fight (8-9 turns) rewards defensive setup.</li>
+<li><strong>Orb Walker</strong>: ~93 HP. Scales +3 Str per turn. Must burst down fast before damage becomes unsurvivable. Kill target for Feed (+3 max HP).</li>
+<li><strong>Exploder + Spiker</strong>: Exploders (~30 HP) deal AoE damage on death. Spikers have Thorns 3 (retaliate 3 per Attack played). Use AOE (Immolate+) to clear Exploders, use single large hits against Spikers. Barricade handles Thorns chip damage.</li>
+<li><strong>Darklings</strong>: Life Link -- must kill all 3 in the same turn or they revive at half HP. AOE (Immolate+) is critical. Save AOE for the kill turn.</li>
+<li><strong>Spikers</strong>: Thorns damage per Attack played. Block before attacking. Use fewer, larger attacks.</li>
+</ul>
+
+<h3 id="what-the-deck-needs-for-act-3">What the Deck Needs for Act 3</h3>
+
+<p>1. <strong>Strength scaling engine OR Barricade + Corruption engine</strong>: Two proven winning approaches with three victories between them. (A) Snecko Eye + Limit Break + Heavy Blade (Runs 147-148): burst-damage engine using cost randomization and Strength doubling. (B) Barricade + Corruption + Feel No Pain + Entrench + Body Slam (Run 150): block accumulation engine that converts persistent block to damage via Body Slam+. Both approaches work against all Act 3 bosses. The key is having a COMPLETE engine -- individual strong cards without the supporting pieces are insufficient. The Barricade engine additionally benefits from Metallicize (passive block per turn), Apotheosis (mass upgrade when Fusion Hammer prevents smithing), and Second Wind+ (mass exhaust for block + FNP triggers).</p>
+<p>2. <strong>Block density beyond Barricade</strong>: Impervious, Shrug It Off, Defend+. Barricade needs block cards to feed into the snowball. Without block cards to play, Barricade only accumulates Metallicize&#x27;s passive block (slow). Impervious + Barricade = 30-40 permanent block in one play.</p>
+<p>3. <strong>AOE</strong>: Immolate+ is the single best card. Darklings require simultaneous kills; Exploders can be cleared with single Immolate+.</p>
+<p>4. <strong>Disarm/Weak sources</strong>: Transient and scaling enemies require Strength reduction and Weak application. Save for Transient and boss fights -- do not waste on hallway fights that the Barricade engine can handle.</p>
+<p>5. <strong>Healing cards</strong>: Even more critical than Act 2. Writhing Mass drains 25-40 HP per fight. Without Reaper or Feed, consecutive fights will end the run. Feed from boss card rewards is a reliable source.</p>
+<p>6. <strong>Deck thinning</strong>: A lean deck (18-23 cards) draws key cards more reliably in long fights. Removes dilution from Strikes.</p>
+<p>7. <strong>High energy base</strong>: 5E (from Ectoplasm, Fusion Hammer, or similar) transforms Barricade from a liability (3E = entire turn) to a strong Turn 1 play (2-3E with energy left for block). Mummified Hand further offsets the setup cost.</p>
+
+<hr>
+
+<h3 id="what-wins-and-what-kills-summary">What Wins and What Kills (Summary)</h3>
+
+<p><strong>All three victories had:</strong> (1) Immolate+ as primary AOE, (2) a complete scaling engine (Snecko Eye + Limit Break in Runs 147-148, Barricade + Corruption + FNP + Entrench + Body Slam in Run 150), (3) zero UI misplays, (4) zero arithmetic errors, (5) strong Act 1 performance with 2 elites fought. The third win (Run 150) used a completely different formula from the first two: Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine, built around block accumulation rather than Strength scaling. Fusion Hammer (no upgrades) was compensated by Apotheosis (mass upgrade) and Blessing of the Forge potions. Cursed Key provided 5E base, enabling Barricade + block plays in a single turn. The engine generated 100-200 block per fight and dealt damage through Body Slam+ (0E, damage = block). Fairy in a Bottle x2 provided death insurance at the boss. Feed+ gained +7 Max HP across the run (80 to 87). White Beast Statue guaranteed potion drops after every fight.</p>
+
+<p><strong>Every boss victory</strong> had: (1) a card that addressed the boss&#x27;s main threat, (2) passive block/sustain, (3) entry HP above 50% or Pantograph, (4) at least 1 key upgrade, (5) no self-damage cards (Brutality/Berserk). <strong>Every boss death</strong> was missing at least one of these.</p>
+
+<p><strong>Act 2 death causes (ranked by frequency, 35+ deaths):</strong></p>
+<p>1. <strong>HP attrition from failure to full block</strong> -- the player takes unnecessary damage in hallway fights, then enters the next fight at critical HP and dies. Root cause: not executing the Full Block Algorithm. Solved by making zero-damage-taken the explicit default for every hallway turn.</p>
+<p>2. <strong>Bad map pathing</strong> -- taking combat rooms after HP-draining fights. Solved by Full Act Pathing (plan the whole route before floor 1, re-route when HP drops).</p>
+<p>3. <strong>3 Cultists at low HP</strong> -- 6 deaths at 5-53% HP entry. Hard-scaler exception: kill speed &gt; block. 60% entry threshold non-negotiable.</p>
+<p>4. <strong>Book of Stabbing</strong> -- 3 deaths. #1 elite killer. Needs exhaust tools. Brimstone makes it unwinnable.</p>
+<p>5. <strong>Mechanics execution errors</strong> -- arithmetic mistakes that waste 3-20 HP per error. Full Block Flowchart forces explicit math every turn, which should reduce these.</p>
+<p>6. <strong>Healing RNG denial</strong> -- 7 of last 9 runs with no Reaper/Feed offered. Not directly addressable, but Full Block reduces the need for healing by preventing HP loss in the first place.</p>
+<p>7. <strong>Brimstone anti-synergy</strong> -- 2 deaths from Brimstone + Book of Stabbing.</p>
+<p>8. <strong>Deck building window closes at Floor 15</strong> -- missing criteria after F15 cannot be filled. Act 1 tier list + boss drafting should improve card selection.</p>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

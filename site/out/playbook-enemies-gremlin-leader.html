@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gremlin Leader (elite, Act 2, HP: ~131) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="gremlin-leader-elite-act-2-hp-131">Gremlin Leader (elite, Act 2, HP: ~131)</h1>
+<p>PATTERN: Starts with 2 gremlins of varying types (Fat Gremlin, Shield Gremlin, Sneaky Gremlin, Mad Gremlin, etc.). Uses DEFEND_BUFF (Rally): gives ALL enemies +3 Strength permanently and stacking. Gremlins attack for base damage + accumulated Str. Leader itself attacks for 6x3 base (18 damage) when not rallying. Leader re-summons gremlins when they die -- killing gremlins is temporary relief, not permanent removal.</p>
+<p>KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight&#x27;s damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader&#x27;s own attacks.</p>
+<p>RALLY SCALING MATH: Rally fires roughly every other turn. By turn 3, all enemies have +3 Str. By turn 5, all enemies have +6 Str. By turn 7, all enemies have +9 Str. With 2 gremlins alive at +9 Str, gremlins alone deal (9+9)*2 = 36, plus the Leader&#x27;s own attacks. Total incoming by turn 7-8 exceeds 50 per turn. Every wasted turn is effectively +3 Str to the entire board -- a single lost turn (e.g., ending turn early after Battle Trance draw without playing drawn cards) can be the difference between winning and losing.</p>
+<p>WHAT THIS MEANS: TURN ECONOMY IS EVERYTHING. Every turn must deal maximum damage or apply critical debuffs. Wasting even one turn (misplaying end-of-turn, failing to use drawn cards) allows Rally to stack once more, which compounds across all gremlins. KILL GREMLINS FAST to reduce per-turn damage, but prioritize Leader damage when possible because gremlins get re-summoned. AOE is critical for clearing gremlins efficiently. Apply Shockwave early for mass Weak + Vulnerable. The fight becomes mathematically unwinnable once Strength stacks too high (by turn 3-4 with multiple gremlins alive, incoming damage is 40+).</p>
+<p>BENCHMARKS: Must win by turn 5-6 or Rally scaling overwhelms you. Enter with 60%+ HP minimum AND at least 1 potion. At 52% HP (42/80) with Inflame+ and 3 potions, died on turn 9 -- Inflame+ + Impervious on Turn 1 (zero damage) extended the fight past the survivable window. By turn 5, Rally had stacked to +12 Str on all enemies (4 Rallies), producing 34+ incoming/turn at 23 HP. At 55% HP (44/80) with zero potions and no Strength scaling, died on turn 4 to 47 incoming damage (Leader 12x3=36 + Mad Gremlin 11). At 56% (56/98) was insufficient even with Corruption + Feel No Pain engine. At 25% HP (14/56), unwinnable even with Nilry&#x27;s Codex. Bloated decks (19+ cards with 4+ Strikes) cannot draw answers fast enough against Rally&#x27;s exponential scaling.</p>
+<p>TURN 1 PRIORITY: Deal damage, NOT setup. Playing Inflame+ (1E setup) + Impervious (2E block) on Turn 1 means zero damage dealt. This wastes the most valuable turn against Rally scaling. The correct Turn 1 against Gremlin Leader is Inflame+ + the best available Attack (Bash+, Strike+, Rampage). Take the unblocked hit -- HP lost on Turn 1 is recoverable, but a wasted damage turn against Rally scaling is not. Impervious should be saved for Turn 4-5 when Rally-scaled damage is 34+ per turn and block is critical for survival, not Turn 1 when incoming is only ~22. Confirmed: Inflame+ + Impervious on Turn 1 at 42 HP led to a 9-turn fight (needed 5-6), death at 10 HP.</p>
+<p>BRING: AOE (Thunderclap, Whirlwind, Immolate+) for gremlin clearing, Shockwave+ (mass debuff), Disarm (reduce Leader Str). Non-exhaust damage cards for sustained fighting. Rage (0E power that generates block per attack -- excellent value in multi-attack turns). Potions -- this fight demands aggressive potion use. Fairy in a Bottle as safety net (but expect it to be consumed early if the fight goes long -- a Fairy consumed on turn 6 leaves no safety for turns 7-8 when Rally scaling peaks).</p>
+<p>CORRUPTION + FNP ENGINE: Corruption makes Skills free, Feel No Pain generates block per exhaust. This engine is theoretically strong here but ONLY if it comes online by turn 2-3. If the engine activates on turn 7 of 8, Rally has already stacked to +9 Str on all enemies and incoming damage exceeds all available block. The engine needs early activation or it arrives too late.</p>
+<p>STRENGTH SCALING IS MANDATORY: Without permanent Strength, you cannot kill the Leader fast enough. In run 98, Mutagenic Strength (+3 Str turn 1 only) enabled 35 damage to Leader on turn 1, but by turn 2 with 0 Str, damage output collapsed. The DPS race against Rally requires at least +2 permanent Strength (Inflame, Spot Weakness, Demon Form) or enough burst cards (Immolate + Heavy Blade + Bash+) to close the fight in 5 turns. Evaluate whether your deck can realistically kill 144 HP in 5-6 turns BEFORE entering this fight.</p>
+<p>GREMLIN WIZARD PRIORITY: If Gremlin Wizard is present, it charges for a massive 28-damage nuke. Kill it before it fires. In run 98, Thunderclap+ (7 AOE + Vuln) into Pommel Strike+ (15 Vuln damage) = 22 damage exactly killed a 22 HP Wizard on turn 3, preventing 28 damage that would have been instantly fatal. Always check Wizard charge timer and prioritize killing it on the turn before it fires.</p>
+<p>AVOID: Entering below 60% HP. Entering without potions. Entering without permanent Strength scaling. Exhaust-heavy decks (once Impervious/Shockwave/Disarm are gone, remaining deck is too weak). If below 50% HP, take any alternative path. Decks with reduced Max HP (e.g., post-Vampires at 56 Max HP) have no margin for error against this fight&#x27;s scaling. Wasting turns -- do NOT batch <code>end</code> with draw effects like Battle Trance; the drawn cards need to be played that same turn.</p>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

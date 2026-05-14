@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centurion + Mystic (hallway, Act 2, Centurion HP: ~76-80, Mystic HP: ~50) — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.site-subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* File list */
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.file-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.file-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
+<nav><a href="index.html" class="">Home</a>
+<a href="playbook.html" class="active">Playbook</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="human-advice.html" class="">Human Advice</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<div class="back-link"><a href="playbook-enemies.html">&larr; Back to Enemies</a></div><h1 id="centurion-mystic-hallway-act-2-centurion-hp-76-80-mystic-hp-50">Centurion + Mystic (hallway, Act 2, Centurion HP: ~76-80, Mystic HP: ~50)</h1>
+<p>PATTERN: Mystic heals Centurion ~12 HP/turn and gains ~15 block. Centurion attacks for 12 damage on normal turns, but has a <strong>10x3 = 30 damage multi-hit attack</strong> on some turns. Both can have buff/defend turns (free damage windows).</p>
+<p>KEY MECHANIC: Mystic heals Centurion. Centurion is unkillable while Mystic lives.</p>
+<p>WHAT THIS MEANS: KILL MYSTIC FIRST. Non-negotiable. If you attack Centurion while Mystic is alive, you&#x27;re in an unwinnable attrition war. Focus all damage on Mystic despite Centurion being the bigger per-turn threat. Apply Weak to Centurion to reduce incoming while you kill Mystic. Expect 6-12 turns.</p>
+
+<p><strong>CENTURION SOLO PHASE IS DANGEROUS.</strong> Once Mystic is dead, Centurion still has the 10x3 multi-hit attack (30 damage). If you are at low HP after killing Mystic, this attack is lethal without strong block (Flame Barrier, Impervious, multiple Defends + Iron Wave). Do NOT spend all potions and exhaust cards on the Mystic kill -- save at least one defensive resource for the Centurion solo phase. Confirmed: death at 3 HP from 10x3 = 30 attack with no block cards or potions remaining.</p>
+
+<p>THE DRAIN PATTERN: This fight reliably drains 20-30+ HP even with correct target priority and debuffs applied. Centurion&#x27;s sustained damage over the 6-12 turns needed to kill Mystic through its block accumulates to lethal levels at low HP. The fight functions as an HP attrition check -- if you enter below 50%, the cumulative Centurion damage will leave you dead or at critical HP for the next fight. Observed drains: 29 HP to 9 HP (20 HP lost) with Shockwave+ and Reaper available. In run 98, entered at 39 HP (49%), killed Mystic by turn 4, but had only 2 HP remaining by the time Centurion phase started. The Centurion solo phase then required 6 more turns (Centurion at 77 HP with +2 Str), surviving at 2 HP for multiple consecutive turns with Metallicize+ and careful blocking.</p>
+<p>MYSTIC HEALS BOTH ENEMIES: Mystic heals Centurion AND itself. In run 98, Mystic healed Centurion back to full (77/77) after turn 2, negating 26 damage dealt on turn 1. The +3 temporary Strength from Mutagenic Strength was wasted because Mystic healed through all the turn-1 burst. This reinforces KILL MYSTIC FIRST -- never split damage, even with Mutagenic Strength or temporary damage buffs, because Mystic healing negates any Centurion damage.</p>
+
+<p>BENCHMARKS: Kill Mystic in 5-6 turns. Expect 25-61 HP lost even with correct play. The 10x3 multi-hit can cause catastrophic drain if block is insufficient. Enter with 60%+ HP (49% entry left 2 HP; 71% entry resulted in death from 61 HP drain). Fairy in a Bottle is often consumed in this fight -- save it for elites if possible.</p>
+<p>BRING: Burst damage for Mystic (need to break through 15 block/turn). Weak for Centurion. Double Metallicize is excellent. Headbutt+ (12+ damage, 13 Vuln through block). Stone Calendar is ideal here -- the fight naturally lasts 7+ turns, and the 52 damage nuke lands automatically on Centurion after Mystic is dead.</p>
+<p>LETHAL FINISH PATTERN: Once Mystic is dead, if you are at very low HP (under 10), look for lethal combos that kill Centurion before his attack phase. In run 98, at 2 HP vs Centurion at 23 HP, Thunderclap+ (7 dmg + Vuln) into Immolate (31 Vuln damage) = 38 total killed Centurion during the player turn, preventing a fatal 14-damage attack. Always check if you can burst the remaining Centurion in one turn rather than blocking.</p>
+<p>POTION MANAGEMENT: Do NOT spend all potions on the Mystic kill. The Centurion solo phase still requires surviving 30-damage multi-hit attacks. Save at least one potion (Blood Potion, Weak Potion, or Essence of Steel) for after Mystic dies. Confirmed: spending Duplication Potion + Liquid Memories on Mystic kill left zero resources for Centurion&#x27;s 10x3 attack, resulting in death at 3 HP.</p>
+<p>AVOID: Attacking Centurion while Mystic lives. Entering below 50% HP. Wasting Fairy here when elites are ahead. Splitting damage between Centurion and Mystic even with temporary Strength buffs. Spending ALL potions on the Mystic kill phase.</p>
+
+<p>OBSERVED FIGHT LENGTHS: This fight can extend to 10 turns with insufficient burst for Mystic. At 10 turns, even Metallicize and Weak on Centurion cannot prevent 30-65 HP drain. Stone Calendar (52 damage on turn 7) helps close out the fight before attrition becomes lethal.</p>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>
