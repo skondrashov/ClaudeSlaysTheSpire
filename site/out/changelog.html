@@ -374,6 +374,101 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Runs 159-160 analysis: Hex vs Silent, Coffee Dripper entry, Chosen warning</div>
+      <div class="changelog-sha">2a2549c0</div>
+    </div>
+    <div class="changelog-date">2026-05-14</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/enemies/chosen.md</div>
+<div class="diff-hunk">@@ -12,7 +12,7 @@ DAMAGE:</div>
+<div class="diff-ctx"> KEY MECHANIC: Hex. Every non-Attack card played adds a Dazed to draw pile. Blocking is actively costly -- each Defend clogs the deck. Also applies Vulnerable to player, making Zap (18) and Poke (10) hit harder.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: Minimize Skill usage. Front-load damage with Attacks. Bash+ is safe (Attack). Kill before Strength buffs make 7x2 lethal. With Vulnerable on you, even 7x2 base becomes 20 damage per turn. At low HP (&lt;20), the 7x2 with Vulnerable is a death sentence.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-HP DRAIN: This fight routinely drains 30-40 HP even with a strong deck. If opening hand lacks block cards, the first 1-2 turns of unblocked 10-14 damage create immediate danger. At 50 HP entry, leaving at 17 HP is a realistic outcome -- which then makes the NEXT fight lethal (the death spiral pattern). Confirmed: 39 HP entry with Carnage+, Bash+, Headbutt, Dropkick, Demon Form, and Ghostly Armor resulted in 32 HP drain (39-&gt;7 HP) over 7 turns. Even with Demon Form scaling, the Chosen&#x27;s Hex penalty on Skills and Vulnerable on the player made every turn painful. The fight is a reliable death spiral trigger in Act 2.</div>
+<div class="diff-add">+HP DRAIN: This fight routinely drains 30-40 HP even with a strong deck. If opening hand lacks block cards, the first 1-2 turns of unblocked 10-14 damage create immediate danger. At 50 HP entry, leaving at 17 HP is a realistic outcome -- which then makes the NEXT fight lethal (the death spiral pattern). Confirmed: (1) 39 HP entry with Carnage+, Bash+, Headbutt, Dropkick, Demon Form, and Ghostly Armor resulted in 32 HP drain (39-&gt;7 HP) over 7 turns. Even with Demon Form scaling, the Chosen&#x27;s Hex penalty on Skills and Vulnerable on the player made every turn painful. (2) Silent Cultist+Chosen at 30 HP entry with strong Shiv deck (ATC, Envenom, Footwork, Blade Dance+, 2x CnD+) resulted in 26 HP drain (30-&gt;4 HP) over 7 turns -- Hex added 5+ Dazed by Turn 4, collapsing block density. The fight is a reliable death spiral trigger in Act 2.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> BENCHMARKS: Kill in 4-5 turns. Damage output drops from Weak -- plan accordingly. Must enter with 40+ HP minimum.</div>
+<div class="diff-ctx"> BRING: Attack-heavy deck. Iron Wave (Attack that blocks). Inflame (Strength overcomes Weak penalty). Bash+ (Attack, applies Vulnerable). Metallicize (passive block without triggering Hex -- Power, not a Skill).</div>
+<div class="diff-hunk">@@ -21,4 +21,6 @@ AVOID: Playing Defend unless absolutely necessary (each one adds Dazed). Slow ki</div>
+<div class="diff-ctx"> FIEND FIRE WARNING: Fiend Fire can exhaust Dazed cards for damage, but it also exhausts ALL other cards in hand -- including defensive cards like Uppercut and Defend. If Fiend Fire does not kill the Chosen, the remaining turns have no block sources. At 14 HP, a single 28-damage attack with only 13 block available is lethal. Only use Fiend Fire when the burst will kill, or when the hand contains only expendable cards.</div>
+<div class="diff-ctx"> APPEARS WITH: Cultist (in multi-enemy fights). When paired, Cultist buffs turn 1 while Chosen applies Hex -- the combined threat is extreme. Kill Cultist first (lower HP, faster to remove, reduces incoming damage count). Once Cultist dies, Chosen alone is manageable with focused damage. Fire Potion or burst cards on Cultist turn 2 can eliminate it before combined scaling overwhelms.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-HEX DETAILS: Hex is applied turn 1. Each Skill played (Defend, Shrug It Off, etc.) adds one Dazed card to the draw pile. Dazed is Unplayable + Ethereal (exhausts at end of turn if in hand, but still takes up a draw slot). Over a 4-5 turn fight, playing 4-6 Skills adds 4-6 Dazed to the draw pile, significantly diluting future hands. This makes sustained blocking impossible -- the deck clogs with dead draws. Powers (Inflame, Rage) do NOT trigger Hex. Attacks are safe.</div>
+<div class="diff-add">+HEX DETAILS: Hex is applied turn 2 (after Poke on turn 1). Each Skill played (Defend, Shrug It Off, etc.) adds one Dazed card to the draw pile. Dazed is Unplayable + Ethereal (exhausts at end of turn if in hand, but still takes up a draw slot). Over a 4-5 turn fight, playing 4-6 Skills adds 4-6 Dazed to the draw pile, significantly diluting future hands. This makes sustained blocking impossible -- the deck clogs with dead draws. Powers (Inflame, Rage, Footwork, After Image, A Thousand Cuts) do NOT trigger Hex. Attacks are safe.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC WARNING: Hex is disproportionately devastating for the Silent. Silent decks are naturally Skill-heavy (Backflip, Footwork, Survivor, Deflect, Blur, Piercing Wail, Acrobatics). In a Cultist+Chosen fight, Hex can add 5+ Dazed cards by Turn 4, diluting the deck to the point where critical turns draw 3-4 Dazed cards and 1-2 playable cards. The block density collapse is lethal when combined with Chosen&#x27;s Vulnerable. Confirmed: deck with Footwork+, After Image, A Thousand Cuts, Envenom (all Powers, safe from Hex) still needed 3 Defends on Turn 3 (adding 3 Dazed), then Turn 4 drew too few block cards to survive. Silent mitigation: (1) Play Powers liberally -- they do NOT trigger Hex. (2) Front-load damage with Attacks and Shivs (Blade Dance, Cloak and Dagger -- the block from CnD is a Skill but the Shivs are Attacks). (3) Use Piercing Wail Turn 1 BEFORE Hex is applied to negate damage for a free turn. (4) Kill the Chosen as fast as possible -- poison ticking while blocking minimally is the best approach.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
+<div class="diff-hunk">@@ -103,6 +103,7 @@</div>
+<div class="diff-ctx"> - [Maw Bank](maw-bank.md)</div>
+<div class="diff-ctx"> - [Mutagenic Strength](mutagenic-strength.md)</div>
+<div class="diff-ctx"> - [Mark of Pain](mark-of-pain.md)</div>
+<div class="diff-add">+- [Coffee Dripper](coffee-dripper.md)</div>
+<div class="diff-ctx"> - [Ectoplasm](ectoplasm.md)</div>
+<div class="diff-ctx"> - [Fusion Hammer](fusion-hammer.md)</div>
+<div class="diff-ctx"> - [Cursed Key](cursed-key.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/coffee-dripper.md</div>
+<div class="diff-hunk">@@ -0,0 +1,20 @@</div>
+<div class="diff-add">+# Coffee Dripper (Boss Relic)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">++1 Energy per turn. You can no longer Rest at rest sites (upgrade only).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EVALUATION: Strong energy boost but removes the primary healing mechanism. Rest sites become upgrade-only, meaning the only healing sources are potions, events, healing cards (Reaper, Feed), and relics (Toy Ornithopter, Meal Ticket, Regen Potion, Blood Vial, Burning Blood). For the Silent, who lacks Burning Blood&#x27;s passive healing, Coffee Dripper is significantly more dangerous than for Ironclad.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN TO TAKE:</div>
+<div class="diff-add">+- Deck is nearly complete and rest sites would be used for upgrades anyway.</div>
+<div class="diff-add">+- Multiple healing sources already exist (healing cards, potions, relics).</div>
+<div class="diff-add">+- Energy-hungry deck that benefits greatly from the extra energy (Shiv archetypes, Barricade engine, multi-card turns).</div>
+<div class="diff-add">+- Ironclad with Burning Blood providing baseline healing per fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN TO AVOID:</div>
+<div class="diff-add">+- Early in Act 1 when HP management is uncertain.</div>
+<div class="diff-add">+- No healing sources beyond rest sites.</div>
+<div class="diff-add">+- Silent without healing cards or potions -- the Silent takes more chip damage and has no passive heal equivalent to Burning Blood.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC DANGER: The Silent relies heavily on rest sites for HP recovery because she has no innate post-combat healing (no Burning Blood equivalent). Coffee Dripper removes this safety net entirely. Every point of chip damage becomes permanent until a potion or event heals it. In Act 2, fights like Cultist+Chosen (30-40 HP drain from Hex deck clog) can drop HP to critical levels with zero recovery path. Confirmed: Coffee Dripper Silent entered Cultist+Chosen at 30 HP, dropped to 4 HP, then died two fights later because no healing existed.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CRITICAL ANTI-SYNERGY -- COFFEE DRIPPER + ECTOPLASM: Taking both boss relics means no healing from rest sites AND no gold to buy potions or healing items at shops. This double downside eliminates two of the three primary recovery paths (rest, shop, card rewards). The only remaining healing is from card rewards and random events. This combination should be avoided unless the deck is already dominant and can reliably take zero damage in every fight.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/ectoplasm.md</div>
+<div class="diff-hunk">@@ -20,5 +20,6 @@ ANTI-SYNERGIES:</div>
+<div class="diff-ctx"> - Golden Idol (+25% gold, negated).</div>
+<div class="diff-ctx"> - Bloody Idol (5 HP per gold gain, negated).</div>
+<div class="diff-ctx"> - Shops in general -- cannot buy potions, relics, or card removal.</div>
+<div class="diff-add">+- **Coffee Dripper (CRITICAL)**: Coffee Dripper + Ectoplasm = no healing from rest AND no gold for potions/healing items at shops. This eliminates two of three primary recovery paths. Only healing cards and random events remain. Confirmed lethal: Silent with both relics dropped to 4 HP after Cultist+Chosen fight (Hex deck clog) and had zero recovery options, dying two fights later. Avoid taking Ectoplasm when Coffee Dripper is already equipped unless the deck can reliably take zero damage in every fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> NOTE: Gold already in pocket is not lost -- it just cannot be spent (shops are still accessible for browsing but purchases require gold you cannot replenish). Spend all gold BEFORE taking Ectoplasm if possible. In practice, boss relics are offered after the boss fight, so spending gold at a prior shop is the last chance.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,16 +2,15 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (158 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Eight Silent runs total (Runs 151-158). Run 157 died to Bronze Automaton (Act 2 boss) -- poison was lethal but deck could not survive 2 more turns. Sozu blocked potions. Run 158 VICTORY vs Time Eater -- Shiv archetype with Accuracy x2, After Image (innate), Wraith Form+, Phantasmal Killer, Malaise, Cultist Potion for Str scaling. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.</div>
+<div class="diff-add">+**CURRENT STATUS (160 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Ten Silent runs total (Runs 151-160). Run 159 quick death. Run 160 (Silent) died Floor 28 to Cultist+Chosen -- Hex hard-countered the Skill-heavy deck. Coffee Dripper (no rest healing) + Ectoplasm (no gold) double boss relic downside eliminated all recovery paths. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 5. Act 2 boss reaches: 11+.</div>
+<div class="diff-ctx"> - **Act 3 reached seven times (Runs 145, 147, 148, 149, 150, 151, 158).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Run 158 (Silent) all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158 all reached Floor 51).**</div>
+<div class="diff-del">-- **4 wins in 158 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (8 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23).</div>
+<div class="diff-del">-- **Run 157: Silent died to Bronze Automaton at F33.** Fusion Hammer + Sozu from Neow. Poison strategy had lethal poison applied but deck could not survive 2 more turns. Automaton Str reached 9 by Turn 12+. Sozu blocked all potions -- no emergency healing.</div>
+<div class="diff-del">-- **Run 158: FIRST SILENT VICTORY vs Time Eater at F51.** Pandora&#x27;s Box from Neow gave 2x Accuracy + Envenom + Infinite Blades. Bottled Tornado made After Image innate. Ginger enabled free Mind Bloom heal (Doubt&#x27;s Weak negated). Cultist Potion gave Ritual 1, Str scaled to 11 by Turn 10. Shivs dealt 23 each. Lizard Tail revived at 0 HP. Malaise X=5 neutered Time Eater&#x27;s offense. Wraith Form+ played at correct timing (Turn 5 at 19 HP). Score 636, Final HP 47/70.</div>
+<div class="diff-add">+- **4 wins in 160 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (10 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog).</div>
+<div class="diff-add">+- **Run 160: Silent died Floor 28 to Cultist+Chosen.** Coffee Dripper + Ectoplasm double boss relic downside. Strong Shiv deck (ATC, Envenom+Snecko Skull, Strike Dummy, Footwork, Blade Dance+, 2x Cloak and Dagger+). Hex from Chosen added 5+ Dazed by Turn 4, collapsing block density. HP already 4/69 from the fight with zero recovery path.</div>
+<div class="diff-ctx"> - **Three distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THE WINNING FORMULAS (confirmed by 4 victories across 3 distinct engines):**</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Runs 157-158: FIRST SILENT VICTORY vs Time Eater, Shiv archetype documented</div>
       <div class="changelog-sha">0c9f2aaf</div>
     </div>
@@ -10310,101 +10405,6 @@ footer {
 <div class="diff-add">+WHEN IT&#x27;S GOOD: At low HP to avoid hallway fights that would kill you. To reach a shop or rest site that is otherwise inaccessible. To skip elite fights you are not prepared for.</div>
 <div class="diff-add">+</div>
 <div class="diff-add">+DECISION POINTS: Use sparingly -- only 3 charges for the entire run. Best saved for Act 2-3 where hallway fights are deadlier and pathing is more critical. Do not waste charges in Act 1 unless absolutely necessary for survival.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Strategist review #3: Spheric Guardian bottleneck, Hard Rules 6-7, Strength scaling priority</div>
-      <div class="changelog-sha">339523b1</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
-<div class="diff-hunk">@@ -16,6 +16,10 @@ These rules have been validated across 60+ runs. Violating any of them has direc</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> 5. **USE ALL POTIONS when entering a fight below 40% HP.** Do not save potions at low HP. An unused potion on a death screen is a strategic failure. Use stat-boost potions on turn 1.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+6. **NEVER PLAY BRUTALITY against Spheric Guardian, Book of Stabbing, bosses with status damage (Hexaghost), or any fight expected to last 7+ turns.** Brutality&#x27;s 1 HP/turn self-damage is lethal in long fights. One confirmed death at FULL HP (87/87) was caused by Brutality draining HP from 47 to 1 over a 6-turn Spheric Guardian fight. Before playing Brutality, ask: &quot;Will this fight end in 4-5 turns?&quot; If uncertain, do NOT play it.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+7. **NEVER EXHAUST Spot Weakness, Reaper, or your only Strength-scaling card in a fight where you need damage scaling.** Exhausting Spot Weakness on turn 1 of a Spheric Guardian fight removed the only way to break through Barricade block, directly causing death. Exhaust Strikes and Defends first. Situationally powerful cards are NOT safe exhaust targets.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ## Setup</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```python</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/inflame.md</div>
-<div class="diff-hunk">@@ -4,4 +4,4 @@ Cheap, permanent damage scaling. Every Attack deals 2 more damage for the entire</div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Play as early as possible in long fights (bosses, elites) for maximum value. At 1E cost, extremely efficient.</div>
-<div class="diff-ctx"> DECISION POINTS: Is this turn a setup turn or a survival turn? On free turns (enemy buffing/debuffing), always play Inflame. Damage formula with Inflame + Weak: floor((base+2)*0.75). Powers do NOT trigger Gremlin Nob Enrage.</div>
-<div class="diff-ctx"> SYNERGIES: Reaper (Strength increases damage to ALL enemies = more healing), Heavy Blade (+2 Str becomes +6 damage, or +10 upgraded, due to multiplier), Whirlwind (each hit gains +2 damage), Twin Strike (+2 per hit = +4 total), every Attack card.</div>
-<div class="diff-del">-MATCHUPS: Guardian Defensive Mode -- Inflame is a Power, not an Attack, so no Sharp Hide retaliation. Bronze Automaton -- Inflame is a high-priority Stasis target. Orbs steal cards from hand, and losing Inflame removes permanent Strength scaling. Play Inflame immediately when drawn rather than holding it. Having two copies provides insurance against one being stolen.</div>
-<div class="diff-add">+MATCHUPS: Guardian Defensive Mode -- Inflame is a Power, not an Attack, so no Sharp Hide retaliation. Bronze Automaton -- Inflame is a high-priority Stasis target. Orbs steal cards from hand, and losing Inflame removes permanent Strength scaling. Play Inflame immediately when drawn rather than holding it. Having two copies provides insurance against one being stolen. Spheric Guardian -- CRITICAL. Without Strength scaling, this fight is mathematically unwinnable (Barricade block regenerates faster than chip damage removes it). Inflame is the single best card for breaking through Spheric Guardian&#x27;s defenses. Take Inflame over most other card rewards if no Strength scaling exists in the deck.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -2,7 +2,9 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**CURRENT BOTTLENECK:** Act 3 HP management. We beat Act 1 bosses consistently and have beaten the Act 2 boss (Collector). Act 3 enemies (Writhing Mass, Transient, Darklings) are severe HP drains -- Writhing Mass alone cost 38 HP in a single fight. The Collector fight itself costs 50-65 HP even when won. Entering Act 3 with a healing card (Reaper or Feed) is more important than ever, since there is no Pantograph-equivalent safety net for hallway fights. Without healing cards, conservative pathing and block density are the only defense against Act 3 HP attrition.</div>
-<div class="diff-add">+**CURRENT BOTTLENECK:** Act 2 hallway survival -- specifically Spheric Guardian fights. We beat Act 1 bosses consistently and have beaten the Act 2 boss (Collector) once. But 6 of the last 8 logged deaths were in Act 2 hallway fights or early Act 2 elites, and Spheric Guardian alone accounts for 3 of the last 4 deaths. The problem is not HP management alone -- it is that the player repeatedly self-sabotages in long fights by playing self-damage Powers (Brutality) and exhausting key cards (Spot Weakness, Shockwave+) that are needed to win attrition battles. Act 3 HP management remains the NEXT bottleneck once Act 2 is solved.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**IMMEDIATE PRIORITY:** Stop losing to Spheric Guardian. Three deaths in the last 12 runs, including one at FULL HP. The fix is behavioral: (1) never play Brutality in fights expected to last 7+ turns, (2) never exhaust Strength-scaling cards like Spot Weakness, (3) kill Sentry first to reduce incoming damage, (4) have Strength scaling in the deck by Floor 20 (Inflame, Spot Weakness, or accumulated Strength from relics). If the deck has no Strength scaling by Act 2, Spheric Guardian is mathematically unwinnable -- take card picks that address this.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ---</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -19,7 +21,7 @@ High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |</div>
-<div class="diff-ctx"> | Boss | 70% or Pantograph | Act 2 boss has massive damage |</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**CRITICAL: 3 Cultists is the single most lethal encounter in the game -- responsible for three deaths (the most of any fight).** Triple independent +3 Str/turn = +9 combined Str/turn. Deaths occurred at 30%, 37%, and 39% HP entry. Even a deck with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage failed at 30% HP because slow scaling engines cannot kill fast enough to survive the combined damage. The 50% threshold for hard hallway fights is NON-NEGOTIABLE for this encounter.</div>
-<div class="diff-add">+**CRITICAL: 3 Cultists and Spheric Guardian are tied for the most lethal encounter in the game -- each responsible for three deaths.** Triple independent +3 Str/turn = +9 combined Str/turn. Deaths occurred at 30%, 37%, and 39% HP entry. Even a deck with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage failed at 30% HP because slow scaling engines cannot kill fast enough to survive the combined damage. The 50% threshold for hard hallway fights is NON-NEGOTIABLE for this encounter.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### What to Do at Low HP</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -103,12 +105,30 @@ A card&#x27;s value depends on what your deck needs RIGHT NOW.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Before taking a card, ask:</div>
-<div class="diff-ctx"> - Do I have a healing card? (If no, this is the #1 gap to fill)</div>
-<div class="diff-add">+- Do I have Strength scaling? (If no, this is the #2 gap to fill -- see below)</div>
-<div class="diff-ctx"> - What fights am I struggling with?</div>
-<div class="diff-ctx"> - Do I have enough damage? Enough block? AOE?</div>
-<div class="diff-ctx"> - Will this card dilute my draws (bigger deck = less likely to draw key cards)?</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> A mediocre card that fills a gap is better than a strong card that duplicates what you already have.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+### Strength Scaling Is Mandatory for Act 2</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Spheric Guardian (the single most dangerous Act 2 hallway fight, 3 deaths confirmed) has Barricade -- its block never expires and grows 15-20 per defend cycle. At 0-1 Strength, Strikes deal 6-7 damage per play against 15-20 block gained per cycle. The fight is mathematically unwinnable without Strength scaling.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**By Floor 15, the deck MUST have at least one Strength source:**</div>
-<div class="diff-add">+- Inflame (+2 Str permanent, 1E) -- best standalone option</div>
-<div class="diff-add">+- Spot Weakness (+3/+4 Str when enemy attacks, 1E) -- excellent but conditional</div>
-<div class="diff-add">+- Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses</div>
-<div class="diff-add">+- Limit Break (doubles current Str) -- requires a Str source to double</div>
-<div class="diff-add">+- Vajra relic (+1 Str) -- passive, always on</div>
-<div class="diff-add">+- Strength Potion (+2 Str) -- temporary but bridges the gap</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Card reward priority when the deck has NO Strength scaling:**</div>
-<div class="diff-add">+Inflame &gt; Spot Weakness &gt; Limit Break (if other Str source exists) &gt; any other card.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+This is nearly as important as healing. A deck with block + healing but no Strength scaling will die to Spheric Guardian&#x27;s Barricade every time.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ### Deck Thinning</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Remove Strikes at shops and events. A 10-12 card deck draws key cards much more reliably than a 15+ card deck. Remove Strikes before Defends (Strikes get outclassed faster; Defend&#x27;s 5 block stays relevant).</div>
-<div class="diff-hunk">@@ -254,7 +274,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai</div>
-<div class="diff-ctx"> - Prefer routes with a rest site in the last 1-2 floors before the boss.</div>
-<div class="diff-ctx"> - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.</div>
-<div class="diff-ctx"> - If the path forces an elite at low HP, skip it entirely -- take any alternative path.</div>
-<div class="diff-del">-- **Unknown rooms are NOT safe at low HP.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. Two deaths confirmed from Spheric Guardian spawning from Unknown rooms. Treat Unknown rooms as Monster rooms when below 40% HP.</div>
-<div class="diff-add">+- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). The third death occurred at FULL HP -- even 87/87 was not enough. Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Elite Risk Assessment</div>
-<div class="diff-ctx"> </div>
 <div class="diff-ctx"></div>
 </div>
   </div>

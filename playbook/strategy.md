@@ -2,15 +2,15 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (160 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Ten Silent runs total (Runs 151-160). Run 159 quick death. Run 160 (Silent) died Floor 28 to Cultist+Chosen -- Hex hard-countered the Skill-heavy deck. Coffee Dripper (no rest healing) + Ectoplasm (no gold) double boss relic downside eliminated all recovery paths. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.
+**CURRENT STATUS (161 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Eleven Silent runs total (Runs 151-161). Run 161 (Silent) died Floor 22 to Sentry + Spheric Guardian from Unknown room at 21% HP -- Sozu (no potions) removed all safety nets. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.
 
 **SCORECARD (runs 101-158):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 5. Act 2 boss reaches: 11+.
 - **Act 3 reached seven times (Runs 145, 147, 148, 149, 150, 151, 158).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Run 158 (Silent) all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158 all reached Floor 51).**
-- **4 wins in 160 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (10 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog).
-- **Run 160: Silent died Floor 28 to Cultist+Chosen.** Coffee Dripper + Ectoplasm double boss relic downside. Strong Shiv deck (ATC, Envenom+Snecko Skull, Strike Dummy, Footwork, Blade Dance+, 2x Cloak and Dagger+). Hex from Chosen added 5+ Dazed by Turn 4, collapsing block density. HP already 4/69 from the fight with zero recovery path.
+- **4 wins in 161 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (11 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP).
+- **Run 161: Silent died Floor 22 to Sentry + Spheric Guardian.** Sozu (no potions) removed emergency saves. Centurion+Mystic on F21 drained 24 HP (39->15) at 55% entry. Player chose Unknown room at 21% HP reasoning it was "safer than combat" -- playbook explicitly says Unknown = Monster in Act 2. Sentry + SG spawned. Survived 5 turns via excellent play (poison through Barricade, Piercing Wail+ negating attacks, precise block math) but died Turn 6 with 3 HP, 10 block vs 20 incoming.
 - **Three distinct winning formulas confirmed.** See THE WINNING FORMULAS below.
 
 **THE WINNING FORMULAS (confirmed by 4 victories across 3 distinct engines):**
@@ -83,7 +83,7 @@ These thresholds determine which MAP PATHS are safe, not how to play combat. Com
 | Fight Type | Minimum HP to Enter | Notes |
 |---|---|---|
 | Hallway (easy) | 25% | Byrds/Chosen can drain 40-73 HP even with correct play and TC+ in deck |
-| Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic (10x3 multi-hit can drain 61 HP, death at 71% entry confirmed), Snake Plant |
+| Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic (10x3 multi-hit can drain 61 HP, death at 71% entry confirmed; Silent at 55% entry drained 24 HP leaving 21% for remaining floors), Snake Plant |
 | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |
 | Boss | 70% or Pantograph | Act 2 boss has massive damage |
 
@@ -449,7 +449,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
 - If the path forces an elite at low HP, skip it entirely -- take any alternative path.
 - **Act 2 route must include a non-combat room in the first 2-3 floors.** The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), Spheric Guardian (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. When choosing Act 2 entry points, prefer routes where a rest site, shop, or event appears by floor 2-3, even if it means giving up other rewards. A route of M-M-M before a rest site is a death trap.
-- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.**
+- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. FOUR deaths confirmed from Unknown rooms resolving as combat (at 21%, 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.** The player has repeatedly chosen Unknown rooms at critical HP reasoning "Unknown is safer than Monster" -- this is WRONG. Unknown rooms ARE Monster rooms ~50% of the time. At 21% HP with no potions, the correct choice is ANY non-combat room (rest site, shop) or, if none exists, the run was lost at map selection.
 
 ### Elite Risk Assessment
 
