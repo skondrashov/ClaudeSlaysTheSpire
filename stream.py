@@ -60,35 +60,33 @@ def _save_feed():
 
 action_feed = _load_feed()
 
-# Run stats — persisted to disk
+# Run stats — read from disk (written by regen_stats.py, never by stream.py)
 def _load_stats():
     try:
         with open(STATS_FILE) as f:
-            saved = json.load(f)
-        # Merge with defaults so new fields don't break
-        defaults = {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0, "best_ascension": 0,
-                     "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?",
-                     "floor_history": []}
-        defaults.update(saved)
-        # Derive wins/deaths from floor_history (source of truth) to prevent
-        # double-counting when stream.py restarts and re-hits GAME_OVER.
-        # total_runs is kept separate — floor_history doesn't include early
-        # runs that predate tracking (runs 0-80).
-        fh = defaults.get("floor_history", [])
-        if fh:
-            defaults["wins"] = sum(1 for e in fh if e.get("victory"))
-            defaults["deaths"] = defaults["total_runs"] - defaults["wins"]
-            defaults["best_floor"] = max(e.get("floor", 0) for e in fh)
-        return defaults
+            return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0, "best_ascension": 0,
                 "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?",
                 "floor_history": []}
 
-def _save_stats():
-    os.makedirs(os.path.dirname(STATS_FILE), exist_ok=True)
+def _reload_stats():
+    """Re-read stats from disk (called when regen_stats.py may have updated it)."""
+    global run_stats
+    run_stats = _load_stats()
+
+def _save_live_state():
+    """Save only live game state fields back to run_stats.json."""
+    try:
+        with open(STATS_FILE) as f:
+            on_disk = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        on_disk = {}
+    # Only update live state fields, preserve everything regen_stats.py wrote
+    for key in ("current_floor", "current_hp", "max_hp", "current_class"):
+        on_disk[key] = run_stats.get(key, on_disk.get(key, 0))
     with open(STATS_FILE, "w") as f:
-        json.dump(run_stats, f)
+        json.dump(on_disk, f)
 
 run_stats = _load_stats()
 
@@ -232,7 +230,7 @@ async def state_watcher():
                         if (current_asc, floor) > (run_stats.get("best_ascension", 0), run_stats["best_floor"]):
                             run_stats["best_floor"] = floor
                             run_stats["best_ascension"] = current_asc
-                            _save_stats()
+                            _save_live_state()
                             await _broadcast_stats()
 
                         # Detect new game session (in_game transitions true)
@@ -253,12 +251,10 @@ async def state_watcher():
                                 and screen == "EVENT"
                                 and "neow" in ss.get("event_name", "").lower()):
                             run_counted = True
-                            # Don't increment total_runs here — counters are derived
-                            # from floor_history at GAME_OVER to prevent double-counting
                             await broadcast({
                                 "type": "run_start",
                                 "class": cls,
-                                "run_number": run_stats["total_runs"] + 1,
+                                "run_number": run_stats.get("total_runs", 0) + 1,
                             })
                             await _broadcast_stats()
 
@@ -268,31 +264,9 @@ async def state_watcher():
                             if not run_counted:
                                 run_counted = True
                             victory = ss.get("victory", False)
-                            # Track floor history for the graph
-                            if "floor_history" not in run_stats:
-                                run_stats["floor_history"] = []
-                            seed = gs.get("seed", None)
-                            asc = gs.get("ascension_level", 0)
-                            # Dedupe: don't re-log same seed (each seed is unique per run)
-                            already_logged = any(
-                                e.get("seed") == seed and e.get("floor") == floor
-                                for e in run_stats["floor_history"]
-                            )
-                            if not already_logged:
-                                run_stats["total_runs"] += 1
-                                run_stats["floor_history"].append({
-                                    "floor": floor,
-                                    "victory": victory,
-                                    "seed": seed,
-                                    "class": cls,
-                                    "ascension": asc,
-                                })
-                            # Derive wins/deaths from floor_history (prevents double-count)
-                            fh = run_stats["floor_history"]
-                            run_stats["wins"] = sum(1 for e in fh if e.get("victory"))
-                            run_stats["deaths"] = run_stats["total_runs"] - run_stats["wins"]
-                            run_stats["best_floor"] = max((e.get("floor", 0) for e in fh), default=0)
-                            _save_stats()
+                            # No counter updates — regen_stats.py handles all
+                            # stats after the analyst writes the run file.
+                            _save_live_state()
                             await broadcast({
                                 "type": "run_end",
                                 "victory": victory,
@@ -302,7 +276,7 @@ async def state_watcher():
                             await _broadcast_stats()
                             # Archive this run's event log
                             _archive_run(
-                                run_stats["total_runs"], victory, floor, cls
+                                run_stats.get("total_runs", 0) + 1, victory, floor, cls
                             )
 
                         # Detect event screen
@@ -500,56 +474,29 @@ class DecisionHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps(stats).encode())
         elif self.path == "/run-history":
-            # Return last 20 run floor results for the overlay graph
-            history = run_stats.get("floor_history", [])[-20:]
+            # Re-read from disk (regen_stats.py is the writer)
+            fresh = _load_stats()
+            history = fresh.get("floor_history", [])[-20:]
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(json.dumps(history).encode())
         elif self.path == "/character-stats":
-            # Per-character breakdown from run log filenames + floor_history
-            # Build ascension lookup from floor_history (keyed by run number)
-            asc_lookup = {}
-            for entry in run_stats.get("floor_history", []):
-                asc_lookup[entry.get("run")] = entry.get("ascension", 0)
-
+            # Re-read from disk (regen_stats.py computes this)
+            fresh = _load_stats()
+            char_stats = fresh.get("character_stats", {})
+            total = fresh.get("total_runs", 0)
+            # Reshape for overlay compatibility
             chars = {}
-            seen_runs = set()
-            pattern = re.compile(r"^run_(\d+)_(.+?)_(death_f(\d+)|win)\.jsonl$")
-            try:
-                for fname in sorted(os.listdir(RUNS_DIR)):
-                    m = pattern.match(fname)
-                    if not m:
-                        continue
-                    run_num = int(m.group(1))
-                    if run_num in seen_runs:
-                        continue  # dedupe: only count each run number once (keep first/lowest floor)
-                    seen_runs.add(run_num)
-                    cls = m.group(2).upper().replace(" ", "_")
-                    is_win = m.group(3) == "win"
-                    floor = int(m.group(4)) if m.group(4) else 0
-                    asc = asc_lookup.get(run_num, 0)
-
-                    if cls not in chars:
-                        chars[cls] = {"runs": 0, "best_asc": 0, "best_win": False, "best_floor": 0, "best_count": 0}
-
-                    chars[cls]["runs"] += 1
-                    c = chars[cls]
-
-                    # Compare: higher ascension > win > higher floor
-                    cur = (asc, is_win, floor if not is_win else 999)
-                    prev = (c["best_asc"], c["best_win"], c["best_floor"] if not c["best_win"] else 999)
-                    if cur > prev:
-                        c["best_asc"] = asc
-                        c["best_win"] = is_win
-                        c["best_floor"] = floor if not is_win else 0
-                        c["best_count"] = 1
-                    elif cur == prev:
-                        c["best_count"] += 1
-            except FileNotFoundError:
-                pass
-            total = sum(c["runs"] for c in chars.values())
+            for cls, cs in char_stats.items():
+                chars[cls] = {
+                    "runs": cs.get("runs_tracked", 0),
+                    "best_asc": 0,
+                    "best_win": cs.get("wins", 0) > 0,
+                    "best_floor": cs.get("best_floor", 0),
+                    "best_count": cs.get("wins", 0),
+                }
             result = {"characters": chars, "total_runs": total}
             self.send_response(200)
             self.send_header("Content-Type", "application/json")

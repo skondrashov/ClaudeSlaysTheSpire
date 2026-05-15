@@ -35,7 +35,8 @@ Runs after a completed run (victory or defeat). Reads the event log, identifies 
 
 Output directories:
 - `playbook/` — Individual files per card, enemy, boss, event, potion, relic. Plus `mechanics.md` and `strategy.md` for general reference.
-- `analyst/` — Working notes: `run_log.md` (brief per-run summaries), `observations.md` (uncertain items pending more data)
+- `analyst/runs/` — One file per run (`run_NNN.md`). Machine-parsed by `regen_stats.py` to generate all stats.
+- `analyst/observations.md` — Uncertain items pending more data
 
 No confidence tags. If it's confirmed, it goes in `playbook/`. If uncertain, it goes in `analyst/observations.md`.
 
@@ -149,10 +150,12 @@ Spawn the **player** as a background subagent (Agent tool, `run_in_background: t
 When the player finishes:
 1. Delete `data/player.lock`.
 2. Switch the overlay to agent mode (see below).
-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/` files.
+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/runs/run_NNN.md`.
 4. When analyst completes, switch overlay back to game mode.
-5. Commit and push playbook changes (triggers site rebuild on claudeslaysthespire.org).
-6. Spawn the next player.
+5. Regenerate stats: `python regen_stats.py` (rebuilds `data/run_stats.json` from `analyst/runs/`).
+6. Rebuild site: `python site/build.py`.
+7. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).
+8. Spawn the next player.
 
 Repeat until interrupted.
 
