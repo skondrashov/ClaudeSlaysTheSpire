@@ -16,6 +16,10 @@ Silent boss relic. The first time you discard a card each turn, gain 1 Energy.
 
 Hovering Kite is excellent when the deck already has or plans to have discard synergy (Tools of the Trade, Survivor+, Tactician+). The energy boost enables playing more cards per turn, which compounds with A Thousand Cuts (1 damage per card to ALL enemies), After Image (1 block per card), and Kunai/Shuriken (buff per 3 attacks).
 
+## Confirmed Performance
+
+Hovering Kite + Survivor provided consistent 5E/turn across an entire Act 3 run. Combined with Cursed Key (+1E base = 4E), effective energy was 5E every turn Survivor was drawn. Hovering Kite also synergizes with discarding Burns and curses -- turning dead cards into energy. In a poison deck, the extra energy enabled playing Crippling Cloud (2E) alongside block cards in the same turn, which is impossible at 3E base.
+
 ## Anti-Synergies
 
 - Decks without discard sources get inconsistent value -- Kite only triggers if a discard actually happens.

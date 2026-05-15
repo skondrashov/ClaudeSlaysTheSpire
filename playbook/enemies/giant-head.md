@@ -30,3 +30,17 @@ LESSON: **Never use turn() sequences with cards that shift indices.** Play one c
 BARRICADE ENGINE APPROACH (CONFIRMED WIN): The Barricade + Corruption + FNP + Entrench + Body Slam engine can defeat Giant Head without Demon Form or Strength scaling. Body Slam+ with 66-83 accumulated block deals massive single-card damage (bypasses Slow penalty since it is one card play). Apotheosis on the setup turn upgrades all cards. Entrench+ doubles block from 63 to 126, then Body Slam+ delivers the killing blow. With Preserved Insect reducing HP by 25%, the effective HP is ~375. The engine completed the kill in 8 turns with zero HP lost after the block wall was established. The key advantage: Body Slam+ is a SINGLE card play per turn, so Slow penalty is minimal.
 
 NOTE: Demon Form is NOT required to kill Giant Head. Either Demon Form (Strength scaling) or Barricade + Body Slam (block scaling) works. The fight is unwinnable only when NEITHER scaling engine is available.
+
+## SILENT POISON APPROACH
+
+Poison bypasses Metallicize 8 entirely -- it ticks at end of enemy turn, ignoring block. This makes poison the primary damage source for the Silent against Giant Head.
+
+**Strategy:** Apply poison early (Deadly Poison+, Crippling Cloud, Noxious Fumes), then triple with Catalyst+ for a lethal poison total. The key math: if Giant Head has 375 HP (with Preserved Insect -25%), tripling 16+ poison with Catalyst+ produces 48+ poison, which deals 48+47+46+...=1176 total damage over time -- far more than needed. The fight becomes a race to triple poison before It Is Time escalates past your block capacity.
+
+**Slow mechanic helps the Silent.** Each card played makes Giant Head take 10% more damage. The Silent's high card-count turns (5-8 cards with draw engines and Shivs) mean Giant Head takes 50-80% more damage from Attacks. Pair Shiv generation with targeted attacks for maximum Slow bonus. Poison damage is NOT affected by Slow (it's not Attack damage), so Slow primarily amplifies direct Attacks.
+
+**Metallicize 8 interaction:** Direct attacks (Strikes, Bane+, Dash) must overcome 8 Metallicize block before dealing HP damage. Bane+ (20 damage on poisoned) breaks through. Single Strikes (6 damage) bounce off entirely unless block was already stripped by a prior attack that turn.
+
+**Critical timing window:** After Catalyst+ triples poison (e.g., to 48+), the fight is mathematically won but the player must survive 2-3 more turns for poison to finish the kill. These survival turns often coincide with It Is Time reaching 40-50+ damage. Block aggressively on these turns. Use Neutralize+ (Weak), Malaise, Piercing Wail to reduce incoming. **Use ALL available potions on survival turns.** A Strength Potion adding +2 to Strikes, or an Explosive Potion dealing 10 direct damage, can be the difference between the enemy dying from poison this turn versus surviving at 1 HP.
+
+**DEATH PATTERN (Silent, Floor 40):** Giant Head survived at 1 HP after poison tick (52 HP - 51 poison = 1 HP). Player had Strength Potion and Explosive Potion unused at death. Either potion would have dealt the 1 extra damage needed for poison to finish the kill. The player used Malaise defensively on Turn 8 instead of using potions offensively on Turn 7. Potions are zero-cost -- no energy, no card play. ALWAYS use offensive potions against Giant Head before the kill window closes.

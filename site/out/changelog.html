@@ -374,6 +374,114 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 166 analysis: Hovering Kite relic, Gremlin Leader Silent strategy, rest site density</div>
+      <div class="changelog-sha">89c63574</div>
+    </div>
+    <div class="changelog-date">2026-05-15</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-leader.md</div>
+<div class="diff-hunk">@@ -18,10 +18,11 @@ Starts with 2 gremlins already present. Leader re-summons gremlins when they die</div>
+<div class="diff-ctx"> KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight&#x27;s damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader&#x27;s own attacks.</div>
+<div class="diff-ctx"> RALLY SCALING MATH: Rally fires roughly every other turn. By turn 3, all enemies have +3 Str. By turn 5, all enemies have +6 Str. By turn 7, all enemies have +9 Str. With 2 gremlins alive at +9 Str, gremlins alone deal (9+9)*2 = 36, plus the Leader&#x27;s own attacks. Total incoming by turn 7-8 exceeds 50 per turn. Every wasted turn is effectively +3 Str to the entire board -- a single lost turn (e.g., ending turn early after Battle Trance draw without playing drawn cards) can be the difference between winning and losing.</div>
+<div class="diff-ctx"> WHAT THIS MEANS: TURN ECONOMY IS EVERYTHING. Every turn must deal maximum damage or apply critical debuffs. Wasting even one turn (misplaying end-of-turn, failing to use drawn cards) allows Rally to stack once more, which compounds across all gremlins. KILL GREMLINS FAST to reduce per-turn damage, but prioritize Leader damage when possible because gremlins get re-summoned. AOE is critical for clearing gremlins efficiently. Apply Shockwave early for mass Weak + Vulnerable. The fight becomes mathematically unwinnable once Strength stacks too high (by turn 3-4 with multiple gremlins alive, incoming damage is 40+).</div>
+<div class="diff-del">-BENCHMARKS: Must win by turn 5-6 or Rally scaling overwhelms you. Enter with 60%+ HP minimum AND at least 1 potion. At 52% HP (42/80) with Inflame+ and 3 potions, died on turn 9 -- Inflame+ + Impervious on Turn 1 (zero damage) extended the fight past the survivable window. By turn 5, Rally had stacked to +12 Str on all enemies (4 Rallies), producing 34+ incoming/turn at 23 HP. At 55% HP (44/80) with zero potions and no Strength scaling, died on turn 4 to 47 incoming damage (Leader 12x3=36 + Mad Gremlin 11). At 56% (56/98) was insufficient even with Corruption + Feel No Pain engine. At 25% HP (14/56), unwinnable even with Nilry&#x27;s Codex. Bloated decks (19+ cards with 4+ Strikes) cannot draw answers fast enough against Rally&#x27;s exponential scaling.</div>
+<div class="diff-add">+BENCHMARKS: Must win by turn 5-6 or Rally scaling overwhelms you. Enter with 60%+ HP minimum AND at least 1 potion. At 52% HP (42/80) with Inflame+ and 3 potions, died on turn 9 -- Inflame+ + Impervious on Turn 1 (zero damage) extended the fight past the survivable window. By turn 5, Rally had stacked to +12 Str on all enemies (4 Rallies), producing 34+ incoming/turn at 23 HP. At 55% HP (44/80) with zero potions and no Strength scaling, died on turn 4 to 47 incoming damage (Leader 12x3=36 + Mad Gremlin 11). At 56% (56/98) was insufficient even with Corruption + Feel No Pain engine. At 25% HP (14/56), unwinnable even with Nilry&#x27;s Codex. At 4 HP (Silent) with +9 Str Rally and 5 Apparitions exhausted, 28 incoming vs 20 max block was lethal -- poison engine had Leader at only ~40% HP with insufficient time remaining. Bloated decks (19+ cards with 4+ Strikes) cannot draw answers fast enough against Rally&#x27;s exponential scaling.</div>
+<div class="diff-ctx"> TURN 1 PRIORITY: Deal damage, NOT setup. Playing Inflame+ (1E setup) + Impervious (2E block) on Turn 1 means zero damage dealt. This wastes the most valuable turn against Rally scaling. The correct Turn 1 against Gremlin Leader is Inflame+ + the best available Attack (Bash+, Strike+, Rampage). Take the unblocked hit -- HP lost on Turn 1 is recoverable, but a wasted damage turn against Rally scaling is not. Impervious should be saved for Turn 4-5 when Rally-scaled damage is 34+ per turn and block is critical for survival, not Turn 1 when incoming is only ~22. Confirmed: Inflame+ + Impervious on Turn 1 at 42 HP led to a 9-turn fight (needed 5-6), death at 10 HP.</div>
+<div class="diff-ctx"> BRING: AOE (Thunderclap, Whirlwind, Immolate+) for gremlin clearing, Shockwave+ (mass debuff), Disarm (reduce Leader Str). Non-exhaust damage cards for sustained fighting. Rage (0E power that generates block per attack -- excellent value in multi-attack turns). Potions -- this fight demands aggressive potion use. Fairy in a Bottle as safety net (but expect it to be consumed early if the fight goes long -- a Fairy consumed on turn 6 leaves no safety for turns 7-8 when Rally scaling peaks).</div>
+<div class="diff-ctx"> CORRUPTION + FNP ENGINE: Corruption makes Skills free, Feel No Pain generates block per exhaust. This engine is theoretically strong here but ONLY if it comes online by turn 2-3. If the engine activates on turn 7 of 8, Rally has already stacked to +9 Str on all enemies and incoming damage exceeds all available block. The engine needs early activation or it arrives too late.</div>
+<div class="diff-ctx"> STRENGTH SCALING IS MANDATORY: Without permanent Strength, you cannot kill the Leader fast enough. In run 98, Mutagenic Strength (+3 Str turn 1 only) enabled 35 damage to Leader on turn 1, but by turn 2 with 0 Str, damage output collapsed. The DPS race against Rally requires at least +2 permanent Strength (Inflame, Spot Weakness, Demon Form) or enough burst cards (Immolate + Heavy Blade + Bash+) to close the fight in 5 turns. Evaluate whether your deck can realistically kill 144 HP in 5-6 turns BEFORE entering this fight.</div>
+<div class="diff-ctx"> GREMLIN WIZARD PRIORITY: If Gremlin Wizard is present, it charges for a massive 28-damage nuke. Kill it before it fires. In run 98, Thunderclap+ (7 AOE + Vuln) into Pommel Strike+ (15 Vuln damage) = 22 damage exactly killed a 22 HP Wizard on turn 3, preventing 28 damage that would have been instantly fatal. Always check Wizard charge timer and prioritize killing it on the turn before it fires.</div>
+<div class="diff-del">-AVOID: Entering below 60% HP. Entering without potions. Entering without permanent Strength scaling. Exhaust-heavy decks (once Impervious/Shockwave/Disarm are gone, remaining deck is too weak). If below 50% HP, take any alternative path. Decks with reduced Max HP (e.g., post-Vampires at 56 Max HP) have no margin for error against this fight&#x27;s scaling. Wasting turns -- do NOT batch `end` with draw effects like Battle Trance; the drawn cards need to be played that same turn.</div>
+<div class="diff-add">+SILENT-SPECIFIC: The Silent&#x27;s poison engine (Noxious Fumes + Bouncing Flask + Catalyst+) is excellent against the Leader -- poison ignores the 6 Metallicize block all enemies gain per turn. A Thousand Cuts provides passive AOE damage per card played, chipping gremlins down. Apparitions are critical survival tools: 5 Intangible turns buy time for poison to tick while Rally stacks Str harmlessly. Piercing Wail reduces all enemies&#x27; Str for 1 turn, buying a critical survival turn at peak Rally scaling. At 4 HP vs +9 Str Rally scaling (28+ incoming), even Piercing Wail + Fear Potion + Noxious Fumes was insufficient -- the fight was unwinnable at that HP. The Silent MUST kill the Leader before Apparitions run out, or have enough block density + Piercing Wail to bridge the gap.</div>
+<div class="diff-add">+AVOID: Entering below 60% HP. Entering without potions. Entering without permanent Strength scaling (Ironclad) or poison engine (Silent). Exhaust-heavy decks (once Impervious/Shockwave/Disarm are gone, remaining deck is too weak). If below 50% HP, take any alternative path. Decks with reduced Max HP (e.g., post-Apparitions at 29 Max HP or post-Vampires at 56 Max HP) have no margin for error against this fight&#x27;s scaling. Wasting turns -- do NOT batch `end` with draw effects like Battle Trance; the drawn cards need to be played that same turn.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/council-of-ghosts.md</div>
+<div class="diff-hunk">@@ -1,7 +1,12 @@</div>
+<div class="diff-ctx"> # Council of Ghosts (Act 2)</div>
+<div class="diff-ctx"> OPTIONS:</div>
+<div class="diff-del">-- [Accept] Lose 40 Max HP, gain 5 Apparition cards (prevent ALL damage for 1 turn each, Ethereal).</div>
+<div class="diff-add">+- [Accept] Lose ~29-40 Max HP (scales with current Max HP), gain 5 Apparition cards (prevent ALL damage for 1 turn each, Ethereal).</div>
+<div class="diff-ctx"> - [Refuse] Leave.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-DECISION FRAMEWORK: 5 turns of invincibility is powerful, but -40 Max HP is devastating. At 100+ Max HP with a strong deck that ends fights quickly, Accept can work (Apparitions buy 5 free turns). At low Max HP (&lt;80), Refuse -- being at 39 Max HP means one bad fight ends the run.</div>
+<div class="diff-del">-PRIORITY: Accept (100+ Max HP, strong deck) &gt; Refuse (default, especially &lt;80 Max HP).</div>
+<div class="diff-add">+DECISION FRAMEWORK: 5 turns of invincibility is powerful, but the Max HP loss is devastating. At 100+ Max HP with a strong deck that ends fights quickly, Accept can work. At low Max HP (&lt;80), Refuse -- being at 39 Max HP means one bad fight ends the run.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**SILENT POISON SYNERGY:** Apparitions are exceptionally powerful with a poison deck. Intangible buys time for poison to tick -- Noxious Fumes applies damage every turn regardless of Intangible status. With 5 Apparitions, you get 5 turns of guaranteed poison scaling while taking near-zero damage. Catalyst+ tripling a poison stack during Intangible turns is the optimal sequencing: build poison safely, then survive with block after Intangible expires. Tools of the Trade filters Apparitions to when they are needed; Hovering Kite generates energy from discarding unneeded ones.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Apparition management under Hex:** Apparitions are Skills, so they trigger Hex (add Dazed). Playing 3-4 Apparitions against Chosen adds 3-4 Dazed to the draw pile. This is still worth it -- Intangible is more valuable than the Dazed penalty.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PRIORITY: Accept (poison deck with Noxious Fumes/Catalyst+, or 100+ Max HP) &gt; Refuse (default, especially &lt;80 Max HP without poison engine).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
+<div class="diff-hunk">@@ -91,6 +91,7 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Boss Relics / Special</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+- [Hovering Kite](hovering-kite.md)</div>
+<div class="diff-ctx"> - [Snecko Eye](snecko-eye.md)</div>
+<div class="diff-ctx"> - [Busted Crown](busted-crown.md)</div>
+<div class="diff-ctx"> - [Pandora&#x27;s Box](pandoras-box.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/hovering-kite.md</div>
+<div class="diff-hunk">@@ -0,0 +1,22 @@</div>
+<div class="diff-add">+# Hovering Kite</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent boss relic. The first time you discard a card each turn, gain 1 Energy.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** +1 Energy per turn when combined with any discard source. Effectively raises base energy from 3 to 4 (or 4 to 5 with other energy relics).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Synergies</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Tools of the Trade:** TotT discards a card at start of each turn, triggering Kite automatically. This combo provides +1E every turn with zero effort. Together they give energy + card filtering -- the Silent&#x27;s core engine needs.</div>
+<div class="diff-add">+- **Survivor / Survivor+:** Manual discard trigger. Block + energy in one card play.</div>
+<div class="diff-add">+- **Tactician+:** When discarded (by TotT or Survivor), returns 2E. Combined with Kite&#x27;s +1E from the discard, a single TotT discard of Tactician+ generates +3E (Kite 1 + Tactician+ 2), bringing a 3E base to 6E per turn.</div>
+<div class="diff-add">+- **Apparitions (Ethereal):** Unneeded Apparitions can be discarded via TotT for Kite energy instead of exhausting at end of turn.</div>
+<div class="diff-add">+- **Calculated Gamble:** Discard entire hand, Kite triggers on the first discard.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## When to Take</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Hovering Kite is excellent when the deck already has or plans to have discard synergy (Tools of the Trade, Survivor+, Tactician+). The energy boost enables playing more cards per turn, which compounds with A Thousand Cuts (1 damage per card to ALL enemies), After Image (1 block per card), and Kunai/Shuriken (buff per 3 attacks).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Anti-Synergies</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Decks without discard sources get inconsistent value -- Kite only triggers if a discard actually happens.</div>
+<div class="diff-add">+- Snecko Eye randomizes card costs, making the +1E less impactful when cards already cost 0.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,14 +2,14 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (165 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Fifteen Silent runs total (Runs 151-165). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-add">+**CURRENT STATUS (166 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Sixteen Silent runs total (Runs 151-166). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 6. Act 2 boss reaches: 12+.</div>
+<div class="diff-ctx"> - **Act 3 reached eight times (Runs 145, 147, 148, 149, 150, 151, 158, 162).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**</div>
+<div class="diff-del">-- **5 wins in 165 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (15 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD, Run 165 died Floor 27 to Cultist+Chosen Hex at 9 HP).</div>
+<div class="diff-add">+- **5 wins in 166 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (16 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD, Run 165 died Floor 27 to Cultist+Chosen Hex at 9 HP, Run 166 died Floor 29 to Gremlin Leader at 4 HP -- strong poison engine but map forced brutal combat sequence with no rest).</div>
+<div class="diff-ctx"> - **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.</div>
+<div class="diff-ctx"> - **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -467,6 +467,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai</div>
+<div class="diff-ctx"> - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.</div>
+<div class="diff-ctx"> - If the path forces an elite at low HP, skip it entirely -- take any alternative path.</div>
+<div class="diff-ctx"> - **Act 2 route must include a non-combat room in the first 2-3 floors.** The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), Spheric Guardian (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. When choosing Act 2 entry points, prefer routes where a rest site, shop, or event appears by floor 2-3, even if it means giving up other rewards. A route of M-M-M before a rest site is a death trap.</div>
+<div class="diff-add">+- **Evaluate rest site density across the entire path, not just the next 2 floors.** Count forced combats between rest sites on each viable path. A route of M-R-E-M-M-?-E forces 6 fights with only 1 rest site -- if any fight drains significant HP, recovery is impossible. Prefer paths where rest sites break up combat sequences (e.g., M-M-R-M-R-E gives recovery opportunities). At reduced Max HP (post-Apparitions at 29 Max HP, post-Vampires at 56 Max HP), rest site density is even more critical because every fight loss is proportionally larger. A path with no rest site across 6+ consecutive combat floors is a death spiral waiting to happen.</div>
+<div class="diff-ctx"> - **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. FIVE deaths confirmed from Unknown rooms resolving as combat (at 21%, 26%, 27%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.** The player has repeatedly chosen Unknown rooms at critical HP reasoning &quot;Unknown is safer than Monster&quot; -- this is WRONG. Unknown rooms ARE Monster rooms ~50% of the time. At 21% HP with no potions, the correct choice is ANY non-combat room (rest site, shop) or, if none exists, the run was lost at map selection.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Elite Risk Assessment</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 165 analysis: Chosen kill priority reversed, sub-20% HP rule</div>
       <div class="changelog-sha">18229ce0</div>
     </div>
@@ -10460,57 +10568,6 @@ footer {
 <div class="diff-ctx"> OPTIMAL TIMING: Keep as safety net for boss fights or dangerous elites. Triggers when you would die, reviving at ~30% Max HP. WARNING: Fairy is often consumed in Centurion+Mystic hallway fights. If possible, save it for elites/bosses -- don&#x27;t waste it in hallway fights.</div>
 <div class="diff-ctx"> NOTE: This is a one-time safety net. Once consumed, it&#x27;s gone. Plan paths so Fairy is available for the most dangerous fight, not consumed early.</div>
 <div class="diff-add">+GREMLIN LEADER WARNING: In scaling fights like Gremlin Leader, Fairy can be consumed mid-fight (e.g., turn 6 of an 8-turn fight) when Rally-boosted gremlins spike damage past your remaining HP. Once consumed, there is no safety net for the final turns when Rally scaling peaks (+9 Str to all enemies). Fairy buys one extra turn but does NOT solve the underlying problem of insufficient damage output vs Rally scaling.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 73 analysis: 4th Spheric Guardian death, Artifact stripping, Demon Form too slow</div>
-      <div class="changelog-sha">1f671280</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/cards/uppercut.md</div>
-<div class="diff-hunk">@@ -1,8 +1,8 @@</div>
-<div class="diff-del">-# Uppercut (2E, Attack, 13 damage + 1 Weak + 1 Vulnerable)</div>
-<div class="diff-del">-Applies BOTH major debuffs in one card.</div>
-<div class="diff-add">+# Uppercut (2E, Attack, 13 damage + 1 Weak + 1 Vulnerable | +: 2 Weak + 2 Vulnerable)</div>
-<div class="diff-add">+Applies BOTH major debuffs in one card. The best single-card Artifact stripper in the Ironclad pool.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WHEN IT&#x27;S GOOD: Against single targets where both debuffs matter. Against Artifact enemies (strips 2 charges).</div>
-<div class="diff-del">-DECISION POINTS: At 2E, is dual-debuff worth the cost? Against Spheric Guardian (3 Artifact), Uppercut strips 2 charges efficiently. Against Gremlin Nob, it&#x27;s safe (Attack card).</div>
-<div class="diff-del">-UPGRADE: Likely extends debuff duration to 2 turns each.</div>
-<div class="diff-del">-SYNERGIES: Artifact stripping (each debuff consumes 1 charge separately).</div>
-<div class="diff-del">-MATCHUPS: Spheric Guardian -- strips 2 of 3 Artifact charges in one play.</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: Against single targets where both debuffs matter. Against Artifact enemies (strips 2 charges). Upgraded version applies 2 turns of each debuff, making it the most efficient debuff card at 2E.</div>
-<div class="diff-add">+DECISION POINTS: At 2E, is dual-debuff worth the cost? Against Spheric Guardian (3 Artifact), Uppercut strips 2 charges efficiently. Against Gremlin Nob, it&#x27;s safe (Attack card). Upgraded Uppercut is high priority against any Artifact enemy.</div>
-<div class="diff-add">+UPGRADE: Extends debuff duration to 2 turns each (confirmed). Significant -- doubles debuff value and makes the 2E cost worthwhile in longer fights.</div>
-<div class="diff-add">+SYNERGIES: Artifact stripping (each debuff consumes 1 charge separately). Spot Weakness (Vulnerable from Uppercut amplifies Strength-boosted attacks). Demon Form (sustained Vulnerability keeps damage high as Strength ramps).</div>
-<div class="diff-add">+MATCHUPS: Spheric Guardian -- strips 2 of 3 Artifact charges in one play. Confirmed effective in Run 75: Uppercut+ stripped Artifact charges, enabling subsequent debuffs. However, even with successful Artifact stripping, Spheric Guardian&#x27;s Barricade block can still be insurmountable if damage scaling is too slow.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/spheric-guardian.md</div>
-<div class="diff-hunk">@@ -3,9 +3,15 @@ PATTERN: Starts with 40 block + Barricade (block persists) + 3 Artifact + applie</div>
-<div class="diff-ctx"> KEY MECHANIC: Barricade means block never expires. The Spheric Guardian GAINS block on defend turns (observed 15-20 block gained per action), and since block persists via Barricade, it stacks indefinitely. Combined with alternating attack/defend, the block grows faster than chip damage can remove it. At low Strength (0-1), Strikes deal 6-7 per play vs 15-20 block gained per defend cycle. The block will grow every other turn even while being attacked on the off turns.</div>
-<div class="diff-ctx"> WHAT THIS MEANS: This is a DPS check disguised as a hallway fight. At 1 Strength, Strikes deal 6-7 damage per play. The Spheric Guardian gains 15-20 block on defend turns and retains leftover block. After 5-6 turns, its block reaches 40-64 and never comes down. The fight becomes mathematically unwinnable without sufficient Strength scaling or burst damage. Strip 3 Artifact charges first with cheap debuffs (Thunderclap ideal). Then apply Vulnerable. Then burst through remaining block + HP.</div>
-<div class="diff-ctx"> BENCHMARKS: Must kill within 6-8 turns or block becomes insurmountable. Expect 30-50+ HP lost from Frail-reduced blocking vs 10x2 attacks. At low Strength without burst, this fight is a guaranteed loss through attrition.</div>
-<div class="diff-del">-BRING: Thunderclap (strip Artifact), Pen Nib (double damage to break block), burst damage (Fiend Fire, Immolate, Bludgeon), Strength scaling (Inflame, Spot Weakness), Headbutt (find specific cards).</div>
-<div class="diff-del">-AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it at low Strength). Havoc (random exhaust can destroy key cards in a long DPS race). Random exhaust effects in general. Exhausting your own key cards with Second Wind (observed: Second Wind exhausted Shockwave+, True Grit+, and block cards, sealing a loss). Playing Brutality (1 HP/turn self-damage over an 8-13 turn fight is 8-13 HP lost -- confirmed to cause death in this fight). Playing Rage+ expecting persistent block (Rage expires at end of turn, does NOT carry over). Exhausting Spot Weakness (permanent Strength gain is one of the few ways to break through Barricade block). Entering at low HP (&lt;50%) -- this fight routinely drains 30-50 HP, and even full HP entry resulted in death.</div>
-<div class="diff-add">+BRING: Uppercut+ (strips 2 Artifact charges in one play, best single-card Artifact solution), Thunderclap (strip remaining Artifact), Pen Nib (double damage to break block), burst damage (Fiend Fire, Immolate, Bludgeon), FAST Strength scaling (Inflame, Spot Weakness, Limit Break -- NOT Demon Form), Headbutt (find specific cards), potions (Strength Potion, Fire Potion -- any supplemental damage matters).</div>
-<div class="diff-add">+AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it at low Strength). Demon Form as sole Strength source (too slow -- 13 Str by turn 9 still lost to 65+ block). Havoc (random exhaust can destroy key cards in a long DPS race). Random exhaust effects in general. Exhausting your own key cards with Second Wind (observed: Second Wind exhausted Shockwave+, True Grit+, and block cards, sealing a loss). Playing Brutality (1 HP/turn self-damage over an 8-13 turn fight is 8-13 HP lost -- confirmed to cause death in this fight). Playing Rage+ expecting persistent block (Rage expires at end of turn, does NOT carry over). Exhausting Spot Weakness (permanent Strength gain is one of the few ways to break through Barricade block). Entering at low HP (&lt;50%) -- this fight routinely drains 30-50 HP, and even full HP entry resulted in death. Entering with zero potions -- potions are the only way to supplement insufficient scaling in this fight.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> APPEARS WITH: Sentry (in Act 2 hallway fights). When paired, incoming damage is 9 (Sentry) + 10x2 (Spheric Guardian) = 29 per turn. Frail from Spheric Guardian reduces block by 25%, making Defend give only 3 instead of 5. At low HP, the combined damage is often unblockable. Kill the Sentry first (no block, lower HP) to reduce incoming damage and stop Dazed generation. Then focus Spheric Guardian with burst damage. Metallicize&#x27;s passive 3-4 block/turn helps but is insufficient alone against 20 incoming.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WARNING: This is the single most dangerous Act 2 hallway fight. Three deaths confirmed against this enemy (at 26%, 43%, and 100% HP entry). The third death occurred at FULL HP (87/87) in a Sentry + Spheric Guardian pairing from an Unknown room. Despite having Barricade (player card), Rage+, Rampage+, Blood for Blood, and Stone Calendar, the fight was still lost because: (1) Brutality&#x27;s 1 HP/turn self-damage ticked HP from 9 to 1 over the long fight, making survival impossible, (2) Rage+ expires at end of turn (not permanent), so the player had no block generation on the critical final turn, and (3) Frail 5 reduced block cards by 25%, making even True Grit+ insufficient. Even entering at full HP, the fight drained 86 HP over 6 turns through a combination of Spheric Guardian attacks, Sentry attacks, and Brutality self-damage. Reaper is useless in this fight (all damage absorbed by block = zero healing). Brutality is actively harmful (extends the death clock). Only massive single-turn burst or sustained Strength scaling can win.</div>
-<div class="diff-add">+ARTIFACT STRIPPING: Spheric Guardian starts with 3 Artifact charges. Uppercut+ is the best single-card Artifact stripper -- it applies Weak 2 and Vulnerable 2, consuming 2 Artifact charges in one play. Follow with any single debuff (Bash, Thunderclap) to strip the 3rd. Once Artifact is gone, Vulnerable massively increases kill speed through the Barricade block.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+FRAIL 5 INTERACTION: Frail 5 reduces block from ALL sources by 25%. Defend gives 3 instead of 5. Shrug It Off gives 6 instead of 8. This lasts 5 turns and cannot be removed while Artifact charges remain. Combined with 10x2 attacks, the effective damage per attack turn is ~24+ (20 damage minus reduced block). This is the primary reason low-Strength decks lose -- block is insufficient AND damage is insufficient simultaneously.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DEMON FORM SCALING: Even Demon Form scaling to 13 Strength by turn 9 was insufficient to kill Spheric Guardian through 65+ Barricade block. The fight lasted 9 turns and still ended in a loss. Demon Form is too slow -- by the time Strength ramps, block is already insurmountable. Front-loaded Strength (Spot Weakness, Inflame, Limit Break) or burst damage is required.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WARNING: This is the single most dangerous Act 2 hallway fight. Four deaths confirmed against this enemy (at 26%, 43%, 47%, and 100% HP entry). The fourth death (47% HP, 38/80) involved Demon Form + Metallicize + Spot Weakness scaling that reached 13 Str by turn 9, with Uppercut+ stripping Artifact charges -- and still lost. Zero potions available. Frail 5 crippled blocking during the critical early turns while Demon Form was ramping. Barricade block reached 65+ and grew faster than 13 Str could deplete it. The third death occurred at FULL HP (87/87) in a Sentry + Spheric Guardian pairing from an Unknown room. Despite having Barricade (player card), Rage+, Rampage+, Blood for Blood, and Stone Calendar, the fight was still lost because: (1) Brutality&#x27;s 1 HP/turn self-damage ticked HP from 9 to 1 over the long fight, making survival impossible, (2) Rage+ expires at end of turn (not permanent), so the player had no block generation on the critical final turn, and (3) Frail 5 reduced block cards by 25%, making even True Grit+ insufficient. Even entering at full HP, the fight drained 86 HP over 6 turns through a combination of Spheric Guardian attacks, Sentry attacks, and Brutality self-damage. Reaper is useless in this fight (all damage absorbed by block = zero healing). Brutality is actively harmful (extends the death clock). Potions are critical for this fight -- entering with zero potions removes the only way to supplement insufficient scaling. Only massive single-turn burst or sustained Strength scaling that comes ONLINE FAST (Inflame, Spot Weakness, not Demon Form) can win.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

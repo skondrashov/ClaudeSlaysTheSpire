@@ -8,6 +8,7 @@
 - [Speed Potion](speed-potion.md)
 - [Weak Potion](weak-potion.md)
 - [Fire Potion](fire-potion.md)
+- [Explosive Potion](explosive-potion.md)
 - [Skill Potion](skill-potion.md)
 - [Power Potion](power-potion.md)
 - [Snecko Oil](snecko-oil.md)
