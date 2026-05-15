@@ -255,5 +255,5 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g
 
 - Playing **The Silent** at Ascension 0
 - Strategist runs every 10 runs
-- 76 total runs (74 Ironclad, 2 Silent). Ironclad has 3 A0 wins.
+- 5 wins total (3 Ironclad, 2 Silent) at Ascension 0.
 

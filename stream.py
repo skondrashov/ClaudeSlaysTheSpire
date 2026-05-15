@@ -70,6 +70,14 @@ def _load_stats():
                      "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?",
                      "floor_history": []}
         defaults.update(saved)
+        # Derive counters from floor_history (source of truth) to prevent
+        # double-counting when stream.py restarts and re-hits GAME_OVER
+        fh = defaults.get("floor_history", [])
+        if fh:
+            defaults["total_runs"] = len(fh)
+            defaults["wins"] = sum(1 for e in fh if e.get("victory"))
+            defaults["deaths"] = sum(1 for e in fh if not e.get("victory"))
+            defaults["best_floor"] = max(e.get("floor", 0) for e in fh)
         return defaults
     except (FileNotFoundError, json.JSONDecodeError):
         return {"total_runs": 0, "wins": 0, "deaths": 0, "best_floor": 0, "best_ascension": 0,
@@ -239,33 +247,26 @@ async def state_watcher():
                                 _save_feed()
                                 recent_events.clear()
 
-                        # Count the run when Neow event appears — every STS run
-                        # starts with Neow, so this is the definitive signal.
+                        # Detect run start when Neow event appears
                         if (not run_counted
                                 and screen == "EVENT"
                                 and "neow" in ss.get("event_name", "").lower()):
                             run_counted = True
-                            run_stats["total_runs"] += 1
-                            _save_stats()
+                            # Don't increment total_runs here — counters are derived
+                            # from floor_history at GAME_OVER to prevent double-counting
                             await broadcast({
                                 "type": "run_start",
                                 "class": cls,
-                                "run_number": run_stats["total_runs"],
+                                "run_number": run_stats["total_runs"] + 1,
                             })
                             await _broadcast_stats()
 
                         # Detect game over (only process once per run)
                         if screen == "GAME_OVER" and not game_over_handled:
                             game_over_handled = True
-                            # If run was never counted (Neow detection missed), count it now
                             if not run_counted:
                                 run_counted = True
-                                run_stats["total_runs"] += 1
                             victory = ss.get("victory", False)
-                            if victory:
-                                run_stats["wins"] += 1
-                            else:
-                                run_stats["deaths"] += 1
                             # Track floor history for the graph
                             if "floor_history" not in run_stats:
                                 run_stats["floor_history"] = []
@@ -278,13 +279,18 @@ async def state_watcher():
                             )
                             if not already_logged:
                                 run_stats["floor_history"].append({
-                                    "run": run_stats["total_runs"],
                                     "floor": floor,
                                     "victory": victory,
                                     "seed": seed,
                                     "class": cls,
                                     "ascension": asc,
                                 })
+                            # Derive counters from floor_history (single source of truth)
+                            fh = run_stats["floor_history"]
+                            run_stats["total_runs"] = len(fh)
+                            run_stats["wins"] = sum(1 for e in fh if e.get("victory"))
+                            run_stats["deaths"] = sum(1 for e in fh if not e.get("victory"))
+                            run_stats["best_floor"] = max((e.get("floor", 0) for e in fh), default=0)
                             _save_stats()
                             await broadcast({
                                 "type": "run_end",
