@@ -2,14 +2,14 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (164 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Fourteen Silent runs total (Runs 151-164). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).
+**CURRENT STATUS (165 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Fifteen Silent runs total (Runs 151-165). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).
 
 **SCORECARD (runs 101-158):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 6. Act 2 boss reaches: 12+.
 - **Act 3 reached eight times (Runs 145, 147, 148, 149, 150, 151, 158, 162).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**
-- **5 wins in 164 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (14 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD).
+- **5 wins in 165 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (15 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD, Run 165 died Floor 27 to Cultist+Chosen Hex at 9 HP).
 - **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.
 - **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.
 
@@ -96,6 +96,7 @@ These thresholds determine which MAP PATHS are safe, not how to play combat. Com
 
 | Fight Type | Minimum HP to Enter | Notes |
 |---|---|---|
+| ANY fight | 20% | Below 20% HP, avoid ALL combat. No fight is safe -- a single bad draw kills. Rest/shop/event ONLY. |
 | Hallway (easy) | 25% | Byrds/Chosen can drain 40-73 HP even with correct play and TC+ in deck |
 | Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic (10x3 multi-hit can drain 61 HP, death at 71% entry confirmed; Silent at 55% entry drained 24 HP leaving 21% for remaining floors), Snake Plant |
 | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |
@@ -109,6 +110,7 @@ These thresholds determine which MAP PATHS are safe, not how to play combat. Com
 - If forced into a fight below threshold, use ALL potions aggressively on turn 1. An unused potion on a death screen is a strategic failure.
 - If there's a rest site before an elite, REST (don't upgrade). HP > upgrades when below threshold.
 - After any fight that drops you below 30% HP, the next room MUST be a rest site, shop, or event -- not combat.
+- **At below 20% HP, avoid ALL fights.** At this HP level, even a 2-enemy hallway fight (Cultist+Chosen, Looter+Mugger) can be lethal from a single bad draw. There is no fight in the game that is safe at sub-20% HP. The ONLY acceptable rooms are rest sites, shops, and events with known non-combat outcomes. If the map forces combat at sub-20% HP, the run was lost at map selection. This threshold has been confirmed across multiple deaths where 15-19% HP entry into "easy" hallway fights resulted in death from draw RNG (Dazed clog, curse clog, or insufficient block cards).
 - **Low HP does NOT change combat behavior.** You should already be full blocking at any HP level. If you find yourself thinking "I'm at low HP, I should block more" -- that means you were NOT full blocking at high HP, which is the real mistake.
 
 ### The Act 2 Death Spiral Is Predictable

@@ -28,6 +28,8 @@ HP THRESHOLD: Do NOT enter this fight below 50% HP. Two confirmed deaths at low 
 
 **TIMING RULE: Do NOT fight Slavers within 2 floors of the Act 2 boss.** Run 114 fought Slavers at Floor 31 (2 floors before the boss). The fight drained HP from 36 to 14 despite a strong deck (Shockwave, Dark Shackles, True Grit+, Reaper, Inflame). Only 1 rest site remained before the boss, healing to 39/85 (45%) -- far below the 70% threshold. When Slavers appears on a forced path close to the boss, the HP drain from this fight almost guarantees entering the boss at sub-threshold HP. If the map offers ANY alternative path in the last 3 floors, take it even if it means missing the elite relic.
 
-BRING: AOE (Thunderclap, Whirlwind, Immolate), Flame Barrier+ (block + punishes all 3 attackers), Weak sources, high block density.
+SILENT-SPECIFIC: The Silent struggles against Slavers due to lower base block output and Skill-heavy deck composition. Shiv burst can eliminate one Slaver quickly (Ninja Scroll + STR = 21+ free damage Turn 1), and Fire Potion or Attack Potion can finish the kill. Focus-fire Blue Slaver first with Shivs (highest single-hit damage), then Red Slaver with Terror+Vulnerable for amplified damage. Piercing Wail is excellent Turn 1 (reduces 27 combined incoming to ~9). Expect 30-40 HP drain even with correct play -- the Weakened debuff from Blue Slaver reduces attack output, extending the fight. An 8-turn Slavers fight at ~75% HP entry drained to ~20% HP due to Weakened attack reduction compounding over multiple turns.
+
+BRING: AOE (Thunderclap, Whirlwind, Immolate), Flame Barrier+ (block + punishes all 3 attackers), Weak sources, high block density. Silent: Piercing Wail, Shiv burst, Fire Potion, Terror for single-target focus.
 
 AVOID: Entering at low HP. This fight has no free turns and no way to stall. Avoid this elite within 2 floors of the boss -- the HP drain is too severe to recover from.
