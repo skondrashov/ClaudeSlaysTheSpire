@@ -26,12 +26,16 @@ At high negative Dex, all block from Skills becomes 0 (block cannot go below 0).
 
 **Medium fights (elites, 8-12 turns):** Play mid-fight (Turn 3-5) to cover the highest-damage turns. Accept that Dex will be -4 to -7 by fight end, requiring non-Dex block sources for the final turns.
 
-**Long fights (bosses, 15+ turns):** EXTREME CAUTION. Playing Wraith Form early in a boss fight is potentially fatal:
+**Long fights (bosses, 15+ turns):** DO NOT PLAY WRAITH FORM EARLY. This is a confirmed recurring fatal error -- two deaths (Dex spiraled to -11 and -7) from early Wraith Form in boss fights. Playing Wraith Form early in a boss fight is suicide:
 - Playing Turn 2 means Dex is -11 by Turn 13, -17 by Turn 19.
-- At -11 Dex, Defend gives 0 block. Footwork+ gives 0 block. Survivor gives 0 block.
-- The only block comes from After Image (~7-8 block/turn from card plays), which is insufficient against 24+ damage.
+- At -7 Dex, Defend gives 0 block. Footwork+ gives 0 block. Survivor gives 0 block. ALL Skill-based block becomes worthless.
+- The only block comes from After Image (~7-8 block/turn from card plays), which is insufficient against 20+ damage.
 
-**Boss fight timing rule:** In fights expected to last 15+ turns, delay Wraith Form until the final 5-6 turns. Use it as a finisher when the enemy is near death, not as early defense. If the fight will last 20 turns and you play Wraith Form on Turn 2, you will have 18 turns of Dex drain -- the last 10+ turns will have zero effective block from Skills.
+**FUNDAMENTAL RULE: In any fight expected to last 8+ turns, do NOT play Wraith Form until the enemy is within 5 turns of dying.** Count the enemy's remaining HP, estimate your damage per turn, and only play Wraith Form when the fight will end before Dex drops below -4. If you cannot estimate when the fight ends, DO NOT PLAY WRAITH FORM. Use it as a finisher when the enemy is near death, not as early defense. If the fight will last 20 turns and you play Wraith Form on Turn 2, you will have 18 turns of Dex drain -- the last 10+ turns will have zero effective block from Skills.
+
+**Two confirmed deaths from this exact mistake:**
+- Dex reached -11: all block cards gave 0, died 5 HP short of killing the Collector.
+- Dex reached -7: all block cards gave 0, died 8 damage short of Mode Shift trigger vs the Guardian. The missing Shiv damage from an unupgraded Cloak and Dagger was the exact margin of death.
 
 ## Interactions
 

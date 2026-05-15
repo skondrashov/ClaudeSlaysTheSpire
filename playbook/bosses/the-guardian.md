@@ -47,4 +47,18 @@ CORRUPTION DECK DENSITY DEATH (Run 107): Corruption+ played on turn 9 at 46 HP. 
 
 TWO-DEATH GUARDIAN PATTERN (Runs 103, 107): Both Guardian deaths share the same root cause -- insufficient block density in the second half of the fight. Run 103: Pandora's Box removed Defends before the fight started. Run 107: Corruption+ exhausted all Skills mid-fight. The Guardian punishes ANY mechanism that reduces block card count below sustainable levels for a 14-turn fight.
 
+## Silent-Specific Strategy
+
+The Guardian fight is 12-14 turns. The Silent's damage profile (many small hits from Shivs) interacts uniquely with Mode Shift:
+
+**Mode Shift and Shivs:** Each Shiv deals 4-9+ damage individually (base 4 + Accuracy + Vajra + Str). Multiple Shivs per turn accumulate toward Mode Shift quickly. Cloak and Dagger+ generates 2 Shivs (18 damage with Accuracy 4 + Vajra 1), while unupgraded generates only 1 Shiv (9 damage). The difference is 9 damage per play -- enough to determine whether Mode Shift triggers on a lethal turn.
+
+**Cloak and Dagger upgrade is critical for Guardian.** Upgraded: 2 Shivs = 18 damage toward Mode Shift. Unupgraded: 1 Shiv = 9 damage. This 9-damage gap was the exact margin between triggering Mode Shift (cancelling a lethal 20-damage attack) and dying.
+
+**Wraith Form timing against Guardian:** DO NOT play Wraith Form early. The Guardian fight lasts 12+ turns. Playing Wraith Form Turn 2 means Dex is -7 by Turn 8, making all block cards give 0 block. In Defensive Mode, Sharp Hide (3 damage per Attack) combined with zero block means every Shiv costs 3 HP. Hold Wraith Form until the Guardian is below 60 HP or you are confident the fight ends within 5 turns.
+
+**Noxious Fumes priority:** Play Noxious Fumes as early as possible. In a 12-turn fight, Fumes played Turn 1 deals 78 total poison damage (1+2+3+...+12). Played Turn 6, it deals only 21 (1+2+3+4+5+6). Every turn of delay costs exponentially more damage.
+
+**Poison Potions bypass Sharp Hide.** Potions do not trigger Sharp Hide retaliation. Use Poison Potions during Defensive Mode when Attacks cost 3 HP each.
+
 ---

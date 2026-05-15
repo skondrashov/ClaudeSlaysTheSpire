@@ -184,6 +184,38 @@ X-cost cards (Whirlwind, Malaise, Skewer, and others) **automatically consume AL
 
 ---
 
+## Wraith Form Timing (CRITICAL -- TWO CONFIRMED DEATHS)
+
+Wraith Form gives Intangible (2 or 3 turns) but applies a PERMANENT, CUMULATIVE -1 Dex/turn for the rest of combat. This penalty never expires. Playing Wraith Form early in a long fight is a confirmed recurring fatal error.
+
+**THE RULE: Do NOT play Wraith Form until the enemy is within 5 turns of dying.** Estimate remaining enemy HP, estimate your damage per turn, and only play Wraith Form when the fight will end before Dex drops below -4. If you cannot estimate when the fight ends, DO NOT PLAY WRAITH FORM.
+
+**Two deaths from this exact mistake:**
+- Boss fight: Dex reached -11, all block 0, died 5 HP from winning.
+- Boss fight: Dex reached -7, all block 0, died 8 damage short of Mode Shift.
+
+This rule applies to ALL boss fights and any fight expected to last 8+ turns. Wraith Form is a FINISHER, not an early defense tool. See wraith-form.md for full details.
+
+---
+
+## Power Card Priority in Boss Fights
+
+**Play Power cards as early as possible in boss fights.** Powers are permanent for the rest of combat. Every turn a Power sits unplayed in the deck is a turn of missed value. In a 12-turn boss fight, a Power played Turn 1 provides 12 turns of benefit; played Turn 6, only 7 turns.
+
+This is especially critical for scaling Powers:
+- **Noxious Fumes:** Poison accumulates quadratically. Turn 1 play = 78 total poison over 12 turns. Turn 6 play = 21 total. The difference is enormous.
+- **Infinite Blades:** Free Shiv per turn. Earlier play = more free damage.
+- **Demon Form:** +2 Str/turn compounds. Earlier = more total Str.
+- **Metallicize:** Block per turn. Earlier = more total block.
+
+**Exceptions:**
+- **Awakened One Phase 2:** Do NOT play Powers (each gives +2 Str to the boss). Phase 1 Power dumping is fine because Curiosity Str resets on phase transition.
+- **When the Power costs all your energy on an attack turn:** A 3E Power on a 3E turn with incoming damage means 0E for block. Wait for a free turn (enemy buffing/defending).
+
+**If a Power is in your hand during a boss fight and the turn is safe (enemy buffing, low incoming, or sufficient block remaining after the Power cost), PLAY IT.** Not playing Noxious Fumes in a boss fight despite it being in the deck is a setup priority failure that costs damage equivalent to multiple card plays.
+
+---
+
 ## Card Draw
 
 - Standard draw: 5 cards per turn.

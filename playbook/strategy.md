@@ -2,14 +2,14 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (163 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Thirteen Silent runs total (Runs 151-163). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).
+**CURRENT STATUS (164 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Fourteen Silent runs total (Runs 151-164). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).
 
 **SCORECARD (runs 101-158):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 6. Act 2 boss reaches: 12+.
 - **Act 3 reached eight times (Runs 145, 147, 148, 149, 150, 151, 158, 162).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**
-- **5 wins in 163 runs (3.1% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (13 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP).
+- **5 wins in 164 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (14 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD).
 - **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.
 - **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.
 
@@ -75,6 +75,12 @@ Before calculating damage or block, answer these FOUR questions:
 - To control X: spend energy on other cards FIRST, then play the X-cost card LAST with only the desired energy remaining.
 - Confirmed fatal error: player intended Malaise X=1 on Mugger but played it first with 4E remaining. Malaise consumed X=4, leaving 0E for Defend/Survivor. Took 21 unblocked damage at 19 HP = death.
 - **RULE: NEVER play an X-cost card before block cards unless you want X = all remaining energy.**
+
+**6. WRAITH FORM: DO NOT PLAY UNTIL ENEMY IS WITHIN 5 TURNS OF DYING.**
+- Wraith Form gives Intangible but applies PERMANENT -1 Dex/turn for the rest of combat. At -7 Dex, ALL block from Skills is 0.
+- Three confirmed deaths from playing Wraith Form too early in boss fights. The playbook warned against this after the first death but the error keeps recurring.
+- Before playing Wraith Form: estimate enemy remaining HP, estimate your damage per turn, calculate how many turns remain. Only play if the fight ends within 5 turns.
+- **RULE: Wraith Form is a FINISHER. Never play it as early defense in a fight expected to last 8+ turns.**
 
 ---
 
@@ -325,10 +331,12 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re
 
 **The Guardian needs:**
 - 32+ block capability in one turn (Impervious, double Metallicize + Weak)
-- Burst damage for Mode Shift (Bludgeon at 32-48, Carnage+ at 28-42)
+- Burst damage for Mode Shift (Bludgeon at 32-48, Carnage+ at 28-42; Silent: Shivs with Accuracy accumulate toward Mode Shift -- each Shiv deals 9+ damage with Accuracy 4 + Vajra 1)
 - Enough cards to last 12+ turns (do NOT over-exhaust)
+- **Silent-specific: upgrade Cloak and Dagger before Guardian.** Upgraded CaD produces 2 Shivs (18 damage toward Mode Shift), unupgraded produces 1 Shiv (9 damage). This 9-damage gap is a confirmed death margin.
+- **Silent-specific: do NOT play Wraith Form until Guardian is below 60 HP.** Guardian fight lasts 12+ turns. Early Wraith Form creates unsurvivable Dex drain. See wraith-form.md.
 - **Avoid exhaustion-heavy strategies.** Fiend Fire + Dark Embrace creates a thin deck by mid-fight. Block density on 32-damage turns (turns 8-12) drops below survivable thresholds when the deck thins to 8-10 cards. Use Fiend Fire on free turns or for burst, never as the primary deck engine.
-- **Do NOT play Corruption/Corruption+ without Dead Branch or Feel No Pain.** Run 107: Corruption+ played turn 9, all Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards remaining. Corruption is a trap in 14-turn fights -- the energy savings do not compensate for losing all block in the second half. This is now the SECOND Guardian death from block-density collapse (Run 103: Pandora's Box, Run 107: Corruption+).
+- **Do NOT play Corruption/Corruption+ without Dead Branch or Feel No Pain.** Corruption is a trap in 14-turn fights -- the energy savings do not compensate for losing all block in the second half.
 
 **Hexaghost needs:**
 - Weak source (Shockwave, Clothesline, Intimidate, Weak Potion; Silent: Neutralize+, Crippling Cloud, Leg Sweep, Malaise) -- MANDATORY

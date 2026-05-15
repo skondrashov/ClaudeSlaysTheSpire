@@ -374,6 +374,180 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 163 analysis: X-cost card mechanics gap, 5th unknown room death</div>
+      <div class="changelog-sha">96bb1cde</div>
+    </div>
+    <div class="changelog-date">2026-05-15</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
+<div class="diff-hunk">@@ -44,6 +44,7 @@</div>
+<div class="diff-ctx"> - [Masterful Stab](masterful-stab.md)</div>
+<div class="diff-ctx"> - [Finisher](finisher.md)</div>
+<div class="diff-ctx"> - [Bane](bane.md)</div>
+<div class="diff-add">+- [Skewer](skewer.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Silent Skill Cards</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/malaise.md</div>
+<div class="diff-hunk">@@ -11,10 +11,12 @@ Silent Skill, X cost (Exhaust).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Malaise is the Silent&#x27;s strongest boss debuff. It consumes all remaining energy and applies that amount as both Weak and permanent Strength reduction. Unlike Piercing Wail (temporary -6 Str for 1 turn), Malaise&#x27;s Strength reduction is permanent for the combat.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**CRITICAL -- X-COST ENERGY TRAP:** Malaise automatically uses ALL remaining energy. You CANNOT specify X manually. If you have 4E and play Malaise first, X=4 and you have 0E left for block cards. This has directly caused a death: player intended Malaise X=1 but it consumed all 4E, leaving 0E for Defend/Survivor, taking 21 unblocked damage at 19 HP. **To control X: play block cards and other spells FIRST, then play Malaise LAST with only the desired energy remaining.** See mechanics.md &quot;X-Cost Cards&quot; section.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Optimal Usage</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - **Save for boss fights.** Malaise exhausts -- single use per combat. Do not waste on hallway fights or elites unless the fight is genuinely lethal.</div>
+<div class="diff-del">-- **Play LAST on your turn** after all other non-X-cost cards. Malaise consumes all remaining energy. Play block cards, Powers, and 0-cost attacks first, then Malaise with remaining E.</div>
+<div class="diff-add">+- **Play LAST on your turn** after all other non-X-cost cards. Malaise consumes ALL remaining energy automatically. Play block cards, Powers, and 0-cost attacks first, then Malaise with the desired remaining E. There is no way to specify X -- X equals your remaining energy when Malaise is played.</div>
+<div class="diff-ctx"> - **Maximum value at high energy.** With 5E and Malaise as the only play: X=5 gives -5 Str and 5 Weak. Combined, this reduces enemy damage by ~50-70% for multiple turns.</div>
+<div class="diff-ctx"> - **Do NOT use for Artifact stripping.** Malaise is too valuable to spend on removing 1 Artifact charge. Use Neutralize, Crippling Cloud, or other cheap debuffs for Artifact stripping.</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/skewer.md</div>
+<div class="diff-hunk">@@ -0,0 +1,29 @@</div>
+<div class="diff-add">+# Skewer</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Attack, X cost.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Deal 7 damage X times to one enemy.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** 7 * X damage.</div>
+<div class="diff-add">+**Upgraded:** 10 * X damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Skewer is an X-cost attack that scales with remaining energy. High energy (4-5E) produces massive single-target burst. With Vulnerable, each hit deals 10 (base) or 15 (upgraded) damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**CRITICAL -- X-COST ENERGY TRAP:** Skewer automatically uses ALL remaining energy. You CANNOT specify X manually. If you have 4E and play Skewer first, X=4 and you have 0E left for block cards. **To control X: play block cards and other spells FIRST, then play Skewer LAST with only the desired energy remaining.** See mechanics.md &quot;X-Cost Cards&quot; section.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Optimal Usage</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Play LAST on your turn** after all block cards and non-X-cost attacks. Skewer consumes ALL remaining energy automatically.</div>
+<div class="diff-add">+- **Best on free turns (enemy buffing/defending)** where all energy can go to damage without sacrificing block.</div>
+<div class="diff-add">+- **Pairs with Energy Potions** for massive burst (5E Skewer = 35/50 damage).</div>
+<div class="diff-add">+- **Pairs with Vulnerable** for 50% more damage per hit.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Observed Usage</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Confirmed as primary Hexaghost kill card -- Skewer at 5E (with Sozu + Energy Potion) dealt 36 Vulnerable damage in a single turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Draft Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Moderate priority. Strong burst finisher for boss fights and elites. Less useful in hallway fights where energy must be split between block and damage.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/whirlwind.md</div>
+<div class="diff-hunk">@@ -2,7 +2,7 @@</div>
+<div class="diff-ctx"> AOE that scales with energy. Uses ALL remaining energy.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Turn 1 with bonus energy (Lantern, Seeing Red+) for massive AOE. Against Slime Boss split (hits both slimes). Against Sentries (45 total AOE for 3E).</div>
+<div class="diff-del">-DECISION POINTS: Play LAST -- it uses all remaining energy. Plan other plays first, then dump remaining energy into Whirlwind. With Strength, each hit gains +Str damage.</div>
+<div class="diff-add">+DECISION POINTS: Play LAST -- it uses ALL remaining energy automatically. You CANNOT specify X manually. X equals your remaining energy when Whirlwind is played. To control X, spend energy on other cards first, then play Whirlwind last. With Strength, each hit gains +Str damage.</div>
+<div class="diff-ctx"> UPGRADE: 5-&gt;8 per hit. Significant improvement.</div>
+<div class="diff-ctx"> SYNERGIES: Extra energy (Lantern, Seeing Red+, Berserk), Strength (each hit gains bonus).</div>
+<div class="diff-ctx"> MATCHUPS: Slime Boss split -- hits both slimes. Sentries -- 15 damage to all 3. Gremlin Leader -- clears summoned gremlins.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/mechanics.md</div>
+<div class="diff-hunk">@@ -157,7 +157,30 @@ When you play a card by numeric index, all cards after it shift down by 1. This</div>
+<div class="diff-ctx"> - Base energy: 3 per turn (Ironclad, no modifiers).</div>
+<div class="diff-ctx"> - Energy resets each turn -- unspent energy is WASTED.</div>
+<div class="diff-ctx"> - Energy modifiers: Lantern (+1E turn 1), Ancient Tea Set (+2E turn 1 after rest), Berserk (+1E/turn permanently), Seeing Red+ (+2E one time), Happy Flower (+1E every 3 turns).</div>
+<div class="diff-del">-- X-cost cards (Whirlwind) use ALL remaining energy. Play LAST.</div>
+<div class="diff-add">+- X-cost cards (Whirlwind, Malaise, Skewer) use ALL remaining energy. See X-Cost Cards section below.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### X-Cost Cards (CRITICAL -- CONFIRMED FATAL ERROR)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+X-cost cards (Whirlwind, Malaise, Skewer, and others) **automatically consume ALL remaining energy when played.** You CANNOT specify X manually. X is always equal to your remaining energy at the moment the card is played.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**This means:** If you have 4E and play Malaise intending X=1, the game will use X=4 and consume all 4 energy. You will have 0E remaining for block cards. This has directly caused a death.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**To control X, spend energy on other cards FIRST:**</div>
+<div class="diff-add">+1. Decide what X value you want.</div>
+<div class="diff-add">+2. Calculate: energy to spend on other cards = current energy - desired X.</div>
+<div class="diff-add">+3. Play those other cards FIRST (Defend, block cards, Powers, 0-cost attacks).</div>
+<div class="diff-add">+4. Play the X-cost card LAST with only the desired energy remaining.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Example:** You have 4E and want Malaise X=1 + 2 Defends + Deflect.</div>
+<div class="diff-add">+- WRONG: `play Malaise 0` (uses X=4, 0E left, Defends cannot be played)</div>
+<div class="diff-add">+- CORRECT: `play Defend; play Defend; play Deflect; play Malaise 0` (3E spent on block, Malaise uses X=1)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**X-cost cards in the game:**</div>
+<div class="diff-add">+- **Whirlwind** (Ironclad Attack): 5 damage X times to ALL enemies</div>
+<div class="diff-add">+- **Malaise** (Silent Skill, Exhaust): X Weak + X Str Down to one enemy</div>
+<div class="diff-add">+- **Skewer** (Silent Attack): 7 damage X times to one enemy</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**RULE: ALWAYS play X-cost cards LAST on a turn.** Never play an X-cost card first unless you genuinely want to spend all energy on it.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,14 +2,14 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (162 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Twelve Silent runs total (Runs 151-162). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-add">+**CURRENT STATUS (163 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Thirteen Silent runs total (Runs 151-163). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 6. Act 2 boss reaches: 12+.</div>
+<div class="diff-ctx"> - **Act 3 reached eight times (Runs 145, 147, 148, 149, 150, 151, 158, 162).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**</div>
+<div class="diff-del">-- **5 wins in 162 runs (3.1% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (12 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP).</div>
+<div class="diff-add">+- **5 wins in 163 runs (3.1% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (13 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP).</div>
+<div class="diff-ctx"> - **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.</div>
+<div class="diff-ctx"> - **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -31,7 +31,7 @@ High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> 3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Immolate is the highest-impact card), (c) healing beyond Burning Blood (Toy Ornithopter + potions is a valid backup), (d) block scaling beyond basic Defends.</div>
+<div class="diff-ctx"> 4. **Pursue one of the two proven scaling engines.** (A) **Strength engine**: Snecko Eye as Act 2 boss relic, Immolate+ for AOE, Limit Break for Str doubling, Heavy Blade or other Str finishers. (B) **Block engine**: Barricade + Corruption + Feel No Pain + Entrench + Body Slam+. Immolate+ is the primary AOE in both. Do not force one engine -- pursue whichever the card/relic offerings support. If Barricade + Corruption + FNP are all available by mid-Act 2, commit to the block engine. If Snecko Eye is offered as Act 2 boss relic and Limit Break exists, commit to the Str engine. Either engine can defeat any Act 3 boss.</div>
+<div class="diff-ctx"> 5. **Use the Act 1 tier list for card evaluation.** The starting deck is the same every run. Know the tier list, draft for the visible boss.</div>
+<div class="diff-del">-6. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first.</div>
+<div class="diff-add">+6. **STOP MAKING ARITHMETIC AND MECHANICS ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first. (e) X-cost cards (Malaise, Whirlwind, Skewer) use ALL remaining energy -- play them LAST.</div>
+<div class="diff-ctx"> 7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Book natively gains +3 Str/turn; Brimstone adds +2 Str/turn on top = +5 Str/turn. Two deaths confirmed.</div>
+<div class="diff-ctx"> 8. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed &gt; block.</div>
+<div class="diff-ctx"> 9. **Enter every boss at as high HP as possible.** The first victory entered all three bosses at 80/80. The second victory entered Act 1 and Act 2 bosses at high HP but entered Donu and Deca at only 49% (42/85) and survived at 4 HP -- a razor-thin margin. Full HP entry provides the buffer needed when boss fights go long. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enable full HP entry. A powerful deck (Snecko Eye + Immolate+ + Limit Break+) can compensate for low HP entry, but the margin of error is minimal.</div>
+<div class="diff-hunk">@@ -70,6 +70,12 @@ Before calculating damage or block, answer these FOUR questions:</div>
+<div class="diff-ctx"> - Confirmed fatal error: player played Iron Wave (13 damage) against 20 HP Hexaghost and submitted `end` in the same command line. Headbutt (17 damage) was in hand with 2E remaining. The combined 30 damage would have killed. The player wrote &quot;13 &gt; 20&quot; in reasoning -- a basic comparison error that went unnoticed because the command was already committed.</div>
+<div class="diff-ctx"> - **RULE: On kill turns, NEVER include `end` in the same command as the attack. Play the attack, verify the kill, THEN end turn separately.**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**5. X-COST CARDS USE ALL REMAINING ENERGY -- PLAY LAST.**</div>
+<div class="diff-add">+- X-cost cards (Malaise, Whirlwind, Skewer) automatically consume ALL remaining energy. You cannot specify X manually.</div>
+<div class="diff-add">+- To control X: spend energy on other cards FIRST, then play the X-cost card LAST with only the desired energy remaining.</div>
+<div class="diff-add">+- Confirmed fatal error: player intended Malaise X=1 on Mugger but played it first with 4E remaining. Malaise consumed X=4, leaving 0E for Defend/Survivor. Took 21 unblocked damage at 19 HP = death.</div>
+<div class="diff-add">+- **RULE: NEVER play an X-cost card before block cards unless you want X = all remaining energy.**</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## HP Management: Full Block Is the Solution</div>
+<div class="diff-hunk">@@ -451,7 +457,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai</div>
+<div class="diff-ctx"> - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.</div>
+<div class="diff-ctx"> - If the path forces an elite at low HP, skip it entirely -- take any alternative path.</div>
+<div class="diff-ctx"> - **Act 2 route must include a non-combat room in the first 2-3 floors.** The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), Spheric Guardian (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. When choosing Act 2 entry points, prefer routes where a rest site, shop, or event appears by floor 2-3, even if it means giving up other rewards. A route of M-M-M before a rest site is a death trap.</div>
+<div class="diff-del">-- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. FOUR deaths confirmed from Unknown rooms resolving as combat (at 21%, 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.** The player has repeatedly chosen Unknown rooms at critical HP reasoning &quot;Unknown is safer than Monster&quot; -- this is WRONG. Unknown rooms ARE Monster rooms ~50% of the time. At 21% HP with no potions, the correct choice is ANY non-combat room (rest site, shop) or, if none exists, the run was lost at map selection.</div>
+<div class="diff-add">+- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. FIVE deaths confirmed from Unknown rooms resolving as combat (at 21%, 26%, 27%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.** The player has repeatedly chosen Unknown rooms at critical HP reasoning &quot;Unknown is safer than Monster&quot; -- this is WRONG. Unknown rooms ARE Monster rooms ~50% of the time. At 21% HP with no potions, the correct choice is ANY non-combat room (rest site, shop) or, if none exists, the run was lost at map selection.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Elite Risk Assessment</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -577,7 +583,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> 2. **Bad map pathing** -- taking combat rooms after HP-draining fights. Solved by Full Act Pathing (plan the whole route before floor 1, re-route when HP drops).</div>
+<div class="diff-ctx"> 3. **3 Cultists at low HP** -- 6 deaths at 5-53% HP entry. Hard-scaler exception: kill speed &gt; block. 60% entry threshold non-negotiable.</div>
+<div class="diff-ctx"> 4. **Book of Stabbing** -- 4 deaths. #1 elite killer. Double scaling (+1 hit/turn AND +3 Str/turn). Needs exhaust tools. Brimstone makes it worse. Silent decks without poison or Malaise should avoid.</div>
+<div class="diff-del">-5. **Mechanics execution errors** -- arithmetic mistakes that waste 3-20 HP per error. Full Block Flowchart forces explicit math every turn, which should reduce these.</div>
+<div class="diff-add">+5. **Mechanics execution errors** -- arithmetic mistakes and X-cost card misplays that waste 3-20 HP per error. X-cost cards (Malaise, Whirlwind, Skewer) consume ALL remaining energy automatically -- playing them first leaves 0E for block. Full Block Flowchart forces explicit math every turn, which should reduce these.</div>
+<div class="diff-ctx"> 6. **Healing RNG denial** -- 7 of last 9 runs with no Reaper/Feed offered. Not directly addressable, but Full Block reduces the need for healing by preventing HP loss in the first place.</div>
+<div class="diff-ctx"> 7. **Brimstone anti-synergy** -- 2 deaths from Brimstone + Book of Stabbing.</div>
+<div class="diff-ctx"> 8. **Deck building window closes at Floor 15** -- missing criteria after F15 cannot be filled. Act 1 tier list + boss drafting should improve card selection.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 162: SECOND SILENT WIN vs Awakened One, Formula 4 (Dead Branch Exhaust)</div>
       <div class="changelog-sha">54ad9741</div>
     </div>
@@ -10312,145 +10486,6 @@ footer {
 <div class="diff-ctx"> 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.</div>
 <div class="diff-ctx"> 4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage. Brutality is now confirmed as a death cause in long fights even at full HP entry -- the 1 HP/turn drain is lethal in fights lasting 8+ turns (Spheric Guardian, Shelled Parasite with Plated Armor). Only play Brutality in fights expected to end within 4-5 turns.</div>
 <div class="diff-ctx"> 5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 71 analysis: Pantograph fix (25 HP not full), The Champ boss, Dark Shackles</div>
-      <div class="changelog-sha">b1adef15</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/bosses/_index.md</div>
-<div class="diff-hunk">@@ -8,6 +8,7 @@</div>
-<div class="diff-ctx"> ## Act 2</div>
-<div class="diff-ctx"> - [The Collector](the-collector.md)</div>
-<div class="diff-ctx"> - [Bronze Automaton](bronze-automaton.md)</div>
-<div class="diff-add">+- [The Champ](the-champ.md)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Act 3</div>
-<div class="diff-ctx"> - [Donu and Deca](donu-and-deca.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/bosses/the-champ.md</div>
-<div class="diff-hunk">@@ -0,0 +1,37 @@</div>
-<div class="diff-add">+# The Champ</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Act 2 Boss. Single target. High HP. Two-phase fight with a dangerous transition.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Phase 1 (Above ~50% HP)</div>
-<div class="diff-add">+Attacks with moderate damage. Applies debuffs. Manageable if you have block and scaling.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Phase 2 — Execute (Below ~50% HP)</div>
-<div class="diff-add">+When The Champ drops below approximately 50% HP, he performs Execute: cleanses ALL debuffs from himself, gains +8 Strength, and gains Metallicize 5 (5 block per turn permanently). This is a massive power spike.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+EXECUTE DETAILS:</div>
-<div class="diff-add">+- Removes ALL player-applied debuffs (Weak, Vulnerable, Strength Down) instantly</div>
-<div class="diff-add">+- Gains +8 Strength permanently — subsequent attacks hit extremely hard</div>
-<div class="diff-add">+- Gains Metallicize 5 — passive 5 block every turn makes chip damage less effective</div>
-<div class="diff-add">+- Occurs once when crossing the ~50% HP threshold</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Strategy</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+CRITICAL: Demon Form and other slow scaling engines need enough turns to ramp BEFORE Execute triggers. If Demon Form is played turn 1 and Execute happens turn 5, you have only +10 Strength — but The Champ now has +8 Strength and Metallicize 5, and all your debuffs are gone.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+BURST THROUGH PHASE 2: The best approach is to have enough burst damage to kill The Champ quickly after Execute. Slow attrition decks struggle because Metallicize 5 + cleansed debuffs mean he takes less damage and deals more.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+RE-APPLY DEBUFFS AFTER EXECUTE: Shockwave, Disarm, and other debuffs are completely wasted if applied before Execute — they all get cleansed. Save debuff cards for after the phase transition if possible, or have a second copy/way to re-apply.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+HP MANAGEMENT: Enter this fight at high HP. Pantograph provides 25 HP (not full heal). The Champ&#x27;s post-Execute attacks with +8 Strength hit for 27x2 or more. Being at low HP when Execute triggers is often fatal.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+VULNERABILITY WINDOW: After Execute, The Champ spends one turn performing the transition. Use this turn to set up block and prepare for the damage spike.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Observed Death Pattern</div>
-<div class="diff-add">+Died Turn 10 to 27x2 attack while Vulnerable at 7 HP. Demon Form+ was providing scaling but couldn&#x27;t overcome the +8 Strength and Metallicize 5 fast enough. Reaper+ had already exhausted (single use), removing the healing option needed to survive phase 2.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Matchup Notes</div>
-<div class="diff-add">+- **Demon Form**: Good but needs early play. By Execute, need enough accumulated Strength to outscale Champ&#x27;s +8 Str and Metallicize 5.</div>
-<div class="diff-add">+- **Shockwave+**: Save for AFTER Execute if possible. Applying before Execute wastes the debuffs entirely.</div>
-<div class="diff-add">+- **Reaper**: Single-use exhausting heal. Must time carefully — use after Execute for maximum value when Champ&#x27;s attacks are strongest.</div>
-<div class="diff-add">+- **Dark Shackles**: Excellent emergency block tool post-Execute to survive the first big hit.</div>
-<div class="diff-add">+- **Heavy Blade+**: Strong finisher post-Execute if Strength is high enough from Demon Form.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
-<div class="diff-hunk">@@ -46,6 +46,7 @@</div>
-<div class="diff-ctx"> - [Impervious](impervious.md)</div>
-<div class="diff-ctx"> - [Burning Pact](burning-pact.md)</div>
-<div class="diff-ctx"> - [Battle Trance](battle-trance.md)</div>
-<div class="diff-add">+- [Dark Shackles](dark-shackles.md)</div>
-<div class="diff-ctx"> - [Disarm](disarm.md)</div>
-<div class="diff-ctx"> - [Intimidate](intimidate.md)</div>
-<div class="diff-ctx"> - [Ghostly Armor](ghostly-armor.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/dark-shackles.md</div>
-<div class="diff-hunk">@@ -0,0 +1,13 @@</div>
-<div class="diff-add">+# Dark Shackles (0E, Skill, enemy loses Strength for 1 turn, Exhaust | Colorless)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Emergency defensive tool. Reduces an enemy&#x27;s Strength until the end of its next turn, then the Strength returns. Costs 0 energy, making it playable in any situation. Exhausts after use.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: Against high-damage single attacks where you need to survive one turn. Excellent against boss burst turns (The Champ&#x27;s post-Execute attacks, Hexaghost Inferno). The 0E cost means it never competes with block or damage cards for energy.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION POINTS: Because the Strength reduction is temporary (1 turn only), time it for the enemy&#x27;s highest-damage turn. Using it on a low-damage turn wastes the exhaust. Against bosses with phase transitions (The Champ Execute), save it for the first big hit after the transition.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+MATCHUPS:</div>
-<div class="diff-add">+- **The Champ**: Strong post-Execute when Champ has +8 Strength. Reducing that spike for one turn can be the difference between dying and stabilizing.</div>
-<div class="diff-add">+- **Boss fights generally**: 0E emergency button for any turn where incoming damage would be lethal.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SYNERGIES: Works in any deck since it costs 0E. Pairs with other Strength-reduction effects (Disarm) for layered defense.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/demon-form.md</div>
-<div class="diff-hunk">@@ -23,6 +23,10 @@ WHEN TO PLAY: Turn 1 of boss fights. Turn 1 of any fight where the enemy buffs (</div>
-<div class="diff-ctx"> DECK BUILDING NOTE: If Demon Form is your primary scaling, the deck still needs fast burst (Fiend Fire, Rampage, Immolate) for emergency hallway fights at low HP. Demon Form solves bosses but not the Act 2 death spiral.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> SYNERGIES:</div>
-<div class="diff-add">+- **Heavy Blade+**: The premier damage payoff for Demon Form Strength. Heavy Blade+ applies 5x Strength bonus. At +12 Str (turn 4 of Demon Form+), Heavy Blade+ deals 14 + 60 = 74 damage. At +18 Str (turn 6), it deals 14 + 90 = 104. This combination is a core Ironclad scaling engine for boss fights.</div>
-<div class="diff-ctx"> - **Shuriken + Anger**: Anger (0E) counts toward Shuriken&#x27;s 3-Attack threshold. Demon Form Str stacks with Shuriken&#x27;s passive Str. By turn 5-7, combined Str can reach +12-15 from both sources, making every attack devastating. This combo killed Hexaghost in 7 turns.</div>
-<div class="diff-ctx"> - **Confusion (from Snecko)**: If Confusion randomizes Demon Form&#x27;s cost below 3E, playing it becomes much easier. In one fight, Demon Form cost 2E under Confusion, enabling Disarm (0E) + Demon Form (2E) on the same turn -- impossible at normal costs.</div>
-<div class="diff-ctx"> - **Evolve**: In long fights with Status cards (Hexaghost Burns), Evolve maintains hand quality while Demon Form provides the damage scaling to shorten the fight.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+MATCHUPS:</div>
-<div class="diff-add">+- **The Champ**: Demon Form+ needs to be played early (turn 1) to accumulate enough Strength before Execute (~50% HP). After Execute, The Champ gains +8 Str and Metallicize 5 and cleanses all debuffs. If Demon Form has only ramped +6-8 Str by Execute, you are barely keeping pace. Demon Form is viable but the fight becomes a race -- can you kill The Champ before his post-Execute damage overwhelms your HP?</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/heavy-blade.md</div>
-<div class="diff-hunk">@@ -9,6 +9,7 @@ DECISION POINTS: Only take when the deck already has or is building toward Stren</div>
-<div class="diff-ctx"> UPGRADE PRIORITY: High in Strength decks. 3x to 5x Strength multiplier is transformative. At Strength 6: unupgraded = 32 damage, upgraded = 44 damage. The upgrade adds 12 damage at Str 6, scaling further with each additional Strength point.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> SYNERGIES:</div>
-<div class="diff-add">+- **Demon Form+** -- the strongest sustained synergy. Demon Form+ adds +3 Str/turn. Heavy Blade+ multiplies Strength by 5x. By turn 4 of Demon Form+ (+12 Str), Heavy Blade+ deals 14 + 60 = 74. By turn 6 (+18 Str): 14 + 90 = 104. This is the core Ironclad boss-killing engine.</div>
-<div class="diff-ctx"> - **Limit Break+** -- doubling Strength before Heavy Blade creates exponential damage. Str 3 -&gt; Limit Break -&gt; Str 6 -&gt; Heavy Blade = 32 damage. Next cycle: Str 12 -&gt; Heavy Blade = 50 damage.</div>
-<div class="diff-ctx"> - **Double Tap** -- plays Heavy Blade twice for one card play. At Str 6: 32 x 2 = 64 damage for 3E total.</div>
-<div class="diff-ctx"> - **Spot Weakness** -- +3 Str on attack turns directly feeds Heavy Blade&#x27;s multiplier.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/reaper.md</div>
-<div class="diff-hunk">@@ -9,3 +9,4 @@ SYNERGIES: Inflame (+2 Str boosts damage to all enemies = more healing), Vulnera</div>
-<div class="diff-ctx"> MATCHUPS:</div>
-<div class="diff-ctx"> - The Collector -- 3 targets (Collector + 2 Torch Heads). With +4 Str and Vulnerable on all, Reaper healed 14 HP in a single play. One of the best Reaper fights due to guaranteed 3 targets for the entire fight.</div>
-<div class="diff-ctx"> - Spheric Guardian -- WORST MATCHUP. Spheric Guardian has Barricade (block persists) and accumulates 40-64+ block. Reaper heals only for UNBLOCKED damage. Against 60+ block, Reaper deals zero HP damage and heals zero. Reaper is completely useless in this fight.</div>
-<div class="diff-add">+- The Champ -- Single target, so healing is limited to damage dealt to one enemy. Because Reaper exhausts after one use, timing is critical. Ideally save Reaper for after Execute when The Champ&#x27;s Metallicize 5 is not yet stacked high and you need the healing most. Using Reaper early in phase 1 means no healing option for the more dangerous phase 2.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/shockwave.md</div>
-<div class="diff-hunk">@@ -6,3 +6,4 @@ DECISION POINTS: TIMING IS CRITICAL. Play on the FIRST ATTACK TURN of multi-enem</div>
-<div class="diff-ctx"> UPGRADE: 2-&gt;3 turns of each debuff. Massive improvement -- 50% more duration. High priority.</div>
-<div class="diff-ctx"> SYNERGIES: Multi-enemy fights (debuffs apply to ALL), Dropkick (Vulnerable on all targets = free cycling on any of them).</div>
-<div class="diff-ctx"> MATCHUPS: Hexaghost -- Weak reduces 7x6=42 Inferno to 7x4=28. MANDATORY for Hexaghost survival. Gremlin Leader -- mass debuff on Leader + all gremlins. 3 Cultists -- play turn 2, not turn 4. Slime Boss split -- mass debuff on both slimes. The Collector -- play Turn 1 or Turn 2 when Torch Heads are present. Mass Weak reduces combined incoming from Collector + 2 Torch Heads. Mass Vulnerable boosts Reaper healing and Bludgeon/Immolate damage against all 3 targets.</div>
-<div class="diff-add">+WARNING — The Champ: Shockwave debuffs applied BEFORE Execute are WASTED. The Champ&#x27;s Execute (at ~50% HP) cleanses ALL debuffs. If Shockwave has already been played and exhausted before Execute triggers, you lose the debuffs AND cannot re-apply them. Ideally, hold Shockwave for after Execute. If that is not possible (Shockwave drawn early, need Weak to survive phase 1), accept that the debuffs will be cleansed and plan accordingly.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/pantograph.md</div>
-<div class="diff-hunk">@@ -1,7 +1,7 @@</div>
-<div class="diff-ctx"> # Pantograph</div>
-<div class="diff-del">-EFFECT: Heal to FULL HP at the start of boss fights.</div>
-<div class="diff-del">-HOW IT CHANGES DECISIONS: Game-changing. Removes the need to conserve HP before the boss -- take risky elite fights, spend HP at events, and still enter the boss at full. Changes rest site calculus: ALWAYS Smith (upgrade) before boss when you have Pantograph, since HP doesn&#x27;t matter. One of the best relics in the game.</div>
-<div class="diff-add">+EFFECT: Heal 25 HP at the start of boss fights. NOT a full heal.</div>
-<div class="diff-add">+HOW IT CHANGES DECISIONS: Strong but not game-changing. 25 HP is significant but does not remove the need to manage HP before bosses. Still worth taking risky fights if the 25 HP buffer covers the deficit, but entering a boss at 30% HP with 87 Max HP means healing to ~54% (49+25=74 of 87), not full. Upgrading at rest sites before bosses is still good, but only if the 25 HP heal brings you above a survivable threshold.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-CONFIRMED VALUE: Pantograph enabled the first Act 2 boss victory. The player entered the Guardian fight at 31% HP and healed to full; entered the Collector fight at 57% HP and healed to full. Without Pantograph, both boss fights would have been entered below the 70% HP threshold and likely lost. Pantograph single-handedly bridges the HP sustain gap that kills most runs in Act 2.</div>
-<div class="diff-add">+CRITICAL CORRECTION: Previous entries stated Pantograph heals to FULL HP. This is WRONG. Pantograph heals exactly 25 HP. In Run 71, the player entered The Champ at 49/87 HP expecting a full heal to 87/87. Instead, Pantograph healed only 25 HP to 74/87. The 38 HP deficit (87-49=38, only 25 recovered) contributed directly to the death. Earlier runs where Pantograph appeared to &quot;heal to full&quot; were likely cases where the player entered with a small enough HP deficit that 25 HP happened to bring them near full.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-INTERACTION: With Sozu (no potions), Pantograph becomes even MORE critical -- it is the only reliable full heal in the run. Pantograph + Sozu is a viable combination because the energy from Sozu makes fights faster (less HP drain) and Pantograph recovers all HP at the two most dangerous fights.</div>
-<div class="diff-add">+INTERACTION: With Sozu (no potions), Pantograph is still valuable as a reliable 25 HP heal, but it is NOT a full heal replacement. Plan boss HP thresholds accordingly -- you need to enter bosses at no more than 25 HP below max to benefit fully.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>
