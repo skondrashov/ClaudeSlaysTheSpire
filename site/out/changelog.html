@@ -374,6 +374,83 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Restructure run tracking: per-run files + regen_stats.py</div>
+      <div class="changelog-sha">c3e53345</div>
+    </div>
+    <div class="changelog-date">2026-05-15</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
+<div class="diff-hunk">@@ -35,7 +35,8 @@ Runs after a completed run (victory or defeat). Reads the event log, identifies</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Output directories:</div>
+<div class="diff-ctx"> - `playbook/` — Individual files per card, enemy, boss, event, potion, relic. Plus `mechanics.md` and `strategy.md` for general reference.</div>
+<div class="diff-del">-- `analyst/` — Working notes: `run_log.md` (brief per-run summaries), `observations.md` (uncertain items pending more data)</div>
+<div class="diff-add">+- `analyst/runs/` — One file per run (`run_NNN.md`). Machine-parsed by `regen_stats.py` to generate all stats.</div>
+<div class="diff-add">+- `analyst/observations.md` — Uncertain items pending more data</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> No confidence tags. If it&#x27;s confirmed, it goes in `playbook/`. If uncertain, it goes in `analyst/observations.md`.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -149,10 +150,12 @@ Spawn the **player** as a background subagent (Agent tool, `run_in_background: t</div>
+<div class="diff-ctx"> When the player finishes:</div>
+<div class="diff-ctx"> 1. Delete `data/player.lock`.</div>
+<div class="diff-ctx"> 2. Switch the overlay to agent mode (see below).</div>
+<div class="diff-del">-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/` files.</div>
+<div class="diff-add">+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/runs/run_NNN.md`.</div>
+<div class="diff-ctx"> 4. When analyst completes, switch overlay back to game mode.</div>
+<div class="diff-del">-5. Commit and push playbook changes (triggers site rebuild on claudeslaysthespire.org).</div>
+<div class="diff-del">-6. Spawn the next player.</div>
+<div class="diff-add">+5. Regenerate stats: `python regen_stats.py` (rebuilds `data/run_stats.json` from `analyst/runs/`).</div>
+<div class="diff-add">+6. Rebuild site: `python site/build.py`.</div>
+<div class="diff-add">+7. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
+<div class="diff-add">+8. Spawn the next player.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Repeat until interrupted.</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
+<div class="diff-hunk">@@ -41,20 +41,29 @@ Each subdirectory has an `_index.md` listing all entries. Update it when adding</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> 6. **Adding new entries.** To add a new card/enemy/etc., create a new file in the appropriate subdirectory and update the `_index.md`.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-### `analyst/run_log.md` — Run summaries</div>
+<div class="diff-add">+### `analyst/runs/run_NNN.md` — Individual run files</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Append a brief (5-8 line) structured summary of each run:</div>
+<div class="diff-add">+Create one file per run in `analyst/runs/`. Filename: `run_NNN.md` where NNN is the run number, zero-padded to 3 digits (e.g., `run_169.md`).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The header line format is **machine-parsed by `regen_stats.py`** — follow it exactly:</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ```</div>
+<div class="diff-ctx"> ## Run N — Character AscensionLevel, Outcome Floor F</div>
+<div class="diff-ctx"> DECK: [notable cards]</div>
+<div class="diff-ctx"> RELICS: [notable relics]</div>
+<div class="diff-ctx"> CAUSE OF DEATH: [what killed it] / VICTORY: [boss beaten]</div>
+<div class="diff-del">-KEY MOMENTS: [1-2 important things that happened]</div>
+<div class="diff-del">-LESSONS: [what was learned or confirmed]</div>
+<div class="diff-add">+KEY MOMENTS: [numbered list]</div>
+<div class="diff-add">+LESSONS: [numbered list]</div>
+<div class="diff-ctx"> ```</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-This is for your own tracking. Keep it concise.</div>
+<div class="diff-add">+- Character: `Ironclad`, `The Silent`, `Defect`, or `Watcher`</div>
+<div class="diff-add">+- AscensionLevel: e.g., `A0`, `A1`</div>
+<div class="diff-add">+- Outcome: `Victory`, `Defeat`, or `Death`</div>
+<div class="diff-add">+- Floor: the floor number reached</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Example: `## Run 169 — The Silent A0, Defeat Floor 23`</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Do NOT append to `analyst/run_log.md`** — it is deprecated. Write `analyst/runs/run_NNN.md` instead.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### `analyst/observations.md` — Uncertain items</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Fix all run counters: derive from floor_history, prevent double-counting</div>
       <div class="changelog-sha">9f5fb5a7</div>
     </div>
@@ -10265,100 +10342,6 @@ footer {
 <div class="diff-add">+STRENGTH SCALING IS MANDATORY: Without permanent Strength, you cannot kill the Leader fast enough. In run 98, Mutagenic Strength (+3 Str turn 1 only) enabled 35 damage to Leader on turn 1, but by turn 2 with 0 Str, damage output collapsed. The DPS race against Rally requires at least +2 permanent Strength (Inflame, Spot Weakness, Demon Form) or enough burst cards (Immolate + Heavy Blade + Bash+) to close the fight in 5 turns. Evaluate whether your deck can realistically kill 144 HP in 5-6 turns BEFORE entering this fight.</div>
 <div class="diff-add">+GREMLIN WIZARD PRIORITY: If Gremlin Wizard is present, it charges for a massive 28-damage nuke. Kill it before it fires. In run 98, Thunderclap+ (7 AOE + Vuln) into Pommel Strike+ (15 Vuln damage) = 22 damage exactly killed a 22 HP Wizard on turn 3, preventing 28 damage that would have been instantly fatal. Always check Wizard charge timer and prioritize killing it on the turn before it fires.</div>
 <div class="diff-add">+AVOID: Entering below 60% HP. Entering without potions. Entering without permanent Strength scaling. Exhaust-heavy decks (once Impervious/Shockwave/Disarm are gone, remaining deck is too weak). If below 50% HP, take any alternative path. Decks with reduced Max HP (e.g., post-Vampires at 56 Max HP) have no margin for error against this fight&#x27;s scaling. Wasting turns -- do NOT batch `end` with draw effects like Battle Trance; the drawn cards need to be played that same turn.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 76 analysis: Calipers entry, 2nd SG survival, Impervious+ synergies</div>
-      <div class="changelog-sha">0225213f</div>
-    </div>
-    <div class="changelog-date">2026-05-08</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/cards/impervious.md</div>
-<div class="diff-hunk">@@ -1,11 +1,16 @@</div>
-<div class="diff-del">-# Impervious (2E, Skill, 30 block, Exhaust)</div>
-<div class="diff-del">-Best single-card block in the game. 30 block for 2E.</div>
-<div class="diff-add">+# Impervious (2E, Skill, 30 block | +: 40 block, Exhaust)</div>
-<div class="diff-add">+Best single-card block in the game. 30 block for 2E (40 upgraded). Exhaust after use.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WHEN IT&#x27;S GOOD: Against the biggest attack of the fight. Guardian&#x27;s 32-damage attack (take only 2). Hexaghost Inferno. Transient&#x27;s escalating attacks. Collector&#x27;s post-debuff turns.</div>
-<div class="diff-del">-DECISION POINTS: Save for the biggest incoming hit. Using 30 block on a 16-damage turn is wasteful -- Defends handle that. One-time use means timing matters. Against Gremlin Nob, do NOT play (Skill triggers Enrage).</div>
-<div class="diff-add">+UPGRADE: 30-&gt;40 block. High priority. The extra 10 block is the difference between absorbing a big hit cleanly and taking chip damage. With Calipers, Impervious+ retains 25 block into the next turn vs 15 for unupgraded.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: Against the biggest attack of the fight. Guardian&#x27;s 32-damage attack (take only 2 unupgraded, 0 upgraded). Hexaghost Inferno. Transient&#x27;s escalating attacks. Collector&#x27;s post-debuff turns. Any fight where one turn has dramatically higher incoming damage than others.</div>
-<div class="diff-add">+DECISION POINTS: Save for the biggest incoming hit. Using 30-40 block on a 16-damage turn is wasteful -- Defends handle that. One-time use means timing matters. Against Gremlin Nob, do NOT play (Skill triggers Enrage).</div>
-<div class="diff-ctx"> MATCHUPS: </div>
-<div class="diff-del">-- Guardian -- absorbs the 32-damage attack (take only 2).</div>
-<div class="diff-del">-- Gremlin Leader -- turn 1 opener for 30 block safety.</div>
-<div class="diff-add">+- Guardian -- absorbs the 32-damage attack completely (upgraded takes 0).</div>
-<div class="diff-add">+- Gremlin Leader -- turn 1 opener for 30-40 block safety.</div>
-<div class="diff-ctx"> - Collector -- critical for surviving post-STRONG_DEBUFF turns (40-50+ incoming). Play it on Turn 3 or when Collector attacks hardest.</div>
-<div class="diff-ctx"> - Transient -- absorbs an entire turn of escalating damage. Save for turn 2-3 when damage is highest.</div>
-<div class="diff-del">-- Snake Plant -- 30 block completely absorbs the 7x3=21 multi-hit attack.</div>
-<div class="diff-add">+- Snake Plant -- 30-40 block completely absorbs the 9x3=27 multi-hit attack.</div>
-<div class="diff-add">+- 3 Cultists -- absorbs combined Ritual-scaled attacks on a critical turn. At turn 4 (45 combined), Impervious+ blocks almost all of it.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SYNERGIES: Calipers (Impervious+ retains 25 block next turn, Impervious retains 15 -- transforms a one-shot exhaust card into two turns of defense). Barricade (retained block stacks permanently). Paper Phrog (freed turn from block lets you focus on Vulnerable damage). Spot Weakness (use the safe turn from Impervious to set up Strength).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/3-cultists.md</div>
-<div class="diff-hunk">@@ -17,9 +17,9 @@ WHAT THIS MEANS: Turn 1 is free -- use it for Powers (Metallicize, Inflame) and</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> KILL PRIORITY: Kill one Cultist ASAP. Reducing from 3 to 2 cuts incoming by 33%. Reducing to 1 makes the fight trivial. Each turn a Cultist stays alive, it gets permanently stronger.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-BENCHMARKS: **Enter with 50%+ HP MINIMUM -- this is a hard threshold, not a guideline.** Three deaths occurred at 30%, 37%, and 39% HP entry. Even with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage in the deck, the fight was fatal at 30% because the deck&#x27;s scaling engine (Demon Form + Limit Break, or Rampage) needs 4-5 turns to kill all three, and the combined incoming damage overwhelms block capacity at low HP. The math is simple: if you cannot survive 4 turns of 18-27 combined damage per turn (after Weak), you die.</div>
-<div class="diff-add">+BENCHMARKS: **Enter with 50%+ HP MINIMUM -- this is a hard threshold, not a guideline.** Four encounters confirm this: three deaths at 30%, 37%, and 39% HP entry, and a fourth at 53% HP where Ritual scaling outpaced blocking despite Immolate (AOE), Impervious+ (40 block), and Calipers (block retention). Even strong defensive tools cannot compensate for low HP entry because the fight demands both burst kill speed AND sustained block for 4-6 turns simultaneously. The math is simple: if you cannot survive 4 turns of 18-27 combined damage per turn (after Weak), you die.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WHY DECKS FAIL HERE: Slow scaling engines (Demon Form, Limit Break) need 2-3 free setup turns that do not exist at low HP. Even fast scaling (Rampage) killed one Cultist but could not finish the second before combined damage was lethal. The fight demands BOTH burst damage AND sustained block for 4-6 turns simultaneously.</div>
-<div class="diff-add">+WHY DECKS FAIL HERE: Slow scaling engines (Demon Form, Limit Break) need 2-3 free setup turns that do not exist at low HP. Even fast scaling (Rampage) killed one Cultist but could not finish the second before combined damage was lethal. Even strong block tools (Impervious+, Calipers) only delay the inevitable if kill speed is insufficient -- Ritual scaling is +9 combined Str/turn, and block generation cannot keep pace past turn 5-6. The fight demands BOTH burst damage AND sustained block for 4-6 turns simultaneously. Without a healing card, HP attrition from earlier Act 2 fights (Spheric Guardian, Looter/Mugger) frequently pushes entry HP below the 50% threshold.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> BRING: Shockwave+ (MUST play on first attack turn), Powers for free turn setup (Inflame, Metallicize), single-target burst for focus fire (Rampage, Fiend Fire, Iron Wave+), immediate block (Defend, Ghostly Armor).</div>
-<div class="diff-ctx"> AVOID: Entering below 50% HP (three deaths confirm this). Delaying Shockwave+ past the first attack turn. Spreading damage across all 3 instead of focus-firing. Using numeric card indices (index shifting has caused fatal misplays in this fight). Relying solely on slow scaling (Demon Form) without fast burst to complement it.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/spheric-guardian.md</div>
-<div class="diff-hunk">@@ -14,6 +14,8 @@ FRAIL 5 INTERACTION: Frail 5 reduces block from ALL sources by 25%. Defend gives</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> DEMON FORM IS TOO SLOW: Even 13 Str by turn 9 lost to 65+ Barricade block (Run 75). By the time Demon Form ramps, block is insurmountable. Front-loaded Strength (Inflame, Spot Weakness, Limit Break) or burst damage is required.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WINNING FORMULA: Corruption + Feel No Pain engine (first survival, Run 76, only 12 HP lost). Free Skills + FNP block generation + burst damage broke through Barricade before it stacked. Alternatively: front-loaded Str (Inflame/Spot Weakness) + burst (Fiend Fire, Bludgeon) + potions.</div>
-<div class="diff-add">+WINNING FORMULA: Corruption + Feel No Pain engine (first survival, only 12 HP lost). Free Skills + FNP block generation + burst damage broke through Barricade before it stacked. Second survival: Immolate (AOE burst) + Impervious+ (40 block) + Calipers (block retention) + Spot Weakness (front-loaded Str) -- only 20 HP lost. The common thread: front-loaded damage output that breaks through Barricade block before it stacks to 60+. Alternatively: front-loaded Str (Inflame/Spot Weakness) + burst (Fiend Fire, Bludgeon) + potions.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WARNING: Single most dangerous Act 2 hallway fight. 4 deaths confirmed (at 26%, 43%, 47%, and 100% HP entry). 1 survival (Corruption+FNP). Key death causes: Demon Form too slow, Brutality self-damage in long fight, Rage+ expiring at end of turn, zero potions, Reaper useless (all damage absorbed by block = zero healing). Potions are critical -- entering with zero potions at any HP is near-certain death without Corruption+FNP engine.</div>
-<div class="diff-add">+CALIPERS INTERACTION: Calipers retains 15 block between turns, partially countering the Frail-reduced blocking problem. Impervious+ (40 block) retains 25 next turn with Calipers, providing substantial defense even under Frail. This combination significantly reduces HP loss from the 10x2 attack turns.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WARNING: Single most dangerous Act 2 hallway fight. 4 deaths confirmed (at 26%, 43%, 47%, and 100% HP entry). 2 survivals (Corruption+FNP engine; Immolate+Impervious++Calipers+Spot Weakness). Key death causes: Demon Form too slow, Brutality self-damage in long fight, Rage+ expiring at end of turn, zero potions, Reaper useless (all damage absorbed by block = zero healing). Potions are critical -- entering with zero potions at any HP is near-certain death without Corruption+FNP engine or equivalent burst+defense combo.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
-<div class="diff-hunk">@@ -49,6 +49,7 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Rare Relics</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+- [Calipers](calipers.md)</div>
-<div class="diff-ctx"> - [Pantograph](pantograph.md)</div>
-<div class="diff-ctx"> - [Golden Idol](golden-idol.md)</div>
-<div class="diff-ctx"> - [Lizard Tail](lizard-tail.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/calipers.md</div>
-<div class="diff-hunk">@@ -0,0 +1,16 @@</div>
-<div class="diff-add">+# Calipers (Rare Relic)</div>
-<div class="diff-add">+At the start of each turn, block decays by 15 instead of fully expiring. If you have 20 block at end of turn, you start next turn with 5 block.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHY IT&#x27;S GOOD: Turns any large block turn into sustained defense. Impervious+ (40 block) leaves 25 block retained next turn. Stacking multiple block cards in one turn carries meaningful defense forward. Eliminates the &quot;wasted block&quot; problem where overblocking a small attack loses the excess.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+MATH EXAMPLES:</div>
-<div class="diff-add">+- Impervious+ (40 block): 25 retained next turn.</div>
-<div class="diff-add">+- Impervious (30 block): 15 retained next turn.</div>
-<div class="diff-add">+- Shrug It Off + 2 Defends (18 block): 3 retained next turn.</div>
-<div class="diff-add">+- Any block &gt; 15 in excess of incoming damage carries forward.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SYNERGIES: Impervious/Impervious+ (huge single-turn block retains massive amounts), Metallicize (passive block stacks with retention), Barricade (redundant -- Barricade already retains all block, Calipers adds nothing), any deck that generates more block than needed on defend turns. Strongest in fights with alternating high/low damage turns where you can stack block on low turns and retain it for high turns.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+ANTI-SYNERGIES: Barricade makes Calipers redundant. Decks that generate exactly 5-15 block per turn see no benefit (all decays away).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+EVALUATION: Strong rare relic. Best in decks with Impervious or other large block sources. Turns burst block into sustained defense. Does NOT replace the need for healing -- retained block only helps if you have block to retain.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>
