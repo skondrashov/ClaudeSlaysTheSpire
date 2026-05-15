@@ -91,40 +91,6 @@ def _save_live_state():
 run_stats = _load_stats()
 
 
-def _write_run_log(run_number: int, gs: dict, victory: bool):
-    """Write structured run log to analyst/runs/run_NNN.json from game state.
-
-    This is the authoritative run record — written programmatically from game
-    data, not by an LLM. The analyst reads it but never writes it.
-    """
-    runs_dir = os.path.join(os.path.dirname(__file__), "analyst", "runs")
-    os.makedirs(runs_dir, exist_ok=True)
-
-    deck = [c.get("name", "?") for c in gs.get("deck", [])]
-    relics = [r.get("name", "?") for r in gs.get("relics", [])]
-    potions = [p.get("name", "Empty") for p in gs.get("potions", []) if p.get("name")]
-
-    run_data = {
-        "run": run_number,
-        "character": gs.get("class", "UNKNOWN"),
-        "ascension": gs.get("ascension_level", 0),
-        "victory": victory,
-        "floor": gs.get("floor", 0),
-        "deck": deck,
-        "relics": relics,
-        "potions": potions,
-        "gold": gs.get("gold", 0),
-        "hp": gs.get("current_hp", 0),
-        "max_hp": gs.get("max_hp", 0),
-        "seed": gs.get("seed"),
-    }
-
-    path = os.path.join(runs_dir, f"run_{run_number:03d}.json")
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(run_data, f, indent=2)
-    print(f"[stream] Wrote run log: {path}")
-
-
 def _archive_run(run_number: int, victory: bool, floor: int, cls: str):
     """Archive current run's event log to data/runs/run_NNN.jsonl and reset."""
     os.makedirs(RUNS_DIR, exist_ok=True)
@@ -293,16 +259,18 @@ async def state_watcher():
                             await _broadcast_stats()
 
                         # Detect game over (only process once per run)
-                        # Run log is written by relay.py (sees every state, no race).
+                        # Run log is written by cmd.py (detects GAME_OVER in send()).
                         # Stream.py just reloads stats and broadcasts.
                         if screen == "GAME_OVER" and not game_over_handled:
                             game_over_handled = True
                             if not run_counted:
                                 run_counted = True
                             victory = ss.get("victory", False)
-                            run_number = run_stats.get("total_runs", 0) + 1
-                            # Reload stats (relay.py already wrote run log + ran regen)
+                            # Reload stats (cmd.py already wrote run log + ran regen)
                             _reload_stats()
+                            # Get actual run number from reloaded floor_history
+                            fh = run_stats.get("floor_history", [])
+                            run_number = fh[-1]["run"] if fh else run_stats.get("total_runs", 0)
                             _save_live_state()
                             await broadcast({
                                 "type": "run_end",
@@ -526,7 +494,7 @@ class DecisionHandler(BaseHTTPRequestHandler):
             chars = {}
             for cls, cs in char_stats.items():
                 chars[cls] = {
-                    "runs": cs.get("runs_tracked", 0),
+                    "runs": cs.get("runs", cs.get("runs_tracked", 0)),
                     "best_asc": 0,
                     "best_win": cs.get("wins", 0) > 0,
                     "best_floor": cs.get("best_floor", 0),

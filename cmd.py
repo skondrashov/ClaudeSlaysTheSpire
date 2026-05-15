@@ -17,6 +17,7 @@ Usage from Claude Code:
 import json
 import os
 import socket
+import subprocess
 import sys
 import time
 import urllib.request
@@ -27,11 +28,16 @@ HOST = "127.0.0.1"
 PORT = 19284
 TIMEOUT = 120  # seconds — long timeout for slow animations
 STREAM_URL = "http://127.0.0.1:3002/decision"
-LOCK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "player.lock")
-PLAYBOOK_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "playbook")
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOCK_FILE = os.path.join(_BASE_DIR, "data", "player.lock")
+PLAYBOOK_DIR = os.path.join(_BASE_DIR, "playbook")
+RUNS_DIR = os.path.join(_BASE_DIR, "analyst", "runs")
+STATS_FILE = os.path.join(_BASE_DIR, "data", "run_stats.json")
 
-# Direct event log — backup for when stream.py is down.
-EVENT_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "stream_events.jsonl")
+# Direct event log — cmd.py is the single writer. stream.py reads this for
+# real-time overlay display. On GAME_OVER, cmd.py reads it to build the
+# permanent run JSON.
+EVENT_LOG = os.path.join(_BASE_DIR, "data", "stream_events.jsonl")
 
 # Session token: passed via PLAYER_SESSION env var by the orchestrator.
 # All bash calls from one agent use the same token. The lock checks this.
@@ -655,6 +661,201 @@ def _log_event(event: dict):
         pass
 
 
+def _snapshot(raw: dict) -> dict:
+    """Extract a compact state snapshot from raw game state for logging."""
+    gs = raw.get("game_state") or {}
+    snap = {
+        "floor": gs.get("floor"),
+        "hp": gs.get("current_hp"),
+        "max_hp": gs.get("max_hp"),
+        "gold": gs.get("gold"),
+        "screen": gs.get("screen_type"),
+    }
+    combat = gs.get("combat_state")
+    if combat:
+        player = combat.get("player") or {}
+        snap["block"] = player.get("block", 0)
+        snap["energy"] = player.get("energy", 0)
+        snap["hand"] = [c.get("name", "?") for c in combat.get("hand", [])]
+        snap["enemies"] = [
+            {"name": m.get("name"), "hp": m.get("current_hp"), "intent": m.get("intent")}
+            for m in combat.get("monsters", []) if not m.get("is_gone")
+        ]
+        snap["orbs"] = [
+            {"name": o.get("name"), "passive": o.get("passive_amount"), "evoke": o.get("evoke_amount")}
+            for o in combat.get("orbs", [])
+        ] if combat.get("orbs") else None
+    return {k: v for k, v in snap.items() if v is not None}
+
+
+def _log_result(raw: dict):
+    """Log the game state after a command executes."""
+    event = {
+        "type": "result",
+        "state": _snapshot(raw),
+        "timestamp": time.time(),
+    }
+    _log_event(event)
+
+
+# ---------------------------------------------------------------------------
+# Run capture — writes permanent run JSON on GAME_OVER
+# ---------------------------------------------------------------------------
+
+_game_over_handled = False
+
+
+def _get_next_run_number() -> int:
+    """Get the next run number by finding the highest existing run file.
+
+    Looks at actual filenames in analyst/runs/ to avoid collisions.
+    Run numbers have gaps (from migration), so total_runs != max run number.
+    """
+    import glob as _glob
+    existing = _glob.glob(os.path.join(RUNS_DIR, "run_*.json"))
+    if not existing:
+        return 1
+    max_num = 0
+    for path in existing:
+        name = os.path.basename(path)
+        try:
+            num = int(name.replace("run_", "").replace(".json", ""))
+            max_num = max(max_num, num)
+        except ValueError:
+            continue
+    return max_num + 1
+
+
+def _read_events_for_run() -> list:
+    """Read all events from stream_events.jsonl for the run log.
+
+    Returns decision, result, plan, and feed events — the complete record
+    of everything the player did and what happened.
+    """
+    events = []
+    try:
+        with open(EVENT_LOG, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    e = json.loads(line)
+                    t = e.get("type")
+                    if t == "decision":
+                        events.append({
+                            "type": "decision",
+                            "command": e.get("command", ""),
+                            "translated": e.get("translated", ""),
+                            "reasoning": e.get("reasoning", ""),
+                        })
+                    elif t == "result":
+                        events.append({
+                            "type": "result",
+                            "state": e.get("state", {}),
+                        })
+                    elif t == "plan":
+                        events.append({
+                            "type": "plan",
+                            "mode": e.get("mode", ""),
+                            "summary": e.get("summary", ""),
+                        })
+                    elif t == "feed":
+                        events.append({
+                            "type": "feed",
+                            "text": e.get("text", ""),
+                        })
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        pass
+    return events
+
+
+def _write_run_log(gs: dict, victory: bool):
+    """Write structured run log to analyst/runs/run_NNN.json.
+
+    Includes full game state (deck, relics, potions, HP, gold, seed) plus
+    every decision and its result from the event log.
+    """
+    run_number = _get_next_run_number()
+    os.makedirs(RUNS_DIR, exist_ok=True)
+
+    deck = [c.get("name", "?") for c in gs.get("deck", [])]
+    relics = [r.get("name", "?") for r in gs.get("relics", [])]
+    potions = [p.get("name", "Empty") for p in gs.get("potions", []) if p.get("name")]
+    events = _read_events_for_run()
+
+    run_data = {
+        "run": run_number,
+        "character": gs.get("class", "UNKNOWN"),
+        "ascension": gs.get("ascension_level", 0),
+        "victory": victory,
+        "floor": gs.get("floor", 0),
+        "deck": deck,
+        "relics": relics,
+        "potions": potions,
+        "gold": gs.get("gold", 0),
+        "hp": gs.get("current_hp", 0),
+        "max_hp": gs.get("max_hp", 0),
+        "seed": gs.get("seed"),
+        "events": events,
+    }
+
+    path = os.path.join(RUNS_DIR, f"run_{run_number:03d}.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(run_data, f, indent=2)
+
+    # Regenerate stats
+    try:
+        regen = os.path.join(_BASE_DIR, "regen_stats.py")
+        subprocess.run([sys.executable, regen], cwd=_BASE_DIR,
+                       timeout=10, capture_output=True)
+    except Exception:
+        pass
+
+    # Tell stream.py to reload stats
+    try:
+        req = urllib.request.Request(
+            "http://127.0.0.1:3002/reload",
+            method="POST",
+            headers={"Content-Type": "application/json"},
+        )
+        urllib.request.urlopen(req, timeout=5)
+    except Exception:
+        pass
+
+    return run_number, path
+
+
+def _check_game_over(raw: dict):
+    """Check if the game just ended. If so, write the run log.
+
+    Called after every send(). Only fires once per run — the flag resets
+    when a non-GAME_OVER screen is seen.
+    """
+    global _game_over_handled
+    gs = raw.get("game_state") or {}
+    screen = gs.get("screen_type")
+
+    if screen == "GAME_OVER" and not _game_over_handled:
+        _game_over_handled = True
+        ss = gs.get("screen_state", {})
+        victory = ss.get("victory", False)
+        try:
+            run_num, path = _write_run_log(gs, victory)
+            outcome = "VICTORY" if victory else "DEFEAT"
+            print(f"\n{'='*50}", file=sys.stderr)
+            print(f"  RUN {run_num} — {outcome} (floor {gs.get('floor', '?')})", file=sys.stderr)
+            print(f"  Saved to {path}", file=sys.stderr)
+            print(f"{'='*50}\n", file=sys.stderr)
+        except Exception as e:
+            print(f"[cmd] Failed to write run log: {e}", file=sys.stderr)
+    elif screen != "GAME_OVER" and _game_over_handled:
+        # Reset for next run
+        _game_over_handled = False
+
+
 def _post_decision(command: str, reasoning: str = "", translated_override: str = None,
                     skip_feed: bool = False):
     """Post decision to stream server AND log directly to file."""
@@ -790,6 +991,8 @@ def send(command: str, reason: str = "") -> str:
     _post_decision(resolved, reason)
     raw = _tcp_request({"type": "command", "command": resolved})
     _last_raw_state = raw  # Update cache
+    _log_result(raw)
+    _check_game_over(raw)
 
     # Auto-handle mechanical transitions (gold, chests, shop wait)
     raw = _auto_handle_mechanical(raw)

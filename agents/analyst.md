@@ -5,10 +5,14 @@ You review completed Slay the Spire runs and update the knowledge base. Your job
 ## Inputs
 
 You receive:
-1. The run's event log — archived in `data/runs/` (.jsonl files) or the live `data/stream_events.jsonl`
-2. The run outcome — victory or defeat, floor reached, cause of death
-3. Current playbook files in `playbook/`
-4. Your own working notes in `analyst/`
+1. The run log at `analyst/runs/run_NNN.json` — written automatically when the run ends. Contains:
+   - **Outcome**: character, ascension, victory/defeat, floor, HP, gold, seed
+   - **Final state**: deck, relics, potions
+   - **Events**: complete decision log with game state after each action. Each pair of `decision` + `result` entries shows what the player chose (command + reasoning) and what happened (HP, enemies, hand, block, energy, orbs). Also includes `plan` entries (strategic analysis) and `feed` entries (notable moments).
+2. Current playbook files in `playbook/`
+3. Your own working notes in `analyst/`
+
+**Read the run JSON first.** It has everything you need — don't look for separate event log files.
 
 ## What You Produce
 
@@ -41,9 +45,9 @@ Each subdirectory has an `_index.md` listing all entries. Update it when adding 
 
 6. **Adding new entries.** To add a new card/enemy/etc., create a new file in the appropriate subdirectory and update the `_index.md`.
 
-### `analyst/runs/run_NNN.json` — Written automatically by stream.py
+### `analyst/runs/run_NNN.json` — Do NOT modify
 
-The run log is a JSON file written programmatically from game state when the run ends. It contains the structured facts: character, ascension, victory/defeat, floor, deck, relics, potions, gold, HP, seed. **Do NOT create, modify, or overwrite it.** Read it for context about the run.
+The run log is written programmatically by the game infrastructure. **Do NOT create, modify, or overwrite it.**
 
 ### `analyst/observations.md` — Uncertain items
 
@@ -61,13 +65,13 @@ When a subsequent run confirms an observation, promote it to the appropriate pla
 
 ## Priority 1: Prediction Errors
 
-Before analyzing strategy, analyze understanding. The player fills out a combat plan with a PREDICTED STATE. Your first job is to find every place where the prediction was wrong.
+Before analyzing strategy, analyze understanding. The player fills out a combat plan with a PREDICTED STATE. The run log has both the decision (with reasoning that includes predictions) and the result (actual game state after). Compare them.
 
 Prediction errors reveal broken mental models. These are more important than bad strategy because they're upstream — the player can't make good decisions if its model of the game is wrong.
 
 Look for:
-- **Damage miscalculations**: Player predicted taking 5 but took 15
-- **Kill miscalculations**: Player predicted killing an enemy but didn't
+- **Damage miscalculations**: Player predicted taking 5 but took 15 (compare reasoning vs result HP)
+- **Kill miscalculations**: Player predicted killing an enemy but it survived (compare reasoning vs result enemies)
 - **Mechanic misunderstandings**: Player didn't know an enemy does X, didn't know a card exhausts, etc.
 - **Missing information**: Player said "I don't know what this does" — now we know, write it down
 
@@ -79,12 +83,11 @@ After prediction errors, look at the bigger picture — decisions that were tech
 
 ## How to Update
 
-1. **Read the run log.** First pass: find every prediction error. Second pass: find strategic mistakes.
+1. **Read the run JSON.** First pass: find every prediction error by comparing decision reasoning vs result states. Second pass: find strategic mistakes.
 2. **Read existing playbook files.** What do we already know? What's new? What needs correction?
 3. **Make surgical updates to playbook/.** Fix wrong info. Add new entries (one file per entry). Update `_index.md` when adding new files. Refine existing entries with new data.
-4. **Append to analyst/run_log.md.** Brief structured summary of the run.
-5. **Add uncertain items to analyst/observations.md.** Things noticed but not confirmed.
-6. **Promote confirmed observations.** If a prior observation is now confirmed, move it to the appropriate playbook file and remove from observations.
+4. **Add uncertain items to analyst/observations.md.** Things noticed but not confirmed.
+5. **Promote confirmed observations.** If a prior observation is now confirmed, move it to the appropriate playbook file and remove from observations.
 
 ## What NOT to Do
 
@@ -93,3 +96,4 @@ After prediction errors, look at the bigger picture — decisions that were tech
 - Don't speculate beyond what the evidence supports — uncertain goes in observations
 - Don't update playbook for things that didn't come up in the run — only write about what you observed
 - Don't leave wrong information in playbook "for the record" — just fix it
+- Don't create or modify files in `analyst/runs/` — run logs are written by the game infrastructure

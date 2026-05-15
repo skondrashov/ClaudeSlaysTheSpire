@@ -73,6 +73,12 @@
 - [Sweeping Beam](sweeping-beam.md)
 - [Cold Snap](cold-snap.md)
 - [Barrage](barrage.md)
+- [Doom and Gloom](doom-and-gloom.md)
+- [Beam Cell](beam-cell.md)
+- [FTL](ftl.md)
+- [Blizzard](blizzard.md)
+- [Claw](claw.md)
+- [Melter](melter.md)
 
 ## Defect Skill Cards
 
@@ -80,6 +86,16 @@
 - [Leap](leap.md)
 - [Fission](fission.md)
 - [Aggregate](aggregate.md)
+- [Seek](seek.md)
+- [Chill](chill.md)
+- [Overclock](overclock.md)
+
+## Defect Power Cards
+
+- [Echo Form](echo-form.md)
+- [Loop](loop.md)
+- [Capacitor](capacitor.md)
+- [Machine Learning](machine-learning.md)
 
 ## Colorless Cards
 

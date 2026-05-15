@@ -374,6 +374,288 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 171 analysis + relay.py auto-writes run logs on GAME_OVER</div>
+      <div class="changelog-sha">f76ed7a6</div>
+    </div>
+    <div class="changelog-date">2026-05-15</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
+<div class="diff-hunk">@@ -71,11 +71,15 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Compile Driver](compile-driver.md)</div>
+<div class="diff-ctx"> - [Sweeping Beam](sweeping-beam.md)</div>
+<div class="diff-add">+- [Cold Snap](cold-snap.md)</div>
+<div class="diff-add">+- [Barrage](barrage.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Defect Skill Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Coolheaded](coolheaded.md)</div>
+<div class="diff-ctx"> - [Leap](leap.md)</div>
+<div class="diff-add">+- [Fission](fission.md)</div>
+<div class="diff-add">+- [Aggregate](aggregate.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Colorless Cards</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/aggregate.md</div>
+<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
+<div class="diff-add">+# Aggregate (1E, Skill, Gain Energy equal to floor(cards in draw pile / 4) | +: Gain Energy equal to floor(cards in draw pile / 3))</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect uncommon Skill. Generates energy based on the number of cards remaining in the draw pile.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Energy burst card that enables big turns. With 12 cards in the draw pile, Aggregate generates 3 Energy (12/4=3). This effectively makes the turn a 6-Energy turn (3 base + 3 from Aggregate), allowing multiple expensive cards to be played. Best played early in the turn before drawing cards reduces the draw pile count.</div>
+<div class="diff-add">+DECISION POINTS: Play at the start of your turn when the draw pile is largest. Every 4 cards drawn or exhausted before playing Aggregate reduces the Energy gain by 1. In a 17-card deck drawing 7 (Snecko Eye), the draw pile has ~10 cards on Turn 1, yielding 2 Energy (10/4=2). On Turn 2, after discarding and reshuffling, the pile is larger.</div>
+<div class="diff-add">+UPGRADE: Divisor changes from 4 to 3. With 12 cards in draw pile: 3E unupgraded vs 4E upgraded. Significant improvement.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SNECKO EYE SYNERGY: Snecko Eye draws 7 cards per turn instead of 5, which slightly reduces the draw pile size. However, the extra energy from Aggregate fuels the extra cards drawn. When Snecko Eye randomizes expensive cards to high costs, Aggregate provides the energy to play them anyway.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+TIMING: Play first each turn (before other draw effects reduce the draw pile). Do NOT play Coolheaded or Compile Driver before Aggregate -- each card drawn shrinks the draw pile and reduces Aggregate&#x27;s output.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/barrage.md</div>
+<div class="diff-hunk">@@ -0,0 +1,13 @@</div>
+<div class="diff-add">+# Barrage (2E, Attack, 4 damage per channeled orb | +: 5 damage per channeled orb)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Attack. Deals 4 damage times the number of currently channeled orbs to a target enemy.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: The Defect&#x27;s primary scaling Attack. With 5 orb slots filled, Barrage deals 20 damage (25 upgraded) for 2E. This scales directly with Capacitor (more orb slots) and any card/relic that fills orbs (Coolheaded, Zap, Cold Snap, Glacier). Barrage is an Attack card, so it is safe against Gremlin Nob.</div>
+<div class="diff-add">+DECISION POINTS: Play after filling orb slots for maximum value. With 1 orb, Barrage deals only 4 damage for 2E (terrible). With 5 orbs, it deals 20 damage for 2E (excellent). Always channel orbs before playing Barrage.</div>
+<div class="diff-add">+UPGRADE: 4 -&gt; 5 damage per orb. At 5 orbs, this is 20 -&gt; 25 damage. High upgrade value.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SNECKO EYE SYNERGY: Snecko Eye can randomize Barrage to 0E, making it free 20+ damage. Even at 1E, Barrage is well above rate. At 3E it is overcosted. The variance is worth it because Barrage&#x27;s ceiling is extremely high.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NECRONOMICON SYNERGY: If Barrage costs 2+ energy (its base cost or via Snecko randomization), Necronomicon makes it play twice. With 5 Frost orbs, that is 40 damage for a single card play. This is one of the highest single-card damage outputs available to the Defect.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EARLY DEFECT PRIORITY: Moderate. Barrage is weak early when orb slots are mostly empty (3 slots, often 0-1 filled). It becomes strong once Capacitor, Coolheaded, and Focus cards create a full orb board. Take it in Act 1 if the deck already has orb-channeling cards.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/cold-snap.md</div>
+<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
+<div class="diff-add">+# Cold Snap (1E, Attack, 6 damage + Channel 1 Frost | +: 9 damage + Channel 1 Frost)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Attack. Deals 6 damage to a target enemy and channels 1 Frost orb.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Dual-purpose Attack that provides both damage and defense in one card. The Frost orb gives 2 passive block per turn (more with Focus), making Cold Snap a sustained-value card. As an Attack, it is safe against Gremlin Nob. Excellent early Defect pickup because it addresses the Attack deficit while building Frost orb defense.</div>
+<div class="diff-add">+DECISION POINTS: Play on the highest-priority damage target. The Frost orb channels regardless of whether the damage kills the target. In Frost-heavy builds, Cold Snap fills orb slots that fuel Barrage (4 damage per orb) and provide passive block.</div>
+<div class="diff-add">+UPGRADE: 6 -&gt; 9 damage. Solid damage increase. Upgrade priority is moderate -- the Frost channel is the primary value.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NECRONOMICON INTERACTION: When Cold Snap costs 2+ energy (naturally or via Snecko Eye randomization) and Necronomicon triggers, it plays twice -- dealing double damage AND channeling two Frost orbs. This is extremely high value because it advances both offense and defense simultaneously.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EARLY DEFECT PRIORITY: High. One of the best early Defect pickups because it is an Attack (Nob protection) that also builds Frost orb defense. Take it when offered in Act 1.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/fission.md</div>
+<div class="diff-hunk">@@ -0,0 +1,20 @@</div>
+<div class="diff-add">+# Fission (0E, Skill, Remove ALL orbs. Gain 1 Energy + Draw 1 per orb removed | +: EVOKE ALL orbs. Gain 1 Energy + Draw 1 per orb evoked)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect uncommon Skill. Removes all channeled orbs and grants 1 Energy and 1 card draw per orb removed.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CRITICAL UPGRADE DIFFERENCE:</div>
+<div class="diff-add">+- **Unupgraded Fission: REMOVES orbs WITHOUT evoking them.** The orbs vanish. No Frost block, no Lightning damage, no Dark burst. The orbs are simply deleted. You still gain the Energy and draws, but the orb effects are lost entirely.</div>
+<div class="diff-add">+- **Fission+: EVOKES all orbs, triggering their evoke effects.** Frost orbs grant block, Lightning orbs deal damage, Dark orbs fire their accumulated damage. Then you gain Energy and draws on top. This is a massive burst play.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+THIS IS ONE OF THE MOST IMPORTANT UPGRADES IN THE DEFECT&#x27;S CARD POOL. Unupgraded Fission is a trap in Frost-heavy decks: it destroys the Frost orbs providing passive block without generating any evoke block, leaving the player defenseless. Upgraded Fission+ is one of the strongest burst cards in the game.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD (UPGRADED): Fission+ with 5 orbs = 5 Frost evokes (25 block), 5 Energy, 5 draws. This is a massive defensive burst AND enables playing the drawn cards with the gained energy. The ceiling is enormous.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S BAD (UNUPGRADED): Destroys orb-based defense for Energy and draws that may not compensate. Playing unupgraded Fission with 3 Frost orbs deletes 6 passive block per turn and 15 evoke block, getting only 3E and 3 draws in return. If those draws do not include sufficient block cards, the player takes the full incoming damage. This exact scenario caused significant HP loss in a Snake Plant fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS:</div>
+<div class="diff-add">+- **Never play unupgraded Fission when Frost orbs are providing critical block** unless the Energy and draws will enable a lethal turn.</div>
+<div class="diff-add">+- **Upgraded Fission+ is a burst finisher.** Use it when the evoke effects plus the Energy/draws enable killing the enemy or generating massive block.</div>
+<div class="diff-add">+- At 0 orbs, Fission does nothing. At 1 orb, the payoff is minimal. Fission shines at 3+ orbs.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE PRIORITY: Extremely high. This is a top-3 Defect upgrade target. The difference between removing and evoking is the difference between destroying your own defense and generating a massive burst turn.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-nob.md</div>
+<div class="diff-hunk">@@ -18,4 +18,12 @@ DECK COMPOSITION WARNING: Before pathing into a potential Nob fight, count Attac</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> SILENT-SPECIFIC WARNING: The Silent&#x27;s starter deck and most early picks (Defend x5, Survivor, Backflip, Leg Sweep, Piercing Wail, Blade Dance) are Skills. A typical early Silent deck has 9+ Skills vs 5 Attacks. Even &quot;careful&quot; play forces 5-7 Skill triggers across a 7-turn fight because: (a) pure-Attack hands are rare (2-3 Attacks in 5-card draw), (b) survival requires playing block Skills when Nob attacks for 20+, (c) Blade Dance generates Shiv Attacks but is itself a Skill that triggers Enrage. Confirmed: a Silent deck at full HP played 7 Skills across 7 turns, giving Nob +14 Str, costing 28 HP. When Hexaghost is the boss, do NOT waste Piercing Wail on Nob -- save it for Inferno. Use Strength Potion, Explosive Potion, or Fire Potion for Nob damage instead of Skill-based defense.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-DEFECT-SPECIFIC WARNING: The Defect has the most Skill-heavy starting deck of any character: 6 Skills (4 Defend + Zap + Dualcast) vs 4 Attacks (4 Strike). Adding Coolheaded (a common early pickup) makes it 7 Skills vs 4 Attacks. Both Zap (0E) and Dualcast (1E) are Skills that trigger Enrage. Gremlin Nob is the Defect&#x27;s WORST elite matchup. Do NOT path into a Nob fight unless the deck has picked up multiple Attack cards (Compile Driver, Sweeping Beam, Ball Lightning, etc.) to rebalance the ratio. Even with Horn Cleat providing 14 free block on Turn 2, the fight drains most of the Defect&#x27;s HP at early floors.</div>
+<div class="diff-add">+DEFECT-SPECIFIC WARNING: The Defect has the most Skill-heavy starting deck of any character: 6 Skills (4 Defend + Zap + Dualcast) vs 4 Attacks (4 Strike). Adding Coolheaded (a common early pickup) makes it 7 Skills vs 4 Attacks. Both Zap (0E) and Dualcast (1E) are Skills that trigger Enrage. Gremlin Nob is the Defect&#x27;s WORST elite matchup. Do NOT path into a Nob fight unless the deck has picked up multiple Attack cards (Compile Driver, Sweeping Beam, Ball Lightning, Cold Snap, etc.) to rebalance the ratio. Even with Horn Cleat providing 14 free block on Turn 2, the fight drains most of the Defect&#x27;s HP at early floors.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEFECT NICHE TACTICS VS NOB:</div>
+<div class="diff-add">+- **Cold Snap is the Defect&#x27;s best Nob card**: It is an Attack (no Enrage trigger) that also channels a Frost orb for passive block. The orb-based defense does not trigger Enrage because orb passives are not card plays.</div>
+<div class="diff-add">+- **Barrage scales with orbs**: With 3+ orbs, Barrage deals 12+ damage as an Attack. Fill orb slots with Cold Snap and Zap (on Turn 1 before Bellow), then use Barrage for burst damage.</div>
+<div class="diff-add">+- **Turn 1 is free**: Nob always Bellows Turn 1. Skills played BEFORE Bellow do not trigger Enrage because Enrage is not yet active. Use Turn 1 to play Zap, Aggregate, Coolheaded, and Defend freely -- this is the only safe turn for Skills.</div>
+<div class="diff-add">+- **Frost passive block does not trigger Enrage**: Frost orbs generate block passively at end of turn. This block is free and scales with Focus. Channel Frost orbs early (Turn 1 Zap, Cold Snap) to get passive block every turn without playing Skills.</div>
+<div class="diff-add">+- **Aggregate and Fission are Skills**: Both trigger Enrage after Turn 1. Plan energy carefully -- Aggregate&#x27;s energy gain may not offset the +2 Str Nob gains.</div>
+<div class="diff-add">+- **Necronomicon does not save a Skill-heavy hand**: Even with Necronomicon doubling a 2+ cost Attack, if the remaining 4-6 cards in hand are all Skills, the turn is still terrible. Nob punishes deck composition, not individual card power.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/colosseum.md</div>
+<div class="diff-hunk">@@ -10,10 +10,17 @@ MECHANICS:</div>
+<div class="diff-ctx"> - This is a FORCED COMBAT event. Juzu Bracelet does NOT prevent it (Juzu prevents monster encounters in Unknown rooms, but Colosseum is an event with forced combat, not a monster room).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> DECISION POINTS:</div>
+<div class="diff-del">-- **[COWARDICE] is correct at low HP.** If HP is below 40% after Wave 1, escaping is the right call. Wave 2 rewards are not worth dying before the boss. Run 110: escaped at 27/83 (32%) after Wave 1 -- correct decision, but the HP drain from Wave 1 (37-&gt;27) contributed to entering the Act 2 boss at only 57% HP, which proved fatal.</div>
+<div class="diff-add">+- **[COWARDICE] is correct at low HP.** If HP is below 40% after Wave 1, escaping is the right call. Wave 2 rewards are not worth dying before the boss.</div>
+<div class="diff-ctx"> - **[Fight] only if HP is above 50% after Wave 1** and the deck can handle another multi-enemy fight.</div>
+<div class="diff-add">+- **Wave 2 enemies are unpredictable and can be extremely dangerous.** Wave 2 can include Gremlin Nob, Taskmaster, or other elites. A Skill-heavy deck (especially Defect) facing Gremlin Nob in Wave 2 is near-unwinnable at low HP because Nob&#x27;s Enrage punishes every Skill played. At 21 HP, a Wave 2 Gremlin Nob + Taskmaster killed a Defect deck that had Snecko Eye + Necronomicon -- raw power cannot compensate for Nob&#x27;s anti-Skill scaling at critical HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+ESCAPE DECISION FRAMEWORK:</div>
+<div class="diff-add">+1. After Wave 1, check HP. Below 30 HP: ALWAYS escape. The Wave 2 enemy pool includes Gremlin Nob, which can kill any deck at low HP.</div>
+<div class="diff-add">+2. Check deck composition. Skill-heavy decks (Defect, early Silent) face worst-case matchups in Wave 2. Escape unless HP is above 60%.</div>
+<div class="diff-add">+3. Check potions. If all defensive potions were used in Wave 1, escape -- Wave 2 requires fresh resources.</div>
+<div class="diff-add">+4. The rewards from Wave 2 are NEVER worth a run-ending death. Colosseum appears mid-Act 2 where the remaining path has plenty of card/relic opportunities.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> WARNINGS:</div>
+<div class="diff-ctx"> - **Pre-boss HP drain**: This event appears in Act 2 Unknown rooms. If encountered 1-2 floors before the boss, the forced combat can drain 15-25 HP, dropping the player below boss entry thresholds. When pathing before the Act 2 boss, Unknown rooms carry Colosseum risk even with Juzu Bracelet.</div>
+<div class="diff-ctx"> - **Entangle**: Blue Slaver&#x27;s Entangle prevents all attacks for 1 turn. Plan for 1 turn of pure blocking.</div>
+<div class="diff-del">-- **Run 110 case study**: Colosseum on Floor 30 drained HP from 37 to 27. Healed to 49/86 at rest site. Entered Collector at 57% -- below 70% threshold. Died Floor 33. The Colosseum HP drain was a direct contributing factor to the boss death.</div>
+<div class="diff-add">+- **Gremlin Nob in Wave 2**: Nob + Taskmaster is a confirmed Wave 2 combination. Nob&#x27;s Enrage (+2 Str per Skill) is devastating for Skill-heavy decks. The Defect&#x27;s starting composition (6 Skills vs 4 Attacks) and common pickups (Coolheaded, Aggregate, Fission) make this matchup extremely punishing. Even Necronomicon-doubled Attacks cannot compensate if most of the hand is Skills that feed Nob&#x27;s Strength.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/cursed-tome.md</div>
+<div class="diff-hunk">@@ -12,6 +12,7 @@ Total HP cost to complete: 1+2+3+10 = 16 HP. Can leave at any stage.</div>
+<div class="diff-ctx"> KNOWN BOOK RELICS:</div>
+<div class="diff-ctx"> - Enchiridion: Free random 0-cost Power card at start of each combat.</div>
+<div class="diff-ctx"> - Nilry&#x27;s Codex: At end of each turn, choose 1 of 3 randomly generated cards (from any class) to add to hand. Excellent in long fights.</div>
+<div class="diff-add">+- Necronomicon: First Attack costing 2+ energy each turn plays twice. Adds Necronomicurse (unplayable, unremovable) to the deck. Extremely powerful with Snecko Eye (cost randomization creates more 2+ cost Attacks) and with high-cost Attacks like Barrage, Carnage, or Bludgeon. See relics/necronomicon.md.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> DECISION FRAMEWORK: Book relics are powerful (Enchiridion gives a free Power every fight, Nilry&#x27;s Codex generates cards every turn). At 16 HP total cost, worth it when above 50% HP and not approaching a boss. Can bail early if HP gets too low -- you only lose the HP already spent.</div>
+<div class="diff-ctx"> PRIORITY: Read to completion (high HP, no boss imminent) &gt; Leave early (moderate HP) &gt; Leave immediately (low HP).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/mechanics.md</div>
+<div class="diff-hunk">@@ -23,6 +23,13 @@ The Defect channels orbs into orb slots. Orbs provide passive effects at end of</div>
+<div class="diff-ctx"> - **Evoke**: Remove the frontmost (leftmost) orb, triggering its evoke effect. Dualcast evokes the front orb twice.</div>
+<div class="diff-ctx"> - **Orb Slots**: The Defect starts with 3 orb slots. Some cards/relics add more slots (Capacitor). More slots = more passive effects per turn.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+### Fission: Remove vs Evoke (CRITICAL UPGRADE DISTINCTION)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Unupgraded Fission:** Removes ALL orbs WITHOUT evoking. The orbs are deleted -- no Frost block, no Lightning damage, no Dark burst. Only the Energy and card draws are gained.</div>
+<div class="diff-add">+- **Upgraded Fission+:** EVOKES all orbs, triggering their evoke effects (Frost block, Lightning damage, Dark burst), then grants Energy and card draws.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+This is one of the most impactful upgrades in the game. Playing unupgraded Fission in a Frost-heavy build destroys the orb-based defense without generating any evoke block. See cards/fission.md.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ### Focus</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Focus is the Defect&#x27;s core scaling stat (equivalent to Strength for damage or Dexterity for block, but for orbs).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
+<div class="diff-hunk">@@ -38,6 +38,7 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Uncommon Relics</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+- [Emotion Chip](emotion-chip.md) (Defect)</div>
+<div class="diff-ctx"> - [Brimstone](brimstone.md)</div>
+<div class="diff-ctx"> - [Kunai](kunai.md)</div>
+<div class="diff-ctx"> - [Pen Nib](pen-nib.md)</div>
+<div class="diff-hunk">@@ -90,6 +91,10 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Sling of Courage](sling-of-courage.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Book Relics (from Cursed Tome event)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Necronomicon](necronomicon.md)</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Boss Relics / Special</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Hovering Kite](hovering-kite.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/emotion-chip.md</div>
+<div class="diff-hunk">@@ -0,0 +1,15 @@</div>
+<div class="diff-add">+# Emotion Chip (Uncommon Relic, Defect-only)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: If you lost HP during the previous turn, trigger the passive ability of all orbs at the start of your next turn (in addition to the normal end-of-turn passive trigger).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHY IT&#x27;S STRONG: Effectively doubles orb passive output on turns after taking damage. With 3 Frost orbs at Focus 2, the normal end-of-turn passive is 12 block. With Emotion Chip triggering at the start of the next turn, that is an additional 12 block before the player even plays cards. Lightning orbs deal their passive damage twice (6 damage per orb per cycle instead of 3).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY INTERACTIONS:</div>
+<div class="diff-add">+- **Frost orbs + Focus:** The defensive ceiling is enormous. With 5 Frost orbs at Focus 3, Emotion Chip adds 25 block at the start of the turn (5 orbs x 5 block each). This stacks with the normal 25 block at end of turn for 50 passive block per cycle.</div>
+<div class="diff-add">+- **Lightning orbs:** Double passive damage. Less impactful than Frost doubling because Lightning passives hit random enemies, but still meaningful in multi-enemy fights.</div>
+<div class="diff-add">+- **Dark orbs:** Dark orb passive gains (6+Focus) damage each turn. Emotion Chip triggers the passive gain twice, accelerating Dark orb scaling.</div>
+<div class="diff-add">+- **Self-damage effects:** Cards or relics that cause self-damage (e.g., Brutality) technically trigger Emotion Chip because they cause HP loss. However, deliberately taking damage to trigger Emotion Chip is rarely worth it -- the orb passives need to be substantial to justify the HP cost.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION FRAMEWORK: Emotion Chip is strongest in Frost-heavy builds with Focus scaling. It rewards taking chip damage (which is often unavoidable) by converting it into defensive value the following turn. In a deck that reliably channels 3+ Frost orbs and has Focus 2+, Emotion Chip provides significant free block that compounds the Defect&#x27;s defensive engine.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+LIMITATION: Only triggers if HP was lost the previous turn. In fights where the player takes zero damage (full block discipline), Emotion Chip provides no value. It is a recovery tool, not a proactive one.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/necronomicon.md</div>
+<div class="diff-hunk">@@ -0,0 +1,25 @@</div>
+<div class="diff-add">+# Necronomicon (Book Relic, from Cursed Tome event)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: The first Attack card costing 2 or more energy played each turn is played a second time automatically. Adds a Necronomicurse to the deck (unplayable, cannot be removed except by special means).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHY IT&#x27;S STRONG: Doubles the first expensive Attack each turn for free. This effectively doubles damage output on the best Attack of each turn. Cards that have secondary effects (channeling orbs, applying debuffs, drawing cards) trigger those effects twice as well.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY INTERACTIONS:</div>
+<div class="diff-add">+- **Cold Snap (when 2+ cost):** Plays twice = 12 damage + channels 2 Frost orbs. Both damage and the orb channel happen twice.</div>
+<div class="diff-add">+- **Barrage (2E base):** Always triggers Necronomicon at base cost. With 5 orbs, Barrage plays twice for 40 damage total (50 upgraded). One of the highest single-card damage outputs in the game.</div>
+<div class="diff-add">+- **Strike+ (when 2+ cost via Snecko Eye):** Even basic Strikes become doubled when Snecko randomizes their cost to 2+.</div>
+<div class="diff-add">+- **Any Attack with secondary effects:** The entire card effect replays, not just the damage. Draw effects draw again, channel effects channel again, debuff effects apply again.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SNECKO EYE SYNERGY: Snecko Eye randomizes all card costs to 0-3. Cards that normally cost 0-1 energy now have a chance of costing 2+, triggering Necronomicon. This dramatically increases the number of Attacks that can be doubled each turn. Conversely, cards that normally cost 2+ (like Barrage) may roll 0-1 and NOT trigger Necronomicon. The variance works out favorably because Snecko Eye draws 7 cards -- with more cards in hand, the chance of at least one Attack costing 2+ is very high.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NECRONOMICURSE: The curse is an unplayable card that clogs the hand. It cannot be removed at shops. In a Snecko Eye deck drawing 7 cards, the curse is a minor nuisance (1 dead card out of 7). In a standard 5-draw deck, it is more impactful. Manage it by keeping the deck lean so the curse appears less frequently.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION FRAMEWORK: Take Necronomicon from Cursed Tome when:</div>
+<div class="diff-add">+- The deck has multiple 2+ cost Attack cards (Barrage, Carnage, Bludgeon, etc.)</div>
+<div class="diff-add">+- Snecko Eye is active (maximizes trigger chance across all Attacks)</div>
+<div class="diff-add">+- HP can afford the Cursed Tome cost (16 HP total)</div>
+<div class="diff-add">+Avoid when:</div>
+<div class="diff-add">+- The deck is entirely 0-1 cost Attacks with no way to increase costs</div>
+<div class="diff-add">+- HP is critical and cannot afford the 16 HP event cost</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+ONCE PER TURN: Necronomicon triggers only on the FIRST 2+ cost Attack each turn. Plan the turn so the highest-value Attack is played first to receive the doubling. Do not waste the trigger on a low-impact Attack when a high-impact one is in hand.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/snecko-eye.md</div>
+<div class="diff-hunk">@@ -21,4 +21,8 @@ KEY INTERACTION -- GAMBLING CHIP: Gambling Chip&#x27;s mulligan at combat start syner</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> KEY INTERACTION -- SNECKO OIL: With Snecko Eye already active (Confused), Snecko Oil&#x27;s cost randomization is redundant -- all cards are already randomized. But the draw 5 effect is pure upside. Using Snecko Oil Turn 1 of a boss fight expands the hand to 10 cards for a massive burst opening. No additional downside since Confusion is already in effect.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-EVALUATION: The strongest boss relic for Ironclad when the deck has 4+ cards costing 2E. Present in both consecutive victories (the only boss relic appearing in both wins). The extra draws solve consistency problems (always find key cards) and the cost randomization provides massive energy efficiency on high rolls. S-tier in Strength-scaling decks with expensive power cards. Take Snecko Eye as Act 2 boss relic whenever the deck has high-cost cards. Two wins confirm it is the single most important relic in the winning formula.</div>
+<div class="diff-add">+KEY INTERACTION -- NECRONOMICON: Snecko Eye randomizes card costs to 0-3. Cards that normally cost 0-1 energy can roll 2+, triggering Necronomicon&#x27;s doubling effect. This dramatically increases the number of Attacks that benefit from Necronomicon each turn. With 7 cards drawn, the probability of at least one Attack costing 2+ is very high. Barrage (2E base) always qualifies when it rolls 2-3, and Cold Snap (1E base) can trigger when randomized to 2+. The combined effect of Snecko Eye + Necronomicon is one of the strongest damage engines available to the Defect.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEFECT-SPECIFIC VALUE: Snecko Eye is strong on the Defect because Defect decks often contain a mix of 0-2 cost cards. Drawing 7 cards per turn means more orbs channeled, more Frost passive block, and more chances to play Barrage at reduced cost. The Defect&#x27;s orb-based defense (passive Frost block) partially compensates for bad cost rolls on block cards because orbs generate block automatically without playing cards.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EVALUATION: The strongest boss relic for Ironclad when the deck has 4+ cards costing 2E. Present in both consecutive Ironclad victories (the only boss relic appearing in both wins). Also powerful on Defect with orb-scaling cards (Barrage, Cold Snap) and Necronomicon synergy. The extra draws solve consistency problems (always find key cards) and the cost randomization provides massive energy efficiency on high rolls. S-tier in Strength-scaling decks with expensive power cards. Take Snecko Eye as Act 2 boss relic whenever the deck has high-cost cards or orb-scaling Attacks.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,7 +2,7 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles across all characters.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (170 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-169). One Defect run (Run 170, first ever, died Floor 7). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.</div>
+<div class="diff-add">+**CURRENT STATUS (171 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-169). Two Defect runs (Run 170 died Floor 7, Run 171 died Floor 28 -- Colosseum event, chose Fight at 21 HP, killed by Gremlin Nob + Taskmaster in second wave). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-hunk">@@ -602,7 +602,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## Defect-Specific Strategy (PRELIMINARY -- 1 run)</div>
+<div class="diff-add">+## Defect-Specific Strategy (PRELIMINARY -- 2 runs)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### The Defect&#x27;s Core Problem: Skill-Heavy Starting Deck</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -610,7 +610,20 @@ The Defect starts with 6 Skills (4 Defend + Zap + Dualcast) and 4 Attacks (4 Str</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Consequence: Gremlin Nob is the Defect&#x27;s worst elite matchup.** Nob&#x27;s Enrage triggers on every Skill played. With 7 Skills in a 12-card deck, most 5-card hands contain 3-4 Skills and only 1-2 Attacks. Even with perfect discipline (never playing Skills), each hand has only 1-2 playable cards, extending the fight to 7+ turns and allowing Nob to scale to lethal damage.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Mitigation:** Prioritize Attack card pickups in the first 3-4 floors before any elite path. Compile Driver (Attack, 7 damage + draw per orb) and Sweeping Beam (Attack, 6 AOE + draw 1) are excellent because they are Attacks that also cycle cards. Count your Attack-to-Skill ratio before committing to an elite path.</div>
+<div class="diff-add">+**Mitigation:** Prioritize Attack card pickups in the first 3-4 floors before any elite path. Compile Driver (Attack, 7 damage + draw per orb), Sweeping Beam (Attack, 6 AOE + draw 1), and Cold Snap (Attack, 6 damage + channel Frost) are excellent because they are Attacks that also provide secondary value. Count your Attack-to-Skill ratio before committing to an elite path.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Defect Key Cards and Relics</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Barrage** is the Defect&#x27;s primary scaling Attack. Deals 4 damage per channeled orb. With Capacitor (5 slots) fully loaded, Barrage deals 20 damage. With Necronomicon (2E base triggers it), Barrage plays twice for 40 damage. This is the Defect&#x27;s main burst card.</div>
+<div class="diff-add">+- **Cold Snap** is the best dual-purpose early pickup: Attack (Nob-safe) + channels Frost orb. With Necronomicon at 2+ cost, it plays twice for double damage and two Frost orbs.</div>
+<div class="diff-add">+- **Fission** MUST be upgraded before playing in Frost builds. Unupgraded Fission removes orbs WITHOUT evoking -- it destroys Frost defense for Energy and draws. Upgraded Fission+ evokes all orbs (triggering Frost block, Lightning damage) AND gives Energy + draws. This is one of the most critical upgrade distinctions in the Defect&#x27;s pool.</div>
+<div class="diff-add">+- **Aggregate** generates Energy based on draw pile size. Play it first each turn before other draw effects. With Snecko Eye, Aggregate enables playing multiple randomized cards per turn.</div>
+<div class="diff-add">+- **Necronomicon + Snecko Eye** is a powerful Defect combo. Snecko randomizes costs, making more Attacks cost 2+ and triggering Necronomicon&#x27;s doubling. With 7 cards drawn per turn, the probability of a high-value doubled Attack is very high.</div>
+<div class="diff-add">+- **Emotion Chip** doubles orb passive triggers on turns after taking damage. With 5 Frost orbs and Focus, this provides enormous free block. Best in Frost-heavy builds that inevitably take some chip damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Defect Colosseum Warning</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Colosseum event&#x27;s second wave can include Gremlin Nob. The Defect&#x27;s Skill-heavy deck composition makes Nob the worst possible Wave 2 enemy. At 21 HP after Wave 1, the Defect was killed by Gremlin Nob + Taskmaster despite having Snecko Eye + Necronomicon. **Always escape the Colosseum at low HP with a Skill-heavy Defect deck.** The offensive power of Necronomicon cannot compensate for Nob punishing every Skill in a 60%+ Skill deck.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Defect Scaling: Focus Is Everything</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run logs to JSON + auto-write on GAME_OVER</div>
       <div class="changelog-sha">384d9b62</div>
     </div>
@@ -10207,67 +10489,6 @@ footer {
 <div class="diff-add">+4. **Book of Stabbing is the #1 elite killer**: 3 deaths. Wound clog + escalating multi-hit. Decks without exhaust tools cannot win. Decks with Brimstone cannot win.</div>
 <div class="diff-add">+5. **Shop bug damage (RESOLVED)**: The shop indexing bug was fixed. No longer a factor for future runs.</div>
 <div class="diff-add">+6. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling or AOE by Floor 12, the player must prioritize these over all other card choices.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 100 analysis: Brimstone danger, Book of Stabbing, mechanics clarifications</div>
-      <div class="changelog-sha">12754724</div>
-    </div>
-    <div class="changelog-date">2026-05-08</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/cards/armaments.md</div>
-<div class="diff-hunk">@@ -2,5 +2,7 @@</div>
-<div class="diff-ctx"> Block + card upgrade in one play. Upgraded version is transformative.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Armaments+ is one of the best cards in the game -- every turn it upgrades your entire hand. Over a long fight, every card in the deck gets upgraded. Unupgraded version is decent (5 block + 1 upgrade per turn).</div>
-<div class="diff-del">-DECISION POINTS: Play every turn. The upgrades are permanent for the combat. Prioritize upgrading Armaments itself first if given the choice (Armaments+ is enormously better than Armaments). Against Gremlin Nob, do NOT play (Skill triggers Enrage).</div>
-<div class="diff-add">+DECISION POINTS: Play every turn in long fights where you can afford a setup turn. The upgrades are permanent for the combat. Prioritize upgrading Armaments itself first if given the choice (Armaments+ is enormously better than Armaments). Against Gremlin Nob, do NOT play (Skill triggers Enrage).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN NOT TO PLAY: In DPS-race fights where every turn of damage matters, spending 1E on Armaments+ for 5 block + upgrades can cost you the fight. Specifically: against Book of Stabbing (incoming grows +7/turn, lost damage turns are fatal), Gremlin Leader (Rally scaling adds +3 Str to all enemies per cycle), or any fight where the enemy&#x27;s damage scaling outpaces your block growth. In run 100, playing Armaments+ on turn 2 against Book of Stabbing (for 5 block + upgrades) instead of dealing ~30 damage cost a critical turn. By turn 5, Book was still alive at 53 HP and dealt lethal damage. The upgrades never mattered because the fight ended before upgraded cards could be drawn again.</div>
-<div class="diff-ctx"> UPGRADE: Single card upgrade -&gt; ALL cards in hand. This is one of the highest-priority upgrades in the game.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/book-of-stabbing.md</div>
-<div class="diff-hunk">@@ -13,3 +13,7 @@ BRING: Exhaust tools for Wounds (True Grit+, Burning Pact, Second Wind, Fiend Fi</div>
-<div class="diff-ctx"> AVOID: Entering below 60% HP. Entering with a large deck (20+ cards) and no exhaust. Slow play (each turn is worse than the last). Flex and other low-impact cards that dilute draws.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> DECK REQUIREMENTS: If your deck has no exhaust tools (True Grit+, Burning Pact, Second Wind, Fiend Fire), DO NOT fight Book of Stabbing voluntarily. The Wound clog WILL overwhelm any deck that cannot remove status cards from the draw pile. This is not a &quot;nice to have&quot; -- it is mandatory for decks above 15 cards.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+BRIMSTONE INTERACTION (CRITICAL): If you have Brimstone, DO NOT fight Book of Stabbing. Brimstone gives Book +2 Str/turn, which applies to EVERY hit of its multi-hit attack. By turn 3, each hit does 13 instead of 7 -- nearly double. By turn 5, each hit does 17 with 6 hits = 102 total incoming. In run 100, a deck with Brimstone + Inflame+ (+3 Str) + Spot Weakness+ (+4 Str) + Mutagenic Strength (+3 turn 1) entered at 57 HP and died on turn 5. The player&#x27;s own Strength scaling was excellent but could not outrace Book&#x27;s Brimstone-boosted multi-hit growth. This is a hard avoid -- no amount of Strength scaling compensates when the enemy&#x27;s damage grows quadratically (more hits * more damage per hit).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+TURN EFFICIENCY: Do not waste turns on setup that does not deal damage or provide meaningful block. In run 100, turn 2 was spent on Armaments+ (5 block + upgrade hand) instead of damage. That single lost damage turn meant Book reached turn 5 alive with 53 HP remaining. Every turn costs approximately +7 more incoming damage than the previous turn (more with Brimstone). Prioritize damage cards over utility cards in this fight.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/mechanics.md</div>
-<div class="diff-hunk">@@ -73,7 +73,9 @@ Order of operations:</div>
-<div class="diff-ctx"> - Block expires at the start of your turn (resets to 0).</div>
-<div class="diff-ctx"> - Exception: Barricade (enemy passive) -- block does NOT expire. Accumulates turn over turn.</div>
-<div class="diff-ctx"> - Metallicize and Plated Armor add block at end of turn (before enemy attacks resolve).</div>
-<div class="diff-del">-- Plated Armor decreases by 1 each time you take unblocked damage.</div>
-<div class="diff-add">+- Plated Armor decreases by 1 each time you take unblocked HP damage (damage that gets through block). Multiple hits in one attack (e.g., Book of Stabbing 7x4) each count separately -- if block runs out mid-attack, each subsequent hit that deals HP damage reduces Plated Armor by 1. Plated Armor from multiple sources stacks additively (e.g., two Plated Armor 3 = 6 block/turn).</div>
-<div class="diff-add">+- Flame Barrier / Thorns: Counter damage triggers AFTER each individual hit that strikes you (whether blocked or hitting HP). Against multi-hit attacks, counter fires once per hit. Example: Book of Stabbing 7x4 with Flame Barrier+ active = 4 triggers of 6 counter damage = 24 total counter damage dealt to the attacker. Counter damage ignores the attacker&#x27;s block -- it deals direct HP damage. Flame Barrier&#x27;s block is applied once at play time and absorbs across all hits; the counter triggers per hit regardless of whether the hit was blocked or not.</div>
-<div class="diff-add">+- Pen Nib: Tracks total Attack cards played across ALL combats. Every 10th Attack card deals double damage. The counter persists between fights and does NOT reset. The counter is visible on the relic tooltip. Track it by counting Attack card plays (Strikes, Bash, Rampage, Cleave, Immolate, etc. -- any card with the Attack type). Skills and Powers do not increment the counter. Double Tap causes the repeated attack to count as a separate play for Pen Nib.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ---</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/brimstone.md</div>
-<div class="diff-hunk">@@ -12,4 +12,12 @@ SYNERGIES: Demon Form (+4 Str/turn combined), Reaper (heals more as Strength gro</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ANTI-SYNERGIES: Slow decks, long fights, enemies with multi-hit attacks (Book of Stabbing, Snake Plant). The enemy Strength gain compounds the danger of every additional turn.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+CRITICAL DANGER -- BOOK OF STABBING: Brimstone + Book of Stabbing is one of the most lethal relic-enemy combinations in the game. Book&#x27;s multi-hit attacks gain +1 hit per turn AND +2 damage per hit per turn from Brimstone. The math escalates catastrophically:</div>
-<div class="diff-add">+- Turn 1: (7+2)x2 = 18 (vs 14 without Brimstone)</div>
-<div class="diff-add">+- Turn 2: (7+4)x3 = 33 (vs 21)</div>
-<div class="diff-add">+- Turn 3: (7+6)x4 = 52 (vs 28)</div>
-<div class="diff-add">+- Turn 4: (7+8)x5 = 75 (vs 35)</div>
-<div class="diff-add">+- Turn 5: (7+10)x6 = 102 (vs 42)</div>
-<div class="diff-add">+By turn 5, incoming is 102 vs 42 without Brimstone -- a 143% increase. This is unsurvivable. In run 100, entered at 57 HP and died on turn 5 despite strong Strength scaling (Brimstone + Inflame+ + Spot Weakness+). If you have Brimstone, AVOID Book of Stabbing entirely. If forced into the fight, you must kill it in 3 turns or die.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ---</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

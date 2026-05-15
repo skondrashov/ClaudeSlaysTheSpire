@@ -32,9 +32,15 @@ VULNERABILITY WINDOW: After Execute, The Champ spends one turn performing the tr
 ## Observed Death Pattern
 Died Turn 10 to 27x2 attack while Vulnerable at 7 HP. Demon Form+ was providing scaling but couldn't overcome the +8 Strength and Metallicize 5 fast enough. Reaper+ had already exhausted (single use), removing the healing option needed to survive phase 2.
 
-## Matchup Notes
+## Matchup Notes (Ironclad)
 - **Demon Form**: Good but needs early play. By Execute, need enough accumulated Strength to outscale Champ's +8 Str and Metallicize 5.
 - **Shockwave+**: Save for AFTER Execute if possible. Applying before Execute wastes the debuffs entirely.
 - **Reaper**: Single-use exhausting heal. Must time carefully — use after Execute for maximum value when Champ's attacks are strongest.
 - **Dark Shackles**: Excellent emergency block tool post-Execute to survive the first big hit.
 - **Heavy Blade+**: Strong finisher post-Execute if Strength is high enough from Demon Form.
+
+## Matchup Notes (Defect)
+- **Barrage+ is the primary burst card.** With 5+ orbs and Vulnerable, Barrage+ deals 52+ damage per play. Echo Form doubling Barrage+ can deal 100+ in a single turn, enough to burst through Phase 2 before Execute damage escalates.
+- **Frost wall for Phase 1 survival.** Frost orbs with Focus provide passive block while building orbs for Barrage. Phase 1 is a setup phase -- channel orbs, play Echo Form, establish the engine.
+- **Re-apply Vulnerable after Anger.** Beam Cell or Sweeping Beam must be saved or drawn after the 50% HP transition. Without Vulnerable, Barrage+ damage drops by 33%.
+- **Survived at 2 HP in the first Defect victory.** The Champ fight was the closest call of the run. The deck lacked sufficient Frost defense to fully block Phase 2 attacks with +6 Str. Barrage+ burst barely finished the fight. This confirms the Defect needs either massive Focus (4+) or fast burst to handle The Champ's Phase 2.

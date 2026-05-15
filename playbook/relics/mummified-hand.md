@@ -10,6 +10,10 @@ BEST SYNERGIES:
 - **Inflame+/Evolve+ in long fights**: Powers played on BUFF/DEFEND free turns give free attacks or blocks, converting setup turns into hybrid offense/defense turns.
 - **Immolate+**: A free Immolate+ (normally 2E) is 28-31 damage for zero energy. Devastating when triggered.
 
+DEFECT SYNERGY: The Defect has excellent Power density (Echo Form, Loop, Capacitor, Machine Learning, Defragment, Creative AI). In Power-heavy Defect decks, Mummified Hand triggers frequently. Playing Echo Form (3E) and getting a free Coolheaded+ or Barrage+ makes the setup turn less punishing. In the first Defect victory, Mummified Hand + Echo Form + Loop + Capacitor generated multiple free card plays during setup turns, partially offsetting Echo Form's 3E cost.
+
 ANTI-SYNERGIES: Decks with 0-1 Powers (trigger is too rare to matter). Corruption (Skills cost 0 already, so the free card is less impactful if it hits a Skill).
 
-CONFIRMED DOMINANT: In a deck with Barricade+, 2x Metallicize, Inflame+, Evolve+, Mummified Hand enabled 2-4 free plays per turn on setup turns, resulting in zero-damage hallway fights against Act 3 enemies (including The Maw at 300 HP). The relic scales in value as more Powers are added to the deck.
+CONFIRMED DOMINANT (Ironclad): In a deck with Barricade+, 2x Metallicize, Inflame+, Evolve+, Mummified Hand enabled 2-4 free plays per turn on setup turns, resulting in zero-damage hallway fights against Act 3 enemies (including The Maw at 300 HP). The relic scales in value as more Powers are added to the deck.
+
+CONFIRMED DOMINANT (Defect): In the first Defect victory with Echo Form+, Loop, Capacitor -- 3 Powers generating 3 free card plays during setup. The relic's value is confirmed across both Ironclad and Defect Power-heavy archetypes.

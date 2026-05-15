@@ -61,4 +61,18 @@ The Guardian fight is 12-14 turns. The Silent's damage profile (many small hits 
 
 **Poison Potions bypass Sharp Hide.** Potions do not trigger Sharp Hide retaliation. Use Poison Potions during Defensive Mode when Attacks cost 3 HP each.
 
+## Defect-Specific Strategy
+
+**Frost wall sustains through the long fight.** The Guardian fight lasts 12-14 turns. Frost orbs provide passive block every turn, making the Defect's defense self-sustaining. With 3+ Frost orbs and Focus 1+, passive block of 9+ per turn handles most Guardian attacks without playing block cards.
+
+**Barrage as burst for Mode Shift.** Barrage with full orbs (5+ orbs) deals enough damage to trigger Mode Shift in 1-2 card plays. This cancels the Guardian's biggest attacks. Echo Form doubling Barrage makes Mode Shift triggering extremely reliable.
+
+**Sharp Hide vs Barrage:** Barrage is an Attack card and WILL trigger Sharp Hide (3 damage per Attack). However, Barrage hits once (not per-orb), so Sharp Hide only deals 3 damage per Barrage play. The damage is worth it if Barrage deals 15+ damage.
+
+**Echo Form deployment:** Play Echo Form early (Turn 1-2) on a free Charging Up turn. The 3E cost leaves 0-1E for other plays that turn, but the doubling pays off enormously across the remaining 10+ turns.
+
+**Coolheaded+ cycling:** The Guardian fight has many turns where specific cards are needed (block cards on 32-damage turns, burst on Mode Shift turns). Coolheaded+ drawing 3 cards helps cycle toward the right cards while building the Frost wall.
+
+DEFEATED WITH (Defect): Echo Form+ + Seek+ (innate via Bottled Lightning) + Coolheaded+ + Barrage + Frost orb engine. Seek+ found Echo Form+ Turn 1. Frost orbs provided sustained block. Barrage triggered Mode Shift on dangerous attack turns. Capacitor expanded orb slots to 5 for both defense and Barrage damage.
+
 ---

@@ -147,12 +147,12 @@ Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overla
 
 Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.
 
-**Run log + stats are automatic.** When the run ends (GAME_OVER), stream.py writes `analyst/runs/run_NNN.json` from the game state and runs `regen_stats.py`. The overlay updates immediately. No orchestrator action needed for the run log.
+**Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py detects it and writes `analyst/runs/run_NNN.json` from the game state (deck, relics, potions, HP, gold, seed) plus the complete decision log from `data/stream_events.jsonl` (every command, reasoning, and resulting game state after each action). It then runs `regen_stats.py` to update stats and pings stream.py to reload. The overlay updates immediately. No orchestrator action needed for the run log.
 
 When the player finishes:
 1. Delete `data/player.lock`.
 2. Switch the overlay to agent mode (see below).
-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the event log, updates `playbook/` files. The run log is already written by stream.py — the analyst does NOT touch it.
+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run JSON, updates `playbook/` files. The run log is already written by cmd.py — the analyst does NOT touch it.
 4. When analyst completes, switch overlay back to game mode.
 5. Rebuild site: `python site/build.py`.
 6. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).

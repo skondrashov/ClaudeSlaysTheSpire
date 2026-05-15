@@ -6,6 +6,11 @@
 - [Burning Blood](burning-blood.md) (Ironclad)
 - [Cracked Core](cracked-core.md) (Defect)
 
+## Defect-specific Relics
+
+- [Data Disk](data-disk.md) (+1 Focus at combat start)
+- [Runic Capacitor](runic-capacitor.md) (+3 orb slots at combat start)
+
 ## Common Relics
 
 - [Lantern](lantern.md)
@@ -68,6 +73,7 @@
 - [Omamori](omamori.md)
 - [Ginger](ginger.md)
 - [Bottled Tornado](bottled-tornado.md)
+- [Bottled Lightning](bottled-lightning.md)
 
 ## Rare Relics
 
@@ -116,3 +122,4 @@
 - [Cursed Key](cursed-key.md)
 - [Empty Cage](empty-cage.md)
 - [Ornamental Fan](ornamental-fan.md)
+- [Black Star](black-star.md)

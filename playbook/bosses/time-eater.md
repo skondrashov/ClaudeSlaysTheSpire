@@ -40,6 +40,16 @@ DEFEATED WITH (Silent -- FIRST SILENT WIN): Accuracy x2 (+8 Shiv damage) + After
 - **Finisher** scales with attacks played this turn. After 4 Shivs, Finisher deals 24+ damage for 1E.
 - **Track Time Warp count precisely.** Trigger Time Warp intentionally on low-value plays (Phantasmal Killer on a free turn, last Shiv of a burst) to minimize wasted card plays.
 
+**DEFECT-SPECIFIC STRATEGY vs Time Eater:**
+- **Echo Form copies count toward the 12-card counter.** This is the most important Defect-specific mechanic in this fight. Every card doubled by Echo Form counts as 2 plays toward Time Warp, not 1. With Echo Form active, the effective budget per cycle is roughly 6 real card plays (each generating 2 counted plays). Track meticulously: "Playing Coolheaded+ with Echo Form = 2 counted plays, counter is now 8/12."
+- **High-value, low-count cards are essential.** Barrage+ with 6 orbs deals 42 damage for 1 card play (2 with Echo Form). Coolheaded+ draws 3 and channels 1 Frost for 1 play (2 with Echo Form). Maximize damage and block per card play, not per energy.
+- **Frost wall persists through Time Warp.** Unlike Barricade (which preserves block), Frost orbs persist through turn endings. After Time Warp forces a turn end, all channeled Frost orbs remain and continue providing passive block. The orb engine is not disrupted by Time Warp.
+- **Seek+ is critical for card efficiency.** Seek+ (0E, find 2 cards) enables finding exactly the right cards for the remaining counter budget. At 9/12, Seek+ finds the kill card and a block card for the final 1-2 real plays.
+- **Manage the Haste heal at 50% HP.** Same as other classes -- prepare for debuff removal and 50% HP reset. Re-apply Vulnerable (Beam Cell, Sweeping Beam) after Haste triggers.
+- **Lizard Tail as death insurance.** In the first Defect victory, Lizard Tail was consumed on Turn 8 when Time Warp escalation + Strength stacks overwhelmed the Frost wall. The revival provided the HP needed to survive Turn 8 and kill on Turn 9.
+
+DEFEATED WITH (Defect -- FIRST DEFECT WIN): Echo Form+ + Seek+ (Bottled Lightning innate) + Coolheaded+ + Barrage+ + Loop + Data Disk + Runic Capacitor. Key sequence: Turn 1 Seek+ found Echo Form+, played Echo Form+ (3E). Turn 2 onward: Echo Form doubled Coolheaded+ (6 draws + 2 Frost) and Barrage+ (70 damage with 5 orbs + Vulnerable). Two Time Warps triggered over 9 turns. Lizard Tail consumed Turn 8 when Str-boosted attacks exceeded Frost block. Turn 9: Barrage+ doubled by Echo Form dealt lethal through remaining HP. Finished at 27 HP.
+
 WHAT NOT TO DO:
 - Play many small cards per turn without purpose (accelerates Time Warp with low damage output).
 - Exhaust Impervious early -- save for high-damage turns after Str has stacked.

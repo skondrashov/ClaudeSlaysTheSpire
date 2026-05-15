@@ -13,4 +13,4 @@
 ## Act 3
 - [Awakened One](awakened-one.md) — HP: 300+300. Two phases. Curiosity (+2 Str per Power played). Regenerate 10 in Phase 2.
 - [Donu and Deca](donu-and-deca.md) — HP: 250+250. Donu buffs Str, Deca adds Dazed + Block. Artifact 2 each.
-- [Time Eater](time-eater.md) — HP: 456. Time Warp every 12 cards played. Haste heals at 50% HP. DEFEATED 2x (Ironclad Barricade engine, Silent Shiv burst).
+- [Time Eater](time-eater.md) — HP: 456. Time Warp every 12 cards played. Haste heals at 50% HP. DEFEATED 3x (Ironclad Barricade engine, Silent Shiv burst, Defect Echo Form orb engine).

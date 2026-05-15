@@ -714,7 +714,8 @@
               rows += `<tr class="dimmed"><td class="char-name">${names[cls]}</td><td>0</td><td>—</td></tr>`;
             }
           }
-          rows += `<tr class="total-row"><td class="char-name">Total</td><td>${totalRuns}</td><td></td></tr>`;
+          const trackedTotal = order.reduce((sum, cls) => sum + (stats[cls]?.runs || 0), 0);
+          rows += `<tr class="total-row"><td class="char-name">Total</td><td>${trackedTotal}</td><td></td></tr>`;
 
           container.innerHTML = `<table class="char-table"><thead><tr><th></th><th>Runs</th><th>Best</th></tr></thead><tbody>${rows}</tbody></table>`;
         })
