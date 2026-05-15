@@ -118,7 +118,7 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - Duplication Potion on 0-cost Immolate+: PROMOTED. 60 AOE for 0E. Best observed Duplication Potion play. Promoted to duplication-potion.md.
 - Darklings simultaneous AOE kill: CONFIRMED. All 3 Darklings killed in same turn bypasses Life Link. Promoted to darklings.md (new entry).
 - Fairy in a Bottle saved the run vs Spikers/Guardians in Act 3. Confirms Fairy is critical safety net for Act 3 fights with Thorns mechanics. Promoted to fairy-in-a-bottle.md.
-- **THREE winning formulas confirmed across 4 victories**: PROMOTED. (A) Snecko Eye + Immolate+ + Limit Break (Runs 147-148, vs Donu and Deca). (B) Barricade + Corruption + FNP + Entrench + Body Slam (Run 150, vs Time Eater). (C) Accuracy x2 + After Image (innate) + Wraith Form+ + Phantasmal Killer + Malaise + Shiv burst (Run 158, Silent vs Time Eater -- FIRST SILENT WIN). All require zero UI misplays. Promoted to strategy.md as THE WINNING FORMULAS. New playbook entries created: accuracy.md, phantasmal-killer.md, finisher.md, malaise.md, ginger.md, bottled-tornado.md. Updated: time-eater.md, after-image.md, wraith-form.md, mind-bloom.md, lizard-tail.md, cultist-potion.md.
+- **FOUR winning formulas confirmed across 5 victories**: PROMOTED. (A) Snecko Eye + Immolate+ + Limit Break (Runs 147-148, vs Donu and Deca). (B) Barricade + Corruption + FNP + Entrench + Body Slam (Run 150, vs Time Eater). (C) Accuracy x2 + After Image (innate) + Wraith Form+ + Phantasmal Killer + Malaise + Shiv burst (Run 158, Silent vs Time Eater -- FIRST SILENT WIN). (D) Dead Branch + exhaust engine (Run 162, Silent vs Awakened One -- SECOND SILENT WIN). All require zero UI misplays. Promoted to strategy.md as THE WINNING FORMULAS. New playbook entries: terror.md, bane.md. Updated: dead-branch.md, awakened-one.md, strategy.md.
 - **The Champ Act 2 boss**: Defeated in Run 148 at 11 HP. 9-turn fight, Duplication Potion on Immolate+ (0-cost from Snecko Eye) delivered the killing blow. Immolate+ was the MVP again. The Champ had no playbook entry update needed -- existing entry is sufficient.
 - **Slaver's Collar relic**: +1 energy at elite/boss starts. Combined with Busted Crown (+1E), gave 5E in hallway fights and 6E in boss fights. The energy advantage from double boss-relic energy was significant. Two energy boss relics stacking is a powerful combination. Only 1 observation.
 
@@ -145,7 +145,7 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - **Blur block retention with Wraith Form confirmed**: PROMOTED to blur.md (new entry). Block from Intangible turns (when damage is reduced to 1) carries to post-Intangible turns when Dex penalty makes new block generation impossible.
 - **Collector DEFEND_BUFF +3 Str scaling confirmed**: PROMOTED to the-collector.md. Each DEFEND_BUFF gives ALL enemies +3 Str. Over a 19-turn fight, Collector scaled from Str 3 to Str 14+. This makes the Collector both an HP check AND a DPS race.
 - **Awakened One Curiosity mechanic -- +2 Str per Power played**: PROMOTED to awakened-one.md (new entry). First observation but mechanic is definitive (game rules). Player played 6 Powers, AO gained at least +6 Str, turning a survivable 30 multi-attack into lethal 48. The Str cost of Powers directly caused the death. No further observation needed -- this is a game mechanic, not a hypothesis.
-- **Awakened One Phase 1 HP**: Approximately 320 (not precisely tracked). Phase 2 HP confirmed 300 from last_state.json. Need more observations for exact Phase 1 HP.
+- **Awakened One Phase 1 HP**: Approximately 300 at A0 (Run 162 data: AO at 293 after ~7 damage, consistent with 300 starting HP). Phase 2 HP confirmed 300. Boss file updated to "Phase 1 = 300." A9 value may differ (320 estimated).
 - **Awakened One Phase 2 Regenerate 10**: Confirmed from game state. Heals 10 HP per turn. Need to determine if this is reduced by artifact or other mechanics.
 - **Awakened One Phase transition strips all player Powers**: Confirmed from the fight. All Powers played in Phase 1 provide zero carry-over to Phase 2. This makes Phase 1 Power plays even worse -- you pay the Str cost but lose the benefit.
 - **Awakened One Phase 2 multi-attack pattern**: 10x3 base damage confirmed from game state (move_base_damage: 10, move_hits: 3). With Str scaling, this is the primary lethal threat. Need more data on the full attack rotation.
@@ -222,9 +222,10 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - The Joust: 70% win chance for Murderer accurate?
 - Offering self-damage at sub-30% HP: 6 HP cost was exactly lethal margin in Run 128. Monitor whether Offering at critical HP causes deaths.
 - Dual RNG denial: Run 128 had both healing AND Strength scaling denied across 24 floors despite Prayer Wheel. Two criteria denied simultaneously makes runs near-unwinnable. No fix possible -- pure variance.
-- Awakened One exact Phase 1 HP: Need precise data. Estimated ~320.
-- Awakened One full attack rotation: Only observed multi-attack (10x3) and inferred other moves from move_id data. Need complete pattern documentation.
+- Awakened One exact Phase 1 HP: Need precise data. Estimated ~300-320. Run 162 stream data shows Phase 1 damage dealt but exact HP not tracked.
+- Awakened One full attack rotation: Confirmed from 2 runs: Phase 1 opens with Slash (20), then Slash/Soul Strike (6x4). Phase 2 opens with Dark Echo (40), then Tackle (10x3) / Sludge (18 + Void). Complete pattern documented in awakened-one.md.
 - Does Awakened One Curiosity activate on Powers played from relics (Enchiridion) or only hand-played Powers?
+- **Does Dex/After Image/Caltrops persist through Awakened One phase transition?** Run 162 showed Dex 7 and After Image active in Phase 2 despite Powers being "stripped." If Powers are stripped but their granted buffs remain, Phase 1 Power dumping is strictly superior to avoiding Powers. Needs confirmation -- this is the most strategically important open question for the Awakened One fight.
 - **Transient Fading timing**: Confirmed that the Transient attacks on its Fading 1 turn BEFORE fading. You must survive the final attack. Does this mean the total turns to survive is 5 (attacks on Fading 5, 4, 3, 2, 1) or 4? The run confirms 5 attack turns.
 - **Orb Walker burn generation pattern**: Do Orb Walkers generate Burns every turn, or only on specific attack patterns? Need more data on when Burns are added to the draw pile.
 - **Wraith Form+ exact Dex penalty**: Is the penalty -1 Dex/turn starting the turn Wraith Form is played, or starting the next turn? If played Turn 1, is Dex reduced on Turn 1 or Turn 2? Need more data.
@@ -246,3 +247,23 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - **Centennial Puzzle relic**: Draws additional cards when you lose HP. Observed in Run 161: at 5 HP, losing HP triggered an 8-card hand on the subsequent turn. Need more data on exact trigger conditions (how many extra cards? does it trigger on any HP loss or only when unblocked?).
 
 - **Medical Kit relic**: Allows playing Status cards (Burns, Wounds, Dazed) to exhaust them. Observed in Run 161: player exhausted Burns from hand during Hexaghost fight for free (0E play to exhaust). Useful for Burns management against Hexaghost. One observation.
+
+- **Dead Branch + Silent exhaust engine (PROMOTED)**: Run 162 VICTORY. Dead Branch transforms all exhaust cards (Terror, Piercing Wail, Adrenaline, Storm of Steel, Endless Agony, Distraction, Crippling Cloud, Shivs) into random card generation. This creates infinite card advantage without playing Powers -- specifically effective against Awakened One. PROMOTED to dead-branch.md, awakened-one.md, strategy.md (Formula 4).
+
+- **Storm of Steel + Dead Branch chain reaction (PROMOTED)**: Storm of Steel discards hand -> generates Shivs -> each Shiv played exhausts -> Dead Branch proc per Shiv -> new random cards. In Run 162, Storm of Steel with 3 cards in hand generated 3 Shivs, each proc'd Dead Branch for 3 more random cards, dealing 45+ damage in the chain. PROMOTED to dead-branch.md.
+
+- **Terror Vuln 99 as boss amplifier (PROMOTED)**: 0-1E for permanent 50% damage increase on any boss. Exhausts (no deck clog + Dead Branch trigger). Confirmed MVP in Awakened One victory. PROMOTED to terror.md (new entry).
+
+- **Bane double damage on Poisoned targets (PROMOTED)**: Bane deals base damage twice if target is Poisoned. With Terror Vuln 99, effective damage is 3x base. PROMOTED to bane.md (new entry).
+
+- **Awakened One Phase 1 Power dump strategy (PROMOTED)**: Curiosity Str resets when AO dies and enters Phase 2. Play ALL Powers in Phase 1 to maximize their benefit (they are stripped at transition anyway). Apply Terror/Vuln to burst through Phase 1 quickly. Phase 2: ZERO Powers. Confirmed in victory. PROMOTED to awakened-one.md.
+
+- **Dex persistence through Awakened One phase transition**: Footwork Dex (+2 per Footwork) appeared to persist from Phase 1 into Phase 2. Player had Dex 7 in Phase 2 (from 3 Footwork plays in Phase 1) enabling 12-block Defends and 12-block Survivors without replaying Footwork. Powers are stripped but their EFFECTS (Dex, After Image block-per-card, Caltrops thorns) may persist. ONE OBSERVATION -- needs confirmation. If confirmed, this makes Phase 1 Power dumping even more valuable.
+
+- **Lizard Tail consumed by Awakened One Phase 2 Dark Echo**: Phase 2 opens with Dark Echo (40 damage). At 18 HP with 20 block, the 21 unblocked damage was lethal. Lizard Tail revived to 33 HP (50% of 67 max). Without Lizard Tail, this victory does not happen. Lizard Tail is especially critical for Awakened One because Phase 2 opens with its hardest single hit.
+
+- **Nightmare + Cloak and Dagger**: Nightmare (3E) copies a card 3x, adding copies to hand next turn. Copying Cloak and Dagger produced 3 extra copies next turn = 3 extra Shiv generation + 3 extra block plays + 3 extra Dead Branch procs (from Shiv exhaust). Excellent combo in Dead Branch decks. One observation.
+
+- **Clockwork Souvenir relic**: Artifact 1 at start of every combat. Blocks the first debuff applied. Useful against Awakened One (blocks the first Sludge debuff in Phase 2). One observation.
+
+- **Mercury Hourglass passive damage in long boss fights**: 3 damage to ALL enemies at start of each turn. Across ~15 turns of Awakened One (both phases), this contributed ~45 free damage. Non-trivial against Regenerate 10 in Phase 2. One observation.

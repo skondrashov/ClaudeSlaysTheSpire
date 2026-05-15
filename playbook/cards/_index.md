@@ -43,11 +43,13 @@
 
 - [Masterful Stab](masterful-stab.md)
 - [Finisher](finisher.md)
+- [Bane](bane.md)
 
 ## Silent Skill Cards
 
 - [Blur](blur.md)
 - [Malaise](malaise.md)
+- [Terror](terror.md)
 
 ## Silent Power Cards
 

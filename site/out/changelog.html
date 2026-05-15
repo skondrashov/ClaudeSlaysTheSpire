@@ -374,6 +374,111 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 161 analysis: Sozu anti-pattern confirmed, Unknown room rule reinforced</div>
+      <div class="changelog-sha">69c51771</div>
+    </div>
+    <div class="changelog-date">2026-05-14</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/enemies/centurion-mystic.md</div>
+<div class="diff-hunk">@@ -28,3 +28,5 @@ POTION MANAGEMENT: Do NOT spend all potions on the Mystic kill. The Centurion so</div>
+<div class="diff-ctx"> AVOID: Attacking Centurion while Mystic lives. Entering below 50% HP. Wasting Fairy here when elites are ahead. Splitting damage between Centurion and Mystic even with temporary Strength buffs. Spending ALL potions on the Mystic kill phase.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> OBSERVED FIGHT LENGTHS: This fight can extend to 10 turns with insufficient burst for Mystic. At 10 turns, even Metallicize and Weak on Centurion cannot prevent 30-65 HP drain. Stone Calendar (52 damage on turn 7) helps close out the fight before attrition becomes lethal.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT-SPECIFIC: The Silent can handle this fight with Poison + Dex stacking but expect 24+ HP drain even with correct play. Confirmed: Silent entered at 39/70 (55%), killed Mystic by Turn 5 via Backstab+Strike+Leg Sweep+Deadly Poison+Skewer burst. Malaise X=2 on Centurion (-2 Str, 2 Weak) neutered early attacks. Catalyst doubled Centurion&#x27;s Poison (4-&gt;8) for sustained kill. Fight lasted 10 turns, drained 24 HP (39-&gt;15). Key resource decisions: (1) Piercing Wail+ used on Turn 10 to negate 8x3=24 multi-hit, saving 10+ HP but exhausting the card before the boss fight. (2) Leg Sweep blocked the first 8x3 multi-hit entirely (Weak + 27 block vs 18 Weakened). (3) Malaise should be played early on Centurion (Turn 3-4) to reduce cumulative damage across the long fight. The 55% HP entry was survivable but left only 21% HP for the remaining floors -- below the 30% threshold where Unknown rooms become lethal.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/sentry.md</div>
+<div class="diff-hunk">@@ -23,3 +23,5 @@ BRING: AOE (Whirlwind, Thunderclap, Cleave). Damage scaling (Inflame, Spot Weakn</div>
+<div class="diff-ctx"> AVOID: Slow play (Dazed accumulation cripples draws). Fighting with a starter-quality deck.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ACT 2 APPEARANCE: Sentries also appear in Act 2 hallway fights paired with other enemies (e.g., Sentry + Spheric Guardian). In these pairings, the Sentry still generates Dazed and attacks for ~9 damage per turn. Combined with Spheric Guardian&#x27;s 10x2 attacks and Frail debuff, this is one of the most dangerous Act 2 hallway fights. Kill the Sentry first (no block to break through, lower HP) to reduce incoming damage count and stop Dazed generation. Gremlin Horn triggers on Sentry death, providing energy and draw to handle the Spheric Guardian.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SILENT ACT 2 PAIRING: The Silent can handle the Sentry via Piercing Wail (negates beam damage entirely) and Terror (99 Vuln for fast kill). Kill order: Sentry first (strip Artifact with Neutralize, apply Terror for Vuln, burst with Backstab + attacks). Use Piercing Wail to zero the Sentry&#x27;s beam turn while setting up Footwork Dex. After Sentry dies, poison the Spheric Guardian (Deadly Poison, Noxious Fumes bypass Barricade block entirely). Confirmed: Sentry killed Turn 4 via this approach. However, Dazed from Sentry Bolts combined with SG&#x27;s Barricade block creates a lethal combination -- Dazed-clogged draws reduce block density while Barricade accumulates. At low HP (&lt;30%), this fight is unwinnable regardless of deck quality. One death confirmed at 3 HP (10 block vs 20 incoming on Turn 6, insufficient block cards drawn due to Dazed dilution).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/spheric-guardian.md</div>
+<div class="diff-hunk">@@ -19,6 +19,10 @@ APPEARS WITH: Sentry (in Act 2 hallway fights). Spikers (in Act 3 hallway fights</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> SILENT-SPECIFIC: The Silent&#x27;s Dex stacking (Footwork+) combined with Shiv damage (Accuracy + Blade Dance) can handle this fight but expect 26+ HP drain even with Dex 6. Kill the Sentry fast with Shivs (Accuracy Shivs deal 8 each, Blade Dance = 24 damage), then chip through Spheric Guardian&#x27;s Barricade block over 4-5 turns. The critical danger turn is when both Footwork+ copies have not yet been played and no block cards are drawn -- a single turn with zero block cards against Spheric Guardian&#x27;s 10x2 costs 20 HP. Tools of the Trade helps filter for block cards. Confirmed: 6-turn fight with 26 HP lost (59-&gt;33) despite Dex 6, Accuracy Shivs, and TotT active. The HP drain from this fight can set up lethal entry into subsequent forced encounters.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+SILENT POISON APPROACH: Poison bypasses Barricade entirely (Deadly Poison, Noxious Fumes). Confirmed effective: Deadly Poison (5 poison) applied through 65+ block, ticking damage each turn regardless of Barricade. Piercing Wail+ strips Artifact charges while also negating Sentry beam damage. However, the Silent&#x27;s block density under Frail 5 is precarious -- 4x Defend with Frail produces only 20 block (5 each), barely matching SG&#x27;s 10x2 = 20 incoming. A single missing block card at 3 HP is lethal. With Sozu (no potions), there is zero margin for error.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DAZED + BARRICADE COMBO (Sentry + Spheric Guardian): When paired with a Sentry, this fight is especially brutal. Sentry&#x27;s Dazed cards (Unplayable, Ethereal) clog draws, reducing the probability of drawing block cards on critical turns. Meanwhile, Spheric Guardian&#x27;s Barricade accumulates block unimpeded during turns when the player draws Dazed-heavy hands and cannot deal damage. The combination creates a vicious cycle: Dazed reduces both damage output (block grows faster) and block density (more damage taken). Confirmed lethal at 3 HP when 20 incoming exceeded 10 available block due to Dazed-clogged hand.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ARTIFACT STRIPPING: Spheric Guardian starts with 3 Artifact charges. Uppercut+ is the best single-card Artifact stripper -- it applies Weak 2 and Vulnerable 2, consuming 2 Artifact charges in one play. Follow with any single debuff (Bash, Thunderclap) to strip the 3rd. Once Artifact is gone, Vulnerable massively increases kill speed through the Barricade block.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> FRAIL 5 INTERACTION: Frail 5 reduces block from ALL sources by 25%. Defend gives 3 instead of 5. Shrug It Off gives 6 instead of 8. This lasts 5 turns and cannot be removed while Artifact charges remain. Combined with 10x2 attacks, the effective damage per attack turn is ~24+ (20 damage minus reduced block). This is the primary reason low-Strength decks lose -- block is insufficient AND damage is insufficient simultaneously.</div>
+<div class="diff-hunk">@@ -29,4 +33,4 @@ WINNING FORMULA: Corruption + Feel No Pain engine (first survival, only 12 HP lo</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> CALIPERS INTERACTION: Calipers retains 15 block between turns, partially countering the Frail-reduced blocking problem. Impervious+ (40 block) retains 25 next turn with Calipers, providing substantial defense even under Frail. This combination significantly reduces HP loss from the 10x2 attack turns.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-WARNING: Single most dangerous Act 2 hallway fight. 4 deaths confirmed (at 26%, 43%, 47%, and 100% HP entry). 4 survivals: (1) Corruption+FNP engine (12 HP lost), (2) Immolate+Impervious++Calipers+Spot Weakness (20 HP lost), (3) Run 116: Inflame+Thunderclap+Bash++Flame Barrier++Armaments+ (38 HP lost over 14 turns, 60-&gt;22 HP). The third survival used Offering for early card draw, stripped all 3 Artifacts with 3 Thunderclap plays, then ground through Barricade block with Inflame (+4 Str total) and Vulnerable cycling. (4) Barricade+Impervious+Regen Potion+Bash++Rampage+Shockwave+Thunderclap (~32 HP lost over 8 turns, 80-&gt;48). Used Shockwave to strip 2 Artifacts, Intimidate to strip 3rd, then Barricade for permanent block and burst damage through Vulnerable. Regen Potion (5 HP/turn for 5 turns = 25 HP) was critical for sustaining through the HP drain. Even with correct play and front-loaded Strength, expect 30-40 HP drain. Key death causes: Demon Form too slow, Brutality self-damage in long fight, Rage+ expiring at end of turn, zero potions, Reaper useless (all damage absorbed by block = zero healing). Potions are critical -- entering with zero potions at any HP is near-certain death without Corruption+FNP engine or equivalent burst+defense combo.</div>
+<div class="diff-add">+WARNING: Single most dangerous Act 2 hallway fight. 5 deaths confirmed (at 21%, 26%, 43%, 47%, and 100% HP entry). 4 survivals: (1) Corruption+FNP engine (12 HP lost), (2) Immolate+Impervious++Calipers+Spot Weakness (20 HP lost), (3) Inflame+Thunderclap+Bash++Flame Barrier++Armaments+ (38 HP lost over 14 turns, 60-&gt;22 HP). The third survival used Offering for early card draw, stripped all 3 Artifacts with 3 Thunderclap plays, then ground through Barricade block with Inflame (+4 Str total) and Vulnerable cycling. (4) Barricade+Impervious+Regen Potion+Bash++Rampage+Shockwave+Thunderclap (~32 HP lost over 8 turns, 80-&gt;48). Used Shockwave to strip 2 Artifacts, Intimidate to strip 3rd, then Barricade for permanent block and burst damage through Vulnerable. Regen Potion (5 HP/turn for 5 turns = 25 HP) was critical for sustaining through the HP drain. Even with correct play and front-loaded Strength, expect 30-40 HP drain. Key death causes: Demon Form too slow, Brutality self-damage in long fight, Rage+ expiring at end of turn, zero potions, Reaper useless (all damage absorbed by block = zero healing). Potions are critical -- entering with zero potions at any HP is near-certain death without Corruption+FNP engine or equivalent burst+defense combo.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/sozu.md</div>
+<div class="diff-hunk">@@ -10,9 +10,16 @@ ANTI-SYNERGIES:</div>
+<div class="diff-ctx"> - **Woman in Blue event**: Cannot buy potions.</div>
+<div class="diff-ctx"> - **Healing potions as sustain plan**: With Sozu, the backup healing plan (buy Blood Potions at shops) is unavailable. Healing cards (Reaper, Feed) become even MORE critical.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+SILENT-SPECIFIC DANGER (3 deaths confirmed): Sozu is disproportionately dangerous for the Silent. The Silent lacks innate healing (no Burning Blood equivalent) and relies on potions as emergency saves in boss fights where survivability matters more than raw power. Three deaths with Sozu active:</div>
+<div class="diff-add">+- Awakened One Phase 2: no Weak Potion or Block Potion to survive 48 multi-attack at 6 HP.</div>
+<div class="diff-add">+- Bronze Automaton: lethal poison applied (2 turns from kill) but no potion to survive 2 more turns of 48+ incoming. Died at 3 HP.</div>
+<div class="diff-add">+- Sentry + Spheric Guardian (Act 2 hallway): no potions to bridge the 3 HP crisis on the final turn. 10 unblocked damage from 20 incoming with only 10 block available.</div>
+<div class="diff-add">+The pattern is consistent: Sozu removes the safety net that would have saved the run in a single critical turn. For the Silent, **strongly prefer other boss relics** (even Ectoplasm or Busted Crown) unless the deck has Wraith Form+ for Intangible safety and multiple block sources independent of potions.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> HOW IT CHANGES DECISIONS:</div>
+<div class="diff-ctx"> - Skip all potion-related relics and events.</div>
+<div class="diff-ctx"> - Healing cards (Reaper, Feed) become absolutely essential since potions cannot supplement healing.</div>
+<div class="diff-ctx"> - Conservative play is more important -- no potions means no emergency saves.</div>
+<div class="diff-ctx"> - The extra energy partially compensates by enabling more block cards per turn, reducing damage taken.</div>
+<div class="diff-ctx"> - When offered as a boss relic swap from Neow, it is a strong pick IF you are confident in finding healing cards. The 4th energy transforms every fight.</div>
+<div class="diff-add">+- **For the Silent: avoid Sozu unless the deck has Wraith Form+ AND After Image for potion-independent survivability.** The Silent&#x27;s natural Skill-heavy block generation is vulnerable to Frail and bad draws, making potion safety nets critical.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,15 +2,15 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (160 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Ten Silent runs total (Runs 151-160). Run 159 quick death. Run 160 (Silent) died Floor 28 to Cultist+Chosen -- Hex hard-countered the Skill-heavy deck. Coffee Dripper (no rest healing) + Ectoplasm (no gold) double boss relic downside eliminated all recovery paths. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.</div>
+<div class="diff-add">+**CURRENT STATUS (161 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Eleven Silent runs total (Runs 151-161). Run 161 (Silent) died Floor 22 to Sentry + Spheric Guardian from Unknown room at 21% HP -- Sozu (no potions) removed all safety nets. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 5. Act 2 boss reaches: 11+.</div>
+<div class="diff-ctx"> - **Act 3 reached seven times (Runs 145, 147, 148, 149, 150, 151, 158).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Run 158 (Silent) all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158 all reached Floor 51).**</div>
+<div class="diff-del">-- **4 wins in 160 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (10 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog).</div>
+<div class="diff-del">-- **Run 160: Silent died Floor 28 to Cultist+Chosen.** Coffee Dripper + Ectoplasm double boss relic downside. Strong Shiv deck (ATC, Envenom+Snecko Skull, Strike Dummy, Footwork, Blade Dance+, 2x Cloak and Dagger+). Hex from Chosen added 5+ Dazed by Turn 4, collapsing block density. HP already 4/69 from the fight with zero recovery path.</div>
+<div class="diff-add">+- **4 wins in 161 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (11 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP).</div>
+<div class="diff-add">+- **Run 161: Silent died Floor 22 to Sentry + Spheric Guardian.** Sozu (no potions) removed emergency saves. Centurion+Mystic on F21 drained 24 HP (39-&gt;15) at 55% entry. Player chose Unknown room at 21% HP reasoning it was &quot;safer than combat&quot; -- playbook explicitly says Unknown = Monster in Act 2. Sentry + SG spawned. Survived 5 turns via excellent play (poison through Barricade, Piercing Wail+ negating attacks, precise block math) but died Turn 6 with 3 HP, 10 block vs 20 incoming.</div>
+<div class="diff-ctx"> - **Three distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THE WINNING FORMULAS (confirmed by 4 victories across 3 distinct engines):**</div>
+<div class="diff-hunk">@@ -83,7 +83,7 @@ These thresholds determine which MAP PATHS are safe, not how to play combat. Com</div>
+<div class="diff-ctx"> | Fight Type | Minimum HP to Enter | Notes |</div>
+<div class="diff-ctx"> |---|---|---|</div>
+<div class="diff-ctx"> | Hallway (easy) | 25% | Byrds/Chosen can drain 40-73 HP even with correct play and TC+ in deck |</div>
+<div class="diff-del">-| Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic (10x3 multi-hit can drain 61 HP, death at 71% entry confirmed), Snake Plant |</div>
+<div class="diff-add">+| Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic (10x3 multi-hit can drain 61 HP, death at 71% entry confirmed; Silent at 55% entry drained 24 HP leaving 21% for remaining floors), Snake Plant |</div>
+<div class="diff-ctx"> | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |</div>
+<div class="diff-ctx"> | Boss | 70% or Pantograph | Act 2 boss has massive damage |</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -449,7 +449,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai</div>
+<div class="diff-ctx"> - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.</div>
+<div class="diff-ctx"> - If the path forces an elite at low HP, skip it entirely -- take any alternative path.</div>
+<div class="diff-ctx"> - **Act 2 route must include a non-combat room in the first 2-3 floors.** The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), Spheric Guardian (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. When choosing Act 2 entry points, prefer routes where a rest site, shop, or event appears by floor 2-3, even if it means giving up other rewards. A route of M-M-M before a rest site is a death trap.</div>
+<div class="diff-del">-- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. THREE deaths confirmed from Spheric Guardian spawning from Unknown rooms (at 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.**</div>
+<div class="diff-add">+- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. FOUR deaths confirmed from Unknown rooms resolving as combat (at 21%, 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.** The player has repeatedly chosen Unknown rooms at critical HP reasoning &quot;Unknown is safer than Monster&quot; -- this is WRONG. Unknown rooms ARE Monster rooms ~50% of the time. At 21% HP with no potions, the correct choice is ANY non-combat room (rest site, shop) or, if none exists, the run was lost at map selection.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Elite Risk Assessment</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Runs 159-160 analysis: Hex vs Silent, Coffee Dripper entry, Chosen warning</div>
       <div class="changelog-sha">2a2549c0</div>
     </div>
@@ -10276,135 +10381,6 @@ footer {
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> **The Guardian needs:**</div>
 <div class="diff-ctx"> - 32+ block capability in one turn (Impervious, double Metallicize + Weak)</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 69 analysis: Corruption setup trap, Dead Branch synergy, Mugger entry</div>
-      <div class="changelog-sha">ee6ea6f3</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/cards/barricade.md</div>
-<div class="diff-hunk">@@ -12,4 +12,4 @@ ANTI-SYNERGIES: Low energy decks (3E cost is prohibitive without extra energy),</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> MATCHUPS: Spheric Guardian -- the ENEMY has Barricade, not you. If you have Barricade yourself, the fight still requires massive burst to break through the enemy&#x27;s persistent block. Your own Barricade helps survive but does not solve the DPS problem.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-NOTE: This card was taken but never played in the fight where it was acquired. At 3E with 3E total energy per turn, it requires a completely free turn to deploy. In fights with constant incoming damage, the setup opportunity may never arrive.</div>
-<div class="diff-add">+NOTE: This card was taken but never played in the fight where it was acquired. At 3E with 3E total energy per turn, it requires a completely free turn to deploy. In fights with constant incoming damage, the setup opportunity may never arrive. Barricade shares the same 3E setup cost problem as Corruption -- both consume an entire turn with no immediate block or damage. See Corruption entry for detailed analysis of the setup cost trap in multi-enemy fights.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/corruption.md</div>
-<div class="diff-hunk">@@ -1,7 +1,14 @@</div>
-<div class="diff-del">-# Corruption (3E, Power, all Skills cost 0 energy but Exhaust when played)</div>
-<div class="diff-add">+# Corruption (3E, Power, all Skills cost 0 energy but Exhaust when played | +: 2E)</div>
-<div class="diff-ctx"> Extremely powerful but fundamentally changes deck economy. All Skills become free but one-time-use.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+SETUP COST TRAP: At 3E unupgraded, playing Corruption on turn 1 leaves ZERO energy for blocking. Against enemies dealing 10+ damage per turn (especially multi-enemy fights like Looter + Mugger), this means eating a full unblocked hit. In a multi-enemy fight, unblocked damage can be 20+ and fatal. NEVER play unupgraded Corruption into a dangerous fight without a way to survive the setup turn. Safe to play when: (1) enemy is buffing/defending (free turn), (2) you have 4+ energy from relics, (3) you have enough HP to absorb the unblocked hit, or (4) you upgraded Corruption to 2E (leaving 1E for a Defend).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+UPGRADE PRIORITY: HIGH. Corruption+ costs 2E instead of 3E. The 1E savings on the setup turn is the difference between blocking and not blocking. Upgrade Corruption before other cards when building an exhaust/Corruption engine.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: When your deck has many Skills (Defend, Shrug It Off, Shockwave, Impervious). Making Shockwave free is enormous. Making Impervious free is game-winning. The energy savings over a long fight are massive.</div>
-<div class="diff-del">-DECISION POINTS: At 3E, the setup turn is expensive. Play on a free turn when possible. After Corruption, every Skill exhausts -- plan for a finite number of block/utility plays. In a 12-turn fight, if you have 8 Skills, you get 8 free plays then have no Skills left. Pair with Second Wind or other exhaust synergies.</div>
-<div class="diff-del">-SYNERGIES: Second Wind (exhaust non-Attacks for block -- with Corruption, all Skills exhaust anyway), Dark Embrace (draw per exhaust), Barricade (accumulated block persists). Enchiridion (can grant Corruption at start of combat for free).</div>
-<div class="diff-del">-MATCHUPS: Boss fights where the energy savings outweigh the loss of repeated Skill use.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION POINTS: At 3E, the setup turn is expensive. Play on a free turn when possible. After Corruption, every Skill exhausts -- plan for a finite number of block/utility plays. In a 12-turn fight, if you have 8 Skills, you get 8 free plays then have no Skills left. Pair with Second Wind or other exhaust synergies. In multi-enemy fights, delay Corruption until you can afford the setup cost or until the highest-threat enemy is dead.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SYNERGIES: Dead Branch (every exhausted Skill generates a random card -- this is the strongest combo in the game. Every Skill becomes free AND replaces itself with a new card, so your hand never empties. The engine wins any fight it survives to activate. BUT: you must survive the 3E setup turn AND get Dead Branch in play, which means the combo takes 2+ turns to fully activate), Second Wind (exhaust non-Attacks for block -- with Corruption, all Skills exhaust anyway), Dark Embrace (draw per exhaust), Feel No Pain (3 block per exhaust -- with Corruption, every Skill played triggers FNP), Barricade (accumulated block persists). Enchiridion (can grant Corruption at start of combat for free).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+MATCHUPS: Boss fights where the energy savings outweigh the loss of repeated Skill use. DANGEROUS in multi-enemy hallway fights where the setup turn leaves you exposed to combined attacks.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/feel-no-pain.md</div>
-<div class="diff-hunk">@@ -6,7 +6,7 @@ WHEN IT&#x27;S GOOD: Any deck with exhaust sources. Converts Slimed/Wound/Dazed/Burn</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> DECISION POINTS: Play on a free turn (enemy buffing/debuffing) for zero opportunity cost. At 1E, worth playing even when only 2-3 exhaust triggers are expected (6-9 block over a fight). Priority increases with more exhaust sources in the deck.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-SYNERGIES: True Grit+ (each exhaust = block from True Grit + 3 from FNP), Burning Pact (exhaust + draw + 3 block), Fiend Fire (exhaust entire hand = 3 block per card), Corruption (all Skills exhaust = constant block triggers), Second Wind (mass exhaust = massive FNP block burst).</div>
-<div class="diff-add">+SYNERGIES: True Grit+ (each exhaust = block from True Grit + 3 from FNP), Burning Pact (exhaust + draw + 3 block), Fiend Fire (exhaust entire hand = 3 block per card), Corruption (all Skills exhaust = constant block triggers -- FNP is critical for surviving Corruption&#x27;s setup turns by generating block from every subsequent Skill play), Corruption + Dead Branch (the triple combo: every Skill exhausts for free, generates 3 block from FNP, and adds a random card from Dead Branch -- this is the strongest defensive engine in the game), Second Wind (mass exhaust = massive FNP block burst).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> SLIME BOSS SYNERGY: Slimed cards cost 1E to exhaust. With Feel No Pain active, each Slimed exhausted generates 3 block, partially offsetting the 1E tempo cost. In a typical Slime Boss fight with 5+ Slimed cards, this generates 15+ total block across the fight.</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/_index.md</div>
-<div class="diff-hunk">@@ -25,6 +25,7 @@</div>
-<div class="diff-ctx"> - [Chosen](chosen.md)</div>
-<div class="diff-ctx"> - [Centurion + Mystic](centurion-mystic.md)</div>
-<div class="diff-ctx"> - [3 Cultists](3-cultists.md)</div>
-<div class="diff-add">+- [Mugger](mugger.md)</div>
-<div class="diff-ctx"> - [Snake Plant](snake-plant.md)</div>
-<div class="diff-ctx"> - [Spheric Guardian](spheric-guardian.md)</div>
-<div class="diff-ctx"> - [Snecko](snecko.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/looter.md</div>
-<div class="diff-hunk">@@ -5,3 +5,5 @@ WHAT THIS MEANS: Kill fast to minimize gold loss. Prioritize over non-stealing e</div>
-<div class="diff-ctx"> BENCHMARKS: Kill in 3-4 turns to limit theft.</div>
-<div class="diff-ctx"> BRING: Burst damage.</div>
-<div class="diff-ctx"> AVOID: Slow play (hemorrhages gold).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+ACT 2 PAIRING: Looter appears alongside Mugger in an Act 2 hallway fight (Looter + Mugger). Combined damage is 20+ per turn with no free setup turns. This pairing punishes expensive setup cards (Corruption at 3E, Barricade at 3E) because you cannot afford a turn without block against two enemies attacking simultaneously. AOE and fast kills are critical.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/mugger.md</div>
-<div class="diff-hunk">@@ -0,0 +1,17 @@</div>
-<div class="diff-add">+# Mugger (hallway, Act 2, HP: ~48-52)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Act 2 version of the Looter. Steals gold and deals significant damage.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+PATTERN: Steals gold on some turns. Attacks for moderate damage (10-12+). May attempt to escape after stealing.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+KEY MECHANIC: Gold theft, similar to Looter but appears in Act 2 where enemy damage is higher overall.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+APPEARS WITH: Often paired with a Looter in the Looter + Mugger encounter. Combined damage from both enemies is 20+ per turn with no free turns. This is a dangerous multi-enemy fight if you lack block or AOE.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+STRATEGY: Kill one enemy quickly to reduce incoming damage. Prioritize the higher-damage enemy first. AOE (Cleave, Thunderclap, Immolate) is efficient here. Do NOT play expensive setup cards (3E Powers like Corruption or Barricade) on turn 1 -- the combined unblocked damage from both enemies will be 20+ and potentially fatal.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+BENCHMARKS: Kill in 3-4 turns. Every extra turn costs gold and HP.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+BRING: Burst damage, AOE, sufficient block for 20+ combined incoming.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+AVOID: Slow setup turns with no block. Playing 3E powers unprotected.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
-<div class="diff-hunk">@@ -53,6 +53,8 @@</div>
-<div class="diff-ctx"> - [Nilry&#x27;s Codex](nilrys-codex.md)</div>
-<div class="diff-ctx"> - [Unceasing Top](unceasing-top.md)</div>
-<div class="diff-ctx"> - [Stone Calendar](stone-calendar.md)</div>
-<div class="diff-add">+- [Dead Branch](dead-branch.md)</div>
-<div class="diff-add">+- [Wing Boots](wing-boots.md)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Shop Relics</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/dead-branch.md</div>
-<div class="diff-hunk">@@ -0,0 +1,15 @@</div>
-<div class="diff-add">+# Dead Branch (Rare Relic, whenever you exhaust a card, add a random card to your hand)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Every exhausted card is replaced by a random card added to your hand. The random card costs its normal energy but is a free card advantage engine.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: In any deck with exhaust sources. The more cards you exhaust per fight, the more value Dead Branch generates. Transforms exhaust from a resource-spending mechanic into a resource-generating one.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+CORRUPTION SYNERGY: The strongest combo in the game. With Corruption active, every Skill costs 0E and exhausts on play, and Dead Branch replaces it with a random card. This means every free Skill played generates a new card. The hand never empties, and you cycle through enormous numbers of cards per turn. Any block or damage cards generated are effectively free because Corruption freed up the energy that would have been spent on Skills. This engine wins any fight it survives to activate.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SETUP RISK: The Corruption + Dead Branch engine requires playing Corruption (3E unupgraded) and having Dead Branch already equipped. On the setup turn, you spend 3E and get no immediate block. Against multi-enemy encounters or high-damage enemies, this setup turn can be fatal. The engine is only as good as your ability to survive activating it.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+FEEL NO PAIN SYNERGY: With Feel No Pain active, every exhaust triggers both Dead Branch (new card) and Feel No Pain (3 block). This provides defensive sustain during the engine turns.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION POINTS: Dead Branch is always a strong relic pick. When you have Dead Branch, prioritize cards that exhaust (Corruption, Second Wind, True Grit+, Burning Pact, Fiend Fire). Corruption becomes the highest-priority card to acquire when Dead Branch is in your relic pool.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+ANTI-SYNERGIES: None significant. Dead Branch is universally strong. The only risk is relying on random card generation for specific answers (you cannot control what cards you get).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/wing-boots.md</div>
-<div class="diff-hunk">@@ -0,0 +1,7 @@</div>
-<div class="diff-add">+# Wing Boots (Rare Relic, can fly over map nodes 3 times)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Grants 3 uses of flight on the map, allowing you to skip a node and move to any connected node on the next row. Useful for avoiding dangerous fights or reaching specific paths (shops, rest sites, elites).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: At low HP to avoid hallway fights that would kill you. To reach a shop or rest site that is otherwise inaccessible. To skip elite fights you are not prepared for.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION POINTS: Use sparingly -- only 3 charges for the entire run. Best saved for Act 2-3 where hallway fights are deadlier and pathing is more critical. Do not waste charges in Act 1 unless absolutely necessary for survival.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>
