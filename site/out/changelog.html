@@ -374,6 +374,263 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 162: SECOND SILENT WIN vs Awakened One, Formula 4 (Dead Branch Exhaust)</div>
+      <div class="changelog-sha">54ad9741</div>
+    </div>
+    <div class="changelog-date">2026-05-15</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/bosses/awakened-one.md</div>
+<div class="diff-hunk">@@ -23,17 +23,23 @@ Each Power played adds +2 to every attack the Awakened One makes for the rest of</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## PHASE 1</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-The Awakened One starts with two Cultist minions (~48 HP each). Phase 1 has approximately 320 HP. After Phase 1 HP reaches 0, the Awakened One enters Phase 2 with full HP (300). All your Powers, buffs, and poison are REMOVED when Phase 2 begins.</div>
+<div class="diff-add">+The Awakened One starts with two Cultist minions (~48 HP each). Phase 1 has approximately 300 HP (A0). After Phase 1 HP reaches 0, the Awakened One enters Phase 2 with full HP (300). All your Powers are STRIPPED at the phase transition, but their EFFECTS (Dex from Footwork, block-per-card from After Image, Caltrops thorns) appear to persist (confirmed in 1 victory, needs more data). Poison on the boss is REMOVED.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Phase 1 priorities:**</div>
+<div class="diff-ctx"> - Kill the Cultists quickly. They scale with Ritual (+1 Str/turn) and deal increasing damage if left alive.</div>
+<div class="diff-ctx"> - Damage the Awakened One to end Phase 1, but conserve HP for Phase 2.</div>
+<div class="diff-del">-- **Minimize Power plays.** Every Power played in Phase 1 makes Phase 1 harder by giving the AO more Strength. And all your Powers are stripped at the phase transition anyway, so their long-term value is zero.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**When to play Powers in Phase 1:**</div>
+<div class="diff-del">-- Playing 0 Powers is the ideal. Win Phase 1 with attacks, skills, and potions.</div>
+<div class="diff-del">-- Playing 1 Power may be acceptable if it is game-defining (e.g., a Power that enables your entire win condition and you cannot survive Phase 1 without it).</div>
+<div class="diff-del">-- Playing 2+ Powers in Phase 1 is almost always wrong. You are paying +4 or more Strength to the boss for buffs that get stripped at the phase transition.</div>
+<div class="diff-add">+**When to play Powers in Phase 1 -- THE DUMP STRATEGY (confirmed in victory):**</div>
+<div class="diff-add">+The Curiosity Strength gained in Phase 1 RESETS when the Awakened One dies and enters Phase 2. All player Powers are also stripped. This creates a unique strategic window: **play ALL your Powers in Phase 1, because the Strength cost resets on death.** The Powers help you kill Phase 1 faster (saving HP for Phase 2) and the Str given to the boss only applies to the remaining Phase 1 turns -- a short window.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+This was executed successfully in a victory: After Image, Footwork x2, Well-Laid Plans, Caltrops, and Noxious Fumes were ALL played in Phase 1. The AO gained Str from Curiosity, but the player applied Terror (Vuln 99) and burst it down quickly. The Str cost was irrelevant because Phase 1 ended before it accumulated to dangerous levels.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Phase 1 Power dump guidelines:**</div>
+<div class="diff-add">+- Play Powers early in Phase 1 to maximize their benefit before the phase transition strips them.</div>
+<div class="diff-add">+- Apply Terror/Vulnerable to convert the Power-boosted card plays into faster Phase 1 kills.</div>
+<div class="diff-add">+- Use Piercing Wail and Weak to counteract the Str the AO gains from Curiosity during Phase 1.</div>
+<div class="diff-add">+- The more Powers you play early, the faster Phase 1 ends, limiting the number of turns the AO gets to use its boosted Str.</div>
+<div class="diff-add">+- **This ONLY works because Phase 1 Str resets.** Phase 2 is the opposite -- see below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## PHASE 2</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -44,10 +50,11 @@ HP: 300. Gains Regenerate 10 (heals 10 HP per turn). Curiosity resets -- Strengt</div>
+<div class="diff-ctx"> - The boss also uses single large attacks and debuff/buff turns.</div>
+<div class="diff-ctx"> - Regenerate 10 heals the boss every turn, so the fight has a clock -- you must out-damage the regeneration or you lose to attrition.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Phase 2 Power discipline:**</div>
+<div class="diff-del">-- **0 Powers is still ideal.** If your deck can kill a 300 HP boss with Regenerate 10 using only attacks and skills, play zero Powers.</div>
+<div class="diff-del">-- **1 Power is the absolute maximum in most situations.** Only play it if it is your sole path to victory and you understand the Strength cost.</div>
+<div class="diff-add">+**Phase 2 Power discipline (STRICT -- confirmed by victory):**</div>
+<div class="diff-add">+- **0 Powers is the rule.** The victory run played ZERO Powers in Phase 2 and won. The player&#x27;s hand frequently contained Powers (Noxious Fumes, Caltrops, Infinite Blades, etc.) that were deliberately not played. Instead, all damage came from Attacks and Skills + Dead Branch exhaust generation.</div>
+<div class="diff-add">+- **1 Power is the absolute maximum in desperate situations.** Only play it if it is your sole path to victory and you understand the Strength cost.</div>
+<div class="diff-ctx"> - **Every Power beyond the first makes the fight dramatically harder.** 2 Powers = +4 Str = roughly +12 extra damage per multi-attack turn. 3 Powers = +6 Str = +18 per multi-attack. This adds up across every remaining turn.</div>
+<div class="diff-add">+- **Dead Branch solves the &quot;no Powers&quot; problem.** Without Powers, the deck needs an alternative card generation engine. Dead Branch + exhaust cards (Terror, Piercing Wail, Adrenaline, Storm of Steel, Shivs, Endless Agony, Distraction) generates random cards every turn, providing both offense and defense without triggering Curiosity.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## HOW TO WIN WITHOUT POWERS</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -57,18 +64,27 @@ HP: 300. Gains Regenerate 10 (heals 10 HP per turn). Curiosity resets -- Strengt</div>
+<div class="diff-ctx"> - **Block without Powers:** Impervious, Defend, Backflip, Blur, Leg Sweep, Footwork (Footwork IS a Power -- weigh the Dexterity against the Str cost).</div>
+<div class="diff-ctx"> - **Weak application:** Neutralize, Leg Sweep, Sucker Punch. Reducing the boss&#x27;s damage by 25% is often worth more than a Power that adds 2 Str.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## WHAT KILLED US (Run 151)</div>
+<div class="diff-add">+## WHAT KILLED US (Run 151 -- Silent, Phase 2 death)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Died Phase 2, Turn 14, 6 HP vs 16x3 = 48 multi-attack with only 28 block. The 16 per hit was 10 base + 6 Strength from Curiosity. Six Powers were played over the course of the fight, split across both phases. The Awakened One&#x27;s Phase 2 Strength of 6 means 3 Powers were played in Phase 2 alone. Without those Phase 2 Powers, the multi-attack would have been 10x3 = 30, and 28 block would have left only 2 unblocked damage -- survivable at 6 HP.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-The deck contained 7 Power cards: After Image+, Infinite Blades, Well-Laid Plans, Tools of the Trade, Accuracy, Footwork, Noxious Fumes. The player declared the Powers &quot;essential&quot; and played them freely. This is exactly the wrong approach. The Powers played in Phase 1 were also harmful: they gave the AO Strength during Phase 1 (dealing more damage before the transition), and they were stripped at the phase transition anyway -- providing zero carry-over benefit.</div>
+<div class="diff-add">+The deck contained 7 Power cards: After Image+, Infinite Blades, Well-Laid Plans, Tools of the Trade, Accuracy, Footwork, Noxious Fumes. The player declared the Powers &quot;essential&quot; and played them freely. This is exactly the wrong approach.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## WHAT WON (Run 162 -- Silent, VICTORY, Dead Branch engine)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Phase 1 -- Power dump:** Played ALL Powers early (After Image, Footwork x2, Well-Laid Plans, Caltrops, Noxious Fumes). Applied Terror for Vuln 99. Used Flex Potions + Glass Knife for 42-damage burst attacks. Burst damage + poison killed Phase 1 in ~8 turns. The Curiosity Str gained was offset by Piercing Wail (-6 Str) and Weak from Neutralize/Crippling Cloud. Phase 1 Str resets on death, so all Powers were &quot;free.&quot;</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Phase 2 -- Zero Powers, Dead Branch engine:** Deliberately avoided all Power cards despite having them in hand. Damage came entirely from Attacks + Skills + Dead Branch random card generation. Key plays: Terror for Vuln 99 (exhaust = Dead Branch proc), Shivs from Cloak and Dagger exhausting for Dead Branch procs, Storm of Steel generating 3 Shivs that each exhausted for more Dead Branch procs, Adrenaline for free energy + Dead Branch proc, Distraction for Dead Branch proc + random Skill. Dex 7 (from Phase 1 Footwork x2 + Footwork+, which persisted -- Dex was NOT stripped) + After Image + Blur provided blocking. Lizard Tail saved the run on Phase 2 Turn 1 (41 damage vs 20 block + 18 HP). Final kill on ~Turn 7 of Phase 2 via Strike + Sucker Punch + Quick Slash burst.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Key tactical insight: Dex from Footwork persisted into Phase 2.** Powers are stripped at the phase transition, but their EFFECTS (Dex, After Image block-per-card, Caltrops thorns) appear to persist. This means Phase 1 Power plays are doubly valuable -- the boss loses its Str, but the player keeps the buffs. Needs confirmation across more runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## DECK BUILDING FOR THIS FIGHT</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> When the Act 3 boss is Awakened One (you can see this on the map):</div>
+<div class="diff-del">-- **Deprioritize Power cards during drafting.** Every Power in the deck is a card you must discipline yourself not to play, wasting a draw.</div>
+<div class="diff-del">-- **Prioritize Skill-based and Attack-based scaling.** Catalyst (Skill), Leg Sweep (Skill), Backflip (Skill) are all better picks than Power equivalents.</div>
+<div class="diff-del">-- **If your deck is Power-heavy, this is the hardest Act 3 boss.** A deck with 5+ Powers that relies on those Powers to function will struggle badly.</div>
+<div class="diff-add">+- **Without Dead Branch:** Deprioritize Power cards during drafting. Every Power in the deck is a card you must discipline yourself not to play in Phase 2, wasting a draw. Prioritize Skill-based and Attack-based scaling (Catalyst, Leg Sweep, Backflip).</div>
+<div class="diff-add">+- **With Dead Branch:** Powers are WELCOME in the deck. Play them ALL in Phase 1 (dump strategy) for their full benefit. In Phase 2, ignore them in hand and rely on Dead Branch + exhaust for card generation. The more exhaust cards in the deck (Terror, Piercing Wail, Adrenaline, Endless Agony, Storm of Steel, Distraction), the stronger the Dead Branch engine. Dead Branch fundamentally changes the Awakened One from the hardest boss to a manageable one.</div>
+<div class="diff-add">+- **Terror is the MVP card for this fight.** 0-1E for Vulnerable 99 (permanent 50% damage boost) + exhaust (Dead Branch trigger). Take Terror whenever offered if Awakened One is the Act 3 boss.</div>
+<div class="diff-add">+- **If your deck is Power-heavy without Dead Branch, this is the hardest Act 3 boss.** A deck with 5+ Powers that relies on those Powers to function will struggle badly.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## PREPARATION CHECKLIST</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -78,6 +94,14 @@ When the Act 3 boss is Awakened One (you can see this on the map):</div>
+<div class="diff-ctx"> 4. Sustain vs Regenerate 10 -- must deal &gt;10 net damage per turn averaged across the fight. Catalyst+ on poison solves this. High Str + multi-hit solves this.</div>
+<div class="diff-ctx"> 5. Enter at 70%+ HP. Phase 2 is a long fight (10-15 turns) with escalating damage.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## DEAD BRANCH STRATEGY (confirmed victory)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Dead Branch + exhaust-heavy Silent deck is the best approach against the Awakened One because it generates card advantage in Phase 2 WITHOUT playing Powers. The engine:</div>
+<div class="diff-add">+1. **Phase 1:** Play ALL Powers (dump strategy). Apply Terror for Vuln 99, burst down Phase 1.</div>
+<div class="diff-add">+2. **Phase 2:** Play ZERO Powers. Use exhaust cards (Terror, Piercing Wail, Adrenaline, Storm of Steel, Endless Agony, Distraction, Crippling Cloud) for Dead Branch procs. Each proc generates a random card. Shivs from Cloak and Dagger exhaust for more procs, creating chain reactions.</div>
+<div class="diff-add">+3. **Block in Phase 2:** After Image (from Phase 1) provides +1 block per card played. Dex (from Phase 1 Footwork) boosts all Skill block. Blur carries block between turns. Combined, these provide 20-40 block per turn from Skills + After Image without playing any new Powers.</div>
+<div class="diff-add">+4. **Damage in Phase 2:** Terror Vuln 99 makes all attacks deal 50% more. Shivs at (4 base + Dex) * 1.5 Vuln = 15+ each. Random Dead Branch cards contribute attacks. Storm of Steel -&gt; Shiv chain for 45+ burst damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## POTION TIMING</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - Save at least 1 potion for Phase 2. Phase 2 is the harder phase -- do not spend everything in Phase 1.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
+<div class="diff-hunk">@@ -43,11 +43,13 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Masterful Stab](masterful-stab.md)</div>
+<div class="diff-ctx"> - [Finisher](finisher.md)</div>
+<div class="diff-add">+- [Bane](bane.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Silent Skill Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Blur](blur.md)</div>
+<div class="diff-ctx"> - [Malaise](malaise.md)</div>
+<div class="diff-add">+- [Terror](terror.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Silent Power Cards</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/bane.md</div>
+<div class="diff-hunk">@@ -0,0 +1,16 @@</div>
+<div class="diff-add">+# Bane (Silent Attack, 1E, 7 damage / 10 upgraded)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Deal 7 (10) damage. If the enemy has Poison, deal 7 (10) damage again (double damage).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: Bane deals its damage TWICE if the target is Poisoned. This is effectively 14 (20) damage for 1E against any Poisoned enemy -- one of the highest damage-per-energy ratios for a common card.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHY IT&#x27;S GOOD:</div>
+<div class="diff-add">+- In any Silent deck with poison sources (Noxious Fumes, Deadly Poison, Envenom, Bouncing Flask, Poisoned Stab), Bane is almost always dealing double damage.</div>
+<div class="diff-add">+- 14 damage for 1E (unupgraded) rivals uncommon attack cards. 20 damage for 1E (upgraded) is exceptional.</div>
+<div class="diff-add">+- The double-hit counts as two separate attacks for relics like Kunai (Dex per 3 attacks) and Shuriken (Str per 3 attacks).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+TERROR SYNERGY: With Terror&#x27;s Vulnerable 99 active, Bane on a Poisoned target deals (7 * 2) * 1.5 = 21 damage unupgraded, or (10 * 2) * 1.5 = 30 damage upgraded, for 1E. This is among the highest single-card damage outputs for 1E in the game.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEAD BRANCH CONTEXT: Bane can be generated randomly by Dead Branch. When it appears against a Poisoned, Vulnerable boss, it is one of the best possible Dead Branch outcomes.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+LIMITATION: Against enemies without Poison, Bane deals only 7 (10) damage for 1E -- below average. Do not take Bane unless the deck has reliable poison application.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/terror.md</div>
+<div class="diff-hunk">@@ -0,0 +1,23 @@</div>
+<div class="diff-add">+# Terror (Silent Skill, 1E / 0E upgraded, Exhaust)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Apply 99 Vulnerable to target enemy. Exhausts.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: The target takes 50% more damage from ALL attacks for the rest of combat. 99 turns of Vulnerable means it never wears off -- this is effectively permanent Vulnerable for the entire fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: Terror+ costs 0E instead of 1E. The upgrade is excellent -- a free permanent 50% damage boost to any enemy.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHY IT&#x27;S EXCELLENT:</div>
+<div class="diff-add">+- 99 Vulnerable is the single strongest damage multiplier in the game for sustained fights. Every attack for the rest of combat deals 50% more damage.</div>
+<div class="diff-add">+- Exhausts, so it does not clog the deck after use. The exhaust also triggers Dead Branch (random card generation) and Feel No Pain (block).</div>
+<div class="diff-add">+- 1E cost (0E upgraded) for a permanent 50% damage increase is the best energy-to-value ratio of any damage-amplifying card.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BOSS FIGHT VALUE:</div>
+<div class="diff-add">+- Against bosses with 250-300+ HP, the 50% damage increase applied to every subsequent attack saves 3-5 turns of combat. This translates to 3-5 fewer turns of incoming damage.</div>
+<div class="diff-add">+- Against the Awakened One: Terror in Phase 1 accelerates the kill before Curiosity Str accumulates. Terror in Phase 2 enables the kill without playing Powers. Confirmed MVP in a victory.</div>
+<div class="diff-add">+- Against any boss: play Terror on the first turn you can spare 1E, then focus on damage. Earlier application = more total bonus damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEAD BRANCH SYNERGY: Terror exhausts on play, triggering Dead Branch for a random card. This makes Terror a &quot;free&quot; Dead Branch proc on top of its devastating debuff. In the Awakened One victory, Terror was played in both Phase 1 and Phase 2 (generated by Dead Branch in Phase 2), each time providing Vuln 99 + a random card.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BANE SYNERGY: Bane deals double damage to Poisoned enemies. With Terror&#x27;s Vuln 99 active, Bane on a poisoned target deals (base * 2) * 1.5 = 3x effective damage. Confirmed strong interaction.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SINGLE-TARGET LIMITATION: Terror only applies to one enemy. In multi-enemy fights, the other enemies are unaffected. Prioritize the highest-HP target (usually the boss or elite).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/dead-branch.md</div>
+<div class="diff-hunk">@@ -12,4 +12,18 @@ FEEL NO PAIN SYNERGY: With Feel No Pain active, every exhaust triggers both Dead</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> DECISION POINTS: Dead Branch is always a strong relic pick. When you have Dead Branch, prioritize cards that exhaust (Corruption, Second Wind, True Grit+, Burning Pact, Fiend Fire). Corruption becomes the highest-priority card to acquire when Dead Branch is in your relic pool.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+SILENT EXHAUST SYNERGY: Dead Branch transforms the Silent&#x27;s many exhaust cards into an infinite value engine. Key interactions:</div>
+<div class="diff-add">+- **Shivs exhaust after play** (they are Ethereal-like 0-cost attacks). Each Shiv played exhausts and triggers Dead Branch, generating a random card. With 4-6 Shivs per turn, Dead Branch generates 4-6 new cards per turn.</div>
+<div class="diff-add">+- **Storm of Steel** discards hand and generates Shivs equal to cards discarded. Each Shiv then exhausts on play for Dead Branch. Storm of Steel -&gt; 5 Shivs -&gt; 5 Dead Branch procs = massive card generation chain.</div>
+<div class="diff-add">+- **Terror** (0E, Vuln 99, exhaust) becomes a free Dead Branch proc on top of its devastating debuff.</div>
+<div class="diff-add">+- **Endless Agony** (0E, exhaust, copies itself when drawn) provides repeatable Dead Branch triggers.</div>
+<div class="diff-add">+- **Adrenaline** (0E, +2E, draw 2, exhaust) = free energy + draws + Dead Branch proc.</div>
+<div class="diff-add">+- **Distraction** (1E, exhaust, generates random Skill) = Dead Branch proc + random Skill.</div>
+<div class="diff-add">+- **Piercing Wail** (exhaust) = Dead Branch proc after the Str reduction.</div>
+<div class="diff-add">+- **Crippling Cloud** (exhaust) = Dead Branch proc after poison + Weak AOE.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Silent Dead Branch engine won against the Awakened One (both phases). In Phase 2, the player avoided all Powers and relied entirely on Dead Branch + exhaust cards for card generation. Storm of Steel -&gt; Shiv chains via Dead Branch created explosive turns dealing 45+ damage while generating block through After Image. This is a confirmed winning approach.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEAD BRANCH + AFTER IMAGE: Each Dead Branch-generated card played triggers After Image for +1 block. With 5-10 card plays per turn from Dead Branch chains, After Image generates 5-10 passive block per turn. This combination provides both offense (random cards) and defense (After Image block) simultaneously.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ANTI-SYNERGIES: None significant. Dead Branch is universally strong. The only risk is relying on random card generation for specific answers (you cannot control what cards you get).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,18 +2,18 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (161 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Eleven Silent runs total (Runs 151-161). Run 161 (Silent) died Floor 22 to Sentry + Spheric Guardian from Unknown room at 21% HP -- Sozu (no potions) removed all safety nets. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.</div>
+<div class="diff-add">+**CURRENT STATUS (162 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Twelve Silent runs total (Runs 151-162). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-del">-- Act 2 boss kills: 5. Act 2 boss reaches: 11+.</div>
+<div class="diff-del">-- **Act 3 reached seven times (Runs 145, 147, 148, 149, 150, 151, 158).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Run 158 (Silent) all WON.</div>
+<div class="diff-del">-- **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158 all reached Floor 51).**</div>
+<div class="diff-del">-- **4 wins in 161 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (11 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP).</div>
+<div class="diff-del">-- **Run 161: Silent died Floor 22 to Sentry + Spheric Guardian.** Sozu (no potions) removed emergency saves. Centurion+Mystic on F21 drained 24 HP (39-&gt;15) at 55% entry. Player chose Unknown room at 21% HP reasoning it was &quot;safer than combat&quot; -- playbook explicitly says Unknown = Monster in Act 2. Sentry + SG spawned. Survived 5 turns via excellent play (poison through Barricade, Piercing Wail+ negating attacks, precise block math) but died Turn 6 with 3 HP, 10 block vs 20 incoming.</div>
+<div class="diff-del">-- **Three distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-add">+- Act 2 boss kills: 6. Act 2 boss reaches: 12+.</div>
+<div class="diff-add">+- **Act 3 reached eight times (Runs 145, 147, 148, 149, 150, 151, 158, 162).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.</div>
+<div class="diff-add">+- **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**</div>
+<div class="diff-add">+- **5 wins in 162 runs (3.1% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (12 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP).</div>
+<div class="diff-add">+- **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.</div>
+<div class="diff-add">+- **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**THE WINNING FORMULAS (confirmed by 4 victories across 3 distinct engines):**</div>
+<div class="diff-add">+**THE WINNING FORMULAS (confirmed by 5 victories across 4 distinct engines):**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Formula 1 (Ironclad): Snecko Eye + Strength Scaling (Runs 147-148).** Snecko Eye (Act 2 boss relic, draw 7, cost randomization) + Immolate+ (AOE) + Limit Break (Str doubler) + Heavy Blade / high-Str finishers. Key components: Snecko Eye as Act 2 boss relic, Immolate+ as primary AOE, Limit Break for Strength scaling. Works by rolling cheap costs on expensive cards and doubling Strength for massive finisher damage.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -21,6 +21,8 @@ High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Formula 3 (Silent): Accuracy Shiv Burst (Run 158 -- FIRST SILENT WIN).** Accuracy x2 (+8 Shiv damage) + After Image (innate via Bottled Tornado, 1 block/card played) + Wraith Form+ (3 Intangible for emergency survival) + Phantasmal Killer (double damage burst turn) + Malaise (X Weak + X Str Down for boss debuff) + Blade Dance (3 Shivs for 1E) + Finisher (damage per attack played this turn). Key components: Accuracy stacking makes every 0-cost Shiv deal 12+ damage; After Image as innate guarantees block from Turn 1 of every fight; Wraith Form+ provides 3 turns of Intangible when HP drops to crisis levels; Phantasmal Killer doubles the next attack for massive Shiv burst turns; Malaise neuters boss offense for the final stretch. Cultist Potion (Ritual 1) provides permanent Str scaling that compounds with Accuracy -- by Turn 10, Shivs dealt 23 each (4 base + 8 Accuracy + 11 Str). This formula defeats Time Eater because each Shiv is a single card play but deals massive damage, making the 12-card Time Warp counter manageable (12 cards can output 200+ damage per cycle). Lizard Tail provided death insurance for the revival that enabled the final burst.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**Formula 4 (Silent): Dead Branch Exhaust Engine (Run 162 -- SECOND SILENT WIN, vs Awakened One).** Dead Branch (relic: random card on exhaust) + exhaust-heavy Silent deck (Terror, Piercing Wail, Adrenaline, Storm of Steel, Endless Agony, Distraction, Crippling Cloud, Shivs) + After Image (1 block/card played) + Footwork x2 (Dex 7 for massive Skill block) + Well-Laid Plans (card retention). Key components: Dead Branch transforms every exhaust into a new card, creating infinite card advantage; Terror provides Vuln 99 for permanent 50% damage boost; Storm of Steel discards hand for Shivs that exhaust into Dead Branch procs; After Image + high Dex provides blocking without Powers. **This formula specifically defeats the Awakened One** because it generates card advantage in Phase 2 without playing Powers (zero Curiosity triggers). Phase 1: dump ALL Powers (Curiosity Str resets on death). Phase 2: play ZERO Powers, rely entirely on Dead Branch + exhaust for card generation. Lizard Tail provides death insurance. Mercury Hourglass adds 3 passive damage/turn. Clockwork Souvenir provides Artifact 1 at combat start.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> **What all formulas share:** (1) zero UI misplays, (2) zero arithmetic errors, (3) strong Act 1 performance, (4) proper map pathing, (5) a complete scaling engine (not individual strong cards). The key insight: pursue whichever engine the card/relic offerings support, not force one formula over the other.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **IMMEDIATE PRIORITIES (in order):**</div>
+<div class="diff-hunk">@@ -33,7 +35,7 @@ High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> 7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Book natively gains +3 Str/turn; Brimstone adds +2 Str/turn on top = +5 Str/turn. Two deaths confirmed.</div>
+<div class="diff-ctx"> 8. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed &gt; block.</div>
+<div class="diff-ctx"> 9. **Enter every boss at as high HP as possible.** The first victory entered all three bosses at 80/80. The second victory entered Act 1 and Act 2 bosses at high HP but entered Donu and Deca at only 49% (42/85) and survived at 4 HP -- a razor-thin margin. Full HP entry provides the buffer needed when boss fights go long. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enable full HP entry. A powerful deck (Snecko Eye + Immolate+ + Limit Break+) can compensate for low HP entry, but the margin of error is minimal.</div>
+<div class="diff-del">-10. **KNOW YOUR ACT 3 BOSS MECHANIC AND BUILD AROUND IT.** The Act 3 boss is visible on the map from Act 1. Each Act 3 boss punishes a specific playstyle: (a) **Awakened One** punishes Power cards (+2 Str per Power played -- see awakened-one.md). If the boss is Awakened One, deprioritize Powers during drafting and plan to win with Attacks and Skills. (b) **Time Eater** punishes high card-count turns (12-card Time Warp -- see time-eater.md). Track card count exactly. However, Shivs with Accuracy stacking make Time Warp manageable -- each Shiv is 1 card play dealing 20+ damage, so 12 plays per cycle output massive total damage. The Silent Shiv archetype BEAT Time Eater in the first Silent victory. (c) **Donu and Deca** is a raw stats check (500 combined HP). The boss you see should influence every card pick, relic choice, and deck-building decision from Floor 1 onward.</div>
+<div class="diff-add">+10. **KNOW YOUR ACT 3 BOSS MECHANIC AND BUILD AROUND IT.** The Act 3 boss is visible on the map from Act 1. Each Act 3 boss punishes a specific playstyle: (a) **Awakened One** punishes Power cards (+2 Str per Power played -- see awakened-one.md). If the boss is Awakened One, deprioritize Powers during drafting UNLESS you have Dead Branch -- Dead Branch + exhaust engine beats the Awakened One by dumping Powers in Phase 1 (Str resets) and playing zero Powers in Phase 2 (Dead Branch generates cards instead). Without Dead Branch, plan to win with Attacks and Skills. (b) **Time Eater** punishes high card-count turns (12-card Time Warp -- see time-eater.md). Track card count exactly. However, Shivs with Accuracy stacking make Time Warp manageable -- each Shiv is 1 card play dealing 20+ damage, so 12 plays per cycle output massive total damage. The Silent Shiv archetype BEAT Time Eater in the first Silent victory. (c) **Donu and Deca** is a raw stats check (500 combined HP). The boss you see should influence every card pick, relic choice, and deck-building decision from Floor 1 onward.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -554,7 +556,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### What the Deck Needs for Act 3</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-1. **A complete scaling engine**: Three proven winning approaches with four victories between them. **Ironclad (A)** Snecko Eye + Limit Break + Heavy Blade: burst-damage engine using cost randomization and Strength doubling. **Ironclad (B)** Barricade + Corruption + Feel No Pain + Entrench + Body Slam: block accumulation engine that converts persistent block to damage via Body Slam+. **Silent (C)** Accuracy x2 + After Image (innate) + Wraith Form+ + Phantasmal Killer + Malaise + Shiv burst: multiplier-stacking engine using Accuracy+Str on 0-cost Shivs with Phantasmal Killer for double damage burst turns. All approaches work against Act 3 bosses. The key is having a COMPLETE engine -- individual strong cards without the supporting pieces are insufficient.</div>
+<div class="diff-add">+1. **A complete scaling engine**: Four proven winning approaches with five victories between them. **Ironclad (A)** Snecko Eye + Limit Break + Heavy Blade: burst-damage engine using cost randomization and Strength doubling. **Ironclad (B)** Barricade + Corruption + Feel No Pain + Entrench + Body Slam: block accumulation engine that converts persistent block to damage via Body Slam+. **Silent (C)** Accuracy x2 + After Image (innate) + Wraith Form+ + Phantasmal Killer + Malaise + Shiv burst: multiplier-stacking engine using Accuracy+Str on 0-cost Shivs with Phantasmal Killer for double damage burst turns. **Silent (D)** Dead Branch + exhaust engine: Dead Branch generates random cards from exhaust triggers; Terror provides Vuln 99; Storm of Steel + Shivs create Dead Branch chain reactions; After Image + Footwork provide blocking without Powers. Specifically effective against the Awakened One (zero Powers in Phase 2). All approaches work against Act 3 bosses. The key is having a COMPLETE engine -- individual strong cards without the supporting pieces are insufficient.</div>
+<div class="diff-ctx"> 2. **Block density beyond Barricade**: Impervious, Shrug It Off, Defend+. Barricade needs block cards to feed into the snowball. Without block cards to play, Barricade only accumulates Metallicize&#x27;s passive block (slow). Impervious + Barricade = 30-40 permanent block in one play.</div>
+<div class="diff-ctx"> 3. **AOE**: Immolate+ is the single best card. Darklings require simultaneous kills; Exploders can be cleared with single Immolate+.</div>
+<div class="diff-ctx"> 4. **Disarm/Weak sources**: Transient and scaling enemies require Strength reduction and Weak application. Save for Transient and boss fights -- do not waste on hallway fights that the Barricade engine can handle.</div>
+<div class="diff-hunk">@@ -566,9 +568,9 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### What Wins and What Kills (Summary)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**All four victories had:** (1) a complete scaling engine, (2) zero UI misplays, (3) zero arithmetic errors, (4) strong Act 1 performance. The fourth win (Run 158, Silent) introduced a completely new formula: Accuracy Shiv burst. Pandora&#x27;s Box from Neow provided 2x Accuracy + Envenom + Infinite Blades. Bottled Tornado made After Image innate (guaranteed block from Turn 1). Ginger negated Doubt curse from Mind Bloom &quot;I am Healthy&quot; for a free full heal. Cultist Potion gave Ritual 1 for permanent Str scaling (reached Str 11 by Turn 10). Lizard Tail revived at 0 HP during the Time Eater fight. Key difference from Ironclad formulas: Silent wins through many small card plays (Shivs) with stacked multipliers (Accuracy + Str + Phantasmal Killer), not through single massive hits. Against Time Eater&#x27;s 12-card counter, each Shiv deals 20+ damage, so 12 card plays per cycle still output massive total damage.</div>
+<div class="diff-add">+**All five victories had:** (1) a complete scaling engine, (2) zero UI misplays, (3) zero arithmetic errors, (4) strong Act 1 performance. The fourth win (Run 158, Silent) introduced Accuracy Shiv burst vs Time Eater. The fifth win (Run 162, Silent) introduced Dead Branch exhaust engine vs Awakened One -- a formula specifically designed to defeat the Power-punishing boss by dumping Powers in Phase 1 (Str resets) and avoiding them entirely in Phase 2 (Dead Branch generates cards instead). Key difference from Ironclad formulas: Silent wins through many small card plays (Shivs, exhaust chains) with stacked multipliers (Accuracy + Str + Phantasmal Killer for Formula 3; Dead Branch + Terror Vuln 99 + After Image for Formula 4), not through single massive hits. Both Silent victories used Lizard Tail as death insurance in the Act 3 boss fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Every boss victory** had: (1) a card that addressed the boss&#x27;s main threat, (2) passive block/sustain (After Image, Metallicize, Barricade), (3) entry HP above 50% or Pantograph or Lizard Tail, (4) at least 1 key upgrade or strong unupgraded cards, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.</div>
+<div class="diff-add">+**Every boss victory** had: (1) a card that addressed the boss&#x27;s main threat, (2) passive block/sustain (After Image, Metallicize, Barricade), (3) entry HP above 50% or Pantograph or Lizard Tail (Run 162 entered at full HP with Lizard Tail as insurance), (4) at least 1 key upgrade or strong unupgraded cards, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Act 2 death causes (ranked by frequency, 35+ deaths):**</div>
+<div class="diff-ctx"> 1. **HP attrition from failure to full block** -- the player takes unnecessary damage in hallway fights, then enters the next fight at critical HP and dies. Root cause: not executing the Full Block Algorithm. Solved by making zero-damage-taken the explicit default for every hallway turn.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 161 analysis: Sozu anti-pattern confirmed, Unknown room rule reinforced</div>
       <div class="changelog-sha">69c51771</div>
     </div>
@@ -10194,193 +10451,6 @@ footer {
 <div class="diff-ctx"> </div>
 <div class="diff-del">-INTERACTION: With Sozu (no potions), Pantograph becomes even MORE critical -- it is the only reliable full heal in the run. Pantograph + Sozu is a viable combination because the energy from Sozu makes fights faster (less HP drain) and Pantograph recovers all HP at the two most dangerous fights.</div>
 <div class="diff-add">+INTERACTION: With Sozu (no potions), Pantograph is still valuable as a reliable 25 HP heal, but it is NOT a full heal replacement. Plan boss HP thresholds accordingly -- you need to enter bosses at no more than 25 HP below max to benefit fully.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 70 analysis: Slime Boss split management, Disarm doesn&#x27;t transfer, upgrade spiral</div>
-      <div class="changelog-sha">a34c9233</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/bosses/slime-boss.md</div>
-<div class="diff-hunk">@@ -2,7 +2,7 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> PATTERN:</div>
-<div class="diff-ctx"> - Pre-split: Alternates between STRONG_DEBUFF turns (no attack, safe to go all-in) and high-damage ATTACK turns (35 damage). Debuff turns are safe windows for damage.</div>
-<div class="diff-del">-- Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss&#x27;s remaining HP at split. If you deal excess damage past the threshold (e.g., boss goes from 87 to 63), both slimes spawn with 63 HP each.</div>
-<div class="diff-add">+- Split: At 50% HP (70 HP remaining), splits into Spike Slime (L) + Acid Slime (L). Each split slime has HP equal to the boss&#x27;s remaining HP at split. **Excess damage past 70 HP is wasted AND makes the fight harder** -- if the boss goes from 87 to 63, both slimes spawn with 63 HP each instead of 70 HP. This sounds helpful but you already dealt 17 &quot;free&quot; damage that could have been blocked instead; the real cost is that you overkilled by 7 HP on a hit that could have been split across two turns. Manage damage carefully: aim to trigger the split at exactly 70 HP or as close as possible.</div>
-<div class="diff-ctx"> - Post-split: Two enemies each with significant HP and damage. Spike Slime (L) attacks for ~16 and applies Frail. Acid Slime (L) attacks for ~11-12 and applies Weak. Combined 25-36 damage per turn. Both add Slimed cards to deck.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> KEY MECHANICS:</div>
-<div class="diff-hunk">@@ -12,23 +12,25 @@ KEY MECHANICS:</div>
-<div class="diff-ctx"> - **Large slimes split on death**: Both Spike Slime (L) and Acid Slime (L) split into 2 medium slimes when killed. Spike Slime (L) splits into 2x Spike Slime (M). Acid Slime (L) splits into 2x Acid Slime (M). This means killing one large slime creates a 3-enemy situation (1 large + 2 mediums), which can be worse than the 2-enemy state.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> PREPARATION CHECKLIST:</div>
-<div class="diff-del">-1. AOE for the split (Thunderclap, Whirlwind, Cleave) -- MANDATORY</div>
-<div class="diff-add">+1. AOE for the split (Thunderclap, Whirlwind, Cleave) -- MANDATORY. Without AOE, you must single-target each of 4+ enemies after both large slimes split. Confirmed death in Run 70: no AOE was ever offered, and single-target damage could not keep up with Slimed card generation from multiple enemies.</div>
-<div class="diff-ctx"> 2. Burst single-target to kill one slime fast (Fiend Fire, Carnage+)</div>
-<div class="diff-del">-3. Exhaust tools for Slimed cards (Fiend Fire turns Slimed into 7 damage each, True Grit+, Burning Pact, Feel No Pain converts exhaust into 3 block each)</div>
-<div class="diff-add">+3. Exhaust tools for Slimed cards (Fiend Fire turns Slimed into 7 damage each, True Grit+, Burning Pact, Feel No Pain converts exhaust into 3 block each). Without exhaust tools, Slimed cards clog the hand (3 of 5 cards being Slimed observed), leaving only 2 playable cards per turn.</div>
-<div class="diff-ctx"> 4. Enough block/HP to survive 2-3 turns of 25-36 combined damage</div>
-<div class="diff-add">+5. At least 1 upgrade before the fight. Zero upgrades makes the fight dramatically harder -- unupgraded Bash provides only 2 turns of Vulnerable instead of 3, and all damage/block cards are weaker.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> STRATEGY:</div>
-<div class="diff-del">-- **Pre-split**: Use debuff turns (free turns) to deal damage. Apply Vulnerable with Bash+. Don&#x27;t worry about killing fast -- prepare for the split.</div>
-<div class="diff-add">+- **Pre-split**: Use debuff turns (free turns) to deal damage. Apply Vulnerable with Bash+. Don&#x27;t worry about killing fast -- prepare for the split. **Manage damage near the 70 HP threshold**: on the turn the boss will cross 70 HP, calculate exact damage to avoid massive overkill. Spending energy on block instead of excess damage past the threshold is often correct.</div>
-<div class="diff-ctx"> - **At split**: Use Thunderclap for mass Vulnerable on both slimes. AOE with Whirlwind or Cleave.</div>
-<div class="diff-ctx"> - **Post-split**: SPREAD DAMAGE to both large slimes before killing either one. Killing one creates a 3-enemy situation (2 mediums + 1 large). Ideally, reduce both to low HP, then kill them in quick succession to minimize turns spent fighting 3+ enemies. If forced to kill one first, kill the one you can follow up on immediately -- do NOT leave a full-HP large slime alive while dealing with mediums.</div>
-<div class="diff-ctx"> - **Slimed management**: Exhaust Slimed cards as priority. Each one exhausted is one fewer dead draw for the rest of combat. Fiend Fire is ideal -- converts Slimed cards to 7 damage each. Feel No Pain turns each Slimed exhaust into 3 block, making the tempo cost much more bearable.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> WHAT NOT TO DO:</div>
-<div class="diff-del">-- Enter without AOE. Single-target damage cannot handle the split.</div>
-<div class="diff-add">+- Enter without AOE. Single-target damage cannot handle the split. If no AOE was offered in card rewards, consider the run compromised against Slime Boss -- path aggressively through shops and events to find Thunderclap or Cleave before Floor 16.</div>
-<div class="diff-add">+- Enter with 0 upgrades. The upgrade death spiral (low HP forces resting at every rest site, which means no upgrades, which means fights are harder, which means more HP loss) was confirmed fatal in Run 70. Both rest sites were spent healing because HP was critically low from fights with unupgraded cards.</div>
-<div class="diff-add">+- Enter below 60% HP. 50/85 HP (58%) entry contributed to death in Run 70.</div>
-<div class="diff-ctx"> - Ignore Slimed cards. They accumulate and destroy hand quality.</div>
-<div class="diff-ctx"> - Play Berserk. Self-Vulnerable against 2 enemies doing 25-36 combined is suicidal.</div>
-<div class="diff-ctx"> - Focus all damage on one large slime while ignoring the other. Killing Acid Slime (L) at 63 HP while Spike Slime (L) sits untouched at 63 HP creates a 3-enemy nightmare (Spike Slime L + 2x Acid Slime M dealing 33+ combined damage). Spread damage to both large slimes before killing either.</div>
-<div class="diff-ctx"> - Use Hemokinesis at low HP during split phase. The 2 HP self-damage compounds with split damage.</div>
-<div class="diff-del">-- Enter below 50% HP. Even with a strong deck (Shockwave, Metallicize, Impervious), low entry HP leaves no buffer for the split transition.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ---</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/burning-pact.md</div>
-<div class="diff-hunk">@@ -1,5 +1,5 @@</div>
-<div class="diff-ctx"> # Burning Pact (1E, Skill, Exhaust 1 chosen card from hand, draw 2)</div>
-<div class="diff-ctx"> Controlled exhaust + card draw. Net +1 card in hand.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WHEN IT&#x27;S GOOD: Removing status cards (Slimed, Dazed, Wound). Cycling to find key cards. Thinning in-combat deck safely. Critical vs Book of Stabbing -- exhaust Wounds to keep draws functional while cycling toward damage cards.</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: Removing status cards (Slimed, Dazed, Wound). Cycling to find key cards. Thinning in-combat deck safely. Critical vs Book of Stabbing -- exhaust Wounds to keep draws functional while cycling toward damage cards. Essential in Slime Boss fight -- exhaust Slimed cards to prevent hand clog while drawing toward damage/block. With Feel No Pain active, each Slimed exhausted via Burning Pact generates 3 block AND draws 2 cards.</div>
-<div class="diff-ctx"> DECISION POINTS: What&#x27;s expendable in hand? Exhaust status cards or extra Strikes. Against Gremlin Nob and Chosen, do NOT play (Skill card triggers Enrage/Hex).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/clothesline.md</div>
-<div class="diff-hunk">@@ -4,4 +4,5 @@ Expensive but applies Weak. Reduces enemy attack damage by 25% for 2-3 turns.</div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Against single big attackers where Weak saves more HP than alternative plays. Against Hexaghost when no other Weak source is available.</div>
-<div class="diff-ctx"> DECISION POINTS: Is 2E for 12 damage + Weak worth more than two 1E cards? Against multiple enemies, you can only Weak one. Consider energy economy.</div>
-<div class="diff-ctx"> UPGRADE: 12-&gt;14 damage, 2-&gt;3 Weak. The extra Weak turn is significant for boss fights. Medium priority.</div>
-<div class="diff-del">-MATCHUPS: Hexaghost -- Weak reduces 7x6=42 Inferno to 7x4=28. This is a lifesaving application.</div>
-<div class="diff-add">+MATCHUPS: Hexaghost -- Weak reduces 7x6=42 Inferno to 7x4=28. This is a lifesaving application. Slime Boss -- Weak on a large slime post-split reduces its attack by 25% for 2-3 turns. At 2E it is expensive during the split phase when energy is tight, but the Weak duration helps survive combined damage from both slimes.</div>
-<div class="diff-add">+SLIME BOSS NOTE: Does not help with the core problem (need AOE for split). Clothesline is a supplementary defensive tool in this fight, not a solution.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/disarm.md</div>
-<div class="diff-hunk">@@ -4,6 +4,7 @@ Permanent Strength reduction. Extremely powerful against scaling enemies.</div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Against enemies that gain Strength over time (Gremlin Leader, Cultist). Unlike Weak (temporary 25% reduction), Disarm permanently removes 2 damage from every attack.</div>
-<div class="diff-ctx"> DECISION POINTS: Save for the enemy with the most dangerous Strength scaling. Against multi-hit enemies, the value compounds (5-hit attack loses 10 total damage). Against Gremlin Nob, do NOT play (Skill triggers Enrage). Against Chosen, playing Disarm adds a Dazed via Hex -- weigh the permanent -2 Str against the deck clog. If the fight will last 4+ more turns, the Str reduction is usually worth one Dazed.</div>
-<div class="diff-ctx"> MATCHUPS: Gremlin Leader -- reduces Rally effectiveness. Hexaghost -- -2 Str permanently reduces all attacks including each Inferno hit. Very effective in the long fight. Slavers -- play on the hardest-hitting Slaver to reduce incoming from the most dangerous source. Collector -- play Turn 1 for maximum cumulative value across 10-turn fight. Transient -- essential for survival. Permanent Str reduction compounds over all 5 turns of escalating damage; two Disarms (-4 to -5 total) makes the fight trivial. Against multi-hit enemies generally.</div>
-<div class="diff-add">+SLIME BOSS: Disarm&#x27;s Strength reduction applied to the boss pre-split does NOT carry over to the split slimes. The split creates new enemies with their own base stats. Play Disarm post-split on the higher-damage slime (Spike Slime L, ~16 damage) rather than wasting it pre-split.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> NOTE: Under Snecko&#x27;s Confusion, Disarm can cost 0E (normally 1E). A 0E permanent -2 Str is exceptional value -- play immediately when this occurs.</div>
-<div class="diff-ctx"> ARTIFACT INTERACTION: Against enemies with Artifact (e.g., Bronze Automaton starts with 3), Disarm strips 1 Artifact instead of applying -2 Str. Use Disarm alongside Thunderclap and Bash+ to strip Artifact stacks before applying real debuffs.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/dropkick.md</div>
-<div class="diff-hunk">@@ -5,4 +5,4 @@ WHEN IT&#x27;S GOOD: With reliable Vulnerable application (Bash+, Thunderclap). Infin</div>
-<div class="diff-ctx"> DECISION POINTS: Is the target Vulnerable? If yes, always play -- it&#x27;s free damage + cycling. If no, it&#x27;s a terrible card (5/8 damage, no benefit). Do NOT play against non-Vulnerable targets.</div>
-<div class="diff-ctx"> UPGRADE: 5-&gt;8 damage. With Vulnerable: 7-&gt;12 damage. The upgrade matters because the free damage is significantly higher.</div>
-<div class="diff-ctx"> SYNERGIES: Bash+ (3 turns Vulnerable = 3 free Dropkick plays), Thunderclap (mass Vulnerable = Dropkick any target).</div>
-<div class="diff-del">-MATCHUPS: Book of Stabbing -- Dropkick+ dealt 12 Vuln damage three times as free actions = 36 total damage for 0 net energy.</div>
-<div class="diff-add">+MATCHUPS: Book of Stabbing -- Dropkick+ dealt 12 Vuln damage three times as free actions = 36 total damage for 0 net energy. Slime Boss (pre-split) -- excellent with Bash+ providing 3 turns of Vulnerable. Free cycling helps find block cards for the split transition. Post-split -- requires re-applying Vulnerable to each slime individually, which is energy-intensive without Thunderclap.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/feel-no-pain.md</div>
-<div class="diff-hunk">@@ -8,7 +8,9 @@ DECISION POINTS: Play on a free turn (enemy buffing/debuffing) for zero opportun</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> SYNERGIES: True Grit+ (each exhaust = block from True Grit + 3 from FNP), Burning Pact (exhaust + draw + 3 block), Fiend Fire (exhaust entire hand = 3 block per card), Corruption (all Skills exhaust = constant block triggers -- FNP is critical for surviving Corruption&#x27;s setup turns by generating block from every subsequent Skill play), Corruption + Dead Branch (the triple combo: every Skill exhausts for free, generates 3 block from FNP, and adds a random card from Dead Branch -- this is the strongest defensive engine in the game), Second Wind (mass exhaust = massive FNP block burst).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-SLIME BOSS SYNERGY: Slimed cards cost 1E to exhaust. With Feel No Pain active, each Slimed exhausted generates 3 block, partially offsetting the 1E tempo cost. In a typical Slime Boss fight with 5+ Slimed cards, this generates 15+ total block across the fight.</div>
-<div class="diff-add">+SLIME BOSS SYNERGY: Slimed cards cost 1E to exhaust. With Feel No Pain active, each Slimed exhausted generates 3 block, partially offsetting the 1E tempo cost. In a typical Slime Boss fight with 5+ Slimed cards, this generates 15+ total block across the fight. FNP is one of the most important cards for surviving the Slime Boss split because the post-split phase generates the most Slimed cards.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+FRAIL INTERACTION (UNCONFIRMED): Feel No Pain&#x27;s 3 block is generated by a Power effect, not directly from playing a card. Frail says &quot;block gained from cards is reduced by 25%.&quot; It is uncertain whether FNP block counts as &quot;block from a card&quot; (and is reduced by Frail) or &quot;block from a Power trigger&quot; (and is unaffected). This matters in the Slime Boss fight because Spike Slime L applies Frail.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ANTI-SYNERGY: Weak in decks with few exhaust sources. If the deck only exhausts 1-2 cards per fight, 3-6 block total is poor value for a deck slot.</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/power-through.md</div>
-<div class="diff-hunk">@@ -6,4 +6,6 @@ WHEN IT&#x27;S A TRAP: In long fights (Shelled Parasite, scaling enemies) without exh</div>
-<div class="diff-ctx"> DECISION POINTS: Is 15 block worth 2 dead draws in future hands? In long fights without exhaust tools, the Wounds accumulate and ruin draws. In short fights or with exhaust, the 15 block is worth it.</div>
-<div class="diff-ctx"> SYNERGY -- FIRE BREATHING: The 2 Wounds added by Power Through trigger Fire Breathing when drawn, dealing 6-10 damage to all enemies per Wound drawn. With Evolve also active, each Wound drawn deals damage AND draws a replacement card. This transforms Power Through&#x27;s downside (Wounds clogging hand) into pure upside (free AOE damage + card cycling).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+SLIME BOSS CAUTION: Power Through adds 2 Wounds to the hand on top of Slimed cards the boss is already adding. Without exhaust tools, Wound + Slimed accumulation can make 4 of 5 cards in a hand unplayable. If the deck has exhaust tools (Burning Pact, Feel No Pain), Power Through&#x27;s 15 block is excellent for surviving the split transition. Without exhaust, it accelerates hand clog.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> DRAFT RULE: Do not take Power Through unless the deck has at least one exhaust tool (True Grit+, Fiend Fire, Second Wind, Burning Pact), Fire Breathing (converts Wounds to damage), or the deck is fast enough to end fights in 4-5 turns.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/acid-slime-l.md</div>
-<div class="diff-hunk">@@ -1,4 +1,4 @@</div>
-<div class="diff-del">-# Acid Slime L (hallway/boss split, Act 1, HP: ~63 from Slime Boss split)</div>
-<div class="diff-add">+# Acid Slime L (hallway/boss split, Act 1, HP: equal to Slime Boss&#x27;s remaining HP at split, max 70)</div>
-<div class="diff-ctx"> PATTERN: Attacks for ~11-12 damage. Applies Weak. Adds Slimed cards. Splits into 2x Acid Slime (M) on death.</div>
-<div class="diff-ctx"> KEY MECHANIC: Weak + Split on death + Slimed.</div>
-<div class="diff-ctx"> WHAT THIS MEANS: Killing this enemy creates 2 Acid Slime (M) enemies. In the Slime Boss fight, this means going from 2 enemies to 3 unless you kill both large slimes in quick succession. Weak reduces YOUR damage output, making it harder to finish off remaining enemies.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/spike-slime-l.md</div>
-<div class="diff-hunk">@@ -1,4 +1,4 @@</div>
-<div class="diff-del">-# Spike Slime L (hallway/boss split, Act 1, HP: ~63 from Slime Boss split)</div>
-<div class="diff-add">+# Spike Slime L (hallway/boss split, Act 1, HP: equal to Slime Boss&#x27;s remaining HP at split, max 70)</div>
-<div class="diff-ctx"> PATTERN: Attacks for ~16 damage. Applies Frail. Adds Slimed cards. Splits into 2x Spike Slime (M) on death.</div>
-<div class="diff-ctx"> KEY MECHANIC: Split on death. Creates 2 medium slimes, extending the fight significantly. Frail reduces block gained from cards by 25%.</div>
-<div class="diff-ctx"> WHAT THIS MEANS: Prepare for the split -- have enough HP and resources to handle 2 medium slimes after killing the large one. In the Slime Boss fight, killing this while Acid Slime (L) is at full HP creates a 3-enemy nightmare.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
-<div class="diff-hunk">@@ -37,6 +37,7 @@</div>
-<div class="diff-ctx"> - [Gremlin Horn](gremlin-horn.md)</div>
-<div class="diff-ctx"> - [Meat on the Bone](meat-on-the-bone.md)</div>
-<div class="diff-ctx"> - [Matryoshka](matryoshka.md)</div>
-<div class="diff-add">+- [Preserved Insect](preserved-insect.md)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Uncommon Relics (continued)</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/preserved-insect.md</div>
-<div class="diff-hunk">@@ -0,0 +1,8 @@</div>
-<div class="diff-add">+# Preserved Insect (Uncommon Relic)</div>
-<div class="diff-add">+Enemies in Elite fights start with 25% less HP.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: Makes every elite fight significantly easier. 25% HP reduction means fewer turns needed to kill, which means fewer turns of incoming damage. Particularly strong against high-HP elites like Book of Stabbing and Gremlin Leader.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+VALUE: Passive benefit with no downside. Always take when offered. The 25% reduction compounds with Vulnerable (50% more damage taken) -- an elite at 75% HP taking 50% more damage effectively has ~50% of its original effective HP.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SOURCE: Elite reward (confirmed from Lagavulin fight).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -10,7 +10,7 @@ High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## HP Management: The #1 Cause of Death</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-22 of 25 documented deaths resulted from entering a fight below safe HP thresholds (one death occurred at full HP but self-damage from Brutality drained HP during the fight). The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-add">+23 of 26 documented deaths resulted from entering a fight below safe HP thresholds (one death occurred at full HP but self-damage from Brutality drained HP during the fight). The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### HP Thresholds for Act 2</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -67,9 +67,11 @@ Even &quot;hallway&quot; fights in Act 2 can be run-ending: 3 Cultists has killed the play</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### The Upgrade Death Spiral</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed twice: once with only 1 upgrade across 28 floors, and once with literally ZERO upgrades across 23 floors. Both runs died in Act 2 with decks that had adequate card quality but no upgraded cards to back it up.</div>
-<div class="diff-add">+Zero upgrades in an entire run is a death sentence. Even one missed upgrade makes fights harder, which drains more HP, which forces more resting, which means more missed upgrades. This has now been observed three times: once with only 1 upgrade across 28 floors, once with literally ZERO upgrades across 23 floors, and once in Run 70 where ZERO upgrades occurred until Floor 15 (both rest sites consumed by healing due to critically low HP from fights with unupgraded cards). All three runs died with decks that had adequate card quality but no upgraded cards to back it up.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 50% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest.</div>
-<div class="diff-add">+**The spiral is self-reinforcing:** unupgraded cards mean fights take longer and deal more damage, which forces resting instead of upgrading, which keeps cards unupgraded. In Run 70, the deck had good cards (Dropkick, Clothesline, Feel No Pain, Disarm, Burning Pact, Ghostly Armor) but zero upgrades made every fight drain more HP than necessary, creating the exact spiral described here.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**MANDATORY RULE: Upgrade at EVERY rest site where HP is above the rest threshold (35% Act 1, 50% Act 2).** If no upgrade has been performed by Floor 10, something is seriously wrong -- the player is either resting unnecessarily or skipping rest sites. Bash should be upgraded by Floor 8 at the latest. If FORCED to rest at the first rest site due to low HP, the deck is already in danger -- path to the next rest site urgently and upgrade there no matter what.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Upgrade Priority</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -167,9 +169,10 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re</div>
-<div class="diff-ctx"> ### Boss-Specific Requirements</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **Slime Boss needs:**</div>
-<div class="diff-del">-- AOE for the split (Thunderclap, Whirlwind) -- MANDATORY</div>
-<div class="diff-add">+- AOE for the split (Thunderclap, Whirlwind, Cleave) -- MANDATORY. If no AOE has been offered by Floor 12, actively seek it at shops or events. Without AOE, the Slime Boss fight is near-unwinnable because post-split enemies generate Slimed cards faster than single-target damage can clear them.</div>
-<div class="diff-ctx"> - Burst single-target to kill one slime fast (Fiend Fire)</div>
-<div class="diff-del">-- Exhaust for Slimed cards</div>
-<div class="diff-add">+- Exhaust for Slimed cards (Burning Pact, Feel No Pain, True Grit+)</div>
-<div class="diff-add">+- Manage pre-split damage: aim to trigger the split as close to 70 HP as possible. Excess damage past the threshold is wasted.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **The Guardian needs:**</div>
-<div class="diff-ctx"> - 32+ block capability in one turn (Impervious, double Metallicize + Weak)</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

@@ -616,8 +616,35 @@ footer {
 <li>Base energy: 3 per turn (Ironclad, no modifiers).</li>
 <li>Energy resets each turn -- unspent energy is WASTED.</li>
 <li>Energy modifiers: Lantern (+1E turn 1), Ancient Tea Set (+2E turn 1 after rest), Berserk (+1E/turn permanently), Seeing Red+ (+2E one time), Happy Flower (+1E every 3 turns).</li>
-<li>X-cost cards (Whirlwind) use ALL remaining energy. Play LAST.</li>
+<li>X-cost cards (Whirlwind, Malaise, Skewer) use ALL remaining energy. See X-Cost Cards section below.</li>
 </ul>
+
+<h3 id="x-cost-cards-critical-confirmed-fatal-error">X-Cost Cards (CRITICAL -- CONFIRMED FATAL ERROR)</h3>
+
+<p>X-cost cards (Whirlwind, Malaise, Skewer, and others) <strong>automatically consume ALL remaining energy when played.</strong> You CANNOT specify X manually. X is always equal to your remaining energy at the moment the card is played.</p>
+
+<p><strong>This means:</strong> If you have 4E and play Malaise intending X=1, the game will use X=4 and consume all 4 energy. You will have 0E remaining for block cards. This has directly caused a death.</p>
+
+<p><strong>To control X, spend energy on other cards FIRST:</strong></p>
+<p>1. Decide what X value you want.</p>
+<p>2. Calculate: energy to spend on other cards = current energy - desired X.</p>
+<p>3. Play those other cards FIRST (Defend, block cards, Powers, 0-cost attacks).</p>
+<p>4. Play the X-cost card LAST with only the desired energy remaining.</p>
+
+<p><strong>Example:</strong> You have 4E and want Malaise X=1 + 2 Defends + Deflect.</p>
+<ul>
+<li>WRONG: <code>play Malaise 0</code> (uses X=4, 0E left, Defends cannot be played)</li>
+<li>CORRECT: <code>play Defend; play Defend; play Deflect; play Malaise 0</code> (3E spent on block, Malaise uses X=1)</li>
+</ul>
+
+<p><strong>X-cost cards in the game:</strong></p>
+<ul>
+<li><strong>Whirlwind</strong> (Ironclad Attack): 5 damage X times to ALL enemies</li>
+<li><strong>Malaise</strong> (Silent Skill, Exhaust): X Weak + X Str Down to one enemy</li>
+<li><strong>Skewer</strong> (Silent Attack): 7 damage X times to one enemy</li>
+</ul>
+
+<p><strong>RULE: ALWAYS play X-cost cards LAST on a turn.</strong> Never play an X-cost card first unless you genuinely want to spend all energy on it.</p>
 
 <hr>
 

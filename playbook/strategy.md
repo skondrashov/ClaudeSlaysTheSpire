@@ -2,14 +2,14 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (162 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Twelve Silent runs total (Runs 151-162). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).
+**CURRENT STATUS (163 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Thirteen Silent runs total (Runs 151-163). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).
 
 **SCORECARD (runs 101-158):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 6. Act 2 boss reaches: 12+.
 - **Act 3 reached eight times (Runs 145, 147, 148, 149, 150, 151, 158, 162).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**
-- **5 wins in 162 runs (3.1% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (12 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP).
+- **5 wins in 163 runs (3.1% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (13 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP).
 - **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.
 - **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.
 
@@ -31,7 +31,7 @@ High-level strategic principles for Ironclad runs.
 3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Immolate is the highest-impact card), (c) healing beyond Burning Blood (Toy Ornithopter + potions is a valid backup), (d) block scaling beyond basic Defends.
 4. **Pursue one of the two proven scaling engines.** (A) **Strength engine**: Snecko Eye as Act 2 boss relic, Immolate+ for AOE, Limit Break for Str doubling, Heavy Blade or other Str finishers. (B) **Block engine**: Barricade + Corruption + Feel No Pain + Entrench + Body Slam+. Immolate+ is the primary AOE in both. Do not force one engine -- pursue whichever the card/relic offerings support. If Barricade + Corruption + FNP are all available by mid-Act 2, commit to the block engine. If Snecko Eye is offered as Act 2 boss relic and Limit Break exists, commit to the Str engine. Either engine can defeat any Act 3 boss.
 5. **Use the Act 1 tier list for card evaluation.** The starting deck is the same every run. Know the tier list, draft for the visible boss.
-6. **STOP MAKING ARITHMETIC ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first.
+6. **STOP MAKING ARITHMETIC AND MECHANICS ERRORS.** Before EVERY damage/block calculation, verify: (a) Who has Weak? (b) Am I using UPGRADED card values? (c) Strength resets between combats. (d) On kill turns, NEVER chain `end` with the attack -- verify the kill first. (e) X-cost cards (Malaise, Whirlwind, Skewer) use ALL remaining energy -- play them LAST.
 7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Book natively gains +3 Str/turn; Brimstone adds +2 Str/turn on top = +5 Str/turn. Two deaths confirmed.
 8. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed > block.
 9. **Enter every boss at as high HP as possible.** The first victory entered all three bosses at 80/80. The second victory entered Act 1 and Act 2 bosses at high HP but entered Donu and Deca at only 49% (42/85) and survived at 4 HP -- a razor-thin margin. Full HP entry provides the buffer needed when boss fights go long. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enable full HP entry. A powerful deck (Snecko Eye + Immolate+ + Limit Break+) can compensate for low HP entry, but the margin of error is minimal.
@@ -69,6 +69,12 @@ Before calculating damage or block, answer these FOUR questions:
 - Do NOT chain `play X; end` in a single command when the enemy is near death. Play cards one at a time, verify the enemy's remaining HP after each play, then play additional cards or end turn.
 - Confirmed fatal error: player played Iron Wave (13 damage) against 20 HP Hexaghost and submitted `end` in the same command line. Headbutt (17 damage) was in hand with 2E remaining. The combined 30 damage would have killed. The player wrote "13 > 20" in reasoning -- a basic comparison error that went unnoticed because the command was already committed.
 - **RULE: On kill turns, NEVER include `end` in the same command as the attack. Play the attack, verify the kill, THEN end turn separately.**
+
+**5. X-COST CARDS USE ALL REMAINING ENERGY -- PLAY LAST.**
+- X-cost cards (Malaise, Whirlwind, Skewer) automatically consume ALL remaining energy. You cannot specify X manually.
+- To control X: spend energy on other cards FIRST, then play the X-cost card LAST with only the desired energy remaining.
+- Confirmed fatal error: player intended Malaise X=1 on Mugger but played it first with 4E remaining. Malaise consumed X=4, leaving 0E for Defend/Survivor. Took 21 unblocked damage at 19 HP = death.
+- **RULE: NEVER play an X-cost card before block cards unless you want X = all remaining energy.**
 
 ---
 
@@ -451,7 +457,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai
 - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.
 - If the path forces an elite at low HP, skip it entirely -- take any alternative path.
 - **Act 2 route must include a non-combat room in the first 2-3 floors.** The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), Spheric Guardian (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. When choosing Act 2 entry points, prefer routes where a rest site, shop, or event appears by floor 2-3, even if it means giving up other rewards. A route of M-M-M before a rest site is a death trap.
-- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. FOUR deaths confirmed from Unknown rooms resolving as combat (at 21%, 26%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.** The player has repeatedly chosen Unknown rooms at critical HP reasoning "Unknown is safer than Monster" -- this is WRONG. Unknown rooms ARE Monster rooms ~50% of the time. At 21% HP with no potions, the correct choice is ANY non-combat room (rest site, shop) or, if none exists, the run was lost at map selection.
+- **Unknown rooms are NOT safe in Act 2.** They can resolve as any hallway fight, including Byrds, Snake Plant, and Spheric Guardian + Sentry. FIVE deaths confirmed from Unknown rooms resolving as combat (at 21%, 26%, 27%, 43%, and 100% HP). Treat Unknown rooms as Monster rooms when routing in Act 2. Only take Unknown rooms in Act 2 if the deck has Strength scaling and the alternative path is worse. **At below 30% HP, Unknown rooms are lethal.** The player has repeatedly chosen Unknown rooms at critical HP reasoning "Unknown is safer than Monster" -- this is WRONG. Unknown rooms ARE Monster rooms ~50% of the time. At 21% HP with no potions, the correct choice is ANY non-combat room (rest site, shop) or, if none exists, the run was lost at map selection.
 
 ### Elite Risk Assessment
 
@@ -577,7 +583,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 2. **Bad map pathing** -- taking combat rooms after HP-draining fights. Solved by Full Act Pathing (plan the whole route before floor 1, re-route when HP drops).
 3. **3 Cultists at low HP** -- 6 deaths at 5-53% HP entry. Hard-scaler exception: kill speed > block. 60% entry threshold non-negotiable.
 4. **Book of Stabbing** -- 4 deaths. #1 elite killer. Double scaling (+1 hit/turn AND +3 Str/turn). Needs exhaust tools. Brimstone makes it worse. Silent decks without poison or Malaise should avoid.
-5. **Mechanics execution errors** -- arithmetic mistakes that waste 3-20 HP per error. Full Block Flowchart forces explicit math every turn, which should reduce these.
+5. **Mechanics execution errors** -- arithmetic mistakes and X-cost card misplays that waste 3-20 HP per error. X-cost cards (Malaise, Whirlwind, Skewer) consume ALL remaining energy automatically -- playing them first leaves 0E for block. Full Block Flowchart forces explicit math every turn, which should reduce these.
 6. **Healing RNG denial** -- 7 of last 9 runs with no Reaper/Feed offered. Not directly addressable, but Full Block reduces the need for healing by preventing HP loss in the first place.
 7. **Brimstone anti-synergy** -- 2 deaths from Brimstone + Book of Stabbing.
 8. **Deck building window closes at Floor 15** -- missing criteria after F15 cannot be filled. Act 1 tier list + boss drafting should improve card selection.

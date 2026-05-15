@@ -44,6 +44,7 @@
 - [Masterful Stab](masterful-stab.md)
 - [Finisher](finisher.md)
 - [Bane](bane.md)
+- [Skewer](skewer.md)
 
 ## Silent Skill Cards
 

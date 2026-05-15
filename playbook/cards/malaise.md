@@ -11,10 +11,12 @@ Silent Skill, X cost (Exhaust).
 
 Malaise is the Silent's strongest boss debuff. It consumes all remaining energy and applies that amount as both Weak and permanent Strength reduction. Unlike Piercing Wail (temporary -6 Str for 1 turn), Malaise's Strength reduction is permanent for the combat.
 
+**CRITICAL -- X-COST ENERGY TRAP:** Malaise automatically uses ALL remaining energy. You CANNOT specify X manually. If you have 4E and play Malaise first, X=4 and you have 0E left for block cards. This has directly caused a death: player intended Malaise X=1 but it consumed all 4E, leaving 0E for Defend/Survivor, taking 21 unblocked damage at 19 HP. **To control X: play block cards and other spells FIRST, then play Malaise LAST with only the desired energy remaining.** See mechanics.md "X-Cost Cards" section.
+
 ## Optimal Usage
 
 - **Save for boss fights.** Malaise exhausts -- single use per combat. Do not waste on hallway fights or elites unless the fight is genuinely lethal.
-- **Play LAST on your turn** after all other non-X-cost cards. Malaise consumes all remaining energy. Play block cards, Powers, and 0-cost attacks first, then Malaise with remaining E.
+- **Play LAST on your turn** after all other non-X-cost cards. Malaise consumes ALL remaining energy automatically. Play block cards, Powers, and 0-cost attacks first, then Malaise with the desired remaining E. There is no way to specify X -- X equals your remaining energy when Malaise is played.
 - **Maximum value at high energy.** With 5E and Malaise as the only play: X=5 gives -5 Str and 5 Weak. Combined, this reduces enemy damage by ~50-70% for multiple turns.
 - **Do NOT use for Artifact stripping.** Malaise is too valuable to spend on removing 1 Artifact charge. Use Neutralize, Crippling Cloud, or other cheap debuffs for Artifact stripping.
 

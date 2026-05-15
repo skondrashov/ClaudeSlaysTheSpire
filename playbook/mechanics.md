@@ -157,7 +157,30 @@ When you play a card by numeric index, all cards after it shift down by 1. This 
 - Base energy: 3 per turn (Ironclad, no modifiers).
 - Energy resets each turn -- unspent energy is WASTED.
 - Energy modifiers: Lantern (+1E turn 1), Ancient Tea Set (+2E turn 1 after rest), Berserk (+1E/turn permanently), Seeing Red+ (+2E one time), Happy Flower (+1E every 3 turns).
-- X-cost cards (Whirlwind) use ALL remaining energy. Play LAST.
+- X-cost cards (Whirlwind, Malaise, Skewer) use ALL remaining energy. See X-Cost Cards section below.
+
+### X-Cost Cards (CRITICAL -- CONFIRMED FATAL ERROR)
+
+X-cost cards (Whirlwind, Malaise, Skewer, and others) **automatically consume ALL remaining energy when played.** You CANNOT specify X manually. X is always equal to your remaining energy at the moment the card is played.
+
+**This means:** If you have 4E and play Malaise intending X=1, the game will use X=4 and consume all 4 energy. You will have 0E remaining for block cards. This has directly caused a death.
+
+**To control X, spend energy on other cards FIRST:**
+1. Decide what X value you want.
+2. Calculate: energy to spend on other cards = current energy - desired X.
+3. Play those other cards FIRST (Defend, block cards, Powers, 0-cost attacks).
+4. Play the X-cost card LAST with only the desired energy remaining.
+
+**Example:** You have 4E and want Malaise X=1 + 2 Defends + Deflect.
+- WRONG: `play Malaise 0` (uses X=4, 0E left, Defends cannot be played)
+- CORRECT: `play Defend; play Defend; play Deflect; play Malaise 0` (3E spent on block, Malaise uses X=1)
+
+**X-cost cards in the game:**
+- **Whirlwind** (Ironclad Attack): 5 damage X times to ALL enemies
+- **Malaise** (Silent Skill, Exhaust): X Weak + X Str Down to one enemy
+- **Skewer** (Silent Attack): 7 damage X times to one enemy
+
+**RULE: ALWAYS play X-cost cards LAST on a turn.** Never play an X-cost card first unless you genuinely want to spend all energy on it.
 
 ---
 
