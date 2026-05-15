@@ -374,6 +374,261 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 165 analysis: Chosen kill priority reversed, sub-20% HP rule</div>
+      <div class="changelog-sha">18229ce0</div>
+    </div>
+    <div class="changelog-date">2026-05-15</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/enemies/chosen.md</div>
+<div class="diff-hunk">@@ -19,8 +19,14 @@ BRING: Attack-heavy deck. Iron Wave (Attack that blocks). Inflame (Strength over</div>
+<div class="diff-ctx"> AVOID: Playing Defend unless absolutely necessary (each one adds Dazed). Slow kill (Strength scaling is lethal). Entering below 30 HP (7x2 + Vulnerable = 20/turn is often unblockable at low card density).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> FIEND FIRE WARNING: Fiend Fire can exhaust Dazed cards for damage, but it also exhausts ALL other cards in hand -- including defensive cards like Uppercut and Defend. If Fiend Fire does not kill the Chosen, the remaining turns have no block sources. At 14 HP, a single 28-damage attack with only 13 block available is lethal. Only use Fiend Fire when the burst will kill, or when the hand contains only expendable cards.</div>
+<div class="diff-del">-APPEARS WITH: Cultist (in multi-enemy fights). When paired, Cultist buffs turn 1 while Chosen applies Hex -- the combined threat is extreme. Kill Cultist first (lower HP, faster to remove, reduces incoming damage count). Once Cultist dies, Chosen alone is manageable with focused damage. Fire Potion or burst cards on Cultist turn 2 can eliminate it before combined scaling overwhelms.</div>
+<div class="diff-add">+APPEARS WITH: Cultist (in multi-enemy fights). When paired, Cultist buffs turn 1 while Chosen applies Hex -- the combined threat is extreme.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KILL PRIORITY: **Kill Chosen FIRST.** Previous guidance said &quot;kill Cultist first&quot; but three deaths from Hex deck flooding prove this wrong. The Cultist&#x27;s Ritual scaling is dangerous but PREDICTABLE (damage grows linearly). Hex&#x27;s Dazed flooding is CATASTROPHIC -- every Skill played after Turn 2 adds a Dazed to the draw pile, and by Turn 4-5 the deck is so diluted that critical turns draw 2-3 Dazed cards and only 1-2 playable cards. Killing the Cultist first leaves Chosen alive for 4+ turns applying Hex, which destroys block density. Killing Chosen first stops Hex immediately, and the Cultist alone (even with +6-9 Ritual Str) is a simple single-target fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EXCEPTION: If the Cultist can be killed in 1-2 turns (Fire Potion burst, Shiv flood, or it has &lt;15 HP), killing it first is acceptable because Hex only applies for 1-2 turns. If the Cultist will take 3+ turns to kill, kill Chosen first.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED: Three deaths from killing Cultist first while Hex flooded the deck (1 Ironclad, 2 Silent). The Dazed accumulation made blocking impossible by Turn 5-6 in all cases.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> HEX DETAILS: Hex is applied turn 2 (after Poke on turn 1). Each Skill played (Defend, Shrug It Off, etc.) adds one Dazed card to the draw pile. Dazed is Unplayable + Ethereal (exhausts at end of turn if in hand, but still takes up a draw slot). Over a 4-5 turn fight, playing 4-6 Skills adds 4-6 Dazed to the draw pile, significantly diluting future hands. This makes sustained blocking impossible -- the deck clogs with dead draws. Powers (Inflame, Rage, Footwork, After Image, A Thousand Cuts) do NOT trigger Hex. Attacks are safe.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-SILENT-SPECIFIC WARNING: Hex is disproportionately devastating for the Silent. Silent decks are naturally Skill-heavy (Backflip, Footwork, Survivor, Deflect, Blur, Piercing Wail, Acrobatics). In a Cultist+Chosen fight, Hex can add 5+ Dazed cards by Turn 4, diluting the deck to the point where critical turns draw 3-4 Dazed cards and 1-2 playable cards. The block density collapse is lethal when combined with Chosen&#x27;s Vulnerable. Confirmed: deck with Footwork+, After Image, A Thousand Cuts, Envenom (all Powers, safe from Hex) still needed 3 Defends on Turn 3 (adding 3 Dazed), then Turn 4 drew too few block cards to survive. Silent mitigation: (1) Play Powers liberally -- they do NOT trigger Hex. (2) Front-load damage with Attacks and Shivs (Blade Dance, Cloak and Dagger -- the block from CnD is a Skill but the Shivs are Attacks). (3) Use Piercing Wail Turn 1 BEFORE Hex is applied to negate damage for a free turn. (4) Kill the Chosen as fast as possible -- poison ticking while blocking minimally is the best approach.</div>
+<div class="diff-add">+SILENT-SPECIFIC WARNING: Hex is disproportionately devastating for the Silent. Silent decks are naturally Skill-heavy (Backflip, Footwork, Survivor, Deflect, Blur, Piercing Wail, Acrobatics). In a Cultist+Chosen fight, Hex can add 5+ Dazed cards by Turn 4, diluting the deck to the point where critical turns draw 3-4 Dazed cards and 1-2 playable cards. The block density collapse is lethal when combined with Chosen&#x27;s Vulnerable. Confirmed across 3 deaths: (1) deck with Footwork+, After Image, A Thousand Cuts, Envenom (all Powers, safe from Hex) still needed 3 Defends on Turn 3 (adding 3 Dazed), then Turn 4 drew too few block cards to survive. (2) Shiv deck with Finisher+, Terror+, WLP+, Adrenaline entered at 15 HP, killed Cultist first (Turn 3), but Hex added 7+ Dazed by Turn 6. Hand on death turn: 2 Dazed + 1 Strike + 2 Defend = 10 block vs 27 incoming. Curses (Doubt + Injury from Du-Vu Doll strategy) compounded the draw dilution. Silent mitigation: (1) **Kill Chosen FIRST** -- see KILL PRIORITY above. (2) Play Powers liberally -- they do NOT trigger Hex. (3) Front-load damage with Attacks and Shivs (Blade Dance, Cloak and Dagger -- the block from CnD is a Skill but the Shivs are Attacks). (4) Use Piercing Wail Turn 1 BEFORE Hex is applied to negate damage for a free turn. (5) Avoid curse-heavy decks (Du-Vu Doll strategy) when Hex encounters are likely -- curses compound draw dilution with Dazed.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/slavers.md</div>
+<div class="diff-hunk">@@ -28,6 +28,8 @@ HP THRESHOLD: Do NOT enter this fight below 50% HP. Two confirmed deaths at low</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **TIMING RULE: Do NOT fight Slavers within 2 floors of the Act 2 boss.** Run 114 fought Slavers at Floor 31 (2 floors before the boss). The fight drained HP from 36 to 14 despite a strong deck (Shockwave, Dark Shackles, True Grit+, Reaper, Inflame). Only 1 rest site remained before the boss, healing to 39/85 (45%) -- far below the 70% threshold. When Slavers appears on a forced path close to the boss, the HP drain from this fight almost guarantees entering the boss at sub-threshold HP. If the map offers ANY alternative path in the last 3 floors, take it even if it means missing the elite relic.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-BRING: AOE (Thunderclap, Whirlwind, Immolate), Flame Barrier+ (block + punishes all 3 attackers), Weak sources, high block density.</div>
+<div class="diff-add">+SILENT-SPECIFIC: The Silent struggles against Slavers due to lower base block output and Skill-heavy deck composition. Shiv burst can eliminate one Slaver quickly (Ninja Scroll + STR = 21+ free damage Turn 1), and Fire Potion or Attack Potion can finish the kill. Focus-fire Blue Slaver first with Shivs (highest single-hit damage), then Red Slaver with Terror+Vulnerable for amplified damage. Piercing Wail is excellent Turn 1 (reduces 27 combined incoming to ~9). Expect 30-40 HP drain even with correct play -- the Weakened debuff from Blue Slaver reduces attack output, extending the fight. An 8-turn Slavers fight at ~75% HP entry drained to ~20% HP due to Weakened attack reduction compounding over multiple turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BRING: AOE (Thunderclap, Whirlwind, Immolate), Flame Barrier+ (block + punishes all 3 attackers), Weak sources, high block density. Silent: Piercing Wail, Shiv burst, Fire Potion, Terror for single-target focus.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> AVOID: Entering at low HP. This fight has no free turns and no way to stall. Avoid this elite within 2 floors of the boss -- the HP drain is too severe to recover from.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,14 +2,14 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (164 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Fourteen Silent runs total (Runs 151-164). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-add">+**CURRENT STATUS (165 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Fifteen Silent runs total (Runs 151-165). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 6. Act 2 boss reaches: 12+.</div>
+<div class="diff-ctx"> - **Act 3 reached eight times (Runs 145, 147, 148, 149, 150, 151, 158, 162).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**</div>
+<div class="diff-del">-- **5 wins in 164 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (14 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD).</div>
+<div class="diff-add">+- **5 wins in 165 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (15 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD, Run 165 died Floor 27 to Cultist+Chosen Hex at 9 HP).</div>
+<div class="diff-ctx"> - **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.</div>
+<div class="diff-ctx"> - **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -96,6 +96,7 @@ These thresholds determine which MAP PATHS are safe, not how to play combat. Com</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> | Fight Type | Minimum HP to Enter | Notes |</div>
+<div class="diff-ctx"> |---|---|---|</div>
+<div class="diff-add">+| ANY fight | 20% | Below 20% HP, avoid ALL combat. No fight is safe -- a single bad draw kills. Rest/shop/event ONLY. |</div>
+<div class="diff-ctx"> | Hallway (easy) | 25% | Byrds/Chosen can drain 40-73 HP even with correct play and TC+ in deck |</div>
+<div class="diff-ctx"> | Hallway (hard) | 60% | 3 Cultists (6 deaths, even 53% was insufficient), Centurion+Mystic (10x3 multi-hit can drain 61 HP, death at 71% entry confirmed; Silent at 55% entry drained 24 HP leaving 21% for remaining floors), Snake Plant |</div>
+<div class="diff-ctx"> | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |</div>
+<div class="diff-hunk">@@ -109,6 +110,7 @@ These thresholds determine which MAP PATHS are safe, not how to play combat. Com</div>
+<div class="diff-ctx"> - If forced into a fight below threshold, use ALL potions aggressively on turn 1. An unused potion on a death screen is a strategic failure.</div>
+<div class="diff-ctx"> - If there&#x27;s a rest site before an elite, REST (don&#x27;t upgrade). HP &gt; upgrades when below threshold.</div>
+<div class="diff-ctx"> - After any fight that drops you below 30% HP, the next room MUST be a rest site, shop, or event -- not combat.</div>
+<div class="diff-add">+- **At below 20% HP, avoid ALL fights.** At this HP level, even a 2-enemy hallway fight (Cultist+Chosen, Looter+Mugger) can be lethal from a single bad draw. There is no fight in the game that is safe at sub-20% HP. The ONLY acceptable rooms are rest sites, shops, and events with known non-combat outcomes. If the map forces combat at sub-20% HP, the run was lost at map selection. This threshold has been confirmed across multiple deaths where 15-19% HP entry into &quot;easy&quot; hallway fights resulted in death from draw RNG (Dazed clog, curse clog, or insufficient block cards).</div>
+<div class="diff-ctx"> - **Low HP does NOT change combat behavior.** You should already be full blocking at any HP level. If you find yourself thinking &quot;I&#x27;m at low HP, I should block more&quot; -- that means you were NOT full blocking at high HP, which is the real mistake.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### The Act 2 Death Spiral Is Predictable</div>
+<div class="diff-ctx"></div>
+<div class="diff-ctx">da27525ede4e136373e36f9feb67b37abd5465aa|2026-05-15 02:48:09 -0400|Run 164 analysis: Wraith Form 3rd death, Guardian Silent strategy, CaD upgrade</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/the-guardian.md</div>
+<div class="diff-hunk">@@ -47,4 +47,18 @@ CORRUPTION DECK DENSITY DEATH (Run 107): Corruption+ played on turn 9 at 46 HP.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> TWO-DEATH GUARDIAN PATTERN (Runs 103, 107): Both Guardian deaths share the same root cause -- insufficient block density in the second half of the fight. Run 103: Pandora&#x27;s Box removed Defends before the fight started. Run 107: Corruption+ exhausted all Skills mid-fight. The Guardian punishes ANY mechanism that reduces block card count below sustainable levels for a 14-turn fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Silent-Specific Strategy</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Guardian fight is 12-14 turns. The Silent&#x27;s damage profile (many small hits from Shivs) interacts uniquely with Mode Shift:</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Mode Shift and Shivs:** Each Shiv deals 4-9+ damage individually (base 4 + Accuracy + Vajra + Str). Multiple Shivs per turn accumulate toward Mode Shift quickly. Cloak and Dagger+ generates 2 Shivs (18 damage with Accuracy 4 + Vajra 1), while unupgraded generates only 1 Shiv (9 damage). The difference is 9 damage per play -- enough to determine whether Mode Shift triggers on a lethal turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Cloak and Dagger upgrade is critical for Guardian.** Upgraded: 2 Shivs = 18 damage toward Mode Shift. Unupgraded: 1 Shiv = 9 damage. This 9-damage gap was the exact margin between triggering Mode Shift (cancelling a lethal 20-damage attack) and dying.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Wraith Form timing against Guardian:** DO NOT play Wraith Form early. The Guardian fight lasts 12+ turns. Playing Wraith Form Turn 2 means Dex is -7 by Turn 8, making all block cards give 0 block. In Defensive Mode, Sharp Hide (3 damage per Attack) combined with zero block means every Shiv costs 3 HP. Hold Wraith Form until the Guardian is below 60 HP or you are confident the fight ends within 5 turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Noxious Fumes priority:** Play Noxious Fumes as early as possible. In a 12-turn fight, Fumes played Turn 1 deals 78 total poison damage (1+2+3+...+12). Played Turn 6, it deals only 21 (1+2+3+4+5+6). Every turn of delay costs exponentially more damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Poison Potions bypass Sharp Hide.** Potions do not trigger Sharp Hide retaliation. Use Poison Potions during Defensive Mode when Attacks cost 3 HP each.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ---</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/cloak-and-dagger.md</div>
+<div class="diff-hunk">@@ -0,0 +1,30 @@</div>
+<div class="diff-add">+# Cloak and Dagger</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Skill, 1E.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Gain 6 Block. Add 1 Shiv to your hand (2 Shivs upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** 6 Block + 1 Shiv.</div>
+<div class="diff-add">+**Upgraded:** 6 Block + 2 Shivs.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Cloak and Dagger is a dual-purpose card: block + damage via Shiv generation. The Shivs benefit from Accuracy, Strength, and other Shiv modifiers.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Upgrade Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**UPGRADE THIS CARD WHEN THE GUARDIAN IS THE BOSS.** The upgrade from 1 Shiv to 2 Shivs adds 9+ damage per play (with Accuracy 4 + Vajra 1). Against the Guardian, this extra Shiv is the difference between triggering Mode Shift (cancelling a lethal attack) and dying 8 damage short. A confirmed death occurred because unupgraded Cloak and Dagger produced 1 Shiv instead of 2, leaving total damage 8 short of the 40-damage Mode Shift threshold.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+General upgrade priority: medium-high. The upgrade doubles offensive output while block stays the same. In Shiv-focused decks with Accuracy, the upgrade is high priority because each additional Shiv carries the full Accuracy bonus.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Interactions</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Accuracy:** Each Shiv gains the full Accuracy bonus. Upgraded CaD with Accuracy = 2 Shivs at 8-10+ damage each.</div>
+<div class="diff-add">+- **After Image:** Each Shiv played triggers +1 block from After Image, making upgraded CaD effectively generate 8+ block (6 base + 2 from After Image).</div>
+<div class="diff-add">+- **Dead Branch:** Shivs exhaust after use, triggering Dead Branch for a random card per Shiv.</div>
+<div class="diff-add">+- **Wraith Form Dex penalty:** At negative Dex, the 6 block from CaD drops toward 0, but Shiv damage is unaffected by Dex. At -6 Dex, CaD gives 0 block but still generates Shivs.</div>
+<div class="diff-add">+- **Sharp Hide (Guardian Defensive Mode):** Shivs are Attack cards and trigger Sharp Hide (3 damage per Shiv). During Defensive Mode, each Shiv costs 3 HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Draft Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+High in Shiv decks. The card is both offense (Shiv generation) and defense (block) in a single 1E play. Take early for sustained value across many fights.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/wraith-form.md</div>
+<div class="diff-hunk">@@ -26,12 +26,16 @@ At high negative Dex, all block from Skills becomes 0 (block cannot go below 0).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Medium fights (elites, 8-12 turns):** Play mid-fight (Turn 3-5) to cover the highest-damage turns. Accept that Dex will be -4 to -7 by fight end, requiring non-Dex block sources for the final turns.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Long fights (bosses, 15+ turns):** EXTREME CAUTION. Playing Wraith Form early in a boss fight is potentially fatal:</div>
+<div class="diff-add">+**Long fights (bosses, 15+ turns):** DO NOT PLAY WRAITH FORM EARLY. This is a confirmed recurring fatal error -- two deaths (Dex spiraled to -11 and -7) from early Wraith Form in boss fights. Playing Wraith Form early in a boss fight is suicide:</div>
+<div class="diff-ctx"> - Playing Turn 2 means Dex is -11 by Turn 13, -17 by Turn 19.</div>
+<div class="diff-del">-- At -11 Dex, Defend gives 0 block. Footwork+ gives 0 block. Survivor gives 0 block.</div>
+<div class="diff-del">-- The only block comes from After Image (~7-8 block/turn from card plays), which is insufficient against 24+ damage.</div>
+<div class="diff-add">+- At -7 Dex, Defend gives 0 block. Footwork+ gives 0 block. Survivor gives 0 block. ALL Skill-based block becomes worthless.</div>
+<div class="diff-add">+- The only block comes from After Image (~7-8 block/turn from card plays), which is insufficient against 20+ damage.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Boss fight timing rule:** In fights expected to last 15+ turns, delay Wraith Form until the final 5-6 turns. Use it as a finisher when the enemy is near death, not as early defense. If the fight will last 20 turns and you play Wraith Form on Turn 2, you will have 18 turns of Dex drain -- the last 10+ turns will have zero effective block from Skills.</div>
+<div class="diff-add">+**FUNDAMENTAL RULE: In any fight expected to last 8+ turns, do NOT play Wraith Form until the enemy is within 5 turns of dying.** Count the enemy&#x27;s remaining HP, estimate your damage per turn, and only play Wraith Form when the fight will end before Dex drops below -4. If you cannot estimate when the fight ends, DO NOT PLAY WRAITH FORM. Use it as a finisher when the enemy is near death, not as early defense. If the fight will last 20 turns and you play Wraith Form on Turn 2, you will have 18 turns of Dex drain -- the last 10+ turns will have zero effective block from Skills.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Two confirmed deaths from this exact mistake:**</div>
+<div class="diff-add">+- Dex reached -11: all block cards gave 0, died 5 HP short of killing the Collector.</div>
+<div class="diff-add">+- Dex reached -7: all block cards gave 0, died 8 damage short of Mode Shift trigger vs the Guardian. The missing Shiv damage from an unupgraded Cloak and Dagger was the exact margin of death.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Interactions</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/mechanics.md</div>
+<div class="diff-hunk">@@ -184,6 +184,38 @@ X-cost cards (Whirlwind, Malaise, Skewer, and others) **automatically consume AL</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Wraith Form Timing (CRITICAL -- TWO CONFIRMED DEATHS)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Wraith Form gives Intangible (2 or 3 turns) but applies a PERMANENT, CUMULATIVE -1 Dex/turn for the rest of combat. This penalty never expires. Playing Wraith Form early in a long fight is a confirmed recurring fatal error.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**THE RULE: Do NOT play Wraith Form until the enemy is within 5 turns of dying.** Estimate remaining enemy HP, estimate your damage per turn, and only play Wraith Form when the fight will end before Dex drops below -4. If you cannot estimate when the fight ends, DO NOT PLAY WRAITH FORM.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Two deaths from this exact mistake:**</div>
+<div class="diff-add">+- Boss fight: Dex reached -11, all block 0, died 5 HP from winning.</div>
+<div class="diff-add">+- Boss fight: Dex reached -7, all block 0, died 8 damage short of Mode Shift.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+This rule applies to ALL boss fights and any fight expected to last 8+ turns. Wraith Form is a FINISHER, not an early defense tool. See wraith-form.md for full details.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+---</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Power Card Priority in Boss Fights</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Play Power cards as early as possible in boss fights.** Powers are permanent for the rest of combat. Every turn a Power sits unplayed in the deck is a turn of missed value. In a 12-turn boss fight, a Power played Turn 1 provides 12 turns of benefit; played Turn 6, only 7 turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+This is especially critical for scaling Powers:</div>
+<div class="diff-add">+- **Noxious Fumes:** Poison accumulates quadratically. Turn 1 play = 78 total poison over 12 turns. Turn 6 play = 21 total. The difference is enormous.</div>
+<div class="diff-add">+- **Infinite Blades:** Free Shiv per turn. Earlier play = more free damage.</div>
+<div class="diff-add">+- **Demon Form:** +2 Str/turn compounds. Earlier = more total Str.</div>
+<div class="diff-add">+- **Metallicize:** Block per turn. Earlier = more total block.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Exceptions:**</div>
+<div class="diff-add">+- **Awakened One Phase 2:** Do NOT play Powers (each gives +2 Str to the boss). Phase 1 Power dumping is fine because Curiosity Str resets on phase transition.</div>
+<div class="diff-add">+- **When the Power costs all your energy on an attack turn:** A 3E Power on a 3E turn with incoming damage means 0E for block. Wait for a free turn (enemy buffing/defending).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**If a Power is in your hand during a boss fight and the turn is safe (enemy buffing, low incoming, or sufficient block remaining after the Power cost), PLAY IT.** Not playing Noxious Fumes in a boss fight despite it being in the deck is a setup priority failure that costs damage equivalent to multiple card plays.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+---</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Card Draw</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - Standard draw: 5 cards per turn.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/potions/smoke-bomb.md</div>
+<div class="diff-hunk">@@ -6,4 +6,6 @@ WHEN TO USE: When the fight is unwinnable and continuing will result in death. C</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> DECISION FRAMEWORK: Use Smoke Bomb when estimated incoming damage on the next turn exceeds your current HP + maximum possible block. Do not save it for &quot;a worse situation&quot; -- dying to an avoidable fight is worse than losing rewards from one combat.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-VALUE: Extremely high. A single Smoke Bomb can extend a run by multiple floors. Carry one into Act 2 whenever possible as insurance against dangerous hallway fights (3 Cultists, Byrds, Snake Plant) at low HP.</div>
+<div class="diff-add">+VALUE: Extremely high. A single Smoke Bomb can extend a run by multiple floors. Carry one into Act 2 whenever possible as insurance against dangerous hallway fights (3 Cultists, Byrds, Snake Plant) at low HP. Also valuable in Act 1 against Gremlin Gang fights at low HP -- 4 gremlins deal 22+ combined damage on Turn 1, which is lethal at sub-30% HP without strong AOE.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED SAVES: Escaped a lethal Gremlin Gang fight at 19 HP where 38 incoming damage exceeded max block of 16. The escape forfeited card rewards but preserved HP for the boss fight.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,14 +2,14 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (163 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Thirteen Silent runs total (Runs 151-163). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-add">+**CURRENT STATUS (164 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Fourteen Silent runs total (Runs 151-164). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 6. Act 2 boss reaches: 12+.</div>
+<div class="diff-ctx"> - **Act 3 reached eight times (Runs 145, 147, 148, 149, 150, 151, 158, 162).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**</div>
+<div class="diff-del">-- **5 wins in 163 runs (3.1% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (13 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP).</div>
+<div class="diff-add">+- **5 wins in 164 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (14 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD).</div>
+<div class="diff-ctx"> - **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.</div>
+<div class="diff-ctx"> - **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -76,6 +76,12 @@ Before calculating damage or block, answer these FOUR questions:</div>
+<div class="diff-ctx"> - Confirmed fatal error: player intended Malaise X=1 on Mugger but played it first with 4E remaining. Malaise consumed X=4, leaving 0E for Defend/Survivor. Took 21 unblocked damage at 19 HP = death.</div>
+<div class="diff-ctx"> - **RULE: NEVER play an X-cost card before block cards unless you want X = all remaining energy.**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**6. WRAITH FORM: DO NOT PLAY UNTIL ENEMY IS WITHIN 5 TURNS OF DYING.**</div>
+<div class="diff-add">+- Wraith Form gives Intangible but applies PERMANENT -1 Dex/turn for the rest of combat. At -7 Dex, ALL block from Skills is 0.</div>
+<div class="diff-add">+- Three confirmed deaths from playing Wraith Form too early in boss fights. The playbook warned against this after the first death but the error keeps recurring.</div>
+<div class="diff-add">+- Before playing Wraith Form: estimate enemy remaining HP, estimate your damage per turn, calculate how many turns remain. Only play if the fight ends within 5 turns.</div>
+<div class="diff-add">+- **RULE: Wraith Form is a FINISHER. Never play it as early defense in a fight expected to last 8+ turns.**</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## HP Management: Full Block Is the Solution</div>
+<div class="diff-hunk">@@ -325,10 +331,12 @@ If you have 0-1 of these, the boss will likely kill you. Adjust card picks in re</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **The Guardian needs:**</div>
+<div class="diff-ctx"> - 32+ block capability in one turn (Impervious, double Metallicize + Weak)</div>
+<div class="diff-del">-- Burst damage for Mode Shift (Bludgeon at 32-48, Carnage+ at 28-42)</div>
+<div class="diff-add">+- Burst damage for Mode Shift (Bludgeon at 32-48, Carnage+ at 28-42; Silent: Shivs with Accuracy accumulate toward Mode Shift -- each Shiv deals 9+ damage with Accuracy 4 + Vajra 1)</div>
+<div class="diff-ctx"> - Enough cards to last 12+ turns (do NOT over-exhaust)</div>
+<div class="diff-add">+- **Silent-specific: upgrade Cloak and Dagger before Guardian.** Upgraded CaD produces 2 Shivs (18 damage toward Mode Shift), unupgraded produces 1 Shiv (9 damage). This 9-damage gap is a confirmed death margin.</div>
+<div class="diff-add">+- **Silent-specific: do NOT play Wraith Form until Guardian is below 60 HP.** Guardian fight lasts 12+ turns. Early Wraith Form creates unsurvivable Dex drain. See wraith-form.md.</div>
+<div class="diff-ctx"> - **Avoid exhaustion-heavy strategies.** Fiend Fire + Dark Embrace creates a thin deck by mid-fight. Block density on 32-damage turns (turns 8-12) drops below survivable thresholds when the deck thins to 8-10 cards. Use Fiend Fire on free turns or for burst, never as the primary deck engine.</div>
+<div class="diff-del">-- **Do NOT play Corruption/Corruption+ without Dead Branch or Feel No Pain.** Run 107: Corruption+ played turn 9, all Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards remaining. Corruption is a trap in 14-turn fights -- the energy savings do not compensate for losing all block in the second half. This is now the SECOND Guardian death from block-density collapse (Run 103: Pandora&#x27;s Box, Run 107: Corruption+).</div>
+<div class="diff-add">+- **Do NOT play Corruption/Corruption+ without Dead Branch or Feel No Pain.** Corruption is a trap in 14-turn fights -- the energy savings do not compensate for losing all block in the second half.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Hexaghost needs:**</div>
+<div class="diff-ctx"> - Weak source (Shockwave, Clothesline, Intimidate, Weak Potion; Silent: Neutralize+, Crippling Cloud, Leg Sweep, Malaise) -- MANDATORY</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 163 analysis: X-cost card mechanics gap, 5th unknown room death</div>
       <div class="changelog-sha">96bb1cde</div>
     </div>
@@ -10256,97 +10511,6 @@ footer {
 <div class="diff-add">+DEMON FORM SCALING: Even Demon Form scaling to 13 Strength by turn 9 was insufficient to kill Spheric Guardian through 65+ Barricade block. The fight lasted 9 turns and still ended in a loss. Demon Form is too slow -- by the time Strength ramps, block is already insurmountable. Front-loaded Strength (Spot Weakness, Inflame, Limit Break) or burst damage is required.</div>
 <div class="diff-add">+</div>
 <div class="diff-add">+WARNING: This is the single most dangerous Act 2 hallway fight. Four deaths confirmed against this enemy (at 26%, 43%, 47%, and 100% HP entry). The fourth death (47% HP, 38/80) involved Demon Form + Metallicize + Spot Weakness scaling that reached 13 Str by turn 9, with Uppercut+ stripping Artifact charges -- and still lost. Zero potions available. Frail 5 crippled blocking during the critical early turns while Demon Form was ramping. Barricade block reached 65+ and grew faster than 13 Str could deplete it. The third death occurred at FULL HP (87/87) in a Sentry + Spheric Guardian pairing from an Unknown room. Despite having Barricade (player card), Rage+, Rampage+, Blood for Blood, and Stone Calendar, the fight was still lost because: (1) Brutality&#x27;s 1 HP/turn self-damage ticked HP from 9 to 1 over the long fight, making survival impossible, (2) Rage+ expires at end of turn (not permanent), so the player had no block generation on the critical final turn, and (3) Frail 5 reduced block cards by 25%, making even True Grit+ insufficient. Even entering at full HP, the fight drained 86 HP over 6 turns through a combination of Spheric Guardian attacks, Sentry attacks, and Brutality self-damage. Reaper is useless in this fight (all damage absorbed by block = zero healing). Brutality is actively harmful (extends the death clock). Potions are critical for this fight -- entering with zero potions removes the only way to supplement insufficient scaling. Only massive single-turn burst or sustained Strength scaling that comes ONLINE FAST (Inflame, Spot Weakness, not Demon Form) can win.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 72 analysis: Gremlin Leader Rally, Masked Bandits, shop bug documented</div>
-      <div class="changelog-sha">55c7ac8d</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/cards/havoc.md</div>
-<div class="diff-hunk">@@ -16,3 +16,5 @@ SYNERGIES: Headbutt (place a specific card on top, then Havoc plays it for free</div>
-<div class="diff-ctx"> ANTI-SYNERGY: Any deck with irreplaceable scaling cards (Rampage, Fiend Fire, Feed). The random exhaust risk outweighs the 0-energy benefit. DO NOT take Havoc if the deck depends on specific cards surviving to future fights.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> MATCHUPS: Gremlin Nob -- Havoc is a Skill, triggers Enrage. Do NOT play.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SHOP BUG WARNING: In one run, a shop index mismatch caused 2 copies of Havoc to be purchased instead of the intended Inflame. This is a cmd.py infrastructure bug, not a player decision error, but the result was a deck polluted with 2 unwanted Havocs. If Havoc appears in the deck unexpectedly, treat it as a dead card -- do NOT play it in fights with irreplaceable cards in the draw pile.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-leader.md</div>
-<div class="diff-hunk">@@ -1,7 +1,7 @@</div>
-<div class="diff-ctx"> # Gremlin Leader (elite, Act 2, HP: ~131)</div>
-<div class="diff-ctx"> PATTERN: Summons Sneaky Gremlins (~10-12 HP each). Uses DEFEND_BUFF (Rally): gives ALL enemies +3 Strength permanently and stacking. Gremlins attack for ~9 base + accumulated Str. Leader itself attacks for significant damage when not rallying. Leader re-summons gremlins when they die -- killing gremlins is temporary relief, not permanent removal.</div>
-<div class="diff-del">-KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight&#x27;s damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader&#x27;s own attacks. Confirmed: at 32% HP entry (28/86), Rally + 2 gremlins attacking dealt 36+ combined damage on turn 2, overwhelming 19 block + 10 HP remaining. The fight is unwinnable at low HP because there is no time to set up before Rally scaling makes incoming damage lethal.</div>
-<div class="diff-del">-WHAT THIS MEANS: KILL GREMLINS FAST to reduce per-turn damage, but prioritize Leader damage when possible because gremlins get re-summoned. AOE is critical for clearing gremlins efficiently. Apply Shockwave early for mass Weak + Vulnerable. The fight becomes mathematically unwinnable once Strength stacks too high (by turn 8+, incoming damage is 49+).</div>
-<div class="diff-del">-BENCHMARKS: Must win by turn 6-7 or exhaust cards run out and scaling overwhelms you. Enter with 60%+ HP minimum. At 25% HP (14/56), the fight is unwinnable even with Nilry&#x27;s Codex generating Impervious and Immolate.</div>
-<div class="diff-add">+KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight&#x27;s damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader&#x27;s own attacks. Second data point: at 54% HP entry (43/80), turn 3 total enemy damage was 44 (mathematically unblockable with a 19-card deck containing 5 Strikes). Even with FNP + Shockwave+ + Fiend Fire+ burst tools, the fight ended in death because gremlins + Leader combined output exceeded all available block. The fight is unwinnable at low HP because there is no time to set up before Rally scaling makes incoming damage lethal.</div>
-<div class="diff-add">+WHAT THIS MEANS: KILL GREMLINS FAST to reduce per-turn damage, but prioritize Leader damage when possible because gremlins get re-summoned. AOE is critical for clearing gremlins efficiently. Apply Shockwave early for mass Weak + Vulnerable. The fight becomes mathematically unwinnable once Strength stacks too high (by turn 3-4 with multiple gremlins alive, incoming damage is 40+).</div>
-<div class="diff-add">+BENCHMARKS: Must win by turn 5-6 or Rally scaling overwhelms you. Enter with 60%+ HP minimum -- 54% (43/80) was insufficient even with strong burst tools. At 25% HP (14/56), the fight is unwinnable even with Nilry&#x27;s Codex generating Impervious and Immolate. Bloated decks (19 cards with 5 Strikes) cannot draw answers fast enough against Rally&#x27;s exponential scaling.</div>
-<div class="diff-ctx"> BRING: AOE (Thunderclap, Whirlwind, Immolate+), Shockwave+ (mass debuff), Disarm (reduce Leader Str). Non-exhaust damage cards for sustained fighting. Rage (0E power that generates block per attack -- excellent value in multi-attack turns). Potions -- this fight demands aggressive potion use.</div>
-<div class="diff-ctx"> AVOID: Entering below 60% HP. Exhaust-heavy decks (once Impervious/Shockwave/Disarm are gone, remaining deck is too weak). If below 50% HP, take any alternative path. Decks with reduced Max HP (e.g., post-Vampires at 56 Max HP) have no margin for error against this fight&#x27;s scaling.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/events/_index.md</div>
-<div class="diff-hunk">@@ -33,3 +33,4 @@</div>
-<div class="diff-ctx"> - [Wheel of Change](wheel-of-change.md)</div>
-<div class="diff-ctx"> - [Knowing Skull](knowing-skull.md)</div>
-<div class="diff-ctx"> - [The Library](the-library.md)</div>
-<div class="diff-add">+- [Masked Bandits](masked-bandits.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/events/masked-bandits.md</div>
-<div class="diff-hunk">@@ -0,0 +1,13 @@</div>
-<div class="diff-add">+# Masked Bandits (Act 2 Event)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+OPTIONS:</div>
-<div class="diff-add">+1. **Pay gold (toll)** — Lose all gold, avoid combat. The safe option when at low HP.</div>
-<div class="diff-add">+2. **Fight** — Fight a group of bandits. Standard combat encounter.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN TO PAY: At low HP where combat risks death. Gold is recoverable; HP is not. If below 60% HP and the alternative is a fight that could cascade into a death spiral, pay the toll without hesitation. Gold has no value if you die.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN TO FIGHT: At high HP with a strong deck. The fight is a standard Act 2 hallway encounter. If the deck handles hallway fights cleanly, fight to preserve gold for shops.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+STRATEGIC NOTE: This event appeared in Run 72 at critically low HP (4 HP after the Chosen + Byrd fight). Paying the toll was correct -- any combat at 4/80 HP is near-certain death. The toll preserved the run long enough to reach the next rest site.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+---</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
-<div class="diff-hunk">@@ -22,6 +22,8 @@</div>
-<div class="diff-ctx"> - [Whetstone](whetstone.md)</div>
-<div class="diff-ctx"> - [Bloody Idol](bloody-idol.md)</div>
-<div class="diff-ctx"> - [Meal Ticket](meal-ticket.md)</div>
-<div class="diff-add">+- [Oddly Smooth Stone](oddly-smooth-stone.md)</div>
-<div class="diff-add">+- [Eternal Feather](eternal-feather.md)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Uncommon Relics</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/eternal-feather.md</div>
-<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
-<div class="diff-add">+# Eternal Feather</div>
-<div class="diff-add">+RARITY: Common</div>
-<div class="diff-add">+EFFECT: For every 5 cards in your deck, heal 3 HP after combat.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+HOW IT CHANGES DECISIONS: Supplements Burning Blood&#x27;s flat 6 HP/fight. At 15 cards: +9 HP/fight (total 15 with Burning Blood). At 20 cards: +12 HP/fight (total 18). At 25 cards: +15 HP/fight (total 21). Rewards larger decks, which conflicts with typical deck-thinning strategy. Do not take extra cards just to increase Eternal Feather healing -- deck quality matters more than marginal HP gains.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+EVALUATION: Mediocre. The healing scales with deck size, but larger decks draw key cards less reliably. In a typical 15-20 card deck, the healing is modest (9-12 HP). Compare to Meat on the Bone (12 HP if below 50%) or Burning Blood (6 HP flat). Only valuable when the run already has a larger deck and no better relic options.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+---</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/oddly-smooth-stone.md</div>
-<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
-<div class="diff-add">+# Oddly Smooth Stone</div>
-<div class="diff-add">+RARITY: Common</div>
-<div class="diff-add">+EFFECT: Gain 1 Dexterity.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+HOW IT CHANGES DECISIONS: Permanent +1 block on every block card played. Defend generates 6 block instead of 5. Shrug It Off generates 9 instead of 8. Compounds with multiple block cards per turn. Over a long fight, this adds up to 10-20 extra block total.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+EVALUATION: Solid common relic. Passive defensive boost with no downside. Less impactful than Vajra (+1 Strength) for Ironclad because Ironclad&#x27;s win condition is typically killing fast, not blocking more. But in Act 2 where chip damage accumulates, the extra block helps reduce HP drain between rest sites.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+---</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

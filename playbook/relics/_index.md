@@ -91,6 +91,7 @@
 
 ## Boss Relics / Special
 
+- [Hovering Kite](hovering-kite.md)
 - [Snecko Eye](snecko-eye.md)
 - [Busted Crown](busted-crown.md)
 - [Pandora's Box](pandoras-box.md)
