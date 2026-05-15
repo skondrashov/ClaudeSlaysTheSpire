@@ -70,13 +70,14 @@ def _load_stats():
                      "current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?",
                      "floor_history": []}
         defaults.update(saved)
-        # Derive counters from floor_history (source of truth) to prevent
-        # double-counting when stream.py restarts and re-hits GAME_OVER
+        # Derive wins/deaths from floor_history (source of truth) to prevent
+        # double-counting when stream.py restarts and re-hits GAME_OVER.
+        # total_runs is kept separate — floor_history doesn't include early
+        # runs that predate tracking (runs 0-80).
         fh = defaults.get("floor_history", [])
         if fh:
-            defaults["total_runs"] = len(fh)
             defaults["wins"] = sum(1 for e in fh if e.get("victory"))
-            defaults["deaths"] = sum(1 for e in fh if not e.get("victory"))
+            defaults["deaths"] = defaults["total_runs"] - defaults["wins"]
             defaults["best_floor"] = max(e.get("floor", 0) for e in fh)
         return defaults
     except (FileNotFoundError, json.JSONDecodeError):
@@ -278,6 +279,7 @@ async def state_watcher():
                                 for e in run_stats["floor_history"]
                             )
                             if not already_logged:
+                                run_stats["total_runs"] += 1
                                 run_stats["floor_history"].append({
                                     "floor": floor,
                                     "victory": victory,
@@ -285,11 +287,10 @@ async def state_watcher():
                                     "class": cls,
                                     "ascension": asc,
                                 })
-                            # Derive counters from floor_history (single source of truth)
+                            # Derive wins/deaths from floor_history (prevents double-count)
                             fh = run_stats["floor_history"]
-                            run_stats["total_runs"] = len(fh)
                             run_stats["wins"] = sum(1 for e in fh if e.get("victory"))
-                            run_stats["deaths"] = sum(1 for e in fh if not e.get("victory"))
+                            run_stats["deaths"] = run_stats["total_runs"] - run_stats["wins"]
                             run_stats["best_floor"] = max((e.get("floor", 0) for e in fh), default=0)
                             _save_stats()
                             await broadcast({
