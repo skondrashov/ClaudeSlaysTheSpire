@@ -374,6 +374,439 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Runs 157-158: FIRST SILENT VICTORY vs Time Eater, Shiv archetype documented</div>
+      <div class="changelog-sha">0c9f2aaf</div>
+    </div>
+    <div class="changelog-date">2026-05-14</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">playbook/bosses/_index.md</div>
+<div class="diff-hunk">@@ -13,4 +13,4 @@</div>
+<div class="diff-ctx"> ## Act 3</div>
+<div class="diff-ctx"> - [Awakened One](awakened-one.md) — HP: 300+300. Two phases. Curiosity (+2 Str per Power played). Regenerate 10 in Phase 2.</div>
+<div class="diff-ctx"> - [Donu and Deca](donu-and-deca.md) — HP: 250+250. Donu buffs Str, Deca adds Dazed + Block. Artifact 2 each.</div>
+<div class="diff-del">-- [Time Eater](time-eater.md) — HP: 456. Time Warp every 12 cards played. Haste heals at 50% HP.</div>
+<div class="diff-add">+- [Time Eater](time-eater.md) — HP: 456. Time Warp every 12 cards played. Haste heals at 50% HP. DEFEATED 2x (Ironclad Barricade engine, Silent Shiv burst).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/time-eater.md</div>
+<div class="diff-hunk">@@ -26,13 +26,26 @@ STRATEGY:</div>
+<div class="diff-ctx"> - **Corruption + Feel No Pain is excellent but be card-count conscious.** Every Skill played under Corruption counts toward the 12-card limit AND exhausts. The block generation is enormous but the card count adds up fast. Sequence carefully: play all free Skills in one burst, accept the Time Warp trigger, then use the accumulated block with Body Slam+ on the next cycle.</div>
+<div class="diff-ctx"> - **Second Wind+ under Corruption can exhaust status cards (Burns, Normality curse) for block AND remove them from the deck permanently.** Using Second Wind+ to exhaust Normality is a high-priority play.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-DEFEATED WITH: Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Key sequence: accumulate 69 block through Barricade + FNP exhaust chain, Entrench to 138, Body Slam+ for 146 damage. Two Time Warps triggered (boss healed 64 total, gained +4 Str) but the block wall absorbed all damage. Final kill: Body Slam+ with 119 block at 26/87 HP. 2 Fairy in a Bottle potions provided safety margin.</div>
+<div class="diff-add">+DEFEATED WITH (Ironclad): Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Key sequence: accumulate 69 block through Barricade + FNP exhaust chain, Entrench to 138, Body Slam+ for 146 damage. Two Time Warps triggered (boss healed 64 total, gained +4 Str) but the block wall absorbed all damage. Final kill: Body Slam+ with 119 block at 26/87 HP. 2 Fairy in a Bottle potions provided safety margin.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEFEATED WITH (Silent -- FIRST SILENT WIN): Accuracy x2 (+8 Shiv damage) + After Image (innate) + Wraith Form+ + Phantasmal Killer + Malaise + Blade Dance + Finisher. Key sequence: Turn 1 Cultist Potion for Ritual 1, After Image + Blur + Blade Dance setup. Turn 3 Phantasmal Killer + Fear Potion (Vuln) -- Shivs dealt 36 each (doubled, Vulnerable), 72 burst in 2 plays. Turn 5 Wraith Form+ at 19 HP for 3 Intangible. Turn 7 Phantasmal Killer triggered Time Warp on a free turn, setting up Double Damage for Turn 8. Turn 8 Malaise X=5 (-5 Str, 5 Weak). Turn 9 Lizard Tail revival at 35 HP, Snecko Oil for cards. Turn 10 Str 11 + Accuracy 8 = Shivs dealing 23 each, 4 Shivs + Finisher killed from 139 HP. Three Time Warps triggered but the Str scaling from Ritual outpaced Time Eater&#x27;s healing (32 per Warp vs 23 damage per Shiv).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**SILENT-SPECIFIC STRATEGY vs Time Eater:**</div>
+<div class="diff-add">+- **Shivs are excellent despite the 12-card counter.** Each Shiv is 1 card play but deals massive damage with Accuracy + Str stacking. 12 card plays per cycle can output 200+ damage.</div>
+<div class="diff-add">+- **Accuracy is the key card.** 2x Accuracy = +8 per Shiv. This turns 0-cost throwaway cards into 12+ damage each.</div>
+<div class="diff-add">+- **Phantasmal Killer timing:** Play the turn BEFORE a big burst turn. Double Damage makes Shivs devastating (36+ each with Accuracy + Str + Vuln).</div>
+<div class="diff-add">+- **Wraith Form+ timing:** Save for crisis moments (sub-20% HP). 3 Intangible buys time for Str scaling via Ritual or other sources.</div>
+<div class="diff-add">+- **Malaise is the best Silent boss debuff.** X=5 applies -5 Str AND 5 Weak, crippling Time Eater&#x27;s offense for the final turns.</div>
+<div class="diff-add">+- **Cultist Potion Turn 1** is optimal -- Ritual 1 compounds across the entire fight. By Turn 10, Str reaches 10-11, making Shivs deal 20+ each.</div>
+<div class="diff-add">+- **Finisher** scales with attacks played this turn. After 4 Shivs, Finisher deals 24+ damage for 1E.</div>
+<div class="diff-add">+- **Track Time Warp count precisely.** Trigger Time Warp intentionally on low-value plays (Phantasmal Killer on a free turn, last Shiv of a burst) to minimize wasted card plays.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> WHAT NOT TO DO:</div>
+<div class="diff-del">-- Play many small cards per turn (accelerates Time Warp).</div>
+<div class="diff-add">+- Play many small cards per turn without purpose (accelerates Time Warp with low damage output).</div>
+<div class="diff-ctx"> - Exhaust Impervious early -- save for high-damage turns after Str has stacked.</div>
+<div class="diff-ctx"> - Enter below 40% HP. Time Warp + escalating damage means even with strong block, some damage leaks through.</div>
+<div class="diff-add">+- Waste Malaise on Artifact stripping -- use Neutralize or Crippling Cloud for that.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-POTION TIMING: Energy Potion on the setup turn (Barricade + Corruption in one turn). Save Fairy in a Bottle as death insurance.</div>
+<div class="diff-add">+POTION TIMING: Cultist Potion Turn 1 (maximum Str scaling). Fear Potion on Phantasmal Killer burst turns. Snecko Oil as emergency draw. Save Lizard Tail / Fairy in a Bottle as death insurance.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ENTER AT: 50%+ HP. The fight is long (10-15 turns) with escalating damage from Time Warp Str stacks.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
+<div class="diff-hunk">@@ -42,15 +42,19 @@</div>
+<div class="diff-ctx"> ## Silent Attack Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Masterful Stab](masterful-stab.md)</div>
+<div class="diff-add">+- [Finisher](finisher.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Silent Skill Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Blur](blur.md)</div>
+<div class="diff-add">+- [Malaise](malaise.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Silent Power Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [After Image](after-image.md)</div>
+<div class="diff-ctx"> - [Wraith Form](wraith-form.md)</div>
+<div class="diff-add">+- [Accuracy](accuracy.md)</div>
+<div class="diff-add">+- [Phantasmal Killer](phantasmal-killer.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Colorless Cards</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/accuracy.md</div>
+<div class="diff-hunk">@@ -0,0 +1,40 @@</div>
+<div class="diff-add">+# Accuracy</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Power, 1E (0E upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Your Shivs deal 4 additional damage (6 upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** +4 Shiv damage.</div>
+<div class="diff-add">+**Upgraded:** +6 Shiv damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Accuracy is a permanent Power that adds flat damage to every Shiv played for the rest of combat. The bonus stacks with multiple copies: 2x Accuracy = +8 per Shiv. Combined with Strength from any source (Cultist Potion, Strength Potion, etc.), the per-Shiv damage becomes devastating.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Victory-Proven Damage Math</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+With 2x Accuracy (+8) and Str 11 (from Cultist Potion Ritual by Turn 10):</div>
+<div class="diff-add">+- Shiv base: 4 + 8 (Accuracy) + 11 (Str) = 23 damage per 0-cost Shiv</div>
+<div class="diff-add">+- Blade Dance (1E) = 3 Shivs = 69 damage</div>
+<div class="diff-add">+- With Phantasmal Killer (double): 46 per Shiv, 3 Shivs = 138 damage</div>
+<div class="diff-add">+- With Vulnerable: 36 per Shiv (doubled + 1.5x), 2 Shivs = 72 damage</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+This scaling makes Accuracy the most important card in a Shiv-based Silent deck.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Synergies</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Blade Dance:** 3 Shivs for 1E, each benefiting from Accuracy bonus.</div>
+<div class="diff-add">+- **Cloak and Dagger+:** 2 Shivs + 6 block, with Accuracy bonus on each Shiv.</div>
+<div class="diff-add">+- **Infinite Blades:** Free Shiv each turn with Accuracy bonus = free 8+ damage/turn.</div>
+<div class="diff-add">+- **Phantasmal Killer:** Doubles Shiv damage for one devastating burst turn.</div>
+<div class="diff-add">+- **Cultist Potion:** Ritual Str compounds with Accuracy on every Shiv. Key contributor to the first Silent victory.</div>
+<div class="diff-add">+- **Finisher:** Scales with attacks played; after 3-4 Shivs, Finisher deals massive damage.</div>
+<div class="diff-add">+- **After Image:** Each Shiv played gives +1 block from After Image, making Shivs both offense and defense.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Time Eater Interaction</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Shivs count as individual card plays toward the 12-card Time Warp counter. However, with Accuracy stacking, each Shiv deals enough damage that 12 card plays per cycle output 200+ total damage. The Time Warp counter is manageable when each card play is worth 20+ damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Draft Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+High priority in any Silent deck building toward Shivs. Take the first Accuracy early (Turn 1 setup in every fight). The second copy is also excellent -- going from +4 to +8 per Shiv doubles the offensive value of every Shiv-generating card in the deck.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/after-image.md</div>
+<div class="diff-hunk">@@ -28,10 +28,14 @@ After Image provides flat block per card played that is **not affected by Dexter</div>
+<div class="diff-ctx"> - **Before the Collector&#x27;s Turn 4 debuff.** After Image MUST be active before the triple debuff lands. It is the Silent&#x27;s primary tool for surviving post-debuff turns.</div>
+<div class="diff-ctx"> - **Priority over other Powers except Noxious Fumes+.** In boss fights, play Noxious Fumes+ first (poison scaling is the win condition), then After Image second (block scaling is the survival condition).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Bottled Tornado Synergy (VICTORY-PROVEN)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Making After Image innate via Bottled Tornado guarantees it starts in hand every combat. This was a key decision in the first Silent victory: After Image was active from Turn 1 of every fight for the entire run, providing guaranteed block generation without spending a draw on it. When choosing what to bottle with Bottled Tornado, After Image is the top pick for Silent decks -- it is the most universally valuable Power to have Turn 1 of every combat.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Silent Boss Fights: Setup Priority</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> 1. Noxious Fumes+ (poison = win condition)</div>
+<div class="diff-del">-2. After Image (block per card = survival)</div>
+<div class="diff-add">+2. After Image (block per card = survival) -- ideally innate via Bottled Tornado</div>
+<div class="diff-ctx"> 3. Footwork+ (Dex scaling = block multiplier)</div>
+<div class="diff-ctx"> 4. Other powers</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/finisher.md</div>
+<div class="diff-hunk">@@ -0,0 +1,35 @@</div>
+<div class="diff-add">+# Finisher</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Attack, 1E.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Deal 6 damage for each Attack played this turn (8 upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** 6 damage per Attack this turn.</div>
+<div class="diff-add">+**Upgraded:** 8 damage per Attack this turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Finisher counts all Attack cards played this turn (before Finisher itself) and deals that count multiplied by 6 (or 8 upgraded) as damage. Shivs count as Attacks. This makes Finisher a powerful turn-ender after a Shiv burst.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Damage Calculation</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+With Str and Accuracy modifiers, Finisher&#x27;s per-hit damage also benefits from Strength:</div>
+<div class="diff-add">+- Base: 6 per Attack + Str bonus</div>
+<div class="diff-add">+- After 4 Shivs: 4 * (6 + Str) = significant burst</div>
+<div class="diff-add">+- In the first Silent victory: 4 attacks played, Finisher dealt ~24 damage for 1E</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Optimal Play Pattern</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. Play all Shivs and other Attacks first</div>
+<div class="diff-add">+2. Play Finisher as the LAST Attack card of the turn</div>
+<div class="diff-add">+3. With Blade Dance (3 Shivs) + 1 extra Shiv: 4 attacks = Finisher deals 4 * (6 + Str)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Synergies</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Blade Dance:** Creates 3 Shivs that count toward Finisher&#x27;s multiplier.</div>
+<div class="diff-add">+- **Accuracy:** Doesn&#x27;t directly affect Finisher (not a Shiv), but enables Shiv plays that build the Attack count.</div>
+<div class="diff-add">+- **Phantasmal Killer:** Finisher is an Attack -- Double Damage doubles Finisher&#x27;s total output.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Draft Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Mid-to-high priority in Shiv decks. Becomes excellent with Blade Dance and any Shiv generation. Without Shiv support, Finisher deals only 6-12 damage (1-2 attacks before it) -- mediocre.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/malaise.md</div>
+<div class="diff-hunk">@@ -0,0 +1,33 @@</div>
+<div class="diff-add">+# Malaise</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Skill, X cost (Exhaust).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Apply X Weak and reduce enemy Strength by X. Exhaust.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** X Weak + X Str Down, Exhaust.</div>
+<div class="diff-add">+**Upgraded:** X+1 Weak + X+1 Str Down, Exhaust.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Malaise is the Silent&#x27;s strongest boss debuff. It consumes all remaining energy and applies that amount as both Weak and permanent Strength reduction. Unlike Piercing Wail (temporary -6 Str for 1 turn), Malaise&#x27;s Strength reduction is permanent for the combat.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Optimal Usage</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Save for boss fights.** Malaise exhausts -- single use per combat. Do not waste on hallway fights or elites unless the fight is genuinely lethal.</div>
+<div class="diff-add">+- **Play LAST on your turn** after all other non-X-cost cards. Malaise consumes all remaining energy. Play block cards, Powers, and 0-cost attacks first, then Malaise with remaining E.</div>
+<div class="diff-add">+- **Maximum value at high energy.** With 5E and Malaise as the only play: X=5 gives -5 Str and 5 Weak. Combined, this reduces enemy damage by ~50-70% for multiple turns.</div>
+<div class="diff-add">+- **Do NOT use for Artifact stripping.** Malaise is too valuable to spend on removing 1 Artifact charge. Use Neutralize, Crippling Cloud, or other cheap debuffs for Artifact stripping.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Victory-Proven Usage</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+First Silent victory, Turn 8 vs Time Eater: Malaise X=5 applied -5 Str and 5 Weak. Time Eater&#x27;s damage was reduced from ~39 to ~18 per turn. This debuff enabled survival through the critical final turns with Lizard Tail as backup. The Str reduction is particularly valuable because it is permanent -- Time Eater&#x27;s subsequent attacks were all reduced for the rest of the fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Synergies</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **High energy decks (Fusion Hammer, Happy Flower):** More energy = larger X = bigger debuff.</div>
+<div class="diff-add">+- **Wraith Form+:** Malaise reduces the damage you need to block after Intangible wears off.</div>
+<div class="diff-add">+- **Shiv burst:** Malaise neuters the boss&#x27;s offense while your Shiv damage scales via Accuracy/Str.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Draft Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+High priority for boss fights. One of the best Silent cards against any single-target boss. Take it when it appears in Act 2-3 card rewards, especially with Time Eater or Awakened One as the Act 3 boss.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/phantasmal-killer.md</div>
+<div class="diff-hunk">@@ -0,0 +1,36 @@</div>
+<div class="diff-add">+# Phantasmal Killer</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Silent Power, 1E (0E upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Effect:** Your next Attack deals double damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Base:** 1E, double next Attack.</div>
+<div class="diff-add">+**Upgraded:** 0E, double next Attack.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Mechanic</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Phantasmal Killer grants the &quot;Double Damage&quot; buff, which doubles the damage of the NEXT Attack card played. This includes all modifiers (Strength, Accuracy, Vulnerable). The buff persists until an Attack is played -- it can be set up one turn and used the next.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Optimal Timing</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Play the turn BEFORE a burst turn.** On a free turn (enemy buffing/defending), play Phantasmal Killer. Next turn, play the highest-value Attack for doubled damage.</div>
+<div class="diff-add">+- **With Shivs:** Each Shiv is an Attack. With Accuracy x2 (+8) and Str scaling, a doubled Shiv deals 36+ damage. Play PK, then Blade Dance next turn for 3 doubled Shivs.</div>
+<div class="diff-add">+- **Trigger Time Warp intentionally:** If the 12-card counter is at 11/12, play Phantasmal Killer as the 12th card on a free turn. Time Warp triggers, but Double Damage persists for the fresh cycle&#x27;s first attack.</div>
+<div class="diff-add">+- **With Vulnerable:** PK doubles after Vulnerable multiplier. A 12-damage Shiv with Vulnerable = 18, doubled = 36.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Synergies</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Blade Dance:** 3 Shivs, each doubled = devastating burst.</div>
+<div class="diff-add">+- **Accuracy:** +4/+8 per Shiv, all doubled.</div>
+<div class="diff-add">+- **Finisher:** After 3-4 doubled Shivs, Finisher&#x27;s damage (based on attacks played this turn) is also doubled.</div>
+<div class="diff-add">+- **Flechettes+:** Counts Skills in hand, doubled = 24+ damage for 1E.</div>
+<div class="diff-add">+- **All-Out Attack+:** AOE attack, doubled = massive multi-target damage.</div>
+<div class="diff-add">+- **Fear Potion/Vulnerable:** Multiplicative with Double Damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Victory-Proven Sequence</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+First Silent victory, Turn 3 vs Time Eater: Phantasmal Killer (played Turn 2) + Fear Potion (3 Vulnerable) + 2 Shivs at 36 each (doubled, Vuln) = 72 burst damage from 2 card plays. This combination of setup (PK) + multiplier (Vuln) + efficient damage (Shivs with Accuracy) is the core burst pattern for the Silent Shiv archetype.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Draft Priority</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+High priority when the deck has Blade Dance and/or Accuracy. The upgraded version (0E) is strictly better -- it costs nothing and can be played on any turn as a free setup.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/wraith-form.md</div>
+<div class="diff-hunk">@@ -35,10 +35,11 @@ At high negative Dex, all block from Skills becomes 0 (block cannot go below 0).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Interactions</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- **After Image:** Becomes the ONLY reliable block source at high negative Dex. After Image gives flat 1 block per card played regardless of Dex. With 7-8 cards played per turn, this is ~7-8 block -- often insufficient against boss damage.</div>
+<div class="diff-add">+- **After Image:** Becomes the ONLY reliable block source at high negative Dex. After Image gives flat 1 block per card played regardless of Dex. With 7-8 cards played per turn, this is ~7-8 block -- often insufficient against boss damage but the only option.</div>
+<div class="diff-ctx"> - **Blur:** Critical companion card. Blur lets block carry over between turns. During Intangible turns (minimal damage taken), excess block from After Image or other sources carries over to post-Intangible turns when the Dex penalty makes new block generation impossible.</div>
+<div class="diff-ctx"> - **Footwork+:** Partially offsets the Dex drain. Starting with Dex +3 from Footwork+ means the penalty takes 3 extra turns to reach 0. But in a 19-turn fight, this only delays the crisis.</div>
+<div class="diff-ctx"> - **The Transient:** Wraith Form+ covers turns 1-3 via Intangible, but -1 Dex/turn makes turns 4-5 extremely tight. Enter with 25+ HP minimum.</div>
+<div class="diff-add">+- **Time Eater:** Wraith Form+ is excellent as an EMERGENCY play at low HP. In the first Silent victory, WF+ was played Turn 5 at 19 HP via Acrobatics draw, buying 3 Intangible turns that bridged the gap until Malaise could neuter Time Eater&#x27;s offense. The fight ended on Turn 10 -- only 5 turns of Dex drain, manageable.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## The Collector Boss Warning</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/events/mind-bloom.md</div>
+<div class="diff-hunk">@@ -14,8 +14,17 @@ Three options:</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **I am Rich is a trap with Snecko Eye.** Normality limits the hand to 3 cards per turn. With Snecko Eye drawing 7 cards, 4 are immediately wasted. The 999 gold is useless in late Act 3 (few shops remaining). Avoid.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## I am Healthy (Option 3 -- SITUATIONALLY EXCELLENT)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**[I am Healthy]** -- Heal to full HP. Obtain Doubt curse (1 Weak at end of each turn).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+This option is normally mediocre (Doubt applying Weak every turn degrades defense), but becomes the BEST choice when **Ginger relic is equipped**. Ginger prevents the Weakened debuff entirely, making Doubt&#x27;s effect completely harmless. The result: a free full heal with only a minor deck dilution cost (one dead card). Remove Doubt at the next shop for a clean deck.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Choose &quot;I am Healthy&quot; when Ginger is equipped.** This was a key decision in the first Silent victory -- healing from 55 to 70 HP for free with zero downside.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Decision Framework</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+- **Ginger equipped:** **Healthy** (free full heal, Doubt curse is harmless, remove at shop)</div>
+<div class="diff-ctx"> - Strong deck that can beat Act 1 boss trivially: **War** (free Rare Relic, no downside)</div>
+<div class="diff-ctx"> - **Awake: Almost never.** Only consider if ALL of the following are true: (1) the deck has multiple unupgraded cards where upgrades are transformative, (2) the path from here to the boss contains ZERO remaining combat encounters (no hallway fights, no events that could resolve as combat, no Mysterious Sphere), AND (3) current HP is near max. If any fights remain on the path, choose War instead.</div>
+<div class="diff-ctx"> - Never: **Rich** (Normality curses are devastating)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/potions/cultist-potion.md</div>
+<div class="diff-hunk">@@ -1,5 +1,5 @@</div>
+<div class="diff-ctx"> # Cultist Potion</div>
+<div class="diff-ctx"> EFFECT: Gain Ritual 1 (gain +1 Strength at the start of each turn, permanently stacking).</div>
+<div class="diff-ctx"> WHEN TO USE: Turn 1 of long fights (bosses, elites). The earlier it is used, the more turns of Strength accumulation. In a 9-turn boss fight, Cultist Potion used Turn 1 provides +1, +2, +3... up to +8 Str by Turn 9. This is comparable to Demon Form (+2/turn) over 4 turns.</div>
+<div class="diff-del">-SYNERGIES: Rampage (Strength compounds with Rampage&#x27;s per-play scaling for multiplicative damage growth). Sword Boomerang (multi-hit multiplies Strength bonus). Any long fight where damage scaling matters.</div>
+<div class="diff-del">-BEST TARGETS: Hexaghost (13-turn fight, massive scaling value), Bronze Automaton (long fight, DPS race), any boss fight. Do NOT waste on hallway fights -- the fight ends before meaningful scaling occurs.</div>
+<div class="diff-add">+SYNERGIES: Rampage (Strength compounds with Rampage&#x27;s per-play scaling for multiplicative damage growth). Sword Boomerang (multi-hit multiplies Strength bonus). **Shivs + Accuracy (VICTORY-PROVEN)**: Ritual Str stacks with Accuracy bonus on every Shiv. By Turn 10, each 0-cost Shiv deals 23 damage (4 base + 8 Accuracy + 11 Str). This was a key contributor to the first Silent victory. Any long fight where damage scaling matters.</div>
+<div class="diff-add">+BEST TARGETS: Hexaghost (13-turn fight, massive scaling value), Bronze Automaton (long fight, DPS race), **Time Eater (10-turn fight, Str reached 11 in first Silent victory)**, any boss fight. Do NOT waste on hallway fights -- the fight ends before meaningful scaling occurs.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
+<div class="diff-hunk">@@ -64,6 +64,8 @@</div>
+<div class="diff-ctx"> - [Mummified Hand](mummified-hand.md)</div>
+<div class="diff-ctx"> - [Frozen Egg](frozen-egg.md)</div>
+<div class="diff-ctx"> - [Omamori](omamori.md)</div>
+<div class="diff-add">+- [Ginger](ginger.md)</div>
+<div class="diff-add">+- [Bottled Tornado](bottled-tornado.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Rare Relics</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/bottled-tornado.md</div>
+<div class="diff-hunk">@@ -0,0 +1,19 @@</div>
+<div class="diff-add">+# Bottled Tornado</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: Upon pick up, choose a Power card. That card becomes Innate (starts in your hand at the beginning of every combat).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HOW IT CHANGES DECISIONS: Bottled Tornado guarantees a specific Power is available from Turn 1 of every fight. The choice of which Power to make innate is one of the most impactful decisions in a run.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BEST TARGETS (Silent):</div>
+<div class="diff-add">+1. **After Image** (VICTORY-PROVEN) -- 1 block per card played from Turn 1. This was the #1 defensive choice in the first Silent victory. Guarantees block generation without spending a draw on finding it.</div>
+<div class="diff-add">+2. **Noxious Fumes+** -- Passive poison from Turn 1 of every fight. Best for poison-focused decks.</div>
+<div class="diff-add">+3. **Footwork+** -- +3 Dex from Turn 1. Strong for block-heavy decks.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BEST TARGETS (Ironclad):</div>
+<div class="diff-add">+1. **Barricade** -- Block persists from Turn 1. Excellent with Corruption engine.</div>
+<div class="diff-add">+2. **Metallicize** -- Passive block every turn from Turn 1.</div>
+<div class="diff-add">+3. **Inflame** -- +2 Str from Turn 1 of every fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NOTE: Bottled Tornado bottles a POWER card (not Attack or Skill). Bottled Flame bottles an Attack. Bottled Lightning bottles a Skill. Do not confuse them.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DRAFT PRIORITY: High when you have a Power that you always want Turn 1. The value depends entirely on which Power is bottled -- After Image innate is game-defining; a situational Power is less impactful.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/ginger.md</div>
+<div class="diff-hunk">@@ -0,0 +1,18 @@</div>
+<div class="diff-add">+# Ginger</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: You can no longer be Weakened.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HOW IT CHANGES DECISIONS: Ginger completely negates the Weakened debuff from all sources -- enemy attacks, curses, events. This has several implications:</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. **Mind Bloom &quot;I am Healthy&quot; becomes free.** The Doubt curse (1 Weak/turn) is completely harmless with Ginger. Choose &quot;I am Healthy&quot; for a free full heal to max HP, then remove Doubt at the next shop. This interaction was a key decision in the first Silent victory.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+2. **Enemy Weak applications are ignored.** Chosen&#x27;s Hex, Collector&#x27;s triple debuff (Weak component), Time Eater&#x27;s Ripple (Weak component) -- all have no effect on your damage output. This is particularly valuable for the Silent where every point of Shiv damage matters.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+3. **Block calculations simplified.** With Ginger, you never need to account for the 25% damage reduction from Weak on your attacks. Your damage output is always at full value.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SYNERGIES:</div>
+<div class="diff-add">+- **Mind Bloom + Ginger** = free full heal (victory-proven)</div>
+<div class="diff-add">+- **Shiv decks** benefit most since Weak would reduce every individual Shiv hit</div>
+<div class="diff-add">+- **Boss fights with Weak application** (Collector, Time Eater Ripple) become safer offensively</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DRAFT PRIORITY: High. Immunity to an entire debuff type is always valuable. The Mind Bloom interaction alone can provide 15-30 HP of free healing.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/lizard-tail.md</div>
+<div class="diff-hunk">@@ -1,3 +1,5 @@</div>
+<div class="diff-ctx"> # Lizard Tail</div>
+<div class="diff-ctx"> EFFECT: When HP reaches 0, heal to 50% Max HP. One-time use, then becomes inactive.</div>
+<div class="diff-ctx"> HOW IT CHANGES DECISIONS: A safety net similar to Fairy in a Bottle but heals significantly more (50% Max HP vs ~30%). Save it for boss fights or dangerous elites. Unlike Fairy, Lizard Tail is a relic -- it doesn&#x27;t take a potion slot. Once triggered, it&#x27;s gone for the rest of the run.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BOSS FIGHT VALUE (VICTORY-PROVEN): In the first Silent victory, Lizard Tail revived from 0 HP to 35 HP (50% of 70) during the Time Eater fight on Turn 9. This revival enabled 2 more turns of Shiv burst that killed Time Eater from 139 HP. Without Lizard Tail, the run was lost. The key insight: Lizard Tail is not just a safety net -- it can be deliberately &quot;spent&quot; by accepting lethal damage on a turn where you maximize damage output instead of blocking, knowing the revival will sustain you for the killing turns.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,30 +2,27 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (156 runs, 3 WINS):** Three Ironclad victories in four runs (Runs 147, 148, 150). Six Silent runs (Runs 151-156). Run 151 reached Awakened One (Act 3 boss), died Phase 2. Run 152 reached The Collector (Act 2 boss), died Floor 33. Run 153 reached Floor 45 (best Silent floor), died to Transient with Mark of the Bloom preventing recovery from Orb Walker fight. Run 154 died to Hexaghost (Act 1 boss) at Floor 16 -- defensive-heavy deck with Dex 6 from 2x Footwork+ blocked perfectly but had insufficient damage output (23-turn fight, Burns overwhelmed). Run 155 died to Book of Stabbing (Act 2 elite) at Floor 23 -- entered at 47% HP with no potions, no exhaust tools. Run 156 died to The Collector (Act 2 boss) at Floor 33 -- Wraith Form played too early in a 19-turn fight caused -17 Dex by endgame, making all Skill block 0. Collector at 5/282 HP when player died (5 HP short). TWO proven Ironclad winning formulas exist: (1) Snecko Eye + Immolate+ + Limit Break engine, and (2) Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine. Silent strategy is developing -- Wraith Form timing is the critical lesson from Run 156: in 15+ turn boss fights, delay Wraith Form until the final 5-6 turns. Poison engine + After Image + Blur is the defensive package for long Collector fights. The Collector&#x27;s DEFEND_BUFF +3 Str scaling makes long fights exponentially more dangerous.</div>
+<div class="diff-add">+**CURRENT STATUS (158 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Eight Silent runs total (Runs 151-158). Run 157 died to Bronze Automaton (Act 2 boss) -- poison was lethal but deck could not survive 2 more turns. Sozu blocked potions. Run 158 VICTORY vs Time Eater -- Shiv archetype with Accuracy x2, After Image (innate), Wraith Form+, Phantasmal Killer, Malaise, Cultist Potion for Str scaling. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**SCORECARD (runs 101-155):**</div>
+<div class="diff-add">+**SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-del">-- Act 2 boss kills: 4. Act 2 boss reaches: 9+.</div>
+<div class="diff-del">-- **Act 3 reached six times (Runs 145, 147, 148, 149, 150, 151).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 all WON.</div>
+<div class="diff-del">-- **Best floor: 51 -- VICTORY (Runs 147, 148, 150 all reached Floor 51).**</div>
+<div class="diff-del">-- **3 wins in 156 runs (1.9% win rate).** Ascension 0. Three Ironclad wins. Zero Silent wins (6 attempts: Run 151 reached Act 3 boss, Run 152 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 156 reached Act 2 boss Floor 33).</div>
+<div class="diff-del">-- **No UI misplays in Runs 147-151.** Nine+ consecutive clean runs.</div>
+<div class="diff-del">-- **Mechanics error in Run 151: Awakened One Curiosity mechanic ignored.** Player played 6 Powers into a boss that gains +2 Str per Power. This was a fundamental boss mechanic misunderstanding, not an arithmetic error. Awakened One playbook entry created.</div>
+<div class="diff-del">-- **Run 152: Silent died to Collector at F33.** Defensive powers (After Image, Footwork+) not played early enough. Card index confusion on Turn 1 caused suboptimal command execution. Post-debuff incoming was unsurvivable without defensive powers active. Poison strategy was highly effective against block-based enemies (Spheric Guardian crushed).</div>
+<div class="diff-del">-- **Run 153: Silent died to Transient at F45.** Best Silent floor yet. Strong poison engine + card retention engine dominated Act 3 hallways. Two critical strategic errors: (1) Mind Bloom &quot;I am Awake&quot; gave Mark of the Bloom (no healing), then (2) Mysterious Sphere fight (2 Orb Walkers) drained 66 HP with no recovery possible. Entered Transient at 3 HP. Died 7 damage short of surviving the final turn.</div>
+<div class="diff-del">-- **Run 154: Silent died to Hexaghost at F16.** Defensive-heavy deck with 2x Footwork+ (Dex 6), Dash+, Masterful Stab. Took zero damage in 5/6 pre-boss fights. But damage output was only ~10/turn average -- fight lasted 23 turns, Burns accumulated to 12+ per turn, and second Inferno (8x6=48) hit with a hand of all Burns. Hexaghost at 24/250 HP when killed. The problem was entirely damage, not defense.</div>
+<div class="diff-del">-- **Run 155: Silent died to Book of Stabbing at F23.** Dex 6 + Accuracy Shiv deck with Piercing Wail, TotT, Sacred Bark. Beat Slime Boss near-zero damage. Act 2 Sentry+Spheric Guardian drained 26 HP (59-&gt;33). Entered Book of Stabbing at 47% HP with zero potions. Dealt 137/161 damage but Book&#x27;s +3 Str/turn overwhelmed Dex block by Turn 6. Died with 24 HP remaining on Book.</div>
+<div class="diff-del">-- **Run 156: Silent died to Collector at F33.** Wraith Form played too early in a 19-turn fight. Dex dropped to -17 by Turn 19, making all Skill-based block 0. After Image provided ~7-8 block/turn (only block source at negative Dex) but insufficient against Collector&#x27;s Str-scaled attacks (Str 14+ from repeated DEFEND_BUFF). Collector at 5/282 HP when player died -- 5 HP short. Blur carried block from Intangible turns but was insufficient to bridge the full Dex gap. Key lesson: Wraith Form must be delayed until the final 5-6 turns in boss fights expected to last 15+ turns. Created wraith-form.md, after-image.md, blur.md.</div>
+<div class="diff-del">-- **Two distinct Ironclad winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-add">+- Act 2 boss kills: 5. Act 2 boss reaches: 11+.</div>
+<div class="diff-add">+- **Act 3 reached seven times (Runs 145, 147, 148, 149, 150, 151, 158).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Run 158 (Silent) all WON.</div>
+<div class="diff-add">+- **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158 all reached Floor 51).**</div>
+<div class="diff-add">+- **4 wins in 158 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (8 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23).</div>
+<div class="diff-add">+- **Run 157: Silent died to Bronze Automaton at F33.** Fusion Hammer + Sozu from Neow. Poison strategy had lethal poison applied but deck could not survive 2 more turns. Automaton Str reached 9 by Turn 12+. Sozu blocked all potions -- no emergency healing.</div>
+<div class="diff-add">+- **Run 158: FIRST SILENT VICTORY vs Time Eater at F51.** Pandora&#x27;s Box from Neow gave 2x Accuracy + Envenom + Infinite Blades. Bottled Tornado made After Image innate. Ginger enabled free Mind Bloom heal (Doubt&#x27;s Weak negated). Cultist Potion gave Ritual 1, Str scaled to 11 by Turn 10. Shivs dealt 23 each. Lizard Tail revived at 0 HP. Malaise X=5 neutered Time Eater&#x27;s offense. Wraith Form+ played at correct timing (Turn 5 at 19 HP). Score 636, Final HP 47/70.</div>
+<div class="diff-add">+- **Three distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**THE WINNING FORMULAS (confirmed by 3 victories across 2 distinct engines):**</div>
+<div class="diff-add">+**THE WINNING FORMULAS (confirmed by 4 victories across 3 distinct engines):**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Formula 1: Snecko Eye + Strength Scaling (Runs 147-148).** Snecko Eye (Act 2 boss relic, draw 7, cost randomization) + Immolate+ (AOE) + Limit Break (Str doubler) + Heavy Blade / high-Str finishers. Key components: Snecko Eye as Act 2 boss relic, Immolate+ as primary AOE, Limit Break for Strength scaling. Works by rolling cheap costs on expensive cards and doubling Strength for massive finisher damage.</div>
+<div class="diff-add">+**Formula 1 (Ironclad): Snecko Eye + Strength Scaling (Runs 147-148).** Snecko Eye (Act 2 boss relic, draw 7, cost randomization) + Immolate+ (AOE) + Limit Break (Str doubler) + Heavy Blade / high-Str finishers. Key components: Snecko Eye as Act 2 boss relic, Immolate+ as primary AOE, Limit Break for Strength scaling. Works by rolling cheap costs on expensive cards and doubling Strength for massive finisher damage.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Formula 2: Barricade + Corruption Engine (Run 150).** Barricade (block persists) + Corruption (all Skills free but exhaust) + Feel No Pain (block per exhaust) + Entrench (double block) + Body Slam+ (damage = block). Key components: Barricade as the foundation (block persists between turns), Corruption making Skills free (and triggering FNP on exhaust), Entrench doubling accumulated block, Body Slam+ converting block to damage for 0E. This engine builds an impenetrable block wall (100-200+ block) while dealing massive damage through Body Slam+. Apotheosis is critical when Fusion Hammer prevents normal upgrades -- upgrading everything in one play (Barricade 3E to 2E, FNP 3 to 4, Impervious 30 to 40).</div>
+<div class="diff-add">+**Formula 2 (Ironclad): Barricade + Corruption Engine (Run 150).** Barricade (block persists) + Corruption (all Skills free but exhaust) + Feel No Pain (block per exhaust) + Entrench (double block) + Body Slam+ (damage = block). Key components: Barricade as the foundation (block persists between turns), Corruption making Skills free (and triggering FNP on exhaust), Entrench doubling accumulated block, Body Slam+ converting block to damage for 0E. This engine builds an impenetrable block wall (100-200+ block) while dealing massive damage through Body Slam+. Apotheosis is critical when Fusion Hammer prevents normal upgrades -- upgrading everything in one play (Barricade 3E to 2E, FNP 3 to 4, Impervious 30 to 40).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**What both formulas share:** (1) Immolate+ as primary AOE, (2) zero UI misplays, (3) zero arithmetic errors, (4) strong Act 1 elite fights, (5) proper map pathing. The key insight: two completely different scaling mechanisms both work at A0. The player should pursue whichever engine the card/relic offerings support, not force one formula over the other.</div>
+<div class="diff-add">+**Formula 3 (Silent): Accuracy Shiv Burst (Run 158 -- FIRST SILENT WIN).** Accuracy x2 (+8 Shiv damage) + After Image (innate via Bottled Tornado, 1 block/card played) + Wraith Form+ (3 Intangible for emergency survival) + Phantasmal Killer (double damage burst turn) + Malaise (X Weak + X Str Down for boss debuff) + Blade Dance (3 Shivs for 1E) + Finisher (damage per attack played this turn). Key components: Accuracy stacking makes every 0-cost Shiv deal 12+ damage; After Image as innate guarantees block from Turn 1 of every fight; Wraith Form+ provides 3 turns of Intangible when HP drops to crisis levels; Phantasmal Killer doubles the next attack for massive Shiv burst turns; Malaise neuters boss offense for the final stretch. Cultist Potion (Ritual 1) provides permanent Str scaling that compounds with Accuracy -- by Turn 10, Shivs dealt 23 each (4 base + 8 Accuracy + 11 Str). This formula defeats Time Eater because each Shiv is a single card play but deals massive damage, making the 12-card Time Warp counter manageable (12 cards can output 200+ damage per cycle). Lizard Tail provided death insurance for the revival that enabled the final burst.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**What all formulas share:** (1) zero UI misplays, (2) zero arithmetic errors, (3) strong Act 1 performance, (4) proper map pathing, (5) a complete scaling engine (not individual strong cards). The key insight: pursue whichever engine the card/relic offerings support, not force one formula over the other.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **IMMEDIATE PRIORITIES (in order):**</div>
+<div class="diff-ctx"> 1. **FULL BLOCK EVERY HALLWAY FIGHT.** The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md.</div>
+<div class="diff-hunk">@@ -37,7 +34,7 @@ High-level strategic principles for Ironclad runs.</div>
+<div class="diff-ctx"> 7. **Brimstone + Book of Stabbing = death.** Do NOT buy Brimstone if Book of Stabbing is possible. Book natively gains +3 Str/turn; Brimstone adds +2 Str/turn on top = +5 Str/turn. Two deaths confirmed.</div>
+<div class="diff-ctx"> 8. **3 Cultists entry threshold is 60%.** Six deaths at 5-53% HP confirm. This is a hard-scaler -- kill speed &gt; block.</div>
+<div class="diff-ctx"> 9. **Enter every boss at as high HP as possible.** The first victory entered all three bosses at 80/80. The second victory entered Act 1 and Act 2 bosses at high HP but entered Donu and Deca at only 49% (42/85) and survived at 4 HP -- a razor-thin margin. Full HP entry provides the buffer needed when boss fights go long. Regal Pillow (+15 rest heal), smart pathing, and Omamori (free event rewards without curse downside) enable full HP entry. A powerful deck (Snecko Eye + Immolate+ + Limit Break+) can compensate for low HP entry, but the margin of error is minimal.</div>
+<div class="diff-del">-10. **KNOW YOUR ACT 3 BOSS MECHANIC AND BUILD AROUND IT.** The Act 3 boss is visible on the map from Act 1. Each Act 3 boss punishes a specific playstyle: (a) **Awakened One** punishes Power cards (+2 Str per Power played -- see awakened-one.md). If the boss is Awakened One, deprioritize Powers during drafting and plan to win with Attacks and Skills. (b) **Time Eater** punishes high card-count turns (12-card Time Warp -- see time-eater.md). Track card count exactly. (c) **Donu and Deca** is a raw stats check (500 combined HP). The boss you see should influence every card pick, relic choice, and deck-building decision from Floor 1 onward.</div>
+<div class="diff-add">+10. **KNOW YOUR ACT 3 BOSS MECHANIC AND BUILD AROUND IT.** The Act 3 boss is visible on the map from Act 1. Each Act 3 boss punishes a specific playstyle: (a) **Awakened One** punishes Power cards (+2 Str per Power played -- see awakened-one.md). If the boss is Awakened One, deprioritize Powers during drafting and plan to win with Attacks and Skills. (b) **Time Eater** punishes high card-count turns (12-card Time Warp -- see time-eater.md). Track card count exactly. However, Shivs with Accuracy stacking make Time Warp manageable -- each Shiv is 1 card play dealing 20+ damage, so 12 plays per cycle output massive total damage. The Silent Shiv archetype BEAT Time Eater in the first Silent victory. (c) **Donu and Deca** is a raw stats check (500 combined HP). The boss you see should influence every card pick, relic choice, and deck-building decision from Floor 1 onward.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -558,7 +555,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### What the Deck Needs for Act 3</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-1. **Strength scaling engine OR Barricade + Corruption engine**: Two proven winning approaches with three victories between them. (A) Snecko Eye + Limit Break + Heavy Blade (Runs 147-148): burst-damage engine using cost randomization and Strength doubling. (B) Barricade + Corruption + Feel No Pain + Entrench + Body Slam (Run 150): block accumulation engine that converts persistent block to damage via Body Slam+. Both approaches work against all Act 3 bosses. The key is having a COMPLETE engine -- individual strong cards without the supporting pieces are insufficient. The Barricade engine additionally benefits from Metallicize (passive block per turn), Apotheosis (mass upgrade when Fusion Hammer prevents smithing), and Second Wind+ (mass exhaust for block + FNP triggers).</div>
+<div class="diff-add">+1. **A complete scaling engine**: Three proven winning approaches with four victories between them. **Ironclad (A)** Snecko Eye + Limit Break + Heavy Blade: burst-damage engine using cost randomization and Strength doubling. **Ironclad (B)** Barricade + Corruption + Feel No Pain + Entrench + Body Slam: block accumulation engine that converts persistent block to damage via Body Slam+. **Silent (C)** Accuracy x2 + After Image (innate) + Wraith Form+ + Phantasmal Killer + Malaise + Shiv burst: multiplier-stacking engine using Accuracy+Str on 0-cost Shivs with Phantasmal Killer for double damage burst turns. All approaches work against Act 3 bosses. The key is having a COMPLETE engine -- individual strong cards without the supporting pieces are insufficient.</div>
+<div class="diff-ctx"> 2. **Block density beyond Barricade**: Impervious, Shrug It Off, Defend+. Barricade needs block cards to feed into the snowball. Without block cards to play, Barricade only accumulates Metallicize&#x27;s passive block (slow). Impervious + Barricade = 30-40 permanent block in one play.</div>
+<div class="diff-ctx"> 3. **AOE**: Immolate+ is the single best card. Darklings require simultaneous kills; Exploders can be cleared with single Immolate+.</div>
+<div class="diff-ctx"> 4. **Disarm/Weak sources**: Transient and scaling enemies require Strength reduction and Weak application. Save for Transient and boss fights -- do not waste on hallway fights that the Barricade engine can handle.</div>
+<div class="diff-hunk">@@ -570,9 +567,9 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### What Wins and What Kills (Summary)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**All three victories had:** (1) Immolate+ as primary AOE, (2) a complete scaling engine (Snecko Eye + Limit Break in Runs 147-148, Barricade + Corruption + FNP + Entrench + Body Slam in Run 150), (3) zero UI misplays, (4) zero arithmetic errors, (5) strong Act 1 performance with 2 elites fought. The third win (Run 150) used a completely different formula from the first two: Barricade + Corruption + Feel No Pain + Entrench + Body Slam engine, built around block accumulation rather than Strength scaling. Fusion Hammer (no upgrades) was compensated by Apotheosis (mass upgrade) and Blessing of the Forge potions. Cursed Key provided 5E base, enabling Barricade + block plays in a single turn. The engine generated 100-200 block per fight and dealt damage through Body Slam+ (0E, damage = block). Fairy in a Bottle x2 provided death insurance at the boss. Feed+ gained +7 Max HP across the run (80 to 87). White Beast Statue guaranteed potion drops after every fight.</div>
+<div class="diff-add">+**All four victories had:** (1) a complete scaling engine, (2) zero UI misplays, (3) zero arithmetic errors, (4) strong Act 1 performance. The fourth win (Run 158, Silent) introduced a completely new formula: Accuracy Shiv burst. Pandora&#x27;s Box from Neow provided 2x Accuracy + Envenom + Infinite Blades. Bottled Tornado made After Image innate (guaranteed block from Turn 1). Ginger negated Doubt curse from Mind Bloom &quot;I am Healthy&quot; for a free full heal. Cultist Potion gave Ritual 1 for permanent Str scaling (reached Str 11 by Turn 10). Lizard Tail revived at 0 HP during the Time Eater fight. Key difference from Ironclad formulas: Silent wins through many small card plays (Shivs) with stacked multipliers (Accuracy + Str + Phantasmal Killer), not through single massive hits. Against Time Eater&#x27;s 12-card counter, each Shiv deals 20+ damage, so 12 card plays per cycle still output massive total damage.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Every boss victory** had: (1) a card that addressed the boss&#x27;s main threat, (2) passive block/sustain, (3) entry HP above 50% or Pantograph, (4) at least 1 key upgrade, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.</div>
+<div class="diff-add">+**Every boss victory** had: (1) a card that addressed the boss&#x27;s main threat, (2) passive block/sustain (After Image, Metallicize, Barricade), (3) entry HP above 50% or Pantograph or Lizard Tail, (4) at least 1 key upgrade or strong unupgraded cards, (5) no self-damage cards (Brutality/Berserk). **Every boss death** was missing at least one of these.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Act 2 death causes (ranked by frequency, 35+ deaths):**</div>
+<div class="diff-ctx"> 1. **HP attrition from failure to full block** -- the player takes unnecessary damage in hallway fights, then enters the next fight at critical HP and dies. Root cause: not executing the Full Block Algorithm. Solved by making zero-damage-taken the explicit default for every hallway turn.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 156 analysis + enemy encyclopedia: wiki-verified mechanics for all enemies/bosses</div>
       <div class="changelog-sha">58d85ca9</div>
     </div>
@@ -9972,176 +10405,6 @@ footer {
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> ### Elite Risk Assessment</div>
 <div class="diff-ctx"> </div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 68 analysis: Rage+ per-turn fix, Brutality trap, Spheric Guardian 3rd death, Snecko cost fix</div>
-      <div class="changelog-sha">e189e61d</div>
-    </div>
-    <div class="changelog-date">2026-05-07</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
-<div class="diff-hunk">@@ -70,5 +70,6 @@</div>
-<div class="diff-ctx"> - [Rupture](rupture.md)</div>
-<div class="diff-ctx"> - [Corruption](corruption.md)</div>
-<div class="diff-ctx"> - [Rage](rage.md)</div>
-<div class="diff-add">+- [Barricade](barricade.md)</div>
-<div class="diff-ctx"> - [Evolve](evolve.md)</div>
-<div class="diff-ctx"> - [Fire Breathing](fire-breathing.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/barricade.md</div>
-<div class="diff-hunk">@@ -0,0 +1,15 @@</div>
-<div class="diff-add">+# Barricade (3E, Power, block is not removed at start of turn)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Block persists between turns instead of resetting to 0. Transforms block cards from temporary defense into permanent HP shields.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: In block-heavy decks with multiple block sources (Shrug It Off, True Grit+, Defend, Iron Wave). Once played, every point of block generated for the rest of the fight is permanent. Combined with Body Slam, accumulated block becomes a repeatable damage source. Strongest in long fights (bosses, elites) where the setup cost is amortized over many turns.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION POINTS: At 3E, playing Barricade costs an entire turn (3E budget). You generate ZERO block and deal ZERO damage on the turn you play it. This is only acceptable if: (1) the enemy is buffing or defending (free turn), (2) you are at high enough HP to absorb one unblocked attack, or (3) you have 4+ energy from relics or Offering. NEVER play Barricade when the incoming attack will kill you or leave you at critical HP. The setup cost is the card&#x27;s biggest weakness.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+SYNERGIES: Body Slam (damage = current block -- with Barricade, this scales every turn), Shrug It Off (8 block + draw, permanent with Barricade), True Grit+ (9 block + exhaust, permanent), Iron Wave (5 block + 5 damage), Metallicize (3-4 passive block/turn becomes permanent), Rage (block from attacks persists -- but Rage itself expires at end of turn, so only the block generated on the Rage turn persists).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+ANTI-SYNERGIES: Low energy decks (3E cost is prohibitive without extra energy), short fights (not enough turns to recover the setup cost), fights at low HP (cannot afford a turn without block). Brutality (the fight extension from Barricade&#x27;s defensive style compounds Brutality&#x27;s self-damage).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+MATCHUPS: Spheric Guardian -- the ENEMY has Barricade, not you. If you have Barricade yourself, the fight still requires massive burst to break through the enemy&#x27;s persistent block. Your own Barricade helps survive but does not solve the DPS problem.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+NOTE: This card was taken but never played in the fight where it was acquired. At 3E with 3E total energy per turn, it requires a completely free turn to deploy. In fights with constant incoming damage, the setup opportunity may never arrive.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/blood-for-blood.md</div>
-<div class="diff-hunk">@@ -8,6 +8,8 @@ DECISION POINTS: At 0 cost, always play it. At 1-2 cost, evaluate whether the da</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> SYNERGIES: Double Tap (double a 0-cost Attack = 36+ free damage), Inflame/Strength (18 base + Str, amplified by Vulnerable), Bludgeon (both are high-damage single-hits that pair well in burst turns).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WEAKNESSES: Terrible on turn 1 of fights where you block all damage (costs 4E if you take no hits). In decks that prevent all damage (Barricade + heavy block), the cost may never reduce. Not reliable as your only damage source -- need other cards for turns before the cost drops.</div>
-<div class="diff-add">+WEAKNESSES: Terrible on turn 1 of fights where you block all damage (costs 4E if you take no hits). In decks that prevent all damage (Barricade + heavy block), the cost may never reduce. Not reliable as your only damage source -- need other cards for turns before the cost drops. At 3-4E, it is dead weight in hand and a prime candidate for True Grit+ exhaust. Observed being exhausted via True Grit+ in multiple fights as deck thinning because the cost never dropped enough to be playable early.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+COST REDUCTION TRACKING: The cost reduction counts each time HP is lost during combat, not the amount of HP lost. Each instance of damage reduces the cost by 1. After 4 separate damage instances, Blood for Blood costs 0E. Multi-hit attacks (e.g., 10x2) count as separate instances. Brutality&#x27;s 1 HP/turn self-damage counts as a damage instance. In fights with Brutality active, Blood for Blood reaches 0E faster.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+OBSERVED: Reached 0E mid-fight against Guardian (after ~35 HP lost across multiple turns) and against 3 Cultists (after 4+ turns of combat). At 0E, Blood for Blood + Strength scaling delivered 18-27 free damage, enabling clutch kills. Also reached 0E in Shelled Parasite fight, where 31 damage (18 base + 3 Str + Vulnerable) killed the enemy from 17 HP for free.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/brutality.md</div>
-<div class="diff-hunk">@@ -4,4 +4,5 @@ DANGEROUS in long fights. Extra draw at the cost of permanent HP drain.</div>
-<div class="diff-ctx"> WHEN IT&#x27;S GOOD: Short fights (3-4 turns) where the extra draw finds lethal faster. With healing (Reaper, Feed) to offset self-damage. With Rupture, each Brutality provides +1 Strength/turn permanently -- a powerful scaling engine.</div>
-<div class="diff-ctx"> DECISION POINTS: How long will this fight last? In a 9-turn fight, Brutality costs 9 HP minimum. Against Hexaghost with Burns (2-4 HP/turn), Brutality compounds the self-damage to 3-5 HP/turn total. NEVER play against bosses with status card damage (Hexaghost Burns) or fights expected to last 7+ turns. With Rupture in play, Brutality becomes a scaling engine -- but NEVER play 2 copies at low HP. Two Brutalities = 2 HP/turn self-damage, which is lethal below ~20 HP even in short fights.</div>
-<div class="diff-ctx"> SYNERGIES: Rupture (each Brutality triggers +1 Str/turn permanently). With 1 Brutality + Rupture, you gain +1 Str every turn -- fights get easier over time. With 2 Brutalities + Rupture, you gain +2 Str/turn but lose 2 HP/turn. Only play multiple copies at 40+ HP.</div>
-<div class="diff-del">-MATCHUPS: Hexaghost -- NEVER play. Burns + Brutality = death spiral (20-30 HP from self-damage alone). Book of Stabbing -- NEVER play. The fight lasts 5-7+ turns with escalating damage; Brutality drains 5-7 HP on top of already-increasing incoming damage. At low HP, the 1 HP/turn self-drain seals the death before block or burst can stabilize. Enchiridion can generate Brutality at 0 cost -- do NOT autopilot playing it against scaling enemies.</div>
-<div class="diff-add">+MATCHUPS: Hexaghost -- NEVER play. Burns + Brutality = death spiral (20-30 HP from self-damage alone). Book of Stabbing -- NEVER play. The fight lasts 5-7+ turns with escalating damage; Brutality drains 5-7 HP on top of already-increasing incoming damage. At low HP, the 1 HP/turn self-drain seals the death before block or burst can stabilize. Enchiridion can generate Brutality at 0 cost -- do NOT autopilot playing it against scaling enemies. Spheric Guardian -- NEVER play. The fight is a long attrition grind where Barricade block makes damage futile. Brutality drains 1 HP/turn while the fight extends to 8-13 turns. In one observed death, Brutality ticked HP from 9 to 1, making survival impossible on the final turn. The self-damage is the difference between living and dying in drawn-out fights.</div>
-<div class="diff-add">+THE BRUTALITY TRAP: Brutality feels free at 0 cost and the extra draw seems universally good. But in any fight that might go 7+ turns, the cumulative self-damage becomes lethal. Before playing Brutality, ask: &quot;Am I confident this fight ends in 4-5 turns?&quot; If the answer is no -- if you face a high-HP enemy, a Barricade enemy, or multiple enemies -- do NOT play it. The extra card draw does not offset dying to self-damage in a fight you cannot end quickly.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/cards/rage.md</div>
-<div class="diff-hunk">@@ -1,10 +1,14 @@</div>
-<div class="diff-ctx"> # Rage (0E, Power)</div>
-<div class="diff-del">-Gain 3 block (5 upgraded) whenever you play an Attack this turn. Lasts until end of turn.</div>
-<div class="diff-add">+Gain 3 block (5 upgraded) whenever you play an Attack this turn. **Lasts until end of turn only -- NOT permanent.**</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WHEN IT&#x27;S GOOD: In attack-heavy decks. At 0 energy cost, it provides &quot;free&quot; block that scales with number of attacks played. Playing 3 attacks = 9 block for 0 energy. With Unceasing Top + Fiend Fire cycling many attacks, can generate enormous block.</div>
-<div class="diff-add">+CRITICAL MECHANIC: Despite being a Power card (permanent), Rage&#x27;s block-per-attack effect EXPIRES at the end of the turn it is played. It must be replayed every turn to generate block. This means Rage is effectively a 0-cost Skill that gives block proportional to attacks played that turn. It does NOT provide ongoing block generation across multiple turns.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-DECISION POINTS: Play at start of turn before any attacks. Since it costs 0, it never competes with other plays. Even 2 attacks = 6 block for free, which is better than most 1E block cards.</div>
-<div class="diff-add">+WHEN IT&#x27;S GOOD: In attack-heavy decks on turns with high attack volume. At 0 energy cost, it provides &quot;free&quot; block that scales with number of attacks played THAT TURN. Playing 3 attacks = 9 block (15 upgraded) for 0 energy. With Unceasing Top + Fiend Fire cycling many attacks, can generate enormous block in a single mega-turn.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+DECISION POINTS: Play at start of turn before any attacks. Since it costs 0, it never competes with other plays. Even 2 attacks = 6 block for free, which is better than most 1E block cards. **BUT: it only helps the turn you play it.** Do NOT play Rage on a setup turn expecting block on future turns. If you draw Rage on a turn where you play few attacks, it provides minimal value.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+ANTI-SYNERGY WITH BARRICADE: Despite appearing to synergize (Rage generates block, Barricade preserves it), Rage&#x27;s per-turn expiration limits the combo. Rage block only accumulates with Barricade on the turn Rage is played. You must redraw and replay Rage each turn to benefit, which is inconsistent in a 15+ card deck.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> SYNERGIES: Attack-heavy decks, Unceasing Top (draw attacks after Fiend Fire, each gives block), multi-attack turns (Offering + many attacks). Excellent vs Gremlin Leader where you want to both kill gremlins AND block incoming damage in the same turn. **Anger**: Anger is a 0E Attack that triggers Rage for free block. Playing Rage + 3x Anger = 9 block for 0 energy. **Shuriken**: Both Rage and Shuriken reward playing many Attacks per turn -- Rage generates block while Shuriken generates Strength.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-MATCHUPS: Excellent vs Gremlin Leader (block while killing gremlins). Against The Collector, Rage+ (5 block per attack) combined with Thunderclap provided exactly the block needed to survive a lethal turn at 2 HP. Against Slavers (3 enemies, no free turn), Rage + Anger + Uppercut on turn 2 generated 6 block for free alongside damage and debuffs. At 0 energy, Rage/Rage+ is never a wasted play.</div>
-<div class="diff-add">+MATCHUPS: Excellent vs Gremlin Leader (block while killing gremlins). Against The Collector, Rage+ (5 block per attack) combined with Thunderclap provided exactly the block needed to survive a lethal turn at 2 HP. Against Slavers (3 enemies, no free turn), Rage + Anger + Uppercut on turn 2 generated 6 block for free alongside damage and debuffs. At 0 energy, Rage/Rage+ is never a wasted play -- but only on the turn it is played.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/spheric-guardian.md</div>
-<div class="diff-hunk">@@ -4,8 +4,8 @@ KEY MECHANIC: Barricade means block never expires. The Spheric Guardian GAINS bl</div>
-<div class="diff-ctx"> WHAT THIS MEANS: This is a DPS check disguised as a hallway fight. At 1 Strength, Strikes deal 6-7 damage per play. The Spheric Guardian gains 15-20 block on defend turns and retains leftover block. After 5-6 turns, its block reaches 40-64 and never comes down. The fight becomes mathematically unwinnable without sufficient Strength scaling or burst damage. Strip 3 Artifact charges first with cheap debuffs (Thunderclap ideal). Then apply Vulnerable. Then burst through remaining block + HP.</div>
-<div class="diff-ctx"> BENCHMARKS: Must kill within 6-8 turns or block becomes insurmountable. Expect 30-50+ HP lost from Frail-reduced blocking vs 10x2 attacks. At low Strength without burst, this fight is a guaranteed loss through attrition.</div>
-<div class="diff-ctx"> BRING: Thunderclap (strip Artifact), Pen Nib (double damage to break block), burst damage (Fiend Fire, Immolate, Bludgeon), Strength scaling (Inflame, Spot Weakness), Headbutt (find specific cards).</div>
-<div class="diff-del">-AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it at low Strength). Havoc (random exhaust can destroy key cards in a long DPS race). Random exhaust effects in general. Exhausting your own key cards with Second Wind (observed: Second Wind exhausted Shockwave+, True Grit+, and block cards, sealing a loss). Entering at low HP (&lt;50%) -- this fight routinely drains 30-50 HP.</div>
-<div class="diff-add">+AVOID: Chip damage with Strikes (block regenerates faster than you can deplete it at low Strength). Havoc (random exhaust can destroy key cards in a long DPS race). Random exhaust effects in general. Exhausting your own key cards with Second Wind (observed: Second Wind exhausted Shockwave+, True Grit+, and block cards, sealing a loss). Playing Brutality (1 HP/turn self-damage over an 8-13 turn fight is 8-13 HP lost -- confirmed to cause death in this fight). Playing Rage+ expecting persistent block (Rage expires at end of turn, does NOT carry over). Exhausting Spot Weakness (permanent Strength gain is one of the few ways to break through Barricade block). Entering at low HP (&lt;50%) -- this fight routinely drains 30-50 HP, and even full HP entry resulted in death.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> APPEARS WITH: Sentry (in Act 2 hallway fights). When paired, incoming damage is 9 (Sentry) + 10x2 (Spheric Guardian) = 29 per turn. Frail from Spheric Guardian reduces block by 25%, making Defend give only 3 instead of 5. At low HP, the combined damage is often unblockable. Kill the Sentry first (no block, lower HP) to reduce incoming damage and stop Dazed generation. Then focus Spheric Guardian with burst damage. Metallicize&#x27;s passive 3-4 block/turn helps but is insufficient alone against 20 incoming.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-WARNING: This is one of the most dangerous Act 2 hallway fights. Two deaths confirmed against this enemy (at 26% and 43% HP entry). Even with Reaper+, Immolate, Metallicize+, and Shockwave+ in the deck, the fight was lost because Reaper heals nothing through 60+ block (all damage absorbed by block = zero healing), and chip damage cannot break through Barricade block faster than it regenerates. Reaper is useless in this fight. Only massive single-turn burst or sustained Strength scaling can win.</div>
-<div class="diff-add">+WARNING: This is the single most dangerous Act 2 hallway fight. Three deaths confirmed against this enemy (at 26%, 43%, and 100% HP entry). The third death occurred at FULL HP (87/87) in a Sentry + Spheric Guardian pairing from an Unknown room. Despite having Barricade (player card), Rage+, Rampage+, Blood for Blood, and Stone Calendar, the fight was still lost because: (1) Brutality&#x27;s 1 HP/turn self-damage ticked HP from 9 to 1 over the long fight, making survival impossible, (2) Rage+ expires at end of turn (not permanent), so the player had no block generation on the critical final turn, and (3) Frail 5 reduced block cards by 25%, making even True Grit+ insufficient. Even entering at full HP, the fight drained 86 HP over 6 turns through a combination of Spheric Guardian attacks, Sentry attacks, and Brutality self-damage. Reaper is useless in this fight (all damage absorbed by block = zero healing). Brutality is actively harmful (extends the death clock). Only massive single-turn burst or sustained Strength scaling can win.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/potions/snecko-oil.md</div>
-<div class="diff-hunk">@@ -2,3 +2,5 @@</div>
-<div class="diff-ctx"> EFFECT: Draw 5 cards. Randomize the cost of ALL cards in hand (0-3 energy each), including cards already in hand before the draw.</div>
-<div class="diff-ctx"> OPTIMAL TIMING: Desperation plays or burst turns. Very high variance -- can give incredible turns (multiple 0-cost cards) or unplayable hands. Best as a last resort when the standard hand can&#x27;t win, or when you need a miracle turn.</div>
-<div class="diff-ctx"> CONFIRMED INTERACTION: Cards already in hand when Snecko Oil is used also get their costs randomized. This means high-cost cards like Double Tap (1E) can become free, enabling massive burst combos.</div>
-<div class="diff-add">+RISK: Randomized costs persist on cards until played. Key cards can become 3E (unplayable at 3E budget). In one observed fight, Strikes were randomized to 3E each, making them dead cards. At low HP, the variance of Snecko Oil can seal a loss by making block cards unplayable on critical survival turns. Do NOT use Snecko Oil when your survival depends on playing specific cards -- use it only when the default hand is already insufficient.</div>
-<div class="diff-add">+COST RANDOMIZATION AND CARD SELECTION: When multiple copies of a card exist in hand with different randomized costs, the game engine now selects the cheapest copy when a card is played by name. This prevents the issue of accidentally playing a 3E copy when a 0E copy exists.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
-<div class="diff-hunk">@@ -54,6 +54,10 @@</div>
-<div class="diff-ctx"> - [Unceasing Top](unceasing-top.md)</div>
-<div class="diff-ctx"> - [Stone Calendar](stone-calendar.md)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+## Shop Relics</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- [Lee&#x27;s Waffle](lees-waffle.md)</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ## Boss Relics / Special</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> - [Sozu](sozu.md)</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/lees-waffle.md</div>
-<div class="diff-hunk">@@ -0,0 +1,8 @@</div>
-<div class="diff-add">+# Lee&#x27;s Waffle (Shop Relic, ~157g)</div>
-<div class="diff-add">+Raise Max HP by 7. Heal all HP.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHY IT&#x27;S GOOD: Immediate full heal plus permanent Max HP increase. At any HP percentage, this restores you to maximum. The +7 Max HP also raises all HP thresholds, giving more buffer for future fights. Observed healing from 31/80 to 87/87 (healed 56 HP and gained 7 Max HP).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+WHEN TO BUY: At any HP below 60% when you have the gold. The full heal is worth more than almost any card or card removal at low HP. At 157g it is expensive, but preventing a death from low HP is worth the entire gold reserve.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+EVALUATION: One of the strongest shop purchases in the game. Combines the immediate value of a full heal with permanent Max HP scaling. Buy it whenever affordable and HP is below 70%.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/stone-calendar.md</div>
-<div class="diff-hunk">@@ -7,7 +7,10 @@ WHEN IT MATTERS: Only fires once per fight, only on turn 7. In fights that end i</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> KEY INTERACTIONS:</div>
-<div class="diff-ctx"> - **Centurion+Mystic**: Observed 52 damage to Centurion after 7 turns of focusing Mystic. This is the best Act 2 matchup for Stone Calendar.</div>
-<div class="diff-del">-- **Boss fights**: Most boss fights last 10+ turns, so the turn 7 nuke always fires. 52 free damage is significant.</div>
-<div class="diff-add">+- **Boss fights**: Most boss fights last 10+ turns, so the turn 7 nuke always fires. 52 free damage is significant. Against Guardian, Calendar + Spot Weakness Str scaling killed the boss.</div>
-<div class="diff-add">+- **3 Cultists**: Calendar fired end of turn 6 (counter reached 7) and killed the last Cultist at 23 HP. Combined with Rampage+ scaling and Blood for Blood at 0E, Calendar was the safety net that ended a fight at 15 HP.</div>
-<div class="diff-add">+- **Shelled Parasite**: Calendar&#x27;s 52 damage overkilled a 35 HP Parasite through remaining Plated Armor block (~8-9 block). Calendar is the answer to Plated Armor enemies in long fights.</div>
-<div class="diff-add">+- **Spheric Guardian**: Calendar damage goes through block normally. 52 damage into 65 block only removes 52 block, leaving 13 block -- does NOT kill. Calendar alone is insufficient against Barricade enemies with high block.</div>
-<div class="diff-ctx"> - **Short fights**: Useless against enemies that die in 3-5 turns (Cultist, Louse, etc.).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-EVALUATION: Strong in decks that expect long fights (defensive/block-heavy builds). Weak in burst-focused decks that aim to kill quickly.</div>
-<div class="diff-add">+EVALUATION: Strong in decks that expect long fights (defensive/block-heavy builds). Weak in burst-focused decks that aim to kill quickly. Confirmed as a fight-winning condition in 3 fights across one run (Guardian, 3 Cultists, Shelled Parasite). Does NOT solve Spheric Guardian due to block absorption.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -8,7 +8,7 @@ High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## HP Management: The #1 Cause of Death</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-21 of 24 documented deaths resulted from entering a fight below safe HP thresholds. The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-add">+22 of 25 documented deaths resulted from entering a fight below safe HP thresholds (one death occurred at full HP but self-damage from Brutality drained HP during the fight). The pattern is always the same: a drain fight (Byrds, Centurion+Mystic, Chosen) takes 30-50 HP, the next room is combat, and the player dies.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### HP Thresholds for Act 2</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -41,7 +41,7 @@ Even &quot;hallway&quot; fights in Act 2 can be run-ending: 3 Cultists has killed the play</div>
-<div class="diff-ctx"> 1. **Byrd fights**: 36-58 HP lost per fight. Flight makes fights 8-12 turns. The primary Act 2 HP drain. Without Thunderclap (mass Flight stripping + Vulnerable), expect the upper end. Thunderclap is the single most important card for Act 2 Byrd survival.</div>
-<div class="diff-ctx"> 2. **Centurion+Mystic**: 25-42 HP lost per fight. Mystic&#x27;s healing extends the fight. Often consumes Fairy in a Bottle.</div>
-<div class="diff-ctx"> 3. **Snake Plant in Unknown rooms**: 21 HP/turn with Frail debuff. Even with burst damage, drains 20-30 HP. Unknown rooms can become Snake Plant fights -- they are NOT safe at low HP.</div>
-<div class="diff-del">-3b. **Spheric Guardian + Sentry from Unknown rooms**: 29 combined damage/turn with Frail 5 reducing block. Spheric Guardian&#x27;s Barricade block makes Reaper useless and chip damage futile. Two deaths confirmed from this encounter (at 26% and 43% HP entry). Unknown rooms are the most dangerous room type in Act 2 at low HP.</div>
-<div class="diff-add">+3b. **Spheric Guardian + Sentry from Unknown rooms**: 29 combined damage/turn with Frail 5 reducing block. Spheric Guardian&#x27;s Barricade block makes Reaper useless and chip damage futile. Three deaths confirmed from this encounter (at 26%, 43%, and 100% HP entry). The third death occurred at FULL HP -- even 87/87 was insufficient because Brutality self-damage and Rage+ expiring at end of turn left no survival path after 6 turns. Unknown rooms are the most dangerous room type in Act 2 at any HP level when this fight spawns.</div>
-<div class="diff-ctx"> 4. **No healing between fights**: Burning Blood (+6) cannot compensate for 30-50 HP fights.</div>
-<div class="diff-ctx"> 5. **Fairy consumed in wrong fight**: In multiple runs, Fairy was consumed in Centurion+Mystic, leaving no safety net for elites. Save Fairy for elites/bosses when possible.</div>
-<div class="diff-ctx"> 6. **Decay curse compound damage**: Each Decay in hand deals 2 unblockable damage per turn. With 2 Decays, that is 4 HP/turn lost regardless of block. Over a 5-turn fight, that is 20 free HP lost. Prioritize curse removal at shops or via exhaust (Fiend Fire).</div>
-<div class="diff-hunk">@@ -355,7 +355,7 @@ Across all boss victories (8 total, including first Act 2 boss victory), the dif</div>
-<div class="diff-ctx"> 1. **Boss-specific answer cards**: Every victory had at least one card for the boss&#x27;s main threat. Every death lacked this. Hexaghost victories used Disarm, Rampage+, Reaper, or Shockwave from potions. Collector victory used Immolate+ (AOE for Torch Heads), Shockwave+ (mass debuff), and Impervious (post-debuff survival).</div>
-<div class="diff-ctx"> 2. **Passive block/sustain**: Metallicize, Plated Armor, Pantograph, or Torii appeared in most victories. None of the Act 1 boss deaths had passive block. Pantograph was the key enabler for the Collector victory (entered at 57% HP, healed to full).</div>
-<div class="diff-ctx"> 3. **Entry HP**: Victories entered at 50-80 HP (or had Pantograph). Deaths entered at 16-50 HP.</div>
-<div class="diff-del">-4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage.</div>
-<div class="diff-add">+4. **Self-damage avoidance**: No boss victory used Berserk or Brutality. Brutality+Rupture is a valid Act 2 scaling engine but must not be active during boss fights with status damage. Brutality is now confirmed as a death cause in long fights even at full HP entry -- the 1 HP/turn drain is lethal in fights lasting 8+ turns (Spheric Guardian, Shelled Parasite with Plated Armor). Only play Brutality in fights expected to end within 4-5 turns.</div>
-<div class="diff-ctx"> 5. **Upgrade discipline**: Victories had 1-4 key upgrades. One victory had 0 upgrades but compensated with rare cards. Collector victory had Armaments+ upgrading cards mid-combat, compensating for limited rest-site upgrades.</div>
-<div class="diff-ctx"> 6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm) to shorten the fight. Collector victory relied on Immolate+ AOE (28 damage to all enemies) to manage both Collector HP and Torch Head respawns. Two Hexaghost deaths had Weak sources but insufficient damage -- the fight lasted too long and Burns attrition killed them.</div>
-<div class="diff-ctx"> 7. **Extra energy**: The Collector victory had 4 energy (Sozu). The extra card per turn allowed playing both offense and defense simultaneously, which is critical for multi-enemy fights.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

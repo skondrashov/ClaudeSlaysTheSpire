@@ -103,6 +103,7 @@
 - [Maw Bank](maw-bank.md)
 - [Mutagenic Strength](mutagenic-strength.md)
 - [Mark of Pain](mark-of-pain.md)
+- [Coffee Dripper](coffee-dripper.md)
 - [Ectoplasm](ectoplasm.md)
 - [Fusion Hammer](fusion-hammer.md)
 - [Cursed Key](cursed-key.md)

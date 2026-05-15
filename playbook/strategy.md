@@ -2,16 +2,15 @@
 
 High-level strategic principles for Ironclad runs.
 
-**CURRENT STATUS (158 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Eight Silent runs total (Runs 151-158). Run 157 died to Bronze Automaton (Act 2 boss) -- poison was lethal but deck could not survive 2 more turns. Sozu blocked potions. Run 158 VICTORY vs Time Eater -- Shiv archetype with Accuracy x2, After Image (innate), Wraith Form+, Phantasmal Killer, Malaise, Cultist Potion for Str scaling. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.
+**CURRENT STATUS (160 runs, 4 WINS):** Three Ironclad victories (Runs 147, 148, 150). One Silent victory (Run 158 -- FIRST SILENT WIN). Ten Silent runs total (Runs 151-160). Run 159 quick death. Run 160 (Silent) died Floor 28 to Cultist+Chosen -- Hex hard-countered the Skill-heavy deck. Coffee Dripper (no rest healing) + Ectoplasm (no gold) double boss relic downside eliminated all recovery paths. THREE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, and (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst.
 
 **SCORECARD (runs 101-158):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
 - Act 2 boss kills: 5. Act 2 boss reaches: 11+.
 - **Act 3 reached seven times (Runs 145, 147, 148, 149, 150, 151, 158).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Runs 147, 148, 150 (Ironclad) and Run 158 (Silent) all WON.
 - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158 all reached Floor 51).**
-- **4 wins in 158 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (8 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23).
-- **Run 157: Silent died to Bronze Automaton at F33.** Fusion Hammer + Sozu from Neow. Poison strategy had lethal poison applied but deck could not survive 2 more turns. Automaton Str reached 9 by Turn 12+. Sozu blocked all potions -- no emergency healing.
-- **Run 158: FIRST SILENT VICTORY vs Time Eater at F51.** Pandora's Box from Neow gave 2x Accuracy + Envenom + Infinite Blades. Bottled Tornado made After Image innate. Ginger enabled free Mind Bloom heal (Doubt's Weak negated). Cultist Potion gave Ritual 1, Str scaled to 11 by Turn 10. Shivs dealt 23 each. Lizard Tail revived at 0 HP. Malaise X=5 neutered Time Eater's offense. Wraith Form+ played at correct timing (Turn 5 at 19 HP). Score 636, Final HP 47/70.
+- **4 wins in 160 runs (2.5% win rate).** Ascension 0. Three Ironclad wins. One Silent win (10 attempts: Run 158 VICTORY vs Time Eater, Run 151 reached Act 3 boss, Runs 152/156/157 reached Act 2 boss, Run 153 reached Floor 45, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog).
+- **Run 160: Silent died Floor 28 to Cultist+Chosen.** Coffee Dripper + Ectoplasm double boss relic downside. Strong Shiv deck (ATC, Envenom+Snecko Skull, Strike Dummy, Footwork, Blade Dance+, 2x Cloak and Dagger+). Hex from Chosen added 5+ Dazed by Turn 4, collapsing block density. HP already 4/69 from the fight with zero recovery path.
 - **Three distinct winning formulas confirmed.** See THE WINNING FORMULAS below.
 
 **THE WINNING FORMULAS (confirmed by 4 victories across 3 distinct engines):**

@@ -20,5 +20,6 @@ ANTI-SYNERGIES:
 - Golden Idol (+25% gold, negated).
 - Bloody Idol (5 HP per gold gain, negated).
 - Shops in general -- cannot buy potions, relics, or card removal.
+- **Coffee Dripper (CRITICAL)**: Coffee Dripper + Ectoplasm = no healing from rest AND no gold for potions/healing items at shops. This eliminates two of three primary recovery paths. Only healing cards and random events remain. Confirmed lethal: Silent with both relics dropped to 4 HP after Cultist+Chosen fight (Hex deck clog) and had zero recovery options, dying two fights later. Avoid taking Ectoplasm when Coffee Dripper is already equipped unless the deck can reliably take zero damage in every fight.
 
 NOTE: Gold already in pocket is not lost -- it just cannot be spent (shops are still accessible for browsing but purchases require gold you cannot replenish). Spend all gold BEFORE taking Ectoplasm if possible. In practice, boss relics are offered after the boss fight, so spending gold at a prior shop is the last chance.
