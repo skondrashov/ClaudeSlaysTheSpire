@@ -41,29 +41,9 @@ Each subdirectory has an `_index.md` listing all entries. Update it when adding 
 
 6. **Adding new entries.** To add a new card/enemy/etc., create a new file in the appropriate subdirectory and update the `_index.md`.
 
-### `analyst/runs/run_NNN.md` — Individual run files
+### `analyst/runs/run_NNN.json` — Written automatically by stream.py
 
-Create one file per run in `analyst/runs/`. Filename: `run_NNN.md` where NNN is the run number, zero-padded to 3 digits (e.g., `run_169.md`).
-
-The header line format is **machine-parsed by `regen_stats.py`** — follow it exactly:
-
-```
-## Run N — Character AscensionLevel, Outcome Floor F
-DECK: [notable cards]
-RELICS: [notable relics]
-CAUSE OF DEATH: [what killed it] / VICTORY: [boss beaten]
-KEY MOMENTS: [numbered list]
-LESSONS: [numbered list]
-```
-
-- Character: `Ironclad`, `The Silent`, `Defect`, or `Watcher`
-- AscensionLevel: e.g., `A0`, `A1`
-- Outcome: `Victory`, `Defeat`, or `Death`
-- Floor: the floor number reached
-
-Example: `## Run 169 — The Silent A0, Defeat Floor 23`
-
-**Do NOT append to `analyst/run_log.md`** — it is deprecated. Write `analyst/runs/run_NNN.md` instead.
+The run log is a JSON file written programmatically from game state when the run ends. It contains the structured facts: character, ascension, victory/defeat, floor, deck, relics, potions, gold, HP, seed. **Do NOT create, modify, or overwrite it.** Read it for context about the run.
 
 ### `analyst/observations.md` — Uncertain items
 

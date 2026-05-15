@@ -1,0 +1,30 @@
+{
+  "run": 148,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": true,
+  "floor": 51,
+  "deck": "17 cards \u2014 including Immolate+, Limit Break+ (upgraded F40), Flex+, Heavy Blade, and others",
+  "relics": "9 relics including Snecko Eye (Act 2 boss), Gambling Chip, Bronze Scales",
+  "victory_info": "Donu and Deca (Act 3 Boss), Floor 51, Score 703, Final HP 4/85",
+  "annotation": "SECOND WIN -- BACK TO BACK",
+  "key_moments": [
+    "Snecko Eye again as Act 2 boss relic -- 2nd consecutive win with it.",
+    "Limit Break+ upgrade at F40 campfire was the most impactful decision -- enabled infinite Str doubling.",
+    "Flex+ into Limit Break+ gave 10 Str on Turn 4 of boss fight.",
+    "Duplication Potion on 0-cost Immolate+ dealt 60 AOE Turn 3.",
+    "Snecko Oil Turn 1 expanded hand to 10 cards.",
+    "Bronze Scales killed Deca at 4 HP from its own attacks.",
+    "Fairy in a Bottle saved the run vs Spikers/Guardians.",
+    "Darklings killed with simultaneous AOE.",
+    "Gambling Chip improved Turn 1 hands by mulliganing expensive Snecko Eye draws."
+  ],
+  "lessons": [
+    "Snecko Eye + Immolate+ + Limit Break is the confirmed winning formula (2 consecutive wins).",
+    "Limit Break+ upgrade is the #1 campfire priority approaching Act 3 boss.",
+    "Flex+ has real value with Limit Break+ (temporary Str gets doubled into permanent).",
+    "Gambling Chip + Snecko Eye is a powerful consistency combo.",
+    "Bronze Scales can deliver killing blows at very low HP.",
+    "Zero UI misplays -- sixth consecutive clean run."
+  ]
+}

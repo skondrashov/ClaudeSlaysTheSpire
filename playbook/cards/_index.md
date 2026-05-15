@@ -1,10 +1,13 @@
 # Cards
 
 
-## Starter Cards
+## Universal Starter Cards
 
-- [Strike](strike.md)
-- [Defend](defend.md)
+- [Strike](strike.md) (all characters)
+- [Defend](defend.md) (all characters)
+
+## Ironclad Starter Cards
+
 - [Bash](bash.md)
 
 ## Attack Cards
@@ -58,6 +61,21 @@
 - [Wraith Form](wraith-form.md)
 - [Accuracy](accuracy.md)
 - [Phantasmal Killer](phantasmal-killer.md)
+
+## Defect Starter Cards
+
+- [Zap](zap.md)
+- [Dualcast](dualcast.md)
+
+## Defect Attack Cards
+
+- [Compile Driver](compile-driver.md)
+- [Sweeping Beam](sweeping-beam.md)
+
+## Defect Skill Cards
+
+- [Coolheaded](coolheaded.md)
+- [Leap](leap.md)
 
 ## Colorless Cards
 

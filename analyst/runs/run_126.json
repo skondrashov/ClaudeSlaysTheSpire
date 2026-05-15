@@ -1,0 +1,19 @@
+{
+  "run": 126,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 21,
+  "deck": "Reaper, Carnage+, Demon Form, Dropkick, Ghostly Armor, Headbutt, Armaments+, Shrug It Off+, Bash+, starters + Pain curse",
+  "relics": "Burning Blood, Toy Ornithopter, (chest relic)",
+  "cause_of_death": "Shelled Parasite + Fungi Beast at 7 HP with no potions. Unwinnable at that HP.",
+  "key_moments": [
+    "Beat Guardian using Mode Shift cancellation (cancelled both 32-hit and 5x4=20). Beat Spheric Guardian with Demon Form scaling (41 HP drain). Chosen fight drained 32 HP (39->7), setting up lethal next fight."
+  ],
+  "lessons": [
+    "Demon Form as sole Str source leaves Reaper healing too slow -- need front-loaded Str (Inflame/Spot Weakness) to make Reaper effective.",
+    "Armaments+ block value (5 block) was forgotten in survival calculations -- documented prominently.",
+    "Missing AOE for entire run (criterion 2 unmet).",
+    "Chosen is a reliable death spiral trigger in Act 2 (30-40 HP drain even with good cards)."
+  ]
+}

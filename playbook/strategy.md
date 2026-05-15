@@ -1,8 +1,8 @@
 # Strategy
 
-High-level strategic principles for Ironclad runs.
+High-level strategic principles across all characters.
 
-**CURRENT STATUS (168 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-168). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.
+**CURRENT STATUS (170 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-169). One Defect run (Run 170, first ever, died Floor 7). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.
 
 **SCORECARD (runs 101-158):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
@@ -599,3 +599,38 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 6. **Healing RNG denial** -- 7 of last 9 runs with no Reaper/Feed offered. Not directly addressable, but Full Block reduces the need for healing by preventing HP loss in the first place.
 7. **Brimstone anti-synergy** -- 2 deaths from Brimstone + Book of Stabbing.
 8. **Deck building window closes at Floor 15** -- missing criteria after F15 cannot be filled. Act 1 tier list + boss drafting should improve card selection.
+
+---
+
+## Defect-Specific Strategy (PRELIMINARY -- 1 run)
+
+### The Defect's Core Problem: Skill-Heavy Starting Deck
+
+The Defect starts with 6 Skills (4 Defend + Zap + Dualcast) and 4 Attacks (4 Strike). Adding Coolheaded (a common early pickup) makes it 7 Skills vs 4 Attacks. This is the most Skill-heavy starting composition of any character.
+
+**Consequence: Gremlin Nob is the Defect's worst elite matchup.** Nob's Enrage triggers on every Skill played. With 7 Skills in a 12-card deck, most 5-card hands contain 3-4 Skills and only 1-2 Attacks. Even with perfect discipline (never playing Skills), each hand has only 1-2 playable cards, extending the fight to 7+ turns and allowing Nob to scale to lethal damage.
+
+**Mitigation:** Prioritize Attack card pickups in the first 3-4 floors before any elite path. Compile Driver (Attack, 7 damage + draw per orb) and Sweeping Beam (Attack, 6 AOE + draw 1) are excellent because they are Attacks that also cycle cards. Count your Attack-to-Skill ratio before committing to an elite path.
+
+### Defect Scaling: Focus Is Everything
+
+The Defect's primary scaling stat is Focus. Focus increases the passive AND evoke values of ALL orbs.
+
+- Without Focus, Lightning orbs deal 3 passive / 8 evoke. Frost orbs give 2 passive / 5 evoke. These values are too low to scale into Act 2.
+- With Focus 3, Lightning deals 6 passive / 11 evoke. Frost gives 5 passive / 8 evoke. The difference compounds across 3 orb slots and every turn of combat.
+
+**Defragment (+1 Focus permanent, 1E Power) is the Defect's most important card.** Take it whenever offered. It is the Defect equivalent of Inflame for Ironclad.
+
+### Defect Orb Strategy
+
+- **Lightning orbs** are the primary damage source. Passive 3 damage/turn per orb + 8 evoke damage. With Focus scaling, these become the Defect's main damage engine.
+- **Frost orbs** are the primary defense. Passive 2 block/turn per orb + 5 evoke block. With Focus, Frost orbs can provide enough passive block to replace Defend cards entirely.
+- **Channeling order matters.** Orbs fill from right to left. When all slots are full, channeling a new orb evokes the leftmost (oldest) orb. Channel Lightning first for damage, then Frost for ongoing defense, or vice versa depending on the fight.
+- **Dualcast is a burst tool.** Evokes the front orb twice. Lightning Dualcast = 16 burst damage for 1E. Frost Dualcast = 10 burst block for 1E. Plan orb positioning so the right orb is in front when Dualcast is drawn.
+
+### Defect Energy and Card Draw
+
+- Base energy: 3 per turn (same as other characters at A0).
+- Cracked Core (starter relic): channels 1 Lightning at combat start. Provides guaranteed passive damage from Turn 1.
+- Compile Driver draws 1 card per channeled orb -- with 3 orbs, it draws 3 cards for 1E. This is the Defect's best draw engine in early floors.
+- Coolheaded+ draws 2 cards while channeling Frost. Excellent cycling.

@@ -1,0 +1,26 @@
+{
+  "run": 143,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 33,
+  "deck": "Bash+, 2x Impervious+, Inflame+, Evolve+, Cleave, Clothesline, Shrug It Off, Pommel Strike, Headbutt, Strike+ x2, Defend x3, Intimidate",
+  "relics": "Burning Blood, Golden Idol, Self-Forming Clay, Whetstone, Horn Cleat, Mark of Pain, Toy Ornithopter, Strawberry",
+  "cause_of_death": "Bronze Automaton at 7/300 HP. Hyper Beam #2 dealt 57 damage (45 base + 12 Str) with only 13 block and 54 HP. Both Impervious+ exhausted on earlier turns. Could not output enough damage to kill in 13 turns.",
+  "key_moments": [
+    "CLOSEST Act 2 boss kill -- Automaton at 7 HP when player died.",
+    "No UI misplays: boss relic (Mark of Pain) collected, both treasure chests opened, all shops browsed, all events evaluated. First clean run since UI bugs identified.",
+    "Distilled Chaos potion randomly played Impervious+ from draw pile on Hyper Beam #1 for 40 block -- saved that turn via RNG. Without this potion, Hyper Beam #1 would have been lethal.",
+    "Both Impervious+ used on Snake Plant hallway fight (zero damage taken), then restored after combat. Both upgraded at rest sites before boss. But neither drawn on either Hyper Beam turn in boss fight -- draw RNG failure in a Wound-diluted deck.",
+    "Mark of Pain + Evolve+ engine worked excellently: 4E + 2 draws per Wound = 5-7 cards per turn.",
+    "Duplicator event duplicated Impervious (2 copies, both upgraded to Impervious+).",
+    "Excellent hallway fight execution: zero damage vs Snake Plant (6 turns), 1 damage vs Jaw Worm, minimal damage vs all others."
+  ],
+  "lessons": [
+    "Hyper Beam #2 can reach 57 damage (Str scales to 12 by turn 12). Previous max was 51. Updated bronze-automaton.md.",
+    "Inflame+ alone (+3 Str) is marginal sustained damage against 300 HP -- need a second Str source or burst damage to kill before Hyper Beam #2.",
+    "Mark of Pain + Evolve+ is a confirmed powerful engine but Wounds dilute the deck, reducing probability of drawing specific cards (Impervious+) on critical turns.",
+    "Clothesline is the best Weak source for Automaton because it does not exhaust -- can apply Weak on both Hyper Beam turns.",
+    "Distilled Chaos is an excellent emergency tool -- can randomly play Impervious+ from draw pile when not in hand."
+  ]
+}

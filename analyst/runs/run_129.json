@@ -1,0 +1,24 @@
+{
+  "run": 129,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 16,
+  "deck": "3 Strike, 4 Defend, Bash+, Inflame+, Headbutt, Twin Strike, Spot Weakness, Ghostly Armor, Shrug It Off, Intimidate, Flame Barrier",
+  "relics": "Burning Blood, Darkstone Periapt, (chest relic)",
+  "cause_of_death": "Hexaghost Burns accumulation. By Turn 12, 5+ Burns/Burns+ in deck dealing 4 damage each at end of turn. Burns ate block, leaving nothing for Hexaghost attacks. Hexaghost at ~43/250 HP (17% remaining) when killed.",
+  "key_moments": [
+    "Neow removed 2 Strikes for thin 8-card deck. Strong Str scaling: Inflame+ (+3) + Spot Weakness (+3) = up to +9 Str.",
+    "Turn 2 critical error: spent all 3E on Inflame+ + Spot Weakness + Ghostly Armor (10 block vs ~30 multi-hit incoming = 20 unblocked damage, 55->35 HP). The 20 HP lost here was the margin that made Burns lethal by Turn 12.",
+    "No AOE -- 5 small slimes fight drained 15 HP unnecessarily.",
+    "No healing beyond Burning Blood.",
+    "Intimidate forced on Turn 11 at 7 HP for survival instead of saved for Inferno.",
+    "Flame Barrier played Turn 12, too late to save."
+  ],
+  "lessons": [
+    "Hexaghost Turn 2 blocking is mandatory -- even with strong Str scaling, 20 unblocked damage on Turn 2 makes Burns lethal later. Budget at least 1E for block on Turn 2.",
+    "Burns+ (upgraded Burns) deal 4 damage each, not 2 -- significantly worse than regular Burns.",
+    "This is the 4th Hexaghost death despite extensive playbook guidance -- Turn 2 setup greed is a new specific failure mode not previously documented.",
+    "Deck had strong damage scaling but missing AOE and healing criteria."
+  ]
+}

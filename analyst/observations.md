@@ -35,7 +35,7 @@ Preserved Insect, Upgrade death spiral (3x confirmed), Slime Boss split threshol
 - Clothesline as non-exhausting Weak source for Automaton: confirmed useful on both Hyper Beam turns. Promoted to clothesline.md.
 - Hexaghost multi-hit attack variants: Conflicting Turn 2 data. Previous observation: 5x6=30. Run 144 observed 4x6=24 on Turn 2. The difference (24 vs 30) is significant for block planning. Playbook currently says "~5x6=30." Need more data to determine if Turn 2 is always 4x6 or variable.
 - Burns+ timing: Burns+ (4 damage each) appear from later ATTACK_DEBUFF turns. Exact transition turn unknown.
-- Horn Cleat: Observed 14 block on turn 2. Fixed or scaling?
+- Horn Cleat: Confirmed 14 block on turn 2 across 2 observations (Run 170 Defect). Fixed value, not scaling. Playbook entry already says 14 block. Confirmed.
 - Gremlin Horn: Works on ALL enemy deaths including minions?
 - Whetstone: Can upgrade already-upgraded cards?
 - Collector total HP: CONFIRMED 282 (from Run 145 Rampage+ opening hit at 282 HP). Updated the-collector.md.
@@ -227,6 +227,13 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - **Shop translation mismatch (recurring)**: Run 168 shop: player reasoned "Piercing Wail for 50g" but translated field shows "Buy Infinite Blades". Another instance of the known shop display/logging issue where the translated field shows the wrong card name but the correct purchase executes. Low priority.
 
 - **Hexaghost Divider hit count at 70 Max HP**: Player calculated Turn 2 Divider as "5x6" but at 70 Max HP, the formula yields floor(70/12)+1 = 6 hits of 6 = 36 base damage. With Weak (per-hit floor): 6 * floor(6*0.75) = 6*4 = 24. The block happened to be exactly 24 (Block Potion 12 + Dash 12), so the outcome was correct despite the wrong prediction. Non-fatal arithmetic error -- monitor for recurrence. Playbook already documents the correct formula.
+
+- **Defect starting deck Skill ratio (PROMOTED)**: Defect starts with 6 Skills vs 4 Attacks (4 Defend + Zap + Dualcast vs 4 Strike). Adding Coolheaded makes it 7:4. Confirmed from Run 170. PROMOTED to mechanics.md (Defect Starting Deck Composition), strategy.md (Defect-Specific Strategy), and gremlin-nob.md (Defect-specific warning).
+- **Defect orb mechanics (PROMOTED)**: Lightning (3/8 passive/evoke), Frost (2/5 passive/evoke), Focus scaling, Cracked Core starter relic. All confirmed from Run 170. PROMOTED to mechanics.md (Defect Orb Mechanics section).
+- **Defect Focus priority**: Defragment (+1 Focus) is the Defect's most important scaling card (equivalent to Inflame for Ironclad). Without Focus, orb passive values are too low for Act 2. ONE observation (Run 170 never found Defragment). Needs confirmation from a run where Focus is obtained.
+- **Defect Gremlin Nob matchup**: Worst elite for Defect. 7 Skills vs 4 Attacks with Coolheaded in deck. Barely survived at 5 HP from 46 HP entry. PROMOTED to gremlin-nob.md Defect-specific warning.
+- **Defect Zap upgrade**: No observed change from upgrade. Wiki says Zap+ channels 1 Lightning for 0E (same as base). Need to verify if there is a hidden upgrade effect or if it remains functionally identical.
+- **Defect Dark and Plasma orbs**: Not encountered in Run 170. Dark orb (scaling damage) and Plasma orb (energy) exist but have not been observed. Need data from future runs.
 
 ## Open Questions
 

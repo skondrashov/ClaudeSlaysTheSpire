@@ -1,0 +1,24 @@
+{
+  "run": 153,
+  "character": "THE_SILENT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 45,
+  "deck": "21 cards (all upgraded) \u2014 Noxious Fumes+, Deadly Poison+ (innate), Catalyst+, Well-Laid Plans+, Tools of the Trade+, Tactician+, Wraith Form+, After Image+, Footwork+, Malaise+, 2x Piercing Wail+, Neutralize+, Survivor+, Backflip+, Deflect+, 2x Defend+, 2x Strike+",
+  "relics": "Ring of the Snake, Hovering Kite, Plated Armor 4 (Thread and Needle), Pocketwatch, Mark of the Bloom, Girya, Blue Candle, others",
+  "cause_of_death": "Transient at Floor 45. Fading 1 (last turn), Transient dealt 48 damage (after PW+ and Malaise debuffs) vs 41 block (38 played + 3 Plated Armor) at 3 HP. Died 7 damage short. Transient would have faded at end of its turn.",
+  "key_moments": [
+    "Mind Bloom \"I am Awake\" upgraded all cards but gave Mark of the Bloom (cannot heal). At 69/70 HP, player reasoned \"healing is irrelevant\" -- but fights remained before the boss.",
+    "Mysterious Sphere fight (2 Orb Walkers with +3 Str/turn each + Burns) drained 66 HP (69 to 3). Mark of the Bloom made this permanent.",
+    "Catalyst+ spent on Orb Walkers to kill one fast, exhausting it before Awakened One boss.",
+    "Wraith Form+ gave 3 Intangible (turns 1-3 safe) but -1 Dex/turn left Dex at -2 by turn 5, reducing block output.",
+    "Poison engine dominated Act 3 hallways -- near-zero damage in Spiker+Repulsor, Darklings. Card retention engine (WLP+ + TotT+ + Tactician+ + Hovering Kite) was excellent."
+  ],
+  "lessons": [
+    "Mind Bloom \"I am Awake\" is a trap when fights remain before the boss. Mark of the Bloom prevents ALL healing. Updated mind-bloom.md.",
+    "Do not fight Mysterious Sphere when Mark of the Bloom is active. Created mysterious-sphere.md.",
+    "Catalyst+ is irreplaceable for Awakened One -- do not spend on hallway fights.",
+    "Wraith Form+ Dex penalty makes Transient turns 4-5 extremely tight. Updated transient.md with Silent-specific strategy.",
+    "Best Silent floor yet (45 vs 50 and 33)."
+  ]
+}

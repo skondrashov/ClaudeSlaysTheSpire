@@ -376,6 +376,81 @@ footer {
 
 <hr>
 
+<h2 id="defect-orb-mechanics">Defect Orb Mechanics</h2>
+
+<p>The Defect channels orbs into orb slots. Orbs provide passive effects at end of turn and stronger evoke effects when removed.</p>
+
+<h3 id="orb-types">Orb Types</h3>
+
+<table><thead><tr>
+<th>Orb</th>
+<th>Passive (end of turn)</th>
+<th>Evoke (when removed)</th>
+<th>Notes</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Lightning</strong></td>
+<td>3 damage to random enemy</td>
+<td>8 damage to random enemy</td>
+<td>Primary damage orb. Passive targets random enemy.</td>
+</tr>
+<tr>
+<td><strong>Frost</strong></td>
+<td>2 Block</td>
+<td>5 Block</td>
+<td>Primary defensive orb. Passive block applies every turn.</td>
+</tr>
+<tr>
+<td><strong>Dark</strong></td>
+<td>Gains damage equal to 6 + Focus each turn</td>
+<td>Deals accumulated damage to lowest HP enemy</td>
+<td>Scaling damage orb. Grows each turn it stays channeled.</td>
+</tr>
+<tr>
+<td><strong>Plasma</strong></td>
+<td>Gain 1 Energy</td>
+<td>Gain 2 Energy</td>
+<td>Energy generation. Rare but powerful.</td>
+</tr>
+</tbody></table>
+
+<h3 id="channeling-and-evoking">Channeling and Evoking</h3>
+
+<ul>
+<li><strong>Channel</strong>: Add an orb to the rightmost empty slot. If all slots are full, the leftmost orb is <strong>evoked</strong> (triggering its evoke effect) to make room.</li>
+<li><strong>Evoke</strong>: Remove the frontmost (leftmost) orb, triggering its evoke effect. Dualcast evokes the front orb twice.</li>
+<li><strong>Orb Slots</strong>: The Defect starts with 3 orb slots. Some cards/relics add more slots (Capacitor). More slots = more passive effects per turn.</li>
+</ul>
+
+<h3 id="focus">Focus</h3>
+
+<p>Focus is the Defect&#x27;s core scaling stat (equivalent to Strength for damage or Dexterity for block, but for orbs).</p>
+
+<ul>
+<li>Each point of Focus increases ALL orb passive AND evoke values.</li>
+<li>Lightning with Focus 2: passive = 3+2 = 5 damage, evoke = 8+2 = 10 damage.</li>
+<li>Frost with Focus 2: passive = 2+2 = 4 block, evoke = 5+2 = 7 block.</li>
+<li>Focus sources: Defragment (+1 Focus permanent), Consume (+2 Focus but lose 1 orb slot), Inserter (relic, +1 orb slot every other turn).</li>
+<li><strong>Focus is the Defect&#x27;s #1 scaling priority.</strong> Without Focus, orb passive values are too low to scale into Act 2. Defragment should be taken whenever offered.</li>
+</ul>
+
+<h3 id="cracked-core-defect-starter-relic">Cracked Core (Defect Starter Relic)</h3>
+
+<p>Channels 1 Lightning orb at the start of each combat. Provides guaranteed passive Lightning damage from Turn 1. Replaces once any orb is channeled manually (the first orb channeled triggers Cracked Core&#x27;s replacement).</p>
+
+<h3 id="defect-starting-deck-composition">Defect Starting Deck Composition</h3>
+
+<ul>
+<li>4 Strike (Attack, 1E, 6 damage)</li>
+<li>4 Defend (Skill, 1E, 5 block)</li>
+<li>1 Zap (Skill, 0E, Channel 1 Lightning)</li>
+<li>1 Dualcast (Skill, 1E, Evoke front orb twice)</li>
+</ul>
+
+<p><strong>Skill-to-Attack ratio: 6 Skills vs 4 Attacks.</strong> Adding Coolheaded (common pickup) makes it 7:4. This is the most Skill-heavy starting deck of any character, making Gremlin Nob the Defect&#x27;s worst elite matchup.</p>
+
+<hr>
+
 <h2 id="damage-formula">Damage Formula</h2>
 
 <p>Base formula: <code>floor((card_base_damage + strength) * multipliers)</code></p>

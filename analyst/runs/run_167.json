@@ -1,0 +1,26 @@
+{
+  "run": 167,
+  "character": "THE_SILENT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 40,
+  "deck": "~25 cards \u2014 Neutralize+ (Bottled Flame innate), Survivor, Deadly Poison+, Bane+, Backflip+, Crippling Cloud, Crippling Cloud+, Catalyst+, Well-Laid Plans+, Adrenaline (exhaust), Malaise (exhaust), Envenom, Blade Dance, Dash, Good Instincts, Blur, Deflect, Defend x3, Strike x3 + Normality curse (from Cursed Key chest) + Burn (from Hexaghost)",
+  "relics": "Ring of the Snake, Cursed Key (+1E), Hovering Kite (Act 2 boss), Bottled Flame (Neutralize+), Preserved Insect (-25% elite HP), Sundial, The Courier, Tiny Chest, Bloody Idol",
+  "cause_of_death": "Giant Head elite at Floor 40. Giant Head survived at 1 HP after Turn 7 poison tick (52 HP - 51 poison = 1 HP). Player died Turn 8 with 17 HP vs 31 incoming (11 block from Good Instincts + Defend + Malaise X=3). Two unused potions (Strength Potion +2 Str, Explosive Potion 10 AOE) would have dealt the extra damage needed. Strength Potion on Turn 7 Strikes would have added 4 damage (2 Strikes x 2 Str), pushing GH to 48 HP vs 51 poison = dead. Explosive Potion's 10 damage bypasses Metallicize entirely. Either potion saves the run.",
+  "key_moments": [
+    "**Poison engine dominated all 3 Acts.** Deadly Poison+ + Bane+ carried Act 1 hallways (Fungi Beast, Lagavulin elite, Spike Slime). Crippling Cloud + Catalyst+ carried Act 2 (Chosen, Spheric Guardian, Centurion+Mystic, 3x Cultists). Catalyst+ tripled poison for massive kills against Shelled Parasite, Snecko, The Maw, and nearly Giant Head.",
+    "**Collector killed cleanly at 61/70 HP (87%).** Turn 1: Neutralize+ + Deadly Poison+ + Blade Dance Shivs + Strike = 30+ damage. Turn 3: CC+(7 poison) + Catalyst+ tripled Collector poison from 12 to 36. Turn 4 (STRONG_DEBUFF free turn): Adrenaline + CC(4 poison) + Bane+(20 dmg TH0) + Strike. Turn 8: survived at 1 HP using Liquid Memories to recover Dash for 15 block vs 36 incoming. Collector died from 42 poison. Clean poison kill with Normality curse limiting plays to 3/turn on 2 turns -- manageable because poison ticks automatically.",
+    "**Hexaghost killed in 12 turns.** Poison engine (Deadly Poison+ -> 7 poison -> Bane+ for burst) combined with Malaise Str reduction. Entered at 84% HP, smithed Bane+ before boss.",
+    "**Giant Head fight: Catalyst+ tripled 16 poison to 48 on Turn 4.** CC+ (7 poison) + CC (4 poison) on Turn 3, then Catalyst+ on Turn 4 = 48 poison on GH at 304 HP. Mathematically lethal (sum of 48+47+46+... = 1176). But GH survived Turn 7 at 1 HP because direct damage was 1 short. Player played 2 Strikes on Turn 7 (12 damage - 8 Metallicize block = 4 to HP), bringing GH to 115-4=111... then poison 52 ticked it to 52, then next turn 51 poison leaves 1 HP.",
+    "**POTION FAILURE: 2 potions unused at death.** Strength Potion (+2 Str) and Explosive Potion (10 AOE) both in potion slots. Player never considered potions in Turn 7-8 reasoning. Turn 7 think log mentions \"play Strikes to deal damage\" but never evaluates potion usage. Turn 8 think log calculates survival odds but does not check potions. This is the critical strategic error.",
+    "**Hovering Kite + Survivor = reliable 5E/turn.** Survivor discards a card (triggering Kite +1E), providing 8 block + energy every turn. Also used to discard Burn curse (from Hexaghost) and dead cards, turning liabilities into energy.",
+    "**The Maw killed cleanly in 6 turns** -- Catalyst+ tripled 14 poison to 42 on Turn 3 (free BUFF turn). Zero damage taken after block wall established."
+  ],
+  "lessons": [
+    "**POTION CHECK ON EVERY LETHAL TURN.** The player died holding 2 potions that trivially solve the fight. Potions bypass Slow (not card plays), bypass Metallicize (direct damage), and cost zero energy. On any turn where the enemy might survive by a small margin, potions MUST be evaluated. Updated strategy.md with mandatory potion check rule.",
+    "**Giant Head Slow mechanic corrected.** The existing playbook described Slow as \"rewarding\" playing many cards. Stream events confirm the opposite: Giant Head GAINS Strength based on cards played, PUNISHING high card-count turns. Fixed in giant-head.md.",
+    "**Poison engine is near-confirmed as 5th winning formula.** The engine (Catalyst+ + CC/CC+ + Deadly Poison+ + Hovering Kite energy) dominated every fight from Act 1 through Act 3 Floor 40. The death was caused by unused potions, not engine failure. The poison engine defeats: Hexaghost (poison + Bane+ burst), Collector (Catalyst+ triple kills through Normality), Spheric Guardian (poison bypasses Barricade), The Maw (Catalyst+ triple on free turn), and would have defeated Giant Head (48 poison = mathematically lethal) if potions were used. Missing piece: needs a run that reaches Act 3 boss to fully confirm.",
+    "**Preserved Insect is critical for Giant Head.** Reduces 500 HP to 375, which means Catalyst+ tripling 16 poison (48 total, sum ~1176) is overkill. Without Preserved Insect, the required poison threshold is much higher.",
+    "**Normality curse (from Cursed Key) is manageable with poison.** Normality limits plays to 3/turn, but poison ticks automatically. In the Collector fight, Normality appeared in hand on 2 turns but did not prevent the Catalyst+ triple combo. Cursed Key's +1E is worth the curse for poison decks."
+  ]
+}

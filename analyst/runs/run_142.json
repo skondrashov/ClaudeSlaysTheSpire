@@ -1,0 +1,26 @@
+{
+  "run": 142,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 24,
+  "deck": "Bash+, Iron Wave+, Thunderclap+, Inflame, Flame Barrier, Feed, Headbutt, Second Wind, Intimidate, Strike x3, Defend x3",
+  "relics": "Burning Blood, Neow's Lament, Sundial, Juzu Bracelet, Ceramic Fish (boss relic SKIPPED, Act 1 chest relic SKIPPED)",
+  "cause_of_death": "Centurion + Mystic at F24. Centurion's 10x3 = 30 multi-hit attack at 3 HP. No block cards or potions remaining after Mystic kill phase.",
+  "key_moments": [
+    "Clean Slime Boss kill at 46/80 HP. Thunderclap+ was mandatory AOE for split. Feed obtained from boss card reward.",
+    "**BOSS RELIC SKIPPED** -- two `proceed` commands bypassed BOSS_REWARD screen. 3rd confirmed occurrence (Runs 71, 77, 142).",
+    "**ACT 1 CHEST SKIPPED** -- `proceed` on Floor 9 Treasure room bypassed chest. No relic collected.",
+    "Feed killed 3 enemies for +9 Max HP (80->89). Feed+Headbutt combo used correctly.",
+    "Juzu Bracelet bought at shop (147g) gave safe Act 2 Unknown rooms.",
+    "Blood Potion used on 3 Cultists fight (F20), not available for Centurion+Mystic. Duplication Potion + Liquid Memories both used on Mystic kill, leaving zero potions for Centurion solo phase.",
+    "Centurion 10x3 = 30 multi-hit not previously documented in playbook. Entered fight at 61/86, drained to 0 over 4 turns."
+  ],
+  "lessons": [
+    "Centurion has a 10x3 = 30 multi-hit attack (playbook corrected from 12-18 single hit).",
+    "Boss relic skip bug is now confirmed 3x -- MUST be fixed at infrastructure level.",
+    "Treasure chest skip is a new related bug.",
+    "Potion allocation across two-phase fights matters -- do not spend everything on phase 1 (Mystic) when phase 2 (Centurion solo) still has lethal attacks.",
+    "Deck lacked block scaling (no Shrug It Off, Impervious) -- only Flame Barrier and Iron Wave+ for block beyond Defends. Against 30 incoming, max block from hand was ~17 (Flame Barrier 12 + Defend 5), insufficient."
+  ]
+}

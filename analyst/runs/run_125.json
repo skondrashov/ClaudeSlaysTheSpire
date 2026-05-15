@@ -1,0 +1,24 @@
+{
+  "run": 125,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 33,
+  "deck": "Immolate, Reaper, Demon Form, Flame Barrier+, Inflame, Bash+, Battle Trance, Rampage, Shrug It Off+, Intimidate, Thunderclap, Headbutt, Panacea, 2 Strikes, 4 Defends",
+  "relics": "Burning Blood, Lantern, Preserved Insect, Red Mask, Liquid Memories (potion)",
+  "cause_of_death": "Bronze Automaton Hyper Beam on Turn 6. 51 damage vs 27 block at 24 HP = exactly 24 unblocked = exactly lethal (0 HP).",
+  "key_moments": [
+    "CLOSEST to beating an Act 2 boss -- died by exactly 1 HP. Met 70% HP threshold for the first time (60/80 = 75%). All 4 readiness criteria met.",
+    "Intimidate exhausted on Turn 1 for Artifact stripping instead of saved for Hyper Beam. Weak would have reduced 51 to 38, surviving at 13 HP.",
+    "Liquid Memories used to recover Intimidate from exhaust -- but Liquid Memories retrieves from DISCARD, not EXHAUST. Mechanics misunderstanding.",
+    "Stasis stole Demon Form + Flame Barrier+, both recovered by killing Orbs but Demon Form was never played.",
+    "Reaper confirmed critical for Act 2 -- healed 16->30 HP in 3 Cultists fight via AOE.",
+    "SIO+ block miscalculated as 8 instead of 11 on Hyper Beam turn."
+  ],
+  "lessons": [
+    "Save exhausting Weak sources (Intimidate, Shockwave) for Hyper Beam, use Bash+/Thunderclap for Artifact stripping.",
+    "Liquid Memories cannot recover exhausted cards.",
+    "Hyper Beam can reach 51 damage (higher than prior 38-45 range).",
+    "Always use upgraded values in calculations after upgrading."
+  ]
+}

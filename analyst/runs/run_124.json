@@ -1,0 +1,22 @@
+{
+  "run": 124,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 23,
+  "deck": "Whirlwind, Inflame+, Bash+, Impervious, Barricade, Shockwave, Rampage, Thunderclap, Shrug It Off x3, Intimidate, Demon Form, Strike+ x2, Defend x2",
+  "relics": "Burning Blood, Gambling Chip, others",
+  "cause_of_death": "Gremlin Leader elite at Floor 23. Entered at 42/80 HP (52%), below 60% threshold. Rally scaled to +12 Str (4 Rallies). By Turn 9, incoming was 68/turn (Leader 18x3 + gremlins 14) vs 10 HP with 13 block.",
+  "key_moments": [
+    "Barricade+Impervious combo dominated Guardian fight -- 30 permanent block wall led to clean boss kill.",
+    "Spheric Guardian survived with Barricade+Impervious+Regen Potion but drained 32 HP (80->48).",
+    "Impervious wasted on Turn 1 of Gremlin Leader for 30 block against 22 incoming, zero damage dealt.",
+    "Systematic Weak multiplier misapplication -- player applied 0.75 to own damage when enemies were Weakened (not player), underestimating own damage output throughout Act 2."
+  ],
+  "lessons": [
+    "Impervious Turn 1 against Gremlin Leader is wrong -- use for Turn 4-5 when Rally damage peaks.",
+    "Weak direction confusion is a recurring mechanics error that needs correction.",
+    "Third consecutive run with no Reaper/Feed offered -- backup healing plan exists but wasn't enough.",
+    "Barricade+Impervious is a confirmed strong combo for Guardian."
+  ]
+}

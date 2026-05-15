@@ -1,9 +1,10 @@
 # Relics
 
 
-## Starter Relic
+## Starter Relics
 
-- [Burning Blood](burning-blood.md)
+- [Burning Blood](burning-blood.md) (Ironclad)
+- [Cracked Core](cracked-core.md) (Defect)
 
 ## Common Relics
 

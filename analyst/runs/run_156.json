@@ -1,0 +1,27 @@
+{
+  "run": 156,
+  "character": "THE_SILENT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 33,
+  "deck": "~20 cards \u2014 Noxious Fumes+, Wraith Form, After Image, Footwork+, Blur, Phantasmal Killer+, Piercing Wail+ (exhaust), Flechettes+, Sneaky Strike, Dagger Throw+, Backflip+, Cloak and Dagger+, Acrobatics+, Concentrate+, All-Out Attack+, Neutralize (Innate via Bottled Flame), Survivor, 4x Defend, Necronomicurse",
+  "relics": "Pocketwatch, Astrolabe (boss relic replacing Ring of the Snake), Kunai, Nunchaku, Bottled Flame, Matryoshka, Whetstone, Bloody Idol, Ceramic Fish, Necronomicon",
+  "cause_of_death": "The Collector, Floor 33. 19-turn fight. Wraith Form played too early, causing permanent cumulative -1 Dex/turn. By Turn 19, Dex was -17 or worse. All Skill-based block (Defend, Survivor, Backflip+) produced 0 block. After Image provided ~7-8 block/turn (only remaining block source) but insufficient against Collector's Str-scaled attacks. Collector at 5/282 HP when player died -- 5 HP short of winning.",
+  "key_moments": [
+    "Beat Slime Boss Act 1 cleanly. Astrolabe transformed 3 Strikes into useful cards.",
+    "Act 2 progression was solid -- beat Chosen, Byrds, Snecko, Snake Plant, Slavers, Centurion+Mystic, Sentry+Spheric Guardian. Took Necronomicon from Cursed Tome event.",
+    "Poison-through-block strategy effective against Spheric Guardian (Noxious Fumes+ ignores Barricade).",
+    "Collector fight lasted 19 turns due to DEFEND_BUFF turns and Torch Head respawns. Each DEFEND_BUFF gave all enemies +3 Str, scaling Collector from Str 3 to Str 14+.",
+    "Wraith Form played early for Intangible safety, but -1 Dex/turn accumulated to -17 by Turn 19, destroying all Skill block.",
+    "After Image was the ONLY functional block source at high negative Dex (~7-8 block/turn from card plays).",
+    "Blur carried block from Intangible turns to post-Intangible turns, partially bridging the gap.",
+    "Collector died 5 HP after the player -- if 5 more block existed on any single turn, the fight was won."
+  ],
+  "lessons": [
+    "Wraith Form must be delayed until the final 5-6 turns in boss fights expected to last 15+ turns. Playing early in a long fight creates an unrecoverable Dex deficit. Created wraith-form.md with detailed timing rules.",
+    "After Image is the Silent's only block source immune to Dex drain and Frail -- it gives flat 1 block per card played regardless of debuffs. It must be active before the Collector's Turn 4 triple debuff. Created after-image.md.",
+    "Blur is the critical companion card to Wraith Form -- carries block from Intangible turns (when damage is irrelevant) to post-Intangible turns (when Dex penalty makes new block impossible). Created blur.md.",
+    "The Collector's DEFEND_BUFF gives +3 Str to ALL enemies per use. In a 19-turn fight, this scaled the Collector from Str 3 to Str 14+. Updated the-collector.md with Str scaling documentation.",
+    "The fight was lost by 5 HP -- being 5 HP short suggests the strategy was close to viable but Wraith Form timing was the critical error."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "run": 128,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 24,
+  "deck": "Evolve, Fire Breathing+, True Grit+, Feel No Pain, Flame Barrier, Immolate+, Disarm, Shockwave+, Uppercut+, Armaments, Anger, Thunderclap, Offering, Shrug It Off, 3 Strikes, 3 Defends",
+  "relics": "Burning Blood, Pen Nib, Prayer Wheel, others",
+  "cause_of_death": "Shelled Parasite + Fungi Beast at Floor 24. Entered at 37/80 (46%) with zero potions. Drew no block cards on final turn (5 attacks + Evolve), took 16 unblocked damage at 14 HP.",
+  "key_moments": [
+    "Evolve + Fire Breathing+ engine beat Hexaghost cleanly (36/80 HP remaining). Confirmed second clean victory with this engine.",
+    "Exhausted Fire Breathing+ via True Grit+ against Shelled Parasite+Fungi Beast, reasoning \"no major status generation\" -- but Immolate Burns would have triggered 10 free damage each, shortening the fight. Critical synergy awareness error.",
+    "Three consecutive monster rooms (F20-22) drained HP: Shelled Parasite (-41), Centurion+Mystic (-16 after Blood Potion), Snecko (-33). Act 2 death spiral from consecutive combat.",
+    "Pen Nib doubled Immolate for 42 AOE in key fights (Centurion+Mystic, Spike Slime split).",
+    "No Strength scaling entire run despite Prayer Wheel giving double card rewards."
+  ],
+  "lessons": [
+    "Do not exhaust Fire Breathing+ when Immolate is in the deck -- Burns trigger 10 free damage bypassing Plated Armor.",
+    "Shelled Parasite + Fungi Beast now at 3 deaths -- Plated Armor fights without Str scaling are a death trap.",
+    "Healing RNG denial continues: 6th run in 8 with no Reaper/Feed offered.",
+    "Gambler's Brew saved the Snecko fight by rerolling a lethal Confusion hand."
+  ]
+}

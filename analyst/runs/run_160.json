@@ -1,0 +1,28 @@
+{
+  "run": 160,
+  "character": "THE_SILENT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 28,
+  "deck": "~22 cards \u2014 Neutralize+, Survivor+, Backstab, Blade Dance+, Cloak and Dagger+ x2, Escape Plan, Sucker Punch+, Slice, Masterful Stab, All-Out Attack, Acrobatics, A Thousand Cuts, Envenom, Footwork, Piercing Wail, Strike x3, Defend x3, Defend+",
+  "relics": "Coffee Dripper (boss relic from Neow swap), Ectoplasm (Act 1 boss), Golden Idol, Strike Dummy, Snecko Skull, Mummified Hand",
+  "cause_of_death": "Cultist+Chosen fight at Floor 25 drained HP from 30 to 4. Hex added 5+ Dazed to draw pile by Turn 4, collapsing block density in the Skill-heavy deck. Chosen dealt 14 damage through Vulnerable with only 8 block available at 4 HP. Subsequent fight (Byrd+Chosen at F28) was unwinnable at 4 HP despite Piercing Wail negating Turn 1 damage.",
+  "key_moments": [
+    "Coffee Dripper from Neow swap gave 4 energy (later 5 with Ectoplasm) but eliminated rest site healing entirely.",
+    "Sentry elite taken zero damage except 10 HP (1 turn unblocked beam) across 12 turns -- excellent play for a no-AOE deck.",
+    "Hexaghost killed in 11 turns with Shiv burst -- Blade Dance+ (4 Shivs = 28 damage via Strike Dummy) and Cloak and Dagger+ dominated. Took only 9 HP from one unblocked Inferno turn (no block cards drawn).",
+    "Took Ectoplasm over Velvet Choker (kills Shiv deck) and Sozu (blocks only healing source). Ectoplasm was the least bad option but created the fatal double-downside with Coffee Dripper.",
+    "Zero-damage fights vs Shelled Parasite (5 turns, ATC+Envenom+Footwork+Strike Dummy engine online) and Centurion+Mystic (5 turns, killed Mystic Turn 2).",
+    "Gremlin Leader elite survived at 47 HP after taking 12 damage from Rally-scaled gremlins, killed Leader with Shiv burst and ATC chain.",
+    "Cultist+Chosen at F25: Piercing Wail negated Turn 1 damage perfectly. Powers (Footwork, ATC, Envenom) played safely without triggering Hex. But Turn 3 required 3 Defends for 21 block (adding 3 Dazed), and Turn 4 drew mostly Dazed cards, leaving only 2E of block against 27 incoming. HP dropped from 30 to 4. Regen Potion kept player alive but was the only healing source in the entire run.",
+    "Only 1 Piercing Wail (exhausts) for all of Act 2 -- insufficient for multiple dangerous encounters."
+  ],
+  "lessons": [
+    "Coffee Dripper + Ectoplasm is a lethal combination for the Silent. No rest healing + no gold = no recovery from any HP loss. The player correctly chose Ectoplasm as the least bad option (Velvet Choker and Sozu are worse for Shiv decks), but the combination of both relics left zero margin for error.",
+    "Hex hard-counters Skill-heavy Silent decks. The Silent has no choice but to play Skills for block (Defend, Survivor, Backflip). Each adds a Dazed, diluting the draw pile until critical turns have 3-4 unplayable cards. Powers are safe but insufficient for blocking alone.",
+    "Piercing Wail is a one-use exhaust card -- excellent for one fight per act but cannot protect across multiple encounters. The Silent needs multiple damage negation tools for Act 2 (Piercing Wail x2, Malaise, Wraith Form).",
+    "The Shiv archetype worked extremely well -- zero-damage fights against Shelled Parasite, Centurion+Mystic, Spheric Guardian, and others. The death was caused by boss relic downside stacking + Hex encounter, not by archetype weakness.",
+    "Masterful Stab taken at F25 after taking damage -- the card's cost was already escalated. Taking it at 4 HP was irrelevant since the run was already lost.",
+    "Snecko Skull + Envenom combo confirmed strong: every attack applies 2 Poison (1 Envenom + 1 Skull). With 4-6 Shivs per turn, this applies 8-12 Poison per turn passively."
+  ]
+}

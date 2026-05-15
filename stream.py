@@ -91,6 +91,40 @@ def _save_live_state():
 run_stats = _load_stats()
 
 
+def _write_run_log(run_number: int, gs: dict, victory: bool):
+    """Write structured run log to analyst/runs/run_NNN.json from game state.
+
+    This is the authoritative run record — written programmatically from game
+    data, not by an LLM. The analyst reads it but never writes it.
+    """
+    runs_dir = os.path.join(os.path.dirname(__file__), "analyst", "runs")
+    os.makedirs(runs_dir, exist_ok=True)
+
+    deck = [c.get("name", "?") for c in gs.get("deck", [])]
+    relics = [r.get("name", "?") for r in gs.get("relics", [])]
+    potions = [p.get("name", "Empty") for p in gs.get("potions", []) if p.get("name")]
+
+    run_data = {
+        "run": run_number,
+        "character": gs.get("class", "UNKNOWN"),
+        "ascension": gs.get("ascension_level", 0),
+        "victory": victory,
+        "floor": gs.get("floor", 0),
+        "deck": deck,
+        "relics": relics,
+        "potions": potions,
+        "gold": gs.get("gold", 0),
+        "hp": gs.get("current_hp", 0),
+        "max_hp": gs.get("max_hp", 0),
+        "seed": gs.get("seed"),
+    }
+
+    path = os.path.join(runs_dir, f"run_{run_number:03d}.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(run_data, f, indent=2)
+    print(f"[stream] Wrote run log: {path}")
+
+
 def _archive_run(run_number: int, victory: bool, floor: int, cls: str):
     """Archive current run's event log to data/runs/run_NNN.jsonl and reset."""
     os.makedirs(RUNS_DIR, exist_ok=True)
@@ -264,8 +298,15 @@ async def state_watcher():
                             if not run_counted:
                                 run_counted = True
                             victory = ss.get("victory", False)
-                            # No counter updates — regen_stats.py handles all
-                            # stats after the analyst writes the run file.
+                            run_number = run_stats.get("total_runs", 0) + 1
+                            # Write structured run log from game state
+                            _write_run_log(run_number, gs, victory)
+                            # Regenerate stats so overlay updates immediately
+                            import subprocess
+                            subprocess.run([sys.executable, "regen_stats.py"],
+                                           cwd=os.path.dirname(__file__) or ".",
+                                           timeout=10)
+                            _reload_stats()
                             _save_live_state()
                             await broadcast({
                                 "type": "run_end",
@@ -275,9 +316,7 @@ async def state_watcher():
                             })
                             await _broadcast_stats()
                             # Archive this run's event log
-                            _archive_run(
-                                run_stats.get("total_runs", 0) + 1, victory, floor, cls
-                            )
+                            _archive_run(run_number, victory, floor, cls)
 
                         # Detect event screen
                         if screen == "EVENT":
@@ -529,8 +568,10 @@ class DecisionHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(content.encode("utf-8"))
         elif self.path == "/reload":
-            # Broadcast reload to all overlay clients
+            # Reload stats from disk and broadcast to all overlay clients
+            _reload_stats()
             if loop:
+                asyncio.run_coroutine_threadsafe(broadcast({"type": "stats", **run_stats}), loop)
                 asyncio.run_coroutine_threadsafe(broadcast({"type": "reload"}), loop)
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
@@ -633,6 +674,10 @@ class DecisionHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": str(e)}).encode())
         elif self.path == "/reload":
+            _reload_stats()
+            asyncio.run_coroutine_threadsafe(
+                broadcast({"type": "stats", **run_stats}), loop
+            )
             asyncio.run_coroutine_threadsafe(
                 broadcast({"type": "reload"}), loop
             )

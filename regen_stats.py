@@ -3,27 +3,19 @@
 
 This is the single source of truth for all run statistics. Run after every
 analyst completion. stream.py reads the output; it never writes counters.
+
+Run files are JSON: analyst/runs/run_NNN.json with fields:
+  run, character, ascension, victory, floor, deck, relics, cause_of_death, etc.
 """
 
 import json
 import os
-import re
 import sys
 import tempfile
 from glob import glob
 
 RUNS_DIR = "analyst/runs"
 STATS_FILE = "data/run_stats.json"
-
-# Header pattern: ## Run N — Character ALevel, Outcome Floor F (optional annotation)
-HEADER_RE = re.compile(
-    r"^## Run (\d+)\s*[—–-]+\s*"        # Run number
-    r"(.*?)\s+A(\d+),\s*"                # Character + Ascension
-    r"(Victory|VICTORY|Defeat|Death|Quick Death)"  # Outcome
-    r"(?:\s+Floor\s+(\d+))?"             # Floor (optional for Quick Death)
-    r"(.*)$",                             # Rest of line (annotations)
-    re.IGNORECASE
-)
 
 # Baseline: runs that predate individual tracking. Extracted from summary files.
 # These are all deaths (no wins before run 147).
@@ -36,44 +28,21 @@ SUMMARY_COUNTS = {
 }
 
 
-def parse_character(raw: str) -> str:
-    """Normalize character name to game constant."""
-    raw = raw.strip()
-    if "silent" in raw.lower():
-        return "THE_SILENT"
-    if "ironclad" in raw.lower():
-        return "IRONCLAD"
-    if "defect" in raw.lower():
-        return "DEFECT"
-    if "watcher" in raw.lower():
-        return "WATCHER"
-    return raw.upper()
-
-
-def parse_run_file(path: str) -> dict | None:
-    """Parse a run_NNN.md file and return structured data."""
-    with open(path, encoding="utf-8") as f:
-        first_line = f.readline().strip()
-
-    m = HEADER_RE.match(first_line)
-    if not m:
-        print(f"  WARNING: Could not parse header in {path}: {first_line[:80]}", file=sys.stderr)
+def load_run_file(path: str) -> dict | None:
+    """Load a run_NNN.json file."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        # Minimal validation
+        if "run" not in data or "floor" not in data or "victory" not in data:
+            print(f"  WARNING: Missing required fields in {path}", file=sys.stderr)
+            return None
+        # Normalize character field to class for stats output
+        data.setdefault("class", data.get("character", "UNKNOWN"))
+        return data
+    except (json.JSONDecodeError, OSError) as e:
+        print(f"  WARNING: Could not read {path}: {e}", file=sys.stderr)
         return None
-
-    run_num = int(m.group(1))
-    character = parse_character(m.group(2))
-    ascension = int(m.group(3))
-    outcome = m.group(4).lower()
-    floor = int(m.group(5)) if m.group(5) else 0
-    victory = outcome == "victory"
-
-    return {
-        "run": run_num,
-        "floor": floor,
-        "victory": victory,
-        "class": character,
-        "ascension": ascension,
-    }
 
 
 def compute_baseline() -> int:
@@ -91,12 +60,12 @@ def compute_baseline() -> int:
 
 def main():
     # Parse all individual run files
-    run_files = sorted(glob(os.path.join(RUNS_DIR, "run_*.md")))
+    run_files = sorted(glob(os.path.join(RUNS_DIR, "run_*.json")))
     entries = []
     parse_errors = 0
 
     for path in run_files:
-        entry = parse_run_file(path)
+        entry = load_run_file(path)
         if entry:
             entries.append(entry)
         else:
@@ -113,18 +82,30 @@ def main():
     wins = sum(1 for e in entries if e["victory"])
     deaths = total_runs - wins  # baseline runs are all deaths
     best_floor = max((e["floor"] for e in entries), default=0)
-    best_ascension = max((e["ascension"] for e in entries), default=0)
+    best_ascension = max((e.get("ascension", 0) for e in entries), default=0)
 
     # Character stats from individual entries only
     char_stats = {}
     for e in entries:
-        cls = e["class"]
+        cls = e.get("class", e.get("character", "UNKNOWN"))
         if cls not in char_stats:
             char_stats[cls] = {"wins": 0, "best_floor": 0, "runs_tracked": 0}
         char_stats[cls]["runs_tracked"] += 1
         if e["victory"]:
             char_stats[cls]["wins"] += 1
         char_stats[cls]["best_floor"] = max(char_stats[cls]["best_floor"], e["floor"])
+
+    # floor_history for the overlay graph (slim entries only)
+    floor_history = [
+        {
+            "run": e["run"],
+            "floor": e["floor"],
+            "victory": e["victory"],
+            "class": e.get("class", e.get("character", "UNKNOWN")),
+            "ascension": e.get("ascension", 0),
+        }
+        for e in entries
+    ]
 
     # Preserve live game state from existing stats file if present
     live_state = {"current_floor": 0, "current_hp": 0, "max_hp": 0, "current_class": "?"}
@@ -146,7 +127,7 @@ def main():
         "baseline_runs": baseline_runs,
         "tracked_runs": individual_runs,
         **live_state,
-        "floor_history": entries,
+        "floor_history": floor_history,
         "character_stats": char_stats,
     }
 

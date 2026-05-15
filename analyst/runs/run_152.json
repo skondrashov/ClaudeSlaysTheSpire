@@ -1,0 +1,22 @@
+{
+  "run": 152,
+  "character": "THE_SILENT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 33,
+  "deck": "19 cards \u2014 Noxious Fumes+, Footwork+, After Image, Phantasmal Killer+, Piercing Wail+, Flechettes+, Sneaky Strike, Dagger Throw+, Backflip+, Cloak and Dagger+, Acrobatics+, Concentrate+, All-Out Attack+, Neutralize (Innate), Survivor, 4x Defend + Necronomicurse",
+  "relics": "Pocketwatch, Ring of the Snake, Kunai, Necronomicon, Ceramic Fish, Bloody Idol, Nunchaku, Bottled Flame, Matryoshka, Whetstone",
+  "cause_of_death": "The Collector, Floor 33. Failed to play After Image and Footwork+ in early turns -- both were in discard unplayed when Turn 4 triple debuff landed. Without defensive powers active, post-debuff incoming of 60-90 effective damage was unsurvivable at 20 HP.",
+  "key_moments": [
+    "Poison-through-block strategy crushed Spheric Guardian (89 block irrelevant).",
+    "Pocketwatch discipline excellent -- consistently played 3 or fewer cards to trigger +3 draw.",
+    "Refused Sssserpent gold despite shop nearby (net 100g missed).",
+    "Slavers elite took 35 HP despite strong deck.",
+    "Collector Turn 4 Vuln+Frail+Weak at 20 HP was lethal."
+  ],
+  "lessons": [
+    "Defensive powers (After Image, Footwork+) must be played in first 2 turns of Collector fight -- they are the Silent's answer to post-debuff crisis.",
+    "Curse-giving events should be evaluated against nearby shops for net-profit removal.",
+    "Split timing on slimes is a defensive tool -- splitting a slime about to attack prevents the incoming damage entirely."
+  ]
+}

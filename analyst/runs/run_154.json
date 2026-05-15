@@ -1,0 +1,24 @@
+{
+  "run": 154,
+  "character": "THE_SILENT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 16,
+  "deck": "16 cards \u2014 2x Footwork+, Dash+, Masterful Stab, Deflect, Backflip, Quick Slash, Neutralize+, Crippling Cloud, Setup+, Survivor, 2x Defend, Strike",
+  "relics": "Astrolabe, Art of War, Molten Egg",
+  "cause_of_death": "Hexaghost at 24/250 HP. 23-turn fight. Second Inferno (8x6=48) hit with hand of all Burns. Zero playable cards on final turn. Burns+ (12+ per turn) had accumulated to unsurvivable levels.",
+  "key_moments": [
+    "Astrolabe from Neow transformed 3 Strikes into 2x Footwork+ and Setup+ -- incredible defensive core but zero damage scaling.",
+    "Zero damage taken in 5/6 pre-boss hallway fights. Masterful Stab at 0E confirmed excellent in short fights.",
+    "Hexaghost fight: blocking was trivial (Dex 6 = Defend 11, Deflect 10, Dash+ 19, Survivor 14) but damage output was only ~10/turn average.",
+    "Masterful Stab cost escalated from 0E to 4-7E by Turn 12 due to Burns chip damage, becoming unplayable. Setup+ was used twice to reset its cost.",
+    "Crippling Cloud saved for first Inferno (Turn 16, reduced to 6x6=36). Neutralize+ used for ongoing Weak.",
+    "No poison scaling in deck -- Catalyst+, Deadly Poison, and Noxious Fumes were never offered or taken during Act 1 card rewards."
+  ],
+  "lessons": [
+    "Block without damage loses to Hexaghost -- 5th death confirms this pattern. Dex 6 blocks everything except Burns, which are unblockable end-of-turn damage.",
+    "Masterful Stab is a trap against Hexaghost -- Burns chip damage makes it unplayable by mid-fight. Created masterful-stab.md.",
+    "Silent has NO native Burns management (no Evolve, Fire Breathing, True Grit). Kill speed through poison scaling is the only answer.",
+    "Art of War encourages all-block turns but the fight demands mixed offense+defense -- anti-synergy with Hexaghost where damage output matters most."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "run": 145,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 44,
+  "deck": "23 cards \u2014 Bash+, Impervious, Wild Strike+, Whirlwind+, Immolate+, Armaments+, Inflame+, Rampage+, Feed+, Barricade+, Evolve+, 2x Metallicize(3+4), Bloodletting+, Headbutt, 3x Strike+, 3x Defend+",
+  "relics": "Burning Blood, Golden Idol, Ancient Tea Set, Mummified Hand, Sundial, Ectoplasm, Frozen Egg, Pantograph, Maw Bank, Omamori, Ceramic Fish, Gremlin Horn, Fusion Hammer",
+  "cause_of_death": "The Transient (Floor 44, Act 3). Impervious played Turn 1 against 30 damage (wasted). Turn 2: all attacks drawn, 0 block, took 40 unblocked (77->37). Turn 3: 50 incoming, 11 block max, died by 2 HP.",
+  "annotation": "NEW BEST FLOOR -- FIRST ACT 3!",
+  "key_moments": [
+    "FIRST run to beat BOTH Act 1 and Act 2 bosses. Guardian killed cleanly via Mode Shift cancellation (both 32-damage attacks cancelled). Collector killed at 5/282 HP with Rampage+ scaling.",
+    "Barricade+ (from Frozen Egg auto-upgrade) + 2x Metallicize (7 block/turn stacking) dominated Act 3 hallways. The Maw (300 HP) defeated at 0 damage taken.",
+    "Mummified Hand enabled 2-4 free plays per turn with 5 Powers in deck.",
+    "Feed gave +3 max HP on Orb Walker kill (77 max HP).",
+    "Ancient Writing event upgraded ALL Strikes and Defends (9 free upgrades).",
+    "Card index shifting bug caused Impervious to be accidentally played in Maw fight.",
+    "Third consecutive clean run -- no UI misplays."
+  ],
+  "lessons": [
+    "Impervious against Transient must be saved for Turn 3+ (50-70 damage). Turn 1 (30 damage) is handleable by Defend+ and block cards.",
+    "Barricade + 2x Metallicize is the strongest sustained defense engine observed -- makes Act 3 hallway fights trivial.",
+    "Mummified Hand is S-tier in Power-heavy decks (4-5 Powers).",
+    "Collector HP confirmed at 282.",
+    "Full HP heal confirmed between Act 2 and Act 3."
+  ]
+}

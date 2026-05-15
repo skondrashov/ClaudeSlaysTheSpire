@@ -1,0 +1,22 @@
+{
+  "run": 146,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 12,
+  "deck": "Strike x3, Defend x4, Bash+, Shockwave, Shrug It Off, Limit Break (dead \u2014 no Str source)",
+  "relics": "Burning Blood, Golden Idol, Bird-Faced Urn, Incense Burner",
+  "cause_of_death": "Gremlin Nob (elite F11). Entered at 43/80 (53%) with 7 Skills vs 4 Attacks. Forced to play Skills for survival on T5 (+4 Str to Nob). Died T7-T8 at 0 HP.",
+  "key_moments": [
+    "Sentries at F6 drained 52 HP (60->8) with near-starter deck \u2014 only 2 monster rooms before elite.",
+    "Golden Idol Smash cost 20 HP before Sentries (80->60), compounding crisis.",
+    "Limit Break from Neow was dead weight (0 Str entire run).",
+    "Clean execution otherwise: zero hallway damage in Cultist and Slime fights, correct Bash+ upgrade, good Strike removal."
+  ],
+  "lessons": [
+    "Do not path into elites with only 0-2 monster rooms beforehand \u2014 not enough fights to build a deck.",
+    "Golden Idol Smash before an elite is reckless \u2014 20 HP loss reduces elite survivability.",
+    "Limit Break as Neow rare is dead without a Str source.",
+    "Deck Attack/Skill ratio matters for Nob \u2014 7 Skills vs 4 Attacks makes most hands unplayable."
+  ]
+}

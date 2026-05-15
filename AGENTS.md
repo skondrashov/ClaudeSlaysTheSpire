@@ -147,15 +147,16 @@ Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overla
 
 Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.
 
+**Run log + stats are automatic.** When the run ends (GAME_OVER), stream.py writes `analyst/runs/run_NNN.json` from the game state and runs `regen_stats.py`. The overlay updates immediately. No orchestrator action needed for the run log.
+
 When the player finishes:
 1. Delete `data/player.lock`.
 2. Switch the overlay to agent mode (see below).
-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/runs/run_NNN.md`.
+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the event log, updates `playbook/` files. The run log is already written by stream.py — the analyst does NOT touch it.
 4. When analyst completes, switch overlay back to game mode.
-5. Regenerate stats: `python regen_stats.py` (rebuilds `data/run_stats.json` from `analyst/runs/`).
-6. Rebuild site: `python site/build.py`.
-7. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).
-8. Spawn the next player.
+5. Rebuild site: `python site/build.py`.
+6. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).
+7. Spawn the next player.
 
 Repeat until interrupted.
 
@@ -256,7 +257,7 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g
 
 ### Current state
 
-- Playing **The Silent** at Ascension 0
+- Playing **Defect** at Ascension 0 (first Defect runs — learning phase)
 - Strategist runs every 10 runs
 - 5 wins total (3 Ironclad, 2 Silent) at Ascension 0.
 

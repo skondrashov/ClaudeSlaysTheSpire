@@ -1,0 +1,22 @@
+{
+  "run": 127,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": false,
+  "floor": 23,
+  "deck": "Inflame+, Whirlwind+, Flame Barrier+, Shockwave, Offering, Bash+, Thunderclap, Intimidate, Pommel Strike, Headbutt, Shrug It Off, 4 Strikes, 4 Defends",
+  "relics": "Burning Blood, Preserved Insect, Regal Pillow, others",
+  "cause_of_death": "Slavers elite at Floor 23, entered at 19/80 HP (23%) with zero potions. Three enemies dealt lethal damage Turn 1 despite mass Weak+Vuln from Shockwave.",
+  "key_moments": [
+    "Strong Act 1 -- beat Slime Boss cleanly with Whirlwind+ AOE, met 3/4 readiness criteria (Str, AOE, block scaling).",
+    "Snecko fight at F22 drained HP to 19 via Confusion + Vulnerable combo; smart Duplication Potion play on 0-cost Strike under Confusion saved the fight.",
+    "Forced elite at F23 with no potions and 23% HP. Turn 1 played Shockwave (2E) + Pommel Strike (1E) for damage instead of Shockwave + Defend for 5 block. Died to combined Weakened damage.",
+    "No healing card (Reaper/Feed) offered entire run -- 5th run in 7 with healing RNG denial."
+  ],
+  "lessons": [
+    "Block-first at critical HP -- Defend over damage when sub-30% HP.",
+    "Healing RNG denial is the most persistent failure pattern.",
+    "Confusion + Duplication Potion synergy confirmed (target 0-cost cards).",
+    "Slavers HP data: ~36 HP per Slaver (with Preserved Insect -25%, base ~48)."
+  ]
+}

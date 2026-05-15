@@ -1,0 +1,26 @@
+{
+  "run": 147,
+  "character": "IRONCLAD",
+  "ascension": 0,
+  "victory": true,
+  "floor": 51,
+  "deck": "22 cards \u2014 Bash+, Immolate+, Heavy Blade (upgraded to + via Blessing of the Forge in Automaton fight), Impervious x2, Spot Weakness+, Limit Break, Dual Wield+, Evolve, Rampage, Headbutt+, Anger+, Cleave, Flame Barrier, Metallicize, Shrug It Off, Strike x2, Defend x3",
+  "relics": "Burning Blood, Omamori, Anchor, Dream Catcher, Busted Crown (Act 1 boss), Maw Bank, Toy Ornithopter, Nunchaku, Paper Phrog, Champion Belt, Sling of Courage, Snecko Eye (Act 2 boss), Regal Pillow, Whetstone, Bag of Marbles, Maw Bank",
+  "victory_info": "Donu and Deca (Act 3 Boss), Floor 51, Score 652, Final HP 31/80",
+  "annotation": "FIRST WIN EVER",
+  "key_moments": [
+    "Neow's Lament gave 3 free fights -- built deck safely. Living Wall upgraded Bash at F3 for free. Immolate from F11 card reward was the run-defining pickup.",
+    "Lagavulin elite defeated in 5 turns taking only 16 damage -- Spot Weakness+ + Headbutt recycling Bash+ for Vuln.",
+    "Slime Boss defeated cleanly -- Immolate+ and Evolve handled the split phase. Took Impervious from boss card reward + Busted Crown (4E) as boss relic.",
+    "Book of Stabbing elite (Act 2) defeated at 57% HP using Immolate+ burst. Headbutt top-decked Immolate+ for 48 Vuln damage Turn 4. Took Limit Break from Dream Catcher + Maw Bank.",
+    "Bronze Automaton defeated at 80/80 HP. Essence of Steel + Blessing of the Forge potions. Str scaled to 16 via Spot Weakness+ x2 + Limit Break. Heavy Blade+ dealt 94 damage in a single play. Took Snecko Eye as Act 2 boss relic -- the single most impactful decision in the run.",
+    "Donu and Deca defeated in 6 turns. Immolate+ at 0E from Snecko on Turn 1. Dual Wield+ copied Immolate+ twice for TRIPLE 34 AOE (102 damage) on Turn 4. Limit Break doubled Str 6 to 12. Heavy Blade 50-damage finisher on Deca. 3 potion uses healed 15 HP via Toy Ornithopter during the boss fight."
+  ],
+  "lessons": [
+    "Snecko Eye + high-cost Str-scaling deck = the winning formula. Draw 7 cards with 0-cost rolls on Immolate+ and Heavy Blade is game-breaking.",
+    "Toy Ornithopter patched the healing gap when Reaper/Feed never appeared -- 3 potion uses = 15 HP in the final boss fight.",
+    "Dual Wield+ on Immolate+ is the strongest offensive combo observed (102 AOE in one turn).",
+    "Full HP entry at every boss (Slime Boss 80/80, Automaton 80/80, Donu+Deca 80/80) was enabled by Regal Pillow (+15 rest healing) and smart pathing.",
+    "Zero UI misplays -- fifth consecutive clean run. Both boss relics collected, all chests opened, shops browsed."
+  ]
+}

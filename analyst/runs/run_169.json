@@ -1,0 +1,21 @@
+{
+  "run": 169,
+  "character": "THE_SILENT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 33,
+  "deck": "[Envenom+, Infinite Blades, Blade Dance+, Finisher+, Backflip+, Crippling Cloud, Panache, Well-Laid Plans+, Noxious Fumes, Deadly Poison, Cloak and Dagger+, Neutralize+, Slice, 4x Defend+, 2x Strike+, Survivor, Escape Plan+]",
+  "relics": "[Ring of the Snake, Kunai, Cursed Key, Lantern]",
+  "cause_of_death": "Infrastructure failure \u2014 CommunicationMod stdin/stdout pipe froze mid-combat against The Collector (Act 2 boss). Not a gameplay death.",
+  "key_moments": [
+    "Built strong Envenom+ / Shiv / Infinite Blades poison engine",
+    "Had 8 Dexterity from Kunai scaling during Collector fight",
+    "The Collector was at 165/282 HP with 18 poison stacked when communication froze",
+    "Relay could read cached state but could not send commands \u2014 game process alive but mod deadlocked"
+  ],
+  "lessons": [
+    "No gameplay lessons \u2014 this was an infrastructure failure, not a strategic mistake",
+    "CommunicationMod has no \"continue\" command to resume saved games, making mid-run recovery impossible",
+    "The deck and strategy were strong \u2014 Envenom + Shivs + Kunai is an effective Silent archetype"
+  ]
+}

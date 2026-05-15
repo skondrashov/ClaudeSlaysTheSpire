@@ -1,0 +1,28 @@
+{
+  "run": 161,
+  "character": "THE_SILENT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 22,
+  "deck": "~20 cards \u2014 Neutralize, Survivor, Backstab, Skewer, Leg Sweep, Terror, Deadly Poison, Catalyst, Malaise, Piercing Wail, Piercing Wail+, Footwork, Deflect, Dagger Throw, Strike x3, Defend x3 + Plated Armor 3 (from relic)",
+  "relics": "Slavers Collar (Neow), Centennial Puzzle, Sozu (Act 1 boss), Medical Kit, others",
+  "cause_of_death": "Sentry + Spheric Guardian at Floor 22 (Unknown room resolved as combat). Entered at 15/70 HP (21%) with zero potions (Sozu). Survived 5 turns via poison through Barricade, precise block math, and Piercing Wail negation. Turn 6: 3 HP, drew only 2 Defends = 10 block vs SG's 10x2 = 20 incoming. 10 unblocked damage at 3 HP = lethal.",
+  "key_moments": [
+    "Hexaghost Act 1 boss killed cleanly with Skewer burst (4E = 36 Vulnerable damage) + Energy Potion + Attack Potion for Dagger Spray. Leg Sweep blocked Inferno perfectly. Clean boss kill.",
+    "Sozu taken as Act 1 boss relic over Busted Crown. Reasoning: +1E enables Skewer burst, card rewards keep full 3 choices. 3rd Silent death with Sozu active.",
+    "Centurion+Mystic fight (F21) drained 24 HP (39->15) over 10 turns despite correct target priority (Mystic first) and Malaise X=2 on Centurion. Piercing Wail+ exhausted on Centurion 8x3 multi-hit (saved 10+ HP but card lost before boss). New Piercing Wail taken from card reward post-fight.",
+    "Player chose Unknown room at F22 with 15/70 HP (21%) reasoning \"MUST avoid combat. Unknown/event room is safer.\" This DIRECTLY CONTRADICTS the playbook rule: \"Unknown rooms are NOT safe in Act 2\" and \"At below 30% HP, Unknown rooms are lethal.\" The run died because of this pathing decision.",
+    "In the Sentry+SG fight, combat execution was excellent: Turn 1 stripped Sentry Artifact via Neutralize, Terror applied 99 Vuln, Backstab+Leg Sweep dealt 29 damage. Turn 2 Piercing Wail zeroed Sentry beam. Turn 3 all-block survival (4x Defend = 20 vs 20 at 3 HP -- exact). Turn 4 killed Sentry, Deadly Poison through 65+ Barricade block. Turn 5 survived via Deflect+Survivor. Turn 6 drew insufficient block cards.",
+    "Catalyst bought at shop (F20) for Collector boss prep -- never reached the boss.",
+    "Malaise taken from Hexaghost boss card reward -- excellent pickup, used effectively on Centurion.",
+    "Piercing Wail+ spent on Centurion fight saved 10 HP but left no AoE Str reduction for the SG fight."
+  ],
+  "lessons": [
+    "**Sozu is a trap for the Silent** -- 3rd death with Sozu. A single potion on Turn 6 would have saved the run. Updated sozu.md.",
+    "**Unknown rooms at <30% HP = death.** 4th Unknown room combat death. Player ignored playbook rule. Strategy.md reinforced with explicit language.",
+    "**Piercing Wail+ is a finite resource** -- exhausting it on a hallway fight leaves nothing for subsequent encounters. The replacement (unupgraded Piercing Wail from card reward) was available but weaker (-6 vs -8).",
+    "**55% HP entry into Centurion+Mystic is technically survivable but strategically fatal** -- the 24 HP drain left 21% for remaining floors. The 60% threshold is the minimum for a reason.",
+    "**Poison through Barricade works** -- Deadly Poison applied 5 poison through 65+ block, ticking damage each turn. This is the correct Silent approach to Spheric Guardian.",
+    "**Sentry + Spheric Guardian Dazed+Barricade combo** documented -- Dazed clogs draws, reducing block density while Barricade accumulates unimpeded."
+  ]
+}
