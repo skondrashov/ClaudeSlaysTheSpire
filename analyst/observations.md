@@ -216,6 +216,18 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 
 - **Sentry elite without AOE -- Silent approach**: Run 160 killed all 3 Sentries in 12 turns taking only 10 damage total. Strategy: focus-fire one outer Sentry at a time. Backstab + 2 Strikes = near-kill on Turn 1. Without AOE, the fight is longer but manageable with 4-5 energy. Dazed cards from Bolt turns exhaust via Ethereal and can be discarded with Survivor. Compare to Ironclad without AOE (Run 141: 20 turns, 56 HP drain with starter deck).
 
+- **Glass Knife damage degradation within combat (1st precise observation)**: Glass Knife deals 8x2=16 damage on first play, 6x2=12 on second play, 4x2=8 on third play. Each subsequent use reduces per-hit damage by 2 (8 -> 6 -> 4). In a 16-turn Hexaghost fight, Glass Knife was played 3 times for 16+12+8=36 total damage across 3 plays (~12 average). Strong burst card for short fights but diminishing value in long fights. One precise observation of the degradation pattern.
+
+- **Smoke Bomb does not work in boss fights (1st confirmed observation)**: Player attempted to use Smoke Bomb (`potion use 1`) on Turn 16 of Hexaghost fight at 7 HP. The escape did not work. Smoke Bomb is restricted to non-boss encounters. PROMOTED to hexaghost.md.
+
+- **Piercing Wail Inferno negation math (PROMOTED to hexaghost.md)**: Piercing Wail (-6 Str) + Hexaghost base Inferno (2x6) = each hit becomes 0 damage (2-6 = negative, floored at 0). Complete Inferno negation. Saving Piercing Wail for Inferno saves 36+ HP. Spending it on Nob saved ~9 HP. Net trade: -27 HP. Promoted to hexaghost.md and gremlin-nob.md.
+
+- **Silent Hexaghost death pattern (6th confirmed)**: Six Silent deaths from insufficient Hexaghost damage output across 18 Silent runs. Decks without poison or damage amplifiers consistently die between Turn 13-23. Defensive excellence (Dex scaling, Backflip, Leg Sweep) is necessary but not sufficient. Poison or amplifiers are the kill condition. PROMOTED to hexaghost.md.
+
+- **Shop translation mismatch (recurring)**: Run 168 shop: player reasoned "Piercing Wail for 50g" but translated field shows "Buy Infinite Blades". Another instance of the known shop display/logging issue where the translated field shows the wrong card name but the correct purchase executes. Low priority.
+
+- **Hexaghost Divider hit count at 70 Max HP**: Player calculated Turn 2 Divider as "5x6" but at 70 Max HP, the formula yields floor(70/12)+1 = 6 hits of 6 = 36 base damage. With Weak (per-hit floor): 6 * floor(6*0.75) = 6*4 = 24. The block happened to be exactly 24 (Block Potion 12 + Dash 12), so the outcome was correct despite the wrong prediction. Non-fatal arithmetic error -- monitor for recurrence. Playbook already documents the correct formula.
+
 ## Open Questions
 
 - Face Trader event options and outcomes
