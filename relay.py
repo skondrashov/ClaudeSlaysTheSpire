@@ -30,6 +30,9 @@ import time
 HOST = "127.0.0.1"
 PORT = 19284
 STATE_FILE = os.path.join(os.path.dirname(__file__), "data", "last_state.json")
+RUNS_DIR = os.path.join(os.path.dirname(__file__), "analyst", "runs")
+STATS_FILE = os.path.join(os.path.dirname(__file__), "data", "run_stats.json")
+game_over_handled = False  # Only write run log once per run
 
 # How long stdin_reader waits for a client command before sending a
 # keep-alive "state" to CommunicationMod. Lower = more responsive to game
@@ -47,6 +50,56 @@ lock = threading.Lock()
 
 def log(msg):
     print(f"[relay] {msg}", file=sys.stderr, flush=True)
+
+
+def _get_run_number():
+    """Get the next run number from run_stats.json."""
+    try:
+        with open(STATS_FILE) as f:
+            return json.load(f).get("total_runs", 0) + 1
+    except (FileNotFoundError, json.JSONDecodeError):
+        return 1
+
+
+def _write_run_log(gs, victory):
+    """Write structured run log to analyst/runs/run_NNN.json from game state."""
+    run_number = _get_run_number()
+    os.makedirs(RUNS_DIR, exist_ok=True)
+
+    deck = [c.get("name", "?") for c in gs.get("deck", [])]
+    relics = [r.get("name", "?") for r in gs.get("relics", [])]
+    potions = [p.get("name", "Empty") for p in gs.get("potions", []) if p.get("name")]
+
+    run_data = {
+        "run": run_number,
+        "character": gs.get("class", "UNKNOWN"),
+        "ascension": gs.get("ascension_level", 0),
+        "victory": victory,
+        "floor": gs.get("floor", 0),
+        "deck": deck,
+        "relics": relics,
+        "potions": potions,
+        "gold": gs.get("gold", 0),
+        "hp": gs.get("current_hp", 0),
+        "max_hp": gs.get("max_hp", 0),
+        "seed": gs.get("seed"),
+    }
+
+    path = os.path.join(RUNS_DIR, f"run_{run_number:03d}.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(run_data, f, indent=2)
+    log(f"Wrote run log: {path}")
+
+    # Regenerate stats
+    import subprocess
+    try:
+        regen = os.path.join(os.path.dirname(__file__), "regen_stats.py")
+        subprocess.run([sys.executable, regen],
+                       cwd=os.path.dirname(__file__) or ".",
+                       timeout=10, capture_output=True)
+        log(f"Stats regenerated for run {run_number}")
+    except Exception as e:
+        log(f"Stats regen failed: {e}")
 
 
 def stdin_reader():
@@ -89,7 +142,23 @@ def stdin_reader():
         if is_error:
             log(f"Error from game: {state.get('error', '?')}")
         else:
-            log(f"State received: screen={state.get('game_state', {}).get('screen_type', '?')}")
+            gs = state.get("game_state", {})
+            screen = gs.get("screen_type", "?")
+            log(f"State received: screen={screen}")
+
+            # Write run log on GAME_OVER (relay sees every state — no race)
+            global game_over_handled
+            if screen == "GAME_OVER" and not game_over_handled:
+                game_over_handled = True
+                ss = gs.get("screen_state", {})
+                victory = ss.get("victory", False)
+                try:
+                    _write_run_log(gs, victory)
+                except Exception as e:
+                    log(f"Failed to write run log: {e}")
+            elif screen != "GAME_OVER" and game_over_handled:
+                # Reset for next run
+                game_over_handled = False
 
         # Signal that we have at least one state (for initial state requests)
         state_ready.set()

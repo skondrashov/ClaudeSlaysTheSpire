@@ -71,11 +71,15 @@
 
 - [Compile Driver](compile-driver.md)
 - [Sweeping Beam](sweeping-beam.md)
+- [Cold Snap](cold-snap.md)
+- [Barrage](barrage.md)
 
 ## Defect Skill Cards
 
 - [Coolheaded](coolheaded.md)
 - [Leap](leap.md)
+- [Fission](fission.md)
+- [Aggregate](aggregate.md)
 
 ## Colorless Cards
 

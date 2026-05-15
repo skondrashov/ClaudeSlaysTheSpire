@@ -374,6 +374,338 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run logs to JSON + auto-write on GAME_OVER</div>
+      <div class="changelog-sha">384d9b62</div>
+    </div>
+    <div class="changelog-date">2026-05-15</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
+<div class="diff-hunk">@@ -147,15 +147,16 @@ Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overla</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**Run log + stats are automatic.** When the run ends (GAME_OVER), stream.py writes `analyst/runs/run_NNN.json` from the game state and runs `regen_stats.py`. The overlay updates immediately. No orchestrator action needed for the run log.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> When the player finishes:</div>
+<div class="diff-ctx"> 1. Delete `data/player.lock`.</div>
+<div class="diff-ctx"> 2. Switch the overlay to agent mode (see below).</div>
+<div class="diff-del">-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/runs/run_NNN.md`.</div>
+<div class="diff-add">+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the event log, updates `playbook/` files. The run log is already written by stream.py — the analyst does NOT touch it.</div>
+<div class="diff-ctx"> 4. When analyst completes, switch overlay back to game mode.</div>
+<div class="diff-del">-5. Regenerate stats: `python regen_stats.py` (rebuilds `data/run_stats.json` from `analyst/runs/`).</div>
+<div class="diff-del">-6. Rebuild site: `python site/build.py`.</div>
+<div class="diff-del">-7. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
+<div class="diff-del">-8. Spawn the next player.</div>
+<div class="diff-add">+5. Rebuild site: `python site/build.py`.</div>
+<div class="diff-add">+6. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
+<div class="diff-add">+7. Spawn the next player.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Repeat until interrupted.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -256,7 +257,7 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Current state</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- Playing **The Silent** at Ascension 0</div>
+<div class="diff-add">+- Playing **Defect** at Ascension 0 (first Defect runs — learning phase)</div>
+<div class="diff-ctx"> - Strategist runs every 10 runs</div>
+<div class="diff-ctx"> - 5 wins total (3 Ironclad, 2 Silent) at Ascension 0.</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
+<div class="diff-hunk">@@ -41,29 +41,9 @@ Each subdirectory has an `_index.md` listing all entries. Update it when adding</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> 6. **Adding new entries.** To add a new card/enemy/etc., create a new file in the appropriate subdirectory and update the `_index.md`.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-### `analyst/runs/run_NNN.md` — Individual run files</div>
+<div class="diff-add">+### `analyst/runs/run_NNN.json` — Written automatically by stream.py</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Create one file per run in `analyst/runs/`. Filename: `run_NNN.md` where NNN is the run number, zero-padded to 3 digits (e.g., `run_169.md`).</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-The header line format is **machine-parsed by `regen_stats.py`** — follow it exactly:</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-```</div>
+<div class="diff-del">-## Run N — Character AscensionLevel, Outcome Floor F</div>
+<div class="diff-del">-DECK: [notable cards]</div>
+<div class="diff-del">-RELICS: [notable relics]</div>
+<div class="diff-del">-CAUSE OF DEATH: [what killed it] / VICTORY: [boss beaten]</div>
+<div class="diff-del">-KEY MOMENTS: [numbered list]</div>
+<div class="diff-del">-LESSONS: [numbered list]</div>
+<div class="diff-del">-```</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-- Character: `Ironclad`, `The Silent`, `Defect`, or `Watcher`</div>
+<div class="diff-del">-- AscensionLevel: e.g., `A0`, `A1`</div>
+<div class="diff-del">-- Outcome: `Victory`, `Defeat`, or `Death`</div>
+<div class="diff-del">-- Floor: the floor number reached</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-Example: `## Run 169 — The Silent A0, Defeat Floor 23`</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-**Do NOT append to `analyst/run_log.md`** — it is deprecated. Write `analyst/runs/run_NNN.md` instead.</div>
+<div class="diff-add">+The run log is a JSON file written programmatically from game state when the run ends. It contains the structured facts: character, ascension, victory/defeat, floor, deck, relics, potions, gold, HP, seed. **Do NOT create, modify, or overwrite it.** Read it for context about the run.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### `analyst/observations.md` — Uncertain items</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
+<div class="diff-hunk">@@ -1,10 +1,13 @@</div>
+<div class="diff-ctx"> # Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## Starter Cards</div>
+<div class="diff-add">+## Universal Starter Cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Strike](strike.md) (all characters)</div>
+<div class="diff-add">+- [Defend](defend.md) (all characters)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Ironclad Starter Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- [Strike](strike.md)</div>
+<div class="diff-del">-- [Defend](defend.md)</div>
+<div class="diff-ctx"> - [Bash](bash.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Attack Cards</div>
+<div class="diff-hunk">@@ -59,6 +62,21 @@</div>
+<div class="diff-ctx"> - [Accuracy](accuracy.md)</div>
+<div class="diff-ctx"> - [Phantasmal Killer](phantasmal-killer.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Defect Starter Cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Zap](zap.md)</div>
+<div class="diff-add">+- [Dualcast](dualcast.md)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Defect Attack Cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Compile Driver](compile-driver.md)</div>
+<div class="diff-add">+- [Sweeping Beam](sweeping-beam.md)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Defect Skill Cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Coolheaded](coolheaded.md)</div>
+<div class="diff-add">+- [Leap](leap.md)</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Colorless Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Apotheosis](apotheosis.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/compile-driver.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Compile Driver (1E, Attack, 7 damage + Draw 1 per orb slot filled | +: 10 damage + Draw 1 per orb slot filled)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Attack. Deals 7 damage and draws 1 card for each orb currently channeled.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Multi-purpose Attack that provides both damage and card draw. With 3 orbs channeled, it draws 3 cards for 1E while dealing 7 damage -- excellent value. The draw scales with orb count, rewarding orb-heavy builds. As an Attack card, it is safe against Gremlin Nob.</div>
+<div class="diff-add">+DECISION POINTS: Best played when orbs are channeled. With 0 orbs, it is just a 7-damage Strike equivalent. With 3+ orbs, it becomes one of the best draw engines available. Channel orbs before playing Compile Driver to maximize draw.</div>
+<div class="diff-add">+UPGRADE: 7 -&gt; 10 damage. The damage increase is useful but the draw is the primary value.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EARLY DEFECT PRIORITY: High. The Defect&#x27;s starting deck is extremely Skill-heavy (7 Skills vs 3 Attacks). Compile Driver is an Attack that also draws cards -- it addresses both the Attack deficit and the need for deck cycling. Take it when offered in Act 1.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/coolheaded.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Coolheaded (1E, Skill, Channel 1 Frost, Draw 1 | +: Channel 1 Frost, Draw 2)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Skill. Channels 1 Frost orb and draws 1 card (2 cards upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Defensive cycling card. Frost orb provides 2 passive block per turn (more with Focus). The draw replaces itself in hand, making it a net-positive play for card flow. Upgraded Coolheaded+ draws 2 cards, making it one of the best cycling cards in the Defect&#x27;s pool.</div>
+<div class="diff-add">+DECISION POINTS: Play early in the turn to cycle into better cards. The Frost orb provides ongoing block value for the rest of combat.</div>
+<div class="diff-add">+UPGRADE: Draw 1 -&gt; Draw 2. High upgrade priority -- the extra draw significantly improves hand quality.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NOB WARNING: Coolheaded is a Skill card. It triggers Gremlin Nob&#x27;s Enrage. Against Nob, do NOT play Coolheaded unless you need the draw to find a lethal Attack.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/dualcast.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Dualcast (1E, Skill, Evoke your front orb twice | +: 0E)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect starter card. Evokes the frontmost orb slot twice, triggering its evoke effect two times.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Burst damage (Lightning: 8x2 = 16 damage) or burst block (Frost: 5x2 = 10 block) for 1E. Excellent finisher when a Lightning orb is in the front slot. With Focus scaling, evoke values increase, making Dualcast scale multiplicatively.</div>
+<div class="diff-add">+DECISION POINTS: Only valuable when an orb is channeled. With an empty orb slot, Dualcast does nothing. Plan orb channeling before using Dualcast -- channel a Lightning orb with Zap (0E) then Dualcast it for 16 damage.</div>
+<div class="diff-add">+UPGRADE: 1E -&gt; 0E. Massive upgrade -- free double evoke. Upgrade priority is high for the Defect.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NOB WARNING: Dualcast is a Skill card. It triggers Gremlin Nob&#x27;s Enrage. Against Nob, only play Dualcast if the evoke damage justifies the +2 Str cost (e.g., killing Nob that turn).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/leap.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Leap (1E, Skill, Gain 9 Block | +: Gain 12 Block)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Skill. Provides 9 block (12 upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Straightforward block card. 9 block for 1E is good value (better than Defend&#x27;s 5 block). Fills the Defect&#x27;s need for reliable turn-by-turn block before Frost orbs + Focus are online.</div>
+<div class="diff-add">+DECISION POINTS: Play when you need block. No special mechanics.</div>
+<div class="diff-add">+UPGRADE: 9 -&gt; 12 block. Decent upgrade but lower priority than Focus cards or Coolheaded.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NOTE: Leap is a Skill card. It triggers Gremlin Nob&#x27;s Enrage. Against Nob, only play if survival requires it (incoming damage &gt; remaining HP).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/sweeping-beam.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Sweeping Beam (1E, Attack, 6 damage to ALL enemies + Draw 1 | +: 9 damage to ALL enemies + Draw 1)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Attack. Deals 6 AOE damage and draws 1 card.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: The Defect&#x27;s best early AOE option. Hits all enemies and replaces itself with a draw. Fills the AOE gap that every character needs for multi-enemy fights (Gremlin Gang, Louse pairs, Act 2 multi-fights). As an Attack, it is safe against Gremlin Nob.</div>
+<div class="diff-add">+DECISION POINTS: Always play in multi-enemy fights for the AOE. In single-enemy fights, it functions as a 6-damage Attack with a draw -- slightly below Strike in damage but the draw makes it net-positive.</div>
+<div class="diff-add">+UPGRADE: 6 -&gt; 9 damage AOE. Solid improvement for multi-enemy fights.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EARLY DEFECT PRIORITY: High. Addresses the Defect&#x27;s Attack deficit and provides AOE damage, which is a critical gap for Act 1 Slime Boss and Act 2 multi-enemy fights.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/zap.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Zap (0E, Skill, Channel 1 Lightning | +: Channel 1 Lightning for 0E)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect starter card. Channels 1 Lightning orb for 0 energy.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Free orb channel every time it&#x27;s drawn. Lightning orb deals 3 passive damage at end of turn (or 8 on evoke). At 0E, it never competes with other plays for energy.</div>
+<div class="diff-add">+DECISION POINTS: Always play Zap when drawn -- it costs 0E and generates value. The only exception is Gremlin Nob, where Zap is a Skill and triggers Enrage (+2 Str). Against Nob, do NOT play Zap.</div>
+<div class="diff-add">+UPGRADE: No functional change at base (still 0E, still channels 1 Lightning). Upgrade priority is low compared to other Defect cards.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NOB WARNING: Zap is a Skill card. It triggers Gremlin Nob&#x27;s Enrage. Defect&#x27;s starting deck already has 7 Skills vs 3 Attacks -- Zap being a Skill (not an Attack) is a key reason Nob is the Defect&#x27;s worst elite matchup.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-nob.md</div>
+<div class="diff-hunk">@@ -17,3 +17,5 @@ AVOID: ANY Skill card. The difference is massive: zero Skills = clean kill, 3 Sk</div>
+<div class="diff-ctx"> DECK COMPOSITION WARNING: Before pathing into a potential Nob fight, count Attacks vs Skills in the deck. If the deck has more Skills than Attacks (e.g., 7 Skills vs 4 Attacks), most hands will contain 3-4 Skills and only 1-2 Attacks. Even with perfect discipline (play only Attacks, discard Skills), the kill takes 7+ turns because each hand only has 1-2 playable cards. By Turn 5-6, Nob&#x27;s scaling makes incoming damage 20-30+, and the player is forced to play Skills for survival, compounding the Str gain. A Skill-heavy deck makes Nob a near-unwinnable fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> SILENT-SPECIFIC WARNING: The Silent&#x27;s starter deck and most early picks (Defend x5, Survivor, Backflip, Leg Sweep, Piercing Wail, Blade Dance) are Skills. A typical early Silent deck has 9+ Skills vs 5 Attacks. Even &quot;careful&quot; play forces 5-7 Skill triggers across a 7-turn fight because: (a) pure-Attack hands are rare (2-3 Attacks in 5-card draw), (b) survival requires playing block Skills when Nob attacks for 20+, (c) Blade Dance generates Shiv Attacks but is itself a Skill that triggers Enrage. Confirmed: a Silent deck at full HP played 7 Skills across 7 turns, giving Nob +14 Str, costing 28 HP. When Hexaghost is the boss, do NOT waste Piercing Wail on Nob -- save it for Inferno. Use Strength Potion, Explosive Potion, or Fire Potion for Nob damage instead of Skill-based defense.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEFECT-SPECIFIC WARNING: The Defect has the most Skill-heavy starting deck of any character: 6 Skills (4 Defend + Zap + Dualcast) vs 4 Attacks (4 Strike). Adding Coolheaded (a common early pickup) makes it 7 Skills vs 4 Attacks. Both Zap (0E) and Dualcast (1E) are Skills that trigger Enrage. Gremlin Nob is the Defect&#x27;s WORST elite matchup. Do NOT path into a Nob fight unless the deck has picked up multiple Attack cards (Compile Driver, Sweeping Beam, Ball Lightning, etc.) to rebalance the ratio. Even with Horn Cleat providing 14 free block on Turn 2, the fight drains most of the Defect&#x27;s HP at early floors.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/mechanics.md</div>
+<div class="diff-hunk">@@ -4,6 +4,50 @@ Core game systems and how they interact.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Defect Orb Mechanics</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Defect channels orbs into orb slots. Orbs provide passive effects at end of turn and stronger evoke effects when removed.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Orb Types</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+| Orb | Passive (end of turn) | Evoke (when removed) | Notes |</div>
+<div class="diff-add">+|---|---|---|---|</div>
+<div class="diff-add">+| **Lightning** | 3 damage to random enemy | 8 damage to random enemy | Primary damage orb. Passive targets random enemy. |</div>
+<div class="diff-add">+| **Frost** | 2 Block | 5 Block | Primary defensive orb. Passive block applies every turn. |</div>
+<div class="diff-add">+| **Dark** | Gains damage equal to 6 + Focus each turn | Deals accumulated damage to lowest HP enemy | Scaling damage orb. Grows each turn it stays channeled. |</div>
+<div class="diff-add">+| **Plasma** | Gain 1 Energy | Gain 2 Energy | Energy generation. Rare but powerful. |</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Channeling and Evoking</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Channel**: Add an orb to the rightmost empty slot. If all slots are full, the leftmost orb is **evoked** (triggering its evoke effect) to make room.</div>
+<div class="diff-add">+- **Evoke**: Remove the frontmost (leftmost) orb, triggering its evoke effect. Dualcast evokes the front orb twice.</div>
+<div class="diff-add">+- **Orb Slots**: The Defect starts with 3 orb slots. Some cards/relics add more slots (Capacitor). More slots = more passive effects per turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Focus</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Focus is the Defect&#x27;s core scaling stat (equivalent to Strength for damage or Dexterity for block, but for orbs).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Each point of Focus increases ALL orb passive AND evoke values.</div>
+<div class="diff-add">+- Lightning with Focus 2: passive = 3+2 = 5 damage, evoke = 8+2 = 10 damage.</div>
+<div class="diff-add">+- Frost with Focus 2: passive = 2+2 = 4 block, evoke = 5+2 = 7 block.</div>
+<div class="diff-add">+- Focus sources: Defragment (+1 Focus permanent), Consume (+2 Focus but lose 1 orb slot), Inserter (relic, +1 orb slot every other turn).</div>
+<div class="diff-add">+- **Focus is the Defect&#x27;s #1 scaling priority.** Without Focus, orb passive values are too low to scale into Act 2. Defragment should be taken whenever offered.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Cracked Core (Defect Starter Relic)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Channels 1 Lightning orb at the start of each combat. Provides guaranteed passive Lightning damage from Turn 1. Replaces once any orb is channeled manually (the first orb channeled triggers Cracked Core&#x27;s replacement).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Defect Starting Deck Composition</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- 4 Strike (Attack, 1E, 6 damage)</div>
+<div class="diff-add">+- 4 Defend (Skill, 1E, 5 block)</div>
+<div class="diff-add">+- 1 Zap (Skill, 0E, Channel 1 Lightning)</div>
+<div class="diff-add">+- 1 Dualcast (Skill, 1E, Evoke front orb twice)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Skill-to-Attack ratio: 6 Skills vs 4 Attacks.** Adding Coolheaded (common pickup) makes it 7:4. This is the most Skill-heavy starting deck of any character, making Gremlin Nob the Defect&#x27;s worst elite matchup.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+---</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Damage Formula</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Base formula: `floor((card_base_damage + strength) * multipliers)`</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
+<div class="diff-hunk">@@ -1,9 +1,10 @@</div>
+<div class="diff-ctx"> # Relics</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## Starter Relic</div>
+<div class="diff-add">+## Starter Relics</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- [Burning Blood](burning-blood.md)</div>
+<div class="diff-add">+- [Burning Blood](burning-blood.md) (Ironclad)</div>
+<div class="diff-add">+- [Cracked Core](cracked-core.md) (Defect)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Common Relics</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/cracked-core.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Cracked Core (Defect Starter Relic)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: At the start of each combat, Channel 1 Lightning orb.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+HOW IT CHANGES DECISIONS: Provides a guaranteed Lightning orb from Turn 1 of every fight without spending a card play or energy. The Lightning orb deals 3 passive damage at end of turn. Combined with Zap (0E, channel another Lightning), the Defect can have 2 Lightning orbs passively dealing 6 damage per turn from Turn 1.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+VALUE: The Defect&#x27;s equivalent of Burning Blood (Ironclad) or Ring of the Snake (Silent). Provides guaranteed baseline value in every combat. The free Lightning orb also means Dualcast always has a target on Turn 1 (16 burst damage if used immediately).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NOTE: If Cracked Core is swapped for a boss relic (e.g., via Neow), the Defect loses the guaranteed Turn 1 Lightning orb. This removes passive damage and makes Dualcast dead on Turn 1 unless another orb is channeled first.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -1,8 +1,8 @@</div>
+<div class="diff-ctx"> # Strategy</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-High-level strategic principles for Ironclad runs.</div>
+<div class="diff-add">+High-level strategic principles across all characters.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (168 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-168). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.</div>
+<div class="diff-add">+**CURRENT STATUS (170 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-169). One Defect run (Run 170, first ever, died Floor 7). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-hunk">@@ -599,3 +599,38 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> 6. **Healing RNG denial** -- 7 of last 9 runs with no Reaper/Feed offered. Not directly addressable, but Full Block reduces the need for healing by preventing HP loss in the first place.</div>
+<div class="diff-ctx"> 7. **Brimstone anti-synergy** -- 2 deaths from Brimstone + Book of Stabbing.</div>
+<div class="diff-ctx"> 8. **Deck building window closes at Floor 15** -- missing criteria after F15 cannot be filled. Act 1 tier list + boss drafting should improve card selection.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+---</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Defect-Specific Strategy (PRELIMINARY -- 1 run)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### The Defect&#x27;s Core Problem: Skill-Heavy Starting Deck</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Defect starts with 6 Skills (4 Defend + Zap + Dualcast) and 4 Attacks (4 Strike). Adding Coolheaded (a common early pickup) makes it 7 Skills vs 4 Attacks. This is the most Skill-heavy starting composition of any character.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Consequence: Gremlin Nob is the Defect&#x27;s worst elite matchup.** Nob&#x27;s Enrage triggers on every Skill played. With 7 Skills in a 12-card deck, most 5-card hands contain 3-4 Skills and only 1-2 Attacks. Even with perfect discipline (never playing Skills), each hand has only 1-2 playable cards, extending the fight to 7+ turns and allowing Nob to scale to lethal damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Mitigation:** Prioritize Attack card pickups in the first 3-4 floors before any elite path. Compile Driver (Attack, 7 damage + draw per orb) and Sweeping Beam (Attack, 6 AOE + draw 1) are excellent because they are Attacks that also cycle cards. Count your Attack-to-Skill ratio before committing to an elite path.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Defect Scaling: Focus Is Everything</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The Defect&#x27;s primary scaling stat is Focus. Focus increases the passive AND evoke values of ALL orbs.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Without Focus, Lightning orbs deal 3 passive / 8 evoke. Frost orbs give 2 passive / 5 evoke. These values are too low to scale into Act 2.</div>
+<div class="diff-add">+- With Focus 3, Lightning deals 6 passive / 11 evoke. Frost gives 5 passive / 8 evoke. The difference compounds across 3 orb slots and every turn of combat.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Defragment (+1 Focus permanent, 1E Power) is the Defect&#x27;s most important card.** Take it whenever offered. It is the Defect equivalent of Inflame for Ironclad.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Defect Orb Strategy</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Lightning orbs** are the primary damage source. Passive 3 damage/turn per orb + 8 evoke damage. With Focus scaling, these become the Defect&#x27;s main damage engine.</div>
+<div class="diff-add">+- **Frost orbs** are the primary defense. Passive 2 block/turn per orb + 5 evoke block. With Focus, Frost orbs can provide enough passive block to replace Defend cards entirely.</div>
+<div class="diff-add">+- **Channeling order matters.** Orbs fill from right to left. When all slots are full, channeling a new orb evokes the leftmost (oldest) orb. Channel Lightning first for damage, then Frost for ongoing defense, or vice versa depending on the fight.</div>
+<div class="diff-add">+- **Dualcast is a burst tool.** Evokes the front orb twice. Lightning Dualcast = 16 burst damage for 1E. Frost Dualcast = 10 burst block for 1E. Plan orb positioning so the right orb is in front when Dualcast is drawn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### Defect Energy and Card Draw</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Base energy: 3 per turn (same as other characters at A0).</div>
+<div class="diff-add">+- Cracked Core (starter relic): channels 1 Lightning at combat start. Provides guaranteed passive damage from Turn 1.</div>
+<div class="diff-add">+- Compile Driver draws 1 card per channeled orb -- with 3 orbs, it draws 3 cards for 1E. This is the Defect&#x27;s best draw engine in early floors.</div>
+<div class="diff-add">+- Coolheaded+ draws 2 cards while channeling Frost. Excellent cycling.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Restructure run tracking: per-run files + regen_stats.py</div>
       <div class="changelog-sha">c3e53345</div>
     </div>
@@ -9936,412 +10268,6 @@ footer {
 <div class="diff-add">+By turn 5, incoming is 102 vs 42 without Brimstone -- a 143% increase. This is unsurvivable. In run 100, entered at 57 HP and died on turn 5 despite strong Strength scaling (Brimstone + Inflame+ + Spot Weakness+). If you have Brimstone, AVOID Book of Stabbing entirely. If forced into the fight, you must kill it in 3 turns or die.</div>
 <div class="diff-add">+</div>
 <div class="diff-ctx"> ---</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 98 analysis + fix shop indexing bug</div>
-      <div class="changelog-sha">72c881a9</div>
-    </div>
-    <div class="changelog-date">2026-05-08</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -26,7 +26,8 @@ Plays the game. Makes every decision with reasoning. In combat, fills out a comb</div>
-<div class="diff-ctx"> Key traits:</div>
-<div class="diff-ctx"> - **Humble.** Says &quot;I think&quot; not &quot;clearly.&quot; Admits uncertainty. Doesn&#x27;t rationalize deaths.</div>
-<div class="diff-ctx"> - **Plans full turns.** Doesn&#x27;t play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.</div>
-<div class="diff-del">-- **References playbook.** Reads `playbook/` files (individual files per card, enemy, boss, etc.). Leans toward documented knowledge over instinct.</div>
-<div class="diff-add">+- **Plans full fights.** At combat start, calls `plan()` to load playbook context, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.</div>
-<div class="diff-add">+- **References playbook.** Calls `plan()` at act/combat start, `reason(&quot;topic&quot;)` for targeted lookups. Playbook has 149+ files covering every card, enemy, boss, event, relic, and potion.</div>
-<div class="diff-ctx"> - **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Analyst (`agents/analyst.md`)</div>
-<div class="diff-hunk">@@ -38,36 +39,44 @@ Output directories:</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> No confidence tags. If it&#x27;s confirmed, it goes in `playbook/`. If uncertain, it goes in `analyst/observations.md`.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-### Steward (`agents/steward.md`)</div>
-<div class="diff-del">-Runs between sessions or when context is cluttered. Keeps the project clean and efficient.</div>
-<div class="diff-add">+### Strategist (`agents/strategist.md`)</div>
-<div class="diff-add">+Runs every ~10 runs. Steps back and evaluates whether the whole system is working.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Key responsibilities:</div>
-<div class="diff-del">-- **Playbook quality.** Verifies accuracy, removes duplicates, ensures card entries have DECISION POINTS and enemy entries have PATTERN/WHAT THIS MEANS sections.</div>
-<div class="diff-del">-- **Context hygiene.** Trims bloated run logs, promotes confirmed observations to reference/playbook, cleans up agent files.</div>
-<div class="diff-del">-- **Run data cleanup.** Archives processed run logs, verifies run_stats.json, removes stale temp files.</div>
-<div class="diff-add">+Key questions:</div>
-<div class="diff-add">+- **Are we improving?** Floor-reached trends, recurring deaths, plateaus and their causes.</div>
-<div class="diff-add">+- **Is the playbook serving the player?** Dead weight, missing coverage, signal-to-noise, structural fitness.</div>
-<div class="diff-add">+- **Cross-run patterns.** Things the analyst misses because it only sees one run at a time.</div>
-<div class="diff-add">+- **Architecture review.** Is the combat plan template helping? Is playbook loading effective? Is the analyst producing useful output?</div>
-<div class="diff-add">+- **Cleanup.** Dedup, trim bloat, promote observations, fix contradictions, archive stale data.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Does not play, analyze runs, write code, or make architectural decisions.</div>
-<div class="diff-add">+Has authority to reshape the playbook structure — consolidate files, rewrite sections, delete what isn&#x27;t working.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Commands (cmd.py)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```python</div>
-<div class="diff-del">-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, start</div>
-<div class="diff-add">+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, start</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> state()                          # See current game state</div>
-<div class="diff-del">-send(&quot;play 1 0&quot;, reason=&quot;...&quot;)   # Single action — reason= is REQUIRED or action fails</div>
-<div class="diff-del">-turn([&quot;play 3&quot;, &quot;play 1 0&quot;, &quot;play 2&quot;, &quot;end&quot;],</div>
-<div class="diff-del">-     reason=&quot;Block first, then damage&quot;)  # Full combat turn — reason= is REQUIRED</div>
-<div class="diff-add">+plan()                           # Load strategic context (auto-detects combat vs act)</div>
-<div class="diff-add">+think(reasoning, label)          # Post strategic analysis to stream overlay</div>
-<div class="diff-add">+reason(&quot;topic&quot;)                  # Look up a specific playbook entry</div>
-<div class="diff-add">+send(&quot;play Bash 0&quot;, reason=&quot;...&quot;) # Single action — reason= is REQUIRED</div>
-<div class="diff-add">+turn([&quot;play Bash Jaw Worm&quot;, &quot;play Strike Jaw Worm&quot;, &quot;play Defend&quot;, &quot;end&quot;],</div>
-<div class="diff-add">+     reason=&quot;...&quot;)               # Full combat turn — reason= is REQUIRED</div>
-<div class="diff-ctx"> choose(2, reason=&quot;...&quot;)          # Choose option — reason= is REQUIRED</div>
-<div class="diff-ctx"> choose(&quot;smith&quot;, reason=&quot;...&quot;)    # Choose by name (rest site)</div>
-<div class="diff-ctx"> proceed()                        # Confirm/proceed (auto-reason)</div>
-<div class="diff-ctx"> skip(reason=&quot;...&quot;)               # Skip/cancel/leave</div>
-<div class="diff-ctx"> potion_use(0, 1, reason=&quot;...&quot;)   # Use potion slot 0 on enemy 1 — reason= REQUIRED</div>
-<div class="diff-add">+potion_discard(0, reason=&quot;...&quot;)  # Discard potion slot 0</div>
-<div class="diff-ctx"> start(&quot;IRONCLAD&quot;, 5)             # Start Ironclad A5 run</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Card indices are 1-indexed. Enemy indices are 0-indexed.**</div>
-<div class="diff-add">+**Card names preferred over indices.** `play Bash 0` resolves &quot;Bash&quot; against the current hand. Avoids index-shift bugs when playing multiple cards.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Card indices shift when you play cards!** Playing card 3 makes card 4 become card 3. Plan accordingly.</div>
-<div class="diff-add">+**Enemy names work for distinct enemies.** `play Bash Jaw Worm` resolves to the correct target. For same-name enemies (Byrds, Cultists), use numeric indices.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Enemy indices are absolute** — they don&#x27;t shift when enemies die. If Byrd [0] dies, remaining Byrds stay at [1] and [2].</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Mod Stack (all Steam Workshop)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -85,6 +94,8 @@ Run ends (victory or defeat) → player STOPS</div>
-<div class="diff-ctx">     ↓</div>
-<div class="diff-ctx"> Analyst reads log, updates playbook/ files</div>
-<div class="diff-ctx">     ↓</div>
-<div class="diff-add">+Every ~10 runs: Strategist reviews the arc, reshapes playbook, identifies bottlenecks</div>
-<div class="diff-add">+    ↓</div>
-<div class="diff-ctx"> Next run: player reads updated playbook before first action</div>
-<div class="diff-ctx">     ↓</div>
-<div class="diff-ctx"> Player makes better decisions → repeat</div>
-<div class="diff-hunk">@@ -100,19 +111,121 @@ This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondr</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/` or `site/` triggers a rebuild.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-## Spawning Agents</div>
-<div class="diff-add">+## How to Run</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+This is the full startup procedure. Follow it from the top when starting a new session.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 1. Launch the game</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Check if the relay is already up:</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+python -c &quot;from cmd import state; print(state())&quot;</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+If you get &quot;Cannot connect to relay&quot;, the game isn&#x27;t running. Launch it:</div>
-<div class="diff-add">+```powershell</div>
-<div class="diff-add">+pwsh scripts/launch.ps1</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+This starts Slay the Spire via ModTheSpire, presses Enter to load mods, and waits until relay.py is online (port 19284). Prints &quot;Ready.&quot; when done.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 2. Start stream.py</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+```powershell</div>
-<div class="diff-add">+Start-Process -FilePath &quot;python&quot; -ArgumentList &quot;stream.py&quot; -WorkingDirectory &quot;C:\Users\tkond\projects\autoplay\games\sts1&quot; -WindowStyle Hidden</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overlay for streaming. Independent of relay — can restart without affecting gameplay.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 3. Run the player/analyst loop</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+When the player finishes:</div>
-<div class="diff-add">+1. Delete `data/player.lock`.</div>
-<div class="diff-add">+2. Switch the overlay to agent mode (see below).</div>
-<div class="diff-add">+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/` files.</div>
-<div class="diff-add">+4. When analyst completes, switch overlay back to game mode.</div>
-<div class="diff-add">+5. Commit and push playbook changes (triggers site rebuild on claudeslaysthespire.org).</div>
-<div class="diff-add">+6. Spawn the next player.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Repeat until interrupted.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Overlay switching for analyst/strategist</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+When spawning a non-player agent (analyst, strategist), the overlay should show their streaming output instead of the game. The agent&#x27;s JSONL conversation file is at:</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+~/.claude/projects/C--Users-tkond-projects-autoplay/&lt;session-id&gt;/subagents/agent-&lt;agent-task-id&gt;.jsonl</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Start agent mode** (right after spawning the agent — use Python to avoid curl encoding issues):</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+python -c &quot;</div>
-<div class="diff-add">+import json, urllib.request</div>
-<div class="diff-add">+data = json.dumps({</div>
-<div class="diff-add">+    &#x27;action&#x27;: &#x27;start&#x27;,</div>
-<div class="diff-add">+    &#x27;title&#x27;: &#x27;POST-GAME ANALYSIS&#x27;,</div>
-<div class="diff-add">+    &#x27;jsonl_path&#x27;: &#x27;&lt;path-to-agent-jsonl&gt;&#x27;,</div>
-<div class="diff-add">+    &#x27;run_summary&#x27;: &#x27;&lt;player summary text with newlines&gt;&#x27;</div>
-<div class="diff-add">+}).encode(&#x27;utf-8&#x27;)</div>
-<div class="diff-add">+req = urllib.request.Request(&#x27;http://127.0.0.1:3002/agent&#x27;, data=data, headers={&#x27;Content-Type&#x27;: &#x27;application/json&#x27;})</div>
-<div class="diff-add">+urllib.request.urlopen(req)</div>
-<div class="diff-add">+&quot;</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Titles: `&quot;POST-GAME ANALYSIS&quot;` for analyst, `&quot;STRATEGIC REVIEW&quot;` for strategist.</div>
-<div class="diff-add">+The `run_summary` field is shown in the bottom bar&#x27;s action feed area during agent mode (replaces action log with a last-run summary from the player).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Player and analyst agents are spawned as Claude Code subagents. Their role definitions are in `agents/player.md` and `agents/analyst.md`. When spawning an agent, include the full role definition in the agent prompt so it has all the context it needs — the subagent doesn&#x27;t see the parent conversation.</div>
-<div class="diff-add">+**Stop agent mode** (after the agent completes):</div>
-<div class="diff-add">+```bash</div>
-<div class="diff-add">+curl -s http://127.0.0.1:3002/agent -X POST -H &quot;Content-Type: application/json&quot; \</div>
-<div class="diff-add">+  -d &#x27;{&quot;action&quot;:&quot;stop&quot;}&#x27;</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The JSONL path requires the current Claude Code session ID and the agent&#x27;s task ID (returned by the Agent tool). To find the session ID, check the most recently modified directory:</div>
-<div class="diff-add">+```bash</div>
-<div class="diff-add">+ls -td ~/.claude/projects/C--Users-tkond-projects-autoplay/*/ | head -1</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+Then construct the path as:</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+C:/Users/tkond/.claude/projects/C--Users-tkond-projects-autoplay/&lt;SESSION_ID&gt;/subagents/agent-&lt;TASK_ID&gt;.jsonl</div>
-<div class="diff-add">+```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Key rules:</div>
-<div class="diff-del">-- **One player agent at a time.** The lock file in `data/player.lock` enforces this, but don&#x27;t rely on it — just don&#x27;t spawn two.</div>
-<div class="diff-del">-- **Analyst runs after the run ends.** Don&#x27;t run analyst and player simultaneously.</div>
-<div class="diff-del">-- **Commit playbook after analyst.** The analyst writes to `playbook/` and `analyst/`. Commit and push those changes so the site updates and the changelog tracks the diff.</div>
-<div class="diff-add">+stream.py watches the JSONL, parses assistant text blocks and tool_use blocks, and broadcasts them to the overlay. The overlay covers the game area with an opaque panel showing the agent&#x27;s reasoning in real time.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Rules</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- **One player at a time.** Enforced by `data/player.lock` (see lock mechanism below).</div>
-<div class="diff-add">+- **Analyst runs between runs.** Never simultaneously with the player.</div>
-<div class="diff-add">+- **Overlay switches for analyst/strategist.** Always activate agent mode before spawning, deactivate after completion.</div>
-<div class="diff-add">+- **Commit after analyst.** The site changelog tracks every playbook diff.</div>
-<div class="diff-add">+- **If this session crashes**, the loop stops. Re-read this section and resume from wherever it left off. The game state persists in relay — nothing is lost.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Player lock mechanism</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Each Bash tool call is a separate Python process. The orchestrator gives the agent a unique token in its prompt. The agent must set `PLAYER_SESSION` env var to this token in every Bash call before importing cmd.py. The lock file stores which token is authorized.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Before spawning a player agent:**</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+import uuid, os</div>
-<div class="diff-add">+token = str(uuid.uuid4())</div>
-<div class="diff-add">+# Clear the old lock — previous agent is dead</div>
-<div class="diff-add">+if os.path.exists(&quot;data/player.lock&quot;):</div>
-<div class="diff-add">+    os.remove(&quot;data/player.lock&quot;)</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Then include in the agent prompt:</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+Your session token is: &lt;token&gt;</div>
-<div class="diff-add">+In every Bash call, before importing cmd, set:</div>
-<div class="diff-add">+    import os; os.environ[&quot;PLAYER_SESSION&quot;] = &quot;&lt;token&gt;&quot;</div>
-<div class="diff-add">+```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-## Key Differences from Balatro</div>
-<div class="diff-add">+**How it works:**</div>
-<div class="diff-add">+- cmd.py reads `PLAYER_SESSION` env var on import. Refuses to run without it.</div>
-<div class="diff-add">+- Lock file (`data/player.lock`) stores the token of whoever acquired it first.</div>
-<div class="diff-add">+- Same token → proceed. Different token → crash immediately.</div>
-<div class="diff-add">+- Orchestrator deletes lock file before spawning a new agent. That&#x27;s the handoff.</div>
-<div class="diff-add">+- If the agent forgets to set the env var → import fails → agent dies. Orchestrator spawns a new one.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-- No custom mod needed — CommunicationMod does everything</div>
-<div class="diff-del">-- stdin/stdout, not TCP (relay bridges to TCP)</div>
-<div class="diff-del">-- Synchronous lock-step — mod waits for our command</div>
-<div class="diff-del">-- 1-indexed card positions</div>
-<div class="diff-del">-- Full turn planning with `turn()` instead of card-by-card</div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/steward.md</div>
-<div class="diff-hunk">@@ -1,64 +0,0 @@</div>
-<div class="diff-del">-# Steward Agent</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-You keep the project clean and efficient. You run between sessions or when context is getting cluttered. Your job is quality control over the knowledge base, context hygiene, and run data cleanup.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## 1. Playbook Quality</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-Review `playbook/` files for accuracy, clarity, and usefulness.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- **Remove wrong or outdated entries.** If a damage number is wrong or a mechanic has changed, fix it or delete it.</div>
-<div class="diff-del">-- **Consolidate duplicates.** If the same information appears in multiple entries, pick the best home for it and remove the rest.</div>
-<div class="diff-del">-- **Card entries must have DECISION POINTS.** Every card entry needs a section that tells the player what to CHECK, not what to DO. If it&#x27;s missing, add it based on the card&#x27;s mechanics and existing context.</div>
-<div class="diff-del">-- **Enemy/boss entries must have PATTERN and WHAT THIS MEANS.** If either section is missing, add it from what&#x27;s known.</div>
-<div class="diff-del">-- **Verify cross-references.** Synergies and matchups should reference cards/enemies that actually exist in the playbook. Remove references to things that don&#x27;t have entries.</div>
-<div class="diff-del">-- **Verify numbers.** Damage values, block values, energy costs, and other mechanics should be correct. Check against `reference/` files when in doubt.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## 2. Context Hygiene</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- **`analyst/run_log.md`** — Each run entry should be 5-8 lines. No fluff, no commentary beyond the structured format. Trim anything longer.</div>
-<div class="diff-del">-- **`analyst/observations.md`** — Promote confirmed observations to the appropriate reference or playbook file, then delete them from observations. Delete disproven observations outright.</div>
-<div class="diff-del">-- **Agent files** (`agents/player.md`, `agents/analyst.md`) — Should be clear and not bloated. Flag if they&#x27;ve grown beyond their core purpose.</div>
-<div class="diff-del">-- **`AGENTS.md`** — Should be up to date with actual roles and files. Flag if it references things that don&#x27;t exist or misses things that do.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## 3. Run Data Cleanup</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- **Archive reviewed run logs.** Old run logs in `data/` that have been fully analyzed by the analyst can be archived or noted as processed.</div>
-<div class="diff-del">-- **Check `run_stats.json`.** Total runs, wins, deaths, best floor should match reality. Flag discrepancies.</div>
-<div class="diff-del">-- **Clean stale temp files.** Remove temporary files from `data/` that are no longer needed.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## 4. What the Steward Does NOT Do</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- Does not play the game</div>
-<div class="diff-del">-- Does not make architectural decisions (that&#x27;s the orchestrator&#x27;s job)</div>
-<div class="diff-del">-- Does not write code (that&#x27;s the builder&#x27;s job)</div>
-<div class="diff-del">-- Does not do post-run analysis (that&#x27;s the analyst&#x27;s job)</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## Output Format</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-Report what you found and what you changed. Be specific.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-## Steward Report</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-### Playbook Changes</div>
-<div class="diff-del">-- Fixed Headbutt damage: was 11, actually 9 (12 upgraded)</div>
-<div class="diff-del">-- Added DECISION POINTS to Whirlwind (was missing)</div>
-<div class="diff-del">-- Removed duplicate Vulnerable explanation from Bash and mechanics.md</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-### Context Cleanup</div>
-<div class="diff-del">-- Trimmed run_log.md entries 1-4 (were 15+ lines each, now 5-8)</div>
-<div class="diff-del">-- Promoted &quot;Snake Plant Malleable&quot; from observations.md to playbook</div>
-<div class="diff-del">-- Deleted observation about &quot;Snecko Eye&quot; — confirmed in run 11</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-### Issues Found</div>
-<div class="diff-del">-- No entry for Acid Slime M in enemies/</div>
-<div class="diff-del">-- Run stats show 14 runs but only 12 run log files</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## How to Work</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-1. **Read first.** Scan all playbook, reference, analyst, and data files before changing anything.</div>
-<div class="diff-del">-2. **Fix what&#x27;s clearly wrong.** Wrong numbers, missing sections, stale observations.</div>
-<div class="diff-del">-3. **Consolidate what&#x27;s duplicated.** Pick the best location, remove the rest.</div>
-<div class="diff-del">-4. **Report what you can&#x27;t fix.** Missing entries, data discrepancies, structural issues — flag them in the report for the orchestrator.</div>
-<div class="diff-del">-5. **Don&#x27;t over-edit.** If something is fine, leave it alone. The goal is cleanup, not rewriting.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/strategist.md</div>
-<div class="diff-hunk">@@ -0,0 +1,79 @@</div>
-<div class="diff-add">+# Strategist Agent</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+You step back and evaluate whether the whole system is working. You run every ~10 runs and ask: are we getting better? Is the playbook serving the player? Is the architecture helping or getting in the way?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Cleanup and hygiene are part of your job, but they&#x27;re in service of the bigger question: is this project structured to produce wins?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## When You Run</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Every ~10 completed runs (or when things feel stuck). You have access to:</div>
-<div class="diff-add">+- `analyst/run_log.md` — brief structured summaries of every run</div>
-<div class="diff-add">+- `analyst/observations.md` — uncertain items the analyst hasn&#x27;t promoted</div>
-<div class="diff-add">+- `playbook/` — the full knowledge base (130+ files)</div>
-<div class="diff-add">+- `data/run_stats.json` — win/death/floor stats</div>
-<div class="diff-add">+- `data/runs/` — full event logs from past runs (if you need raw data)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## What You Ask</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 1. Are we improving?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Look at the last 10 runs. Floor reached, cause of death, deck quality at death.</div>
-<div class="diff-add">+- Is floor-reached trending up? Plateauing? Regressing?</div>
-<div class="diff-add">+- Are we dying to new things (good — exploring) or the same things (bad — not learning)?</div>
-<div class="diff-add">+- If plateauing: what&#x27;s the bottleneck? Is it a knowledge gap, a decision-making pattern, or a structural issue with how the player operates?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 2. Is the playbook serving the player?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The playbook exists so the player makes better decisions. Evaluate whether it&#x27;s doing that:</div>
-<div class="diff-add">+- **Dead weight**: Are there entries the player probably never loads? (e.g., cards we never see, events we always skip)</div>
-<div class="diff-add">+- **Missing coverage**: Are there decisions the player keeps getting wrong that the playbook doesn&#x27;t address?</div>
-<div class="diff-add">+- **Signal-to-noise**: Are entries concise and actionable, or bloated with hedging and history?</div>
-<div class="diff-add">+- **Structure**: Is 130+ individual files the right shape? Would some topics be better consolidated? Are the index files useful or just lists?</div>
-<div class="diff-add">+- **strategy.md coherence**: Is it a coherent document or a pile of disconnected paragraphs from different runs?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 3. Are there patterns the analyst is missing?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The analyst reviews one run at a time. You see the arc:</div>
-<div class="diff-add">+- Same cause of death recurring across runs → needs a stronger playbook entry or strategic principle</div>
-<div class="diff-add">+- Observations.md items that keep reappearing → probably confirmed, promote them</div>
-<div class="diff-add">+- Analyst notes that contradict each other across runs → one of them is wrong, figure out which</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 4. Is the architecture helping?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Evaluate the system itself:</div>
-<div class="diff-add">+- **Combat plan template**: Is the player filling it out usefully or is it ceremonial? Does the prediction actually catch errors?</div>
-<div class="diff-add">+- **Playbook loading pattern**: Is the player reading the right files at the right time? Too many? Too few?</div>
-<div class="diff-add">+- **Analyst output quality**: Are analyst updates actually improving the playbook or just restating what happened?</div>
-<div class="diff-add">+- **Agent coordination**: Is the player→analyst→player loop producing compounding improvement?</div>
-<div class="diff-add">+- **Stream overlay**: Is the reasoning useful for viewers or generic?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 5. Cleanup</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+While you&#x27;re in here:</div>
-<div class="diff-add">+- **Dedup**: Merge entries that say the same thing in different places</div>
-<div class="diff-add">+- **Trim bloat**: Cut paragraphs that don&#x27;t help the player make decisions</div>
-<div class="diff-add">+- **Format consistency**: Ensure card entries have DECISION POINTS, enemy entries have PATTERN + WHAT THIS MEANS</div>
-<div class="diff-add">+- **Archive stale data**: Trim run_log.md if it&#x27;s gotten too long (keep last 20 runs, summarize older ones)</div>
-<div class="diff-add">+- **Promote observations**: Anything in observations.md that&#x27;s now clearly confirmed → move to playbook</div>
-<div class="diff-add">+- **Fix contradictions**: If two entries disagree, determine which is correct and fix it</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## What You Produce</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+1. **A brief assessment** (10-15 lines) at the top of your output: what&#x27;s working, what&#x27;s not, what you changed and why.</div>
-<div class="diff-add">+2. **Playbook edits** — structural changes, consolidations, rewrites. You have authority to reshape the playbook. Don&#x27;t just tweak wording — if a section is fundamentally not working, rewrite it.</div>
-<div class="diff-add">+3. **Strategy.md updates** — if high-level principles need revision based on 10-run patterns.</div>
-<div class="diff-add">+4. **Cleanup** — dedup, trim, archive, promote observations.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## What You Don&#x27;t Do</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- Don&#x27;t play the game</div>
-<div class="diff-add">+- Don&#x27;t analyze individual runs (that&#x27;s the analyst&#x27;s job)</div>
-<div class="diff-add">+- Don&#x27;t make code changes to cmd.py, relay.py, stream.py, etc.</div>
-<div class="diff-add">+- Don&#x27;t add speculative entries about things you haven&#x27;t observed — work from run data</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Principles</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- **Be willing to delete.** A smaller, more accurate playbook beats a comprehensive but noisy one. If an entry isn&#x27;t helping the player win, cut it or rewrite it.</div>
-<div class="diff-add">+- **Structural changes are fine.** If 10 individual card files should be one &quot;card evaluation framework&quot; doc, do it. If strategy.md should be split into act-specific files, do it. The current structure is not sacred.</div>
-<div class="diff-add">+- **Name the bottleneck.** Every plateau has a reason. Your most important output is identifying what that reason is — not just &quot;we need to play better&quot; but &quot;we keep entering Act 2 without a scaling card because the card reward evaluation doesn&#x27;t weight scaling highly enough.&quot;</div>
-<div class="diff-add">+- **Measure progress.** Use concrete numbers (floor reached, death count by cause, HP at death) not vibes.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/centurion-mystic.md</div>
-<div class="diff-hunk">@@ -3,10 +3,12 @@ PATTERN: Mystic heals Centurion ~12 HP/turn and gains ~15 block. Centurion attac</div>
-<div class="diff-ctx"> KEY MECHANIC: Mystic heals Centurion. Centurion is unkillable while Mystic lives.</div>
-<div class="diff-ctx"> WHAT THIS MEANS: KILL MYSTIC FIRST. Non-negotiable. If you attack Centurion while Mystic is alive, you&#x27;re in an unwinnable attrition war. Focus all damage on Mystic despite Centurion being the bigger per-turn threat. Apply Weak to Centurion to reduce incoming while you kill Mystic. Expect 6-12 turns.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-THE DRAIN PATTERN: This fight reliably drains 20-30+ HP even with correct target priority and debuffs applied. Centurion&#x27;s sustained damage over the 6-12 turns needed to kill Mystic through its block accumulates to lethal levels at low HP. The fight functions as an HP attrition check -- if you enter below 50%, the cumulative Centurion damage will leave you dead or at critical HP for the next fight. Observed drains: 29 HP to 9 HP (20 HP lost) with Shockwave+ and Reaper available.</div>
-<div class="diff-add">+THE DRAIN PATTERN: This fight reliably drains 20-30+ HP even with correct target priority and debuffs applied. Centurion&#x27;s sustained damage over the 6-12 turns needed to kill Mystic through its block accumulates to lethal levels at low HP. The fight functions as an HP attrition check -- if you enter below 50%, the cumulative Centurion damage will leave you dead or at critical HP for the next fight. Observed drains: 29 HP to 9 HP (20 HP lost) with Shockwave+ and Reaper available. In run 98, entered at 39 HP (49%), killed Mystic by turn 4, but had only 2 HP remaining by the time Centurion phase started. The Centurion solo phase then required 6 more turns (Centurion at 77 HP with +2 Str), surviving at 2 HP for multiple consecutive turns with Metallicize+ and careful blocking.</div>
-<div class="diff-add">+MYSTIC HEALS BOTH ENEMIES: Mystic heals Centurion AND itself. In run 98, Mystic healed Centurion back to full (77/77) after turn 2, negating 26 damage dealt on turn 1. The +3 temporary Strength from Mutagenic Strength was wasted because Mystic healed through all the turn-1 burst. This reinforces KILL MYSTIC FIRST -- never split damage, even with Mutagenic Strength or temporary damage buffs, because Mystic healing negates any Centurion damage.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-BENCHMARKS: Kill Mystic in 5-6 turns. Expect 25-42 HP lost even with correct play. Enter with 50+ HP. Fairy in a Bottle is often consumed in this fight -- save it for elites if possible.</div>
-<div class="diff-add">+BENCHMARKS: Kill Mystic in 5-6 turns. Expect 25-42 HP lost even with correct play. Enter with 50+ HP (49% entry in run 98 left 2 HP after fight -- barely survived). Fairy in a Bottle is often consumed in this fight -- save it for elites if possible.</div>
-<div class="diff-ctx"> BRING: Burst damage for Mystic (need to break through 15 block/turn). Weak for Centurion. Double Metallicize is excellent. Headbutt+ (12+ damage, 13 Vuln through block). Stone Calendar is ideal here -- the fight naturally lasts 7+ turns, and the 52 damage nuke lands automatically on Centurion after Mystic is dead.</div>
-<div class="diff-del">-AVOID: Attacking Centurion while Mystic lives. Entering below 50% HP. Wasting Fairy here when elites are ahead.</div>
-<div class="diff-add">+LETHAL FINISH PATTERN: Once Mystic is dead, if you are at very low HP (under 10), look for lethal combos that kill Centurion before his attack phase. In run 98, at 2 HP vs Centurion at 23 HP, Thunderclap+ (7 dmg + Vuln) into Immolate (31 Vuln damage) = 38 total killed Centurion during the player turn, preventing a fatal 14-damage attack. Always check if you can burst the remaining Centurion in one turn rather than blocking.</div>
-<div class="diff-add">+AVOID: Attacking Centurion while Mystic lives. Entering below 50% HP. Wasting Fairy here when elites are ahead. Splitting damage between Centurion and Mystic even with temporary Strength buffs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> OBSERVED FIGHT LENGTHS: This fight can extend to 10 turns with insufficient burst for Mystic. At 10 turns, even Metallicize and Weak on Centurion cannot prevent 30-65 HP drain. Stone Calendar (52 damage on turn 7) helps close out the fight before attrition becomes lethal.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/enemies/gremlin-leader.md</div>
-<div class="diff-hunk">@@ -3,7 +3,9 @@ PATTERN: Summons Sneaky Gremlins (~10-12 HP each). Uses DEFEND_BUFF (Rally): giv</div>
-<div class="diff-ctx"> KEY MECHANIC: Rally gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. After 2 rallies: every enemy has +6 Str. The fight&#x27;s damage scales exponentially with turn count. With +3 Str after one rally, gremlins deal 9+3=12 each. With two gremlins attacking, that is 24 damage from gremlins alone, plus the Leader&#x27;s own attacks.</div>
-<div class="diff-ctx"> RALLY SCALING MATH: Rally fires roughly every other turn. By turn 3, all enemies have +3 Str. By turn 5, all enemies have +6 Str. By turn 7, all enemies have +9 Str. With 2 gremlins alive at +9 Str, gremlins alone deal (9+9)*2 = 36, plus the Leader&#x27;s own attacks. Total incoming by turn 7-8 exceeds 50 per turn. Every wasted turn is effectively +3 Str to the entire board -- a single lost turn (e.g., ending turn early after Battle Trance draw without playing drawn cards) can be the difference between winning and losing.</div>
-<div class="diff-ctx"> WHAT THIS MEANS: TURN ECONOMY IS EVERYTHING. Every turn must deal maximum damage or apply critical debuffs. Wasting even one turn (misplaying end-of-turn, failing to use drawn cards) allows Rally to stack once more, which compounds across all gremlins. KILL GREMLINS FAST to reduce per-turn damage, but prioritize Leader damage when possible because gremlins get re-summoned. AOE is critical for clearing gremlins efficiently. Apply Shockwave early for mass Weak + Vulnerable. The fight becomes mathematically unwinnable once Strength stacks too high (by turn 3-4 with multiple gremlins alive, incoming damage is 40+).</div>
-<div class="diff-del">-BENCHMARKS: Must win by turn 5-6 or Rally scaling overwhelms you. Enter with 60%+ HP minimum -- 56% (56/98) was insufficient even with Corruption + Feel No Pain engine and strong burst tools. At 25% HP (14/56), the fight is unwinnable even with Nilry&#x27;s Codex generating Impervious and Immolate. Bloated decks (19 cards with 5 Strikes) cannot draw answers fast enough against Rally&#x27;s exponential scaling.</div>
-<div class="diff-add">+BENCHMARKS: Must win by turn 5-6 or Rally scaling overwhelms you. Enter with 60%+ HP minimum AND at least 1 potion. At 55% HP (44/80) with zero potions and no Strength scaling, died on turn 4 to 47 incoming damage (Leader 12x3=36 + Mad Gremlin 11). At 56% (56/98) was insufficient even with Corruption + Feel No Pain engine. At 25% HP (14/56), unwinnable even with Nilry&#x27;s Codex. Bloated decks (19+ cards with 4+ Strikes) cannot draw answers fast enough against Rally&#x27;s exponential scaling.</div>
-<div class="diff-ctx"> BRING: AOE (Thunderclap, Whirlwind, Immolate+) for gremlin clearing, Shockwave+ (mass debuff), Disarm (reduce Leader Str). Non-exhaust damage cards for sustained fighting. Rage (0E power that generates block per attack -- excellent value in multi-attack turns). Potions -- this fight demands aggressive potion use. Fairy in a Bottle as safety net (but expect it to be consumed early if the fight goes long -- a Fairy consumed on turn 6 leaves no safety for turns 7-8 when Rally scaling peaks).</div>
-<div class="diff-ctx"> CORRUPTION + FNP ENGINE: Corruption makes Skills free, Feel No Pain generates block per exhaust. This engine is theoretically strong here but ONLY if it comes online by turn 2-3. If the engine activates on turn 7 of 8, Rally has already stacked to +9 Str on all enemies and incoming damage exceeds all available block. The engine needs early activation or it arrives too late.</div>
-<div class="diff-del">-AVOID: Entering below 60% HP. Exhaust-heavy decks (once Impervious/Shockwave/Disarm are gone, remaining deck is too weak). If below 50% HP, take any alternative path. Decks with reduced Max HP (e.g., post-Vampires at 56 Max HP) have no margin for error against this fight&#x27;s scaling. Wasting turns -- do NOT batch `end` with draw effects like Battle Trance; the drawn cards need to be played that same turn.</div>
-<div class="diff-add">+STRENGTH SCALING IS MANDATORY: Without permanent Strength, you cannot kill the Leader fast enough. In run 98, Mutagenic Strength (+3 Str turn 1 only) enabled 35 damage to Leader on turn 1, but by turn 2 with 0 Str, damage output collapsed. The DPS race against Rally requires at least +2 permanent Strength (Inflame, Spot Weakness, Demon Form) or enough burst cards (Immolate + Heavy Blade + Bash+) to close the fight in 5 turns. Evaluate whether your deck can realistically kill 144 HP in 5-6 turns BEFORE entering this fight.</div>
-<div class="diff-add">+GREMLIN WIZARD PRIORITY: If Gremlin Wizard is present, it charges for a massive 28-damage nuke. Kill it before it fires. In run 98, Thunderclap+ (7 AOE + Vuln) into Pommel Strike+ (15 Vuln damage) = 22 damage exactly killed a 22 HP Wizard on turn 3, preventing 28 damage that would have been instantly fatal. Always check Wizard charge timer and prioritize killing it on the turn before it fires.</div>
-<div class="diff-add">+AVOID: Entering below 60% HP. Entering without potions. Entering without permanent Strength scaling. Exhaust-heavy decks (once Impervious/Shockwave/Disarm are gone, remaining deck is too weak). If below 50% HP, take any alternative path. Decks with reduced Max HP (e.g., post-Vampires at 56 Max HP) have no margin for error against this fight&#x27;s scaling. Wasting turns -- do NOT batch `end` with draw effects like Battle Trance; the drawn cards need to be played that same turn.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

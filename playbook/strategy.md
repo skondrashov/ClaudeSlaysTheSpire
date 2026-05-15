@@ -2,7 +2,7 @@
 
 High-level strategic principles across all characters.
 
-**CURRENT STATUS (170 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-169). One Defect run (Run 170, first ever, died Floor 7). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.
+**CURRENT STATUS (171 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-169). Two Defect runs (Run 170 died Floor 7, Run 171 died Floor 28 -- Colosseum event, chose Fight at 21 HP, killed by Gremlin Nob + Taskmaster in second wave). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.
 
 **SCORECARD (runs 101-158):**
 - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.
@@ -602,7 +602,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a
 
 ---
 
-## Defect-Specific Strategy (PRELIMINARY -- 1 run)
+## Defect-Specific Strategy (PRELIMINARY -- 2 runs)
 
 ### The Defect's Core Problem: Skill-Heavy Starting Deck
 
@@ -610,7 +610,20 @@ The Defect starts with 6 Skills (4 Defend + Zap + Dualcast) and 4 Attacks (4 Str
 
 **Consequence: Gremlin Nob is the Defect's worst elite matchup.** Nob's Enrage triggers on every Skill played. With 7 Skills in a 12-card deck, most 5-card hands contain 3-4 Skills and only 1-2 Attacks. Even with perfect discipline (never playing Skills), each hand has only 1-2 playable cards, extending the fight to 7+ turns and allowing Nob to scale to lethal damage.
 
-**Mitigation:** Prioritize Attack card pickups in the first 3-4 floors before any elite path. Compile Driver (Attack, 7 damage + draw per orb) and Sweeping Beam (Attack, 6 AOE + draw 1) are excellent because they are Attacks that also cycle cards. Count your Attack-to-Skill ratio before committing to an elite path.
+**Mitigation:** Prioritize Attack card pickups in the first 3-4 floors before any elite path. Compile Driver (Attack, 7 damage + draw per orb), Sweeping Beam (Attack, 6 AOE + draw 1), and Cold Snap (Attack, 6 damage + channel Frost) are excellent because they are Attacks that also provide secondary value. Count your Attack-to-Skill ratio before committing to an elite path.
+
+### Defect Key Cards and Relics
+
+- **Barrage** is the Defect's primary scaling Attack. Deals 4 damage per channeled orb. With Capacitor (5 slots) fully loaded, Barrage deals 20 damage. With Necronomicon (2E base triggers it), Barrage plays twice for 40 damage. This is the Defect's main burst card.
+- **Cold Snap** is the best dual-purpose early pickup: Attack (Nob-safe) + channels Frost orb. With Necronomicon at 2+ cost, it plays twice for double damage and two Frost orbs.
+- **Fission** MUST be upgraded before playing in Frost builds. Unupgraded Fission removes orbs WITHOUT evoking -- it destroys Frost defense for Energy and draws. Upgraded Fission+ evokes all orbs (triggering Frost block, Lightning damage) AND gives Energy + draws. This is one of the most critical upgrade distinctions in the Defect's pool.
+- **Aggregate** generates Energy based on draw pile size. Play it first each turn before other draw effects. With Snecko Eye, Aggregate enables playing multiple randomized cards per turn.
+- **Necronomicon + Snecko Eye** is a powerful Defect combo. Snecko randomizes costs, making more Attacks cost 2+ and triggering Necronomicon's doubling. With 7 cards drawn per turn, the probability of a high-value doubled Attack is very high.
+- **Emotion Chip** doubles orb passive triggers on turns after taking damage. With 5 Frost orbs and Focus, this provides enormous free block. Best in Frost-heavy builds that inevitably take some chip damage.
+
+### Defect Colosseum Warning
+
+The Colosseum event's second wave can include Gremlin Nob. The Defect's Skill-heavy deck composition makes Nob the worst possible Wave 2 enemy. At 21 HP after Wave 1, the Defect was killed by Gremlin Nob + Taskmaster despite having Snecko Eye + Necronomicon. **Always escape the Colosseum at low HP with a Skill-heavy Defect deck.** The offensive power of Necronomicon cannot compensate for Nob punishing every Skill in a 60%+ Skill deck.
 
 ### Defect Scaling: Focus Is Everything
 

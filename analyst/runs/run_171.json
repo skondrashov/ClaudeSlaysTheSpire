@@ -1,0 +1,40 @@
+{
+  "run": 171,
+  "character": "DEFECT",
+  "ascension": 0,
+  "victory": false,
+  "floor": 28,
+  "deck": [
+    "Strike",
+    "Strike",
+    "Strike",
+    "Strike",
+    "Defend",
+    "Defend",
+    "Defend",
+    "Defend",
+    "Zap",
+    "Dualcast",
+    "Coolheaded",
+    "Barrage",
+    "Aggregate",
+    "Cold Snap",
+    "Fission",
+    "Compile Driver",
+    "Sweeping Beam",
+    "Leap"
+  ],
+  "relics": [
+    "Cracked Core",
+    "Necronomicon",
+    "Snecko Eye",
+    "Emotion Chip",
+    "Horn Cleat"
+  ],
+  "potions": [],
+  "gold": 0,
+  "hp": 0,
+  "max_hp": 75,
+  "seed": null,
+  "note": "Reconstructed from player report \u2014 relay missed GAME_OVER"
+}

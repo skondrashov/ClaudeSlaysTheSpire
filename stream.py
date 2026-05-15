@@ -293,19 +293,15 @@ async def state_watcher():
                             await _broadcast_stats()
 
                         # Detect game over (only process once per run)
+                        # Run log is written by relay.py (sees every state, no race).
+                        # Stream.py just reloads stats and broadcasts.
                         if screen == "GAME_OVER" and not game_over_handled:
                             game_over_handled = True
                             if not run_counted:
                                 run_counted = True
                             victory = ss.get("victory", False)
                             run_number = run_stats.get("total_runs", 0) + 1
-                            # Write structured run log from game state
-                            _write_run_log(run_number, gs, victory)
-                            # Regenerate stats so overlay updates immediately
-                            import subprocess
-                            subprocess.run([sys.executable, "regen_stats.py"],
-                                           cwd=os.path.dirname(__file__) or ".",
-                                           timeout=10)
+                            # Reload stats (relay.py already wrote run log + ran regen)
                             _reload_stats()
                             _save_live_state()
                             await broadcast({

@@ -12,6 +12,7 @@ Total HP cost to complete: 1+2+3+10 = 16 HP. Can leave at any stage.
 KNOWN BOOK RELICS:
 - Enchiridion: Free random 0-cost Power card at start of each combat.
 - Nilry's Codex: At end of each turn, choose 1 of 3 randomly generated cards (from any class) to add to hand. Excellent in long fights.
+- Necronomicon: First Attack costing 2+ energy each turn plays twice. Adds Necronomicurse (unplayable, unremovable) to the deck. Extremely powerful with Snecko Eye (cost randomization creates more 2+ cost Attacks) and with high-cost Attacks like Barrage, Carnage, or Bludgeon. See relics/necronomicon.md.
 
 DECISION FRAMEWORK: Book relics are powerful (Enchiridion gives a free Power every fight, Nilry's Codex generates cards every turn). At 16 HP total cost, worth it when above 50% HP and not approaching a boss. Can bail early if HP gets too low -- you only lose the HP already spent.
 PRIORITY: Read to completion (high HP, no boss imminent) > Leave early (moderate HP) > Leave immediately (low HP).

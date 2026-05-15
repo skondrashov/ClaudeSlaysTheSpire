@@ -38,6 +38,7 @@
 
 ## Uncommon Relics
 
+- [Emotion Chip](emotion-chip.md) (Defect)
 - [Brimstone](brimstone.md)
 - [Kunai](kunai.md)
 - [Pen Nib](pen-nib.md)
@@ -89,6 +90,10 @@
 ## Shop Relics (continued)
 
 - [Sling of Courage](sling-of-courage.md)
+
+## Book Relics (from Cursed Tome event)
+
+- [Necronomicon](necronomicon.md)
 
 ## Boss Relics / Special
 

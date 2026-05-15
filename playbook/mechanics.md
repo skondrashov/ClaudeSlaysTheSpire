@@ -23,6 +23,13 @@ The Defect channels orbs into orb slots. Orbs provide passive effects at end of 
 - **Evoke**: Remove the frontmost (leftmost) orb, triggering its evoke effect. Dualcast evokes the front orb twice.
 - **Orb Slots**: The Defect starts with 3 orb slots. Some cards/relics add more slots (Capacitor). More slots = more passive effects per turn.
 
+### Fission: Remove vs Evoke (CRITICAL UPGRADE DISTINCTION)
+
+- **Unupgraded Fission:** Removes ALL orbs WITHOUT evoking. The orbs are deleted -- no Frost block, no Lightning damage, no Dark burst. Only the Energy and card draws are gained.
+- **Upgraded Fission+:** EVOKES all orbs, triggering their evoke effects (Frost block, Lightning damage, Dark burst), then grants Energy and card draws.
+
+This is one of the most impactful upgrades in the game. Playing unupgraded Fission in a Frost-heavy build destroys the orb-based defense without generating any evoke block. See cards/fission.md.
+
 ### Focus
 
 Focus is the Defect's core scaling stat (equivalent to Strength for damage or Dexterity for block, but for orbs).
