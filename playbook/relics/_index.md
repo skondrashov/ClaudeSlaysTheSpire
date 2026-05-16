@@ -5,6 +5,7 @@
 
 - [Burning Blood](burning-blood.md) (Ironclad)
 - [Cracked Core](cracked-core.md) (Defect)
+- [Pure Water](pure-water.md) (Watcher)
 
 ## Defect-specific Relics
 

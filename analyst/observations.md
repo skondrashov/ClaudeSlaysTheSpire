@@ -372,3 +372,25 @@ Hard Rules retired (Session 2026-05-12). Guidance distributed to individual card
 - **Bottled Flame + Neutralize+ as Silent standard**: Bottled Flame makes an attack Innate (starts in hand every combat). Bottling Neutralize+ guarantees 0E Weak application Turn 1 of every fight. Observed across 12+ fights in the run -- Neutralize+ always available Turn 1. Combined with Preserved Insect (-25% elite HP), this provides guaranteed Turn 1 Weak + reduced elite HP. Strong general-purpose setup. One observation.
 
 - **The Maw fight pattern**: The Maw alternates BUFF (no damage) and ATTACK turns with 3x multi-hit. BUFF turns are free setup turns. Catalyst+ tripling poison on a BUFF turn is the ideal play -- massive damage with zero defensive cost. In the observed fight, Catalyst+ tripled 14 to 42 on Turn 3 (BUFF), and The Maw died Turn 6 from 55 poison (86 HP). Zero damage taken after Turn 1. One observation.
+
+- **Watcher Hexaghost low-HP entry pattern (3 deaths)**: Three Watcher runs entered Hexaghost at 22 HP (30%), 42 HP (58%), and N/A (4th run log lost). All three died. The first run dealt 57 damage on a single Wrath burst turn (Turn 5) but entered at 22 HP and died at 5 HP on Turn 11 with Hexaghost at 68/250 (73% done). The second run dealt good sustained damage (Battle Hymn Smites + Kunai Dex scaling) but died at 14 HP on Turn 10 with Hexaghost at 61/250 (76% done). Both runs were within 2-3 turns of killing the boss when Burns+ EoT damage + Hexaghost attacks exceeded remaining HP. The third run survived to 9 HP at end of Act 1 but died to Snake Plant in Act 2 at 13 HP on Floor 31. PROMOTED to hexaghost.md Watcher-specific strategy section.
+
+- **Watcher Flurry of Blows sequencing errors (widespread)**: Across all 3 Watcher runs, the player sometimes plays Flurry of Blows AFTER stance changes rather than before. When Flurry is in hand during a stance change, it does not trigger the return-from-discard effect. The correct sequence (play Flurry first, then stance change, then play returned Flurry) yields 2 plays (8 damage) vs 1 play (4 damage). With 2 stance changes per turn, this is 8+ free damage wasted per turn. PROMOTED to flurry-of-blows.md and mechanics.md.
+
+- **Watcher Miracle waste pattern (confirmed fatal)**: The player plays Miracles without useful cards to spend the energy on. Fatal instance: Floor 31 Snake Plant at 13 HP, player played 3 Miracles for +3E then spent energy on Rushdown (Power, 1E) and Meditate+ (1E, ends turn) with 0 block against 21 incoming. If instead the player had played Defend (1E, 5 block) + another block source, they might have survived. PROMOTED to miracle.md and mechanics.md.
+
+- **Watcher Eruption+ upgrade priority**: Eruption+ reduces cost from 2E to 1E. With the Calm energy loop (exit Calm = +2E), Eruption+ entering Wrath costs net -1E (spend 1, gain 2 from Calm exit). This enables playing 1-2 more cards per burst turn. One observation but the math is clear -- this is the highest priority Watcher upgrade.
+
+- **Pure Water relic (Watcher starter)**: Adds 1 Miracle to hand at combat start. This provides +1E for Turn 1 setup. With Deus Ex Machina generating additional Miracles, the Watcher can have 4+ Miracles in hand. Managing Miracle usage (not wasting them) is critical. Three observations.
+
+- **Violet Lotus relic**: Gain 1 energy whenever you exit Calm. This is the Watcher equivalent of an energy relic that triggers on the core engine loop. With Calm exits happening 1-2 times per turn (via Eruption, Crescendo), this provides 1-2 bonus energy per turn. Extremely strong for the stance cycling engine. One observation.
+
+- **Stone Calendar relic (Watcher observation)**: Deals 52 damage to all enemies at end of turn 7. In the 10-turn Hexaghost fight, this is a significant free damage chunk. One observation.
+
+- **Orange Pellets relic**: Remove all debuffs when playing an Attack, Skill, and Power in the same turn. Clears Frail and Weak from Snake Plant's Enfeebling Spores. The Watcher naturally plays all three types (Powers for setup, Skills for stance/block, Attacks for damage), making this easy to trigger. One observation.
+
+- **Watcher vs Hexaghost Divider damage**: Divider formula is (max_hp / 12 + 1) x 6. At 72 max HP: (72/12 + 1) * 6 = 7 * 6 = 42. At 79 max HP: (79/12 + 1) * 6 = 7 * 6 = 42 (still 7 per hit due to integer division). One observation confirming the formula matches playbook.
+
+- **Watcher Sentry fight data**: Sentries added Dazed to the draw pile, diluting the stance-cycling engine. Flurry of Blows and free attacks compensated. The Watcher's 0-cost attacks (Flurry, Just Lucky) are more resilient against Dazed hand clog than other characters' paid attacks. One observation.
+
+- **Watcher card sequencing errors promoted to playbook**: Created explicit PLAY ORDER sections in every Watcher card entry. Added 5 sequencing rules to mechanics.md. This is the most critical Watcher playbook addition -- the player's stance interaction understanding was fundamentally wrong across all 3 analyzed runs.

@@ -374,6 +374,628 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Run 172: First Defect victory + infrastructure overhaul</div>
+      <div class="changelog-sha">4d4479bf</div>
+    </div>
+    <div class="changelog-date">2026-05-15</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
+<div class="diff-hunk">@@ -147,12 +147,12 @@ Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overla</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Run log + stats are automatic.** When the run ends (GAME_OVER), stream.py writes `analyst/runs/run_NNN.json` from the game state and runs `regen_stats.py`. The overlay updates immediately. No orchestrator action needed for the run log.</div>
+<div class="diff-add">+**Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py detects it and writes `analyst/runs/run_NNN.json` from the game state (deck, relics, potions, HP, gold, seed) plus the complete decision log from `data/stream_events.jsonl` (every command, reasoning, and resulting game state after each action). It then runs `regen_stats.py` to update stats and pings stream.py to reload. The overlay updates immediately. No orchestrator action needed for the run log.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> When the player finishes:</div>
+<div class="diff-ctx"> 1. Delete `data/player.lock`.</div>
+<div class="diff-ctx"> 2. Switch the overlay to agent mode (see below).</div>
+<div class="diff-del">-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the event log, updates `playbook/` files. The run log is already written by stream.py — the analyst does NOT touch it.</div>
+<div class="diff-add">+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run JSON, updates `playbook/` files. The run log is already written by cmd.py — the analyst does NOT touch it.</div>
+<div class="diff-ctx"> 4. When analyst completes, switch overlay back to game mode.</div>
+<div class="diff-ctx"> 5. Rebuild site: `python site/build.py`.</div>
+<div class="diff-ctx"> 6. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
+<div class="diff-hunk">@@ -5,10 +5,14 @@ You review completed Slay the Spire runs and update the knowledge base. Your job</div>
+<div class="diff-ctx"> ## Inputs</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> You receive:</div>
+<div class="diff-del">-1. The run&#x27;s event log — archived in `data/runs/` (.jsonl files) or the live `data/stream_events.jsonl`</div>
+<div class="diff-del">-2. The run outcome — victory or defeat, floor reached, cause of death</div>
+<div class="diff-del">-3. Current playbook files in `playbook/`</div>
+<div class="diff-del">-4. Your own working notes in `analyst/`</div>
+<div class="diff-add">+1. The run log at `analyst/runs/run_NNN.json` — written automatically when the run ends. Contains:</div>
+<div class="diff-add">+   - **Outcome**: character, ascension, victory/defeat, floor, HP, gold, seed</div>
+<div class="diff-add">+   - **Final state**: deck, relics, potions</div>
+<div class="diff-add">+   - **Events**: complete decision log with game state after each action. Each pair of `decision` + `result` entries shows what the player chose (command + reasoning) and what happened (HP, enemies, hand, block, energy, orbs). Also includes `plan` entries (strategic analysis) and `feed` entries (notable moments).</div>
+<div class="diff-add">+2. Current playbook files in `playbook/`</div>
+<div class="diff-add">+3. Your own working notes in `analyst/`</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Read the run JSON first.** It has everything you need — don&#x27;t look for separate event log files.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## What You Produce</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -41,9 +45,9 @@ Each subdirectory has an `_index.md` listing all entries. Update it when adding</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> 6. **Adding new entries.** To add a new card/enemy/etc., create a new file in the appropriate subdirectory and update the `_index.md`.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-### `analyst/runs/run_NNN.json` — Written automatically by stream.py</div>
+<div class="diff-add">+### `analyst/runs/run_NNN.json` — Do NOT modify</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-The run log is a JSON file written programmatically from game state when the run ends. It contains the structured facts: character, ascension, victory/defeat, floor, deck, relics, potions, gold, HP, seed. **Do NOT create, modify, or overwrite it.** Read it for context about the run.</div>
+<div class="diff-add">+The run log is written programmatically by the game infrastructure. **Do NOT create, modify, or overwrite it.**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### `analyst/observations.md` — Uncertain items</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -61,13 +65,13 @@ When a subsequent run confirms an observation, promote it to the appropriate pla</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Priority 1: Prediction Errors</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Before analyzing strategy, analyze understanding. The player fills out a combat plan with a PREDICTED STATE. Your first job is to find every place where the prediction was wrong.</div>
+<div class="diff-add">+Before analyzing strategy, analyze understanding. The player fills out a combat plan with a PREDICTED STATE. The run log has both the decision (with reasoning that includes predictions) and the result (actual game state after). Compare them.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Prediction errors reveal broken mental models. These are more important than bad strategy because they&#x27;re upstream — the player can&#x27;t make good decisions if its model of the game is wrong.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Look for:</div>
+<div class="diff-del">-- **Damage miscalculations**: Player predicted taking 5 but took 15</div>
+<div class="diff-del">-- **Kill miscalculations**: Player predicted killing an enemy but didn&#x27;t</div>
+<div class="diff-add">+- **Damage miscalculations**: Player predicted taking 5 but took 15 (compare reasoning vs result HP)</div>
+<div class="diff-add">+- **Kill miscalculations**: Player predicted killing an enemy but it survived (compare reasoning vs result enemies)</div>
+<div class="diff-ctx"> - **Mechanic misunderstandings**: Player didn&#x27;t know an enemy does X, didn&#x27;t know a card exhausts, etc.</div>
+<div class="diff-ctx"> - **Missing information**: Player said &quot;I don&#x27;t know what this does&quot; — now we know, write it down</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -79,12 +83,11 @@ After prediction errors, look at the bigger picture — decisions that were tech</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## How to Update</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-1. **Read the run log.** First pass: find every prediction error. Second pass: find strategic mistakes.</div>
+<div class="diff-add">+1. **Read the run JSON.** First pass: find every prediction error by comparing decision reasoning vs result states. Second pass: find strategic mistakes.</div>
+<div class="diff-ctx"> 2. **Read existing playbook files.** What do we already know? What&#x27;s new? What needs correction?</div>
+<div class="diff-ctx"> 3. **Make surgical updates to playbook/.** Fix wrong info. Add new entries (one file per entry). Update `_index.md` when adding new files. Refine existing entries with new data.</div>
+<div class="diff-del">-4. **Append to analyst/run_log.md.** Brief structured summary of the run.</div>
+<div class="diff-del">-5. **Add uncertain items to analyst/observations.md.** Things noticed but not confirmed.</div>
+<div class="diff-del">-6. **Promote confirmed observations.** If a prior observation is now confirmed, move it to the appropriate playbook file and remove from observations.</div>
+<div class="diff-add">+4. **Add uncertain items to analyst/observations.md.** Things noticed but not confirmed.</div>
+<div class="diff-add">+5. **Promote confirmed observations.** If a prior observation is now confirmed, move it to the appropriate playbook file and remove from observations.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## What NOT to Do</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -93,3 +96,4 @@ After prediction errors, look at the bigger picture — decisions that were tech</div>
+<div class="diff-ctx"> - Don&#x27;t speculate beyond what the evidence supports — uncertain goes in observations</div>
+<div class="diff-ctx"> - Don&#x27;t update playbook for things that didn&#x27;t come up in the run — only write about what you observed</div>
+<div class="diff-ctx"> - Don&#x27;t leave wrong information in playbook &quot;for the record&quot; — just fix it</div>
+<div class="diff-add">+- Don&#x27;t create or modify files in `analyst/runs/` — run logs are written by the game infrastructure</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/_index.md</div>
+<div class="diff-hunk">@@ -13,4 +13,4 @@</div>
+<div class="diff-ctx"> ## Act 3</div>
+<div class="diff-ctx"> - [Awakened One](awakened-one.md) — HP: 300+300. Two phases. Curiosity (+2 Str per Power played). Regenerate 10 in Phase 2.</div>
+<div class="diff-ctx"> - [Donu and Deca](donu-and-deca.md) — HP: 250+250. Donu buffs Str, Deca adds Dazed + Block. Artifact 2 each.</div>
+<div class="diff-del">-- [Time Eater](time-eater.md) — HP: 456. Time Warp every 12 cards played. Haste heals at 50% HP. DEFEATED 2x (Ironclad Barricade engine, Silent Shiv burst).</div>
+<div class="diff-add">+- [Time Eater](time-eater.md) — HP: 456. Time Warp every 12 cards played. Haste heals at 50% HP. DEFEATED 3x (Ironclad Barricade engine, Silent Shiv burst, Defect Echo Form orb engine).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/the-champ.md</div>
+<div class="diff-hunk">@@ -32,9 +32,15 @@ VULNERABILITY WINDOW: After Execute, The Champ spends one turn performing the tr</div>
+<div class="diff-ctx"> ## Observed Death Pattern</div>
+<div class="diff-ctx"> Died Turn 10 to 27x2 attack while Vulnerable at 7 HP. Demon Form+ was providing scaling but couldn&#x27;t overcome the +8 Strength and Metallicize 5 fast enough. Reaper+ had already exhausted (single use), removing the healing option needed to survive phase 2.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## Matchup Notes</div>
+<div class="diff-add">+## Matchup Notes (Ironclad)</div>
+<div class="diff-ctx"> - **Demon Form**: Good but needs early play. By Execute, need enough accumulated Strength to outscale Champ&#x27;s +8 Str and Metallicize 5.</div>
+<div class="diff-ctx"> - **Shockwave+**: Save for AFTER Execute if possible. Applying before Execute wastes the debuffs entirely.</div>
+<div class="diff-ctx"> - **Reaper**: Single-use exhausting heal. Must time carefully — use after Execute for maximum value when Champ&#x27;s attacks are strongest.</div>
+<div class="diff-ctx"> - **Dark Shackles**: Excellent emergency block tool post-Execute to survive the first big hit.</div>
+<div class="diff-ctx"> - **Heavy Blade+**: Strong finisher post-Execute if Strength is high enough from Demon Form.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Matchup Notes (Defect)</div>
+<div class="diff-add">+- **Barrage+ is the primary burst card.** With 5+ orbs and Vulnerable, Barrage+ deals 52+ damage per play. Echo Form doubling Barrage+ can deal 100+ in a single turn, enough to burst through Phase 2 before Execute damage escalates.</div>
+<div class="diff-add">+- **Frost wall for Phase 1 survival.** Frost orbs with Focus provide passive block while building orbs for Barrage. Phase 1 is a setup phase -- channel orbs, play Echo Form, establish the engine.</div>
+<div class="diff-add">+- **Re-apply Vulnerable after Anger.** Beam Cell or Sweeping Beam must be saved or drawn after the 50% HP transition. Without Vulnerable, Barrage+ damage drops by 33%.</div>
+<div class="diff-add">+- **Survived at 2 HP in the first Defect victory.** The Champ fight was the closest call of the run. The deck lacked sufficient Frost defense to fully block Phase 2 attacks with +6 Str. Barrage+ burst barely finished the fight. This confirms the Defect needs either massive Focus (4+) or fast burst to handle The Champ&#x27;s Phase 2.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/the-guardian.md</div>
+<div class="diff-hunk">@@ -61,4 +61,18 @@ The Guardian fight is 12-14 turns. The Silent&#x27;s damage profile (many small hits</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Poison Potions bypass Sharp Hide.** Potions do not trigger Sharp Hide retaliation. Use Poison Potions during Defensive Mode when Attacks cost 3 HP each.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Defect-Specific Strategy</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Frost wall sustains through the long fight.** The Guardian fight lasts 12-14 turns. Frost orbs provide passive block every turn, making the Defect&#x27;s defense self-sustaining. With 3+ Frost orbs and Focus 1+, passive block of 9+ per turn handles most Guardian attacks without playing block cards.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Barrage as burst for Mode Shift.** Barrage with full orbs (5+ orbs) deals enough damage to trigger Mode Shift in 1-2 card plays. This cancels the Guardian&#x27;s biggest attacks. Echo Form doubling Barrage makes Mode Shift triggering extremely reliable.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Sharp Hide vs Barrage:** Barrage is an Attack card and WILL trigger Sharp Hide (3 damage per Attack). However, Barrage hits once (not per-orb), so Sharp Hide only deals 3 damage per Barrage play. The damage is worth it if Barrage deals 15+ damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Echo Form deployment:** Play Echo Form early (Turn 1-2) on a free Charging Up turn. The 3E cost leaves 0-1E for other plays that turn, but the doubling pays off enormously across the remaining 10+ turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Coolheaded+ cycling:** The Guardian fight has many turns where specific cards are needed (block cards on 32-damage turns, burst on Mode Shift turns). Coolheaded+ drawing 3 cards helps cycle toward the right cards while building the Frost wall.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEFEATED WITH (Defect): Echo Form+ + Seek+ (innate via Bottled Lightning) + Coolheaded+ + Barrage + Frost orb engine. Seek+ found Echo Form+ Turn 1. Frost orbs provided sustained block. Barrage triggered Mode Shift on dangerous attack turns. Capacitor expanded orb slots to 5 for both defense and Barrage damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ---</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/bosses/time-eater.md</div>
+<div class="diff-hunk">@@ -40,6 +40,16 @@ DEFEATED WITH (Silent -- FIRST SILENT WIN): Accuracy x2 (+8 Shiv damage) + After</div>
+<div class="diff-ctx"> - **Finisher** scales with attacks played this turn. After 4 Shivs, Finisher deals 24+ damage for 1E.</div>
+<div class="diff-ctx"> - **Track Time Warp count precisely.** Trigger Time Warp intentionally on low-value plays (Phantasmal Killer on a free turn, last Shiv of a burst) to minimize wasted card plays.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**DEFECT-SPECIFIC STRATEGY vs Time Eater:**</div>
+<div class="diff-add">+- **Echo Form copies count toward the 12-card counter.** This is the most important Defect-specific mechanic in this fight. Every card doubled by Echo Form counts as 2 plays toward Time Warp, not 1. With Echo Form active, the effective budget per cycle is roughly 6 real card plays (each generating 2 counted plays). Track meticulously: &quot;Playing Coolheaded+ with Echo Form = 2 counted plays, counter is now 8/12.&quot;</div>
+<div class="diff-add">+- **High-value, low-count cards are essential.** Barrage+ with 6 orbs deals 42 damage for 1 card play (2 with Echo Form). Coolheaded+ draws 3 and channels 1 Frost for 1 play (2 with Echo Form). Maximize damage and block per card play, not per energy.</div>
+<div class="diff-add">+- **Frost wall persists through Time Warp.** Unlike Barricade (which preserves block), Frost orbs persist through turn endings. After Time Warp forces a turn end, all channeled Frost orbs remain and continue providing passive block. The orb engine is not disrupted by Time Warp.</div>
+<div class="diff-add">+- **Seek+ is critical for card efficiency.** Seek+ (0E, find 2 cards) enables finding exactly the right cards for the remaining counter budget. At 9/12, Seek+ finds the kill card and a block card for the final 1-2 real plays.</div>
+<div class="diff-add">+- **Manage the Haste heal at 50% HP.** Same as other classes -- prepare for debuff removal and 50% HP reset. Re-apply Vulnerable (Beam Cell, Sweeping Beam) after Haste triggers.</div>
+<div class="diff-add">+- **Lizard Tail as death insurance.** In the first Defect victory, Lizard Tail was consumed on Turn 8 when Time Warp escalation + Strength stacks overwhelmed the Frost wall. The revival provided the HP needed to survive Turn 8 and kill on Turn 9.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DEFEATED WITH (Defect -- FIRST DEFECT WIN): Echo Form+ + Seek+ (Bottled Lightning innate) + Coolheaded+ + Barrage+ + Loop + Data Disk + Runic Capacitor. Key sequence: Turn 1 Seek+ found Echo Form+, played Echo Form+ (3E). Turn 2 onward: Echo Form doubled Coolheaded+ (6 draws + 2 Frost) and Barrage+ (70 damage with 5 orbs + Vulnerable). Two Time Warps triggered over 9 turns. Lizard Tail consumed Turn 8 when Str-boosted attacks exceeded Frost block. Turn 9: Barrage+ doubled by Echo Form dealt lethal through remaining HP. Finished at 27 HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> WHAT NOT TO DO:</div>
+<div class="diff-ctx"> - Play many small cards per turn without purpose (accelerates Time Warp with low damage output).</div>
+<div class="diff-ctx"> - Exhaust Impervious early -- save for high-damage turns after Str has stacked.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/_index.md</div>
+<div class="diff-hunk">@@ -73,6 +73,12 @@</div>
+<div class="diff-ctx"> - [Sweeping Beam](sweeping-beam.md)</div>
+<div class="diff-ctx"> - [Cold Snap](cold-snap.md)</div>
+<div class="diff-ctx"> - [Barrage](barrage.md)</div>
+<div class="diff-add">+- [Doom and Gloom](doom-and-gloom.md)</div>
+<div class="diff-add">+- [Beam Cell](beam-cell.md)</div>
+<div class="diff-add">+- [FTL](ftl.md)</div>
+<div class="diff-add">+- [Blizzard](blizzard.md)</div>
+<div class="diff-add">+- [Claw](claw.md)</div>
+<div class="diff-add">+- [Melter](melter.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Defect Skill Cards</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -80,6 +86,16 @@</div>
+<div class="diff-ctx"> - [Leap](leap.md)</div>
+<div class="diff-ctx"> - [Fission](fission.md)</div>
+<div class="diff-ctx"> - [Aggregate](aggregate.md)</div>
+<div class="diff-add">+- [Seek](seek.md)</div>
+<div class="diff-add">+- [Chill](chill.md)</div>
+<div class="diff-add">+- [Overclock](overclock.md)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Defect Power Cards</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Echo Form](echo-form.md)</div>
+<div class="diff-add">+- [Loop](loop.md)</div>
+<div class="diff-add">+- [Capacitor](capacitor.md)</div>
+<div class="diff-add">+- [Machine Learning](machine-learning.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Colorless Cards</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/barrage.md</div>
+<div class="diff-hunk">@@ -1,13 +1,21 @@</div>
+<div class="diff-del">-# Barrage (2E, Attack, 4 damage per channeled orb | +: 5 damage per channeled orb)</div>
+<div class="diff-add">+# Barrage (2E, Attack, 4 damage per channeled orb | +: 6 damage per channeled orb)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Defect common Attack. Deals 4 damage times the number of currently channeled orbs to a target enemy.</div>
+<div class="diff-add">+Defect common Attack. Deals 4 damage times the number of currently channeled orbs to a target enemy (6 per orb upgraded).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-WHEN IT&#x27;S GOOD: The Defect&#x27;s primary scaling Attack. With 5 orb slots filled, Barrage deals 20 damage (25 upgraded) for 2E. This scales directly with Capacitor (more orb slots) and any card/relic that fills orbs (Coolheaded, Zap, Cold Snap, Glacier). Barrage is an Attack card, so it is safe against Gremlin Nob.</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: The Defect&#x27;s primary scaling Attack. With 5 orb slots filled, Barrage deals 20 damage (30 upgraded) for 2E. This scales directly with Capacitor (more orb slots) and any card/relic that fills orbs (Coolheaded, Zap, Cold Snap, Glacier). Barrage is an Attack card, so it is safe against Gremlin Nob.</div>
+<div class="diff-ctx"> DECISION POINTS: Play after filling orb slots for maximum value. With 1 orb, Barrage deals only 4 damage for 2E (terrible). With 5 orbs, it deals 20 damage for 2E (excellent). Always channel orbs before playing Barrage.</div>
+<div class="diff-del">-UPGRADE: 4 -&gt; 5 damage per orb. At 5 orbs, this is 20 -&gt; 25 damage. High upgrade value.</div>
+<div class="diff-add">+UPGRADE: 4 -&gt; 6 damage per orb. At 5 orbs, this is 20 -&gt; 30 damage. High upgrade value -- 50% more damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+THE BOOT INTERACTION: Each per-orb hit is a separate damage instance. The Boot (minimum 5 damage on attacks) bumps each unupgraded hit from 4 to 5. With The Boot and 5 orbs, unupgraded Barrage deals 25 instead of 20. Barrage+ at 6 per orb is above The Boot threshold, so it is unaffected.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+ECHO FORM SYNERGY: Echo Form plays Barrage twice. The second play uses the orb count at the time of the copy, which may differ from the first play if orbs were evoked between plays. With 3 orbs and no changes between plays, Echo Form Barrage+ deals 36 damage (18+18) for a single card play. Confirmed: Barrage+ Echo Form&#x27;d with 3 orbs dealt exactly 36 damage to an Orb Walker (52 to 16 HP).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> SNECKO EYE SYNERGY: Snecko Eye can randomize Barrage to 0E, making it free 20+ damage. Even at 1E, Barrage is well above rate. At 3E it is overcosted. The variance is worth it because Barrage&#x27;s ceiling is extremely high.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> NECRONOMICON SYNERGY: If Barrage costs 2+ energy (its base cost or via Snecko randomization), Necronomicon makes it play twice. With 5 Frost orbs, that is 40 damage for a single card play. This is one of the highest single-card damage outputs available to the Defect.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+VULNERABILITY SCALING: With Vulnerable on the target (50% more damage), Barrage+ at 3 orbs deals 6*3*1.5 = 27 damage per play. With 5 orbs: 6*5*1.5 = 45 damage. This was the primary burst damage source in the first Defect victory.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+PREDICTION ERROR: The player repeatedly miscalculated Barrage+ as &quot;7 per orb&quot; and unupgraded as &quot;5 per orb&quot; during the first Defect victory. The actual values are 4/6. The confusion likely arose from The Boot bumping unupgraded per-orb hits from 4 to 5, which the player then assumed was the base value. Always use 4 (base) / 6 (upgraded) for Barrage damage calculations.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> EARLY DEFECT PRIORITY: Moderate. Barrage is weak early when orb slots are mostly empty (3 slots, often 0-1 filled). It becomes strong once Capacitor, Coolheaded, and Focus cards create a full orb board. Take it in Act 1 if the deck already has orb-channeling cards.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/beam-cell.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Beam Cell (0E, Attack, 3 damage + 1 Vulnerable | +: 4 damage + 2 Vulnerable)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Attack. Deals 3 damage and applies 1 Vulnerable (4 damage and 2 Vulnerable upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: A 0-cost Vulnerable applicator. Vulnerable increases all damage by 50% for its duration, making Beam Cell an enabler for Barrage burst turns. At 0E, it fits into any turn without energy conflict. The damage is negligible -- the Vulnerable application is the entire value.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: 3 -&gt; 4 damage, 1 -&gt; 2 Vulnerable. The extra Vulnerable turn is significant, keeping enemies Vulnerable longer for more Barrage/Sweeping Beam damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Beam Cell before Barrage or other damage cards to maximize Vulnerable amplification. In short fights, even 1 turn of Vulnerable on a Barrage+ with 5 orbs adds 17 bonus damage (35 * 0.5).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/blizzard.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Blizzard (1E, Attack, Deal damage = 2x Frost channeled this combat | +: 3x Frost channeled)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect uncommon Attack. Deals damage equal to 2 times the total number of Frost orbs channeled this combat (3 times upgraded). Hits ALL enemies.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: AOE attack that scales with Frost orb count over the course of the fight. In a Frost-heavy deck that channels 2-3 Frost per turn (Coolheaded, Chill, Cold Snap, Glacier), Blizzard deals 10-18 AOE damage by Turn 3, scaling to 30-50+ by mid-fight. Excellent in multi-enemy fights where Frost defense and AOE damage are both needed.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: 2x -&gt; 3x multiplier. High upgrade priority -- 50% more damage from the same Frost count.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Blizzard after channeling several Frost orbs for maximum damage. The card is weak in early turns (2-6 damage) but becomes devastating in turns 5+. Best in decks that naturally channel many Frost orbs for defense.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/capacitor.md</div>
+<div class="diff-hunk">@@ -0,0 +1,13 @@</div>
+<div class="diff-add">+# Capacitor (1E, Power, +2 Orb Slots | +: +3 Orb Slots)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect uncommon Power. Permanently increases maximum orb slots by 2 (3 upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: More orb slots means more simultaneous passive effects and higher Barrage damage. The Defect starts with 3 orb slots. Capacitor+ brings it to 6, enabling 6 simultaneous Frost passives (12+ block/turn at Focus 0, 30+ at Focus 3) or 6 orbs for Barrage+ (42 damage). Orb slots are one of the Defect&#x27;s core scaling axes.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: +2 -&gt; +3 orb slots. High upgrade priority. The extra slot is worth 2+Focus block per turn (Frost) or 7 damage per Barrage+ play.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Capacitor early in long fights to maximize the number of turns with extra orb slots. In short hallway fights, the Power setup cost matters less because the fight ends before the orb slots are fully utilized.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+RUNIC CAPACITOR INTERACTION: The Runic Capacitor relic provides +3 orb slots at combat start (6 total). With Capacitor+ on top, the Defect reaches 9 orb slots, enabling massive Barrage damage (63 per play with Barrage+) and an enormous Frost wall.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BARRAGE SCALING: Each additional orb slot (when filled) adds 4/7 damage to Barrage/Barrage+. Capacitor+ adding 3 slots = +21 Barrage+ damage when all slots are filled.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/chill.md</div>
+<div class="diff-hunk">@@ -0,0 +1,9 @@</div>
+<div class="diff-add">+# Chill (0E, Skill, Channel 1 Frost per enemy | +: Innate)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect uncommon Skill. Channels 1 Frost orb for each enemy in the fight. Exhausts.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: In multi-enemy fights (3 Shapes, Darklings, Gremlin Gang), Chill channels 3 Frost orbs for 0E -- an enormous defensive burst. Even in single-target fights, 1 free Frost orb is acceptable. The 0E cost means it can always be played without energy conflict.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: Gains Innate (starts in hand). The upgrade guarantees Chill on Turn 1, providing immediate Frost defense. Useful upgrade if the card is already in the deck.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Chill immediately on Turn 1 of multi-enemy fights for maximum Frost generation. In single-enemy fights, play it whenever a Frost orb is needed. Exhausts after use, so timing matters less than with reusable cards.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/claw.md</div>
+<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
+<div class="diff-add">+# Claw (0E, Attack, 3 damage, +2 Claw damage this combat | +: 5 damage, +2 Claw damage)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Attack. Deals 3 damage (5 upgraded) and permanently increases ALL future Claw damage by 2 for this combat. Each Claw played makes subsequent Claws hit harder.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: A 0-cost Attack that scales within combat. The first Claw deals 3 (5+), the second deals 5 (7+), the third deals 7 (9+), etc. In a Defect deck with 2 Claws and a long fight, the scaling is meaningful. At 0E, Claw is free damage on any turn with spare card plays.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+AKABEKO SYNERGY: Akabeko adds Vigor 8 to the first Attack each combat. Claw at 0E is an ideal first attack: 3 + 8 = 11 damage for free on Turn 1.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+LIMITATIONS: The scaling is slow (only +2 per play across all Claws in the deck). In a 10-turn fight with 1 Claw, it might be played 3-4 times for 3+5+7+9 = 24 total damage. This is decent but not an engine card. Claw is a complementary damage source, not a primary one.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Claw freely whenever 0E is available. The damage accumulates without cost. Against Gremlin Nob, Claw is one of the best Turn 1 plays -- it&#x27;s an Attack (no Enrage trigger) that costs 0E.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/coolheaded.md</div>
+<div class="diff-hunk">@@ -1,9 +1,11 @@</div>
+<div class="diff-del">-# Coolheaded (1E, Skill, Channel 1 Frost, Draw 1 | +: Channel 1 Frost, Draw 2)</div>
+<div class="diff-add">+# Coolheaded (1E, Skill, Channel 1 Frost, Draw 1 | +: Channel 1 Frost, Draw 3)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Defect common Skill. Channels 1 Frost orb and draws 1 card (2 cards upgraded).</div>
+<div class="diff-add">+Defect common Skill. Channels 1 Frost orb and draws 1 card (3 cards upgraded).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-WHEN IT&#x27;S GOOD: Defensive cycling card. Frost orb provides 2 passive block per turn (more with Focus). The draw replaces itself in hand, making it a net-positive play for card flow. Upgraded Coolheaded+ draws 2 cards, making it one of the best cycling cards in the Defect&#x27;s pool.</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Defensive cycling card. Frost orb provides 2 passive block per turn (more with Focus). The draw replaces itself in hand, making it a net-positive play for card flow. Upgraded Coolheaded+ draws 3 cards, making it one of the best cycling cards in the game -- better than Battle Trance for deck cycling because it also provides a Frost orb.</div>
+<div class="diff-ctx"> DECISION POINTS: Play early in the turn to cycle into better cards. The Frost orb provides ongoing block value for the rest of combat.</div>
+<div class="diff-del">-UPGRADE: Draw 1 -&gt; Draw 2. High upgrade priority -- the extra draw significantly improves hand quality.</div>
+<div class="diff-add">+UPGRADE: Draw 1 -&gt; Draw 3. Extremely high upgrade priority -- the +2 draw dramatically improves hand quality and makes Coolheaded+ an engine piece rather than a utility card.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+ECHO FORM SYNERGY: Echo Form plays Coolheaded+ twice, channeling 2 Frost orbs and drawing 6 cards. This is an enormous hand size boost that frequently draws the entire remaining deck. In the first Defect victory, Echo Form + Coolheaded+ was the primary defensive engine, generating 6+ draws per turn while building a Frost wall.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> NOB WARNING: Coolheaded is a Skill card. It triggers Gremlin Nob&#x27;s Enrage. Against Nob, do NOT play Coolheaded unless you need the draw to find a lethal Attack.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/doom-and-gloom.md</div>
+<div class="diff-hunk">@@ -0,0 +1,13 @@</div>
+<div class="diff-add">+# Doom and Gloom (2E, Attack, 10 damage + Channel 1 Dark | +: 14 damage + Channel 1 Dark)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect uncommon Attack. Deals 10 damage (14 upgraded) and channels 1 Dark orb.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: A damage card that also channels a Dark orb for scaling. The Dark orb gains 6+Focus damage per turn passively and deals its accumulated damage when evoked. In long fights, the Dark orb eventually becomes a massive single-target nuke. The upfront 10/14 damage is reasonable for 2E, and the Dark orb is pure upside in multi-turn fights.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play when orb slots are not full of more valuable orbs (Frost for defense). If all slots are Frost and the deck relies on block, channeling Dark pushes a Frost orb rightward toward evocation. In damage-focused turns or when orb slots are available, Doom and Gloom is excellent.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: 10 -&gt; 14 damage. Moderate upgrade priority -- the 4 extra damage is useful but the Dark orb is the main value regardless of upgrade status.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DARK ORB MECHANICS: Dark orbs gain 6+Focus damage every turn passively. They deal their accumulated damage to the enemy with the lowest HP when evoked. A Dark orb channeled Turn 1 with Focus 2 gains 8 damage per turn; by Turn 5 it has accumulated 40 damage. Evoking it via Dualcast or new orb channeling delivers that 40 damage in a single hit.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BARRAGE SYNERGY: Dark orbs count toward Barrage&#x27;s orb count. Channeling a Dark orb via Doom and Gloom increases Barrage damage by 4/7 per play.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/echo-form.md</div>
+<div class="diff-hunk">@@ -0,0 +1,21 @@</div>
+<div class="diff-add">+# Echo Form (3E, Power | +: 3E, Ethereal removed)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect rare Power. The first card you play each turn is played twice.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: The single most powerful card in the Defect&#x27;s pool. Echo Form doubles the value of the strongest card played each turn -- Barrage+ becomes 70 damage, Coolheaded+ becomes 6 draws + 2 Frost orbs, Seek+ becomes a 4-card tutor. The doubling is unconditional and permanent for the rest of combat. Any card that is already strong becomes game-defining when doubled.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CRITICAL MECHANIC -- ETHEREAL: Unupgraded Echo Form is Ethereal, meaning it exhausts at end of turn if not played. If drawn on a turn where 3E cannot be spent on it (because block or damage is needed), the card is permanently lost. Upgrading Echo Form removes Ethereal, allowing it to stay in hand until affordable. This makes Echo Form one of the highest upgrade priorities in the game.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Echo Form as early as possible in long fights (bosses, elites). The doubling compounds over many turns -- playing it Turn 1 doubles 9+ cards across a 10-turn fight. Playing it Turn 5 doubles only 5+ cards. The 3E setup cost means the turn Echo Form is played, only 0-1E remains for other cards. Plan for a low-pressure turn (e.g., after building a Frost wall) to deploy it.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: Removes Ethereal. This is arguably the most important upgrade in the Defect card pool. Without the upgrade, a bad draw timing can permanently lose the card.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SEEK SYNERGY: Seek/Seek+ guarantees Echo Form is in hand on Turn 1 (or whenever needed). With Bottled Lightning on Seek, the player always opens with a tutor that can find Echo Form. This Seek + Echo Form combination is the core of the Defect&#x27;s most consistent winning engine.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+MUMMIFIED HAND SYNERGY: Echo Form is a Power. Playing it triggers Mummified Hand, making a random card in hand cost 0. This partially offsets the 3E setup cost -- on a 4E turn, play Echo Form (3E) and get a free card play (0E from Mummified Hand).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+TIME EATER WARNING: Echo Form copies count toward the Time Warp 12-card counter. Every doubled card is 2 plays counted, not 1. This means the effective card budget per cycle is roughly 6 real card plays (each counting as 2). Track the counter precisely and account for every Echo Form copy.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BOTTLED LIGHTNING INTERACTION: Bottled Lightning can make Echo Form innate, guaranteeing it starts in hand every combat. However, Bottled Lightning on Seek is often better because Seek can find Echo Form AND adapt to the specific fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED DOMINANT: Core card of the first Defect victory. Echo Form+ doubled Barrage+ (36 damage with 3 orbs, 60 with 5 orbs), Coolheaded+ (6 draws + 2 Frost), and Seek+ (4 cards tutored) across all 3 boss fights. The card transformed an orb-synergy deck into a dominant engine that could burst, defend, and cycle simultaneously.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/ftl.md</div>
+<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
+<div class="diff-add">+# FTL (0E, Attack, 5 damage, Draw 1 if first card play | +: 5 damage, Draw 2 if first card play)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Attack. Deals 5 damage. If this is the first card played this turn, draw 1 card (2 upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: A 0-cost attack with conditional draw. When played first each turn, FTL replaces itself in hand (or generates +1 card upgraded). At 0E, the floor is a free 5 damage, and the ceiling is 5 damage + 2 draws. Safe against Gremlin Nob as an Attack card.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: Draw 1 -&gt; Draw 2. Moderate upgrade priority. The extra draw makes FTL+ a strong opening play each turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+ECHO FORM NOTE: If Echo Form is active, Echo Form&#x27;s copy is the &quot;first card played&quot; mechanic. FTL played as the first card gets doubled by Echo Form (10 damage + draw effect triggers on the first copy). The interaction with &quot;first card played&quot; requires confirmation on whether both copies trigger the draw or only the first.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Always play FTL first if possible to get the draw bonus. If another card is more important to play first (especially with Echo Form), the draw bonus is lost and FTL becomes a simple 5 damage for 0E.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/loop.md</div>
+<div class="diff-hunk">@@ -0,0 +1,15 @@</div>
+<div class="diff-add">+# Loop (1E, Power | +: 0E)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect uncommon Power. At the start of each turn, trigger the passive ability of your first orb.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Doubles the passive output of the first orb slot. With a Frost orb in slot 1 at Focus 2, Loop provides 4 extra block per turn (2+Focus passive triggered again). With Lightning in slot 1, Loop deals an extra 3+Focus damage to a random enemy per turn. The value scales directly with Focus and is permanent for the rest of combat.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: 1E -&gt; 0E. High upgrade priority. At 0E, Loop is a free permanent passive boost, playable on any turn without energy cost.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Loop after channeling an orb you want to keep in slot 1. Since new orbs push older orbs rightward and eventually evoke them, the first orb slot is the most stable position. Place the orb type you want Loop to trigger (usually Frost for defense, Lightning for offense) in slot 1 before playing Loop.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+FOCUS SCALING: Loop triggers a passive, which means Focus amplifies its value. At Focus 3, a Frost orb passive gives 5 block. Loop adds another 5 block at start of turn = 10 passive block per turn from a single orb. This makes Loop excellent in Focus-heavy builds.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EMOTION CHIP INTERACTION: If Emotion Chip is also active, the first orb triggers three times per cycle: Loop at start of turn, Emotion Chip at start of turn (if HP was lost), and normal passive at end of turn. This is enormous passive value from a single orb.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED: Part of the first Defect victory engine. Loop provided additional Frost passive triggers that supplemented the Coolheaded+ Frost wall.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/machine-learning.md</div>
+<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
+<div class="diff-add">+# Machine Learning (1E, Power | +: 0E, Innate)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect rare Power. Draw 1 additional card each turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Permanent +1 card draw per turn for the rest of combat. Over a 10-turn boss fight, this is 10 extra cards drawn. More cards means more options each turn and faster cycling through the deck to find key pieces (Echo Form, Barrage+, Coolheaded+). The effect is subtle but compounds significantly in long fights.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: 1E -&gt; 0E and gains Innate (starts in hand every combat). Extremely high upgrade priority. At 0E Innate, Machine Learning+ is always free to play Turn 1, guaranteeing the +1 draw from Turn 2 onward with zero opportunity cost.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Machine Learning as early as possible in any fight expected to last 3+ turns. The sooner it is active, the more extra draws it generates. In hallway fights that end in 2-3 turns, the 1E cost may not be worth the 1-2 extra draws.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+MUMMIFIED HAND SYNERGY: As a Power, Machine Learning triggers Mummified Hand for a free card play. At 0E upgraded, it is already free, so the Mummified Hand trigger is pure bonus value.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/melter.md</div>
+<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
+<div class="diff-add">+# Melter (1E, Attack, 10 damage, remove enemy Block | +: 14 damage, remove enemy Block)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect common Attack. Deals 10 damage (14 upgraded) and removes all Block from the target enemy before dealing damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Bypasses enemy Block entirely. Against enemies with Block (Spheric Guardian, Gremlin Leader&#x27;s Shield Gremlin, enemies using Defensive Stance), Melter ensures all damage is dealt to HP. Without Melter, damage into Block is wasted.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: 10 -&gt; 14 damage. Moderate upgrade priority. The Block removal is the main value regardless of upgrade status.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Melter before other attacks on enemies with Block. The Block removal applies first, then the damage hits HP directly. If the enemy has 15 Block, a normal 10-damage attack does 0 HP damage, but Melter removes the 15 Block and then deals 10 HP damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+SYNERGY: Good with Barrage in fights where enemies gain Block (Gremlin Leader, Spheric Guardian). Melter strips Block, then Barrage&#x27;s full damage hits HP.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/overclock.md</div>
+<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
+<div class="diff-add">+# Overclock (0E, Skill, Draw 2 + Add 1 Burn to discard | +: Draw 3 + Add 1 Burn to discard)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect uncommon Skill. Draw 2 cards and add a Burn to the discard pile (Draw 3 upgraded).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: Free cycling card -- draws 2/3 cards for 0E. The Burn added to discard is a minor downside (2 unblocked damage when drawn and not played). In decks with Fire Breathing (deals damage when status cards are drawn) or Evolve (draws extra cards on status draw), the Burn becomes upside.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: Draw 2 -&gt; Draw 3. High upgrade priority. The extra draw significantly improves the card.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Play Overclock freely when cycling is needed. The Burn dilutes the deck slightly but is manageable in small decks. In large decks, the Burn dilution is negligible.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NOB WARNING: Overclock is a Skill card. Triggers Gremlin Nob Enrage.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/cards/seek.md</div>
+<div class="diff-hunk">@@ -0,0 +1,19 @@</div>
+<div class="diff-add">+# Seek (0E, Skill, Choose 1 card from draw pile | +: Choose 2 cards)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Defect rare Skill. Search the draw pile and add 1 card to hand (2 cards upgraded). Exhausts.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHEN IT&#x27;S GOOD: The most consistent card in the Defect&#x27;s pool. Seek guarantees access to the exact card needed for the current situation -- Echo Form on setup turns, Barrage+ on damage turns, Coolheaded+ on defense turns. No other Defect card provides this level of adaptability. At 0E, the tutor effect is free in terms of energy.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+UPGRADE: 1 card -&gt; 2 cards. Extremely high upgrade priority. Seek+ finds 2 cards for 0E, which is functionally a perfect draw that ignores deck dilution. In an Echo Form deck, Seek+ doubled by Echo Form tutors 4 cards from the draw pile -- the player effectively chooses their entire hand.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION POINTS: Use Seek to find the highest-impact card for the current turn. In boss fights, Turn 1 Seek should almost always find Echo Form (or the most important setup piece). In hallway fights, Seek should find the kill card (Barrage+ with full orbs) to end the fight quickly.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BOTTLED LIGHTNING SYNERGY: Making Seek innate via Bottled Lightning guarantees a tutor on Turn 1 of every combat. This is the single most consistent opener available to the Defect -- every fight starts with the player choosing their best card from the draw pile. With Echo Form in the deck, this means Turn 1 always has Echo Form available.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+ECHO FORM SYNERGY: Echo Form doubles Seek, tutoring 2 cards (or 4 with Seek+). This enables assembling a complete hand every turn -- finding both the damage card AND the defense card simultaneously.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EXHAUST NOTE: Seek exhausts after use. It is a one-time tutor per combat (unless returned via Hologram or similar effects). The single use is almost always sufficient because it sets up the engine on Turn 1, and the engine sustains itself afterward.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+NOB WARNING: Seek is a Skill card. It triggers Gremlin Nob&#x27;s Enrage. Against Nob, play Seek only if the tutored card enables a kill within 1-2 turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED DOMINANT: Core card of the first Defect victory. Seek+ (Bottled Lightning innate) guaranteed Echo Form+ on Turn 1 of every boss fight, enabling the full orb engine from the first turn of combat.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/_index.md</div>
+<div class="diff-hunk">@@ -6,6 +6,11 @@</div>
+<div class="diff-ctx"> - [Burning Blood](burning-blood.md) (Ironclad)</div>
+<div class="diff-ctx"> - [Cracked Core](cracked-core.md) (Defect)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Defect-specific Relics</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- [Data Disk](data-disk.md) (+1 Focus at combat start)</div>
+<div class="diff-add">+- [Runic Capacitor](runic-capacitor.md) (+3 orb slots at combat start)</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Common Relics</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - [Lantern](lantern.md)</div>
+<div class="diff-hunk">@@ -68,6 +73,7 @@</div>
+<div class="diff-ctx"> - [Omamori](omamori.md)</div>
+<div class="diff-ctx"> - [Ginger](ginger.md)</div>
+<div class="diff-ctx"> - [Bottled Tornado](bottled-tornado.md)</div>
+<div class="diff-add">+- [Bottled Lightning](bottled-lightning.md)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Rare Relics</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -116,3 +122,4 @@</div>
+<div class="diff-ctx"> - [Cursed Key](cursed-key.md)</div>
+<div class="diff-ctx"> - [Empty Cage](empty-cage.md)</div>
+<div class="diff-ctx"> - [Ornamental Fan](ornamental-fan.md)</div>
+<div class="diff-add">+- [Black Star](black-star.md)</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/black-star.md</div>
+<div class="diff-hunk">@@ -0,0 +1,11 @@</div>
+<div class="diff-add">+# Black Star (Boss Relic)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: Elites drop 2 relics instead of 1.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHY IT&#x27;S STRONG: Doubles relic acquisition from elite fights. In a run that fights 3-4 elites, Black Star provides 3-4 extra relics -- each of which could be a game-changing uncommon or rare relic. The value is proportional to the number of remaining elites the player can reasonably fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION FRAMEWORK: Best taken at the end of Act 1 (before Act 2 and 3 elites). Weaker if taken after Act 2 (only Act 3 elites remain, and there are fewer of them). Requires actively routing through elites to realize value -- taking Black Star and avoiding elites wastes the relic slot.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+RISK: Boss relics replace the starter relic (Burning Blood, Ring of the Snake, Cracked Core). Losing the starter relic&#x27;s sustain/utility must be weighed against Black Star&#x27;s long-term relic advantage. For the Defect, losing Cracked Core (channel 1 Lightning at combat start) is relatively low-cost compared to losing Burning Blood.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED: Present in the first Defect victory. Black Star provided extra relics from elite fights that strengthened the deck significantly through Acts 2 and 3.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/bottled-lightning.md</div>
+<div class="diff-hunk">@@ -0,0 +1,12 @@</div>
+<div class="diff-add">+# Bottled Lightning (Uncommon Relic)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: Choose a Skill card at pickup. That card becomes Innate (always starts in hand at the beginning of combat).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHY IT&#x27;S STRONG: Guarantees a specific Skill card on Turn 1 of every fight. This provides perfect consistency for engine-defining cards. The Skill restriction means it cannot bottle Attack or Power cards, but many of the strongest engine-enabling cards are Skills (Seek, Coolheaded+, Offering, Battle Trance).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+BEST TARGETS:</div>
+<div class="diff-add">+- **Seek/Seek+** (Defect): Guarantees a Turn 1 tutor that can find Echo Form, Barrage+, or any other card needed for the specific fight. This is the strongest known Bottled Lightning target for the Defect.</div>
+<div class="diff-add">+- **Offering** (Ironclad): Guaranteed Turn 1 energy burst + draw.</div>
+<div class="diff-add">+- **Coolheaded+** (Defect): Guaranteed Turn 1 Frost orb + 3 draws.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED DOMINANT: In the first Defect victory, Bottled Lightning on Seek+ guaranteed Echo Form+ in hand Turn 1 of every boss fight. This single relic-card combination was the foundation of the entire winning engine.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/data-disk.md</div>
+<div class="diff-hunk">@@ -0,0 +1,13 @@</div>
+<div class="diff-add">+# Data Disk (Common Relic, Defect-only)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: Start each combat with 1 Focus.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHY IT&#x27;S STRONG: Focus is the Defect&#x27;s primary scaling stat. Each point of Focus adds 1 to every orb passive (Frost block, Lightning damage, Dark scaling). Data Disk provides +1 Focus for free, permanently, from Turn 1 of every combat. With 3 Frost orbs, this is +3 block per turn passively. Over a 10-turn fight, that is 30+ block from a single relic.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY INTERACTIONS:</div>
+<div class="diff-add">+- **Frost orbs:** +1 passive block per Frost orb per turn. With 5 Frost orbs, Data Disk adds 5 passive block per turn.</div>
+<div class="diff-add">+- **Defragment:** Stacks with Defragment for total Focus. Data Disk + Defragment = Focus 2 at minimum, making orb passives immediately impactful.</div>
+<div class="diff-add">+- **Loop:** Loop triggers a passive, so Data Disk&#x27;s Focus bonus applies to Loop&#x27;s extra passive trigger as well.</div>
+<div class="diff-add">+- **Emotion Chip:** Same -- Focus applies to all passive triggers, including Emotion Chip&#x27;s bonus start-of-turn passives.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED: Present in the first Defect victory. Data Disk provided the baseline Focus that made Frost orb passives meaningful from Turn 1, supplementing the orb engine before additional Focus scaling was established.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/mummified-hand.md</div>
+<div class="diff-hunk">@@ -10,6 +10,10 @@ BEST SYNERGIES:</div>
+<div class="diff-ctx"> - **Inflame+/Evolve+ in long fights**: Powers played on BUFF/DEFEND free turns give free attacks or blocks, converting setup turns into hybrid offense/defense turns.</div>
+<div class="diff-ctx"> - **Immolate+**: A free Immolate+ (normally 2E) is 28-31 damage for zero energy. Devastating when triggered.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+DEFECT SYNERGY: The Defect has excellent Power density (Echo Form, Loop, Capacitor, Machine Learning, Defragment, Creative AI). In Power-heavy Defect decks, Mummified Hand triggers frequently. Playing Echo Form (3E) and getting a free Coolheaded+ or Barrage+ makes the setup turn less punishing. In the first Defect victory, Mummified Hand + Echo Form + Loop + Capacitor generated multiple free card plays during setup turns, partially offsetting Echo Form&#x27;s 3E cost.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ANTI-SYNERGIES: Decks with 0-1 Powers (trigger is too rare to matter). Corruption (Skills cost 0 already, so the free card is less impactful if it hits a Skill).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-CONFIRMED DOMINANT: In a deck with Barricade+, 2x Metallicize, Inflame+, Evolve+, Mummified Hand enabled 2-4 free plays per turn on setup turns, resulting in zero-damage hallway fights against Act 3 enemies (including The Maw at 300 HP). The relic scales in value as more Powers are added to the deck.</div>
+<div class="diff-add">+CONFIRMED DOMINANT (Ironclad): In a deck with Barricade+, 2x Metallicize, Inflame+, Evolve+, Mummified Hand enabled 2-4 free plays per turn on setup turns, resulting in zero-damage hallway fights against Act 3 enemies (including The Maw at 300 HP). The relic scales in value as more Powers are added to the deck.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED DOMINANT (Defect): In the first Defect victory with Echo Form+, Loop, Capacitor -- 3 Powers generating 3 free card plays during setup. The relic&#x27;s value is confirmed across both Ironclad and Defect Power-heavy archetypes.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/pandoras-box.md</div>
+<div class="diff-hunk">@@ -16,4 +16,6 @@ AFTER TAKING IT:</div>
+<div class="diff-ctx"> - Feel No Pain provides exhaust-based block but only triggers 3-6 times per fight -- not enough for sustained defense.</div>
+<div class="diff-ctx"> - Barricade (3E) is too slow to set up in fights with early pressure (Guardian, Hexaghost first attacks).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-DECISION FRAMEWORK: Pandora&#x27;s Box from Neow is a run-defining gamble. The upside (10 powerful cards replacing 10 weak starters) is enormous but the downside (no block = dead at Act 1 boss) is terminal. Prefer safer Neow options (100 Gold, Remove 2 Cards) unless you have no other path to a strong deck.</div>
+<div class="diff-add">+DEFECT-SPECIFIC NOTE: The Defect&#x27;s starter deck has 10 replaceable cards (4 Strikes, 4 Defends, Zap, Dualcast). Pandora&#x27;s Box replaces all of them with random Defect cards. Losing Zap and Dualcast is low-cost (they are weak). Losing Cracked Core (starter relic) does NOT happen -- Pandora&#x27;s Box replaces the starter relic, not individual cards. In the first Defect victory, Pandora&#x27;s Box Neow swap replaced Cracked Core with Pandora&#x27;s Box, transforming the starter deck into a much stronger starting pool that included Coolheaded, Cold Snap, Sweeping Beam, Claw, and other Defect cards. The loss of Cracked Core&#x27;s Turn 1 Lightning orb was irrelevant because the deck generated orbs through cards immediately.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+DECISION FRAMEWORK: Pandora&#x27;s Box from Neow is a run-defining gamble. The upside (10 powerful cards replacing 10 weak starters) is enormous but the downside (no block = dead at Act 1 boss) is terminal. Prefer safer Neow options (100 Gold, Remove 2 Cards) unless you have no other path to a strong deck. For the Defect specifically, Pandora&#x27;s Box is slightly safer than for other classes because the Defect&#x27;s starter cards are weaker (Zap and Dualcast are not impactful), and the random Defect card pool includes many strong orb-channeling cards.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/relics/runic-capacitor.md</div>
+<div class="diff-hunk">@@ -0,0 +1,13 @@</div>
+<div class="diff-add">+# Runic Capacitor (Common Relic, Defect-only)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+EFFECT: Start each combat with 3 additional orb slots (6 total instead of 3).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+WHY IT&#x27;S STRONG: Doubles the Defect&#x27;s starting orb capacity. More orb slots means more simultaneous passive effects and dramatically higher Barrage damage. With 6 slots filled with Frost orbs at Focus 2, passive block is 24 per turn (6 * 4). With Barrage+, 6 orbs = 42 damage per play.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+KEY INTERACTIONS:</div>
+<div class="diff-add">+- **Barrage+:** Each additional orb slot (when filled) adds 7 damage to Barrage+. Runic Capacitor&#x27;s 3 extra slots = +21 Barrage+ damage.</div>
+<div class="diff-add">+- **Capacitor (card):** Stacks with Capacitor/Capacitor+ for even more orb slots. Runic Capacitor + Capacitor+ = 9 orb slots, enabling truly massive orb boards.</div>
+<div class="diff-add">+- **Coolheaded+:** More orb slots means Coolheaded+ Frost orbs persist longer before being pushed out by new channels. The Frost wall is more stable.</div>
+<div class="diff-add">+- **Blizzard:** More Frost orbs channeled means higher Blizzard damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+CONFIRMED: Present in the first Defect victory. Runic Capacitor enabled 6+ simultaneous orbs, making Barrage+ a reliable 42+ damage card and the Frost wall substantial enough to block most incoming damage.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
+<div class="diff-hunk">@@ -2,16 +2,17 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> High-level strategic principles across all characters.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**CURRENT STATUS (171 runs, 5 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). Eighteen Silent runs total (Runs 151-169). Two Defect runs (Run 170 died Floor 7, Run 171 died Floor 28 -- Colosseum event, chose Fight at 21 HP, killed by Gremlin Nob + Taskmaster in second wave). FOUR proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, and (4) Silent Dead Branch + exhaust engine (dump Powers Phase 1, zero Powers Phase 2). A 5th formula (Poison engine: Catalyst+ + Crippling Cloud + Deadly Poison+ + Hovering Kite energy) is nearly confirmed -- it dominated Act 3 hallways and elites but died to unused potions on the lethal turn, not to engine failure.</div>
+<div class="diff-add">+**CURRENT STATUS (172 runs, 6 WINS):** Three Ironclad victories (Runs 147, 148, 150). Two Silent victories (Run 158 vs Time Eater, Run 162 vs Awakened One). One Defect victory (Run 172 vs Time Eater -- FIRST DEFECT WIN). Eighteen Silent runs total (Runs 151-169). Four Defect runs (Run 170 died Floor 7, Run 171 died Floor 28, Run 172 VICTORY Floor 51). FIVE proven winning formulas now exist: (1) Ironclad Snecko Eye + Immolate+ + Limit Break, (2) Ironclad Barricade + Corruption + FNP + Entrench + Body Slam, (3) Silent Accuracy + After Image + Wraith Form+ + Phantasmal Killer + Shiv burst, (4) Silent Dead Branch + exhaust engine, and (5) Defect Echo Form+ + Seek+ + Frost/Barrage orb engine (Mummified Hand for tempo, Bottled Lightning for Seek+ consistency).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SCORECARD (runs 101-158):**</div>
+<div class="diff-ctx"> - Act 1 boss wins: ~73%. All three Act 1 bosses beaten across runs.</div>
+<div class="diff-ctx"> - Act 2 boss kills: 6. Act 2 boss reaches: 12+.</div>
+<div class="diff-ctx"> - **Act 3 reached nine times (Runs 145, 147, 148, 149, 150, 151, 158, 162, 167).** Run 145 died to Transient. Run 149 died to Giant Head elite. Run 151 (Silent) died to Awakened One Phase 2 at Floor 50. Run 167 (Silent) died to Giant Head elite at Floor 40 -- deepest Silent elite reach in Act 3, GH survived at 1 HP with 2 unused potions. Runs 147, 148, 150 (Ironclad) and Runs 158, 162 (Silent) all WON.</div>
+<div class="diff-ctx"> - **Best floor: 51 -- VICTORY (Runs 147, 148, 150, 158, 162 all reached Floor 51).**</div>
+<div class="diff-del">-- **5 wins in 168 runs (3.0% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (18 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 168 died Floor 16 Hexaghost -- no poison scaling, Burns overwhelm in 16-turn fight, Run 167 died Floor 40 Giant Head elite -- GH survived at 1 HP with 2 unused potions, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD, Run 165 died Floor 27 to Cultist+Chosen Hex at 9 HP, Run 166 died Floor 29 to Gremlin Leader at 4 HP -- strong poison engine but map forced brutal combat sequence with no rest).</div>
+<div class="diff-add">+- **6 wins in 172 runs (3.5% win rate).** Ascension 0. Three Ironclad wins. Two Silent wins (18 attempts: Run 162 VICTORY vs Awakened One -- Dead Branch exhaust engine, Run 158 VICTORY vs Time Eater -- Accuracy Shiv burst, Run 168 died Floor 16 Hexaghost -- no poison scaling, Burns overwhelm in 16-turn fight, Run 167 died Floor 40 Giant Head elite -- GH survived at 1 HP with 2 unused potions, Run 151 reached Act 3 boss, Runs 152/153/156/157 reached Act 2 boss, Run 154 died Act 1 boss Floor 16, Run 155 died Act 2 elite Floor 23, Run 159 quick death, Run 160 died Floor 28 to Hex deck clog, Run 161 died Floor 22 to Unknown room combat at 21% HP, Run 163 died Floor 19 to Malaise X-cost energy trap at 19 HP, Run 164 died Floor 16 to Guardian -- early Wraith Form + unupgraded CaD, Run 165 died Floor 27 to Cultist+Chosen Hex at 9 HP, Run 166 died Floor 29 to Gremlin Leader at 4 HP -- strong poison engine but map forced brutal combat sequence with no rest).</div>
+<div class="diff-ctx"> - **Run 162: Silent VICTORY Floor 51 vs Awakened One.** Dead Branch MVP. Phase 1 Power dump (all Powers played early, Curiosity Str resets on death). Phase 2 zero Powers -- Dead Branch + exhaust cards for infinite value. Lizard Tail consumed Phase 2 Turn 1 (41 dmg vs 20 block + 18 HP). Final HP 23/67.</div>
+<div class="diff-del">-- **Four distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-add">+- **Run 172: Defect VICTORY Floor 51 vs Time Eater.** Echo Form+ MVP. Pandora&#x27;s Box replaced all starters with Seek x2, Coolheaded, Chill, Overclock, Barrage, Melter, Sweeping Beam. Picked up Echo Form+ in Act 2, Mummified Hand for Power tempo, Bottled Lightning for Seek+. Beat The Guardian (Act 1), The Champ at 2 HP (Act 2), Time Eater in 9 turns (Act 3). Final HP 27/85. Lizard Tail consumed during Time Eater fight.</div>
+<div class="diff-add">+- **Five distinct winning formulas confirmed.** See THE WINNING FORMULAS below.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **THE WINNING FORMULAS (confirmed by 5 victories across 4 distinct engines):**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -23,6 +24,8 @@ High-level strategic principles across all characters.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Formula 4 (Silent): Dead Branch Exhaust Engine (Run 162 -- SECOND SILENT WIN, vs Awakened One).** Dead Branch (relic: random card on exhaust) + exhaust-heavy Silent deck (Terror, Piercing Wail, Adrenaline, Storm of Steel, Endless Agony, Distraction, Crippling Cloud, Shivs) + After Image (1 block/card played) + Footwork x2 (Dex 7 for massive Skill block) + Well-Laid Plans (card retention). Key components: Dead Branch transforms every exhaust into a new card, creating infinite card advantage; Terror provides Vuln 99 for permanent 50% damage boost; Storm of Steel discards hand for Shivs that exhaust into Dead Branch procs; After Image + high Dex provides blocking without Powers. **This formula specifically defeats the Awakened One** because it generates card advantage in Phase 2 without playing Powers (zero Curiosity triggers). Phase 1: dump ALL Powers (Curiosity Str resets on death). Phase 2: play ZERO Powers, rely entirely on Dead Branch + exhaust for card generation. Lizard Tail provides death insurance. Mercury Hourglass adds 3 passive damage/turn. Clockwork Souvenir provides Artifact 1 at combat start.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**Formula 5 (Defect): Echo Form+ Orb Engine (Run 172 -- FIRST DEFECT WIN, vs Time Eater).** Echo Form+ (first card each turn plays twice) + Seek+/Bottled Lightning (find key cards every turn) + Coolheaded+ (Frost + draw 3, doubled = 14 block + 2 Frost + draw 6) + Barrage+/Barrage (damage per orb, doubled = 84+ damage per cycle) + Mummified Hand (free card per Power played) + Loop (front orb passive at start of turn) + Data Disk (+1 Focus innate). Key components: Echo Form+ is the engine foundation -- doubling the first card each turn means Coolheaded+ provides 14 block + 2 Frost channels + draw 6, and Barrage+ deals 42-84 damage per play. Seek+ bottled via Bottled Lightning guarantees finding Echo Form+ or Coolheaded+ on Turn 1 of every fight. Mummified Hand discounts a card each Power play, enabling 3-4 card turns on Power setup turns despite the energy cost. Against Time Eater, card count discipline is critical: Echo Form copies DO count toward the 12-card Time Warp counter (each doubled card = 2 toward counter). The deck plays 5-6 effective cards per turn while outputting 80+ damage per cycle via Barrage with 6-8 orbs. Lizard Tail provided death insurance for the Time Eater&#x27;s 39-damage attack turn.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> **What all formulas share:** (1) zero UI misplays, (2) zero arithmetic errors, (3) strong Act 1 performance, (4) proper map pathing, (5) a complete scaling engine (not individual strong cards). The key insight: pursue whichever engine the card/relic offerings support, not force one formula over the other.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **IMMEDIATE PRIORITIES (in order):**</div>
+<div class="diff-hunk">@@ -602,7 +605,7 @@ HP is fully restored between acts (confirmed). After beating the Act 2 boss at a</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## Defect-Specific Strategy (PRELIMINARY -- 2 runs)</div>
+<div class="diff-add">+## Defect-Specific Strategy (4 runs, 1 VICTORY)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### The Defect&#x27;s Core Problem: Skill-Heavy Starting Deck</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -614,12 +617,17 @@ The Defect starts with 6 Skills (4 Defend + Zap + Dualcast) and 4 Attacks (4 Str</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Defect Key Cards and Relics</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- **Barrage** is the Defect&#x27;s primary scaling Attack. Deals 4 damage per channeled orb. With Capacitor (5 slots) fully loaded, Barrage deals 20 damage. With Necronomicon (2E base triggers it), Barrage plays twice for 40 damage. This is the Defect&#x27;s main burst card.</div>
+<div class="diff-del">-- **Cold Snap** is the best dual-purpose early pickup: Attack (Nob-safe) + channels Frost orb. With Necronomicon at 2+ cost, it plays twice for double damage and two Frost orbs.</div>
+<div class="diff-add">+- **Echo Form+** (3E Power, Rare) is the Defect&#x27;s most powerful card. First card played each turn is played twice. This doubles Coolheaded+ (14 block + 2 Frost + draw 6), doubles Barrage+ (84 damage with 6 orbs), doubles Cold Snap (12 damage + 2 Frost channels). The 3E cost is steep but Mummified Hand offsets it by making a random card free when Echo Form+ is played. **Echo Form+ copies DO count toward Time Eater&#x27;s 12-card Time Warp counter** -- each doubled card is 2 toward the limit. Upgrade priority: extremely high (Echo Form+ costs 3E instead of 3E but starts working immediately instead of next turn).</div>
+<div class="diff-add">+- **Seek/Seek+** (0E Skill, Rare) searches the draw pile for a card and adds it to hand. Seek+ searches for 2 cards. With Bottled Lightning making Seek+ innate, you find Echo Form+ or Coolheaded+ Turn 1 of every fight. Two Seeks in a Pandora&#x27;s Box deck provides extraordinary consistency.</div>
+<div class="diff-add">+- **Barrage/Barrage+** is the Defect&#x27;s primary scaling Attack. Deals 4/5 damage per channeled orb (upgraded: 7 per orb). With 6-8 orb slots filled, Barrage+ deals 42-56 damage. Doubled by Echo Form = 84-112 damage. With Vulnerable, each orb hit deals floor(7*1.5)=10 damage. This is the Defect&#x27;s highest single-card damage output.</div>
+<div class="diff-add">+- **Cold Snap** is the best dual-purpose early pickup: Attack (Nob-safe) + channels Frost orb. Doubled by Echo Form, it channels 2 Frost and deals double damage.</div>
+<div class="diff-ctx"> - **Fission** MUST be upgraded before playing in Frost builds. Unupgraded Fission removes orbs WITHOUT evoking -- it destroys Frost defense for Energy and draws. Upgraded Fission+ evokes all orbs (triggering Frost block, Lightning damage) AND gives Energy + draws. This is one of the most critical upgrade distinctions in the Defect&#x27;s pool.</div>
+<div class="diff-del">-- **Aggregate** generates Energy based on draw pile size. Play it first each turn before other draw effects. With Snecko Eye, Aggregate enables playing multiple randomized cards per turn.</div>
+<div class="diff-del">-- **Necronomicon + Snecko Eye** is a powerful Defect combo. Snecko randomizes costs, making more Attacks cost 2+ and triggering Necronomicon&#x27;s doubling. With 7 cards drawn per turn, the probability of a high-value doubled Attack is very high.</div>
+<div class="diff-add">+- **Aggregate** generates Energy based on draw pile size. Play it first each turn before other draw effects. With a 20+ card deck, Aggregate provides 3-4 bonus energy.</div>
+<div class="diff-add">+- **Mummified Hand** is the Defect&#x27;s best uncommon relic. Every Power played makes a random card cost 0. With Echo Form+, Loop, Machine Learning, Capacitor all being Powers, setup turns generate 2-4 free card plays. This is the tempo engine that makes 3E Powers affordable.</div>
+<div class="diff-add">+- **Bottled Lightning** (innate Skill) guarantees Seek+ in the opening hand every fight. This ensures Echo Form+ or Coolheaded+ is always accessible Turn 1. Combined with Seek+ searching for 2 cards, the opening hand is perfectly consistent.</div>
+<div class="diff-ctx"> - **Emotion Chip** doubles orb passive triggers on turns after taking damage. With 5 Frost orbs and Focus, this provides enormous free block. Best in Frost-heavy builds that inevitably take some chip damage.</div>
+<div class="diff-add">+- **Data Disk** (+1 Focus innate) is the Defect&#x27;s best uncommon relic for orb builds. Permanent +1 Focus means all orbs are stronger from Turn 1. Frost passive goes from 2 to 3 block, Lightning from 3 to 4 damage.</div>
+<div class="diff-add">+- **Runic Capacitor** (+3 orb slots) is excellent in Barrage builds. 6 orb slots base becomes the foundation for 30+ damage Barrages. More orb slots = more Frost passive block and higher Barrage damage ceiling.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Defect Colosseum Warning</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Run 171 analysis + relay.py auto-writes run logs on GAME_OVER</div>
       <div class="changelog-sha">f76ed7a6</div>
     </div>
@@ -10343,152 +10965,6 @@ footer {
 <div class="diff-ctx"> - Act 2 deaths: 9/9 logged deaths -- still the wall (floors 21-33)</div>
 <div class="diff-ctx"> - Average death floor: 26.2 (plateau from runs 63-78 average of 25.6)</div>
 <div class="diff-ctx"> - 3 Cultists: 2 deaths (at 52% and 53% HP -- threshold revised to 60%)</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Strategist #6 (100-run milestone): path tracing, Brimstone checklist</div>
-      <div class="changelog-sha">363918eb</div>
-    </div>
-    <div class="changelog-date">2026-05-08</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
-<div class="diff-hunk">@@ -158,10 +158,12 @@ If missing any of these, PRIORITIZE filling that gap over taking a generically s</div>
-<div class="diff-ctx"> - Which card benefits most from upgrading? Priority: Bash &gt; Corruption (if in deck) &gt; True Grit &gt; Armaments &gt; best damage card &gt; best block card.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Map Pathing</div>
-<div class="diff-add">+- **MANDATORY: Before choosing any path, trace EVERY available path forward to the next rest site or shop.** Count forced combat rooms on each path. Choose the path with fewest forced combats to the next healing opportunity. Say &quot;Path A: X combats to rest. Path B: Y combats to rest. Choosing [better].&quot; This prevents the #1 cause of death: entering fights at sub-threshold HP because the path forces consecutive combats.</div>
-<div class="diff-ctx"> - Consider your HP, deck strength, and what you need before the boss</div>
-<div class="diff-ctx"> - Elites give relics but cost HP</div>
-<div class="diff-ctx"> - Rest sites and shops are resources — path through them when you need them</div>
-<div class="diff-ctx"> - Question marks (events) are variable — some heal, some hurt</div>
-<div class="diff-add">+- In Act 2, treat Unknown rooms as Monster rooms when routing (3 deaths from Spheric Guardian spawning in Unknown rooms)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Events</div>
-<div class="diff-ctx"> - Read the options carefully. Many events have hidden costs or benefits.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/relics/brimstone.md</div>
-<div class="diff-hunk">@@ -8,6 +8,12 @@ THE RISK: Enemy Strength stacks identically. A multi-hit enemy like Book of Stab</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> DECISION POINTS: Take Brimstone when your deck has burst damage and can end fights in 4-5 turns. Avoid if your deck relies on slow defensive scaling or long attrition fights. Pairs well with Weak application (Bash+, Thunderclap, Shockwave) to offset enemy Strength gains.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+**PURCHASE CHECKLIST (before buying Brimstone at a shop):**</div>
-<div class="diff-add">+1. Is Book of Stabbing a possible Act 2 elite? If yes, DO NOT BUY. Brimstone + Book of Stabbing has killed the player twice (Run 091, Run 100). The anti-synergy is unsurvivable.</div>
-<div class="diff-add">+2. Can your deck end fights in 4-5 turns? If no, the enemy Str gain will overwhelm you.</div>
-<div class="diff-add">+3. Do you have Weak application (Bash+, Thunderclap, Shockwave)? Weak offsets enemy Str gains.</div>
-<div class="diff-add">+4. Are you in Act 2 already? If yes, evaluate remaining enemy pool before buying. If Snake Plant and Book of Stabbing are both possible encounters, skip Brimstone.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> SYNERGIES: Demon Form (+4 Str/turn combined), Reaper (heals more as Strength grows), Heavy Blade (Strength multiplied 3x/5x), Pummel/multi-hit (Strength added per hit), Limit Break (doubles accumulated Strength).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ANTI-SYNERGIES: Slow decks, long fights, enemies with multi-hit attacks (Book of Stabbing, Snake Plant). The enemy Strength gain compounds the danger of every additional turn.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">playbook/strategy.md</div>
-<div class="diff-hunk">@@ -2,21 +2,25 @@</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**CURRENT BOTTLENECK:** Deck building for Act 2 readiness. Runs 72-76 averaged Floor 25.6 -- still dying mid-Act 2. Hard Rules are working (zero compliance failures in 10+ runs). Playbook accuracy is mostly fixed. The new problem is assembling the right tools BEFORE Act 2 demands them. Every recent death had a deck that was *close* but missing one critical piece: front-loaded Strength for Spheric Guardian, AOE for Gremlin Leader gremlins, or affordable Corruption (2E upgrade). The shop indexing bug continues to pollute decks with unwanted cards (~40% of runs affected).</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-**SCORECARD (runs 72-76):**</div>
-<div class="diff-del">-- Act 1 boss wins: 5/5 (100%) -- Act 1 is solved</div>
-<div class="diff-del">-- Act 2 deaths: 5/5 -- still the wall</div>
-<div class="diff-del">-- Spheric Guardian: 2 deaths, 1 survival (Corruption+FNP engine works)</div>
-<div class="diff-del">-- Gremlin Leader: 2 deaths (emerging as co-#1 killer with SG)</div>
-<div class="diff-del">-- Average floor: 25.6 (no improvement from runs 69-73 average of 24.6)</div>
-<div class="diff-del">-- Hard Rule violations: 0 (rules are working)</div>
-<div class="diff-add">+**CURRENT BOTTLENECK (100-run milestone):** HP attrition in Act 2. The playbook is comprehensive. Hard Rules have zero violations. Deck building is adequate. The problem is PATHING: the player enters fights at sub-threshold HP because map evaluation is too shallow. Consecutive combat rooms drain HP below survival thresholds before rest sites are reachable. Secondary bottleneck: Brimstone anti-synergy with multi-hit enemies (Book of Stabbing) caused 2 of 5 recent deaths.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**SCORECARD (runs 81-100):**</div>
-<div class="diff-add">+- Act 1 boss wins: ~100% -- Act 1 is solved</div>
-<div class="diff-add">+- Act 2 deaths: 9/9 logged deaths -- still the wall (floors 21-33)</div>
-<div class="diff-add">+- Average death floor: 26.2 (plateau from runs 63-78 average of 25.6)</div>
-<div class="diff-add">+- 3 Cultists: 2 deaths (at 52% and 53% HP -- threshold revised to 60%)</div>
-<div class="diff-add">+- Book of Stabbing: 3 deaths (2 with Brimstone anti-synergy)</div>
-<div class="diff-add">+- Gremlin Leader: 2 deaths (at 55% and 56% HP)</div>
-<div class="diff-add">+- Hard Rule violations: 0</div>
-<div class="diff-add">+- Best floor: 39 (Run 63, Act 3 death) -- unchanged since run 63</div>
-<div class="diff-add">+- Shop indexing bug: FIXED. Boss relic skip bug: UNRESOLVED (2 occurrences)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **IMMEDIATE PRIORITIES (in order):**</div>
-<div class="diff-del">-1. **Build Act 2-ready decks by Floor 15.** The deck needs ALL THREE: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Thunderclap, Cleave, Immolate, Whirlwind), (c) healing beyond Burning Blood. If missing any by Floor 12, actively seek it in remaining card rewards, shops, and events.</div>
-<div class="diff-del">-2. **Gremlin Leader is now co-#1 killer.** Enter at 60%+ HP. Kill gremlins with AOE. Apply Shockwave early. Every wasted turn = +3 Str to ALL enemies. Do not end turn early after draw effects.</div>
-<div class="diff-del">-3. **Upgrade Corruption to 2E before relying on it.** Unupgraded Corruption (3E) has killed the player. If Corruption is the engine piece, upgrade it FIRST at rest sites -- above Bash, above everything.</div>
-<div class="diff-del">-4. **Have Strength scaling by Floor 15** (Inflame &gt; Spot Weakness &gt; Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.</div>
-<div class="diff-add">+1. **Trace full paths before every map choice.** Before choosing any path, trace EVERY option forward to the next rest/shop. Count forced combats. Choose fewer combats. This is the #1 structural fix -- the majority of deaths result from entering fights at sub-threshold HP because the path forced consecutive combats. Say the count aloud: &quot;Path A: 3 combats to rest. Path B: 1 combat to rest.&quot;</div>
-<div class="diff-add">+2. **Do NOT buy Brimstone if Book of Stabbing is a possible Act 2 elite.** Brimstone + Book of Stabbing has killed the player twice. The anti-synergy makes Book of Stabbing damage grow quadratically (more hits * more damage per hit). If already holding Brimstone, AVOID Book of Stabbing entirely.</div>
-<div class="diff-add">+3. **Build Act 2-ready decks by Floor 15.** The deck needs ALL THREE: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Thunderclap, Cleave, Immolate, Whirlwind), (c) healing beyond Burning Blood. If missing any by Floor 12, actively seek it in remaining card rewards, shops, and events.</div>
-<div class="diff-add">+4. **3 Cultists threshold is 60%, not 50%.** Five deaths at 30-53% HP confirm that even strong block tools cannot survive Ritual scaling. Kill speed (AOE burst to remove one Cultist fast) matters more than defensive tools.</div>
-<div class="diff-add">+5. **Have Strength scaling by Floor 15** (Inflame &gt; Spot Weakness &gt; Limit Break). Spheric Guardian and other high-block enemies are mathematically unwinnable without it.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ---</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -29,11 +33,11 @@ High-level strategic principles for Ironclad runs.</div>
-<div class="diff-ctx"> | Fight Type | Minimum HP | Notes |</div>
-<div class="diff-ctx"> |---|---|---|</div>
-<div class="diff-ctx"> | Hallway (easy) | 25% | Byrds/Chosen can still drain 40-60 HP |</div>
-<div class="diff-del">-| Hallway (hard) | 50% | 3 Cultists, Centurion+Mystic, Snake Plant |</div>
-<div class="diff-add">+| Hallway (hard) | 60% | 3 Cultists (5 deaths, even 53% was insufficient), Centurion+Mystic, Snake Plant |</div>
-<div class="diff-ctx"> | Elite | 60% | Gremlin Leader, Book of Stabbing, Slavers |</div>
-<div class="diff-ctx"> | Boss | 70% or Pantograph | Act 2 boss has massive damage |</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**CRITICAL: 3 Cultists and Spheric Guardian are tied for the most lethal encounter in the game -- each responsible for three deaths.** Triple independent +3 Str/turn = +9 combined Str/turn. Deaths occurred at 30%, 37%, and 39% HP entry. Even a deck with Shockwave+, Metallicize, Inflame, Fiend Fire, and Rampage failed at 30% HP because slow scaling engines cannot kill fast enough to survive the combined damage. The 50% threshold for hard hallway fights is NON-NEGOTIABLE for this encounter.</div>
-<div class="diff-add">+**CRITICAL: 3 Cultists is the most lethal hallway fight in the game (5 deaths confirmed at 30%, 37%, 39%, 52%, 53% HP entry).** Triple independent +3 Str/turn = +9 combined Str/turn. Even decks with Impervious+, Calipers, Immolate, Shockwave+ failed at 53% HP because Ritual scaling outpaces all defensive tools -- kill speed (AOE burst to eliminate one Cultist fast) matters more than block density. The 60% threshold for this encounter is NON-NEGOTIABLE.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### What to Do at Low HP</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -318,6 +322,7 @@ Exception to the long fight problem: Fiend Fire + Unceasing Top creates a sustai</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Core Principles</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+- **MANDATORY PATH TRACE: Before choosing ANY path, trace EVERY available option forward to the next rest site or shop.** Count the number of forced combat rooms on each path. Choose the path with the fewest forced combats between here and the next healing opportunity. This single practice prevents the majority of death-spiral entries. Do NOT just look at the next room -- trace the FULL path.</div>
-<div class="diff-ctx"> - **Look 2-3 floors ahead, not just the next room.** At EVERY map node, trace paths forward. If a path leads to 2+ consecutive combat rooms with no rest/shop/event between them, that path is dangerous at any HP below 70%. Three deaths (Runs 20, 21, 22) were caused by map topology forcing combat after a drain fight.</div>
-<div class="diff-ctx"> - Prefer routes with a rest site in the last 1-2 floors before the boss.</div>
-<div class="diff-ctx"> - After a brutal fight (Byrds, Centurion+Mystic), next room MUST be healing, not another combat.</div>
-<div class="diff-hunk">@@ -333,10 +338,19 @@ Before fighting an elite, check:</div>
-<div class="diff-ctx"> 4. **Path alternatives**: If a safer path exists with similar value, take it.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **Act 2 Elite Threat Ranking:**</div>
-<div class="diff-del">-- **Gremlin Leader** (2 deaths in 5 runs, co-#1 killer): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death).</div>
-<div class="diff-del">-- **Book of Stabbing**: Escalating multi-hit (+1 per turn). Wounds clog draw pile. NEED: exhaust for Wounds, fast kill. Do NOT play Brutality.</div>
-<div class="diff-add">+- **Book of Stabbing** (3 deaths, now #1 killer): Escalating multi-hit (+1 per turn). Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. Do NOT play Brutality. **CRITICAL: If you have Brimstone, DO NOT FIGHT Book of Stabbing. Brimstone gives it +2 Str/turn on top of +1 hit/turn -- damage grows quadratically. Two deaths confirmed from this anti-synergy (Runs 091, 100). Even at 75% HP with strong Str scaling, the fight is unwinnable by turn 5.**</div>
-<div class="diff-add">+- **Gremlin Leader** (2 deaths in 5 runs): Rally gives +3 Str to ALL enemies per cast. By turn 5, all enemies have +6 Str. Fight is unwinnable after turn 7. NEED: AOE for gremlins, Shockwave for mass debuff, 60%+ HP entry. Do NOT waste turns (Battle Trance + end = death).</div>
-<div class="diff-ctx"> - **Slavers**: 3 enemies, 27+ combined damage. NEED: AOE, mass debuff, 60%+ HP.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+### Brimstone Elite Avoidance</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+If Brimstone is equipped, the Act 2 elite pool becomes asymmetrically dangerous:</div>
-<div class="diff-add">+- **Book of Stabbing: HARD AVOID.** Brimstone + multi-hit + hit-count escalation = quadratic damage growth. Two deaths confirmed. No amount of player Strength compensates.</div>
-<div class="diff-add">+- **Snake Plant: CAUTION.** Brimstone adds +2/turn to each of its 3 hits. 9x3 becomes 11x3 by turn 2. Combined with Frail, expect 40-60 HP drain.</div>
-<div class="diff-add">+- **Gremlin Leader: MODERATE RISK.** Brimstone adds +2 to every gremlin. With Rally +3, combined scaling is +5 Str/turn to all enemies.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+When holding Brimstone, avoid elite paths entirely if HP is below 70%. The enemy Strength scaling makes every elite fight significantly harder.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ### Fairy Management</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Fairy in a Bottle is often consumed in Centurion+Mystic fights. If Fairy is your only death insurance, avoid fights that might trigger it before the elite/boss. Plan paths so Fairy is available for the most dangerous fight.</div>
-<div class="diff-hunk">@@ -433,10 +447,12 @@ Across all Act 1 boss victories (10 total, including 1 Act 2 boss victory), the</div>
-<div class="diff-ctx"> 6. **Damage scaling for long fights**: Hexaghost victories had damage scaling (Inflame, Rampage+, Disarm). Collector victory relied on Immolate+ AOE. Two Hexaghost deaths had Weak but no damage scaling.</div>
-<div class="diff-ctx"> 7. **Extra energy**: The Collector victory had 4 energy (Sozu). Extra energy enables offense + defense simultaneously.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-### Cross-Run Death Pattern (Act 2)</div>
-<div class="diff-add">+### Cross-Run Death Pattern (Act 2) -- Updated at 100 runs</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Across Act 2 deaths (runs 72-76), the pattern is:</div>
-<div class="diff-del">-1. **Missing one critical tool**: 5/5 deaths had decks that were close but missing a key piece. Inflame/Spot Weakness absent in SG fights. Zero AOE in GL fights. Unupgraded Corruption in multi-enemy fights.</div>
-<div class="diff-del">-2. **Shop bug damage**: 2/5 runs had decks polluted by accidental shop purchases (Havoc x2, Sever Soul, Clash). This is infrastructure damage, not player error, but it adds 2-3 dead cards that dilute draws at the worst time.</div>
-<div class="diff-del">-3. **Gremlin Leader + Spheric Guardian are the two killers**: Combined 4/5 Act 2 deaths. Both require specific answers (AOE + turn economy for GL, front-loaded Str + burst for SG). A deck that answers one may not answer the other -- need BOTH AOE and Str scaling.</div>
-<div class="diff-del">-4. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling or AOE by Floor 12, the player must prioritize these over all other card choices.</div>
-<div class="diff-add">+Across 30+ Act 2 deaths, the pattern has SHIFTED from &quot;missing critical tools&quot; to &quot;HP attrition from pathing&quot;:</div>
-<div class="diff-add">+1. **HP attrition from consecutive combats (primary cause)**: The player enters Act 2 at healthy HP, loses 30-50 HP in one fight (Byrds, Snake Plant, Centurion+Mystic), then enters the NEXT fight at critical HP and dies. The mistake is not the first fight -- it is taking a second combat room immediately after. This is a MAP PATHING failure, not a deck building failure. The fix is mandatory path tracing before every map choice.</div>
-<div class="diff-add">+2. **Brimstone anti-synergy (new pattern, 2 deaths)**: Brimstone purchased at shop without evaluating Act 2 elite pool. Book of Stabbing with Brimstone deals quadratically scaling damage. Both deaths occurred with strong Str decks that would have survived without Brimstone&#x27;s enemy buff.</div>
-<div class="diff-add">+3. **3 Cultists + scaling hallway fights**: 5 deaths to 3 Cultists at 30-53% HP. This is a HALLWAY fight, not an elite. It cannot be avoided via pathing (it spawns on Monster nodes). The only defense is entering every Act 2 combat at 60%+ HP -- which requires better pathing between combats.</div>
-<div class="diff-add">+4. **Book of Stabbing is the #1 elite killer**: 3 deaths. Wound clog + escalating multi-hit. Decks without exhaust tools cannot win. Decks with Brimstone cannot win.</div>
-<div class="diff-add">+5. **Shop bug damage (RESOLVED)**: The shop indexing bug was fixed. No longer a factor for future runs.</div>
-<div class="diff-add">+6. **The deck building window is Floor 6-15**: After Floor 15, there are too few card rewards and shops left to fill gaps. If the deck is missing Str scaling or AOE by Floor 12, the player must prioritize these over all other card choices.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

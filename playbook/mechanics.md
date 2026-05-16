@@ -4,6 +4,52 @@ Core game systems and how they interact.
 
 ---
 
+## Watcher Stance Mechanics
+
+The Watcher has three stances: **Calm**, **Wrath**, and **No Stance** (neutral). Stance changes are the core of the Watcher's gameplay.
+
+### Stances
+
+| Stance | Effect | How to Enter | How to Exit |
+|---|---|---|---|
+| **Wrath** | ALL attack damage dealt is DOUBLED. ALL damage received is DOUBLED. | Eruption, Crescendo, Fear No Evil (conditional) | Vigilance, Inner Peace, Empty Body, Meditate, Fear No Evil (conditional) |
+| **Calm** | No combat bonuses. When you LEAVE Calm, gain +2 Energy. | Vigilance, Inner Peace, Meditate, Fear No Evil (conditional), Empty Body enters no-stance | Eruption, Crescendo (any Wrath entry) |
+| **No Stance** | Neutral. No bonuses or penalties. Starting stance. | Empty Body, or at combat start | Any stance-entry card |
+
+### The Energy Loop (Core Engine)
+
+The Watcher's primary engine is cycling between Calm and Wrath:
+1. Enter Calm (via Vigilance, Inner Peace, Meditate).
+2. Next turn, exit Calm by entering Wrath (via Eruption, Crescendo). Gain +2 Energy from leaving Calm.
+3. Play attacks in Wrath at doubled damage using the bonus energy.
+4. Exit Wrath before the enemy attacks (via Vigilance, Inner Peace, Empty Body, Fear No Evil).
+5. Repeat.
+
+With Eruption+ (1E) and Calm exit (+2E), entering Wrath costs net -1E (gain 2, spend 1). This means the Watcher effectively gets 2 free energy per cycle compared to staying in no stance.
+
+### CARD SEQUENCING RULES (CRITICAL -- CONFIRMED ERRORS)
+
+**RULE 1: Play Flurry of Blows BEFORE stance-change cards.** Flurry of Blows returns from discard to hand when you change stance. If Flurry is in your hand when you change stance, it does NOT trigger (it must be in the discard pile). Play Flurry first (it goes to discard), then change stance (Flurry returns to hand), then play Flurry again. Wrong order wastes 4-8 damage per stance change.
+
+**RULE 2: Play Miracle ONLY when you have a use for the energy.** Miracle gives +1E and Retains between turns. Do not play Miracles with no plan for the energy. A confirmed death occurred at 13 HP against Snake Plant when 3 Miracles were played for +3E with no useful cards to spend the energy on (only setup cards available), leaving 0 block against 21 incoming damage.
+
+**RULE 3: Play Meditate LAST.** Meditate ends your turn immediately. All other plays must happen before Meditate.
+
+**RULE 4: Play Wave of the Hand BEFORE block cards.** Wave of the Hand applies Weak when you gain block. Playing block cards before Wave of the Hand wastes the Weak triggers.
+
+**RULE 5: Do NOT end your turn in Wrath if the enemy is attacking.** Doubled incoming damage is lethal at any HP below full. Always have an exit (Vigilance, Inner Peace, Empty Body, Fear No Evil) available before entering Wrath on an attack turn.
+
+### Watcher Starting Deck
+
+- 4 Strike (Attack, 1E, 6 damage)
+- 4 Defend (Skill, 1E, 5 block)
+- 1 Eruption (Attack, 2E, 9 damage, enter Wrath)
+- 1 Vigilance (Skill, 2E, 8 block, enter Calm)
+
+**Starting Relic: Pure Water** -- adds 1 Miracle to hand at the start of each combat.
+
+---
+
 ## Defect Orb Mechanics
 
 The Defect channels orbs into orb slots. Orbs provide passive effects at end of turn and stronger evoke effects when removed.
@@ -172,7 +218,7 @@ Exhaust is NOT card removal. Permanent card removal only happens at shops (remov
 
 ### Retain
 - Retained cards stay in hand at end of turn instead of being discarded.
-- Not observed frequently in current card pool.
+- **Watcher makes heavy use of Retain:** Miracle (Retain, +1E), Smite (Retain, 12 damage), Flying Sleeves (Retain, 4x2), and cards retrieved by Meditate all have Retain. This allows the Watcher to set up cards on defensive turns and use them on offensive turns. Held Miracles provide energy flexibility; held Smites enable burst damage in Wrath.
 
 ---
 

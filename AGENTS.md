@@ -257,7 +257,7 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g
 
 ### Current state
 
-- Playing **Defect** at Ascension 0 (first Defect runs — learning phase)
+- Playing **Watcher** at Ascension 0 (first Watcher runs — learning phase)
 - Strategist runs every 10 runs
-- 5 wins total (3 Ironclad, 2 Silent) at Ascension 0.
+- 6 wins total (3 Ironclad, 2 Silent, 1 Defect) at Ascension 0.
 

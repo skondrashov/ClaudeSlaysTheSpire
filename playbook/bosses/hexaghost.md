@@ -92,6 +92,24 @@ The Silent's primary challenge against Hexaghost is damage output, not defense. 
 
 **Smoke Bomb does NOT work in boss fights.** You cannot escape boss encounters. If you are counting on Smoke Bomb for emergency survival against Hexaghost, it will not function. Plan block for Inferno from the deck itself.
 
+WATCHER-SPECIFIC STRATEGY (confirmed in three defeats):
+
+The Watcher's primary challenge against Hexaghost is surviving the long fight while dealing enough damage via stance cycling to end it before Burns overwhelm. The Watcher has natural advantages (doubled damage in Wrath, Calm energy loop for extra plays) but also unique dangers (Wrath doubles incoming damage from Inferno/Divider).
+
+**Turn 1 (free -- Activate):** Set up Powers (Battle Hymn, Rushdown). Do NOT enter Wrath -- Turn 2 Divider would be doubled in Wrath, dealing 60-84 damage (instant death). If no Powers are in hand, play Cut Through Fate for Scry + damage to set up Turn 2 draws. Wreath of Flame is a good Turn 1 play (bank Vigor for Turn 2).
+
+**Turn 2 (Divider -- MUST BLOCK):** Stay in Calm or no stance. Do NOT enter Wrath. Use all available block cards. Divider is 36-42 base damage as a multi-hit. With Weak (from Wave of the Hand), this drops to 24-28. Enter Calm on Turn 1 if possible for +2E on Turn 2 to fund more block.
+
+**Wrath timing:** Enter Wrath ONLY on turns where you can exit before the enemy attacks, OR on free turns (DEFEND_BUFF). The DEFEND_BUFF turn (Inflame) is the ideal burst window -- enter Wrath, play all attacks at doubled damage, exit via Vigilance or Inner Peace. Each Wrath burst turn can deal 40-60 damage.
+
+**Weak source:** Wave of the Hand is the Watcher's primary Weak applicator. Save it for Inferno and Divider turns. Play Wave of the Hand, then block cards (each block triggers Weak). Weak Potion is an alternative for the second Inferno.
+
+**Burns management:** The Watcher has Cut Through Fate (Scry away Burns) and natural deck cycling from draw cards (Inner Peace draws 3-4). Scry is modest Burns management but helps maintain hand quality. The primary Burns solution is kill speed via Wrath burst turns.
+
+**Kill speed targets:** With the Calm -> Wrath energy loop and Smite generation (Carve Reality, Battle Hymn), the Watcher should aim to kill Hexaghost in 9-11 turns. Judgment finishes the fight when Hexaghost reaches 30-40 HP, saving 1-2 turns of Burns damage.
+
+**CONFIRMED FAILURE PATTERN (3 deaths):** All three Watcher Hexaghost deaths followed the same pattern: entering the boss at low HP (22-42 HP, 30-58%), dealing adequate damage per turn, but dying when Burns+ accumulated in hand during the final turns (Turns 10-11). Two deaths had 0 block against the attack that killed them because the hand was clogged with Burns+ and Writhe (curse). The third death had Burns+ dealing 8 EoT damage at 14 HP with no block cards drawn. **Entry HP is the critical factor.** Enter the Hexaghost fight at 50%+ HP minimum, 70%+ preferred.
+
 WHAT NOT TO DO:
 - **End turn before verifying the kill.** When Hexaghost is near death, calculate total damage from ALL playable cards before ending turn. A confirmed death occurred at Hexaghost 7/250 HP remaining because the player played Iron Wave (13 damage) against 20 HP and ended turn, despite having Headbutt (17 damage) in hand with 2E remaining. Combined damage (30) would have killed. The error was writing "13 > 20" in reasoning -- a basic arithmetic mistake. On kill turns, play attacks one at a time and verify the kill before ending.
 - Spend all energy on setup Turn 2 with minimal block. Turn 2 is a ~30 damage multi-hit. Even 5 more block (one Defend) reduces damage from 20 to 15, which can be the difference between surviving Burns in the final turns and dying. Setup is important, but not at the cost of 20+ unblocked damage.

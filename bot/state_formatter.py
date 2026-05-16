@@ -317,38 +317,58 @@ def format_map(gs: dict) -> str:
     map_data = gs.get("map", [])
     next_nodes = gs.get("screen_state", {}).get("next_nodes", [])
     current_floor = gs.get("floor", 0)
+    boss = gs.get("screen_state", {}).get("boss", {})
+
+    SYMBOLS = {
+        "M": "Monster", "?": "Unknown", "$": "Shop",
+        "E": "Elite", "R": "Rest", "T": "Treasure",
+        "B": "Boss",
+    }
 
     lines = ["\n=== MAP ==="]
 
+    # Show available next choices
     if next_nodes:
-        lines.append("Available paths:")
+        lines.append("Available paths (choose one):")
         for i, node in enumerate(next_nodes):
             symbol = node.get("symbol", "?")
             x = node.get("x", "?")
-            y = node.get("y", "?")
-            node_type = {
-                "M": "Monster", "?": "Unknown", "$": "Shop",
-                "E": "Elite", "R": "Rest", "T": "Treasure",
-                "B": "Boss"
-            }.get(symbol, symbol)
-            lines.append(f"  [{i}] {node_type} (x={x}, y={y})")
-    else:
-        # Show next floor nodes from map data
-        next_floor = current_floor + 1
-        nodes_at_floor = [n for n in map_data if n.get("y") == next_floor - 1]
-        if nodes_at_floor:
-            lines.append(f"Nodes at floor {next_floor}:")
-            for i, node in enumerate(nodes_at_floor):
-                symbol = node.get("symbol", "?")
-                x = node.get("x", "?")
-                node_type = {
-                    "M": "Monster", "?": "Unknown", "$": "Shop",
-                    "E": "Elite", "R": "Rest", "T": "Treasure",
-                    "B": "Boss"
-                }.get(symbol, symbol)
-                lines.append(f"  [{i}] {node_type} (x={x})")
+            node_type = SYMBOLS.get(symbol, symbol)
+            lines.append(f"  [{i}] {node_type} (x={x})")
 
-    lines.append("\nUse: choose <index> or proceed")
+    # Show full map for act pathing — group by floor, show connections
+    if map_data:
+        lines.append("")
+        lines.append("FULL MAP (for route planning):")
+        # Build lookup: (x,y) → node
+        node_lookup = {}
+        floors = {}
+        for node in map_data:
+            x, y = node.get("x", 0), node.get("y", 0)
+            node_lookup[(x, y)] = node
+            if y not in floors:
+                floors[y] = []
+            floors[y].append(node)
+
+        for y in sorted(floors.keys()):
+            floor_num = y + 1  # map y is 0-indexed, floors are 1-indexed
+            marker = " <<<" if floor_num == current_floor + 1 else ""
+            node_strs = []
+            for n in sorted(floors[y], key=lambda n: n.get("x", 0)):
+                sym = SYMBOLS.get(n.get("symbol", "?"), n.get("symbol", "?"))
+                x = n.get("x", "?")
+                children = n.get("children", [])
+                if children:
+                    child_xs = ",".join(str(c.get("x", "?")) for c in children)
+                    node_strs.append(f"{sym}(x={x})→[{child_xs}]")
+                else:
+                    node_strs.append(f"{sym}(x={x})")
+            lines.append(f"  F{floor_num}: {'  '.join(node_strs)}{marker}")
+
+    if boss:
+        lines.append(f"  BOSS: {boss.get('name', '?')}")
+
+    lines.append("\nUse: choose <index> to pick a path")
     return "\n".join(lines)
 
 

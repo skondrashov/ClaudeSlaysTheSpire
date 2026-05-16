@@ -4,7 +4,18 @@ These notes are from human coaching and should be incorporated into playbook upd
 
 ## Pending
 
-(No pending notes.)
+(No pending items.)
+
+## Addressed (Runs 174-177 analysis)
+
+### Watcher card sequencing is terrible (Runs 174-177) -- ADDRESSED
+- Created playbook entries for ALL Watcher cards encountered with explicit PLAY ORDER sections in each: flurry-of-blows.md (ALWAYS play before stance change), miracle.md (ONLY play when energy is useful), eruption.md, vigilance.md, crescendo.md, inner-peace.md, fear-no-evil.md, meditate.md (play LAST -- ends turn), wave-of-the-hand.md (play BEFORE block cards), empty-body.md
+- Added CARD SEQUENCING RULES section to mechanics.md (Watcher Stance Mechanics) with 5 explicit rules
+- Added Watcher-Specific Strategy section to strategy.md
+
+### Transient Shifting mechanic was wrong in playbook -- FIXED BY HUMAN, VERIFIED BY ANALYST
+- Verified: transient.md correctly describes Shifting as "LOSES that much Strength for the rest of the turn" and "Attacking is strictly better than blocking"
+- No incorrect info re-introduced. Entry is accurate.
 
 ## Addressed (Run 152 analysis)
 

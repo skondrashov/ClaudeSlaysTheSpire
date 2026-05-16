@@ -664,12 +664,13 @@ def _log_event(event: dict):
 def _snapshot(raw: dict) -> dict:
     """Extract a compact state snapshot from raw game state for logging."""
     gs = raw.get("game_state") or {}
+    screen = gs.get("screen_type")
     snap = {
         "floor": gs.get("floor"),
         "hp": gs.get("current_hp"),
         "max_hp": gs.get("max_hp"),
         "gold": gs.get("gold"),
-        "screen": gs.get("screen_type"),
+        "screen": screen,
     }
     combat = gs.get("combat_state")
     if combat:
@@ -685,7 +686,36 @@ def _snapshot(raw: dict) -> dict:
             {"name": o.get("name"), "passive": o.get("passive_amount"), "evoke": o.get("evoke_amount")}
             for o in combat.get("orbs", [])
         ] if combat.get("orbs") else None
+    # Include map data on MAP screen (once per act for route analysis)
+    if screen == "MAP":
+        map_data = gs.get("map", [])
+        if map_data:
+            snap["map"] = _compact_map(map_data)
+            boss = gs.get("act_boss")
+            if boss:
+                snap["boss"] = boss
     return {k: v for k, v in snap.items() if v is not None}
+
+
+def _compact_map(map_data: list) -> list:
+    """Compress full map data into a compact per-floor summary for the run log.
+
+    Each entry: {"floor": N, "nodes": [{"x": X, "type": "M", "children": [X2, X3]}]}
+    """
+    floors = {}
+    for node in map_data:
+        y = node.get("y", 0)
+        if y not in floors:
+            floors[y] = []
+        floors[y].append({
+            "x": node.get("x"),
+            "type": node.get("symbol", "?"),
+            "children": [c.get("x") for c in node.get("children", [])],
+        })
+    return [
+        {"floor": y + 1, "nodes": sorted(nodes, key=lambda n: n.get("x", 0))}
+        for y, nodes in sorted(floors.items())
+    ]
 
 
 def _log_result(raw: dict):
@@ -703,6 +733,7 @@ def _log_result(raw: dict):
 # ---------------------------------------------------------------------------
 
 _game_over_handled = False
+_potion_skip_warned = False
 
 
 def _get_next_run_number() -> int:
@@ -729,8 +760,8 @@ def _get_next_run_number() -> int:
 def _read_events_for_run() -> list:
     """Read all events from stream_events.jsonl for the run log.
 
-    Returns decision, result, plan, and feed events — the complete record
-    of everything the player did and what happened.
+    Returns all meaningful event types — the complete record of everything
+    the player did, thought, looked up, and what happened.
     """
     events = []
     try:
@@ -764,6 +795,18 @@ def _read_events_for_run() -> list:
                         events.append({
                             "type": "feed",
                             "text": e.get("text", ""),
+                        })
+                    elif t == "reason":
+                        events.append({
+                            "type": "reason",
+                            "topic": e.get("topic", ""),
+                            "category": e.get("category", ""),
+                        })
+                    elif t == "think":
+                        events.append({
+                            "type": "think",
+                            "label": e.get("label", ""),
+                            "reasoning": e.get("reasoning", ""),
                         })
                 except json.JSONDecodeError:
                     continue
@@ -956,6 +999,28 @@ def send(command: str, reason: str = "") -> str:
             "Use: send('choose 0', reason='...') to pick a boss relic.\n"
             "Skipping a boss relic is a devastating misplay."
         )
+
+    # Guard: warn when proceeding past unclaimed potions with empty slots.
+    # Uses a flag so the warning only fires once — second proceed goes through.
+    global _potion_skip_warned
+    if cmd_verb == "proceed" and screen == "COMBAT_REWARD":
+        ss = gs.get("screen_state", {})
+        rewards = ss.get("rewards", [])
+        potions_available = [r for r in rewards if r.get("reward_type") == "POTION"]
+        if potions_available and not _potion_skip_warned:
+            player_potions = gs.get("potions", [])
+            has_empty = any(p.get("id") == "Potion Slot" for p in player_potions)
+            if has_empty:
+                potion_names = [r.get("potion", {}).get("name", "?") for r in potions_available]
+                _potion_skip_warned = True
+                return (
+                    f"[WARNING] You're leaving a potion behind with empty slots!\n"
+                    f"Available: {', '.join(potion_names)}\n"
+                    f"You have empty potion slots. Pick up the potion first with choose,\n"
+                    f"or send proceed again if you intentionally want to skip it."
+                )
+    if screen != "COMBAT_REWARD":
+        _potion_skip_warned = False
 
     # Guard: prevent choosing a potion reward when all potion slots are full.
     # CommunicationMod hangs/crashes if you try to pick up a potion with no empty slots.
@@ -1357,9 +1422,30 @@ def plan() -> str:
     combat = gs.get("combat_state")
 
     if combat:
-        return _plan_combat(gs, combat)
+        result = _plan_combat(gs, combat)
+        # Log what combat context was loaded
+        enemies = [m.get("name", "?") for m in combat.get("monsters", []) if not m.get("is_gone")]
+        hand = [c.get("name", "?") for c in combat.get("hand", [])]
+        _log_event({
+            "type": "plan",
+            "mode": "combat",
+            "summary": f"Enemies: {', '.join(enemies)}. Hand: {', '.join(hand)}",
+            "timestamp": time.time(),
+        })
+        return result
     else:
-        return _plan_act(gs)
+        result = _plan_act(gs)
+        # Log what act context was loaded
+        act = gs.get("act", 1)
+        boss = gs.get("act_boss", "?")
+        deck_size = len(gs.get("deck", []))
+        _log_event({
+            "type": "plan",
+            "mode": "act",
+            "summary": f"Act {act}, Boss: {boss}, Deck: {deck_size} cards",
+            "timestamp": time.time(),
+        })
+        return result
 
 
 def _plan_combat(gs: dict, combat: dict) -> str:
@@ -1689,7 +1775,14 @@ def think(reasoning: str, label: str = "Strategy") -> str:
     """
     if not reasoning or not reasoning.strip():
         return "[ERROR] reasoning is required. Share your strategic analysis."
+    # Log as both a decision (for stream) and a think event (for run log)
     _post_decision("think", reasoning=reasoning.strip(), translated_override=label)
+    _log_event({
+        "type": "think",
+        "label": label,
+        "reasoning": reasoning.strip(),
+        "timestamp": time.time(),
+    })
     return f"[Reasoning posted to stream: {label}]"
 
 
