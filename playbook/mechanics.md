@@ -1,103 +1,6 @@
 # Game Mechanics
 
-Core game systems and how they interact.
-
----
-
-## Watcher Stance Mechanics
-
-The Watcher has three stances: **Calm**, **Wrath**, and **No Stance** (neutral). Stance changes are the core of the Watcher's gameplay.
-
-### Stances
-
-| Stance | Effect | How to Enter | How to Exit |
-|---|---|---|---|
-| **Wrath** | ALL attack damage dealt is DOUBLED. ALL damage received is DOUBLED. | Eruption, Crescendo, Fear No Evil (conditional) | Vigilance, Inner Peace, Empty Body, Meditate, Fear No Evil (conditional) |
-| **Calm** | No combat bonuses. When you LEAVE Calm, gain +2 Energy. | Vigilance, Inner Peace, Meditate, Fear No Evil (conditional), Empty Body enters no-stance | Eruption, Crescendo (any Wrath entry) |
-| **No Stance** | Neutral. No bonuses or penalties. Starting stance. | Empty Body, or at combat start | Any stance-entry card |
-
-### The Energy Loop (Core Engine)
-
-The Watcher's primary engine is cycling between Calm and Wrath:
-1. Enter Calm (via Vigilance, Inner Peace, Meditate).
-2. Next turn, exit Calm by entering Wrath (via Eruption, Crescendo). Gain +2 Energy from leaving Calm.
-3. Play attacks in Wrath at doubled damage using the bonus energy.
-4. Exit Wrath before the enemy attacks (via Vigilance, Inner Peace, Empty Body, Fear No Evil).
-5. Repeat.
-
-With Eruption+ (1E) and Calm exit (+2E), entering Wrath costs net -1E (gain 2, spend 1). This means the Watcher effectively gets 2 free energy per cycle compared to staying in no stance.
-
-### CARD SEQUENCING RULES (CRITICAL -- CONFIRMED ERRORS)
-
-**RULE 1: Play Flurry of Blows BEFORE stance-change cards.** Flurry of Blows returns from discard to hand when you change stance. If Flurry is in your hand when you change stance, it does NOT trigger (it must be in the discard pile). Play Flurry first (it goes to discard), then change stance (Flurry returns to hand), then play Flurry again. Wrong order wastes 4-8 damage per stance change.
-
-**RULE 2: Play Miracle ONLY when you have a use for the energy.** Miracle gives +1E and Retains between turns. Do not play Miracles with no plan for the energy. A confirmed death occurred at 13 HP against Snake Plant when 3 Miracles were played for +3E with no useful cards to spend the energy on (only setup cards available), leaving 0 block against 21 incoming damage.
-
-**RULE 3: Play Meditate LAST.** Meditate ends your turn immediately. All other plays must happen before Meditate.
-
-**RULE 4: Play Wave of the Hand BEFORE block cards.** Wave of the Hand applies Weak when you gain block. Playing block cards before Wave of the Hand wastes the Weak triggers.
-
-**RULE 5: Do NOT end your turn in Wrath if the enemy is attacking.** Doubled incoming damage is lethal at any HP below full. Always have an exit (Vigilance, Inner Peace, Empty Body, Fear No Evil) available before entering Wrath on an attack turn.
-
-### Watcher Starting Deck
-
-- 4 Strike (Attack, 1E, 6 damage)
-- 4 Defend (Skill, 1E, 5 block)
-- 1 Eruption (Attack, 2E, 9 damage, enter Wrath)
-- 1 Vigilance (Skill, 2E, 8 block, enter Calm)
-
-**Starting Relic: Pure Water** -- adds 1 Miracle to hand at the start of each combat.
-
----
-
-## Defect Orb Mechanics
-
-The Defect channels orbs into orb slots. Orbs provide passive effects at end of turn and stronger evoke effects when removed.
-
-### Orb Types
-
-| Orb | Passive (end of turn) | Evoke (when removed) | Notes |
-|---|---|---|---|
-| **Lightning** | 3 damage to random enemy | 8 damage to random enemy | Primary damage orb. Passive targets random enemy. |
-| **Frost** | 2 Block | 5 Block | Primary defensive orb. Passive block applies every turn. |
-| **Dark** | Gains damage equal to 6 + Focus each turn | Deals accumulated damage to lowest HP enemy | Scaling damage orb. Grows each turn it stays channeled. |
-| **Plasma** | Gain 1 Energy | Gain 2 Energy | Energy generation. Rare but powerful. |
-
-### Channeling and Evoking
-
-- **Channel**: Add an orb to the rightmost empty slot. If all slots are full, the leftmost orb is **evoked** (triggering its evoke effect) to make room.
-- **Evoke**: Remove the frontmost (leftmost) orb, triggering its evoke effect. Dualcast evokes the front orb twice.
-- **Orb Slots**: The Defect starts with 3 orb slots. Some cards/relics add more slots (Capacitor). More slots = more passive effects per turn.
-
-### Fission: Remove vs Evoke (CRITICAL UPGRADE DISTINCTION)
-
-- **Unupgraded Fission:** Removes ALL orbs WITHOUT evoking. The orbs are deleted -- no Frost block, no Lightning damage, no Dark burst. Only the Energy and card draws are gained.
-- **Upgraded Fission+:** EVOKES all orbs, triggering their evoke effects (Frost block, Lightning damage, Dark burst), then grants Energy and card draws.
-
-This is one of the most impactful upgrades in the game. Playing unupgraded Fission in a Frost-heavy build destroys the orb-based defense without generating any evoke block. See cards/fission.md.
-
-### Focus
-
-Focus is the Defect's core scaling stat (equivalent to Strength for damage or Dexterity for block, but for orbs).
-
-- Each point of Focus increases ALL orb passive AND evoke values.
-- Lightning with Focus 2: passive = 3+2 = 5 damage, evoke = 8+2 = 10 damage.
-- Frost with Focus 2: passive = 2+2 = 4 block, evoke = 5+2 = 7 block.
-- Focus sources: Defragment (+1 Focus permanent), Consume (+2 Focus but lose 1 orb slot), Inserter (relic, +1 orb slot every other turn).
-- **Focus is the Defect's #1 scaling priority.** Without Focus, orb passive values are too low to scale into Act 2. Defragment should be taken whenever offered.
-
-### Cracked Core (Defect Starter Relic)
-
-Channels 1 Lightning orb at the start of each combat. Provides guaranteed passive Lightning damage from Turn 1. Replaces once any orb is channeled manually (the first orb channeled triggers Cracked Core's replacement).
-
-### Defect Starting Deck Composition
-
-- 4 Strike (Attack, 1E, 6 damage)
-- 4 Defend (Skill, 1E, 5 block)
-- 1 Zap (Skill, 0E, Channel 1 Lightning)
-- 1 Dualcast (Skill, 1E, Evoke front orb twice)
-
-**Skill-to-Attack ratio: 6 Skills vs 4 Attacks.** Adding Coolheaded (common pickup) makes it 7:4. This is the most Skill-heavy starting deck of any character, making Gremlin Nob the Defect's worst elite matchup.
+Core game systems that apply to all characters. For character-specific mechanics (Watcher stances, Defect orbs, etc.), see `playbook/characters/`.
 
 ---
 
@@ -131,38 +34,7 @@ Order of operations:
 
 ## Status Effects
 
-### Vulnerable
-- Target takes 50% more damage from attacks.
-- Duration: N turns, decrements at start of affected entity's turn.
-- When on enemies (from Bash, Thunderclap): YOUR attacks deal 50% more.
-- When on YOU (from Berserk, enemy abilities): ENEMY attacks deal 50% more. Extremely dangerous against multiple enemies.
-- Direction matters: Vulnerable on enemy = you deal more. Vulnerable on you = you take more.
-
-### Weak
-- Affected entity deals 25% less attack damage.
-- Duration: N turns.
-- Formula: `floor((base + strength) * 0.75)` -- Strength is added BEFORE the Weak multiplier.
-- When on enemies (from Shockwave, Clothesline, Intimidate): THEIR attacks deal 25% less. YOUR attacks are UNAFFECTED.
-- When on YOU (from enemy debuffs like Acid Slime Corrosive Spit): YOUR attacks deal 25% less.
-- Direction matters: Weak on enemy = they deal less, you deal normal. Weak on you = you deal less.
-- **CRITICAL: Applying Weak to enemies does NOT reduce YOUR damage.** After playing Shockwave or Intimidate, your attacks deal FULL damage. The 0.75 multiplier applies ONLY to the Weakened entity's own attacks. Do not apply 0.75 to your own damage calculations when enemies are Weakened -- this is a recurring prediction error that causes underestimation of player damage output.
-
-### Frail
-- Block gained from cards is reduced by 25%.
-- Duration: N turns, decrements at start of your turn.
-- Math: `floor(block * 0.75)`. Defend 5 -> 3. Shrug It Off 8 -> 6.
-- Extremely punishing against multiple enemies where you need more total block but each block card gives less.
-
-### Strength
-- Each point of Strength adds 1 damage to every Attack card played.
-- Permanent within combat (unless modified by Disarm or enemy debuffs).
-- **RESETS BETWEEN COMBATS.** Strength from Inflame, Spot Weakness, Demon Form, and Strength Potion does NOT carry over to the next fight. Only relic Strength (Vajra +1) persists. At the start of each new combat, Strength is 0 (plus relic bonuses). This is a confirmed recurring error -- the player has carried Strength values from previous fights into new fight calculations, overestimating damage.
-- Negative Strength (from Lagavulin debuffs): reduces all attack damage by that amount. Strike goes from 6 to 5 to 4.
-- IMPORTANT: Recalculate all damage values after Strength changes.
-
-### Dexterity
-- Each point of Dexterity adds block to all block-gaining cards.
-- Negative Dexterity (from Lagavulin debuffs): reduces block from all block cards.
+See `playbook/effects/` for individual effect files (Vulnerable, Weak, Frail, Strength, Dexterity).
 
 ---
 
@@ -170,11 +42,11 @@ Order of operations:
 
 - Block absorbs damage before HP.
 - Block expires at the start of your turn (resets to 0).
-- Exception: Barricade (enemy passive) -- block does NOT expire. Accumulates turn over turn.
+- Exception: Barricade (enemy passive) — block does NOT expire. Accumulates turn over turn.
 - Metallicize and Plated Armor add block at end of turn (before enemy attacks resolve).
-- Plated Armor decreases by 1 each time you take unblocked HP damage (damage that gets through block). Multiple hits in one attack (e.g., Book of Stabbing 7x4) each count separately -- if block runs out mid-attack, each subsequent hit that deals HP damage reduces Plated Armor by 1. Plated Armor from multiple sources stacks additively (e.g., two Plated Armor 3 = 6 block/turn).
-- Flame Barrier / Thorns: Counter damage triggers AFTER each individual hit that strikes you (whether blocked or hitting HP). Against multi-hit attacks, counter fires once per hit. Example: Book of Stabbing 7x4 with Flame Barrier+ active = 4 triggers of 6 counter damage = 24 total counter damage dealt to the attacker. Counter damage ignores the attacker's block -- it deals direct HP damage. Flame Barrier's block is applied once at play time and absorbs across all hits; the counter triggers per hit regardless of whether the hit was blocked or not.
-- Pen Nib: Tracks total Attack cards played across ALL combats. Every 10th Attack card deals double damage. The counter persists between fights and does NOT reset. The counter is visible on the relic tooltip. Track it by counting Attack card plays (Strikes, Bash, Rampage, Cleave, Immolate, etc. -- any card with the Attack type). Skills and Powers do not increment the counter. Double Tap causes the repeated attack to count as a separate play for Pen Nib.
+- Plated Armor decreases by 1 each time you take unblocked HP damage. Multiple hits in one attack each count separately.
+- Flame Barrier / Thorns: Counter damage triggers AFTER each individual hit. Against multi-hit attacks, counter fires once per hit. Counter damage ignores the attacker's block.
+- Pen Nib: Tracks total Attack cards played across ALL combats. Every 10th Attack card deals double damage. Counter persists between fights.
 
 ---
 
@@ -182,203 +54,111 @@ Order of operations:
 
 | Card | Cost | Effect | Source | Persistence |
 |---|---|---|---|---|
-| Slimed | 1E | Exhaust (does nothing else) | Slime enemies | Cycles in deck until played for 1E to exhaust |
-| Burn | Unplayable | 2 damage at end of turn if in hand | Hexaghost | Cycles in deck permanently (cannot be played) |
-| Dazed | Unplayable | Ethereal (exhausts at end of turn if in hand) | Chosen (via Hex), Sentries | Self-exhausts via Ethereal; but new ones keep being added |
-| Wound | Unplayable | Nothing -- pure hand clog | Book of Stabbing | Cycles in deck permanently (most persistent status) |
+| Slimed | 1E | Exhaust (does nothing else) | Slime enemies | Cycles until played for 1E |
+| Burn | Unplayable | 2 damage at end of turn if in hand | Hexaghost | Permanent deck clog |
+| Dazed | Unplayable | Ethereal (exhausts at end of turn if in hand) | Chosen (Hex), Sentries | Self-exhausts but keeps being added |
+| Wound | Unplayable | Nothing — pure hand clog | Book of Stabbing | Most persistent status |
 
 **Removal methods:**
 - True Grit+ can exhaust any of these from hand.
 - Burning Pact exhausts a chosen card from hand.
-- Fiend Fire exhausts ALL cards in hand (converts them to 7 damage each).
-- Slimed can be played for 1E to exhaust it (always correct -- removes it permanently).
+- Fiend Fire exhausts ALL cards in hand.
+- Slimed can be played for 1E to exhaust it (always correct).
 - Dazed self-exhausts via Ethereal at end of turn.
-
-**Status card severity ranking:** Wound (most persistent, no self-removal) > Burn (deals damage + clogs) > Slimed (costs 1E to remove) > Dazed (auto-exhausts but Hex keeps adding more).
 
 ---
 
 ## Keywords
 
 ### Exhaust
-Removes a card from THIS COMBAT ONLY. The card goes to the exhaust pile and will not be drawn again for the rest of this fight. Your full deck resets between fights — exhausted cards return.
+Removes a card from THIS COMBAT ONLY. The card goes to the exhaust pile and will not be drawn again for the rest of this fight. Your full deck resets between fights.
 
-WHAT THIS MEANS: Exhaust has zero long-term cost. If Shockwave would help this fight, play it — you'll have it again next fight. Never "save" an exhausting card for a later fight. Cards that exhaust after use (Shockwave, Impervious, Fiend Fire) are meant to be played freely every fight they're drawn.
-
-Exhaust is NOT card removal. Permanent card removal only happens at shops (remove service) or certain events (like Peace Pipe rest option). That's a completely different mechanic.
+WHAT THIS MEANS: Exhaust has zero long-term cost. Never "save" an exhausting card for a later fight. Exhaust is NOT card removal — permanent removal only happens at shops or certain events.
 
 ### Ethereal
 - Ethereal cards exhaust at end of turn if still in hand (not played).
-- ALWAYS play Ethereal cards if possible -- permanent loss is worse than wasted block/damage.
-- Examples: Ghostly Armor, Carnage, Dazed.
+- ALWAYS play Ethereal cards if possible — permanent loss is worse than wasted block/damage.
 
 ### Innate
 - Innate cards are always in your opening hand (turn 1 draw).
-- Bottled Flame relic makes a chosen Attack card Innate (always in opening hand). Best target: Bash+ for guaranteed turn 1 Vulnerable.
+- Bottled Flame/Lightning/Tornado relics make a chosen card Innate.
 
 ### Retain
 - Retained cards stay in hand at end of turn instead of being discarded.
-- **Watcher makes heavy use of Retain:** Miracle (Retain, +1E), Smite (Retain, 12 damage), Flying Sleeves (Retain, 4x2), and cards retrieved by Meditate all have Retain. This allows the Watcher to set up cards on defensive turns and use them on offensive turns. Held Miracles provide energy flexibility; held Smites enable burst damage in Wrath.
+- Watcher makes heavy use of Retain — see `playbook/characters/watcher.md`.
 
 ---
 
 ## Card Index Shifting (CRITICAL — RECURRING FATAL ERROR)
 
-When you play a card by numeric index, all cards after it shift down by 1. This means multi-card commands using numeric indices will play WRONG CARDS if the indices aren't adjusted for each prior play.
+When you play a card by numeric index, all cards after it shift down by 1. Multi-card commands using numeric indices will play WRONG CARDS.
 
-**Example:** Hand is [1]Strike [2]Defend [3]Bash [4]Iron Wave [5]Fiend Fire
-- You plan: "play 3 0; play 5 0" (Bash, then Fiend Fire)
-- After Bash plays, hand becomes: [1]Strike [2]Defend [3]Iron Wave [4]Fiend Fire
-- "play 5 0" now targets NOTHING (only 4 cards) or errors
-- "play 4 0" would hit Fiend Fire (the correct adjusted index)
+**THE FIX: USE CARD NAMES, NOT NUMBERS.** Card names are resolved against the current hand at execution time. This eliminates the entire class of index shift errors.
 
-**THE FIX: USE CARD NAMES, NOT NUMBERS.**
-- "play Bash 0; play Fiend Fire 0" always works regardless of shifting
-- Card names are resolved against the current hand at execution time
-- This eliminates the entire class of index shift errors
+**THIS ALSO APPLIES TO SHOP PURCHASES.** Use card names when buying from shops.
 
-**KNOWN KILLS FROM THIS BUG:**
-- Played Defend instead of Strike due to shift. Chosen survived at 6 HP, killed player next turn.
-- Final turn planned Fiend Fire (would have killed Cultist for 39 damage) but index shift caused Strike to play instead (only 12 damage). Could not kill second Cultist, died next turn.
-- Bought Sever Soul instead of Flame Barrier at shop due to index confusion. Sever Soul then exhausted 2 Defend cards during Guardian fight, directly reducing survivability.
-- Throughout an entire run, consistently played Defends when intending Strikes and vice versa due to numeric index usage. Four confirmed deaths caused by this bug across multiple runs.
-
-**RULE: NEVER use numeric indices in multi-card turn commands. Always use card names.** The only exception is when two copies of the same card are in hand and you need a specific one — in that case, use the index for ONLY that card and names for everything else.
-
-**THIS ALSO APPLIES TO SHOP PURCHASES.** Use card names when buying from shops, not numeric indices. Index confusion at shops has caused purchasing the wrong card, which cascaded into a boss death.
+The only exception: two copies of the same card in hand where you need a specific one.
 
 ---
 
 ## Energy System
 
-- Base energy: 3 per turn (Ironclad, no modifiers).
-- Energy resets each turn -- unspent energy is WASTED.
-- Energy modifiers: Lantern (+1E turn 1), Ancient Tea Set (+2E turn 1 after rest), Berserk (+1E/turn permanently), Seeing Red+ (+2E one time), Happy Flower (+1E every 3 turns).
-- X-cost cards (Whirlwind, Malaise, Skewer) use ALL remaining energy. See X-Cost Cards section below.
-
-### X-Cost Cards (CRITICAL -- CONFIRMED FATAL ERROR)
-
-X-cost cards (Whirlwind, Malaise, Skewer, and others) **automatically consume ALL remaining energy when played.** You CANNOT specify X manually. X is always equal to your remaining energy at the moment the card is played.
-
-**This means:** If you have 4E and play Malaise intending X=1, the game will use X=4 and consume all 4 energy. You will have 0E remaining for block cards. This has directly caused a death.
-
-**To control X, spend energy on other cards FIRST:**
-1. Decide what X value you want.
-2. Calculate: energy to spend on other cards = current energy - desired X.
-3. Play those other cards FIRST (Defend, block cards, Powers, 0-cost attacks).
-4. Play the X-cost card LAST with only the desired energy remaining.
-
-**Example:** You have 4E and want Malaise X=1 + 2 Defends + Deflect.
-- WRONG: `play Malaise 0` (uses X=4, 0E left, Defends cannot be played)
-- CORRECT: `play Defend; play Defend; play Deflect; play Malaise 0` (3E spent on block, Malaise uses X=1)
-
-**X-cost cards in the game:**
-- **Whirlwind** (Ironclad Attack): 5 damage X times to ALL enemies
-- **Malaise** (Silent Skill, Exhaust): X Weak + X Str Down to one enemy
-- **Skewer** (Silent Attack): 7 damage X times to one enemy
-
-**RULE: ALWAYS play X-cost cards LAST on a turn.** Never play an X-cost card first unless you genuinely want to spend all energy on it.
-
----
-
-## Wraith Form Timing (CRITICAL -- TWO CONFIRMED DEATHS)
-
-Wraith Form gives Intangible (2 or 3 turns) but applies a PERMANENT, CUMULATIVE -1 Dex/turn for the rest of combat. This penalty never expires. Playing Wraith Form early in a long fight is a confirmed recurring fatal error.
-
-**THE RULE: Do NOT play Wraith Form until the enemy is within 5 turns of dying.** Estimate remaining enemy HP, estimate your damage per turn, and only play Wraith Form when the fight will end before Dex drops below -4. If you cannot estimate when the fight ends, DO NOT PLAY WRAITH FORM.
-
-**Two deaths from this exact mistake:**
-- Boss fight: Dex reached -11, all block 0, died 5 HP from winning.
-- Boss fight: Dex reached -7, all block 0, died 8 damage short of Mode Shift.
-
-This rule applies to ALL boss fights and any fight expected to last 8+ turns. Wraith Form is a FINISHER, not an early defense tool. See wraith-form.md for full details.
-
----
-
-## Power Card Priority in Boss Fights
-
-**Play Power cards as early as possible in boss fights.** Powers are permanent for the rest of combat. Every turn a Power sits unplayed in the deck is a turn of missed value. In a 12-turn boss fight, a Power played Turn 1 provides 12 turns of benefit; played Turn 6, only 7 turns.
-
-This is especially critical for scaling Powers:
-- **Noxious Fumes:** Poison accumulates quadratically. Turn 1 play = 78 total poison over 12 turns. Turn 6 play = 21 total. The difference is enormous.
-- **Infinite Blades:** Free Shiv per turn. Earlier play = more free damage.
-- **Demon Form:** +2 Str/turn compounds. Earlier = more total Str.
-- **Metallicize:** Block per turn. Earlier = more total block.
-
-**Exceptions:**
-- **Awakened One Phase 2:** Do NOT play Powers (each gives +2 Str to the boss). Phase 1 Power dumping is fine because Curiosity Str resets on phase transition.
-- **When the Power costs all your energy on an attack turn:** A 3E Power on a 3E turn with incoming damage means 0E for block. Wait for a free turn (enemy buffing/defending).
-
-**If a Power is in your hand during a boss fight and the turn is safe (enemy buffing, low incoming, or sufficient block remaining after the Power cost), PLAY IT.** Not playing Noxious Fumes in a boss fight despite it being in the deck is a setup priority failure that costs damage equivalent to multiple card plays.
+- Base energy: 3 per turn (no modifiers).
+- Energy resets each turn — unspent energy is WASTED.
+- X-cost cards (Whirlwind, Malaise, Skewer) use ALL remaining energy. **Always play X-cost cards LAST.** See individual card files for details.
 
 ---
 
 ## Card Draw
 
 - Standard draw: 5 cards per turn.
-- Cards that draw (Shrug It Off, Pommel Strike) add to hand mid-turn.
-- When planning with draw cards: play the draw card first, then reassess with the new card(s).
-- Brutality adds +1 card per turn (6 total) at the cost of 1 HP/turn.
-- Dark Embrace draws 1 card per exhaust.
-- **Draw pile reshuffle**: When a draw effect triggers and the draw pile is empty, the discard pile is shuffled and becomes the new draw pile. This happens mid-turn if a card draw (Pommel Strike, Flash of Steel, Shrug It Off) triggers with an empty draw pile. This means playing draw cards late in a turn can effectively cycle through the entire deck.
+- Cards that draw add to hand mid-turn. Play draw cards first, then reassess.
+- When draw pile is empty and a draw triggers, discard pile shuffles into draw pile.
 
 ---
 
 ## Enemy Intent Display
 
-Enemy intent numbers show the FINAL damage the player will take, including all modifiers:
-- **Vulnerable on player**: The displayed damage already includes the 1.5x multiplier from player Vulnerable. Do NOT multiply the displayed number by 1.5 again.
-- **Weak on enemy**: The displayed damage already includes the 0.75x reduction from enemy Weak.
-- **Enemy Strength**: The displayed damage already includes enemy Strength.
-
-**RULE: Use the displayed intent number directly for block calculations.** Do not recalculate modifiers on top of it. The displayed number is the exact damage that will be dealt if unblocked.
+Enemy intent numbers show the FINAL damage including all modifiers (Vulnerable on player, Weak on enemy, enemy Strength). **Use the displayed number directly for block calculations.** Do not recalculate modifiers on top of it.
 
 ---
 
 ## Enemy Mechanics
 
 ### Artifact
-- Artifact N: next N debuffs applied to the enemy are negated (consumed instead of applying).
-- Each debuff application consumes 1 charge: Bash's Vulnerable = 1 charge, Uppercut's Weak + Vulnerable = 2 charges.
-- Once all charges are consumed, subsequent debuffs apply normally.
-- Strategy: Strip with cheap debuffs (Thunderclap at 1E), then apply real debuffs.
+- Artifact N: next N debuffs are negated.
+- Strip with cheap debuffs (Thunderclap at 1E), then apply real debuffs.
 
 ### Barricade (enemy)
-- Block does NOT expire at start of enemy's turn. Accumulates.
-- Makes enemies effectively much tankier. A 20 HP enemy with 40 block is a 60+ HP enemy.
-- Need burst or sustained high damage to break through.
+- Block does NOT expire. Accumulates. Need burst damage to break through.
 
 ### Mode Shift (Guardian)
-- Damage counter in Attack Mode. When enough damage dealt, Guardian switches to Defensive Mode.
-- Counter values by cycle: 30 (first), 40 (second), 50 (third).
-- Tracks total HP damage, not damage to block.
-- Triggering Mode Shift mid-attack CANCELS the current attack -- this is the primary defensive tool against the 32-damage and 5x4=20 attacks.
+- Damage counter in Attack Mode. When enough damage dealt, switches to Defensive Mode.
+- Counter: 30 (first cycle), 40 (second), 50 (third).
+- Triggering Mode Shift mid-attack CANCELS the current attack.
 
 ### Sharp Hide (Guardian Defensive Mode)
-- Deals N damage (N=3 observed) to player per Attack card played.
-- Damage applies to block first (if player has block).
-- Strategy: Block before playing Attacks, or play only Skills for pure block.
+- Deals N damage per Attack card played. Block before playing Attacks.
 
 ### Flight (Byrds)
-- Flight N: all damage halved while N > 0. Each hit decrements Flight by 1.
-- Multi-hit attacks strip Flight faster. AOE counts as separate hits per enemy.
-- Byrds can regain Flight on buff turns.
+- All damage halved while Flight > 0. Each hit decrements Flight by 1. Multi-hit strips faster.
 
-### Hex (Chosen debuff)
-- When you play a Skill card, a Dazed is added to your draw pile.
-- Punishes defensive play. Minimize Skill usage against Chosen.
+### Hex (Chosen)
+- When you play a Skill, a Dazed is added to draw pile. Minimize Skill usage.
 
-### Curl Up (Louse passive)
-- When first attacked, gains 5-7 block.
-- First attack is partially absorbed. Follow up with more attacks same turn.
+### Curl Up (Louse)
+- First attack triggers 5-7 block. Follow up with more attacks same turn.
 
 ### Ritual (Cultist)
-- Gains +3 Strength per Ritual activation. Permanent and stacking.
-- Cultists activate Ritual every turn. Kill fast before damage escalates.
+- +3 Strength per activation, permanent and stacking. Kill fast.
 
 ### Malleable (Snake Plant)
-- Gains increasing block each time it is attacked within a single turn.
-- First attack in a turn: gains ~3 block. Subsequent attacks in the same turn: gains more block (amount increases).
-- Resets at the start of each turn.
-- Counter-strategy: Use one large hit per turn instead of multiple small hits. Rampage (40+ damage) is better than Whirlwind (5 per hit, each triggering more Malleable block).
-- Applies to Snake Plant in Act 2.
+- Gains increasing block each time attacked within a single turn. Resets each turn. Use one large hit per turn.
+
+---
+
+## Power Card Priority in Boss Fights
+
+Play Power cards early in boss fights. Powers are permanent — every turn unplayed is missed value. Especially critical for scaling Powers (Noxious Fumes, Demon Form, Metallicize, Infinite Blades).
+
+**Exception: Awakened One Phase 2** — do NOT play Powers (each gives +2 Str to boss).

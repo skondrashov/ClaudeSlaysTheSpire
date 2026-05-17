@@ -29,7 +29,7 @@ High-level strategic principles across all characters.
 **What all formulas share:** (1) zero UI misplays, (2) zero arithmetic errors, (3) strong Act 1 performance, (4) proper map pathing, (5) a complete scaling engine (not individual strong cards). The key insight: pursue whichever engine the card/relic offerings support, not force one formula over the other.
 
 **IMMEDIATE PRIORITIES (in order):**
-1. **FULL BLOCK EVERY HALLWAY FIGHT.** The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. See the Full Block Flowchart in player.md.
+1. **FULL BLOCK EVERY HALLWAY FIGHT.** The goal every turn is ZERO damage taken. Enumerate paths to zero (kill attackers + block remainder, pure block, debuff + block). Only deviate for boss fights, hard-scaling enemies, and Burning Blood buffer at max HP. Enumerate paths to zero: kill attackers + block remainder, pure block, debuff + block, potion-assisted. Prefer kill paths (removes future damage). Only deviate for boss fights (spend HP freely), hard-scaling enemies (kill speed priority), and Burning Blood buffer at max HP.
 2. **PLAN FULL ACT ROUTES BEFORE FLOOR 1.** Read the entire map at act start. Count elites, shops, campfires on every viable path. Choose a route and follow it. Re-route only when HP forces it.
 3. **Build Act 2-ready decks by Floor 15.** ALL FOUR criteria: (a) front-loaded Strength (Inflame or Spot Weakness, NOT Demon Form alone), (b) AOE (Immolate is the highest-impact card), (c) healing beyond Burning Blood (Toy Ornithopter + potions is a valid backup), (d) block scaling beyond basic Defends.
 4. **Pursue one of the two proven scaling engines.** (A) **Strength engine**: Snecko Eye as Act 2 boss relic, Immolate+ for AOE, Limit Break for Str doubling, Heavy Blade or other Str finishers. (B) **Block engine**: Barricade + Corruption + Feel No Pain + Entrench + Body Slam+. Immolate+ is the primary AOE in both. Do not force one engine -- pursue whichever the card/relic offerings support. If Barricade + Corruption + FNP are all available by mid-Act 2, commit to the block engine. If Snecko Eye is offered as Act 2 boss relic and Limit Break exists, commit to the Str engine. Either engine can defeat any Act 3 boss.
@@ -217,7 +217,46 @@ If missing 2+ of these entering Act 2, the run is in serious danger. Shift to co
 
 You can see the boss from floor 1. You know which elites exist in each act. Evaluate cards against fights you are GUARANTEED or LIKELY to face, not generically.
 
-**Act 1 uses a TIER LIST, not reasoning.** The starting deck is nearly identical every run. An experienced player doesn't reason about Act 1 picks from first principles -- they know the tier list. See player.md "Act 1 Card Evaluation: Use the Tier List" for the full list. The core constraint: take attacks so Gremlin Nob doesn't kill you.
+**Act 1 uses a TIER LIST, not reasoning.** The starting deck is nearly identical every run. An experienced player doesn't reason about Act 1 picks from first principles — they know the tier list. The core constraint: take attacks so Gremlin Nob doesn't kill you (+2 Str per Skill played).
+
+**Ironclad Act 1 Tier List:**
+
+MUST-TAKE (take over almost anything):
+- Reaper (healing — the most important card in the game for Ironclad)
+- Feed (permanent Max HP scaling, take early for max value)
+- Inflame (immediate +2 Str, satisfies front-loaded Str requirement)
+- Immolate (massive AOE + single target, solves multiple problems)
+- Impervious (30 block in one card, solves every block problem)
+- Shrug It Off (block + draw, best defensive common)
+- Pommel Strike (damage + draw, best offensive common)
+
+HIGH PRIORITY (take to fill gaps):
+- Spot Weakness (+3/+4 Str when enemy attacks — most enemies attack)
+- Thunderclap (AOE + Vulnerable, critical for Byrds in Act 2)
+- Headbutt (damage + deck manipulation)
+- Carnage (high damage Ethereal attack — great for Nob-safe damage)
+- Iron Wave (damage + block in one card)
+- Clothesline (damage + Weak)
+- Shockwave (mass Weak + Vulnerable, exhausts — incredible vs multi-enemy)
+- Flame Barrier (block + counter damage, excellent in multi-hit fights)
+
+SITUATIONAL (take only if it fills a specific gap):
+- Evolve (MUST-TAKE if Slime Boss is the Act 1 boss — trivializes Slimed cards)
+- Fire Breathing (MUST-TAKE if Slime Boss AND you have Evolve)
+- Uppercut (Weak + Vulnerable in one card, but 2E is expensive)
+- Perfected Strike (only if 3+ Strike cards remain in deck)
+- Anger (free attack, good for Nob, but adds copies to discard)
+- Rampage (scaling damage, needs multiple plays to ramp)
+- True Grit (ONLY if you can upgrade it soon — unupgraded is dangerous)
+- Sentinel (block + energy on exhaust)
+
+SKIP (do not take in Act 1):
+- Demon Form (too slow for hallway fights, does not satisfy front-loaded Str)
+- Limit Break (needs a Str source first)
+- Barricade (3E, too slow, no immediate value)
+- Brutality (self-damage in long fights)
+- Berserk (self-Vulnerable is extremely dangerous)
+- Any Skill-heavy card if you lack attacks (Nob will punish you)
 
 **Boss-specific drafting examples:**
 - Slime Boss visible: Evolve and Fire Breathing become MUST-TAKES (Slimed status floods the deck, Evolve draws on status draw, Fire Breathing deals damage per status drawn)

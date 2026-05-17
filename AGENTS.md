@@ -145,7 +145,9 @@ Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overla
 
 ### 3. Run the player/analyst loop
 
-Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.
+Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). The player plays one complete run, then stops and reports the outcome.
+
+**Read `agents/player.md` for how to compose the player prompt.** It specifies which layer files to read (including the character-specific file from `playbook/characters/`), in what order, and the rules for assembling them. Follow it exactly.
 
 **Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py detects it and writes `analyst/runs/run_NNN.json` from the game state (deck, relics, potions, HP, gold, seed) plus the complete decision log from `data/stream_events.jsonl` (every command, reasoning, and resulting game state after each action). It then runs `regen_stats.py` to update stats and pings stream.py to reload. The overlay updates immediately. No orchestrator action needed for the run log.
 
