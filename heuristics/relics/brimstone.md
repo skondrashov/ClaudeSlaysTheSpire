@@ -5,7 +5,7 @@ Double-edged scaling relic. Your damage scales fast but enemies become devastati
 WHEN TO TAKE: Deck has burst damage and can end fights in 4-5 turns. Pairs well with Weak application (Bash+, Thunderclap, Shockwave) to offset enemy Strength gains.
 
 **PURCHASE CHECKLIST:**
-1. Is Book of Stabbing a possible Act 2 elite? If yes, DO NOT BUY. Brimstone + Book of Stabbing is unsurvivable (confirmed kills in Run 091, Run 100).
+1. Is Book of Stabbing a possible Act 2 elite? If yes, DO NOT BUY. Brimstone + Book of Stabbing is unsurvivable.
 2. Can your deck end fights in 4-5 turns? If no, enemy Str gain will overwhelm you.
 3. Do you have Weak application? Weak offsets enemy Str gains.
 4. In Act 2 already? Evaluate remaining enemy pool before buying.

@@ -11,3 +11,5 @@ Permanent Strength reduction. Extremely powerful against scaling enemies.
 **Slime Boss:** Disarm applied pre-split does NOT carry over to split slimes. Play post-split on the higher-damage slime.
 
 **Artifact interaction:** Against enemies with Artifact, Disarm strips 1 Artifact instead of applying -2 Str.
+
+**The Champ:** Disarm applied before Anger is completely wasted (Anger cleanses all debuffs). Hold Disarm for Phase 2 -- the -2 Str reduction is critical against post-Anger +6/+9/+12 Str. With Runic Pyramid, Disarm stays in hand; if Fiend Fire is also in deck, Disarm will be exhausted by Fiend Fire unless played first. Protect Disarm from Fiend Fire during Phase 1 burst.

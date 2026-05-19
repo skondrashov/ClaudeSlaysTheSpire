@@ -12,4 +12,4 @@ Mass debuff. One of the most powerful cards in the game. Exhausts but returns to
 
 **Matchups:** Hexaghost -- Weak reduces Inferno from 42 to 28. MANDATORY for survival. Gremlin Leader -- mass debuff. Slime Boss split -- mass debuff on both slimes. The Collector -- play when Torch Heads are present.
 
-**Warning -- The Champ:** Shockwave debuffs applied BEFORE Execute are WASTED. Execute cleanses ALL debuffs. Ideally hold for after Execute.
+**Warning -- The Champ:** Shockwave debuffs applied BEFORE Anger are WASTED. Anger cleanses ALL debuffs at 50% HP. Hold for after Anger. With Runic Pyramid, Shockwave stays in hand across turns -- if Fiend Fire is also in the deck, Shockwave will be permanently exhausted by Fiend Fire along with the rest of the hand. Do NOT fire Fiend Fire while Shockwave is in hand during a Champ fight. Wait until Shockwave has been played post-Anger or is safely in the draw pile.
