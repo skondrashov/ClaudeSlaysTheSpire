@@ -14,6 +14,3 @@ Uses Stab every turn.
 |------|--------|--------|
 | Stab | 5x2 | -- |
 
-## Mechanics
-
-- Part of the [[encounters/2 Thieves]] encounter with [[enemies/Mugger]]

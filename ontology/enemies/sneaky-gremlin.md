@@ -14,6 +14,3 @@ Uses Puncture every turn.
 |------|--------|--------|
 | Puncture | 9 | -- |
 
-## Mechanics
-
-- Highest damage-per-HP ratio in Act 1. Kill priority target.

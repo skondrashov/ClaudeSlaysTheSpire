@@ -12,10 +12,6 @@ Alternates between Constrict and Smash.
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Constrict | -- | Apply 10 [[debuffs/Constricted]] (take 10 damage end of each turn) |
+| Constrict | -- | Apply 10 [[debuffs/Constricted]] |
 | Smash | 22 | -- |
 
-## Mechanics
-
-- High HP pool makes it a long fight
-- Constricted stacks: each application adds more end-of-turn damage

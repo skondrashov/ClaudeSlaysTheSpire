@@ -12,12 +12,6 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Flame Tackle | 16 (18 at A2) | Adds 2 Slimed cards to discard pile |
-| Lick | -- | Applies 2 Frail |
+| Flame Tackle | 16 (18 at A2) | Adds 2 [[cards/Slimed]] to discard pile |
+| Lick | -- | Applies 2 [[debuffs/Frail]] |
 | Split | -- | At 50% HP or below, spawns 2 Spike Slime (M) with current HP each |
-
-## Mechanics
-
-**Split at 50% HP:** Creates 2 medium slimes with current HP, extending the fight significantly.
-
-**Frail 2:** Reduces block gained from cards by 25%.

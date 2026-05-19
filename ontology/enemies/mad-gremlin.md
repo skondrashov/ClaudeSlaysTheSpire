@@ -16,5 +16,4 @@ Uses Scratch every turn.
 
 ## Mechanics
 
-- Has [[buffs/Enrage]] 1: gains 1 [[buffs/Strength]] whenever it takes damage
-- Do NOT spread incidental damage to it — each hit makes it stronger
+- Has [[buffs/Enrage]] 1

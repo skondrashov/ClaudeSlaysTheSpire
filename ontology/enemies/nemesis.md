@@ -18,8 +18,4 @@ First turn: 50/50 chance of Scorch (Burns) or Attack. Subsequent turns: ~35% Sco
 
 ## Mechanics
 
-**Intangible:** On Intangible turns, ALL damage dealt to Nemesis is reduced to 1 -- including poison ticks, Thorns, everything. Pattern: Turn 1 (no Intangible), Turn 2 (Intangible), Turn 3 (no), Turn 4 (Intangible), etc.
-
-**Burns:** Unplayable status cards. Deal 2 damage at end of turn if in hand. Accumulate and clog hand quality over the fight.
-
-**Effective Fight Length:** Intangible doubles the effective fight length since half your turns deal essentially zero damage.
+Gains [[buffs/Intangible]] every other turn starting from Turn 2 (Turn 2, Turn 4, Turn 6, etc.).

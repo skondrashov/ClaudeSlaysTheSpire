@@ -2,5 +2,5 @@
 
 - **Act:** 2
 - **Options:**
-  - Engage: Lose HP, receive uncertain reward
+  - Touch: Lose HP based on current Max HP, receive a random relic and lose a random relic
   - Leave: Nothing happens

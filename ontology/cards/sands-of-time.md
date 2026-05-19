@@ -4,6 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Keywords:** Retain
 - **Effect:** 20 damage, Retain; when Retained, lower its cost by 1 this combat
 - **Upgraded:** 26 damage, Retain; when Retained, lower its cost by 1

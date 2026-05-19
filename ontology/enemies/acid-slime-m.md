@@ -12,10 +12,10 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Corrosive Spit | 7 (8 at A2) | Add 1 Slimed to discard pile |
+| Corrosive Spit | 7 (8 at A2) | Add 1 [[cards/Slimed]] to discard pile |
 | Tackle | 10 (12 at A2) | -- |
 | Lick | -- | Apply 1 [[debuffs/Weak]] |
 
 ## Mechanics
 
-- Has [[debuffs/Split]]: at half HP or below, dies and spawns 2x [[enemies/Acid Slime S]]
+- Splits into 2 [[enemies/Acid Slime S]] when HP drops to 50% or below

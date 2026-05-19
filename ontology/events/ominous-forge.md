@@ -2,5 +2,5 @@
 
 - **Act:** 2
 - **Options:**
-  - Forge: Upgrade a card in your deck (free, no cost)
+  - Forge: Upgrade a card in your deck
   - Leave: Nothing happens

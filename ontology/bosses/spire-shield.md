@@ -13,10 +13,9 @@ Alternates Bash and Fortify. Can also use Smash.
 | Move | Damage | Effect |
 |------|--------|--------|
 | Bash | 12 | -- |
-| Fortify | -- | Gives [[bosses/Spire Spear]] 30 [[buffs/Block]] |
+| Fortify | -- | Gives [[bosses/Spire Spear]] 30 Block |
 | Smash | 34 | -- |
 
 ## Mechanics
 
 - Paired with [[bosses/Spire Spear]] in the Act 4 elite fight before the Heart
-- Provides Block to [[bosses/Spire Spear]] — kill order matters

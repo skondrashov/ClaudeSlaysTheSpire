@@ -1,4 +1,4 @@
 # Power Potion
 
-- **Effect:** Choose from 3 random [[types/Power]] cards and add one to your hand. It costs 0 energy this turn.
 - **Rarity:** Common
+- **Effect:** Choose 1 of 3 random [[types/Power]] cards and add it to your hand. It costs 0 this turn.

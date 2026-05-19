@@ -1,4 +1,4 @@
 # Bloody Idol
 
 - **Rarity:** Uncommon
-- **Effect:** Gain 5 gold whenever you gain gold. Heal 5 HP whenever you gain gold.
+- **Effect:** Whenever you gain gold, heal 5 HP

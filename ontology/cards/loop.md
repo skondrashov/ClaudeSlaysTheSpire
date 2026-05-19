@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** At the start of each turn, trigger the passive ability of your first orb
+- **Effect:** Apply 1 [[buffs/Loop]] to self
 - **Upgraded:** Costs 0E

@@ -1,35 +1,32 @@
 # Act 2
 
-16 floors + 1 boss floor (Floor 33 in the run, or floor 17 within Act 2).
+16 floors + 1 boss floor (Floor 33).
 
 ## Map Structure
 
-Same structure as Act 1. Floor 15 within the act is always a Rest Site. Enemies are significantly stronger than Act 1.
+- Floors 17-31: Mix of Monster, Elite, Rest Site, Shop, Unknown
+- Floor 32: Always a Rest Site
+- Floor 33: Boss fight
 
-## Enemy Pool
+## Encounters
 
-### Hallway Fights
-- 3 Byrds
-- Chosen
-- Chosen + Cultist
-- Centurion + Mystic
-- Snake Plant
-- Spheric Guardian
-- 3 Cultists
-- Shelled Parasite
-- Snecko
-- Mugger + Looter (upgraded from Act 1)
+### Hallway
+- [[encounters/3 Byrds]]
+- [[encounters/Chosen]]
+- [[encounters/Chosen and Cultist]]
+- [[encounters/Centurion and Mystic]]
+- [[encounters/Snake Plant]]
+- [[encounters/Spheric Guardian]]
+- [[encounters/3 Cultists]]
+- [[encounters/Shelled Parasite]]
+- [[encounters/Snecko]]
 
 ### Elites
-- Gremlin Leader
-- Book of Stabbing
-- Slavers (3 enemies: Blue Slaver, Red Slaver, Taskmaster)
+- [[encounters/Gremlin Leader]]
+- [[encounters/Book of Stabbing]]
+- [[encounters/Slavers]]
 
 ### Bosses (one per run, visible from floor 1)
-- The Champ
-- The Collector
-- Bronze Automaton
-
-## HP Scaling
-
-Enemies have significantly more HP and deal more damage than Act 1. Multi-enemy fights are common and dangerous. Status effects (Hex, Vulnerable, Frail) are more prevalent.
+- [[bosses/The Champ]]
+- [[bosses/The Collector]]
+- [[bosses/Bronze Automaton]]

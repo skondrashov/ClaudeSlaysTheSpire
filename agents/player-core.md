@@ -14,16 +14,23 @@ You are playing for a stream audience. Every decision must be explainable.
 - **Post strategic analysis with `think()`** at key moments — viewers want to see WHY, not just WHAT.
 - Keep reasoning concise but specific — viewers want the logic, not an essay.
 
-## Knowledge Loading
+## Knowledge System
 
-The playbook has detailed entries for every game element. Three commands give you access:
+Game knowledge lives in two layers:
 
-### `plan()` — Strategic context loading
+- **Ontology** (`ontology/`) — Facts about the game. What exists, how it behaves, how things connect. Cards, enemies, bosses, buffs, debuffs, relics, potions, events, encounters, rules. These are ground truth — safe to build on.
+- **Heuristics** (`heuristics/`) — Strategic reasoning. How to fight enemies, when to play cards, which relics to prioritize, build paths. These are cached conclusions — useful shortcuts, but they can be wrong. Evaluate them against the current situation.
 
-Call `plan()` to load context relevant to your current situation. It auto-detects what you need.
+Ontology entries cross-reference each other with `[[category/Name]]` links (e.g., `[[buffs/Strength]]`, `[[enemies/Cultist]]`). When `plan()` loads knowledge, it automatically resolves these links to pull in related facts. When you see a `[[link]]` in loaded text, the linked knowledge has either already been loaded or can be fetched with `reason()`.
+
+### `plan()` — Load context for the current situation
+
+Auto-detects what you need based on game state:
+- **In combat:** Loads enemy ontology + strategy, hand card knowledge, relic effects, and resolves cross-reference links (buffs, debuffs, mechanics the enemies use).
+- **Outside combat:** Loads strategy overview, character heuristics, boss knowledge, deck composition, relic/potion notes.
 
 **When to call plan():**
-- **Start of each act/chapter** — mandatory
+- **Start of each act** — mandatory
 - **Start of each combat** — mandatory
 - **Before boss fights** — mandatory (even if you already planned this act)
 
@@ -37,15 +44,26 @@ After reading `plan()` output, formulate your strategy and **post it with `think
 - **After every plan()** — always post your strategic synthesis
 - **Before major decisions** — boss relic picks, key card choices, risky paths
 
-### `reason(topic)` — Quick targeted lookup
+### `reason(topic)` — Look up any game entity
 
-Look up any specific playbook entry by name.
+Searches both ontology and heuristics for the topic. Returns facts + strategy together, plus resolves cross-reference links.
 
 **When to call reason():**
 - **Rewards/choices**: Look up each option before deciding
 - **Events**: Look up the event before choosing
 - **Shop**: Look up items you're considering
+- **Unfamiliar mechanics**: If you see a buff, debuff, or effect you're unsure about, look it up
 - **Anytime you're unsure**: If you don't know what something does, look it up
+
+### The Knowledge Gap Queue
+
+When you encounter something you don't know — an enemy pattern that surprised you, a mechanic that didn't work as expected, a card interaction you couldn't predict — **note it in your think() output**. Mark it clearly:
+
+```
+KNOWLEDGE GAP: [what you expected] vs [what happened]
+```
+
+These gaps are the raw material for improving the knowledge base between runs. The more specific, the better.
 
 ## Run End
 
@@ -54,6 +72,6 @@ When the run ends (GAME_OVER screen — victory or defeat), proceed through the 
 - Floor reached
 - What went well
 - What went wrong
-- Any mechanics you were unsure about
+- Any knowledge gaps encountered (mechanics surprises, missing entries, wrong heuristics)
 
-The orchestrator will run the analyst to review your run before starting the next one.
+The orchestrator will review your run before starting the next one.

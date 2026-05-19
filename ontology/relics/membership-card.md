@@ -1,4 +1,4 @@
 # Membership Card
 
-- **Rarity:** Shop relic
+- **Rarity:** Shop
 - **Effect:** 50% discount on all items in the shop

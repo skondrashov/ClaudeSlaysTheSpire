@@ -2,4 +2,4 @@
 
 - **Act:** 2/3
 - **Options:**
-  - Play: Spin the wheel for a random outcome. Known outcomes include: lose 8 HP, heal to full health. Full outcome table partially unknown.
+  - Play: Spin the wheel for a random outcome (gain Gold, lose HP, heal to full, gain a Curse, or gain a card)

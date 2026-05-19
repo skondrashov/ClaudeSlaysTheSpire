@@ -13,14 +13,8 @@
 | Move | Damage | Effect |
 |------|--------|--------|
 | Chomp | 7x3 = 21 (8x3 = 24 at A2) | -- |
-| Enfeebling Spores | -- | Applies 2 Frail + 2 Weak |
+| Enfeebling Spores | -- | Applies 2 [[debuffs/Frail]] + 2 [[debuffs/Weak]] |
 
 ## Mechanics
 
-**Malleable 3:** Upon receiving attack damage, gains Block. First hit: gains 3 block. Second hit: 4 block. Third hit: 5 block. Increases by 1 each time triggered in the same turn. Resets at start of player turn.
-
-**Frail + Weak Combination:** Frail cripples block (25% reduction) while Chomp (21-24) overwhelms weakened defenses.
-
-## Appearances
-
-Can appear in Unknown rooms (not just hallway combat).
+Starts with [[buffs/Malleable]] 3.

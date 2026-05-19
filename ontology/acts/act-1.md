@@ -4,41 +4,38 @@
 
 ## Map Structure
 
-- Floors 1-14: Mix of Monster (M), Elite (E), Rest Site (R), Shop ($), Event/Unknown (?)
+- Floors 1-14: Mix of Monster, Elite, Rest Site, Shop, Unknown
 - Floor 15: Always a Rest Site
 - Floor 16: Boss fight
 
-## Enemy Pool
+## Encounters
 
-### Hallway Fights (Monster rooms)
-- Jaw Worm
-- 2 Louse (Red/Green mix)
-- Small Slimes (Spike Slime S + Acid Slime S)
-- Cultist
-- Fungi Beast x2
-- Looter
-- 3 Louse
-- Gremlin Gang (5 small gremlins)
-- Large Slime (Spike Slime L or Acid Slime L)
-- 2 Fungi Beasts
-- Looter + Mugger (later floors)
+### Hallway
+- [[encounters/Jaw Worm]]
+- [[encounters/2 Louse]]
+- [[encounters/Small Slimes]]
+- [[encounters/Cultist]]
+- [[encounters/Blue Slaver]]
+- [[encounters/Looter]]
+- [[encounters/3 Louse]]
+- [[encounters/Gremlin Gang]]
+- [[encounters/Large Slime]]
+- [[encounters/2 Fungi Beasts]]
+- [[encounters/Exordium Thugs]]
 
 ### Elites
-- Gremlin Nob
-- Lagavulin
-- 3 Sentries
+- [[encounters/Gremlin Nob]]
+- [[encounters/Lagavulin]]
+- [[encounters/3 Sentries]]
 
 ### Bosses (one per run, visible from floor 1)
-- The Guardian
-- Hexaghost
-- Slime Boss
+- [[bosses/The Guardian]]
+- [[bosses/Hexaghost]]
+- [[bosses/Slime Boss]]
 
 ## Card Rewards
 
-- Common cards appear frequently
-- Uncommon cards appear occasionally
-- Rare cards appear rarely (~3% base chance, increased by certain relics)
-- Card reward offers 3 cards (4 with Question Card relic)
+3 cards offered per reward (4 with [[relics/Question Card]]). Mix of Common, Uncommon, and Rare (~3% Rare base chance).
 
 ## Gold
 

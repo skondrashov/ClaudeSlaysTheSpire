@@ -1,4 +1,5 @@
 # Black Blood
 
-- **Character:** Ironclad (Boss relic)
-- **Effect:** Replaces Burning Blood. At the end of combat, heal 12 HP (instead of 6)
+- **Character:** Ironclad
+- **Rarity:** Boss
+- **Effect:** Replaces [[relics/Burning Blood]]. At the end of combat, heal 12 HP

@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Rare
-- **Effect:** This turn, your next Skill is played twice
-- **Upgraded:** Your next 2 Skills are played twice
+- **Effect:** Apply 1 [[buffs/Burst]] to self
+- **Upgraded:** Apply 2 [[buffs/Burst]] to self

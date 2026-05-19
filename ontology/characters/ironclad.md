@@ -2,14 +2,14 @@
 
 ## Starting Deck
 
-- 5 Strike (Attack, 1E, 6 damage)
-- 4 Defend (Skill, 1E, 5 block)
-- 1 Bash (Attack, 2E, 8 damage, apply Vulnerable 2)
+- 5 [[cards/Strike]] ([[types/Attack]], 1E, 6 damage)
+- 4 [[cards/Defend]] ([[types/Skill]], 1E, 5 block)
+- 1 [[cards/Bash]] ([[types/Attack]], 2E, 8 damage, apply 2 [[debuffs/Vulnerable]])
 
 ## Starting Relic
 
-**Burning Blood** — heal 6 HP at the end of every combat.
+[[relics/Burning Blood]] — heal 6 HP at end of combat
 
 ## Unique Mechanics
 
-None. The Ironclad has no unique combat system (unlike Defect orbs or Watcher stances). Card pools emphasize Strength scaling, exhaust synergies, self-damage trades, and HP recovery.
+None. No unique combat system (unlike [[characters/Defect]] orbs or [[characters/Watcher]] stances).

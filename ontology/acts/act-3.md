@@ -1,40 +1,38 @@
 # Act 3
 
-16 floors + 1 boss floor (Floor 50 in the run, or floor 17 within Act 3).
+16 floors + 1 boss floor (Floor 50).
 
 ## Map Structure
 
-Same structure as previous acts. Floor 15 within the act is always a Rest Site. Enemies are the strongest in the game.
+- Floors 34-48: Mix of Monster, Elite, Rest Site, Shop, Unknown
+- Floor 49: Always a Rest Site
+- Floor 50: Boss fight
+- HP fully restored at start of Act 3
 
-## Enemy Pool
+## Encounters
 
-### Hallway Fights
-- Darklings (3 enemies, Life Link)
-- Orb Walker (or 2 Orb Walkers)
-- Writhing Mass
-- Spiker + Exploder combinations
-- Jaw Worm Horde (3 Jaw Worms, upgraded)
-- Reptomancer (+ Daggers)
-- Nemesis (Intangible)
-- 3 Shapes (Maw + 2 others)
-- The Maw
-- Transient (survival check)
-- Giant Head (elite-tier hallway)
+### Hallway
+- [[encounters/Darklings]]
+- [[encounters/Orb Walkers]]
+- [[encounters/Writhing Mass]]
+- [[encounters/Spiker and Exploder]]
+- [[encounters/Jaw Worm Horde]]
+- [[encounters/Reptomancer]]
+- [[encounters/Nemesis]]
+- [[encounters/3 Shapes]]
+- [[encounters/The Maw]]
+- [[encounters/Transient]]
 
 ### Elites
-- Giant Head
-- Nemesis
-- Reptomancer
+- [[encounters/Giant Head]]
+- [[encounters/Nemesis]]
+- [[encounters/Reptomancer]]
 
 ### Bosses (one per run, visible from floor 1)
-- Awakened One
-- Time Eater
-- Donu and Deca
+- [[bosses/Awakened One]]
+- [[bosses/Time Eater]]
+- [[bosses/Donu and Deca]]
 
 ## Victory
 
-Defeating the Act 3 boss wins the run. Floor 51 is the Heart (optional superboss, requires specific key items to access).
-
-## HP Full Reset
-
-HP is fully restored at the start of Act 3 (between Act 2 boss and Act 3 floor 1).
+Defeating the Act 3 boss wins the run (Floor 51). The Heart is an optional superboss requiring key items to access.

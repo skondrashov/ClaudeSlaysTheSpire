@@ -13,9 +13,5 @@ Always starts with Chomp. After Chomp: 59% Bellow, 41% Thrash. After Bellow: 56%
 | Move | Damage | Effect |
 |------|--------|--------|
 | Chomp | 11 (12 at A2) | -- |
-| Bellow | -- | Gains 3 Strength + 6 Block (4 Str at A2, 5 Str + 9 Block at A17) |
-| Thrash | 7 + 5 Block | -- |
-
-## Mechanics
-
-**Strength Scaling:** Each Bellow gives +3 Str and 6 Block. Damage increases each turn the fight goes on. Turn 1 is always Chomp (11 damage). Turn 2 is likely Bellow (free turn, 0 damage).
+| Bellow | -- | Gain 3 [[buffs/Strength]], gain 6 Block (4 Str at A2, 5 Str + 9 Block at A17) |
+| Thrash | 7 | Gain 5 Block |

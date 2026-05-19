@@ -2,5 +2,5 @@
 
 - **Act:** 1
 - **Options:**
-  - Heal: Heal HP
+  - Heal: Pay 35 Gold, heal HP
   - Purify: Pay 50 Gold, remove a card from your deck

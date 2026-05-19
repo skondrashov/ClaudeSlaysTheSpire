@@ -2,5 +2,5 @@
 
 - **Act:** 1
 - **Options:**
-  - Agree: Gain 175 gold, receive Doubt [[types/Curse]] (gain [[debuffs/Weak]] each turn in combat)
+  - Agree: Gain 175 Gold, receive Doubt [[types/Curse]]
   - Disagree: Nothing happens

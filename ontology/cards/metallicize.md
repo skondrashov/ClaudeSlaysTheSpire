@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** At the end of each turn, gain 3 block
-- **Upgraded:** At the end of each turn, gain 4 block
+- **Effect:** Gain 3 [[buffs/Metallicize]]
+- **Upgraded:** Gain 4 [[buffs/Metallicize]]

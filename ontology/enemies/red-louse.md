@@ -17,5 +17,4 @@
 
 ## Mechanics
 
-- Has [[buffs/Curl Up]]: gains 3-7 [[buffs/Block]] when first hit by an attack
-- Grow gives permanent Strength — scales if left alive
+- Has [[buffs/Curl Up]] 3-7

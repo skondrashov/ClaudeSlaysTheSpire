@@ -4,8 +4,6 @@
 - **Act:** 2
 - **HP:** 420 (A0), 440 (A9)
 
-Single target. Two-phase fight with a dangerous transition.
-
 ## Attacks
 
 | Move | Damage | Effect |
@@ -26,10 +24,3 @@ Uses Taunt every 4 turns. On other turns: 15% Defensive Stance, 15% Gloat, 25% F
 
 When HP drops below 50%, performs Anger: removes ALL debuffs, gains 6 [[buffs/Strength]] (+9 at A4, +12 at A19). Then repeats: Random Move -> Random Move -> Execute (10x2 = 20 damage).
 
-## Mechanics
-
-**Anger (Phase Transition):** Removes ALL player-applied debuffs ([[debuffs/Vulnerable]], [[debuffs/Weak]], [[buffs/Strength]] reduction). Gains massive permanent [[buffs/Strength]]. All debuffs applied before this point are wasted.
-
-**Execute Pattern:** After Anger, repeats a 3-move cycle ending with Execute (10x2, but with +6-12 Str = 16x2 to 22x2).
-
-**[[buffs/Metallicize]] 5:** From Defensive Stance, gains 5 passive block per turn permanently.

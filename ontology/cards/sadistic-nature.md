@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Silent
 - **Rarity:** Rare
-- **Effect:** Whenever you apply a debuff, deal 5 damage to the enemy
-- **Upgraded:** Deal 7 damage
+- **Effect:** Apply 5 [[buffs/Sadistic Nature]] to self
+- **Upgraded:** Apply 7 [[buffs/Sadistic Nature]] to self

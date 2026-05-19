@@ -12,11 +12,5 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Flame Tackle | 8 (10 at A2) | Adds 1 Slimed card to discard pile |
-| Lick | -- | Applies 1 Frail |
-
-## Mechanics
-
-**Frail:** Reduces player block by 25%.
-
-**Slimed Cards:** Cost 1E to exhaust, do nothing. Clog hand over time.
+| Flame Tackle | 8 (10 at A2) | Adds 1 [[cards/Slimed]] to discard pile |
+| Lick | -- | Applies 1 [[debuffs/Frail]] |

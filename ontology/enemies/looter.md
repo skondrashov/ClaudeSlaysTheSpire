@@ -19,10 +19,4 @@ Turns 1-2: Mug (10 damage + steals gold). Turn 3+: 50% Lunge (12 damage) or 50% 
 
 ## Mechanics
 
-**Thievery:** Steals gold whenever it attacks. Stolen gold is returned if the Looter is killed. If it escapes, gold is lost permanently.
-
-**Escape Sequence:** Smoke Bomb intent signals one turn left before it flees.
-
-## Act 2 Pairing
-
-Looter appears alongside Mugger in an Act 2 hallway fight (Looter + Mugger). Combined damage is 20+ per turn with no free setup turns.
+Stolen gold is returned if the Looter is killed. If it escapes, gold is lost permanently.

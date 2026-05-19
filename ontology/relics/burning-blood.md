@@ -1,4 +1,5 @@
 # Burning Blood
 
-- **Character:** Ironclad (Starter)
+- **Character:** Ironclad
+- **Rarity:** Starter
 - **Effect:** Heal 6 HP at the end of every combat

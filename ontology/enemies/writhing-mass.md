@@ -16,12 +16,10 @@
 |------|--------|--------|
 | Multi Hit | 7x3 = 21 (9x3 = 27 at A2) | -- |
 | Big Hit | 32 (38 at A2) | -- |
-| Debuff Attack | 10 (12 at A2) | Applies 2 Weak + 2 Vulnerable |
+| Debuff Attack | 10 (12 at A2) | Applies 2 [[debuffs/Weak]] + 2 [[debuffs/Vulnerable]] |
 | Block Attack | 15 (16 at A2) | Gains 16 Block |
 | Parasite | -- | Permanently adds Parasite curse to deck (once per combat) |
 
 ## Mechanics
 
-**Reactive:** Changes the Writhing Mass's weakness/intent when the player plays certain card types. Unpredictable.
-
-**Malleable:** Gains block each time it is hit. Multi-hit attacks (Whirlwind, Pummel) are punished -- each hit gives it more block.
+Has [[buffs/Reactive]] and [[buffs/Malleable]].

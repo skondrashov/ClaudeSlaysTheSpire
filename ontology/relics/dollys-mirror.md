@@ -1,4 +1,4 @@
 # Dolly's Mirror
 
-- **Rarity:** Shop relic
+- **Rarity:** Shop
 - **Effect:** Upon pickup, obtain a copy of a card in your deck

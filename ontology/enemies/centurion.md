@@ -14,9 +14,5 @@
 | Move | Damage | Effect |
 |------|--------|--------|
 | Slash | 12 | -- |
-| Protect | -- | Gives [[enemies/Mystic]] 15 [[buffs/Block]] |
+| Protect | -- | Gives [[enemies/Mystic]] 15 Block |
 | Fury | 6x3 | Only used after [[enemies/Mystic]] dies |
-
-## Mechanics
-
-- Mode shift when [[enemies/Mystic]] dies: replaces Protect with Fury (multi-hit)

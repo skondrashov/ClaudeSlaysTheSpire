@@ -1,4 +1,5 @@
 # Teardrop Locket
 
-- **Character:** Watcher (Uncommon)
+- **Character:** Watcher
+- **Rarity:** Uncommon
 - **Effect:** Start each combat in Calm (upon leaving Calm, gain 2 Energy)

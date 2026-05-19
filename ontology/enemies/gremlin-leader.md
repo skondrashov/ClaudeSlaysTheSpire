@@ -21,19 +21,9 @@ Cannot use any intent twice in a row.
 | Move | Damage | Effect |
 |------|--------|--------|
 | Stab | 6x3 = 18 | -- |
-| Encourage | -- | All enemies gain 3 Strength + other gremlins gain 6 Block (Str scales to 4-5, Block to 10-18 at higher Ascensions) |
+| Encourage | -- | All enemies gain 3 [[buffs/Strength]] + other gremlins gain 6 Block (Str scales to 4-5, Block to 10-18 at higher Ascensions) |
 | Rally! | -- | Summons 2 random Gremlins |
 
 ## Mechanics
 
-**Rally Strength Scaling:** Encourage gives +3 Str to ALL enemies (Leader + all gremlins). Permanent and stacking. Fires roughly every other turn.
-
-**Rally Scaling Math:**
-- Turn 3: all enemies have +3 Str
-- Turn 5: all enemies have +6 Str
-- Turn 7: all enemies have +9 Str
-- With 2 gremlins alive at +9 Str, gremlins alone deal (9+9)*2 = 36, plus Leader's own attacks. Total incoming by turn 7-8 exceeds 50/turn.
-
-**Gremlin Respawn:** Leader re-summons gremlins when they die -- killing gremlins is temporary relief, not permanent removal.
-
-**Gremlin Wizard:** If present, charges for a massive 28-damage nuke. Must be killed before it fires.
+Maximum 3 small gremlins active at a time. Summoned gremlins are random types (including [[enemies/Gremlin Wizard]]).

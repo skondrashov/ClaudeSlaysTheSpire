@@ -4,6 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Keywords:** Retain, Exhaust
 - **Effect:** Enter Calm, Retain, Exhaust
 - **Upgraded:** Costs 0E

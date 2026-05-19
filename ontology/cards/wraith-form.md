@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Silent
 - **Rarity:** Rare
-- **Effect:** Gain 2 [[buffs/Intangible]], lose 1 [[buffs/Dexterity]] at end of each turn (permanent, cumulative)
-- **Upgraded:** Gain 3 [[buffs/Intangible]], lose 1 [[buffs/Dexterity]] at end of each turn
+- **Effect:** Gain 2 [[buffs/Intangible]], apply [[debuffs/Wraith Form]] to self
+- **Upgraded:** Gain 3 [[buffs/Intangible]], apply [[debuffs/Wraith Form]] to self

@@ -17,5 +17,4 @@
 
 ## Mechanics
 
-- Has [[buffs/Curl Up]]: gains 3-7 [[buffs/Block]] when first hit by an attack
-- Spit Web reduces player damage output by 25%
+- Has [[buffs/Curl Up]] 3-7

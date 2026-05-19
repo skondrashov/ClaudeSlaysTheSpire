@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Rare
-- **Effect:** When drawn, add 2 Miracles to your hand and exhaust this card
-- **Upgraded:** Add 3 Miracles when drawn
+- **Effect:** When drawn, add 2 [[cards/Miracle]]s to your hand and Exhaust this card
+- **Upgraded:** Add 3 [[cards/Miracle]]s when drawn

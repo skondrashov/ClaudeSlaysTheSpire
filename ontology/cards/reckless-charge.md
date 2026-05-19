@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** 7 damage, shuffle a Dazed into your draw pile
+- **Effect:** 7 damage, shuffle a [[cards/Dazed]] into your draw pile
 - **Upgraded:** 10 damage

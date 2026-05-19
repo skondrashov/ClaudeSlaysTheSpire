@@ -20,4 +20,3 @@ Heals if any enemy missing 16+ HP (priority). Otherwise: 60% Attack, 40% Buff. C
 
 - Heal targets ALL enemies (including self)
 - Heal threshold: any enemy missing 16+ HP
-- Buff affects [[enemies/Centurion]] too — escalating damage if left alive

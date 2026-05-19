@@ -33,7 +33,8 @@ EVENT_LOG = os.path.join(DATA_DIR, "stream_events.jsonl")
 STATS_FILE = os.path.join(DATA_DIR, "run_stats.json")
 RUNS_DIR = os.path.join(DATA_DIR, "runs")
 PID_FILE = os.path.join(DATA_DIR, "stream.pid")
-PLAYBOOK_DIR = os.path.join(os.path.dirname(__file__), "playbook")
+ONTOLOGY_DIR = os.path.join(os.path.dirname(__file__), "ontology")
+HEURISTICS_DIR = os.path.join(os.path.dirname(__file__), "heuristics")
 
 # Connected overlay clients
 clients = set()
@@ -457,20 +458,21 @@ class DecisionHandler(BaseHTTPRequestHandler):
     """HTTP handler for decision posts from cmd.py."""
 
     def do_GET(self):
-        if self.path == "/playbook-stats":
-            # Count .md files in each playbook subdirectory (excluding _index.md)
-            stats = {}
-            try:
-                for d in sorted(os.listdir(PLAYBOOK_DIR)):
-                    full = os.path.join(PLAYBOOK_DIR, d)
-                    if os.path.isdir(full):
-                        count = sum(
-                            1 for f in os.listdir(full)
-                            if f.endswith(".md") and f != "_index.md"
-                        )
-                        stats[d] = count
-            except FileNotFoundError:
-                pass
+        if self.path == "/playbook-stats" or self.path == "/knowledge-stats":
+            # Count .md files in ontology + heuristics
+            stats = {"ontology": {}, "heuristics": {}}
+            for label, base_dir in [("ontology", ONTOLOGY_DIR), ("heuristics", HEURISTICS_DIR)]:
+                try:
+                    for d in sorted(os.listdir(base_dir)):
+                        full = os.path.join(base_dir, d)
+                        if os.path.isdir(full):
+                            count = sum(
+                                1 for f in os.listdir(full)
+                                if f.endswith(".md") and f != "_index.md"
+                            )
+                            stats[label][d] = count
+                except FileNotFoundError:
+                    pass
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")

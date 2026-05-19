@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Ironclad
 - **Rarity:** Rare
-- **Effect:** Block is not removed at the start of your turn
+- **Effect:** Apply [[buffs/Barricade]] to self
 - **Upgraded:** Costs 2E

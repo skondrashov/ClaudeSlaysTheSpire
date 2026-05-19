@@ -4,6 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Keywords:** Exhaust
 - **Effect:** Heal 4 HP, Exhaust
 - **Upgraded:** Heal 6 HP, Exhaust

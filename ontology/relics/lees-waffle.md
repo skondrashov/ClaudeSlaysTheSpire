@@ -1,4 +1,4 @@
 # Lee's Waffle
 
-- **Rarity:** Shop relic (~157g)
+- **Rarity:** Shop
 - **Effect:** Raise Max HP by 7. Heal all HP.

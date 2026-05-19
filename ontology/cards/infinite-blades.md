@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** At the start of your turn, add a Shiv to your hand
+- **Effect:** At the start of your turn, add a [[cards/Shiv]] to your hand
 - **Upgraded:** Innate

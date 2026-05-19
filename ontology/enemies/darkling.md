@@ -15,8 +15,8 @@
 |------|--------|--------|
 | Nip | 7-11 (random, set at combat start) | -- |
 | Chomp | 8x2 | Outer only |
-| Harden | -- | Gain 12 [[buffs/Block]] |
+| Harden | -- | Gain 12 Block |
 
 ## Mechanics
 
-- Has [[buffs/Life Link]]: must kill all Darklings in the same turn or dead ones revive at 50% HP next turn
+- Has [[buffs/Life Link]]

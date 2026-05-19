@@ -12,10 +12,6 @@ Always opens with Bellow. After Bellow: 33% Skull Bash, 67% Rush. Cannot use Rus
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Bellow | — | Gains Enrage 2 |
-| Skull Bash | 6 (8 at A2) | Apply 2 Vulnerable |
-| Rush | 14 (16 at A2) | — |
-
-## Mechanics
-
-**Enrage 2:** Whenever the player plays a Skill card, Nob gains +2 Strength permanently. Powers do NOT trigger Enrage. Skills played before Bellow (Turn 1) do NOT trigger Enrage because Enrage is not yet active.
+| Bellow | -- | Gain [[buffs/Enrage]] 2 |
+| Skull Bash | 6 (8 at A2) | Apply 2 [[debuffs/Vulnerable]] |
+| Rush | 14 (16 at A2) | -- |

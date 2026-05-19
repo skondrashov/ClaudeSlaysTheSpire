@@ -178,11 +178,11 @@ DRAFT TARGETS: What cards do I need for [boss name]?
 
 ### Card Rewards
 
-Look up each offered card with `reason("Card Name")` before deciding. The playbook has character-specific tier lists and card evaluations. Don't reason from first principles when the playbook has an answer.
+Look up each offered card with `reason("Card Name")` before deciding. The knowledge base has card evaluations and strategic guidance. Don't reason from first principles when a heuristic exists.
 
 ### Rest Sites
 - **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is genuinely low enough that the next fight would kill you.
-- Check `plan()` output for upgrade priorities — the playbook ranks which cards benefit most from upgrading.
+- Check `plan()` output for upgrade priorities — heuristic entries note which cards benefit most from upgrading.
 
 ### Map Pathing
 - **You should already have a full act route from your Act Pathing plan.** Follow it. Only re-route when HP drops below safe thresholds or strategy changes.
@@ -218,7 +218,7 @@ state()                          — Read current game state
 deck()                           — View full deck (use after transforms, adds, removes)
 plan()                           — Load strategic context (auto-detects combat vs act mode)
 think(reasoning, label)          — Post your strategic analysis to the stream overlay
-reason("topic")                  — Look up a specific playbook entry
+reason("topic")                  — Look up any game entity (ontology + heuristics)
 send(command, reason="...")      — Single action with reasoning
 turn([actions], reason="...")    — Full combat turn as batch
 play(card, target)               — Play card (1-indexed) at target (0-indexed)

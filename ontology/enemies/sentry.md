@@ -12,17 +12,9 @@ Outer two Sentries start with Bolt, middle Sentry starts with Beam. They alterna
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Bolt | -- | Adds 2 Dazed to discard pile |
+| Bolt | -- | Adds 2 [[cards/Dazed]] to discard pile |
 | Beam | 9 (10 at A2) | -- |
-
-Two Sentries on Beam = 18-20 total damage per turn.
 
 ## Mechanics
 
-**Artifact 1:** Each Sentry starts with 1 Artifact charge, blocking the first debuff application.
-
-**Dazed Generation:** Dazed cards are Unplayable + Ethereal status cards that clog draws. Each Bolt adds 2 Dazed to the discard pile.
-
-## Act 2 Appearance
-
-Sentries also appear in Act 2 hallway fights paired with other enemies (e.g., Sentry + Spheric Guardian). In these pairings, the Sentry still generates Dazed and attacks for ~9 damage per turn.
+Each Sentry starts with [[buffs/Artifact]] 1.

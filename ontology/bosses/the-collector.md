@@ -22,10 +22,4 @@
 
 ## Mechanics
 
-**Mega Debuff (Turn 4):** Applies ALL THREE debuffs simultaneously. [[debuffs/Vulnerable]] 3 (50% more damage taken), [[debuffs/Frail]] 3 (25% less block), [[debuffs/Weak]] 3 (25% less damage dealt). The following 3 turns are the crisis window.
-
-**[[buffs/Strength]] Scaling (Buff):** Each Buff gives ALL enemies +3 [[buffs/Strength]]. Over a long fight with 4+ Buff uses, Collector Str escalates to 9-14+. By Turn 15-19, Fireball hits for 30+ instead of 18. Torch Heads also gain +3 Str per Buff.
-
-**Torch Heads:** 38-40 HP each. Tackle for 7 damage every turn. Collector resummons if killed (max 2 active).
-
-**Combined Threat:** HP check boss AND DPS race. Low HP entry means Mega Debuff creates unwinnable math. Slow kill means Str scaling compounds to lethal levels.
+**Torch Heads:** 38-40 HP each. Attack for 7 damage every turn. Re-summoned if killed (max 2 active).

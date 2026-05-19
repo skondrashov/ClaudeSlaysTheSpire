@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Whenever you play a Power card, channel 1 Lightning orb
-- **Upgraded:** Innate
+- **Effect:** Apply 1 [[buffs/Storm]] to self
+- **Upgraded:** Innate; apply 1 [[buffs/Storm]] to self

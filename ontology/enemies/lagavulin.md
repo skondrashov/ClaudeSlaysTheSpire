@@ -6,17 +6,11 @@
 
 ## Pattern
 
-Starts asleep with Metallicize 8 (gains 8 Block every turn). Wakes when it takes any damage (stunned for 1 turn, then attacks) or after 3 turns of no damage (immediately attacks). After waking, Metallicize is removed. Repeating cycle: Attack -> Attack -> Siphon Soul.
+Starts asleep with [[buffs/Metallicize]] 8. Wakes when it takes damage (stunned 1 turn, then attacks) or after 3 turns idle (attacks immediately). [[buffs/Metallicize]] removed on wake. Awake cycle: Attack, Attack, Siphon Soul (repeating).
 
 ## Attacks
 
 | Move | Damage | Effect |
 |------|--------|--------|
 | Attack | 18 (20 at A3) | -- |
-| Siphon Soul | -- | Applies -1 Strength and -1 Dexterity permanently (-2 each at A18) |
-
-## Mechanics
-
-**Metallicize 8 (while asleep):** Gains 8 Block every turn while sleeping. Removed upon waking.
-
-**Siphon Soul:** Permanent -1 Str/-1 Dex debuffs. These stack and never go away. Each Siphon Soul makes all player attacks and block cards permanently worse. After 2+ debuff turns, recalculate all damage values: Strike goes from 6 to 5 to 4.
+| Siphon Soul | -- | Apply -1 [[buffs/Strength]] and -1 [[buffs/Dexterity]] permanently (-2 each at A18) |

@@ -18,20 +18,9 @@ Fight starts with Reptomancer + 2 Daggers (3 enemies total).
 | Move | Damage | Effect |
 |------|--------|--------|
 | Big Bite | 30 (34 at A3) | -- |
-| Snake Strike | 13x2 = 26 (16x2 = 32 at A3) | Applies 1 Weak |
+| Snake Strike | 13x2 = 26 (16x2 = 32 at A3) | Applies 1 [[debuffs/Weak]] |
 | Summon Dagger | -- | Summons 2 Daggers |
-
-## Dagger Pattern
-
-Fixed: Stab (9 damage + 1 Wound to discard) -> Explode (25 damage, Dagger dies). Each Dagger is a 2-turn time bomb.
-
-| Dagger Move | Damage | Effect |
-|-------------|--------|--------|
-| Stab | 9 | Adds 1 Wound to discard |
-| Explode | 25 | Dagger dies |
 
 ## Mechanics
 
-**Dagger Time Bombs:** Starting 2 Daggers will Stab Turn 1 (9 each + Wounds) then Explode Turn 2 (25 each = 50 total). Meanwhile Reptomancer herself deals 26-30. Total incoming Turn 2 can exceed 75 damage.
-
-**Wound Generation:** Daggers add Wounds (Unplayable status) to discard via Stab.
+Starts with 2 [[enemies/Dagger]] minions. Maximum 4 [[enemies/Dagger]] active at any time.

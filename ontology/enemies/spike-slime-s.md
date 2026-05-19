@@ -16,5 +16,4 @@ Uses Tackle every turn.
 
 ## Mechanics
 
-- Produced by [[enemies/Spike Slime M]] when it uses [[debuffs/Split]]
-- No special abilities — just attacks
+- Produced by [[enemies/Spike Slime M]] via Split

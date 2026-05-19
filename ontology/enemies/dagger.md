@@ -6,15 +6,15 @@
 
 ## Pattern
 
-Attacks every turn with Stab.
+Fixed: Stab -> Explode. Each Dagger is a 2-turn time bomb.
 
 ## Attacks
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Stab | 9 | -- |
+| Stab | 9 | Adds 1 [[cards/Wound]] to discard |
+| Explode | 25 | Dagger dies |
 
 ## Mechanics
 
-- Summoned by [[enemies/Reptomancer]] (starts with 2, summons more when killed)
-- Kill to reduce incoming damage, but Reptomancer will resummon
+- Summoned by [[enemies/Reptomancer]]

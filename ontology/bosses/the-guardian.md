@@ -6,32 +6,20 @@
 
 ## Pattern
 
-**Offensive Mode** (repeating cycle): Charging Up (9 Block) -> Fierce Bash (32 damage) -> Vent Steam (2 [[debuffs/Weak]] + 2 [[debuffs/Vulnerable]]) -> Whirlwind (5x4 = 20 damage).
+**Offensive Mode** (repeating cycle): Charging Up, Fierce Bash, Vent Steam, Whirlwind.
 
-**[[buffs/Mode Shift]]:** After taking 30 HP of damage (first cycle; 40 second, 50 third, +10 each), gains 20 Block and switches to Defensive Mode. Triggering [[buffs/Mode Shift]] mid-attack CANCELS the current attack.
+**[[buffs/Mode Shift]]:** Threshold 30 (first cycle), 40, 50, +10 each. Triggers mid-attack cancels the current attack. Switches to Defensive Mode.
 
-**Defensive Mode:** [[buffs/Sharp Hide]] 3 (deal 3 damage to player per [[types/Attack]] card played) -> Roll Attack (9 damage) -> Twin Slam (8x2 = 16 damage, Removes [[buffs/Sharp Hide]], resets [[buffs/Mode Shift]] counter) -> returns to Offensive Mode.
+**Defensive Mode:** [[buffs/Sharp Hide]], Roll Attack, Twin Slam (returns to Offensive Mode).
 
 ## Attacks
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Charging Up | -- | Gains 9 Block |
+| Charging Up | -- | Gain 9 Block |
 | Fierce Bash | 32 | -- |
-| Vent Steam | -- | Applies 2 [[debuffs/Weak]] + 2 [[debuffs/Vulnerable]] |
+| Vent Steam | -- | Apply 2 [[debuffs/Weak]] + 2 [[debuffs/Vulnerable]] |
 | Whirlwind | 5x4 = 20 | -- |
-| [[buffs/Sharp Hide]] | -- | Player takes 3 damage per [[types/Attack]] card played |
+| [[buffs/Sharp Hide]] | -- | Gain [[buffs/Sharp Hide]] 3 |
 | Roll Attack | 9 | -- |
-| Twin Slam | 8x2 = 16 | Removes [[buffs/Sharp Hide]], resets [[buffs/Mode Shift]] counter |
-
-## Mechanics
-
-**[[buffs/Mode Shift]]:** Counter values are 30, 40, 50 (+10 each cycle). Only HP damage counts (damage absorbed by block does NOT reduce counter). Triggering mid-attack cancels the attack -- primary survival mechanic.
-
-**[[buffs/Sharp Hide]] 3:** 3 damage to player per [[types/Attack]] card played in Defensive Mode. Powers are safe (no trigger).
-
-**32-Damage Attack:** The Guardian's biggest single hit. Must have 32+ block capability in one turn.
-
-**Fight Length:** 240 HP means 12-14 turns minimum.
-
-**Free Turns:** DEFEND and STRONG_DEBUFF intents deal no damage.
+| Twin Slam | 8x2 = 16 | Remove [[buffs/Sharp Hide]], reset [[buffs/Mode Shift]] counter |

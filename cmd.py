@@ -16,6 +16,7 @@ Usage from Claude Code:
 
 import json
 import os
+import re
 import socket
 import subprocess
 import sys
@@ -30,7 +31,8 @@ TIMEOUT = 120  # seconds — long timeout for slow animations
 STREAM_URL = "http://127.0.0.1:3002/decision"
 _BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOCK_FILE = os.path.join(_BASE_DIR, "data", "player.lock")
-PLAYBOOK_DIR = os.path.join(_BASE_DIR, "playbook")
+ONTOLOGY_DIR = os.path.join(_BASE_DIR, "ontology")
+HEURISTICS_DIR = os.path.join(_BASE_DIR, "heuristics")
 RUNS_DIR = os.path.join(_BASE_DIR, "analyst", "runs")
 STATS_FILE = os.path.join(_BASE_DIR, "data", "run_stats.json")
 
@@ -77,11 +79,11 @@ _acquire_lock()
 
 
 # ---------------------------------------------------------------------------
-# Playbook loading utilities
+# Knowledge loading utilities (ontology + heuristics)
 # ---------------------------------------------------------------------------
 
 def _name_to_filename(name: str) -> str:
-    """Convert a game entity name to its playbook filename (without extension).
+    """Convert a game entity name to its filename (without extension).
 
     "Shrug It Off+" -> "shrug-it-off"
     "Charon's Ashes" -> "charon-s-ashes"
@@ -96,14 +98,10 @@ def _name_to_filename(name: str) -> str:
     return name
 
 
-def _load_playbook(category: str, name: str) -> str | None:
-    """Load a playbook file. Returns content or None if not found.
-
-    category: "cards", "enemies", "bosses", "events", "relics", "potions"
-    name: game entity name (e.g., "Shrug It Off", "Gremlin Nob")
-    """
+def _load_ontology(category: str, name: str) -> str | None:
+    """Load an ontology file. Returns content or None if not found."""
     filename = _name_to_filename(name) + ".md"
-    path = os.path.join(PLAYBOOK_DIR, category, filename)
+    path = os.path.join(ONTOLOGY_DIR, category, filename)
     try:
         with open(path, "r", encoding="utf-8") as f:
             return f.read().strip()
@@ -111,13 +109,55 @@ def _load_playbook(category: str, name: str) -> str | None:
         return None
 
 
-def _load_playbook_top(category: str, name: str) -> str | None:
-    """Load just the header + first summary line of a playbook file.
+def _load_heuristic(category: str, name: str) -> str | None:
+    """Load a heuristic file. Returns content or None if not found."""
+    filename = _name_to_filename(name) + ".md"
+    path = os.path.join(HEURISTICS_DIR, category, filename)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        return None
 
-    Returns the first non-empty line (title) + second non-empty line (summary),
-    or None if not found. Used for compact deck reports.
+
+def _load_heuristic_root(filename: str) -> str | None:
+    """Load a root-level heuristic file (strategy.md)."""
+    path = os.path.join(HEURISTICS_DIR, filename)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        return None
+
+
+def _load_knowledge(category: str, name: str) -> str | None:
+    """Load ontology + heuristic for an entity, combined.
+
+    Returns both layers clearly separated, or None if neither exists.
     """
-    content = _load_playbook(category, name)
+    ont = _load_ontology(category, name)
+    heur = _load_heuristic(category, name)
+    if not ont and not heur:
+        return None
+    parts = []
+    if ont:
+        parts.append(ont)
+    if heur:
+        # Strip the duplicate "# Name" header from heuristic if ontology has it
+        heur_lines = heur.split("\n")
+        if heur_lines and heur_lines[0].startswith("# ") and ont:
+            heur = "\n".join(heur_lines[1:]).strip()
+        if heur:
+            parts.append(f"### Strategy\n\n{heur}")
+    return "\n\n".join(parts)
+
+
+def _load_ontology_top(category: str, name: str) -> str | None:
+    """Load just the header + first summary line of an ontology file.
+
+    Used for compact deck reports in act planning.
+    """
+    content = _load_ontology(category, name)
     if content is None:
         return None
     lines = [l for l in content.split("\n") if l.strip()]
@@ -128,14 +168,35 @@ def _load_playbook_top(category: str, name: str) -> str | None:
     return None
 
 
-def _load_playbook_root(filename: str) -> str | None:
-    """Load a root-level playbook file (strategy.md, mechanics.md)."""
-    path = os.path.join(PLAYBOOK_DIR, filename)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return f.read().strip()
-    except FileNotFoundError:
-        return None
+def _extract_links(content: str) -> list[tuple[str, str]]:
+    """Extract [[category/Name]] links from content.
+
+    Returns list of (category, name) tuples.
+    """
+    return re.findall(r'\[\[(\w+)/([^\]]+)\]\]', content)
+
+
+def _resolve_links(content: str, already_loaded: set = None) -> str:
+    """Resolve one level of [[category/Name]] links in content.
+
+    Returns formatted string with resolved link targets appended.
+    Only resolves links not already in the already_loaded set.
+    """
+    if already_loaded is None:
+        already_loaded = set()
+    links = _extract_links(content)
+    resolved = []
+    for cat, name in links:
+        key = f"{cat}/{name}"
+        if key in already_loaded:
+            continue
+        already_loaded.add(key)
+        entry = _load_ontology(cat, name)
+        if entry:
+            resolved.append(entry)
+    if resolved:
+        return "\n\n--- LINKED KNOWLEDGE ---\n\n" + "\n\n".join(resolved)
+    return ""
 
 
 _BASIC_CARDS = {"Strike", "Defend", "Strike+", "Defend+"}
@@ -597,7 +658,6 @@ def _translate_command(command: str) -> str:
             event_name = ss.get("event_name", "")
             options = ss.get("options", [])
             if 0 <= idx < len(options):
-                import re
                 text = options[idx].get("text", "?")
                 text = re.sub(r"<[^>]+>", "", text)[:50]
                 return text
@@ -1398,7 +1458,7 @@ def potion_discard(slot: int, reason: str = "") -> str:
 
 
 # ---------------------------------------------------------------------------
-# Playbook planning and reasoning
+# Knowledge planning and reasoning (ontology + heuristics)
 # ---------------------------------------------------------------------------
 
 def plan() -> str:
@@ -1408,7 +1468,7 @@ def plan() -> str:
     - In combat: loads enemy files + hand card files + relevant relics
     - Outside combat: loads strategy.md + boss file + full deck/relic/potion notes
 
-    Returns formatted playbook knowledge. Call at the start of each act
+    Returns combined ontology + heuristic knowledge. Call at the start of each act
     and at the start of each combat.
     """
     global _last_raw_state
@@ -1449,13 +1509,15 @@ def plan() -> str:
 
 
 def _plan_combat(gs: dict, combat: dict) -> str:
-    """Combat plan: enemy patterns + hand card details + relic effects."""
+    """Combat plan: enemy facts + strategy, hand card knowledge, relic effects."""
     lines = ["=== COMBAT PLAN ===", ""]
+    loaded_keys = set()  # Track what we've loaded for link resolution
 
-    # Enemies — load playbook for each unique monster
+    # Enemies — load ontology + heuristic for each unique monster
     monsters = combat.get("monsters", [])
     alive = [m for m in monsters if not m.get("is_gone")]
     enemy_names = []
+    all_ontology_content = []
     seen = set()
     for m in alive:
         name = m.get("name", "?")
@@ -1464,17 +1526,24 @@ def _plan_combat(gs: dict, combat: dict) -> str:
             continue
         seen.add(name)
         # Try enemies/ first, then bosses/
-        entry = _load_playbook("enemies", name)
+        entry = _load_knowledge("enemies", name)
+        cat = "enemies"
         if entry is None:
-            entry = _load_playbook("bosses", name)
+            entry = _load_knowledge("bosses", name)
+            cat = "bosses"
         if entry:
             lines.append(entry)
             lines.append("")
+            loaded_keys.add(f"{cat}/{name}")
+            # Collect ontology content for link resolution
+            ont = _load_ontology(cat, name)
+            if ont:
+                all_ontology_content.append(ont)
         else:
-            lines.append(f"[No playbook entry for enemy: {name}]")
+            lines.append(f"[No entry for enemy: {name}]")
             lines.append("")
 
-    # Hand cards — full playbook entries
+    # Hand cards — ontology + heuristic
     hand = combat.get("hand", [])
     if hand:
         lines.append("--- HAND CARD REFERENCE ---")
@@ -1487,23 +1556,33 @@ def _plan_combat(gs: dict, combat: dict) -> str:
             if base in seen_cards or base in _BASIC_CARDS:
                 continue
             seen_cards.add(base)
-            entry = _load_playbook("cards", name)
+            entry = _load_knowledge("cards", name)
             if entry:
                 lines.append(entry)
                 lines.append("")
+                loaded_keys.add(f"cards/{name}")
 
-    # Relics — all of them (entries are short)
+    # Relics — ontology + heuristic
     relics = gs.get("relics", [])
     if relics:
         lines.append("--- RELICS ---")
         for r in relics:
             name = r.get("name", "?")
             counter = r.get("counter", -1)
-            entry = _load_playbook("relics", name)
+            entry = _load_knowledge("relics", name)
             if entry:
                 counter_note = f" [counter: {counter}]" if counter >= 0 else ""
                 lines.append(f"{entry}{counter_note}")
                 lines.append("")
+                loaded_keys.add(f"relics/{name}")
+
+    # Resolve one level of [[links]] from enemy ontology entries
+    if all_ontology_content:
+        combined = "\n".join(all_ontology_content)
+        linked = _resolve_links(combined, loaded_keys)
+        if linked:
+            lines.append(linked)
+            lines.append("")
 
     summary = f"Combat: vs {' + '.join(enemy_names)}"
     _post_feed(f"PLAN — {summary}", highlight=True)
@@ -1526,20 +1605,29 @@ def _plan_act(gs: dict) -> str:
     lines = ["=== ACT PLAN ===", ""]
 
     # Strategy overview
-    strat = _load_playbook_root("strategy.md")
+    strat = _load_heuristic_root("strategy.md")
     if strat:
         lines.append("--- STRATEGY ---")
         lines.append(strat)
         lines.append("")
 
+    # Character heuristic
+    character = gs.get("class", "")
+    if character:
+        char_heur = _load_heuristic("characters", character)
+        if char_heur:
+            lines.append(f"--- CHARACTER: {character} ---")
+            lines.append(char_heur)
+            lines.append("")
+
     # Boss file
-    boss_entry = _load_playbook("bosses", boss)
+    boss_entry = _load_knowledge("bosses", boss)
     if boss_entry:
         lines.append(f"--- BOSS: {boss} ---")
         lines.append(boss_entry)
         lines.append("")
     else:
-        lines.append(f"[No playbook entry for boss: {boss}]")
+        lines.append(f"[No entry for boss: {boss}]")
         lines.append("")
 
     # Deck composition summary
@@ -1580,7 +1668,7 @@ def _plan_act(gs: dict) -> str:
         if base in seen_cards or name in _BASIC_CARDS or base in _BASIC_CARDS:
             continue
         seen_cards.add(base)
-        top = _load_playbook_top("cards", name)
+        top = _load_ontology_top("cards", name)
         if top:
             # Indent under "Card Notes:"
             lines.append(f"  {top.replace(chr(10), chr(10) + '  ')}")
@@ -1594,7 +1682,7 @@ def _plan_act(gs: dict) -> str:
         lines.append(f"--- RELICS ({len(relics)}) ---")
         for r in relics:
             name = r.get("name", "?")
-            entry = _load_playbook("relics", name)
+            entry = _load_knowledge("relics", name)
             if entry:
                 counter = r.get("counter", -1)
                 counter_note = f" [counter: {counter}]" if counter >= 0 else ""
@@ -1610,7 +1698,7 @@ def _plan_act(gs: dict) -> str:
         lines.append("--- POTIONS ---")
         for p in active_potions:
             name = p.get("name", "?")
-            entry = _load_playbook("potions", name)
+            entry = _load_knowledge("potions", name)
             if entry:
                 lines.append(f"  {entry}")
                 lines.append("")
@@ -1619,7 +1707,7 @@ def _plan_act(gs: dict) -> str:
 
     # Missing entries
     if missing_cards:
-        lines.append("--- MISSING PLAYBOOK ENTRIES ---")
+        lines.append("--- MISSING ENTRIES ---")
         for m in missing_cards:
             lines.append(f"  {m}")
         lines.append("")
@@ -1637,74 +1725,140 @@ def _plan_act(gs: dict) -> str:
 
 
 def reason(topic: str) -> str:
-    """Look up a specific playbook entry by name.
+    """Look up knowledge about any game entity.
+
+    Searches both ontology (facts) and heuristics (strategy) for the topic.
 
     Args:
-        topic: Name of a card, enemy, boss, event, relic, or potion.
+        topic: Name of a card, enemy, boss, event, relic, potion, buff, debuff, etc.
                Examples: "Shrug It Off", "Gremlin Nob", "Hexaghost",
-                         "Big Fish", "Pen Nib", "Flex Potion"
+                         "Big Fish", "Pen Nib", "Flex Potion", "Vulnerable"
 
-    Returns the full playbook entry, or a helpful error if not found.
+    Returns the ontology entry + heuristic entry (if both exist), or a helpful error.
     """
-    categories = ["cards", "enemies", "bosses", "events", "relics", "potions"]
+    ontology_cats = ["cards", "enemies", "bosses", "events", "relics", "potions",
+                     "buffs", "debuffs", "encounters", "acts", "characters", "rules", "shop", "types"]
+    heuristic_cats = ["cards", "enemies", "bosses", "events", "relics", "potions", "characters"]
 
-    # Try exact match in each category
-    for cat in categories:
-        entry = _load_playbook(cat, topic)
+    # Try exact match in each ontology category
+    ont_result = None
+    ont_cat = None
+    for cat in ontology_cats:
+        entry = _load_ontology(cat, topic)
         if entry:
-            _post_feed(f"LOOKUP — {topic}", highlight=False)
-            _log_event({
-                "type": "reason",
-                "topic": topic,
-                "category": cat,
-                "timestamp": time.time(),
-            })
-            return f"=== PLAYBOOK: {topic} ({cat}) ===\n\n{entry}"
+            ont_result = entry
+            ont_cat = cat
+            break
 
-    # No exact match — try substring search across all categories
+    # Try exact match in each heuristic category
+    heur_result = None
+    heur_cat = None
+    for cat in heuristic_cats:
+        entry = _load_heuristic(cat, topic)
+        if entry:
+            heur_result = entry
+            heur_cat = cat
+            break
+
+    if ont_result or heur_result:
+        cat = ont_cat or heur_cat
+        parts = []
+        if ont_result:
+            parts.append(f"=== ONTOLOGY: {topic} ({ont_cat}) ===\n\n{ont_result}")
+            # Resolve links from the ontology entry
+            loaded = {f"{ont_cat}/{topic}"}
+            linked = _resolve_links(ont_result, loaded)
+            if linked:
+                parts.append(linked)
+        if heur_result:
+            parts.append(f"=== HEURISTICS: {topic} ({heur_cat}) ===\n\n{heur_result}")
+
+        _post_feed(f"LOOKUP — {topic}", highlight=False)
+        _log_event({
+            "type": "reason",
+            "topic": topic,
+            "category": cat,
+            "timestamp": time.time(),
+        })
+        return "\n\n".join(parts)
+
+    # No exact match — try substring search across both layers
     target = _name_to_filename(topic)
     matches = []
-    for cat in categories:
-        cat_dir = os.path.join(PLAYBOOK_DIR, cat)
+    for cat in ontology_cats:
+        cat_dir = os.path.join(ONTOLOGY_DIR, cat)
         if not os.path.isdir(cat_dir):
             continue
         for fname in os.listdir(cat_dir):
             if fname.startswith("_"):
                 continue
             if target in fname.replace(".md", ""):
-                matches.append(f"{cat}/{fname}")
+                matches.append(("ontology", cat, fname))
+    for cat in heuristic_cats:
+        cat_dir = os.path.join(HEURISTICS_DIR, cat)
+        if not os.path.isdir(cat_dir):
+            continue
+        for fname in os.listdir(cat_dir):
+            if fname.startswith("_"):
+                continue
+            if target in fname.replace(".md", ""):
+                matches.append(("heuristics", cat, fname))
 
     if matches:
-        # Load the first match
-        first = matches[0]
-        cat, fname = first.split("/", 1)
-        path = os.path.join(PLAYBOOK_DIR, cat, fname)
+        # Deduplicate by filename — prefer ontology
+        seen_files = set()
+        unique = []
+        for layer, cat, fname in matches:
+            key = f"{cat}/{fname}"
+            if key not in seen_files:
+                seen_files.add(key)
+                unique.append((layer, cat, fname))
+
+        first_layer, first_cat, first_fname = unique[0]
+        base_dir = ONTOLOGY_DIR if first_layer == "ontology" else HEURISTICS_DIR
+        path = os.path.join(base_dir, first_cat, first_fname)
         with open(path, "r", encoding="utf-8") as f:
             content = f.read().strip()
 
-        display_name = fname.replace(".md", "").replace("-", " ").title()
+        display_name = first_fname.replace(".md", "").replace("-", " ").title()
         _post_feed(f"LOOKUP — {display_name}", highlight=False)
         _log_event({
             "type": "reason",
             "topic": topic,
-            "category": cat,
-            "found": first,
+            "category": first_cat,
+            "found": f"{first_layer}/{first_cat}/{first_fname}",
             "timestamp": time.time(),
         })
 
-        if len(matches) == 1:
-            return f"=== PLAYBOOK: {display_name} ({cat}) ===\n\n{content}"
+        # Also load the companion entry from the other layer
+        companion = None
+        companion_label = None
+        if first_layer == "ontology":
+            comp = _load_heuristic(first_cat, display_name)
+            if comp:
+                companion = comp
+                companion_label = "HEURISTICS"
+        else:
+            comp = _load_ontology(first_cat, display_name)
+            if comp:
+                companion = comp
+                companion_label = "ONTOLOGY"
 
-        result = f"Multiple matches for \"{topic}\":\n"
-        for m in matches:
-            result += f"  - {m}\n"
-        result += f"\nShowing: {first}\n\n{content}"
-        return result
+        result_parts = [f"=== {first_layer.upper()}: {display_name} ({first_cat}) ===\n\n{content}"]
+        if companion:
+            result_parts.append(f"=== {companion_label}: {display_name} ({first_cat}) ===\n\n{companion}")
+
+        if len(unique) > 1:
+            result_parts.insert(0, f"Multiple matches for \"{topic}\":\n" +
+                               "\n".join(f"  - {l}/{c}/{f}" for l, c, f in unique) +
+                               f"\n\nShowing: {first_layer}/{first_cat}/{first_fname}")
+
+        return "\n\n".join(result_parts)
 
     return (
-        f"No playbook entry found for \"{topic}\".\n"
+        f"No entry found for \"{topic}\".\n"
         f"Try the exact game name (e.g., \"Shrug It Off\", \"Gremlin Nob\").\n"
-        f"Use reason(\"bash\") for cards, reason(\"hexaghost\") for bosses, etc."
+        f"Categories: cards, enemies, bosses, events, relics, potions, buffs, debuffs"
     )
 
 
@@ -1755,7 +1909,7 @@ def think(reasoning: str, label: str = "Strategy") -> str:
     appears in the thinking panel and the action feed.
 
     This is how viewers see WHY you're making decisions — not just what
-    playbook entries were loaded, but your actual strategic synthesis.
+    knowledge entries were loaded, but your actual strategic synthesis.
 
     Args:
         reasoning: Your strategic analysis. This is the text viewers will read.

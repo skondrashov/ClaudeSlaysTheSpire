@@ -1,4 +1,4 @@
 # Sling of Courage
 
-- **Rarity:** Shop relic
+- **Rarity:** Shop
 - **Effect:** Start each Elite and Boss combat with +2 [[buffs/Strength]]

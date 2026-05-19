@@ -4,6 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Keywords:** Exhaust
 - **Effect:** Gain 1 [[buffs/Artifact]], Exhaust
 - **Upgraded:** Gain 2 [[buffs/Artifact]], Exhaust

@@ -18,14 +18,6 @@ Stunned -> Headbutt (3 damage) -> Go Airborne (gains 3 Flying) -> returns to nor
 |------|--------|--------|
 | Peck | 1x5 = 5 | Each hit is 1 |
 | Swoop | 12 | -- |
-| Caw | -- | Gains 1 Strength |
+| Caw | -- | Gains 1 [[buffs/Strength]] |
 | Headbutt | 3 | Only when grounded |
-| Go Airborne | -- | Gains 3 Flying |
-
-## Mechanics
-
-**Flight 3:** Takes 50% less attack damage while Flying. Each attack hit removes 1 Flight charge. Resets at start of next turn if not fully removed. Multi-hit and AOE attacks strip Flight faster. Indirect damage (poison, orbs) ignores Flight entirely.
-
-## Appearances
-
-Can appear alongside Chosen (Chosen+Byrd fight), combining Flight mechanics with Hex.
+| Go Airborne | -- | Gains [[buffs/Flight]] 3 |

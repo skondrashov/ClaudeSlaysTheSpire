@@ -4,6 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Rare
-- **Keywords:** Exhaust
 - **Effect:** 13 damage to ALL enemies, Exhaust
 - **Upgraded:** 17 damage to ALL enemies, Exhaust

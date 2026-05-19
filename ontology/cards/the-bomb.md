@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Rare
-- **Effect:** At the end of 3 turns, deal 40 damage to ALL enemies
-- **Upgraded:** Deal 50 damage to ALL enemies
+- **Effect:** Apply 40 [[buffs/The Bomb]] to self
+- **Upgraded:** Apply 50 [[buffs/The Bomb]] to self

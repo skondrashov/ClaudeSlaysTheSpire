@@ -1,7 +1,7 @@
 # Footwork
 
-- **Type:** [[types/Power]]
 - **Cost:** 1E
+- **Type:** [[types/Power]]
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Gain 2 [[buffs/Dexterity]]

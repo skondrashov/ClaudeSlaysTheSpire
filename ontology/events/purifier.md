@@ -2,5 +2,5 @@
 
 - **Act:** 1/2
 - **Options:**
-  - Purify: Remove a card from your deck (free, no cost)
+  - Purify: Remove a card from your deck
   - Leave: Nothing happens
