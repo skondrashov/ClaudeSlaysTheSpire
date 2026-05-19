@@ -18,6 +18,7 @@ A debuff is a negative status effect on an entity. Displayed as red icons.
 - Most debuffs have stacks that decrement at the start of the affected entity's turn
 - When stacks reach 0, the debuff disappears
 - [[buffs/Artifact]] prevents debuff application (consumes 1 Artifact stack per prevented debuff)
+- Enemy attack debuffs (Frail, Weak, Vulnerable) apply regardless of whether the attack damage is blocked. Blocking prevents HP loss but does NOT prevent debuff application.
 - All debuffs are removed between combats
 
 ## Stacking

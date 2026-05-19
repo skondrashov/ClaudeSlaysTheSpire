@@ -55,7 +55,7 @@ CHOSEN: [A/B] because [reason]
 
 ## Combat Arithmetic Checklist
 
-Before every turn, verify each of these six items.
+Before every turn, verify each of these seven items.
 
 ### 1. WHO has Weak?
 
@@ -94,7 +94,16 @@ X-cost cards (Malaise, Whirlwind, Skewer) consume ALL remaining energy automatic
 
 **Example fatal error:** intended Malaise X=1 but played it first with 4 energy available. It consumed all energy, leaving zero block, and died.
 
-### 6. WRAITH FORM: DO NOT PLAY UNTIL ENEMY IS WITHIN 5 TURNS OF DYING
+### 6. FOSSILIZED HELIX / BUFFER: BLOCK IS CONSUMED FIRST
+
+Fossilized Helix and Buffer prevent HP loss, not damage. Block is consumed BEFORE the prevention check. Against multi-hit attacks, this means Block is depleted by hit 1 (Helix/Buffer catches overflow), then hits 2+ land with no Block remaining.
+
+**Wrong:** "Helix absorbs hit 1 entirely, my 5 Block handles hit 2." (Overestimates survivability)
+**Right:** "Hit 1 (6) eats my 5 Block, Helix catches the 1 overflow. Hit 2 (6) lands in full." (5 HP worse)
+
+When calculating damage against multi-hit enemies with Helix/Buffer, assume Block is gone after hit 1.
+
+### 7. WRAITH FORM: DO NOT PLAY UNTIL ENEMY IS WITHIN 5 TURNS OF DYING
 
 Wraith Form gives Intangible but applies a permanent -1 Dexterity per turn. Three recorded deaths from playing it too early. Estimate the number of turns remaining before playing. Wraith Form is a FINISHER, not an opener.
 
