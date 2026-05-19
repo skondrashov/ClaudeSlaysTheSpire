@@ -7,7 +7,7 @@ The agent interacts with the game through Python functions imported from `cmd.py
 ```python
 import sys
 sys.path.insert(0, r"C:\Users\tkond\projects\autoplay\games\sts1")
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, deck, start
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start
 ```
 
 ## Observation
@@ -17,12 +17,9 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 | `state()` | Returns formatted text of the current game state (HP, enemies, hand, map, etc.) |
 | `deck()` | Returns full deck contents sorted by type with costs and upgrade status |
 
-## Knowledge Loading
+## Knowledge
 
-| Function | Description |
-|----------|-------------|
-| `plan()` | Auto-detects context and loads relevant ontology + heuristics. In combat: enemy entries, hand card entries, relic entries, resolved [[links]]. Outside combat: strategy, character heuristics, boss entry, deck/relic/potion notes. |
-| `reason(topic)` | Searches ontology and heuristics for the named entity. Returns both layers with resolved [[links]]. |
+Knowledge lives in files, not functions. Read ontology and heuristic files directly using the Read tool. Start from `ontology/index.md`. Follow `[[category/Name]]` links by reading `ontology/category/name.md`. Check `heuristics/category/name.md` for strategic guidance on any entity.
 
 ## Action
 

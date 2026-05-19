@@ -68,6 +68,12 @@ Promote confirmed observations to heuristics and remove from observations.
 5. Add uncertain items to `analyst/observations.md`.
 6. Promote confirmed observations.
 
+## Where to Put Lessons
+
+**Attribute lessons to the mechanic that caused the mistake, not the fight where it happened.** If Fiend Fire exhausted critical debuff cards during a Champ fight, the lesson belongs on Fiend Fire's heuristic (or a Fiend Fire + Runic Pyramid interaction), not on The Champ's. The Champ didn't cause the problem — the card sequencing did. Ask: "would this lesson apply in a different fight?" If yes, it doesn't belong on the fight.
+
+Boss/enemy heuristics should describe how to fight that enemy. Card/relic heuristics should describe how that card/relic behaves across contexts. Don't overcorrect on the fatal fight.
+
 ## Don't
 
 - Don't rewrite heuristic files from scratch
@@ -75,3 +81,4 @@ Promote confirmed observations to heuristics and remove from observations.
 - Don't update for things that didn't come up in the run
 - Don't add strategic commentary to ontology files
 - Don't create or modify files in `analyst/runs/`
+- Don't put card/relic interaction lessons on boss files — put them on the card or relic

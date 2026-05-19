@@ -26,15 +26,16 @@ Plays the game. Makes every decision with reasoning. In combat, fills out a comb
 Key traits:
 - **Humble.** Says "I think" not "clearly." Admits uncertainty. Doesn't rationalize deaths.
 - **Plans full turns.** Doesn't play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.
-- **Plans full fights.** At combat start, calls `plan()` to load playbook context, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.
-- **References playbook.** Calls `plan()` at act/combat start, `reason("topic")` for targeted lookups. Playbook has 200+ files covering every card, enemy, boss, event, relic, and potion.
+- **Plans full fights.** At combat start, reads enemy ontology + heuristic files, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.
+- **Navigates knowledge.** Reads ontology + heuristic files directly. Starts from `ontology/index.md`. Follows `[[links]]` to related entries. 750+ files covering every card, enemy, boss, event, relic, and potion.
 - **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.
 
 ### Analyst (`agents/analyst.md`)
 Runs after a completed run (victory or defeat). Reads the event log, identifies what went well and what went wrong, and updates playbook files.
 
 Output directories:
-- `playbook/` — Individual files per card, enemy, boss, event, potion, relic. Plus `mechanics.md` and `strategy.md` for general reference.
+- `ontology/` — Facts about game entities (what things ARE and DO)
+- `heuristics/` — Strategic guidance (what to DO about them)
 - `analyst/runs/` — One file per run (`run_NNN.md`). Machine-parsed by `regen_stats.py` to generate all stats.
 - `analyst/observations.md` — Uncertain items pending more data
 
@@ -55,13 +56,11 @@ Has authority to reshape the playbook structure — consolidate files, rewrite s
 ## Commands (cmd.py)
 
 ```python
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, deck, start
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start
 
 state()                          # See current game state
-plan()                           # Load strategic context (auto-detects combat vs act)
 think(reasoning, label)          # Post strategic analysis to stream overlay
 deck()                           # View full deck (use after transforms, adds, removes)
-reason("topic")                  # Look up a specific playbook entry
 send("play Bash 0", reason="...") # Single action — reason= is REQUIRED
 turn(["play Bash Jaw Worm", "play Strike Jaw Worm", "play Defend", "end"],
      reason="...")               # Full combat turn — reason= is REQUIRED

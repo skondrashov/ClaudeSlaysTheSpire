@@ -17,4 +17,4 @@
 
 ## Mechanics
 
-- Produced by [[enemies/Acid Slime M]] via Split, or appears directly in small slime encounters
+- Produced by [[enemies/Acid Slime L]] via [[debuffs/Split]], or appears directly in small slime encounters

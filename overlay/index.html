@@ -682,11 +682,17 @@
       fetch('http://127.0.0.1:3002/playbook-stats')
         .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(stats => {
+          // Combine ontology + heuristics counts per category
           const ids = {cards:'pb-cards', enemies:'pb-enemies', bosses:'pb-bosses',
                        events:'pb-events', relics:'pb-relics', potions:'pb-potions'};
+          const ont = stats.ontology || {};
+          const heur = stats.heuristics || {};
           for (const [key, id] of Object.entries(ids)) {
             const el = document.getElementById(id);
-            if (el && stats[key] !== undefined) el.textContent = stats[key];
+            if (el) {
+              const total = (ont[key] || 0) + (heur[key] || 0);
+              el.textContent = total || '-';
+            }
           }
         })
         .catch(() => {});

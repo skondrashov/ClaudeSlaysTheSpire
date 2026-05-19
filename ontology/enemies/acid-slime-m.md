@@ -16,6 +16,3 @@
 | Tackle | 10 (12 at A2) | -- |
 | Lick | -- | Apply 1 [[debuffs/Weak]] |
 
-## Mechanics
-
-- Splits into 2 [[enemies/Acid Slime S]] when HP drops to 50% or below

@@ -7,3 +7,5 @@ __pycache__/
 config/bot_config.json
 .env
 site/out/
+.player_token_current.txt
+player.lock

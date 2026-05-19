@@ -16,4 +16,4 @@ Uses Tackle every turn.
 
 ## Mechanics
 
-- Produced by [[enemies/Spike Slime M]] via Split
+- Produced by [[enemies/Spike Slime L]] via [[debuffs/Split]], or appears directly in small slime encounters
