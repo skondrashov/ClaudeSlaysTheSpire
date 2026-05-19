@@ -93,7 +93,12 @@ run_stats = _load_stats()
 
 
 def _archive_run(run_number: int, victory: bool, floor: int, cls: str):
-    """Archive current run's event log to data/runs/run_NNN.jsonl and reset."""
+    """Archive current run's event log to data/runs/run_NNN.jsonl.
+
+    Does NOT clear the event log — cmd.py owns that lifecycle. It reads the
+    event log to build the run JSON, then clears it. If stream.py clears first,
+    cmd.py loses all the decision data (race condition that broke Run 133).
+    """
     os.makedirs(RUNS_DIR, exist_ok=True)
     result = "win" if victory else f"death_f{floor}"
     archive_name = f"run_{run_number:03d}_{cls.lower()}_{result}.jsonl"
@@ -104,9 +109,6 @@ def _archive_run(run_number: int, victory: bool, floor: int, cls: str):
             import shutil
             shutil.copy2(EVENT_LOG, archive_path)
             print(f"[stream] Archived run {run_number} → {archive_name}")
-            # Clear the event log for the next run
-            with open(EVENT_LOG, "w") as f:
-                pass
         else:
             print(f"[stream] No events to archive for run {run_number}")
     except OSError as e:

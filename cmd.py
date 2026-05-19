@@ -909,6 +909,14 @@ def _write_run_log(gs: dict, victory: bool):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(run_data, f, indent=2)
 
+    # Clear the event log now that the run JSON is written.
+    # cmd.py owns this lifecycle — stream.py archives but does not clear.
+    try:
+        with open(EVENT_LOG, "w") as f:
+            pass
+    except OSError:
+        pass
+
     # Regenerate stats
     try:
         regen = os.path.join(_BASE_DIR, "regen_stats.py")
