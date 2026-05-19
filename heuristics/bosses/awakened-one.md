@@ -1,0 +1,54 @@
+# Awakened One
+
+**Core rule:** Phase 1: play ALL Powers (dump strategy -- Str resets at phase transition). Phase 2: play ZERO Powers (every Power gives the boss +2 permanent Str that compounds across all remaining turns).
+
+## Phase 1 -- Power Dump Strategy
+
+- Play ALL Powers early (the Curiosity Str gained resets when Phase 1 ends)
+- Apply Vulnerable and burst down Phase 1 quickly
+- Use Piercing Wail and Weak to counteract Curiosity Str during Phase 1
+- Kill Cultist minions quickly (they scale with Ritual)
+- Dex and After Image effects persist into Phase 2 -- Phase 1 Power plays are doubly valuable
+
+## Phase 2 -- Zero Powers, Maximum Discipline
+
+- **0 Powers is the rule.** Confirmed victory with ZERO Powers played in Phase 2.
+- **1 Power is the absolute maximum** in desperate situations.
+- Every Power beyond the first: +2 Str = ~+6 extra damage per multi-attack turn. Compounds across every remaining turn.
+- Must deal >10 net damage per turn to overcome Regenerate 10.
+
+## How to Win Without Powers
+
+- **Poison (Silent):** Catalyst+ triples poison, defeating Regenerate 10. Prioritize poison from Skills and Attacks.
+- **Strength scaling (Ironclad):** Inflame, Spot Weakness (both non-Power). Limit Break doubles Str.
+- **Front-loaded damage:** Immolate+, Carnage+, Glass Knife
+- **Block without Powers:** Impervious, Defend, Backflip, Leg Sweep
+- **Weak:** Neutralize, Leg Sweep, Sucker Punch
+
+## Dead Branch Strategy (confirmed victory)
+
+Dead Branch + exhaust-heavy deck is the best approach:
+1. Phase 1: dump all Powers. Apply Terror for Vuln 99.
+2. Phase 2: ZERO Powers. Use exhaust cards (Terror, Piercing Wail, Adrenaline, Storm of Steel) for Dead Branch procs generating random cards.
+3. Shivs from Cloak and Dagger exhaust for more procs, creating chain reactions.
+4. After Image + Dex + Blur from Phase 1 provides blocking without new Powers.
+
+## Preparation Checklist
+
+1. Damage source that works without Powers
+2. Block density (Impervious, Leg Sweep, Backflip)
+3. Weak application (Neutralize, Leg Sweep)
+4. Sustain vs Regenerate 10 (Catalyst+ on poison, or high Str + multi-hit)
+5. Enter at 70%+ HP
+
+## Deck Building
+
+- **Without Dead Branch:** Deprioritize Power cards during drafting. Every Power in deck is a wasted draw in Phase 2.
+- **With Dead Branch:** Powers are welcome (play all in Phase 1, ignore in Phase 2).
+- **Terror is the MVP card** (0-1E for Vuln 99 + exhaust + Dead Branch trigger)
+- If deck is Power-heavy without Dead Branch, this is the hardest Act 3 boss.
+
+## Potion Timing
+
+- Save at least 1 potion for Phase 2 (the harder phase)
+- Poison-applying potions bypass the Power restriction entirely

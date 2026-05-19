@@ -3,9 +3,10 @@ name: Deploy site
 on:
   push:
     paths:
-      - 'playbook/**'
+      - 'ontology/**'
+      - 'heuristics/**'
       - 'site/**'
-      - 'analyst/**'
+      - 'agents/**'
       - 'data/run_stats.json'
       - 'HUMAN_ADVICE.md'
     branches: [main]

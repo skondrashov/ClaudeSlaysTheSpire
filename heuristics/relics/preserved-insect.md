@@ -1,0 +1,5 @@
+# Preserved Insect
+
+Makes every elite fight significantly easier. 25% HP reduction means fewer turns needed to kill, which means fewer turns of incoming damage. Particularly strong against high-HP elites like Book of Stabbing and Gremlin Leader.
+
+Passive benefit with no downside. Always take when offered. The 25% reduction compounds with Vulnerable (50% more damage taken) -- an elite at 75% HP taking 50% more damage effectively has ~50% of its original effective HP.

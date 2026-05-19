@@ -1,0 +1,46 @@
+# Book of Stabbing
+
+**Core rule:** Front-load damage -- every turn the fight goes on, attacks get worse AND Wounds clog draws. Exhaust tools for Wounds are the #1 priority.
+
+**Benchmark:** Even with strong burst, expect 5+ turns. Minimum entry: 60% HP with exhaust tools, or avoid entirely.
+
+## Strategy
+
+- Apply Vulnerable immediately
+- Use exhaust tools for Wound removal (True Grit+, Burning Pact, Second Wind, Fiend Fire)
+- Enter with HIGH HP (60%+ minimum)
+- Deck size matters: a 15-card deck survives Wound clog better than a 21-card deck
+- Weak and Piercing Wail are extremely valuable but temporary
+
+## Deck Requirements
+
+If your deck has no exhaust tools (True Grit+, Burning Pact, Second Wind, Fiend Fire), DO NOT fight Book of Stabbing voluntarily. The Wound clog WILL overwhelm any deck above 15 cards that cannot remove status cards.
+
+## Brimstone Interaction (CRITICAL)
+
+If you have Brimstone, DO NOT fight Book of Stabbing. Brimstone gives Book +2 Str/turn on TOP of its native scaling. By turn 5, 6+ hits at 17+ damage each = 100+ total incoming. Hard avoid.
+
+## Turn Efficiency
+
+Do not waste turns on setup that does not deal damage. Prioritize damage cards over utility/Power cards in this fight. Every turn costs approximately +7 more incoming damage than the previous turn.
+
+## What to Bring
+
+- Exhaust tools for Wounds (THIS IS THE #1 PRIORITY)
+- Burst damage front-loaded in turns 1-3
+- Vulnerable application
+- Weak sources (reduce each individual hit)
+- Piercing Wail (Silent -- temporarily reduces all enemy Str)
+- Malaise (Silent -- semi-permanent Str reduction)
+- Poison scaling (Silent -- kills through block without needing to out-damage the Str scaling)
+
+## What to Avoid
+
+- Entering below 60% HP
+- Entering with a large deck (20+ cards) and no exhaust
+- Slow play (each turn is worse than the last)
+- Power-heavy setup (spending turns 1-3 on Powers instead of dealing damage)
+
+## Character Matchups
+
+**Silent:** Dex stacking alone cannot keep up with scaling. Needs either: (1) burst poison (Deadly Poison + Catalyst+), (2) Malaise to permanently reduce Str, or (3) avoid the fight entirely. Shiv decks provide decent damage (~24-30/turn) but cannot block 30-54 incoming on turns 5-6.

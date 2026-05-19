@@ -1,18 +1,31 @@
 """
-Build static site from playbook markdown files.
+Build static site from ontology and heuristics markdown files.
 Generates HTML pages + a changelog with diffs from git history.
 
 Usage: python site/build.py
 Output: site/out/
 """
 
-import os, re, subprocess, html, shutil
+import os, re, subprocess, html, shutil, json
 from pathlib import Path
 from datetime import datetime
 
 ROOT = Path(__file__).parent.parent
 OUT = ROOT / "site" / "out"
-CONTENT_DIRS = ["playbook"]
+
+# ── Wiki-link resolution ────────────────────────────────────────────
+
+def resolve_wiki_link(match):
+    """Convert [[category/Name]] to an HTML link pointing to the ontology page."""
+    full = match.group(1)
+    if "/" in full:
+        category, name = full.split("/", 1)
+        slug = name.lower().replace(" ", "-").replace("'", "").replace(".", "")
+        slug = re.sub(r'[^a-z0-9-]', '', slug)
+        href = f"ontology-{category}-{slug}.html"
+        return f'<a href="{href}" class="wiki-link">{html.escape(name)}</a>'
+    return f'<code>{html.escape(full)}</code>'
+
 
 # ── Minimal markdown → HTML ──────────────────────────────────────────
 
@@ -116,8 +129,10 @@ def md_to_html(text):
 
 
 def inline(text):
-    """Inline markdown: bold, italic, code, links."""
+    """Inline markdown: bold, italic, code, links, wiki-links."""
     text = html.escape(text)
+    # Wiki-links: [[category/Name]] → resolved HTML links
+    text = re.sub(r'\[\[([^\]]+)\]\]', resolve_wiki_link, text)
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', text)
     text = re.sub(r'`(.+?)`', r'<code>\1</code>', text)
@@ -128,12 +143,12 @@ def inline(text):
 # ── Git history ──────────────────────────────────────────────────────
 
 def git_changelog(max_entries=50):
-    """Get commits that touched playbook/ or agents/ with diffs."""
+    """Get commits that touched ontology/, heuristics/, or agents/ with diffs."""
     try:
         result = subprocess.run(
             ["git", "log", f"--max-count={max_entries}", "--pretty=format:%H|%ai|%s",
              "--diff-filter=ACDMR", "-p", "--",
-             "playbook/", "agents/", "AGENTS.md"],
+             "ontology/", "heuristics/", "agents/", "AGENTS.md"],
             capture_output=True, text=True, cwd=ROOT, encoding="utf-8"
         )
         if result.returncode != 0:
@@ -175,7 +190,6 @@ def format_diff_html(diff_lines):
         if line.startswith("diff --git"):
             if in_file:
                 out.append("</div>")
-            # Extract filename
             parts = line.split(" b/")
             fname = parts[-1] if len(parts) > 1 else line
             out.append(f'<div class="diff-file"><div class="diff-filename">{html.escape(fname)}</div>')
@@ -210,6 +224,8 @@ STYLES = """
   --text-dim: #888;
   --accent: #c084fc;
   --accent-dim: #5a2090;
+  --ontology: #60a5fa;
+  --heuristics: #f59e0b;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -224,6 +240,8 @@ body {
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
+a.wiki-link { color: var(--ontology); border-bottom: 1px dotted var(--ontology); }
+a.wiki-link:hover { border-bottom-style: solid; text-decoration: none; }
 nav {
   display: flex;
   gap: 24px;
@@ -234,6 +252,7 @@ nav {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  flex-wrap: wrap;
 }
 nav a { color: var(--text-dim); }
 nav a:hover, nav a.active { color: var(--accent); }
@@ -301,22 +320,6 @@ tr:nth-child(even) td {
   background: rgba(255,255,255,0.02);
 }
 
-/* File list */
-.file-list { list-style: none; margin: 0; padding: 0; }
-.file-list li {
-  border-bottom: 1px solid var(--border);
-  padding: 14px 0;
-}
-.file-list a {
-  font-size: 18px;
-  font-weight: 600;
-}
-.file-meta {
-  font-size: 13px;
-  color: var(--text-dim);
-  margin-top: 4px;
-}
-
 /* Category grid */
 .category-grid {
   display: grid;
@@ -353,6 +356,10 @@ tr:nth-child(even) td {
 .category-card a h3 {
   color: var(--accent);
 }
+.category-card.ontology-card { border-left: 3px solid var(--ontology); }
+.category-card.ontology-card a h3 { color: var(--ontology); }
+.category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
+.category-card.heuristics-card a h3 { color: var(--heuristics); }
 
 /* Entry grid */
 .entry-grid {
@@ -385,6 +392,30 @@ tr:nth-child(even) td {
 }
 .back-link a:hover {
   color: var(--accent);
+}
+
+/* Section badge */
+.section-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
+.section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+
+/* Companion link (ontology ↔ heuristics) */
+.companion-link {
+  margin: 20px 0;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 15px;
 }
 
 /* Changelog */
@@ -439,6 +470,7 @@ tr:nth-child(even) td {
 .diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
 .diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
 .diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+
 /* Stats panel */
 .stats-grid {
   display: grid;
@@ -562,9 +594,10 @@ TWITCH_CHANNEL = "ClaudeSlaysTheSpire"
 def page(title, content, active=""):
     nav_items = [
         ("index.html", "Home"),
-        ("playbook.html", "Playbook"),
+        ("ontology.html", "Ontology"),
+        ("heuristics.html", "Heuristics"),
+        ("knowledge-system.html", "Knowledge System"),
         ("philosophy.html", "Philosophy"),
-        ("human-advice.html", "Human Advice"),
         ("changelog.html", "Changelog"),
     ]
     nav_html = "\n".join(
@@ -594,14 +627,13 @@ def page(title, content, active=""):
 </html>"""
 
 
-# ── Playbook helpers ────────────────────────────────────────────────
+# ── Content discovery ────────────────────────────────────────────────
 
-def discover_playbook(playbook_dir):
-    """Discover playbook structure: categories (subdirs) and top-level files.
+def discover_content(content_dir):
+    """Discover content structure: categories (subdirs) and top-level files.
 
     Returns:
         categories: dict of category_name -> {
-            "index_content": str (markdown from _index.md),
             "entries": list of {"name": str, "stem": str, "content": str}
         }
         top_level_files: list of {"name": str, "stem": str, "content": str}
@@ -609,13 +641,12 @@ def discover_playbook(playbook_dir):
     categories = {}
     top_level_files = []
 
-    if not playbook_dir.exists():
+    if not content_dir.exists():
         return categories, top_level_files
 
-    # Top-level .md files (mechanics.md, strategy.md, etc.)
-    for f in sorted(playbook_dir.glob("*.md")):
+    # Top-level .md files
+    for f in sorted(content_dir.glob("*.md")):
         content = f.read_text(encoding="utf-8")
-        # Extract title from first H1 if present, else derive from filename
         title_match = re.match(r'^#\s+(.+)', content.strip())
         name = title_match.group(1) if title_match else f.stem.replace("-", " ").replace("_", " ").title()
         top_level_files.append({
@@ -624,19 +655,12 @@ def discover_playbook(playbook_dir):
             "content": content,
         })
 
-    # Subdirectories (cards/, enemies/, bosses/, etc.)
-    for d in sorted(playbook_dir.iterdir()):
+    # Subdirectories
+    for d in sorted(content_dir.iterdir()):
         if not d.is_dir():
             continue
         cat_name = d.name
 
-        # Read _index.md for the category
-        index_file = d / "_index.md"
-        index_content = ""
-        if index_file.exists():
-            index_content = index_file.read_text(encoding="utf-8")
-
-        # Read all entry files (excluding _index.md)
         entries = []
         for f in sorted(d.glob("*.md")):
             if f.name == "_index.md":
@@ -650,42 +674,33 @@ def discover_playbook(playbook_dir):
                 "content": content,
             })
 
-        categories[cat_name] = {
-            "index_content": index_content,
-            "entries": entries,
-        }
+        categories[cat_name] = {"entries": entries}
 
     return categories, top_level_files
 
 
 def short_name(full_name):
-    """Extract just the display name before any parenthetical stats.
-
-    'Bash (2E, Attack, 8 damage...)' -> 'Bash'
-    'Jaw Worm (hallway, Act 1, HP: ~40-44)' -> 'Jaw Worm'
-    """
+    """Extract just the display name before any parenthetical stats."""
     idx = full_name.find(" (")
     if idx > 0:
         return full_name[:idx]
     return full_name
 
 
-def make_slug(category, entry_stem=None):
-    """Generate the output HTML filename for a playbook page.
+def make_slug(section, category, entry_stem=None):
+    """Generate the output HTML filename.
 
-    playbook-cards.html, playbook-cards-headbutt.html, playbook-mechanics.html
+    ontology-cards.html, ontology-cards-bash.html, heuristics-enemies-jaw-worm.html
     """
     if entry_stem:
-        return f"playbook-{category}-{entry_stem}.html"
-    return f"playbook-{category}.html"
+        return f"{section}-{category}-{entry_stem}.html"
+    return f"{section}-{category}.html"
 
 
 # ── Run stats ─────────────────────────────────────────────────────
 
 def load_run_stats(root):
-    """Load run statistics from data/run_stats.json (generated by regen_stats.py)."""
-    import json as _json
-
+    """Load run statistics from data/run_stats.json."""
     stats_file = root / "data" / "run_stats.json"
     defaults = {"total_runs": 0, "wins": 0, "best_floor": 0, "deaths": 0,
                 "current_class": "?", "best_ascension": 0, "character_stats": {}}
@@ -694,7 +709,7 @@ def load_run_stats(root):
         return defaults
 
     try:
-        raw = _json.loads(stats_file.read_text(encoding="utf-8"))
+        raw = json.loads(stats_file.read_text(encoding="utf-8"))
         return {
             "total_runs": raw.get("total_runs", 0),
             "wins": raw.get("wins", 0),
@@ -708,14 +723,48 @@ def load_run_stats(root):
         return defaults
 
 
+# ── Section index builder ────────────────────────────────────────────
+
+def build_section_index(section, section_label, categories, top_level_files, card_class, description):
+    """Build the index page for ontology or heuristics."""
+    body = f'<span class="section-badge {section}">{section_label}</span>\n'
+    body += f"<h2>{section_label.title()}</h2>\n"
+    body += f"<p>{description}</p>\n"
+    body += '<div class="category-grid">\n'
+
+    # Top-level files
+    for tlf in top_level_files:
+        slug = f"{section}-{tlf['stem']}.html"
+        body += f"""<div class="category-card {card_class}"><a href="{slug}">
+  <h3>{html.escape(tlf["name"])}</h3>
+</a></div>\n"""
+
+    # Category cards
+    for cat_name, cat_data in categories.items():
+        slug = make_slug(section, cat_name)
+        count = len(cat_data["entries"])
+        display_name = cat_name.replace("-", " ").replace("_", " ").title()
+        body += f"""<div class="category-card {card_class}"><a href="{slug}">
+  <h3>{html.escape(display_name)}</h3>
+  <div class="count">{count} {"entry" if count == 1 else "entries"}</div>
+</a></div>\n"""
+
+    body += "</div>\n"
+
+    if not categories and not top_level_files:
+        body = f'<div class="empty-state">No {section} entries yet.</div>'
+
+    return body
+
+
 # ── Landing page ────────────────────────────────────────────────────
 
-def build_landing(categories, top_level_files, run_stats):
+def build_landing(ont_categories, heur_categories, run_stats):
     """Build the index/landing page content."""
 
-    total_entries = sum(len(c["entries"]) for c in categories.values())
+    ont_entries = sum(len(c["entries"]) for c in ont_categories.values())
+    heur_entries = sum(len(c["entries"]) for c in heur_categories.values())
 
-    # Character display name
     _char_names = {"IRONCLAD": "Ironclad", "THE_SILENT": "Silent", "DEFECT": "Defect", "WATCHER": "Watcher"}
     char_name = _char_names.get(run_stats.get("current_class", "IRONCLAD"), "Unknown")
 
@@ -737,8 +786,8 @@ def build_landing(categories, top_level_files, run_stats):
 <div class="stats-grid">
   <div class="stat"><div class="stat-value">{run_stats['total_runs']}</div><div class="stat-label">Runs</div></div>
   <div class="stat"><div class="stat-value">{run_stats['wins']}</div><div class="stat-label">Wins</div></div>
-  <div class="stat"><div class="stat-value">{run_stats['best_floor']}</div><div class="stat-label">Best Floor</div></div>
-  <div class="stat"><div class="stat-value">{total_entries}</div><div class="stat-label">Playbook Entries</div></div>
+  <div class="stat"><div class="stat-value">{ont_entries}</div><div class="stat-label">Ontology Entries</div></div>
+  <div class="stat"><div class="stat-value">{heur_entries}</div><div class="stat-label">Heuristics</div></div>
 </div>
 
 <div class="state-details">
@@ -749,13 +798,16 @@ def build_landing(categories, top_level_files, run_stats):
     <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
   </div>
   <div class="state-card">
-    <h3>The Loop</h3>
-    <p>A <strong>player agent</strong> plays a run with visible reasoning. When it ends, an <strong>analyst agent</strong> reviews what went wrong and updates the <a href="playbook.html">playbook</a>. Next run reads the updated knowledge. Repeat.</p>
+    <h3>The Approach</h3>
+    <p>The agent maintains a structured <a href="knowledge-system.html">knowledge system</a> split into
+    <a href="ontology.html">ontology</a> (facts about the game) and
+    <a href="heuristics.html">heuristics</a> (strategy for navigating it).
+    It reads, reasons, plays, and writes back what it learns.</p>
   </div>
 </div>
 """
 
-    # Journey section — character progress
+    # Journey section
     _cstats = run_stats.get("character_stats", {})
     _ccls = run_stats.get("current_class", "IRONCLAD")
     _jcards = []
@@ -772,7 +824,7 @@ def build_landing(categories, top_level_files, run_stats):
                 '<div class="journey-card completed">'
                 '<div class="journey-badge">A0 COMPLETE</div>'
                 f'<div class="journey-name">{_dn}</div>'
-                f'<div class="journey-stats">{run_stats["total_runs"]} runs &middot; {_w} wins &middot; Best floor {_bf}</div>'
+                f'<div class="journey-stats">{_w} wins &middot; Best floor {_bf}</div>'
                 '</div>')
         elif _cur:
             _jcards.append(
@@ -785,49 +837,42 @@ def build_landing(categories, top_level_files, run_stats):
     if _jcards:
         journey_html = '<h2>Journey</h2>\n<div class="journey-grid">\n' + '\n'.join(_jcards) + '\n</div>\n'
 
-    # Condensed intro
+    # Intro
     intro_html = """
 <div style="margin-bottom: 40px;">
 <p>
 Claude plays <a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>,
-makes decisions one at a time with explicit reasoning, and then reviews its own runs afterward to
-figure out what went wrong. No hardcoded strategy. Everything it knows comes from playing and
-self-review.
+makes decisions one at a time with explicit reasoning, and reviews its own runs to figure out what
+went wrong. No hardcoded strategy. Everything it knows is recorded in a structured
+<a href="knowledge-system.html">knowledge system</a> that grows over time.
 </p>
 
 <p>
-The <a href="playbook.html">Playbook</a> is everything Claude has learned so far &mdash; card
-evaluations, enemy patterns, boss strategies, event guides. The
-<a href="changelog.html">Changelog</a> shows every update: what changed, what was learned, and when.
+The <a href="ontology.html">Ontology</a> is the complete factual database of the game &mdash; every
+card, enemy, relic, and mechanic. The <a href="heuristics.html">Heuristics</a> are strategic
+guidance accumulated from gameplay. The <a href="changelog.html">Changelog</a> shows what changed and when.
 </p>
 </div>
 """
 
-    # Playbook categories listing
-    content_html = ""
-    if categories or top_level_files:
-        content_html += '<h2>Playbook</h2>\n<div class="category-grid">\n'
+    # Knowledge sections preview
+    sections_html = '<h2>Knowledge</h2>\n<div class="category-grid">\n'
 
-        # Top-level playbook files first
-        for tlf in top_level_files:
-            slug = make_slug(tlf["stem"])
-            content_html += f"""<div class="category-card"><a href="{slug}">
-  <h3>{html.escape(tlf["name"])}</h3>
+    # Ontology card
+    sections_html += f"""<div class="category-card ontology-card"><a href="ontology.html">
+  <h3>Ontology</h3>
+  <div class="count">{ont_entries} entries &mdash; facts about the game</div>
 </a></div>\n"""
 
-        # Category cards
-        for cat_name, cat_data in categories.items():
-            slug = make_slug(cat_name)
-            count = len(cat_data["entries"])
-            display_name = cat_name.replace("-", " ").replace("_", " ").title()
-            content_html += f"""<div class="category-card"><a href="{slug}">
-  <h3>{html.escape(display_name)}</h3>
-  <div class="count">{count} {"entry" if count == 1 else "entries"}</div>
+    # Heuristics card
+    sections_html += f"""<div class="category-card heuristics-card"><a href="heuristics.html">
+  <h3>Heuristics</h3>
+  <div class="count">{heur_entries} entries &mdash; strategy and guidance</div>
 </a></div>\n"""
 
-        content_html += "</div>\n"
+    sections_html += "</div>\n"
 
-    return twitch_html + stats_html + journey_html + intro_html + content_html
+    return twitch_html + stats_html + journey_html + intro_html + sections_html
 
 
 # ── Build ────────────────────────────────────────────────────────────
@@ -838,84 +883,109 @@ def build():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
 
-    # Discover playbook structure
-    playbook_dir = ROOT / "playbook"
-    categories, top_level_files = discover_playbook(playbook_dir)
+    # Discover content
+    ont_dir = ROOT / "ontology"
+    heur_dir = ROOT / "heuristics"
+    ont_categories, ont_top = discover_content(ont_dir)
+    heur_categories, heur_top = discover_content(heur_dir)
 
     run_stats = load_run_stats(ROOT)
     total_pages = 0
 
     # ── Index page ──
-    index_body = build_landing(categories, top_level_files, run_stats)
+    index_body = build_landing(ont_categories, heur_categories, run_stats)
     (OUT / "index.html").write_text(page("Home", index_body, "Home"), encoding="utf-8")
     total_pages += 1
 
-    # ── Playbook index page ──
-    playbook_body = "<h2>Playbook</h2>\n"
-    playbook_body += "<p>Everything Claude has learned about Slay the Spire, organized by category.</p>\n"
-    playbook_body += '<div class="category-grid">\n'
-
-    # Top-level playbook files
-    for tlf in top_level_files:
-        slug = make_slug(tlf["stem"])
-        playbook_body += f"""<div class="category-card"><a href="{slug}">
-  <h3>{html.escape(tlf["name"])}</h3>
-</a></div>\n"""
-
-    # Category cards — just name + count, linking to category page
-    for cat_name, cat_data in categories.items():
-        slug = make_slug(cat_name)
-        display_name = cat_name.replace("-", " ").replace("_", " ").title()
-        count = len(cat_data["entries"])
-        playbook_body += f"""<div class="category-card"><a href="{slug}">
-  <h3>{html.escape(display_name)}</h3>
-  <div class="count">{count} {"entry" if count == 1 else "entries"}</div>
-</a></div>\n"""
-
-    playbook_body += "</div>\n"
-
-    if not categories and not top_level_files:
-        playbook_body = '<div class="empty-state">Playbook is empty. Strategy, cards, and mechanics will appear here as Claude learns.</div>'
-
-    (OUT / "playbook.html").write_text(page("Playbook", playbook_body, "Playbook"), encoding="utf-8")
-    total_pages += 1
-
-    # ── Top-level playbook file pages (mechanics, strategy, etc.) ──
-    for tlf in top_level_files:
-        slug = make_slug(tlf["stem"])
-        content_html = md_to_html(tlf["content"])
-        back_link = '<div class="back-link"><a href="playbook.html">&larr; Back to playbook</a></div>'
-        single_page = page(tlf["name"], back_link + content_html, "Playbook")
-        (OUT / slug).write_text(single_page, encoding="utf-8")
+    # ── Build both sections ──
+    for section, categories, top_files, card_class, description in [
+        ("ontology", ont_categories, ont_top, "ontology-card",
+         "The complete factual database of Slay the Spire. Every card, enemy, relic, potion, event, boss, buff, debuff, encounter, and game rule. Browse it like a wiki."),
+        ("heuristics", heur_categories, heur_top, "heuristics-card",
+         "Strategic guidance accumulated from gameplay and analysis. How to fight each enemy, when to play each card, which relics to prioritize. These are provisional &mdash; they improve over time."),
+    ]:
+        # Section index page
+        section_body = build_section_index(section, section, categories, top_files, card_class, description)
+        (OUT / f"{section}.html").write_text(page(section.title(), section_body, section.title()), encoding="utf-8")
         total_pages += 1
 
-    # ── Category pages and individual entry pages ──
-    for cat_name, cat_data in categories.items():
-        display_name = cat_name.replace("-", " ").replace("_", " ").title()
-
-        cat_slug = make_slug(cat_name)
-        back_link = '<div class="back-link"><a href="playbook.html">&larr; Playbook</a></div>'
-
-        # Category page: simple tile grid of all entries
-        cat_html = f'<h2>{html.escape(display_name)}</h2>\n'
-        cat_html += '<div class="entry-grid">\n'
-        for entry in cat_data["entries"]:
-            entry_slug = make_slug(cat_name, entry["stem"])
-            cat_html += f'<a href="{entry_slug}">{html.escape(short_name(entry["name"]))}</a>\n'
-        cat_html += '</div>\n'
-
-        cat_page = page(display_name, back_link + cat_html, "Playbook")
-        (OUT / cat_slug).write_text(cat_page, encoding="utf-8")
-        total_pages += 1
-
-        # Individual entry pages
-        for entry in cat_data["entries"]:
-            entry_slug = make_slug(cat_name, entry["stem"])
-            content_html = md_to_html(entry["content"])
-            back_link = f'<div class="back-link"><a href="{cat_slug}">&larr; Back to {html.escape(display_name)}</a></div>'
-            entry_page = page(entry["name"], back_link + content_html, "Playbook")
-            (OUT / entry_slug).write_text(entry_page, encoding="utf-8")
+        # Top-level files
+        for tlf in top_files:
+            slug = f"{section}-{tlf['stem']}.html"
+            content_html = md_to_html(tlf["content"])
+            badge = f'<span class="section-badge {section}">{section}</span>\n'
+            back_link = f'<div class="back-link"><a href="{section}.html">&larr; Back to {section}</a></div>'
+            single_page = page(tlf["name"], badge + back_link + content_html, section.title())
+            (OUT / slug).write_text(single_page, encoding="utf-8")
             total_pages += 1
+
+        # Category pages and individual entry pages
+        for cat_name, cat_data in categories.items():
+            display_name = cat_name.replace("-", " ").replace("_", " ").title()
+            cat_slug = make_slug(section, cat_name)
+
+            # Companion section link
+            companion_section = "heuristics" if section == "ontology" else "ontology"
+            companion_categories = heur_categories if section == "ontology" else ont_categories
+            companion_link = ""
+            if cat_name in companion_categories and companion_categories[cat_name]["entries"]:
+                companion_slug = make_slug(companion_section, cat_name)
+                companion_count = len(companion_categories[cat_name]["entries"])
+                companion_link = f'<div class="companion-link">See also: <a href="{companion_slug}">{companion_section.title()} &rarr; {html.escape(display_name)}</a> ({companion_count} entries)</div>\n'
+
+            badge = f'<span class="section-badge {section}">{section}</span>\n'
+            back_link = f'<div class="back-link"><a href="{section}.html">&larr; {section.title()}</a></div>'
+
+            # Category page: tile grid of all entries
+            cat_html = f'<h2>{html.escape(display_name)}</h2>\n'
+            cat_html += companion_link
+            cat_html += '<div class="entry-grid">\n'
+            for entry in cat_data["entries"]:
+                entry_slug = make_slug(section, cat_name, entry["stem"])
+                cat_html += f'<a href="{entry_slug}">{html.escape(short_name(entry["name"]))}</a>\n'
+            cat_html += '</div>\n'
+
+            cat_page = page(f"{display_name} — {section.title()}", badge + back_link + cat_html, section.title())
+            (OUT / cat_slug).write_text(cat_page, encoding="utf-8")
+            total_pages += 1
+
+            # Individual entry pages
+            for entry in cat_data["entries"]:
+                entry_slug = make_slug(section, cat_name, entry["stem"])
+                content_html = md_to_html(entry["content"])
+
+                # Link to companion entry if it exists
+                companion_entry_link = ""
+                if cat_name in companion_categories:
+                    for ce in companion_categories[cat_name]["entries"]:
+                        if ce["stem"] == entry["stem"]:
+                            ce_slug = make_slug(companion_section, cat_name, ce["stem"])
+                            label = "View strategy" if section == "ontology" else "View facts"
+                            companion_entry_link = f'<div class="companion-link">{label}: <a href="{ce_slug}">{companion_section.title()} &rarr; {html.escape(short_name(ce["name"]))}</a></div>\n'
+                            break
+
+                badge = f'<span class="section-badge {section}">{section}</span>\n'
+                back_link = f'<div class="back-link"><a href="{cat_slug}">&larr; Back to {html.escape(display_name)}</a></div>'
+                entry_page = page(entry["name"], badge + back_link + companion_entry_link + content_html, section.title())
+                (OUT / entry_slug).write_text(entry_page, encoding="utf-8")
+                total_pages += 1
+
+    # ── Knowledge System page ──
+    ks_path = Path(__file__).parent / "knowledge-system.md"
+    if ks_path.exists():
+        ks_content = ks_path.read_text(encoding="utf-8")
+        ks_html = md_to_html(ks_content)
+        (OUT / "knowledge-system.html").write_text(
+            page("Knowledge System", ks_html, "Knowledge System"), encoding="utf-8")
+        total_pages += 1
+
+    # ── Philosophy page ──
+    phil_path = Path(__file__).parent / "philosophy.md"
+    if phil_path.exists():
+        phil_content = phil_path.read_text(encoding="utf-8")
+        phil_html = md_to_html(phil_content)
+        (OUT / "philosophy.html").write_text(page("Philosophy", phil_html, "Philosophy"), encoding="utf-8")
+        total_pages += 1
 
     # ── Changelog ──
     entries = git_changelog()
@@ -937,32 +1007,19 @@ def build():
   </div>
 </div>"""
     else:
-        changelog_body = '<div class="empty-state">No changes to playbook files yet.</div>'
+        changelog_body = '<div class="empty-state">No knowledge changes committed yet.</div>'
 
     (OUT / "changelog.html").write_text(page("Changelog", changelog_body, "Changelog"), encoding="utf-8")
     total_pages += 1
 
-    # ── Philosophy page ──
-    phil_path = Path(__file__).parent / "philosophy.md"
-    if phil_path.exists():
-        phil_content = phil_path.read_text(encoding="utf-8")
-        phil_html = md_to_html(phil_content)
-        (OUT / "philosophy.html").write_text(page("Philosophy", phil_html, "Philosophy"), encoding="utf-8")
-        total_pages += 1
-
-    # ── Human Advice page ──
-    ha_path = ROOT / "HUMAN_ADVICE.md"
-    if ha_path.exists():
-        ha_content = ha_path.read_text(encoding="utf-8")
-        ha_html = md_to_html(ha_content)
-        ha_intro = '<p class="subtitle">A record of every piece of knowledge a human player has explicitly injected into the system. The goal is transparency: you can see exactly what Claude figured out on its own vs. what it was told.</p>\n'
-        (OUT / "human-advice.html").write_text(page("Human Advice", ha_intro + ha_html, "Human Advice"), encoding="utf-8")
-        total_pages += 1
-
     # ── CNAME for GitHub Pages ──
     (OUT / "CNAME").write_text("claudeslaysthespire.org", encoding="utf-8")
 
-    print(f"Built {total_pages} pages (index, playbook, {len(top_level_files)} top-level, {sum(len(c['entries']) for c in categories.values())} entries across {len(categories)} categories, changelog)")
+    ont_total = sum(len(c["entries"]) for c in ont_categories.values()) + len(ont_top)
+    heur_total = sum(len(c["entries"]) for c in heur_categories.values()) + len(heur_top)
+    print(f"Built {total_pages} pages")
+    print(f"  Ontology: {len(ont_categories)} categories, {ont_total} entries")
+    print(f"  Heuristics: {len(heur_categories)} categories, {heur_total} entries")
     print(f"Output: {OUT}")
 
 

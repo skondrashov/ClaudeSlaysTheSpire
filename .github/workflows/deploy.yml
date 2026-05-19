@@ -4,10 +4,10 @@ on:
   push:
     branches: [main]
     paths:
-      - 'playbook/**'
-      - 'knowledge/**'
+      - 'ontology/**'
+      - 'heuristics/**'
       - 'site/**'
-      - 'analyst/**'
+      - 'agents/**'
       - 'data/run_stats.json'
   workflow_dispatch:
 
