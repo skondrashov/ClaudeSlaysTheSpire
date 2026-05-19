@@ -1,22 +1,25 @@
 {
   "run": 124,
-  "character": "IRONCLAD",
+  "character": "DEFECT",
   "ascension": 0,
   "victory": false,
-  "floor": 23,
-  "deck": "Whirlwind, Inflame+, Bash+, Impervious, Barricade, Shockwave, Rampage, Thunderclap, Shrug It Off x3, Intimidate, Demon Form, Strike+ x2, Defend x2",
-  "relics": "Burning Blood, Gambling Chip, others",
-  "cause_of_death": "Gremlin Leader elite at Floor 23. Entered at 42/80 HP (52%), below 60% threshold. Rally scaled to +12 Str (4 Rallies). By Turn 9, incoming was 68/turn (Leader 18x3 + gremlins 14) vs 10 HP with 13 block.",
+  "floor": 7,
+  "deck": "[Zap, Dualcast, Coolheaded, Compile Driver, Sweeping Beam, Leap, Strike x4, Defend x4]",
+  "relics": "[Cracked Core, Horn Cleat]",
+  "cause_of_death": "Jaw Worm at Floor 7 with 5 HP remaining after barely surviving Gremlin Nob elite at Floor 6.",
   "key_moments": [
-    "Barricade+Impervious combo dominated Guardian fight -- 30 permanent block wall led to clean boss kill.",
-    "Spheric Guardian survived with Barricade+Impervious+Regen Potion but drained 32 HP (80->48).",
-    "Impervious wasted on Turn 1 of Gremlin Leader for 30 block against 22 incoming, zero damage dealt.",
-    "Systematic Weak multiplier misapplication -- player applied 0.75 to own damage when enemies were Weakened (not player), underestimating own damage output throughout Act 2."
+    "First ever Defect run. Learned core orb mechanics: Lightning (3 passive/8 evoke), Frost (2 passive/5 evoke), channeling, evoking, Dualcast, Focus stat, orb slots.",
+    "Lost 18 HP in first fight (Louse pair at Floor 1) \u2014 unfamiliarity with Defect's combat rhythm and orb timing.",
+    "World of Goop event at Floor 2: took 75 gold for 11 HP at 57/75 HP (correct trade at high HP).",
+    "Entered Gremlin Nob elite at 46/75 HP with a Skill-heavy deck \u2014 7 Skills (4 Defend + Coolheaded + Leap + Zap) vs 5 Attacks (4 Strike + Compile Driver). Sweeping Beam is an Attack but was added post-Nob.",
+    "Nob's Enrage punished every Skill played. Defect's starting deck is naturally Skill-heavy (Zap is a Skill, Dualcast is a Skill), making this the worst possible elite matchup.",
+    "Barely survived Nob at 5 HP \u2014 entered Floor 7 Jaw Worm with no margin for error and died."
   ],
   "lessons": [
-    "Impervious Turn 1 against Gremlin Leader is wrong -- use for Turn 4-5 when Rally damage peaks.",
-    "Weak direction confusion is a recurring mechanics error that needs correction.",
-    "Third consecutive run with no Reaper/Feed offered -- backup healing plan exists but wasn't enough.",
-    "Barricade+Impervious is a confirmed strong combo for Guardian."
+    "Defect's starting deck has 7 Skills vs 3 Attacks (4 Defend + Zap + Dualcast + Coolheaded vs 4 Strike). This is the most Skill-heavy starter of any character. Gremlin Nob is the worst possible elite matchup.",
+    "Defect MUST prioritize Attack card pickups in early floors to rebalance the deck before any elite path. Compile Driver (Attack, 1E, 7 damage + draw 1 per orb) and Sweeping Beam (Attack, 1E, 6 AOE + draw 1) are excellent early Attack pickups.",
+    "Focus cards (Defragment, Consume) should be top priority for Defect scaling \u2014 Focus increases passive and evoke values of ALL orbs permanently.",
+    "Orb mechanics learned: Lightning orb passively deals 3 damage to random enemy at end of turn, evokes for 8. Frost orb passively gives 2 block, evokes for 5. Cracked Core starter relic channels 1 Lightning at combat start.",
+    "Horn Cleat (14 block on Turn 2) was the only thing that kept the Nob fight survivable."
   ]
 }
