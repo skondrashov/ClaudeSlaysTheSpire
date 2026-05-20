@@ -20,4 +20,4 @@
 
 Has [[debuffs/Time Warp]] 12.
 
-**Haste (at 50% HP, once):** Removes all debuffs, heals to 50% HP, gains 32 Block.
+**Haste (at 50% HP, once):** When HP first drops to or below 50% (228 at A0), triggers at start of its next turn. Removes ALL player-applied debuffs ([[debuffs/Vulnerable]], [[debuffs/Weak]], etc.), heals HP to exactly 50% of max (228 at A0), and gains 32 Block. Fires once per fight.

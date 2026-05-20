@@ -21,6 +21,14 @@
 
 **Defect:** Echo Form+ + Seek+ + Coolheaded+ + Barrage+. Barrage doubled by Echo Form for lethal. Track that Echo Form doubles count toward Time Warp (1 card = 2 counted plays). Frost wall persists through Time Warp.
 
+## Haste — The 50% HP Threshold
+
+Time Eater heals to 50% HP (228 at A0) once when its HP first drops to or below 50%. This triggers at the start of its turn, removes ALL debuffs, and grants 32 Block. Total effective HP is ~684 (456 + 228 heal).
+
+**Plan around Haste, not through it.** Debuffs active when Haste fires are wasted. Vulnerable and Weak applied the turn before Haste are cleansed for free. Time your debuff application for AFTER the heal. If Time Eater is at 240 HP and you deal 30 damage this turn, Haste fires next turn — do not apply Vulnerable this turn, apply it the turn after Haste.
+
+**Damage pacing:** Push through 50% threshold early in a turn cycle (low Time Warp count) so the post-Haste turns have a full 12-card budget for re-applying debuffs and dealing damage.
+
 ## What NOT to Do
 
 - Play many small cards per turn without purpose (accelerates Time Warp with low damage output)
@@ -28,6 +36,7 @@
 - Enter below 40% HP
 - Waste Malaise on Artifact stripping (use Neutralize for that)
 - Lose track of the 12-card count
+- Use Fiend Fire early with defensive tools in hand — Time Eater fights last 10-15 turns and every exhausted card is gone permanently. Dark Shackles, Intimidate, and block cards that seem expendable on Turn 2 become critical when Time Eater has +4-6 Str by Turn 10+
 
 ## Potion Timing
 
