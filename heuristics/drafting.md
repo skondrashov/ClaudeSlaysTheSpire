@@ -72,9 +72,9 @@ The starting deck is nearly identical every run. Use a tier list, not first-prin
 - Brutality (self-damage in long fights)
 - Berserk (self-Vulnerable is extremely dangerous)
 
-**Boss-specific overrides:**
+**Boss-specific overrides (APPLY BEFORE tier list):**
 - Slime Boss visible: Evolve and Fire Breathing become MUST-TAKES
-- Hexaghost visible: Weak sources (Shockwave, Clothesline, Intimidate) become MUST-TAKES
+- Hexaghost visible: Weak sources (Shockwave, Clothesline, Intimidate) become MUST-TAKES. A Weak source outranks ANY generic tier list pick -- take Clothesline over Pommel Strike, take Intimidate over Iron Wave, etc. Without Weak, Hexaghost's Inferno and Tackles deal full damage for 16+ turns. No amount of block cards compensates.
 - The Guardian visible: Burst damage for Mode Shift (Carnage, Bludgeon)
 
 **Elite-specific overrides:**
