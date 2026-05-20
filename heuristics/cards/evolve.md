@@ -8,4 +8,6 @@ Neutralizes hand-clogging from Status cards. Each Status drawn is immediately re
 
 **Upgrade priority:** HIGH with Mark of Pain (2 draws per Wound = dominant card advantage). Moderate without Mark of Pain.
 
-**Matchups:** Excellent vs Hexaghost (top-priority Turn 1 setup). Excellent vs Sentries, [[bosses/Slime Boss]], [[enemies/Book of Stabbing]]. With Mark of Pain, has value in EVERY fight. [[enemies/Chosen]] adds Dazed via [[debuffs/Hex]], so Evolve has value after Hex activation.
+**Anti-synergy with Painful Stabs (CRITICAL):** Against [[enemies/Book of Stabbing]], Evolve is COUNTERPRODUCTIVE. Painful Stabs adds Wounds to the discard pile whenever you take HP damage from an attack. Multi Stab escalates (2, 3, 4, 5... hits per use), so Wounds accumulate faster each turn. Once the deck is saturated with Wounds, Evolve triggers on each Wound draw and draws... more Wounds. The "card advantage" engine becomes a Wound cascade: by Turn 10, 6 of 10 cards in hand can be Wounds. This is the same class of anti-synergy as [[cards/Dark Embrace]] + [[bosses/Hexaghost]] Burns -- draw engines that are normally excellent become counterproductive when the status cards replenish faster than exhaust can remove them. **DO NOT play Evolve against Book of Stabbing.** Spend the 1E on block or damage instead.
+
+**Matchups:** Excellent vs Hexaghost (top-priority Turn 1 setup). Excellent vs Sentries, [[bosses/Slime Boss]]. With Mark of Pain, has value in EVERY fight. [[enemies/Chosen]] adds Dazed via [[debuffs/Hex]], so Evolve has value after Hex activation.

@@ -40,6 +40,7 @@ Do not waste turns on setup that does not deal damage. Prioritize damage cards o
 - Entering with a large deck (20+ cards) and no exhaust
 - Slow play (each turn is worse than the last)
 - Power-heavy setup (spending turns 1-3 on Powers instead of dealing damage)
+- **[[cards/Evolve]] (TRAP)** -- Normally excellent against Status-generating enemies, but Painful Stabs adds Wounds that replenish every turn via Multi Stab hits. Evolve triggers on Wound draws and pulls more Wounds from the saturated deck, cascading into 60-80% Wound hands by Turn 10. Do NOT play Evolve in this fight. Spend the 1E on block or damage.
 
 ## Character Matchups
 
