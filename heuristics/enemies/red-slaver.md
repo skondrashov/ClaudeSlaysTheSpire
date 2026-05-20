@@ -1,6 +1,6 @@
 # Red Slaver
 
-**Core rule:** Apply Vulnerable, burst down. Kill before Entangle if possible.
+**Core rule:** Apply [[debuffs/Vulnerable]], burst down. Kill before Entangle if possible.
 
 **Benchmark:** 3-4 turn kill typical.
 
@@ -8,7 +8,7 @@
 
 - Apply Vulnerable, burst down
 - Block on Stab turns (13 damage)
-- When Entangled: play only Skills (Defend, block cards). Use it for setup
+- When [[debuffs/Entangled]]: play only Skills (Defend, block cards). Use it for setup
 - Kill before Entangle if possible (25% chance per turn means it usually fires by turn 3-4)
 
 ## What to Avoid

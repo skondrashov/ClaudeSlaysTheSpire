@@ -6,7 +6,7 @@ Scry + draw + damage in one card. Effectively replaces itself in hand while filt
 
 **Upgrade priority:** Medium. 7->9 damage and Scry 2->3. More Scry is meaningful for filtering Burns/Curses.
 
-**Hexaghost synergy:** Scrying away Burns is critical for maintaining hand quality against Hexaghost.
+**[[bosses/Hexaghost]] synergy:** Scrying away Burns is critical for maintaining hand quality against Hexaghost.
 
 **Wrath value:** 7/9 damage for 1E becomes 14/18 doubled in Wrath -- reasonable burst.
 

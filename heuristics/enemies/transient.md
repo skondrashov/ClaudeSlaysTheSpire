@@ -10,9 +10,9 @@
 
 ## Strategy
 
-- Strength debuffs are excellent (Disarm, Dark Shackles, Malaise -- permanent or large temporary Str reduction compounds across turns)
-- Weak is excellent (reduces the already-Shifting-reduced damage by another 25%)
-- Impervious is best saved for Turns 3-5 when incoming is 50-70 base
+- [[buffs/Strength]] debuffs are excellent ([[cards/Disarm]], [[cards/Dark Shackles]], [[cards/Malaise]] -- permanent or large temporary Str reduction compounds across turns)
+- [[debuffs/Weak]] is excellent (reduces the already-Shifting-reduced damage by another 25%)
+- [[cards/Impervious]] is best saved for Turns 3-5 when incoming is 50-70 base
 
 ## What NOT to Do
 
@@ -21,8 +21,8 @@
 
 ## Character-Specific Notes
 
-**Ironclad:** Impervious covers one turn. Barricade lets block accumulate. Disarm is permanent Str reduction. Reaper heals chip damage.
+**[[characters/Ironclad]]:** Impervious covers one turn. [[cards/Barricade]] lets block accumulate. Disarm is permanent Str reduction. [[cards/Reaper]] heals chip damage.
 
-**Silent:** Wraith Form+ gives 3 turns Intangible (1 damage each). Piercing Wail reduces attack. Malaise+ is permanent Str reduction. After Image+ provides passive block per card. Poison does NOT help -- Transient fades on its own.
+**[[characters/Silent]]:** [[cards/Wraith Form]] gives 3 turns [[buffs/Intangible]] (1 damage each). [[cards/Piercing Wail]] reduces attack. Malaise+ is permanent Str reduction. [[cards/After Image]] provides passive block per card. [[debuffs/Poison]] does NOT help -- [[encounters/Transient]] fades on its own.
 
-**Defect:** Orb damage counts for Shifting. Lightning procs reduce Transient's Strength. Frost orbs provide block. Barrage with multiple orbs deals massive Shifting-reduced damage.
+**[[characters/Defect]]:** Orb damage counts for Shifting. Lightning procs reduce Transient's Strength. Frost orbs provide block. [[cards/Barrage]] with multiple orbs deals massive Shifting-reduced damage.

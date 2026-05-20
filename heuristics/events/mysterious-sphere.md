@@ -1,8 +1,8 @@
 # Mysterious Sphere
 
 Open Sphere when:
-- HP is above 70% AND healing is available (rest sites ahead, no Mark of the Bloom)
-- The deck can handle 2 Orb Walkers without using irreplaceable boss resources (Catalyst+)
+- HP is above 70% AND healing is available (rest sites ahead, no [[relics/Mark of the Bloom]])
+- The deck can handle 2 Orb Walkers without using irreplaceable boss resources ([[cards/Catalyst]])
 - A Rare Relic could meaningfully improve the boss fight
 
 Leave when:

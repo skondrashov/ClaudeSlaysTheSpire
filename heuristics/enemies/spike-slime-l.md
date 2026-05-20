@@ -4,9 +4,9 @@
 
 ## Strategy
 
-- In the Slime Boss fight, killing this while Acid Slime (L) is at full HP creates a 3-enemy nightmare
+- In the [[bosses/Slime Boss]] fight, killing this while Acid Slime (L) is at full HP creates a 3-enemy nightmare
 - AOE for post-split management
-- Exhaust Slimed cards to maintain hand quality
+- Exhaust [[cards/Slimed]] cards to maintain hand quality
 
 ## What to Bring
 

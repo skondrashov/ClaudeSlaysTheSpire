@@ -6,15 +6,15 @@
 
 ## Turn 1 Priority
 
-Deal damage, NOT setup. Playing Inflame+ (1E setup) + Impervious (2E block) on Turn 1 means zero damage dealt -- this wastes the most valuable turn. The correct Turn 1 is Inflame+ + the best available Attack. Take the unblocked hit. HP lost on Turn 1 is recoverable; a wasted damage turn against Rally scaling is not.
+Deal damage, NOT setup. Playing [[cards/Inflame]] (1E setup) + [[cards/Impervious]] (2E block) on Turn 1 means zero damage dealt -- this wastes the most valuable turn. The correct Turn 1 is Inflame+ + the best available Attack. Take the unblocked hit. HP lost on Turn 1 is recoverable; a wasted damage turn against Rally scaling is not.
 
 ## Strategy
 
-- AOE to clear gremlins efficiently (Thunderclap, Whirlwind, Immolate+)
-- Shockwave+ early for mass Weak + Vulnerable
-- Kill Gremlin Wizard before it fires (28 damage nuke)
+- AOE to clear gremlins efficiently ([[cards/Thunderclap]], [[cards/Whirlwind]], [[cards/Immolate]])
+- [[cards/Shockwave]] early for mass [[debuffs/Weak]] + [[debuffs/Vulnerable]]
+- Kill [[enemies/Gremlin Wizard]] before it fires (28 damage nuke)
 - Prioritize Leader damage when possible (gremlins get re-summoned)
-- Strength scaling is mandatory for the DPS race
+- [[buffs/Strength]] scaling is mandatory for the DPS race
 
 ## Strength Scaling is Mandatory
 
@@ -24,7 +24,7 @@ Without permanent Strength, you cannot kill the Leader fast enough. Evaluate whe
 
 - AOE for gremlin clearing
 - Shockwave+ (mass debuff)
-- Disarm (reduce Leader Str)
+- [[cards/Disarm]] (reduce Leader Str)
 - Non-exhaust damage cards for sustained fighting
 - Rage (0E power, generates block per attack)
 - Potions -- this fight demands aggressive potion use
@@ -33,11 +33,11 @@ Without permanent Strength, you cannot kill the Leader fast enough. Evaluate whe
 
 - Entering below 60% HP
 - Entering without potions
-- Entering without permanent Strength scaling (Ironclad) or poison engine (Silent)
+- Entering without permanent Strength scaling ([[characters/Ironclad]]) or poison engine ([[characters/Silent]])
 - Exhaust-heavy decks (once key cards are gone, remaining deck is too weak)
 - Wasting turns -- do NOT batch end with draw effects (drawn cards need to be played)
 - Bloated decks (19+ cards with 4+ Strikes) cannot draw answers fast enough
 
 ## Character Matchups
 
-**Silent:** Poison engine (Noxious Fumes + Bouncing Flask + Catalyst+) is excellent -- poison ignores Metallicize block all enemies gain. A Thousand Cuts provides passive AOE per card played. Apparitions are critical survival tools (5 Intangible turns). Piercing Wail reduces all enemies' Str for 1 turn. Must kill Leader before Apparitions run out.
+**Silent:** [[debuffs/Poison]] engine ([[cards/Noxious Fumes]] + [[cards/Bouncing Flask]] + [[cards/Catalyst]]) is excellent -- poison ignores [[cards/Metallicize]] block all enemies gain. [[cards/A Thousand Cuts]] provides passive AOE per card played. Apparitions are critical survival tools (5 [[buffs/Intangible]] turns). [[cards/Piercing Wail]] reduces all enemies' Str for 1 turn. Must kill Leader before Apparitions run out.

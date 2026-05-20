@@ -8,4 +8,4 @@ Doubles the passive output of the first orb slot. Value scales directly with Foc
 
 **Focus scaling:** At Focus 3, a Frost orb passive gives 5 block. Loop adds another 5 at start of turn = 10 passive block/turn from a single orb.
 
-**Emotion Chip interaction:** If Emotion Chip is active, the first orb triggers three times per cycle -- massive passive value.
+**[[relics/Emotion Chip]] interaction:** If Emotion Chip is active, the first orb triggers three times per cycle -- massive passive value.

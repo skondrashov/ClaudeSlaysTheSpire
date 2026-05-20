@@ -1,6 +1,6 @@
 # Fossilized Helix
 
-Prevents the first instance of HP loss each combat. Extremely strong in Act 1 where most enemies attack once per turn.
+Prevents the first instance of HP loss each combat. Extremely strong in [[acts/Act 1]] where most enemies attack once per turn.
 
 ## Multi-Hit Interaction (CRITICAL)
 
@@ -21,5 +21,5 @@ Fossilized Helix prevents **HP loss**, not **damage**. Block is consumed BEFORE 
 ## Valuation
 
 - Against single-hit attacks: prevents the full hit. Excellent.
-- Against multi-hit attacks (Book of Stabbing, Byrds, Slimes): prevents only the overflow from hit 1. Much weaker. Plan block as if Helix does not exist for hits 2+.
+- Against multi-hit attacks ([[enemies/Book of Stabbing]], Byrds, Slimes): prevents only the overflow from hit 1. Much weaker. Plan block as if Helix does not exist for hits 2+.
 - Against enemies with both single and multi-hit patterns: value depends on which pattern they use turn 1. Do not rely on Helix for survival against multi-hit enemies.

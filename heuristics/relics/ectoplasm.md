@@ -7,12 +7,12 @@ WHEN TO TAKE:
 - No other boss relic is better for the deck.
 
 WHEN TO AVOID:
-- Early in Act 1 when shops are still critical for deck building.
+- Early in [[acts/Act 1]] when shops are still critical for deck building.
 - Card removal needed (Strikes/Defends polluting deck).
 - Deck is energy-efficient (3E is enough).
 
-ANTI-SYNERGIES: Maw Bank, Ceramic Fish, Golden Idol, Bloody Idol (all negated). Shops in general.
+ANTI-SYNERGIES: [[relics/Maw Bank]], [[relics/Ceramic Fish]], [[relics/Golden Idol]], [[relics/Bloody Idol]] (all negated). Shops in general.
 
-**CRITICAL -- Coffee Dripper + Ectoplasm**: No healing from rest AND no gold for potions/healing at shops. Eliminates two of three primary recovery paths. Confirmed lethal. Avoid unless deck reliably takes zero damage.
+**CRITICAL -- [[relics/Coffee Dripper]] + Ectoplasm**: No healing from rest AND no gold for potions/healing at shops. Eliminates two of three primary recovery paths. Confirmed lethal. Avoid unless deck reliably takes zero damage.
 
 Spend all gold BEFORE taking Ectoplasm if possible. Boss relics are offered after the boss fight, so a prior shop is the last chance.

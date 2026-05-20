@@ -24,4 +24,4 @@
 
 ## Act 2 Pairing (Fungi Beast + Shelled Parasite)
 
-Kill Fungi Beast first to avoid giving Shelled Parasite a damage amplifier from Spore Cloud Vulnerability, but be prepared to block heavily on the turn it dies (Vulnerable from Spore Cloud + Shelled Parasite attack).
+Kill Fungi Beast first to avoid giving [[enemies/Shelled Parasite]] a damage amplifier from Spore Cloud Vulnerability, but be prepared to block heavily on the turn it dies ([[debuffs/Vulnerable]] from Spore Cloud + Shelled Parasite attack).

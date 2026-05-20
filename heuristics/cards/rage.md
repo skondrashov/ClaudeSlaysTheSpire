@@ -8,8 +8,8 @@ Gain block whenever you play an Attack this turn. Lasts until end of turn only -
 
 **Decision points:** If you draw Rage on a turn where you play few attacks, it provides minimal value.
 
-**Anti-synergy with Barricade:** Despite appearing to synergize, Rage's per-turn expiration limits the combo. You must redraw and replay Rage each turn to benefit.
+**Anti-synergy with [[cards/Barricade]]:** Despite appearing to synergize, Rage's per-turn expiration limits the combo. You must redraw and replay Rage each turn to benefit.
 
-**Synergies:** Attack-heavy decks, Unceasing Top, Anger (0E Attack that triggers Rage for free block), Shuriken (both reward playing many Attacks per turn).
+**Synergies:** Attack-heavy decks, [[relics/Unceasing Top]], [[cards/Anger]] (0E Attack that triggers Rage for free block), [[relics/Shuriken]] (both reward playing many Attacks per turn).
 
-**Matchups:** Excellent vs Gremlin Leader (block while killing gremlins). Against The Collector, Rage+ combined with Thunderclap provided exactly the block needed to survive a lethal turn at 2 HP.
+**Matchups:** Excellent vs [[enemies/Gremlin Leader]] (block while killing gremlins). Against [[bosses/The Collector]], Rage+ combined with [[cards/Thunderclap]] provided exactly the block needed to survive a lethal turn at 2 HP.

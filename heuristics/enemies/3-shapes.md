@@ -3,8 +3,8 @@
 ## Kill Priority
 
 1. **Exploders FIRST** -- Detonate on Turn 3 for 30 damage each. Must die before detonation. Non-negotiable.
-2. **Repulsors SECOND** -- Dazed clogging degrades hand quality. Low HP makes them easy kills.
-3. **Spikers LAST** -- Thorns are annoying but direct damage (7/turn) is low. Poison bypasses Thorns entirely.
+2. **Repulsors SECOND** -- [[cards/Dazed]] clogging degrades hand quality. Low HP makes them easy kills.
+3. **Spikers LAST** -- Thorns are annoying but direct damage (7/turn) is low. [[debuffs/Poison]] bypasses Thorns entirely.
 
 ## Strategy
 
@@ -15,6 +15,6 @@
 
 ## Character Matchups
 
-**Silent:** Poison is the best tool. Kills Spikers without triggering Thorns and provides passive damage on all targets. Blade Dance / Dagger Spray for fast Exploder kills. Noxious Fumes hits all 3 passively. Avoid using Shivs on Spikers with high Thorns.
+**[[characters/Silent]]:** Poison is the best tool. Kills Spikers without triggering Thorns and provides passive damage on all targets. [[cards/Blade Dance]] / [[cards/Dagger Spray]] for fast Exploder kills. [[cards/Noxious Fumes]] hits all 3 passively. Avoid using Shivs on Spikers with high Thorns.
 
 **Danger Level:** Medium. Exploders are the primary threat. Without them, low-risk. With 2 Exploders, the Turn 3 timer creates urgency.

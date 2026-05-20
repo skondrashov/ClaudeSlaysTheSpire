@@ -5,10 +5,10 @@
 ## Phase 1 -- Power Dump Strategy
 
 - Play ALL Powers early (the Curiosity Str gained resets when Phase 1 ends)
-- Apply Vulnerable and burst down Phase 1 quickly
-- Use Piercing Wail and Weak to counteract Curiosity Str during Phase 1
-- Kill Cultist minions quickly (they scale with Ritual)
-- Dex and After Image effects persist into Phase 2 -- Phase 1 Power plays are doubly valuable
+- Apply [[debuffs/Vulnerable]] and burst down Phase 1 quickly
+- Use [[cards/Piercing Wail]] and [[debuffs/Weak]] to counteract Curiosity Str during Phase 1
+- Kill [[enemies/Cultist]] minions quickly (they scale with [[buffs/Ritual]])
+- Dex and [[cards/After Image]] effects persist into Phase 2 -- Phase 1 Power plays are doubly valuable
 
 ## Phase 2 -- Zero Powers, Maximum Discipline
 
@@ -19,19 +19,19 @@
 
 ## How to Win Without Powers
 
-- **Poison (Silent):** Catalyst+ triples poison, defeating Regenerate 10. Prioritize poison from Skills and Attacks.
-- **Strength scaling (Ironclad):** Inflame, Spot Weakness (both non-Power). Limit Break doubles Str.
-- **Front-loaded damage:** Immolate+, Carnage+, Glass Knife
-- **Block without Powers:** Impervious, Defend, Backflip, Leg Sweep
-- **Weak:** Neutralize, Leg Sweep, Sucker Punch
+- **[[debuffs/Poison]] ([[characters/Silent]]):** [[cards/Catalyst]] triples poison, defeating Regenerate 10. Prioritize poison from Skills and Attacks.
+- **[[buffs/Strength]] scaling ([[characters/Ironclad]]):** [[cards/Inflame]], [[cards/Spot Weakness]] (both non-Power). [[cards/Limit Break]] doubles Str.
+- **Front-loaded damage:** [[cards/Immolate]], [[cards/Carnage]], [[cards/Glass Knife]]
+- **Block without Powers:** [[cards/Impervious]], Defend, [[cards/Backflip]], [[cards/Leg Sweep]]
+- **Weak:** [[cards/Neutralize]], Leg Sweep, [[cards/Sucker Punch]]
 
 ## Dead Branch Strategy (confirmed victory)
 
-Dead Branch + exhaust-heavy deck is the best approach:
-1. Phase 1: dump all Powers. Apply Terror for Vuln 99.
-2. Phase 2: ZERO Powers. Use exhaust cards (Terror, Piercing Wail, Adrenaline, Storm of Steel) for Dead Branch procs generating random cards.
-3. Shivs from Cloak and Dagger exhaust for more procs, creating chain reactions.
-4. After Image + Dex + Blur from Phase 1 provides blocking without new Powers.
+[[relics/Dead Branch]] + exhaust-heavy deck is the best approach:
+1. Phase 1: dump all Powers. Apply [[cards/Terror]] for Vuln 99.
+2. Phase 2: ZERO Powers. Use exhaust cards (Terror, Piercing Wail, [[cards/Adrenaline]], [[cards/Storm of Steel]]) for Dead Branch procs generating random cards.
+3. Shivs from [[cards/Cloak and Dagger]] exhaust for more procs, creating chain reactions.
+4. After Image + Dex + [[cards/Blur]] from Phase 1 provides blocking without new Powers.
 
 ## Preparation Checklist
 
@@ -46,7 +46,7 @@ Dead Branch + exhaust-heavy deck is the best approach:
 - **Without Dead Branch:** Deprioritize Power cards during drafting. Every Power in deck is a wasted draw in Phase 2.
 - **With Dead Branch:** Powers are welcome (play all in Phase 1, ignore in Phase 2).
 - **Terror is the MVP card** (0-1E for Vuln 99 + exhaust + Dead Branch trigger)
-- If deck is Power-heavy without Dead Branch, this is the hardest Act 3 boss.
+- If deck is Power-heavy without Dead Branch, this is the hardest [[acts/Act 3]] boss.
 
 ## Potion Timing
 

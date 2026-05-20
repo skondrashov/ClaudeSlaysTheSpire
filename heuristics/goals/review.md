@@ -52,5 +52,5 @@ Last 10 runs: floor reached, cause of death, deck quality.
 ## Principles
 
 - **Be willing to delete.** Smaller and accurate beats comprehensive and noisy.
-- **Name the bottleneck.** Every plateau has a reason. Not "play better" but "we keep entering Act 2 without scaling because card reward evaluation doesn't weight it."
+- **Name the bottleneck.** Every plateau has a reason. Not "play better" but "we keep entering [[acts/Act 2]] without scaling because card reward evaluation doesn't weight it."
 - **Measure progress.** Concrete numbers, not vibes.

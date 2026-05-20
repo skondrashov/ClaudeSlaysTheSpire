@@ -8,8 +8,8 @@ All Skills become free but one-time-use. Extremely powerful but fundamentally ch
 
 **Decision points:** After Corruption, every Skill exhausts -- plan for a finite number of block plays. Before playing, count remaining Skills and estimate remaining fight turns. If (Skills) < (turns needing block), do NOT play.
 
-**Synergies:** Dead Branch (every exhausted Skill generates a random card -- strongest combo in the game), Feel No Pain (3 block per exhaust makes Corruption safe), Dark Embrace (draw per exhaust), Second Wind (mass exhaust for block), Barricade (accumulated block persists).
+**Synergies:** [[relics/Dead Branch]] (every exhausted Skill generates a random card -- strongest combo in the game), [[cards/Feel No Pain]] (3 block per exhaust makes Corruption safe), [[cards/Dark Embrace]] (draw per exhaust), [[cards/Second Wind]] (mass exhaust for block), [[cards/Barricade]] (accumulated block persists).
 
 **Guardian warning:** Guardian fight lasts 12-14+ turns. Corruption exhausts ALL block Skills. Without Dead Branch or Feel No Pain, do NOT play against Guardian.
 
-**Victory engine:** Barricade + Corruption + FNP + Entrench + Body Slam defeated Time Eater. Every Skill under Corruption generates FNP block AND exhausts free. Second Wind+ under Corruption can exhaust Normality curse permanently.
+**Victory engine:** Barricade + Corruption + FNP + [[cards/Entrench]] + [[cards/Body Slam]] defeated [[bosses/Time Eater]]. Every Skill under Corruption generates FNP block AND exhausts free. Second Wind+ under Corruption can exhaust Normality curse permanently.

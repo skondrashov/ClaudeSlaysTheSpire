@@ -1,6 +1,6 @@
 # Goal: Play a Run
 
-Play Slay the Spire. Win by defeating the Act 3 boss. Make one decision at a time. Every action requires explicit reasoning.
+Play Slay the Spire. Win by defeating the [[acts/Act 3]] boss. Make one decision at a time. Every action requires explicit reasoning.
 
 Start from `ontology/index.md` to understand the game.
 

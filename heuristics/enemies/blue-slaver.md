@@ -1,6 +1,6 @@
 # Blue Slaver
 
-**Core rule:** Straightforward damage dealer. Apply Vulnerable, burst down.
+**Core rule:** Straightforward damage dealer. Apply [[debuffs/Vulnerable]], burst down.
 
 **Benchmark:** Standard 3-4 turn kill.
 
@@ -12,6 +12,6 @@
 
 ## Character Matchups
 
-**Silent:** Straightforward fight. Neutralize for Weak on Turn 1, then burst with Strikes. Poison handles this efficiently.
+**[[characters/Silent]]:** Straightforward fight. [[cards/Neutralize]] for [[debuffs/Weak]] on Turn 1, then burst with Strikes. [[debuffs/Poison]] handles this efficiently.
 
-**Danger Level:** Low. Below-average threat for Act 1.
+**Danger Level:** Low. Below-average threat for [[acts/Act 1]].

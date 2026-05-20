@@ -6,6 +6,6 @@ Free cycling card -- draws 2/3 cards for 0E. The Burn downside is minor.
 
 **Upgrade priority:** High. Draw 2->3 significantly improves the card.
 
-**Synergies:** Fire Breathing (Burns trigger damage on draw), Evolve (Burns draw replacement cards -- makes Burn downside upside).
+**Synergies:** [[cards/Fire Breathing]] (Burns trigger damage on draw), [[cards/Evolve]] (Burns draw replacement cards -- makes Burn downside upside).
 
-**Nob warning:** Skill card, triggers Enrage.
+**Nob warning:** Skill card, triggers [[buffs/Enrage]].

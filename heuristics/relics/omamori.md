@@ -7,4 +7,4 @@ WHEN TO USE:
 - General insurance against random curse events in Unknown rooms.
 - Note: Bites (Vampires event) are NOT Curses -- Omamori does not help there.
 
-Confirmed: Used to safely open a Coffin event for a free relic (Ceramic Fish). The curse was negated, gaining a relic at zero cost.
+Confirmed: Used to safely open a Coffin event for a free relic ([[relics/Ceramic Fish]]). The curse was negated, gaining a relic at zero cost.

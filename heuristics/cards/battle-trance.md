@@ -6,10 +6,10 @@ Free card draw. Finds key cards faster.
 
 **Critical sequencing:** Do NOT batch `end` in the same turn() call as Battle Trance. The drawn cards need to be evaluated and played before ending the turn. Play Battle Trance first, read the new game state, THEN plan the rest of the turn.
 
-**Decision points:** Against Gremlin Nob, Battle Trance is a Skill and triggers Enrage -- still worth playing on free turns but avoid during attack turns.
+**Decision points:** Against [[enemies/Gremlin Nob]], Battle Trance is a Skill and triggers [[buffs/Enrage]] -- still worth playing on free turns but avoid during attack turns.
 
-**Downside:** You cannot draw additional cards the turn you play Battle Trance (locks out further draw effects like Pommel Strike draw, Shrug It Off draw).
+**Downside:** You cannot draw additional cards the turn you play Battle Trance (locks out further draw effects like [[cards/Pommel Strike]] draw, [[cards/Shrug It Off]] draw).
 
 **Upgrade priority:** Moderate. Draw 4 instead of 3.
 
-**Synergies:** Demon Form (finding it turns 1-2 instead of turn 5 is game-changing), any combo deck (more draw = more likely to find combo pieces).
+**Synergies:** [[cards/Demon Form]] (finding it turns 1-2 instead of turn 5 is game-changing), any combo deck (more draw = more likely to find combo pieces).

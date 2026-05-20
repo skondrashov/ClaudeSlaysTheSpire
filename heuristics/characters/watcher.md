@@ -3,10 +3,10 @@
 ## The Energy Loop
 
 The core engine is cycling between Calm and Wrath:
-1. Enter Calm (Vigilance, Inner Peace, Meditate).
-2. Next turn, exit Calm into Wrath (Eruption, Crescendo). Gain +2 Energy from leaving Calm.
+1. Enter Calm ([[cards/Vigilance]], [[cards/Inner Peace]], [[cards/Meditate]]).
+2. Next turn, exit Calm into Wrath ([[cards/Eruption]], [[cards/Crescendo]]). Gain +2 Energy from leaving Calm.
 3. Play attacks in Wrath at doubled damage using the bonus energy.
-4. Exit Wrath before end of turn (Vigilance, Inner Peace, Empty Body, Fear No Evil).
+4. Exit Wrath before end of turn (Vigilance, Inner Peace, [[cards/Empty Body]], [[cards/Fear No Evil]]).
 5. Repeat.
 
 With Eruption+ (1E), entering Wrath from Calm costs net -1E. The Watcher effectively gets 2 free energy per cycle compared to no-stance play.
@@ -25,17 +25,17 @@ Consider:
 
 ## Stance Sequencing
 
-Play cards that trigger on stance change BEFORE changing stance. Flurry of Blows must be in the discard pile before the stance change for the trigger to work. Check individual card files for play-order rules.
+Play cards that trigger on stance change BEFORE changing stance. [[cards/Flurry of Blows]] must be in the discard pile before the stance change for the trigger to work. Check individual card files for play-order rules.
 
 ## Key Cards
 
 - **Flurry of Blows** (0E, returns from discard on stance change) — best common card. Free damage on every cycle. Take multiples.
 - **Eruption+** — highest priority upgrade. 2E→1E makes the Calm loop net positive.
-- **Battle Hymn** (Power, generates Smite each turn) — best sustained damage for boss fights.
-- **Rushdown** (Power, draw 2-3 on Wrath entry) — enables massive burst turns.
-- **Wave of the Hand** (block gain applies Weak) — primary Weak source.
-- **Talk to the Hand** (Block Return, Exhaust) — excellent against multi-hit enemies.
-- **Judgment** (instant kill at 30/40 HP) — powerful finisher.
+- **[[cards/Battle Hymn]]** (Power, generates Smite each turn) — best sustained damage for boss fights.
+- **[[cards/Rushdown]]** (Power, draw 2-3 on Wrath entry) — enables massive burst turns.
+- **[[cards/Wave of the Hand]]** (block gain applies [[debuffs/Weak]]) — primary Weak source.
+- **[[cards/Talk to the Hand]]** (Block Return, Exhaust) — excellent against multi-hit enemies.
+- **[[cards/Judgment]]** (instant kill at 30/40 HP) — powerful finisher.
 
 ## Boss Preparation
 

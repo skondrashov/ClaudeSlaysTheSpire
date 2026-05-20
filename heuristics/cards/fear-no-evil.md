@@ -7,7 +7,7 @@ Conditional Calm entry that doubles as an attack. Only enters Calm when the enem
 **Upgrade priority:** Medium. +3 damage (8->11) is solid but not game-changing.
 
 **Play order (CRITICAL):** On attack turns:
-1. Play Flurry of Blows first (goes to discard)
+1. Play [[cards/Flurry of Blows]] first (goes to discard)
 2. Play Fear No Evil (deals damage, enters Calm, Flurry returns to hand)
 3. Play returned Flurry of Blows again
 

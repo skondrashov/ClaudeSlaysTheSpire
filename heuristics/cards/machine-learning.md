@@ -6,4 +6,4 @@ Permanent +1 card draw per turn. Subtle but compounds significantly in long figh
 
 **Upgrade priority:** Extremely high. At 0E Innate, Machine Learning+ is always free to play Turn 1, guaranteeing +1 draw from Turn 2 onward with zero opportunity cost.
 
-**Mummified Hand synergy:** As a Power, triggers Mummified Hand. At 0E upgraded, already free -- Mummified Hand trigger is pure bonus value.
+**[[relics/Mummified Hand]] synergy:** As a Power, triggers Mummified Hand. At 0E upgraded, already free -- Mummified Hand trigger is pure bonus value.

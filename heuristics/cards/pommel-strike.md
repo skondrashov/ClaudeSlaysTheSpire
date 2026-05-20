@@ -6,6 +6,6 @@ Damage + draw. Replaces itself in hand while dealing more than Strike.
 
 **Upgrade priority:** High. The double draw (1->2) makes this one of the best cycling cards in the game.
 
-**Synergies:** Any deck that wants to find specific cards (Bash+, Fiend Fire, Feed). Snecko Oil (draw into 0-cost cards).
+**Synergies:** Any deck that wants to find specific cards ([[cards/Bash]], [[cards/Fiend Fire]], Feed). [[potions/Snecko Oil]] (draw into 0-cost cards).
 
 **Matchups:** Against Byrds, the 9 damage is halved by Flight but the draw still finds better answers.

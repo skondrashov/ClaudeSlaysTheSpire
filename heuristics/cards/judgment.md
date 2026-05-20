@@ -10,4 +10,4 @@ Conditional instant-kill finisher. Sets enemy HP to 0 if at or below 30/40 HP th
 
 **Useless above threshold:** Against enemies above 30/40 HP, Judgment does literally nothing. Do not waste 1E playing it on a full-health enemy.
 
-**Boss fights:** Excellent finisher. Against Hexaghost, getting the boss to 30-40 HP then using Judgment avoids 1-2 additional turns of Burns damage.
+**Boss fights:** Excellent finisher. Against [[bosses/Hexaghost]], getting the boss to 30-40 HP then using Judgment avoids 1-2 additional turns of Burns damage.

@@ -8,4 +8,4 @@ Damage card that also channels a Dark orb for scaling.
 
 **Upgrade priority:** Moderate. 10->14 damage is useful but the Dark orb is the main value regardless.
 
-**Synergies:** Barrage (Dark orbs count toward orb count = +4/7 damage per Barrage play).
+**Synergies:** [[cards/Barrage]] (Dark orbs count toward orb count = +4/7 damage per Barrage play).

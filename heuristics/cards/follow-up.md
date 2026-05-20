@@ -8,6 +8,6 @@ Conditional 0-cost attack. Free when played immediately after another Attack car
 
 **Attack chaining:** Strike -> Follow-Up (free) -> Flurry (free) = 3 attacks for 1E total. Enables long burst sequences.
 
-**Kunai/Shuriken synergy:** Free attacks count toward the 3-attack threshold. Follow-Up + Flurry after any attack = 3 attacks for minimal energy, triggering both relics.
+**[[relics/Kunai]]/[[relics/Shuriken]] synergy:** Free attacks count toward the 3-attack threshold. Follow-Up + Flurry after any attack = 3 attacks for minimal energy, triggering both relics.
 
 **In Wrath:** A free 14/22 damage attack in Wrath is exceptional. Chain attacks to maximize doubled damage output.

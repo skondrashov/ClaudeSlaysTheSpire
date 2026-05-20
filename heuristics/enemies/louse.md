@@ -1,12 +1,12 @@
 # Louse
 
-**Core rule:** Focus fire one at a time. The first attack triggers Curl Up block, so follow up with more attacks that turn.
+**Core rule:** Focus fire one at a time. The first attack triggers [[buffs/Curl Up]] block, so follow up with more attacks that turn.
 
-**Benchmark:** Kill one per turn with Vulnerable.
+**Benchmark:** Kill one per turn with [[debuffs/Vulnerable]].
 
 ## Strategy
 
-- Kill Red Louse first if it uses Grow (Strength scaling is more dangerous than Weak application)
+- Kill [[enemies/Red Louse]] first if it uses Grow ([[buffs/Strength]] scaling is more dangerous than [[debuffs/Weak]] application)
 - First attack triggers Curl Up -- commit additional attacks on same target that turn
 - AOE if facing 3
 
@@ -19,4 +19,4 @@
 
 - Splitting damage across all Louses
 
-**Danger Level:** Low. Standard Act 1 encounter.
+**Danger Level:** Low. Standard [[acts/Act 1]] encounter.

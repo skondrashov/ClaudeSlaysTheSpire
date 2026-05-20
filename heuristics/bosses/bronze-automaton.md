@@ -1,13 +1,13 @@
 # Bronze Automaton
 
-**Core rule:** Enter at 70%+ HP. Use ONLY non-exhausting debuffs (Bash+, Thunderclap) for Artifact stripping. SAVE exhausting Weak sources (Intimidate, Shockwave) for Hyper Beam survival. Basic Defends cannot survive Hyper Beam.
+**Core rule:** Enter at 70%+ HP. Use ONLY non-exhausting debuffs ([[cards/Bash]], [[cards/Thunderclap]]) for [[buffs/Artifact]] stripping. SAVE exhausting [[debuffs/Weak]] sources ([[cards/Intimidate]], [[cards/Shockwave]]) for Hyper Beam survival. Basic Defends cannot survive Hyper Beam.
 
 ## Preparation Checklist
 
 1. Enter at 70%+ HP
 2. Artifact strippers (non-exhausting): Thunderclap, Bash+. Need 3+ applications.
-3. Weak source saved for Hyper Beam: Intimidate, Shockwave+, or Weak Potion
-4. Block scaling: Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor (basic Defends are NOT enough)
+3. Weak source saved for Hyper Beam: Intimidate, Shockwave+, or [[potions/Weak Potion]]
+4. Block scaling: [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], [[cards/Ghostly Armor]] (basic Defends are NOT enough)
 5. Burst damage for post-Hyper Beam stun window
 6. Redundant key cards (Stasis steals cards -- single copies are fragile)
 
@@ -27,12 +27,12 @@
 - Enter below 60% HP
 - Enter without block scaling beyond basic Defends
 - Rely on a single irreplaceable card (Stasis will steal something)
-- Take Runic Dome (cannot predict Hyper Beam timing without intent visibility)
-- Plan to recover exhausted cards with Liquid Memories (retrieves from DISCARD only, not EXHAUST)
+- Take [[relics/Runic Dome]] (cannot predict Hyper Beam timing without intent visibility)
+- Plan to recover exhausted cards with [[potions/Liquid Memories]] (retrieves from DISCARD only, not EXHAUST)
 
 ## Dark Shackles Interaction
 
-Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block on top. Dark Shackles + Metallicize + Ghostly Armor + 2 Defends = ~31 block vs reduced Hyper Beam = survivable at 70%+ HP.
+Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block on top. [[cards/Dark Shackles]] + Metallicize + Ghostly Armor + 2 Defends = ~31 block vs reduced Hyper Beam = survivable at 70%+ HP.
 
 ## Key Lessons from Deaths
 

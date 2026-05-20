@@ -4,8 +4,8 @@
 
 ## Strategy
 
-- Exhaust Slimed cards when possible
-- Frail reduces block effectiveness -- account for this in block math
+- Exhaust [[cards/Slimed]] cards when possible
+- [[debuffs/Frail]] reduces block effectiveness -- account for this in block math
 
 ## What to Bring
 

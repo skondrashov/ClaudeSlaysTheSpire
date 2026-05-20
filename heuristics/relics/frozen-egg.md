@@ -1,6 +1,6 @@
 # Frozen Egg
 
-Strong in decks that plan to take more Powers. Saves rest site upgrades for non-Power cards. Ironclad Powers include Metallicize, Inflame, Evolve, Barricade, Demon Form, Corruption, Dark Embrace, Fire Breathing -- many are high-priority upgrades.
+Strong in decks that plan to take more Powers. Saves rest site upgrades for non-Power cards. [[characters/Ironclad]] Powers include [[cards/Metallicize]], [[cards/Inflame]], [[cards/Evolve]], [[cards/Barricade]], [[cards/Demon Form]], [[cards/Corruption]], [[cards/Dark Embrace]], [[cards/Fire Breathing]] -- many are high-priority upgrades.
 
 BEST SYNERGIES:
 - **Mid-run Power pickup**: Getting Frozen Egg before taking Metallicize means Metallicize+ (4 block/turn) for free.

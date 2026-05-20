@@ -8,4 +8,4 @@ Energy generation at an HP cost. Enables big turns.
 
 **Upgrade priority:** Significant. 2->3 energy makes Bloodletting+ one of the best energy cards in the game.
 
-**Synergies:** Rupture (lose HP triggers +1 Str permanently -- best Rupture enabler since it costs 0E), Corruption (extra energy helps survive the 3E setup turn), any 2-3E card needing energy flexibility.
+**Synergies:** [[cards/Rupture]] (lose HP triggers +1 Str permanently -- best Rupture enabler since it costs 0E), [[cards/Corruption]] (extra energy helps survive the 3E setup turn), any 2-3E card needing energy flexibility.

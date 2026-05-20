@@ -4,8 +4,8 @@
 
 ## Strategy
 
-- In the Slime Boss fight, going from 2 enemies to 3 unless both large slimes are killed in quick succession
-- Weak reduces YOUR damage output, making it harder to finish off remaining enemies
+- In the [[bosses/Slime Boss]] fight, going from 2 enemies to 3 unless both large slimes are killed in quick succession
+- [[debuffs/Weak]] reduces YOUR damage output, making it harder to finish off remaining enemies
 - Burst to kill before Weak stacks become crippling
 
 ## What to Bring

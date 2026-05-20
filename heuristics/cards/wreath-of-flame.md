@@ -2,7 +2,7 @@
 
 Grants Vigor (flat bonus damage) to the next Attack played. Persists across turns until consumed.
 
-**When to play:** Before your biggest single-hit attack (Smite, Eruption) for maximum value. On free turns (enemy not attacking), play to bank Vigor for the next turn's attacks.
+**When to play:** Before your biggest single-hit attack (Smite, [[cards/Eruption]]) for maximum value. On free turns (enemy not attacking), play to bank Vigor for the next turn's attacks.
 
 **Upgrade priority:** Medium. 5->8 additional damage. The difference is meaningful when doubled in Wrath (10->16 bonus).
 

@@ -8,6 +8,6 @@ Multi-hit Retain attack. Hold for Wrath turns to deal massive doubled damage.
 
 **Retain strategy:** Draw Flying Sleeves on a defensive turn, hold it for the next Wrath turn. No wasted draws.
 
-**Shuriken/Kunai synergy:** 2 hits = 2 counts toward the 3-attack threshold. Pairs well with Flurry of Blows for quick relic triggers.
+**[[relics/Shuriken]]/[[relics/Kunai]] synergy:** 2 hits = 2 counts toward the 3-attack threshold. Pairs well with [[cards/Flurry of Blows]] for quick relic triggers.
 
-**Snake Plant warning:** Multi-hit attacks trigger Malleable block multiple times. Against Snake Plant, Flying Sleeves gives the enemy 3+4 = 7 block from Malleable (two triggers). Use single large hits against Snake Plant when possible.
+**[[enemies/Snake Plant]] warning:** Multi-hit attacks trigger [[buffs/Malleable]] block multiple times. Against Snake Plant, Flying Sleeves gives the enemy 3+4 = 7 block from Malleable (two triggers). Use single large hits against Snake Plant when possible.
