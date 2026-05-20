@@ -1401,6 +1401,9 @@ def turn(actions: list, reason: str = "") -> str:
                     )
                     break
 
+    # Check for game over (player may have died during the turn)
+    _check_game_over(_last_raw_state)
+
     # Auto-handle mechanical transitions after the turn completes
     _last_raw_state = _auto_handle_mechanical(_last_raw_state)
 
