@@ -1087,6 +1087,9 @@
       document.getElementById('strategyTitle').textContent = 'Latest Strategy Reasoning';
       const el = document.getElementById('strategyContent');
 
+      // Check if this is the first think (placeholder still showing) before overwriting
+      const isFirstThink = !!el.querySelector('.reasoning-empty');
+
       // Collapse consecutive blank lines and trim
       const cleaned = reasoning.replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
       el.textContent = cleaned;
@@ -1096,9 +1099,10 @@
       bottomBar.classList.remove('strategy-expanded');
       bottomBar.style.height = '';
 
-      // Force-switch to strategy panel and reset cycle timer
+      // Only force-switch on the first think of the run (placeholder → real content).
+      // Don't force-switch on every think — frequent thinks starve other panels.
       const stratIdx = panels.indexOf('panelStrategy');
-      if (stratIdx !== -1 && currentPanel !== stratIdx) {
+      if (stratIdx !== -1 && currentPanel !== stratIdx && isFirstThink) {
         document.getElementById(panels[currentPanel]).classList.remove('active');
         currentPanel = stratIdx;
         document.getElementById(panels[currentPanel]).classList.add('active');
