@@ -12,6 +12,7 @@ AFTER TAKING:
 - Immediately assess: does the new deck have ANY block source?
 - If zero block cards: EMERGENCY. Prioritize acquiring block at very next shop or card reward.
 - [[cards/Iron Wave]] (1E, 5/5) is minimum viable. [[cards/Flame Barrier]] (2E, 12 block) is better.
+- Also assess: does the new deck have ANY Strength source? Pandora's Box removes Strikes (base damage), so without [[cards/Inflame]], [[cards/Spot Weakness]], or similar, the deck has no scaling. A skill-heavy Pandora's Box deck (confirmed Run 179) cannot kill bosses fast enough — Guardian at 240 HP requires Strength to outpace its damage cycles.
 
 DEFECT NOTE: Slightly safer than other classes because [[characters/Defect]] starters (Zap, [[cards/Dualcast]]) are weak, and random Defect pool includes many strong orb-channeling cards.
 
