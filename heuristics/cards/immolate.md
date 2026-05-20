@@ -11,3 +11,5 @@ High-damage AOE attack. Hits ALL enemies. The Burn downside is minor.
 **Snecko Eye synergy:** Frequently costs 0-1E instead of 2E, enabling multiple plays per turn.
 
 **Matchups:** Excellent vs Byrds, Slime Boss split, 3 Cultists, Guardian, The Collector. Primary damage source in both consecutive victories.
+
+**Flight damage math:** Against Byrds (Flight 3), damage is halved and rounded down. Include Strength in the base BEFORE halving: (21 + Str) / 2 floored. With +2 Str from Inflame: floor(23/2) = 11 per Byrd, not 10. Forgetting Strength underestimates damage by 1 per Byrd.

@@ -55,7 +55,7 @@ CHOSEN: [A/B] because [reason]
 
 ## Combat Arithmetic Checklist
 
-Before every turn, verify each of these seven items.
+Before every turn, verify each of these eight items.
 
 ### 1. WHO has Weak?
 
@@ -106,6 +106,12 @@ When calculating damage against multi-hit enemies with Helix/Buffer, assume Bloc
 ### 7. WRAITH FORM: DO NOT PLAY UNTIL ENEMY IS WITHIN 5 TURNS OF DYING
 
 Wraith Form gives Intangible but applies a permanent -1 Dexterity per turn. Three recorded deaths from playing it too early. Estimate the number of turns remaining before playing. Wraith Form is a FINISHER, not an opener.
+
+### 8. VERIFY CARD IDENTITY BEFORE PLAYING
+
+Before entering a `play N` command, confirm the card at index N matches the card in your plan. Hand indices shift after each play. Especially dangerous for 2E cards that look similar in reasoning (Bash vs Shockwave are both 2E and both target enemies, but Bash is single-target Attack damage while Shockwave is mass Weak+Vulnerable). Playing Bash when you mean Shockwave wastes 2E on minimal damage instead of critical debuffs.
+
+**Process:** After each card play, re-read the hand state. The card you intend to play next may have shifted index.
 
 ---
 
