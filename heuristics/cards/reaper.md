@@ -14,4 +14,6 @@ Essential sustain card. Damage + healing in one. Exhausts after one use per figh
 
 **Anti-synergy:** [[cards/Demon Form]] as the sole Strength source. Reaper needs Strength NOW, not later.
 
-**Matchups:** [[bosses/The Collector]] -- 3 targets, excellent healing. [[enemies/Spheric Guardian]] -- WORST MATCHUP ([[cards/Barricade]] block means Reaper heals zero). [[bosses/The Champ]] -- single target, limited healing; save for after Execute.
+**[[buffs/Thorns]] warning:** Reaper does NOT heal before Thorns resolves. Against [[enemies/Spiker]], Thorns damage applies during attack resolution before healing. At low HP, Reaper + Thorns is lethal — the player dies to Thorns before the heal takes effect.
+
+**Matchups:** [[bosses/The Collector]] -- 3 targets, excellent healing. [[enemies/Spheric Guardian]] -- WORST MATCHUP ([[cards/Barricade]] block means Reaper heals zero). [[bosses/The Champ]] -- single target, limited healing; save for after Execute. [[enemies/Spiker]] -- DANGEROUS: Thorns triggers before healing, can kill at low HP.

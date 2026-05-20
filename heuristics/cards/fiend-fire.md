@@ -16,6 +16,8 @@ Exhausts ALL other cards in hand. Deals 7 damage per card exhausted to a single 
 
 **[[relics/Runic Pyramid]] trap:** Runic Pyramid retains the entire hand across turns, so the hand grows. Fiend Fire exhausts MORE cards (more damage) but also exhausts every retained card. In boss fights requiring card conservation, do NOT play Fiend Fire while critical cards are in hand. With Runic Pyramid, those cards will NOT leave your hand naturally -- you must either play them first or accept that Fiend Fire cannot be used that turn.
 
+**[[buffs/Thorns]] WARNING — LETHAL:** Fiend Fire hits once per exhausted card. Against [[enemies/Spiker]] or any enemy with Thorns, each hit triggers Thorns separately. 4 exhausted cards at Thorns 9 = 36 self-damage. **NEVER use Fiend Fire against Thorns enemies.** Use single-hit attacks ([[cards/Heavy Blade]], [[cards/Carnage]]) instead. Confirmed kill: Run 182 death at Floor 37 from Fiend Fire + Thorns 9.
+
 **Guardian warning:** Fiend Fire as a primary engine drains the deck unsustainably in 12-14 turn fights. Use on free turns for burst, do not plan the deck around it as sole damage engine.
 
 **Index shifting danger:** Always reference Fiend Fire by name rather than index number. Earlier card plays can shift indices causing wrong cards to be played.
