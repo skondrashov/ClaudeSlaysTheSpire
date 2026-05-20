@@ -73,6 +73,7 @@ Check the + suffix on every card. Common errors:
 - [[cards/Bash]] = 10 damage, 3 [[debuffs/Vulnerable]] (not 2)
 - [[cards/Intimidate]] = 2 Weak (not 1)
 - [[cards/Spot Weakness]] = +3 [[buffs/Strength]] unupgraded / +4 Strength upgraded
+- [[cards/Heavy Blade]] = Str multiplier 3x unupgraded / 5x upgraded (at Str 9: 41 vs 59 damage)
 
 ### 3. Does my Strength reset?
 

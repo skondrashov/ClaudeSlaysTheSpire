@@ -28,7 +28,7 @@ Two-phase fight.
 
 Has [[buffs/Curiosity]] in Phase 1.
 
-**Phase Transition (Rebirth):** At Phase 1 HP = 0, enters Phase 2 with 300 HP. All player Powers are removed. [[debuffs/Poison]] on boss is removed. [[buffs/Curiosity]] [[buffs/Strength]] gained in Phase 1 resets.
+**Phase Transition (Rebirth):** At Phase 1 HP = 0, enters Phase 2 with 300 HP. All player Power CARDS are removed from play, but permanent stat buffs already granted by those Powers persist ([[buffs/Strength]] from [[cards/Inflame]], [[buffs/Dexterity]] from [[cards/Footwork]], [[buffs/After Image]] block-per-card). [[debuffs/Poison]] on boss is removed. [[buffs/Curiosity]] and [[buffs/Strength]] the boss gained in Phase 1 reset.
 
 Has [[buffs/Regenerate]] 10 in Phase 2.
 
