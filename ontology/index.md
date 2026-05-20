@@ -37,6 +37,10 @@ Each run plays through [[acts/Act 1]], [[acts/Act 2]], [[acts/Act 3]], then an o
 - [[characters/Defect]] — Orb-based. Starter relic channels 1 Lightning at combat start.
 - [[characters/Watcher]] — Stance-based. Starter relic adds Miracle to hand at combat start.
 
+## Analysis Methodology
+
+For run analysis, see [[analysis/index]] — prediction errors, attribution, file conventions, observation lifecycle.
+
 ## Strategic Guidance
 
 Heuristics — cached reasoning about how to play — live in `heuristics/`. The directory mirrors the ontology structure: `heuristics/cards/`, `heuristics/enemies/`, `heuristics/bosses/`, etc. For any entity, check whether a heuristic file exists alongside the ontology entry.
