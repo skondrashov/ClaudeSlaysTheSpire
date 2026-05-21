@@ -43,7 +43,9 @@ The base path is the domain directory: `<layer>/<domain>/`. Same convention ever
 
 Ontology and heuristics are each independently navigable. Both use `[[links]]` to cross-reference within their own layer. Your goal file gives you entry points into both — from there, follow links within whichever web you're in.
 
-For entity-level files (cards, enemies, bosses, relics, etc.), the two webs share structure. If you're reading `heuristics/sts1/cards/bash.md`, there's probably an `ontology/sts1/cards/bash.md` too, and vice versa. The ontology tells you what something IS; the heuristic tells you what to DO about it. But this correspondence is a convention for entities, not a universal rule — many heuristic files (`combat.md`, `drafting.md`, `archetypes.md`, `goals/*`) have no ontology counterpart, and some ontology entries have no heuristic yet.
+Every ontology entry has a corresponding heuristic at the same path — `ontology/sts1/cards/bash.md` → `heuristics/sts1/cards/bash.md`. The ontology tells you what something IS; the heuristic tells you what to DO about it. When you read an ontology entry, always check the heuristic too.
+
+The reverse isn't true. Many heuristic files (`combat.md`, `drafting.md`, `archetypes.md`, `goals/*`) have no ontology counterpart — they're strategy and methodology, not entity descriptions.
 
 - Don't pre-load everything. Read what you need, when you need it.
 
