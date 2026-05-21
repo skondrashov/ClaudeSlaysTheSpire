@@ -48,6 +48,9 @@ Examples:
 - "MARGIN NOTE: Runic Pyramid + Well-Laid Plans showed up together. The hand retention could enable massive burst turns — worth testing as a build-around."
 - "MARGIN NOTE: I have Corruption but no FNP. Still won this fight easily because Corruption alone removed 6E of Skill costs. Corruption without FNP might be underrated — worth exploring."
 - "MARGIN NOTE: Snecko Eye + expensive cards (Bludgeon, Immolate) seems incredibly strong. 25% chance of 0-cost Bludgeon is 32 free damage. Snecko Eye drafting heuristic should weight expensive cards higher."
+- "MARGIN NOTE: This seed offered Corruption F3, FNP F7, Dead Branch F12 but I went Strength. Explore should replay this seed building exhaust — it looked like the game was pushing that archetype hard."
+
+Margin notes can suggest **seed replays** — when you can see the game was offering an archetype you didn't pursue, note the seed for the Explore agent to replay with a different strategy. Seeds are recorded automatically in the run log.
 
 ## Run End
 

@@ -47,11 +47,28 @@ OBSERVATION: [what happened, what it tells us]
 EVIDENCE: [confirms / refutes / inconclusive] because [reasoning]
 ```
 
+## Seed Replay
+
+The most powerful tool for controlled experiments. Pass a seed to `start()` to replay the exact same run — same card offerings, same enemies, same map, same relics:
+
+```python
+start("IRONCLAD", 0, seed="ABC123")
+```
+
+Seeds are recorded in every run log (`analyst/runs/run_NNN.json`, field `seed`). When the session context says "replay Run 185's seed with a different strategy," look up the seed and use it.
+
+**Why this matters:** In a normal run, you can't tell if a strategy failed because it's bad or because the card offerings were bad. Seed replay eliminates that confounder. If Win died on seed X building Strength and you win on seed X building Corruption, that's strong evidence the game was offering Corruption, not Strength — and the Win agent's framework missed it.
+
+**When to replay vs fresh run:**
+- **Replay** when testing "could this specific run have gone differently with a different strategy?"
+- **Fresh run** when testing "is archetype X generally viable?" (you want natural variance)
+
 ## Confounders
 
 Roguelike variance is high. A single run doesn't prove anything. Note confounders honestly:
 - "This run offered Corruption on Floor 2 — unusually early. The archetype might not come together this smoothly normally."
 - "No Strength sources appeared despite 8 card rewards. This isn't a fair test of the non-Str archetype — it's a test of what happens when nothing works."
+- Seed replays eliminate card/enemy variance but not decision variance — you still might play the alternative strategy suboptimally because you're less practiced with it.
 
 ## Run End
 
