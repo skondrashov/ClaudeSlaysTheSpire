@@ -1,6 +1,6 @@
 # Exploration Directives
 
-Written by Curate agent. Updated after Run 190 (second audit cycle, Runs 1-190).
+Written by Curate agent. Updated after Run 193 (third curation cycle, Directive 4 synthesis).
 
 ## Directive 1: Corruption+FNP Without Strength Sources
 
@@ -37,28 +37,37 @@ Written by Curate agent. Updated after Run 190 (second audit cycle, Runs 1-190).
 
 ## Directive 4: Watcher Execution Cleanup Runs
 
-**Status:** Open
+**Status:** COMPLETE (Runs 191, 192, 193). 0 wins, best Floor 33. See assessment below.
 
-**Hypothesis:** The Watcher stance dance engine can win if execution errors (turn() index shifting, Blasphemy timing) are eliminated. Runs 189 and 190 both had working engines killed by misplays, not by the archetype being too weak.
+**Results:** Execution was clean across all 3 runs — zero index-shift errors, zero Blasphemy self-kills. The execution rules worked. Deaths were all strategic/knowledge gaps:
+- Run 191 (F24): Chosen+Byrd hallway. Hex debuff collapsed Skill-heavy engine (Dazed flooding). Knowledge gap: Watcher Hex counter-strategy.
+- Run 192 (F25): Slavers elite at 40% HP. Sozu+Philosopher's Stone = no potions + harder fights. HP attrition from Snake Plant (Malleable punishes multi-hit). Knowledge gap: relic risk assessment, HP management.
+- Run 193 (F33): Bronze Automaton at 36/300 HP. Kill was in hand (Smite + Strike = 36 damage in Wrath = exact lethal). Player miscalculated Tantrum+ damage as 12 (undoubled) instead of 24 (doubled in Wrath), thought they were 12 short, used Distilled Chaos "for insurance." Distilled Chaos randomly played Meditate+ (ends turn, 0 block) against 102 Hyper Beam. Dead. Knowledge gap: Wrath damage arithmetic, Distilled Chaos risk, potion ordering.
 
-**Test:** Play 3 Watcher Win runs (not Explore -- the goal is winning, not hypothesis testing). Specific execution rules:
-1. NEVER use index-based card references in turn() batches. Use card NAMES in all turn() actions (e.g., `turn(["play Eruption 0", "play Strike 0", "end"])` not `turn(["play 1 0", "play 3 0", "end"])`).
-2. NEVER play Blasphemy unless the kill is confirmed with exact arithmetic posted via think() first.
-3. Post a fight strategy via think() before every elite and boss fight.
-
-**Success criteria:** At least 1 win, or 2 runs reaching Act 2 boss. If all 3 die in Act 1 with correct execution, the engine has a fundamental problem.
-
-**Why this matters:** We cannot distinguish "Watcher is weak" from "Watcher execution is error-prone" until the execution errors are eliminated. 2 of 3 Directive 3 deaths were execution failures. Fixing those is prerequisite to evaluating the archetype.
+**Assessment:** Execution is solved. The execution rules from Directive 4 work — card names in turn() batches, Blasphemy arithmetic checks, fight strategy planning. The problem has shifted from "execution errors kill the player" to "knowledge gaps kill the player." The Watcher needs better matchup-specific heuristics (Hex, boss fight arithmetic, potion risk assessment). Run 193 was one correct arithmetic check away from winning. The stance dance engine is viable; the knowledge framework around it was insufficient. All 5 heuristic gaps flagged in the Run 193 audit have now been addressed in the playbook.
 
 ## Directive 5: Guardian Matchup for Watcher
 
+**Status:** COMPLETE (data collected from Runs 190, 191, 193). Guardian matchup section added to the-guardian.md.
+
+**Results:** Run 193 faced Guardian as Act 1 boss and won cleanly (12/72 HP remaining). The deck had 3 Wrath exit sources (Vigilance+, Empty Body, Meditate) and the fight lasted 10 turns. Run 190 died to Guardian with only 1 Wrath exit (Vigilance) — Tranquility had been exhausted. Run 191 beat Guardian (different boss RNG, not applicable).
+
+**Assessment:** The Guardian Watcher matchup section has been written in the-guardian.md. Key finding: minimum 2 Wrath exit sources in deck. Run 193's clean Guardian win with 3 exits validates the threshold. The existing Guardian Watcher section (added after Run 190) already covers the critical points. No further data collection needed.
+
+## Directive 6: Watcher First Win
+
 **Status:** Open
 
-**Hypothesis:** The Watcher needs specific Guardian preparation beyond generic stance dance guidance. Run 190 had a working engine but died to Guardian partly due to lacking a Wrath exit on a critical turn (Tranquility exhausted, only 1 Vigilance in the whole deck).
+**Hypothesis:** The Watcher stance dance engine can win now that execution is clean (Directive 4) and knowledge gaps have been addressed (Distilled Chaos warning, Wrath arithmetic rules, Hex counter-strategy, Bronze Automaton Watcher section, potion ordering rules). Run 193 was one arithmetic check away from an Act 2 boss kill. The playbook updates from this curation cycle should close the remaining gaps.
 
-**Test:** Data collection, not a separate run. During Directive 4 runs, when Guardian is the Act 1 boss, record:
-1. Number of Wrath exit sources in deck at boss time (Vigilance, Inner Peace, Empty Body, Fear No Evil, Tranquility).
-2. Whether a turn occurred where Wrath exit was unavailable.
-3. Sharp Hide damage taken per Mode Shift cycle.
+**Test:** Play 3 Watcher Win runs with the updated heuristics. Specific rules carry forward from Directive 4:
+1. Card NAMES in turn() batches (never indices).
+2. Blasphemy requires confirmed kill arithmetic via think().
+3. Fight strategy via think() before every elite and boss.
+4. NEW: NEVER use Distilled Chaos. Skip or ignore it.
+5. NEW: On kill turns, play deterministic damage cards FIRST. Verify kill math BEFORE using any random effect.
+6. NEW: In Wrath, double ALL damage numbers in kill math. Post the doubled calculation explicitly via think().
 
-**Why this matters:** The Guardian heuristic file has Ironclad, Silent, and Defect matchup sections but no Watcher section. The stance dance engine's reliance on Wrath exits makes Guardian uniquely dangerous -- Sharp Hide punishes attacks, and lacking an exit in Wrath doubles incoming damage. We need to document the minimum Wrath-exit density for the Guardian fight.
+**Success criteria:** At least 1 win. If all 3 die, assess whether deaths are (a) new knowledge gaps (document them), (b) bad RNG (variance), or (c) archetype limitation (consider switching focus).
+
+**Why this matters:** 11 Watcher runs, 0 wins. But the trajectory is positive: F12 -> F20 -> F16 -> F24 -> F25 -> F33. Execution is clean. Run 193 nearly won. The heuristic updates from this curation session address every flagged gap. If the Watcher cannot win in the next 3 runs with clean execution AND correct knowledge, we should shift focus back to Ironclad or Silent for efficient win production while continuing occasional Watcher runs for learning.

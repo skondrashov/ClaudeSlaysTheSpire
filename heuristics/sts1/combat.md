@@ -92,6 +92,24 @@ In batched `turn()` commands, card indices shift after each play but the batch p
 
 If two copies of the same card exist in hand and you need to play a specific one, play each card individually via `send()` with a state check between plays instead of using `turn()`.
 
+### 7. POTION ORDERING ON KILL TURNS
+
+On kill turns, play all deterministic damage cards FIRST. Only use random-outcome potions (Distilled Chaos, Gambler's Brew) AFTER all known-value plays are exhausted — or never.
+
+**Rationale:** If the kill is already in hand with deterministic cards, random effects are unnecessary and can only cause harm. If the kill is NOT in hand, playing deterministic damage first reduces the enemy to minimum HP, making the random effect more likely to finish the job and less costly if it fails.
+
+**Confirmed fatal in Run 193:** Player used Distilled Chaos BEFORE playing Smite and Strike, which together were exactly lethal. Distilled Chaos randomly played Meditate+ (ends turn, enters Calm, 0 block) against 102 incoming Hyper Beam. The kill was already in hand but the player miscalculated and thought they were 12 damage short.
+
+**Rule:** Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.
+
+### 8. WRATH DOUBLES ALL DAMAGE
+
+For Watcher: ALL damage is doubled in Wrath, including multi-hit cards. When a card enters Wrath (e.g., Tantrum from Calm), the stance change resolves BEFORE damage, so all hits are doubled.
+
+Common miscalculation: Tantrum+ base is 2x5=10. In Wrath: 2x10=20. Players sometimes calculate the base damage and forget to double it, or assume "entering Wrath" means the first hit is undoubled. It is not. Every hit is doubled.
+
+**Rule:** When in Wrath or entering Wrath, multiply EVERY damage number by 2 in kill math. Double-check the arithmetic before committing to end turn.
+
 ---
 
 ## Shockwave+ Timing Rule
