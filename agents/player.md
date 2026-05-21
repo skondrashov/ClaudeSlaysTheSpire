@@ -21,11 +21,9 @@ See `AGENTS.md` for the full architecture: information flow, ontology split, heu
 
 1. **`agents/core.md`** — The agent itself. Domain-agnostic. Describes how it navigates knowledge (ontology + heuristics + [[links]] via file reads), behavioral properties (honesty, knowledge gaps, one-decision-at-a-time). Always loaded.
 
-2. **Goal file** — What the agent should do this session. One of the four above. The goal file specifies setup (imports, tools) and output format.
+2. **Goal file** — What the agent should do this session. One of the four above. The goal file specifies setup (imports, tools), output format, AND which ontology/heuristic entry points to read. This is how different goals get different knowledge lenses.
 
-3. **Entry point** — `ontology/index.md` — The domain overview. Links to all entity categories, game systems, and characters. The agent navigates from here.
-
-4. **Session context** — Task-specific parameters:
+3. **Session context** — Task-specific parameters:
    - Session token (PLAYER_SESSION env var) — for playing agents only
    - Starting command (e.g., `start("IRONCLAD", 0)` for play, run number for audit)
    - Recent run history and any specific context
@@ -42,7 +40,7 @@ The agent discovers everything else by reading files:
 |---------|----------|-----|
 | Agent behavior (honesty, knowledge gaps) | `agents/core.md` | Domain-agnostic |
 | Domain facts (cards, enemies, buffs, rules) | `ontology/` | Formally closed, composable |
-| Domain overview + entry point | `ontology/index.md` | Starting point for navigation |
+| Game domain overview | `ontology/sts1.md` | Starting point for game navigation |
 | Analysis methodology | `ontology/analysis/` | Facts about evaluation, not strategy |
 | Tool interface (what commands exist) | `ontology/interface/` | Facts about the environment |
 | Game strategy (how to fight, build, path) | `heuristics/` | Win agent's primary heuristics |
@@ -53,6 +51,6 @@ The agent discovers everything else by reading files:
 
 ## Rules
 
-1. **Read core.md, the goal file, and ontology/index.md with the Read tool every time.** Don't rely on memory.
+1. **Read core.md and the goal file with the Read tool every time.** The goal file specifies which ontology/heuristic entry points to read. Don't rely on memory.
 2. **Include their complete, unmodified contents.** Every section exists because its absence caused a regression.
 3. **Don't duplicate knowledge in the prompt.** Everything domain-specific is in ontology/ and heuristics/, navigated via file reads and [[links]].

@@ -2,8 +2,17 @@
 
 Step back and evaluate the knowledge system. You are not playing the game and you are not reviewing individual decisions — you are assessing whether the strategic framework is healthy, balanced, and serving the player well.
 
-Start from `ontology/index.md` to understand the game domain.
-Start from `ontology/analysis/index.md` to understand evaluation methodology (if it exists).
+## Knowledge Entry Points
+
+Read these at the start of the session:
+
+**Ontology:**
+- `ontology/sts1.md` — Game domain (you need to understand the game to assess whether strategy makes sense)
+- `ontology/analysis/index.md` — Analysis methodology: prediction errors, attribution, observation lifecycle
+
+**Heuristics:**
+- `heuristics/curation/` — Overfitting detection, coverage analysis, evidence standards, formatting (read what exists)
+- The ENTIRE `heuristics/` tree is your review target — browse it to assess health, don't just read individual files
 
 ## Inputs
 

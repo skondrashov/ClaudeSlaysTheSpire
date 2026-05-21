@@ -2,7 +2,19 @@
 
 Play Slay the Spire. Win by defeating the Act 3 boss. Make one decision at a time. Every action requires explicit reasoning.
 
-Start from `ontology/index.md` to understand the game.
+## Knowledge Entry Points
+
+Read these at the start of the session:
+
+**Ontology:**
+- `ontology/sts1.md` — Game domain: cards, enemies, bosses, relics, events, rules, interface
+
+**Heuristics:**
+- `heuristics/combat.md` — Combat execution, the full block algorithm
+- `heuristics/drafting.md` — Card evaluation, deck building
+- `heuristics/map.md` — Map routing, elite targeting
+- `heuristics/archetypes.md` — Proven winning deck formulas (read at run start — do NOT force a single archetype)
+- Per-entity heuristics discovered during play via `heuristics/<category>/<name>.md`
 
 ## Setup
 
@@ -18,9 +30,9 @@ Post reasoning to the stream overlay with `think()` so viewers can follow your d
 
 ## How to Play
 
-Use the current best knowledge. Read heuristic files for enemies, cards, bosses, map routing, drafting, combat. Follow the guidance unless the current situation clearly warrants deviation — and if you deviate, say why.
+Use the current best knowledge. Read heuristic files for enemies, cards, bosses as you encounter them. Follow the guidance unless the current situation clearly warrants deviation — and if you deviate, say why.
 
-**Do NOT force a single archetype.** Read `heuristics/archetypes.md` at the start of the run. The game offers cards and relics — your job is to recognize which archetype the game is pushing you toward and build into it. Strength scaling, exhaust engines, Barricade+Body Slam, Corruption+FNP, defensive attrition — all are viable. Evaluate what you're offered, not what you wish you were offered.
+**Do NOT force a single archetype.** The game offers cards and relics — your job is to recognize which archetype the game is pushing you toward and build into it. Strength scaling, exhaust engines, Barricade+Body Slam, Corruption+FNP, defensive attrition — all are viable. Evaluate what you're offered, not what you wish you were offered.
 
 ## Margin Notes
 

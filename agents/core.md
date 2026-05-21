@@ -12,7 +12,7 @@ Facts about the domain. What exists, how it behaves, how things relate. Individu
 
 Ontology entries are formally closed — they describe what an entity IS and what it DOES. They don't say what you should do about it. A card entry says it applies `[[buffs/Buffer]]`. The buff entry says what Buffer does. Neither says when to play Buffer.
 
-Start from `ontology/index.md` to understand the domain structure.
+Your goal file specifies which ontology entry points to read. Start there.
 
 ### Heuristics (`heuristics/`)
 

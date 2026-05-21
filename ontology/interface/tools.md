@@ -19,7 +19,7 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 
 ## Knowledge
 
-Knowledge lives in files, not functions. Read ontology and heuristic files directly using the Read tool. Start from `ontology/index.md`. Follow `[[category/Name]]` links by reading `ontology/category/name.md`. Check `heuristics/category/name.md` for strategic guidance on any entity.
+Knowledge lives in files, not functions. Read ontology and heuristic files directly using the Read tool. Your goal file specifies which entry points to start from. Follow `[[category/Name]]` links by reading `ontology/category/name.md`. Check `heuristics/category/name.md` for strategic guidance on any entity.
 
 ## Action
 

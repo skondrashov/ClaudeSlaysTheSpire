@@ -2,7 +2,17 @@
 
 Play Slay the Spire to TEST SOMETHING SPECIFIC. You are not trying to maximize win probability — you are trying to generate evidence about a hypothesis. Wins are a bonus, not the objective.
 
-Start from `ontology/index.md` to understand the game.
+## Knowledge Entry Points
+
+Read these at the start of the session:
+
+**Ontology:**
+- `ontology/sts1.md` — Game domain: cards, enemies, bosses, relics, events, rules, interface
+
+**Heuristics:**
+- `heuristics/exploration/` — Experiment design, hypothesis evaluation, confounder tracking (read what exists)
+- `heuristics/archetypes.md` — Known archetypes (your experiments often test beyond these)
+- Game heuristics (`heuristics/combat.md`, per-entity files) as baseline — you need to play competently even while experimenting
 
 ## Setup
 

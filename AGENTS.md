@@ -92,7 +92,12 @@ Every agent gets:
 2. `heuristics/goals/<goal>.md` — One of: win, explore, audit, curate
 3. Session context — Injected by orchestrator (run number, recent history, directives)
 
-The goal file points the agent at its ontology entry point and heuristic categories. The agent discovers everything else by reading files.
+Each goal file specifies which ontology and heuristic entry points to read. This is the mechanism that gives each goal a different knowledge lens:
+- Win/Explore read `ontology/sts1.md` (game domain) + game heuristics
+- Audit reads `ontology/sts1.md` + `ontology/analysis/index.md` + audit heuristics
+- Curate reads `ontology/sts1.md` + `ontology/analysis/index.md` + curation heuristics
+
+The agent discovers everything else by following `[[links]]` in the files it reads.
 
 ## Commands (cmd.py)
 
