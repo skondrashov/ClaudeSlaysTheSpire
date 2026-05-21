@@ -2,10 +2,10 @@
 
 ## Identity
 
-The Ironclad has two equally viable winning engines. Which one to pursue depends on what the run offers, not a preset preference. 5 wins across 122 runs: 3 via Strength scaling, 2 via Corruption+FNP block engine (with 1 hybrid).
+The Ironclad has one proven winning engine and one promising alternative. Which to pursue depends on what the run offers, not a preset preference. 5 wins across 122 runs: 3 via Strength scaling, 2 via Corruption+FNP block engine (both also had Str sources — the engine's independence is under investigation).
 
 1. **Strength engine (Runs 102, 103, 184):** [[buffs/Strength]] sources ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Limit Break]]) + [[cards/Heavy Blade]] finisher + optional [[relics/Snecko Eye]] for draw/cost manipulation + [[cards/Immolate]] for AOE
-2. **Exhaust/Block engine (Runs 104, 187):** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). This engine does NOT require Strength to function -- block generation IS the damage source via Body Slam.
+2. **Exhaust/Block engine (Runs 104, 187):** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). Both wins also included Str sources. Whether this engine can function independently without Strength is under investigation.
 
 ## Key Heuristics
 

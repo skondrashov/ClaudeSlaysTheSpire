@@ -18,7 +18,7 @@ Deal damage, NOT setup. Playing [[cards/Inflame]] (1E setup) + [[cards/Imperviou
 
 ## Damage Scaling Required
 
-Without damage scaling, you cannot kill the Leader fast enough. Evaluate whether your deck can kill 144 HP in 5-6 turns BEFORE entering this fight. For Ironclad, this means either Strength sources (Inflame, Spot Weakness) OR the Corruption+FNP engine with Body Slam for damage conversion. For Silent, Poison or Shiv+Accuracy.
+Without damage scaling, you cannot kill the Leader fast enough. Evaluate whether your deck can kill 144 HP in 5-6 turns BEFORE entering this fight. For Ironclad, Strength sources (Inflame, Spot Weakness) are the proven path. The Corruption+FNP engine with Body Slam may also work but hasn't been confirmed against Gremlin Leader specifically. For Silent, Poison or Shiv+Accuracy.
 
 ## What to Bring
 
@@ -33,7 +33,7 @@ Without damage scaling, you cannot kill the Leader fast enough. Evaluate whether
 
 - Entering below 60% HP
 - Entering without potions
-- Entering without damage scaling ([[buffs/Strength]] or Corruption+FNP for [[characters/Ironclad]], poison for [[characters/Silent]])
+- Entering without damage scaling ([[buffs/Strength]] for [[characters/Ironclad]], poison for [[characters/Silent]])
 - Exhaust-heavy decks (once key cards are gone, remaining deck is too weak)
 - Wasting turns -- do NOT batch end with draw effects (drawn cards need to be played)
 - Bloated decks (19+ cards with 4+ Strikes) cannot draw answers fast enough

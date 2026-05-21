@@ -67,11 +67,25 @@ The big picture:
 ## Output
 
 1. **Assessment** (10-15 lines): What's working, what's not, what's the biggest issue.
-2. **Exploration directives**: Specific hypotheses for the Explore agent to test.
-3. **Playbook edits**: Structural changes, rewrites, consolidations. You have authority to reshape.
-4. **Cleanup**: Dedup, trim, promote observations, fix contradictions.
+2. **Exploration directives**: Specific hypotheses for the Explore agent to test. This is your PRIMARY output — most insights should become directives, not immediate edits.
+3. **Playbook edits**: Only for changes with strong evidence. See editing rules below.
+4. **Cleanup**: Dedup, trim, fix contradictions, formatting.
 
-Write directives to `analyst/directives.md`. Make playbook edits directly.
+Write directives to `analyst/directives.md`. Be conservative with direct playbook edits.
+
+### What you CAN edit directly
+- **Remove clearly wrong claims** (contradicted by evidence, with cited run numbers)
+- **Soften absolutist language** when evidence is thin ("non-negotiable" → "strongly preferred", "always" → "usually")
+- **Fix contradictions** between files
+- **Formatting and structural cleanup**
+- **Factual corrections** (wrong damage numbers, wrong mechanics)
+
+### What you CANNOT edit directly
+- **Promoting unproven strategies** to high priority. One win is an existence proof, not a tier list change. Write an exploration directive instead.
+- **Rewriting tier lists** based on hypotheses. The Explore agent needs to validate first.
+- **Adding prescriptive guidance** ("TAKE this card if X") based on < 3 confirming runs. Flag it as worth testing.
+
+The pattern is: Curate identifies the question → Explore generates evidence → THEN the playbook updates. Skipping Explore means replacing one form of overconfidence with another.
 
 ## Principles
 
