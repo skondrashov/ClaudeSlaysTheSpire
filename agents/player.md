@@ -30,7 +30,7 @@ See `AGENTS.md` for the full architecture: information flow, ontology split, heu
    - Exploration directives — for Explore agent only (from `analyst/directives.md`)
 
 The agent discovers everything else by reading files:
-- `[[category/Name]]` links → read `ontology/category/name.md`
+- `[[category/Name]]` links → read `ontology/sts1/category/name.md` (domain + category + name)
 - Per-entity heuristics → read `heuristics/category/name.md`
 - Topic heuristics → referenced from the goal file (combat.md, drafting.md, etc.)
 
@@ -40,9 +40,9 @@ The agent discovers everything else by reading files:
 |---------|----------|-----|
 | Agent behavior (honesty, knowledge gaps) | `agents/core.md` | Domain-agnostic |
 | Domain facts (cards, enemies, buffs, rules) | `ontology/` | Formally closed, composable |
-| Game domain overview | `ontology/sts1.md` | Starting point for game navigation |
-| Analysis methodology | `ontology/analysis/` | Facts about evaluation, not strategy |
-| Tool interface (what commands exist) | `ontology/interface/` | Facts about the environment |
+| Game domain overview | `ontology/sts1/game.md` | Starting point for game navigation |
+| Analysis methodology | `ontology/sts1/analysis/` | Facts about evaluation, not strategy |
+| Tool interface (what commands exist) | `ontology/sts1/interface/` | Facts about the environment |
 | Game strategy (how to fight, build, path) | `heuristics/` | Win agent's primary heuristics |
 | Exploration methodology | `heuristics/exploration/` | Explore agent's primary heuristics |
 | Audit methodology | `heuristics/audit/` | Audit agent's primary heuristics |

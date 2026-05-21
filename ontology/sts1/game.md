@@ -16,19 +16,19 @@ Each run plays through [[acts/Act 1]], [[acts/Act 2]], [[acts/Act 3]], then an o
 
 ## Entity Categories
 
-**Cards** — [[types/Attack]], [[types/Skill]], [[types/Power]], [[types/Status]], [[types/Curse]]. Character-specific pools + colorless. Individual entries at `ontology/cards/<name>.md`.
+**Cards** — [[types/Attack]], [[types/Skill]], [[types/Power]], [[types/Status]], [[types/Curse]]. Character-specific pools + colorless. Individual entries at `ontology/sts1/cards/<name>.md`.
 
-**Enemies** — Hallway fights and elites per act. Individual entries at `ontology/enemies/<name>.md`. See [[acts/Act 1]], [[acts/Act 2]], [[acts/Act 3]] for encounter lists.
+**Enemies** — Hallway fights and elites per act. Individual entries at `ontology/sts1/enemies/<name>.md`. See [[acts/Act 1]], [[acts/Act 2]], [[acts/Act 3]] for encounter lists.
 
-**Bosses** — One per act, visible from floor 1. Entries at `ontology/bosses/<name>.md`.
+**Bosses** — One per act, visible from floor 1. Entries at `ontology/sts1/bosses/<name>.md`.
 
-**Relics** — Passive effects. Sources: elites (guaranteed), bosses (choice of 3), shops, events. Entries at `ontology/relics/<name>.md`.
+**Relics** — Passive effects. Sources: elites (guaranteed), bosses (choice of 3), shops, events. Entries at `ontology/sts1/relics/<name>.md`.
 
-**Potions** — Single-use consumables. 3 slots (base). Entries at `ontology/potions/<name>.md`.
+**Potions** — Single-use consumables. 3 slots (base). Entries at `ontology/sts1/potions/<name>.md`.
 
-**Events** — Choice encounters. Outcomes vary by act. Entries at `ontology/events/<name>.md`.
+**Events** — Choice encounters. Outcomes vary by act. Entries at `ontology/sts1/events/<name>.md`.
 
-**Buffs/Debuffs** — Combat status effects. Entries at `ontology/buffs/<name>.md` and `ontology/debuffs/<name>.md`.
+**Buffs/Debuffs** — Combat status effects. Entries at `ontology/sts1/buffs/<name>.md` and `ontology/sts1/debuffs/<name>.md`.
 
 ## Characters
 

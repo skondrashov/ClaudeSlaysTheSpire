@@ -43,12 +43,12 @@ One agent, four goals. The agent is generic — it navigates an ontology (facts)
 
 The agents share a file system but see it through different lenses.
 
-**Game Ontology** (`ontology/`) — What the game IS. Cards, enemies, bosses, relics, potions, events, buffs, debuffs, rules, interface. All four agents can reference it. The playing agents (Win, Explore) navigate it actively during gameplay. The analysis agents (Audit, Curate) reference it to understand the decisions they're evaluating.
+**Game Ontology** (`ontology/sts1/`) — What the game IS. Cards, enemies, bosses, relics, potions, events, buffs, debuffs, rules, interface. All four agents can reference it. The playing agents (Win, Explore) navigate it actively during gameplay. The analysis agents (Audit, Curate) reference it to understand the decisions they're evaluating.
 
 - **Win's direction:** Game state → optimal action. "What do I play here?"
 - **Explore's direction:** Game state → experiment design. "What can I learn here?"
 
-**Analysis Ontology** (`ontology/analysis/`) — What good reasoning and good knowledge look like. Decision evaluation criteria, heuristic quality standards, evidence frameworks. The analysis agents' primary domain. Playing agents don't need this.
+**Analysis Ontology** (`ontology/sts1/analysis/`) — What good reasoning and good knowledge look like. Decision evaluation criteria, heuristic quality standards, evidence frameworks. The analysis agents' primary domain. Playing agents don't need this.
 
 - **Audit's direction:** Decision → evaluation. "Was this play correct?"
 - **Curate's direction:** Heuristic → assessment. "Is this entry well-supported and useful?"
@@ -93,9 +93,9 @@ Every agent gets:
 3. Session context — Injected by orchestrator (run number, recent history, directives)
 
 Each goal file specifies which ontology and heuristic entry points to read. This is the mechanism that gives each goal a different knowledge lens:
-- Win/Explore read `ontology/sts1.md` (game domain) + game heuristics
-- Audit reads `ontology/sts1.md` + `ontology/analysis/index.md` + audit heuristics
-- Curate reads `ontology/sts1.md` + `ontology/analysis/index.md` + curation heuristics
+- Win/Explore read `ontology/sts1/game.md` (game domain) + game heuristics
+- Audit reads `ontology/sts1/game.md` + `ontology/sts1/analysis/index.md` + audit heuristics
+- Curate reads `ontology/sts1/game.md` + `ontology/sts1/analysis/index.md` + curation heuristics
 
 The agent discovers everything else by following `[[links]]` in the files it reads.
 

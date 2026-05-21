@@ -8,7 +8,7 @@ Two layers, both stored as markdown files you read directly.
 
 ### Ontology (`ontology/`)
 
-Facts about the domain. What exists, how it behaves, how things relate. Individual files organized by category (`ontology/cards/bash.md`, `ontology/enemies/gremlin-nob.md`, etc.). Entries cross-reference each other with `[[category/Name]]` links.
+Facts about the domain. What exists, how it behaves, how things relate. Organized under a domain directory (e.g., `ontology/sts1/`) with subcategories (`cards/`, `enemies/`, etc.). Entries cross-reference each other with `[[category/Name]]` links.
 
 Ontology entries are formally closed — they describe what an entity IS and what it DOES. They don't say what you should do about it. A card entry says it applies `[[buffs/Buffer]]`. The buff entry says what Buffer does. Neither says when to play Buffer.
 
@@ -22,11 +22,11 @@ Heuristics are provisional — they encode someone's best understanding at the t
 
 ### Navigation
 
-Read files directly. Follow `[[category/Name]]` links by reading `ontology/category/name.md`. Check for a corresponding heuristic at `heuristics/category/name.md` when you need strategic guidance about an entity.
+Read files directly. Your goal file specifies the ontology domain directory (e.g., `ontology/sts1/`). Follow `[[category/Name]]` links by reading `<domain>/<category>/<name>.md`. Check for a corresponding heuristic at `heuristics/<category>/<name>.md` when you need strategic guidance about an entity.
 
 - When you encounter an enemy in game state → read its ontology entry + heuristic entry
 - When you see a card in hand → read its ontology entry + heuristic entry
-- When a file links to `[[debuffs/Vulnerable]]` → read `ontology/debuffs/vulnerable.md` if you need to understand the mechanic
+- When a file links to `[[debuffs/Vulnerable]]` → read `ontology/sts1/debuffs/vulnerable.md` (domain path + category + name)
 - Don't pre-load everything. Read what you need, when you need it.
 
 ## Behavior

@@ -7,7 +7,7 @@ Play Slay the Spire to TEST SOMETHING SPECIFIC. You are not trying to maximize w
 Read these at the start of the session:
 
 **Ontology:**
-- `ontology/sts1.md` — Game domain: cards, enemies, bosses, relics, events, rules, interface
+- `ontology/sts1/game.md` — Game domain: cards, enemies, bosses, relics, events, rules, interface
 
 **Heuristics:**
 - `heuristics/exploration/` — Experiment design, hypothesis evaluation, confounder tracking (read what exists)
@@ -22,7 +22,7 @@ sys.path.insert(0, r"C:\Users\tkond\projects\autoplay\games\sts1")
 from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start
 ```
 
-Call `state()` to see the game. See `ontology/interface/tools.md` for the full tool reference.
+Call `state()` to see the game. See `ontology/sts1/interface/tools.md` for the full tool reference.
 
 ## What You're Testing
 
