@@ -12,7 +12,7 @@ The Ironclad has one proven winning engine and one promising alternative. Which 
 - **[[relics/Burning Blood]] buffer:** At full HP, up to 6 damage is "free" in hallway fights. Below max HP, this buffer doesn't exist.
 - **Healing cards are mandatory:** [[cards/Reaper]] is the most important card in the game for Ironclad. Take it over almost anything. Feed is #2.
 - **Strength resets between combats.** Only [[relics/Vajra]] persists. Don't carry Strength expectations between fights.
-- **[[acts/Act 1]] tier list exists** — see heuristics/drafting.md for the full list.
+- **[[acts/Act 1]] tier list exists** — see [[drafting]].
 
 ## Deck Building
 

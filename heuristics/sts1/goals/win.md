@@ -7,24 +7,18 @@ Play Slay the Spire. Win by defeating the Act 3 boss. Make one decision at a tim
 Read these at the start of the session:
 
 **Ontology:**
-- `ontology/sts1/game.md` — Game domain: cards, enemies, bosses, relics, events, rules, interface
+- `ontology/sts1/game.md` — Game domain: cards, enemies, bosses, relics, events, rules
+
+**Interface:**
+- `interface/sts1/tools.md` — Setup, commands, how to interact with the game
+- `interface/sts1/stream.md` — Streaming overlay, viewer communication
 
 **Heuristics:**
-- `heuristics/combat.md` — Combat execution, the full block algorithm
-- `heuristics/drafting.md` — Card evaluation, deck building
-- `heuristics/map.md` — Map routing, elite targeting
-- `heuristics/archetypes.md` — Proven winning deck formulas (read at run start — do NOT force a single archetype)
-- Per-entity heuristics discovered during play via `heuristics/<category>/<name>.md`
-
-## Setup
-
-```python
-import sys
-sys.path.insert(0, r"C:\Users\tkond\projects\autoplay\games\sts1")
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start
-```
-
-Call `state()` to see the game. See `ontology/sts1/interface/tools.md` for the full tool reference.
+- [[combat]] — Combat execution, the full block algorithm
+- [[drafting]] — Card evaluation, deck building
+- [[map]] — Map routing, elite targeting
+- [[archetypes]] — Proven winning deck formulas (read at run start — do NOT force a single archetype)
+- Per-entity heuristics discovered during play via `[[<category>/<name>]]`
 
 Post reasoning to the stream overlay with `think()` so viewers can follow your decisions.
 
@@ -59,4 +53,4 @@ When the run ends (GAME_OVER screen), proceed through it and STOP. Report:
 - What went well, what went wrong
 - Knowledge gaps encountered
 - Any margin notes from the run (collected)
-- **Next goal recommendation** — read `heuristics/goals/next.md` and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why
+- **Next goal recommendation** — read [[goals/next]] and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why

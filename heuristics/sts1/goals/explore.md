@@ -7,22 +7,15 @@ Play Slay the Spire to TEST SOMETHING SPECIFIC. You are not trying to maximize w
 Read these at the start of the session:
 
 **Ontology:**
-- `ontology/sts1/game.md` — Game domain: cards, enemies, bosses, relics, events, rules, interface
+- `ontology/sts1/game.md` — Game domain: cards, enemies, bosses, relics, events, rules
+
+**Interface:**
+- `interface/sts1/tools.md` — Setup, commands, how to interact with the game
 
 **Heuristics:**
-- `heuristics/exploration/` — Experiment design, hypothesis evaluation, confounder tracking (read what exists)
-- `heuristics/archetypes.md` — Known archetypes (your experiments often test beyond these)
-- Game heuristics (`heuristics/combat.md`, per-entity files) as baseline — you need to play competently even while experimenting
-
-## Setup
-
-```python
-import sys
-sys.path.insert(0, r"C:\Users\tkond\projects\autoplay\games\sts1")
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start
-```
-
-Call `state()` to see the game. See `ontology/sts1/interface/tools.md` for the full tool reference.
+- [[exploration/]] — Experiment design, hypothesis evaluation, confounder tracking (read what exists)
+- [[archetypes]] — Known archetypes (your experiments often test beyond these)
+- Game heuristics ([[combat]], per-entity files) as baseline — you need to play competently even while experimenting
 
 ## What You're Testing
 
@@ -77,4 +70,4 @@ When the run ends (GAME_OVER screen), proceed through it and STOP. Report:
 - **Experiment summary:** What was tested, what evidence was generated, verdict (confirmed / refuted / needs more data)
 - Confounders that limit the conclusion
 - Suggested follow-up experiments
-- **Next goal recommendation** — read `heuristics/goals/next.md` and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why
+- **Next goal recommendation** — read [[goals/next]] and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why

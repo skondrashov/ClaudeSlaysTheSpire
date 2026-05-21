@@ -11,8 +11,8 @@ Read these at the start of the session:
 - `ontology/sts1/analysis/index.md` — Analysis methodology: prediction errors, attribution, observation lifecycle
 
 **Heuristics:**
-- `heuristics/audit/` — How to evaluate decisions, common error patterns, what "correct" looks like (read what exists)
-- Game heuristics (`heuristics/cards/`, `heuristics/enemies/`, etc.) as reference standard — read per-entity files to check whether the player followed guidance
+- [[audit/]] — How to evaluate decisions, common error patterns, what "correct" looks like (read what exists)
+- Game heuristics ([[cards/]], [[enemies/]], etc.) as reference standard — read per-entity files to check whether the player followed guidance
 
 ## Input
 
@@ -58,4 +58,4 @@ At the end, summarize:
 
 Write output to `analyst/audits/run_NNN.md`.
 
-**Next goal recommendation** — read `heuristics/goals/next.md` and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why. Include this at the end of your audit report.
+**Next goal recommendation** — read [[goals/next]] and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why. Include this at the end of your audit report.

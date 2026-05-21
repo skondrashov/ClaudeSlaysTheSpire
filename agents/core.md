@@ -39,13 +39,16 @@ Files cross-reference each other with `[[path]]` links. Links resolve relative t
 
 The base path is the domain directory: `<layer>/<domain>/`. Same convention everywhere — different base paths.
 
-#### Cross-layer lookup
+#### Ontology → Heuristic correspondence
 
-When you encounter a game entity (card, enemy, boss, relic, event, buff, debuff), check both layers:
-- **Ontology** (`ontology/sts1/<category>/<name>.md`) — what it is, what it does
-- **Heuristic** (`heuristics/sts1/<category>/<name>.md`) — what to do about it
+The heuristic tree mirrors the ontology tree. Every ontology entry *implicitly* has a corresponding heuristic at the same path in the heuristic layer. When you read an ontology entry, always check for the heuristic too:
 
-Not every entity has both. Read what exists.
+`ontology/sts1/cards/bash.md` → `heuristics/sts1/cards/bash.md`
+`ontology/sts1/enemies/cultist.md` → `heuristics/sts1/enemies/cultist.md`
+
+The ontology tells you what something IS. The heuristic tells you what to DO about it. Not every entity has a heuristic yet — read what exists.
+
+You navigate primarily through ontology (following `[[links]]` between entities). The heuristic layer rides along — whenever you land on an ontology entry, the heuristic is there if it exists. You don't need to navigate "back" from heuristics to ontology because you already have the ontology context that led you there.
 
 - Don't pre-load everything. Read what you need, when you need it.
 

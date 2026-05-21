@@ -11,15 +11,15 @@ Read these at the start of the session:
 - `ontology/sts1/analysis/index.md` — Analysis methodology: prediction errors, attribution, observation lifecycle
 
 **Heuristics:**
-- `heuristics/curation/` — Overfitting detection, coverage analysis, evidence standards, formatting (read what exists)
-- The ENTIRE `heuristics/` tree is your review target — browse it to assess health, don't just read individual files
+- [[curation/]] — Overfitting detection, coverage analysis, evidence standards, formatting (read what exists)
+- The ENTIRE heuristic tree is your review target — browse it to assess health, don't just read individual files
 
 ## Inputs
 
 - `analyst/audits/` — Audit reports flagging tactical errors and patterns
 - `analyst/runs/` — Raw run logs (skim for context, don't re-audit)
 - `data/run_stats.json` — Win/death/floor statistics
-- `heuristics/` — The full strategic playbook
+- The full strategic playbook (heuristic tree)
 - `ontology/` — Game facts
 - Win agent margin notes (in run logs or analyst summaries)
 - Explore agent experiment results (in run logs)
@@ -30,7 +30,7 @@ Read these at the start of the session:
 
 The most dangerous failure mode. Signs:
 - **Single-cause attribution.** Are deaths being attributed to the same cause repeatedly? ("no Strength" appearing in 5 of 8 death analyses suggests the diagnosis is too narrow, not that Strength is literally the only thing that matters.)
-- **Archetype tunnel vision.** Does the playbook present one archetype as dominant and others as inferior? Check `heuristics/archetypes.md` — are all viable archetypes documented with equal conviction? Or does one get a paragraph and the others get a sentence?
+- **Archetype tunnel vision.** Does the playbook present one archetype as dominant and others as inferior? Check [[archetypes]] — are all viable archetypes documented with equal conviction? Or does one get a paragraph and the others get a sentence?
 - **Confirmation loop.** The knowledge cycle can self-reinforce: agent dies without X → analyst writes "need X" → next agent forces X → wins with X → "X confirmed critical." Check whether alternative explanations for deaths were considered.
 
 When you detect overfitting:
@@ -40,7 +40,7 @@ When you detect overfitting:
 ### 2. Coverage
 
 - **Entity coverage.** Which cards, enemies, bosses, relics, events have heuristic entries? Which don't? Gaps in frequently-encountered entities are higher priority than gaps in rare ones.
-- **Archetype coverage.** Are all proven winning archetypes documented? Check win logs — what archetypes actually won, and are they reflected in `heuristics/archetypes.md`?
+- **Archetype coverage.** Are all proven winning archetypes documented? Check win logs — what archetypes actually won, and are they reflected in [[archetypes]]?
 - **Act coverage.** Is Act 1, 2, and 3 guidance balanced, or is one act under-documented?
 - **Character coverage.** If we're playing multiple characters, is guidance balanced across them?
 
@@ -96,4 +96,4 @@ The pattern is: Curate identifies the question → Explore generates evidence �
 
 ## Next Goal
 
-At the end of your output, read `heuristics/goals/next.md` and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why. If you wrote exploration directives, the answer is almost certainly Explore.
+At the end of your output, read [[goals/next]] and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why. If you wrote exploration directives, the answer is almost certainly Explore.
