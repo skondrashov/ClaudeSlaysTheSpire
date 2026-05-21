@@ -18,40 +18,81 @@ CommunicationMod (in-game Java mod, stdin/stdout)
     overlay/index.html (OBS browser source)
 ```
 
-## Agents
+## Agent Model
 
-### Player (`agents/player.md`)
-Plays the game. Makes every decision with reasoning. In combat, fills out a combat plan template for the full turn, then executes with `turn()`. Outside combat, uses `send()` one action at a time.
+One agent, four goals. The agent is generic — it navigates an ontology (facts) and heuristics (cached reasoning) driven by a goal file. The four goals produce four specializations with different knowledge needs, different outputs, and different lenses on the same game.
 
-Key traits:
-- **Humble.** Says "I think" not "clearly." Admits uncertainty. Doesn't rationalize deaths.
-- **Plans full turns.** Doesn't play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.
-- **Plans full fights.** At combat start, reads enemy ontology + heuristic files, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.
-- **Navigates knowledge.** Reads ontology + heuristic files directly. Starts from `ontology/index.md`. Follows `[[links]]` to related entries. 750+ files covering every card, enemy, boss, event, relic, and potion.
-- **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.
+### The Four Goals
 
-### Analyst (`agents/analyst.md`)
-Runs after a completed run (victory or defeat). Reads the event log, identifies what went well and what went wrong, and updates playbook files.
+| Goal | Plays? | Input | Output |
+|------|--------|-------|--------|
+| **Win** | Yes | Game state + playbook | Run log + margin notes |
+| **Explore** | Yes | Hypotheses + directives | Run log + experiment results |
+| **Audit** | No | Completed run log | Fight assessments + error flags |
+| **Curate** | No | Audit flags + run stats + playbook | Edits, directives, structural changes |
 
-Output directories:
-- `ontology/` — Facts about game entities (what things ARE and DO)
-- `heuristics/` — Strategic guidance (what to DO about them)
-- `analyst/runs/` — One file per run (`run_NNN.md`). Machine-parsed by `regen_stats.py` to generate all stats.
-- `analyst/observations.md` — Uncertain items pending more data
+**Win** — The main player. Uses current best knowledge to win. Doesn't experiment, doesn't take risks for learning. But it has peripheral vision — roughly half the time, when it notices something interesting ("this card combo could be strong," "I wonder if this relic changes the calculus here"), it drops a margin note without diverting from the winning line. These notes are hypotheses for Explore.
 
-No confidence tags. If it's confirmed, it goes in `playbook/`. If uncertain, it goes in `analyst/observations.md`.
+**Explore** — The experimenter. Takes hypotheses from Win's margin notes or directives from the Curator and actively tests them. Willing to sacrifice win probability for information. "The Curator says we're overfitting on Strength — play 3 runs trying Corruption+FNP as primary engine" or "Win noted Runic Pyramid + Well-Laid Plans looked powerful — build around that."
 
-### Strategist (`agents/strategist.md`)
-Runs every ~10 runs. Steps back and evaluates whether the whole system is working.
+**Audit** — The tactical reviewer. Takes a completed run log and audits each fight: was the reasoning sound? Did the math check out? Did the player follow heuristics or deviate, and was the deviation justified? Doesn't second-guess the strategic framework — just checks execution against intent. Flags errors for the Curator.
 
-Key questions:
-- **Are we improving?** Floor-reached trends, recurring deaths, plateaus and their causes.
-- **Is the playbook serving the player?** Dead weight, missing coverage, signal-to-noise, structural fitness.
-- **Cross-run patterns.** Things the analyst misses because it only sees one run at a time.
-- **Architecture review.** Is the combat plan template helping? Is playbook loading effective? Is the analyst producing useful output?
-- **Cleanup.** Dedup, trim bloat, promote observations, fix contradictions, archive stale data.
+**Curate** — The strategist. Evaluates the knowledge system itself. Is the playbook overfitting? Coverage gaps? Contradictions? Stale entries? Takes input from Audit flags, Explorer results, Win's notes, and run statistics. Has authority to restructure the playbook, write directives for the Explorer, and revise strategic principles.
 
-Has authority to reshape the playbook structure — consolidate files, rewrite sections, delete what isn't working.
+### Two Ontologies, Four Directions
+
+The agents share a file system but see it through different lenses.
+
+**Game Ontology** (`ontology/`) — What the game IS. Cards, enemies, bosses, relics, potions, events, buffs, debuffs, rules, interface. All four agents can reference it. The playing agents (Win, Explore) navigate it actively during gameplay. The analysis agents (Audit, Curate) reference it to understand the decisions they're evaluating.
+
+- **Win's direction:** Game state → optimal action. "What do I play here?"
+- **Explore's direction:** Game state → experiment design. "What can I learn here?"
+
+**Analysis Ontology** (`ontology/analysis/`) — What good reasoning and good knowledge look like. Decision evaluation criteria, heuristic quality standards, evidence frameworks. The analysis agents' primary domain. Playing agents don't need this.
+
+- **Audit's direction:** Decision → evaluation. "Was this play correct?"
+- **Curate's direction:** Heuristic → assessment. "Is this entry well-supported and useful?"
+
+### Four Heuristic Sets
+
+**Game Heuristics** (`heuristics/`) — How to play. Combat, drafting, map routing, per-card strategies, per-enemy strategies, archetypes. Win's primary set. Explore uses as baseline. Audit uses as reference standard.
+
+**Exploration Heuristics** (`heuristics/exploration/`) — How to experiment. Hypothesis design, controlling for variance in a roguelike, evaluating results from small samples, when to declare confirmed/refuted. Explore's primary set.
+
+**Audit Heuristics** (`heuristics/audit/`) — How to evaluate decisions. Common reasoning errors, what "correct" looks like for each decision type, how to assess justified vs unjustified deviation from heuristics. Audit's primary set.
+
+**Curation Heuristics** (`heuristics/curation/`) — How to maintain the playbook. Overfitting detection, coverage analysis, evidence standards, formatting, contradiction detection, archetype balance. Curate's primary set.
+
+### Information Flow
+
+```
+Win ──margin notes──→ Explore
+ │                       │
+ run log                 run log + results
+ │                       │
+ ↓                       ↓
+Audit ────flags────→ Curate
+                        │
+                        ├── playbook edits (→ Win)
+                        ├── exploration directives (→ Explore)
+                        └── framework updates (→ all)
+```
+
+### Typical Cadence
+
+- Win runs most of the time (the main pipeline)
+- Explore runs when there are hypotheses to test or Curate directs it
+- Audit runs after every 1-3 Win/Explore runs
+- Curate runs every ~10 runs, or when Audit flags accumulate
+
+### Prompt Composition
+
+Every agent gets:
+1. `agents/core.md` — Agent identity, knowledge navigation, behavior
+2. `heuristics/goals/<goal>.md` — One of: win, explore, audit, curate
+3. Session context — Injected by orchestrator (run number, recent history, directives)
+
+The goal file points the agent at its ontology entry point and heuristic categories. The agent discovers everything else by reading files.
 
 ## Commands (cmd.py)
 
@@ -86,36 +127,6 @@ start("IRONCLAD", 5)             # Start Ironclad A5 run
 3. CommunicationMod — game state + action protocol
 4. SuperFastMode — speed up animations for bot play
 
-## Learning Loop
-
-```
-Player plays run → stream_events.jsonl captures every decision
-    ↓
-Run ends (victory or defeat) → player STOPS
-    ↓
-Analyst reads log, updates playbook/ files
-    ↓
-Every ~10 runs: Strategist reviews the arc, reshapes playbook, identifies bottlenecks
-    ↓
-Next run: player reads updated playbook before first action
-    ↓
-Player makes better decisions → repeat
-```
-
-The site (claudeslaysthespire.org) tracks every playbook diff over time — what changed, what was learned, how the system evolved. Two kinds of changes show up:
-- **Pipeline changes** — dev restructures to improve how the system works
-- **Playbook changes** — analyst updates from gameplay experience
-
-## Reference Files
-
-- `HUMAN_ADVICE.md` — provenance log of all human-injected knowledge (not read by the pipeline)
-
-## Repository
-
-This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondrashov/ClaudeSlaysTheSpire`. The parent `autoplay/` repo is a separate project that contains all games. **Do not add autoplay's remote to this directory, and do not add this directory's files to autoplay's git.** They are separate repos that happen to share a filesystem.
-
-The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/` or `site/` triggers a rebuild.
-
 ## How to Run
 
 This is the full startup procedure. Follow it from the top when starting a new session.
@@ -142,75 +153,23 @@ Start-Process -FilePath "python" -ArgumentList "stream.py" -WorkingDirectory "C:
 
 Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overlay for streaming. Independent of relay — can restart without affecting gameplay.
 
-### 3. Run the player/analyst loop
+### 3. Run the agent loop
 
-Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). The player plays one complete run, then stops and reports the outcome.
+Spawn a **Win** agent as a background subagent (Agent tool, `run_in_background: true`). The agent plays one complete run, then stops and reports the outcome.
 
-**Read `agents/player.md` for how to compose the player prompt.** It specifies which layer files to read (including the character-specific file from `playbook/characters/`), in what order, and the rules for assembling them. Follow it exactly.
+Compose the prompt from `agents/core.md` + `heuristics/goals/win.md` + session context (run number, session token, recent history). The goal file specifies the full setup including imports and interface.
 
-**Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py detects it and writes `analyst/runs/run_NNN.json` from the game state (deck, relics, potions, HP, gold, seed) plus the complete decision log from `data/stream_events.jsonl` (every command, reasoning, and resulting game state after each action). It then runs `regen_stats.py` to update stats and pings stream.py to reload. The overlay updates immediately. No orchestrator action needed for the run log.
+**Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py writes `analyst/runs/run_NNN.json` from game state plus the complete decision log from `data/stream_events.jsonl`. It then runs `regen_stats.py` to update stats and pings stream.py to reload.
 
-When the player finishes:
+When the agent finishes:
 1. Delete `data/player.lock`.
-2. Switch the overlay to agent mode (see below).
-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run JSON, updates `playbook/` files. The run log is already written by cmd.py — the analyst does NOT touch it.
-4. When analyst completes, switch overlay back to game mode.
-5. Rebuild site: `python site/build.py`.
-6. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).
-7. Spawn the next player.
+2. Commit run data + any knowledge updates.
+3. Optionally spawn **Audit** to review the run.
+4. Optionally spawn **Curate** if flags have accumulated (~every 10 runs).
+5. Push changes (triggers site rebuild on claudeslaysthespire.org).
+6. Spawn the next Win (or Explore, if there are directives).
 
 Repeat until interrupted.
-
-### Overlay switching for analyst/strategist
-
-When spawning a non-player agent (analyst, strategist), the overlay should show their streaming output instead of the game. The agent's JSONL conversation file is at:
-
-```
-~/.claude/projects/C--Users-tkond-projects-autoplay/<session-id>/subagents/agent-<agent-task-id>.jsonl
-```
-
-**Start agent mode** (right after spawning the agent — use Python to avoid curl encoding issues):
-```python
-python -c "
-import json, urllib.request
-data = json.dumps({
-    'action': 'start',
-    'title': 'POST-GAME ANALYSIS',
-    'jsonl_path': '<path-to-agent-jsonl>',
-    'run_summary': '<player summary text with newlines>'
-}).encode('utf-8')
-req = urllib.request.Request('http://127.0.0.1:3002/agent', data=data, headers={'Content-Type': 'application/json'})
-urllib.request.urlopen(req)
-"
-```
-
-Titles: `"POST-GAME ANALYSIS"` for analyst, `"STRATEGIC REVIEW"` for strategist.
-The `run_summary` field is shown in the bottom bar's action feed area during agent mode (replaces action log with a last-run summary from the player).
-
-**Stop agent mode** (after the agent completes):
-```bash
-curl -s http://127.0.0.1:3002/agent -X POST -H "Content-Type: application/json" \
-  -d '{"action":"stop"}'
-```
-
-The JSONL path requires the current Claude Code session ID and the agent's task ID (returned by the Agent tool). To find the session ID, check the most recently modified directory:
-```bash
-ls -td ~/.claude/projects/C--Users-tkond-projects-autoplay/*/ | head -1
-```
-Then construct the path as:
-```
-C:/Users/tkond/.claude/projects/C--Users-tkond-projects-autoplay/<SESSION_ID>/subagents/agent-<TASK_ID>.jsonl
-```
-
-stream.py watches the JSONL, parses assistant text blocks and tool_use blocks, and broadcasts them to the overlay. The overlay covers the game area with an opaque panel showing the agent's reasoning in real time.
-
-### Rules
-
-- **One player at a time.** Enforced by `data/player.lock` (see lock mechanism below).
-- **Analyst runs between runs.** Never simultaneously with the player.
-- **Overlay switches for analyst/strategist.** Always activate agent mode before spawning, deactivate after completion.
-- **Commit after analyst.** The site changelog tracks every playbook diff.
-- **If this session crashes**, the loop stops. Re-read this section and resume from wherever it left off. The game state persists in relay — nothing is lost.
 
 ### Player lock mechanism
 
@@ -239,9 +198,40 @@ In every Bash call, before importing cmd, set:
 - Orchestrator deletes lock file before spawning a new agent. That's the handoff.
 - If the agent forgets to set the env var → import fails → agent dies. Orchestrator spawns a new one.
 
+### Overlay switching for analyst/strategist
+
+When spawning a non-player agent (Audit, Curate), the overlay should show their streaming output instead of the game. The agent's JSONL conversation file is at:
+
+```
+~/.claude/projects/C--Users-tkond-projects-autoplay/<session-id>/subagents/agent-<agent-task-id>.jsonl
+```
+
+**Start agent mode** (right after spawning the agent — use Python to avoid curl encoding issues):
+```python
+python -c "
+import json, urllib.request
+data = json.dumps({
+    'action': 'start',
+    'title': 'POST-GAME ANALYSIS',
+    'jsonl_path': '<path-to-agent-jsonl>',
+    'run_summary': '<player summary text with newlines>'
+}).encode('utf-8')
+req = urllib.request.Request('http://127.0.0.1:3002/agent', data=data, headers={'Content-Type': 'application/json'})
+urllib.request.urlopen(req)
+"
+```
+
+Titles: `"POST-GAME ANALYSIS"` for Audit, `"STRATEGIC REVIEW"` for Curate.
+
+**Stop agent mode** (after the agent completes):
+```bash
+curl -s http://127.0.0.1:3002/agent -X POST -H "Content-Type: application/json" \
+  -d '{"action":"stop"}'
+```
+
 ### Coaching notes
 
-Human feedback for the analyst goes in `data/coaching_notes.md`. When the user gives coaching during a run (e.g., "the player should have done X"), append it to this file. Include the file path in the analyst prompt so the analyst incorporates the feedback into playbook updates. The analyst marks notes as addressed after processing them.
+Human feedback goes in `data/coaching_notes.md`. When the user gives coaching during a run, append it to this file. Include the file path in the Audit prompt so it incorporates the feedback. The Audit agent marks notes as addressed after processing them.
 
 ### Git gotchas
 
@@ -258,7 +248,13 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g
 
 ### Current state
 
-- Playing **Watcher** at Ascension 0 (first Watcher runs — learning phase)
-- Strategist runs every 10 runs
-- 6 wins total (3 Ironclad, 2 Silent, 1 Defect) at Ascension 0.
+- Playing **Ironclad** at Ascension 0
+- 8 wins total (5 Ironclad, 2 Silent, 1 Defect) at Ascension 0
+- 150 runs completed
+- Four-agent model (Win/Explore/Audit/Curate) — Explore, Audit, and Curate goal files written, heuristic directories stubbed
 
+## Repository
+
+This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondrashov/ClaudeSlaysTheSpire`. The parent `autoplay/` repo is a separate project that contains all games. **Do not add autoplay's remote to this directory, and do not add this directory's files to autoplay's git.** They are separate repos that happen to share a filesystem.
+
+The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/` or `site/` triggers a rebuild.
