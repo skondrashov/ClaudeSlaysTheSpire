@@ -17,10 +17,6 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 | `state()` | Returns formatted text of the current game state (HP, enemies, hand, map, etc.) |
 | `deck()` | Returns full deck contents sorted by type with costs and upgrade status |
 
-## Knowledge
-
-Knowledge lives in files, not functions. Read ontology and heuristic files directly using the Read tool. Your goal file specifies which entry points to start from. Follow `[[category/Name]]` links by reading `ontology/sts1/category/name.md`. Check `heuristics/category/name.md` for strategic guidance on any entity.
-
 ## Action
 
 | Function | Description |
