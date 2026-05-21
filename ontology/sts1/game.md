@@ -8,6 +8,7 @@ Each run plays through [[acts/Act 1]], [[acts/Act 2]], [[acts/Act 3]], then an o
 
 ## Game Systems
 
+- [[combat]] — Turn structure, intents, how damage/block/energy/draw interact in a fight
 - [[rules/energy]] — 3E per turn (base). Cards cost energy to play.
 - [[rules/block]] — Prevents damage. Resets to 0 at start of your turn.
 - [[rules/damage]] — Attack cards deal damage modified by [[buffs/Strength]] and [[debuffs/Vulnerable]].
