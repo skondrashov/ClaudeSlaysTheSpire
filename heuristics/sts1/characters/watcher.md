@@ -101,6 +101,12 @@ The Watcher is more HP-sensitive than other characters because Wrath doubles inc
 - **Sozu + Philosopher's Stone is a lethal combination.** Sozu prevents potion use (no emergency healing), and Philosopher's Stone gives enemies +1 Str (amplifies all incoming damage). Run 192 died at F25 with this combination — no healing and harder fights. Avoid both together.
 - **Pantograph (+25 HP at boss start) is exceptional.** It changes the rest-vs-upgrade calculus at pre-boss rest sites. If Rest + Pantograph would overcap HP, always upgrade instead. Run 193 correctly identified this.
 
+## Relic Warnings
+
+**Runic Pyramid (retain hand between turns):** Dangerous for Watcher. Burns, Wounds, Slimed, Dazed, and other unplayable status cards are retained permanently, consuming hand slots every turn. The Watcher needs specific cards in hand each turn for stance sequencing (Eruption/Crescendo for Wrath entry, Vigilance/Inner Peace/Empty Body for Calm exit). Retained junk cards reduce the effective hand size, making it impossible to sequence stance changes reliably. **Confirmed fatal: Run 195 (F45)** -- Burns from combat encounters were retained by Runic Pyramid, clogging the hand against Nemesis. Avoid Runic Pyramid unless the deck has very few sources of status cards AND a way to play/exhaust them.
+
+**Sozu (no potions):** Removes the Watcher's only emergency healing and burst tools. Combined with Philosopher's Stone (+1 enemy Str), the Watcher takes amplified damage with no recovery option. **Confirmed fatal: Run 192 (F25).**
+
 ## Spire Growth Counter-Strategy
 
 Spire Growth (170 HP, Act 3) applies **Constricted X** on its STRONG_DEBUFF turns. Constricted deals X damage at end of every subsequent turn, and this damage IS affected by block. However, it stacks with the attack damage each turn, so the effective incoming damage per turn is (attack + Constricted).
@@ -117,12 +123,16 @@ Spire Growth (170 HP, Act 3) applies **Constricted X** on its STRONG_DEBUFF turn
 
 ## Current Status
 
-0 wins in 14 runs (128-132, 188-196), best Floor 39. Stance dance is the only engine tested. The engine assembles reliably and the strategic framework is sound. Execution is clean. Recent deaths are strategic/knowledge gaps and HP management:
+0 wins in 14 runs (128-132, 188-196), best Floor 45 (Run 195). Stance dance is the only engine tested. The engine assembles reliably and the strategic framework is sound. Execution is clean. Recent deaths are strategic/knowledge gaps and HP management:
 - Run 191 (F24): Chosen+Byrd — Hex vulnerability, Skill-heavy engine collapsed.
 - Run 192 (F25): Slavers elite at low HP — Sozu+Philosopher's Stone, no healing.
 - Run 193 (F33): Bronze Automaton — Tantrum+ damage miscalculation led to unnecessary Distilled Chaos use that ended the turn. The kill was in hand.
-- Run 194 (F17): Unknown cause.
-- Run 195 (F?): Unknown cause.
-- Run 196 (F39): Spire Growth — entered fight at 9 HP, Constricted 10 made survival impossible. Root cause: Orb Walker fight (F35) dealt 36 damage in one turn (ended in Wrath with no exit + 3 Burns). Thorns fights (F38) cost additional HP. No healing cards in deck, no potions. The engine was fully assembled and performing well but HP attrition killed the run.
+- Run 194 (F16): Slime Boss — Slimed card flooding overwhelmed the small deck. The Watcher lacks exhaust tools to manage junk cards, and Slimed clogged the draws needed for stance-change sequencing.
+- Run 195 (F45): Nemesis — Flurry of Blows damage miscalculation + Burns from Runic Pyramid clogged the hand. Deepest Watcher run. The engine was fully online but Burns (unplayable, retained by Runic Pyramid) consumed hand slots needed for stance-change cards.
+- Run 196 (F39): Spire Growth — entered fight at 9 HP, Constricted 10 made survival impossible. Root cause: Orb Walker fight (F35) dealt 36 damage in one turn (ended in Wrath with no exit + 3 Burns). No healing cards in deck, no potions. The engine was fully assembled and performing well but HP attrition killed the run.
 
-**Key lesson from Run 196:** The Watcher has NO built-in healing. Without healing cards/relics/potions, HP attrition through Act 3 is fatal even with a strong engine. Stance dance generates damage and block but cannot recover HP. Prioritize acquiring healing sources (potions, Meal Ticket, events) to sustain through Act 3. Additionally, NEVER end a turn in Wrath without a guaranteed exit — Run 196's critical HP loss came from ending in Wrath against Orb Walker with Burns in hand.
+**Key lessons:**
+- **No built-in healing (Runs 192, 196):** The Watcher has NO built-in healing. Without healing cards/relics/potions, HP attrition through Act 3 is fatal even with a strong engine. Stance dance generates damage and block but cannot recover HP. Prioritize acquiring healing sources (potions, Meal Ticket, events) to sustain through Act 3.
+- **NEVER end in Wrath without a guaranteed exit (Run 196):** Run 196's critical HP loss came from ending in Wrath against Orb Walker with Burns in hand.
+- **Runic Pyramid is dangerous for Watcher (Run 195):** Burns and other unplayable cards are retained by Runic Pyramid, permanently consuming hand slots. The Watcher needs specific cards in hand each turn for stance sequencing. Retained junk cards break the engine. Avoid Runic Pyramid unless the deck has very few status/curse sources.
+- **Slime Boss requires special preparation (Run 194):** The Watcher's stance dance engine is single-target focused. Slimed flooding is uniquely punishing because drawing the right stance-change cards in the right order is critical. See Slime Boss matchup notes.

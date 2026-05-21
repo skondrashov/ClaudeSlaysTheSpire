@@ -28,6 +28,22 @@
 - Focus all damage on one large slime while ignoring the other
 - Use [[cards/Hemokinesis]] at low HP during split phase
 
-## Confirmed Winning Approach
+## Watcher-Specific Concerns
+
+The Watcher's stance dance engine is single-target focused and uniquely vulnerable to Slimed flooding:
+
+- **Slimed cards clog the draw pile.** The stance dance engine requires drawing specific cards (Eruption, Vigilance, Inner Peace, Meditate) in the right order. Each Slimed card displaces a critical draw. In a small deck (10-15 cards), 3-5 Slimed cards can make it impossible to sequence stance changes.
+- **No exhaust tools.** Ironclad has True Grit, Fiend Fire, and Corruption to exhaust Slimed. The Watcher has no equivalent. Slimed cards stay in the deck for the entire fight.
+- **Limited AOE.** Conclude+ (AOE, ends turn) is the primary option. Windmill Strike and Wheel Kick are single-target. Without Conclude+, the split phase requires killing each slime individually.
+
+**Mitigation:**
+- If Slime Boss is visible from Floor 1, prioritize a larger deck (15+ cards) to dilute Slimed impact on draw quality.
+- Take Conclude if offered before the boss fight -- it is the best Watcher AOE for the split phase.
+- Use Calm energy bonus (+2E from leaving Calm) to play through Slimed cards (1E each) while still having energy for real cards.
+- Consider pathing to avoid Slime Boss if possible (take an alternate path if the map offers one).
+
+**Confirmed fatal: Run 194 (F16)** -- Small deck + Slimed flooding = engine collapse. Could not draw stance-change cards reliably.
+
+## Confirmed Winning Approach (Ironclad)
 
 [[cards/Evolve]] + Thunderclap+ + [[cards/Spot Weakness]] + [[relics/Shuriken]]: Evolve neutralizes Slimed clog. Thunderclap+ applies AOE Vulnerable on split slimes. Spot Weakness + Shuriken provide [[buffs/Strength]] scaling across multi-enemy phase.
