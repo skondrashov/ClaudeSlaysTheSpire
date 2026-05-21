@@ -28,17 +28,27 @@ OBS browser source (overlay/index.html)
 
 ## Starting the Pipeline
 
+### Quick start (use this)
+
+```powershell
+# Kill any existing game/relay processes
+.\scripts\kill.ps1
+
+# Launch game with mods, auto-click Play, wait for relay
+.\scripts\launch.ps1
+```
+
+`launch.ps1` handles everything: launches ModTheSpire, waits for the mod selection window, sends Enter to click Play, waits for the relay on port 19284. When it prints "Ready." the pipeline is good to go.
+
+### Manual start (if scripts fail)
+
 Order matters. Each component depends on the one above it.
 
 ### 1. Launch the game
 Start Slay the Spire through Steam with mods enabled (ModTheSpire → BaseMod → CommunicationMod → SuperFastMode). The game must be running before relay.py can connect.
 
 ### 2. Start relay.py
-```powershell
-cd C:\Users\tkond\projects\autoplay\games\sts1
-python relay.py
-```
-Bridges CommunicationMod's stdin/stdout to TCP on port 19284. Must be running before cmd.py can connect.
+CommunicationMod launches relay.py automatically as its child process — do NOT start relay.py manually. If the relay dies, the game must be restarted (CommunicationMod won't re-spawn it).
 
 ### 3. Start stream.py
 ```powershell
