@@ -20,6 +20,12 @@ Pursue whichever engine the card/relic offerings support. No single archetype is
 
 **6. [[cards/Echo Form]] Orb Engine** — Echo Form+ + [[cards/Seek]]/[[relics/Bottled Lightning]] + [[cards/Coolheaded]] + [[cards/Barrage]] + [[relics/Mummified Hand]] + Loop + [[relics/Data Disk]]. Echo Form doubles first card each turn. Seek+ guarantees finding key cards.
 
+## [[characters/Watcher]] (0 wins / 8 runs)
+
+**No proven archetype yet.** Stance dance (Wrath/Calm cycling) is the primary engine under development. The engine assembles reliably and strategic plans have been correct, but all 3 recent deaths (runs 188-190) involved execution errors (Blasphemy self-kill, turn() index shifting) rather than archetype failure. Best floor: 33 (run 131). See exploration directives 4 and 5 for the testing plan.
+
+**Stance Dance Engine (unproven, promising):** Eruption+ (1E Wrath entry) + Calm exits (Vigilance, Inner Peace, Empty Body) + Rushdown (draw on Wrath entry) + Simmering Fury+ (draw on Wrath start-of-turn) + Flurry of Blows (free damage on stance change) + Battle Hymn (sustained Smite generation). The energy loop (Calm +2E -> Wrath doubled damage) is the Watcher's fundamental scaling path.
+
 ## What All Wins Share
 
-(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP block engine has won twice but always alongside Str sources — its independence is under investigation. The key is having SOME scaling path.
+(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP block engine has won twice but always alongside Str sources — its independence is under investigation. The Watcher's 0-win record correlates with execution errors, not archetype weakness. The key is having SOME scaling path AND clean execution.

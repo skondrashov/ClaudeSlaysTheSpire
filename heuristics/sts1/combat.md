@@ -84,6 +84,14 @@ Always play X-cost cards LAST. To control the value of X, spend energy on other 
 
 Hand indices shift after each play. Before entering `play N`, confirm the card at index N matches your plan. Re-read hand state after each card play.
 
+### 6. USE CARD NAMES IN turn() BATCHES — NEVER INDICES
+
+In batched `turn()` commands, card indices shift after each play but the batch pre-computes all actions. This causes the wrong card to be played. **Confirmed fatal in Run 190:** `turn(["play 1", "play 2 0", "play 3 0", "play 4", "end"])` played Eruption+ instead of a Strike because indices shifted after the first card was played, entering Wrath with no exit and causing death.
+
+**RULE:** Always use card names in `turn()` sequences: `turn(["play Consecrate", "play Strike 0", "play Strike 0", "play Defend", "end"])`. Card names resolve against the current hand state at the time each action executes, so they are immune to index shifting.
+
+If two copies of the same card exist in hand and you need to play a specific one, play each card individually via `send()` with a state check between plays instead of using `turn()`.
+
 ---
 
 ## Shockwave+ Timing Rule

@@ -44,3 +44,15 @@ Need at minimum: (1) a Wrath exit in the deck (at least 2 sources), (2) a Weak s
 ## HP Sensitivity
 
 The Watcher is more HP-sensitive than other characters because Wrath doubles incoming damage. A single turn ending in Wrath against an attacker can drain 20-40 HP from doubled multi-hits. Prioritize HP conservation.
+
+## Execution Risks
+
+The Watcher's stance mechanics create unique execution failure modes not present in other characters:
+
+1. **Accidental Wrath entry via turn() index shifting.** Batched turn() commands with index-based card references can play the wrong card when indices shift after each play. If the wrong card enters Wrath, the result is often lethal. **Always use card names in turn() batches** (see combat.md rule 6). Confirmed fatal: Run 190.
+2. **Blasphemy self-kill.** Blasphemy sets HP to 1 at end of next turn. The kill MUST be confirmed with exact arithmetic before playing. Confirmed fatal: Run 189.
+3. **Missing Wrath exit.** Entering Wrath without a confirmed exit card in hand or guaranteed next draw is gambling with doubled incoming damage. Before entering Wrath, verify: "Do I have an exit in hand RIGHT NOW?" If no, do not enter Wrath.
+
+## Current Status
+
+0 wins in 8 runs (128-132, 188-190), best Floor 33. Stance dance is the only engine tested. The engine assembles reliably and the strategic framework is sound -- all recent deaths (189, 190) were execution errors, not archetype failures. Improving execution is the current bottleneck, not strategy.

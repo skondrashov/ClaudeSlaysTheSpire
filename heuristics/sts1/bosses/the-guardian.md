@@ -34,3 +34,9 @@
 **[[characters/Silent]]:** Mode Shift + Shivs: multiple Shivs accumulate toward Mode Shift quickly. [[cards/Cloak and Dagger]] (2 Shivs) is critical. [[cards/Noxious Fumes]] played Turn 1 deals 78 total poison over 12 turns. [[cards/Wraith Form]]: do NOT play early (Dex penalty compounds over 12+ turns). [[debuffs/Poison]] Potions bypass Sharp Hide.
 
 **[[characters/Defect]]:** Frost wall sustains through the long fight. [[cards/Barrage]] with full orbs (5+) triggers Mode Shift in 1-2 plays. [[cards/Echo Form]] early on a free Charging Up turn. [[cards/Coolheaded]] cycling finds cards when needed.
+
+**[[characters/Watcher]]:** The stance dance engine is powerful against Guardian but uniquely risky. Key considerations:
+- **NEVER enter Wrath without a guaranteed exit in hand.** Sharp Hide deals 3 damage per attack played; in Wrath this effectively costs 6 HP per attack (doubled incoming + retaliation). If the next turn has no Wrath exit, you take doubled Guardian attacks (32 damage becomes 64, multi-hits become lethal).
+- **Wrath exit density matters.** Run 190 died because the only Wrath exit (Tranquility) had been exhausted and Vigilance was in the draw pile. Minimum 2 Wrath exit sources in deck for this fight. If only 1 exit source exists, do NOT enter Wrath unless the exit card is in hand.
+- **Mode Shift burst:** Eruption+ (in Calm) -> attacks in Wrath -> Vigilance to Calm is the ideal cycle. Doubled attacks trigger Mode Shift quickly. But do NOT batch the whole sequence in turn() — use card names, not indices (see combat.md rule 6).
+- **Sharp Hide in Wrath:** Playing 3 attacks in Wrath during Sharp Hide costs 9 HP from retaliation alone. Limit attacks per Sharp Hide turn or accept the cost only if it triggers Mode Shift.
