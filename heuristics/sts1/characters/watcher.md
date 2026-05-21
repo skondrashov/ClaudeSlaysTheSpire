@@ -101,11 +101,28 @@ The Watcher is more HP-sensitive than other characters because Wrath doubles inc
 - **Sozu + Philosopher's Stone is a lethal combination.** Sozu prevents potion use (no emergency healing), and Philosopher's Stone gives enemies +1 Str (amplifies all incoming damage). Run 192 died at F25 with this combination — no healing and harder fights. Avoid both together.
 - **Pantograph (+25 HP at boss start) is exceptional.** It changes the rest-vs-upgrade calculus at pre-boss rest sites. If Rest + Pantograph would overcap HP, always upgrade instead. Run 193 correctly identified this.
 
+## Spire Growth Counter-Strategy
+
+Spire Growth (170 HP, Act 3) applies **Constricted X** on its STRONG_DEBUFF turns. Constricted deals X damage at end of every subsequent turn, and this damage IS affected by block. However, it stacks with the attack damage each turn, so the effective incoming damage per turn is (attack + Constricted).
+
+**At low HP, Constricted is lethal.** Constricted 10 means you need 10 EXTRA block every turn beyond blocking the attack. If the attack is 16 (Weakened), that's 26 block needed per turn. Without massive block generation or Wrath burst to kill quickly, this is unsurvivable at low HP.
+
+**Mitigation:**
+- Enter the fight at high HP (40+). Constricted is manageable if you can absorb a few turns of damage.
+- Kill FAST. Wrath burst with the full engine (Rushdown 4, Deva Form, Divinity) can output 50-100+ damage per turn.
+- Do NOT waste the first free debuff turn on setup if your HP is critical — prioritize block infrastructure over power setup.
+- Wave of the Hand + Wallop combo is key: Wallop generates block equal to damage dealt, Wave converts that to Weak, reducing attack component.
+
+**Confirmed fatal: Run 196 (F39)** — Entered at 9 HP after Orb Walker fight drained HP. Constricted 10 + 16 attack = 26 damage per turn. Maximum block from hand was 12. Died turn 3.
+
 ## Current Status
 
-0 wins in 11 runs (128-132, 188-193), best Floor 33. Stance dance is the only engine tested. The engine assembles reliably and the strategic framework is sound. Directive 4 (execution cleanup, runs 191-193) eliminated all index-shift errors and Blasphemy self-kills — execution is now clean. Recent deaths are strategic/knowledge gaps, not execution failures:
+0 wins in 14 runs (128-132, 188-196), best Floor 39. Stance dance is the only engine tested. The engine assembles reliably and the strategic framework is sound. Execution is clean. Recent deaths are strategic/knowledge gaps and HP management:
 - Run 191 (F24): Chosen+Byrd — Hex vulnerability, Skill-heavy engine collapsed.
 - Run 192 (F25): Slavers elite at low HP — Sozu+Philosopher's Stone, no healing.
 - Run 193 (F33): Bronze Automaton — Tantrum+ damage miscalculation led to unnecessary Distilled Chaos use that ended the turn. The kill was in hand.
+- Run 194 (F17): Unknown cause.
+- Run 195 (F?): Unknown cause.
+- Run 196 (F39): Spire Growth — entered fight at 9 HP, Constricted 10 made survival impossible. Root cause: Orb Walker fight (F35) dealt 36 damage in one turn (ended in Wrath with no exit + 3 Burns). Thorns fights (F38) cost additional HP. No healing cards in deck, no potions. The engine was fully assembled and performing well but HP attrition killed the run.
 
-The bottleneck has shifted from execution to matchup knowledge. The engine can reach Act 2 bosses; it needs better fight-specific heuristics to close out runs.
+**Key lesson from Run 196:** The Watcher has NO built-in healing. Without healing cards/relics/potions, HP attrition through Act 3 is fatal even with a strong engine. Stance dance generates damage and block but cannot recover HP. Prioritize acquiring healing sources (potions, Meal Ticket, events) to sustain through Act 3. Additionally, NEVER end a turn in Wrath without a guaranteed exit — Run 196's critical HP loss came from ending in Wrath against Orb Walker with Burns in hand.
