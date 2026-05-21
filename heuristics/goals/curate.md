@@ -79,3 +79,7 @@ Write directives to `analyst/directives.md`. Make playbook edits directly.
 - **Name the bottleneck.** Every plateau has a specific reason. Find it.
 - **Measure, don't vibe.** Use run statistics, not impressions.
 - **Diversify, don't narrow.** The playbook should expand the player's repertoire, not restrict it to what worked last time.
+
+## Next Goal
+
+At the end of your output, read `heuristics/goals/next.md` and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why. If you wrote exploration directives, the answer is almost certainly Explore.

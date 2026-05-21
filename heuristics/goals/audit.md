@@ -57,3 +57,5 @@ At the end, summarize:
 - **Flags for Curator:** Issues that suggest the playbook needs updating (not the player's execution)
 
 Write output to `analyst/audits/run_NNN.md`.
+
+**Next goal recommendation** — read `heuristics/goals/next.md` and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why. Include this at the end of your audit report.

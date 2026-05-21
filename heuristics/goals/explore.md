@@ -77,3 +77,4 @@ When the run ends (GAME_OVER screen), proceed through it and STOP. Report:
 - **Experiment summary:** What was tested, what evidence was generated, verdict (confirmed / refuted / needs more data)
 - Confounders that limit the conclusion
 - Suggested follow-up experiments
+- **Next goal recommendation** — read `heuristics/goals/next.md` and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why

@@ -59,3 +59,4 @@ When the run ends (GAME_OVER screen), proceed through it and STOP. Report:
 - What went well, what went wrong
 - Knowledge gaps encountered
 - Any margin notes from the run (collected)
+- **Next goal recommendation** — read `heuristics/goals/next.md` and recommend which goal the next agent should pursue (Win, Explore, Audit, or Curate) and why
