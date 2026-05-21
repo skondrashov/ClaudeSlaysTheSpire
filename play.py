@@ -15,10 +15,11 @@ lock_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "pl
 if os.path.exists(lock_file):
     os.remove(lock_file)
 
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, start, state_raw, _tcp_request
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, start, think, deck, state_raw, _tcp_request
 from bot.state_formatter import format_state
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding='utf-8')
     if len(sys.argv) < 2:
         print("Usage: python play.py <command>")
         sys.exit(1)
@@ -38,6 +39,48 @@ if __name__ == "__main__":
         actions = args[0].split("|") if args else []
         reason = args[1] if len(args) > 1 else "executing turn"
         print(turn(actions, reason=reason))
+    elif cmd == "play":
+        # python play.py play "card_index [target]" "reason text"
+        play_args = args[0] if args else ""
+        reason = args[1] if len(args) > 1 else "playing card"
+        parts = play_args.split()
+        card_idx = int(parts[0]) if parts else 1
+        target = int(parts[1]) if len(parts) > 1 else None
+        if target is not None:
+            print(play(card_idx, target, reason=reason))
+        else:
+            print(play(card_idx, reason=reason))
+    elif cmd == "end":
+        reason = args[0] if args else "ending turn"
+        print(end(reason=reason))
+    elif cmd == "choose":
+        idx = int(args[0]) if args else 0
+        reason = args[1] if len(args) > 1 else "choosing"
+        print(choose(idx, reason=reason))
+    elif cmd == "proceed":
+        reason = args[0] if args else "proceeding"
+        print(proceed(reason=reason))
+    elif cmd == "skip":
+        reason = args[0] if args else "skipping"
+        print(skip(reason=reason))
+    elif cmd == "think":
+        text = args[0] if args else ""
+        label = args[1] if len(args) > 1 else "THINKING"
+        print(think(text, label))
+    elif cmd == "deck":
+        print(deck())
+    elif cmd == "potion_use":
+        idx = int(args[0]) if args else 0
+        target = int(args[1]) if len(args) > 1 else None
+        reason = args[2] if len(args) > 2 else "using potion"
+        if target is not None:
+            print(potion_use(idx, target, reason=reason))
+        else:
+            print(potion_use(idx, reason=reason))
+    elif cmd == "potion_discard":
+        idx = int(args[0]) if args else 0
+        reason = args[1] if len(args) > 1 else "discarding potion"
+        print(potion_discard(idx, reason=reason))
     elif cmd == "raw":
         result = _tcp_request({'type': 'command', 'command': 'state'})
         print(format_state(result))
