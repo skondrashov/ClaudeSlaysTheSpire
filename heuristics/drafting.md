@@ -23,10 +23,12 @@ The single biggest strategic failure across 50 runs: entering [[acts/Act 2]] wit
 
 Verify by Floor 15. ALL FOUR criteria or die in Act 2:
 
-1. **Front-loaded [[buffs/Strength]]** -- [[cards/Inflame]], [[cards/Spot Weakness]]. NOT [[cards/Demon Form]] alone (too slow for hallway fights, confirmed in 2+ deaths). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).
+1. **Damage scaling** -- the deck needs SOME way to outpace enemy block and HP growth. Two valid paths:
+   - **Strength path:** [[cards/Inflame]], [[cards/Spot Weakness]] (front-loaded). NOT [[cards/Demon Form]] alone (too slow for hallway fights, confirmed in 2+ deaths). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).
+   - **Exhaust/Block path:** [[cards/Corruption]] + [[cards/Feel No Pain]] (+ [[cards/Body Slam]] for damage conversion). This engine generates block and damage without Strength. Confirmed to defeat [[enemies/Spheric Guardian]] with only 12 HP lost. If building toward this engine, Corruption+FNP satisfy this criterion WITHOUT a Str source.
 2. **AOE damage** -- [[cards/Thunderclap]], [[cards/Cleave]], [[cards/Immolate]], [[cards/Whirlwind]]. Required for [[enemies/Gremlin Leader]] (gremlins re-summon), 3 Cultists (hard-scaler, kill speed matters), [[bosses/Slime Boss]] split.
 3. **Healing beyond Burning Blood** -- Reaper, Feed, potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.
-4. **Block scaling beyond basic Defends** -- [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]]. Basic Defends provide only 20 block from a full hand of 4. Act 2 boss Hyper Beam deals 45-57 damage. Even late Act 2 hallway fights ([[enemies/Book of Stabbing]] turn 5: 6x6=36) outscale basic Defends.
+4. **Block scaling beyond basic Defends** -- [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], or [[cards/Corruption]] + [[cards/Feel No Pain]] (FNP generates block on every exhaust). Basic Defends provide only 20 block from a full hand of 4. Act 2 boss Hyper Beam deals 45-57 damage. Even late Act 2 hallway fights ([[enemies/Book of Stabbing]] turn 5: 6x6=36) outscale basic Defends.
 
 **If missing 2+ entering Act 2, shift to conservative pathing** -- avoid elites, path through shops and rest sites, skip unknown rooms.
 
@@ -47,6 +49,7 @@ The starting deck is nearly identical every run. Use a tier list, not first-prin
 
 **HIGH PRIORITY** (take to fill gaps):
 - Spot Weakness (+3/+4 Str when enemy attacks -- most enemies attack)
+- [[cards/Feel No Pain]] (block engine piece -- 3 block per exhaust, enables Corruption engine later. Good standalone value with True Grit, Fiend Fire, or any exhaust source)
 - Thunderclap (AOE + [[debuffs/Vulnerable]], critical for Byrds in Act 2)
 - [[cards/Headbutt]] (damage + deck manipulation)
 - [[cards/Carnage]] (high damage Ethereal attack -- great for Nob-safe damage)
@@ -65,10 +68,11 @@ The starting deck is nearly identical every run. Use a tier list, not first-prin
 - [[cards/True Grit]] (ONLY if you can upgrade it soon -- unupgraded random exhaust is dangerous)
 - [[cards/Sentinel]] (block + energy on exhaust)
 
-**SKIP** (do not take in Act 1):
-- Demon Form (too slow for hallway fights, does not satisfy front-loaded Str)
+**SKIP** (do not take in Act 1 unless noted):
+- Demon Form (too slow for hallway fights, does not satisfy front-loaded damage scaling)
 - [[cards/Limit Break]] (needs a Str source first)
-- [[cards/Barricade]] (3E, too slow, no immediate value)
+- [[cards/Barricade]] (3E, too slow, no immediate value -- but take from boss card rewards if building block engine)
+- [[cards/Corruption]] (3E, dangerous without [[cards/Feel No Pain]] -- but TAKE if FNP is already in deck. Corruption+FNP together are an engine. Corruption alone exhausts all your block.)
 - [[cards/Brutality]] (self-damage in long fights)
 - [[cards/Berserk]] (self-Vulnerable is extremely dangerous)
 
@@ -100,30 +104,37 @@ A card's value depends on what the deck needs RIGHT NOW and what fights are comi
 
 Before taking a card, ask:
 1. Do I have a healing card? (If no, #1 gap)
-2. Do I have Str scaling? (If no, #2 gap)
+2. Do I have a damage scaling path? (If no, #2 gap -- Str sources OR Corruption+FNP engine pieces)
 3. Do I have AOE? (If no, #3 gap -- Gremlin Leader and 3 Cultists will kill you)
-4. Do I have block scaling beyond basic Defends? (If no, #4 gap -- Hyper Beam will kill you)
+4. Do I have block scaling beyond basic Defends? (If no, #4 gap -- Hyper Beam will kill you. Note: Corruption+FNP also fills this gap.)
 5. Does this card help against my boss?
 
 A mediocre card that fills a gap is better than a strong card that duplicates what you already have.
 
 ---
 
-## Strength Scaling Is Mandatory
+## Damage Scaling Is Mandatory
 
-[[enemies/Spheric Guardian]] has Barricade -- its block never expires and grows 15-20 per defend cycle. At 0-1 Strength, Strikes deal 6-7 damage per play against 15-20 block gained per cycle. The fight is mathematically unwinnable without Strength scaling.
+[[enemies/Spheric Guardian]] has Barricade -- its block never expires and grows 15-20 per defend cycle. At 0-1 Strength with no scaling engine, Strikes deal 6-7 damage per play against 15-20 block gained per cycle. The fight is unwinnable without some form of damage scaling.
 
-**By Floor 15, the deck MUST have at least one Strength source.**
+**By Floor 15, the deck MUST have a scaling path.** Either:
 
-Priority when no Str source exists:
+**Path A -- Strength scaling:**
 1. Inflame (+2 Str permanent, 1E) -- best standalone option
 2. Spot Weakness (+3/+4 Str when enemy attacks, 1E) -- excellent but conditional
 3. Limit Break (doubles current Str) -- only if another Str source exists to double
 4. Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses
 5. [[relics/Vajra]] relic (+1 Str) -- passive, always on
 
-**Card reward priority when the deck has NO Strength scaling:**
-Inflame > Spot Weakness > Limit Break (with source) > anything.
+**Path B -- Exhaust/Block engine:**
+1. [[cards/Corruption]] + [[cards/Feel No Pain]] -- core combo. FNP generates block on each exhausted Skill; Corruption makes all Skills free but one-use. Together they produce massive block per turn. Add [[cards/Body Slam]] to convert block to damage.
+2. [[cards/Barricade]] -- block persists, so the engine snowballs. Not required early but completes the engine.
+3. [[cards/Entrench]] -- doubles accumulated block. With Barricade, this is exponential growth.
+
+These paths are not mutually exclusive. Run 187 won with Corruption+FNP primary and Spot Weakness secondary. Run 104 won with the full Barricade+Corruption+FNP+Body Slam engine. But a deck does NOT need Strength if it has the exhaust/block engine, and it does NOT need the exhaust engine if it has Strength. What it cannot survive without is one or the other.
+
+**Card reward priority when the deck has NO scaling path:**
+Inflame > Spot Weakness > Corruption (if FNP available or likely) > Feel No Pain (if Corruption available or likely) > Limit Break (with Str source) > anything.
 
 ---
 

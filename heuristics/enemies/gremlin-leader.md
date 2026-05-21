@@ -14,11 +14,11 @@ Deal damage, NOT setup. Playing [[cards/Inflame]] (1E setup) + [[cards/Imperviou
 - [[cards/Shockwave]] early for mass [[debuffs/Weak]] + [[debuffs/Vulnerable]]
 - Kill [[enemies/Gremlin Wizard]] before it fires (28 damage nuke)
 - Prioritize Leader damage when possible (gremlins get re-summoned)
-- [[buffs/Strength]] scaling is mandatory for the DPS race
+- Damage scaling is required for the DPS race (Strength, Corruption+FNP+Body Slam, or Poison for Silent)
 
-## Strength Scaling is Mandatory
+## Damage Scaling Required
 
-Without permanent Strength, you cannot kill the Leader fast enough. Evaluate whether your deck can kill 144 HP in 5-6 turns BEFORE entering this fight.
+Without damage scaling, you cannot kill the Leader fast enough. Evaluate whether your deck can kill 144 HP in 5-6 turns BEFORE entering this fight. For Ironclad, this means either Strength sources (Inflame, Spot Weakness) OR the Corruption+FNP engine with Body Slam for damage conversion. For Silent, Poison or Shiv+Accuracy.
 
 ## What to Bring
 
@@ -33,7 +33,7 @@ Without permanent Strength, you cannot kill the Leader fast enough. Evaluate whe
 
 - Entering below 60% HP
 - Entering without potions
-- Entering without permanent Strength scaling ([[characters/Ironclad]]) or poison engine ([[characters/Silent]])
+- Entering without damage scaling ([[buffs/Strength]] or Corruption+FNP for [[characters/Ironclad]], poison for [[characters/Silent]])
 - Exhaust-heavy decks (once key cards are gone, remaining deck is too weak)
 - Wasting turns -- do NOT batch end with draw effects (drawn cards need to be played)
 - Bloated decks (19+ cards with 4+ Strikes) cannot draw answers fast enough
