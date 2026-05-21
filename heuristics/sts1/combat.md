@@ -55,7 +55,7 @@ CHOSEN: [A/B] because [reason]
 
 ## Combat Arithmetic Checklist
 
-Before every turn, verify these items. Game mechanics are in [[combat]] (ontology) — this checklist catches common reasoning errors.
+Before every turn, verify these items.
 
 ### 1. Am I using UPGRADED values?
 
