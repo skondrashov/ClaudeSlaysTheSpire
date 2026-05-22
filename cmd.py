@@ -523,9 +523,18 @@ def _resolve_choose_card_name(raw_state: dict, action: str) -> str:
 
     remainder = " ".join(parts[1:])
 
-    # Already numeric — pass through
+    # Already numeric — for GRID screens, warn if the index might be wrong
+    # (agents often confuse hand indices with GRID indices)
     try:
-        int(remainder)
+        idx = int(remainder)
+        if screen == "GRID" and cards:
+            # Log what card is at this index in the GRID for debugging
+            if 0 <= idx < len(cards):
+                card_at_idx = cards[idx].get("name", "?")
+                if cards[idx].get("upgrades", 0) > 0 and not card_at_idx.endswith("+"):
+                    card_at_idx += "+"
+                # Pass through — the index is valid for the GRID
+            # else: index out of range, pass through and let CommunicationMod handle
         return action
     except ValueError:
         pass

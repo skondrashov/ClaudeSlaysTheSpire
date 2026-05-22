@@ -23,7 +23,17 @@ def format_state(state: dict) -> str:
 
     parts = [format_header(gs)]
 
-    if phase == "COMBAT" or screen == "NONE":
+    # GRID and HAND_SELECT can appear mid-combat (e.g., Omniscience, Meditate).
+    # Always show them first when active, then show combat context below.
+    if screen == "GRID":
+        parts.append(format_grid(gs))
+        if gs.get("combat_state"):
+            parts.append(format_combat(gs))
+    elif screen == "HAND_SELECT":
+        parts.append(format_hand_select(gs))
+        if gs.get("combat_state"):
+            parts.append(format_combat(gs))
+    elif phase == "COMBAT" or screen == "NONE":
         if gs.get("combat_state"):
             parts.append(format_combat(gs))
     elif screen == "EVENT":
@@ -40,10 +50,6 @@ def format_state(state: dict) -> str:
         parts.append(format_combat_reward(gs))
     elif screen == "BOSS_REWARD":
         parts.append(format_boss_reward(gs))
-    elif screen == "GRID":
-        parts.append(format_grid(gs))
-    elif screen == "HAND_SELECT":
-        parts.append(format_hand_select(gs))
     elif screen == "GAME_OVER":
         parts.append(format_game_over(gs))
     elif screen == "COMPLETE":
@@ -489,7 +495,7 @@ def format_grid(gs: dict) -> str:
         ctype = card.get("type", "?").lower()
         lines.append(f"  [{i}] {name} ({ctype}, {cost}E)")
 
-    lines.append("\nUse: choose <index>, then confirm/proceed")
+    lines.append("\nUse the indices above: choose 0, choose 1, etc. These are GRID indices (NOT hand indices — they differ!).")
     return "\n".join(lines)
 
 
