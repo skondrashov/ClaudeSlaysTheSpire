@@ -1,9 +1,9 @@
 {
-  "last_agent": "win",
+  "last_agent": "audit",
   "last_run": 219,
-  "next_recommended": "audit",
-  "reason": "Run 219: FIRST IRONCLAD A5 WIN! Corruption+FNP+Reaper engine. Notable victory — audit high priority per next.md.",
-  "runs_since_last_audit": 1,
+  "next_recommended": "win",
+  "reason": "Audit 219 complete. 4 minor flags (Normality+Corruption, Brimstone entry, Transient strategy, Directive 7 closure). Curate ran 1 run ago — flags can accumulate. Win next.",
+  "runs_since_last_audit": 0,
   "runs_since_last_curate": 1,
   "outstanding_directives": [],
   "character": "IRONCLAD",
