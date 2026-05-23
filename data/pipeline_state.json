@@ -1,10 +1,10 @@
 {
-  "last_agent": "curate",
-  "last_run": 218,
-  "next_recommended": "win",
-  "reason": "Curation complete. All 5 audit flags addressed: Thunderclap fix in combat.md, potion timing rule, Sozu risk in drafting, double-end bug documented, Directive 7 updated. Playbook corrected for next Win batch.",
-  "runs_since_last_audit": 0,
-  "runs_since_last_curate": 0,
+  "last_agent": "win",
+  "last_run": 219,
+  "next_recommended": "audit",
+  "reason": "Run 219: FIRST IRONCLAD A5 WIN! Corruption+FNP+Reaper engine. Notable victory — audit high priority per next.md.",
+  "runs_since_last_audit": 1,
+  "runs_since_last_curate": 1,
   "outstanding_directives": [],
   "character": "IRONCLAD",
   "ascension": 5
