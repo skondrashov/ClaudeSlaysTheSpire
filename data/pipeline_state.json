@@ -1,10 +1,10 @@
 {
   "last_agent": "win",
-  "last_run": 217,
-  "next_recommended": "win",
-  "reason": "Run 217: Ironclad A5 F33 death (The Collector). HP attrition from Sozu + no healing cards. Need more A5 data before audit.",
-  "runs_since_last_audit": 2,
-  "runs_since_last_curate": 2,
+  "last_run": 218,
+  "next_recommended": "audit",
+  "reason": "3 runs since last audit (216-218). Run 218 had a card knowledge error (Thunderclap Vulnerable vs Weak). Audit warranted.",
+  "runs_since_last_audit": 3,
+  "runs_since_last_curate": 3,
   "outstanding_directives": [],
   "character": "IRONCLAD",
   "ascension": 5
