@@ -1,10 +1,10 @@
 {
   "last_agent": "win",
-  "last_run": 216,
+  "last_run": 217,
   "next_recommended": "win",
-  "reason": "Run 216: Ironclad A5 death at floor 14 (Sentries). First A5 run, need more data before audit.",
-  "runs_since_last_audit": 1,
-  "runs_since_last_curate": 1,
+  "reason": "Run 217: Ironclad A5 F33 death (The Collector). HP attrition from Sozu + no healing cards. Need more A5 data before audit.",
+  "runs_since_last_audit": 2,
+  "runs_since_last_curate": 2,
   "outstanding_directives": [],
   "character": "IRONCLAD",
   "ascension": 5
