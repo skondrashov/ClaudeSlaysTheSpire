@@ -1,9 +1,9 @@
 {
-  "last_agent": "win",
+  "last_agent": "audit",
   "last_run": 218,
-  "next_recommended": "audit",
-  "reason": "3 runs since last audit (216-218). Run 218 had a card knowledge error (Thunderclap Vulnerable vs Weak). Audit warranted.",
-  "runs_since_last_audit": 3,
+  "next_recommended": "curate",
+  "reason": "Audit found 5 curator flags: Thunderclap/Vulnerable confusion, potion hoarding pattern, HP threshold violations, Sozu risk assessment, Bash upgrade timing. 22 runs since last curation.",
+  "runs_since_last_audit": 0,
   "runs_since_last_curate": 3,
   "outstanding_directives": [],
   "character": "IRONCLAD",
