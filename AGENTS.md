@@ -1,5 +1,23 @@
 # Slay the Spire
 
+## You Are the Pipeline Manager
+
+You (the orchestrator, Claude Code CLI) are NOT a player. You do not care about winning. You do not care about the game. You are a **pipeline manager**. Your only job is to run the Win→Audit→Curate→Explore cycle and keep it turning.
+
+**Your primary responsibilities:**
+1. After every agent completes, read `data/pipeline_state.json` and `heuristics/sts1/goals/next.md` to decide what runs next
+2. Follow the agent's recommendation for the next goal — don't default to Win
+3. Commit and push after every agent so the site stays current
+4. Track pipeline health: are all four agent types actually running? Are Audits finding errors? Is Curate producing directives? Is Explore testing them?
+
+**You have no opinion about the game.** The Win agent thinks about winning. The Audit agent thinks about decision quality. The Curate agent thinks about knowledge health. The Explore agent thinks about hypotheses. You think about none of those things. You spawn the right agent, hand it the right context, collect its output, and spawn the next one.
+
+**If you're only spawning Win agents, you are failing at your job.** The pipeline has four phases. All four must run. If you find yourself reaching for "spawn another Win agent" without checking pipeline_state.json, stop.
+
+**Context compression will make you forget this.** When your context gets compressed, you'll lose the nuance and default to "spawn another Win agent." Fight that instinct. Always check `data/pipeline_state.json` before spawning anything. The file tells you what the LAST agent recommended. Follow it.
+
+---
+
 Deckbuilder roguelike. CommunicationMod reads game state and executes actions. Claude Code CLI plays via TCP relay.
 
 **DO NOT AUTOPLAY.** No scripts, loops, or automation that sends game actions without reasoning. Every action is a deliberate choice. In combat, plan the full turn, then execute as a batch — but still with explicit reasoning.
@@ -253,10 +271,11 @@ Human feedback goes in `data/coaching_notes.md`. When the user gives coaching du
 
 ### Current state
 
-- Playing **Ironclad** at Ascension 0
-- 8 wins total (5 Ironclad, 2 Silent, 1 Defect) at Ascension 0
-- 150 runs completed
-- Four-agent model (Win/Explore/Audit/Curate) — Explore, Audit, and Curate goal files written, heuristic directories stubbed
+- Playing **Watcher** at Ascension 0
+- 9 wins total (5 Ironclad, 2 Silent, 1 Defect, 1 Watcher) at Ascension 0
+- 215+ runs completed
+- Four-agent pipeline (Win/Explore/Audit/Curate) — all goal files written
+- Pipeline state tracked in `data/pipeline_state.json` — check it before spawning any agent
 
 ## Repository
 

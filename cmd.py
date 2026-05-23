@@ -276,6 +276,106 @@ def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
     return None
 
 
+def _card_identity(card: dict) -> tuple:
+    """Return (name, upgrades) tuple for matching cards across hand changes.
+
+    Ignores cost because Corruption/Madness/Enlightenment can modify costs
+    mid-turn. Name + upgrade status is stable enough for identity matching.
+    """
+    return (card.get("name", ""), card.get("upgrades", 0))
+
+
+def _find_card_in_current_hand(current_hand: list, identity: tuple) -> int | None:
+    """Find a card matching the given identity in the current hand.
+
+    Returns 1-indexed position (for CommunicationMod), or None if not found.
+    Tries (name, upgrades) first, falls back to name-only for Armaments+ edge case.
+    """
+    name, upgrades = identity
+
+    # Pass 1: exact match on (name, upgrades)
+    for i, card in enumerate(current_hand):
+        if _card_identity(card) == identity:
+            return i + 1
+
+    # Pass 2: name-only (handles Armaments+ upgrading cards mid-turn)
+    for i, card in enumerate(current_hand):
+        if card.get("name", "") == name:
+            return i + 1
+
+    return None
+
+
+def _resolve_play_from_snapshot(snapshot_hand: list, current_state: dict, action: str) -> str:
+    """Resolve a 'play N [target]' action using the snapshot hand for card identity.
+
+    When the agent plans a turn, it sees a hand and references cards by index.
+    As cards are played, indices shift. This function translates the agent's
+    original index (referencing the snapshot) to the correct current index.
+
+    Only handles numeric card indices — name-based actions pass through unchanged
+    to be handled by _resolve_card_name.
+    """
+    if not action or not action.strip().lower().startswith("play "):
+        return action
+
+    parts = action.strip().split()
+    if len(parts) < 2 or not parts[1].isdigit():
+        return action  # Name-based, existing resolution handles it
+
+    card_idx_0 = int(parts[1]) - 1  # Agent uses 1-indexed
+    if card_idx_0 < 0 or card_idx_0 >= len(snapshot_hand):
+        return action  # Out of range, let CommunicationMod error
+
+    # Look up what card the agent meant
+    identity = _card_identity(snapshot_hand[card_idx_0])
+
+    # Find it in the current hand
+    current_combat = (current_state.get("game_state") or {}).get("combat_state")
+    if not current_combat:
+        return action
+    current_hand = current_combat.get("hand", [])
+
+    current_idx = _find_card_in_current_hand(current_hand, identity)
+    if current_idx is None:
+        # Card gone (already played, discarded, etc.) — pass through, will fail naturally
+        return action
+
+    # Rebuild action with corrected index, preserve target
+    target = " ".join(parts[2:]) if len(parts) > 2 else ""
+    return f"play {current_idx} {target}".strip()
+
+
+def _resolve_choose_from_snapshot(snapshot_cards: list, current_cards: list, action: str) -> str:
+    """Resolve a 'choose N' action using a snapshot for card identity.
+
+    Same logic as _resolve_play_from_snapshot but for HAND_SELECT/GRID screens
+    where selecting a card removes it from the list, shifting indices.
+    """
+    parts = action.strip().split()
+    if len(parts) < 2 or parts[0].lower() != "choose" or not parts[1].isdigit():
+        return action
+
+    idx = int(parts[1])
+    if idx < 0 or idx >= len(snapshot_cards):
+        return action  # Out of range
+
+    identity = _card_identity(snapshot_cards[idx])
+
+    # Find in current list
+    for j, card in enumerate(current_cards):
+        if _card_identity(card) == identity:
+            return f"choose {j}"
+
+    # Fallback: name-only match
+    name = identity[0]
+    for j, card in enumerate(current_cards):
+        if card.get("name", "") == name:
+            return f"choose {j}"
+
+    return action  # Not found, pass through
+
+
 def _resolve_card_name(raw_state: dict, action: str) -> str:
     """Translate card names and enemy names in play commands to indices.
 
@@ -803,6 +903,9 @@ def _log_result(raw: dict):
 
 _game_over_handled = False
 _potion_skip_warned = False
+# Snapshot of HAND_SELECT card list from when the screen first appeared.
+# Used to translate numeric indices across selections (cards get removed, shifting indices).
+_hand_select_snapshot = None
 
 
 def _get_next_run_number() -> int:
@@ -1124,6 +1227,24 @@ def send(command: str, reason: str = "") -> str:
             except ValueError:
                 pass  # Non-numeric choose argument, pass through
 
+    # HAND_SELECT snapshot: track the card list from when the screen first appeared.
+    # When the agent sends 'choose 3', it means "the card at position 3 when I first
+    # saw this screen." After each selection a card is removed and indices shift —
+    # we translate the original index to the correct current index.
+    global _hand_select_snapshot
+    if screen == "HAND_SELECT":
+        ss = gs.get("screen_state", {})
+        current_cards = ss.get("hand", [])
+        if _hand_select_snapshot is None:
+            _hand_select_snapshot = list(current_cards)
+        # Resolve numeric choose against snapshot
+        if cmd_verb == "choose" and _hand_select_snapshot:
+            command = _resolve_choose_from_snapshot(
+                _hand_select_snapshot, current_cards, command
+            )
+    else:
+        _hand_select_snapshot = None  # Clear when leaving HAND_SELECT
+
     # Resolve card names to indices using current hand state
     resolved = _resolve_card_name(_last_raw_state, command)
     # Resolve card names in choose commands (HAND_SELECT, CARD_REWARD, GRID)
@@ -1341,9 +1462,16 @@ def turn(actions: list, reason: str = "") -> str:
             "The stream overlay shows your reasoning to viewers — it cannot be empty."
         )
 
-    # Fetch pre-turn state for translation
+    # Fetch pre-turn state for translation and snapshot
     global _last_raw_state
     _last_raw_state = _tcp_request({"type": "state"})
+
+    # Snapshot the hand at turn start for index stability.
+    # When the agent says "play 3 0", it means "the card I see at position 3."
+    # As cards are played and indices shift, we use this snapshot to find
+    # the intended card in the current hand by identity (name + upgrades).
+    pre_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+    snapshot_hand = list(pre_combat.get("hand", [])) if pre_combat else []
 
     # Resolve and translate all actions using pre-turn state for the stream
     # (Translation uses original names for readability; resolution happens per-action below)
@@ -1360,10 +1488,12 @@ def turn(actions: list, reason: str = "") -> str:
     total = len(actions)
     stopped_msg = None
 
-    # Execute each action, resolving card names against CURRENT state
+    # Execute each action, resolving card references against CURRENT state
     for i, action in enumerate(actions):
-        # Resolve card name to index using current hand (not pre-turn hand)
-        resolved_action = _resolve_card_name(_last_raw_state, action)
+        # For numeric indices: translate from snapshot position to current position.
+        # For names: pass through to _resolve_card_name which handles them correctly.
+        resolved_action = _resolve_play_from_snapshot(snapshot_hand, _last_raw_state, action)
+        resolved_action = _resolve_card_name(_last_raw_state, resolved_action)
 
         # Validate before sending (uses current game state)
         if i > 0:

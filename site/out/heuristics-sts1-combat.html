@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combat Execution — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+  --ontology: #60a5fa;
+  --heuristics: #f59e0b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a.wiki-link { color: var(--ontology); border-bottom: 1px dotted var(--ontology); }
+a.wiki-link:hover { border-bottom-style: solid; text-decoration: none; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  flex-wrap: wrap;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+.category-card.ontology-card { border-left: 3px solid var(--ontology); }
+.category-card.ontology-card a h3 { color: var(--ontology); }
+.category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
+.category-card.heuristics-card a h3 { color: var(--heuristics); }
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Section badge */
+.section-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
+.section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+
+/* Companion link (ontology ↔ heuristics) */
+.companion-link {
+  margin: 20px 0;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<nav><a href="index.html" class="">Home</a>
+<a href="ontology.html" class="">Ontology</a>
+<a href="heuristics.html" class="active">Heuristics</a>
+<a href="knowledge-system.html" class="">Knowledge System</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<span class="section-badge heuristics">heuristics</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><div class="companion-link">View facts: <a href="ontology-sts1-combat.html">Ontology &rarr; Combat</a></div>
+<h1 id="combat-execution">Combat Execution</h1>
+
+<h2 id="the-full-block-algorithm">The Full Block Algorithm</h2>
+
+<p><strong>The default goal every turn in a hallway fight is ZERO DAMAGE TAKEN.</strong> Not &quot;minimize damage.&quot; Zero. HP lost in a hallway fight is permanent until a rest site. 8 damage at 80 HP is exactly as bad as 8 damage at 20 HP.</p>
+
+<p>Every turn:</p>
+
+<p>1. Read total incoming damage (sum all attacking enemies, apply <a href="ontology-debuffs-weak.html" class="wiki-link">Weak</a> if on them).</p>
+<p>2. Enumerate ALL paths to zero damage:</p>
+<ul>
+<li><strong>Kill attackers</strong> + block remainder</li>
+<li><strong>Pure block</strong> (block cards, Weak on attacker)</li>
+<li><strong>Debuff + block</strong> (apply Weak to reduce, block the rest)</li>
+<li><strong>Potion-assisted</strong> (damage potion to kill, block potion to survive)</li>
+</ul>
+<p>3. Compare paths that achieve zero: prefer kill paths (removes future damage).</p>
+<p>4. If NO path achieves zero: minimize damage. Use potions. Kill the highest-damage attacker.</p>
+
+<p><strong>Enumerate at least two paths before choosing.</strong> Do not pick ONE plan and execute.</p>
+
+<h3 id="exceptions">Exceptions</h3>
+
+<p>1. <strong>Boss fights.</strong> HP resets via rest/heal. Spend HP freely to kill faster.</p>
+<p>2. <strong>Hard-scaling enemies (<a href="ontology-buffs-ritual.html" class="wiki-link">Ritual</a>, Rally).</strong> Kill speed prevents more total damage than blocking.</p>
+
+<p>Everything else is a hallway fight: zero damage taken.</p>
+
+<h3 id="fight-strategy-once-per-combat">Fight Strategy (once per combat)</h3>
+
+<p>Before the first turn, write and post via <code>think()</code>:</p>
+
+<pre><code>
+FIGHT STRATEGY — [Enemy Name]
+FIGHT TYPE: [Hallway (full block) | Boss (spend HP freely) | Hard-scaler (kill speed)]
+WIN CONDITION: How do I kill this?
+ZERO DAMAGE PLAN: How do I block each turn?
+KEY CARDS: Which cards matter most?
+POTION PLAN: When to use potions?
+RISKS: What can go wrong?
+</code></pre>
+
+<h3 id="turn-planning-every-turn">Turn Planning (every turn)</h3>
+
+<pre><code>
+TURN N — INCOMING: [damage] — PATHS TO ZERO:
+  A) Kill [enemy] (XE) + block remainder → zero? [y/n]
+  B) Pure block → total block vs incoming → zero? [y/n]
+CHOSEN: [A/B] because [reason]
+</code></pre>
+
+<h3 id="draw-effects-critical">Draw Effects — CRITICAL</h3>
+
+<p><strong>NEVER include cards after a draw card in a <code>turn()</code> sequence.</strong> If a card draws (<a href="ontology-cards-backflip.html" class="wiki-link">Backflip</a>, <a href="ontology-cards-shrug-it-off.html" class="wiki-link">Shrug It Off</a>, <a href="ontology-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a>, <a href="ontology-cards-battle-trance.html" class="wiki-link">Battle Trance</a>, <a href="ontology-cards-offering.html" class="wiki-link">Offering</a>, etc.), it MUST be the last card before <code>&quot;end&quot;</code>. Play it via <code>send()</code> and re-read state before continuing.</p>
+
+<hr>
+
+<h2 id="combat-arithmetic-checklist">Combat Arithmetic Checklist</h2>
+
+<p>Before every turn, verify these items.</p>
+
+<h3 id="1-am-i-using-upgraded-values">1. Am I using UPGRADED values?</h3>
+
+<p>Check the + suffix on every card. Common errors:</p>
+
+<ul>
+<li>Shrug It Off+ = 11 block (not 8)</li>
+<li><a href="ontology-cards-flame-barrier.html" class="wiki-link">Flame Barrier</a> = 16 block AND 6 counter-damage</li>
+<li><a href="ontology-cards-armaments.html" class="wiki-link">Armaments</a> = 5 block AND upgrades ALL cards in hand</li>
+<li><a href="ontology-cards-bash.html" class="wiki-link">Bash</a> = 10 damage, 3 <a href="ontology-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a> (not 2)</li>
+<li><a href="ontology-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a> = +3 <a href="ontology-buffs-strength.html" class="wiki-link">Strength</a> unupgraded / +4 Strength upgraded</li>
+<li><a href="ontology-cards-heavy-blade.html" class="wiki-link">Heavy Blade</a> = Str multiplier 3x unupgraded / 5x upgraded (at Str 9: 41 vs 59 damage)</li>
+</ul>
+
+<h3 id="2-verify-kill-math-before-ending-turn">2. VERIFY KILL MATH BEFORE ENDING TURN</h3>
+
+<p>On kill turns, NEVER include <code>end</code> in the same command as the final attack. Play the attack, verify the kill, THEN end the turn separately.</p>
+
+<h3 id="3-x-cost-cards-play-last">3. X-COST CARDS: PLAY LAST</h3>
+
+<p>Always play X-cost cards LAST. To control the value of X, spend energy on other cards first.</p>
+
+<h3 id="4-wraith-form-finisher-only">4. WRAITH FORM: FINISHER ONLY</h3>
+
+<p><a href="ontology-cards-wraith-form.html" class="wiki-link">Wraith Form</a> gives <a href="ontology-buffs-intangible.html" class="wiki-link">Intangible</a> but applies permanent -1 <a href="ontology-buffs-dexterity.html" class="wiki-link">Dexterity</a> per turn. Three recorded deaths from playing it too early. DO NOT play until the enemy is within 5 turns of dying.</p>
+
+<h3 id="5-verify-card-identity-before-playing">5. VERIFY CARD IDENTITY BEFORE PLAYING</h3>
+
+<p>Hand indices shift after each play. Before entering <code>play N</code>, confirm the card at index N matches your plan. Re-read hand state after each card play.</p>
+
+<h3 id="6-use-card-names-in-turn-batches-never-indices">6. USE CARD NAMES IN turn() BATCHES — NEVER INDICES</h3>
+
+<p>In batched <code>turn()</code> commands, card indices shift after each play but the batch pre-computes all actions. This causes the wrong card to be played. <strong>Confirmed fatal in Run 190:</strong> <code>turn([&quot;play 1&quot;, &quot;play 2 0&quot;, &quot;play 3 0&quot;, &quot;play 4&quot;, &quot;end&quot;])</code> played Eruption+ instead of a Strike because indices shifted after the first card was played, entering Wrath with no exit and causing death.</p>
+
+<p><strong>RULE:</strong> Always use card names in <code>turn()</code> sequences: <code>turn([&quot;play Consecrate&quot;, &quot;play Strike 0&quot;, &quot;play Strike 0&quot;, &quot;play Defend&quot;, &quot;end&quot;])</code>. Card names resolve against the current hand state at the time each action executes, so they are immune to index shifting.</p>
+
+<p>If two copies of the same card exist in hand and you need to play a specific one, play each card individually via <code>send()</code> with a state check between plays instead of using <code>turn()</code>.</p>
+
+<h3 id="7-potion-ordering-on-kill-turns">7. POTION ORDERING ON KILL TURNS</h3>
+
+<p>On kill turns, play all deterministic damage cards FIRST. Only use random-outcome potions (Distilled Chaos, Gambler&#x27;s Brew) AFTER all known-value plays are exhausted — or never.</p>
+
+<p><strong>Rationale:</strong> If the kill is already in hand with deterministic cards, random effects are unnecessary and can only cause harm. If the kill is NOT in hand, playing deterministic damage first reduces the enemy to minimum HP, making the random effect more likely to finish the job and less costly if it fails.</p>
+
+<p><strong>Confirmed fatal in Run 193:</strong> Player used Distilled Chaos BEFORE playing Smite and Strike, which together were exactly lethal. Distilled Chaos randomly played Meditate+ (ends turn, enters Calm, 0 block) against 102 incoming Hyper Beam. The kill was already in hand but the player miscalculated and thought they were 12 damage short.</p>
+
+<p><strong>Rule:</strong> Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.</p>
+
+<h3 id="8-wrath-doubles-all-damage">8. WRATH DOUBLES ALL DAMAGE</h3>
+
+<p>For Watcher: ALL damage is doubled in Wrath, including multi-hit cards. When a card enters Wrath (e.g., Tantrum from Calm), the stance change resolves BEFORE damage, so all hits are doubled.</p>
+
+<p>Common miscalculation: Tantrum+ base is 2x5=10. In Wrath: 2x10=20. Players sometimes calculate the base damage and forget to double it, or assume &quot;entering Wrath&quot; means the first hit is undoubled. It is not. Every hit is doubled.</p>
+
+<p><strong>Rule:</strong> When in Wrath or entering Wrath, multiply EVERY damage number by 2 in kill math. Double-check the arithmetic before committing to end turn.</p>
+
+<hr>
+
+<h2 id="shockwave-timing-rule">Shockwave+ Timing Rule</h2>
+
+<p>Play Shockwave+ on the <strong>FIRST ATTACK TURN</strong> of multi-enemy fights.</p>
+
+<ul>
+<li><strong>Turn 1 is NOT always correct:</strong> if all enemies are buffing (e.g., Cultists on turn 1), Weak is wasted on a non-attack turn.</li>
+<li><strong>Turn 2 is usually correct:</strong> most multi-enemy fights begin attacking on turn 2.</li>
+<li><strong>NEVER save for turn 4+:</strong> by then enemies have already accumulated Strength and you have taken unnecessary damage.</li>
+<li><strong>Priority on the first attack turn:</strong> Shockwave+ (mass Weak + Vulnerable) &gt; <a href="ontology-cards-reaper.html" class="wiki-link">Reaper</a> (healing) &gt; single-target damage.</li>
+</ul>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

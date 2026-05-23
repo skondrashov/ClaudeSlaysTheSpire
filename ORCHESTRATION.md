@@ -60,8 +60,8 @@ WebSocket server for overlay + HTTP endpoint for decisions. Independent of relay
 ### 4. Add OBS browser source
 Point OBS browser source at `C:\Users\tkond\projects\autoplay\games\sts1\overlay\index.html`, 1920x1080, transparent background. Only needs to be set up once.
 
-### 5. Spawn a player agent
-One agent at a time. See "Agent Management" below.
+### 5. Run the pipeline
+Check `data/pipeline_state.json` for what agent to spawn next. See "Pipeline Loop" below. One agent at a time.
 
 ## Stopping / Restarting
 
@@ -147,62 +147,37 @@ If stats get corrupted, manually edit `data/run_stats.json`.
 
 7. **Bash doesn't work for Windows paths**: Use PowerShell for any commands involving Windows paths. Bash tries to interpret backslashes.
 
-## Agent Loop Checklist
+## Pipeline Loop
 
-The player/analyst/strategist loop. Follow these steps exactly — every time, no shortcuts.
+**You are a pipeline manager.** You have no opinion about the game. The pipeline cycles through four agent types. Your only job is to keep the cycle turning.
 
-### When a PLAYER agent completes
+### After EVERY agent completes — do this FIRST
 
-1. Read the agent's result — note victory/defeat, floor, cause of death, key lessons
-2. Clear the player lock:
-   ```python
-   python -c "import os; f='data/player.lock'; os.path.exists(f) and os.remove(f); print('lock cleared')"
-   ```
-3. Read `data/run_stats.json` — note total_runs for strategist scheduling
-4. **ACTIVATE OVERLAY** for the analyst (do this BEFORE spawning):
-   ```python
-   python -c "
-   import json, urllib.request
-   data = json.dumps({
-       'action': 'start',
-       'title': 'POST-GAME ANALYSIS',
-       'jsonl_path': '<ANALYST_JSONL_PATH>',
-       'run_summary': '<PLAYER_SUMMARY_TEXT>'
-   }).encode('utf-8')
-   req = urllib.request.Request('http://127.0.0.1:3002/agent', data=data, headers={'Content-Type': 'application/json'})
-   urllib.request.urlopen(req)
-   "
-   ```
-   JSONL path: `C:/Users/tkond/.claude/projects/C--Users-tkond-projects-autoplay/<SESSION_ID>/subagents/agent-<ANALYST_TASK_ID>.jsonl`
-5. Spawn analyst as background agent with run summary in prompt
+1. Read `data/pipeline_state.json` — what did the last agent recommend?
+2. Read the agent's result — note the outcome and their next-goal recommendation
+3. Update `data/pipeline_state.json` with the completed agent's info
+4. Commit and push all changes (run data, playbook edits, analyst reports)
+5. **Spawn the recommended agent** — not Win by default. Whatever the pipeline says.
 
-### When an ANALYST agent completes
+If `pipeline_state.json` doesn't exist or is corrupt, read `heuristics/sts1/goals/next.md` and apply the decision logic manually.
 
-1. **STOP OVERLAY:**
-   ```python
-   python -c "
-   import json, urllib.request
-   data = json.dumps({'action': 'stop'}).encode('utf-8')
-   req = urllib.request.Request('http://127.0.0.1:3002/agent', data=data, headers={'Content-Type': 'application/json'})
-   urllib.request.urlopen(req)
-   "
-   ```
-2. Check git status — review what the analyst changed
-3. Stage and commit playbook + analyst files (NOT unrelated infra changes)
-4. Push to GitHub (triggers site rebuild)
-5. **Check if strategist is due** — if total_runs crossed a multiple of 10 since last strategist:
-   - YES → go to "Spawning a STRATEGIST"
-   - NO → go to "Spawning a PLAYER"
+### pipeline_state.json format
 
-### When a STRATEGIST agent completes
+```json
+{
+  "last_agent": "win",
+  "last_run": 215,
+  "next_recommended": "audit",
+  "reason": "Run 215 was first Watcher win — notable outcome, audit is high priority",
+  "runs_since_last_audit": 3,
+  "runs_since_last_curate": 12,
+  "outstanding_directives": ["Directive 4: Watcher execution cleanup"]
+}
+```
 
-1. **STOP OVERLAY** (same command as analyst step 1)
-2. Check git status — review what the strategist changed
-3. Stage and commit all strategist changes
-4. Push to GitHub
-5. Go to "Spawning a PLAYER"
+Update this file after every agent completes. The `next_recommended` field is what you follow.
 
-### Spawning a PLAYER
+### Spawning a PLAYER (Win or Explore)
 
 1. Generate new session token and clear old lock:
    ```python
@@ -217,23 +192,48 @@ The player/analyst/strategist loop. Follow these steps exactly — every time, n
 2. Spawn player as background agent with token in prompt
 3. Do NOT activate overlay — player uses normal game overlay
 
-### Spawning an ANALYST
+### Spawning an ANALYST (Audit)
 
-1. **ACTIVATE OVERLAY FIRST** — title: `POST-GAME ANALYSIS`, use the analyst's agent task ID for the JSONL path
-2. Spawn analyst as background agent with analyst.md instructions + run summary
+1. **ACTIVATE OVERLAY FIRST:**
+   ```python
+   python -c "
+   import json, urllib.request
+   data = json.dumps({
+       'action': 'start',
+       'title': 'POST-GAME ANALYSIS',
+       'jsonl_path': '<ANALYST_JSONL_PATH>',
+       'run_summary': '<PLAYER_SUMMARY_TEXT>'
+   }).encode('utf-8')
+   req = urllib.request.Request('http://127.0.0.1:3002/agent', data=data, headers={'Content-Type': 'application/json'})
+   urllib.request.urlopen(req)
+   "
+   ```
+   JSONL path: `C:/Users/tkond/.claude/projects/C--Users-tkond-projects-autoplay/<SESSION_ID>/subagents/agent-<ANALYST_TASK_ID>.jsonl`
+2. Spawn analyst as background agent with audit.md instructions + run summary
 
-### Spawning a STRATEGIST
+### Spawning a CURATOR (Curate)
 
-1. **ACTIVATE OVERLAY FIRST** — title: `STRATEGIC REVIEW`, use the strategist's agent task ID for the JSONL path
-2. Spawn strategist as background agent with strategist.md instructions + review context
+1. **ACTIVATE OVERLAY FIRST** — title: `STRATEGIC REVIEW`, use the curator's agent task ID for the JSONL path
+2. Spawn curator as background agent with curate.md instructions + review context
+
+### Stopping overlay (after Audit or Curate completes)
+
+```python
+python -c "
+import json, urllib.request
+data = json.dumps({'action': 'stop'}).encode('utf-8')
+req = urllib.request.Request('http://127.0.0.1:3002/agent', data=data, headers={'Content-Type': 'application/json'})
+urllib.request.urlopen(req)
+"
+```
 
 ### Common mistakes
 
-- **Forgetting overlay for strategist** — EVERY non-player agent gets overlay activation BEFORE spawning
+- **Defaulting to Win** — the #1 pipeline failure. ALWAYS check pipeline_state.json first. If context compression made you forget the cycle, the file remembers.
+- **Forgetting overlay for non-player agents** — EVERY Audit/Curate agent gets overlay activation BEFORE spawning
 - **Using wrong task ID for JSONL path** — use the NEW agent's task ID, not the completed one
-- **Committing infra changes with analyst changes** — keep them separate
-- **Forgetting to stop overlay** — always stop when analyst/strategist completes
 - **Forgetting to push** — site rebuild triggers on push, not commit
+- **Skipping Audit after notable runs** — first wins, surprising deaths, and new archetype attempts all deserve audits
 
 ---
 

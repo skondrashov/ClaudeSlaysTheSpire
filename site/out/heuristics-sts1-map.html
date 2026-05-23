@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Map Routing — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+  --ontology: #60a5fa;
+  --heuristics: #f59e0b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a.wiki-link { color: var(--ontology); border-bottom: 1px dotted var(--ontology); }
+a.wiki-link:hover { border-bottom-style: solid; text-decoration: none; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  flex-wrap: wrap;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+.category-card.ontology-card { border-left: 3px solid var(--ontology); }
+.category-card.ontology-card a h3 { color: var(--ontology); }
+.category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
+.category-card.heuristics-card a h3 { color: var(--heuristics); }
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Section badge */
+.section-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
+.section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+
+/* Companion link (ontology ↔ heuristics) */
+.companion-link {
+  margin: 20px 0;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<nav><a href="index.html" class="">Home</a>
+<a href="ontology.html" class="">Ontology</a>
+<a href="heuristics.html" class="active">Heuristics</a>
+<a href="knowledge-system.html" class="">Knowledge System</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<span class="section-badge heuristics">heuristics</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><h1 id="map-routing">Map Routing</h1>
+
+<h2 id="relic-economy-why-elites-matter">Relic Economy: Why Elites Matter</h2>
+
+<p>Relics are the primary driver of run strength. Every winning formula was built on specific relics (<a href="ontology-relics-snecko-eye.html" class="wiki-link">Snecko Eye</a>, <a href="ontology-relics-dead-branch.html" class="wiki-link">Dead Branch</a>, <a href="ontology-relics-mummified-hand.html" class="wiki-link">Mummified Hand</a>, <a href="ontology-relics-bottled-lightning.html" class="wiki-link">Bottled Lightning</a>, <a href="ontology-cards-after-image.html" class="wiki-link">After Image</a> via <a href="ontology-relics-bottled-tornado.html" class="wiki-link">Bottled Tornado</a>). Elites are the primary source of relics — each elite drops a relic guaranteed. Skipping elites means fewer relics means weaker runs.</p>
+
+<p><strong>Elite targets per act:</strong></p>
+<ul>
+<li><strong><a href="ontology-acts-act-1.html" class="wiki-link">Act 1</a>: Fight 2 elites.</strong> The Act 1 elite pool (<a href="ontology-enemies-gremlin-nob.html" class="wiki-link">Gremlin Nob</a>, <a href="ontology-enemies-lagavulin.html" class="wiki-link">Lagavulin</a>, Sentries) is the easiest in the game. Two elite relics + boss relic = 3 relics by <a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a>. If the map offers a 2-elite path with rest site coverage, take it. Only settle for 1 elite if the map forces bad rest site spacing or the deck is still starter-quality at Floor 5.</li>
+<li><strong>Act 2: Fight 1-2 elites.</strong> Act 2 elites are dangerous but the relic rewards are stronger (rare pool). If HP is above 60% and the deck has its scaling engine online, path through at least 1 elite. Skip only when the deck genuinely cannot handle the matchup (e.g., <a href="ontology-relics-brimstone.html" class="wiki-link">Brimstone</a> vs <a href="ontology-enemies-book-of-stabbing.html" class="wiki-link">Book of Stabbing</a>).</li>
+<li><strong><a href="ontology-acts-act-3.html" class="wiki-link">Act 3</a>: Fight 0-1 elites.</strong> Act 3 elites (<a href="ontology-enemies-giant-head.html" class="wiki-link">Giant Head</a>, <a href="ontology-enemies-reptomancer.html" class="wiki-link">Reptomancer</a>, <a href="ontology-enemies-nemesis.html" class="wiki-link">Nemesis</a>) are extremely dangerous. Only take an elite if the path naturally includes one and the deck is strong. Don&#x27;t go out of the way for Act 3 elites.</li>
+</ul>
+
+<p><strong>When comparing routes, elites are a POSITIVE, not just a risk.</strong> A route with 1 elite + 1 rest site is often better than a route with 0 elites + 2 rest sites, because the relic from the elite compounds for the rest of the run while the extra rest only heals one fight&#x27;s worth of damage.</p>
+
+<h2 id="full-act-pathing">Full Act Pathing</h2>
+
+<p><strong>At the START of each act, read the ENTIRE map.</strong> Count elites, shops, campfires, and unknowns on every viable route. Choose a full route before floor 1. This replaces room-by-room pathing.</p>
+
+<ul>
+<li><strong>Default to the elite-heavy route.</strong> Only downgrade to the safe route when HP or deck quality genuinely can&#x27;t handle the elite pool.</li>
+<li><strong>Re-route only when forced.</strong> Follow your act plan. Only deviate if HP drops below safe thresholds.</li>
+<li><strong>At each floor, verify the planned route is still viable.</strong> Count remaining forced combats to the next rest site. If the path forces 2+ combats and HP is below 50%, re-route.</li>
+<li>Prefer routes with a rest site in the last 1-2 floors before the boss.</li>
+<li>After a brutal fight (Byrds, <a href="ontology-enemies-centurion.html" class="wiki-link">Centurion</a>+<a href="ontology-enemies-mystic.html" class="wiki-link">Mystic</a>), next room MUST be healing, not another combat.</li>
+<li>If the path forces an elite at low HP, skip it entirely — take any alternative path.</li>
+</ul>
+
+<h2 id="act-2-route-selection">Act 2 Route Selection</h2>
+
+<ul>
+<li><strong>Act 2 route must include a non-combat room in the first 2-3 floors.</strong> The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), <a href="ontology-enemies-spheric-guardian.html" class="wiki-link">Spheric Guardian</a> (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. Prefer routes where a rest site, shop, or event appears by floor 2-3.</li>
+<li><strong>Evaluate rest site density across the entire path.</strong> Count forced combats between rest sites on each viable path. A route of M-R-E-M-M-?-E forces 6 fights with only 1 rest site. Prefer paths where rest sites break up combat sequences (e.g., M-M-R-M-R-E gives recovery opportunities). At reduced Max HP (post-Apparitions, post-Vampires), rest site density is even more critical.</li>
+<li><strong>Unknown rooms are NOT safe in Act 2.</strong> They resolve as any hallway fight ~50% of the time, including Byrds, <a href="ontology-enemies-snake-plant.html" class="wiki-link">Snake Plant</a>, and Spheric Guardian. FIVE deaths confirmed from Unknown rooms resolving as combat. Treat Unknown rooms as Monster rooms when routing in Act 2. <strong>At below 30% HP, Unknown rooms are lethal.</strong></li>
+</ul>
+
+<h2 id="elite-risk-assessment">Elite Risk Assessment</h2>
+
+<p>Before fighting an elite, check:</p>
+<p>1. <strong>HP threshold</strong>: Below 30 HP for Act 1 elites is dangerous. Below 60% for Act 2 elites.</p>
+<p>2. <strong>Deck vs elite matchup</strong>: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling. Count your Attack/Skill ratio before committing to an elite path. <strong>Minimum 3 monster rooms before first elite</strong> — 0-2 fights are not enough to build a deck that can handle any Act 1 elite.</p>
+<p>3. <strong>Potions available</strong>: Potions compensate for bad matchups.</p>
+<p>4. <strong>Path alternatives</strong>: Only prefer a safer path if the elite risk is genuinely unmanageable. Don&#x27;t default to &quot;safer path exists, take it.&quot;</p>
+
+<p><strong>Act 2 Elite Threat Ranking:</strong></p>
+<ul>
+<li><strong>Book of Stabbing</strong> (4 deaths, #1 elite killer): Double scaling — +1 hit/turn AND +3 Str/turn. Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. <strong>If you have Brimstone, DO NOT FIGHT. Brimstone + Book of Stabbing = unsurvivable.</strong></li>
+<li><strong><a href="ontology-enemies-gremlin-leader.html" class="wiki-link">Gremlin Leader</a></strong> (3 deaths): Rally gives +3 Str to ALL enemies per cast. Fight is unwinnable after turn 7. NEED: AOE for gremlins, <a href="ontology-cards-shockwave.html" class="wiki-link">Shockwave</a> for mass debuff, 60%+ HP.</li>
+<li><strong>Slavers</strong> (2 deaths): 3 enemies, 27+ combined damage from Turn 1. NEED: AOE, mass debuff, block density, 60%+ HP.</li>
+</ul>
+
+<h2 id="brimstone-elite-avoidance">Brimstone Elite Avoidance</h2>
+
+<p>If Brimstone is equipped, the Act 2 elite pool becomes asymmetrically dangerous:</p>
+<ul>
+<li><strong>Book of Stabbing: HARD AVOID.</strong> Brimstone + multi-hit + hit-count escalation = quadratic damage growth. Two deaths confirmed.</li>
+<li><strong>Snake Plant: CAUTION.</strong> Brimstone adds +2/turn to each of its 3 hits.</li>
+<li><strong>Gremlin Leader: MODERATE RISK.</strong> Brimstone adds +2 to every gremlin. With Rally +3, combined scaling is +5 Str/turn to all enemies.</li>
+</ul>
+
+<p>When holding Brimstone, avoid elite paths entirely if HP is below 70%.</p>
+
+<h2 id="pre-boss-routing-last-5-floors">Pre-Boss Routing (last 5 floors)</h2>
+
+<ul>
+<li><strong>No HP-for-reward trades.</strong> No <a href="ontology-events-knowing-skull.html" class="wiki-link">Knowing Skull</a>, <a href="ontology-relics-golden-idol.html" class="wiki-link">Golden Idol</a>, or HP-cost events.</li>
+<li><strong>Skip elites in the last 3 floors.</strong> Relic value &lt; boss HP threshold.</li>
+<li><strong>Rest over upgrade at every rest site if below 70% HP.</strong></li>
+<li><strong>Path priority: Rest &gt; Shop &gt; Event &gt; Monster &gt; Elite.</strong> Invert normal priority.</li>
+<li>Count forced combats on each path to the boss. If ALL paths force 4+ combats, use potions aggressively.</li>
+</ul>
+
+<h2 id="fairy-management">Fairy Management</h2>
+
+<p><a href="ontology-potions-fairy-in-a-bottle.html" class="wiki-link">Fairy in a Bottle</a> is often consumed in Centurion+Mystic fights. If Fairy is your only death insurance, plan paths so Fairy is available for the most dangerous fight (elite or boss).</p>
+
+<h2 id="mark-of-the-bloom-no-optional-combat">Mark of the Bloom = No Optional Combat</h2>
+
+<p>If <a href="ontology-relics-mark-of-the-bloom.html" class="wiki-link">Mark of the Bloom</a> is active, every point of damage is permanent. Under this condition:</p>
+<ul>
+<li>Do NOT fight <a href="ontology-events-mysterious-sphere.html" class="wiki-link">Mysterious Sphere</a>, Unknown rooms, or elites unless forced.</li>
+<li>Take only shops, rest sites (upgrades only), events with known non-combat outcomes.</li>
+</ul>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

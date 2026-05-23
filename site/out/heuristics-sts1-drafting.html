@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drafting &amp; Deck Building — Claude Slays the Spire</title>
+<script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+<style>
+:root {
+  --bg: #0a0a0e;
+  --surface: #111116;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c084fc;
+  --accent-dim: #5a2090;
+  --ontology: #60a5fa;
+  --heuristics: #f59e0b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a.wiki-link { color: var(--ontology); border-bottom: 1px dotted var(--ontology); }
+a.wiki-link:hover { border-bottom-style: solid; text-decoration: none; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  flex-wrap: wrap;
+}
+nav a { color: var(--text-dim); }
+nav a:hover, nav a.active { color: var(--accent); }
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
+h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
+h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 10px 24px; }
+li { margin: 6px 0; }
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+code {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; font-size: 14px; }
+strong { color: #f0f0f0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--surface);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* Category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.category-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--accent-dim);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.category-card .count {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.category-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.category-card a:hover {
+  text-decoration: none;
+}
+.category-card a h3 {
+  color: var(--accent);
+}
+.category-card.ontology-card { border-left: 3px solid var(--ontology); }
+.category-card.ontology-card a h3 { color: var(--ontology); }
+.category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
+.category-card.heuristics-card a h3 { color: var(--heuristics); }
+
+/* Entry grid */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.entry-grid a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.entry-grid a:hover {
+  border-color: var(--accent-dim);
+  text-decoration: none;
+}
+
+/* Back link */
+.back-link {
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.back-link a {
+  color: var(--text-dim);
+}
+.back-link a:hover {
+  color: var(--accent);
+}
+
+/* Section badge */
+.section-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
+.section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+
+/* Companion link (ontology ↔ heuristics) */
+.companion-link {
+  margin: 20px 0;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Changelog */
+.changelog-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.changelog-header {
+  background: var(--surface);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.changelog-header:hover { background: #181820; }
+.changelog-date {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-sha {
+  font-size: 12px;
+  color: var(--accent-dim);
+  font-family: 'Consolas', monospace;
+}
+.changelog-msg {
+  font-weight: 600;
+  font-size: 16px;
+}
+.changelog-diff {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.diff-file {
+  border-bottom: 1px solid var(--border);
+}
+.diff-file:last-child { border-bottom: none; }
+.diff-filename {
+  background: #161622;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+.diff-hunk { color: #6ab0f3; padding: 2px 16px; background: #0d1117; }
+.diff-add { color: #4ade80; padding: 2px 16px; background: rgba(74,222,128,0.07); }
+.diff-del { color: #f87171; padding: 2px 16px; background: rgba(248,113,113,0.07); }
+.diff-ctx { color: var(--text-dim); padding: 2px 16px; }
+
+/* Stats panel */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.state-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 32px;
+}
+@media (max-width: 600px) {
+  .state-details { grid-template-columns: 1fr; }
+}
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.state-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.state-card strong {
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+/* Journey / character progress */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 40px;
+}
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.journey-card.completed {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, var(--surface), rgba(74, 222, 128, 0.04));
+}
+.journey-card.active {
+  border-color: var(--accent);
+}
+.journey-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.journey-card.completed .journey-badge { color: #4ade80; }
+.journey-card.active .journey-badge { color: var(--accent); }
+.journey-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+}
+.journey-stats {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Claude Slays the Spire</h1>
+<nav><a href="index.html" class="">Home</a>
+<a href="ontology.html" class="">Ontology</a>
+<a href="heuristics.html" class="active">Heuristics</a>
+<a href="knowledge-system.html" class="">Knowledge System</a>
+<a href="philosophy.html" class="">Philosophy</a>
+<a href="changelog.html" class="">Changelog</a></nav>
+<span class="section-badge heuristics">heuristics</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><h1 id="drafting-deck-building">Drafting &amp; Deck Building</h1>
+
+<p>Card evaluation and deck construction heuristics for <a href="ontology-characters-ironclad.html" class="wiki-link">Ironclad</a>. Every card pick should solve a problem, not add raw power.</p>
+
+<hr>
+
+<h2 id="healing-card-priority-the-critical-gap">Healing Card Priority (THE CRITICAL GAP)</h2>
+
+<p>The single biggest strategic failure across 50 runs: entering <a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a> without a healing card. <a href="ontology-relics-burning-blood.html" class="wiki-link">Burning Blood</a> (+6/fight) heals 6% of max HP per fight. Act 2 fights drain 25-50 HP. The math does not work.</p>
+
+<p><strong>Card reward priority when offered a healing card:</strong></p>
+<ul>
+<li><strong><a href="ontology-cards-reaper.html" class="wiki-link">Reaper</a>: TAKE IT.</strong> Even over good damage/block cards. Best card in the game for Ironclad.</li>
+<li><strong>Feed: TAKE IT</strong> in early <a href="ontology-acts-act-1.html" class="wiki-link">Act 1</a>. +3-4 Max HP per kill compounds over 15+ fights.</li>
+<li>If neither offered by Floor 12, seek healing potions (<a href="ontology-potions-blood-potion.html" class="wiki-link">Blood Potion</a>, <a href="ontology-potions-regen-potion.html" class="wiki-link">Regen Potion</a>) and healing relics (<a href="ontology-relics-toy-ornithopter.html" class="wiki-link">Toy Ornithopter</a>, <a href="ontology-relics-meal-ticket.html" class="wiki-link">Meal Ticket</a>, <a href="ontology-relics-bloody-idol.html" class="wiki-link">Bloody Idol</a>) at shops.</li>
+</ul>
+
+<p><strong>This is non-negotiable.</strong> A deck with Reaper + adequate damage will reach <a href="ontology-acts-act-3.html" class="wiki-link">Act 3</a>. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30.</p>
+
+<p><strong>Reaper alone is NOT sufficient.</strong> Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. Multiple healing sources are required. <strong>Minimum TWO healing sources by Act 2 Floor 5.</strong></p>
+
+<hr>
+
+<h2 id="act-2-readiness-checklist">Act 2 Readiness Checklist</h2>
+
+<p>Verify by Floor 15. ALL FOUR criteria or die in Act 2:</p>
+
+<p>1. <strong>Damage scaling</strong> -- the deck needs SOME way to outpace enemy block and HP growth. Two valid paths:</p>
+<ul>
+<li><strong>Strength path:</strong> <a href="ontology-cards-inflame.html" class="wiki-link">Inflame</a>, <a href="ontology-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a> (front-loaded). NOT <a href="ontology-cards-demon-form.html" class="wiki-link">Demon Form</a> alone (too slow for hallway fights, confirmed in 2+ deaths). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).</li>
+<li><strong>Exhaust/Block path (under investigation):</strong> <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (+ <a href="ontology-cards-body-slam.html" class="wiki-link">Body Slam</a> for damage conversion). This engine may generate block and damage without Strength — Run 187 won with it as the primary engine (with supplementary Str from Spot Weakness + Red Skull). Whether it works WITHOUT any Str sources is being tested (see exploration directives).</li>
+</ul>
+<p>2. <strong>AOE damage</strong> -- <a href="ontology-cards-thunderclap.html" class="wiki-link">Thunderclap</a>, <a href="ontology-cards-cleave.html" class="wiki-link">Cleave</a>, <a href="ontology-cards-immolate.html" class="wiki-link">Immolate</a>, <a href="ontology-cards-whirlwind.html" class="wiki-link">Whirlwind</a>. Required for <a href="ontology-enemies-gremlin-leader.html" class="wiki-link">Gremlin Leader</a> (gremlins re-summon), 3 Cultists (hard-scaler, kill speed matters), <a href="ontology-bosses-slime-boss.html" class="wiki-link">Slime Boss</a> split.</p>
+<p>3. <strong>Healing beyond Burning Blood</strong> -- Reaper, Feed, potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.</p>
+<p>4. <strong>Block scaling beyond basic Defends</strong> -- <a href="ontology-cards-shrug-it-off.html" class="wiki-link">Shrug It Off</a>, <a href="ontology-cards-flame-barrier.html" class="wiki-link">Flame Barrier</a>, <a href="ontology-cards-metallicize.html" class="wiki-link">Metallicize</a>, <a href="ontology-cards-impervious.html" class="wiki-link">Impervious</a>, or <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (FNP generates block on every exhaust). Basic Defends provide only 20 block from a full hand of 4. Act 2 boss Hyper Beam deals 45-57 damage. Even late Act 2 hallway fights (<a href="ontology-enemies-book-of-stabbing.html" class="wiki-link">Book of Stabbing</a> turn 5: 6x6=36) outscale basic Defends.</p>
+
+<p><strong>If missing 2+ entering Act 2, shift to conservative pathing</strong> -- avoid elites, path through shops and rest sites, skip unknown rooms.</p>
+
+<hr>
+
+<h2 id="ironclad-act-1-tier-list">Ironclad Act 1 Tier List</h2>
+
+<p>The starting deck is nearly identical every run. Use a tier list, not first-principles reasoning.</p>
+
+<p><strong>MUST-TAKE</strong> (take over almost anything):</p>
+<ul>
+<li>Reaper (healing -- most important card for Ironclad)</li>
+<li>Feed (permanent Max HP scaling, take early for max value)</li>
+<li>Inflame (immediate +2 Str, satisfies front-loaded Str requirement)</li>
+<li>Immolate (massive AOE + single target, solves multiple problems)</li>
+<li>Impervious (30 block in one card, solves every block problem)</li>
+<li>Shrug It Off (block + draw, best defensive common)</li>
+<li><a href="ontology-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a> (damage + draw, best offensive common)</li>
+</ul>
+
+<p><strong>HIGH PRIORITY</strong> (take to fill gaps):</p>
+<ul>
+<li>Spot Weakness (+3/+4 Str when enemy attacks -- most enemies attack)</li>
+<li>Thunderclap (AOE + <a href="ontology-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a>, critical for Byrds in Act 2)</li>
+<li><a href="ontology-cards-headbutt.html" class="wiki-link">Headbutt</a> (damage + deck manipulation)</li>
+<li><a href="ontology-cards-carnage.html" class="wiki-link">Carnage</a> (high damage Ethereal attack -- great for Nob-safe damage)</li>
+<li><a href="ontology-cards-iron-wave.html" class="wiki-link">Iron Wave</a> (damage + block in one card)</li>
+<li><a href="ontology-cards-clothesline.html" class="wiki-link">Clothesline</a> (damage + <a href="ontology-debuffs-weak.html" class="wiki-link">Weak</a>)</li>
+<li><a href="ontology-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts -- incredible vs multi-enemy)</li>
+<li>Flame Barrier (block + counter damage, excellent in multi-hit fights)</li>
+</ul>
+
+<p><strong>SITUATIONAL</strong> (take only if it fills a specific gap):</p>
+<ul>
+<li><a href="ontology-cards-evolve.html" class="wiki-link">Evolve</a> (MUST-TAKE if Slime Boss is the Act 1 boss -- trivializes <a href="ontology-cards-slimed.html" class="wiki-link">Slimed</a> cards)</li>
+<li><a href="ontology-cards-fire-breathing.html" class="wiki-link">Fire Breathing</a> (MUST-TAKE if Slime Boss AND you have Evolve)</li>
+<li><a href="ontology-cards-uppercut.html" class="wiki-link">Uppercut</a> (Weak + Vulnerable in one card, but 2E is expensive)</li>
+<li><a href="ontology-cards-perfected-strike.html" class="wiki-link">Perfected Strike</a> (only if 3+ Strike cards remain in deck)</li>
+<li><a href="ontology-cards-anger.html" class="wiki-link">Anger</a> (free attack, good for Nob, but adds copies to discard)</li>
+<li><a href="ontology-cards-rampage.html" class="wiki-link">Rampage</a> (scaling damage, needs multiple plays to ramp)</li>
+<li><a href="ontology-cards-true-grit.html" class="wiki-link">True Grit</a> (ONLY if you can upgrade it soon -- unupgraded random exhaust is dangerous)</li>
+<li><a href="ontology-cards-sentinel.html" class="wiki-link">Sentinel</a> (block + energy on exhaust)</li>
+</ul>
+
+<p><strong>SITUATIONAL</strong> (take only if it fills a specific gap):</p>
+<ul>
+<li><a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (3 block per exhaust. Enables Corruption engine; also good standalone with True Grit, Fiend Fire, or any exhaust source. Under investigation as a high-priority pick — see exploration directives.)</li>
+</ul>
+
+<p><strong>SKIP</strong> (do not take in Act 1 unless noted):</p>
+<ul>
+<li>Demon Form (too slow for hallway fights, does not satisfy front-loaded damage scaling)</li>
+<li><a href="ontology-cards-limit-break.html" class="wiki-link">Limit Break</a> (needs a Str source first)</li>
+<li><a href="ontology-cards-barricade.html" class="wiki-link">Barricade</a> (3E, too slow, no immediate value -- but take from boss card rewards if building block engine)</li>
+<li><a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> (3E, dangerous without <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a>. Under investigation: may be worth taking if FNP is already in deck, but needs more data — see exploration directives.)</li>
+<li><a href="ontology-cards-brutality.html" class="wiki-link">Brutality</a> (self-damage in long fights)</li>
+<li><a href="ontology-cards-berserk.html" class="wiki-link">Berserk</a> (self-Vulnerable is extremely dangerous)</li>
+</ul>
+
+<p><strong>Boss-specific overrides (APPLY BEFORE tier list):</strong></p>
+<ul>
+<li>Slime Boss visible: Evolve and Fire Breathing become MUST-TAKES</li>
+<li><a href="ontology-bosses-hexaghost.html" class="wiki-link">Hexaghost</a> visible: Weak sources (Shockwave, Clothesline, <a href="ontology-cards-intimidate.html" class="wiki-link">Intimidate</a>) become MUST-TAKES. A Weak source outranks ANY generic tier list pick -- take Clothesline over Pommel Strike, take Intimidate over Iron Wave, etc. Without Weak, Hexaghost&#x27;s Inferno and Tackles deal full damage for 16+ turns. No amount of block cards compensates.</li>
+<li><a href="ontology-bosses-the-guardian.html" class="wiki-link">The Guardian</a> visible: Burst damage for <a href="ontology-buffs-mode-shift.html" class="wiki-link">Mode Shift</a> (Carnage, <a href="ontology-cards-bludgeon.html" class="wiki-link">Bludgeon</a>)</li>
+</ul>
+
+<p><strong>Elite-specific overrides:</strong></p>
+<ul>
+<li><a href="ontology-enemies-gremlin-nob.html" class="wiki-link">Gremlin Nob</a>: Take attacks, not skills. Nob gains +2 Str per Skill you play.</li>
+<li>Slavers in Act 2: AOE and mass debuff are critical for 3-enemy fight.</li>
+<li>Book of Stabbing in Act 2: Exhaust tools for Wound removal.</li>
+</ul>
+
+<hr>
+
+<h2 id="draft-for-known-encounters">Draft for Known Encounters</h2>
+
+<p>You see the boss from Floor 1. You know which elites exist in each act. Evaluate cards against fights you are GUARANTEED to face, not generically.</p>
+
+<p>The boss is visible on the map from the start. Every card pick, relic choice, and deck-building decision should account for that specific boss matchup. A card that is mediocre in isolation but strong against your boss is worth more than a generically powerful card that does not address the boss threat.</p>
+
+<p>After Act 1, shift from the tier list to gap-filling based on the Act 2 Readiness Checklist.</p>
+
+<hr>
+
+<h2 id="take-cards-that-solve-problems">Take Cards That Solve Problems</h2>
+
+<p>A card&#x27;s value depends on what the deck needs RIGHT NOW and what fights are coming next.</p>
+
+<p>Before taking a card, ask:</p>
+<p>1. Do I have a healing card? (If no, #1 gap)</p>
+<p>2. Do I have a damage scaling path? (If no, #2 gap -- Str sources are proven; Corruption+FNP is a promising alternative under investigation)</p>
+<p>3. Do I have AOE? (If no, #3 gap -- Gremlin Leader and 3 Cultists will kill you)</p>
+<p>4. Do I have block scaling beyond basic Defends? (If no, #4 gap -- Hyper Beam will kill you. Note: Corruption+FNP also fills this gap.)</p>
+<p>5. Does this card help against my boss?</p>
+
+<p>A mediocre card that fills a gap is better than a strong card that duplicates what you already have.</p>
+
+<hr>
+
+<h2 id="damage-scaling-is-mandatory">Damage Scaling Is Mandatory</h2>
+
+<p><a href="ontology-enemies-spheric-guardian.html" class="wiki-link">Spheric Guardian</a> has Barricade -- its block never expires and grows 15-20 per defend cycle. At 0-1 Strength with no scaling engine, Strikes deal 6-7 damage per play against 15-20 block gained per cycle. The fight is unwinnable without some form of damage scaling.</p>
+
+<p><strong>By Floor 15, the deck MUST have a scaling path.</strong> Either:</p>
+
+<p><strong>Path A -- Strength scaling:</strong></p>
+<p>1. Inflame (+2 Str permanent, 1E) -- best standalone option</p>
+<p>2. Spot Weakness (+3/+4 Str when enemy attacks, 1E) -- excellent but conditional</p>
+<p>3. Limit Break (doubles current Str) -- only if another Str source exists to double</p>
+<p>4. Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses</p>
+<p>5. <a href="ontology-relics-vajra.html" class="wiki-link">Vajra</a> relic (+1 Str) -- passive, always on</p>
+
+<p><strong>Path B -- Exhaust/Block engine (under investigation):</strong></p>
+<p>1. <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> -- core combo. FNP generates block on each exhausted Skill; Corruption makes all Skills free but one-use. Together they produce massive block per turn. Add <a href="ontology-cards-body-slam.html" class="wiki-link">Body Slam</a> to convert block to damage.</p>
+<p>2. <a href="ontology-cards-barricade.html" class="wiki-link">Barricade</a> -- block persists, so the engine snowballs. Not required early but completes the engine.</p>
+<p>3. <a href="ontology-cards-entrench.html" class="wiki-link">Entrench</a> -- doubles accumulated block. With Barricade, this is exponential growth.</p>
+
+<p>These paths are not mutually exclusive. Run 187 won with Corruption+FNP primary and Spot Weakness secondary. Run 104 won with the full Barricade+Corruption+FNP+Body Slam engine. Both winning runs ALSO had Strength sources. Whether the exhaust/block engine can win purely on its own (without any Str) is being tested — see exploration directives. What IS clear: a deck cannot survive without SOME scaling path.</p>
+
+<p><strong>Card reward priority when the deck has NO scaling path:</strong></p>
+<p>Inflame &gt; Spot Weakness &gt; Corruption (if FNP available or likely) &gt; Feel No Pain (if Corruption available or likely) &gt; Limit Break (with Str source) &gt; anything.</p>
+
+<hr>
+
+<h2 id="curse-management">Curse Management</h2>
+
+<p>Curses are removable at shops for 75g (except Parasite, which cannot be removed).</p>
+
+<p><strong>When an event offers gold + a curse, check the map:</strong></p>
+<ul>
+<li><strong>Shop within 2-3 floors:</strong> Take the gold + curse, remove at shop. Net profit after 75g removal. <a href="ontology-events-sssserpent.html" class="wiki-link">Sssserpent</a> (175g + Doubt curse) nets 100g profit.</li>
+<li><strong>No shop before boss/elite:</strong> Refuse. A curse stuck in the deck for 5+ floors degrades draw quality and costs HP in hard fights.</li>
+<li><strong>Parasite: Never take.</strong> Cannot be removed at shops. No exceptions unless <a href="ontology-relics-omamori.html" class="wiki-link">Omamori</a> will negate it.</li>
+</ul>
+
+<p>Evaluate the map context, not just the curse itself.</p>
+
+<hr>
+
+<h2 id="deck-thinning">Deck Thinning</h2>
+
+<p>Remove Strikes at shops and events. A 10-12 card deck draws key cards much more reliably than a 15+ card deck.</p>
+
+<p>Remove Strikes before Defends. Strikes get outclassed faster by better attacks; Defend&#x27;s 5 block stays relevant longer.</p>
+
+<hr>
+
+<h2 id="multi-purpose-cards-win">Multi-Purpose Cards Win</h2>
+
+<p>The winning formula across all victories: cards that do two things.</p>
+
+<ul>
+<li>Block + draw: Shrug It Off</li>
+<li>Damage + draw: Pommel Strike</li>
+<li>Damage + block: Iron Wave</li>
+<li>Damage + heal: Reaper</li>
+<li>Damage + deck manipulation: Headbutt</li>
+</ul>
+
+<p>Single-purpose cards (Strike, Defend) are the weakest cards in the deck. When choosing between a single-purpose card and a dual-purpose card of similar power level, always take the dual-purpose card.</p>
+
+<hr>
+
+<h2 id="3-cost-power-setup-trap">3-Cost Power Setup Trap</h2>
+
+<p><a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> (3E), Barricade (3E), Demon Form (3E) consume ALL energy on a 3-energy turn. Playing them on Turn 1 against attacking enemies leaves zero energy for block. Two deaths confirmed from this pattern.</p>
+
+<p><strong>Only play 3E Powers when:</strong></p>
+<ul>
+<li>Enemy is buffing/defending (free turn with no incoming damage)</li>
+<li>You have 4+ energy (from <a href="ontology-relics-lantern.html" class="wiki-link">Lantern</a>, <a href="ontology-relics-sozu.html" class="wiki-link">Sozu</a>, <a href="ontology-cards-offering.html" class="wiki-link">Offering</a>, etc.), leaving energy for block</li>
+<li>You upgraded the Power to 2E (Corruption+ is 2E, leaving 1E for Defend)</li>
+<li>It is a boss fight where spending HP for setup speed is acceptable</li>
+</ul>
+
+<p><strong>Do NOT play 3E Powers when:</strong></p>
+<ul>
+<li>Any turn with incoming damage in a hallway fight</li>
+<li>Turn 1 against multi-enemy fights (combined damage 15-25+)</li>
+<li>The Full Block Flowchart shows no path to zero damage after spending 3E</li>
+</ul>
+
+<hr>
+
+<h2 id="slow-scaling-engines">Slow Scaling Engines</h2>
+
+<p>Demon Form (+2 Str/turn) and Limit Break (double Strength) are powerful in long fights but require 2-3 setup turns before providing meaningful value. They solve bosses but NOT hallway fights.</p>
+
+<p>Against fast-scaling enemies at low HP (3 Cultists, multi-enemy fights), setup time does not exist. The player is dead before the engine comes online.</p>
+
+<p><strong>Rule:</strong> If primary scaling is Demon Form or Limit Break, MUST have an alternative fast-burst plan for hallway fights. Slow engines are for bosses. Hallway fights need cards that contribute to Full Block paths on the turn they are drawn.</p>
+
+<hr>
+
+<h2 id="backup-healing-plan">Backup Healing Plan</h2>
+
+<p>Activate by Floor 17 if no healing card has been acquired. Do not wait until HP is critical.</p>
+
+<p>1. <strong>Shop healing:</strong> Buy Blood Potion or Regen Potion at every shop. Buy Toy Ornithopter or Meal Ticket if offered.</p>
+<p>2. <strong>Event healing:</strong> <a href="ontology-events-the-cleric.html" class="wiki-link">The Cleric</a> heals. <a href="ontology-events-big-fish.html" class="wiki-link">Big Fish</a> offers healing. <a href="ontology-events-woman-in-blue.html" class="wiki-link">Woman in Blue</a> sells potions. Prioritize these events.</p>
+<p>3. <strong>Path through more rest sites:</strong> Without healing cards, rest sites become the primary healing source. Accept fewer upgrades. Degraded strategy but better than dying.</p>
+<p>4. <strong>Potion management:</strong> Treat Blood Potions and Regen Potions as precious resources. Do not use them in trivial fights.</p>
+<p>5. <strong>Conservative pathing:</strong> Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.</p>
+
+<p>The absence of healing cards does NOT mean the run is lost. It means Full Block discipline becomes even more critical and map pathing must be more conservative.</p>
+
+<footer>
+  <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;
+  <a href="https://www.reddit.com/r/ClaudeSlaysTheSpire/">Reddit</a>
+</footer>
+</body>
+</html>

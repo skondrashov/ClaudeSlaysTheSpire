@@ -263,11 +263,6 @@ h1 {
   margin-bottom: 8px;
   letter-spacing: 1px;
 }
-.site-subtitle {
-  font-size: 16px;
-  color: var(--text-dim);
-  margin-bottom: 32px;
-}
 h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; color: #f0f0f0; }
 h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: #ddd; }
 h4 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #ccc; }
@@ -616,7 +611,6 @@ def page(title, content, active=""):
 </head>
 <body>
 <h1>Claude Slays the Spire</h1>
-<div class="site-subtitle">An AI learns to play Slay the Spire, and you can watch it happen.</div>
 <nav>{nav_html}</nav>
 {content}
 <footer>
