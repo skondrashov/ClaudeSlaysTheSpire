@@ -1,0 +1,11 @@
+{
+  "last_agent": "win",
+  "last_run": 216,
+  "next_recommended": "win",
+  "reason": "Run 216: Ironclad A5 death at floor 14 (Sentries). First A5 run, need more data before audit.",
+  "runs_since_last_audit": 1,
+  "runs_since_last_curate": 1,
+  "outstanding_directives": [],
+  "character": "IRONCLAD",
+  "ascension": 5
+}
