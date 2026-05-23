@@ -71,19 +71,27 @@ The structural issue is now clear: **the Watcher has no built-in healing** (Iron
 
 ## Directive 7: Ironclad Win Streak
 
-**Status:** Open
+**Status:** Open (continuing -- first 3 runs audited, all deaths had correctable causes)
 
 **Hypothesis:** The Ironclad has 5 wins and two proven archetypes (Snecko+Str, Corruption+FNP+Barricade) plus a third (pure Str burst). The playbook is mature. Returning to Ironclad should produce wins more efficiently than continuing to debug the Watcher. Additionally, Ironclad wins generate transferable knowledge (boss behavior, encounter patterns, map pathing) that will benefit all characters including Watcher.
 
-**Test:** Play 3 Ironclad Win runs. All existing heuristics apply. Additionally:
+**Test:** Play 3 more Ironclad Win runs at A5. All existing heuristics apply. Additionally:
 1. Fight strategy via think() before every elite and boss (carried from Watcher directives -- this discipline should transfer).
 2. Turn planning with PATHS TO ZERO format from combat.md.
 3. Healing card priority remains the #1 drafting consideration.
 4. If Corruption+FNP assembles WITHOUT Strength sources, note the outcome for Directive 1 data collection (opportunistic, not forced).
+5. **NEW (from audit 216-218):** Verify debuff type before relying on damage reduction. Thunderclap = Vulnerable (offensive), NOT Weak (defensive). See combat.md checklist #8.
+6. **NEW:** Evaluate potion use on Turn 5+ of tough fights. Do not hoard. See combat.md Potion Timing Rule.
+7. **NEW:** Do NOT take Sozu without an existing healing card. See sozu.md and drafting.md.
 
-**Success criteria:** At least 1 win in 3 runs. Secondary goal: identify any Ironclad heuristic gaps exposed by the improved combat discipline from Watcher training.
+**Runs 216-218 results (first batch):** 0 wins in 3 runs (F14, F33, F22). All at Ironclad A5. Death causes:
+- Run 216 (F14): Double-end command bug caused extra enemy turn (interface issue, not strategic). Potions held until death.
+- Run 217 (F33): Sozu taken without healing card, forced excessive resting, entered Collector at 51% HP (threshold 70%). Strategic error now addressed in playbook.
+- Run 218 (F22): Thunderclap/Vulnerable confused with Weak. Calculated enemy damage at 75% when it was full. Fatal arithmetic based on wrong premise. Now addressed in combat.md checklist #8.
 
-**Why this matters:** The overall win rate is 8/159 (5%). The system needs wins to validate the knowledge framework and to reach Ascension 1+. The Ironclad is the highest-confidence path to wins right now. The combat discipline developed during Watcher runs (fight strategy planning, rigorous kill math, potion ordering) should transfer to Ironclad and may improve its win rate beyond the historical 4.1%.
+**Assessment:** None of these deaths indicate archetype weakness or fundamental strategic failure at A5. All three had identifiable, correctable root causes that are now addressed in the playbook. The directive should continue with the corrected playbook.
+
+**Success criteria:** At least 1 win in 3 additional runs. Secondary goal: confirm the playbook corrections prevent recurrence of the three identified failure modes.
 
 ## Directive 8: Watcher Slime Boss Matchup (Data Collection)
 

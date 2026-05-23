@@ -17,6 +17,8 @@ The single biggest strategic failure across 50 runs: entering [[acts/Act 2]] wit
 
 **Reaper alone is NOT sufficient.** Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. Multiple healing sources are required. **Minimum TWO healing sources by Act 2 Floor 5.**
 
+**Sozu boss relic risk:** [[relics/Sozu]] (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. **Confirmed fatal in Run 217:** took Sozu with no healing card, forced 5 rests in Act 2, entered boss at 51% HP (threshold 70%), died.
+
 ---
 
 ## Act 2 Readiness Checklist
@@ -66,8 +68,6 @@ The starting deck is nearly identical every run. Use a tier list, not first-prin
 - [[cards/Rampage]] (scaling damage, needs multiple plays to ramp)
 - [[cards/True Grit]] (ONLY if you can upgrade it soon -- unupgraded random exhaust is dangerous)
 - [[cards/Sentinel]] (block + energy on exhaust)
-
-**SITUATIONAL** (take only if it fills a specific gap):
 - [[cards/Feel No Pain]] (3 block per exhaust. Enables Corruption engine; also good standalone with True Grit, Fiend Fire, or any exhaust source. Under investigation as a high-priority pick — see exploration directives.)
 
 **SKIP** (do not take in Act 1 unless noted):

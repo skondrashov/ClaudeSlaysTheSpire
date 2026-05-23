@@ -102,7 +102,25 @@ On kill turns, play all deterministic damage cards FIRST. Only use random-outcom
 
 **Rule:** Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.
 
-### 8. WRATH DOUBLES ALL DAMAGE
+### 8. VERIFY DEBUFF TYPE: VULNERABLE IS NOT WEAK
+
+Thunderclap applies [[debuffs/Vulnerable]] (target takes 50% MORE damage). It does NOT reduce enemy damage. Vulnerable makes the TARGET take more damage from attacks -- it is an offensive amplifier, not a defensive tool.
+
+**Ironclad Weak sources (reduce enemy damage dealt by 25%):**
+- [[cards/Intimidate]] (mass Weak, exhausts, 0E)
+- [[cards/Clothesline]] (single target Weak, 2E)
+- [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)
+- [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)
+
+**Ironclad Vulnerable sources (target takes 50% more damage from attacks):**
+- [[cards/Bash]] (single target Vulnerable, 2E)
+- [[cards/Thunderclap]] (mass Vulnerable, 1E)
+- [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)
+- [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)
+
+**CRITICAL:** Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. **Confirmed fatal in Run 218:** player calculated enemy damage as reduced by 25% (Weak math) after playing Thunderclap (which applies Vulnerable, not Weak). Actual incoming was 30, not 21. Death at -6 HP.
+
+### 9. WRATH DOUBLES ALL DAMAGE
 
 For Watcher: ALL damage is doubled in Wrath, including multi-hit cards. When a card enters Wrath (e.g., Tantrum from Calm), the stance change resolves BEFORE damage, so all hits are doubled.
 
@@ -120,3 +138,19 @@ Play Shockwave+ on the **FIRST ATTACK TURN** of multi-enemy fights.
 - **Turn 2 is usually correct:** most multi-enemy fights begin attacking on turn 2.
 - **NEVER save for turn 4+:** by then enemies have already accumulated Strength and you have taken unnecessary damage.
 - **Priority on the first attack turn:** Shockwave+ (mass Weak + Vulnerable) > [[cards/Reaper]] (healing) > single-target damage.
+
+---
+
+## Potion Timing Rule
+
+**Do not hoard potions until death.** Two of three runs in audit 216-218 died with usable potions that would have changed the outcome.
+
+**Trigger for potion evaluation:** If ANY of these conditions are true, evaluate potion use THIS TURN:
+1. **Turn 5+ in a tough fight** (elite, multi-enemy, hard-scaler) and potions are held.
+2. **HP below 30%** in any fight.
+3. **A damage potion would kill an enemy** that is generating status cards (Sentries generating Dazed, enemies applying debuffs). Killing the source earlier prevents compound damage from clogged draws.
+4. **A Strength/damage potion would accelerate a kill by 2+ turns.** Faster kills mean fewer incoming damage turns.
+
+**Anti-pattern: "saving for later."** There is no later if you die. A Fire Potion used on Turn 5 to kill a Sentry prevents 3+ turns of Dazed generation and incoming damage. A Strength Potion used mid-fight accelerates kills and reduces total damage taken. The value of a potion in the CURRENT fight is almost always higher than its speculative value in a FUTURE fight.
+
+**Exception:** Fairy in a Bottle and potions specifically needed for the next boss fight (within 1-2 floors). These may be worth holding. All other potions should be evaluated for immediate use when the trigger conditions are met.

@@ -10,4 +10,6 @@ Cheap mass [[debuffs/Vulnerable]]. The best setup card for multi-enemy fights.
 
 **Synergies:** [[cards/Dropkick]] (sets up free cycling on all Vulnerable targets), all Attack cards (50% more damage to all enemies).
 
+**CRITICAL WARNING:** Thunderclap applies [[debuffs/Vulnerable]], NOT [[debuffs/Weak]]. Vulnerable makes enemies take MORE damage from your attacks. It does NOT reduce the damage enemies deal to you. If you need to reduce incoming damage, use a Weak source ([[cards/Intimidate]], [[cards/Clothesline]], [[cards/Shockwave]]). **Confirmed fatal in Run 218:** agent treated Thunderclap as Weak, calculated 25% damage reduction on Centurion Fury. Actual incoming was full 30, not 21. Death at -6 HP.
+
 **Matchups:** Byrds -- THE single most important card. Strips 1 Flight from each + applies Vulnerable. Without Thunderclap, Flight 3 on three Byrds requires 9 separate hits. Having Thunderclap before [[acts/Act 2]] is essential. Sentries -- strips 1 Artifact from each. [[bosses/Slime Boss]] split -- mass Vulnerable on both slimes. [[bosses/Bronze Automaton]] -- strips Artifact charges (Automaton starts with Artifact 3).

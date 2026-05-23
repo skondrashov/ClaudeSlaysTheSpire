@@ -38,6 +38,10 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 |----------|-------------|
 | `think(reasoning, label)` | Post strategic analysis to the stream overlay. `reasoning` is the text viewers see. `label` is a short heading (default: "Strategy"). |
 
+## Known Issues
+
+- **Double-end bug (Run 216, confirmed fatal):** Sending `end` when the turn has already ended or is resolving can cause an extra enemy turn. Do NOT send `end` more than once per turn. If using `turn()` batches, include exactly one `"end"` at the end. If using `send()`, call `end()` only once and verify turn state before acting again. The snapshot-based fix in cmd.py addresses card index issues but does not guard against duplicate `end` commands.
+
 ## Card and Enemy References
 
 - Card names resolve against the current hand: `"play Bash 0"` finds Bash in hand

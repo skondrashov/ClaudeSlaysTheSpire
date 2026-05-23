@@ -2,7 +2,7 @@
 
 Pursue whichever engine the card/relic offerings support. No single archetype is "the" Ironclad strategy.
 
-## [[characters/Ironclad]] (5 wins / 122 runs)
+## [[characters/Ironclad]] (5 wins / 126 runs)
 
 **1. [[relics/Snecko Eye]] + [[buffs/Strength]] Scaling (Runs 102, 103)** — Snecko Eye (draw 7, cost randomization) + [[cards/Immolate]] (AOE) + [[cards/Limit Break]] (Str doubler) + [[cards/Heavy Blade]] finishers. Roll cheap costs on expensive cards, double Str for massive damage. Commit when: Snecko Eye is offered as Act 2 boss relic and Limit Break or Heavy Blade already exist.
 
@@ -20,9 +20,9 @@ Pursue whichever engine the card/relic offerings support. No single archetype is
 
 **6. [[cards/Echo Form]] Orb Engine** — Echo Form+ + [[cards/Seek]]/[[relics/Bottled Lightning]] + [[cards/Coolheaded]] + [[cards/Barrage]] + [[relics/Mummified Hand]] + Loop + [[relics/Data Disk]]. Echo Form doubles first card each turn. Seek+ guarantees finding key cards.
 
-## [[characters/Watcher]] (0 wins / 14 runs)
+## [[characters/Watcher]] (1 win / 32 runs)
 
-**No proven archetype yet.** Stance dance (Wrath/Calm cycling) is the primary engine under development across 14 runs. The engine assembles reliably and execution is clean. Deaths are strategic/knowledge gaps and HP management: Hex vulnerability (191), HP management under bad relics (192), Wrath damage miscalculation (193), Slime Boss deck flooding (194), Burns/Runic Pyramid hand clog (195), and HP attrition through Act 3 without healing (196). Best floor: 45 (Run 195). The Watcher is structurally harder to pilot than other characters: no built-in healing, Wrath doubles incoming damage on mistakes, and the stance-sequencing engine is uniquely vulnerable to hand/deck clog (Slimed, Burns, Dazed). **Watcher focus is paused** pending further Ironclad wins. Knowledge base is preserved for future resumption.
+**First win achieved (Run 215).** Stance dance (Wrath/Calm cycling) is the primary engine across 32 runs. The engine assembles reliably and execution is clean. After progressing through execution errors (runs 188-190), knowledge gaps (runs 191-193), and structural challenges (runs 194-196), focus shifted to Ironclad for efficient win production. The Watcher knowledge base continued expanding through runs 198-215, culminating in the first win. The Watcher is structurally harder to pilot than other characters: no built-in healing, Wrath doubles incoming damage on mistakes, and the stance-sequencing engine is uniquely vulnerable to hand/deck clog (Slimed, Burns, Dazed). **Watcher focus is paused** pending Ironclad A5 progress. Knowledge base is preserved for future resumption.
 
 **Stance Dance Engine (unproven, very promising):** Eruption+ (1E Wrath entry) + Calm exits (Vigilance, Inner Peace, Empty Body) + Rushdown (draw on Wrath entry) + Mental Fortress (block on stance change) + Flurry of Blows (free damage on stance change) + Battle Hymn (sustained Smite generation) + Apparitions (Intangible for boss survival). The energy loop (Calm +2E -> Wrath doubled damage) is the Watcher's fundamental scaling path. Mental Fortress+ (6 block per stance change) was excellent in Run 192 as a passive defense layer.
 
@@ -30,4 +30,4 @@ Pursue whichever engine the card/relic offerings support. No single archetype is
 
 ## What All Wins Share
 
-(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP block engine has won twice but always alongside Str sources — its independence is under investigation. The Watcher's 0-win record across 14 runs progressed through three phases: execution errors (runs 188-190), knowledge gaps (runs 191-193), and structural challenges (runs 194-196). Run 195 reached Floor 45 with a fully assembled engine but died to Burns/Runic Pyramid hand clog against Nemesis. Run 196 reached Floor 39 but died to HP attrition (no healing sources). The Watcher's lack of built-in healing and doubled incoming damage from Wrath make it structurally harder to pilot. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge AND (for Watcher) sufficient HP management to survive Act 3 without built-in healing.
+(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP block engine has won twice but always alongside Str sources — its independence is under investigation. The Watcher achieved its first win on Run 215 after 32 total runs. The Watcher's lack of built-in healing and doubled incoming damage from Wrath make it structurally harder to pilot. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge AND (for Watcher) sufficient HP management to survive Act 3 without built-in healing.

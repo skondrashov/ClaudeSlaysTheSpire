@@ -1,17 +1,11 @@
 {
-  "last_agent": "audit",
+  "last_agent": "curate",
   "last_run": 218,
-  "next_recommended": "curate",
-  "reason": "Audit 216-218 complete. 5 curator flags: Thunderclap/Vulnerable confusion (critical), potion hoarding, HP threshold violations, Sozu risk, Bash upgrade timing. Curator should address playbook gaps.",
+  "next_recommended": "win",
+  "reason": "Curation complete. All 5 audit flags addressed: Thunderclap fix in combat.md, potion timing rule, Sozu risk in drafting, double-end bug documented, Directive 7 updated. Playbook corrected for next Win batch.",
   "runs_since_last_audit": 0,
-  "runs_since_last_curate": 3,
-  "outstanding_directives": [
-    "Fix Thunderclap Vulnerable vs Weak in combat.md",
-    "Add potion timing trigger rule",
-    "Add Sozu risk assessment to drafting",
-    "Review double-end bug fix status",
-    "Evaluate Directive 7 continuation"
-  ],
+  "runs_since_last_curate": 0,
+  "outstanding_directives": [],
   "character": "IRONCLAD",
   "ascension": 5
 }
