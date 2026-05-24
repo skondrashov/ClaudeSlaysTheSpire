@@ -124,9 +124,10 @@ A mediocre card that fills a gap is better than a strong card that duplicates wh
 **Path A -- Strength scaling:**
 1. Inflame (+2 Str permanent, 1E) -- best standalone option
 2. Spot Weakness (+3/+4 Str when enemy attacks, 1E) -- excellent but conditional
-3. Limit Break (doubles current Str) -- only if another Str source exists to double
-4. Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses
-5. [[relics/Vajra]] relic (+1 Str) -- passive, always on
+3. [[relics/Brimstone]] relic (+2 Str/turn to you AND enemies) -- run-defining when acquired early (see brimstone.md). Pairs exceptionally well with Reaper.
+4. Limit Break (doubles current Str) -- only if another Str source exists to double
+5. Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses
+6. [[relics/Vajra]] relic (+1 Str) -- passive, always on
 
 **Path B -- Exhaust/Block engine (under investigation):**
 1. [[cards/Corruption]] + [[cards/Feel No Pain]] -- core combo. FNP generates block on each exhausted Skill; Corruption makes all Skills free but one-use. Together they produce massive block per turn. Add [[cards/Body Slam]] to convert block to damage.

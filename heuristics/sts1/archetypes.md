@@ -2,11 +2,11 @@
 
 Pursue whichever engine the card/relic offerings support. No single archetype is "the" Ironclad strategy.
 
-## [[characters/Ironclad]] (5 wins / 126 runs)
+## [[characters/Ironclad]] (6 wins / 130 runs)
 
 **1. [[relics/Snecko Eye]] + [[buffs/Strength]] Scaling (Runs 102, 103)** — Snecko Eye (draw 7, cost randomization) + [[cards/Immolate]] (AOE) + [[cards/Limit Break]] (Str doubler) + [[cards/Heavy Blade]] finishers. Roll cheap costs on expensive cards, double Str for massive damage. Commit when: Snecko Eye is offered as Act 2 boss relic and Limit Break or Heavy Blade already exist.
 
-**2. [[cards/Barricade]] + [[cards/Corruption]] + [[cards/Feel No Pain]] Block Engine (Runs 104, 187)** — Corruption (Skills free but exhaust) + Feel No Pain (block per exhaust) + Barricade (block persists) + [[cards/Entrench]] (double block) + [[cards/Body Slam]] (damage = block). Builds 100-200+ block wall, Body Slam converts to damage. Both wins also included Str sources (Spot Weakness, [[relics/Red Skull]] in 187; unknown in 104). Whether this engine can win WITHOUT any Strength is under investigation — see exploration directives. Commit when: Corruption + FNP appear by mid-[[acts/Act 2]].
+**2. [[cards/Corruption]] + [[cards/Feel No Pain]] Engine (Runs 104, 187, 219)** — Corruption (Skills free but exhaust) + Feel No Pain (block per exhaust) + optional [[cards/Barricade]] (block persists) + [[cards/Entrench]] (double block) + [[cards/Body Slam]] (damage = block). Builds massive block from free Skill exhausts. All 3 wins included Str sources ([[cards/Spot Weakness]]/[[relics/Red Skull]] in 187; [[relics/Brimstone]]/Spot Weakness in 219; unknown in 104). Whether this engine can win WITHOUT any Strength is under investigation -- see exploration directives. Run 219 (first A5 win) used Brimstone as the primary Str source, with the engine providing block generation. Commit when: Corruption + FNP appear by mid-[[acts/Act 2]].
 
 **3. Pure [[buffs/Strength]] Burst (Run 184)** — [[cards/Spot Weakness]]+ stacking + [[cards/Heavy Blade]]+ finisher + strong defensive tools ([[cards/Impervious]], [[cards/Intimidate]]). No Snecko Eye, no Barricade, no Corruption. Wins by accumulating Str over turns, then delivering a single massive Heavy Blade hit. Viable when: multiple Str sources appear early and Heavy Blade is in the deck. [[potions/Duplication Potion]] + Heavy Blade+ at high Str is a one-shot kill combo (312 damage confirmed vs [[bosses/Awakened One]]).
 
@@ -30,4 +30,4 @@ Pursue whichever engine the card/relic offerings support. No single archetype is
 
 ## What All Wins Share
 
-(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP block engine has won twice but always alongside Str sources — its independence is under investigation. The Watcher achieved its first win on Run 215 after 32 total runs. The Watcher's lack of built-in healing and doubled incoming damage from Wrath make it structurally harder to pilot. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge AND (for Watcher) sufficient HP management to survive Act 3 without built-in healing.
+(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP engine has won three times but always alongside Str sources -- its independence is under investigation. Run 219 (first A5 win) added Brimstone as a Str source variant, confirming that the engine + any Str source is the most reliable Ironclad formula. The Watcher achieved its first win on Run 215 after 32 total runs. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge.

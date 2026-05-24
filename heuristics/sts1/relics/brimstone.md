@@ -1,8 +1,8 @@
 # Brimstone
 
-Double-edged scaling relic. Your damage scales fast but enemies become devastating in long fights. Turns every fight into a race.
+**Run-defining relic.** +2 Str/combat to both you and all enemies. Turns every fight into a DPS race. When acquired early (Run 219, Floor 5), Brimstone carried damage scaling for the entire run -- by mid-Act 2, the player had 10+ Str, making Strikes deal 16+ and [[cards/Heavy Blade]]+ deal 50-100+. Confirmed as the primary damage engine in the first Ironclad A5 victory.
 
-WHEN TO TAKE: Deck has burst damage and can end fights in 4-5 turns. Pairs well with [[debuffs/Weak]] application ([[cards/Bash]], [[cards/Thunderclap]], [[cards/Shockwave]]) to offset enemy [[buffs/Strength]] gains.
+WHEN TO TAKE: Almost always correct for Ironclad, especially with [[cards/Reaper]] (more Str = more healing per Reaper hit). Best purchased early for maximum compounding. Pairs well with [[debuffs/Weak]] application ([[cards/Bash]], [[cards/Thunderclap]], [[cards/Shockwave]]) to offset enemy [[buffs/Strength]] gains.
 
 **PURCHASE CHECKLIST:**
 1. Is [[enemies/Book of Stabbing]] a possible [[acts/Act 2]] elite? If yes, DO NOT BUY. Brimstone + Book of Stabbing is unsurvivable.

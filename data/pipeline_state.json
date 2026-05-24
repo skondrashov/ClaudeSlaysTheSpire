@@ -1,10 +1,10 @@
 {
-  "last_agent": "audit",
+  "last_agent": "curate",
   "last_run": 222,
-  "next_recommended": "curate",
-  "reason": "Audit 220-222 complete. 7 total unaddressed flags (4 from audit_219 + 3 new). Step 4: 3+ flags piling up triggers early Curate.",
+  "next_recommended": "win",
+  "reason": "Curation complete. All 7 flags addressed. Directive 7 closed, Directive 9 (A5 Consolidation) opened. Route safety + damage scaling checks added to map.md. Win next.",
   "runs_since_last_audit": 0,
-  "runs_since_last_curate": 4,
+  "runs_since_last_curate": 0,
   "outstanding_directives": [],
   "character": "IRONCLAD",
   "ascension": 5

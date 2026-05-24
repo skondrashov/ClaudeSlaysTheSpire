@@ -1,5 +1,5 @@
 # Transient
 
 - **Act:** 3
-- **Type:** Elite
+- **Type:** Hallway
 - **Composition:** 1x [[enemies/Transient]]

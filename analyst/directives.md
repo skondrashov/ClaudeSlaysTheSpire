@@ -1,6 +1,6 @@
 # Exploration Directives
 
-Written by Curate agent. Updated after Run 196 (fourth curation cycle, Directive 6 synthesis).
+Written by Curate agent. Updated after Run 222 (fifth curation cycle, 7 audit flags addressed).
 
 ## Directive 1: Corruption+FNP Without Strength Sources
 
@@ -71,27 +71,20 @@ The structural issue is now clear: **the Watcher has no built-in healing** (Iron
 
 ## Directive 7: Ironclad Win Streak
 
-**Status:** Open (continuing -- first 3 runs audited, all deaths had correctable causes)
+**Status:** COMPLETE (Run 219 = victory, satisfying success criteria)
 
 **Hypothesis:** The Ironclad has 5 wins and two proven archetypes (Snecko+Str, Corruption+FNP+Barricade) plus a third (pure Str burst). The playbook is mature. Returning to Ironclad should produce wins more efficiently than continuing to debug the Watcher. Additionally, Ironclad wins generate transferable knowledge (boss behavior, encounter patterns, map pathing) that will benefit all characters including Watcher.
 
-**Test:** Play 3 more Ironclad Win runs at A5. All existing heuristics apply. Additionally:
-1. Fight strategy via think() before every elite and boss (carried from Watcher directives -- this discipline should transfer).
-2. Turn planning with PATHS TO ZERO format from combat.md.
-3. Healing card priority remains the #1 drafting consideration.
-4. If Corruption+FNP assembles WITHOUT Strength sources, note the outcome for Directive 1 data collection (opportunistic, not forced).
-5. **NEW (from audit 216-218):** Verify debuff type before relying on damage reduction. Thunderclap = Vulnerable (offensive), NOT Weak (defensive). See combat.md checklist #8.
-6. **NEW:** Evaluate potion use on Turn 5+ of tough fights. Do not hoard. See combat.md Potion Timing Rule.
-7. **NEW:** Do NOT take Sozu without an existing healing card. See sozu.md and drafting.md.
+**Runs 216-222 results (7 runs):** 1 win (Run 219), 6 deaths. Death causes:
+- Run 216 (F14): Double-end command bug (interface issue).
+- Run 217 (F33): Sozu without healing card (strategic error, now in playbook).
+- Run 218 (F22): Thunderclap/Vulnerable confusion (arithmetic error, now in checklist #8).
+- Run 219 (F51): **VICTORY.** Corruption+FNP engine + Brimstone Str scaling. First Ironclad A5 win.
+- Run 220 (F6): Routing into elite without rest site coverage at 12 HP.
+- Run 221 (F50): Void status card drained 1E on lethal turn. Died by 1 HP to Awakened One. Flawless execution, RNG death.
+- Run 222 (F10): Back-to-back elites with no rest between. No damage scaling vs Lagavulin.
 
-**Runs 216-218 results (first batch):** 0 wins in 3 runs (F14, F33, F22). All at Ironclad A5. Death causes:
-- Run 216 (F14): Double-end command bug caused extra enemy turn (interface issue, not strategic). Potions held until death.
-- Run 217 (F33): Sozu taken without healing card, forced excessive resting, entered Collector at 51% HP (threshold 70%). Strategic error now addressed in playbook.
-- Run 218 (F22): Thunderclap/Vulnerable confused with Weak. Calculated enemy damage at 75% when it was full. Fatal arithmetic based on wrong premise. Now addressed in combat.md checklist #8.
-
-**Assessment:** None of these deaths indicate archetype weakness or fundamental strategic failure at A5. All three had identifiable, correctable root causes that are now addressed in the playbook. The directive should continue with the corrected playbook.
-
-**Success criteria:** At least 1 win in 3 additional runs. Secondary goal: confirm the playbook corrections prevent recurrence of the three identified failure modes.
+**Assessment:** Success criteria met (1 win in Runs 219-222). The playbook corrections from audit 216-218 prevented recurrence of those failure modes. Run 219 demonstrated mastery of the Corruption+FNP engine. Post-win deaths (220-222) revealed two new systemic issues (route safety, damage scaling check) now addressed in the playbook. Run 221 was an RNG loss with flawless execution.
 
 ## Directive 8: Watcher Slime Boss Matchup (Data Collection)
 
@@ -104,3 +97,20 @@ The structural issue is now clear: **the Watcher has no built-in healing** (Iron
 **When Watcher runs resume:** If Slime Boss is the Act 1 boss, document: (a) deck size at time of fight, (b) AOE cards available, (c) Slimed management strategy, (d) outcome. Possible mitigations to test: larger deck size to dilute Slimed, Conclude+ as AOE finisher, Empty Mind to cycle past junk cards.
 
 **This directive does not require dedicated runs.** It is a data collection note for when Watcher play eventually resumes.
+
+## Directive 9: Ironclad A5 Consolidation
+
+**Status:** Open
+
+**Hypothesis:** The playbook has been significantly updated after Runs 216-222. Three systemic issues are now addressed: (1) route safety before elites, (2) damage scaling check before elites, (3) Normality + Corruption+FNP interaction. The Ironclad win rate at A5 should improve with these corrections. Runs 220-222 deaths had correctable root causes. Run 221 was RNG (flawless execution, died by 1 HP to Void).
+
+**Test:** Play 3 Ironclad A5 runs with the updated playbook. Key behavioral changes to validate:
+1. **Route safety rule:** Never commit to an elite without rest site coverage within 2 floors, or HP above 70%.
+2. **Damage scaling before elites:** Verify at least one scaling source exists before routing through Act 1 elites.
+3. **Normality management:** If Cursed Key is taken with Corruption engine, exhaust Normality immediately when drawn.
+4. **Void awareness:** After Sludge adds Void, plan for potential 1E loss on critical turns.
+5. All other existing heuristics (healing priority, potion timing, debuff verification, fight strategy planning).
+
+**Success criteria:** At least 1 win in 3 runs. If 2+ wins, consider advancing to A6. If 0 wins, audit for new failure modes.
+
+**Why stay at A5 (not advance to A6):** Only 1 win at A5 so far. The playbook needs validation that the post-Run-222 corrections work. Advancing before confirming the fixes risks compounding new ascension mechanics with unresolved routing/scaling issues.

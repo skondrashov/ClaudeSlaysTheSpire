@@ -1,10 +1,12 @@
 # The Transient
 
-**Core rule:** ATTACK TO SURVIVE. Every point of damage dealt reduces incoming by the same amount this turn (via Shifting). Attacking is strictly better than blocking.
+**Core mechanic:** The Transient has [[buffs/Fading]] 5 -- it dies automatically after 5 turns regardless of HP. It also has [[buffs/Shifting]], so every point of damage dealt reduces incoming by the same amount this turn. Attacking is strictly better than pure blocking.
+
+**Primary strategy: survive 5 turns.** You do not need to kill the Transient. It will die on its own. The goal is to minimize total HP loss across 5 attack turns (30/40/50/60/70 at A2+). Use attacks to reduce incoming via Shifting, then block the remainder.
 
 ## Optimal Play Each Turn
 
-1. Play all attack cards first -- each point of damage reduces this turn's incoming
+1. Play all attack cards first -- each point of damage reduces this turn's incoming via Shifting
 2. Play block cards with remaining energy to cover whatever damage is left
 3. The combination of Shifting + block should get to zero or near-zero damage taken
 
@@ -18,6 +20,7 @@
 
 - Play purely defensively (blocking without attacking wastes the Shifting mechanic)
 - Enter below 40% HP without strong block density or Strength debuffs
+- **Play with Normality curse in deck.** Normality limits card plays to 3/turn, which cripples the ability to play attacks (for Shifting) AND block in the same turn. If Normality is in the deck, exhaust it immediately when drawn ([[cards/Burning Pact]], [[cards/True Grit]]). Confirmed: Normality cost 40 HP in Run 219's Transient fight.
 
 ## Character-Specific Notes
 
