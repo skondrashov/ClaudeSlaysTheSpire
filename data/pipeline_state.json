@@ -1,10 +1,10 @@
 {
-  "last_agent": "audit",
-  "last_run": 219,
+  "last_agent": "win",
+  "last_run": 221,
   "next_recommended": "win",
-  "reason": "Audit 219 complete. 4 minor flags (Normality+Corruption, Brimstone entry, Transient strategy, Directive 7 closure). Curate ran 1 run ago — flags can accumulate. Win next.",
-  "runs_since_last_audit": 0,
-  "runs_since_last_curate": 1,
+  "reason": "Runs 220-221. R220: F6 early death. R221: F50 Awakened One Phase 2 (-1 HP, one turn short). 2 runs since audit, not yet at threshold.",
+  "runs_since_last_audit": 2,
+  "runs_since_last_curate": 3,
   "outstanding_directives": [],
   "character": "IRONCLAD",
   "ascension": 5
