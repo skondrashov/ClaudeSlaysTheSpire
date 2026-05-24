@@ -1,10 +1,10 @@
 {
   "last_agent": "win",
-  "last_run": 221,
-  "next_recommended": "win",
-  "reason": "Runs 220-221. R220: F6 early death. R221: F50 Awakened One Phase 2 (-1 HP, one turn short). 2 runs since audit, not yet at threshold.",
-  "runs_since_last_audit": 2,
-  "runs_since_last_curate": 3,
+  "last_run": 222,
+  "next_recommended": "audit",
+  "reason": "Run 222: F10 death (Lagavulin, 2nd elite no rest between). 3 runs since audit (220-222). Audit threshold reached.",
+  "runs_since_last_audit": 3,
+  "runs_since_last_curate": 4,
   "outstanding_directives": [],
   "character": "IRONCLAD",
   "ascension": 5
