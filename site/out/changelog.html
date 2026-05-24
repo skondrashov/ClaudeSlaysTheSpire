@@ -387,6 +387,387 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
+      <div class="changelog-msg">Curate: address 7 flags, add route safety + Void + Brimstone</div>
+      <div class="changelog-sha">c5233f68</div>
+    </div>
+    <div class="changelog-date">2026-05-23</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">heuristics/sts1/archetypes.md</div>
+<div class="diff-hunk">@@ -2,11 +2,11 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Pursue whichever engine the card/relic offerings support. No single archetype is &quot;the&quot; Ironclad strategy.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## [[characters/Ironclad]] (5 wins / 126 runs)</div>
+<div class="diff-add">+## [[characters/Ironclad]] (6 wins / 130 runs)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **1. [[relics/Snecko Eye]] + [[buffs/Strength]] Scaling (Runs 102, 103)** — Snecko Eye (draw 7, cost randomization) + [[cards/Immolate]] (AOE) + [[cards/Limit Break]] (Str doubler) + [[cards/Heavy Blade]] finishers. Roll cheap costs on expensive cards, double Str for massive damage. Commit when: Snecko Eye is offered as Act 2 boss relic and Limit Break or Heavy Blade already exist.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**2. [[cards/Barricade]] + [[cards/Corruption]] + [[cards/Feel No Pain]] Block Engine (Runs 104, 187)** — Corruption (Skills free but exhaust) + Feel No Pain (block per exhaust) + Barricade (block persists) + [[cards/Entrench]] (double block) + [[cards/Body Slam]] (damage = block). Builds 100-200+ block wall, Body Slam converts to damage. Both wins also included Str sources (Spot Weakness, [[relics/Red Skull]] in 187; unknown in 104). Whether this engine can win WITHOUT any Strength is under investigation — see exploration directives. Commit when: Corruption + FNP appear by mid-[[acts/Act 2]].</div>
+<div class="diff-add">+**2. [[cards/Corruption]] + [[cards/Feel No Pain]] Engine (Runs 104, 187, 219)** — Corruption (Skills free but exhaust) + Feel No Pain (block per exhaust) + optional [[cards/Barricade]] (block persists) + [[cards/Entrench]] (double block) + [[cards/Body Slam]] (damage = block). Builds massive block from free Skill exhausts. All 3 wins included Str sources ([[cards/Spot Weakness]]/[[relics/Red Skull]] in 187; [[relics/Brimstone]]/Spot Weakness in 219; unknown in 104). Whether this engine can win WITHOUT any Strength is under investigation -- see exploration directives. Run 219 (first A5 win) used Brimstone as the primary Str source, with the engine providing block generation. Commit when: Corruption + FNP appear by mid-[[acts/Act 2]].</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **3. Pure [[buffs/Strength]] Burst (Run 184)** — [[cards/Spot Weakness]]+ stacking + [[cards/Heavy Blade]]+ finisher + strong defensive tools ([[cards/Impervious]], [[cards/Intimidate]]). No Snecko Eye, no Barricade, no Corruption. Wins by accumulating Str over turns, then delivering a single massive Heavy Blade hit. Viable when: multiple Str sources appear early and Heavy Blade is in the deck. [[potions/Duplication Potion]] + Heavy Blade+ at high Str is a one-shot kill combo (312 damage confirmed vs [[bosses/Awakened One]]).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -30,4 +30,4 @@ Pursue whichever engine the card/relic offerings support. No single archetype is</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## What All Wins Share</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP block engine has won twice but always alongside Str sources — its independence is under investigation. The Watcher achieved its first win on Run 215 after 32 total runs. The Watcher&#x27;s lack of built-in healing and doubled incoming damage from Wrath make it structurally harder to pilot. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge AND (for Watcher) sufficient HP management to survive Act 3 without built-in healing.</div>
+<div class="diff-add">+(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP engine has won three times but always alongside Str sources -- its independence is under investigation. Run 219 (first A5 win) added Brimstone as a Str source variant, confirming that the engine + any Str source is the most reliable Ironclad formula. The Watcher achieved its first win on Run 215 after 32 total runs. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/cards/void.md</div>
+<div class="diff-hunk">@@ -0,0 +1,22 @@</div>
+<div class="diff-add">+# Void</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Status card.** Unplayable. Ethereal. When drawn, lose 1 Energy.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Source:** Added to draw pile by Sludge (from [[bosses/Awakened One]] and some Act 3 enemies).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Why Void Matters</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Void drains 1E on the turn it is drawn. In fights where every point of energy determines whether you can fully block, losing 1E can be fatal. Confirmed fatal: Run 221 died by exactly 1 HP against Awakened One Phase 2 because Void was drawn on the lethal turn, reducing energy from 4 to 3. With 4E the player could block 25 (surviving at 4 HP). With 3E they could only block 20 (dying at -1 HP).</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Management</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Void is Ethereal: if not played, it exhausts at end of turn. It does NOT persist in hand.</div>
+<div class="diff-add">+- With [[relics/Runic Pyramid]]: Void stays in hand but does NOT drain energy again on subsequent turns (only on draw). However, it occupies a hand slot.</div>
+<div class="diff-add">+- Void cannot be played, so it cannot be removed via normal card play. Exhaust tools ([[cards/Burning Pact]], [[cards/True Grit]], [[cards/Second Wind]]) can remove it from the deck permanently.</div>
+<div class="diff-add">+- After Sludge adds Void to the deck, count the number of Voids and plan for potential energy loss on critical survival turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Key Interactions</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Runic Pyramid:** Void drawn once drains 1E, then sits in hand harmlessly (no repeated drain). But it occupies a slot, reducing effective hand size.</div>
+<div class="diff-add">+- **Draw effects:** Cards that draw ([[cards/Shrug It Off]], [[cards/Pommel Strike]], [[cards/Battle Trance]]) can pull Void from the draw pile, triggering the energy drain mid-turn. Be aware of this when planning draw-heavy turns after Sludge.</div>
+<div class="diff-add">+- **Corruption+FNP engine:** Void is not a Skill, so Corruption does not make it free or exhaust it. Must be removed via dedicated exhaust tools.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/characters/ironclad.md</div>
+<div class="diff-hunk">@@ -2,10 +2,10 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Identity</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-The Ironclad has one proven winning engine and one promising alternative. Which to pursue depends on what the run offers, not a preset preference. 5 wins across 126 runs: 3 via Strength scaling, 2 via Corruption+FNP block engine (both also had Str sources — the engine&#x27;s independence is under investigation). Currently playing at Ascension 5.</div>
+<div class="diff-add">+The Ironclad has two proven winning engines. Which to pursue depends on what the run offers, not a preset preference. 6 wins across 130 runs: 3 via Strength scaling, 3 via Corruption+FNP engine (all also had Str sources -- the engine&#x27;s independence is under investigation). Currently playing at Ascension 5.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> 1. **Strength engine (Runs 102, 103, 184):** [[buffs/Strength]] sources ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Limit Break]]) + [[cards/Heavy Blade]] finisher + optional [[relics/Snecko Eye]] for draw/cost manipulation + [[cards/Immolate]] for AOE</div>
+<div class="diff-del">-2. **Exhaust/Block engine (Runs 104, 187):** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). Both wins also included Str sources. Whether this engine can function independently without Strength is under investigation.</div>
+<div class="diff-add">+2. **Corruption+FNP engine (Runs 104, 187, 219):** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + optional [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). All 3 wins also included Str sources ([[relics/Brimstone]] in 219, [[cards/Spot Weakness]]+[[relics/Red Skull]] in 187). Whether the engine can function independently without Strength is under investigation.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Key Heuristics</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/drafting.md</div>
+<div class="diff-hunk">@@ -124,9 +124,10 @@ A mediocre card that fills a gap is better than a strong card that duplicates wh</div>
+<div class="diff-ctx"> **Path A -- Strength scaling:**</div>
+<div class="diff-ctx"> 1. Inflame (+2 Str permanent, 1E) -- best standalone option</div>
+<div class="diff-ctx"> 2. Spot Weakness (+3/+4 Str when enemy attacks, 1E) -- excellent but conditional</div>
+<div class="diff-del">-3. Limit Break (doubles current Str) -- only if another Str source exists to double</div>
+<div class="diff-del">-4. Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses</div>
+<div class="diff-del">-5. [[relics/Vajra]] relic (+1 Str) -- passive, always on</div>
+<div class="diff-add">+3. [[relics/Brimstone]] relic (+2 Str/turn to you AND enemies) -- run-defining when acquired early (see brimstone.md). Pairs exceptionally well with Reaper.</div>
+<div class="diff-add">+4. Limit Break (doubles current Str) -- only if another Str source exists to double</div>
+<div class="diff-add">+5. Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses</div>
+<div class="diff-add">+6. [[relics/Vajra]] relic (+1 Str) -- passive, always on</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Path B -- Exhaust/Block engine (under investigation):**</div>
+<div class="diff-ctx"> 1. [[cards/Corruption]] + [[cards/Feel No Pain]] -- core combo. FNP generates block on each exhausted Skill; Corruption makes all Skills free but one-use. Together they produce massive block per turn. Add [[cards/Body Slam]] to convert block to damage.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/enemies/transient.md</div>
+<div class="diff-hunk">@@ -1,10 +1,12 @@</div>
+<div class="diff-ctx"> # The Transient</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**Core rule:** ATTACK TO SURVIVE. Every point of damage dealt reduces incoming by the same amount this turn (via Shifting). Attacking is strictly better than blocking.</div>
+<div class="diff-add">+**Core mechanic:** The Transient has [[buffs/Fading]] 5 -- it dies automatically after 5 turns regardless of HP. It also has [[buffs/Shifting]], so every point of damage dealt reduces incoming by the same amount this turn. Attacking is strictly better than pure blocking.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Primary strategy: survive 5 turns.** You do not need to kill the Transient. It will die on its own. The goal is to minimize total HP loss across 5 attack turns (30/40/50/60/70 at A2+). Use attacks to reduce incoming via Shifting, then block the remainder.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Optimal Play Each Turn</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-1. Play all attack cards first -- each point of damage reduces this turn&#x27;s incoming</div>
+<div class="diff-add">+1. Play all attack cards first -- each point of damage reduces this turn&#x27;s incoming via Shifting</div>
+<div class="diff-ctx"> 2. Play block cards with remaining energy to cover whatever damage is left</div>
+<div class="diff-ctx"> 3. The combination of Shifting + block should get to zero or near-zero damage taken</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -18,6 +20,7 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - Play purely defensively (blocking without attacking wastes the Shifting mechanic)</div>
+<div class="diff-ctx"> - Enter below 40% HP without strong block density or Strength debuffs</div>
+<div class="diff-add">+- **Play with Normality curse in deck.** Normality limits card plays to 3/turn, which cripples the ability to play attacks (for Shifting) AND block in the same turn. If Normality is in the deck, exhaust it immediately when drawn ([[cards/Burning Pact]], [[cards/True Grit]]). Confirmed: Normality cost 40 HP in Run 219&#x27;s Transient fight.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Character-Specific Notes</div>
+<div class="diff-ctx"> </div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/hp-management.md</div>
+<div class="diff-hunk">@@ -7,4 +7,4 @@</div>
+<div class="diff-ctx"> - **The [[acts/Act 2]] Death Spiral**: Enter Act 2 at reasonable HP → take unnecessary damage (not full blocking) → enter next fight at critical HP → die. After ANY fight below 30%, next room must be non-combat. If map doesn&#x27;t offer this, run was lost at map selection.</div>
+<div class="diff-ctx"> - **What Causes HP Drain**: [[enemies/Byrd]] fights (36-73 HP), Centurion+Mystic (25-61 HP), [[enemies/Chosen]] (30-40 HP), Snake Plant (15-42 HP), [[enemies/Spheric Guardian]] (30-41 HP), no healing between fights, Fairy consumed in wrong fight, Decay curse compound damage, Vampires event Max HP loss.</div>
+<div class="diff-ctx"> - **Act 2 Preparation**: Enter at full HP. Upgrades matter more (upgrade over rest when above 50%). Healing sustain is critical — [[relics/Burning Blood]] cannot compensate for 30-50 HP fights. Minimum TWO healing sources (not counting rest sites) by Act 2 Floor 5.</div>
+<div class="diff-del">-- **[[acts/Act 3]] HP Thresholds**: Hallway easy: 40%. Hallway hard: 60%. [[encounters/Transient]]: 50%. [[enemies/The Maw]]: 60%. Elite: 70%. Boss: 70% or Pantograph.</div>
+<div class="diff-add">+- **[[acts/Act 3]] HP Thresholds**: Hallway easy: 40%. Hallway hard: 60%. [[encounters/Transient]]: 50% (higher if Normality curse is in deck -- Normality cripples block output against Transient). [[enemies/The Maw]]: 60%. Elite: 70%. Boss: 70% or Pantograph.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/map.md</div>
+<div class="diff-hunk">@@ -28,13 +28,24 @@ Relics are the primary driver of run strength. Every winning formula was built o</div>
+<div class="diff-ctx"> - **Evaluate rest site density across the entire path.** Count forced combats between rest sites on each viable path. A route of M-R-E-M-M-?-E forces 6 fights with only 1 rest site. Prefer paths where rest sites break up combat sequences (e.g., M-M-R-M-R-E gives recovery opportunities). At reduced Max HP (post-Apparitions, post-Vampires), rest site density is even more critical.</div>
+<div class="diff-ctx"> - **Unknown rooms are NOT safe in Act 2.** They resolve as any hallway fight ~50% of the time, including Byrds, [[enemies/Snake Plant]], and Spheric Guardian. FIVE deaths confirmed from Unknown rooms resolving as combat. Treat Unknown rooms as Monster rooms when routing in Act 2. **At below 30% HP, Unknown rooms are lethal.**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## Elite Route Safety Rule</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Never route through an elite unless at least one rest site is reachable within 2 floors after the elite, OR HP is above 70% and no second elite follows before a rest.**</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Two of 3 deaths in Runs 220-222 were caused by routing into elites without rest site coverage:</div>
+<div class="diff-add">+- Run 220: F5 Monster path locked into F6 Elite at 12 HP with no rest option. Died.</div>
+<div class="diff-add">+- Run 222: Back-to-back elites (F7, F10) with no rest between. Nob cost 26 HP, then Lagavulin killed at 41 HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Before committing to an elite path, trace the route forward: count forced combats between the elite and the next rest site. If the path forces 2+ combats after the elite with no rest, take the safer route unless HP is above 70%.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Elite Risk Assessment</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Before fighting an elite, check:</div>
+<div class="diff-ctx"> 1. **HP threshold**: Below 30 HP for Act 1 elites is dangerous. Below 60% for Act 2 elites.</div>
+<div class="diff-ctx"> 2. **Deck vs elite matchup**: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling. Count your Attack/Skill ratio before committing to an elite path. **Minimum 3 monster rooms before first elite** — 0-2 fights are not enough to build a deck that can handle any Act 1 elite.</div>
+<div class="diff-del">-3. **Potions available**: Potions compensate for bad matchups.</div>
+<div class="diff-del">-4. **Path alternatives**: Only prefer a safer path if the elite risk is genuinely unmanageable. Don&#x27;t default to &quot;safer path exists, take it.&quot;</div>
+<div class="diff-add">+3. **Damage scaling check**: Before routing through Act 1 elites, verify the deck has at least one damage scaling source ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Carnage]], or a strong Uncommon attack). Without scaling, high-HP elites ([[enemies/Lagavulin]] 110 HP, Sentries 40+42+42) are DPS races that base-damage decks cannot win. Confirmed fatal: Run 222 entered Lagavulin with no Str source and could not deal enough damage before Siphon Soul debuffs compounded.</div>
+<div class="diff-add">+4. **Potions available**: Potions compensate for bad matchups.</div>
+<div class="diff-add">+5. **Path alternatives**: Only prefer a safer path if the elite risk is genuinely unmanageable. Don&#x27;t default to &quot;safer path exists, take it.&quot;</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Act 2 Elite Threat Ranking:**</div>
+<div class="diff-ctx"> - **Book of Stabbing** (4 deaths, #1 elite killer): Double scaling — +1 hit/turn AND +3 Str/turn. Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. **If you have Brimstone, DO NOT FIGHT. Brimstone + Book of Stabbing = unsurvivable.**</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/relics/brimstone.md</div>
+<div class="diff-hunk">@@ -1,8 +1,8 @@</div>
+<div class="diff-ctx"> # Brimstone</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-Double-edged scaling relic. Your damage scales fast but enemies become devastating in long fights. Turns every fight into a race.</div>
+<div class="diff-add">+**Run-defining relic.** +2 Str/combat to both you and all enemies. Turns every fight into a DPS race. When acquired early (Run 219, Floor 5), Brimstone carried damage scaling for the entire run -- by mid-Act 2, the player had 10+ Str, making Strikes deal 16+ and [[cards/Heavy Blade]]+ deal 50-100+. Confirmed as the primary damage engine in the first Ironclad A5 victory.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-WHEN TO TAKE: Deck has burst damage and can end fights in 4-5 turns. Pairs well with [[debuffs/Weak]] application ([[cards/Bash]], [[cards/Thunderclap]], [[cards/Shockwave]]) to offset enemy [[buffs/Strength]] gains.</div>
+<div class="diff-add">+WHEN TO TAKE: Almost always correct for Ironclad, especially with [[cards/Reaper]] (more Str = more healing per Reaper hit). Best purchased early for maximum compounding. Pairs well with [[debuffs/Weak]] application ([[cards/Bash]], [[cards/Thunderclap]], [[cards/Shockwave]]) to offset enemy [[buffs/Strength]] gains.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **PURCHASE CHECKLIST:**</div>
+<div class="diff-ctx"> 1. Is [[enemies/Book of Stabbing]] a possible [[acts/Act 2]] elite? If yes, DO NOT BUY. Brimstone + Book of Stabbing is unsurvivable.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/relics/cursed-key.md</div>
+<div class="diff-hunk">@@ -9,4 +9,6 @@ WHEN TO TAKE:</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> NORMALITY CURSE WARNING: The Normality curse (limit 3 card plays/turn) is the most dangerous curse from Cursed Key. Cripples Barricade + Corruption engine by limiting skill exhaust chains. Remove at first shop opportunity.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**NORMALITY + CORRUPTION+FNP INTERACTION (confirmed fatal, Run 219):** The Corruption+FNP engine depends on playing many free Skills per turn to generate block. Normality caps total card plays at 3 per turn, completely shutting down the engine. In Run 219, this interaction cost 40 HP in the Transient fight and nearly ended a winning run. With Cursed Key + Corruption engine: (1) avoid opening non-boss chests when possible, (2) if Normality enters the deck, exhaust it immediately when drawn ([[cards/Burning Pact]], [[cards/True Grit]], [[cards/Second Wind]]), (3) prioritize shop removal of Normality over all other curse removal. If the deck is Corruption+FNP and no exhaust tool for curses exists, reconsider whether Cursed Key is the right boss relic.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> SYNERGY: [[relics/Omamori]] (negates 2 curses from chests), exhaust engines (Corruption makes curse removal trivial).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">ontology/sts1/encounters/transient.md</div>
+<div class="diff-hunk">@@ -1,5 +1,5 @@</div>
+<div class="diff-ctx"> # Transient</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> - **Act:** 3</div>
+<div class="diff-del">-- **Type:** Elite</div>
+<div class="diff-add">+- **Type:** Hallway</div>
+<div class="diff-ctx"> - **Composition:** 1x [[enemies/Transient]]</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
+      <div class="changelog-msg">Curate: address 5 audit flags from runs 216-218</div>
+      <div class="changelog-sha">0a794332</div>
+    </div>
+    <div class="changelog-date">2026-05-23</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">heuristics/sts1/archetypes.md</div>
+<div class="diff-hunk">@@ -2,7 +2,7 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> Pursue whichever engine the card/relic offerings support. No single archetype is &quot;the&quot; Ironclad strategy.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## [[characters/Ironclad]] (5 wins / 122 runs)</div>
+<div class="diff-add">+## [[characters/Ironclad]] (5 wins / 126 runs)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **1. [[relics/Snecko Eye]] + [[buffs/Strength]] Scaling (Runs 102, 103)** — Snecko Eye (draw 7, cost randomization) + [[cards/Immolate]] (AOE) + [[cards/Limit Break]] (Str doubler) + [[cards/Heavy Blade]] finishers. Roll cheap costs on expensive cards, double Str for massive damage. Commit when: Snecko Eye is offered as Act 2 boss relic and Limit Break or Heavy Blade already exist.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -20,9 +20,9 @@ Pursue whichever engine the card/relic offerings support. No single archetype is</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **6. [[cards/Echo Form]] Orb Engine** — Echo Form+ + [[cards/Seek]]/[[relics/Bottled Lightning]] + [[cards/Coolheaded]] + [[cards/Barrage]] + [[relics/Mummified Hand]] + Loop + [[relics/Data Disk]]. Echo Form doubles first card each turn. Seek+ guarantees finding key cards.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-## [[characters/Watcher]] (0 wins / 14 runs)</div>
+<div class="diff-add">+## [[characters/Watcher]] (1 win / 32 runs)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-**No proven archetype yet.** Stance dance (Wrath/Calm cycling) is the primary engine under development across 14 runs. The engine assembles reliably and execution is clean. Deaths are strategic/knowledge gaps and HP management: Hex vulnerability (191), HP management under bad relics (192), Wrath damage miscalculation (193), Slime Boss deck flooding (194), Burns/Runic Pyramid hand clog (195), and HP attrition through Act 3 without healing (196). Best floor: 45 (Run 195). The Watcher is structurally harder to pilot than other characters: no built-in healing, Wrath doubles incoming damage on mistakes, and the stance-sequencing engine is uniquely vulnerable to hand/deck clog (Slimed, Burns, Dazed). **Watcher focus is paused** pending further Ironclad wins. Knowledge base is preserved for future resumption.</div>
+<div class="diff-add">+**First win achieved (Run 215).** Stance dance (Wrath/Calm cycling) is the primary engine across 32 runs. The engine assembles reliably and execution is clean. After progressing through execution errors (runs 188-190), knowledge gaps (runs 191-193), and structural challenges (runs 194-196), focus shifted to Ironclad for efficient win production. The Watcher knowledge base continued expanding through runs 198-215, culminating in the first win. The Watcher is structurally harder to pilot than other characters: no built-in healing, Wrath doubles incoming damage on mistakes, and the stance-sequencing engine is uniquely vulnerable to hand/deck clog (Slimed, Burns, Dazed). **Watcher focus is paused** pending Ironclad A5 progress. Knowledge base is preserved for future resumption.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Stance Dance Engine (unproven, very promising):** Eruption+ (1E Wrath entry) + Calm exits (Vigilance, Inner Peace, Empty Body) + Rushdown (draw on Wrath entry) + Mental Fortress (block on stance change) + Flurry of Blows (free damage on stance change) + Battle Hymn (sustained Smite generation) + Apparitions (Intangible for boss survival). The energy loop (Calm +2E -&gt; Wrath doubled damage) is the Watcher&#x27;s fundamental scaling path. Mental Fortress+ (6 block per stance change) was excellent in Run 192 as a passive defense layer.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -30,4 +30,4 @@ Pursue whichever engine the card/relic offerings support. No single archetype is</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## What All Wins Share</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP block engine has won twice but always alongside Str sources — its independence is under investigation. The Watcher&#x27;s 0-win record across 14 runs progressed through three phases: execution errors (runs 188-190), knowledge gaps (runs 191-193), and structural challenges (runs 194-196). Run 195 reached Floor 45 with a fully assembled engine but died to Burns/Runic Pyramid hand clog against Nemesis. Run 196 reached Floor 39 but died to HP attrition (no healing sources). The Watcher&#x27;s lack of built-in healing and doubled incoming damage from Wrath make it structurally harder to pilot. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge AND (for Watcher) sufficient HP management to survive Act 3 without built-in healing.</div>
+<div class="diff-add">+(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong [[acts/Act 1]] performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP block engine has won twice but always alongside Str sources — its independence is under investigation. The Watcher achieved its first win on Run 215 after 32 total runs. The Watcher&#x27;s lack of built-in healing and doubled incoming damage from Wrath make it structurally harder to pilot. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge AND (for Watcher) sufficient HP management to survive Act 3 without built-in healing.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/cards/thunderclap.md</div>
+<div class="diff-hunk">@@ -10,4 +10,6 @@ Cheap mass [[debuffs/Vulnerable]]. The best setup card for multi-enemy fights.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Synergies:** [[cards/Dropkick]] (sets up free cycling on all Vulnerable targets), all Attack cards (50% more damage to all enemies).</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**CRITICAL WARNING:** Thunderclap applies [[debuffs/Vulnerable]], NOT [[debuffs/Weak]]. Vulnerable makes enemies take MORE damage from your attacks. It does NOT reduce the damage enemies deal to you. If you need to reduce incoming damage, use a Weak source ([[cards/Intimidate]], [[cards/Clothesline]], [[cards/Shockwave]]). **Confirmed fatal in Run 218:** agent treated Thunderclap as Weak, calculated 25% damage reduction on Centurion Fury. Actual incoming was full 30, not 21. Death at -6 HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> **Matchups:** Byrds -- THE single most important card. Strips 1 Flight from each + applies Vulnerable. Without Thunderclap, Flight 3 on three Byrds requires 9 separate hits. Having Thunderclap before [[acts/Act 2]] is essential. Sentries -- strips 1 Artifact from each. [[bosses/Slime Boss]] split -- mass Vulnerable on both slimes. [[bosses/Bronze Automaton]] -- strips Artifact charges (Automaton starts with Artifact 3).</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/characters/ironclad.md</div>
+<div class="diff-hunk">@@ -2,7 +2,7 @@</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Identity</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-The Ironclad has one proven winning engine and one promising alternative. Which to pursue depends on what the run offers, not a preset preference. 5 wins across 122 runs: 3 via Strength scaling, 2 via Corruption+FNP block engine (both also had Str sources — the engine&#x27;s independence is under investigation).</div>
+<div class="diff-add">+The Ironclad has one proven winning engine and one promising alternative. Which to pursue depends on what the run offers, not a preset preference. 5 wins across 126 runs: 3 via Strength scaling, 2 via Corruption+FNP block engine (both also had Str sources — the engine&#x27;s independence is under investigation). Currently playing at Ascension 5.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> 1. **Strength engine (Runs 102, 103, 184):** [[buffs/Strength]] sources ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Limit Break]]) + [[cards/Heavy Blade]] finisher + optional [[relics/Snecko Eye]] for draw/cost manipulation + [[cards/Immolate]] for AOE</div>
+<div class="diff-ctx"> 2. **Exhaust/Block engine (Runs 104, 187):** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). Both wins also included Str sources. Whether this engine can function independently without Strength is under investigation.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/combat.md</div>
+<div class="diff-hunk">@@ -102,7 +102,25 @@ On kill turns, play all deterministic damage cards FIRST. Only use random-outcom</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Rule:** Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-### 8. WRATH DOUBLES ALL DAMAGE</div>
+<div class="diff-add">+### 8. VERIFY DEBUFF TYPE: VULNERABLE IS NOT WEAK</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Thunderclap applies [[debuffs/Vulnerable]] (target takes 50% MORE damage). It does NOT reduce enemy damage. Vulnerable makes the TARGET take more damage from attacks -- it is an offensive amplifier, not a defensive tool.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Ironclad Weak sources (reduce enemy damage dealt by 25%):**</div>
+<div class="diff-add">+- [[cards/Intimidate]] (mass Weak, exhausts, 0E)</div>
+<div class="diff-add">+- [[cards/Clothesline]] (single target Weak, 2E)</div>
+<div class="diff-add">+- [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)</div>
+<div class="diff-add">+- [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Ironclad Vulnerable sources (target takes 50% more damage from attacks):**</div>
+<div class="diff-add">+- [[cards/Bash]] (single target Vulnerable, 2E)</div>
+<div class="diff-add">+- [[cards/Thunderclap]] (mass Vulnerable, 1E)</div>
+<div class="diff-add">+- [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)</div>
+<div class="diff-add">+- [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**CRITICAL:** Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. **Confirmed fatal in Run 218:** player calculated enemy damage as reduced by 25% (Weak math) after playing Thunderclap (which applies Vulnerable, not Weak). Actual incoming was 30, not 21. Death at -6 HP.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### 9. WRATH DOUBLES ALL DAMAGE</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> For Watcher: ALL damage is doubled in Wrath, including multi-hit cards. When a card enters Wrath (e.g., Tantrum from Calm), the stance change resolves BEFORE damage, so all hits are doubled.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-hunk">@@ -120,3 +138,19 @@ Play Shockwave+ on the **FIRST ATTACK TURN** of multi-enemy fights.</div>
+<div class="diff-ctx"> - **Turn 2 is usually correct:** most multi-enemy fights begin attacking on turn 2.</div>
+<div class="diff-ctx"> - **NEVER save for turn 4+:** by then enemies have already accumulated Strength and you have taken unnecessary damage.</div>
+<div class="diff-ctx"> - **Priority on the first attack turn:** Shockwave+ (mass Weak + Vulnerable) &gt; [[cards/Reaper]] (healing) &gt; single-target damage.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+---</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Potion Timing Rule</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Do not hoard potions until death.** Two of three runs in audit 216-218 died with usable potions that would have changed the outcome.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Trigger for potion evaluation:** If ANY of these conditions are true, evaluate potion use THIS TURN:</div>
+<div class="diff-add">+1. **Turn 5+ in a tough fight** (elite, multi-enemy, hard-scaler) and potions are held.</div>
+<div class="diff-add">+2. **HP below 30%** in any fight.</div>
+<div class="diff-add">+3. **A damage potion would kill an enemy** that is generating status cards (Sentries generating Dazed, enemies applying debuffs). Killing the source earlier prevents compound damage from clogged draws.</div>
+<div class="diff-add">+4. **A Strength/damage potion would accelerate a kill by 2+ turns.** Faster kills mean fewer incoming damage turns.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Anti-pattern: &quot;saving for later.&quot;** There is no later if you die. A Fire Potion used on Turn 5 to kill a Sentry prevents 3+ turns of Dazed generation and incoming damage. A Strength Potion used mid-fight accelerates kills and reduces total damage taken. The value of a potion in the CURRENT fight is almost always higher than its speculative value in a FUTURE fight.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Exception:** Fairy in a Bottle and potions specifically needed for the next boss fight (within 1-2 floors). These may be worth holding. All other potions should be evaluated for immediate use when the trigger conditions are met.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/drafting.md</div>
+<div class="diff-hunk">@@ -17,6 +17,8 @@ The single biggest strategic failure across 50 runs: entering [[acts/Act 2]] wit</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **Reaper alone is NOT sufficient.** Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. Multiple healing sources are required. **Minimum TWO healing sources by Act 2 Floor 5.**</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**Sozu boss relic risk:** [[relics/Sozu]] (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. **Confirmed fatal in Run 217:** took Sozu with no healing card, forced 5 rests in Act 2, entered boss at 51% HP (threshold 70%), died.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ---</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Act 2 Readiness Checklist</div>
+<div class="diff-hunk">@@ -66,8 +68,6 @@ The starting deck is nearly identical every run. Use a tier list, not first-prin</div>
+<div class="diff-ctx"> - [[cards/Rampage]] (scaling damage, needs multiple plays to ramp)</div>
+<div class="diff-ctx"> - [[cards/True Grit]] (ONLY if you can upgrade it soon -- unupgraded random exhaust is dangerous)</div>
+<div class="diff-ctx"> - [[cards/Sentinel]] (block + energy on exhaust)</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-**SITUATIONAL** (take only if it fills a specific gap):</div>
+<div class="diff-ctx"> - [[cards/Feel No Pain]] (3 block per exhaust. Enables Corruption engine; also good standalone with True Grit, Fiend Fire, or any exhaust source. Under investigation as a high-priority pick — see exploration directives.)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **SKIP** (do not take in Act 1 unless noted):</div>
+</div>
+<div class="diff-file"><div class="diff-filename">heuristics/sts1/relics/sozu.md</div>
+<div class="diff-hunk">@@ -6,8 +6,10 @@ ANTI-SYNERGIES: [[relics/Toy Ornithopter]] (completely dead), [[relics/Potion Be</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> SILENT-SPECIFIC DANGER (3 deaths confirmed): The [[characters/Silent]] lacks innate healing and relies on potions as emergency saves. Pattern: Sozu removes the safety net that would have saved the run in a single critical turn. For the Silent, **strongly prefer other boss relics** unless the deck has [[cards/Wraith Form]] and multiple block sources independent of potions.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+IRONCLAD-SPECIFIC DANGER (Run 217): Ironclad took Sozu with no healing card in deck and only [[relics/Burning Blood]]. Burning Blood heals 6 HP/fight, but Act 2 fights drain 25-50 HP. Without potions as a backup healing source, the run was forced to rest at every campfire (5 rests in Act 2, only 1 upgrade). Entered The Collector at 51% HP (threshold is 70%) with empty potion slots. Died. **Do NOT take Sozu unless the deck already has a healing card ([[cards/Reaper]], [[cards/Feed]]) or a healing relic ([[relics/Toy Ornithopter]], [[relics/Meal Ticket]]).** Burning Blood alone cannot offset Act 2 HP drain without potion supplementation.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> WHEN TO TAKE:</div>
+<div class="diff-add">+- **Only if the deck has an existing healing card** (Reaper, Feed) or healing relic.</div>
+<div class="diff-ctx"> - Skip all potion-related relics and events.</div>
+<div class="diff-ctx"> - Conservative play is more important -- no emergency saves.</div>
+<div class="diff-ctx"> - The extra energy partially compensates by enabling more block per turn.</div>
+<div class="diff-del">-- Strong pick if confident in finding healing cards.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
+      <div class="changelog-msg">Fix index shifting bugs + pipeline manager rewrite</div>
+      <div class="changelog-sha">a7ce0fe3</div>
+    </div>
+    <div class="changelog-date">2026-05-23</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
+<div class="diff-hunk">@@ -1,5 +1,23 @@</div>
+<div class="diff-ctx"> # Slay the Spire</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+## You Are the Pipeline Manager</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+You (the orchestrator, Claude Code CLI) are NOT a player. You do not care about winning. You do not care about the game. You are a **pipeline manager**. Your only job is to run the Win→Audit→Curate→Explore cycle and keep it turning.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Your primary responsibilities:**</div>
+<div class="diff-add">+1. After every agent completes, read `data/pipeline_state.json` and `heuristics/sts1/goals/next.md` to decide what runs next</div>
+<div class="diff-add">+2. Follow the agent&#x27;s recommendation for the next goal — don&#x27;t default to Win</div>
+<div class="diff-add">+3. Commit and push after every agent so the site stays current</div>
+<div class="diff-add">+4. Track pipeline health: are all four agent types actually running? Are Audits finding errors? Is Curate producing directives? Is Explore testing them?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**You have no opinion about the game.** The Win agent thinks about winning. The Audit agent thinks about decision quality. The Curate agent thinks about knowledge health. The Explore agent thinks about hypotheses. You think about none of those things. You spawn the right agent, hand it the right context, collect its output, and spawn the next one.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**If you&#x27;re only spawning Win agents, you are failing at your job.** The pipeline has four phases. All four must run. If you find yourself reaching for &quot;spawn another Win agent&quot; without checking pipeline_state.json, stop.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+**Context compression will make you forget this.** When your context gets compressed, you&#x27;ll lose the nuance and default to &quot;spawn another Win agent.&quot; Fight that instinct. Always check `data/pipeline_state.json` before spawning anything. The file tells you what the LAST agent recommended. Follow it.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+---</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> Deckbuilder roguelike. CommunicationMod reads game state and executes actions. Claude Code CLI plays via TCP relay.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> **DO NOT AUTOPLAY.** No scripts, loops, or automation that sends game actions without reasoning. Every action is a deliberate choice. In combat, plan the full turn, then execute as a batch — but still with explicit reasoning.</div>
+<div class="diff-hunk">@@ -253,10 +271,11 @@ Human feedback goes in `data/coaching_notes.md`. When the user gives coaching du</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Current state</div>
+<div class="diff-ctx"> </div>
+<div class="diff-del">-- Playing **Ironclad** at Ascension 0</div>
+<div class="diff-del">-- 8 wins total (5 Ironclad, 2 Silent, 1 Defect) at Ascension 0</div>
+<div class="diff-del">-- 150 runs completed</div>
+<div class="diff-del">-- Four-agent model (Win/Explore/Audit/Curate) — Explore, Audit, and Curate goal files written, heuristic directories stubbed</div>
+<div class="diff-add">+- Playing **Watcher** at Ascension 0</div>
+<div class="diff-add">+- 9 wins total (5 Ironclad, 2 Silent, 1 Defect, 1 Watcher) at Ascension 0</div>
+<div class="diff-add">+- 215+ runs completed</div>
+<div class="diff-add">+- Four-agent pipeline (Win/Explore/Audit/Curate) — all goal files written</div>
+<div class="diff-add">+- Pipeline state tracked in `data/pipeline_state.json` — check it before spawning any agent</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ## Repository</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
       <div class="changelog-msg">Curate: switch to Ironclad after Watcher 0/14</div>
       <div class="changelog-sha">8bc396ed</div>
     </div>
@@ -38733,440 +39114,6 @@ footer {
 <div class="diff-ctx"> - In Act 2, treat Unknown rooms as Monster rooms when routing (3 deaths from Spheric Guardian spawning in Unknown rooms)</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> ### Events</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Strategist #7: plateau broken, Hard Rule #9, Act 2 boss focus</div>
-      <div class="changelog-sha">30d664c4</div>
-    </div>
-    <div class="changelog-date">2026-05-08</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
-<div class="diff-hunk">@@ -22,6 +22,8 @@ These rules have been validated across 60+ runs. Violating any of them has direc</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> 8. **NEVER PLAY a 3-cost Power (Corruption, Barricade, Demon Form) on turn 1 when enemies are attacking UNLESS you have 4+ energy.** Spending 3 of 3 energy on a Power leaves zero energy for block. Combined incoming from multi-enemy fights is 20+ unblocked damage. One confirmed death from playing Corruption (3E) turn 1 into Looter + Mugger with zero block. Wait for a free turn (enemy buffing/defending) or upgrade the Power to reduce its cost. The only exception is Demon Form into a single enemy whose turn 1 attack is survivable at current HP.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+9. **NEVER PLAY Corruption or Corruption+ against The Guardian UNLESS Dead Branch or Feel No Pain is in play.** The Guardian fight lasts 14+ turns. Corruption exhausts every Skill you play. Run 107: Corruption+ played turn 9, all block Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards. The energy savings do not compensate for losing all block in the second half of a 14-turn fight. Dead Branch replaces exhausted cards. Feel No Pain generates 3 block per exhaust. Without either, Corruption is a death sentence against Guardian.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ## Setup</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```python</div>
-<div class="diff-hunk">@@ -151,7 +153,8 @@ Think about what your deck needs, not just whether a card is generically &quot;good.&quot;</div>
-<div class="diff-ctx"> - Do I have front-loaded Strength? (Inflame, Spot Weakness -- NOT just Demon Form)</div>
-<div class="diff-ctx"> - Do I have AOE? (Thunderclap, Cleave, Immolate, Whirlwind)</div>
-<div class="diff-ctx"> - Do I have healing beyond Burning Blood? (Reaper, Feed)</div>
-<div class="diff-del">-If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. Missing all three entering Act 2 has been the #1 cause of death in recent runs.</div>
-<div class="diff-add">+- Do I have block scaling beyond basic Defends? (Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor, True Grit+)</div>
-<div class="diff-add">+If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. The 4-criteria checklist has proven effective: two consecutive Act 2 boss reaches when all criteria were met.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Rest Sites</div>
-<div class="diff-ctx"> - **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is below 35% in Act 1 or below 50% in Act 2. See Hard Rule #3.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Strategist #6 (100-run milestone): path tracing, Brimstone checklist</div>
-      <div class="changelog-sha">363918eb</div>
-    </div>
-    <div class="changelog-date">2026-05-08</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
-<div class="diff-hunk">@@ -158,10 +158,12 @@ If missing any of these, PRIORITIZE filling that gap over taking a generically s</div>
-<div class="diff-ctx"> - Which card benefits most from upgrading? Priority: Bash &gt; Corruption (if in deck) &gt; True Grit &gt; Armaments &gt; best damage card &gt; best block card.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Map Pathing</div>
-<div class="diff-add">+- **MANDATORY: Before choosing any path, trace EVERY available path forward to the next rest site or shop.** Count forced combat rooms on each path. Choose the path with fewest forced combats to the next healing opportunity. Say &quot;Path A: X combats to rest. Path B: Y combats to rest. Choosing [better].&quot; This prevents the #1 cause of death: entering fights at sub-threshold HP because the path forces consecutive combats.</div>
-<div class="diff-ctx"> - Consider your HP, deck strength, and what you need before the boss</div>
-<div class="diff-ctx"> - Elites give relics but cost HP</div>
-<div class="diff-ctx"> - Rest sites and shops are resources — path through them when you need them</div>
-<div class="diff-ctx"> - Question marks (events) are variable — some heal, some hurt</div>
-<div class="diff-add">+- In Act 2, treat Unknown rooms as Monster rooms when routing (3 deaths from Spheric Guardian spawning in Unknown rooms)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Events</div>
-<div class="diff-ctx"> - Read the options carefully. Many events have hidden costs or benefits.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 98 analysis + fix shop indexing bug</div>
-      <div class="changelog-sha">72c881a9</div>
-    </div>
-    <div class="changelog-date">2026-05-08</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -26,7 +26,8 @@ Plays the game. Makes every decision with reasoning. In combat, fills out a comb</div>
-<div class="diff-ctx"> Key traits:</div>
-<div class="diff-ctx"> - **Humble.** Says &quot;I think&quot; not &quot;clearly.&quot; Admits uncertainty. Doesn&#x27;t rationalize deaths.</div>
-<div class="diff-ctx"> - **Plans full turns.** Doesn&#x27;t play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.</div>
-<div class="diff-del">-- **References playbook.** Reads `playbook/` files (individual files per card, enemy, boss, etc.). Leans toward documented knowledge over instinct.</div>
-<div class="diff-add">+- **Plans full fights.** At combat start, calls `plan()` to load playbook context, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.</div>
-<div class="diff-add">+- **References playbook.** Calls `plan()` at act/combat start, `reason(&quot;topic&quot;)` for targeted lookups. Playbook has 149+ files covering every card, enemy, boss, event, relic, and potion.</div>
-<div class="diff-ctx"> - **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Analyst (`agents/analyst.md`)</div>
-<div class="diff-hunk">@@ -38,36 +39,44 @@ Output directories:</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> No confidence tags. If it&#x27;s confirmed, it goes in `playbook/`. If uncertain, it goes in `analyst/observations.md`.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-### Steward (`agents/steward.md`)</div>
-<div class="diff-del">-Runs between sessions or when context is cluttered. Keeps the project clean and efficient.</div>
-<div class="diff-add">+### Strategist (`agents/strategist.md`)</div>
-<div class="diff-add">+Runs every ~10 runs. Steps back and evaluates whether the whole system is working.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Key responsibilities:</div>
-<div class="diff-del">-- **Playbook quality.** Verifies accuracy, removes duplicates, ensures card entries have DECISION POINTS and enemy entries have PATTERN/WHAT THIS MEANS sections.</div>
-<div class="diff-del">-- **Context hygiene.** Trims bloated run logs, promotes confirmed observations to reference/playbook, cleans up agent files.</div>
-<div class="diff-del">-- **Run data cleanup.** Archives processed run logs, verifies run_stats.json, removes stale temp files.</div>
-<div class="diff-add">+Key questions:</div>
-<div class="diff-add">+- **Are we improving?** Floor-reached trends, recurring deaths, plateaus and their causes.</div>
-<div class="diff-add">+- **Is the playbook serving the player?** Dead weight, missing coverage, signal-to-noise, structural fitness.</div>
-<div class="diff-add">+- **Cross-run patterns.** Things the analyst misses because it only sees one run at a time.</div>
-<div class="diff-add">+- **Architecture review.** Is the combat plan template helping? Is playbook loading effective? Is the analyst producing useful output?</div>
-<div class="diff-add">+- **Cleanup.** Dedup, trim bloat, promote observations, fix contradictions, archive stale data.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Does not play, analyze runs, write code, or make architectural decisions.</div>
-<div class="diff-add">+Has authority to reshape the playbook structure — consolidate files, rewrite sections, delete what isn&#x27;t working.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Commands (cmd.py)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```python</div>
-<div class="diff-del">-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, start</div>
-<div class="diff-add">+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, start</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> state()                          # See current game state</div>
-<div class="diff-del">-send(&quot;play 1 0&quot;, reason=&quot;...&quot;)   # Single action — reason= is REQUIRED or action fails</div>
-<div class="diff-del">-turn([&quot;play 3&quot;, &quot;play 1 0&quot;, &quot;play 2&quot;, &quot;end&quot;],</div>
-<div class="diff-del">-     reason=&quot;Block first, then damage&quot;)  # Full combat turn — reason= is REQUIRED</div>
-<div class="diff-add">+plan()                           # Load strategic context (auto-detects combat vs act)</div>
-<div class="diff-add">+think(reasoning, label)          # Post strategic analysis to stream overlay</div>
-<div class="diff-add">+reason(&quot;topic&quot;)                  # Look up a specific playbook entry</div>
-<div class="diff-add">+send(&quot;play Bash 0&quot;, reason=&quot;...&quot;) # Single action — reason= is REQUIRED</div>
-<div class="diff-add">+turn([&quot;play Bash Jaw Worm&quot;, &quot;play Strike Jaw Worm&quot;, &quot;play Defend&quot;, &quot;end&quot;],</div>
-<div class="diff-add">+     reason=&quot;...&quot;)               # Full combat turn — reason= is REQUIRED</div>
-<div class="diff-ctx"> choose(2, reason=&quot;...&quot;)          # Choose option — reason= is REQUIRED</div>
-<div class="diff-ctx"> choose(&quot;smith&quot;, reason=&quot;...&quot;)    # Choose by name (rest site)</div>
-<div class="diff-ctx"> proceed()                        # Confirm/proceed (auto-reason)</div>
-<div class="diff-ctx"> skip(reason=&quot;...&quot;)               # Skip/cancel/leave</div>
-<div class="diff-ctx"> potion_use(0, 1, reason=&quot;...&quot;)   # Use potion slot 0 on enemy 1 — reason= REQUIRED</div>
-<div class="diff-add">+potion_discard(0, reason=&quot;...&quot;)  # Discard potion slot 0</div>
-<div class="diff-ctx"> start(&quot;IRONCLAD&quot;, 5)             # Start Ironclad A5 run</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Card indices are 1-indexed. Enemy indices are 0-indexed.**</div>
-<div class="diff-add">+**Card names preferred over indices.** `play Bash 0` resolves &quot;Bash&quot; against the current hand. Avoids index-shift bugs when playing multiple cards.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Card indices shift when you play cards!** Playing card 3 makes card 4 become card 3. Plan accordingly.</div>
-<div class="diff-add">+**Enemy names work for distinct enemies.** `play Bash Jaw Worm` resolves to the correct target. For same-name enemies (Byrds, Cultists), use numeric indices.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Enemy indices are absolute** — they don&#x27;t shift when enemies die. If Byrd [0] dies, remaining Byrds stay at [1] and [2].</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Mod Stack (all Steam Workshop)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -85,6 +94,8 @@ Run ends (victory or defeat) → player STOPS</div>
-<div class="diff-ctx">     ↓</div>
-<div class="diff-ctx"> Analyst reads log, updates playbook/ files</div>
-<div class="diff-ctx">     ↓</div>
-<div class="diff-add">+Every ~10 runs: Strategist reviews the arc, reshapes playbook, identifies bottlenecks</div>
-<div class="diff-add">+    ↓</div>
-<div class="diff-ctx"> Next run: player reads updated playbook before first action</div>
-<div class="diff-ctx">     ↓</div>
-<div class="diff-ctx"> Player makes better decisions → repeat</div>
-<div class="diff-hunk">@@ -100,19 +111,121 @@ This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondr</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/` or `site/` triggers a rebuild.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-## Spawning Agents</div>
-<div class="diff-add">+## How to Run</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+This is the full startup procedure. Follow it from the top when starting a new session.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 1. Launch the game</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Check if the relay is already up:</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+python -c &quot;from cmd import state; print(state())&quot;</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+If you get &quot;Cannot connect to relay&quot;, the game isn&#x27;t running. Launch it:</div>
-<div class="diff-add">+```powershell</div>
-<div class="diff-add">+pwsh scripts/launch.ps1</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+This starts Slay the Spire via ModTheSpire, presses Enter to load mods, and waits until relay.py is online (port 19284). Prints &quot;Ready.&quot; when done.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 2. Start stream.py</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+```powershell</div>
-<div class="diff-add">+Start-Process -FilePath &quot;python&quot; -ArgumentList &quot;stream.py&quot; -WorkingDirectory &quot;C:\Users\tkond\projects\autoplay\games\sts1&quot; -WindowStyle Hidden</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overlay for streaming. Independent of relay — can restart without affecting gameplay.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 3. Run the player/analyst loop</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+When the player finishes:</div>
-<div class="diff-add">+1. Delete `data/player.lock`.</div>
-<div class="diff-add">+2. Switch the overlay to agent mode (see below).</div>
-<div class="diff-add">+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/` files.</div>
-<div class="diff-add">+4. When analyst completes, switch overlay back to game mode.</div>
-<div class="diff-add">+5. Commit and push playbook changes (triggers site rebuild on claudeslaysthespire.org).</div>
-<div class="diff-add">+6. Spawn the next player.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Repeat until interrupted.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Overlay switching for analyst/strategist</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+When spawning a non-player agent (analyst, strategist), the overlay should show their streaming output instead of the game. The agent&#x27;s JSONL conversation file is at:</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+~/.claude/projects/C--Users-tkond-projects-autoplay/&lt;session-id&gt;/subagents/agent-&lt;agent-task-id&gt;.jsonl</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Start agent mode** (right after spawning the agent — use Python to avoid curl encoding issues):</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+python -c &quot;</div>
-<div class="diff-add">+import json, urllib.request</div>
-<div class="diff-add">+data = json.dumps({</div>
-<div class="diff-add">+    &#x27;action&#x27;: &#x27;start&#x27;,</div>
-<div class="diff-add">+    &#x27;title&#x27;: &#x27;POST-GAME ANALYSIS&#x27;,</div>
-<div class="diff-add">+    &#x27;jsonl_path&#x27;: &#x27;&lt;path-to-agent-jsonl&gt;&#x27;,</div>
-<div class="diff-add">+    &#x27;run_summary&#x27;: &#x27;&lt;player summary text with newlines&gt;&#x27;</div>
-<div class="diff-add">+}).encode(&#x27;utf-8&#x27;)</div>
-<div class="diff-add">+req = urllib.request.Request(&#x27;http://127.0.0.1:3002/agent&#x27;, data=data, headers={&#x27;Content-Type&#x27;: &#x27;application/json&#x27;})</div>
-<div class="diff-add">+urllib.request.urlopen(req)</div>
-<div class="diff-add">+&quot;</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Titles: `&quot;POST-GAME ANALYSIS&quot;` for analyst, `&quot;STRATEGIC REVIEW&quot;` for strategist.</div>
-<div class="diff-add">+The `run_summary` field is shown in the bottom bar&#x27;s action feed area during agent mode (replaces action log with a last-run summary from the player).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Player and analyst agents are spawned as Claude Code subagents. Their role definitions are in `agents/player.md` and `agents/analyst.md`. When spawning an agent, include the full role definition in the agent prompt so it has all the context it needs — the subagent doesn&#x27;t see the parent conversation.</div>
-<div class="diff-add">+**Stop agent mode** (after the agent completes):</div>
-<div class="diff-add">+```bash</div>
-<div class="diff-add">+curl -s http://127.0.0.1:3002/agent -X POST -H &quot;Content-Type: application/json&quot; \</div>
-<div class="diff-add">+  -d &#x27;{&quot;action&quot;:&quot;stop&quot;}&#x27;</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The JSONL path requires the current Claude Code session ID and the agent&#x27;s task ID (returned by the Agent tool). To find the session ID, check the most recently modified directory:</div>
-<div class="diff-add">+```bash</div>
-<div class="diff-add">+ls -td ~/.claude/projects/C--Users-tkond-projects-autoplay/*/ | head -1</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+Then construct the path as:</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+C:/Users/tkond/.claude/projects/C--Users-tkond-projects-autoplay/&lt;SESSION_ID&gt;/subagents/agent-&lt;TASK_ID&gt;.jsonl</div>
-<div class="diff-add">+```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Key rules:</div>
-<div class="diff-del">-- **One player agent at a time.** The lock file in `data/player.lock` enforces this, but don&#x27;t rely on it — just don&#x27;t spawn two.</div>
-<div class="diff-del">-- **Analyst runs after the run ends.** Don&#x27;t run analyst and player simultaneously.</div>
-<div class="diff-del">-- **Commit playbook after analyst.** The analyst writes to `playbook/` and `analyst/`. Commit and push those changes so the site updates and the changelog tracks the diff.</div>
-<div class="diff-add">+stream.py watches the JSONL, parses assistant text blocks and tool_use blocks, and broadcasts them to the overlay. The overlay covers the game area with an opaque panel showing the agent&#x27;s reasoning in real time.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Rules</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- **One player at a time.** Enforced by `data/player.lock` (see lock mechanism below).</div>
-<div class="diff-add">+- **Analyst runs between runs.** Never simultaneously with the player.</div>
-<div class="diff-add">+- **Overlay switches for analyst/strategist.** Always activate agent mode before spawning, deactivate after completion.</div>
-<div class="diff-add">+- **Commit after analyst.** The site changelog tracks every playbook diff.</div>
-<div class="diff-add">+- **If this session crashes**, the loop stops. Re-read this section and resume from wherever it left off. The game state persists in relay — nothing is lost.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Player lock mechanism</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Each Bash tool call is a separate Python process. The orchestrator gives the agent a unique token in its prompt. The agent must set `PLAYER_SESSION` env var to this token in every Bash call before importing cmd.py. The lock file stores which token is authorized.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Before spawning a player agent:**</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+import uuid, os</div>
-<div class="diff-add">+token = str(uuid.uuid4())</div>
-<div class="diff-add">+# Clear the old lock — previous agent is dead</div>
-<div class="diff-add">+if os.path.exists(&quot;data/player.lock&quot;):</div>
-<div class="diff-add">+    os.remove(&quot;data/player.lock&quot;)</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Then include in the agent prompt:</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+Your session token is: &lt;token&gt;</div>
-<div class="diff-add">+In every Bash call, before importing cmd, set:</div>
-<div class="diff-add">+    import os; os.environ[&quot;PLAYER_SESSION&quot;] = &quot;&lt;token&gt;&quot;</div>
-<div class="diff-add">+```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-## Key Differences from Balatro</div>
-<div class="diff-add">+**How it works:**</div>
-<div class="diff-add">+- cmd.py reads `PLAYER_SESSION` env var on import. Refuses to run without it.</div>
-<div class="diff-add">+- Lock file (`data/player.lock`) stores the token of whoever acquired it first.</div>
-<div class="diff-add">+- Same token → proceed. Different token → crash immediately.</div>
-<div class="diff-add">+- Orchestrator deletes lock file before spawning a new agent. That&#x27;s the handoff.</div>
-<div class="diff-add">+- If the agent forgets to set the env var → import fails → agent dies. Orchestrator spawns a new one.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-- No custom mod needed — CommunicationMod does everything</div>
-<div class="diff-del">-- stdin/stdout, not TCP (relay bridges to TCP)</div>
-<div class="diff-del">-- Synchronous lock-step — mod waits for our command</div>
-<div class="diff-del">-- 1-indexed card positions</div>
-<div class="diff-del">-- Full turn planning with `turn()` instead of card-by-card</div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/steward.md</div>
-<div class="diff-hunk">@@ -1,64 +0,0 @@</div>
-<div class="diff-del">-# Steward Agent</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-You keep the project clean and efficient. You run between sessions or when context is getting cluttered. Your job is quality control over the knowledge base, context hygiene, and run data cleanup.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## 1. Playbook Quality</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-Review `playbook/` files for accuracy, clarity, and usefulness.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- **Remove wrong or outdated entries.** If a damage number is wrong or a mechanic has changed, fix it or delete it.</div>
-<div class="diff-del">-- **Consolidate duplicates.** If the same information appears in multiple entries, pick the best home for it and remove the rest.</div>
-<div class="diff-del">-- **Card entries must have DECISION POINTS.** Every card entry needs a section that tells the player what to CHECK, not what to DO. If it&#x27;s missing, add it based on the card&#x27;s mechanics and existing context.</div>
-<div class="diff-del">-- **Enemy/boss entries must have PATTERN and WHAT THIS MEANS.** If either section is missing, add it from what&#x27;s known.</div>
-<div class="diff-del">-- **Verify cross-references.** Synergies and matchups should reference cards/enemies that actually exist in the playbook. Remove references to things that don&#x27;t have entries.</div>
-<div class="diff-del">-- **Verify numbers.** Damage values, block values, energy costs, and other mechanics should be correct. Check against `reference/` files when in doubt.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## 2. Context Hygiene</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- **`analyst/run_log.md`** — Each run entry should be 5-8 lines. No fluff, no commentary beyond the structured format. Trim anything longer.</div>
-<div class="diff-del">-- **`analyst/observations.md`** — Promote confirmed observations to the appropriate reference or playbook file, then delete them from observations. Delete disproven observations outright.</div>
-<div class="diff-del">-- **Agent files** (`agents/player.md`, `agents/analyst.md`) — Should be clear and not bloated. Flag if they&#x27;ve grown beyond their core purpose.</div>
-<div class="diff-del">-- **`AGENTS.md`** — Should be up to date with actual roles and files. Flag if it references things that don&#x27;t exist or misses things that do.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## 3. Run Data Cleanup</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- **Archive reviewed run logs.** Old run logs in `data/` that have been fully analyzed by the analyst can be archived or noted as processed.</div>
-<div class="diff-del">-- **Check `run_stats.json`.** Total runs, wins, deaths, best floor should match reality. Flag discrepancies.</div>
-<div class="diff-del">-- **Clean stale temp files.** Remove temporary files from `data/` that are no longer needed.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## 4. What the Steward Does NOT Do</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- Does not play the game</div>
-<div class="diff-del">-- Does not make architectural decisions (that&#x27;s the orchestrator&#x27;s job)</div>
-<div class="diff-del">-- Does not write code (that&#x27;s the builder&#x27;s job)</div>
-<div class="diff-del">-- Does not do post-run analysis (that&#x27;s the analyst&#x27;s job)</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## Output Format</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-Report what you found and what you changed. Be specific.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-## Steward Report</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-### Playbook Changes</div>
-<div class="diff-del">-- Fixed Headbutt damage: was 11, actually 9 (12 upgraded)</div>
-<div class="diff-del">-- Added DECISION POINTS to Whirlwind (was missing)</div>
-<div class="diff-del">-- Removed duplicate Vulnerable explanation from Bash and mechanics.md</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-### Context Cleanup</div>
-<div class="diff-del">-- Trimmed run_log.md entries 1-4 (were 15+ lines each, now 5-8)</div>
-<div class="diff-del">-- Promoted &quot;Snake Plant Malleable&quot; from observations.md to playbook</div>
-<div class="diff-del">-- Deleted observation about &quot;Snecko Eye&quot; — confirmed in run 11</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-### Issues Found</div>
-<div class="diff-del">-- No entry for Acid Slime M in enemies/</div>
-<div class="diff-del">-- Run stats show 14 runs but only 12 run log files</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## How to Work</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-1. **Read first.** Scan all playbook, reference, analyst, and data files before changing anything.</div>
-<div class="diff-del">-2. **Fix what&#x27;s clearly wrong.** Wrong numbers, missing sections, stale observations.</div>
-<div class="diff-del">-3. **Consolidate what&#x27;s duplicated.** Pick the best location, remove the rest.</div>
-<div class="diff-del">-4. **Report what you can&#x27;t fix.** Missing entries, data discrepancies, structural issues — flag them in the report for the orchestrator.</div>
-<div class="diff-del">-5. **Don&#x27;t over-edit.** If something is fine, leave it alone. The goal is cleanup, not rewriting.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/strategist.md</div>
-<div class="diff-hunk">@@ -0,0 +1,79 @@</div>
-<div class="diff-add">+# Strategist Agent</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+You step back and evaluate whether the whole system is working. You run every ~10 runs and ask: are we getting better? Is the playbook serving the player? Is the architecture helping or getting in the way?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Cleanup and hygiene are part of your job, but they&#x27;re in service of the bigger question: is this project structured to produce wins?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## When You Run</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Every ~10 completed runs (or when things feel stuck). You have access to:</div>
-<div class="diff-add">+- `analyst/run_log.md` — brief structured summaries of every run</div>
-<div class="diff-add">+- `analyst/observations.md` — uncertain items the analyst hasn&#x27;t promoted</div>
-<div class="diff-add">+- `playbook/` — the full knowledge base (130+ files)</div>
-<div class="diff-add">+- `data/run_stats.json` — win/death/floor stats</div>
-<div class="diff-add">+- `data/runs/` — full event logs from past runs (if you need raw data)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## What You Ask</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 1. Are we improving?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Look at the last 10 runs. Floor reached, cause of death, deck quality at death.</div>
-<div class="diff-add">+- Is floor-reached trending up? Plateauing? Regressing?</div>
-<div class="diff-add">+- Are we dying to new things (good — exploring) or the same things (bad — not learning)?</div>
-<div class="diff-add">+- If plateauing: what&#x27;s the bottleneck? Is it a knowledge gap, a decision-making pattern, or a structural issue with how the player operates?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 2. Is the playbook serving the player?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The playbook exists so the player makes better decisions. Evaluate whether it&#x27;s doing that:</div>
-<div class="diff-add">+- **Dead weight**: Are there entries the player probably never loads? (e.g., cards we never see, events we always skip)</div>
-<div class="diff-add">+- **Missing coverage**: Are there decisions the player keeps getting wrong that the playbook doesn&#x27;t address?</div>
-<div class="diff-add">+- **Signal-to-noise**: Are entries concise and actionable, or bloated with hedging and history?</div>
-<div class="diff-add">+- **Structure**: Is 130+ individual files the right shape? Would some topics be better consolidated? Are the index files useful or just lists?</div>
-<div class="diff-add">+- **strategy.md coherence**: Is it a coherent document or a pile of disconnected paragraphs from different runs?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 3. Are there patterns the analyst is missing?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The analyst reviews one run at a time. You see the arc:</div>
-<div class="diff-add">+- Same cause of death recurring across runs → needs a stronger playbook entry or strategic principle</div>
-<div class="diff-add">+- Observations.md items that keep reappearing → probably confirmed, promote them</div>
-<div class="diff-add">+- Analyst notes that contradict each other across runs → one of them is wrong, figure out which</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 4. Is the architecture helping?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Evaluate the system itself:</div>
-<div class="diff-add">+- **Combat plan template**: Is the player filling it out usefully or is it ceremonial? Does the prediction actually catch errors?</div>
-<div class="diff-add">+- **Playbook loading pattern**: Is the player reading the right files at the right time? Too many? Too few?</div>
-<div class="diff-add">+- **Analyst output quality**: Are analyst updates actually improving the playbook or just restating what happened?</div>
-<div class="diff-add">+- **Agent coordination**: Is the player→analyst→player loop producing compounding improvement?</div>
-<div class="diff-add">+- **Stream overlay**: Is the reasoning useful for viewers or generic?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### 5. Cleanup</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+While you&#x27;re in here:</div>
-<div class="diff-add">+- **Dedup**: Merge entries that say the same thing in different places</div>
-<div class="diff-add">+- **Trim bloat**: Cut paragraphs that don&#x27;t help the player make decisions</div>
-<div class="diff-add">+- **Format consistency**: Ensure card entries have DECISION POINTS, enemy entries have PATTERN + WHAT THIS MEANS</div>
-<div class="diff-add">+- **Archive stale data**: Trim run_log.md if it&#x27;s gotten too long (keep last 20 runs, summarize older ones)</div>
-<div class="diff-add">+- **Promote observations**: Anything in observations.md that&#x27;s now clearly confirmed → move to playbook</div>
-<div class="diff-add">+- **Fix contradictions**: If two entries disagree, determine which is correct and fix it</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## What You Produce</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+1. **A brief assessment** (10-15 lines) at the top of your output: what&#x27;s working, what&#x27;s not, what you changed and why.</div>
-<div class="diff-add">+2. **Playbook edits** — structural changes, consolidations, rewrites. You have authority to reshape the playbook. Don&#x27;t just tweak wording — if a section is fundamentally not working, rewrite it.</div>
-<div class="diff-add">+3. **Strategy.md updates** — if high-level principles need revision based on 10-run patterns.</div>
-<div class="diff-add">+4. **Cleanup** — dedup, trim, archive, promote observations.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## What You Don&#x27;t Do</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- Don&#x27;t play the game</div>
-<div class="diff-add">+- Don&#x27;t analyze individual runs (that&#x27;s the analyst&#x27;s job)</div>
-<div class="diff-add">+- Don&#x27;t make code changes to cmd.py, relay.py, stream.py, etc.</div>
-<div class="diff-add">+- Don&#x27;t add speculative entries about things you haven&#x27;t observed — work from run data</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Principles</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- **Be willing to delete.** A smaller, more accurate playbook beats a comprehensive but noisy one. If an entry isn&#x27;t helping the player win, cut it or rewrite it.</div>
-<div class="diff-add">+- **Structural changes are fine.** If 10 individual card files should be one &quot;card evaluation framework&quot; doc, do it. If strategy.md should be split into act-specific files, do it. The current structure is not sacred.</div>
-<div class="diff-add">+- **Name the bottleneck.** Every plateau has a reason. Your most important output is identifying what that reason is — not just &quot;we need to play better&quot; but &quot;we keep entering Act 2 without a scaling card because the card reward evaluation doesn&#x27;t weight scaling highly enough.&quot;</div>
-<div class="diff-add">+- **Measure progress.** Use concrete numbers (floor reached, death count by cause, HP at death) not vibes.</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

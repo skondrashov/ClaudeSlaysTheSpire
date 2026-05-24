@@ -493,7 +493,29 @@ CHOSEN: [A/B] because [reason]
 
 <p><strong>Rule:</strong> Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.</p>
 
-<h3 id="8-wrath-doubles-all-damage">8. WRATH DOUBLES ALL DAMAGE</h3>
+<h3 id="8-verify-debuff-type-vulnerable-is-not-weak">8. VERIFY DEBUFF TYPE: VULNERABLE IS NOT WEAK</h3>
+
+<p>Thunderclap applies <a href="ontology-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a> (target takes 50% MORE damage). It does NOT reduce enemy damage. Vulnerable makes the TARGET take more damage from attacks -- it is an offensive amplifier, not a defensive tool.</p>
+
+<p><strong>Ironclad Weak sources (reduce enemy damage dealt by 25%):</strong></p>
+<ul>
+<li><a href="ontology-cards-intimidate.html" class="wiki-link">Intimidate</a> (mass Weak, exhausts, 0E)</li>
+<li><a href="ontology-cards-clothesline.html" class="wiki-link">Clothesline</a> (single target Weak, 2E)</li>
+<li><a href="ontology-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts, 2E)</li>
+<li><a href="ontology-cards-uppercut.html" class="wiki-link">Uppercut</a> (single target Weak + Vulnerable, 2E)</li>
+</ul>
+
+<p><strong>Ironclad Vulnerable sources (target takes 50% more damage from attacks):</strong></p>
+<ul>
+<li><a href="ontology-cards-bash.html" class="wiki-link">Bash</a> (single target Vulnerable, 2E)</li>
+<li><a href="ontology-cards-thunderclap.html" class="wiki-link">Thunderclap</a> (mass Vulnerable, 1E)</li>
+<li><a href="ontology-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts, 2E)</li>
+<li><a href="ontology-cards-uppercut.html" class="wiki-link">Uppercut</a> (single target Weak + Vulnerable, 2E)</li>
+</ul>
+
+<p><strong>CRITICAL:</strong> Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. <strong>Confirmed fatal in Run 218:</strong> player calculated enemy damage as reduced by 25% (Weak math) after playing Thunderclap (which applies Vulnerable, not Weak). Actual incoming was 30, not 21. Death at -6 HP.</p>
+
+<h3 id="9-wrath-doubles-all-damage">9. WRATH DOUBLES ALL DAMAGE</h3>
 
 <p>For Watcher: ALL damage is doubled in Wrath, including multi-hit cards. When a card enters Wrath (e.g., Tantrum from Calm), the stance change resolves BEFORE damage, so all hits are doubled.</p>
 
@@ -513,6 +535,22 @@ CHOSEN: [A/B] because [reason]
 <li><strong>NEVER save for turn 4+:</strong> by then enemies have already accumulated Strength and you have taken unnecessary damage.</li>
 <li><strong>Priority on the first attack turn:</strong> Shockwave+ (mass Weak + Vulnerable) &gt; <a href="ontology-cards-reaper.html" class="wiki-link">Reaper</a> (healing) &gt; single-target damage.</li>
 </ul>
+
+<hr>
+
+<h2 id="potion-timing-rule">Potion Timing Rule</h2>
+
+<p><strong>Do not hoard potions until death.</strong> Two of three runs in audit 216-218 died with usable potions that would have changed the outcome.</p>
+
+<p><strong>Trigger for potion evaluation:</strong> If ANY of these conditions are true, evaluate potion use THIS TURN:</p>
+<p>1. <strong>Turn 5+ in a tough fight</strong> (elite, multi-enemy, hard-scaler) and potions are held.</p>
+<p>2. <strong>HP below 30%</strong> in any fight.</p>
+<p>3. <strong>A damage potion would kill an enemy</strong> that is generating status cards (Sentries generating Dazed, enemies applying debuffs). Killing the source earlier prevents compound damage from clogged draws.</p>
+<p>4. <strong>A Strength/damage potion would accelerate a kill by 2+ turns.</strong> Faster kills mean fewer incoming damage turns.</p>
+
+<p><strong>Anti-pattern: &quot;saving for later.&quot;</strong> There is no later if you die. A Fire Potion used on Turn 5 to kill a Sentry prevents 3+ turns of Dazed generation and incoming damage. A Strength Potion used mid-fight accelerates kills and reduces total damage taken. The value of a potion in the CURRENT fight is almost always higher than its speculative value in a FUTURE fight.</p>
+
+<p><strong>Exception:</strong> Fairy in a Bottle and potions specifically needed for the next boss fight (within 1-2 floors). These may be worth holding. All other potions should be evaluated for immediate use when the trigger conditions are met.</p>
 
 <footer>
   <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;

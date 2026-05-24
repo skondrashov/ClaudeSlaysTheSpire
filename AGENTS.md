@@ -271,9 +271,9 @@ Human feedback goes in `data/coaching_notes.md`. When the user gives coaching du
 
 ### Current state
 
-- Playing **Watcher** at Ascension 0
-- 9 wins total (5 Ironclad, 2 Silent, 1 Defect, 1 Watcher) at Ascension 0
-- 215+ runs completed
+- Playing **Ironclad** at Ascension 5
+- 10 wins total (6 Ironclad, 2 Silent, 1 Defect, 1 Watcher) — first A5 win on Run 219
+- 223 runs completed
 - Four-agent pipeline (Win/Explore/Audit/Curate) — all goal files written
 - Pipeline state tracked in `data/pipeline_state.json` — check it before spawning any agent
 
