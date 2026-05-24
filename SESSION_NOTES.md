@@ -31,9 +31,21 @@ Current: Ironclad A5, Run 223 complete. Run 224 was abandoned mid-fight (killed 
 - Directive 7 closed, Directive 9 (A5 Consolidation) opened
 - Overlay fix: character stats show correct ascension for wins
 
-## Tomorrow
+## Tomorrow — Fixes & Reorg
 
 User plans to reorganize the pipeline. Run 224 is abandoned — start fresh.
+
+### Bugs to fix
+- **IB-008: Double-end command** — cmd.py should reject duplicate `end` in same turn. Add `_turn_ended` flag. (Run 216 death)
+- **IB-009: Duplicate run logging** — cmd.py's GAME_OVER handler may fire twice. Add guard to `_log_run()`. (Runs 216/217 identical)
+
+### Agent behavior issues
+- **HP management drift** — Agents say "I can afford damage at 80 HP" despite combat.md explicitly forbidding this. The heuristic exists but agents don't internalize it. Options: make it more prominent in combat.md preamble, add to agent prompt template, or have agent re-read hp-management.md before fights.
+- **Prompt template** — Win agent prompt is getting long with accumulated critical rules. Consider extracting to a file that gets composed into the prompt automatically.
+
+### Pipeline improvements
+- Agent sometimes plays 2 runs in one session (fixed by adding "play only ONE run" to prompt, but fragile)
+- Auditors cite wrong "runs since last curate" count — they don't know about recent curations. Consider giving them pipeline_state.json.
 
 ## Important Scripts
 

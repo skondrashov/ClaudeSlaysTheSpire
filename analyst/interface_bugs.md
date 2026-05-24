@@ -124,6 +124,40 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 ---
 
+## IB-008: Double-end command causes extra enemy turn
+
+**What:** Agent sends `end` twice in a single turn. The game processes both, causing an extra enemy turn. The agent's second `end` fires because the state appears unchanged after the first one (state fetch returns before the turn fully resolves).
+
+**Root cause:** Race condition between cmd.py's `send("end")` and CommunicationMod's turn resolution. The first `end` is accepted but the state returned still shows the player's turn (hasn't transitioned yet). The agent sees "still my turn" and sends `end` again, which gets queued and processed as ending the NEXT player turn immediately.
+
+**Impact:** FATAL. Run 216: extra enemy turn cost 22 HP against Sentries, generating additional Dazes that snowballed into death.
+
+**Affected runs:** 216 (fatal — Sentries)
+
+**Repro seed:** `start IRONCLAD 5 9128496640971033917` (Run 216). Play to F14 Sentries. In a turn with no playable cards, send `end` and immediately send `end` again before the state updates.
+
+**Status:** OPEN. Documented in `interface/sts1/tools.md` as known issue. Agent prompt now says "one `end` per turn" but no cmd.py-level guard.
+
+**Fix:** cmd.py should track whether `end` has been sent this turn and reject duplicates. Add a `_turn_ended` flag that's set on `end` and cleared when state shows a new turn (different turn number or enemy phase). Simple guard in `send()`.
+
+---
+
+## IB-009: Duplicate run logging (double GAME_OVER)
+
+**What:** A single run produces two run log files (e.g., run_216.json and run_217.json with identical content). The stats counter also double-counts the run.
+
+**Root cause:** Likely the GAME_OVER detection in cmd.py or regen_stats.py fires twice — once when the game over screen appears and once when the player proceeds through it. Or stream.py's event handler logs the run end twice.
+
+**Impact:** Low. Creates duplicate files and inflates run counts. Caught manually and cleaned up, but wastes time.
+
+**Affected runs:** 216/217 (identical), 220/221 (two genuine runs but agent wasn't told to stop after one)
+
+**Status:** OPEN. Workaround: "Play only ONE run" in agent prompt prevents the two-genuine-runs case. The identical-duplicate case (216/217) needs investigation in cmd.py's GAME_OVER handler.
+
+**Fix:** Investigate whether `_log_run()` in cmd.py can fire twice for the same game_over event. Add a guard (e.g., check if run file already exists before writing). Also check regen_stats.py deduplication.
+
+---
+
 ## Tracking
 
 When a new interface bug is observed, add it here with:
