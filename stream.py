@@ -493,16 +493,28 @@ class DecisionHandler(BaseHTTPRequestHandler):
             # Re-read from disk (regen_stats.py computes this)
             fresh = _load_stats()
             char_stats = fresh.get("character_stats", {})
+            floor_history = fresh.get("floor_history", [])
             total = fresh.get("total_runs", 0)
+            # Compute best ascension win per character from floor_history
+            best_asc_wins = {}  # cls -> {best_asc, count_at_best}
+            for entry in floor_history:
+                if entry.get("victory"):
+                    cls = entry.get("class", "")
+                    asc = entry.get("ascension", 0)
+                    if cls not in best_asc_wins or asc > best_asc_wins[cls]["best_asc"]:
+                        best_asc_wins[cls] = {"best_asc": asc, "count_at_best": 1}
+                    elif asc == best_asc_wins[cls]["best_asc"]:
+                        best_asc_wins[cls]["count_at_best"] += 1
             # Reshape for overlay compatibility
             chars = {}
             for cls, cs in char_stats.items():
+                baw = best_asc_wins.get(cls, {})
                 chars[cls] = {
                     "runs": cs.get("runs", cs.get("runs_tracked", 0)),
-                    "best_asc": 0,
+                    "best_asc": baw.get("best_asc", 0),
                     "best_win": cs.get("wins", 0) > 0,
                     "best_floor": cs.get("best_floor", 0),
-                    "best_count": cs.get("wins", 0),
+                    "best_count": baw.get("count_at_best", cs.get("wins", 0)),
                 }
             result = {"characters": chars, "total_runs": total}
             self.send_response(200)

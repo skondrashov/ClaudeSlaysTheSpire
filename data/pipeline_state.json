@@ -1,10 +1,10 @@
 {
-  "last_agent": "curate",
-  "last_run": 222,
+  "last_agent": "win",
+  "last_run": 223,
   "next_recommended": "win",
-  "reason": "Curation complete. All 7 flags addressed. Directive 7 closed, Directive 9 (A5 Consolidation) opened. Route safety + damage scaling checks added to map.md. Win next.",
-  "runs_since_last_audit": 0,
-  "runs_since_last_curate": 0,
+  "reason": "Run 223: F21 death (Spheric Guardian + Sentry, HP spiral). 1 run since audit, under threshold. Continue Win.",
+  "runs_since_last_audit": 1,
+  "runs_since_last_curate": 1,
   "outstanding_directives": [],
   "character": "IRONCLAD",
   "ascension": 5
