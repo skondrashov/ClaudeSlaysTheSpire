@@ -877,9 +877,9 @@ def build():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
 
-    # Discover content
-    ont_dir = ROOT / "ontology"
-    heur_dir = ROOT / "heuristics"
+    # Discover content — files live under ontology/sts1/ and heuristics/sts1/
+    ont_dir = ROOT / "ontology" / "sts1"
+    heur_dir = ROOT / "heuristics" / "sts1"
     ont_categories, ont_top = discover_content(ont_dir)
     heur_categories, heur_top = discover_content(heur_dir)
 
