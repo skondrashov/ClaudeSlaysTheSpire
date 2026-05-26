@@ -1,0 +1,4650 @@
+{
+  "run": 206,
+  "character": "WATCHER",
+  "ascension": 0,
+  "victory": false,
+  "floor": 7,
+  "deck": [
+    "Strike",
+    "Strike",
+    "Strike",
+    "Strike",
+    "Defend",
+    "Defend",
+    "Defend",
+    "Defend",
+    "Eruption",
+    "Vigilance",
+    "Empty Body",
+    "Wallop",
+    "Crescendo",
+    "Judgment"
+  ],
+  "relics": [
+    "Violet Lotus"
+  ],
+  "potions": [
+    "Blessing of the Forge",
+    "Potion Slot",
+    "Potion Slot"
+  ],
+  "gold": 176,
+  "hp": 0,
+  "max_hp": 72,
+  "seed": 3276600296959609796,
+  "events": [
+    {
+      "type": "decision",
+      "command": "start WATCHER",
+      "translated": "Start \u2014 WATCHER",
+      "reasoning": "Starting WATCHER A0"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Previous run ended in defeat. Moving past game over screen."
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "start WATCHER",
+      "translated": "Start \u2014 WATCHER",
+      "reasoning": "Starting WATCHER A0"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Talk]",
+      "reasoning": "Talk to Neow to get starting bonus"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 3",
+      "translated": "[ Lose your starting Relic Obtain a random boss Re",
+      "reasoning": "Boss relic swap is highest upside. Pure Water is nice but boss relics can define the run. Worth the gamble."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Leave]",
+      "reasoning": "Leave Neow. Got Violet Lotus - excellent! +1 energy on entering Calm. Perfect for Wrath/Calm cycling."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "$",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Monster",
+      "reasoning": "Leave Neow. Got Violet Lotus - great for Wrath/Calm cycling."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Strike",
+          "Vigilance",
+          "Defend",
+          "Defend",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Jaw Worm",
+            "hp": 44,
+            "intent": "DEBUG"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Vigilance; play Defend; end",
+      "translated": "Vigilance \u2192 Defend \u2192 End Turn",
+      "reasoning": "Jaw Worm attacks for 11. Vigilance (8 block) + Defend (5 block) = 13 block vs 11 incoming. Zero damage. Enter Calm for +2E next turn."
+    },
+    {
+      "type": "decision",
+      "command": "play Eruption 0; play Strike 0; play Strike 0; play Strike 0; end",
+      "translated": "Eruption \u2192 Jaw Worm \u2192 Strike \u2192 Jaw Worm \u2192 Strike \u2192 Jaw Worm \u2192 Strike \u2192 Jaw Worm \u2192 End Turn",
+      "reasoning": "In Calm. Eruption (2E) exits Calm (+2E net 0) enters Wrath. Eruption deals 9x2=18 in Wrath. 3x Strike at 6x2=12 each = 36. Total: 54 > 44 HP. Confirmed kill."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Ambrosia",
+      "reasoning": "Take Ambrosia potion - enters Divinity stance for massive burst damage. Save for elites/bosses."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 111,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward options"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 111,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 2",
+      "translated": "Take Empty Body",
+      "reasoning": "Empty Body is a 1E Calm entry - critical Wrath exit card. We need multiple Calm entries for safe Wrath cycling. 7 block is solid too."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 111,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "All rewards collected. Move to map."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 111,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "$",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 1",
+      "translated": "\u2192 Monster",
+      "reasoning": "Take Monster path (x=2). Need card rewards to build deck before elites. Plan: F2 Monster -> F3 Monster/Shop -> build through F5 -> F6 Rest -> F7 Elite."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 111,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Strike",
+          "Vigilance",
+          "Defend",
+          "Defend",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Louse",
+            "hp": 12,
+            "intent": "DEBUG"
+          },
+          {
+            "name": "Louse",
+            "hp": 13,
+            "intent": "DEBUG"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Vigilance; play Defend; end",
+      "translated": "Vigilance \u2192 Defend \u2192 End Turn",
+      "reasoning": "Two Lice attack for 7+6=13. Vigilance (8 block, enters Calm) + Defend (5 block) = 13 block exactly. Zero damage. Calm for burst next turn."
+    },
+    {
+      "type": "decision",
+      "command": "play Eruption 1; play Strike 1; play Strike 0; play Empty Body; end",
+      "translated": "Eruption \u2192 Louse \u2192 Strike \u2192 Louse \u2192 Strike \u2192 Louse \u2192 Empty Body \u2192 End Turn",
+      "reasoning": "In Calm. Eruption (2E, +2E from Calm exit, enters Wrath) on Louse[1]: 18-7(Curl Up)=11 dmg, to 2HP. Strike Wrath on Louse[1]: 12, kills. Strike Wrath on Louse[0]: 12-6(Curl Up)=6 dmg, to 6HP. Empty Body exits Wrath into Calm. 0 incoming since Louse[0] buffs and Louse[1] dead."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 123,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "return",
+      "translated": "Skip",
+      "reasoning": "None of these cards are strong enough to add. Deck should stay thin. Already have Empty Body, dont need Tranquility or Wreath of Flame."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 123,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Done with rewards, move to map"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 123,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "$",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Monster",
+      "reasoning": "Only path available. Monster at x=3. Plan: monsters F3-F5, Rest F6, Elite F7."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 123,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Defend",
+          "Defend",
+          "Vigilance",
+          "Strike",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Acid Slime (S)",
+            "hp": 11,
+            "intent": "DEBUG"
+          },
+          {
+            "name": "Spike Slime (M)",
+            "hp": 29,
+            "intent": "DEBUG"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Vigilance; play Defend; end",
+      "translated": "Vigilance \u2192 Defend \u2192 End Turn",
+      "reasoning": "Slimes attack 3+8=11. Vigilance 8 + Defend 5 = 13 block. Zero damage. Enter Calm for burst next turn."
+    },
+    {
+      "type": "decision",
+      "command": "play Eruption 1; play Strike 1; play Strike 0; end",
+      "translated": "Eruption \u2192 Spike Slime (M) \u2192 Strike \u2192 Spike Slime (M) \u2192 Strike \u2192 Acid Slime (S) \u2192 End Turn",
+      "reasoning": "In Calm. Eruption on Spike Slime: 9x2=18 in Wrath (29-18=11HP). Strike Wrath on Spike: 12, kills. Strike Wrath on Acid: 12 vs 11HP, kills. Both dead turn 2."
+    },
+    {
+      "type": "decision",
+      "command": "play Strike 1; end",
+      "translated": "Strike \u2192 Spike Slime (M) \u2192 End Turn",
+      "reasoning": "Spike Slime at 8 HP, debuffing (0 incoming). Strike deals 6 damage, bring to 2 HP. Conserve energy. Only debuff incoming, no block needed."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Liquid Memories",
+      "reasoning": "Take Liquid Memories - can replay a discarded card. Useful for reusing key cards in tough fights."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 56,
+        "max_hp": 72,
+        "gold": 143,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 56,
+        "max_hp": 72,
+        "gold": 143,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 2",
+      "translated": "Take Wallop",
+      "reasoning": "Wallop is excellent - 10 dmg + block equal to damage dealt. In Wrath: 20 dmg + 20 block. Dual-purpose card perfect for burst turns. 2E cost offset by Calm energy loop."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 56,
+        "max_hp": 72,
+        "gold": 143,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Move to map"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 56,
+        "max_hp": 72,
+        "gold": 143,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "$",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Monster",
+      "reasoning": "Only path: Monster x=2. Continues toward F5->F6 Rest->F7 Elite route."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 56,
+        "max_hp": 72,
+        "gold": 143,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Strike",
+          "Strike",
+          "Strike",
+          "Defend",
+          "Eruption"
+        ],
+        "enemies": [
+          {
+            "name": "Slaver",
+            "hp": 50,
+            "intent": "DEBUG"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Strike 0; play Strike 0; play Defend; end",
+      "translated": "Strike \u2192 Slaver \u2192 Strike \u2192 Slaver \u2192 Defend \u2192 End Turn",
+      "reasoning": "No Calm entry in hand. Cannot safely enter Wrath (no exit). Strike x2 for 12 damage on Slaver + Defend for 5 block vs 12 incoming = take 7 damage. Best available play."
+    },
+    {
+      "type": "decision",
+      "command": "play Empty Body; play Strike 0; play Defend; play Defend; end",
+      "translated": "Empty Body \u2192 Strike \u2192 Slaver \u2192 Defend \u2192 Defend \u2192 End Turn",
+      "reasoning": "Empty Body (1E, 7 block, enters Calm, +1E from Violet Lotus = net 0E). Strike (1E, 6 dmg). Defend x2 (2E, 10 block). Total: 17 block vs 7 incoming = zero damage. In Calm for burst next turn. 3E total."
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "0 energy left. 12 block vs 7 incoming = zero damage. In Calm for burst next turn."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 49,
+        "max_hp": 72,
+        "gold": 143,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Defend",
+          "Wallop",
+          "Strike",
+          "Defend",
+          "Empty Body"
+        ],
+        "enemies": [
+          {
+            "name": "Slaver",
+            "hp": 32,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Wallop 0; play Defend; end",
+      "translated": "Wallop \u2192 Slaver \u2192 Defend \u2192 End Turn",
+      "reasoning": "In Calm but no Wrath entry. Wallop (2E, ~7 dmg with Weak, ~7 block) + Defend (1E, 5 block) = ~12 block vs 12 incoming. Zero damage. Slaver goes from 32 to ~25 HP."
+    },
+    {
+      "type": "decision",
+      "command": "play Vigilance; play Strike 0; end",
+      "translated": "Vigilance \u2192 Strike \u2192 Slaver \u2192 End Turn",
+      "reasoning": "Vigilance (2E, 8 block, enter Calm) + Strike (1E, 6 dmg). 8 block vs 7 incoming = zero damage. In Calm for burst next turn with Eruption in draw pile."
+    },
+    {
+      "type": "decision",
+      "command": "play Eruption 0; play Strike 0; end",
+      "translated": "Eruption \u2192 Slaver \u2192 Strike \u2192 Slaver \u2192 End Turn",
+      "reasoning": "In Calm. Eruption (2E, exits Calm +2E, enters Wrath): 9*2*0.75(Weak)=13 dmg. Slaver to 7HP. Strike in Wrath: 6*2*0.75=9 dmg. 7-9=dead. Confirmed kill."
+    },
+    {
+      "type": "decision",
+      "command": "play Strike 0; play Defend; end",
+      "translated": "Strike \u2192 Slaver \u2192 Defend \u2192 End Turn",
+      "reasoning": "Slaver at 5 HP. Strike should deal 6 damage (no Weak showing). That kills it. Defend for safety in case it survives."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 24,
+        "max_hp": 72,
+        "gold": 157,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Crescendo",
+      "reasoning": "Crescendo is critical - 1E Wrath entry. Much cheaper than Eruption (2E). More Wrath entries = more consistent burst turns. Exhausts so it doesnt clog deck."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 24,
+        "max_hp": 72,
+        "gold": 157,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Done with rewards. Move to map. At 24/72 HP - need to path toward rest site."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 24,
+        "max_hp": 72,
+        "gold": 157,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "$",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Monster",
+      "reasoning": "Monster x=1 leads to F6 Rest. One more fight then heal. At 33% HP, must avoid elites. Unknown x=3 leads to Elite - too dangerous."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 24,
+        "max_hp": 72,
+        "gold": 157,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Empty Body",
+          "Defend",
+          "Strike",
+          "Vigilance",
+          "Eruption"
+        ],
+        "enemies": [
+          {
+            "name": "Spike Slime (M)",
+            "hp": 30,
+            "intent": "DEBUG"
+          },
+          {
+            "name": "Cultist",
+            "hp": 54,
+            "intent": "DEBUG"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Empty Body; play Strike 1; play Defend; end",
+      "translated": "Empty Body \u2192 Strike \u2192 Cultist \u2192 Defend \u2192 End Turn",
+      "reasoning": "Spike Slime attacks 8, Cultist buffs (0 dmg). Empty Body (1E, 7 block, enter Calm) + Strike Cultist (1E, 6 dmg, Cultist hard-scales so priority target) + Defend (1E, 5 block) = 12 block vs 8 = zero damage. In Calm for burst."
+    },
+    {
+      "type": "decision",
+      "command": "potion use 1",
+      "translated": "Use Potion 1",
+      "reasoning": "Liquid Memories to retrieve Empty Body from discard. Need it as Wrath exit after burst turn."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 24,
+        "max_hp": 72,
+        "gold": 157,
+        "screen": "GRID",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Crescendo",
+          "Defend",
+          "Strike",
+          "Strike",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Spike Slime (M)",
+            "hp": 30,
+            "intent": "ATTACK_DEBUFF"
+          },
+          {
+            "name": "Cultist",
+            "hp": 48,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Select Empty Body",
+      "reasoning": "Retrieve Empty Body for Wrath exit after burst turn."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 24,
+        "max_hp": 72,
+        "gold": 157,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Crescendo",
+          "Defend",
+          "Strike",
+          "Strike",
+          "Strike",
+          "Empty Body"
+        ],
+        "enemies": [
+          {
+            "name": "Spike Slime (M)",
+            "hp": 30,
+            "intent": "ATTACK_DEBUFF"
+          },
+          {
+            "name": "Cultist",
+            "hp": 48,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Crescendo; play Strike 1; play Strike 1; play Strike 1; play Defend; play Empty Body; end",
+      "translated": "Crescendo \u2192 Strike \u2192 Cultist \u2192 Strike \u2192 Cultist \u2192 Strike \u2192 Cultist \u2192 Defend \u2192 Empty Body \u2192 End Turn",
+      "reasoning": "In Calm. Crescendo (1E, exit Calm +2E, enter Wrath) = 4E. 3x Strike on Cultist in Wrath: 3x12=36 dmg. Cultist 48-36=12 HP. Defend 5 block. Empty Body (0E from Liquid Memories) exits Wrath, 7 block. Total 12 block vs 14 incoming = take 2. In Calm."
+    },
+    {
+      "type": "decision",
+      "command": "play Empty Body; end",
+      "translated": "Empty Body \u2192 End Turn",
+      "reasoning": "CRITICAL: Must exit Wrath immediately. In Wrath, incoming 28 damage would kill me. Empty Body (0E) exits to Calm, gives 7 block. Incoming returns to 14. Take 7 damage to 17 HP."
+    },
+    {
+      "type": "decision",
+      "command": "play Wallop 1; play Defend; end",
+      "translated": "Wallop \u2192 Cultist \u2192 Defend \u2192 End Turn",
+      "reasoning": "Cultist attacks 9. Wallop on Cultist (2E, 10 dmg + 10 block). Defend (1E, 5 block). Total 15 block vs 9 incoming = zero damage. Cultist to 14 HP. Cant enter Wrath - no entry in hand."
+    },
+    {
+      "type": "decision",
+      "command": "potion use 0",
+      "translated": "Use Potion 0",
+      "reasoning": "Use Ambrosia to enter Divinity (3x damage, +3E). Kill both enemies this turn to avoid lethal damage in Wrath. At 17 HP, cant afford to take 13+ damage."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 17,
+        "max_hp": 72,
+        "gold": 157,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 6,
+        "hand": [
+          "Defend",
+          "Slimed",
+          "Eruption",
+          "Strike",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Spike Slime (M)",
+            "hp": 30,
+            "intent": "ATTACK_DEBUFF"
+          },
+          {
+            "name": "Cultist",
+            "hp": 15,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Eruption 1; play Strike 0; play Strike 0; end",
+      "translated": "Eruption \u2192 Cultist \u2192 Strike \u2192 Spike Slime (M) \u2192 Strike \u2192 Spike Slime (M) \u2192 End Turn",
+      "reasoning": "In Divinity (3x damage). Eruption on Cultist: 9*3=27, kills (15 HP). Strike on Spike Slime: 6*3=18, to 12. Strike again: 18, kills. Both dead. Zero damage taken."
+    },
+    {
+      "type": "decision",
+      "command": "play Strike 0; end",
+      "translated": "Strike \u2192 Spike Slime (M) \u2192 End Turn",
+      "reasoning": "CRITICAL: 1 HP. Must kill Spike Slime (6 HP) NOW. Strike deals 6 damage minimum. If in Wrath, 12. Either way kills it."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Blessing of the Forge",
+      "reasoning": "Take Blessing of the Forge - upgrades a random card. Free value."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 1,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "Check card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 1,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Judgment",
+      "reasoning": "JUDGMENT - MUST TAKE. Instant kill at <=30 HP (<=40 upgraded). Best finisher card. This solves so many kill-math problems."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 1,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Move to map. Rest site is F6, absolutely critical at 1 HP."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 1,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "$",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Rest Site",
+      "reasoning": "Rest site. At 1 HP, absolutely must rest to heal."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 1,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "REST"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose rest",
+      "translated": "Rest",
+      "reasoning": "At 1 HP, must rest. Heal ~21 HP to 22. No other option is viable."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 22,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "REST"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "potion use 0",
+      "translated": "Use Potion 0",
+      "reasoning": "Use Blessing of the Forge at rest site - upgrades a random card for free. Get value while resting."
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Proceed from rest site. 22 HP."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 22,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "$",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  0
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 0,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "?",
+                "children": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 3,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Elite Prep",
+      "reasoning": "ELITE PREPARATION at 22/72 HP. Forced elite. Possible enemies: Gremlin Nob (punishes skills), Lagavulin (debuffs if you stall), Sentries (need AOE). My deck: Eruption, Vigilance, Empty Body, Crescendo, Wallop, Judgment, 4 Strikes, 5 Defends. Key cards: Judgment kills at <=30 HP - huge vs single-target elites. Wallop gives block+damage. Crescendo exhausts so only one Wrath entry that works once. Must play carefully - zero damage discipline."
+    },
+    {
+      "type": "think",
+      "label": "Elite Prep",
+      "reasoning": "ELITE PREPARATION at 22/72 HP. Forced elite. Possible enemies: Gremlin Nob (punishes skills), Lagavulin (debuffs if you stall), Sentries (need AOE). My deck: Eruption, Vigilance, Empty Body, Crescendo, Wallop, Judgment, 4 Strikes, 5 Defends. Key cards: Judgment kills at <=30 HP - huge vs single-target elites. Wallop gives block+damage. Crescendo exhausts so only one Wrath entry that works once. Must play carefully - zero damage discipline."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Elite",
+      "reasoning": "Only path available - Elite. At 22 HP, must play perfectly. Judgment is the key finisher."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 22,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Strike",
+          "Judgment",
+          "Strike",
+          "Crescendo",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 110,
+            "intent": "DEBUG"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play Defend; end",
+      "translated": "Defend \u2192 End Turn",
+      "reasoning": "Lagavulin is sleeping - 0 incoming. Dont attack (wakes it up). Play Defend to cycle cards. Need to draw Vigilance/Empty Body for Calm entry next turn. Save Crescendo for burst."
+    },
+    {
+      "type": "decision",
+      "command": "play Defend; play Defend; end",
+      "translated": "Defend \u2192 Defend \u2192 End Turn",
+      "reasoning": "Lagavulin sleeping. Cycle 2 Defends (5+5=10 block, wont help but cycles cards). Next turn should draw Calm entries (Empty Body, Vigilance in draw pile). Save Crescendo and Wallop for burst turn."
+    },
+    {
+      "type": "decision",
+      "command": "play Empty Body; end",
+      "translated": "Empty Body \u2192 End Turn",
+      "reasoning": "Enter Calm for burst next turn. Lagavulin sleeps one more turn (wakes turn 4). By entering Calm now, I get +2E next turn for burst. Dont attack - save all damage for one massive Wrath burst when it wakes."
+    },
+    {
+      "type": "decision",
+      "command": "play Defend; play Defend; play Strike 0; end",
+      "translated": "Defend \u2192 Defend \u2192 Strike \u2192 Lagavulin \u2192 End Turn",
+      "reasoning": "Lagavulin attacks 18. No Wrath exit in hand - CANNOT enter Wrath. 2x Defend (10 block) + Strike (6 dmg, absorbed by 8 Metallicize but still deals damage to block pool). Take 18-10=8 damage to 14 HP. Conservative play to survive."
+    },
+    {
+      "type": "decision",
+      "command": "play Defend; play Defend; play Strike 0; end",
+      "translated": "Defend \u2192 Defend \u2192 Strike \u2192 Lagavulin \u2192 End Turn",
+      "reasoning": "No Wrath exit in hand again. 2x Defend (10 block) + Strike (6 dmg). Take 8 to 6 HP. Must draw Calm entries next turn or die. Lagavulin debuffs degrade my stats each turn."
+    },
+    {
+      "type": "decision",
+      "command": "play Strike 0; play Vigilance; end",
+      "translated": "Strike \u2192 Lagavulin \u2192 Vigilance \u2192 End Turn",
+      "reasoning": "Lagavulin DEBUFFS (no attack) - free turn. Strike for 6 damage. Vigilance enters Calm for +2E next turn burst. Safety over greed at 6 HP. Cant afford to enter Wrath without guaranteed exit."
+    },
+    {
+      "type": "decision",
+      "command": "play Crescendo; play Wallop 0; play Empty Body; play Defend; end",
+      "translated": "Crescendo \u2192 Wallop \u2192 Lagavulin \u2192 Empty Body \u2192 Defend \u2192 End Turn",
+      "reasoning": "In Calm. Crescendo (1E, exit Calm+2E, enter Wrath)=4E. Wallop in Wrath (2E): 9*2=18 dmg, 10 effective vs 8 Met, gain 10 block. Empty Body (1E, exit Wrath to Calm, 6 block with -1 Dex). Defend (1E, 4 block with -1 Dex). Total block: 10+6+4=20 vs 18=ZERO DAMAGE. In Calm."
+    },
+    {
+      "type": "decision",
+      "command": "play Eruption 0; play Strike 0; play Vigilance; play Defend; end",
+      "translated": "Eruption \u2192 Lagavulin \u2192 Strike \u2192 Lagavulin \u2192 Vigilance \u2192 Defend \u2192 End Turn",
+      "reasoning": "In Calm. Eruption exits Calm (+2E), enters Wrath. 5E total. Eruption 2E (16 dmg) + Strike 1E (10 dmg in Wrath) + Vigilance 2E (exit Wrath, 7 block) + Defend... cant afford. Playing what I can. Eruption + Strike + Vigilance uses 5E. 7 block vs 18 = take 11. Likely fatal at 6 HP but no better option exists."
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "0 energy, in Wrath with 0 block. 36 incoming. Will die. No options remaining."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 0,
+        "max_hp": 72,
+        "gold": 176,
+        "screen": "GAME_OVER",
+        "block": 0,
+        "energy": 0,
+        "hand": [],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 58,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    }
+  ]
+}

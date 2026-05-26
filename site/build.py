@@ -15,6 +15,8 @@ OUT = ROOT / "site" / "out"
 
 # ── Wiki-link resolution ────────────────────────────────────────────
 
+_wiki_link_node = "sts1"  # Set before rendering each page
+
 def resolve_wiki_link(match):
     """Convert [[category/Name]] to an HTML link pointing to the ontology page."""
     full = match.group(1)
@@ -22,7 +24,7 @@ def resolve_wiki_link(match):
         category, name = full.split("/", 1)
         slug = name.lower().replace(" ", "-").replace("'", "").replace(".", "")
         slug = re.sub(r'[^a-z0-9-]', '', slug)
-        href = f"ontology-{category}-{slug}.html"
+        href = f"ontology-{_wiki_link_node}-{category}-{slug}.html"
         return f'<a href="{href}" class="wiki-link">{html.escape(name)}</a>'
     return f'<code>{html.escape(full)}</code>'
 
@@ -148,7 +150,7 @@ def git_changelog(max_entries=50):
         result = subprocess.run(
             ["git", "log", f"--max-count={max_entries}", "--pretty=format:%H|%ai|%s",
              "--diff-filter=ACDMR", "-p", "--",
-             "ontology/", "heuristics/", "agents/", "AGENTS.md"],
+             "ontology/", "heuristics/", "goals/", "agents/"],
             capture_output=True, text=True, cwd=ROOT, encoding="utf-8"
         )
         if result.returncode != 0:
@@ -226,6 +228,7 @@ STYLES = """
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -355,6 +358,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -402,6 +407,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -591,8 +597,7 @@ def page(title, content, active=""):
         ("index.html", "Home"),
         ("ontology.html", "Ontology"),
         ("heuristics.html", "Heuristics"),
-        ("knowledge-system.html", "Knowledge System"),
-        ("philosophy.html", "Philosophy"),
+        ("goals.html", "Goals"),
         ("changelog.html", "Changelog"),
     ]
     nav_html = "\n".join(
@@ -681,21 +686,24 @@ def short_name(full_name):
     return full_name
 
 
-def make_slug(section, category, entry_stem=None):
+def make_slug(section, node, category=None, entry_stem=None):
     """Generate the output HTML filename.
 
-    ontology-cards.html, ontology-cards-bash.html, heuristics-enemies-jaw-worm.html
+    ontology-sts1.html, ontology-sts1-cards.html, ontology-sts1-cards-bash.html
     """
+    parts = [section, node]
+    if category:
+        parts.append(category)
     if entry_stem:
-        return f"{section}-{category}-{entry_stem}.html"
-    return f"{section}-{category}.html"
+        parts.append(entry_stem)
+    return "-".join(parts) + ".html"
 
 
 # ── Run stats ─────────────────────────────────────────────────────
 
 def load_run_stats(root):
     """Load run statistics from data/run_stats.json."""
-    stats_file = root / "data" / "run_stats.json"
+    stats_file = root / "games" / "sts1" / "data" / "run_stats.json"
     defaults = {"total_runs": 0, "wins": 0, "best_floor": 0, "deaths": 0,
                 "current_class": "?", "best_ascension": 0, "character_stats": {}}
 
@@ -838,11 +846,11 @@ def build_landing(ont_categories, heur_categories, run_stats):
 Claude plays <a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>,
 makes decisions one at a time with explicit reasoning, and reviews its own runs to figure out what
 went wrong. No hardcoded strategy. Everything it knows is recorded in a structured
-<a href="knowledge-system.html">knowledge system</a> that grows over time.
+knowledge system called <a href="ontology-praxis.html">Praxis</a> that grows over time.
 </p>
 
 <p>
-The <a href="ontology.html">Ontology</a> is the complete factual database of the game &mdash; every
+The <a href="ontology.html">Ontology</a> is the complete factual database &mdash; every
 card, enemy, relic, and mechanic. The <a href="heuristics.html">Heuristics</a> are strategic
 guidance accumulated from gameplay. The <a href="changelog.html">Changelog</a> shows what changed and when.
 </p>
@@ -855,13 +863,19 @@ guidance accumulated from gameplay. The <a href="changelog.html">Changelog</a> s
     # Ontology card
     sections_html += f"""<div class="category-card ontology-card"><a href="ontology.html">
   <h3>Ontology</h3>
-  <div class="count">{ont_entries} entries &mdash; facts about the game</div>
+  <div class="count">{ont_entries} game entries &mdash; facts</div>
 </a></div>\n"""
 
     # Heuristics card
     sections_html += f"""<div class="category-card heuristics-card"><a href="heuristics.html">
   <h3>Heuristics</h3>
-  <div class="count">{heur_entries} entries &mdash; strategy and guidance</div>
+  <div class="count">{heur_entries} game entries &mdash; strategy</div>
+</a></div>\n"""
+
+    # Goals card
+    sections_html += f"""<div class="category-card goals-card"><a href="goals.html">
+  <h3>Goals</h3>
+  <div class="count">Agent operating modes</div>
 </a></div>\n"""
 
     sections_html += "</div>\n"
@@ -869,117 +883,192 @@ guidance accumulated from gameplay. The <a href="changelog.html">Changelog</a> s
     return twitch_html + stats_html + journey_html + intro_html + sections_html
 
 
+# ── Node discovery ──────────────────────────────────────────────────
+
+NODE_NAMES = {
+    "praxis": "Praxis",
+    "sts1": "Slay the Spire",
+    "book-sts1": "Slay the Spire Book",
+}
+
+NODE_DESCRIPTIONS = {
+    "praxis": "The framework for building domain knowledge through structured practice.",
+    "sts1": "The game domain &mdash; cards, enemies, relics, mechanics, strategy.",
+    "book-sts1": "The knowledge system itself &mdash; its structure, coverage, and maintenance.",
+}
+
+SECTION_META = {
+    "ontology": {
+        "card_class": "ontology-card",
+        "description": "Facts about how things work. Deterministic, composable, permanent.",
+    },
+    "heuristics": {
+        "card_class": "heuristics-card",
+        "description": "Strategy and guidance. Provisional, evidence-grounded, improvable.",
+    },
+    "goals": {
+        "card_class": "goals-card",
+        "description": "Agent operating modes. What to read, what to do, what to output.",
+    },
+}
+
+def discover_nodes(section_dir):
+    """Discover all nodes in a section directory."""
+    nodes = {}
+    if not section_dir.exists():
+        return nodes
+    for d in sorted(section_dir.iterdir()):
+        if d.is_dir() and not d.name.startswith("."):
+            categories, top_files = discover_content(d)
+            nodes[d.name] = {"categories": categories, "top_level_files": top_files}
+    return nodes
+
+
 # ── Build ────────────────────────────────────────────────────────────
 
 def build():
+    global _wiki_link_node
+
     # Clean output
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
 
-    # Discover content — files live under ontology/sts1/ and heuristics/sts1/
-    ont_dir = ROOT / "ontology" / "sts1"
-    heur_dir = ROOT / "heuristics" / "sts1"
-    ont_categories, ont_top = discover_content(ont_dir)
-    heur_categories, heur_top = discover_content(heur_dir)
+    # Discover all nodes across all sections
+    all_sections = {}
+    for section in ["ontology", "heuristics", "goals"]:
+        all_sections[section] = discover_nodes(ROOT / section)
 
     run_stats = load_run_stats(ROOT)
     total_pages = 0
 
     # ── Index page ──
-    index_body = build_landing(ont_categories, heur_categories, run_stats)
+    ont_sts1 = all_sections["ontology"].get("sts1", {"categories": {}, "top_level_files": []})
+    heur_sts1 = all_sections["heuristics"].get("sts1", {"categories": {}, "top_level_files": []})
+    index_body = build_landing(ont_sts1["categories"], heur_sts1["categories"], run_stats)
     (OUT / "index.html").write_text(page("Home", index_body, "Home"), encoding="utf-8")
     total_pages += 1
 
-    # ── Build both sections ──
-    for section, categories, top_files, card_class, description in [
-        ("ontology", ont_categories, ont_top, "ontology-card",
-         "The complete factual database of Slay the Spire. Every card, enemy, relic, potion, event, boss, buff, debuff, encounter, and game rule. Browse it like a wiki."),
-        ("heuristics", heur_categories, heur_top, "heuristics-card",
-         "Strategic guidance accumulated from gameplay and analysis. How to fight each enemy, when to play each card, which relics to prioritize. These are provisional &mdash; they improve over time."),
-    ]:
-        # Section index page
-        section_body = build_section_index(section, section, categories, top_files, card_class, description)
-        (OUT / f"{section}.html").write_text(page(section.title(), section_body, section.title()), encoding="utf-8")
+    # ── Build all sections (ontology, heuristics, goals) ──
+    for section, nodes in all_sections.items():
+        meta = SECTION_META[section]
+        card_class = meta["card_class"]
+
+        # Section index page — lists all nodes
+        body = f'<span class="section-badge {section}">{section}</span>\n'
+        body += f"<h2>{section.title()}</h2>\n"
+        body += f"<p>{meta['description']}</p>\n"
+        body += '<div class="category-grid">\n'
+
+        for node_key, node_data in nodes.items():
+            node_display = NODE_NAMES.get(node_key, node_key.title())
+            node_desc = NODE_DESCRIPTIONS.get(node_key, "")
+            node_slug = make_slug(section, node_key)
+            cat_count = len(node_data["categories"])
+            top_count = len(node_data["top_level_files"])
+            entry_count = sum(len(c["entries"]) for c in node_data["categories"].values()) + top_count
+            body += f"""<div class="category-card {card_class}"><a href="{node_slug}">
+  <h3>{html.escape(node_display)}</h3>
+  <div class="count">{entry_count} entries</div>
+</a></div>\n"""
+
+        body += "</div>\n"
+        if not nodes:
+            body = f'<div class="empty-state">No {section} entries yet.</div>'
+
+        (OUT / f"{section}.html").write_text(page(section.title(), body, section.title()), encoding="utf-8")
         total_pages += 1
 
-        # Top-level files
-        for tlf in top_files:
-            slug = f"{section}-{tlf['stem']}.html"
-            content_html = md_to_html(tlf["content"])
-            badge = f'<span class="section-badge {section}">{section}</span>\n'
-            back_link = f'<div class="back-link"><a href="{section}.html">&larr; Back to {section}</a></div>'
-            single_page = page(tlf["name"], badge + back_link + content_html, section.title())
-            (OUT / slug).write_text(single_page, encoding="utf-8")
-            total_pages += 1
+        # ── Per-node pages ──
+        for node_key, node_data in nodes.items():
+            _wiki_link_node = node_key
+            node_display = NODE_NAMES.get(node_key, node_key.title())
+            categories = node_data["categories"]
+            top_files = node_data["top_level_files"]
+            node_slug = make_slug(section, node_key)
 
-        # Category pages and individual entry pages
-        for cat_name, cat_data in categories.items():
-            display_name = cat_name.replace("-", " ").replace("_", " ").title()
-            cat_slug = make_slug(section, cat_name)
-
-            # Companion section link
+            # Get companion node data (ontology ↔ heuristics within same node)
             companion_section = "heuristics" if section == "ontology" else "ontology"
-            companion_categories = heur_categories if section == "ontology" else ont_categories
-            companion_link = ""
-            if cat_name in companion_categories and companion_categories[cat_name]["entries"]:
-                companion_slug = make_slug(companion_section, cat_name)
-                companion_count = len(companion_categories[cat_name]["entries"])
-                companion_link = f'<div class="companion-link">See also: <a href="{companion_slug}">{companion_section.title()} &rarr; {html.escape(display_name)}</a> ({companion_count} entries)</div>\n'
+            companion_node = all_sections.get(companion_section, {}).get(node_key, {"categories": {}, "top_level_files": []})
+            companion_categories = companion_node["categories"]
 
-            badge = f'<span class="section-badge {section}">{section}</span>\n'
-            back_link = f'<div class="back-link"><a href="{section}.html">&larr; {section.title()}</a></div>'
+            # Node index page — lists categories + top-level files
+            node_body = f'<span class="section-badge {section}">{section}</span>\n'
+            node_body += f'<div class="back-link"><a href="{section}.html">&larr; {section.title()}</a></div>'
+            node_body += f"<h2>{html.escape(node_display)}</h2>\n"
+            node_body += '<div class="category-grid">\n'
 
-            # Category page: tile grid of all entries
-            cat_html = f'<h2>{html.escape(display_name)}</h2>\n'
-            cat_html += companion_link
-            cat_html += '<div class="entry-grid">\n'
-            for entry in cat_data["entries"]:
-                entry_slug = make_slug(section, cat_name, entry["stem"])
-                cat_html += f'<a href="{entry_slug}">{html.escape(short_name(entry["name"]))}</a>\n'
-            cat_html += '</div>\n'
+            for tlf in top_files:
+                tlf_slug = make_slug(section, node_key, tlf["stem"])
+                node_body += f"""<div class="category-card {card_class}"><a href="{tlf_slug}">
+  <h3>{html.escape(short_name(tlf["name"]))}</h3>
+</a></div>\n"""
 
-            cat_page = page(f"{display_name} — {section.title()}", badge + back_link + cat_html, section.title())
-            (OUT / cat_slug).write_text(cat_page, encoding="utf-8")
+            for cat_name, cat_data in categories.items():
+                cat_slug = make_slug(section, node_key, cat_name)
+                count = len(cat_data["entries"])
+                display = cat_name.replace("-", " ").replace("_", " ").title()
+                node_body += f"""<div class="category-card {card_class}"><a href="{cat_slug}">
+  <h3>{html.escape(display)}</h3>
+  <div class="count">{count} {"entry" if count == 1 else "entries"}</div>
+</a></div>\n"""
+
+            node_body += "</div>\n"
+            (OUT / node_slug).write_text(page(f"{node_display} — {section.title()}", node_body, section.title()), encoding="utf-8")
             total_pages += 1
 
-            # Individual entry pages
-            for entry in cat_data["entries"]:
-                entry_slug = make_slug(section, cat_name, entry["stem"])
-                content_html = md_to_html(entry["content"])
-
-                # Link to companion entry if it exists
-                companion_entry_link = ""
-                if cat_name in companion_categories:
-                    for ce in companion_categories[cat_name]["entries"]:
-                        if ce["stem"] == entry["stem"]:
-                            ce_slug = make_slug(companion_section, cat_name, ce["stem"])
-                            label = "View strategy" if section == "ontology" else "View facts"
-                            companion_entry_link = f'<div class="companion-link">{label}: <a href="{ce_slug}">{companion_section.title()} &rarr; {html.escape(short_name(ce["name"]))}</a></div>\n'
-                            break
-
-                badge = f'<span class="section-badge {section}">{section}</span>\n'
-                back_link = f'<div class="back-link"><a href="{cat_slug}">&larr; Back to {html.escape(display_name)}</a></div>'
-                entry_page = page(entry["name"], badge + back_link + companion_entry_link + content_html, section.title())
-                (OUT / entry_slug).write_text(entry_page, encoding="utf-8")
+            # Top-level file pages
+            for tlf in top_files:
+                tlf_slug = make_slug(section, node_key, tlf["stem"])
+                content_html = md_to_html(tlf["content"])
+                badge = f'<span class="section-badge {section}">{section} &middot; {html.escape(node_display)}</span>\n'
+                back = f'<div class="back-link"><a href="{node_slug}">&larr; {html.escape(node_display)}</a></div>'
+                (OUT / tlf_slug).write_text(page(tlf["name"], badge + back + content_html, section.title()), encoding="utf-8")
                 total_pages += 1
 
-    # ── Knowledge System page ──
-    ks_path = Path(__file__).parent / "knowledge-system.md"
-    if ks_path.exists():
-        ks_content = ks_path.read_text(encoding="utf-8")
-        ks_html = md_to_html(ks_content)
-        (OUT / "knowledge-system.html").write_text(
-            page("Knowledge System", ks_html, "Knowledge System"), encoding="utf-8")
-        total_pages += 1
+            # Category pages and entry pages
+            for cat_name, cat_data in categories.items():
+                display_name = cat_name.replace("-", " ").replace("_", " ").title()
+                cat_slug = make_slug(section, node_key, cat_name)
 
-    # ── Philosophy page ──
-    phil_path = Path(__file__).parent / "philosophy.md"
-    if phil_path.exists():
-        phil_content = phil_path.read_text(encoding="utf-8")
-        phil_html = md_to_html(phil_content)
-        (OUT / "philosophy.html").write_text(page("Philosophy", phil_html, "Philosophy"), encoding="utf-8")
-        total_pages += 1
+                # Companion link
+                companion_link = ""
+                if cat_name in companion_categories and companion_categories[cat_name]["entries"]:
+                    comp_slug = make_slug(companion_section, node_key, cat_name)
+                    comp_count = len(companion_categories[cat_name]["entries"])
+                    companion_link = f'<div class="companion-link">See also: <a href="{comp_slug}">{companion_section.title()} &rarr; {html.escape(display_name)}</a> ({comp_count} entries)</div>\n'
+
+                badge = f'<span class="section-badge {section}">{section} &middot; {html.escape(node_display)}</span>\n'
+                back = f'<div class="back-link"><a href="{node_slug}">&larr; {html.escape(node_display)}</a></div>'
+
+                cat_html = f'<h2>{html.escape(display_name)}</h2>\n'
+                cat_html += companion_link
+                cat_html += '<div class="entry-grid">\n'
+                for entry in cat_data["entries"]:
+                    entry_slug = make_slug(section, node_key, cat_name, entry["stem"])
+                    cat_html += f'<a href="{entry_slug}">{html.escape(short_name(entry["name"]))}</a>\n'
+                cat_html += '</div>\n'
+
+                (OUT / cat_slug).write_text(page(f"{display_name} — {section.title()}", badge + back + cat_html, section.title()), encoding="utf-8")
+                total_pages += 1
+
+                for entry in cat_data["entries"]:
+                    entry_slug = make_slug(section, node_key, cat_name, entry["stem"])
+                    content_html = md_to_html(entry["content"])
+
+                    companion_entry_link = ""
+                    if cat_name in companion_categories:
+                        for ce in companion_categories[cat_name]["entries"]:
+                            if ce["stem"] == entry["stem"]:
+                                ce_slug = make_slug(companion_section, node_key, cat_name, ce["stem"])
+                                label = "View strategy" if section == "ontology" else "View facts"
+                                companion_entry_link = f'<div class="companion-link">{label}: <a href="{ce_slug}">{companion_section.title()} &rarr; {html.escape(short_name(ce["name"]))}</a></div>\n'
+                                break
+
+                    badge = f'<span class="section-badge {section}">{section} &middot; {html.escape(node_display)}</span>\n'
+                    back = f'<div class="back-link"><a href="{cat_slug}">&larr; {html.escape(display_name)}</a></div>'
+                    (OUT / entry_slug).write_text(page(entry["name"], badge + back + companion_entry_link + content_html, section.title()), encoding="utf-8")
+                    total_pages += 1
 
     # ── Changelog ──
     entries = git_changelog()
@@ -1009,11 +1098,12 @@ def build():
     # ── CNAME for GitHub Pages ──
     (OUT / "CNAME").write_text("claudeslaysthespire.org", encoding="utf-8")
 
-    ont_total = sum(len(c["entries"]) for c in ont_categories.values()) + len(ont_top)
-    heur_total = sum(len(c["entries"]) for c in heur_categories.values()) + len(heur_top)
+    # Summary
+    for section, nodes in all_sections.items():
+        for node_key, node_data in nodes.items():
+            entry_count = sum(len(c["entries"]) for c in node_data["categories"].values()) + len(node_data["top_level_files"])
+            print(f"  {section}/{node_key}: {len(node_data['categories'])} categories, {entry_count} entries")
     print(f"Built {total_pages} pages")
-    print(f"  Ontology: {len(ont_categories)} categories, {ont_total} entries")
-    print(f"  Heuristics: {len(heur_categories)} categories, {heur_total} entries")
     print(f"Output: {OUT}")
 
 

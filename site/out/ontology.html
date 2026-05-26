@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,16 +384,23 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="active">Ontology</a>
 <a href="heuristics.html" class="">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
 <span class="section-badge ontology">ontology</span>
 <h2>Ontology</h2>
-<p>The complete factual database of Slay the Spire. Every card, enemy, relic, potion, event, boss, buff, debuff, encounter, and game rule. Browse it like a wiki.</p>
+<p>Facts about how things work. Deterministic, composable, permanent.</p>
 <div class="category-grid">
+<div class="category-card ontology-card"><a href="ontology-book-sts1.html">
+  <h3>Slay the Spire Book</h3>
+  <div class="count">8 entries</div>
+</a></div>
+<div class="category-card ontology-card"><a href="ontology-praxis.html">
+  <h3>Praxis</h3>
+  <div class="count">5 entries</div>
+</a></div>
 <div class="category-card ontology-card"><a href="ontology-sts1.html">
-  <h3>Sts1</h3>
-  <div class="count">2 entries</div>
+  <h3>Slay the Spire</h3>
+  <div class="count">767 entries</div>
 </a></div>
 </div>
 

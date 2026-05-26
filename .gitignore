@@ -1,11 +1,41 @@
-data/*
-!data/run_stats.json
-*.log
+# Python
 __pycache__/
-.pytest_cache/
 *.pyc
-config/bot_config.json
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Secrets
 .env
+*.env
+
+# Build outputs
 site/out/
-.player_token_current.txt
-player.lock
+
+# IDE
+.vs/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Session artifacts
+*.log
+
+# Inactive games (not tracked for now)
+games/balatro/
+games/sts2/
+games/arc-agi/
+
+# STS1 game-specific ignores
+games/sts1/.player_token_current.txt
+games/sts1/data/coaching_notes.md

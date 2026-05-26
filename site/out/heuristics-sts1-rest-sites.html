@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,16 +384,15 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="active">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge heuristics">heuristics</span>
-<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><h1 id="rest-site-decisions">Rest Site Decisions</h1>
+<span class="section-badge heuristics">heuristics &middot; Slay the Spire</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Slay the Spire</a></div><h1 id="rest-site-decisions">Rest Site Decisions</h1>
 
 <ul>
-<li><strong>Upgrade vs Rest Framework</strong>: Upgrade when HP &gt; 50% <a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a> (&gt; 35% <a href="ontology-acts-act-1.html" class="wiki-link">Act 1</a>) and critical upgrade target exists. Rest when HP &lt; 50% Act 2 (&lt; 35% Act 1), or next room is elite/boss and below 60%, or path has 2+ combats before next rest and below 50%.</li>
-<li><strong>The Upgrade Death Spiral</strong>: Zero upgrades = death sentence. Unupgraded cards → longer fights → more HP loss → forced resting → no upgrades. MANDATORY RULE: Upgrade at EVERY rest site above threshold. <a href="ontology-cards-bash.html" class="wiki-link">Bash</a> should be upgraded by Floor 8.</li>
-<li><strong>Upgrade Priority (<a href="ontology-characters-ironclad.html" class="wiki-link">Ironclad</a>)</strong>: 1. Bash (3 Vuln vs 2). 2. <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> (3E→2E). 3. <a href="ontology-cards-true-grit.html" class="wiki-link">True Grit</a> (chosen vs random exhaust). 4. <a href="ontology-cards-armaments.html" class="wiki-link">Armaments</a> (1 card → ALL cards). 5. <a href="ontology-cards-carnage.html" class="wiki-link">Carnage</a> (28 vs 20). 6. <a href="ontology-cards-iron-wave.html" class="wiki-link">Iron Wave</a> (7/7 vs 5/5). 7. <a href="ontology-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a> (10+draw 2 vs 9+draw 1). 8. <a href="ontology-cards-thunderclap.html" class="wiki-link">Thunderclap</a> (7 vs 4 AOE). 9. SIO (11 vs 8). 10. <a href="ontology-cards-headbutt.html" class="wiki-link">Headbutt</a> (12 vs 9). 11. Defend (8 vs 5). Context overrides: Corruption above Bash if it&#x27;s the engine piece. <a href="ontology-cards-limit-break.html" class="wiki-link">Limit Break</a> is #1 for Str-scaling decks approaching <a href="ontology-acts-act-3.html" class="wiki-link">Act 3</a> boss.</li>
+<li><strong>Upgrade vs Rest Framework</strong>: Upgrade when HP &gt; 50% <a href="ontology-sts1-acts-act-2.html" class="wiki-link">Act 2</a> (&gt; 35% <a href="ontology-sts1-acts-act-1.html" class="wiki-link">Act 1</a>) and critical upgrade target exists. Rest when HP &lt; 50% Act 2 (&lt; 35% Act 1), or next room is elite/boss and below 60%, or path has 2+ combats before next rest and below 50%.</li>
+<li><strong>The Upgrade Death Spiral</strong>: Zero upgrades = death sentence. Unupgraded cards → longer fights → more HP loss → forced resting → no upgrades. MANDATORY RULE: Upgrade at EVERY rest site above threshold. <a href="ontology-sts1-cards-bash.html" class="wiki-link">Bash</a> should be upgraded by Floor 8.</li>
+<li><strong>Upgrade Priority (<a href="ontology-sts1-characters-ironclad.html" class="wiki-link">Ironclad</a>)</strong>: 1. Bash (3 Vuln vs 2). 2. <a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a> (3E→2E). 3. <a href="ontology-sts1-cards-true-grit.html" class="wiki-link">True Grit</a> (chosen vs random exhaust). 4. <a href="ontology-sts1-cards-armaments.html" class="wiki-link">Armaments</a> (1 card → ALL cards). 5. <a href="ontology-sts1-cards-carnage.html" class="wiki-link">Carnage</a> (28 vs 20). 6. <a href="ontology-sts1-cards-iron-wave.html" class="wiki-link">Iron Wave</a> (7/7 vs 5/5). 7. <a href="ontology-sts1-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a> (10+draw 2 vs 9+draw 1). 8. <a href="ontology-sts1-cards-thunderclap.html" class="wiki-link">Thunderclap</a> (7 vs 4 AOE). 9. SIO (11 vs 8). 10. <a href="ontology-sts1-cards-headbutt.html" class="wiki-link">Headbutt</a> (12 vs 9). 11. Defend (8 vs 5). Context overrides: Corruption above Bash if it&#x27;s the engine piece. <a href="ontology-sts1-cards-limit-break.html" class="wiki-link">Limit Break</a> is #1 for Str-scaling decks approaching <a href="ontology-sts1-acts-act-3.html" class="wiki-link">Act 3</a> boss.</li>
 </ul>
 
 <footer>

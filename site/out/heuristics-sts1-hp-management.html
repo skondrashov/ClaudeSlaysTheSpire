@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,21 +384,20 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="active">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge heuristics">heuristics</span>
-<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><h1 id="hp-management">HP Management</h1>
+<span class="section-badge heuristics">heuristics &middot; Slay the Spire</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Slay the Spire</a></div><h1 id="hp-management">HP Management</h1>
 
 <ul>
 <li><strong>HP is an act-level resource, not per-fight.</strong> &quot;I can afford 8 damage&quot; thinking is wrong. The goal in EVERY hallway fight is zero damage taken. HP thresholds below are for MAP PATHING decisions.</li>
-<li><strong>HP Thresholds for Map Pathing</strong>: ANY fight: 20% minimum. Hallway easy: 25%. Hallway hard (3 Cultists, <a href="ontology-enemies-centurion.html" class="wiki-link">Centurion</a>+<a href="ontology-enemies-mystic.html" class="wiki-link">Mystic</a>, <a href="ontology-enemies-snake-plant.html" class="wiki-link">Snake Plant</a>): 60%. Elite: 60%. Boss: 70% or <a href="ontology-relics-pantograph.html" class="wiki-link">Pantograph</a>.</li>
+<li><strong>HP Thresholds for Map Pathing</strong>: ANY fight: 20% minimum. Hallway easy: 25%. Hallway hard (3 Cultists, <a href="ontology-sts1-enemies-centurion.html" class="wiki-link">Centurion</a>+<a href="ontology-sts1-enemies-mystic.html" class="wiki-link">Mystic</a>, <a href="ontology-sts1-enemies-snake-plant.html" class="wiki-link">Snake Plant</a>): 60%. Elite: 60%. Boss: 70% or <a href="ontology-sts1-relics-pantograph.html" class="wiki-link">Pantograph</a>.</li>
 <li><strong>3 Cultists is the most lethal hallway fight</strong> — 6 deaths at 5-53% HP. Triple +3 Str/turn = +9 combined. Hard-scaler exception. 60% entry NON-NEGOTIABLE.</li>
 <li><strong>What to Do at Low HP</strong>: Take a different path (event/rest/shop). If forced into fight below threshold, use ALL potions turn 1. POTION CHECK ON EVERY LETHAL TURN. After fight drops below 30%, next room MUST be non-combat. Low HP does NOT change combat behavior — you should already be full blocking.</li>
-<li><strong>The <a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a> Death Spiral</strong>: Enter Act 2 at reasonable HP → take unnecessary damage (not full blocking) → enter next fight at critical HP → die. After ANY fight below 30%, next room must be non-combat. If map doesn&#x27;t offer this, run was lost at map selection.</li>
-<li><strong>What Causes HP Drain</strong>: <a href="ontology-enemies-byrd.html" class="wiki-link">Byrd</a> fights (36-73 HP), Centurion+Mystic (25-61 HP), <a href="ontology-enemies-chosen.html" class="wiki-link">Chosen</a> (30-40 HP), Snake Plant (15-42 HP), <a href="ontology-enemies-spheric-guardian.html" class="wiki-link">Spheric Guardian</a> (30-41 HP), no healing between fights, Fairy consumed in wrong fight, Decay curse compound damage, Vampires event Max HP loss.</li>
-<li><strong>Act 2 Preparation</strong>: Enter at full HP. Upgrades matter more (upgrade over rest when above 50%). Healing sustain is critical — <a href="ontology-relics-burning-blood.html" class="wiki-link">Burning Blood</a> cannot compensate for 30-50 HP fights. Minimum TWO healing sources (not counting rest sites) by Act 2 Floor 5.</li>
-<li><strong><a href="ontology-acts-act-3.html" class="wiki-link">Act 3</a> HP Thresholds</strong>: Hallway easy: 40%. Hallway hard: 60%. <a href="ontology-encounters-transient.html" class="wiki-link">Transient</a>: 50% (higher if Normality curse is in deck -- Normality cripples block output against Transient). <a href="ontology-enemies-the-maw.html" class="wiki-link">The Maw</a>: 60%. Elite: 70%. Boss: 70% or Pantograph.</li>
+<li><strong>The <a href="ontology-sts1-acts-act-2.html" class="wiki-link">Act 2</a> Death Spiral</strong>: Enter Act 2 at reasonable HP → take unnecessary damage (not full blocking) → enter next fight at critical HP → die. After ANY fight below 30%, next room must be non-combat. If map doesn&#x27;t offer this, run was lost at map selection.</li>
+<li><strong>What Causes HP Drain</strong>: <a href="ontology-sts1-enemies-byrd.html" class="wiki-link">Byrd</a> fights (36-73 HP), Centurion+Mystic (25-61 HP), <a href="ontology-sts1-enemies-chosen.html" class="wiki-link">Chosen</a> (30-40 HP), Snake Plant (15-42 HP), <a href="ontology-sts1-enemies-spheric-guardian.html" class="wiki-link">Spheric Guardian</a> (30-41 HP), no healing between fights, Fairy consumed in wrong fight, Decay curse compound damage, Vampires event Max HP loss.</li>
+<li><strong>Act 2 Preparation</strong>: Enter at full HP. Upgrades matter more (upgrade over rest when above 50%). Healing sustain is critical — <a href="ontology-sts1-relics-burning-blood.html" class="wiki-link">Burning Blood</a> cannot compensate for 30-50 HP fights. Minimum TWO healing sources (not counting rest sites) by Act 2 Floor 5.</li>
+<li><strong><a href="ontology-sts1-acts-act-3.html" class="wiki-link">Act 3</a> HP Thresholds</strong>: Hallway easy: 40%. Hallway hard: 60%. <a href="ontology-sts1-encounters-transient.html" class="wiki-link">Transient</a>: 50% (higher if Normality curse is in deck -- Normality cripples block output against Transient). <a href="ontology-sts1-enemies-the-maw.html" class="wiki-link">The Maw</a>: 60%. Elite: 70%. Boss: 70% or Pantograph.</li>
 </ul>
 
 <footer>

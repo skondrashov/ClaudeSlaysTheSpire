@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,33 +384,32 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="active">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge heuristics">heuristics</span>
-<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><h1 id="winning-archetypes">Winning Archetypes</h1>
+<span class="section-badge heuristics">heuristics &middot; Slay the Spire</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Slay the Spire</a></div><h1 id="winning-archetypes">Winning Archetypes</h1>
 
 <p>Pursue whichever engine the card/relic offerings support. No single archetype is &quot;the&quot; Ironclad strategy.</p>
 
-<h2 id="characters-ironclad-6-wins-130-runs"><a href="ontology-characters-ironclad.html" class="wiki-link">Ironclad</a> (6 wins / 130 runs)</h2>
+<h2 id="characters-ironclad-6-wins-130-runs"><a href="ontology-sts1-characters-ironclad.html" class="wiki-link">Ironclad</a> (6 wins / 130 runs)</h2>
 
-<p><strong>1. <a href="ontology-relics-snecko-eye.html" class="wiki-link">Snecko Eye</a> + <a href="ontology-buffs-strength.html" class="wiki-link">Strength</a> Scaling (Runs 102, 103)</strong> — Snecko Eye (draw 7, cost randomization) + <a href="ontology-cards-immolate.html" class="wiki-link">Immolate</a> (AOE) + <a href="ontology-cards-limit-break.html" class="wiki-link">Limit Break</a> (Str doubler) + <a href="ontology-cards-heavy-blade.html" class="wiki-link">Heavy Blade</a> finishers. Roll cheap costs on expensive cards, double Str for massive damage. Commit when: Snecko Eye is offered as Act 2 boss relic and Limit Break or Heavy Blade already exist.</p>
+<p><strong>1. <a href="ontology-sts1-relics-snecko-eye.html" class="wiki-link">Snecko Eye</a> + <a href="ontology-sts1-buffs-strength.html" class="wiki-link">Strength</a> Scaling (Runs 102, 103)</strong> — Snecko Eye (draw 7, cost randomization) + <a href="ontology-sts1-cards-immolate.html" class="wiki-link">Immolate</a> (AOE) + <a href="ontology-sts1-cards-limit-break.html" class="wiki-link">Limit Break</a> (Str doubler) + <a href="ontology-sts1-cards-heavy-blade.html" class="wiki-link">Heavy Blade</a> finishers. Roll cheap costs on expensive cards, double Str for massive damage. Commit when: Snecko Eye is offered as Act 2 boss relic and Limit Break or Heavy Blade already exist.</p>
 
-<p><strong>2. <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> Engine (Runs 104, 187, 219)</strong> — Corruption (Skills free but exhaust) + Feel No Pain (block per exhaust) + optional <a href="ontology-cards-barricade.html" class="wiki-link">Barricade</a> (block persists) + <a href="ontology-cards-entrench.html" class="wiki-link">Entrench</a> (double block) + <a href="ontology-cards-body-slam.html" class="wiki-link">Body Slam</a> (damage = block). Builds massive block from free Skill exhausts. All 3 wins included Str sources (<a href="ontology-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a>/<a href="ontology-relics-red-skull.html" class="wiki-link">Red Skull</a> in 187; <a href="ontology-relics-brimstone.html" class="wiki-link">Brimstone</a>/Spot Weakness in 219; unknown in 104). Whether this engine can win WITHOUT any Strength is under investigation -- see exploration directives. Run 219 (first A5 win) used Brimstone as the primary Str source, with the engine providing block generation. Commit when: Corruption + FNP appear by mid-<a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a>.</p>
+<p><strong>2. <a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-sts1-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> Engine (Runs 104, 187, 219)</strong> — Corruption (Skills free but exhaust) + Feel No Pain (block per exhaust) + optional <a href="ontology-sts1-cards-barricade.html" class="wiki-link">Barricade</a> (block persists) + <a href="ontology-sts1-cards-entrench.html" class="wiki-link">Entrench</a> (double block) + <a href="ontology-sts1-cards-body-slam.html" class="wiki-link">Body Slam</a> (damage = block). Builds massive block from free Skill exhausts. All 3 wins included Str sources (<a href="ontology-sts1-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a>/<a href="ontology-sts1-relics-red-skull.html" class="wiki-link">Red Skull</a> in 187; <a href="ontology-sts1-relics-brimstone.html" class="wiki-link">Brimstone</a>/Spot Weakness in 219; unknown in 104). Whether this engine can win WITHOUT any Strength is under investigation -- see exploration directives. Run 219 (first A5 win) used Brimstone as the primary Str source, with the engine providing block generation. Commit when: Corruption + FNP appear by mid-<a href="ontology-sts1-acts-act-2.html" class="wiki-link">Act 2</a>.</p>
 
-<p><strong>3. Pure <a href="ontology-buffs-strength.html" class="wiki-link">Strength</a> Burst (Run 184)</strong> — <a href="ontology-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a>+ stacking + <a href="ontology-cards-heavy-blade.html" class="wiki-link">Heavy Blade</a>+ finisher + strong defensive tools (<a href="ontology-cards-impervious.html" class="wiki-link">Impervious</a>, <a href="ontology-cards-intimidate.html" class="wiki-link">Intimidate</a>). No Snecko Eye, no Barricade, no Corruption. Wins by accumulating Str over turns, then delivering a single massive Heavy Blade hit. Viable when: multiple Str sources appear early and Heavy Blade is in the deck. <a href="ontology-potions-duplication-potion.html" class="wiki-link">Duplication Potion</a> + Heavy Blade+ at high Str is a one-shot kill combo (312 damage confirmed vs <a href="ontology-bosses-awakened-one.html" class="wiki-link">Awakened One</a>).</p>
+<p><strong>3. Pure <a href="ontology-sts1-buffs-strength.html" class="wiki-link">Strength</a> Burst (Run 184)</strong> — <a href="ontology-sts1-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a>+ stacking + <a href="ontology-sts1-cards-heavy-blade.html" class="wiki-link">Heavy Blade</a>+ finisher + strong defensive tools (<a href="ontology-sts1-cards-impervious.html" class="wiki-link">Impervious</a>, <a href="ontology-sts1-cards-intimidate.html" class="wiki-link">Intimidate</a>). No Snecko Eye, no Barricade, no Corruption. Wins by accumulating Str over turns, then delivering a single massive Heavy Blade hit. Viable when: multiple Str sources appear early and Heavy Blade is in the deck. <a href="ontology-sts1-potions-duplication-potion.html" class="wiki-link">Duplication Potion</a> + Heavy Blade+ at high Str is a one-shot kill combo (312 damage confirmed vs <a href="ontology-sts1-bosses-awakened-one.html" class="wiki-link">Awakened One</a>).</p>
 
-<h2 id="characters-silent-2-wins-19-runs"><a href="ontology-characters-silent.html" class="wiki-link">Silent</a> (2 wins / 19 runs)</h2>
+<h2 id="characters-silent-2-wins-19-runs"><a href="ontology-sts1-characters-silent.html" class="wiki-link">Silent</a> (2 wins / 19 runs)</h2>
 
-<p><strong>4. <a href="ontology-cards-accuracy.html" class="wiki-link">Accuracy</a> <a href="ontology-cards-shiv.html" class="wiki-link">Shiv</a> Burst</strong> — Accuracy x2 (+8 Shiv damage) + <a href="ontology-cards-after-image.html" class="wiki-link">After Image</a> (innate) + <a href="ontology-cards-wraith-form.html" class="wiki-link">Wraith Form</a> + <a href="ontology-cards-phantasmal-killer.html" class="wiki-link">Phantasmal Killer</a> + <a href="ontology-cards-malaise.html" class="wiki-link">Malaise</a> + <a href="ontology-cards-blade-dance.html" class="wiki-link">Blade Dance</a>. Shivs deal 12+ damage each, beats <a href="ontology-bosses-time-eater.html" class="wiki-link">Time Eater</a> because each Shiv is one card play dealing massive damage.</p>
+<p><strong>4. <a href="ontology-sts1-cards-accuracy.html" class="wiki-link">Accuracy</a> <a href="ontology-sts1-cards-shiv.html" class="wiki-link">Shiv</a> Burst</strong> — Accuracy x2 (+8 Shiv damage) + <a href="ontology-sts1-cards-after-image.html" class="wiki-link">After Image</a> (innate) + <a href="ontology-sts1-cards-wraith-form.html" class="wiki-link">Wraith Form</a> + <a href="ontology-sts1-cards-phantasmal-killer.html" class="wiki-link">Phantasmal Killer</a> + <a href="ontology-sts1-cards-malaise.html" class="wiki-link">Malaise</a> + <a href="ontology-sts1-cards-blade-dance.html" class="wiki-link">Blade Dance</a>. Shivs deal 12+ damage each, beats <a href="ontology-sts1-bosses-time-eater.html" class="wiki-link">Time Eater</a> because each Shiv is one card play dealing massive damage.</p>
 
-<p><strong>5. <a href="ontology-relics-dead-branch.html" class="wiki-link">Dead Branch</a> Exhaust Engine</strong> — Dead Branch + exhaust cards + After Image + <a href="ontology-cards-footwork.html" class="wiki-link">Footwork</a> x2 + <a href="ontology-cards-well-laid-plans.html" class="wiki-link">Well-Laid Plans</a>. Dead Branch creates infinite card advantage. Specifically defeats <a href="ontology-bosses-awakened-one.html" class="wiki-link">Awakened One</a>: dump Powers in Phase 1, zero Powers in Phase 2.</p>
+<p><strong>5. <a href="ontology-sts1-relics-dead-branch.html" class="wiki-link">Dead Branch</a> Exhaust Engine</strong> — Dead Branch + exhaust cards + After Image + <a href="ontology-sts1-cards-footwork.html" class="wiki-link">Footwork</a> x2 + <a href="ontology-sts1-cards-well-laid-plans.html" class="wiki-link">Well-Laid Plans</a>. Dead Branch creates infinite card advantage. Specifically defeats <a href="ontology-sts1-bosses-awakened-one.html" class="wiki-link">Awakened One</a>: dump Powers in Phase 1, zero Powers in Phase 2.</p>
 
-<h2 id="characters-defect-1-win-4-runs"><a href="ontology-characters-defect.html" class="wiki-link">Defect</a> (1 win / 4 runs)</h2>
+<h2 id="characters-defect-1-win-4-runs"><a href="ontology-sts1-characters-defect.html" class="wiki-link">Defect</a> (1 win / 4 runs)</h2>
 
-<p><strong>6. <a href="ontology-cards-echo-form.html" class="wiki-link">Echo Form</a> Orb Engine</strong> — Echo Form+ + <a href="ontology-cards-seek.html" class="wiki-link">Seek</a>/<a href="ontology-relics-bottled-lightning.html" class="wiki-link">Bottled Lightning</a> + <a href="ontology-cards-coolheaded.html" class="wiki-link">Coolheaded</a> + <a href="ontology-cards-barrage.html" class="wiki-link">Barrage</a> + <a href="ontology-relics-mummified-hand.html" class="wiki-link">Mummified Hand</a> + Loop + <a href="ontology-relics-data-disk.html" class="wiki-link">Data Disk</a>. Echo Form doubles first card each turn. Seek+ guarantees finding key cards.</p>
+<p><strong>6. <a href="ontology-sts1-cards-echo-form.html" class="wiki-link">Echo Form</a> Orb Engine</strong> — Echo Form+ + <a href="ontology-sts1-cards-seek.html" class="wiki-link">Seek</a>/<a href="ontology-sts1-relics-bottled-lightning.html" class="wiki-link">Bottled Lightning</a> + <a href="ontology-sts1-cards-coolheaded.html" class="wiki-link">Coolheaded</a> + <a href="ontology-sts1-cards-barrage.html" class="wiki-link">Barrage</a> + <a href="ontology-sts1-relics-mummified-hand.html" class="wiki-link">Mummified Hand</a> + Loop + <a href="ontology-sts1-relics-data-disk.html" class="wiki-link">Data Disk</a>. Echo Form doubles first card each turn. Seek+ guarantees finding key cards.</p>
 
-<h2 id="characters-watcher-1-win-32-runs"><a href="ontology-characters-watcher.html" class="wiki-link">Watcher</a> (1 win / 32 runs)</h2>
+<h2 id="characters-watcher-1-win-32-runs"><a href="ontology-sts1-characters-watcher.html" class="wiki-link">Watcher</a> (1 win / 32 runs)</h2>
 
 <p><strong>First win achieved (Run 215).</strong> Stance dance (Wrath/Calm cycling) is the primary engine across 32 runs. The engine assembles reliably and execution is clean. After progressing through execution errors (runs 188-190), knowledge gaps (runs 191-193), and structural challenges (runs 194-196), focus shifted to Ironclad for efficient win production. The Watcher knowledge base continued expanding through runs 198-215, culminating in the first win. The Watcher is structurally harder to pilot than other characters: no built-in healing, Wrath doubles incoming damage on mistakes, and the stance-sequencing engine is uniquely vulnerable to hand/deck clog (Slimed, Burns, Dazed). <strong>Watcher focus is paused</strong> pending Ironclad A5 progress. Knowledge base is preserved for future resumption.</p>
 
@@ -416,7 +419,7 @@ footer {
 
 <h2 id="what-all-wins-share">What All Wins Share</h2>
 
-<p>(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong <a href="ontology-acts-act-1.html" class="wiki-link">Act 1</a> performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP engine has won three times but always alongside Str sources -- its independence is under investigation. Run 219 (first A5 win) added Brimstone as a Str source variant, confirming that the engine + any Str source is the most reliable Ironclad formula. The Watcher achieved its first win on Run 215 after 32 total runs. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge.</p>
+<p>(1) Zero UI misplays, (2) zero arithmetic errors, (3) strong <a href="ontology-sts1-acts-act-1.html" class="wiki-link">Act 1</a> performance, (4) proper map pathing, (5) a complete scaling engine -- not individual strong cards. Strength scaling is the most proven path (3 wins). The Corruption+FNP engine has won three times but always alongside Str sources -- its independence is under investigation. Run 219 (first A5 win) added Brimstone as a Str source variant, confirming that the engine + any Str source is the most reliable Ironclad formula. The Watcher achieved its first win on Run 215 after 32 total runs. The key is having SOME scaling path AND clean execution AND correct fight-specific knowledge.</p>
 
 <footer>
   <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;

@@ -1,0 +1,11 @@
+data/*
+!data/run_stats.json
+*.log
+__pycache__/
+.pytest_cache/
+*.pyc
+config/bot_config.json
+.env
+site/out/
+.player_token_current.txt
+player.lock

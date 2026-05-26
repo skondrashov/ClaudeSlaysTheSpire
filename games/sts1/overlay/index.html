@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Claude Plays STS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: transparent;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow: hidden;
+    }
+
+    /* L-shaped overlay: right sidebar + bottom bar */
+    /* Top-left 1500x844 is transparent for the game */
+
+    .sidebar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 420px;
+      height: 1080px;
+      background: rgba(8, 8, 12, 0.94);
+      border-left: 3px solid rgba(140, 70, 230, 0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 1500px;
+      height: 236px;
+      background: rgba(8, 8, 12, 0.94);
+      border-top: 3px solid rgba(140, 70, 230, 0.5);
+      overflow: hidden;
+      transition: height 0.4s ease, background 0.4s ease;
+    }
+
+    .bottom-bar.strategy-expanded {
+      background: rgba(8, 8, 12, 0.99);
+    }
+
+    /* === CYCLING PANELS === */
+
+    .panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    .panel.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Countdown bar — thin line at very bottom of bottom-bar */
+    .countdown-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.06);
+      z-index: 10;
+    }
+
+    .countdown-bar-fill {
+      height: 100%;
+      width: 100%;
+      background: rgba(212, 160, 255, 0.45);
+      transform-origin: left;
+    }
+
+    /* === PANEL A: GAMEPLAY (action log + deck) === */
+
+    .tile {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 16px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+
+    .tile:last-child {
+      border-right: none;
+    }
+
+    .tile.feed-tile {
+      flex: 1;
+    }
+
+    .tile.deck-tile {
+      width: 420px;
+      flex-shrink: 0;
+    }
+
+    /* Action feed — 3 columns */
+    .action-feed {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 0 16px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .feed-entry {
+      display: flex;
+      align-items: baseline;
+      padding: 3px 0;
+      width: calc(33.33% - 11px);
+    }
+
+    .feed-action {
+      font-family: 'Consolas', monospace;
+      font-size: 17px;
+      font-weight: 600;
+      color: #d4a0ff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .feed-action.color-meta { color: #4ade80; }
+    .feed-action.color-combat { color: #e07070; }
+    .feed-action.color-event { color: #c49aff; }
+    .feed-action.color-reward { color: #f0c050; }
+
+    /* Deck display */
+    .deck-list {
+      flex: 1;
+      overflow: hidden;
+      column-width: 160px;
+      column-gap: 16px;
+      column-fill: auto;
+      min-height: 0;
+    }
+
+    .deck-card {
+      color: #bbb;
+      white-space: nowrap;
+      padding: 1px 0;
+      break-inside: avoid;
+    }
+
+    .deck-card .card-count {
+      color: #d4a0ff;
+      font-weight: 700;
+    }
+
+    .deck-card.type-attack { color: #e07070; }
+    .deck-card.type-skill { color: #6ec6ff; }
+    .deck-card.type-power { color: #f0c050; }
+    .deck-card.type-curse { color: #888; }
+    .deck-card.type-status { color: #888; }
+
+    /* === PANEL B: CONTEXT (stats + notes + playbook) === */
+
+    .tile.overview-tile {
+      width: 280px;
+      flex-shrink: 0;
+    }
+
+    .tile.run-history-tile {
+      width: 300px;
+      flex-shrink: 0;
+    }
+
+    .tile.notes-tile {
+      flex: 1;
+    }
+
+    .tile.playbook-tile {
+      width: 160px;
+      flex-shrink: 0;
+    }
+
+    /* Shared context panel title */
+    .ctx-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+
+    .char-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .char-table th {
+      font-size: 12px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: left;
+      padding: 0 0 6px 0;
+    }
+
+    .char-table th:first-child {
+      width: 90px;
+    }
+
+    .char-table td {
+      font-size: 17px;
+      padding: 3px 0;
+      color: #aaa;
+    }
+
+    .char-table td.char-name {
+      font-weight: 700;
+      color: #d4a0ff;
+    }
+
+    .char-table td.char-best .char-wins {
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    .char-table td.char-best .char-floor {
+      color: #f0c050;
+    }
+
+    .char-table tr.total-row td {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 5px;
+    }
+
+    .char-table tr.total-row td.char-name {
+      color: #eee;
+    }
+
+    .char-table tr.dimmed td {
+      color: #888;
+    }
+
+    .char-table tr.dimmed td.char-name {
+      color: #999;
+    }
+
+    .notes-content {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #ccc;
+      overflow: hidden;
+    }
+
+    .notes-content .note-line {
+      padding: 1px 0;
+    }
+
+    /* Strategy panel */
+
+    .tile.strategy-tile {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .strategy-content {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #ccc;
+      overflow: hidden;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* Overview section */
+
+    .knowledge-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 14px;
+    }
+
+    .knowledge-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 16px;
+      color: #ccc;
+      padding: 2px 0;
+    }
+
+    .knowledge-item span {
+      color: #d4a0ff;
+      font-weight: 700;
+      display: inline-block;
+      width: 30px;
+      text-align: right;
+    }
+
+    .project-url {
+      font-size: 19px;
+      color: #d4a0ff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    .overview-content {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.55;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .overview-content .note-line {
+      padding: 1px 0;
+    }
+
+    /* === SIDEBAR: header + full reasoning log === */
+
+    .header {
+      background: linear-gradient(135deg, rgba(30, 12, 52, 0.98), rgba(24, 36, 68, 0.98));
+      padding: 18px 20px;
+      border-bottom: 3px solid #5a2a9a;
+      flex-shrink: 0;
+    }
+
+    .header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #d4a0ff;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .sidebar-section {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+    }
+
+    .sidebar-section.grow {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Floor history graph */
+    .floor-graph {
+      flex-shrink: 0;
+      height: 120px;
+      padding: 0 20px 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .floor-graph-label {
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      font-weight: 700;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      background: rgba(8, 8, 12, 0.94);
+      padding: 0 10px;
+      z-index: 1;
+    }
+
+    .floor-graph svg {
+      width: 100%;
+      height: 112px;
+      display: block;
+    }
+
+    /* Reasoning log */
+    .reasoning-log {
+      flex: 1;
+      overflow-y: auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .reasoning-entry {
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .reasoning-entry:first-child {
+      font-size: 22px;
+      line-height: 1.55;
+      color: #eee;
+    }
+
+    .reasoning-entry:not(:first-child) {
+      font-size: 18px;
+      line-height: 1.45;
+      color: #999;
+    }
+
+    .reasoning-entry .command-badge {
+      display: inline-block;
+      background: #5a2090;
+      color: #e8d0ff;
+      padding: 4px 14px;
+      border-radius: 5px;
+      font-size: 17px;
+      font-weight: 600;
+      font-family: 'Consolas', monospace;
+      margin-bottom: 6px;
+    }
+
+    .reasoning-entry:first-child .command-badge {
+      font-size: 20px;
+      padding: 5px 16px;
+      margin-bottom: 8px;
+    }
+
+    .reasoning-entry .reason-text {
+      display: block;
+    }
+
+    .reasoning-empty {
+      color: #999;
+      font-style: italic;
+      font-size: 22px;
+    }
+
+    /* === AGENT MODE PANEL === */
+
+    .agent-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1500px;
+      height: 844px;
+      background: rgba(8, 8, 12, 0.995);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border-right: 3px solid rgba(140, 70, 230, 0.5);
+      border-bottom: 3px solid rgba(140, 70, 230, 0.5);
+    }
+
+    .agent-panel.active { display: flex; }
+
+    .agent-header {
+      padding: 24px 32px 16px;
+      border-bottom: 2px solid rgba(140, 70, 230, 0.4);
+      flex-shrink: 0;
+    }
+
+    .agent-header h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #d4a0ff;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .agent-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 32px;
+      min-height: 0;
+    }
+
+    .agent-text-block {
+      margin-bottom: 16px;
+      font-size: 17px;
+      line-height: 1.5;
+      color: #e0e0e0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Consolas', 'Cascadia Code', 'Fira Code', monospace;
+    }
+
+    .agent-tool-block {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #8a8aaa;
+      font-family: 'Consolas', monospace;
+      padding: 4px 12px;
+      border-left: 3px solid rgba(140, 70, 230, 0.3);
+    }
+
+    .run-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 0 8px;
+      font-family: 'Consolas', 'Cascadia Code', monospace;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #ccc;
+    }
+
+    .run-summary .summary-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #d4a0ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .run-summary .summary-line {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .run-summary .summary-line.result-death { color: #e07070; }
+    .run-summary .summary-line.result-victory { color: #4ade80; }
+
+    /* Hide all scrollbars */
+    ::-webkit-scrollbar { width: 0; height: 0; display: none; }
+    * { scrollbar-width: none; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Agent mode panel -->
+  <div class="agent-panel" id="agentPanel">
+    <div class="agent-header">
+      <h2 id="agentTitle">ANALYSIS</h2>
+    </div>
+    <div class="agent-body" id="agentBody"></div>
+  </div>
+
+  <!-- Right sidebar: reasoning history -->
+  <div class="sidebar">
+    <div class="header">
+      <h1>CLAUDE SLAYS THE SPIRE</h1>
+    </div>
+
+    <div class="sidebar-section grow">
+      <div class="reasoning-log" id="reasoningLog">
+        <div class="reasoning-empty">Waiting for first decision...</div>
+      </div>
+    </div>
+
+    <div class="floor-graph" id="floorGraphContainer">
+      <div class="floor-graph-label">Previous Runs</div>
+      <svg id="floorGraph" viewBox="0 0 380 112"></svg>
+    </div>
+  </div>
+
+  <!-- Bottom bar: cycles between gameplay and context -->
+  <div class="bottom-bar">
+    <!-- Panel A: Gameplay (action log + deck) -->
+    <div class="panel" id="panelGameplay">
+      <div class="tile feed-tile">
+        <div class="ctx-title">Actions</div>
+        <div class="action-feed" id="actionFeed"></div>
+      </div>
+      <div class="tile deck-tile">
+        <div class="ctx-title">Deck (<span id="deckCount">0</span>)</div>
+        <div class="deck-list" id="deckList"></div>
+      </div>
+    </div>
+
+    <!-- Panel B: Context (overview + playbook + run history + notes) -->
+    <div class="panel active" id="panelContext">
+      <div class="tile overview-tile">
+        <div class="project-url">claudeslaysthespire.org</div>
+        <div class="overview-content" id="overviewContent"></div>
+      </div>
+      <div class="tile playbook-tile">
+        <div class="ctx-title">Playbook</div>
+        <div class="knowledge-grid" id="knowledgeGrid">
+          <div class="knowledge-item"><span id="pb-cards">-</span> cards</div>
+          <div class="knowledge-item"><span id="pb-enemies">-</span> enemies</div>
+          <div class="knowledge-item"><span id="pb-bosses">-</span> bosses</div>
+          <div class="knowledge-item"><span id="pb-events">-</span> events</div>
+          <div class="knowledge-item"><span id="pb-relics">-</span> relics</div>
+          <div class="knowledge-item"><span id="pb-potions">-</span> potions</div>
+        </div>
+      </div>
+      <div class="tile run-history-tile">
+        <div class="ctx-title">Run History</div>
+        <div id="charStats"></div>
+      </div>
+      <div class="tile notes-tile">
+        <div class="ctx-title">Notes</div>
+        <div class="notes-content" id="notes"></div>
+      </div>
+    </div>
+
+    <!-- Panel C: Strategy (last think() output) -->
+    <div class="panel" id="panelStrategy">
+      <div class="tile strategy-tile">
+        <div class="ctx-title" id="strategyTitle">Latest Strategy Reasoning</div>
+        <div class="strategy-content" id="strategyContent">
+          <div class="reasoning-empty">No strategy posted yet...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Countdown bar -->
+    <div class="countdown-bar">
+      <div class="countdown-bar-fill" id="countdownBar"></div>
+    </div>
+  </div>
+
+  <script>
+    const WS_URL = 'ws://127.0.0.1:3001';
+    const CYCLE_INTERVAL = 30000; // 30 seconds
+    let ws = null;
+    let reconnectDelay = 1000;
+    let lastState = null;
+    let savedFeedHTML = '';
+    let currentPanel = 1;
+    const panels = ['panelGameplay', 'panelContext', 'panelStrategy'];
+    let cycleStart = Date.now();
+    let cycleTimer = null;
+
+    // --- Bottom bar cycling with countdown bar ---
+
+    function cyclePanel() {
+      // Collapse expanded strategy when leaving that panel
+      if (panels[currentPanel] === 'panelStrategy') {
+        const bar = document.querySelector('.bottom-bar');
+        bar.classList.remove('strategy-expanded');
+        bar.style.height = '';
+      }
+      document.getElementById(panels[currentPanel]).classList.remove('active');
+      currentPanel = (currentPanel + 1) % panels.length;
+      document.getElementById(panels[currentPanel]).classList.add('active');
+      cycleStart = Date.now();
+    }
+
+    function resetCycleTimer() {
+      if (cycleTimer) clearInterval(cycleTimer);
+      cycleStart = Date.now();
+      cycleTimer = setInterval(cyclePanel, CYCLE_INTERVAL);
+    }
+
+    resetCycleTimer();
+
+    // Animate the countdown bar — shrinks right-to-left, resets on cycle
+    function updateCountdownBar() {
+      const elapsed = Date.now() - cycleStart;
+      const remaining = Math.max(1 - elapsed / CYCLE_INTERVAL, 0);
+      const bar = document.getElementById('countdownBar');
+      if (bar) bar.style.transform = `scaleX(${remaining})`;
+      requestAnimationFrame(updateCountdownBar);
+    }
+    requestAnimationFrame(updateCountdownBar);
+
+    // --- Data fetching ---
+
+    function fetchPlaybookStats() {
+      fetch('http://127.0.0.1:3002/playbook-stats')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(stats => {
+          // Combine ontology + heuristics counts per category
+          const ids = {cards:'pb-cards', enemies:'pb-enemies', bosses:'pb-bosses',
+                       events:'pb-events', relics:'pb-relics', potions:'pb-potions'};
+          const ont = stats.ontology || {};
+          const heur = stats.heuristics || {};
+          for (const [key, id] of Object.entries(ids)) {
+            const el = document.getElementById(id);
+            if (el) {
+              const total = (ont[key] || 0) + (heur[key] || 0);
+              el.textContent = total || '-';
+            }
+          }
+        })
+        .catch(() => {});
+    }
+
+    function fetchCharacterStats() {
+      fetch('http://127.0.0.1:3002/character-stats')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(data => {
+          const container = document.getElementById('charStats');
+          const stats = data.characters || {};
+          const totalRuns = data.total_runs || 0;
+          const order = ['IRONCLAD', 'THE_SILENT', 'DEFECT', 'WATCHER'];
+          const names = {IRONCLAD: 'Ironclad', THE_SILENT: 'Silent', DEFECT: 'Defect', WATCHER: 'Watcher'};
+
+          let rows = '';
+          for (const cls of order) {
+            const s = stats[cls];
+            if (s) {
+              let best = `A${s.best_asc} `;
+              best += s.best_win ? '<span class="char-wins">WIN</span>' : `<span class="char-floor">F${s.best_floor}</span>`;
+              if (s.best_count > 1) best += ` x${s.best_count}`;
+              rows += `<tr><td class="char-name">${names[cls]}</td><td>${s.runs}</td><td class="char-best">${best}</td></tr>`;
+            } else {
+              rows += `<tr class="dimmed"><td class="char-name">${names[cls]}</td><td>0</td><td>—</td></tr>`;
+            }
+          }
+          const trackedTotal = order.reduce((sum, cls) => sum + (stats[cls]?.runs || 0), 0);
+          rows += `<tr class="total-row"><td class="char-name">Total</td><td>${trackedTotal}</td><td></td></tr>`;
+
+          container.innerHTML = `<table class="char-table"><thead><tr><th></th><th>Runs</th><th>Best</th></tr></thead><tbody>${rows}</tbody></table>`;
+        })
+        .catch(() => {});
+    }
+
+    function fetchNotes() {
+      fetch('http://127.0.0.1:3002/notes')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(text => {
+          const container = document.getElementById('notes');
+          const lines = text.split('\n').filter(l => l.trim());
+          container.innerHTML = lines.map(l => `<div class="note-line">${esc(l)}</div>`).join('');
+        })
+        .catch(() => {});
+    }
+
+    function fetchOverview() {
+      fetch('http://127.0.0.1:3002/overview')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(text => {
+          const container = document.getElementById('overviewContent');
+          const lines = text.split('\n').filter(l => l.trim());
+          container.innerHTML = lines.map(l => `<div class="note-line">${esc(l)}</div>`).join('');
+        })
+        .catch(() => {});
+    }
+
+    // Fetch all context data on load and periodically
+    fetchPlaybookStats();
+    fetchCharacterStats();
+    fetchNotes();
+    fetchOverview();
+    setInterval(fetchPlaybookStats, 60000);
+    setInterval(fetchCharacterStats, 60000);
+    setInterval(fetchNotes, 30000);
+    setInterval(fetchOverview, 30000);
+
+    // --- Deck display ---
+
+    function updateDeck(deckCards) {
+      if (!deckCards || deckCards.length === 0) return;
+
+      document.getElementById('deckCount').textContent = deckCards.length;
+
+      // Count duplicates and sort
+      const counts = {};
+      for (const name of deckCards) {
+        counts[name] = (counts[name] || 0) + 1;
+      }
+
+      // Sort: attacks, skills, powers, curses
+      const sorted = Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0]));
+
+      const container = document.getElementById('deckList');
+      container.innerHTML = '';
+
+      // Scale font: 18px at 10 cards, down to 12px at 35+ cards
+      const uniqueCount = sorted.length;
+      const fontSize = Math.max(12, Math.min(18, 22 - uniqueCount * 0.3));
+      container.style.fontSize = fontSize + 'px';
+
+      for (const [name, count] of sorted) {
+        const div = document.createElement('div');
+        const typeClass = getCardTypeClass(name);
+        div.className = 'deck-card' + (typeClass ? ' ' + typeClass : '');
+        div.textContent = count > 1 ? `${name} x${count}` : name;
+        container.appendChild(div);
+      }
+    }
+
+    function getCardTypeClass(name) {
+      // Known curses/statuses
+      const curses = ['Parasite', 'Decay', 'Injury', 'Doubt', 'Shame', 'Regret', 'Pain', 'Normality', 'Writhe', 'Clumsy', 'Necronomicurse', 'Curse of the Bell', 'AscendersBane'];
+      const statuses = ['Wound', 'Burn', 'Dazed', 'Slimed', 'Void'];
+      if (curses.includes(name) || name.endsWith(' Curse')) return 'type-curse';
+      if (statuses.includes(name)) return 'type-status';
+      return ''; // Let CSS default handle it
+    }
+
+    // --- Floor history graph ---
+    const FLOOR_MAX = 62;
+
+    function fetchFloorHistory() {
+      fetch('http://127.0.0.1:3002/run-history')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(data => renderFloorGraph(data))
+        .catch(() => {});
+    }
+
+    function renderFloorGraph(data) {
+      const svg = document.getElementById('floorGraph');
+      if (!data || data.length === 0) {
+        svg.innerHTML = '<text x="190" y="48" text-anchor="middle" fill="#888" font-size="11" font-family="Segoe UI, sans-serif">No run data yet</text>';
+        return;
+      }
+
+      const W = 380, H = 112;
+      const pad = { left: 14, right: 14, top: 16, bottom: 8 };
+      const plotW = W - pad.left - pad.right;
+      const plotH = H - pad.top - pad.bottom;
+      const n = data.length;
+      const act1End = 17, act2End = 34, act3End = 56;
+      const yScale = (floor) => pad.top + plotH - (floor / FLOOR_MAX) * plotH;
+      const xScale = (i) => pad.left + (n > 1 ? i * plotW / (n - 1) : plotW / 2);
+
+      let html = '';
+
+      const refFloors = [act1End, act2End, act3End];
+      const tickH = 6;
+      for (const f of refFloors) {
+        const y = yScale(f);
+        html += `<line x1="${pad.left}" y1="${y}" x2="${W - pad.right}" y2="${y}" stroke="rgba(255,255,255,0.8)" stroke-width="0.5" stroke-dasharray="3,4"/>`;
+        html += `<line x1="${pad.left}" y1="${y - tickH/2}" x2="${pad.left}" y2="${y + tickH/2}" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>`;
+        html += `<line x1="${W - pad.right}" y1="${y - tickH/2}" x2="${W - pad.right}" y2="${y + tickH/2}" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>`;
+      }
+
+      const points = data.map((d, i) => ({
+        x: xScale(i),
+        y: yScale(d.floor),
+        floor: d.floor,
+        victory: d.victory,
+        color: d.victory ? '#4ade80' : (d.floor > act2End ? '#d4a0ff' : (d.floor > act1End ? '#f0c050' : '#e07070')),
+      }));
+
+      for (let i = 0; i < points.length - 1; i++) {
+        const a = points[i], b = points[i + 1];
+        html += `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="rgba(212,160,255,0.25)" stroke-width="1.5"/>`;
+      }
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        const r = (i === points.length - 1) ? 3.5 : 2.5;
+        html += `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.color}"/>`;
+        html += `<text x="${p.x}" y="${p.y - 9}" text-anchor="middle" fill="#eee" font-size="11" font-weight="700" font-family="Segoe UI, sans-serif">${p.floor}</text>`;
+      }
+
+      svg.innerHTML = html;
+    }
+
+    fetchFloorHistory();
+    setInterval(fetchFloorHistory, 60000);
+
+    // --- WebSocket ---
+
+    function connect() {
+      ws = new WebSocket(WS_URL);
+
+      ws.onopen = () => {
+        reconnectDelay = 1000;
+      };
+
+      ws.onmessage = (e) => {
+        try {
+          const event = JSON.parse(e.data);
+          handleEvent(event);
+        } catch { }
+      };
+
+      ws.onclose = () => {
+        setTimeout(connect, reconnectDelay);
+        reconnectDelay = Math.min(reconnectDelay * 1.5, 15000);
+      };
+
+      ws.onerror = () => ws.close();
+    }
+
+    function handleEvent(event) {
+      switch (event.type) {
+        case 'reload':
+          location.reload();
+          return;
+        case 'state':
+          lastState = event;
+          if (event.deck) updateDeck(event.deck);
+          break;
+        case 'decision':
+          addReasoning(event);
+          if (event.command === 'think' && event.reasoning) {
+            updateStrategy(event.translated || 'Strategy', event.reasoning);
+          }
+          if (!event.skip_feed) {
+            const displayText = event.translated || translateCommand(event.command);
+            const color = categorizeAction(event.command);
+            addFeedEntry(displayText, color);
+          }
+          break;
+        case 'feed':
+          addFeedEntry(event.text, categorizeFeed(event.text));
+          break;
+        case 'run_start':
+          clearForNewRun();
+          addFeedEntry('RUN ' + (event.run_number || '?') + ' — ' + event.class, 'meta');
+          if (event.run_number) {
+            fetchCharacterStats();
+          }
+          break;
+        case 'run_end':
+          addFeedEntry(
+            (event.victory ? 'VICTORY' : 'DEFEAT') + ` — Floor ${event.floor}`,
+            'meta'
+          );
+          if (event.stats) updateRunStats(event.stats);
+          fetchFloorHistory();
+          fetchPlaybookStats();
+          fetchCharacterStats();
+          break;
+        case 'stats':
+          updateRunStats(event);
+          break;
+        case 'agent_mode':
+          toggleAgentMode(event);
+          break;
+        case 'agent_text':
+          appendAgentText(event.text);
+          break;
+        case 'agent_tool':
+          appendAgentTool(event.summary);
+          break;
+        case 'reload':
+          location.reload();
+          break;
+      }
+    }
+
+    // --- Agent mode ---
+
+    function toggleAgentMode(event) {
+      const panel = document.getElementById('agentPanel');
+      const feed = document.getElementById('actionFeed');
+
+      if (event.active) {
+        panel.classList.add('active');
+        document.getElementById('agentTitle').textContent = event.title || 'ANALYSIS';
+        document.getElementById('agentBody').innerHTML = '';
+
+        savedFeedHTML = feed.innerHTML;
+        const stats = event.run_stats || {};
+        const summary = event.run_summary || '';
+        const runNum = stats.total_runs || '?';
+        const cls = stats.current_class || '?';
+        const floor = stats.current_floor || '?';
+        const resultClass = floor > 50 ? 'result-victory' : 'result-death';
+
+        let summaryHTML = `<div class="run-summary">`;
+        summaryHTML += `<div class="summary-title">Last Run</div>`;
+        summaryHTML += `<div class="summary-line">Run ${runNum} — ${cls}</div>`;
+        summaryHTML += `<div class="summary-line ${resultClass}">Floor ${floor}</div>`;
+
+        if (summary) {
+          const lines = summary.split('\n').filter(l => l.trim());
+          for (const line of lines) {
+            summaryHTML += `<div class="summary-line">${esc(line.trim())}</div>`;
+          }
+        }
+
+        summaryHTML += `</div>`;
+        feed.innerHTML = summaryHTML;
+      } else {
+        panel.classList.remove('active');
+        if (savedFeedHTML) {
+          feed.innerHTML = savedFeedHTML;
+          savedFeedHTML = '';
+        }
+      }
+    }
+
+    function appendAgentText(text) {
+      const body = document.getElementById('agentBody');
+      const block = document.createElement('div');
+      block.className = 'agent-text-block';
+      block.textContent = text;
+      body.appendChild(block);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function appendAgentTool(summary) {
+      const body = document.getElementById('agentBody');
+      const block = document.createElement('div');
+      block.className = 'agent-tool-block';
+      block.textContent = '▸ ' + summary;
+      body.appendChild(block);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    // --- Action categorization ---
+
+    function categorizeAction(cmd) {
+      if (!cmd) return '';
+      const verb = cmd.trim().split(/\s+/)[0];
+      if (verb === 'start' || verb === 'proceed') return 'meta';
+      if (verb === 'plan' || verb === 'reason') return 'event';
+      if (verb === 'play' || verb === 'potion') return 'combat';
+      if (verb === 'end' && lastState && lastState.in_combat) return 'combat';
+      if (lastState) {
+        const screen = lastState.screen || '';
+        if (screen === 'MAP' || screen === 'BOSS') return 'meta';
+        if (screen === 'EVENT' || screen === 'SHOP_SCREEN' || screen === 'REST') return 'event';
+        if (screen === 'CARD_REWARD' || screen === 'COMBAT_REWARD' || screen === 'GRID') return 'reward';
+        if (lastState.in_combat) return 'combat';
+      }
+      return '';
+    }
+
+    function categorizeFeed(text) {
+      if (!text) return 'meta';
+      if (text.startsWith('COMBAT')) return 'combat';
+      if (text.startsWith('EVENT')) return 'event';
+      if (text.startsWith('RUN') || text.startsWith('VICTORY') || text.startsWith('DEFEAT')) return 'meta';
+      return 'meta';
+    }
+
+    function translateCommand(cmd) {
+      if (!cmd) return cmd;
+      const parts = cmd.trim().split(/\s+/);
+      const verb = parts[0];
+
+      if (verb === 'play' && lastState && lastState.hand) {
+        const cardIdx = parseInt(parts[1]);
+        const targetIdx = parts[2] !== undefined ? parseInt(parts[2]) : null;
+        const card = lastState.hand ? lastState.hand[cardIdx - 1] : null;
+        const cardName = card ? card.name : `card ${parts[1]}`;
+        if (targetIdx !== null && lastState.enemies) {
+          const enemy = lastState.enemies[targetIdx];
+          const enemyName = enemy ? enemy.name : `enemy ${parts[2]}`;
+          return `${cardName} → ${enemyName}`;
+        }
+        return cardName;
+      }
+
+      if (verb === 'choose' && lastState && lastState.choices) {
+        const idx = parseInt(parts[1]);
+        const choice = lastState.choices ? lastState.choices[idx] : null;
+        if (choice) return `Choose: ${choice}`;
+      }
+
+      if (verb === 'end') return 'End Turn';
+      if (verb === 'proceed') return 'Proceed';
+      if (verb === 'skip' || verb === 'return') return 'Skip';
+      if (verb === 'leave') return 'Leave';
+      if (verb === 'potion') {
+        const action = parts[1];
+        if (action === 'use') return `Use Potion ${parts[2]}`;
+        if (action === 'discard') return `Discard Potion ${parts[2]}`;
+      }
+      if (verb === 'start') return `Start — ${parts[1] || 'IRONCLAD'}`;
+      return cmd;
+    }
+
+    // --- UI updates ---
+
+    function clearForNewRun() {
+      const log = document.getElementById('reasoningLog');
+      log.innerHTML = '<div class="reasoning-empty">New run starting...</div>';
+      const feed = document.getElementById('actionFeed');
+      feed.innerHTML = '';
+      document.getElementById('strategyTitle').textContent = 'Latest Strategy Reasoning';
+      document.getElementById('strategyContent').innerHTML = '<div class="reasoning-empty">No strategy posted yet...</div>';
+      lastState = null;
+    }
+
+    function updateStrategy(label, reasoning) {
+      document.getElementById('strategyTitle').textContent = 'Latest Strategy Reasoning';
+      const el = document.getElementById('strategyContent');
+
+      // Check if this is the first think (placeholder still showing) before overwriting
+      const isFirstThink = !!el.querySelector('.reasoning-empty');
+
+      // Collapse consecutive blank lines and trim
+      const cleaned = reasoning.replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
+      el.textContent = cleaned;
+
+      // Reset any previous expansion
+      const bottomBar = document.querySelector('.bottom-bar');
+      bottomBar.classList.remove('strategy-expanded');
+      bottomBar.style.height = '';
+
+      // Only force-switch on the first think of the run (placeholder → real content).
+      // Don't force-switch on every think — frequent thinks starve other panels.
+      const stratIdx = panels.indexOf('panelStrategy');
+      if (stratIdx !== -1 && currentPanel !== stratIdx && isFirstThink) {
+        document.getElementById(panels[currentPanel]).classList.remove('active');
+        currentPanel = stratIdx;
+        document.getElementById(panels[currentPanel]).classList.add('active');
+        resetCycleTimer();
+      }
+
+      // Fit text after layout settles
+      requestAnimationFrame(() => fitStrategyText());
+    }
+
+    function fitStrategyText() {
+      const el = document.getElementById('strategyContent');
+      const tile = el.closest('.strategy-tile');
+      if (!tile) return;
+      const bottomBar = document.querySelector('.bottom-bar');
+      const maxFontSize = 19;
+      const minFontSize = 15;
+      const defaultBarHeight = 236;
+      const maxBarHeight = 500;
+
+      // Reset to single column, default size
+      el.style.columnCount = '';
+      el.style.columnGap = '';
+      let fontSize = maxFontSize;
+      el.style.fontSize = fontSize + 'px';
+
+      function getAvailableHeight() {
+        const titleEl = document.getElementById('strategyTitle');
+        const tileStyle = getComputedStyle(tile);
+        const tileH = tile.clientHeight
+          - parseFloat(tileStyle.paddingTop) - parseFloat(tileStyle.paddingBottom);
+        return tileH - titleEl.offsetHeight - 4;
+      }
+
+      // Phase 1: shrink font to min at default bar height
+      let availableHeight = getAvailableHeight();
+      while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
+        fontSize -= 0.5;
+        el.style.fontSize = fontSize + 'px';
+      }
+
+      // Phase 2: if still overflowing at min font, grow the bar to fit
+      if (el.scrollHeight > availableHeight) {
+        const overflow = el.scrollHeight - availableHeight;
+        const newHeight = Math.min(defaultBarHeight + overflow + 16, maxBarHeight);
+        bottomBar.classList.add('strategy-expanded');
+        bottomBar.style.height = newHeight + 'px';
+
+        // Re-fit with the extra space — try to get font back up
+        requestAnimationFrame(() => {
+          availableHeight = getAvailableHeight();
+          fontSize = maxFontSize;
+          el.style.fontSize = fontSize + 'px';
+          while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
+            fontSize -= 0.5;
+            el.style.fontSize = fontSize + 'px';
+          }
+
+          // Phase 3: if STILL overflowing, two columns as last resort
+          if (el.scrollHeight > availableHeight) {
+            el.style.columnCount = '2';
+            el.style.columnGap = '24px';
+            el.style.columnFill = 'auto';
+            fontSize = maxFontSize;
+            el.style.fontSize = fontSize + 'px';
+            while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
+              fontSize -= 0.5;
+              el.style.fontSize = fontSize + 'px';
+            }
+          }
+        });
+      }
+    }
+
+    function addReasoning(d) {
+      const log = document.getElementById('reasoningLog');
+      const empty = log.querySelector('.reasoning-empty');
+      if (empty) empty.remove();
+
+      const entry = document.createElement('div');
+      entry.className = 'reasoning-entry';
+      let html = '';
+      if (d.command) {
+        const badgeText = d.translated || translateCommand(d.command);
+        html += `<div class="command-badge">${esc(badgeText)}</div>`;
+      }
+      // For think events, only show the badge — full text goes to strategy panel
+      if (d.reasoning && d.command !== 'think') {
+        html += `<span class="reason-text">${esc(d.reasoning)}</span>`;
+      }
+      entry.innerHTML = html;
+      log.insertBefore(entry, log.firstChild);
+
+      while (log.children.length > 20) {
+        log.removeChild(log.lastChild);
+      }
+      log.scrollTop = 0;
+    }
+
+    function addFeedEntry(text, color) {
+      const feed = document.getElementById('actionFeed');
+      const entry = document.createElement('div');
+      entry.className = 'feed-entry';
+      const colorClass = color ? ` color-${color}` : '';
+      entry.innerHTML = `<span class="feed-action${colorClass}">${esc(text || '')}</span>`;
+      feed.appendChild(entry);
+
+      const maxEntries = 21;
+      while (feed.children.length > maxEntries) {
+        feed.removeChild(feed.firstChild);
+      }
+    }
+
+    function updateRunStats(s) {
+      // Stats are now shown via character stats panel
+      fetchCharacterStats();
+    }
+
+    function esc(s) {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    connect();
+  </script>
+</body>
+
+</html>

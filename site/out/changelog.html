@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,8 +384,7 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="active">Changelog</a></nav>
 
 <div class="changelog-entry">
@@ -707,60 +710,6 @@ footer {
 <div class="diff-ctx"> - Conservative play is more important -- no emergency saves.</div>
 <div class="diff-ctx"> - The extra energy partially compensates by enabling more block per turn.</div>
 <div class="diff-del">-- Strong pick if confident in finding healing cards.</div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Fix index shifting bugs + pipeline manager rewrite</div>
-      <div class="changelog-sha">a7ce0fe3</div>
-    </div>
-    <div class="changelog-date">2026-05-23</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -1,5 +1,23 @@</div>
-<div class="diff-ctx"> # Slay the Spire</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+## You Are the Pipeline Manager</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+You (the orchestrator, Claude Code CLI) are NOT a player. You do not care about winning. You do not care about the game. You are a **pipeline manager**. Your only job is to run the Win→Audit→Curate→Explore cycle and keep it turning.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Your primary responsibilities:**</div>
-<div class="diff-add">+1. After every agent completes, read `data/pipeline_state.json` and `heuristics/sts1/goals/next.md` to decide what runs next</div>
-<div class="diff-add">+2. Follow the agent&#x27;s recommendation for the next goal — don&#x27;t default to Win</div>
-<div class="diff-add">+3. Commit and push after every agent so the site stays current</div>
-<div class="diff-add">+4. Track pipeline health: are all four agent types actually running? Are Audits finding errors? Is Curate producing directives? Is Explore testing them?</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**You have no opinion about the game.** The Win agent thinks about winning. The Audit agent thinks about decision quality. The Curate agent thinks about knowledge health. The Explore agent thinks about hypotheses. You think about none of those things. You spawn the right agent, hand it the right context, collect its output, and spawn the next one.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**If you&#x27;re only spawning Win agents, you are failing at your job.** The pipeline has four phases. All four must run. If you find yourself reaching for &quot;spawn another Win agent&quot; without checking pipeline_state.json, stop.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Context compression will make you forget this.** When your context gets compressed, you&#x27;ll lose the nuance and default to &quot;spawn another Win agent.&quot; Fight that instinct. Always check `data/pipeline_state.json` before spawning anything. The file tells you what the LAST agent recommended. Follow it.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+---</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> Deckbuilder roguelike. CommunicationMod reads game state and executes actions. Claude Code CLI plays via TCP relay.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **DO NOT AUTOPLAY.** No scripts, loops, or automation that sends game actions without reasoning. Every action is a deliberate choice. In combat, plan the full turn, then execute as a batch — but still with explicit reasoning.</div>
-<div class="diff-hunk">@@ -253,10 +271,11 @@ Human feedback goes in `data/coaching_notes.md`. When the user gives coaching du</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Current state</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-- Playing **Ironclad** at Ascension 0</div>
-<div class="diff-del">-- 8 wins total (5 Ironclad, 2 Silent, 1 Defect) at Ascension 0</div>
-<div class="diff-del">-- 150 runs completed</div>
-<div class="diff-del">-- Four-agent model (Win/Explore/Audit/Curate) — Explore, Audit, and Curate goal files written, heuristic directories stubbed</div>
-<div class="diff-add">+- Playing **Watcher** at Ascension 0</div>
-<div class="diff-add">+- 9 wins total (5 Ironclad, 2 Silent, 1 Defect, 1 Watcher) at Ascension 0</div>
-<div class="diff-add">+- 215+ runs completed</div>
-<div class="diff-add">+- Four-agent pipeline (Win/Explore/Audit/Curate) — all goal files written</div>
-<div class="diff-add">+- Pipeline state tracked in `data/pipeline_state.json` — check it before spawning any agent</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Repository</div>
-<div class="diff-ctx"> </div>
 <div class="diff-ctx"></div>
 </div>
   </div>
@@ -4617,37 +4566,7 @@ footer {
     <div class="changelog-date">2026-05-21</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -43,12 +43,12 @@ One agent, four goals. The agent is generic — it navigates an ontology (facts)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> The agents share a file system but see it through different lenses.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Game Ontology** (`ontology/`) — What the game IS. Cards, enemies, bosses, relics, potions, events, buffs, debuffs, rules, interface. All four agents can reference it. The playing agents (Win, Explore) navigate it actively during gameplay. The analysis agents (Audit, Curate) reference it to understand the decisions they&#x27;re evaluating.</div>
-<div class="diff-add">+**Game Ontology** (`ontology/sts1/`) — What the game IS. Cards, enemies, bosses, relics, potions, events, buffs, debuffs, rules, interface. All four agents can reference it. The playing agents (Win, Explore) navigate it actively during gameplay. The analysis agents (Audit, Curate) reference it to understand the decisions they&#x27;re evaluating.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> - **Win&#x27;s direction:** Game state → optimal action. &quot;What do I play here?&quot;</div>
-<div class="diff-ctx"> - **Explore&#x27;s direction:** Game state → experiment design. &quot;What can I learn here?&quot;</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Analysis Ontology** (`ontology/analysis/`) — What good reasoning and good knowledge look like. Decision evaluation criteria, heuristic quality standards, evidence frameworks. The analysis agents&#x27; primary domain. Playing agents don&#x27;t need this.</div>
-<div class="diff-add">+**Analysis Ontology** (`ontology/sts1/analysis/`) — What good reasoning and good knowledge look like. Decision evaluation criteria, heuristic quality standards, evidence frameworks. The analysis agents&#x27; primary domain. Playing agents don&#x27;t need this.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> - **Audit&#x27;s direction:** Decision → evaluation. &quot;Was this play correct?&quot;</div>
-<div class="diff-ctx"> - **Curate&#x27;s direction:** Heuristic → assessment. &quot;Is this entry well-supported and useful?&quot;</div>
-<div class="diff-hunk">@@ -93,9 +93,9 @@ Every agent gets:</div>
-<div class="diff-ctx"> 3. Session context — Injected by orchestrator (run number, recent history, directives)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Each goal file specifies which ontology and heuristic entry points to read. This is the mechanism that gives each goal a different knowledge lens:</div>
-<div class="diff-del">-- Win/Explore read `ontology/sts1.md` (game domain) + game heuristics</div>
-<div class="diff-del">-- Audit reads `ontology/sts1.md` + `ontology/analysis/index.md` + audit heuristics</div>
-<div class="diff-del">-- Curate reads `ontology/sts1.md` + `ontology/analysis/index.md` + curation heuristics</div>
-<div class="diff-add">+- Win/Explore read `ontology/sts1/game.md` (game domain) + game heuristics</div>
-<div class="diff-add">+- Audit reads `ontology/sts1/game.md` + `ontology/sts1/analysis/index.md` + audit heuristics</div>
-<div class="diff-add">+- Curate reads `ontology/sts1/game.md` + `ontology/sts1/analysis/index.md` + curation heuristics</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> The agent discovers everything else by following `[[links]]` in the files it reads.</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/core.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/core.md</div>
 <div class="diff-hunk">@@ -8,7 +8,7 @@ Two layers, both stored as markdown files you read directly.</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> ### Ontology (`ontology/`)</div>
@@ -8650,23 +8569,7 @@ footer {
     <div class="changelog-date">2026-05-21</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -92,7 +92,12 @@ Every agent gets:</div>
-<div class="diff-ctx"> 2. `heuristics/goals/&lt;goal&gt;.md` — One of: win, explore, audit, curate</div>
-<div class="diff-ctx"> 3. Session context — Injected by orchestrator (run number, recent history, directives)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-The goal file points the agent at its ontology entry point and heuristic categories. The agent discovers everything else by reading files.</div>
-<div class="diff-add">+Each goal file specifies which ontology and heuristic entry points to read. This is the mechanism that gives each goal a different knowledge lens:</div>
-<div class="diff-add">+- Win/Explore read `ontology/sts1.md` (game domain) + game heuristics</div>
-<div class="diff-add">+- Audit reads `ontology/sts1.md` + `ontology/analysis/index.md` + audit heuristics</div>
-<div class="diff-add">+- Curate reads `ontology/sts1.md` + `ontology/analysis/index.md` + curation heuristics</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The agent discovers everything else by following `[[links]]` in the files it reads.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Commands (cmd.py)</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/core.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/core.md</div>
 <div class="diff-hunk">@@ -12,7 +12,7 @@ Facts about the domain. What exists, how it behaves, how things relate. Individu</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> Ontology entries are formally closed — they describe what an entity IS and what it DOES. They don&#x27;t say what you should do about it. A card entry says it applies `[[buffs/Buffer]]`. The buff entry says what Buffer does. Neither says when to play Buffer.</div>
@@ -8837,305 +8740,7 @@ footer {
     <div class="changelog-date">2026-05-21</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -18,40 +18,81 @@ CommunicationMod (in-game Java mod, stdin/stdout)</div>
-<div class="diff-ctx">     overlay/index.html (OBS browser source)</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-## Agents</div>
-<div class="diff-add">+## Agent Model</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-### Player (`agents/player.md`)</div>
-<div class="diff-del">-Plays the game. Makes every decision with reasoning. In combat, fills out a combat plan template for the full turn, then executes with `turn()`. Outside combat, uses `send()` one action at a time.</div>
-<div class="diff-add">+One agent, four goals. The agent is generic — it navigates an ontology (facts) and heuristics (cached reasoning) driven by a goal file. The four goals produce four specializations with different knowledge needs, different outputs, and different lenses on the same game.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Key traits:</div>
-<div class="diff-del">-- **Humble.** Says &quot;I think&quot; not &quot;clearly.&quot; Admits uncertainty. Doesn&#x27;t rationalize deaths.</div>
-<div class="diff-del">-- **Plans full turns.** Doesn&#x27;t play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.</div>
-<div class="diff-del">-- **Plans full fights.** At combat start, reads enemy ontology + heuristic files, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.</div>
-<div class="diff-del">-- **Navigates knowledge.** Reads ontology + heuristic files directly. Starts from `ontology/index.md`. Follows `[[links]]` to related entries. 750+ files covering every card, enemy, boss, event, relic, and potion.</div>
-<div class="diff-del">-- **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.</div>
-<div class="diff-add">+### The Four Goals</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-### Analyst (`agents/analyst.md`)</div>
-<div class="diff-del">-Runs after a completed run (victory or defeat). Reads the event log, identifies what went well and what went wrong, and updates playbook files.</div>
-<div class="diff-add">+| Goal | Plays? | Input | Output |</div>
-<div class="diff-add">+|------|--------|-------|--------|</div>
-<div class="diff-add">+| **Win** | Yes | Game state + playbook | Run log + margin notes |</div>
-<div class="diff-add">+| **Explore** | Yes | Hypotheses + directives | Run log + experiment results |</div>
-<div class="diff-add">+| **Audit** | No | Completed run log | Fight assessments + error flags |</div>
-<div class="diff-add">+| **Curate** | No | Audit flags + run stats + playbook | Edits, directives, structural changes |</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Output directories:</div>
-<div class="diff-del">-- `ontology/` — Facts about game entities (what things ARE and DO)</div>
-<div class="diff-del">-- `heuristics/` — Strategic guidance (what to DO about them)</div>
-<div class="diff-del">-- `analyst/runs/` — One file per run (`run_NNN.md`). Machine-parsed by `regen_stats.py` to generate all stats.</div>
-<div class="diff-del">-- `analyst/observations.md` — Uncertain items pending more data</div>
-<div class="diff-add">+**Win** — The main player. Uses current best knowledge to win. Doesn&#x27;t experiment, doesn&#x27;t take risks for learning. But it has peripheral vision — roughly half the time, when it notices something interesting (&quot;this card combo could be strong,&quot; &quot;I wonder if this relic changes the calculus here&quot;), it drops a margin note without diverting from the winning line. These notes are hypotheses for Explore.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-No confidence tags. If it&#x27;s confirmed, it goes in `playbook/`. If uncertain, it goes in `analyst/observations.md`.</div>
-<div class="diff-add">+**Explore** — The experimenter. Takes hypotheses from Win&#x27;s margin notes or directives from the Curator and actively tests them. Willing to sacrifice win probability for information. &quot;The Curator says we&#x27;re overfitting on Strength — play 3 runs trying Corruption+FNP as primary engine&quot; or &quot;Win noted Runic Pyramid + Well-Laid Plans looked powerful — build around that.&quot;</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-### Strategist (`agents/strategist.md`)</div>
-<div class="diff-del">-Runs every ~10 runs. Steps back and evaluates whether the whole system is working.</div>
-<div class="diff-add">+**Audit** — The tactical reviewer. Takes a completed run log and audits each fight: was the reasoning sound? Did the math check out? Did the player follow heuristics or deviate, and was the deviation justified? Doesn&#x27;t second-guess the strategic framework — just checks execution against intent. Flags errors for the Curator.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Key questions:</div>
-<div class="diff-del">-- **Are we improving?** Floor-reached trends, recurring deaths, plateaus and their causes.</div>
-<div class="diff-del">-- **Is the playbook serving the player?** Dead weight, missing coverage, signal-to-noise, structural fitness.</div>
-<div class="diff-del">-- **Cross-run patterns.** Things the analyst misses because it only sees one run at a time.</div>
-<div class="diff-del">-- **Architecture review.** Is the combat plan template helping? Is playbook loading effective? Is the analyst producing useful output?</div>
-<div class="diff-del">-- **Cleanup.** Dedup, trim bloat, promote observations, fix contradictions, archive stale data.</div>
-<div class="diff-add">+**Curate** — The strategist. Evaluates the knowledge system itself. Is the playbook overfitting? Coverage gaps? Contradictions? Stale entries? Takes input from Audit flags, Explorer results, Win&#x27;s notes, and run statistics. Has authority to restructure the playbook, write directives for the Explorer, and revise strategic principles.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Has authority to reshape the playbook structure — consolidate files, rewrite sections, delete what isn&#x27;t working.</div>
-<div class="diff-add">+### Two Ontologies, Four Directions</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The agents share a file system but see it through different lenses.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Game Ontology** (`ontology/`) — What the game IS. Cards, enemies, bosses, relics, potions, events, buffs, debuffs, rules, interface. All four agents can reference it. The playing agents (Win, Explore) navigate it actively during gameplay. The analysis agents (Audit, Curate) reference it to understand the decisions they&#x27;re evaluating.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- **Win&#x27;s direction:** Game state → optimal action. &quot;What do I play here?&quot;</div>
-<div class="diff-add">+- **Explore&#x27;s direction:** Game state → experiment design. &quot;What can I learn here?&quot;</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Analysis Ontology** (`ontology/analysis/`) — What good reasoning and good knowledge look like. Decision evaluation criteria, heuristic quality standards, evidence frameworks. The analysis agents&#x27; primary domain. Playing agents don&#x27;t need this.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- **Audit&#x27;s direction:** Decision → evaluation. &quot;Was this play correct?&quot;</div>
-<div class="diff-add">+- **Curate&#x27;s direction:** Heuristic → assessment. &quot;Is this entry well-supported and useful?&quot;</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Four Heuristic Sets</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Game Heuristics** (`heuristics/`) — How to play. Combat, drafting, map routing, per-card strategies, per-enemy strategies, archetypes. Win&#x27;s primary set. Explore uses as baseline. Audit uses as reference standard.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Exploration Heuristics** (`heuristics/exploration/`) — How to experiment. Hypothesis design, controlling for variance in a roguelike, evaluating results from small samples, when to declare confirmed/refuted. Explore&#x27;s primary set.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Audit Heuristics** (`heuristics/audit/`) — How to evaluate decisions. Common reasoning errors, what &quot;correct&quot; looks like for each decision type, how to assess justified vs unjustified deviation from heuristics. Audit&#x27;s primary set.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Curation Heuristics** (`heuristics/curation/`) — How to maintain the playbook. Overfitting detection, coverage analysis, evidence standards, formatting, contradiction detection, archetype balance. Curate&#x27;s primary set.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Information Flow</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+Win ──margin notes──→ Explore</div>
-<div class="diff-add">+ │                       │</div>
-<div class="diff-add">+ run log                 run log + results</div>
-<div class="diff-add">+ │                       │</div>
-<div class="diff-add">+ ↓                       ↓</div>
-<div class="diff-add">+Audit ────flags────→ Curate</div>
-<div class="diff-add">+                        │</div>
-<div class="diff-add">+                        ├── playbook edits (→ Win)</div>
-<div class="diff-add">+                        ├── exploration directives (→ Explore)</div>
-<div class="diff-add">+                        └── framework updates (→ all)</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Typical Cadence</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- Win runs most of the time (the main pipeline)</div>
-<div class="diff-add">+- Explore runs when there are hypotheses to test or Curate directs it</div>
-<div class="diff-add">+- Audit runs after every 1-3 Win/Explore runs</div>
-<div class="diff-add">+- Curate runs every ~10 runs, or when Audit flags accumulate</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Prompt Composition</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Every agent gets:</div>
-<div class="diff-add">+1. `agents/core.md` — Agent identity, knowledge navigation, behavior</div>
-<div class="diff-add">+2. `heuristics/goals/&lt;goal&gt;.md` — One of: win, explore, audit, curate</div>
-<div class="diff-add">+3. Session context — Injected by orchestrator (run number, recent history, directives)</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+The goal file points the agent at its ontology entry point and heuristic categories. The agent discovers everything else by reading files.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ## Commands (cmd.py)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -86,36 +127,6 @@ start(&quot;IRONCLAD&quot;, 5)             # Start Ironclad A5 run</div>
-<div class="diff-ctx"> 3. CommunicationMod — game state + action protocol</div>
-<div class="diff-ctx"> 4. SuperFastMode — speed up animations for bot play</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-## Learning Loop</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-Player plays run → stream_events.jsonl captures every decision</div>
-<div class="diff-del">-    ↓</div>
-<div class="diff-del">-Run ends (victory or defeat) → player STOPS</div>
-<div class="diff-del">-    ↓</div>
-<div class="diff-del">-Analyst reads log, updates playbook/ files</div>
-<div class="diff-del">-    ↓</div>
-<div class="diff-del">-Every ~10 runs: Strategist reviews the arc, reshapes playbook, identifies bottlenecks</div>
-<div class="diff-del">-    ↓</div>
-<div class="diff-del">-Next run: player reads updated playbook before first action</div>
-<div class="diff-del">-    ↓</div>
-<div class="diff-del">-Player makes better decisions → repeat</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-The site (claudeslaysthespire.org) tracks every playbook diff over time — what changed, what was learned, how the system evolved. Two kinds of changes show up:</div>
-<div class="diff-del">-- **Pipeline changes** — dev restructures to improve how the system works</div>
-<div class="diff-del">-- **Playbook changes** — analyst updates from gameplay experience</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## Reference Files</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- `HUMAN_ADVICE.md` — provenance log of all human-injected knowledge (not read by the pipeline)</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-## Repository</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondrashov/ClaudeSlaysTheSpire`. The parent `autoplay/` repo is a separate project that contains all games. **Do not add autoplay&#x27;s remote to this directory, and do not add this directory&#x27;s files to autoplay&#x27;s git.** They are separate repos that happen to share a filesystem.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/` or `site/` triggers a rebuild.</div>
-<div class="diff-del">-</div>
-<div class="diff-ctx"> ## How to Run</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> This is the full startup procedure. Follow it from the top when starting a new session.</div>
-<div class="diff-hunk">@@ -142,28 +153,54 @@ Start-Process -FilePath &quot;python&quot; -ArgumentList &quot;stream.py&quot; -WorkingDirectory &quot;C:</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overlay for streaming. Independent of relay — can restart without affecting gameplay.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-### 3. Run the player/analyst loop</div>
-<div class="diff-add">+### 3. Run the agent loop</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). The player plays one complete run, then stops and reports the outcome.</div>
-<div class="diff-add">+Spawn a **Win** agent as a background subagent (Agent tool, `run_in_background: true`). The agent plays one complete run, then stops and reports the outcome.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Read `agents/player.md` for how to compose the player prompt.** It specifies which layer files to read (including the character-specific file from `playbook/characters/`), in what order, and the rules for assembling them. Follow it exactly.</div>
-<div class="diff-add">+Compose the prompt from `agents/core.md` + `heuristics/goals/win.md` + session context (run number, session token, recent history). The goal file specifies the full setup including imports and interface.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py detects it and writes `analyst/runs/run_NNN.json` from the game state (deck, relics, potions, HP, gold, seed) plus the complete decision log from `data/stream_events.jsonl` (every command, reasoning, and resulting game state after each action). It then runs `regen_stats.py` to update stats and pings stream.py to reload. The overlay updates immediately. No orchestrator action needed for the run log.</div>
-<div class="diff-add">+**Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py writes `analyst/runs/run_NNN.json` from game state plus the complete decision log from `data/stream_events.jsonl`. It then runs `regen_stats.py` to update stats and pings stream.py to reload.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-When the player finishes:</div>
-<div class="diff-add">+When the agent finishes:</div>
-<div class="diff-ctx"> 1. Delete `data/player.lock`.</div>
-<div class="diff-del">-2. Switch the overlay to agent mode (see below).</div>
-<div class="diff-del">-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run JSON, updates `playbook/` files. The run log is already written by cmd.py — the analyst does NOT touch it.</div>
-<div class="diff-del">-4. When analyst completes, switch overlay back to game mode.</div>
-<div class="diff-del">-5. Rebuild site: `python site/build.py`.</div>
-<div class="diff-del">-6. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
-<div class="diff-del">-7. Spawn the next player.</div>
-<div class="diff-add">+2. Commit run data + any knowledge updates.</div>
-<div class="diff-add">+3. Optionally spawn **Audit** to review the run.</div>
-<div class="diff-add">+4. Optionally spawn **Curate** if flags have accumulated (~every 10 runs).</div>
-<div class="diff-add">+5. Push changes (triggers site rebuild on claudeslaysthespire.org).</div>
-<div class="diff-add">+6. Spawn the next Win (or Explore, if there are directives).</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Repeat until interrupted.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+### Player lock mechanism</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Each Bash tool call is a separate Python process. The orchestrator gives the agent a unique token in its prompt. The agent must set `PLAYER_SESSION` env var to this token in every Bash call before importing cmd.py. The lock file stores which token is authorized.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Before spawning a player agent:**</div>
-<div class="diff-add">+```python</div>
-<div class="diff-add">+import uuid, os</div>
-<div class="diff-add">+token = str(uuid.uuid4())</div>
-<div class="diff-add">+# Clear the old lock — previous agent is dead</div>
-<div class="diff-add">+if os.path.exists(&quot;data/player.lock&quot;):</div>
-<div class="diff-add">+    os.remove(&quot;data/player.lock&quot;)</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Then include in the agent prompt:</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+Your session token is: &lt;token&gt;</div>
-<div class="diff-add">+In every Bash call, before importing cmd, set:</div>
-<div class="diff-add">+    import os; os.environ[&quot;PLAYER_SESSION&quot;] = &quot;&lt;token&gt;&quot;</div>
-<div class="diff-add">+```</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**How it works:**</div>
-<div class="diff-add">+- cmd.py reads `PLAYER_SESSION` env var on import. Refuses to run without it.</div>
-<div class="diff-add">+- Lock file (`data/player.lock`) stores the token of whoever acquired it first.</div>
-<div class="diff-add">+- Same token → proceed. Different token → crash immediately.</div>
-<div class="diff-add">+- Orchestrator deletes lock file before spawning a new agent. That&#x27;s the handoff.</div>
-<div class="diff-add">+- If the agent forgets to set the env var → import fails → agent dies. Orchestrator spawns a new one.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ### Overlay switching for analyst/strategist</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-When spawning a non-player agent (analyst, strategist), the overlay should show their streaming output instead of the game. The agent&#x27;s JSONL conversation file is at:</div>
-<div class="diff-add">+When spawning a non-player agent (Audit, Curate), the overlay should show their streaming output instead of the game. The agent&#x27;s JSONL conversation file is at:</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> ~/.claude/projects/C--Users-tkond-projects-autoplay/&lt;session-id&gt;/subagents/agent-&lt;agent-task-id&gt;.jsonl</div>
-<div class="diff-hunk">@@ -184,8 +221,7 @@ urllib.request.urlopen(req)</div>
-<div class="diff-ctx"> &quot;</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Titles: `&quot;POST-GAME ANALYSIS&quot;` for analyst, `&quot;STRATEGIC REVIEW&quot;` for strategist.</div>
-<div class="diff-del">-The `run_summary` field is shown in the bottom bar&#x27;s action feed area during agent mode (replaces action log with a last-run summary from the player).</div>
-<div class="diff-add">+Titles: `&quot;POST-GAME ANALYSIS&quot;` for Audit, `&quot;STRATEGIC REVIEW&quot;` for Curate.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **Stop agent mode** (after the agent completes):</div>
-<div class="diff-ctx"> ```bash</div>
-<div class="diff-hunk">@@ -193,55 +229,9 @@ curl -s http://127.0.0.1:3002/agent -X POST -H &quot;Content-Type: application/json&quot;</div>
-<div class="diff-ctx">   -d &#x27;{&quot;action&quot;:&quot;stop&quot;}&#x27;</div>
-<div class="diff-ctx"> ```</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-The JSONL path requires the current Claude Code session ID and the agent&#x27;s task ID (returned by the Agent tool). To find the session ID, check the most recently modified directory:</div>
-<div class="diff-del">-```bash</div>
-<div class="diff-del">-ls -td ~/.claude/projects/C--Users-tkond-projects-autoplay/*/ | head -1</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-Then construct the path as:</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-C:/Users/tkond/.claude/projects/C--Users-tkond-projects-autoplay/&lt;SESSION_ID&gt;/subagents/agent-&lt;TASK_ID&gt;.jsonl</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-stream.py watches the JSONL, parses assistant text blocks and tool_use blocks, and broadcasts them to the overlay. The overlay covers the game area with an opaque panel showing the agent&#x27;s reasoning in real time.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-### Rules</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-- **One player at a time.** Enforced by `data/player.lock` (see lock mechanism below).</div>
-<div class="diff-del">-- **Analyst runs between runs.** Never simultaneously with the player.</div>
-<div class="diff-del">-- **Overlay switches for analyst/strategist.** Always activate agent mode before spawning, deactivate after completion.</div>
-<div class="diff-del">-- **Commit after analyst.** The site changelog tracks every playbook diff.</div>
-<div class="diff-del">-- **If this session crashes**, the loop stops. Re-read this section and resume from wherever it left off. The game state persists in relay — nothing is lost.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-### Player lock mechanism</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-Each Bash tool call is a separate Python process. The orchestrator gives the agent a unique token in its prompt. The agent must set `PLAYER_SESSION` env var to this token in every Bash call before importing cmd.py. The lock file stores which token is authorized.</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-**Before spawning a player agent:**</div>
-<div class="diff-del">-```python</div>
-<div class="diff-del">-import uuid, os</div>
-<div class="diff-del">-token = str(uuid.uuid4())</div>
-<div class="diff-del">-# Clear the old lock — previous agent is dead</div>
-<div class="diff-del">-if os.path.exists(&quot;data/player.lock&quot;):</div>
-<div class="diff-del">-    os.remove(&quot;data/player.lock&quot;)</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-Then include in the agent prompt:</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-Your session token is: &lt;token&gt;</div>
-<div class="diff-del">-In every Bash call, before importing cmd, set:</div>
-<div class="diff-del">-    import os; os.environ[&quot;PLAYER_SESSION&quot;] = &quot;&lt;token&gt;&quot;</div>
-<div class="diff-del">-```</div>
-<div class="diff-del">-</div>
-<div class="diff-del">-**How it works:**</div>
-<div class="diff-del">-- cmd.py reads `PLAYER_SESSION` env var on import. Refuses to run without it.</div>
-<div class="diff-del">-- Lock file (`data/player.lock`) stores the token of whoever acquired it first.</div>
-<div class="diff-del">-- Same token → proceed. Different token → crash immediately.</div>
-<div class="diff-del">-- Orchestrator deletes lock file before spawning a new agent. That&#x27;s the handoff.</div>
-<div class="diff-del">-- If the agent forgets to set the env var → import fails → agent dies. Orchestrator spawns a new one.</div>
-<div class="diff-del">-</div>
-<div class="diff-ctx"> ### Coaching notes</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Human feedback for the analyst goes in `data/coaching_notes.md`. When the user gives coaching during a run (e.g., &quot;the player should have done X&quot;), append it to this file. Include the file path in the analyst prompt so the analyst incorporates the feedback into playbook updates. The analyst marks notes as addressed after processing them.</div>
-<div class="diff-add">+Human feedback goes in `data/coaching_notes.md`. When the user gives coaching during a run, append it to this file. Include the file path in the Audit prompt so it incorporates the feedback. The Audit agent marks notes as addressed after processing them.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Git gotchas</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -258,7 +248,13 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Current state</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-- Playing **Watcher** at Ascension 0 (first Watcher runs — learning phase)</div>
-<div class="diff-del">-- Strategist runs every 10 runs</div>
-<div class="diff-del">-- 6 wins total (3 Ironclad, 2 Silent, 1 Defect) at Ascension 0.</div>
-<div class="diff-add">+- Playing **Ironclad** at Ascension 0</div>
-<div class="diff-add">+- 8 wins total (5 Ironclad, 2 Silent, 1 Defect) at Ascension 0</div>
-<div class="diff-add">+- 150 runs completed</div>
-<div class="diff-add">+- Four-agent model (Win/Explore/Audit/Curate) — Explore, Audit, and Curate goal files written, heuristic directories stubbed</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+## Repository</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondrashov/ClaudeSlaysTheSpire`. The parent `autoplay/` repo is a separate project that contains all games. **Do not add autoplay&#x27;s remote to this directory, and do not add this directory&#x27;s files to autoplay&#x27;s git.** They are separate repos that happen to share a filesystem.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+The site (claudeslaysthespire.org) deploys via GitHub Actions from this repo. Pushing to `main` with changes to `playbook/` or `site/` triggers a rebuild.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/player.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
 <div class="diff-hunk">@@ -6,26 +6,35 @@ This file tells the orchestrator how to assemble the agent prompt. It is NOT sen</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> One generic agent. It doesn&#x27;t know what domain it&#x27;s operating in until it receives a task. The domain&#x27;s ontology tells it what exists. The domain&#x27;s heuristics tell it how to navigate. The goal tells it what to achieve.</div>
@@ -16164,44 +15769,7 @@ footer {
     <div class="changelog-date">2026-05-19</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -26,15 +26,16 @@ Plays the game. Makes every decision with reasoning. In combat, fills out a comb</div>
-<div class="diff-ctx"> Key traits:</div>
-<div class="diff-ctx"> - **Humble.** Says &quot;I think&quot; not &quot;clearly.&quot; Admits uncertainty. Doesn&#x27;t rationalize deaths.</div>
-<div class="diff-ctx"> - **Plans full turns.** Doesn&#x27;t play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.</div>
-<div class="diff-del">-- **Plans full fights.** At combat start, calls `plan()` to load playbook context, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.</div>
-<div class="diff-del">-- **References playbook.** Calls `plan()` at act/combat start, `reason(&quot;topic&quot;)` for targeted lookups. Playbook has 200+ files covering every card, enemy, boss, event, relic, and potion.</div>
-<div class="diff-add">+- **Plans full fights.** At combat start, reads enemy ontology + heuristic files, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.</div>
-<div class="diff-add">+- **Navigates knowledge.** Reads ontology + heuristic files directly. Starts from `ontology/index.md`. Follows `[[links]]` to related entries. 750+ files covering every card, enemy, boss, event, relic, and potion.</div>
-<div class="diff-ctx"> - **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Analyst (`agents/analyst.md`)</div>
-<div class="diff-ctx"> Runs after a completed run (victory or defeat). Reads the event log, identifies what went well and what went wrong, and updates playbook files.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Output directories:</div>
-<div class="diff-del">-- `playbook/` — Individual files per card, enemy, boss, event, potion, relic. Plus `mechanics.md` and `strategy.md` for general reference.</div>
-<div class="diff-add">+- `ontology/` — Facts about game entities (what things ARE and DO)</div>
-<div class="diff-add">+- `heuristics/` — Strategic guidance (what to DO about them)</div>
-<div class="diff-ctx"> - `analyst/runs/` — One file per run (`run_NNN.md`). Machine-parsed by `regen_stats.py` to generate all stats.</div>
-<div class="diff-ctx"> - `analyst/observations.md` — Uncertain items pending more data</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -55,13 +56,11 @@ Has authority to reshape the playbook structure — consolidate files, rewrite s</div>
-<div class="diff-ctx"> ## Commands (cmd.py)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```python</div>
-<div class="diff-del">-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, deck, start</div>
-<div class="diff-add">+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> state()                          # See current game state</div>
-<div class="diff-del">-plan()                           # Load strategic context (auto-detects combat vs act)</div>
-<div class="diff-ctx"> think(reasoning, label)          # Post strategic analysis to stream overlay</div>
-<div class="diff-ctx"> deck()                           # View full deck (use after transforms, adds, removes)</div>
-<div class="diff-del">-reason(&quot;topic&quot;)                  # Look up a specific playbook entry</div>
-<div class="diff-ctx"> send(&quot;play Bash 0&quot;, reason=&quot;...&quot;) # Single action — reason= is REQUIRED</div>
-<div class="diff-ctx"> turn([&quot;play Bash Jaw Worm&quot;, &quot;play Strike Jaw Worm&quot;, &quot;play Defend&quot;, &quot;end&quot;],</div>
-<div class="diff-ctx">      reason=&quot;...&quot;)               # Full combat turn — reason= is REQUIRED</div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
 <div class="diff-hunk">@@ -1,110 +0,0 @@</div>
 <div class="diff-del">-# Analyst Agent</div>
 <div class="diff-del">-</div>
@@ -37508,20 +37076,7 @@ footer {
     <div class="changelog-date">2026-05-16</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -145,7 +145,9 @@ Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overla</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### 3. Run the player/analyst loop</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.</div>
-<div class="diff-add">+Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). The player plays one complete run, then stops and reports the outcome.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+**Read `agents/player.md` for how to compose the player prompt.** It specifies which layer files to read (including the character-specific file from `playbook/characters/`), in what order, and the rules for assembling them. Follow it exactly.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> **Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py detects it and writes `analyst/runs/run_NNN.json` from the game state (deck, relics, potions, HP, gold, seed) plus the complete decision log from `data/stream_events.jsonl` (every command, reasoning, and resulting game state after each action). It then runs `regen_stats.py` to update stats and pings stream.py to reload. The overlay updates immediately. No orchestrator action needed for the run log.</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/player-core.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/player-core.md</div>
 <div class="diff-hunk">@@ -0,0 +1,59 @@</div>
 <div class="diff-add">+# Player Core — General Game-Playing Agent</div>
 <div class="diff-add">+</div>
@@ -38285,54 +37840,13 @@ footer {
 <div class="changelog-entry">
   <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
     <div>
-      <div class="changelog-msg">Runs 174-176: Watcher A0 analysis + 24 new card entries</div>
-      <div class="changelog-sha">3f0329c1</div>
-    </div>
-    <div class="changelog-date">2026-05-15</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -257,7 +257,7 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Current state</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-- Playing **Defect** at Ascension 0 (first Defect runs — learning phase)</div>
-<div class="diff-add">+- Playing **Watcher** at Ascension 0 (first Watcher runs — learning phase)</div>
-<div class="diff-ctx"> - Strategist runs every 10 runs</div>
-<div class="diff-del">-- 5 wins total (3 Ironclad, 2 Silent) at Ascension 0.</div>
-<div class="diff-add">+- 6 wins total (3 Ironclad, 2 Silent, 1 Defect) at Ascension 0.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
       <div class="changelog-msg">Run 172: First Defect victory + infrastructure overhaul</div>
       <div class="changelog-sha">4d4479bf</div>
     </div>
     <div class="changelog-date">2026-05-15</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -147,12 +147,12 @@ Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overla</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-**Run log + stats are automatic.** When the run ends (GAME_OVER), stream.py writes `analyst/runs/run_NNN.json` from the game state and runs `regen_stats.py`. The overlay updates immediately. No orchestrator action needed for the run log.</div>
-<div class="diff-add">+**Run log + stats are automatic.** When the run ends (GAME_OVER), cmd.py detects it and writes `analyst/runs/run_NNN.json` from the game state (deck, relics, potions, HP, gold, seed) plus the complete decision log from `data/stream_events.jsonl` (every command, reasoning, and resulting game state after each action). It then runs `regen_stats.py` to update stats and pings stream.py to reload. The overlay updates immediately. No orchestrator action needed for the run log.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> When the player finishes:</div>
-<div class="diff-ctx"> 1. Delete `data/player.lock`.</div>
-<div class="diff-ctx"> 2. Switch the overlay to agent mode (see below).</div>
-<div class="diff-del">-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the event log, updates `playbook/` files. The run log is already written by stream.py — the analyst does NOT touch it.</div>
-<div class="diff-add">+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run JSON, updates `playbook/` files. The run log is already written by cmd.py — the analyst does NOT touch it.</div>
-<div class="diff-ctx"> 4. When analyst completes, switch overlay back to game mode.</div>
-<div class="diff-ctx"> 5. Rebuild site: `python site/build.py`.</div>
-<div class="diff-ctx"> 6. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
 <div class="diff-hunk">@@ -5,10 +5,14 @@ You review completed Slay the Spire runs and update the knowledge base. Your job</div>
 <div class="diff-ctx"> ## Inputs</div>
 <div class="diff-ctx"> </div>
@@ -38415,40 +37929,7 @@ footer {
     <div class="changelog-date">2026-05-15</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -147,15 +147,16 @@ Verify: `Test-NetConnection 127.0.0.1 -Port 3001`. Provides the WebSocket overla</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Spawn the **player** as a background subagent (Agent tool, `run_in_background: true`). Include the full contents of `agents/player.md` in the prompt. The player plays one complete run, then stops and reports the outcome.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+**Run log + stats are automatic.** When the run ends (GAME_OVER), stream.py writes `analyst/runs/run_NNN.json` from the game state and runs `regen_stats.py`. The overlay updates immediately. No orchestrator action needed for the run log.</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> When the player finishes:</div>
-<div class="diff-ctx"> 1. Delete `data/player.lock`.</div>
-<div class="diff-ctx"> 2. Switch the overlay to agent mode (see below).</div>
-<div class="diff-del">-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/runs/run_NNN.md`.</div>
-<div class="diff-add">+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the event log, updates `playbook/` files. The run log is already written by stream.py — the analyst does NOT touch it.</div>
-<div class="diff-ctx"> 4. When analyst completes, switch overlay back to game mode.</div>
-<div class="diff-del">-5. Regenerate stats: `python regen_stats.py` (rebuilds `data/run_stats.json` from `analyst/runs/`).</div>
-<div class="diff-del">-6. Rebuild site: `python site/build.py`.</div>
-<div class="diff-del">-7. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
-<div class="diff-del">-8. Spawn the next player.</div>
-<div class="diff-add">+5. Rebuild site: `python site/build.py`.</div>
-<div class="diff-add">+6. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
-<div class="diff-add">+7. Spawn the next player.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Repeat until interrupted.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -256,7 +257,7 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Current state</div>
-<div class="diff-ctx"> </div>
-<div class="diff-del">-- Playing **The Silent** at Ascension 0</div>
-<div class="diff-add">+- Playing **Defect** at Ascension 0 (first Defect runs — learning phase)</div>
-<div class="diff-ctx"> - Strategist runs every 10 runs</div>
-<div class="diff-ctx"> - 5 wins total (3 Ironclad, 2 Silent) at Ascension 0.</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
 <div class="diff-hunk">@@ -41,29 +41,9 @@ Each subdirectory has an `_index.md` listing all entries. Update it when adding</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> 6. **Adding new entries.** To add a new card/enemy/etc., create a new file in the appropriate subdirectory and update the `_index.md`.</div>
@@ -38494,35 +37975,7 @@ footer {
     <div class="changelog-date">2026-05-15</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -35,7 +35,8 @@ Runs after a completed run (victory or defeat). Reads the event log, identifies</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Output directories:</div>
-<div class="diff-ctx"> - `playbook/` — Individual files per card, enemy, boss, event, potion, relic. Plus `mechanics.md` and `strategy.md` for general reference.</div>
-<div class="diff-del">-- `analyst/` — Working notes: `run_log.md` (brief per-run summaries), `observations.md` (uncertain items pending more data)</div>
-<div class="diff-add">+- `analyst/runs/` — One file per run (`run_NNN.md`). Machine-parsed by `regen_stats.py` to generate all stats.</div>
-<div class="diff-add">+- `analyst/observations.md` — Uncertain items pending more data</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> No confidence tags. If it&#x27;s confirmed, it goes in `playbook/`. If uncertain, it goes in `analyst/observations.md`.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-hunk">@@ -149,10 +150,12 @@ Spawn the **player** as a background subagent (Agent tool, `run_in_background: t</div>
-<div class="diff-ctx"> When the player finishes:</div>
-<div class="diff-ctx"> 1. Delete `data/player.lock`.</div>
-<div class="diff-ctx"> 2. Switch the overlay to agent mode (see below).</div>
-<div class="diff-del">-3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/` files.</div>
-<div class="diff-add">+3. Spawn the **analyst** as a subagent. Include `agents/analyst.md` in the prompt. It reads the run log, updates `playbook/` and `analyst/runs/run_NNN.md`.</div>
-<div class="diff-ctx"> 4. When analyst completes, switch overlay back to game mode.</div>
-<div class="diff-del">-5. Commit and push playbook changes (triggers site rebuild on claudeslaysthespire.org).</div>
-<div class="diff-del">-6. Spawn the next player.</div>
-<div class="diff-add">+5. Regenerate stats: `python regen_stats.py` (rebuilds `data/run_stats.json` from `analyst/runs/`).</div>
-<div class="diff-add">+6. Rebuild site: `python site/build.py`.</div>
-<div class="diff-add">+7. Commit and push changes (triggers site rebuild on claudeslaysthespire.org).</div>
-<div class="diff-add">+8. Spawn the next player.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> Repeat until interrupted.</div>
-<div class="diff-ctx"> </div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/analyst.md</div>
 <div class="diff-hunk">@@ -41,20 +41,29 @@ Each subdirectory has an `_index.md` listing all entries. Update it when adding</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> 6. **Adding new entries.** To add a new card/enemy/etc., create a new file in the appropriate subdirectory and update the `_index.md`.</div>
@@ -38558,82 +38011,6 @@ footer {
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> ### `analyst/observations.md` — Uncertain items</div>
 <div class="diff-ctx"> </div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Fix all run counters: derive from floor_history, prevent double-counting</div>
-      <div class="changelog-sha">9f5fb5a7</div>
-    </div>
-    <div class="changelog-date">2026-05-15</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -255,5 +255,5 @@ Human feedback for the analyst goes in `data/coaching_notes.md`. When the user g</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> - Playing **The Silent** at Ascension 0</div>
-<div class="diff-ctx"> - Strategist runs every 10 runs</div>
-<div class="diff-del">-- 76 total runs (74 Ironclad, 2 Silent). Ironclad has 3 A0 wins.</div>
-<div class="diff-add">+- 5 wins total (3 Ironclad, 2 Silent) at Ascension 0.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"></div>
-</div>
-  </div>
-</div>
-<div class="changelog-entry">
-  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-    <div>
-      <div class="changelog-msg">Run 153 analysis: Silent F45 Transient, Mind Bloom trap, Orb Walker scaling</div>
-      <div class="changelog-sha">2d06407f</div>
-    </div>
-    <div class="changelog-date">2026-05-14</div>
-  </div>
-  <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -54,11 +54,12 @@ Has authority to reshape the playbook structure — consolidate files, rewrite s</div>
-<div class="diff-ctx"> ## Commands (cmd.py)</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ```python</div>
-<div class="diff-del">-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, start</div>
-<div class="diff-add">+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, plan, reason, think, deck, start</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> state()                          # See current game state</div>
-<div class="diff-ctx"> plan()                           # Load strategic context (auto-detects combat vs act)</div>
-<div class="diff-ctx"> think(reasoning, label)          # Post strategic analysis to stream overlay</div>
-<div class="diff-add">+deck()                           # View full deck (use after transforms, adds, removes)</div>
-<div class="diff-ctx"> reason(&quot;topic&quot;)                  # Look up a specific playbook entry</div>
-<div class="diff-ctx"> send(&quot;play Bash 0&quot;, reason=&quot;...&quot;) # Single action — reason= is REQUIRED</div>
-<div class="diff-ctx"> turn([&quot;play Bash Jaw Worm&quot;, &quot;play Strike Jaw Worm&quot;, &quot;play Defend&quot;, &quot;end&quot;],</div>
-<div class="diff-hunk">@@ -233,3 +234,26 @@ In every Bash call, before importing cmd, set:</div>
-<div class="diff-ctx"> - Orchestrator deletes lock file before spawning a new agent. That&#x27;s the handoff.</div>
-<div class="diff-ctx"> - If the agent forgets to set the env var → import fails → agent dies. Orchestrator spawns a new one.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+### Coaching notes</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+Human feedback for the analyst goes in `data/coaching_notes.md`. When the user gives coaching during a run (e.g., &quot;the player should have done X&quot;), append it to this file. Include the file path in the analyst prompt so the analyst incorporates the feedback into playbook updates. The analyst marks notes as addressed after processing them.</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Git gotchas</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- `site/out/` is gitignored — always use `git add -f site/out/` when committing site changes</div>
-<div class="diff-add">+- `data/coaching_notes.md` is gitignored — use `git add -f` for it too</div>
-<div class="diff-add">+- Rebuild site before committing: `python site/build.py` then `git add -f site/out/`</div>
-<div class="diff-add">+- **Never create a CLAUDE.md file.** All project context lives in this file (AGENTS.md).</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### cmd.py safety features</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- `turn()` detects draw cards automatically — if hand size doesn&#x27;t shrink after playing a card, the sequence stops and tells the player to re-plan with the new cards</div>
-<div class="diff-add">+- `choose` resolves card names on HAND_SELECT, CARD_REWARD, and GRID screens (not just `play`)</div>
-<div class="diff-add">+- Stream.py deduplicates floor_history by seed+floor, and detects GAME_OVER on startup to prevent recounting on restart</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+### Current state</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- Playing **The Silent** at Ascension 0</div>
-<div class="diff-add">+- Strategist runs every 10 runs</div>
-<div class="diff-add">+- 76 total runs (74 Ironclad, 2 Silent). Ironclad has 3 A0 wins.</div>
-<div class="diff-add">+</div>
 <div class="diff-ctx"></div>
 </div>
   </div>
@@ -38748,29 +38125,7 @@ footer {
     <div class="changelog-date">2026-05-12</div>
   </div>
   <div class="changelog-diff" style="display:none">
-    <div class="diff-file"><div class="diff-filename">AGENTS.md</div>
-<div class="diff-hunk">@@ -27,7 +27,7 @@ Key traits:</div>
-<div class="diff-ctx"> - **Humble.** Says &quot;I think&quot; not &quot;clearly.&quot; Admits uncertainty. Doesn&#x27;t rationalize deaths.</div>
-<div class="diff-ctx"> - **Plans full turns.** Doesn&#x27;t play one card at a time. Thinks about the whole hand, threats, energy, and expected outcome before acting.</div>
-<div class="diff-ctx"> - **Plans full fights.** At combat start, calls `plan()` to load playbook context, then writes a FIGHT STRATEGY (win condition, survival plan, key cards, risks) and posts it via `think()`.</div>
-<div class="diff-del">-- **References playbook.** Calls `plan()` at act/combat start, `reason(&quot;topic&quot;)` for targeted lookups. Playbook has 149+ files covering every card, enemy, boss, event, relic, and potion.</div>
-<div class="diff-add">+- **References playbook.** Calls `plan()` at act/combat start, `reason(&quot;topic&quot;)` for targeted lookups. Playbook has 200+ files covering every card, enemy, boss, event, relic, and potion.</div>
-<div class="diff-ctx"> - **Always explains.** Every `send()` and `turn()` call includes `reason=`. The stream overlay shows this reasoning to viewers.</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> ### Analyst (`agents/analyst.md`)</div>
-<div class="diff-hunk">@@ -105,6 +105,10 @@ The site (claudeslaysthespire.org) tracks every playbook diff over time — what</div>
-<div class="diff-ctx"> - **Pipeline changes** — dev restructures to improve how the system works</div>
-<div class="diff-ctx"> - **Playbook changes** — analyst updates from gameplay experience</div>
-<div class="diff-ctx"> </div>
-<div class="diff-add">+## Reference Files</div>
-<div class="diff-add">+</div>
-<div class="diff-add">+- `HUMAN_ADVICE.md` — provenance log of all human-injected knowledge (not read by the pipeline)</div>
-<div class="diff-add">+</div>
-<div class="diff-ctx"> ## Repository</div>
-<div class="diff-ctx"> </div>
-<div class="diff-ctx"> This directory (`games/sts1/`) is its own git repo pushing to `github.com/skondrashov/ClaudeSlaysTheSpire`. The parent `autoplay/` repo is a separate project that contains all games. **Do not add autoplay&#x27;s remote to this directory, and do not add this directory&#x27;s files to autoplay&#x27;s git.** They are separate repos that happen to share a filesystem.</div>
-</div>
-<div class="diff-file"><div class="diff-filename">agents/player.md</div>
+    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
 <div class="diff-hunk">@@ -2,28 +2,6 @@</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> You play Slay the Spire. You make every decision deliberately, with reasoning.</div>
@@ -39114,6 +38469,258 @@ footer {
 <div class="diff-ctx"> - In Act 2, treat Unknown rooms as Monster rooms when routing (3 deaths from Spheric Guardian spawning in Unknown rooms)</div>
 <div class="diff-ctx"> </div>
 <div class="diff-ctx"> ### Events</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
+      <div class="changelog-msg">Strategist #7: plateau broken, Hard Rule #9, Act 2 boss focus</div>
+      <div class="changelog-sha">30d664c4</div>
+    </div>
+    <div class="changelog-date">2026-05-08</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
+<div class="diff-hunk">@@ -22,6 +22,8 @@ These rules have been validated across 60+ runs. Violating any of them has direc</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> 8. **NEVER PLAY a 3-cost Power (Corruption, Barricade, Demon Form) on turn 1 when enemies are attacking UNLESS you have 4+ energy.** Spending 3 of 3 energy on a Power leaves zero energy for block. Combined incoming from multi-enemy fights is 20+ unblocked damage. One confirmed death from playing Corruption (3E) turn 1 into Looter + Mugger with zero block. Wait for a free turn (enemy buffing/defending) or upgrade the Power to reduce its cost. The only exception is Demon Form into a single enemy whose turn 1 attack is survivable at current HP.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+9. **NEVER PLAY Corruption or Corruption+ against The Guardian UNLESS Dead Branch or Feel No Pain is in play.** The Guardian fight lasts 14+ turns. Corruption exhausts every Skill you play. Run 107: Corruption+ played turn 9, all block Skills exhausted by turn 14, died at Guardian 10/240 HP with zero block cards. The energy savings do not compensate for losing all block in the second half of a 14-turn fight. Dead Branch replaces exhausted cards. Feel No Pain generates 3 block per exhaust. Without either, Corruption is a death sentence against Guardian.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ## Setup</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ```python</div>
+<div class="diff-hunk">@@ -151,7 +153,8 @@ Think about what your deck needs, not just whether a card is generically &quot;good.&quot;</div>
+<div class="diff-ctx"> - Do I have front-loaded Strength? (Inflame, Spot Weakness -- NOT just Demon Form)</div>
+<div class="diff-ctx"> - Do I have AOE? (Thunderclap, Cleave, Immolate, Whirlwind)</div>
+<div class="diff-ctx"> - Do I have healing beyond Burning Blood? (Reaper, Feed)</div>
+<div class="diff-del">-If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. Missing all three entering Act 2 has been the #1 cause of death in recent runs.</div>
+<div class="diff-add">+- Do I have block scaling beyond basic Defends? (Shrug It Off, Flame Barrier, Metallicize, Impervious, Ghostly Armor, True Grit+)</div>
+<div class="diff-add">+If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. The 4-criteria checklist has proven effective: two consecutive Act 2 boss reaches when all criteria were met.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Rest Sites</div>
+<div class="diff-ctx"> - **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is below 35% in Act 1 or below 50% in Act 2. See Hard Rule #3.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
+      <div class="changelog-msg">Strategist #6 (100-run milestone): path tracing, Brimstone checklist</div>
+      <div class="changelog-sha">363918eb</div>
+    </div>
+    <div class="changelog-date">2026-05-08</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
+<div class="diff-hunk">@@ -158,10 +158,12 @@ If missing any of these, PRIORITIZE filling that gap over taking a generically s</div>
+<div class="diff-ctx"> - Which card benefits most from upgrading? Priority: Bash &gt; Corruption (if in deck) &gt; True Grit &gt; Armaments &gt; best damage card &gt; best block card.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Map Pathing</div>
+<div class="diff-add">+- **MANDATORY: Before choosing any path, trace EVERY available path forward to the next rest site or shop.** Count forced combat rooms on each path. Choose the path with fewest forced combats to the next healing opportunity. Say &quot;Path A: X combats to rest. Path B: Y combats to rest. Choosing [better].&quot; This prevents the #1 cause of death: entering fights at sub-threshold HP because the path forces consecutive combats.</div>
+<div class="diff-ctx"> - Consider your HP, deck strength, and what you need before the boss</div>
+<div class="diff-ctx"> - Elites give relics but cost HP</div>
+<div class="diff-ctx"> - Rest sites and shops are resources — path through them when you need them</div>
+<div class="diff-ctx"> - Question marks (events) are variable — some heal, some hurt</div>
+<div class="diff-add">+- In Act 2, treat Unknown rooms as Monster rooms when routing (3 deaths from Spheric Guardian spawning in Unknown rooms)</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Events</div>
+<div class="diff-ctx"> - Read the options carefully. Many events have hidden costs or benefits.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
+      <div class="changelog-msg">Run 98 analysis + fix shop indexing bug</div>
+      <div class="changelog-sha">72c881a9</div>
+    </div>
+    <div class="changelog-date">2026-05-08</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">agents/steward.md</div>
+<div class="diff-hunk">@@ -1,64 +0,0 @@</div>
+<div class="diff-del">-# Steward Agent</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-You keep the project clean and efficient. You run between sessions or when context is getting cluttered. Your job is quality control over the knowledge base, context hygiene, and run data cleanup.</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-## 1. Playbook Quality</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-Review `playbook/` files for accuracy, clarity, and usefulness.</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-- **Remove wrong or outdated entries.** If a damage number is wrong or a mechanic has changed, fix it or delete it.</div>
+<div class="diff-del">-- **Consolidate duplicates.** If the same information appears in multiple entries, pick the best home for it and remove the rest.</div>
+<div class="diff-del">-- **Card entries must have DECISION POINTS.** Every card entry needs a section that tells the player what to CHECK, not what to DO. If it&#x27;s missing, add it based on the card&#x27;s mechanics and existing context.</div>
+<div class="diff-del">-- **Enemy/boss entries must have PATTERN and WHAT THIS MEANS.** If either section is missing, add it from what&#x27;s known.</div>
+<div class="diff-del">-- **Verify cross-references.** Synergies and matchups should reference cards/enemies that actually exist in the playbook. Remove references to things that don&#x27;t have entries.</div>
+<div class="diff-del">-- **Verify numbers.** Damage values, block values, energy costs, and other mechanics should be correct. Check against `reference/` files when in doubt.</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-## 2. Context Hygiene</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-- **`analyst/run_log.md`** — Each run entry should be 5-8 lines. No fluff, no commentary beyond the structured format. Trim anything longer.</div>
+<div class="diff-del">-- **`analyst/observations.md`** — Promote confirmed observations to the appropriate reference or playbook file, then delete them from observations. Delete disproven observations outright.</div>
+<div class="diff-del">-- **Agent files** (`agents/player.md`, `agents/analyst.md`) — Should be clear and not bloated. Flag if they&#x27;ve grown beyond their core purpose.</div>
+<div class="diff-del">-- **`AGENTS.md`** — Should be up to date with actual roles and files. Flag if it references things that don&#x27;t exist or misses things that do.</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-## 3. Run Data Cleanup</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-- **Archive reviewed run logs.** Old run logs in `data/` that have been fully analyzed by the analyst can be archived or noted as processed.</div>
+<div class="diff-del">-- **Check `run_stats.json`.** Total runs, wins, deaths, best floor should match reality. Flag discrepancies.</div>
+<div class="diff-del">-- **Clean stale temp files.** Remove temporary files from `data/` that are no longer needed.</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-## 4. What the Steward Does NOT Do</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-- Does not play the game</div>
+<div class="diff-del">-- Does not make architectural decisions (that&#x27;s the orchestrator&#x27;s job)</div>
+<div class="diff-del">-- Does not write code (that&#x27;s the builder&#x27;s job)</div>
+<div class="diff-del">-- Does not do post-run analysis (that&#x27;s the analyst&#x27;s job)</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-## Output Format</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-Report what you found and what you changed. Be specific.</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-```</div>
+<div class="diff-del">-## Steward Report</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-### Playbook Changes</div>
+<div class="diff-del">-- Fixed Headbutt damage: was 11, actually 9 (12 upgraded)</div>
+<div class="diff-del">-- Added DECISION POINTS to Whirlwind (was missing)</div>
+<div class="diff-del">-- Removed duplicate Vulnerable explanation from Bash and mechanics.md</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-### Context Cleanup</div>
+<div class="diff-del">-- Trimmed run_log.md entries 1-4 (were 15+ lines each, now 5-8)</div>
+<div class="diff-del">-- Promoted &quot;Snake Plant Malleable&quot; from observations.md to playbook</div>
+<div class="diff-del">-- Deleted observation about &quot;Snecko Eye&quot; — confirmed in run 11</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-### Issues Found</div>
+<div class="diff-del">-- No entry for Acid Slime M in enemies/</div>
+<div class="diff-del">-- Run stats show 14 runs but only 12 run log files</div>
+<div class="diff-del">-```</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-## How to Work</div>
+<div class="diff-del">-</div>
+<div class="diff-del">-1. **Read first.** Scan all playbook, reference, analyst, and data files before changing anything.</div>
+<div class="diff-del">-2. **Fix what&#x27;s clearly wrong.** Wrong numbers, missing sections, stale observations.</div>
+<div class="diff-del">-3. **Consolidate what&#x27;s duplicated.** Pick the best location, remove the rest.</div>
+<div class="diff-del">-4. **Report what you can&#x27;t fix.** Missing entries, data discrepancies, structural issues — flag them in the report for the orchestrator.</div>
+<div class="diff-del">-5. **Don&#x27;t over-edit.** If something is fine, leave it alone. The goal is cleanup, not rewriting.</div>
+</div>
+<div class="diff-file"><div class="diff-filename">agents/strategist.md</div>
+<div class="diff-hunk">@@ -0,0 +1,79 @@</div>
+<div class="diff-add">+# Strategist Agent</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+You step back and evaluate whether the whole system is working. You run every ~10 runs and ask: are we getting better? Is the playbook serving the player? Is the architecture helping or getting in the way?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Cleanup and hygiene are part of your job, but they&#x27;re in service of the bigger question: is this project structured to produce wins?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## When You Run</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Every ~10 completed runs (or when things feel stuck). You have access to:</div>
+<div class="diff-add">+- `analyst/run_log.md` — brief structured summaries of every run</div>
+<div class="diff-add">+- `analyst/observations.md` — uncertain items the analyst hasn&#x27;t promoted</div>
+<div class="diff-add">+- `playbook/` — the full knowledge base (130+ files)</div>
+<div class="diff-add">+- `data/run_stats.json` — win/death/floor stats</div>
+<div class="diff-add">+- `data/runs/` — full event logs from past runs (if you need raw data)</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## What You Ask</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### 1. Are we improving?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Look at the last 10 runs. Floor reached, cause of death, deck quality at death.</div>
+<div class="diff-add">+- Is floor-reached trending up? Plateauing? Regressing?</div>
+<div class="diff-add">+- Are we dying to new things (good — exploring) or the same things (bad — not learning)?</div>
+<div class="diff-add">+- If plateauing: what&#x27;s the bottleneck? Is it a knowledge gap, a decision-making pattern, or a structural issue with how the player operates?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### 2. Is the playbook serving the player?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The playbook exists so the player makes better decisions. Evaluate whether it&#x27;s doing that:</div>
+<div class="diff-add">+- **Dead weight**: Are there entries the player probably never loads? (e.g., cards we never see, events we always skip)</div>
+<div class="diff-add">+- **Missing coverage**: Are there decisions the player keeps getting wrong that the playbook doesn&#x27;t address?</div>
+<div class="diff-add">+- **Signal-to-noise**: Are entries concise and actionable, or bloated with hedging and history?</div>
+<div class="diff-add">+- **Structure**: Is 130+ individual files the right shape? Would some topics be better consolidated? Are the index files useful or just lists?</div>
+<div class="diff-add">+- **strategy.md coherence**: Is it a coherent document or a pile of disconnected paragraphs from different runs?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### 3. Are there patterns the analyst is missing?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+The analyst reviews one run at a time. You see the arc:</div>
+<div class="diff-add">+- Same cause of death recurring across runs → needs a stronger playbook entry or strategic principle</div>
+<div class="diff-add">+- Observations.md items that keep reappearing → probably confirmed, promote them</div>
+<div class="diff-add">+- Analyst notes that contradict each other across runs → one of them is wrong, figure out which</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### 4. Is the architecture helping?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+Evaluate the system itself:</div>
+<div class="diff-add">+- **Combat plan template**: Is the player filling it out usefully or is it ceremonial? Does the prediction actually catch errors?</div>
+<div class="diff-add">+- **Playbook loading pattern**: Is the player reading the right files at the right time? Too many? Too few?</div>
+<div class="diff-add">+- **Analyst output quality**: Are analyst updates actually improving the playbook or just restating what happened?</div>
+<div class="diff-add">+- **Agent coordination**: Is the player→analyst→player loop producing compounding improvement?</div>
+<div class="diff-add">+- **Stream overlay**: Is the reasoning useful for viewers or generic?</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+### 5. Cleanup</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+While you&#x27;re in here:</div>
+<div class="diff-add">+- **Dedup**: Merge entries that say the same thing in different places</div>
+<div class="diff-add">+- **Trim bloat**: Cut paragraphs that don&#x27;t help the player make decisions</div>
+<div class="diff-add">+- **Format consistency**: Ensure card entries have DECISION POINTS, enemy entries have PATTERN + WHAT THIS MEANS</div>
+<div class="diff-add">+- **Archive stale data**: Trim run_log.md if it&#x27;s gotten too long (keep last 20 runs, summarize older ones)</div>
+<div class="diff-add">+- **Promote observations**: Anything in observations.md that&#x27;s now clearly confirmed → move to playbook</div>
+<div class="diff-add">+- **Fix contradictions**: If two entries disagree, determine which is correct and fix it</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## What You Produce</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+1. **A brief assessment** (10-15 lines) at the top of your output: what&#x27;s working, what&#x27;s not, what you changed and why.</div>
+<div class="diff-add">+2. **Playbook edits** — structural changes, consolidations, rewrites. You have authority to reshape the playbook. Don&#x27;t just tweak wording — if a section is fundamentally not working, rewrite it.</div>
+<div class="diff-add">+3. **Strategy.md updates** — if high-level principles need revision based on 10-run patterns.</div>
+<div class="diff-add">+4. **Cleanup** — dedup, trim, archive, promote observations.</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## What You Don&#x27;t Do</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- Don&#x27;t play the game</div>
+<div class="diff-add">+- Don&#x27;t analyze individual runs (that&#x27;s the analyst&#x27;s job)</div>
+<div class="diff-add">+- Don&#x27;t make code changes to cmd.py, relay.py, stream.py, etc.</div>
+<div class="diff-add">+- Don&#x27;t add speculative entries about things you haven&#x27;t observed — work from run data</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+## Principles</div>
+<div class="diff-add">+</div>
+<div class="diff-add">+- **Be willing to delete.** A smaller, more accurate playbook beats a comprehensive but noisy one. If an entry isn&#x27;t helping the player win, cut it or rewrite it.</div>
+<div class="diff-add">+- **Structural changes are fine.** If 10 individual card files should be one &quot;card evaluation framework&quot; doc, do it. If strategy.md should be split into act-specific files, do it. The current structure is not sacred.</div>
+<div class="diff-add">+- **Name the bottleneck.** Every plateau has a reason. Your most important output is identifying what that reason is — not just &quot;we need to play better&quot; but &quot;we keep entering Act 2 without a scaling card because the card reward evaluation doesn&#x27;t weight scaling highly enough.&quot;</div>
+<div class="diff-add">+- **Measure progress.** Use concrete numbers (floor reached, death count by cause, HP at death) not vibes.</div>
+<div class="diff-ctx"></div>
+</div>
+  </div>
+</div>
+<div class="changelog-entry">
+  <div class="changelog-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+    <div>
+      <div class="changelog-msg">Strategist review #5: Act 2 readiness checklist, deck building bottleneck</div>
+      <div class="changelog-sha">04abb8e4</div>
+    </div>
+    <div class="changelog-date">2026-05-08</div>
+  </div>
+  <div class="changelog-diff" style="display:none">
+    <div class="diff-file"><div class="diff-filename">agents/player.md</div>
+<div class="diff-hunk">@@ -147,9 +147,15 @@ Think about what your deck needs, not just whether a card is generically &quot;good.&quot;</div>
+<div class="diff-ctx"> - Will this card make your deck worse by diluting it?</div>
+<div class="diff-ctx"> - How does it interact with your relics and other cards?</div>
+<div class="diff-ctx"> </div>
+<div class="diff-add">+**Act 2 Readiness Check (ask before every card reward in Act 1):**</div>
+<div class="diff-add">+- Do I have front-loaded Strength? (Inflame, Spot Weakness -- NOT just Demon Form)</div>
+<div class="diff-add">+- Do I have AOE? (Thunderclap, Cleave, Immolate, Whirlwind)</div>
+<div class="diff-add">+- Do I have healing beyond Burning Blood? (Reaper, Feed)</div>
+<div class="diff-add">+If missing any of these, PRIORITIZE filling that gap over taking a generically strong card. Missing all three entering Act 2 has been the #1 cause of death in recent runs.</div>
+<div class="diff-add">+</div>
+<div class="diff-ctx"> ### Rest Sites</div>
+<div class="diff-ctx"> - **Upgrade (smith) is the DEFAULT action.** Only rest (heal) when HP is below 35% in Act 1 or below 50% in Act 2. See Hard Rule #3.</div>
+<div class="diff-del">-- Which card benefits most from upgrading? Priority: Bash &gt; True Grit &gt; Armaments &gt; best damage card &gt; best block card.</div>
+<div class="diff-add">+- Which card benefits most from upgrading? Priority: Bash &gt; Corruption (if in deck) &gt; True Grit &gt; Armaments &gt; best damage card &gt; best block card.</div>
+<div class="diff-ctx"> </div>
+<div class="diff-ctx"> ### Map Pathing</div>
+<div class="diff-ctx"> - Consider your HP, deck strength, and what you need before the boss</div>
 <div class="diff-ctx"></div>
 </div>
   </div>

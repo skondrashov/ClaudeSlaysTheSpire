@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,22 +384,21 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="active">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge heuristics">heuristics</span>
-<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><h1 id="exhaust-strategy">Exhaust Strategy</h1>
+<span class="section-badge heuristics">heuristics &middot; Slay the Spire</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Slay the Spire</a></div><h1 id="exhaust-strategy">Exhaust Strategy</h1>
 
 <ul>
 <li><strong>Before Exhausting, Ask</strong>: (1) Can remaining deck survive the enemy&#x27;s biggest attack? (2) Is the card truly expendable? (3) Am I in first half (thin=good) or second half (thin=fatal)?</li>
-<li><strong>Random Exhaust Is Run-Ending</strong>: Unupgraded <a href="ontology-cards-true-grit.html" class="wiki-link">True Grit</a> and Havoc both cause random exhaust. Rule: Never play Havoc or unupgraded True Grit when deck contains irreplaceable cards. Upgrade True Grit IMMEDIATELY if taken.</li>
-<li><strong>Safe Exhaust Targets</strong>: Strikes (once better attacks exist), extra Defends, status cards (<a href="ontology-cards-slimed.html" class="wiki-link">Slimed</a>, Wound, Burn, <a href="ontology-cards-dazed.html" class="wiki-link">Dazed</a>).</li>
-<li><strong>Never Exhaust</strong>: Last copy of best damage card, last high-block card, core combo pieces (<a href="ontology-cards-bash.html" class="wiki-link">Bash</a> when Vuln matters), synergy engines (<a href="ontology-cards-fire-breathing.html" class="wiki-link">Fire Breathing</a> when <a href="ontology-cards-immolate.html" class="wiki-link">Immolate</a> is in deck).</li>
+<li><strong>Random Exhaust Is Run-Ending</strong>: Unupgraded <a href="ontology-sts1-cards-true-grit.html" class="wiki-link">True Grit</a> and Havoc both cause random exhaust. Rule: Never play Havoc or unupgraded True Grit when deck contains irreplaceable cards. Upgrade True Grit IMMEDIATELY if taken.</li>
+<li><strong>Safe Exhaust Targets</strong>: Strikes (once better attacks exist), extra Defends, status cards (<a href="ontology-sts1-cards-slimed.html" class="wiki-link">Slimed</a>, Wound, Burn, <a href="ontology-sts1-cards-dazed.html" class="wiki-link">Dazed</a>).</li>
+<li><strong>Never Exhaust</strong>: Last copy of best damage card, last high-block card, core combo pieces (<a href="ontology-sts1-cards-bash.html" class="wiki-link">Bash</a> when Vuln matters), synergy engines (<a href="ontology-sts1-cards-fire-breathing.html" class="wiki-link">Fire Breathing</a> when <a href="ontology-sts1-cards-immolate.html" class="wiki-link">Immolate</a> is in deck).</li>
 <li><strong>The Long Fight Problem</strong>: Exhaust cards front-load power into first 5 turns. After that, deck plays like starter. Against scaling enemies, first 5 turns aren&#x27;t enough. If 30%+ of deck exhausts/is Ethereal, must win in 5-6 turns.</li>
-<li><strong><a href="ontology-cards-fiend-fire.html" class="wiki-link">Fiend Fire</a> + <a href="ontology-relics-unceasing-top.html" class="wiki-link">Unceasing Top</a> Engine</strong>: Exception to long fight problem. After Fiend Fire exhausts hand, Top draws a card. Cycles through draw pile in one mega-turn. With energy from <a href="ontology-cards-bloodletting.html" class="wiki-link">Bloodletting</a>/<a href="ontology-cards-offering.html" class="wiki-link">Offering</a>, deals 50-100+ damage. Strongest combo observed for <a href="ontology-characters-ironclad.html" class="wiki-link">Ironclad</a>.</li>
-<li><strong>Boss Exhaust Trap</strong>: Mass exhaust (Fiend Fire, <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a>) permanently destroys cards. This is dangerous in two scenarios:</li>
-<li><strong>Phased bosses (<a href="ontology-bosses-the-champ.html" class="wiki-link">The Champ</a>, <a href="ontology-bosses-awakened-one.html" class="wiki-link">Awakened One</a>):</strong> Phase transitions cleanse debuffs. Debuffs exhausted by Fiend Fire in Phase 1 are gone forever — cannot be re-applied in Phase 2.</li>
-<li><strong>Long fights (<a href="ontology-bosses-time-eater.html" class="wiki-link">Time Eater</a>, any 10+ turn fight):</strong> Cards exhausted early are gone for the remaining 8-10 turns. Emergency tools (<a href="ontology-cards-dark-shackles.html" class="wiki-link">Dark Shackles</a> -15 Str, <a href="ontology-cards-intimidate.html" class="wiki-link">Intimidate</a> <a href="ontology-debuffs-weak.html" class="wiki-link">Weak</a>, block cards) that seem redundant on Turn 2 become the difference between life and death when the enemy has +4-6 Str by Turn 10. Before mass-exhausting, separate every card in hand into &quot;truly expendable&quot; (Strikes, status, duplicates) and &quot;needed later&quot; (debuffs, emergency defense, block). Only mass-exhaust when hand contains NO category-2 cards.</li>
+<li><strong><a href="ontology-sts1-cards-fiend-fire.html" class="wiki-link">Fiend Fire</a> + <a href="ontology-sts1-relics-unceasing-top.html" class="wiki-link">Unceasing Top</a> Engine</strong>: Exception to long fight problem. After Fiend Fire exhausts hand, Top draws a card. Cycles through draw pile in one mega-turn. With energy from <a href="ontology-sts1-cards-bloodletting.html" class="wiki-link">Bloodletting</a>/<a href="ontology-sts1-cards-offering.html" class="wiki-link">Offering</a>, deals 50-100+ damage. Strongest combo observed for <a href="ontology-sts1-characters-ironclad.html" class="wiki-link">Ironclad</a>.</li>
+<li><strong>Boss Exhaust Trap</strong>: Mass exhaust (Fiend Fire, <a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a>) permanently destroys cards. This is dangerous in two scenarios:</li>
+<li><strong>Phased bosses (<a href="ontology-sts1-bosses-the-champ.html" class="wiki-link">The Champ</a>, <a href="ontology-sts1-bosses-awakened-one.html" class="wiki-link">Awakened One</a>):</strong> Phase transitions cleanse debuffs. Debuffs exhausted by Fiend Fire in Phase 1 are gone forever — cannot be re-applied in Phase 2.</li>
+<li><strong>Long fights (<a href="ontology-sts1-bosses-time-eater.html" class="wiki-link">Time Eater</a>, any 10+ turn fight):</strong> Cards exhausted early are gone for the remaining 8-10 turns. Emergency tools (<a href="ontology-sts1-cards-dark-shackles.html" class="wiki-link">Dark Shackles</a> -15 Str, <a href="ontology-sts1-cards-intimidate.html" class="wiki-link">Intimidate</a> <a href="ontology-sts1-debuffs-weak.html" class="wiki-link">Weak</a>, block cards) that seem redundant on Turn 2 become the difference between life and death when the enemy has +4-6 Str by Turn 10. Before mass-exhausting, separate every card in hand into &quot;truly expendable&quot; (Strikes, status, duplicates) and &quot;needed later&quot; (debuffs, emergency defense, block). Only mass-exhaust when hand contains NO category-2 cards.</li>
 </ul>
 
 <footer>

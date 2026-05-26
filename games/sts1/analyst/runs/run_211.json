@@ -1,0 +1,7059 @@
+{
+  "run": 211,
+  "character": "WATCHER",
+  "ascension": 0,
+  "victory": false,
+  "floor": 8,
+  "deck": [
+    "Strike",
+    "Strike",
+    "Strike",
+    "Defend",
+    "Defend",
+    "Defend",
+    "Defend",
+    "Eruption",
+    "Vigilance",
+    "Wheel Kick",
+    "Simmering Fury",
+    "Foresight",
+    "Wreath of Flame"
+  ],
+  "relics": [
+    "Pure Water",
+    "Neow's Lament",
+    "Mercury Hourglass",
+    "Blood Vial"
+  ],
+  "potions": [
+    "Potion Slot",
+    "Potion Slot",
+    "Potion Slot"
+  ],
+  "gold": 137,
+  "hp": 0,
+  "max_hp": 72,
+  "seed": -4174667120552523376,
+  "events": [
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Dismiss game over"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "start WATCHER",
+      "translated": "Start \u2014 WATCHER",
+      "reasoning": "Starting WATCHER A0"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Talk]",
+      "reasoning": "Talk to Neow"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Option 1: 3 free fights (1 HP enemies). Massive early advantage - free card rewards, gold, potions with no HP cost. Best start for snowballing."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Option 1: 3 free fights (1 HP enemies). Massive early advantage - free card rewards, gold, potions with no HP cost. Best start for snowballing."
+    },
+    {
+      "type": "decision",
+      "command": "choose 1",
+      "translated": "[ Enemies in your next three combats have 1 HP ]",
+      "reasoning": "Enemies in next 3 combats have 1 HP - free rewards!"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Leave]",
+      "reasoning": "Leave Neow"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "New run with Neow Lament (3 free fights). Take right-side path for monsters. Route: F1 Monster(x=6) -> F2 Monster(x=6) -> F3+ path toward rest/elite."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "New run with Neow Lament (3 free fights). Take right-side path for monsters. Route: F1 Monster(x=6) -> F2 Monster(x=6) -> F3+ path toward rest/elite."
+    },
+    {
+      "type": "decision",
+      "command": "choose 3",
+      "translated": "\u2192 Monster",
+      "reasoning": "Monster(x=6) - start getting free rewards"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Defend",
+          "Strike",
+          "Defend",
+          "Vigilance",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Jaw Worm",
+            "hp": 1,
+            "intent": "DEBUG"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 3 0",
+      "translated": "Strike \u2192 Jaw Worm",
+      "reasoning": "Strike kills 1 HP Jaw Worm"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 99,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Stance Potion",
+      "reasoning": "Take Stance Potion"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 110,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 110,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 2",
+      "translated": "Take Wheel Kick",
+      "reasoning": "Wheel Kick - 15 damage + draw 1, strong attack"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 110,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "To map"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 1,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 110,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Monster",
+      "reasoning": "Monster - free fight #2"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 110,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Wheel Kick",
+          "Vigilance",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Acid Slime (S)",
+            "hp": 1,
+            "intent": "DEBUG"
+          },
+          {
+            "name": "Spike Slime (M)",
+            "hp": 1,
+            "intent": "DEBUG"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 2 0",
+      "translated": "Strike \u2192 Acid Slime (S)",
+      "reasoning": "Strike kills Acid Slime"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 110,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Miracle",
+          "Wheel Kick",
+          "Vigilance",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Spike Slime (M)",
+            "hp": 1,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 2 1",
+      "translated": "Wheel Kick \u2192 Spike Slime (M)",
+      "reasoning": "Strike kills Spike Slime"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 110,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Simmering Fury: delayed Wrath entry + 2 cards next turn. Perfect for setup -> burst paradigm. Replaces needing Eruption for Wrath entry."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Simmering Fury: delayed Wrath entry + 2 cards next turn. Perfect for setup -> burst paradigm. Replaces needing Eruption for Wrath entry."
+    },
+    {
+      "type": "decision",
+      "command": "choose 1",
+      "translated": "Take Simmering Fury",
+      "reasoning": "Simmering Fury - delayed Wrath + draw 2, great for burst engine"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "To map"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 2,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Unknown",
+      "reasoning": "Unknown - event or last free fight"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 72,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Reach Inside] Lose 3 HP. 25%: Find a Relic.",
+      "reasoning": "Reach inside - 25% relic for 3 HP at 72 HP"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 69,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Deeper] Lose 4 HP. 35%: Find a Relic.",
+      "reasoning": "35% relic for 4 HP - still very positive EV"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 65,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Scrap Ooze: 45% chance for relic at cost of 5 HP. At 65/72 HP with Neow Lament still giving 1 free fight. 5 HP is cheap for a potential relic. Going deeper."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Scrap Ooze: 45% chance for relic at cost of 5 HP. At 65/72 HP with Neow Lament still giving 1 free fight. 5 HP is cheap for a potential relic. Going deeper."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Deeper] Lose 5 HP. 45%: Find a Relic.",
+      "reasoning": "45% relic chance for only 5 HP is good EV at 90% health"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Mercury Hourglass acquired! 3 passive damage to all enemies each turn. Great for multi-enemy fights and chip damage."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Mercury Hourglass acquired! 3 passive damage to all enemies each turn. Great for multi-enemy fights and chip damage."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Leave]",
+      "reasoning": "Leave event with relic"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 3,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Route planning from F3 (x=5): Options are Monster(x=4) or Unknown(x=6). I still have 1 Neow Lament charge = free fight. Taking Monster(x=4) uses that free fight. From F4 Monster(x=4) goes to F5 Unknown(x=4). From F5 Unknown(x=4) goes to F6 Elite(x=3)/Monster(x=4)/Unknown(x=5). I want an elite for relic. Route: Monster(x=4)>Unknown(x=4)>Elite(x=3). Alternative: Unknown(x=6) at F4 goes to F5 Unknown(x=5)/Monster(x=6). Less favorable. Taking Monster to use Neow Lament."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Route planning from F3 (x=5): Options are Monster(x=4) or Unknown(x=6). I still have 1 Neow Lament charge = free fight. Taking Monster(x=4) uses that free fight. From F4 Monster(x=4) goes to F5 Unknown(x=4). From F5 Unknown(x=4) goes to F6 Elite(x=3)/Monster(x=4)/Unknown(x=5). I want an elite for relic. Route: Monster(x=4)>Unknown(x=4)>Elite(x=3). Alternative: Unknown(x=6) at F4 goes to F5 Unknown(x=5)/Monster(x=6). Less favorable. Taking Monster to use Neow Lament."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Monster",
+      "reasoning": "Monster at x=4 uses last Neow Lament charge for free fight + card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 126,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 141,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Card options: Evaluate (1E, 6 block + Scry 1), Nirvana (1E power, gain 3 block per Scry), Foresight (1E power, Scry 3 at start of each turn). Foresight is excellent card selection that thins our deck effectively. Nirvana needs Scry synergy - we have Wheel Kick (Scry 2) but not enough yet. Evaluate is just a worse Defend. Taking Foresight for consistent deck manipulation."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Card options: Evaluate (1E, 6 block + Scry 1), Nirvana (1E power, gain 3 block per Scry), Foresight (1E power, Scry 3 at start of each turn). Foresight is excellent card selection that thins our deck effectively. Nirvana needs Scry synergy - we have Wheel Kick (Scry 2) but not enough yet. Evaluate is just a worse Defend. Taking Foresight for consistent deck manipulation."
+    },
+    {
+      "type": "decision",
+      "command": "choose 2",
+      "translated": "Take Foresight",
+      "reasoning": "Foresight gives Scry 3 each turn for excellent card selection"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 141,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Move to map"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 4,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 141,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Only one path: Unknown(x=4) at F5. From F5 Unknown(x=4) I can reach F6 Elite(x=3), Monster(x=4), or Unknown(x=5). I want to hit the Elite at F6 for a relic. Lets go."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Only one path: Unknown(x=4) at F5. From F5 Unknown(x=4) I can reach F6 Elite(x=3), Monster(x=4), or Unknown(x=5). I want to hit the Elite at F6 for a relic. Lets go."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Unknown",
+      "reasoning": "Only path available - Unknown at F5"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 141,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "The Cleric event! I have 141 gold and 60/72 HP. Purify costs 50g to remove a card - this is excellent for removing a Strike to thin the deck early. Healing is not needed at 83% HP. Removing a Strike is high value for Watcher to improve draw consistency."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "The Cleric event! I have 141 gold and 60/72 HP. Purify costs 50g to remove a card - this is excellent for removing a Strike to thin the deck early. Healing is not needed at 83% HP. Removing a Strike is high value for Watcher to improve draw consistency."
+    },
+    {
+      "type": "decision",
+      "command": "choose 1",
+      "translated": "[Purify] 50 Gold: Remove a card from your deck.",
+      "reasoning": "Purify to remove a Strike for 50g - high value deck thinning"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "GRID"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Remove Strike",
+      "reasoning": "Remove Strike to thin deck - Strikes are weakest cards"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "GRID"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "confirm",
+      "translated": "Confirm",
+      "reasoning": "Confirm Strike removal"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "[Leave]",
+      "reasoning": "Leave Cleric event"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 5,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "F6 options: Elite(x=3), Monster(x=4), Unknown(x=5). Elite at F6 gives relic + card. From Elite(x=3) at F6 goes to F7 Monster(x=2). From F7 Monster(x=2) goes to F8 Elite(x=3). Thats 2 elites back-to-back which could be rough. But with 60/72 HP and a 12-card lean deck plus Stance Potion, I can handle one elite. Going Elite for the relic, but I need to be careful about the second one. Alternatively, Monster(x=4) at F6 leads to F7 Monster(x=5) then F8 Monster(x=6) - safer but fewer relics. I will take the Elite - relics win runs."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "F6 options: Elite(x=3), Monster(x=4), Unknown(x=5). Elite at F6 gives relic + card. From Elite(x=3) at F6 goes to F7 Monster(x=2). From F7 Monster(x=2) goes to F8 Elite(x=3). Thats 2 elites back-to-back which could be rough. But with 60/72 HP and a 12-card lean deck plus Stance Potion, I can handle one elite. Going Elite for the relic, but I need to be careful about the second one. Alternatively, Monster(x=4) at F6 leads to F7 Monster(x=5) then F8 Monster(x=6) - safer but fewer relics. I will take the Elite - relics win runs."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Elite",
+      "reasoning": "Take Elite for relic - at 83% HP with lean deck, should be manageable"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Defend",
+          "Strike",
+          "Strike",
+          "Wheel Kick",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Lagavulin elite! 109 HP, Metallicize 8, sleeping for 3 turns. Strategy: DO NOT attack it - let it sleep while I set up powers. Use these 3 free turns to play Foresight and Simmering Fury. This turn: Defend twice to block nothing (its asleep), save Miracle. Actually, since it is sleeping, I dont need block. I should just end turn quickly each time until I draw my setup cards. Wait - if I dont attack, the intent is SLEEP, meaning no damage to me. So I can safely play anything except attacks targeted at it. Let me play Defends just to cycle cards, and end. Actually, I should think about what to set up. Foresight is in draw pile. Simmering Fury is in draw pile. I need to play through the deck to find them. Play Defend x2, end turn. Next turn I draw 5 more including likely Foresight/Simmering Fury."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Lagavulin elite! 109 HP, Metallicize 8, sleeping for 3 turns. Strategy: DO NOT attack it - let it sleep while I set up powers. Use these 3 free turns to play Foresight and Simmering Fury. This turn: Defend twice to block nothing (its asleep), save Miracle. Actually, since it is sleeping, I dont need block. I should just end turn quickly each time until I draw my setup cards. Wait - if I dont attack, the intent is SLEEP, meaning no damage to me. So I can safely play anything except attacks targeted at it. Let me play Defends just to cycle cards, and end. Actually, I should think about what to set up. Foresight is in draw pile. Simmering Fury is in draw pile. I need to play through the deck to find them. Play Defend x2, end turn. Next turn I draw 5 more including likely Foresight/Simmering Fury."
+    },
+    {
+      "type": "decision",
+      "command": "Defend; Defend",
+      "translated": "Defend \u2192 Defend",
+      "reasoning": "Block up while Lagavulin sleeps, save Miracle for later"
+    },
+    {
+      "type": "decision",
+      "command": "play 2",
+      "translated": "Defend",
+      "reasoning": "Play Defend"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 5,
+        "energy": 2,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Strike",
+          "Wheel Kick",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 5",
+      "translated": "Defend",
+      "reasoning": "Play second Defend (shifted from 6 to 5)"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 10,
+        "energy": 1,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Strike",
+          "Wheel Kick"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Eruption",
+          "Foresight",
+          "Simmering Fury",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Turn 2: Lagavulin still sleeping. Perfect! Play Foresight (1E) and Simmering Fury (1E) to set up. Foresight gives Scry 3 each turn. Simmering Fury gives Wrath + draw at start of next turn. Wait - Simmering Fury enters Wrath at start of NEXT turn. That means turn 3 I start in Wrath. But Lagavulin wakes turn 3 and hits hard (18 damage). Being in Wrath = take 36 damage. I need to exit Wrath immediately on turn 3 or have enough block. Actually let me check - does Lagavulin wake on turn 3 or after 3 turns of sleeping? It sleeps turns 1, 2, 3 and wakes turn 4. No wait - it has been sleeping 2 turns. Let me reconsider. Lagavulin sleeps for first 3 turns if you dont attack it. So it sleeps T1, T2, T3 and debuffs you T4. But Simmering Fury puts me in Wrath at start of T3 when its still sleeping. Then on T3 I can burst damage while in Wrath while its sleeping! Perfect. Play Foresight + Simmering Fury + Defend (3E total). Save Miracle for later."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Turn 2: Lagavulin still sleeping. Perfect! Play Foresight (1E) and Simmering Fury (1E) to set up. Foresight gives Scry 3 each turn. Simmering Fury gives Wrath + draw at start of next turn. Wait - Simmering Fury enters Wrath at start of NEXT turn. That means turn 3 I start in Wrath. But Lagavulin wakes turn 3 and hits hard (18 damage). Being in Wrath = take 36 damage. I need to exit Wrath immediately on turn 3 or have enough block. Actually let me check - does Lagavulin wake on turn 3 or after 3 turns of sleeping? It sleeps turns 1, 2, 3 and wakes turn 4. No wait - it has been sleeping 2 turns. Let me reconsider. Lagavulin sleeps for first 3 turns if you dont attack it. So it sleeps T1, T2, T3 and debuffs you T4. But Simmering Fury puts me in Wrath at start of T3 when its still sleeping. Then on T3 I can burst damage while in Wrath while its sleeping! Perfect. Play Foresight + Simmering Fury + Defend (3E total). Save Miracle for later."
+    },
+    {
+      "type": "decision",
+      "command": "play 4",
+      "translated": "Foresight",
+      "reasoning": "Play Foresight - Scry 3 each turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Eruption",
+          "Simmering Fury",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 4",
+      "translated": "Simmering Fury",
+      "reasoning": "Play Simmering Fury - enter Wrath next turn for burst"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 1,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Eruption",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 4",
+      "translated": "Defend",
+      "reasoning": "Play Defend for block"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 5,
+        "energy": 0,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Eruption"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "GRID",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "confirm",
+      "translated": "Confirm",
+      "reasoning": "Confirm Scry selection - keep all cards"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Vigilance",
+          "Defend",
+          "Eruption",
+          "Strike",
+          "Wheel Kick",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Turn 3: Lagavulin still sleeping! I have 8 cards, 3E. Simmering Fury should have put me in Wrath (2x damage). BUT WAIT - if I am in Wrath and attack Lagavulin, it WAKES UP. And being in Wrath means I take 2x damage from its attacks. I need to think carefully. If Lagavulin sleeps 3 turns and I am on turn 3, it will wake on turn 4 regardless. So attacking it turn 3 while in Wrath is FINE - it was going to wake up anyway. In Wrath: Eruption deals 9*2=18, Strike deals 6*2=12, Wheel Kick deals 11*2=22. But Eruption enters Wrath (already there). I need to exit Wrath before Lagavulin attacks. Best play: Eruption (2E, 9*2=18 damage vs sleeping target with 5 block = 13 net but attacking wakes it), then Miracle (0E, +1E), then Strike (1E, 6*2=12), then Vigilance (2E, enters Calm). Wait thats 2+0+1+2 = 5E but I only have 3+1(Miracle)=4E. Lets optimize: Miracle(0E, +1E)=4E total. Eruption(2E)=2E left. Strike(1E)=1E left. Then I need to exit Wrath. Vigilance costs 2E but I only have 1E. I could use Defend(1E) for block and stay in Wrath? NO - too dangerous. Hmm. Alternative: Strike(1E)+Strike(1E)+Miracle(0E,+1E)+Wheel Kick(2E) = 1+1+0+2=4E. Damage: 12+12+22=46 in Wrath, minus 5 block = 41 net. But I am still in Wrath. I need Vigilance to exit. Vigilance costs 2E. So: Miracle+Eruption(2E)+Vigilance(2E) = 4E. Or Miracle+Strike(1E)+Strike(1E)+Vigilance(2E) = 4E. Damage with 2 Strikes: 24. Damage with Eruption: 18. Hmm, 2 Strikes is better damage. But Eruption also enters Wrath (already there, no change). Actually wait - Eruption damage happens BEFORE entering Wrath, so if I am already in Wrath, does Eruption get the 2x? Let me check the summary note: Eruption deals damage BEFORE entering Wrath. So if already in Wrath, the damage IS doubled (because we are already in Wrath when the attack happens, just the stance change part is redundant). So Eruption = 18 damage in Wrath. Best line: Miracle(0E,+1E) -> Strike(1E, 12dmg) -> Strike(1E, 12dmg) -> Vigilance(2E, enter Calm, 8 block). Total: 4E, 24 damage in Wrath - 5 block = 19 net damage, end in Calm with 8 block. But actually wait - once I attack Lagavulin, it wakes up. It will attack on ITS next turn (which is after my turn 3). If it attacks for 18, I need block. 8 block from Vigilance is not enough. Hmm. Actually Lagavulin normally does 18 attack on its first awake turn. With 8 block I take 10. At 60 HP thats fine. Or play Defend too for 13 block total. Let me reconsider: Miracle(+1E) -> Eruption(2E, 18dmg, redundant Wrath) -> Defend(1E, 5block) -> Vigilance... no, 4E spent, 0 left. Or: Play attacks first, then exit. Miracle(0E), Eruption(2E, 18dmg), Strike(1E, 12dmg), then 1E left. I need Vigilance(2E) to exit Wrath but only 1E. Could use Stance Potion to enter Calm? That would work! Miracle(0E), Eruption(2E), Strike(1E), Stance Potion to Calm. Wait I have a Stance Potion. Actually best: just dump max damage and use Stance Potion to exit Wrath. Miracle(0E,+1E)=4E. Eruption(2E,18dmg)=2E. Strike(1E,12dmg)=1E. Strike(1E,12dmg)=0E. Stance Potion to Calm. Total damage: 42 in Wrath - 5 block = 37 net. Plus Mercury Hourglass 3 at start of turn. End in Calm with 0 block but safe. Then next turn I get +2E from leaving Calm. This is good!"
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Turn 3: Lagavulin still sleeping! I have 8 cards, 3E. Simmering Fury should have put me in Wrath (2x damage). BUT WAIT - if I am in Wrath and attack Lagavulin, it WAKES UP. And being in Wrath means I take 2x damage from its attacks. I need to think carefully. If Lagavulin sleeps 3 turns and I am on turn 3, it will wake on turn 4 regardless. So attacking it turn 3 while in Wrath is FINE - it was going to wake up anyway. In Wrath: Eruption deals 9*2=18, Strike deals 6*2=12, Wheel Kick deals 11*2=22. But Eruption enters Wrath (already there). I need to exit Wrath before Lagavulin attacks. Best play: Eruption (2E, 9*2=18 damage vs sleeping target with 5 block = 13 net but attacking wakes it), then Miracle (0E, +1E), then Strike (1E, 6*2=12), then Vigilance (2E, enters Calm). Wait thats 2+0+1+2 = 5E but I only have 3+1(Miracle)=4E. Lets optimize: Miracle(0E, +1E)=4E total. Eruption(2E)=2E left. Strike(1E)=1E left. Then I need to exit Wrath. Vigilance costs 2E but I only have 1E. I could use Defend(1E) for block and stay in Wrath? NO - too dangerous. Hmm. Alternative: Strike(1E)+Strike(1E)+Miracle(0E,+1E)+Wheel Kick(2E) = 1+1+0+2=4E. Damage: 12+12+22=46 in Wrath, minus 5 block = 41 net. But I am still in Wrath. I need Vigilance to exit. Vigilance costs 2E. So: Miracle+Eruption(2E)+Vigilance(2E) = 4E. Or Miracle+Strike(1E)+Strike(1E)+Vigilance(2E) = 4E. Damage with 2 Strikes: 24. Damage with Eruption: 18. Hmm, 2 Strikes is better damage. But Eruption also enters Wrath (already there, no change). Actually wait - Eruption damage happens BEFORE entering Wrath, so if I am already in Wrath, does Eruption get the 2x? Let me check the summary note: Eruption deals damage BEFORE entering Wrath. So if already in Wrath, the damage IS doubled (because we are already in Wrath when the attack happens, just the stance change part is redundant). So Eruption = 18 damage in Wrath. Best line: Miracle(0E,+1E) -> Strike(1E, 12dmg) -> Strike(1E, 12dmg) -> Vigilance(2E, enter Calm, 8 block). Total: 4E, 24 damage in Wrath - 5 block = 19 net damage, end in Calm with 8 block. But actually wait - once I attack Lagavulin, it wakes up. It will attack on ITS next turn (which is after my turn 3). If it attacks for 18, I need block. 8 block from Vigilance is not enough. Hmm. Actually Lagavulin normally does 18 attack on its first awake turn. With 8 block I take 10. At 60 HP thats fine. Or play Defend too for 13 block total. Let me reconsider: Miracle(+1E) -> Eruption(2E, 18dmg, redundant Wrath) -> Defend(1E, 5block) -> Vigilance... no, 4E spent, 0 left. Or: Play attacks first, then exit. Miracle(0E), Eruption(2E, 18dmg), Strike(1E, 12dmg), then 1E left. I need Vigilance(2E) to exit Wrath but only 1E. Could use Stance Potion to enter Calm? That would work! Miracle(0E), Eruption(2E), Strike(1E), Stance Potion to Calm. Wait I have a Stance Potion. Actually best: just dump max damage and use Stance Potion to exit Wrath. Miracle(0E,+1E)=4E. Eruption(2E,18dmg)=2E. Strike(1E,12dmg)=1E. Strike(1E,12dmg)=0E. Stance Potion to Calm. Total damage: 42 in Wrath - 5 block = 37 net. Plus Mercury Hourglass 3 at start of turn. End in Calm with 0 block but safe. Then next turn I get +2E from leaving Calm. This is good!"
+    },
+    {
+      "type": "decision",
+      "command": "play 1",
+      "translated": "Miracle",
+      "reasoning": "Play Miracle for +1E"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 4,
+        "hand": [
+          "Vigilance",
+          "Defend",
+          "Eruption",
+          "Strike",
+          "Wheel Kick",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 109,
+            "intent": "SLEEP"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 3",
+      "translated": "Eruption",
+      "reasoning": "Play Eruption on Lagavulin (index shifted) for 18 Wrath damage"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "play 3 0",
+      "translated": "play 3 0",
+      "reasoning": "Play Strike on Lagavulin for 12 Wrath damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Vigilance",
+          "Defend",
+          "Strike",
+          "Wheel Kick",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 96,
+            "intent": "STUN"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 3 0",
+      "translated": "Strike \u2192 Lagavulin",
+      "reasoning": "Play second Strike on Lagavulin for 12 Wrath damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 1,
+        "hand": [
+          "Vigilance",
+          "Defend",
+          "Wheel Kick",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 84,
+            "intent": "STUN"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Lagavulin is STUNNED (woke up, no attack this turn). 84 HP remaining. I did 25 damage (109-84=25). Hmm, that seems low for Wrath. Eruption(9*2=18-5block=13) + Strike(12-8metallicize=4?) Wait, Metallicize gives 8 block at end of its turn. So on turn 3, it had 5 starting block. My attacks: Eruption hit into 5 block, so 18-5=13. Then Strike 12-0=12. Then Strike 12-0=12. Total = 37? But only 25 dealt. Maybe I was NOT in Wrath. Simmering Fury might not have put me in Wrath. Let me check: Simmering Fury says at start of your next turn, enter Wrath. Maybe the scry from Foresight interrupted it. Or maybe it did fire and the Eruption overrode Wrath with... no Eruption enters Wrath which is redundant. Actually: 9+6+6=21 damage undoubled. 21 vs 5 block = 16 net? But we did 25 damage. 109-84=25. So: 9 (Eruption) vs 5 block = 4, then 6+6 = 12 unblocked = 16? No that doesnt add up either. Hmm, Mercury Hourglass does 3 at start of turn. So 3 + attacks. If undoubled: 3 + 9-5block + 6 + 6 = 3+4+12 = 19. Still not 25. If doubled: 3 + 18-5 + 12 + 12 = 3+13+24 = 40. Too much. Hmm. Maybe partial Wrath? Or Eruption was doubled (already in Wrath from Simmering) then Eruption re-enters Wrath (no stance change = no leaving/re-entering). 18-5=13 + 12 + 12 = 37. Minus Mercury 3 = 40. Way more than 25. I think I was NOT in Wrath. Simmering Fury might have the effect of entering Wrath at start of turn, but Foresight scry may have consumed the turn-start. Or maybe draw happens first. Regardless, 84 HP on Lagavulin stunned. 1E left. Strike 5 costs 1E, does 6 damage. Play it."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Lagavulin is STUNNED (woke up, no attack this turn). 84 HP remaining. I did 25 damage (109-84=25). Hmm, that seems low for Wrath. Eruption(9*2=18-5block=13) + Strike(12-8metallicize=4?) Wait, Metallicize gives 8 block at end of its turn. So on turn 3, it had 5 starting block. My attacks: Eruption hit into 5 block, so 18-5=13. Then Strike 12-0=12. Then Strike 12-0=12. Total = 37? But only 25 dealt. Maybe I was NOT in Wrath. Simmering Fury might not have put me in Wrath. Let me check: Simmering Fury says at start of your next turn, enter Wrath. Maybe the scry from Foresight interrupted it. Or maybe it did fire and the Eruption overrode Wrath with... no Eruption enters Wrath which is redundant. Actually: 9+6+6=21 damage undoubled. 21 vs 5 block = 16 net? But we did 25 damage. 109-84=25. So: 9 (Eruption) vs 5 block = 4, then 6+6 = 12 unblocked = 16? No that doesnt add up either. Hmm, Mercury Hourglass does 3 at start of turn. So 3 + attacks. If undoubled: 3 + 9-5block + 6 + 6 = 3+4+12 = 19. Still not 25. If doubled: 3 + 18-5 + 12 + 12 = 3+13+24 = 40. Too much. Hmm. Maybe partial Wrath? Or Eruption was doubled (already in Wrath from Simmering) then Eruption re-enters Wrath (no stance change = no leaving/re-entering). 18-5=13 + 12 + 12 = 37. Minus Mercury 3 = 40. Way more than 25. I think I was NOT in Wrath. Simmering Fury might have the effect of entering Wrath at start of turn, but Foresight scry may have consumed the turn-start. Or maybe draw happens first. Regardless, 84 HP on Lagavulin stunned. 1E left. Strike 5 costs 1E, does 6 damage. Play it."
+    },
+    {
+      "type": "decision",
+      "command": "play 5 0",
+      "translated": "Strike \u2192 Lagavulin",
+      "reasoning": "Strike Lagavulin while stunned for 6 more damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 0,
+        "hand": [
+          "Vigilance",
+          "Defend",
+          "Wheel Kick",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 72,
+            "intent": "STUN"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "GRID",
+        "block": 0,
+        "energy": 3,
+        "hand": [],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 69,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Scry 3 from Foresight. Draw pile has: 2x Defend, Simmering Fury, Strike. I see 3 of these 4. I want Defends to block the 36 incoming damage. Discard Strike/Simmering Fury to find Defends. Wait - I need to see what the Scry is showing. The GRID screen shows the top 3 cards from draw. Let me confirm to keep them or select ones to discard. Actually I cant see which cards are in the Scry. Let me just confirm to see."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Scry 3 from Foresight. Draw pile has: 2x Defend, Simmering Fury, Strike. I see 3 of these 4. I want Defends to block the 36 incoming damage. Discard Strike/Simmering Fury to find Defends. Wait - I need to see what the Scry is showing. The GRID screen shows the top 3 cards from draw. Let me confirm to keep them or select ones to discard. Actually I cant see which cards are in the Scry. Let me just confirm to see."
+    },
+    {
+      "type": "decision",
+      "command": "confirm",
+      "translated": "Confirm",
+      "reasoning": "Confirm Scry - need to see what draws I get"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Defend",
+          "Defend",
+          "Simmering Fury",
+          "Strike",
+          "Vigilance"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 69,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Turn 4: Lagavulin attacks for 36! With 3E, best block: Vigilance(2E,8blk,Calm) + Defend(1E,5blk) = 13 block. Take 23 damage -> 37 HP. Next turn I leave Calm for +2E = 5E total, big burst. OR I could use Stance Potion to enter Wrath, burst kill. Lagavulin 69 HP. In Wrath: Strike(6*2=12), Eruption next turn. Hmm I cant kill 69 HP in one turn without setup. Just block and grind. Actually wait - Simmering Fury(1E) + Defend(1E) + Defend(1E) = 10 block, take 26 damage -> 34HP, but next turn enter Wrath with +2 draws and 3E. Could burst then. Vs Vigilance+Defend = 13 block, take 23 -> 37HP, next turn 5E from Calm. 5E is great for burst. Going with Vigilance+Defend."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Turn 4: Lagavulin attacks for 36! With 3E, best block: Vigilance(2E,8blk,Calm) + Defend(1E,5blk) = 13 block. Take 23 damage -> 37 HP. Next turn I leave Calm for +2E = 5E total, big burst. OR I could use Stance Potion to enter Wrath, burst kill. Lagavulin 69 HP. In Wrath: Strike(6*2=12), Eruption next turn. Hmm I cant kill 69 HP in one turn without setup. Just block and grind. Actually wait - Simmering Fury(1E) + Defend(1E) + Defend(1E) = 10 block, take 26 damage -> 34HP, but next turn enter Wrath with +2 draws and 3E. Could burst then. Vs Vigilance+Defend = 13 block, take 23 -> 37HP, next turn 5E from Calm. 5E is great for burst. Going with Vigilance+Defend."
+    },
+    {
+      "type": "decision",
+      "command": "play 5",
+      "translated": "Vigilance",
+      "reasoning": "Vigilance for 8 block and enter Calm"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 8,
+        "energy": 1,
+        "hand": [
+          "Defend",
+          "Defend",
+          "Simmering Fury",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 69,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 1",
+      "translated": "Defend",
+      "reasoning": "Defend for 5 more block = 13 total vs 36 attack"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 60,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 13,
+        "energy": 0,
+        "hand": [
+          "Defend",
+          "Simmering Fury",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 69,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 55,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "GRID",
+        "block": 0,
+        "energy": 3,
+        "hand": [],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 66,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "confirm",
+      "translated": "Confirm",
+      "reasoning": "Confirm Foresight Scry"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 55,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Defend",
+          "Eruption",
+          "Wheel Kick",
+          "Strike",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 66,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Turn 5 burst plan: In Calm with 3E. Eruption(2E, 9dmg, leave Calm +2E = 3E in Wrath). Strike(1E, 12dmg). Strike(1E, 12dmg). 1E left, Defend(1E, 5blk). 0E. Use Stance Potion to enter Calm = safe from Wrath double damage. Total: 33 damage, 5 block, end in Calm. Take 18-5=13 -> 42 HP. Lagavulin goes to 33 HP. Actually wait, does Lagavulin have Metallicize 8? It showed no powers in recent state. It lost them when it woke up apparently. So no block gain. Good, 33 damage lands clean."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Turn 5 burst plan: In Calm with 3E. Eruption(2E, 9dmg, leave Calm +2E = 3E in Wrath). Strike(1E, 12dmg). Strike(1E, 12dmg). 1E left, Defend(1E, 5blk). 0E. Use Stance Potion to enter Calm = safe from Wrath double damage. Total: 33 damage, 5 block, end in Calm. Take 18-5=13 -> 42 HP. Lagavulin goes to 33 HP. Actually wait, does Lagavulin have Metallicize 8? It showed no powers in recent state. It lost them when it woke up apparently. So no block gain. Good, 33 damage lands clean."
+    },
+    {
+      "type": "decision",
+      "command": "play 2 0",
+      "translated": "Eruption \u2192 Lagavulin",
+      "reasoning": "Eruption on Lagavulin - leave Calm for +2E, 9 damage, enter Wrath"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 55,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Defend",
+          "Wheel Kick",
+          "Strike",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 57,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 3 0",
+      "translated": "Strike \u2192 Lagavulin",
+      "reasoning": "Strike in Wrath for 12 doubled damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 55,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Defend",
+          "Wheel Kick",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 45,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 2 0",
+      "translated": "Wheel Kick \u2192 Lagavulin",
+      "reasoning": "Second Strike in Wrath for 12 doubled damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 55,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 0,
+        "hand": [
+          "Defend",
+          "Strike",
+          "Defend",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 15,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 1",
+      "translated": "Defend",
+      "reasoning": "Defend for 5 block"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "potion use 0",
+      "translated": "Use Potion 0",
+      "reasoning": "Stance Potion to enter Calm, exit Wrath before taking damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 55,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "CARD_REWARD",
+        "block": 0,
+        "energy": 0,
+        "hand": [
+          "Defend",
+          "Strike",
+          "Defend",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 15,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Stance Potion is giving me a choice of stances. I need to enter Calm to avoid Wrath double damage on the 36 attack. Let me choose Calm."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Stance Potion is giving me a choice of stances. I need to enter Calm to avoid Wrath double damage on the 36 attack. Let me choose Calm."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Wrath",
+      "reasoning": "Select stance from potion - need Calm"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 55,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 0,
+        "hand": [
+          "Defend",
+          "Strike",
+          "Defend",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 15,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "End turn. Take 36 damage -> 19 HP. Next turn: 5E (3 base + 2 from Calm). Lagavulin at 15 HP. Eruption alone in Wrath does 9*2=18 which KILLS it from 15 HP! Easy kill next turn."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "End turn. Take 36 damage -> 19 HP. Next turn: 5E (3 base + 2 from Calm). Lagavulin at 15 HP. Eruption alone in Wrath does 9*2=18 which KILLS it from 15 HP! Easy kill next turn."
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 19,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "GRID",
+        "block": 0,
+        "energy": 3,
+        "hand": [],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 12,
+            "intent": "STRONG_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "confirm",
+      "translated": "Confirm",
+      "reasoning": "Confirm Scry quickly - need to kill Lagavulin"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 19,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Strike",
+          "Vigilance",
+          "Simmering Fury",
+          "Strike",
+          "Eruption"
+        ],
+        "enemies": [
+          {
+            "name": "Lagavulin",
+            "hp": 12,
+            "intent": "STRONG_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Kill shot! Lagavulin at 12 HP. Strike(6) + Strike(6) = 12 = exact kill. No need to enter Wrath."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Kill shot! Lagavulin at 12 HP. Strike(6) + Strike(6) = 12 = exact kill. No need to enter Wrath."
+    },
+    {
+      "type": "decision",
+      "command": "play 1 0",
+      "translated": "Strike \u2192 Lagavulin",
+      "reasoning": "Strike Lagavulin for 6 damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 19,
+        "max_hp": 72,
+        "gold": 91,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 1 0",
+      "translated": "play 1 0",
+      "reasoning": "Second Strike for lethal 6 damage"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Lagavulin killed! Blood Vial relic = heal 2 HP at start of each combat. Nice sustain. Taking relic first, then checking cards."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Lagavulin killed! Blood Vial relic = heal 2 HP at start of each combat. Nice sustain. Taking relic first, then checking cards."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Blood Vial",
+      "reasoning": "Take Blood Vial relic for sustain"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 19,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 19,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Card options: Bowling Bash (1E, 7 damage per enemy, scales in multi fights), Perseverance (1E, 5 block, Retain, +2 block each time played), Prostrate (0E, gain 2 block + 2 Mantra). Prostrate is 0-cost and gives Mantra. With Pray or other Mantra sources could reach Divinity. But standalone its weak - 2 block 2 Mantra. Perseverance has Retain and scales, nice for long fights. Bowling Bash is ok for hallway multi-fights. None of these are the key cards I want (Rushdown, Like Water, Wallop, etc). Skip to keep deck lean at 12 cards."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Card options: Bowling Bash (1E, 7 damage per enemy, scales in multi fights), Perseverance (1E, 5 block, Retain, +2 block each time played), Prostrate (0E, gain 2 block + 2 Mantra). Prostrate is 0-cost and gives Mantra. With Pray or other Mantra sources could reach Divinity. But standalone its weak - 2 block 2 Mantra. Perseverance has Retain and scales, nice for long fights. Bowling Bash is ok for hallway multi-fights. None of these are the key cards I want (Rushdown, Like Water, Wallop, etc). Skip to keep deck lean at 12 cards."
+    },
+    {
+      "type": "decision",
+      "command": "return",
+      "translated": "Skip",
+      "reasoning": "None of these cards are high-impact enough for the deck - staying lean"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 19,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Move to map"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 6,
+        "hp": 19,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Only one path: Monster at F7. At 19 HP this is rough. Blood Vial gives 2HP at combat start = 21 effective. I need to play tight - Calm for defense, burst in Wrath only when safe. Deck is 12 cards: 3 Strike, 4 Defend, Eruption, Vigilance, Wheel Kick, Simmering Fury, Foresight. With Foresight Scry and good play I can survive. Mercury Hourglass helps chip. Lets go."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Only one path: Monster at F7. At 19 HP this is rough. Blood Vial gives 2HP at combat start = 21 effective. I need to play tight - Calm for defense, burst in Wrath only when safe. Deck is 12 cards: 3 Strike, 4 Defend, Eruption, Vigilance, Wheel Kick, Simmering Fury, Foresight. With Foresight Scry and good play I can survive. Mercury Hourglass helps chip. Lets go."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Monster",
+      "reasoning": "Only path available"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 21,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Foresight",
+          "Defend",
+          "Defend",
+          "Eruption",
+          "Wheel Kick"
+        ],
+        "enemies": [
+          {
+            "name": "Sneaky Gremlin",
+            "hp": 8,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Mad Gremlin",
+            "hp": 20,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 11,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Gremlin gang at 21 HP. Kill Sneaky Gremlin first (9 damage threat, only 8 HP). Wheel Kick (2E, 11 dmg) kills it and gives Scry 2 + draw 1. Then Defend (1E) for 5 block. Remaining incoming: Mad(4) + Fat(4) = 8. Block 5, take 3 -> 18 HP. Save Foresight and Miracle for next turn."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Gremlin gang at 21 HP. Kill Sneaky Gremlin first (9 damage threat, only 8 HP). Wheel Kick (2E, 11 dmg) kills it and gives Scry 2 + draw 1. Then Defend (1E) for 5 block. Remaining incoming: Mad(4) + Fat(4) = 8. Block 5, take 3 -> 18 HP. Save Foresight and Miracle for next turn."
+    },
+    {
+      "type": "decision",
+      "command": "play 6 0",
+      "translated": "Wheel Kick \u2192 Sneaky Gremlin",
+      "reasoning": "Wheel Kick kills Sneaky Gremlin (11 > 8 HP) + Scry 2 + draw"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 21,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 1,
+        "hand": [
+          "Miracle",
+          "Foresight",
+          "Defend",
+          "Defend",
+          "Eruption",
+          "Strike",
+          "Vigilance"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 20,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 11,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Miracle for +1E, then double Defend for 10 block vs 8 incoming = take 0 damage. Stay at 21 HP."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Miracle for +1E, then double Defend for 10 block vs 8 incoming = take 0 damage. Stay at 21 HP."
+    },
+    {
+      "type": "decision",
+      "command": "play 1",
+      "translated": "Miracle",
+      "reasoning": "Miracle for +1E"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 21,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Foresight",
+          "Defend",
+          "Defend",
+          "Eruption",
+          "Strike",
+          "Vigilance"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 20,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 11,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 2",
+      "translated": "Defend",
+      "reasoning": "Defend for 5 block"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 21,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 5,
+        "energy": 1,
+        "hand": [
+          "Foresight",
+          "Defend",
+          "Eruption",
+          "Strike",
+          "Vigilance"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 20,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 11,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 2",
+      "translated": "Defend",
+      "reasoning": "Second Defend for 10 total block"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 21,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 10,
+        "energy": 0,
+        "hand": [
+          "Foresight",
+          "Eruption",
+          "Strike",
+          "Vigilance"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 20,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 11,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 21,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Defend",
+          "Strike",
+          "Simmering Fury",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 17,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 8,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Turn 2: Weak 1. Set up Simmering Fury for Wrath burst next turn. Double Defend for 10 block vs 8 incoming."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Turn 2: Weak 1. Set up Simmering Fury for Wrath burst next turn. Double Defend for 10 block vs 8 incoming."
+    },
+    {
+      "type": "decision",
+      "command": "play 3",
+      "translated": "Simmering Fury",
+      "reasoning": "Simmering Fury - Wrath + 2 draws next turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 21,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Defend",
+          "Strike",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 17,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 8,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 1",
+      "translated": "Defend",
+      "reasoning": "Defend for 5 block"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 21,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 5,
+        "energy": 1,
+        "hand": [
+          "Strike",
+          "Defend",
+          "Strike"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 17,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 8,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 1",
+      "translated": "Strike",
+      "reasoning": "Second Defend for 10 block total"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Foresight",
+          "Defend",
+          "Strike",
+          "Eruption",
+          "Vigilance",
+          "Strike",
+          "Simmering Fury"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 5,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "In Wrath from Simmering Fury. Incoming: Mad(8)+Fat(8)=16. In Wrath this is 32 = LETHAL. Must exit Wrath NOW. Vigilance(2E, 8 block, enter Calm) + Defend(1E, 5 block) = 13 block vs 16 = take 3 -> 15 HP. Next turn 5E from Calm for big burst. This is the safest line."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "In Wrath from Simmering Fury. Incoming: Mad(8)+Fat(8)=16. In Wrath this is 32 = LETHAL. Must exit Wrath NOW. Vigilance(2E, 8 block, enter Calm) + Defend(1E, 5 block) = 13 block vs 16 = take 3 -> 15 HP. Next turn 5E from Calm for big burst. This is the safest line."
+    },
+    {
+      "type": "decision",
+      "command": "play 5",
+      "translated": "Vigilance",
+      "reasoning": "Vigilance to exit Wrath -> Calm, 8 block"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 8,
+        "energy": 1,
+        "hand": [
+          "Foresight",
+          "Defend",
+          "Strike",
+          "Eruption",
+          "Strike",
+          "Simmering Fury"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 5,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 1",
+      "translated": "Foresight",
+      "reasoning": "Defend for 5 more block = 13 total"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 8,
+        "energy": 0,
+        "hand": [
+          "Defend",
+          "Strike",
+          "Eruption",
+          "Strike",
+          "Simmering Fury"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 5,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 13,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "GRID",
+        "block": 0,
+        "energy": 3,
+        "hand": [],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 2,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 10,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "confirm",
+      "translated": "Confirm",
+      "reasoning": "Confirm Foresight Scry"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Strike",
+          "Defend",
+          "Defend",
+          "Defend",
+          "Wheel Kick"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 2,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 10,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Turn 4: Calm with 3E. Weak. Shield 2HP, Fat 10HP, Mad 14HP/4blk. Plan: Wheel Kick Fat (2E, 8 dmg -> Fat at 2HP) + Defend (1E, 5 block). Take 8-5=3 -> 15HP. Mercury next turn does 3 to all: Shield dies (2-3), Fat dies (2-3), Mad at 14-3=11. Then I just need to kill Mad. Actually, lets go: Strike on Shield (1E, kills it for sure even with weak = 4 dmg vs 2 HP), Wheel Kick on Fat (2E, 8 dmg -> 2 HP). Take 4+4=8 -> 10 HP. Next turn Mercury kills Fat (2-3) and chips Mad (14-3=11). Hmm, taking 8 brings me to 10. Risky. Defend + Wheel Kick is safer: Defend(1E, 5blk) + Wheel Kick on Fat(2E, 8dmg). Take 8-5=3 -> 15HP. Mercury kills Shield(2-3) and Fat(2-3) next turn. Much safer!"
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Turn 4: Calm with 3E. Weak. Shield 2HP, Fat 10HP, Mad 14HP/4blk. Plan: Wheel Kick Fat (2E, 8 dmg -> Fat at 2HP) + Defend (1E, 5 block). Take 8-5=3 -> 15HP. Mercury next turn does 3 to all: Shield dies (2-3), Fat dies (2-3), Mad at 14-3=11. Then I just need to kill Mad. Actually, lets go: Strike on Shield (1E, kills it for sure even with weak = 4 dmg vs 2 HP), Wheel Kick on Fat (2E, 8 dmg -> 2 HP). Take 4+4=8 -> 10 HP. Next turn Mercury kills Fat (2-3) and chips Mad (14-3=11). Hmm, taking 8 brings me to 10. Risky. Defend + Wheel Kick is safer: Defend(1E, 5blk) + Wheel Kick on Fat(2E, 8dmg). Take 8-5=3 -> 15HP. Mercury kills Shield(2-3) and Fat(2-3) next turn. Much safer!"
+    },
+    {
+      "type": "decision",
+      "command": "play 2",
+      "translated": "Defend",
+      "reasoning": "Defend for 5 block"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 5,
+        "energy": 2,
+        "hand": [
+          "Strike",
+          "Defend",
+          "Defend",
+          "Wheel Kick"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 2,
+            "intent": "DEFEND"
+          },
+          {
+            "name": "Fat Gremlin",
+            "hp": 10,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 4 3",
+      "translated": "Wheel Kick \u2192 Fat Gremlin",
+      "reasoning": "Wheel Kick on Fat Gremlin for 8 damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 5,
+        "energy": 0,
+        "hand": [
+          "Strike",
+          "Defend",
+          "Defend",
+          "Strike",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          },
+          {
+            "name": "Shield Gremlin",
+            "hp": 2,
+            "intent": "DEFEND"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "GRID",
+        "block": 0,
+        "energy": 3,
+        "hand": [],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "confirm",
+      "translated": "Confirm",
+      "reasoning": "Confirm Scry"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Strike",
+          "Simmering Fury",
+          "Defend",
+          "Eruption",
+          "Vigilance"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 14,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Kill Mad Gremlin: Eruption(2E, leave Calm +2E, 9 dmg, enter Wrath) then Strike(1E, 12 dmg in Wrath). Total 21 damage vs 18 effective HP. Dead."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Kill Mad Gremlin: Eruption(2E, leave Calm +2E, 9 dmg, enter Wrath) then Strike(1E, 12 dmg in Wrath). Total 21 damage vs 18 effective HP. Dead."
+    },
+    {
+      "type": "decision",
+      "command": "play 4 1",
+      "translated": "Eruption \u2192 Mad Gremlin",
+      "reasoning": "Eruption on Mad Gremlin - leave Calm for +2E, 9 damage, enter Wrath"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Strike",
+          "Simmering Fury",
+          "Defend",
+          "Vigilance"
+        ],
+        "enemies": [
+          {
+            "name": "Mad Gremlin",
+            "hp": 9,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 1 1",
+      "translated": "Strike \u2192 Mad Gremlin",
+      "reasoning": "Strike in Wrath for 12 damage - lethal"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 125,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Weak Potion",
+      "reasoning": "Take Weak Potion - useful debuff for tough fights"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "Take Card Reward",
+      "reasoning": "View card reward"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "CARD_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Card options: Follow-Up (1E, 7 dmg, if last card was attack gain 1E), Crush Joints (1E, 8 dmg, if last card was skill apply Vuln 2), Wreath of Flame (1E skill, next attack deals +5 damage). Wreath of Flame is solid burst setup - makes Eruption or any attack hit harder. Follow-Up is energy efficient with attack chains. Crush Joints applies Vuln which is great. I think Wreath of Flame is the best pick - it pairs well with my burst strategy (play it before Eruption in Wrath for massive damage). But my deck is already lean at 12 cards... Wreath of Flame adds a card but the effect is powerful. Taking it."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Card options: Follow-Up (1E, 7 dmg, if last card was attack gain 1E), Crush Joints (1E, 8 dmg, if last card was skill apply Vuln 2), Wreath of Flame (1E skill, next attack deals +5 damage). Wreath of Flame is solid burst setup - makes Eruption or any attack hit harder. Follow-Up is energy efficient with attack chains. Crush Joints applies Vuln which is great. I think Wreath of Flame is the best pick - it pairs well with my burst strategy (play it before Eruption in Wrath for massive damage). But my deck is already lean at 12 cards... Wreath of Flame adds a card but the effect is powerful. Taking it."
+    },
+    {
+      "type": "decision",
+      "command": "choose 2",
+      "translated": "Take Wreath of Flame",
+      "reasoning": "Wreath of Flame - great burst setup for Wrath turns"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "COMBAT_REWARD"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "Move to map"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 7,
+        "hp": 18,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "MAP",
+        "map": [
+          {
+            "floor": 1,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 2,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 3,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  4,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 4,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "?",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 5,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 6,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 5,
+                "type": "?",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 7,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "E",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 8,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "E",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 9,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "T",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 3,
+                "type": "T",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "T",
+                "children": [
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "T",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 10,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "$",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 11,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "M",
+                "children": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 12,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "M",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  4
+                ]
+              },
+              {
+                "x": 5,
+                "type": "M",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 13,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  1
+                ]
+              },
+              {
+                "x": 4,
+                "type": "?",
+                "children": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "x": 6,
+                "type": "$",
+                "children": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 14,
+            "nodes": [
+              {
+                "x": 1,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 3,
+                "type": "?",
+                "children": [
+                  2
+                ]
+              },
+              {
+                "x": 5,
+                "type": "E",
+                "children": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "x": 6,
+                "type": "M",
+                "children": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "floor": 15,
+            "nodes": [
+              {
+                "x": 2,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 4,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              },
+              {
+                "x": 6,
+                "type": "R",
+                "children": [
+                  3
+                ]
+              }
+            ]
+          }
+        ],
+        "boss": "Hexaghost"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Another elite at 18 HP. Blood Vial gives 2 HP at combat start = 20 HP. I have Weak Potion to reduce enemy damage by 25%. Mercury Hourglass for 3 passive. Wreath of Flame + Eruption in Wrath for burst. This will be TIGHT. Hoping for Gremlin Nob (punishes skills) or a manageable elite. Lets go."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Another elite at 18 HP. Blood Vial gives 2 HP at combat start = 20 HP. I have Weak Potion to reduce enemy damage by 25%. Mercury Hourglass for 3 passive. Wreath of Flame + Eruption in Wrath for burst. This will be TIGHT. Hoping for Gremlin Nob (punishes skills) or a manageable elite. Lets go."
+    },
+    {
+      "type": "decision",
+      "command": "choose 0",
+      "translated": "\u2192 Elite",
+      "reasoning": "Only path available - must take the elite"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 20,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Defend",
+          "Strike",
+          "Defend",
+          "Strike",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 81,
+            "intent": "BUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Gremlin Nob at 81 HP. Buffing this turn (no damage). Attacks safe, skills trigger Enrage (+2 Str each skill). Play both Strikes = 12 damage. DO NOT play Defends or any skills to avoid powering him up. Save Miracle (its a skill that would trigger Enrage) and Weak Potion for his attack turns."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Gremlin Nob at 81 HP. Buffing this turn (no damage). Attacks safe, skills trigger Enrage (+2 Str each skill). Play both Strikes = 12 damage. DO NOT play Defends or any skills to avoid powering him up. Save Miracle (its a skill that would trigger Enrage) and Weak Potion for his attack turns."
+    },
+    {
+      "type": "decision",
+      "command": "play 3 0",
+      "translated": "Strike \u2192 Gremlin Nob",
+      "reasoning": "Strike Nob for 6 damage - attacks dont trigger Enrage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 20,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Miracle",
+          "Defend",
+          "Defend",
+          "Strike",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 75,
+            "intent": "BUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 3 0",
+      "translated": "Defend \u2192 Gremlin Nob",
+      "reasoning": "Second Strike for 6 more damage = 12 total"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 20,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 5,
+        "energy": 1,
+        "hand": [
+          "Miracle",
+          "Defend",
+          "Strike",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 75,
+            "intent": "BUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 20,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Eruption",
+          "Wreath of Flame",
+          "Defend",
+          "Vigilance",
+          "Wheel Kick"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 72,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "Turn 2: Nob attacks 14 with Enrage 2. Use Weak Potion to reduce to ~10. Wheel Kick for 11 damage (2E). Take 10 -> 10 HP. Then need to kill him fast. Nob at 72 - 11 - 3(merc) = 58 HP after this turn. Hmm thats still a lot. Maybe I should go more aggressive. Eruption(2E, 9dmg, Wrath) + Miracle(0E, +1E, Enrage trigger +2 Str) in Wrath... nah too dangerous. Weak Potion + Wheel Kick is the safest play."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "Turn 2: Nob attacks 14 with Enrage 2. Use Weak Potion to reduce to ~10. Wheel Kick for 11 damage (2E). Take 10 -> 10 HP. Then need to kill him fast. Nob at 72 - 11 - 3(merc) = 58 HP after this turn. Hmm thats still a lot. Maybe I should go more aggressive. Eruption(2E, 9dmg, Wrath) + Miracle(0E, +1E, Enrage trigger +2 Str) in Wrath... nah too dangerous. Weak Potion + Wheel Kick is the safest play."
+    },
+    {
+      "type": "decision",
+      "command": "potion use 0 0",
+      "translated": "Use Potion 0",
+      "reasoning": "Weak Potion on Nob to reduce attack damage by 25%"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 20,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Eruption",
+          "Wreath of Flame",
+          "Defend",
+          "Vigilance",
+          "Wheel Kick"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 72,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 5 0",
+      "translated": "Vigilance \u2192 Gremlin Nob",
+      "reasoning": "Wheel Kick for 11 damage + Scry 2 + draw"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 20,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 8,
+        "energy": 1,
+        "hand": [
+          "Miracle",
+          "Eruption",
+          "Wreath of Flame",
+          "Defend",
+          "Wheel Kick"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 72,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "1E left, 8 block vs 12 incoming = take 4 -> 16 HP. Nob still at 72 HP which is confusing but I must have misread. Miracle is a skill that triggers Enrage. Not playing it. End turn and burst next turn."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "1E left, 8 block vs 12 incoming = take 4 -> 16 HP. Nob still at 72 HP which is confusing but I must have misread. Miracle is a skill that triggers Enrage. Not playing it. End turn and burst next turn."
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 16,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Foresight",
+          "Simmering Fury",
+          "Wreath of Flame",
+          "Eruption"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 69,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "KEY INSIGHT: Foresight is a POWER card, not a skill. Nob Enrage only triggers on SKILLS. Powers are safe! Play Foresight (1E, no Enrage trigger) for Scry 3 each turn. Then Strike (1E, 6dmg) = 2E spent. 1E left. Take 6 -> 10 HP. Nob at 63 HP after Mercury. This is the right play - Foresight helps me find attacks and plan turns."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "KEY INSIGHT: Foresight is a POWER card, not a skill. Nob Enrage only triggers on SKILLS. Powers are safe! Play Foresight (1E, no Enrage trigger) for Scry 3 each turn. Then Strike (1E, 6dmg) = 2E spent. 1E left. Take 6 -> 10 HP. Nob at 63 HP after Mercury. This is the right play - Foresight helps me find attacks and plan turns."
+    },
+    {
+      "type": "decision",
+      "command": "play 3",
+      "translated": "Foresight",
+      "reasoning": "Foresight is a POWER - does NOT trigger Enrage. Scry 3 each turn for card selection."
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 16,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Simmering Fury",
+          "Wreath of Flame",
+          "Eruption"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 69,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 2 0",
+      "translated": "Strike \u2192 Gremlin Nob",
+      "reasoning": "Strike for 6 damage"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 16,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 1,
+        "hand": [
+          "Miracle",
+          "Simmering Fury",
+          "Wreath of Flame",
+          "Eruption"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 63,
+            "intent": "ATTACK_DEBUFF"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 10,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "GRID",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 60,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "CRITICAL: 10 HP, Vulnerable 2, Nob attacks 18 (27 with Vuln). Need 17+ block to survive. Draw pile has 4 Defend, 2 Strike, Vigilance, Wheel Kick = 8 cards, drawing 5. Scry lets me discard bad cards. Must keep Defends and Vigilance on top, discard Strikes."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "CRITICAL: 10 HP, Vulnerable 2, Nob attacks 18 (27 with Vuln). Need 17+ block to survive. Draw pile has 4 Defend, 2 Strike, Vigilance, Wheel Kick = 8 cards, drawing 5. Scry lets me discard bad cards. Must keep Defends and Vigilance on top, discard Strikes."
+    },
+    {
+      "type": "decision",
+      "command": "confirm",
+      "translated": "Confirm",
+      "reasoning": "Confirm Scry - prioritize keeping Defends"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 10,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 0,
+        "energy": 3,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Defend",
+          "Strike",
+          "Defend",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 60,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "think",
+      "translated": "Strategy",
+      "reasoning": "SURVIVAL CHECK: 10 HP, Vuln 2, Nob attacks 18 (27 with Vuln). Max block: 3 Defends = 15. Take 12 = dead. BUT WAIT - maybe the intent value 18 already includes the Vulnerable modifier? In some versions the intent shows the actual damage you will take. If 18 is the final number, then 3 Defends (15 block) means take 3 -> 7 HP. Lets play it and hope. Also playing Defends triggers Enrage but survival is priority."
+    },
+    {
+      "type": "think",
+      "label": "Strategy",
+      "reasoning": "SURVIVAL CHECK: 10 HP, Vuln 2, Nob attacks 18 (27 with Vuln). Max block: 3 Defends = 15. Take 12 = dead. BUT WAIT - maybe the intent value 18 already includes the Vulnerable modifier? In some versions the intent shows the actual damage you will take. If 18 is the final number, then 3 Defends (15 block) means take 3 -> 7 HP. Lets play it and hope. Also playing Defends triggers Enrage but survival is priority."
+    },
+    {
+      "type": "decision",
+      "command": "play 3",
+      "translated": "Defend",
+      "reasoning": "Defend for 5 block"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 10,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "NONE",
+        "block": 5,
+        "energy": 2,
+        "hand": [
+          "Miracle",
+          "Strike",
+          "Strike",
+          "Defend",
+          "Defend"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 60,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decision",
+      "command": "play 3",
+      "translated": "Strike",
+      "reasoning": "Second Defend for 10 block"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "play 3",
+      "translated": "play 3",
+      "reasoning": "Third Defend for 15 block"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "end",
+      "translated": "End Turn",
+      "reasoning": "End turn"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 8,
+        "hp": 0,
+        "max_hp": 72,
+        "gold": 137,
+        "screen": "GAME_OVER",
+        "block": 0,
+        "energy": 2,
+        "hand": [
+          "Miracle"
+        ],
+        "enemies": [
+          {
+            "name": "Gremlin Nob",
+            "hp": 60,
+            "intent": "ATTACK"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,12 +384,10 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="active">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge heuristics">heuristics</span>
-<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><div class="companion-link">View facts: <a href="ontology-sts1-combat.html">Ontology &rarr; Combat</a></div>
-<h1 id="combat-execution">Combat Execution</h1>
+<span class="section-badge heuristics">heuristics &middot; Slay the Spire</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Slay the Spire</a></div><h1 id="combat-execution">Combat Execution</h1>
 
 <h2 id="the-full-block-algorithm">The Full Block Algorithm</h2>
 
@@ -393,7 +395,7 @@ footer {
 
 <p>Every turn:</p>
 
-<p>1. Read total incoming damage (sum all attacking enemies, apply <a href="ontology-debuffs-weak.html" class="wiki-link">Weak</a> if on them).</p>
+<p>1. Read total incoming damage (sum all attacking enemies, apply <a href="ontology-sts1-debuffs-weak.html" class="wiki-link">Weak</a> if on them).</p>
 <p>2. Enumerate ALL paths to zero damage:</p>
 <ul>
 <li><strong>Kill attackers</strong> + block remainder</li>
@@ -409,7 +411,7 @@ footer {
 <h3 id="exceptions">Exceptions</h3>
 
 <p>1. <strong>Boss fights.</strong> HP resets via rest/heal. Spend HP freely to kill faster.</p>
-<p>2. <strong>Hard-scaling enemies (<a href="ontology-buffs-ritual.html" class="wiki-link">Ritual</a>, Rally).</strong> Kill speed prevents more total damage than blocking.</p>
+<p>2. <strong>Hard-scaling enemies (<a href="ontology-sts1-buffs-ritual.html" class="wiki-link">Ritual</a>, Rally).</strong> Kill speed prevents more total damage than blocking.</p>
 
 <p>Everything else is a hallway fight: zero damage taken.</p>
 
@@ -438,7 +440,7 @@ CHOSEN: [A/B] because [reason]
 
 <h3 id="draw-effects-critical">Draw Effects — CRITICAL</h3>
 
-<p><strong>NEVER include cards after a draw card in a <code>turn()</code> sequence.</strong> If a card draws (<a href="ontology-cards-backflip.html" class="wiki-link">Backflip</a>, <a href="ontology-cards-shrug-it-off.html" class="wiki-link">Shrug It Off</a>, <a href="ontology-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a>, <a href="ontology-cards-battle-trance.html" class="wiki-link">Battle Trance</a>, <a href="ontology-cards-offering.html" class="wiki-link">Offering</a>, etc.), it MUST be the last card before <code>&quot;end&quot;</code>. Play it via <code>send()</code> and re-read state before continuing.</p>
+<p><strong>NEVER include cards after a draw card in a <code>turn()</code> sequence.</strong> If a card draws (<a href="ontology-sts1-cards-backflip.html" class="wiki-link">Backflip</a>, <a href="ontology-sts1-cards-shrug-it-off.html" class="wiki-link">Shrug It Off</a>, <a href="ontology-sts1-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a>, <a href="ontology-sts1-cards-battle-trance.html" class="wiki-link">Battle Trance</a>, <a href="ontology-sts1-cards-offering.html" class="wiki-link">Offering</a>, etc.), it MUST be the last card before <code>&quot;end&quot;</code>. Play it via <code>send()</code> and re-read state before continuing.</p>
 
 <hr>
 
@@ -452,11 +454,11 @@ CHOSEN: [A/B] because [reason]
 
 <ul>
 <li>Shrug It Off+ = 11 block (not 8)</li>
-<li><a href="ontology-cards-flame-barrier.html" class="wiki-link">Flame Barrier</a> = 16 block AND 6 counter-damage</li>
-<li><a href="ontology-cards-armaments.html" class="wiki-link">Armaments</a> = 5 block AND upgrades ALL cards in hand</li>
-<li><a href="ontology-cards-bash.html" class="wiki-link">Bash</a> = 10 damage, 3 <a href="ontology-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a> (not 2)</li>
-<li><a href="ontology-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a> = +3 <a href="ontology-buffs-strength.html" class="wiki-link">Strength</a> unupgraded / +4 Strength upgraded</li>
-<li><a href="ontology-cards-heavy-blade.html" class="wiki-link">Heavy Blade</a> = Str multiplier 3x unupgraded / 5x upgraded (at Str 9: 41 vs 59 damage)</li>
+<li><a href="ontology-sts1-cards-flame-barrier.html" class="wiki-link">Flame Barrier</a> = 16 block AND 6 counter-damage</li>
+<li><a href="ontology-sts1-cards-armaments.html" class="wiki-link">Armaments</a> = 5 block AND upgrades ALL cards in hand</li>
+<li><a href="ontology-sts1-cards-bash.html" class="wiki-link">Bash</a> = 10 damage, 3 <a href="ontology-sts1-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a> (not 2)</li>
+<li><a href="ontology-sts1-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a> = +3 <a href="ontology-sts1-buffs-strength.html" class="wiki-link">Strength</a> unupgraded / +4 Strength upgraded</li>
+<li><a href="ontology-sts1-cards-heavy-blade.html" class="wiki-link">Heavy Blade</a> = Str multiplier 3x unupgraded / 5x upgraded (at Str 9: 41 vs 59 damage)</li>
 </ul>
 
 <h3 id="2-verify-kill-math-before-ending-turn">2. VERIFY KILL MATH BEFORE ENDING TURN</h3>
@@ -469,7 +471,7 @@ CHOSEN: [A/B] because [reason]
 
 <h3 id="4-wraith-form-finisher-only">4. WRAITH FORM: FINISHER ONLY</h3>
 
-<p><a href="ontology-cards-wraith-form.html" class="wiki-link">Wraith Form</a> gives <a href="ontology-buffs-intangible.html" class="wiki-link">Intangible</a> but applies permanent -1 <a href="ontology-buffs-dexterity.html" class="wiki-link">Dexterity</a> per turn. Three recorded deaths from playing it too early. DO NOT play until the enemy is within 5 turns of dying.</p>
+<p><a href="ontology-sts1-cards-wraith-form.html" class="wiki-link">Wraith Form</a> gives <a href="ontology-sts1-buffs-intangible.html" class="wiki-link">Intangible</a> but applies permanent -1 <a href="ontology-sts1-buffs-dexterity.html" class="wiki-link">Dexterity</a> per turn. Three recorded deaths from playing it too early. DO NOT play until the enemy is within 5 turns of dying.</p>
 
 <h3 id="5-verify-card-identity-before-playing">5. VERIFY CARD IDENTITY BEFORE PLAYING</h3>
 
@@ -495,22 +497,22 @@ CHOSEN: [A/B] because [reason]
 
 <h3 id="8-verify-debuff-type-vulnerable-is-not-weak">8. VERIFY DEBUFF TYPE: VULNERABLE IS NOT WEAK</h3>
 
-<p>Thunderclap applies <a href="ontology-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a> (target takes 50% MORE damage). It does NOT reduce enemy damage. Vulnerable makes the TARGET take more damage from attacks -- it is an offensive amplifier, not a defensive tool.</p>
+<p>Thunderclap applies <a href="ontology-sts1-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a> (target takes 50% MORE damage). It does NOT reduce enemy damage. Vulnerable makes the TARGET take more damage from attacks -- it is an offensive amplifier, not a defensive tool.</p>
 
 <p><strong>Ironclad Weak sources (reduce enemy damage dealt by 25%):</strong></p>
 <ul>
-<li><a href="ontology-cards-intimidate.html" class="wiki-link">Intimidate</a> (mass Weak, exhausts, 0E)</li>
-<li><a href="ontology-cards-clothesline.html" class="wiki-link">Clothesline</a> (single target Weak, 2E)</li>
-<li><a href="ontology-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts, 2E)</li>
-<li><a href="ontology-cards-uppercut.html" class="wiki-link">Uppercut</a> (single target Weak + Vulnerable, 2E)</li>
+<li><a href="ontology-sts1-cards-intimidate.html" class="wiki-link">Intimidate</a> (mass Weak, exhausts, 0E)</li>
+<li><a href="ontology-sts1-cards-clothesline.html" class="wiki-link">Clothesline</a> (single target Weak, 2E)</li>
+<li><a href="ontology-sts1-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts, 2E)</li>
+<li><a href="ontology-sts1-cards-uppercut.html" class="wiki-link">Uppercut</a> (single target Weak + Vulnerable, 2E)</li>
 </ul>
 
 <p><strong>Ironclad Vulnerable sources (target takes 50% more damage from attacks):</strong></p>
 <ul>
-<li><a href="ontology-cards-bash.html" class="wiki-link">Bash</a> (single target Vulnerable, 2E)</li>
-<li><a href="ontology-cards-thunderclap.html" class="wiki-link">Thunderclap</a> (mass Vulnerable, 1E)</li>
-<li><a href="ontology-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts, 2E)</li>
-<li><a href="ontology-cards-uppercut.html" class="wiki-link">Uppercut</a> (single target Weak + Vulnerable, 2E)</li>
+<li><a href="ontology-sts1-cards-bash.html" class="wiki-link">Bash</a> (single target Vulnerable, 2E)</li>
+<li><a href="ontology-sts1-cards-thunderclap.html" class="wiki-link">Thunderclap</a> (mass Vulnerable, 1E)</li>
+<li><a href="ontology-sts1-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts, 2E)</li>
+<li><a href="ontology-sts1-cards-uppercut.html" class="wiki-link">Uppercut</a> (single target Weak + Vulnerable, 2E)</li>
 </ul>
 
 <p><strong>CRITICAL:</strong> Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. <strong>Confirmed fatal in Run 218:</strong> player calculated enemy damage as reduced by 25% (Weak math) after playing Thunderclap (which applies Vulnerable, not Weak). Actual incoming was 30, not 21. Death at -6 HP.</p>
@@ -533,7 +535,7 @@ CHOSEN: [A/B] because [reason]
 <li><strong>Turn 1 is NOT always correct:</strong> if all enemies are buffing (e.g., Cultists on turn 1), Weak is wasted on a non-attack turn.</li>
 <li><strong>Turn 2 is usually correct:</strong> most multi-enemy fights begin attacking on turn 2.</li>
 <li><strong>NEVER save for turn 4+:</strong> by then enemies have already accumulated Strength and you have taken unnecessary damage.</li>
-<li><strong>Priority on the first attack turn:</strong> Shockwave+ (mass Weak + Vulnerable) &gt; <a href="ontology-cards-reaper.html" class="wiki-link">Reaper</a> (healing) &gt; single-target damage.</li>
+<li><strong>Priority on the first attack turn:</strong> Shockwave+ (mass Weak + Vulnerable) &gt; <a href="ontology-sts1-cards-reaper.html" class="wiki-link">Reaper</a> (healing) &gt; single-target damage.</li>
 </ul>
 
 <hr>

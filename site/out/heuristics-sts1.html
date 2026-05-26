@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sts1 — Heuristics — Claude Slays the Spire</title>
+<title>Slay the Spire — Heuristics — Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 <style>
@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,20 +384,68 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="active">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
 <span class="section-badge heuristics">heuristics</span>
-<div class="back-link"><a href="heuristics.html">&larr; Heuristics</a></div><h2>Sts1</h2>
-<div class="companion-link">See also: <a href="ontology-sts1.html">Ontology &rarr; Sts1</a> (2 entries)</div>
-<div class="entry-grid">
-<a href="heuristics-sts1-archetypes.html">Winning Archetypes</a>
-<a href="heuristics-sts1-combat.html">Combat Execution</a>
-<a href="heuristics-sts1-drafting.html">Drafting &amp; Deck Building</a>
-<a href="heuristics-sts1-exhaust.html">Exhaust Strategy</a>
-<a href="heuristics-sts1-hp-management.html">HP Management</a>
-<a href="heuristics-sts1-map.html">Map Routing</a>
-<a href="heuristics-sts1-rest-sites.html">Rest Site Decisions</a>
+<div class="back-link"><a href="heuristics.html">&larr; Heuristics</a></div><h2>Slay the Spire</h2>
+<div class="category-grid">
+<div class="category-card heuristics-card"><a href="heuristics-sts1-archetypes.html">
+  <h3>Winning Archetypes</h3>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-combat.html">
+  <h3>Combat Execution</h3>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-drafting.html">
+  <h3>Drafting &amp; Deck Building</h3>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-exhaust.html">
+  <h3>Exhaust Strategy</h3>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-hp-management.html">
+  <h3>HP Management</h3>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-map.html">
+  <h3>Map Routing</h3>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-rest-sites.html">
+  <h3>Rest Site Decisions</h3>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-bosses.html">
+  <h3>Bosses</h3>
+  <div class="count">9 entries</div>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-cards.html">
+  <h3>Cards</h3>
+  <div class="count">130 entries</div>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-characters.html">
+  <h3>Characters</h3>
+  <div class="count">4 entries</div>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-development.html">
+  <h3>Development</h3>
+  <div class="count">0 entries</div>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-enemies.html">
+  <h3>Enemies</h3>
+  <div class="count">41 entries</div>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-events.html">
+  <h3>Events</h3>
+  <div class="count">33 entries</div>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-goals.html">
+  <h3>Goals</h3>
+  <div class="count">6 entries</div>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-potions.html">
+  <h3>Potions</h3>
+  <div class="count">26 entries</div>
+</a></div>
+<div class="category-card heuristics-card"><a href="heuristics-sts1-relics.html">
+  <h3>Relics</h3>
+  <div class="count">92 entries</div>
+</a></div>
 </div>
 
 <footer>

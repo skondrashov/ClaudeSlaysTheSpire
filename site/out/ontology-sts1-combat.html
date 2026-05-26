@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,12 +384,10 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="active">Ontology</a>
 <a href="heuristics.html" class="">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge ontology">ontology</span>
-<div class="back-link"><a href="ontology-sts1.html">&larr; Back to Sts1</a></div><div class="companion-link">View strategy: <a href="heuristics-sts1-combat.html">Heuristics &rarr; Combat Execution</a></div>
-<h1 id="combat">Combat</h1>
+<span class="section-badge ontology">ontology &middot; Slay the Spire</span>
+<div class="back-link"><a href="ontology-sts1.html">&larr; Slay the Spire</a></div><h1 id="combat">Combat</h1>
 
 <p>A combat encounter against one or more enemies. All card play, damage, and blocking happens within combat.</p>
 
@@ -393,16 +395,16 @@ footer {
 
 <p>Each turn follows this sequence:</p>
 
-<p>1. <strong>Player turn start</strong> — Block resets to 0 (unless <a href="ontology-buffs-barricade.html" class="wiki-link">Barricade</a>, <a href="ontology-relics-calipers.html" class="wiki-link">Calipers</a>, or <a href="ontology-cards-blur.html" class="wiki-link">Blur</a>). Draw cards from draw pile (default 5). Gain energy (default 3).</p>
+<p>1. <strong>Player turn start</strong> — Block resets to 0 (unless <a href="ontology-sts1-buffs-barricade.html" class="wiki-link">Barricade</a>, <a href="ontology-sts1-relics-calipers.html" class="wiki-link">Calipers</a>, or <a href="ontology-sts1-cards-blur.html" class="wiki-link">Blur</a>). Draw cards from draw pile (default 5). Gain energy (default 3).</p>
 <p>2. <strong>Player plays cards</strong> — Spend energy to play cards from hand. Cards resolve immediately (damage, block, buffs, debuffs, draw, exhaust).</p>
-<p>3. <strong>Player ends turn</strong> — Remaining hand cards go to discard pile (except <a href="ontology-rules-retain.html" class="wiki-link">retain</a>ed cards). End-of-turn effects trigger.</p>
+<p>3. <strong>Player ends turn</strong> — Remaining hand cards go to discard pile (except <a href="ontology-sts1-rules-retain.html" class="wiki-link">retain</a>ed cards). End-of-turn effects trigger.</p>
 <p>4. <strong>Enemy turn</strong> — Each enemy acts according to its displayed intent. Damage is dealt, buffs/debuffs are applied. Enemy block resets at the START of the enemy&#x27;s next turn, not at the end.</p>
 
 <h2 id="intents">Intents</h2>
 
 <p>Each enemy displays an intent icon showing what it will do this turn:</p>
 <ul>
-<li><strong>Attack</strong> — displays the exact final damage number (includes enemy <a href="ontology-buffs-strength.html" class="wiki-link">Strength</a>, <a href="ontology-debuffs-weak.html" class="wiki-link">Weak</a> on the enemy, <a href="ontology-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a> on the player). Multi-hit attacks show <code>NxM</code> (N damage, M times).</li>
+<li><strong>Attack</strong> — displays the exact final damage number (includes enemy <a href="ontology-sts1-buffs-strength.html" class="wiki-link">Strength</a>, <a href="ontology-sts1-debuffs-weak.html" class="wiki-link">Weak</a> on the enemy, <a href="ontology-sts1-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a> on the player). Multi-hit attacks show <code>NxM</code> (N damage, M times).</li>
 <li><strong>Block/Buff</strong> — the enemy will gain block or apply a buff to itself.</li>
 <li><strong>Debuff</strong> — the enemy will apply a debuff to the player.</li>
 <li><strong>Unknown</strong> — intent is hidden (rare, specific enemies only).</li>
@@ -412,36 +414,36 @@ footer {
 
 <h2 id="damage-and-block">Damage and Block</h2>
 
-<p>See <a href="ontology-rules-damage.html" class="wiki-link">damage</a> for the damage formula and <a href="ontology-rules-block.html" class="wiki-link">block</a> for block mechanics.</p>
+<p>See <a href="ontology-sts1-rules-damage.html" class="wiki-link">damage</a> for the damage formula and <a href="ontology-sts1-rules-block.html" class="wiki-link">block</a> for block mechanics.</p>
 
 <p>Key interactions:</p>
 <ul>
 <li>Block absorbs damage first. Excess damage hits HP.</li>
-<li><a href="ontology-relics-fossilized-helix.html" class="wiki-link">Fossilized Helix</a> and <a href="ontology-buffs-buffer.html" class="wiki-link">Buffer</a> prevent HP loss, not damage. Block is consumed BEFORE the prevention check. Against multi-hit attacks, block is depleted by hit 1 (Helix/Buffer catches overflow), then subsequent hits land with no block.</li>
-<li><a href="ontology-buffs-thorns.html" class="wiki-link">Thorns</a> and <a href="ontology-cards-flame-barrier.html" class="wiki-link">Flame Barrier</a> deal damage back to attackers per hit received (including hits absorbed by block).</li>
+<li><a href="ontology-sts1-relics-fossilized-helix.html" class="wiki-link">Fossilized Helix</a> and <a href="ontology-sts1-buffs-buffer.html" class="wiki-link">Buffer</a> prevent HP loss, not damage. Block is consumed BEFORE the prevention check. Against multi-hit attacks, block is depleted by hit 1 (Helix/Buffer catches overflow), then subsequent hits land with no block.</li>
+<li><a href="ontology-sts1-buffs-thorns.html" class="wiki-link">Thorns</a> and <a href="ontology-sts1-cards-flame-barrier.html" class="wiki-link">Flame Barrier</a> deal damage back to attackers per hit received (including hits absorbed by block).</li>
 </ul>
 
 <h2 id="energy-and-card-costs">Energy and Card Costs</h2>
 
-<p>See <a href="ontology-rules-energy.html" class="wiki-link">energy</a>. Cards cost 0-5 energy. X-cost cards (<a href="ontology-cards-whirlwind.html" class="wiki-link">Whirlwind</a>, <a href="ontology-cards-malaise.html" class="wiki-link">Malaise</a>, <a href="ontology-cards-skewer.html" class="wiki-link">Skewer</a>) consume ALL remaining energy when played.</p>
+<p>See <a href="ontology-sts1-rules-energy.html" class="wiki-link">energy</a>. Cards cost 0-5 energy. X-cost cards (<a href="ontology-sts1-cards-whirlwind.html" class="wiki-link">Whirlwind</a>, <a href="ontology-sts1-cards-malaise.html" class="wiki-link">Malaise</a>, <a href="ontology-sts1-cards-skewer.html" class="wiki-link">Skewer</a>) consume ALL remaining energy when played.</p>
 
 <h2 id="draw">Draw</h2>
 
-<p>See <a href="ontology-rules-card-draw.html" class="wiki-link">card-draw</a>. Cards that draw (<a href="ontology-cards-backflip.html" class="wiki-link">Backflip</a>, <a href="ontology-cards-shrug-it-off.html" class="wiki-link">Shrug It Off</a>, <a href="ontology-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a>, <a href="ontology-cards-battle-trance.html" class="wiki-link">Battle Trance</a>, <a href="ontology-cards-offering.html" class="wiki-link">Offering</a>) add new cards to hand immediately during the player&#x27;s turn.</p>
+<p>See <a href="ontology-sts1-rules-card-draw.html" class="wiki-link">card-draw</a>. Cards that draw (<a href="ontology-sts1-cards-backflip.html" class="wiki-link">Backflip</a>, <a href="ontology-sts1-cards-shrug-it-off.html" class="wiki-link">Shrug It Off</a>, <a href="ontology-sts1-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a>, <a href="ontology-sts1-cards-battle-trance.html" class="wiki-link">Battle Trance</a>, <a href="ontology-sts1-cards-offering.html" class="wiki-link">Offering</a>) add new cards to hand immediately during the player&#x27;s turn.</p>
 
 <h2 id="strength">Strength</h2>
 
-<p><a href="ontology-buffs-strength.html" class="wiki-link">Strength</a> adds to ALL attack damage for the rest of the combat. Sources:</p>
+<p><a href="ontology-sts1-buffs-strength.html" class="wiki-link">Strength</a> adds to ALL attack damage for the rest of the combat. Sources:</p>
 <ul>
-<li><strong>Per-combat</strong> (resets between fights): <a href="ontology-cards-inflame.html" class="wiki-link">Inflame</a>, <a href="ontology-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a>, <a href="ontology-cards-demon-form.html" class="wiki-link">Demon Form</a>, <a href="ontology-potions-strength-potion.html" class="wiki-link">Strength Potion</a>, <a href="ontology-cards-limit-break.html" class="wiki-link">Limit Break</a></li>
-<li><strong>Persistent</strong> (across combats): <a href="ontology-relics-vajra.html" class="wiki-link">Vajra</a> (+1 permanent)</li>
+<li><strong>Per-combat</strong> (resets between fights): <a href="ontology-sts1-cards-inflame.html" class="wiki-link">Inflame</a>, <a href="ontology-sts1-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a>, <a href="ontology-sts1-cards-demon-form.html" class="wiki-link">Demon Form</a>, <a href="ontology-sts1-potions-strength-potion.html" class="wiki-link">Strength Potion</a>, <a href="ontology-sts1-cards-limit-break.html" class="wiki-link">Limit Break</a></li>
+<li><strong>Persistent</strong> (across combats): <a href="ontology-sts1-relics-vajra.html" class="wiki-link">Vajra</a> (+1 permanent)</li>
 </ul>
 
 <p>Enemy Strength works the same way — visible in intent damage numbers.</p>
 
 <h2 id="exhaust">Exhaust</h2>
 
-<p>When a card is exhausted, it goes to the exhaust pile and cannot be played again this combat (unless retrieved by <a href="ontology-cards-exhume.html" class="wiki-link">Exhume</a>). See <a href="ontology-rules-exhaust.html" class="wiki-link">exhaust</a> if it exists. <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> makes all Skills exhaust after play. Ethereal cards exhaust if still in hand at end of turn.</p>
+<p>When a card is exhausted, it goes to the exhaust pile and cannot be played again this combat (unless retrieved by <a href="ontology-sts1-cards-exhume.html" class="wiki-link">Exhume</a>). See <a href="ontology-sts1-rules-exhaust.html" class="wiki-link">exhaust</a> if it exists. <a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a> makes all Skills exhaust after play. Ethereal cards exhaust if still in hand at end of turn.</p>
 
 <footer>
   <a href="https://github.com/skondrashov/ClaudeSlaysTheSpire">GitHub</a> &middot;

@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,21 +384,20 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="active">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge heuristics">heuristics</span>
-<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><h1 id="map-routing">Map Routing</h1>
+<span class="section-badge heuristics">heuristics &middot; Slay the Spire</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Slay the Spire</a></div><h1 id="map-routing">Map Routing</h1>
 
 <h2 id="relic-economy-why-elites-matter">Relic Economy: Why Elites Matter</h2>
 
-<p>Relics are the primary driver of run strength. Every winning formula was built on specific relics (<a href="ontology-relics-snecko-eye.html" class="wiki-link">Snecko Eye</a>, <a href="ontology-relics-dead-branch.html" class="wiki-link">Dead Branch</a>, <a href="ontology-relics-mummified-hand.html" class="wiki-link">Mummified Hand</a>, <a href="ontology-relics-bottled-lightning.html" class="wiki-link">Bottled Lightning</a>, <a href="ontology-cards-after-image.html" class="wiki-link">After Image</a> via <a href="ontology-relics-bottled-tornado.html" class="wiki-link">Bottled Tornado</a>). Elites are the primary source of relics — each elite drops a relic guaranteed. Skipping elites means fewer relics means weaker runs.</p>
+<p>Relics are the primary driver of run strength. Every winning formula was built on specific relics (<a href="ontology-sts1-relics-snecko-eye.html" class="wiki-link">Snecko Eye</a>, <a href="ontology-sts1-relics-dead-branch.html" class="wiki-link">Dead Branch</a>, <a href="ontology-sts1-relics-mummified-hand.html" class="wiki-link">Mummified Hand</a>, <a href="ontology-sts1-relics-bottled-lightning.html" class="wiki-link">Bottled Lightning</a>, <a href="ontology-sts1-cards-after-image.html" class="wiki-link">After Image</a> via <a href="ontology-sts1-relics-bottled-tornado.html" class="wiki-link">Bottled Tornado</a>). Elites are the primary source of relics — each elite drops a relic guaranteed. Skipping elites means fewer relics means weaker runs.</p>
 
 <p><strong>Elite targets per act:</strong></p>
 <ul>
-<li><strong><a href="ontology-acts-act-1.html" class="wiki-link">Act 1</a>: Fight 2 elites.</strong> The Act 1 elite pool (<a href="ontology-enemies-gremlin-nob.html" class="wiki-link">Gremlin Nob</a>, <a href="ontology-enemies-lagavulin.html" class="wiki-link">Lagavulin</a>, Sentries) is the easiest in the game. Two elite relics + boss relic = 3 relics by <a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a>. If the map offers a 2-elite path with rest site coverage, take it. Only settle for 1 elite if the map forces bad rest site spacing or the deck is still starter-quality at Floor 5.</li>
-<li><strong>Act 2: Fight 1-2 elites.</strong> Act 2 elites are dangerous but the relic rewards are stronger (rare pool). If HP is above 60% and the deck has its scaling engine online, path through at least 1 elite. Skip only when the deck genuinely cannot handle the matchup (e.g., <a href="ontology-relics-brimstone.html" class="wiki-link">Brimstone</a> vs <a href="ontology-enemies-book-of-stabbing.html" class="wiki-link">Book of Stabbing</a>).</li>
-<li><strong><a href="ontology-acts-act-3.html" class="wiki-link">Act 3</a>: Fight 0-1 elites.</strong> Act 3 elites (<a href="ontology-enemies-giant-head.html" class="wiki-link">Giant Head</a>, <a href="ontology-enemies-reptomancer.html" class="wiki-link">Reptomancer</a>, <a href="ontology-enemies-nemesis.html" class="wiki-link">Nemesis</a>) are extremely dangerous. Only take an elite if the path naturally includes one and the deck is strong. Don&#x27;t go out of the way for Act 3 elites.</li>
+<li><strong><a href="ontology-sts1-acts-act-1.html" class="wiki-link">Act 1</a>: Fight 2 elites.</strong> The Act 1 elite pool (<a href="ontology-sts1-enemies-gremlin-nob.html" class="wiki-link">Gremlin Nob</a>, <a href="ontology-sts1-enemies-lagavulin.html" class="wiki-link">Lagavulin</a>, Sentries) is the easiest in the game. Two elite relics + boss relic = 3 relics by <a href="ontology-sts1-acts-act-2.html" class="wiki-link">Act 2</a>. If the map offers a 2-elite path with rest site coverage, take it. Only settle for 1 elite if the map forces bad rest site spacing or the deck is still starter-quality at Floor 5.</li>
+<li><strong>Act 2: Fight 1-2 elites.</strong> Act 2 elites are dangerous but the relic rewards are stronger (rare pool). If HP is above 60% and the deck has its scaling engine online, path through at least 1 elite. Skip only when the deck genuinely cannot handle the matchup (e.g., <a href="ontology-sts1-relics-brimstone.html" class="wiki-link">Brimstone</a> vs <a href="ontology-sts1-enemies-book-of-stabbing.html" class="wiki-link">Book of Stabbing</a>).</li>
+<li><strong><a href="ontology-sts1-acts-act-3.html" class="wiki-link">Act 3</a>: Fight 0-1 elites.</strong> Act 3 elites (<a href="ontology-sts1-enemies-giant-head.html" class="wiki-link">Giant Head</a>, <a href="ontology-sts1-enemies-reptomancer.html" class="wiki-link">Reptomancer</a>, <a href="ontology-sts1-enemies-nemesis.html" class="wiki-link">Nemesis</a>) are extremely dangerous. Only take an elite if the path naturally includes one and the deck is strong. Don&#x27;t go out of the way for Act 3 elites.</li>
 </ul>
 
 <p><strong>When comparing routes, elites are a POSITIVE, not just a risk.</strong> A route with 1 elite + 1 rest site is often better than a route with 0 elites + 2 rest sites, because the relic from the elite compounds for the rest of the run while the extra rest only heals one fight&#x27;s worth of damage.</p>
@@ -408,16 +411,16 @@ footer {
 <li><strong>Re-route only when forced.</strong> Follow your act plan. Only deviate if HP drops below safe thresholds.</li>
 <li><strong>At each floor, verify the planned route is still viable.</strong> Count remaining forced combats to the next rest site. If the path forces 2+ combats and HP is below 50%, re-route.</li>
 <li>Prefer routes with a rest site in the last 1-2 floors before the boss.</li>
-<li>After a brutal fight (Byrds, <a href="ontology-enemies-centurion.html" class="wiki-link">Centurion</a>+<a href="ontology-enemies-mystic.html" class="wiki-link">Mystic</a>), next room MUST be healing, not another combat.</li>
+<li>After a brutal fight (Byrds, <a href="ontology-sts1-enemies-centurion.html" class="wiki-link">Centurion</a>+<a href="ontology-sts1-enemies-mystic.html" class="wiki-link">Mystic</a>), next room MUST be healing, not another combat.</li>
 <li>If the path forces an elite at low HP, skip it entirely — take any alternative path.</li>
 </ul>
 
 <h2 id="act-2-route-selection">Act 2 Route Selection</h2>
 
 <ul>
-<li><strong>Act 2 route must include a non-combat room in the first 2-3 floors.</strong> The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), <a href="ontology-enemies-spheric-guardian.html" class="wiki-link">Spheric Guardian</a> (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. Prefer routes where a rest site, shop, or event appears by floor 2-3.</li>
+<li><strong>Act 2 route must include a non-combat room in the first 2-3 floors.</strong> The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), <a href="ontology-sts1-enemies-spheric-guardian.html" class="wiki-link">Spheric Guardian</a> (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. Prefer routes where a rest site, shop, or event appears by floor 2-3.</li>
 <li><strong>Evaluate rest site density across the entire path.</strong> Count forced combats between rest sites on each viable path. A route of M-R-E-M-M-?-E forces 6 fights with only 1 rest site. Prefer paths where rest sites break up combat sequences (e.g., M-M-R-M-R-E gives recovery opportunities). At reduced Max HP (post-Apparitions, post-Vampires), rest site density is even more critical.</li>
-<li><strong>Unknown rooms are NOT safe in Act 2.</strong> They resolve as any hallway fight ~50% of the time, including Byrds, <a href="ontology-enemies-snake-plant.html" class="wiki-link">Snake Plant</a>, and Spheric Guardian. FIVE deaths confirmed from Unknown rooms resolving as combat. Treat Unknown rooms as Monster rooms when routing in Act 2. <strong>At below 30% HP, Unknown rooms are lethal.</strong></li>
+<li><strong>Unknown rooms are NOT safe in Act 2.</strong> They resolve as any hallway fight ~50% of the time, including Byrds, <a href="ontology-sts1-enemies-snake-plant.html" class="wiki-link">Snake Plant</a>, and Spheric Guardian. FIVE deaths confirmed from Unknown rooms resolving as combat. Treat Unknown rooms as Monster rooms when routing in Act 2. <strong>At below 30% HP, Unknown rooms are lethal.</strong></li>
 </ul>
 
 <h2 id="elite-route-safety-rule">Elite Route Safety Rule</h2>
@@ -437,14 +440,14 @@ footer {
 <p>Before fighting an elite, check:</p>
 <p>1. <strong>HP threshold</strong>: Below 30 HP for Act 1 elites is dangerous. Below 60% for Act 2 elites.</p>
 <p>2. <strong>Deck vs elite matchup</strong>: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling. Count your Attack/Skill ratio before committing to an elite path. <strong>Minimum 3 monster rooms before first elite</strong> — 0-2 fights are not enough to build a deck that can handle any Act 1 elite.</p>
-<p>3. <strong>Damage scaling check</strong>: Before routing through Act 1 elites, verify the deck has at least one damage scaling source (<a href="ontology-cards-inflame.html" class="wiki-link">Inflame</a>, <a href="ontology-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a>, <a href="ontology-cards-carnage.html" class="wiki-link">Carnage</a>, or a strong Uncommon attack). Without scaling, high-HP elites (<a href="ontology-enemies-lagavulin.html" class="wiki-link">Lagavulin</a> 110 HP, Sentries 40+42+42) are DPS races that base-damage decks cannot win. Confirmed fatal: Run 222 entered Lagavulin with no Str source and could not deal enough damage before Siphon Soul debuffs compounded.</p>
+<p>3. <strong>Damage scaling check</strong>: Before routing through Act 1 elites, verify the deck has at least one damage scaling source (<a href="ontology-sts1-cards-inflame.html" class="wiki-link">Inflame</a>, <a href="ontology-sts1-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a>, <a href="ontology-sts1-cards-carnage.html" class="wiki-link">Carnage</a>, or a strong Uncommon attack). Without scaling, high-HP elites (<a href="ontology-sts1-enemies-lagavulin.html" class="wiki-link">Lagavulin</a> 110 HP, Sentries 40+42+42) are DPS races that base-damage decks cannot win. Confirmed fatal: Run 222 entered Lagavulin with no Str source and could not deal enough damage before Siphon Soul debuffs compounded.</p>
 <p>4. <strong>Potions available</strong>: Potions compensate for bad matchups.</p>
 <p>5. <strong>Path alternatives</strong>: Only prefer a safer path if the elite risk is genuinely unmanageable. Don&#x27;t default to &quot;safer path exists, take it.&quot;</p>
 
 <p><strong>Act 2 Elite Threat Ranking:</strong></p>
 <ul>
 <li><strong>Book of Stabbing</strong> (4 deaths, #1 elite killer): Double scaling — +1 hit/turn AND +3 Str/turn. Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. <strong>If you have Brimstone, DO NOT FIGHT. Brimstone + Book of Stabbing = unsurvivable.</strong></li>
-<li><strong><a href="ontology-enemies-gremlin-leader.html" class="wiki-link">Gremlin Leader</a></strong> (3 deaths): Rally gives +3 Str to ALL enemies per cast. Fight is unwinnable after turn 7. NEED: AOE for gremlins, <a href="ontology-cards-shockwave.html" class="wiki-link">Shockwave</a> for mass debuff, 60%+ HP.</li>
+<li><strong><a href="ontology-sts1-enemies-gremlin-leader.html" class="wiki-link">Gremlin Leader</a></strong> (3 deaths): Rally gives +3 Str to ALL enemies per cast. Fight is unwinnable after turn 7. NEED: AOE for gremlins, <a href="ontology-sts1-cards-shockwave.html" class="wiki-link">Shockwave</a> for mass debuff, 60%+ HP.</li>
 <li><strong>Slavers</strong> (2 deaths): 3 enemies, 27+ combined damage from Turn 1. NEED: AOE, mass debuff, block density, 60%+ HP.</li>
 </ul>
 
@@ -462,7 +465,7 @@ footer {
 <h2 id="pre-boss-routing-last-5-floors">Pre-Boss Routing (last 5 floors)</h2>
 
 <ul>
-<li><strong>No HP-for-reward trades.</strong> No <a href="ontology-events-knowing-skull.html" class="wiki-link">Knowing Skull</a>, <a href="ontology-relics-golden-idol.html" class="wiki-link">Golden Idol</a>, or HP-cost events.</li>
+<li><strong>No HP-for-reward trades.</strong> No <a href="ontology-sts1-events-knowing-skull.html" class="wiki-link">Knowing Skull</a>, <a href="ontology-sts1-relics-golden-idol.html" class="wiki-link">Golden Idol</a>, or HP-cost events.</li>
 <li><strong>Skip elites in the last 3 floors.</strong> Relic value &lt; boss HP threshold.</li>
 <li><strong>Rest over upgrade at every rest site if below 70% HP.</strong></li>
 <li><strong>Path priority: Rest &gt; Shop &gt; Event &gt; Monster &gt; Elite.</strong> Invert normal priority.</li>
@@ -471,13 +474,13 @@ footer {
 
 <h2 id="fairy-management">Fairy Management</h2>
 
-<p><a href="ontology-potions-fairy-in-a-bottle.html" class="wiki-link">Fairy in a Bottle</a> is often consumed in Centurion+Mystic fights. If Fairy is your only death insurance, plan paths so Fairy is available for the most dangerous fight (elite or boss).</p>
+<p><a href="ontology-sts1-potions-fairy-in-a-bottle.html" class="wiki-link">Fairy in a Bottle</a> is often consumed in Centurion+Mystic fights. If Fairy is your only death insurance, plan paths so Fairy is available for the most dangerous fight (elite or boss).</p>
 
 <h2 id="mark-of-the-bloom-no-optional-combat">Mark of the Bloom = No Optional Combat</h2>
 
-<p>If <a href="ontology-relics-mark-of-the-bloom.html" class="wiki-link">Mark of the Bloom</a> is active, every point of damage is permanent. Under this condition:</p>
+<p>If <a href="ontology-sts1-relics-mark-of-the-bloom.html" class="wiki-link">Mark of the Bloom</a> is active, every point of damage is permanent. Under this condition:</p>
 <ul>
-<li>Do NOT fight <a href="ontology-events-mysterious-sphere.html" class="wiki-link">Mysterious Sphere</a>, Unknown rooms, or elites unless forced.</li>
+<li>Do NOT fight <a href="ontology-sts1-events-mysterious-sphere.html" class="wiki-link">Mysterious Sphere</a>, Unknown rooms, or elites unless forced.</li>
 <li>Take only shops, rest sites (upgrades only), events with known non-combat outcomes.</li>
 </ul>
 

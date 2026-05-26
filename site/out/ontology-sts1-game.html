@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,34 +384,33 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="active">Ontology</a>
 <a href="heuristics.html" class="">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge ontology">ontology</span>
-<div class="back-link"><a href="ontology-sts1.html">&larr; Back to Sts1</a></div><h1 id="slay-the-spire">Slay the Spire</h1>
+<span class="section-badge ontology">ontology &middot; Slay the Spire</span>
+<div class="back-link"><a href="ontology-sts1.html">&larr; Slay the Spire</a></div><h1 id="slay-the-spire">Slay the Spire</h1>
 
 <p>Deckbuilder roguelike. Build a deck of cards, fight enemies, defeat bosses across 3 acts.</p>
 
 <h2 id="structure">Structure</h2>
 
-<p>Each run plays through <a href="ontology-acts-act-1.html" class="wiki-link">Act 1</a>, <a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a>, <a href="ontology-acts-act-3.html" class="wiki-link">Act 3</a>, then an optional Act 4. Each act has a map of floors containing Monster rooms, Elite rooms, Events, Shops, Rest Sites, and Unknown rooms. A boss fight ends each act.</p>
+<p>Each run plays through <a href="ontology-sts1-acts-act-1.html" class="wiki-link">Act 1</a>, <a href="ontology-sts1-acts-act-2.html" class="wiki-link">Act 2</a>, <a href="ontology-sts1-acts-act-3.html" class="wiki-link">Act 3</a>, then an optional Act 4. Each act has a map of floors containing Monster rooms, Elite rooms, Events, Shops, Rest Sites, and Unknown rooms. A boss fight ends each act.</p>
 
 <h2 id="game-systems">Game Systems</h2>
 
 <ul>
 <li><code>combat</code> — Turn structure, intents, how damage/block/energy/draw interact in a fight</li>
-<li><a href="ontology-rules-energy.html" class="wiki-link">energy</a> — 3E per turn (base). Cards cost energy to play.</li>
-<li><a href="ontology-rules-block.html" class="wiki-link">block</a> — Prevents damage. Resets to 0 at start of your turn.</li>
-<li><a href="ontology-rules-damage.html" class="wiki-link">damage</a> — Attack cards deal damage modified by <a href="ontology-buffs-strength.html" class="wiki-link">Strength</a> and <a href="ontology-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a>.</li>
-<li><a href="ontology-rules-card-draw.html" class="wiki-link">card-draw</a> — Draw 5 cards per turn (base). Draw pile → hand → discard pile → reshuffle.</li>
-<li><a href="ontology-rules-buffs-and-debuffs.html" class="wiki-link">buffs-and-debuffs</a> — Status effects applied during combat.</li>
+<li><a href="ontology-sts1-rules-energy.html" class="wiki-link">energy</a> — 3E per turn (base). Cards cost energy to play.</li>
+<li><a href="ontology-sts1-rules-block.html" class="wiki-link">block</a> — Prevents damage. Resets to 0 at start of your turn.</li>
+<li><a href="ontology-sts1-rules-damage.html" class="wiki-link">damage</a> — Attack cards deal damage modified by <a href="ontology-sts1-buffs-strength.html" class="wiki-link">Strength</a> and <a href="ontology-sts1-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a>.</li>
+<li><a href="ontology-sts1-rules-card-draw.html" class="wiki-link">card-draw</a> — Draw 5 cards per turn (base). Draw pile → hand → discard pile → reshuffle.</li>
+<li><a href="ontology-sts1-rules-buffs-and-debuffs.html" class="wiki-link">buffs-and-debuffs</a> — Status effects applied during combat.</li>
 </ul>
 
 <h2 id="entity-categories">Entity Categories</h2>
 
-<p><strong>Cards</strong> — <a href="ontology-types-attack.html" class="wiki-link">Attack</a>, <a href="ontology-types-skill.html" class="wiki-link">Skill</a>, <a href="ontology-types-power.html" class="wiki-link">Power</a>, <a href="ontology-types-status.html" class="wiki-link">Status</a>, <a href="ontology-types-curse.html" class="wiki-link">Curse</a>. Character-specific pools + colorless. Individual entries at <code>ontology/sts1/cards/&lt;name&gt;.md</code>.</p>
+<p><strong>Cards</strong> — <a href="ontology-sts1-types-attack.html" class="wiki-link">Attack</a>, <a href="ontology-sts1-types-skill.html" class="wiki-link">Skill</a>, <a href="ontology-sts1-types-power.html" class="wiki-link">Power</a>, <a href="ontology-sts1-types-status.html" class="wiki-link">Status</a>, <a href="ontology-sts1-types-curse.html" class="wiki-link">Curse</a>. Character-specific pools + colorless. Individual entries at <code>ontology/sts1/cards/&lt;name&gt;.md</code>.</p>
 
-<p><strong>Enemies</strong> — Hallway fights and elites per act. Individual entries at <code>ontology/sts1/enemies/&lt;name&gt;.md</code>. See <a href="ontology-acts-act-1.html" class="wiki-link">Act 1</a>, <a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a>, <a href="ontology-acts-act-3.html" class="wiki-link">Act 3</a> for encounter lists.</p>
+<p><strong>Enemies</strong> — Hallway fights and elites per act. Individual entries at <code>ontology/sts1/enemies/&lt;name&gt;.md</code>. See <a href="ontology-sts1-acts-act-1.html" class="wiki-link">Act 1</a>, <a href="ontology-sts1-acts-act-2.html" class="wiki-link">Act 2</a>, <a href="ontology-sts1-acts-act-3.html" class="wiki-link">Act 3</a> for encounter lists.</p>
 
 <p><strong>Bosses</strong> — One per act, visible from floor 1. Entries at <code>ontology/sts1/bosses/&lt;name&gt;.md</code>.</p>
 
@@ -422,15 +425,15 @@ footer {
 <h2 id="characters">Characters</h2>
 
 <ul>
-<li><a href="ontology-characters-ironclad.html" class="wiki-link">Ironclad</a> — Strength-based. Starter relic heals 6 HP/fight.</li>
-<li><a href="ontology-characters-silent.html" class="wiki-link">Silent</a> — Poison and Shiv-based. Starter relic draws 2 extra on turn 1.</li>
-<li><a href="ontology-characters-defect.html" class="wiki-link">Defect</a> — Orb-based. Starter relic channels 1 Lightning at combat start.</li>
-<li><a href="ontology-characters-watcher.html" class="wiki-link">Watcher</a> — Stance-based. Starter relic adds Miracle to hand at combat start.</li>
+<li><a href="ontology-sts1-characters-ironclad.html" class="wiki-link">Ironclad</a> — Strength-based. Starter relic heals 6 HP/fight.</li>
+<li><a href="ontology-sts1-characters-silent.html" class="wiki-link">Silent</a> — Poison and Shiv-based. Starter relic draws 2 extra on turn 1.</li>
+<li><a href="ontology-sts1-characters-defect.html" class="wiki-link">Defect</a> — Orb-based. Starter relic channels 1 Lightning at combat start.</li>
+<li><a href="ontology-sts1-characters-watcher.html" class="wiki-link">Watcher</a> — Stance-based. Starter relic adds Miracle to hand at combat start.</li>
 </ul>
 
 <h2 id="analysis-methodology">Analysis Methodology</h2>
 
-<p>For run analysis, see <a href="ontology-analysis-index.html" class="wiki-link">index</a> — prediction errors, attribution, file conventions, observation lifecycle.</p>
+<p>For run analysis, see <a href="ontology-sts1-analysis-index.html" class="wiki-link">index</a> — prediction errors, attribution, file conventions, observation lifecycle.</p>
 
 <h2 id="strategic-guidance">Strategic Guidance</h2>
 

@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,32 +384,31 @@ footer {
 <nav><a href="index.html" class="">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="active">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
-<span class="section-badge heuristics">heuristics</span>
-<div class="back-link"><a href="heuristics-sts1.html">&larr; Back to Sts1</a></div><h1 id="drafting-deck-building">Drafting &amp; Deck Building</h1>
+<span class="section-badge heuristics">heuristics &middot; Slay the Spire</span>
+<div class="back-link"><a href="heuristics-sts1.html">&larr; Slay the Spire</a></div><h1 id="drafting-deck-building">Drafting &amp; Deck Building</h1>
 
-<p>Card evaluation and deck construction heuristics for <a href="ontology-characters-ironclad.html" class="wiki-link">Ironclad</a>. Every card pick should solve a problem, not add raw power.</p>
+<p>Card evaluation and deck construction heuristics for <a href="ontology-sts1-characters-ironclad.html" class="wiki-link">Ironclad</a>. Every card pick should solve a problem, not add raw power.</p>
 
 <hr>
 
 <h2 id="healing-card-priority-the-critical-gap">Healing Card Priority (THE CRITICAL GAP)</h2>
 
-<p>The single biggest strategic failure across 50 runs: entering <a href="ontology-acts-act-2.html" class="wiki-link">Act 2</a> without a healing card. <a href="ontology-relics-burning-blood.html" class="wiki-link">Burning Blood</a> (+6/fight) heals 6% of max HP per fight. Act 2 fights drain 25-50 HP. The math does not work.</p>
+<p>The single biggest strategic failure across 50 runs: entering <a href="ontology-sts1-acts-act-2.html" class="wiki-link">Act 2</a> without a healing card. <a href="ontology-sts1-relics-burning-blood.html" class="wiki-link">Burning Blood</a> (+6/fight) heals 6% of max HP per fight. Act 2 fights drain 25-50 HP. The math does not work.</p>
 
 <p><strong>Card reward priority when offered a healing card:</strong></p>
 <ul>
-<li><strong><a href="ontology-cards-reaper.html" class="wiki-link">Reaper</a>: TAKE IT.</strong> Even over good damage/block cards. Best card in the game for Ironclad.</li>
-<li><strong>Feed: TAKE IT</strong> in early <a href="ontology-acts-act-1.html" class="wiki-link">Act 1</a>. +3-4 Max HP per kill compounds over 15+ fights.</li>
-<li>If neither offered by Floor 12, seek healing potions (<a href="ontology-potions-blood-potion.html" class="wiki-link">Blood Potion</a>, <a href="ontology-potions-regen-potion.html" class="wiki-link">Regen Potion</a>) and healing relics (<a href="ontology-relics-toy-ornithopter.html" class="wiki-link">Toy Ornithopter</a>, <a href="ontology-relics-meal-ticket.html" class="wiki-link">Meal Ticket</a>, <a href="ontology-relics-bloody-idol.html" class="wiki-link">Bloody Idol</a>) at shops.</li>
+<li><strong><a href="ontology-sts1-cards-reaper.html" class="wiki-link">Reaper</a>: TAKE IT.</strong> Even over good damage/block cards. Best card in the game for Ironclad.</li>
+<li><strong>Feed: TAKE IT</strong> in early <a href="ontology-sts1-acts-act-1.html" class="wiki-link">Act 1</a>. +3-4 Max HP per kill compounds over 15+ fights.</li>
+<li>If neither offered by Floor 12, seek healing potions (<a href="ontology-sts1-potions-blood-potion.html" class="wiki-link">Blood Potion</a>, <a href="ontology-sts1-potions-regen-potion.html" class="wiki-link">Regen Potion</a>) and healing relics (<a href="ontology-sts1-relics-toy-ornithopter.html" class="wiki-link">Toy Ornithopter</a>, <a href="ontology-sts1-relics-meal-ticket.html" class="wiki-link">Meal Ticket</a>, <a href="ontology-sts1-relics-bloody-idol.html" class="wiki-link">Bloody Idol</a>) at shops.</li>
 </ul>
 
-<p><strong>This is non-negotiable.</strong> A deck with Reaper + adequate damage will reach <a href="ontology-acts-act-3.html" class="wiki-link">Act 3</a>. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30.</p>
+<p><strong>This is non-negotiable.</strong> A deck with Reaper + adequate damage will reach <a href="ontology-sts1-acts-act-3.html" class="wiki-link">Act 3</a>. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30.</p>
 
 <p><strong>Reaper alone is NOT sufficient.</strong> Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. Multiple healing sources are required. <strong>Minimum TWO healing sources by Act 2 Floor 5.</strong></p>
 
-<p><strong>Sozu boss relic risk:</strong> <a href="ontology-relics-sozu.html" class="wiki-link">Sozu</a> (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. <strong>Confirmed fatal in Run 217:</strong> took Sozu with no healing card, forced 5 rests in Act 2, entered boss at 51% HP (threshold 70%), died.</p>
+<p><strong>Sozu boss relic risk:</strong> <a href="ontology-sts1-relics-sozu.html" class="wiki-link">Sozu</a> (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. <strong>Confirmed fatal in Run 217:</strong> took Sozu with no healing card, forced 5 rests in Act 2, entered boss at 51% HP (threshold 70%), died.</p>
 
 <hr>
 
@@ -415,12 +418,12 @@ footer {
 
 <p>1. <strong>Damage scaling</strong> -- the deck needs SOME way to outpace enemy block and HP growth. Two valid paths:</p>
 <ul>
-<li><strong>Strength path:</strong> <a href="ontology-cards-inflame.html" class="wiki-link">Inflame</a>, <a href="ontology-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a> (front-loaded). NOT <a href="ontology-cards-demon-form.html" class="wiki-link">Demon Form</a> alone (too slow for hallway fights, confirmed in 2+ deaths). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).</li>
-<li><strong>Exhaust/Block path (under investigation):</strong> <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (+ <a href="ontology-cards-body-slam.html" class="wiki-link">Body Slam</a> for damage conversion). This engine may generate block and damage without Strength — Run 187 won with it as the primary engine (with supplementary Str from Spot Weakness + Red Skull). Whether it works WITHOUT any Str sources is being tested (see exploration directives).</li>
+<li><strong>Strength path:</strong> <a href="ontology-sts1-cards-inflame.html" class="wiki-link">Inflame</a>, <a href="ontology-sts1-cards-spot-weakness.html" class="wiki-link">Spot Weakness</a> (front-loaded). NOT <a href="ontology-sts1-cards-demon-form.html" class="wiki-link">Demon Form</a> alone (too slow for hallway fights, confirmed in 2+ deaths). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).</li>
+<li><strong>Exhaust/Block path (under investigation):</strong> <a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-sts1-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (+ <a href="ontology-sts1-cards-body-slam.html" class="wiki-link">Body Slam</a> for damage conversion). This engine may generate block and damage without Strength — Run 187 won with it as the primary engine (with supplementary Str from Spot Weakness + Red Skull). Whether it works WITHOUT any Str sources is being tested (see exploration directives).</li>
 </ul>
-<p>2. <strong>AOE damage</strong> -- <a href="ontology-cards-thunderclap.html" class="wiki-link">Thunderclap</a>, <a href="ontology-cards-cleave.html" class="wiki-link">Cleave</a>, <a href="ontology-cards-immolate.html" class="wiki-link">Immolate</a>, <a href="ontology-cards-whirlwind.html" class="wiki-link">Whirlwind</a>. Required for <a href="ontology-enemies-gremlin-leader.html" class="wiki-link">Gremlin Leader</a> (gremlins re-summon), 3 Cultists (hard-scaler, kill speed matters), <a href="ontology-bosses-slime-boss.html" class="wiki-link">Slime Boss</a> split.</p>
+<p>2. <strong>AOE damage</strong> -- <a href="ontology-sts1-cards-thunderclap.html" class="wiki-link">Thunderclap</a>, <a href="ontology-sts1-cards-cleave.html" class="wiki-link">Cleave</a>, <a href="ontology-sts1-cards-immolate.html" class="wiki-link">Immolate</a>, <a href="ontology-sts1-cards-whirlwind.html" class="wiki-link">Whirlwind</a>. Required for <a href="ontology-sts1-enemies-gremlin-leader.html" class="wiki-link">Gremlin Leader</a> (gremlins re-summon), 3 Cultists (hard-scaler, kill speed matters), <a href="ontology-sts1-bosses-slime-boss.html" class="wiki-link">Slime Boss</a> split.</p>
 <p>3. <strong>Healing beyond Burning Blood</strong> -- Reaper, Feed, potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.</p>
-<p>4. <strong>Block scaling beyond basic Defends</strong> -- <a href="ontology-cards-shrug-it-off.html" class="wiki-link">Shrug It Off</a>, <a href="ontology-cards-flame-barrier.html" class="wiki-link">Flame Barrier</a>, <a href="ontology-cards-metallicize.html" class="wiki-link">Metallicize</a>, <a href="ontology-cards-impervious.html" class="wiki-link">Impervious</a>, or <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (FNP generates block on every exhaust). Basic Defends provide only 20 block from a full hand of 4. Act 2 boss Hyper Beam deals 45-57 damage. Even late Act 2 hallway fights (<a href="ontology-enemies-book-of-stabbing.html" class="wiki-link">Book of Stabbing</a> turn 5: 6x6=36) outscale basic Defends.</p>
+<p>4. <strong>Block scaling beyond basic Defends</strong> -- <a href="ontology-sts1-cards-shrug-it-off.html" class="wiki-link">Shrug It Off</a>, <a href="ontology-sts1-cards-flame-barrier.html" class="wiki-link">Flame Barrier</a>, <a href="ontology-sts1-cards-metallicize.html" class="wiki-link">Metallicize</a>, <a href="ontology-sts1-cards-impervious.html" class="wiki-link">Impervious</a>, or <a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-sts1-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (FNP generates block on every exhaust). Basic Defends provide only 20 block from a full hand of 4. Act 2 boss Hyper Beam deals 45-57 damage. Even late Act 2 hallway fights (<a href="ontology-sts1-enemies-book-of-stabbing.html" class="wiki-link">Book of Stabbing</a> turn 5: 6x6=36) outscale basic Defends.</p>
 
 <p><strong>If missing 2+ entering Act 2, shift to conservative pathing</strong> -- avoid elites, path through shops and rest sites, skip unknown rooms.</p>
 
@@ -438,54 +441,54 @@ footer {
 <li>Immolate (massive AOE + single target, solves multiple problems)</li>
 <li>Impervious (30 block in one card, solves every block problem)</li>
 <li>Shrug It Off (block + draw, best defensive common)</li>
-<li><a href="ontology-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a> (damage + draw, best offensive common)</li>
+<li><a href="ontology-sts1-cards-pommel-strike.html" class="wiki-link">Pommel Strike</a> (damage + draw, best offensive common)</li>
 </ul>
 
 <p><strong>HIGH PRIORITY</strong> (take to fill gaps):</p>
 <ul>
 <li>Spot Weakness (+3/+4 Str when enemy attacks -- most enemies attack)</li>
-<li>Thunderclap (AOE + <a href="ontology-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a>, critical for Byrds in Act 2)</li>
-<li><a href="ontology-cards-headbutt.html" class="wiki-link">Headbutt</a> (damage + deck manipulation)</li>
-<li><a href="ontology-cards-carnage.html" class="wiki-link">Carnage</a> (high damage Ethereal attack -- great for Nob-safe damage)</li>
-<li><a href="ontology-cards-iron-wave.html" class="wiki-link">Iron Wave</a> (damage + block in one card)</li>
-<li><a href="ontology-cards-clothesline.html" class="wiki-link">Clothesline</a> (damage + <a href="ontology-debuffs-weak.html" class="wiki-link">Weak</a>)</li>
-<li><a href="ontology-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts -- incredible vs multi-enemy)</li>
+<li>Thunderclap (AOE + <a href="ontology-sts1-debuffs-vulnerable.html" class="wiki-link">Vulnerable</a>, critical for Byrds in Act 2)</li>
+<li><a href="ontology-sts1-cards-headbutt.html" class="wiki-link">Headbutt</a> (damage + deck manipulation)</li>
+<li><a href="ontology-sts1-cards-carnage.html" class="wiki-link">Carnage</a> (high damage Ethereal attack -- great for Nob-safe damage)</li>
+<li><a href="ontology-sts1-cards-iron-wave.html" class="wiki-link">Iron Wave</a> (damage + block in one card)</li>
+<li><a href="ontology-sts1-cards-clothesline.html" class="wiki-link">Clothesline</a> (damage + <a href="ontology-sts1-debuffs-weak.html" class="wiki-link">Weak</a>)</li>
+<li><a href="ontology-sts1-cards-shockwave.html" class="wiki-link">Shockwave</a> (mass Weak + Vulnerable, exhausts -- incredible vs multi-enemy)</li>
 <li>Flame Barrier (block + counter damage, excellent in multi-hit fights)</li>
 </ul>
 
 <p><strong>SITUATIONAL</strong> (take only if it fills a specific gap):</p>
 <ul>
-<li><a href="ontology-cards-evolve.html" class="wiki-link">Evolve</a> (MUST-TAKE if Slime Boss is the Act 1 boss -- trivializes <a href="ontology-cards-slimed.html" class="wiki-link">Slimed</a> cards)</li>
-<li><a href="ontology-cards-fire-breathing.html" class="wiki-link">Fire Breathing</a> (MUST-TAKE if Slime Boss AND you have Evolve)</li>
-<li><a href="ontology-cards-uppercut.html" class="wiki-link">Uppercut</a> (Weak + Vulnerable in one card, but 2E is expensive)</li>
-<li><a href="ontology-cards-perfected-strike.html" class="wiki-link">Perfected Strike</a> (only if 3+ Strike cards remain in deck)</li>
-<li><a href="ontology-cards-anger.html" class="wiki-link">Anger</a> (free attack, good for Nob, but adds copies to discard)</li>
-<li><a href="ontology-cards-rampage.html" class="wiki-link">Rampage</a> (scaling damage, needs multiple plays to ramp)</li>
-<li><a href="ontology-cards-true-grit.html" class="wiki-link">True Grit</a> (ONLY if you can upgrade it soon -- unupgraded random exhaust is dangerous)</li>
-<li><a href="ontology-cards-sentinel.html" class="wiki-link">Sentinel</a> (block + energy on exhaust)</li>
-<li><a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (3 block per exhaust. Enables Corruption engine; also good standalone with True Grit, Fiend Fire, or any exhaust source. Under investigation as a high-priority pick — see exploration directives.)</li>
+<li><a href="ontology-sts1-cards-evolve.html" class="wiki-link">Evolve</a> (MUST-TAKE if Slime Boss is the Act 1 boss -- trivializes <a href="ontology-sts1-cards-slimed.html" class="wiki-link">Slimed</a> cards)</li>
+<li><a href="ontology-sts1-cards-fire-breathing.html" class="wiki-link">Fire Breathing</a> (MUST-TAKE if Slime Boss AND you have Evolve)</li>
+<li><a href="ontology-sts1-cards-uppercut.html" class="wiki-link">Uppercut</a> (Weak + Vulnerable in one card, but 2E is expensive)</li>
+<li><a href="ontology-sts1-cards-perfected-strike.html" class="wiki-link">Perfected Strike</a> (only if 3+ Strike cards remain in deck)</li>
+<li><a href="ontology-sts1-cards-anger.html" class="wiki-link">Anger</a> (free attack, good for Nob, but adds copies to discard)</li>
+<li><a href="ontology-sts1-cards-rampage.html" class="wiki-link">Rampage</a> (scaling damage, needs multiple plays to ramp)</li>
+<li><a href="ontology-sts1-cards-true-grit.html" class="wiki-link">True Grit</a> (ONLY if you can upgrade it soon -- unupgraded random exhaust is dangerous)</li>
+<li><a href="ontology-sts1-cards-sentinel.html" class="wiki-link">Sentinel</a> (block + energy on exhaust)</li>
+<li><a href="ontology-sts1-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> (3 block per exhaust. Enables Corruption engine; also good standalone with True Grit, Fiend Fire, or any exhaust source. Under investigation as a high-priority pick — see exploration directives.)</li>
 </ul>
 
 <p><strong>SKIP</strong> (do not take in Act 1 unless noted):</p>
 <ul>
 <li>Demon Form (too slow for hallway fights, does not satisfy front-loaded damage scaling)</li>
-<li><a href="ontology-cards-limit-break.html" class="wiki-link">Limit Break</a> (needs a Str source first)</li>
-<li><a href="ontology-cards-barricade.html" class="wiki-link">Barricade</a> (3E, too slow, no immediate value -- but take from boss card rewards if building block engine)</li>
-<li><a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> (3E, dangerous without <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a>. Under investigation: may be worth taking if FNP is already in deck, but needs more data — see exploration directives.)</li>
-<li><a href="ontology-cards-brutality.html" class="wiki-link">Brutality</a> (self-damage in long fights)</li>
-<li><a href="ontology-cards-berserk.html" class="wiki-link">Berserk</a> (self-Vulnerable is extremely dangerous)</li>
+<li><a href="ontology-sts1-cards-limit-break.html" class="wiki-link">Limit Break</a> (needs a Str source first)</li>
+<li><a href="ontology-sts1-cards-barricade.html" class="wiki-link">Barricade</a> (3E, too slow, no immediate value -- but take from boss card rewards if building block engine)</li>
+<li><a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a> (3E, dangerous without <a href="ontology-sts1-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a>. Under investigation: may be worth taking if FNP is already in deck, but needs more data — see exploration directives.)</li>
+<li><a href="ontology-sts1-cards-brutality.html" class="wiki-link">Brutality</a> (self-damage in long fights)</li>
+<li><a href="ontology-sts1-cards-berserk.html" class="wiki-link">Berserk</a> (self-Vulnerable is extremely dangerous)</li>
 </ul>
 
 <p><strong>Boss-specific overrides (APPLY BEFORE tier list):</strong></p>
 <ul>
 <li>Slime Boss visible: Evolve and Fire Breathing become MUST-TAKES</li>
-<li><a href="ontology-bosses-hexaghost.html" class="wiki-link">Hexaghost</a> visible: Weak sources (Shockwave, Clothesline, <a href="ontology-cards-intimidate.html" class="wiki-link">Intimidate</a>) become MUST-TAKES. A Weak source outranks ANY generic tier list pick -- take Clothesline over Pommel Strike, take Intimidate over Iron Wave, etc. Without Weak, Hexaghost&#x27;s Inferno and Tackles deal full damage for 16+ turns. No amount of block cards compensates.</li>
-<li><a href="ontology-bosses-the-guardian.html" class="wiki-link">The Guardian</a> visible: Burst damage for <a href="ontology-buffs-mode-shift.html" class="wiki-link">Mode Shift</a> (Carnage, <a href="ontology-cards-bludgeon.html" class="wiki-link">Bludgeon</a>)</li>
+<li><a href="ontology-sts1-bosses-hexaghost.html" class="wiki-link">Hexaghost</a> visible: Weak sources (Shockwave, Clothesline, <a href="ontology-sts1-cards-intimidate.html" class="wiki-link">Intimidate</a>) become MUST-TAKES. A Weak source outranks ANY generic tier list pick -- take Clothesline over Pommel Strike, take Intimidate over Iron Wave, etc. Without Weak, Hexaghost&#x27;s Inferno and Tackles deal full damage for 16+ turns. No amount of block cards compensates.</li>
+<li><a href="ontology-sts1-bosses-the-guardian.html" class="wiki-link">The Guardian</a> visible: Burst damage for <a href="ontology-sts1-buffs-mode-shift.html" class="wiki-link">Mode Shift</a> (Carnage, <a href="ontology-sts1-cards-bludgeon.html" class="wiki-link">Bludgeon</a>)</li>
 </ul>
 
 <p><strong>Elite-specific overrides:</strong></p>
 <ul>
-<li><a href="ontology-enemies-gremlin-nob.html" class="wiki-link">Gremlin Nob</a>: Take attacks, not skills. Nob gains +2 Str per Skill you play.</li>
+<li><a href="ontology-sts1-enemies-gremlin-nob.html" class="wiki-link">Gremlin Nob</a>: Take attacks, not skills. Nob gains +2 Str per Skill you play.</li>
 <li>Slavers in Act 2: AOE and mass debuff are critical for 3-enemy fight.</li>
 <li>Book of Stabbing in Act 2: Exhaust tools for Wound removal.</li>
 </ul>
@@ -519,22 +522,22 @@ footer {
 
 <h2 id="damage-scaling-is-mandatory">Damage Scaling Is Mandatory</h2>
 
-<p><a href="ontology-enemies-spheric-guardian.html" class="wiki-link">Spheric Guardian</a> has Barricade -- its block never expires and grows 15-20 per defend cycle. At 0-1 Strength with no scaling engine, Strikes deal 6-7 damage per play against 15-20 block gained per cycle. The fight is unwinnable without some form of damage scaling.</p>
+<p><a href="ontology-sts1-enemies-spheric-guardian.html" class="wiki-link">Spheric Guardian</a> has Barricade -- its block never expires and grows 15-20 per defend cycle. At 0-1 Strength with no scaling engine, Strikes deal 6-7 damage per play against 15-20 block gained per cycle. The fight is unwinnable without some form of damage scaling.</p>
 
 <p><strong>By Floor 15, the deck MUST have a scaling path.</strong> Either:</p>
 
 <p><strong>Path A -- Strength scaling:</strong></p>
 <p>1. Inflame (+2 Str permanent, 1E) -- best standalone option</p>
 <p>2. Spot Weakness (+3/+4 Str when enemy attacks, 1E) -- excellent but conditional</p>
-<p>3. <a href="ontology-relics-brimstone.html" class="wiki-link">Brimstone</a> relic (+2 Str/turn to you AND enemies) -- run-defining when acquired early (see brimstone.md). Pairs exceptionally well with Reaper.</p>
+<p>3. <a href="ontology-sts1-relics-brimstone.html" class="wiki-link">Brimstone</a> relic (+2 Str/turn to you AND enemies) -- run-defining when acquired early (see brimstone.md). Pairs exceptionally well with Reaper.</p>
 <p>4. Limit Break (doubles current Str) -- only if another Str source exists to double</p>
 <p>5. Demon Form (+2 Str/turn, 3E) -- too slow for hallway fights but works for bosses</p>
-<p>6. <a href="ontology-relics-vajra.html" class="wiki-link">Vajra</a> relic (+1 Str) -- passive, always on</p>
+<p>6. <a href="ontology-sts1-relics-vajra.html" class="wiki-link">Vajra</a> relic (+1 Str) -- passive, always on</p>
 
 <p><strong>Path B -- Exhaust/Block engine (under investigation):</strong></p>
-<p>1. <a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> -- core combo. FNP generates block on each exhausted Skill; Corruption makes all Skills free but one-use. Together they produce massive block per turn. Add <a href="ontology-cards-body-slam.html" class="wiki-link">Body Slam</a> to convert block to damage.</p>
-<p>2. <a href="ontology-cards-barricade.html" class="wiki-link">Barricade</a> -- block persists, so the engine snowballs. Not required early but completes the engine.</p>
-<p>3. <a href="ontology-cards-entrench.html" class="wiki-link">Entrench</a> -- doubles accumulated block. With Barricade, this is exponential growth.</p>
+<p>1. <a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a> + <a href="ontology-sts1-cards-feel-no-pain.html" class="wiki-link">Feel No Pain</a> -- core combo. FNP generates block on each exhausted Skill; Corruption makes all Skills free but one-use. Together they produce massive block per turn. Add <a href="ontology-sts1-cards-body-slam.html" class="wiki-link">Body Slam</a> to convert block to damage.</p>
+<p>2. <a href="ontology-sts1-cards-barricade.html" class="wiki-link">Barricade</a> -- block persists, so the engine snowballs. Not required early but completes the engine.</p>
+<p>3. <a href="ontology-sts1-cards-entrench.html" class="wiki-link">Entrench</a> -- doubles accumulated block. With Barricade, this is exponential growth.</p>
 
 <p>These paths are not mutually exclusive. Run 187 won with Corruption+FNP primary and Spot Weakness secondary. Run 104 won with the full Barricade+Corruption+FNP+Body Slam engine. Both winning runs ALSO had Strength sources. Whether the exhaust/block engine can win purely on its own (without any Str) is being tested — see exploration directives. What IS clear: a deck cannot survive without SOME scaling path.</p>
 
@@ -549,9 +552,9 @@ footer {
 
 <p><strong>When an event offers gold + a curse, check the map:</strong></p>
 <ul>
-<li><strong>Shop within 2-3 floors:</strong> Take the gold + curse, remove at shop. Net profit after 75g removal. <a href="ontology-events-sssserpent.html" class="wiki-link">Sssserpent</a> (175g + Doubt curse) nets 100g profit.</li>
+<li><strong>Shop within 2-3 floors:</strong> Take the gold + curse, remove at shop. Net profit after 75g removal. <a href="ontology-sts1-events-sssserpent.html" class="wiki-link">Sssserpent</a> (175g + Doubt curse) nets 100g profit.</li>
 <li><strong>No shop before boss/elite:</strong> Refuse. A curse stuck in the deck for 5+ floors degrades draw quality and costs HP in hard fights.</li>
-<li><strong>Parasite: Never take.</strong> Cannot be removed at shops. No exceptions unless <a href="ontology-relics-omamori.html" class="wiki-link">Omamori</a> will negate it.</li>
+<li><strong>Parasite: Never take.</strong> Cannot be removed at shops. No exceptions unless <a href="ontology-sts1-relics-omamori.html" class="wiki-link">Omamori</a> will negate it.</li>
 </ul>
 
 <p>Evaluate the map context, not just the curse itself.</p>
@@ -584,12 +587,12 @@ footer {
 
 <h2 id="3-cost-power-setup-trap">3-Cost Power Setup Trap</h2>
 
-<p><a href="ontology-cards-corruption.html" class="wiki-link">Corruption</a> (3E), Barricade (3E), Demon Form (3E) consume ALL energy on a 3-energy turn. Playing them on Turn 1 against attacking enemies leaves zero energy for block. Two deaths confirmed from this pattern.</p>
+<p><a href="ontology-sts1-cards-corruption.html" class="wiki-link">Corruption</a> (3E), Barricade (3E), Demon Form (3E) consume ALL energy on a 3-energy turn. Playing them on Turn 1 against attacking enemies leaves zero energy for block. Two deaths confirmed from this pattern.</p>
 
 <p><strong>Only play 3E Powers when:</strong></p>
 <ul>
 <li>Enemy is buffing/defending (free turn with no incoming damage)</li>
-<li>You have 4+ energy (from <a href="ontology-relics-lantern.html" class="wiki-link">Lantern</a>, <a href="ontology-relics-sozu.html" class="wiki-link">Sozu</a>, <a href="ontology-cards-offering.html" class="wiki-link">Offering</a>, etc.), leaving energy for block</li>
+<li>You have 4+ energy (from <a href="ontology-sts1-relics-lantern.html" class="wiki-link">Lantern</a>, <a href="ontology-sts1-relics-sozu.html" class="wiki-link">Sozu</a>, <a href="ontology-sts1-cards-offering.html" class="wiki-link">Offering</a>, etc.), leaving energy for block</li>
 <li>You upgraded the Power to 2E (Corruption+ is 2E, leaving 1E for Defend)</li>
 <li>It is a boss fight where spending HP for setup speed is acceptable</li>
 </ul>
@@ -618,7 +621,7 @@ footer {
 <p>Activate by Floor 17 if no healing card has been acquired. Do not wait until HP is critical.</p>
 
 <p>1. <strong>Shop healing:</strong> Buy Blood Potion or Regen Potion at every shop. Buy Toy Ornithopter or Meal Ticket if offered.</p>
-<p>2. <strong>Event healing:</strong> <a href="ontology-events-the-cleric.html" class="wiki-link">The Cleric</a> heals. <a href="ontology-events-big-fish.html" class="wiki-link">Big Fish</a> offers healing. <a href="ontology-events-woman-in-blue.html" class="wiki-link">Woman in Blue</a> sells potions. Prioritize these events.</p>
+<p>2. <strong>Event healing:</strong> <a href="ontology-sts1-events-the-cleric.html" class="wiki-link">The Cleric</a> heals. <a href="ontology-sts1-events-big-fish.html" class="wiki-link">Big Fish</a> offers healing. <a href="ontology-sts1-events-woman-in-blue.html" class="wiki-link">Woman in Blue</a> sells potions. Prioritize these events.</p>
 <p>3. <strong>Path through more rest sites:</strong> Without healing cards, rest sites become the primary healing source. Accept fewer upgrades. Degraded strategy but better than dying.</p>
 <p>4. <strong>Potion management:</strong> Treat Blood Potions and Regen Potions as precious resources. Do not use them in trivial fights.</p>
 <p>5. <strong>Conservative pathing:</strong> Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.</p>

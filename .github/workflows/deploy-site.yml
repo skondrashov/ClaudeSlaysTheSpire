@@ -5,10 +5,10 @@ on:
     paths:
       - 'ontology/**'
       - 'heuristics/**'
+      - 'goals/**'
       - 'site/**'
       - 'agents/**'
-      - 'data/run_stats.json'
-      - 'HUMAN_ADVICE.md'
+      - 'games/sts1/data/run_stats.json'
     branches: [main]
   workflow_dispatch:
 

@@ -17,6 +17,7 @@
   --accent-dim: #5a2090;
   --ontology: #60a5fa;
   --heuristics: #f59e0b;
+  --goals: #34d399;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -146,6 +147,8 @@ tr:nth-child(even) td {
 .category-card.ontology-card a h3 { color: var(--ontology); }
 .category-card.heuristics-card { border-left: 3px solid var(--heuristics); }
 .category-card.heuristics-card a h3 { color: var(--heuristics); }
+.category-card.goals-card { border-left: 3px solid var(--goals); }
+.category-card.goals-card a h3 { color: var(--goals); }
 
 /* Entry grid */
 .entry-grid {
@@ -193,6 +196,7 @@ tr:nth-child(even) td {
 }
 .section-badge.ontology { background: rgba(96,165,250,0.15); color: var(--ontology); }
 .section-badge.heuristics { background: rgba(245,158,11,0.15); color: var(--heuristics); }
+.section-badge.goals { background: rgba(52,211,153,0.15); color: var(--goals); }
 
 /* Companion link (ontology ↔ heuristics) */
 .companion-link {
@@ -380,8 +384,7 @@ footer {
 <nav><a href="index.html" class="active">Home</a>
 <a href="ontology.html" class="">Ontology</a>
 <a href="heuristics.html" class="">Heuristics</a>
-<a href="knowledge-system.html" class="">Knowledge System</a>
-<a href="philosophy.html" class="">Philosophy</a>
+<a href="goals.html" class="">Goals</a>
 <a href="changelog.html" class="">Changelog</a></nav>
 
 <div style="margin: 24px 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
@@ -397,8 +400,8 @@ footer {
 <div class="stats-grid">
   <div class="stat"><div class="stat-value">186</div><div class="stat-label">Runs</div></div>
   <div class="stat"><div class="stat-value">10</div><div class="stat-label">Wins</div></div>
-  <div class="stat"><div class="stat-value">2</div><div class="stat-label">Ontology Entries</div></div>
-  <div class="stat"><div class="stat-value">7</div><div class="stat-label">Heuristics</div></div>
+  <div class="stat"><div class="stat-value">765</div><div class="stat-label">Ontology Entries</div></div>
+  <div class="stat"><div class="stat-value">341</div><div class="stat-label">Heuristics</div></div>
 </div>
 
 <div class="state-details">
@@ -429,11 +432,11 @@ footer {
 Claude plays <a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>,
 makes decisions one at a time with explicit reasoning, and reviews its own runs to figure out what
 went wrong. No hardcoded strategy. Everything it knows is recorded in a structured
-<a href="knowledge-system.html">knowledge system</a> that grows over time.
+knowledge system called <a href="ontology-praxis.html">Praxis</a> that grows over time.
 </p>
 
 <p>
-The <a href="ontology.html">Ontology</a> is the complete factual database of the game &mdash; every
+The <a href="ontology.html">Ontology</a> is the complete factual database &mdash; every
 card, enemy, relic, and mechanic. The <a href="heuristics.html">Heuristics</a> are strategic
 guidance accumulated from gameplay. The <a href="changelog.html">Changelog</a> shows what changed and when.
 </p>
@@ -442,11 +445,15 @@ guidance accumulated from gameplay. The <a href="changelog.html">Changelog</a> s
 <div class="category-grid">
 <div class="category-card ontology-card"><a href="ontology.html">
   <h3>Ontology</h3>
-  <div class="count">2 entries &mdash; facts about the game</div>
+  <div class="count">765 game entries &mdash; facts</div>
 </a></div>
 <div class="category-card heuristics-card"><a href="heuristics.html">
   <h3>Heuristics</h3>
-  <div class="count">7 entries &mdash; strategy and guidance</div>
+  <div class="count">341 game entries &mdash; strategy</div>
+</a></div>
+<div class="category-card goals-card"><a href="goals.html">
+  <h3>Goals</h3>
+  <div class="count">Agent operating modes</div>
 </a></div>
 </div>
 
