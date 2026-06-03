@@ -45,11 +45,22 @@ def build_index(domain: str) -> dict:
     return {"domain": domain, "entries": entries}
 
 
+def index_path(domain: str) -> Path:
+    return ROOT / "awareness" / domain / "survey-index.json"
+
+
+def write_index(domain: str) -> Path:
+    idx = build_index(domain)
+    p = index_path(domain)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(idx, indent=2) + "\n", encoding="utf-8")
+    return p
+
+
 if __name__ == "__main__":
     domain = sys.argv[1] if len(sys.argv) > 1 else "sts1"
-    idx = build_index(domain)
-    print(json.dumps(idx, indent=2))
-    print(f"\n# {len(idx['entries'])} index entries "
-          f"({sum(1 for e in idx['entries'] if e['id'].startswith('rule:'))} rule, "
-          f"{sum(1 for e in idx['entries'] if not e['id'].startswith('rule:'))} contextual)",
-          file=sys.stderr)
+    p = write_index(domain)
+    idx = json.loads(p.read_text(encoding="utf-8"))
+    n_rule = sum(1 for e in idx["entries"] if e["id"].startswith("rule:"))
+    print(f"wrote {p.relative_to(ROOT)} — {len(idx['entries'])} entries "
+          f"({n_rule} rule, {len(idx['entries']) - n_rule} contextual)")

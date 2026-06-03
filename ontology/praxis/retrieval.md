@@ -85,6 +85,13 @@ playing agent. Different register, same file. See `phenomena/sts1/interactions/`
 
 ## Status
 
-Design of record. Not built. Concrete next steps: the index extractor (real, over
-`Applies when:` fields), the reranker prompt, and the `survey`/`recall` signatures —
-sketched under `tools/retrieval/`.
+Built, not yet validated against a live run. Implementation:
+- `tools/retrieval/build_index.py` — extracts `Applies when:` blurbs into the
+  `{blurb, target}` index (+ the upgrade rule entry); writes `awareness/<domain>/survey-index.json`.
+- `awareness/sts1/survey-index.json` — the committed built index.
+- `tools/retrieval/survey.py` — `survey()` (one cached reranker call, returns paths
+  only), `recall()` (fetch, no link-following), `load_index()`.
+- `games/sts1/cmd.py` — agent-facing `survey()`/`recall()` (thin wrappers; guarded import).
+
+Open: needs `ANTHROPIC_API_KEY` at runtime; reranker prompt + model
+(`claude-haiku-4-5`) to be tuned against real surveys; cadence is the agent's call.

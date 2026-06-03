@@ -2093,6 +2093,50 @@ def reason(topic: str) -> str:
     )
 
 
+def survey() -> str:
+    """Survey what knowledge MIGHT apply to the current state — a menu, not content.
+
+    Maps the live game state to a list of handles (paths) for ontology, heuristic,
+    and phenomenon entries that might be relevant right now, via a fast reranker.
+    Returns ONLY the menu; read the ones you want with recall(). It does not compose
+    context for you — you decide what is worth pulling.
+    """
+    try:
+        if ROOT not in sys.path:
+            sys.path.insert(0, ROOT)
+        from tools import retrieval
+    except Exception as e:
+        return f"survey unavailable: {e}"
+    try:
+        state_text = format_state(state_raw())
+        handles = retrieval.survey(state_text, retrieval.load_index("sts1"))
+    except Exception as e:
+        return f"survey failed: {e}"
+    if not handles:
+        return "survey: nothing flagged. recall() entities by name as needed."
+    return "\n".join(["survey — recall() any of these you want:"] +
+                     [f"  - {h}" for h in handles])
+
+
+def recall(*handles: str) -> str:
+    """Fetch the full text of specific knowledge entries by handle (path).
+
+    Pass one or more handles from survey(), e.g.
+    "phenomena/sts1/interactions/corruption-dead-branch". Links inside the returned
+    text are an inline menu — recall() them too to navigate; they are NOT auto-followed.
+    """
+    try:
+        if ROOT not in sys.path:
+            sys.path.insert(0, ROOT)
+        from tools import retrieval
+    except Exception as e:
+        return f"recall unavailable: {e}"
+    docs = retrieval.recall(list(handles))
+    if not docs:
+        return f"recall: no entries found for {list(handles)}"
+    return "\n\n---\n\n".join(f"### {h}\n\n{txt}" for h, txt in docs.items())
+
+
 def deck() -> str:
     """View your full deck. Use after transforming, adding, or removing cards
     to assess how the deck changed holistically.
