@@ -37,3 +37,7 @@ Each run plays through [[acts/Act 1]], [[acts/Act 2]], [[acts/Act 3]], then an o
 - [[characters/Silent]] — Poison and Shiv-based. Starter relic draws 2 extra on turn 1.
 - [[characters/Defect]] — Orb-based. Starter relic channels 1 Lightning at combat start.
 - [[characters/Watcher]] — Stance-based. Starter relic adds Miracle to hand at combat start.
+
+## Ascension
+
+A difficulty system of 20 cumulative levels above the base game (Ascension 0). Each level adds one modifier — see [[ascension/]]. **All numeric values in this ontology (enemy HP, attack damage, buff magnitudes) are Ascension 0 (base) values;** higher-ascension stats are a derived composition of the base entity with the ascension modifiers.

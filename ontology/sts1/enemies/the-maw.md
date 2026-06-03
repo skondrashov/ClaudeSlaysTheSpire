@@ -14,7 +14,7 @@
 | Move | Damage | Effect |
 |------|--------|--------|
 | Roar | -- | Applies 3 [[debuffs/Weak]] + 3 [[debuffs/Frail]] |
-| Slam | 25 (30 at A2) | -- |
+| Slam | 25 | -- |
 | Nom Nom | 5xN (N increases -- roughly current turn / 2 rounded up) | -- |
-| Drool | -- | Gains 3 [[buffs/Strength]] (5 at A5) |
+| Drool | -- | Gains 3 [[buffs/Strength]] |
 

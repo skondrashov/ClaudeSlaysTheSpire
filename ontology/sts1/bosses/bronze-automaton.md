@@ -2,7 +2,7 @@
 
 - **Type:** Boss
 - **Act:** 2
-- **HP:** 300 (A0), 320 (A9)
+- **HP:** 300
 
 ## Starting State
 
@@ -17,9 +17,9 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Flail | 7x2 = 14 (8x2 = 16 at A4) | -- |
+| Flail | 7x2 = 14 | -- |
 | Boost | -- | Gains 3 [[buffs/Strength]] + 9 Block |
-| HYPER BEAM | 45 (50 at A4) | Automaton is Stunned next turn |
+| HYPER BEAM | 45 | Automaton is Stunned next turn |
 | Stunned | -- | Does nothing |
 
 ## Bronze Orbs

@@ -2,7 +2,7 @@
 
 - **Type:** Boss
 - **Act:** 3
-- **HP:** 456 (A0), 480 (A9)
+- **HP:** 456
 
 ## Pattern
 
@@ -12,12 +12,12 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Reverberate | 7x3 = 21 (8x3 = 24 at A4) | -- |
-| Head Slam | 26 (32 at A4) | Applies 1 [[debuffs/Draw Reduction]] (adds 2 [[cards/Slimed]] at A19) |
-| Ripple | -- | Gains 20 Block + applies 1 [[debuffs/Vulnerable]] + 1 [[debuffs/Weak]] (+ 1 [[debuffs/Frail]] at A19) |
+| Reverberate | 7x3 = 21 | -- |
+| Head Slam | 26 | Applies 1 [[debuffs/Draw Reduction]] |
+| Ripple | -- | Gains 20 Block + applies 1 [[debuffs/Vulnerable]] + 1 [[debuffs/Weak]] |
 
 ## Mechanics
 
 Has [[debuffs/Time Warp]] 12.
 
-**Haste (at 50% HP, once):** When HP first drops to or below 50% (228 at A0), triggers at start of its next turn. Removes ALL player-applied debuffs ([[debuffs/Vulnerable]], [[debuffs/Weak]], etc.), heals HP to exactly 50% of max (228 at A0), and gains 32 Block. Fires once per fight.
+**Haste (at 50% HP, once):** When HP first drops to or below 50% (228 remaining), triggers at start of its next turn. Removes ALL player-applied debuffs ([[debuffs/Vulnerable]], [[debuffs/Weak]], etc.), heals HP to exactly 50% of max (228), and gains 32 Block. Fires once per fight.

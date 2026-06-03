@@ -12,7 +12,7 @@ Fixed sequence: Slam -> Slam -> Explode.
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Slam | 9 (11 at A2) | -- |
+| Slam | 9 | -- |
 | Explode | 30 | Kills self |
 
 ## Mechanics

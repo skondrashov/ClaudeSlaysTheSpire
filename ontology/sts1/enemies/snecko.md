@@ -13,6 +13,6 @@ Always starts with Perplexing Glare (Confused debuff). Then each turn: 60% Bite,
 | Move | Damage | Effect |
 |------|--------|--------|
 | Perplexing Glare | -- | Applies [[debuffs/Confused]] |
-| Bite | 15 (18 at A2) | -- |
-| Tail Whip | 8 (10 at A2) | Applies 2 [[debuffs/Vulnerable]] (+ 2 [[debuffs/Weak]] at A17) |
+| Bite | 15 | -- |
+| Tail Whip | 8 | Applies 2 [[debuffs/Vulnerable]] |
 

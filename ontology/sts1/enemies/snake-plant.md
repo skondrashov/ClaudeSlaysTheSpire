@@ -12,7 +12,7 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Chomp | 7x3 = 21 (8x3 = 24 at A2) | -- |
+| Chomp | 7x3 = 21 | -- |
 | Enfeebling Spores | -- | Applies 2 [[debuffs/Frail]] + 2 [[debuffs/Weak]] |
 
 ## Mechanics

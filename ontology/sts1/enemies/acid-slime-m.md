@@ -12,7 +12,7 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Corrosive Spit | 7 (8 at A2) | Add 1 [[cards/Slimed]] to discard pile |
-| Tackle | 10 (12 at A2) | -- |
+| Corrosive Spit | 7 | Add 1 [[cards/Slimed]] to discard pile |
+| Tackle | 10 | -- |
 | Lick | -- | Apply 1 [[debuffs/Weak]] |
 

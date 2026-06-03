@@ -12,7 +12,7 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Tackle | 3 (4 at A2) | -- |
+| Tackle | 3 | -- |
 | Lick | -- | Apply 1 [[debuffs/Weak]] |
 
 ## Mechanics

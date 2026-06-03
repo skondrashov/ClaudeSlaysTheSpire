@@ -13,7 +13,7 @@ Outer two Sentries start with Bolt, middle Sentry starts with Beam. They alterna
 | Move | Damage | Effect |
 |------|--------|--------|
 | Bolt | -- | Adds 2 [[cards/Dazed]] to discard pile |
-| Beam | 9 (10 at A2) | -- |
+| Beam | 9 | -- |
 
 ## Mechanics
 

@@ -2,7 +2,7 @@
 
 - **Type:** Elite
 - **Act:** 1
-- **HP:** 109-111 (A0), 112-115 (A8)
+- **HP:** 109-111
 
 ## Pattern
 
@@ -12,5 +12,5 @@ Starts asleep with [[buffs/Metallicize]] 8. Wakes when it takes damage (stunned 
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Attack | 18 (20 at A3) | -- |
-| Siphon Soul | -- | Apply -1 [[buffs/Strength]] and -1 [[buffs/Dexterity]] permanently (-2 each at A18) |
+| Attack | 18 | -- |
+| Siphon Soul | -- | Apply -1 [[buffs/Strength]] and -1 [[buffs/Dexterity]] permanently |

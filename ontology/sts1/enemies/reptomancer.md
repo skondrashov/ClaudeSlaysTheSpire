@@ -17,8 +17,8 @@ Fight starts with Reptomancer + 2 Daggers (3 enemies total).
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Big Bite | 30 (34 at A3) | -- |
-| Snake Strike | 13x2 = 26 (16x2 = 32 at A3) | Applies 1 [[debuffs/Weak]] |
+| Big Bite | 30 | -- |
+| Snake Strike | 13x2 = 26 | Applies 1 [[debuffs/Weak]] |
 | Summon Dagger | -- | Summons 2 Daggers |
 
 ## Mechanics

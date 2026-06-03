@@ -12,8 +12,8 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Corrosive Spit | 11 (12 at A2) | Add 2 [[cards/Slimed]] to discard pile |
-| Tackle | 16 (18 at A2) | -- |
+| Corrosive Spit | 11 | Add 2 [[cards/Slimed]] to discard pile |
+| Tackle | 16 | -- |
 | Lick | -- | Apply 2 [[debuffs/Weak]] |
 
 ## Mechanics

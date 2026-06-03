@@ -12,7 +12,7 @@ Always starts with Stab. Then repeats Scrape -> Scrape -> Stab until Entangle is
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Stab | 13 (14 at A2) | -- |
-| Scrape | 8 (9 at A2) | Applies 1 [[debuffs/Vulnerable]] (2 at A17) |
+| Stab | 13 | -- |
+| Scrape | 8 | Applies 1 [[debuffs/Vulnerable]] |
 | Entangle | -- | Applies [[debuffs/Entangled]]. Once per combat. |
 

@@ -12,8 +12,8 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Multi Stab | 6xN (7xN at A3), N starts at 2 and increases by 1 each use | -- |
-| Single Stab | 21 (24 at A3) | -- |
+| Multi Stab | 6xN, N starts at 2 and increases by 1 each use | -- |
+| Single Stab | 21 | -- |
 
 ## Mechanics
 

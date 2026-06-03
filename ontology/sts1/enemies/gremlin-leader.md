@@ -2,7 +2,7 @@
 
 - **Type:** Elite
 - **Act:** 2
-- **HP:** 140-148 (A0), 145-155 (A8)
+- **HP:** 140-148
 
 Starts with 2 gremlins already present. Maximum 3 small gremlins active at a time.
 

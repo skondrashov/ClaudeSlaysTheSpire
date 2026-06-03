@@ -12,5 +12,5 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Flame Tackle | 8 (10 at A2) | Adds 1 [[cards/Slimed]] to discard pile |
+| Flame Tackle | 8 | Adds 1 [[cards/Slimed]] to discard pile |
 | Lick | -- | Applies 1 [[debuffs/Frail]] |

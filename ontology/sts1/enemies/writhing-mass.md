@@ -2,7 +2,7 @@
 
 - **Type:** Hallway
 - **Act:** 3
-- **HP:** 160 (175 at A7)
+- **HP:** 160
 
 ## Pattern
 
@@ -14,10 +14,10 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Multi Hit | 7x3 = 21 (9x3 = 27 at A2) | -- |
-| Big Hit | 32 (38 at A2) | -- |
-| Debuff Attack | 10 (12 at A2) | Applies 2 [[debuffs/Weak]] + 2 [[debuffs/Vulnerable]] |
-| Block Attack | 15 (16 at A2) | Gains 16 Block |
+| Multi Hit | 7x3 = 21 | -- |
+| Big Hit | 32 | -- |
+| Debuff Attack | 10 | Applies 2 [[debuffs/Weak]] + 2 [[debuffs/Vulnerable]] |
+| Block Attack | 15 | Gains 16 Block |
 | Parasite | -- | Permanently adds Parasite curse to deck (once per combat) |
 
 ## Mechanics

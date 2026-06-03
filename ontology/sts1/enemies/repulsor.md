@@ -12,6 +12,6 @@ Each turn, 80% chance to use Bash (adds 2 [[cards/Dazed]] to draw pile), 20% cha
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Repulse | 11 (13 at A2) | -- |
+| Repulse | 11 | -- |
 | Bash | -- | Adds 2 [[cards/Dazed]] to draw pile |
 

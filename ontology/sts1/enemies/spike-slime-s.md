@@ -12,7 +12,7 @@ Uses Tackle every turn.
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Tackle | 5 (6 at A2) | -- |
+| Tackle | 5 | -- |
 
 ## Mechanics
 

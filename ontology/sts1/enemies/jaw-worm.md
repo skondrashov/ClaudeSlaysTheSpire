@@ -12,6 +12,6 @@ Always starts with Chomp. After Chomp: 59% Bellow, 41% Thrash. After Bellow: 56%
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Chomp | 11 (12 at A2) | -- |
-| Bellow | -- | Gain 3 [[buffs/Strength]], gain 6 Block (4 Str at A2, 5 Str + 9 Block at A17) |
+| Chomp | 11 | -- |
+| Bellow | -- | Gain 3 [[buffs/Strength]], gain 6 Block |
 | Thrash | 7 | Gain 5 Block |

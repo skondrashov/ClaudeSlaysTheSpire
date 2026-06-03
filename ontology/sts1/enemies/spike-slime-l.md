@@ -12,6 +12,6 @@
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Flame Tackle | 16 (18 at A2) | Adds 2 [[cards/Slimed]] to discard pile |
+| Flame Tackle | 16 | Adds 2 [[cards/Slimed]] to discard pile |
 | Lick | -- | Applies 2 [[debuffs/Frail]] |
 | Split | -- | At 50% HP or below, spawns 2 Spike Slime (M) with current HP each |

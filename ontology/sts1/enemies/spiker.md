@@ -12,7 +12,7 @@ Each turn, 50/50 chance of Cut (attack) or Spike (buff Thorns). Cannot use Cut t
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Cut | 7 (9 at A2) | -- |
+| Cut | 7 | -- |
 | Spike | -- | Gains +2 [[buffs/Thorns]] |
 
 ## Mechanics
