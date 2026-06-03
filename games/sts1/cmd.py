@@ -1952,147 +1952,6 @@ def _plan_act(gs: dict) -> str:
     return "\n".join(lines)
 
 
-def reason(topic: str) -> str:
-    """Look up knowledge about any game entity.
-
-    Searches both ontology (facts) and heuristics (strategy) for the topic.
-
-    Args:
-        topic: Name of a card, enemy, boss, event, relic, potion, buff, debuff, etc.
-               Examples: "Shrug It Off", "Gremlin Nob", "Hexaghost",
-                         "Big Fish", "Pen Nib", "Flex Potion", "Vulnerable"
-
-    Returns the ontology entry + heuristic entry (if both exist), or a helpful error.
-    """
-    ontology_cats = ["cards", "enemies", "bosses", "events", "relics", "potions",
-                     "buffs", "debuffs", "encounters", "acts", "characters", "rules", "shop", "types"]
-    heuristic_cats = ["cards", "enemies", "bosses", "events", "relics", "potions", "characters"]
-
-    # Try exact match in each ontology category
-    ont_result = None
-    ont_cat = None
-    _is_upgraded = topic.endswith("+")
-    for cat in ontology_cats:
-        entry = _load_phenomenon(cat, topic) if _is_upgraded else None
-        if entry is None:
-            entry = _load_ontology(cat, topic)
-        if entry:
-            ont_result = entry
-            ont_cat = cat
-            break
-
-    # Try exact match in each heuristic category
-    heur_result = None
-    heur_cat = None
-    for cat in heuristic_cats:
-        entry = _load_heuristic(cat, topic)
-        if entry:
-            heur_result = entry
-            heur_cat = cat
-            break
-
-    if ont_result or heur_result:
-        cat = ont_cat or heur_cat
-        parts = []
-        if ont_result:
-            parts.append(f"=== ONTOLOGY: {topic} ({ont_cat}) ===\n\n{ont_result}")
-            # Resolve links from the ontology entry
-            loaded = {f"{ont_cat}/{topic}"}
-            linked = _resolve_links(ont_result, loaded)
-            if linked:
-                parts.append(linked)
-        if heur_result:
-            parts.append(f"=== HEURISTICS: {topic} ({heur_cat}) ===\n\n{heur_result}")
-
-        _post_feed(f"LOOKUP — {topic}", highlight=False)
-        _log_event({
-            "type": "reason",
-            "topic": topic,
-            "category": cat,
-            "timestamp": time.time(),
-        })
-        return "\n\n".join(parts)
-
-    # No exact match — try substring search across both layers
-    target = _name_to_filename(topic)
-    matches = []
-    for cat in ontology_cats:
-        cat_dir = os.path.join(ONTOLOGY_DIR, cat)
-        if not os.path.isdir(cat_dir):
-            continue
-        for fname in os.listdir(cat_dir):
-            if fname.startswith("_"):
-                continue
-            if target in fname.replace(".md", ""):
-                matches.append(("ontology", cat, fname))
-    for cat in heuristic_cats:
-        cat_dir = os.path.join(HEURISTICS_DIR, cat)
-        if not os.path.isdir(cat_dir):
-            continue
-        for fname in os.listdir(cat_dir):
-            if fname.startswith("_"):
-                continue
-            if target in fname.replace(".md", ""):
-                matches.append(("heuristics", cat, fname))
-
-    if matches:
-        # Deduplicate by filename — prefer ontology
-        seen_files = set()
-        unique = []
-        for layer, cat, fname in matches:
-            key = f"{cat}/{fname}"
-            if key not in seen_files:
-                seen_files.add(key)
-                unique.append((layer, cat, fname))
-
-        first_layer, first_cat, first_fname = unique[0]
-        base_dir = ONTOLOGY_DIR if first_layer == "ontology" else HEURISTICS_DIR
-        path = os.path.join(base_dir, first_cat, first_fname)
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read().strip()
-
-        display_name = first_fname.replace(".md", "").replace("-", " ").title()
-        _post_feed(f"LOOKUP — {display_name}", highlight=False)
-        _log_event({
-            "type": "reason",
-            "topic": topic,
-            "category": first_cat,
-            "found": f"{first_layer}/{first_cat}/{first_fname}",
-            "timestamp": time.time(),
-        })
-
-        # Also load the companion entry from the other layer
-        companion = None
-        companion_label = None
-        if first_layer == "ontology":
-            comp = _load_heuristic(first_cat, display_name)
-            if comp:
-                companion = comp
-                companion_label = "HEURISTICS"
-        else:
-            comp = _load_ontology(first_cat, display_name)
-            if comp:
-                companion = comp
-                companion_label = "ONTOLOGY"
-
-        result_parts = [f"=== {first_layer.upper()}: {display_name} ({first_cat}) ===\n\n{content}"]
-        if companion:
-            result_parts.append(f"=== {companion_label}: {display_name} ({first_cat}) ===\n\n{companion}")
-
-        if len(unique) > 1:
-            result_parts.insert(0, f"Multiple matches for \"{topic}\":\n" +
-                               "\n".join(f"  - {l}/{c}/{f}" for l, c, f in unique) +
-                               f"\n\nShowing: {first_layer}/{first_cat}/{first_fname}")
-
-        return "\n\n".join(result_parts)
-
-    return (
-        f"No entry found for \"{topic}\".\n"
-        f"Try the exact game name (e.g., \"Shrug It Off\", \"Gremlin Nob\").\n"
-        f"Categories: cards, enemies, bosses, events, relics, potions, buffs, debuffs"
-    )
-
-
 def survey() -> str:
     """Survey what knowledge MIGHT apply to the current state — a menu, not content.
 
@@ -2118,23 +1977,76 @@ def survey() -> str:
                      [f"  - {h}" for h in handles])
 
 
-def recall(*handles: str) -> str:
-    """Fetch the full text of specific knowledge entries by handle (path).
 
-    Pass one or more handles from survey(), e.g.
-    "phenomena/sts1/interactions/corruption-dead-branch". Links inside the returned
-    text are an inline menu — recall() them too to navigate; they are NOT auto-followed.
+_ONT_CATS = ["cards", "enemies", "bosses", "events", "relics", "potions", "buffs",
+             "debuffs", "encounters", "acts", "characters", "rules", "shop", "types",
+             "ascension"]
+_HEUR_CATS = ["cards", "enemies", "bosses", "events", "relics", "potions", "characters"]
+
+
+def _recall_one(handle: str):
+    """Resolve one recall handle -> text, or None. No link-following.
+
+    Accepts a repo path, a wiki-style address (`enemies/Gremlin Nob`,
+    `layer:heuristics, cards/Bash`, `cards/Bash+`), or a bare name (searched across
+    ontology categories; the heuristic needs an explicit `layer:heuristics`).
     """
-    try:
-        if ROOT not in sys.path:
-            sys.path.insert(0, ROOT)
-        from tools import retrieval
-    except Exception as e:
-        return f"recall unavailable: {e}"
-    docs = retrieval.recall(list(handles))
-    if not docs:
-        return f"recall: no entries found for {list(handles)}"
-    return "\n\n---\n\n".join(f"### {h}\n\n{txt}" for h, txt in docs.items())
+    h = handle.strip()
+    first = h.split("/", 1)[0]
+    if "/" in h and first in ("ontology", "heuristics", "phenomena", "goals", "awareness"):
+        rel = h if h.endswith(".md") else h + ".md"
+        try:
+            return open(os.path.join(ROOT, rel), encoding="utf-8").read().strip()
+        except OSError:
+            return None
+    parsed = _extract_links(f"[[{h}]]")
+    if not parsed:
+        return None
+    layer, cat, name = parsed[0]
+    layer = layer or "ontology"
+    is_plus = name.endswith("+")
+    if cat:
+        if is_plus:
+            return _load_phenomenon(cat, name)
+        if layer == "heuristics":
+            return _load_heuristic(cat, name)
+        if layer == "phenomena":
+            return _load_phenomenon(cat, name)
+        return _load_ontology(cat, name)
+    if is_plus:
+        return _load_phenomenon("cards", name)
+    cats = _HEUR_CATS if layer == "heuristics" else _ONT_CATS
+    loader = _load_heuristic if layer == "heuristics" else _load_ontology
+    for c in cats:
+        e = loader(c, name)
+        if e:
+            return e
+    return None
+
+
+def recall(*handles: str) -> str:
+    """Fetch knowledge by handle -- the single lookup verb (replaces reason()).
+
+    A handle is any of:
+      - a path from survey()   ("phenomena/sts1/interactions/corruption-dead-branch")
+      - a wiki-style address    ("enemies/Gremlin Nob", "layer:heuristics, cards/Bash")
+      - a bare name             ("Gremlin Nob" -> the ontology entry)
+      - an upgraded card        ("Bash+" -> the resolved phenomenon)
+
+    Returns exactly what you ask for, each labeled by handle. Does NOT follow links --
+    links in the text are a menu; recall() them too if you want them. Pass several
+    handles in one call to pull several things (an entity's ontology AND heuristic =
+    two handles: "enemies/Gremlin Nob", "layer:heuristics, enemies/Gremlin Nob").
+    """
+    if not handles:
+        return "recall: needs one or more handles (a path, an address, or a name)"
+    out = []
+    for h in handles:
+        txt = _recall_one(h)
+        out.append(f"### {h}\n\n{txt}" if txt else f"### {h}\n\n(not found)")
+    _post_feed(f"RECALL -- {', '.join(handles)[:60]}", highlight=False)
+    _log_event({"type": "recall", "handles": list(handles), "timestamp": time.time()})
+    return "\n\n---\n\n".join(out)
 
 
 def deck() -> str:

@@ -6,8 +6,8 @@ The agent interacts with the game through Python functions imported from `cmd.py
 
 ```python
 import sys
-sys.path.insert(0, r"C:\Users\tkond\projects\autoplay\games\sts1")
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start
+sys.path.insert(0, r"C:\Users\tkond\projects\praxis\games\sts1")
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start, survey, recall, plan
 ```
 
 ## Observation
@@ -37,6 +37,13 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 | Function | Description |
 |----------|-------------|
 | `think(reasoning, label)` | Post strategic analysis to the stream overlay. `reasoning` is the text viewers see. `label` is a short heading (default: "Strategy"). |
+
+## Knowledge
+
+| Function | Description |
+|----------|-------------|
+| `survey()` | Ask the selector which knowledge MIGHT apply to the current state → a menu of handles (paths). Discovery, not content. Use at meaningful decision points (combat start, rewards, shops, before elites/bosses), not every action. |
+| `recall(*handles)` | Fetch knowledge by handle. A handle is a path from `survey()`, a wiki-style address (`"enemies/Gremlin Nob"`, `"layer:heuristics, cards/Bash"`), a bare name (`"Gremlin Nob"` → ontology), or an upgraded card (`"Bash+"` → its resolved phenomenon). Pass several handles for several entries (an entity's ontology AND heuristic = two handles). Does NOT follow links — links in the text are a menu; `recall()` them too. **This is the single lookup verb** (replaces the old `reason()`). |
 
 ## Known Issues
 

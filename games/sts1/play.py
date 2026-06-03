@@ -15,7 +15,7 @@ lock_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "pl
 if os.path.exists(lock_file):
     os.remove(lock_file)
 
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, start, think, deck, state_raw, _tcp_request, reason, plan, survey, recall
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, start, think, deck, state_raw, _tcp_request, plan, survey, recall
 from bot.state_formatter import format_state
 
 if __name__ == "__main__":
@@ -102,8 +102,6 @@ if __name__ == "__main__":
         asc = int(args[1]) if len(args) > 1 else 0
         seed = args[2] if len(args) > 2 else None
         print(start(char, asc, seed) if seed else start(char, asc))
-    elif cmd == "reason":
-        print(reason(args[0]) if args else "reason: needs a topic")
     elif cmd == "plan":
         print(plan())
     elif cmd == "survey":
