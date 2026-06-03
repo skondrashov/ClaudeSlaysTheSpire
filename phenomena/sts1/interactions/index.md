@@ -11,7 +11,7 @@ shape, and surfaced by relevance judgment, not by a lookup.
 Every entry has two designated parts, written for two different readers:
 
 - **`- **Applies when:**`** — the *applicability blurb*. Retrieval bait, written
-  for the survey reranker (a small model): "surface me when …". This is the field
+  for the survey selector (a small model): "surface me when …". This is the field
   the index extractor pulls. It is **authored**, never generated — an interaction
   can take any shape, so nothing about when-it-applies is programmatically derivable.
 - **body** — the knowledge itself, written for the playing agent. The `recall()`
@@ -20,7 +20,7 @@ Every entry has two designated parts, written for two different readers:
 
 ## How they're used
 
-`survey()` hands live state + the interaction index (blurbs only) to the reranker,
+`survey()` hands live state + the interaction index (blurbs only) to the selector,
 which returns the handles of interactions that might apply. The agent then
 `recall()`s the ones it wants. See [[domain:praxis, retrieval]] for the full model.
 

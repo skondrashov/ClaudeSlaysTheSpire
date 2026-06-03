@@ -1,8 +1,9 @@
-"""Build the survey index: one line per contextual phenomenon, `path — blurb`.
+"""Build the survey index: one `<blurb>: <path>` line per entry.
 
-The blurb is LIFTED (not generated) from each file's authored `- **Applies when:**`
-field. Resolvable upgrade phenomena are NOT listed — they're a standing rule in the
-reranker prompt ("for any '+' card, recall its -plus form"), not blurb->path data.
+Contextual blurbs are LIFTED (not generated) from each phenomenon's authored
+`- **Applies when:**` field. The upgrade rule is one more line, with a placeholder
+path (`upgraded cards ('<name>+'): phenomena/<domain>/cards/<name>-plus`) — the
+selector emits any placeholder line once per matching state entity. No schema.
 
 Run: `python -m tools.retrieval.build_index sts1`
 """
@@ -17,7 +18,7 @@ APPLIES_RE = re.compile(r"^- \*\*Applies when:\*\*\s*(.+)$", re.MULTILINE)
 def build_index(domain: str) -> str:
     """Return the index as markdown text: `<blurb>: <path>` per line.
 
-    A line whose path holds a `<name>` placeholder is a rule (the reranker emits it
+    A line whose path holds a `<name>` placeholder is a rule (the selector emits it
     once per matching state entity). The upgrade rule is exactly that — one line, no
     schema. Contextual blurbs are lifted from each phenomenon's `Applies when:` field.
     """

@@ -2097,7 +2097,7 @@ def survey() -> str:
     """Survey what knowledge MIGHT apply to the current state — a menu, not content.
 
     Maps the live game state to a list of handles (paths) for ontology, heuristic,
-    and phenomenon entries that might be relevant right now, via a fast reranker.
+    and phenomenon entries that might be relevant right now, via a fast selector.
     Returns ONLY the menu; read the ones you want with recall(). It does not compose
     context for you — you decide what is worth pulling.
     """

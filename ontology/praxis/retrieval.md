@@ -24,7 +24,7 @@ the Praxis verbs.
 
 `survey` is **one model call**. You cannot know whether a contextual interaction
 applies without asking, so there is no cheaper deterministic pre-pass that saves a
-call — the reranker returns everything relevant in one shot: ontology, heuristics,
+call — the selector returns everything relevant in one shot: ontology, heuristics,
 and phenomena handles for the situation.
 
 It works by handing the live state plus an **index** to a small/fast model (e.g.
@@ -39,14 +39,14 @@ points at:
     Ironclad deck contains Corruption and you hold Dead Branch…: phenomena/sts1/interactions/corruption-dead-branch
 
 That's the whole shape. No ids (the path *is* the id), no typed targets, no JSON; the
-reranker is a model reading text. Each contextual line's blurb is **extracted**
+selector is a model reading text. Each contextual line's blurb is **extracted**
 (mechanically) from the phenomenon file's authored `Applies when:` field.
 
 The **upgrade rule** is just one more line, with a placeholder path:
 
     upgraded cards ('<name>+'): phenomena/sts1/cards/<name>-plus
 
-A line whose path contains a placeholder (`<name>`) is a rule: the reranker emits it
+A line whose path contains a placeholder (`<name>`) is a rule: the selector emits it
 once per matching entity in the state, substituting the placeholder. Same format,
 same call — no schema around it. Ontology/heuristic availability for on-screen
 entities rides along the same call.
@@ -70,16 +70,16 @@ do the part that can't be scripted.
 ## Two readers per phenomenon
 
 Authoring a contextual phenomenon means writing for two audiences in one file: the
-**blurb** is retrieval bait for the reranker, the **body** is knowledge for the
+**blurb** is retrieval bait for the selector, the **body** is knowledge for the
 playing agent. Different register, same file. See `phenomena/sts1/interactions/`.
 
 ## Where the pieces live
 
-- **Praxis (generic):** the `survey`/`recall` verbs, the index format, the rerank
+- **Praxis (generic):** the `survey`/`recall` verbs, the index format, the select
   call, the upgrade rule.
 - **Domain (data + thin glue):** the index contents (its phenomena), and handing
-  the reranker the domain's live state. For sts1 that state already arrives from
-  CommunicationMod; if raw state is reranker-legible (expected), the sts1 `survey`
+  the selector the domain's live state. For sts1 that state already arrives from
+  CommunicationMod; if raw state is selector-legible (expected), the sts1 `survey`
   is a one-liner and carries no procedure — the domain-specificity is the index.
 - **Agent:** sees only the game tools. Calls `survey()` when it wants a menu;
   `recall()` to pull. Cadence is the agent's choice, not a fixed schedule.
@@ -87,12 +87,15 @@ playing agent. Different register, same file. See `phenomena/sts1/interactions/`
 ## Status
 
 Built, not yet validated against a live run. Implementation:
-- `tools/retrieval/build_index.py` — extracts `Applies when:` blurbs into the
-  `{blurb, target}` index (+ the upgrade rule entry); writes `awareness/<domain>/survey-index.json`.
-- `awareness/sts1/survey-index.json` — the committed built index.
-- `tools/retrieval/survey.py` — `survey()` (one cached reranker call, returns paths
-  only), `recall()` (fetch, no link-following), `load_index()`.
+- `tools/retrieval/build_index.py` — lifts `Applies when:` blurbs into the
+  `<blurb>: <path>` markdown index (incl. the upgrade-rule line); writes
+  `awareness/<domain>/survey-index.md`.
+- `awareness/sts1/survey-index.md` — the committed built index.
+- `tools/retrieval/survey.py` — `survey()` (one selector call via the **`claude`
+  CLI**, `claude -p`, returns paths only), `recall()` (fetch, no link-following),
+  `load_index()`.
 - `games/sts1/cmd.py` — agent-facing `survey()`/`recall()` (thin wrappers; guarded import).
 
-Open: needs `ANTHROPIC_API_KEY` at runtime; reranker prompt + model
-(`claude-haiku-4-5`) to be tuned against real surveys; cadence is the agent's call.
+Open: needs the `claude` CLI on PATH (subscription auth) at runtime — not an API
+key; selector prompt + model (`claude-haiku-4-5`) to be tuned against real surveys;
+cadence is the agent's call.
