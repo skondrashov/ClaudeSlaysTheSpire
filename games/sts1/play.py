@@ -4,7 +4,7 @@ import os
 import json
 import uuid
 
-sys.path.insert(0, r'C:\Users\tkond\projects\autoplay\games\sts1')
+sys.path.insert(0, r'C:\Users\tkond\projects\praxis\games\sts1')
 
 # Set a consistent session ID so all calls from this script use the same session
 FIXED_SESSION = "player-agent-fixed-session-001"
@@ -15,7 +15,7 @@ lock_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "pl
 if os.path.exists(lock_file):
     os.remove(lock_file)
 
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, start, think, deck, state_raw, _tcp_request
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, start, think, deck, state_raw, _tcp_request, reason, plan, survey, recall
 from bot.state_formatter import format_state
 
 if __name__ == "__main__":
@@ -54,9 +54,14 @@ if __name__ == "__main__":
         reason = args[0] if args else "ending turn"
         print(end(reason=reason))
     elif cmd == "choose":
-        idx = int(args[0]) if args else 0
+        # Accept an index OR a name (shops/rewards need by-name). cmd.choose handles both.
+        raw = args[0] if args else "0"
+        try:
+            opt = int(raw)
+        except ValueError:
+            opt = raw
         reason = args[1] if len(args) > 1 else "choosing"
-        print(choose(idx, reason=reason))
+        print(choose(opt, reason=reason))
     elif cmd == "proceed":
         reason = args[0] if args else "proceeding"
         print(proceed(reason=reason))
@@ -70,9 +75,17 @@ if __name__ == "__main__":
     elif cmd == "deck":
         print(deck())
     elif cmd == "potion_use":
+        # potion_use <slot> [target] [reason] — target is optional, so a non-numeric
+        # second arg is the reason (non-targeted potions previously crashed on int()).
         idx = int(args[0]) if args else 0
-        target = int(args[1]) if len(args) > 1 else None
-        reason = args[2] if len(args) > 2 else "using potion"
+        target = None
+        reason = "using potion"
+        if len(args) > 1:
+            try:
+                target = int(args[1])
+                reason = args[2] if len(args) > 2 else reason
+            except ValueError:
+                reason = args[1]
         if target is not None:
             print(potion_use(idx, target, reason=reason))
         else:
@@ -84,5 +97,18 @@ if __name__ == "__main__":
     elif cmd == "raw":
         result = _tcp_request({'type': 'command', 'command': 'state'})
         print(format_state(result))
+    elif cmd == "start":
+        char = args[0] if args else "IRONCLAD"
+        asc = int(args[1]) if len(args) > 1 else 0
+        seed = args[2] if len(args) > 2 else None
+        print(start(char, asc, seed) if seed else start(char, asc))
+    elif cmd == "reason":
+        print(reason(args[0]) if args else "reason: needs a topic")
+    elif cmd == "plan":
+        print(plan())
+    elif cmd == "survey":
+        print(survey())
+    elif cmd == "recall":
+        print(recall(*args) if args else "recall: needs one or more handles")
     else:
         print(f"Unknown command: {cmd}")

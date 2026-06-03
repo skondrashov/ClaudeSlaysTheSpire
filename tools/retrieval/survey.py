@@ -94,7 +94,11 @@ def _select(state: str, index: str, model: str) -> list[str]:
     for k in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"):
         env.pop(k, None)
 
+    # Force UTF-8 for the pipe: the live state contains non-cp1252 glyphs (e.g. the
+    # map's "→" arrows), and text=True alone uses the Windows locale codec, which
+    # raised UnicodeEncodeError and broke every survey on the first live run.
     proc = subprocess.run(cmd, input=stdin_text, capture_output=True, text=True,
+                          encoding="utf-8", errors="replace",
                           env=env, cwd=tempfile.gettempdir(), timeout=90)
     if proc.returncode != 0:
         raise RuntimeError(f"selector CLI failed (exit {proc.returncode}): "
