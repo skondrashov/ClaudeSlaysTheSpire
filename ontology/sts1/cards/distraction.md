@@ -1,8 +1,8 @@
 # Distraction
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Add a random Skill to your hand costing 0 this turn, Exhaust
-- **Upgraded:** Costs 0E
+- **Effect:** Add a random Skill into your hand. It costs 0 this turn. Exhaust.
+- **Upgrade:** cost 0E

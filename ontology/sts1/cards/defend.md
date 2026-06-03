@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** All
 - **Rarity:** Starter
-- **Effect:** 5 block
-- **Upgraded:** 8 block
+- **Effect:** Gain 5 Block.
+- **Upgrade:** +3 Block

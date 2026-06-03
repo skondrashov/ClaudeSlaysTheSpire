@@ -1,5 +1,4 @@
 # Necronomicurse
 
-- **Cost:** Unplayable
 - **Type:** [[types/Curse]]
-- **Effect:** Cannot leave your hand (returns when discarded)
+- **Effect:** Unplayable. There is no escape from this Curse.

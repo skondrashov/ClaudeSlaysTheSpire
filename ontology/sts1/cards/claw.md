@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 3 damage, increase ALL Claw damage by 2 this combat
-- **Upgraded:** 5 damage, increase ALL Claw damage by 2 this combat
+- **Effect:** Deal 3 damage. Increase the damage of ALL Claw cards by 2 this combat.
+- **Upgrade:** +2 damage

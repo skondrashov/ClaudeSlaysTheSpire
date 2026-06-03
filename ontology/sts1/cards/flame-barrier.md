@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** 12 block, apply 4 [[buffs/Flame Barrier]] to self
-- **Upgraded:** 16 block, apply 6 [[buffs/Flame Barrier]] to self
+- **Effect:** Gain 12 Block. Whenever you are attacked this turn, deal 4 damage back.
+- **Upgrade:** +4 Block, +2 damage

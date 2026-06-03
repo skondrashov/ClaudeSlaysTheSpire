@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** Gain Block equal to the number of cards in your discard pile
-- **Upgraded:** +3 Block
+- **Effect:** Gain Block equal to the number of cards in your discard pile.
+- **Upgrade:** +3 Block

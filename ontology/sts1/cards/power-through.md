@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** 15 block, add 2 [[cards/Wound]]s to hand
-- **Upgraded:** 20 block, add 2 [[cards/Wound]]s to hand
+- **Effect:** Add 2 Wounds into your hand. Gain 15 Block.
+- **Upgrade:** +5 Block

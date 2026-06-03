@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** 10 block, 10 damage
-- **Upgraded:** 13 block, 13 damage
+- **Effect:** Gain 10 Block. Deal 10 damage.
+- **Upgrade:** +3 damage, +3 Block

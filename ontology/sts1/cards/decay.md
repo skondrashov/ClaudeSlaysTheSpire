@@ -1,5 +1,4 @@
 # Decay
 
-- **Cost:** Unplayable
 - **Type:** [[types/Curse]]
-- **Effect:** At end of turn, take 2 damage
+- **Effect:** Unplayable. At the end of your turn, take 2 damage.

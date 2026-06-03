@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 9 block
-- **Upgraded:** 12 block
+- **Effect:** Gain 9 Block.
+- **Upgrade:** +3 Block

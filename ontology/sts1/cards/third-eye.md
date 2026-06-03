@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 7 block, Scry 3
-- **Upgraded:** 9 block, Scry 5
+- **Effect:** Gain 7 Block. Scry 3.
+- **Upgrade:** +2 Block, +2 (magic)

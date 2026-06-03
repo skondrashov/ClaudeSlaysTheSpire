@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** All
 - **Rarity:** Starter
-- **Effect:** 6 damage
-- **Upgraded:** 9 damage
+- **Effect:** Deal 6 damage.
+- **Upgrade:** +3 damage

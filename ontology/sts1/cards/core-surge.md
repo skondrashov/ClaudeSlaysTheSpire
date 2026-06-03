@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** 11 damage, gain 1 [[buffs/Artifact]], Exhaust
-- **Upgraded:** 15 damage
+- **Effect:** Deal 11 damage. Gain 1 [[buffs/Artifact]]. Exhaust.
+- **Upgrade:** +4 damage

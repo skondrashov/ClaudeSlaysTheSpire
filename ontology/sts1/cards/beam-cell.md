@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 3 damage, apply 1 [[debuffs/Vulnerable]]
-- **Upgraded:** 4 damage, apply 2 [[debuffs/Vulnerable]]
+- **Effect:** Deal 3 damage. Apply 1 [[debuffs/Vulnerable]].
+- **Upgrade:** +1 damage, +1 Vulnerable

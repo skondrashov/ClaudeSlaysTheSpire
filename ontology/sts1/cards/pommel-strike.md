@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 9 damage, draw 1 card
-- **Upgraded:** 10 damage, draw 2 cards
+- **Effect:** Deal 9 damage. Draw 1 card.
+- **Upgrade:** +1 damage, +1 card

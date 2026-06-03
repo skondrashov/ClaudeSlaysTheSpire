@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Gain 2 [[buffs/Focus]], lose 1 orb slot
-- **Upgraded:** Gain 3 [[buffs/Focus]]
+- **Effect:** Gain 2 [[buffs/Focus]]. Lose 1 Orb slot.
+- **Upgrade:** +1 Focus

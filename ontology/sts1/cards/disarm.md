@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Reduce enemy [[buffs/Strength]] by 2 permanently, Exhaust
-- **Upgraded:** Reduce enemy [[buffs/Strength]] by 3 permanently, Exhaust
+- **Effect:** Enemy loses 2 [[buffs/Strength]]. Exhaust.
+- **Upgrade:** +1 Strength

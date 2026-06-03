@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 8 damage to ALL enemies
-- **Upgraded:** 11 damage to ALL enemies
+- **Effect:** Deal 8 damage to ALL enemies.
+- **Upgrade:** +3 damage

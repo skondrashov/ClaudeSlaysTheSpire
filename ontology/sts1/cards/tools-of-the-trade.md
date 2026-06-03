@@ -1,8 +1,8 @@
 # Tools of the Trade
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Power]]
 - **Character:** Silent
-- **Rarity:** Uncommon
-- **Effect:** At the start of your turn, draw 1 card and discard 1 card
-- **Upgraded:** Costs 0E
+- **Rarity:** Rare
+- **Effect:** At the start of your turn, draw 1 card and discard 1 card.
+- **Upgrade:** cost 0E

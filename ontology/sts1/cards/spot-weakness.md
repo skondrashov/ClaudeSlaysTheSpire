@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** If the enemy intends to Attack, gain 3 [[buffs/Strength]] permanently
-- **Upgraded:** If the enemy intends to Attack, gain 4 [[buffs/Strength]] permanently
+- **Effect:** If the enemy intends to attack, gain 3 [[buffs/Strength]].
+- **Upgrade:** +1 Strength

@@ -4,16 +4,7 @@ The strategic layer. Every entry describes what to DO — decisions, priorities,
 
 ## Categories
 
-| Category | Count | Coverage vs Ontology |
-|----------|-------|---------------------|
-| cards | 130 | 37% of 350 cards |
-| relics | 92 | 53% of 173 relics |
-| enemies | 41 | 85% of 48 enemies |
-| events | 33 | 100% of 33 events |
-| potions | 26 | 100% of 26 potions |
-| bosses | 9 | 75% of 12 bosses |
-| characters | 4 | 100% of 4 characters |
-| goals | 6 | Agent operating modes |
+Per-entity heuristics live in category subdirectories mirroring the ontology: `cards`, `relics`, `enemies`, `events`, `potions`, `bosses`, `characters`, plus `development` (interface notes). Coverage is intentionally partial — not every ontology entity has a heuristic (see below). Live counts are on the site.
 
 Plus 7 topic files that have no ontology counterpart: `combat.md`, `drafting.md`, `map.md`, `archetypes.md`, `rest-sites.md`, `hp-management.md`, `exhaust.md`.
 
@@ -28,10 +19,10 @@ One file per game entity (card, enemy, boss, relic, event, potion). Describes ho
 
 ### Topic heuristics
 Cross-cutting strategic documents covering a whole domain. These are the most valuable files in the system:
-- `combat.md` (156 lines) — Full block algorithm, arithmetic checklist, potion timing
-- `drafting.md` (216 lines) — Tier lists, healing priority, readiness checklists, gap-filling
+- `combat.md` — Full block algorithm, arithmetic checklist, potion timing
+- `drafting.md` — Tier lists, healing priority, readiness checklists, gap-filling
 - `archetypes.md` — Proven winning deck formulas with run citations
-- `map.md` (80 lines) — Routing, elite targeting, act transitions
+- `map.md` — Routing, elite targeting, act transitions
 
 ### Coverage gaps are mostly intentional
 Not every ontology entity needs a heuristic. Entities get heuristics when:

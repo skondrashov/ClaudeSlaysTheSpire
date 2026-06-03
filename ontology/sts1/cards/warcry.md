@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** Draw 1 card, put a card from your hand on top of your draw pile, Exhaust
-- **Upgraded:** Draw 2 cards
+- **Effect:** Draw 1 card. Put a card from your hand onto the top of your draw pile. Exhaust.
+- **Upgrade:** +1 card

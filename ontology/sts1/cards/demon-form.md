@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Ironclad
 - **Rarity:** Rare
-- **Effect:** At the start of each turn, gain 2 [[buffs/Strength]]
-- **Upgraded:** At the start of each turn, gain 3 [[buffs/Strength]]
+- **Effect:** At the start of your turn, gain 2 [[buffs/Strength]].
+- **Upgrade:** +1 Strength

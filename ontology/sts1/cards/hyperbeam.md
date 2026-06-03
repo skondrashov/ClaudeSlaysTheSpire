@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** 26 damage to ALL enemies, lose 3 [[buffs/Focus]]
-- **Upgraded:** 34 damage
+- **Effect:** Deal 26 damage to ALL enemies. Lose 3 [[buffs/Focus]].
+- **Upgrade:** +8 damage

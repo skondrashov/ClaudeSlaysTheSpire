@@ -1,8 +1,8 @@
 # Barrage
 
-- **Cost:** 2E
+- **Cost:** 1E
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** Deal 4 damage per channeled orb to a target enemy
-- **Upgraded:** Deal 6 damage per channeled orb
+- **Effect:** Deal 4 damage for each Channeled Orb.
+- **Upgrade:** +2 damage

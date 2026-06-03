@@ -1,8 +1,8 @@
 # Tempest
 
-- **Cost:** XE
+- **Cost:** X
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Channel X Lightning orbs, Exhaust
-- **Upgraded:** Channel X+1 Lightning orbs
+- **Effect:** Channel X Lightning. Exhaust.
+- **Upgrade:** +1 to X (Channel X+1 Lightning)

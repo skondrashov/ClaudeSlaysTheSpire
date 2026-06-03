@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 4 block, add a [[cards/Safety]] to your hand
-- **Upgraded:** 7 block, add a [[cards/Safety]] to your hand
+- **Effect:** Gain 4 Block. Add a Safety into your hand.
+- **Upgrade:** +3 Block

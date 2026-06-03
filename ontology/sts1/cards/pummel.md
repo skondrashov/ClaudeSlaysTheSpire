@@ -3,6 +3,6 @@
 - **Cost:** 1E
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
-- **Rarity:** Common
-- **Effect:** 2 damage x4, Exhaust
-- **Upgraded:** 2 damage x5, Exhaust
+- **Rarity:** Uncommon
+- **Effect:** Deal 2 damage 4 times. Exhaust.
+- **Upgrade:** +1 times

@@ -2,4 +2,4 @@
 
 - **Act:** 1
 - **Type:** Hallway
-- **Composition:** Various 2-enemy combinations from Act 1 pool (e.g. [[enemies/Blue Slaver]] + [[enemies/Red Slaver]], [[enemies/Looter]] + [[enemies/Mugger]], etc.)
+- **Composition:** Enemy 1: [[enemies/Green Louse]] or [[enemies/Red Louse]] or [[enemies/Acid Slime (M)]] or [[enemies/Spike Slime (M)]]. Enemy 2: [[enemies/Blue Slaver]] or [[enemies/Red Slaver]] or [[enemies/Cultist]] or [[enemies/Looter]]

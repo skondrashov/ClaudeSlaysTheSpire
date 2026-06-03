@@ -30,9 +30,14 @@ PORT = 19284
 TIMEOUT = 120  # seconds — long timeout for slow animations
 STREAM_URL = "http://127.0.0.1:3002/decision"
 _BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Knowledge lives at the Praxis root (two levels up: games/sts1 -> praxis), under
+# <layer>/sts1/. cmd.py previously pointed these at games/sts1/{ontology,heuristics},
+# which don't exist — so every lookup silently returned None. Point at the real tree.
+ROOT = os.path.dirname(os.path.dirname(_BASE_DIR))
 LOCK_FILE = os.path.join(_BASE_DIR, "data", "player.lock")
-ONTOLOGY_DIR = os.path.join(_BASE_DIR, "ontology")
-HEURISTICS_DIR = os.path.join(_BASE_DIR, "heuristics")
+ONTOLOGY_DIR = os.path.join(ROOT, "ontology", "sts1")
+HEURISTICS_DIR = os.path.join(ROOT, "heuristics", "sts1")
+PHENOMENA_DIR = os.path.join(ROOT, "phenomena", "sts1")
 RUNS_DIR = os.path.join(_BASE_DIR, "analyst", "runs")
 STATS_FILE = os.path.join(_BASE_DIR, "data", "run_stats.json")
 
@@ -109,6 +114,18 @@ def _load_ontology(category: str, name: str) -> str | None:
         return None
 
 
+def _load_phenomenon(category: str, name: str) -> str | None:
+    """Load a phenomenon (resolved upgraded card). Fires for '+'-suffixed names,
+    mapping to phenomena/sts1/<category>/<stem>-plus.md. None if absent."""
+    filename = _name_to_filename(name) + "-plus.md"
+    path = os.path.join(PHENOMENA_DIR, category, filename)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        return None
+
+
 def _load_heuristic(category: str, name: str) -> str | None:
     """Load a heuristic file. Returns content or None if not found."""
     filename = _name_to_filename(name) + ".md"
@@ -133,9 +150,14 @@ def _load_heuristic_root(filename: str) -> str | None:
 def _load_knowledge(category: str, name: str) -> str | None:
     """Load ontology + heuristic for an entity, combined.
 
+    For a '+'-suffixed (upgraded) name, the resolved phenomenon stands in for the
+    ontology layer — so an upgraded card in hand shows its actual values, not the
+    base — falling back to the base noumenon when no phenomenon exists.
     Returns both layers clearly separated, or None if neither exists.
     """
-    ont = _load_ontology(category, name)
+    ont = _load_phenomenon(category, name) if name.endswith("+") else None
+    if ont is None:
+        ont = _load_ontology(category, name)
     heur = _load_heuristic(category, name)
     if not ont and not heur:
         return None
@@ -1029,6 +1051,18 @@ def _write_run_log(gs: dict, victory: bool):
     except OSError:
         pass
 
+    # Reset the awareness session dedup cache so the next run starts fresh (same
+    # lifecycle as the event log above). Guarded: the live bot must never crash
+    # because the Praxis tool tree is unavailable.
+    try:
+        if ROOT not in sys.path:
+            sys.path.insert(0, ROOT)
+        from tools.awareness import reset as _aw_reset, AwarenessConfig
+        _aw_reset(session=_SESSION_ID, reason="run-complete",
+                  config=AwarenessConfig(knowledge_root=ROOT, domain="sts1"))
+    except Exception:
+        pass
+
     # Regenerate stats
     try:
         regen = os.path.join(_BASE_DIR, "regen_stats.py")
@@ -1893,8 +1927,11 @@ def reason(topic: str) -> str:
     # Try exact match in each ontology category
     ont_result = None
     ont_cat = None
+    _is_upgraded = topic.endswith("+")
     for cat in ontology_cats:
-        entry = _load_ontology(cat, topic)
+        entry = _load_phenomenon(cat, topic) if _is_upgraded else None
+        if entry is None:
+            entry = _load_ontology(cat, topic)
         if entry:
             ont_result = entry
             ont_cat = cat

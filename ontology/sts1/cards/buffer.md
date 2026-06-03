@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** Apply 1 [[buffs/Buffer]] to self
-- **Upgraded:** Apply 2 [[buffs/Buffer]] to self
+- **Effect:** Prevent the next time you would lose HP.
+- **Upgrade:** +1 (magic)

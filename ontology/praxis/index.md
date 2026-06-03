@@ -4,25 +4,26 @@ A framework for building domain knowledge through structured practice. Theory-in
 
 ## Structure
 
-Praxis organizes knowledge into three layers stored as directory trees of markdown files:
+Praxis organizes knowledge into layers stored as directory trees of markdown files:
 
-- **Ontology** — What things ARE. Facts, mechanics, definitions, behavioral descriptions. Deterministic and composable. A correct fact never needs revision, only extension.
+- **Ontology** — What things ARE. Atomic facts, mechanics, definitions, behavioral descriptions. Composable, but only atomic facts are stored here — derived consequences are materialized as phenomena. A correct fact never needs revision, only extension.
+- **Phenomena** — Derived facts, materialized. Resolved consequences generated from ontology (an upgraded card's absolute values, an encounter's roster). Do-not-edit; each falls back to the ontology it derives from. Generated where a domain has stable derived constructs (e.g. `phenomena/sts1/`).
 - **Heuristics** — What to DO about things. Strategy, decisions, warnings, algorithms. Provisional and evidence-grounded. These improve over time as understanding deepens.
 - **Goals** — Operating modes. What to read, what to do, what to output, and when to switch modes. Define the agent's purpose for a given session.
 
-Each layer has the same directory structure: a top-level directory containing **nodes**, where each node is a domain or body of knowledge.
+Each layer has the same directory structure: a top-level directory containing **domains**. A domain is a self-contained body of knowledge — a subject the book is about, or the framework itself.
 
-## Nodes
+## Domains
 
-A node is a self-contained knowledge domain within a layer. Current nodes:
+A domain is a self-contained body of knowledge, appearing as a subtree within each layer. Current domains:
 
-| Node | What it covers |
+| Domain | What it covers |
 |------|---------------|
 | `praxis` | The framework itself (this) |
 | `sts1` | Slay the Spire — facts, strategy, and goals for playing the game |
 | `book-sts1` | The Slay the Spire Book — facts, strategy, and goals for maintaining the STS1 knowledge system |
 
-Each node appears in all three layers:
+Every domain has ontology, heuristics, and goals; phenomena appears only where a domain has stable derived constructs (currently `sts1`). The parallel structure:
 ```
 ontology/praxis/     ontology/sts1/     ontology/book-sts1/
 heuristics/praxis/   heuristics/sts1/   heuristics/book-sts1/
@@ -31,13 +32,25 @@ goals/praxis/        goals/sts1/        goals/book-sts1/
 
 ## Key Properties
 
-- **Ontology/heuristics split is load-bearing.** Facts and strategy are kept separate so facts compose without strategic contamination and strategy can evolve without destabilizing facts.
+- **Ontology/heuristics split matters.** Facts and strategy are kept separate so facts compose without strategic contamination and strategy can evolve without destabilizing facts.
 - **Heuristics are admissions of reasoning gaps.** A heuristic exists because the correct action can't be reliably derived from first principles in real time. As reasoning improves, some heuristics become unnecessary.
 - **Evidence-grounded.** Heuristic claims are grounded in observed outcomes, not theory alone.
-- **Self-referential.** Praxis is itself described in Praxis (this node). The ontology of Praxis describes what it is; the heuristics of Praxis describe how to use it well.
+- **Self-referential.** Praxis is itself described in Praxis (this domain). The ontology of Praxis describes what it is; the heuristics of Praxis describe how to use it well.
+
+## Memory
+
+A session **reads** memory; it doesn't write it. Two read operations: **LOAD** (preload the context a goal or situation calls for) and **RETRIEVE** (pull a specific entity on demand) — one mechanism at different granularity, both deduplicating against a single session cache so nothing enters context twice. A player only ever reads; a tournament agent never touches the book.
+
+Writing back — **CODIFY** — is a *separate* activity, not a step in any playing loop. It's the job of the analysis goals (Audit, Curate), done after the fact on the evidence a session leaves behind (run logs, observations). That decoupling is the praxis flywheel: sessions read knowledge and emit evidence; analysis sessions turn evidence into better knowledge; the improved knowledge feeds the next session's reads.
+
+*What* to load for a given key is itself learned, not computed — stored as **awareness**: a relevance index (manifests) mapping a goal or situation to the knowledge worth holding in context, including what becomes relevant before it appears on screen. Like the rest of the book, awareness is maintained by codify (an analyst adjusting it), not by the player.
+
+Codify diagnoses two failure modes:
+- **Knowledge gap** — the fact didn't exist → write it.
+- **Retrieval miss** — the fact existed but wasn't in context when it mattered → adjust that situation's awareness.
 
 ## Books
 
-A **book** is a Praxis-built knowledge system for a specific domain. The book node (e.g., `book-sts1`) describes the book's structure, coverage, and health. The domain node (e.g., `sts1`) contains the actual domain knowledge.
+A **book** is a Praxis-built knowledge system for a specific domain. The book domain (e.g., `book-sts1`) describes the book's structure, coverage, and health. The subject domain (e.g., `sts1`) contains the actual knowledge the book is about.
 
 A book is the product. Praxis is the process.

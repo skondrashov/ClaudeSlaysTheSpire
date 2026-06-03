@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** Apply 8 [[debuffs/Mark]], ALL enemies lose HP equal to their [[debuffs/Mark]]
-- **Upgraded:** Apply 11 [[debuffs/Mark]]
+- **Effect:** Apply 8 [[debuffs/Mark]]. ALL enemies lose HP equal to their [[debuffs/Mark]].
+- **Upgrade:** +3 Mark

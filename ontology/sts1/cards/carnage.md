@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** 20 damage, Ethereal
-- **Upgraded:** 28 damage, Ethereal
+- **Effect:** Ethereal. Deal 20 damage.
+- **Upgrade:** +8 damage

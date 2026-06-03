@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** Choose and Exhaust up to 3 cards in your hand, Exhaust
-- **Upgraded:** Exhaust up to 5 cards
+- **Effect:** Exhaust up to 3 cards in your hand. Exhaust.
+- **Upgrade:** +2 cards

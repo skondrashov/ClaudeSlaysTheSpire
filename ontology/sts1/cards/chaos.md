@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Channel 1 random orb
-- **Upgraded:** Channel 2 random orbs
+- **Effect:** Channel 1 random Orb.
+- **Upgrade:** +1 random

@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** 5 block, block is not removed at the start of your next turn
-- **Upgraded:** 8 block, block is not removed at the start of your next turn
+- **Effect:** Gain 5 Block. Block is not removed at the start of your next turn.
+- **Upgrade:** +3 Block

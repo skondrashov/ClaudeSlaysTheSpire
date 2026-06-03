@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Apply 1 [[buffs/Evolve]] to self
-- **Upgraded:** Apply 2 [[buffs/Evolve]] to self
+- **Effect:** Whenever you draw a Status card, draw 1 card.
+- **Upgrade:** +1 card

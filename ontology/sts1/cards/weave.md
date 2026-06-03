@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 4 damage; whenever you Scry, return this from discard to hand
-- **Upgraded:** 6 damage; whenever you Scry, return this from discard to hand
+- **Effect:** Deal 4 damage. Whenever you Scry, return this from the discard pile to your Hand.
+- **Upgrade:** +2 damage

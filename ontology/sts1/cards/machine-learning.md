@@ -1,8 +1,8 @@
 # Machine Learning
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** Draw 1 additional card each turn
-- **Upgraded:** Costs 0E, Innate
+- **Effect:** At the start of your turn, draw 1 additional card.
+- **Upgrade:** becomes Innate

@@ -1,8 +1,8 @@
 # Magnetism
 
-- **Cost:** 2E (1E upgraded)
+- **Cost:** 2E
 - **Type:** [[types/Power]]
 - **Character:** Colorless
 - **Rarity:** Rare
-- **Effect:** At the start of each turn, add a random Colorless card to your hand
-- **Upgraded:** Costs 1E
+- **Effect:** At the start of your turn, add a random Colorless card into your hand.
+- **Upgrade:** cost 1E

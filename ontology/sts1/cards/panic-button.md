@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** 30 block, you cannot gain block from cards for 2 turns, Exhaust
-- **Upgraded:** 40 block, Exhaust
+- **Effect:** Gain 30 Block. You cannot gain Block from cards for 2 turns. Exhaust.
+- **Upgrade:** +10 Block

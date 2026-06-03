@@ -1,8 +1,8 @@
 # Havoc
 
-- **Cost:** 0E (1E unupgraded)
+- **Cost:** 1E
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** Play the top card of your draw pile, then exhaust it
-- **Upgraded:** Costs 0E
+- **Effect:** Play the top card of your draw pile and Exhaust it.
+- **Upgrade:** cost 0E

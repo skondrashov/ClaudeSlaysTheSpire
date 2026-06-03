@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Gain 3 [[buffs/Mantra]], shuffle an Insight into your draw pile
-- **Upgraded:** Gain 4 [[buffs/Mantra]], shuffle an Insight into your draw pile
+- **Effect:** Gain 3 [[buffs/Mantra]]. Shuffle an Insight into your draw pile.
+- **Upgrade:** +1 Mantra

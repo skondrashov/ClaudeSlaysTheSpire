@@ -1,8 +1,8 @@
 # Corruption
 
-- **Cost:** 3E (2E upgraded)
+- **Cost:** 3E
 - **Type:** [[types/Power]]
 - **Character:** Ironclad
 - **Rarity:** Rare
-- **Effect:** All Skill cards cost 0 Energy but Exhaust when played
-- **Upgraded:** Costs 2E
+- **Effect:** Skills cost 0. Whenever you play a Skill, Exhaust it.
+- **Upgrade:** cost 2E

@@ -1,8 +1,8 @@
 # Barricade
 
-- **Cost:** 3E (2E upgraded)
+- **Cost:** 3E
 - **Type:** [[types/Power]]
 - **Character:** Ironclad
 - **Rarity:** Rare
-- **Effect:** Apply [[buffs/Barricade]] to self
-- **Upgraded:** Costs 2E
+- **Effect:** Block is not removed at the start of your turn.
+- **Upgrade:** cost 2E

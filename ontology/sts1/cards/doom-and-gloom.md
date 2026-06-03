@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** 10 damage, channel 1 Dark orb
-- **Upgraded:** 14 damage, channel 1 Dark orb
+- **Effect:** Deal 10 damage to ALL enemies. Channel 1 Dark.
+- **Upgrade:** +4 damage

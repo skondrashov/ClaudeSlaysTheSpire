@@ -1,8 +1,8 @@
 # Eruption
 
-- **Cost:** 2E (1E upgraded)
+- **Cost:** 2E
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Starter
-- **Effect:** 9 damage, enter Wrath stance
-- **Upgraded:** Costs 1E
+- **Effect:** Deal 9 damage. Enter Wrath.
+- **Upgrade:** cost 1E

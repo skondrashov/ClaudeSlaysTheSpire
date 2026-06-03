@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 14 damage, [[buffs/Strength]] bonus applies 3x instead of 1x
-- **Upgraded:** 14 damage, [[buffs/Strength]] bonus applies 5x instead of 1x
+- **Effect:** Deal 14 damage. [[buffs/Strength]] affects this card 3 times.
+- **Upgrade:** +2 times

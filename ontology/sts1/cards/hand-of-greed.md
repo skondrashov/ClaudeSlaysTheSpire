@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Colorless
 - **Rarity:** Rare
-- **Effect:** 20 damage; if fatal, gain 20 Gold
-- **Upgraded:** 25 damage; if fatal, gain 25 Gold
+- **Effect:** Deal 20 damage. If Fatal, gain 20 Gold.
+- **Upgrade:** +5 damage, +5 Gold

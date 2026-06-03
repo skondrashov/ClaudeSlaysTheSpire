@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** 24 damage, channel 3 Plasma orbs
-- **Upgraded:** 30 damage
+- **Effect:** Deal 24 damage. Channel 3 Plasma.
+- **Upgrade:** +6 damage

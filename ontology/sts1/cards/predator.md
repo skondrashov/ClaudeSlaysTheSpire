@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** 15 damage, next turn draw 2 cards
-- **Upgraded:** 20 damage, next turn draw 2 cards
+- **Effect:** Deal 15 damage. Next turn, draw 2 additional cards.
+- **Upgrade:** +5 damage

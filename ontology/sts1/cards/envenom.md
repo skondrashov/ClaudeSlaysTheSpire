@@ -1,8 +1,8 @@
 # Envenom
 
-- **Cost:** 2E (1E upgraded)
+- **Cost:** 2E
 - **Type:** [[types/Power]]
 - **Character:** Silent
-- **Rarity:** Uncommon
-- **Effect:** Whenever an Attack deals unblocked damage, apply 1 [[debuffs/Poison]]
-- **Upgraded:** Costs 1E
+- **Rarity:** Rare
+- **Effect:** Whenever an Attack deals unblocked damage, apply 1 [[debuffs/Poison]].
+- **Upgrade:** cost 1E

@@ -11,9 +11,9 @@ Every entry has:
 
 ## Categories
 
-Entries are organized into **categories** — subdirectories within a node. A category groups entries of the same type (cards, enemies, relics, etc. in a game domain; layers, entries, linking in the praxis domain).
+Entries are organized into **categories** — subdirectories within a domain. A category groups entries of the same type (cards, enemies, relics, etc. in a game domain; layers, entries, linking in the praxis domain).
 
-A node may also have **top-level files** — entries that don't fit a category or cover cross-cutting topics.
+A domain may also have **top-level files** — entries that don't fit a category or cover cross-cutting topics.
 
 ## Companion Entries
 
@@ -27,12 +27,17 @@ Not every entry needs a companion:
 
 ## Linking
 
-`[[category/Name]]` links resolve **within the same layer and node**.
+A wiki-link's address is `category/id` — the **id** is what resolves, `category` annotates its type. Resolution is **ontology-canonical**: a bare `[[category/id]]` always points at the *ontology* entry, in the **current page's domain**, no matter which layer the link is written in. A fact has one canonical home, and a mention of it means that home.
 
-In `ontology/sts1/cards/bash.md`: `[[debuffs/Vulnerable]]` → `ontology/sts1/debuffs/vulnerable.md`
-In `heuristics/sts1/cards/bash.md`: `[[enemies/Gremlin Nob]]` → `heuristics/sts1/enemies/gremlin-nob.md`
+To point anywhere else, spell out the qualifier(s) — `layer:`, `domain:` (and, rarely, `category:`) — lowercase, comma-separated, in any order:
 
-Cross-layer references use explicit paths when needed.
+- In `ontology/sts1/cards/bash.md`, `[[debuffs/vulnerable]]` → `ontology/sts1/debuffs/vulnerable.md` (ontology, current domain — the default).
+- In `heuristics/sts1/cards/bash.md`, `[[debuffs/vulnerable]]` *still* resolves to the **ontology** fact (ontology-canonical), not a heuristics page.
+- To reach a heuristic deliberately: `[[layer:heuristics, enemies/gremlin-nob]]`.
+- To reach a goal (a flat layer, no category): `[[layer:goals, next]]`.
+- To cross domains: `[[domain:praxis, layers]]`.
+
+A bare `[[word]]` with no category and no qualifier is left as literal text, not a link.
 
 ## Naming Convention
 

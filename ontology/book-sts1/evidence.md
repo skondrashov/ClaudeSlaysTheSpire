@@ -5,7 +5,7 @@ How claims in the heuristics layer get grounded in gameplay.
 ## Evidence Sources
 
 - **Run logs** (`analyst/runs/run_NNN.json`) — Every decision, reasoning, and resulting state from a completed run. Primary evidence for what happened.
-- **Audit reports** (`analyst/audits/run_NNN.md`) — Per-decision correctness assessment from the Audit agent.
+- **Audit reports** (`analyst/audits/run_NNN.md`) — Per-decision correctness assessment from Audit sessions.
 - **Run statistics** (`data/run_stats.json`) — Aggregate data: wins, deaths, floors reached, character stats.
 - **Seed replays** — Same seed played with different strategy, eliminating card/enemy variance as a confounder.
 

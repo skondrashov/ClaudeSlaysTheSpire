@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 5 block, Retain; whenever Retained, increase block by 2
-- **Upgraded:** 7 block, Retain; whenever Retained, increase block by 3
+- **Effect:** Retain. Gain 5 Block. When Retained, increase its Block by 2 this combat.
+- **Upgrade:** +2 Block, +1 this

@@ -1,6 +1,6 @@
-# Goal: Curate the Book
+# Curate the Book
 
-Evaluate the knowledge system's structure, coverage, quality, and internal consistency. You are not playing the game — you are assessing whether the book is serving the agents well.
+Evaluate the knowledge system's structure, coverage, quality, and internal consistency. You are not playing the game — you are assessing whether the book is serving the agent well across all its goals.
 
 ## Entry Points
 
@@ -10,7 +10,7 @@ Evaluate the knowledge system's structure, coverage, quality, and internal consi
 
 ## What to Evaluate
 
-1. **Coverage.** Are there entities the agents encounter frequently that lack entries? Check recent run logs for entity references that don't resolve to existing entries.
+1. **Coverage.** Are there entities encountered frequently during play that lack entries? Check recent run logs for entity references that don't resolve to existing entries.
 2. **Quality.** Read a sample across categories. Do ontology entries contain strategic language? Do heuristic entries lack evidence? Are there stubs that add no value?
 3. **Consistency.** Are entries in the same category structurally similar? Do wiki-links resolve? Are there contradictions between entries?
 4. **Overfitting.** See `heuristics/book-sts1/overfitting.md`. Check drafting.md and archetypes.md for absolutist claims without sufficient evidence.

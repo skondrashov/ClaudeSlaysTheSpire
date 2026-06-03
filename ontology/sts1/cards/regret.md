@@ -1,5 +1,4 @@
 # Regret
 
-- **Cost:** Unplayable
 - **Type:** [[types/Curse]]
-- **Effect:** At end of turn, lose HP equal to number of cards in hand
+- **Effect:** Unplayable. At the end of your turn, lose HP equal to the number of cards in your hand.

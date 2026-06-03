@@ -1,8 +1,8 @@
 # Scrawl
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Rare
-- **Effect:** Draw cards until your hand is full, Exhaust
-- **Upgraded:** Costs 0E
+- **Effect:** Draw cards until your hand is full. Exhaust.
+- **Upgrade:** cost 0E

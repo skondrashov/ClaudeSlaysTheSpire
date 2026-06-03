@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 9 damage, exit your current stance
-- **Upgraded:** 14 damage, exit your current stance
+- **Effect:** Deal 9 damage. Exit your Stance.
+- **Upgrade:** +5 damage

@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Deal damage to ALL enemies equal to 2x the number of Frost orbs channeled this combat
-- **Upgraded:** 3x the number of Frost orbs channeled this combat
+- **Effect:** Deal damage equal to 2 times the number of Frost Channeled this combat to ALL enemies.
+- **Upgrade:** +1 times

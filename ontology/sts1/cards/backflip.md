@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 5 block, draw 2 cards
-- **Upgraded:** 8 block, draw 2 cards
+- **Effect:** Gain 5 Block. Draw 2 cards.
+- **Upgrade:** +3 Block

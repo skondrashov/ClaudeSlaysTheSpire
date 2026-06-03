@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 7 damage, Scry 2, draw 1 card
-- **Upgraded:** 9 damage, Scry 3, draw 1 card
+- **Effect:** Deal 7 damage. Scry 2. Draw 1 card.
+- **Upgrade:** +2 damage, +1 (magic)

@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Deal 4 damage for each Skill in your hand
-- **Upgraded:** Deal 6 damage for each Skill in your hand
+- **Effect:** Deal 4 damage for each Skill in your hand.
+- **Upgrade:** +2 damage

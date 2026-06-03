@@ -2,4 +2,4 @@
 
 - **Act:** 1
 - **Type:** Hallway
-- **Composition:** 3x [[enemies/Louse]] (each randomly [[enemies/Red Louse]] or [[enemies/Green Louse]])
+- **Composition:** 3x Louse, each independently a [[enemies/Red Louse]] or [[enemies/Green Louse]]

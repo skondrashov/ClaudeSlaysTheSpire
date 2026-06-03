@@ -1,8 +1,8 @@
 # Multi-Cast
 
-- **Cost:** XE
+- **Cost:** X
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** Evoke your next orb X times
-- **Upgraded:** Evoke X+1 times
+- **Effect:** Evoke your next Orb X times.
+- **Upgrade:** +1 to X (Evoke X+1 times)

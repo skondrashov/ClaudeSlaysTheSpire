@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Exit your current stance, draw 2 cards
-- **Upgraded:** Exit your current stance, draw 3 cards
+- **Effect:** Draw 2 cards. Exit your Stance.
+- **Upgrade:** +1 cards

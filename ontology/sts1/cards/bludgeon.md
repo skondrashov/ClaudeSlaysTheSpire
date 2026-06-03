@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Rare
-- **Effect:** 32 damage
-- **Upgraded:** 42 damage
+- **Effect:** Deal 32 damage.
+- **Upgrade:** +10 damage

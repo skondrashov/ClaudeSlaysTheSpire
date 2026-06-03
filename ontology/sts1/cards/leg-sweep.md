@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Apply 2 [[debuffs/Weak]], 11 block
-- **Upgraded:** Apply 3 [[debuffs/Weak]], 14 block
+- **Effect:** Apply 2 [[debuffs/Weak]]. Gain 11 Block.
+- **Upgrade:** +3 Block, +1 Weak

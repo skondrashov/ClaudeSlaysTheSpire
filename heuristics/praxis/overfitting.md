@@ -30,9 +30,9 @@ The knowledge cycle can self-reinforce: agent dies without X → analyst writes 
 
 1. **Write exploration directives.** Don't rewrite the heuristic yourself — tell Explore what to test. "Play 3 runs building around Corruption+FNP without Strength scaling. Goal: determine whether exhaust can win independently."
 2. **Soften language.** Downgrade absolutist claims to conditional claims when evidence is thin. "Non-negotiable" → "strongly preferred." "NEVER" → "avoid unless."
-3. **Diversify the Win agent's opening heuristics.** If win.md says "look for Strength scaling," add explicit instruction to also evaluate exhaust, block, and other archetypes on equal footing.
+3. **Diversify Win's opening heuristics.** If win.md says "look for Strength scaling," add explicit instruction to also evaluate exhaust, block, and other archetypes on equal footing.
 4. **Increase Explore cadence.** If the last 15 runs were all Win, schedule Explore runs more frequently even without directives.
 
 ## The Meta-Trap
 
-Overfitting detection can itself overfit. If the Curate agent always finds overfitting and always writes the same kind of corrective directive ("diversify more"), the correction becomes rote. Check whether previous diversification directives actually produced useful data, or whether they just added noise.
+Overfitting detection can itself overfit. If Curate always finds overfitting and always writes the same kind of corrective directive ("diversify more"), the correction becomes rote. Check whether previous diversification directives actually produced useful data, or whether they just added noise.

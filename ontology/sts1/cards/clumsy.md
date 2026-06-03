@@ -1,5 +1,4 @@
 # Clumsy
 
-- **Cost:** Unplayable
 - **Type:** [[types/Curse]]
-- **Effect:** Ethereal
+- **Effect:** Unplayable. Ethereal.

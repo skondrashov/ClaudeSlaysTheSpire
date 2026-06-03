@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Gain Energy equal to floor(cards in draw pile / 4)
-- **Upgraded:** Gain Energy equal to floor(cards in draw pile / 3)
+- **Effect:** Gain 1 Energy for every 4 cards in your draw pile.
+- **Upgrade:** -1 cards

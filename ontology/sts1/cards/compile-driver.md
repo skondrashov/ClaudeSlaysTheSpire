@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 7 damage, draw 1 card per channeled orb
-- **Upgraded:** 10 damage, draw 1 card per channeled orb
+- **Effect:** Deal 7 damage. Draw 1 card for each unique Orb you have.
+- **Upgrade:** +3 damage

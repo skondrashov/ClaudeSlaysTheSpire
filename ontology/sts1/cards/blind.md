@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** Apply 2 [[debuffs/Weak]] to an enemy
-- **Upgraded:** Apply 2 [[debuffs/Weak]] to ALL enemies
+- **Effect:** Apply 2 [[debuffs/Weak]].
+- **Upgrade:** applies to ALL enemies

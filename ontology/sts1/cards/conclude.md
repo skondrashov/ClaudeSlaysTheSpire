@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 12 damage to ALL enemies, end your turn
-- **Upgraded:** 16 damage to ALL enemies, end your turn
+- **Effect:** Deal 12 damage to ALL enemies. End your turn.
+- **Upgrade:** +4 damage

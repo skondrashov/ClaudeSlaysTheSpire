@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** 11 damage, Innate, Exhaust
-- **Upgraded:** 15 damage
+- **Effect:** Innate. Deal 11 damage. Exhaust.
+- **Upgrade:** +4 damage

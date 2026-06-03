@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Apply 3 [[buffs/Feel No Pain]] to self
-- **Upgraded:** Apply 4 [[buffs/Feel No Pain]] to self
+- **Effect:** Whenever a card is Exhausted, gain 3 Block.
+- **Upgrade:** +1 Block

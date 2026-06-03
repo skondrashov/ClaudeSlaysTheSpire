@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Rare
-- **Effect:** 8 x 2 damage; loses 2 damage per hit each time played this combat
-- **Upgraded:** 12 x 2 damage; loses 2 damage per hit each time played
+- **Effect:** Deal 8 damage twice. Decrease the damage of this card by 2 this combat.
+- **Upgrade:** +4 damage

@@ -17,4 +17,4 @@
 
 ## Mechanics
 
-Has [[buffs/Painful Stabs]].
+Has [[debuffs/Painful Stabs]].

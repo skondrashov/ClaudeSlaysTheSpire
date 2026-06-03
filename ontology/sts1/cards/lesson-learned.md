@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Rare
-- **Effect:** 10 damage; if Fatal, upgrade a random card in your deck, Exhaust
-- **Upgraded:** 13 damage; if Fatal, upgrade a random card, Exhaust
+- **Effect:** Deal 10 damage. If Fatal, Upgrade a random card in your deck. Exhaust.
+- **Upgrade:** +3 damage

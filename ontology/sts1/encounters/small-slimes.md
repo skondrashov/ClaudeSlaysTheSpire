@@ -2,4 +2,4 @@
 
 - **Act:** 1
 - **Type:** Hallway
-- **Composition:** 3-5 slimes total, mix of [[enemies/Spike Slime S]] and [[enemies/Acid Slime S]]
+- **Composition:** [[enemies/Spike Slime (M)]] + [[enemies/Acid Slime (S)]], or [[enemies/Acid Slime (M)]] + [[enemies/Spike Slime (S)]]

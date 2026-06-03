@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 6 damage, add a copy of Anger to discard pile
-- **Upgraded:** 8 damage, add a copy of Anger to discard pile
+- **Effect:** Deal 6 damage. Add a copy of this card into your discard pile.
+- **Upgrade:** +2 damage

@@ -1,0 +1,4 @@
+data/
+staging/
+_*.txt
+__pycache__/

@@ -1,6 +1,6 @@
-# Selecting the Next Goal
+# Select the Next Goal
 
-After an agent finishes, decide what to run next. This heuristic is read by the orchestrator (or by any agent advising on what comes next).
+After a session finishes, decide what goal to pursue next. This heuristic is read at the end of every session.
 
 ## Decision Logic
 
@@ -18,7 +18,7 @@ After an agent finishes, decide what to run next. This heuristic is read by the 
    → YES: Run Curate.
 
 4. Are there unaddressed Audit flags?
-   → Check the most recent audit report in analyst/audits/ for Curator flags.
+   → Check the most recent audit report in analyst/audits/ for curation flags.
    → YES and flags are piling up (3+): Run Curate early.
 
 5. Default: Run Win.
@@ -33,7 +33,8 @@ Most of the time, the answer is **Win**. The exceptions:
 
 ## Notes
 
-- Never run two playing agents (Win/Explore) simultaneously. One at a time.
+- Never run two playing goals (Win/Tournament/Explore) simultaneously. One at a time.
+- **Tournament Win** is the all-out variant — every token goes to winning, with no win% labeling or learning detours. Choose it for a clean benchmark of best play, or when a win matters most. Default (casual) Win plays to win but spends some slack labeling win% as a learning artifact. Both are auditable; only Casual Win and Explore carry the *live* labels a calibration check needs — the analyst labels Tournament runs retrospectively.
 - Audit and Curate don't touch the game — they can theoretically run while a game is in progress, but keep it simple and run them between games.
-- After a Curate run that produces exploration directives, the next run should be Explore (not Win) to act on those directives while they're fresh.
+- After a Curate session that produces exploration directives, the next session should be Explore (not Win) to act on those directives while they're fresh.
 - After a notable victory or a surprising death, Audit is higher priority than usual — there's more to learn from extreme outcomes.

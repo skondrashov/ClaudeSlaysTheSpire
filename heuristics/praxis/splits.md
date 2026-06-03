@@ -8,6 +8,18 @@ The most important structural decision in the system. Getting this wrong contami
 
 If you can imagine a different strategy that would use the same fact differently, the fact belongs in ontology and the strategy belongs in heuristics.
 
+## Atomic Facts Only — Derived Consequences Are Heuristics
+
+Ontology holds **atomic** facts. Combining two of them to produce a third — a worked example or interaction result like "Block resolves before Fossilized Helix, so 6 damage into 5 Block leaves 1 HP for Helix to prevent" — is *reasoning*, not an atomic fact. Even though the derivation is deterministic, it does **not** go in ontology; it lives in heuristics (a topic file or the entity's heuristic). There is no separate layer or name for derived facts: ontology stores Block's timing and Helix's effect as two atomic entries, and a heuristic composes them when a decision needs the result.
+
+Keeping ontology atomic protects its core property — *a correct entry never needs revision, only extension*. A derived fact can go stale when an input changes (a patch alters Block timing and the worked example is now wrong); an atomic fact can't. So the split has three buckets, not two:
+
+- `"X triggers Y"` (a base mechanic) → atomic fact → **ontology**
+- `"X before Y, so 6 into 5 leaves 1"` (a composition) → derivation → **heuristics**
+- `"avoid X"` (a recommendation) → strategy → **heuristics**
+
+The contamination test below catches the third bucket; this rule adds the second.
+
 ## Why This Matters
 
 The split enables compositional reasoning. When facts and strategy are mixed:

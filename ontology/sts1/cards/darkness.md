@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Channel 1 Dark orb
-- **Upgraded:** Also triggers the Dark orb's passive
+- **Effect:** Channel 1 Dark.
+- **Upgrade:** also triggers the passive of all Dark orbs

@@ -36,7 +36,7 @@ A bad heuristic entry:
 
 Is a 3-line entry worth having?
 
-For **ontology**: yes. Even a minimal card entry (cost, type, effect) is useful for composition. An agent encountering the card can look it up and get the facts. Better than nothing.
+For **ontology**: yes. Even a minimal card entry (cost, type, effect) is useful as an input for composition (the composed result itself is a heuristic, not an ontology entry). An agent encountering the card can look it up and get the facts. Better than nothing.
 
 For **heuristics**: usually no. A 1-sentence heuristic ("This is good") adds no value over what the agent would conclude from the ontology facts alone. Either write a useful heuristic (when to play, synergies, warnings) or don't write one at all.
 

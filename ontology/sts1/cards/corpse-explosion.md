@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Rare
-- **Effect:** Apply 6 [[debuffs/Poison]], apply [[debuffs/Corpse Explosion]] to target
-- **Upgraded:** Apply 9 [[debuffs/Poison]], apply [[debuffs/Corpse Explosion]] to target
+- **Effect:** Apply 6 [[debuffs/Poison]]. When the enemy dies, deal damage equal to its Max HP to ALL enemies.
+- **Upgrade:** +3 Poison

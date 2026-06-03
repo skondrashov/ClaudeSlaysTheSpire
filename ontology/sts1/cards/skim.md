@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Draw 3 cards
-- **Upgraded:** Draw 4 cards
+- **Effect:** Draw 3 cards.
+- **Upgrade:** +1 cards

@@ -1,5 +1,4 @@
 # Void
 
-- **Cost:** Unplayable
 - **Type:** [[types/Status]]
-- **Effect:** Ethereal. When drawn, lose 1 Energy.
+- **Effect:** Unplayable. Ethereal. Whenever this card is drawn, lose 1 Energy.

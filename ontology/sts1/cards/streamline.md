@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 15 damage, reduce this card's cost by 1 this combat
-- **Upgraded:** 20 damage
+- **Effect:** Deal 15 damage. Reduce this card's cost by 1 this combat.
+- **Upgrade:** +5 damage

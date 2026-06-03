@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 6 block, add 1 [[cards/Shiv]] to your hand
-- **Upgraded:** 6 block, add 2 [[cards/Shiv]]s to your hand
+- **Effect:** Gain 6 Block. Add 1 Shiv into your hand.
+- **Upgrade:** +1 Shiv

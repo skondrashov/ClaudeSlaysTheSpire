@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 7 Block, gain 1 Energy next turn
-- **Upgraded:** 10 Block
+- **Effect:** Gain 7 Block. Next turn, gain 1 Energy.
+- **Upgrade:** +3 Block

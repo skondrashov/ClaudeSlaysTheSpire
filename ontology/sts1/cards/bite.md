@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Colorless
 - **Rarity:** Special (from Vampires event)
-- **Effect:** 7 damage, heal 2 HP
-- **Upgraded:** 8 damage, heal 3 HP
+- **Effect:** Deal 7 damage. Heal 2 HP.
+- **Upgrade:** +1 damage, +1 HP

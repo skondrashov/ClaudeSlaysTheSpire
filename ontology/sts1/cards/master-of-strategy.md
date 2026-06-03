@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Rare
-- **Effect:** Draw 3 cards, Exhaust
-- **Upgraded:** Draw 4 cards, Exhaust
+- **Effect:** Draw 3 cards. Exhaust.
+- **Upgrade:** +1 cards

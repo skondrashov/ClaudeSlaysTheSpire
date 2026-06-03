@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 8 damage; if enemy intends to Attack, enter Calm
-- **Upgraded:** 11 damage; if enemy intends to Attack, enter Calm
+- **Effect:** Deal 8 damage. If the enemy intends to Attack, enter Calm.
+- **Upgrade:** +3 damage

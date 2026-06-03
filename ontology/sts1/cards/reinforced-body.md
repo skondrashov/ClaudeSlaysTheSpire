@@ -1,8 +1,8 @@
 # Reinforced Body
 
-- **Cost:** XE
+- **Cost:** X
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Gain 7 Block X times
-- **Upgraded:** Gain 9 Block X times
+- **Effect:** Gain 7 Block X times.
+- **Upgrade:** +2 Block

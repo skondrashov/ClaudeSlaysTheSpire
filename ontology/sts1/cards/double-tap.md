@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Rare
-- **Effect:** Next Attack card played this turn is played twice
-- **Upgraded:** Next 2 Attack cards played this turn are played twice
+- **Effect:** This turn, your next Attack is played twice.
+- **Upgrade:** +1 (magic)

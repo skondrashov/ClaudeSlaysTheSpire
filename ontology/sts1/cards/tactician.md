@@ -3,5 +3,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Unplayable. If discarded, gain 1 Energy
-- **Upgraded:** If discarded, gain 2 Energy
+- **Effect:** Unplayable. If this card is discarded from your hand, gain 1 Energy.
+- **Upgrade:** +1 (magic)

@@ -31,6 +31,10 @@ Thumbs.db
 # Session artifacts
 *.log
 
+# Card regeneration staging (scratch; regenerable via tools/regen/stage_cards.py)
+tools/regen/staging/
+tools/regen/staging-report.md
+
 # Inactive games (not tracked for now)
 games/balatro/
 games/sts2/
@@ -39,3 +43,4 @@ games/arc-agi/
 # STS1 game-specific ignores
 games/sts1/.player_token_current.txt
 games/sts1/data/coaching_notes.md
+games/sts1/data/awareness_cache.json

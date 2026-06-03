@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 9 damage, the next card you play this turn is placed on top of your draw pile
-- **Upgraded:** 12 damage
+- **Effect:** Deal 9 damage. Put the next card you play this turn on top of your draw pile.
+- **Upgrade:** +3 damage

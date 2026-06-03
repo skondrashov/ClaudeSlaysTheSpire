@@ -1,5 +1,4 @@
 # Normality
 
-- **Cost:** Unplayable
 - **Type:** [[types/Curse]]
-- **Effect:** Cannot play more than 3 cards per turn
+- **Effect:** Unplayable. While in hand, you cannot play more than 3 cards this turn.

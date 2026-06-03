@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Choose 1 of 3 Attacks of any color to add to your hand, Exhaust
-- **Upgraded:** The chosen Attack costs 0 this turn
+- **Effect:** Choose 1 of 3 Attacks of any color to add into your hand. Exhaust.
+- **Upgrade:** the added card costs 0 this turn

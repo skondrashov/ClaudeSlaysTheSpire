@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 6 damage, apply 3 [[debuffs/Poison]]
-- **Upgraded:** 8 damage, apply 4 [[debuffs/Poison]]
+- **Effect:** Deal 6 damage. Apply 3 [[debuffs/Poison]].
+- **Upgrade:** +2 damage, +1 Poison

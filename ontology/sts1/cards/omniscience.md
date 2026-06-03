@@ -1,8 +1,8 @@
 # Omniscience
 
-- **Cost:** 4E (3E upgraded)
+- **Cost:** 4E
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Rare
-- **Effect:** Choose a card in your draw pile; play it twice and Exhaust it, Exhaust
-- **Upgraded:** Costs 3E
+- **Effect:** Choose a card in your draw pile. Play the chosen card twice and exhaust it. Exhaust.
+- **Upgrade:** cost 3E

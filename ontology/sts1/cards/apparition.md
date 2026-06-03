@@ -2,6 +2,7 @@
 
 - **Cost:** 1E
 - **Type:** [[types/Skill]]
+- **Character:** Colorless
 - **Rarity:** Special (from [[events/Council of Ghosts]])
-- **Effect:** Ethereal, Exhaust. Gain 1 [[buffs/Intangible]].
-- **Upgraded:** Exhaust. Gain 1 [[buffs/Intangible]]. (no longer Ethereal)
+- **Effect:** Ethereal. Gain 1 [[buffs/Intangible]]. Exhaust.
+- **Upgrade:** loses Ethereal

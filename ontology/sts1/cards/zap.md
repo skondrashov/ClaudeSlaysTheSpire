@@ -1,8 +1,8 @@
 # Zap
 
-- **Cost:** 0E
+- **Cost:** 1E
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Starter
-- **Effect:** Channel 1 Lightning orb
-- **Upgraded:** Channel 1 Lightning orb (no functional change)
+- **Effect:** Channel 1 Lightning.
+- **Upgrade:** cost 0E

@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** 10 Block, Innate, Exhaust
-- **Upgraded:** 13 Block
+- **Effect:** Innate. Gain 10 Block. Exhaust.
+- **Upgrade:** +3 Block

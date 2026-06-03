@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Apply 3 [[buffs/Foresight]] to self
-- **Upgraded:** Apply 4 [[buffs/Foresight]] to self
+- **Effect:** At the start of your turn, Scry 3.
+- **Upgrade:** +1 (magic)

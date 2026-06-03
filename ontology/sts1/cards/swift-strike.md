@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** 7 damage
-- **Upgraded:** 10 damage
+- **Effect:** Deal 7 damage.
+- **Upgrade:** +3 damage

@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 4 damage; returns to hand from discard whenever you change stance
-- **Upgraded:** 6 damage; returns to hand from discard whenever you change stance
+- **Effect:** Deal 4 damage. Whenever you change Stances, return this from the discard pile to your hand.
+- **Upgrade:** +2 damage

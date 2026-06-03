@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 9 damage, gain block equal to unblocked damage dealt
-- **Upgraded:** 12 damage, gain block equal to unblocked damage dealt
+- **Effect:** Deal 9 damage. Gain Block equal to unblocked damage dealt.
+- **Upgrade:** +3 damage

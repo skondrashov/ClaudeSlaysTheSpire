@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Rare
-- **Effect:** Gain 1 Energy, draw 2 cards, Exhaust
-- **Upgraded:** Gain 2 Energy, draw 2 cards, Exhaust
+- **Effect:** Gain 1 Energy. Draw 2 cards. Exhaust.
+- **Upgrade:** +1 energy

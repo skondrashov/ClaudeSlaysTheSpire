@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Starter
-- **Effect:** 3 damage, apply 1 [[debuffs/Weak]]
-- **Upgraded:** 4 damage, apply 2 [[debuffs/Weak]]
+- **Effect:** Deal 3 damage. Apply 1 [[debuffs/Weak]].
+- **Upgrade:** +1 damage, +1 Weak

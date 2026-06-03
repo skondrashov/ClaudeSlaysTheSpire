@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Discard your hand, draw that many cards, Exhaust
-- **Upgraded:** No longer Exhausts
+- **Effect:** Discard your hand, then draw that many cards. Exhaust.
+- **Upgrade:** loses Exhaust

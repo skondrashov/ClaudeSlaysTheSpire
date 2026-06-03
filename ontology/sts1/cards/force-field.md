@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** 12 Block, costs 1 less for each Power played this combat
-- **Upgraded:** 16 Block
+- **Effect:** Costs 1 less 1 Energy for each Power card played this combat. Gain 12 Block.
+- **Upgrade:** +4 Block

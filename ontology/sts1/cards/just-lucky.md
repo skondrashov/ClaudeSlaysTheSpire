@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 3 damage, gain 2 block, Scry 1
-- **Upgraded:** 4 damage, gain 3 block, Scry 1
+- **Effect:** Scry 1. Gain 2 Block. Deal 3 damage.
+- **Upgrade:** +1 damage, +1 Block, +1 (magic)

@@ -1,8 +1,8 @@
 # Vault
 
-- **Cost:** 3E (2E upgraded)
+- **Cost:** 3E
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Rare
-- **Effect:** Take an additional turn after this one, Exhaust
-- **Upgraded:** Costs 2E, Exhaust
+- **Effect:** Take an extra turn after this one. End your turn. Exhaust.
+- **Upgrade:** cost 2E

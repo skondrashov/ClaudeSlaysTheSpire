@@ -1,6 +1,5 @@
 # Burn
 
-- **Cost:** Unplayable
 - **Type:** [[types/Status]]
-- **Effect:** At end of turn, if in hand, take 2 damage
-- **Upgraded:** At end of turn, if in hand, take 4 damage
+- **Effect:** Unplayable. At the end of your turn, take 2 damage.
+- **Upgrade:** +2 damage

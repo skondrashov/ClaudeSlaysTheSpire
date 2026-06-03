@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Apply 1 [[buffs/Dark Embrace]] to self
-- **Upgraded:** Costs 1E
+- **Effect:** Whenever a card is Exhausted, draw 1 card.
+- **Upgrade:** cost 1E

@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Channel 1 Frost orb for each enemy, Exhaust
-- **Upgraded:** Innate, Exhaust
+- **Effect:** Channel 1 Frost for each enemy in combat. Exhaust.
+- **Upgrade:** becomes Innate

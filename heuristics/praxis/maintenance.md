@@ -19,7 +19,7 @@ Do NOT create heuristic stubs. Either write something actionable or don't create
 - **New evidence.** A run revealed something not in the entry. Add it with a run citation.
 - **Counter-evidence.** A run contradicted the entry. Soften language, add the exception.
 - **Ascension change.** Playing at a new ascension level reveals mechanics that differ. Add ascension-specific values.
-- **Curate flag.** The Curate agent identified an issue (absolutist language, missing conditions, stale content).
+- **Curate flag.** A Curate session identified an issue (absolutist language, missing conditions, stale content).
 
 ## When to Split an Entry
 

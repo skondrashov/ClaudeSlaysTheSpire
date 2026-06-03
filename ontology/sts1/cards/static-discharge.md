@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Whenever you receive unblocked attack damage, channel 1 Lightning orb
-- **Upgraded:** Channel 2 Lightning orbs
+- **Effect:** Whenever you receive unblocked attack damage, Channel 1 Lightning.
+- **Upgrade:** +1 Lightning

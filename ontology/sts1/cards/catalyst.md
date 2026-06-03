@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Double an enemy's [[debuffs/Poison]], Exhaust
-- **Upgraded:** Triple an enemy's [[debuffs/Poison]], Exhaust
+- **Effect:** Double the enemy's [[debuffs/Poison]]. Exhaust.
+- **Upgrade:** Triple the enemy's Poison (was Double)

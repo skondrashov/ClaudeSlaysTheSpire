@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 3 block; if in Wrath, gain 9 additional block (12 total)
-- **Upgraded:** 4 block; if in Wrath, gain 10 additional block (14 total)
+- **Effect:** Gain 3 Block. If you are in Wrath, gain 9 additional Block.
+- **Upgrade:** +1 Block

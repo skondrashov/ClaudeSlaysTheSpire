@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** If you have no Attacks in hand, draw 2 cards
-- **Upgraded:** Draw 3 cards
+- **Effect:** If you have no Attacks in your hand, draw 2 cards.
+- **Upgrade:** +1 cards

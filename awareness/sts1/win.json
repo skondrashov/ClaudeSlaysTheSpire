@@ -1,0 +1,22 @@
+{
+  "schema": "praxis.awareness.manifest/1",
+  "goal": "win",
+  "domain": "sts1",
+  "tiers": {
+    "goal": {
+      "schema": "praxis.awareness.payload/1",
+      "label": "win:goal-level",
+      "resolve_links": true,
+      "budget": null,
+      "refs": [
+        { "layer": "ontology",   "name": "game" },
+        { "layer": "interface",  "name": "tools" },
+        { "layer": "interface",  "name": "stream" },
+        { "layer": "heuristics", "name": "combat" },
+        { "layer": "heuristics", "name": "drafting" },
+        { "layer": "heuristics", "name": "map" },
+        { "layer": "heuristics", "name": "archetypes" }
+      ]
+    }
+  }
+}

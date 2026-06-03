@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** Shuffle discard pile into draw pile, draw 1 card
-- **Upgraded:** Draw 2 cards
+- **Effect:** Shuffle your discard pile into your draw pile. Draw 1 card.
+- **Upgrade:** +1 card

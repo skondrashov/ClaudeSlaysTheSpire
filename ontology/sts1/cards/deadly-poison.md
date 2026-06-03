@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** Apply 5 [[debuffs/Poison]]
-- **Upgraded:** Apply 7 [[debuffs/Poison]]
+- **Effect:** Apply 5 [[debuffs/Poison]].
+- **Upgrade:** +2 Poison

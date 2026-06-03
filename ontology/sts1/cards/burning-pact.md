@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Exhaust 1 card from hand, draw 2 cards
-- **Upgraded:** Exhaust 1 card from hand, draw 3 cards
+- **Effect:** Exhaust 1 card. Draw 2 cards.
+- **Upgrade:** +1 cards

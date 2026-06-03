@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Discard 3 cards, gain 2 Energy
-- **Upgraded:** Discard 2 cards, gain 2 Energy
+- **Effect:** Discard 3 cards. Gain 2 Energy.
+- **Upgrade:** -1 cards

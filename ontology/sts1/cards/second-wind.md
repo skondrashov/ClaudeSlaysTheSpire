@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Exhaust all non-Attack cards in hand, gain 5 block per card exhausted
-- **Upgraded:** Gain 7 block per card exhausted
+- **Effect:** Exhaust all non-Attack cards in your hand. Gain 5 Block for each card Exhausted.
+- **Upgrade:** +2 Block

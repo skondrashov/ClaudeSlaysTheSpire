@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 7 block, exit your current stance (enter no stance)
-- **Upgraded:** 10 block, exit your current stance
+- **Effect:** Gain 7 Block. Exit your Stance.
+- **Upgrade:** +3 Block

@@ -1,8 +1,8 @@
 # Loop
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Apply 1 [[buffs/Loop]] to self
-- **Upgraded:** Costs 0E
+- **Effect:** At the start of your turn, trigger the passive ability of your next Orb.
+- **Upgrade:** triggers 1 additional time

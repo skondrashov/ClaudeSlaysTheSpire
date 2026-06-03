@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** Gain 1 [[buffs/Focus]]
-- **Upgraded:** Gain 2 [[buffs/Focus]]
+- **Effect:** Gain 1 [[buffs/Focus]].
+- **Upgrade:** +1 Focus

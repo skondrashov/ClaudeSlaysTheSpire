@@ -3,6 +3,6 @@
 - **Cost:** 1E
 - **Type:** [[types/Attack]]
 - **Character:** Defect
-- **Rarity:** Common
-- **Effect:** Remove all enemy block, deal 10 damage
-- **Upgraded:** Remove all enemy block, deal 14 damage
+- **Rarity:** Uncommon
+- **Effect:** Remove all Block from the enemy. Deal 10 damage.
+- **Upgrade:** +4 damage

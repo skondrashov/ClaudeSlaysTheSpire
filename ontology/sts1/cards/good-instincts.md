@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** 6 block
-- **Upgraded:** 9 block
+- **Effect:** Gain 6 Block.
+- **Upgrade:** +3 Block

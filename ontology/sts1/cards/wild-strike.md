@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 12 damage, shuffle a [[cards/Wound]] into your draw pile
-- **Upgraded:** 17 damage
+- **Effect:** Deal 12 damage. Shuffle a Wound into your draw pile.
+- **Upgrade:** +5 damage

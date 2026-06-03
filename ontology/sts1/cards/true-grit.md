@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 7 block, exhaust a random card from hand
-- **Upgraded:** 9 block, exhaust a chosen card from hand
+- **Effect:** Gain 7 Block. Exhaust 1 card at random.
+- **Upgrade:** Exhaust a chosen card (was random)

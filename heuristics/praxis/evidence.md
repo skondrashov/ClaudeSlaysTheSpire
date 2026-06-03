@@ -39,7 +39,7 @@ Don't cite when:
 ## Handling Counter-Evidence
 
 When a run contradicts an existing heuristic:
-1. Check whether the run's context was genuinely comparable (different ascension level, different deck composition, unusual RNG)
+1. Check whether the run's context was comparable (different ascension level, different deck composition, unusual RNG)
 2. If comparable: soften the heuristic's language and note the counter-example
 3. If not comparable: note the exception as a condition ("ALWAYS do X... unless Y, which occurred in Run 203")
 4. If the counter-evidence is strong enough (controlled comparison, repeated): rewrite the heuristic

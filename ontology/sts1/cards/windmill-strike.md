@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 7 damage, Retain; whenever Retained, increase damage by 4
-- **Upgraded:** 10 damage, Retain; whenever Retained, increase damage by 5
+- **Effect:** Retain. Deal 7 damage. When Retained, increase its damage by 4 this combat.
+- **Upgrade:** +3 damage, +1 this

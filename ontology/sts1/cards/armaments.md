@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 5 block, upgrade a card in hand for this combat
-- **Upgraded:** 5 block, upgrade ALL cards in hand for this combat
+- **Effect:** Gain 5 Block. Upgrade a card in your hand for the rest of combat.
+- **Upgrade:** upgrades ALL cards in hand (was 1)

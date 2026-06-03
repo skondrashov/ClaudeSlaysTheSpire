@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Rare
-- **Effect:** Add X random Colorless cards to your hand costing 0 this turn, Exhaust
-- **Upgraded:** Cards added are upgraded
+- **Effect:** Add X random Colorless cards into your hand. They cost 0 this turn. Exhaust.
+- **Upgrade:** the added cards are Upgraded

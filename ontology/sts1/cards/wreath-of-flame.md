@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Apply 5 [[buffs/Vigor]] to self
-- **Upgraded:** Apply 8 [[buffs/Vigor]] to self
+- **Effect:** Your next Attack deals 5 additional damage.
+- **Upgrade:** +3 additional

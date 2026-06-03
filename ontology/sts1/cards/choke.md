@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** 12 damage; for each card played after this, the enemy loses 3 HP
-- **Upgraded:** 12 damage; for each card played after this, the enemy loses 5 HP
+- **Effect:** Deal 12 damage. Whenever you play a card this turn, the enemy loses 3 HP.
+- **Upgrade:** +2 HP

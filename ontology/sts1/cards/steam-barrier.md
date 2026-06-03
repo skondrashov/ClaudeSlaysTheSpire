@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 6 Block, this card's Block decreases by 1 each time it is played this combat
-- **Upgraded:** 8 Block
+- **Effect:** Gain 6 Block. Decrease this card's Block by 1 this combat.
+- **Upgrade:** +2 Block

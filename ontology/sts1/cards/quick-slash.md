@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 8 damage, draw 1 card
-- **Upgraded:** 12 damage, draw 1 card
+- **Effect:** Deal 8 damage. Draw 1 card.
+- **Upgrade:** +4 damage

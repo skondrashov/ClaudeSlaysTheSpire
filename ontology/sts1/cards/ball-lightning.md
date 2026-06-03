@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 7 damage, channel 1 Lightning orb
-- **Upgraded:** 10 damage
+- **Effect:** Deal 7 damage. Channel 1 Lightning.
+- **Upgrade:** +3 damage

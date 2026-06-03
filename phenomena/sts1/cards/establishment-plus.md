@@ -1,0 +1,12 @@
+# Establishment+
+
+<!-- DO NOT EDIT - generated from ontology/sts1/cards/establishment.md
+     by tools/regen. Edit the noumenon (base + Upgrade delta) and re-apply. -->
+
+- **Cost:** 1E
+- **Type:** [[types/Power]]
+- **Character:** Watcher
+- **Rarity:** Rare
+- **Effect:** Innate. Whenever a card is Retained, reduce its cost by 1 this combat.
+
+Upgraded form of [[cards/Establishment]].

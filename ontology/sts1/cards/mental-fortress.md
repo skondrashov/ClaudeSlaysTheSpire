@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Whenever you change stance, gain 4 block
-- **Upgraded:** Gain 6 block per stance change
+- **Effect:** Whenever you change Stances, gain 4 Block.
+- **Upgrade:** +2 Block

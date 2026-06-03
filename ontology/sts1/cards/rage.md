@@ -1,8 +1,8 @@
 # Rage
 
 - **Cost:** 0E
-- **Type:** [[types/Power]]
+- **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Apply 3 [[buffs/Rage]] to self
-- **Upgraded:** Apply 5 [[buffs/Rage]] to self
+- **Effect:** Whenever you play an Attack this turn, gain 3 Block.
+- **Upgrade:** +2 Block

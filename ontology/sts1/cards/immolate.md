@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Rare
-- **Effect:** 21 damage to ALL enemies, add 1 [[cards/Burn]] to discard pile
-- **Upgraded:** 28 damage to ALL enemies, add 1 [[cards/Burn]] to discard pile
+- **Effect:** Deal 21 damage to ALL enemies. Add a Burn into your discard pile.
+- **Upgrade:** +7 damage

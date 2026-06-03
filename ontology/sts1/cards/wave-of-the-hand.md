@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Whenever you gain block this turn, apply 1 [[debuffs/Weak]] to ALL enemies
-- **Upgraded:** Apply 2 [[debuffs/Weak]] per trigger
+- **Effect:** Whenever you gain Block this turn, apply 1 [[debuffs/Weak]] to ALL enemies.
+- **Upgrade:** +1 Weak

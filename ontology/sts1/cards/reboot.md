@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** Shuffle your hand and discard pile into your draw pile, draw 4 cards, Exhaust
-- **Upgraded:** Draw 6 cards
+- **Effect:** Shuffle ALL your cards into your draw pile. Draw 4 cards. Exhaust.
+- **Upgrade:** +2 cards

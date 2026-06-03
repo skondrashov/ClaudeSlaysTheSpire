@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 8 block, the next Attack you play costs 0
-- **Upgraded:** 11 block, the next Attack you play costs 0
+- **Effect:** Gain 8 Block. The next Attack you play costs 0.
+- **Upgrade:** +3 Block

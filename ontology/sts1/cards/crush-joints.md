@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 8 damage; if previous card played was a Skill, apply 1 [[debuffs/Vulnerable]]
-- **Upgraded:** 10 damage, apply 2 [[debuffs/Vulnerable]]
+- **Effect:** Deal 8 damage. If the last card played this combat was a Skill, apply 1 [[debuffs/Vulnerable]].
+- **Upgrade:** +2 damage, +1 Vulnerable

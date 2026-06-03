@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Rare
-- **Effect:** Shuffle a [[cards/Beta]] into your draw pile, Exhaust
-- **Upgraded:** Innate, shuffle a [[cards/Beta]] into your draw pile, Exhaust
+- **Effect:** Shuffle a Beta into your draw pile. Exhaust.
+- **Upgrade:** becomes Innate

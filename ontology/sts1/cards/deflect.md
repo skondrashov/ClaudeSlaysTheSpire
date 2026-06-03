@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 4 block
-- **Upgraded:** 7 block
+- **Effect:** Gain 4 Block.
+- **Upgrade:** +3 Block

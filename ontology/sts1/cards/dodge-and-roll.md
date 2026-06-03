@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 4 block, next turn gain 4 block
-- **Upgraded:** 6 block, next turn gain 6 block
+- **Effect:** Gain 4 Block. Next turn, gain 4 Block.
+- **Upgrade:** +2 Block

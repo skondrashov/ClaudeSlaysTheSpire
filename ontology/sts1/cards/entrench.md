@@ -1,8 +1,8 @@
 # Entrench
 
-- **Cost:** 2E (1E upgraded)
+- **Cost:** 2E
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Double your current block
-- **Upgraded:** Costs 1E, double your current block
+- **Effect:** Double your Block.
+- **Upgrade:** cost 1E

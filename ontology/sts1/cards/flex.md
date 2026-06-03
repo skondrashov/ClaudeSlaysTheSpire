@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** Gain 2 [[buffs/Strength]] this turn (lost at end of turn)
-- **Upgraded:** Gain 4 [[buffs/Strength]] this turn (lost at end of turn)
+- **Effect:** Gain 2 [[buffs/Strength]]. At the end of this turn, lose 2 [[buffs/Strength]].
+- **Upgrade:** +2 Strength

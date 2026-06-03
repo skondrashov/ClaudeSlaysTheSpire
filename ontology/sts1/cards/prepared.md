@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** Draw 1 card, discard 1 card
-- **Upgraded:** Draw 2 cards, discard 2 cards
+- **Effect:** Draw 1 card. Discard 1 card.
+- **Upgrade:** +1 card

@@ -1,5 +1,4 @@
 # Parasite
 
-- **Cost:** Unplayable
 - **Type:** [[types/Curse]]
-- **Effect:** Cannot be removed at shops
+- **Effect:** Unplayable. If transformed or removed from your deck, lose 3 Max HP.

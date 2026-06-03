@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Common
-- **Effect:** 6 damage to ALL enemies, draw 1 card
-- **Upgraded:** 9 damage to ALL enemies, draw 1 card
+- **Effect:** Deal 6 damage to ALL enemies. Draw 1 card.
+- **Upgrade:** +3 damage

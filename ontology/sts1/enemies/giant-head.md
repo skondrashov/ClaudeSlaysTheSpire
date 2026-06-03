@@ -18,4 +18,4 @@ For the first 4 turns, uses Count (13 damage) or Glare (1 Weak) with 50/50 chanc
 
 ## Mechanics
 
-Has [[buffs/Slow]] and [[buffs/Metallicize]] 8.
+Has [[debuffs/Slow]] and [[buffs/Metallicize]] 8.

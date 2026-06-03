@@ -1,8 +1,8 @@
 # Eviscerate
 
-- **Cost:** 3E (reduced by 1 for each card discarded this turn)
+- **Cost:** 3E
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** 7 x 3 damage
-- **Upgraded:** 9 x 3 damage
+- **Effect:** Costs 1 less 1 Energy for each card discarded this turn. Deal 7 damage 3 times.
+- **Upgrade:** +2 damage

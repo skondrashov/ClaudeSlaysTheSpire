@@ -1,8 +1,8 @@
 # Dualcast
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Starter
-- **Effect:** Evoke your front orb twice
-- **Upgraded:** Costs 0E
+- **Effect:** Evoke your next Orb twice.
+- **Upgrade:** cost 0E

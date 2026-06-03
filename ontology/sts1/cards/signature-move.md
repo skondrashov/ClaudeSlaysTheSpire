@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 30 damage; can only be played if this is the only Attack in your hand
-- **Upgraded:** 40 damage
+- **Effect:** Can only be played if this is the only Attack in your hand. Deal 30 damage.
+- **Upgrade:** +10 damage

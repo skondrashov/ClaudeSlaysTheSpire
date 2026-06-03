@@ -15,7 +15,7 @@ Turn 1: Debilitate. Turn 2: Blood Shots. Turn 3+: cycles through Debilitate → 
 | Debilitate | -- | Apply 2 [[debuffs/Vulnerable]], 2 [[debuffs/Weak]], 2 [[debuffs/Frail]] |
 | Blood Shots | 2x15 (A0) | Multi-hit |
 | Echo | 40 | -- |
-| Buff | -- | Gains 2 [[buffs/Strength]], gains [[buffs/Painful Stabs]], gains [[buffs/Beat of Death]] |
+| Buff | -- | Gains 2 [[buffs/Strength]], gains [[debuffs/Painful Stabs]], gains [[buffs/Beat of Death]] |
 
 ## Mechanics
 

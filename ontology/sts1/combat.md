@@ -48,4 +48,4 @@ Enemy Strength works the same way — visible in intent damage numbers.
 
 ## Exhaust
 
-When a card is exhausted, it goes to the exhaust pile and cannot be played again this combat (unless retrieved by [[cards/Exhume]]). See [[rules/exhaust]] if it exists. [[cards/Corruption]] makes all Skills exhaust after play. Ethereal cards exhaust if still in hand at end of turn.
+When a card is exhausted, it goes to the exhaust pile and cannot be played again this combat (unless retrieved by [[cards/Exhume]]). See [[rules/exhaust]] for full mechanics, sources, and on-exhaust payoffs. [[cards/Corruption]] makes all Skills exhaust after play. Ethereal cards exhaust if still in hand at end of turn.

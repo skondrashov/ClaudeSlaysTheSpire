@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 7 damage; if enemy has [[debuffs/Poison]], deal 7 damage again
-- **Upgraded:** 10 damage; if enemy has [[debuffs/Poison]], deal 10 damage again
+- **Effect:** Deal 7 damage. If the enemy has [[debuffs/Poison]], deal 7 damage again.
+- **Upgrade:** +3 damage

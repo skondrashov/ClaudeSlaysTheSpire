@@ -6,7 +6,7 @@ Relics are the primary driver of run strength. Every winning formula was built o
 
 **Elite targets per act:**
 - **[[acts/Act 1]]: Fight 2 elites.** The Act 1 elite pool ([[enemies/Gremlin Nob]], [[enemies/Lagavulin]], Sentries) is the easiest in the game. Two elite relics + boss relic = 3 relics by [[acts/Act 2]]. If the map offers a 2-elite path with rest site coverage, take it. Only settle for 1 elite if the map forces bad rest site spacing or the deck is still starter-quality at Floor 5.
-- **Act 2: Fight 1-2 elites.** Act 2 elites are dangerous but the relic rewards are stronger (rare pool). If HP is above 60% and the deck has its scaling engine online, path through at least 1 elite. Skip only when the deck genuinely cannot handle the matchup (e.g., [[relics/Brimstone]] vs [[enemies/Book of Stabbing]]).
+- **Act 2: Fight 1-2 elites.** Act 2 elites are dangerous but the relic rewards are stronger (rare pool). If HP is above 60% and the deck has its scaling engine online, path through at least 1 elite. Skip only when the deck cannot handle the matchup (e.g., [[relics/Brimstone]] vs [[enemies/Book of Stabbing]]).
 - **[[acts/Act 3]]: Fight 0-1 elites.** Act 3 elites ([[enemies/Giant Head]], [[enemies/Reptomancer]], [[enemies/Nemesis]]) are extremely dangerous. Only take an elite if the path naturally includes one and the deck is strong. Don't go out of the way for Act 3 elites.
 
 **When comparing routes, elites are a POSITIVE, not just a risk.** A route with 1 elite + 1 rest site is often better than a route with 0 elites + 2 rest sites, because the relic from the elite compounds for the rest of the run while the extra rest only heals one fight's worth of damage.
@@ -15,7 +15,7 @@ Relics are the primary driver of run strength. Every winning formula was built o
 
 **At the START of each act, read the ENTIRE map.** Count elites, shops, campfires, and unknowns on every viable route. Choose a full route before floor 1. This replaces room-by-room pathing.
 
-- **Default to the elite-heavy route.** Only downgrade to the safe route when HP or deck quality genuinely can't handle the elite pool.
+- **Default to the elite-heavy route.** Only downgrade to the safe route when HP or deck quality can't handle the elite pool.
 - **Re-route only when forced.** Follow your act plan. Only deviate if HP drops below safe thresholds.
 - **At each floor, verify the planned route is still viable.** Count remaining forced combats to the next rest site. If the path forces 2+ combats and HP is below 50%, re-route.
 - Prefer routes with a rest site in the last 1-2 floors before the boss.
@@ -45,7 +45,7 @@ Before fighting an elite, check:
 2. **Deck vs elite matchup**: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling. Count your Attack/Skill ratio before committing to an elite path. **Minimum 3 monster rooms before first elite** — 0-2 fights are not enough to build a deck that can handle any Act 1 elite.
 3. **Damage scaling check**: Before routing through Act 1 elites, verify the deck has at least one damage scaling source ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Carnage]], or a strong Uncommon attack). Without scaling, high-HP elites ([[enemies/Lagavulin]] 110 HP, Sentries 40+42+42) are DPS races that base-damage decks cannot win. Confirmed fatal: Run 222 entered Lagavulin with no Str source and could not deal enough damage before Siphon Soul debuffs compounded.
 4. **Potions available**: Potions compensate for bad matchups.
-5. **Path alternatives**: Only prefer a safer path if the elite risk is genuinely unmanageable. Don't default to "safer path exists, take it."
+5. **Path alternatives**: Only prefer a safer path if the elite risk is unmanageable. Don't default to "safer path exists, take it."
 
 **Act 2 Elite Threat Ranking:**
 - **Book of Stabbing** (4 deaths, #1 elite killer): Double scaling — +1 hit/turn AND +3 Str/turn. Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. **If you have Brimstone, DO NOT FIGHT. Brimstone + Book of Stabbing = unsurvivable.**

@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Rare
-- **Effect:** Draw 2 cards, put a card from your hand on top of your draw pile, Exhaust
-- **Upgraded:** No longer Exhausts
+- **Effect:** Draw 2 cards. Put a card from your hand on top of your draw pile. Exhaust.
+- **Upgrade:** loses Exhaust

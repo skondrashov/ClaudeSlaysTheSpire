@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** At the start of each turn, add a random Common card into your hand
-- **Upgraded:** Innate
+- **Effect:** At the start of your turn, add a random Common card into your hand.
+- **Upgrade:** becomes Innate

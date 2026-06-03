@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** 7 damage, draw 4 cards, discard all drawn cards that cost more than 0
-- **Upgraded:** 10 damage, draw 5 cards
+- **Effect:** Deal 7 damage. Draw 4 cards. Discard all cards drawn this way that do not cost 0.
+- **Upgrade:** +3 damage, +1 cards

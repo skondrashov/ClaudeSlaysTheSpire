@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Uncommon
-- **Effect:** Create 1 copy of an Attack or Power card in your hand
-- **Upgraded:** Create 2 copies of an Attack or Power card in your hand
+- **Effect:** Choose an Attack or Power card. Add a copy of that card into your hand.
+- **Upgrade:** +1 (magic)

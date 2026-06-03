@@ -1,4 +1,4 @@
-# Goal: Extend the Book
+# Extend the Book
 
 Add new entries for entities that lack coverage. Focus on the highest-value gaps first.
 

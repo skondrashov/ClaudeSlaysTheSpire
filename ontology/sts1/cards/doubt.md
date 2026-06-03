@@ -1,5 +1,4 @@
 # Doubt
 
-- **Cost:** Unplayable
 - **Type:** [[types/Curse]]
-- **Effect:** At end of turn, gain 1 [[debuffs/Weak]]
+- **Effect:** Unplayable. At the end of your turn, gain 1 [[debuffs/Weak]].

@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 12 damage, apply 2 [[debuffs/Weak]]
-- **Upgraded:** 14 damage, apply 3 [[debuffs/Weak]]
+- **Effect:** Deal 12 damage. Apply 2 [[debuffs/Weak]].
+- **Upgrade:** +2 damage, +1 Weak

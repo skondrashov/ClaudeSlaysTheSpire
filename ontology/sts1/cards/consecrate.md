@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 5 damage to ALL enemies
-- **Upgraded:** 8 damage to ALL enemies
+- **Effect:** Deal 5 damage to ALL enemies.
+- **Upgrade:** +3 damage

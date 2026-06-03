@@ -1,14 +1,14 @@
-# Agent Pipeline
+# Goal Cycle
 
-Four agent roles cycle through the knowledge system. Each reads from the same ontology but different heuristic subsets. The cycle prevents the system from converging on local optima.
+The agent cycles through goals to maintain the knowledge system. Each goal reads from the same ontology but loads different heuristics. The cycle prevents the system from converging on local optima.
 
-## Agents
+## Goals
 
-| Agent | Purpose | Reads | Writes |
-|-------|---------|-------|--------|
+| Goal | Purpose | Reads | Writes |
+|------|---------|-------|--------|
 | Win | Play to win | Full ontology + game heuristics | Run logs, margin notes |
 | Explore | Test hypotheses | Full ontology + exploration heuristics | Run logs, experiment results |
-| Audit | Review execution | Full ontology + audit heuristics + run logs | Audit reports, Curator flags |
+| Audit | Review execution | Full ontology + audit heuristics + run logs | Audit reports, curation flags |
 | Curate | Evaluate strategy | Full ontology + full heuristics + audit reports | Directives, playbook edits |
 | Develop | Improve interface | Ontology + interface docs | Code changes, interface docs |
 
@@ -34,13 +34,14 @@ Default cadence:
 
 ## Pipeline State
 
-Tracked in `data/pipeline_state.json`:
-- `last_agent` — which agent last ran
+Tracked in `data/pipeline_state.json` (relative to `games/sts1/`):
+- `last_agent` — which goal last ran
 - `last_run` — which run completed
-- `next_recommended` — what the last agent suggested
+- `next_recommended` — what the last session suggested
 - `runs_since_last_audit` and `runs_since_last_curate` — cadence tracking
 - `outstanding_directives` — exploration directives waiting for Explore
+- `reason`, `character`, `ascension` — context for the last run
 
 ## Critical Property
 
-**All four phases are required.** Only running Win causes the system to overfit to its current strategy. Only running Curate without Explore means replacing one form of overconfidence with another. The pipeline exists because no single agent can simultaneously play well, check its own work, evaluate its own strategy, AND test alternatives.
+**All four phases of the play cycle are required** (Win, Audit, Curate, Explore; Develop is an auxiliary interface mode, not part of the cycle). Only running Win causes the system to overfit to its current strategy. Only running Curate without Explore means replacing one form of overconfidence with another. The cycle exists because no single goal session can simultaneously play well, check its own work, evaluate its own strategy, AND test alternatives.

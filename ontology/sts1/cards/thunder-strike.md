@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** Deal 7 damage to a random enemy for each Lightning orb channeled this combat
-- **Upgraded:** 9 damage per hit
+- **Effect:** Deal 7 damage to a random enemy for each Lightning Channeled this combat.
+- **Upgrade:** +2 damage

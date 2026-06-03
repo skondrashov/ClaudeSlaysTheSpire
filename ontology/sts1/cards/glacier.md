@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** 7 Block, channel 2 Frost orbs
-- **Upgraded:** 10 Block
+- **Effect:** Gain 7 Block. Channel 2 Frost.
+- **Upgrade:** +3 Block

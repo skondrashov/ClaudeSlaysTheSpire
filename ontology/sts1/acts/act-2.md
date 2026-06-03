@@ -11,15 +11,20 @@
 ## Encounters
 
 ### Hallway
-- [[encounters/3 Byrds]]
-- [[encounters/Chosen]]
-- [[encounters/Chosen and Cultist]]
-- [[encounters/Centurion and Mystic]]
-- [[encounters/Snake Plant]]
 - [[encounters/Spheric Guardian]]
-- [[encounters/3 Cultists]]
+- [[encounters/Chosen]]
 - [[encounters/Shelled Parasite]]
+- [[encounters/Three Byrds]]
+- [[encounters/City Muggers]]
+- [[encounters/Four Byrds]]
+- [[encounters/Chosen Flock]]
+- [[encounters/Chosen and Cultist]]
+- [[encounters/Sentry and Spheric Guardian]]
+- [[encounters/Snake Plant]]
 - [[encounters/Snecko]]
+- [[encounters/Centurion and Mystic]]
+- [[encounters/Triple Cultists]]
+- [[encounters/Parasite and Fungi Beast]]
 
 ### Elites
 - [[encounters/Gremlin Leader]]

@@ -1,0 +1,301 @@
+# Lossless decode of MonsterHelper.getEncounter() bytecode (desktop-1.0.jar)
+# Ordered: case-key strings (the dispatch block), then the per-encounter MonsterGroup bodies.
+# A 'MonsterGroup' marker begins one encounter's roster; following class names are its monsters.
+# Encounters built via helpers/loops (Slimes, Gremlin Gang, Louse, Shapes) have empty/partial bodies.
+
+
+[KEY] Blue Slaver
+
+[KEY] Cultist
+
+[KEY] Jaw Worm
+
+[KEY] Looter
+
+[KEY] Gremlin Gang
+
+[KEY] Red Slaver
+
+[KEY] Large Slime
+
+[KEY] Exordium Thugs
+
+[KEY] Exordium Wildlife
+
+[KEY] 3 Louse
+
+[KEY] 2 Louse
+
+[KEY] 2 Fungi Beasts
+
+[KEY] Lots of Slimes
+
+[KEY] Small Slimes
+
+[KEY] Gremlin Nob
+
+[KEY] Lagavulin
+
+[KEY] 3 Sentries
+
+[KEY] Lagavulin Event
+
+[KEY] The Mushroom Lair
+
+[KEY] The Guardian
+
+[KEY] Hexaghost
+
+[KEY] Slime Boss
+  MonsterGroup
+  SlaverBlue
+  MonsterGroup
+  Cultist
+  MonsterGroup
+  JawWorm
+  MonsterGroup
+  Looter
+  MonsterGroup
+  SlaverRed
+  MonsterGroup
+  AcidSlime_L
+  MonsterGroup
+  SpikeSlime_L
+  MonsterGroup
+  MonsterGroup
+  MonsterGroup
+  FungiBeast
+  FungiBeast
+  MonsterGroup
+  GremlinNob
+  MonsterGroup
+  Lagavulin
+  MonsterGroup
+  Sentry
+  Sentry
+  Sentry
+  MonsterGroup
+  Lagavulin
+  MonsterGroup
+  FungiBeast
+  FungiBeast
+  FungiBeast
+  MonsterGroup
+  TheGuardian
+  MonsterGroup
+  Hexaghost
+  MonsterGroup
+  SlimeBoss
+
+[KEY] 2 Thieves
+
+[KEY] 3 Byrds
+
+[KEY] 4 Byrds
+
+[KEY] Chosen
+
+[KEY] Shell Parasite
+
+[KEY] Spheric Guardian
+
+[KEY] Cultist and Chosen
+
+[KEY] 3 Cultists
+
+[KEY] Chosen and Byrds
+
+[KEY] Sentry and Sphere
+
+[KEY] Snake Plant
+
+[KEY] Snecko
+
+[KEY] Centurion and Healer
+
+[KEY] Shelled Parasite and Fungi
+
+[KEY] Book of Stabbing
+
+[KEY] Gremlin Leader
+
+[KEY] Slavers
+
+[KEY] Masked Bandits
+
+[KEY] Colosseum Nobs
+
+[KEY] Colosseum Slavers
+
+[KEY] Automaton
+
+[KEY] Champ
+
+[KEY] Collector
+  MonsterGroup
+  Looter
+  Mugger
+  MonsterGroup
+  Byrd
+  Byrd
+  Byrd
+  MonsterGroup
+  Byrd
+  Byrd
+  Byrd
+  Byrd
+  MonsterGroup
+  Chosen
+  MonsterGroup
+  ShelledParasite
+  MonsterGroup
+  SphericGuardian
+  MonsterGroup
+  Cultist
+  Chosen
+  MonsterGroup
+  Cultist
+  Cultist
+  Cultist
+  MonsterGroup
+  Byrd
+  Chosen
+  MonsterGroup
+  Sentry
+  SphericGuardian
+  MonsterGroup
+  SnakePlant
+  MonsterGroup
+  Snecko
+  MonsterGroup
+  Centurion
+  Healer
+  MonsterGroup
+  ShelledParasite
+  FungiBeast
+  MonsterGroup
+  BookOfStabbing
+  MonsterGroup
+  GremlinLeader
+  MonsterGroup
+  SlaverBlue
+  Taskmaster
+  SlaverRed
+  MonsterGroup
+  BanditPointy
+  BanditLeader
+  BanditBear
+  MonsterGroup
+  Taskmaster
+  GremlinNob
+  MonsterGroup
+  SlaverBlue
+  SlaverRed
+  MonsterGroup
+  BronzeAutomaton
+  MonsterGroup
+  Champ
+  MonsterGroup
+  TheCollector
+
+[KEY] Flame Bruiser 1 Orb
+
+[KEY] Flame Bruiser 2 Orb
+
+[KEY] Reptomancer
+
+[KEY] Transient
+
+[KEY] 3 Darklings
+
+[KEY] 3 Shapes
+
+[KEY] Jaw Worm Horde
+
+[KEY] Snecko and Mystics
+
+[KEY] Orb Walker
+
+[KEY] Spire Growth
+
+[KEY] Maw
+
+[KEY] 4 Shapes
+
+[KEY] Sphere and 2 Shapes
+
+[KEY] 2 Orb Walkers
+
+[KEY] Nemesis
+
+[KEY] Writhing Mass
+
+[KEY] Giant Head
+
+[KEY] Mysterious Sphere
+
+[KEY] Time Eater
+
+[KEY] Awakened One
+
+[KEY] Donu and Deca
+  MonsterGroup
+  Reptomancer
+  SnakeDagger
+  MonsterGroup
+  SnakeDagger
+  Reptomancer
+  SnakeDagger
+  MonsterGroup
+  Transient
+  MonsterGroup
+  Darkling
+  Darkling
+  Darkling
+  MonsterGroup
+  JawWorm
+  JawWorm
+  JawWorm
+  MonsterGroup
+  Healer
+  Snecko
+  Healer
+  MonsterGroup
+  OrbWalker
+  MonsterGroup
+  SpireGrowth
+  MonsterGroup
+  Maw
+  MonsterGroup
+  SphericGuardian
+  MonsterGroup
+  OrbWalker
+  OrbWalker
+  MonsterGroup
+  Nemesis
+  MonsterGroup
+  WrithingMass
+  MonsterGroup
+  GiantHead
+  MonsterGroup
+  OrbWalker
+  MonsterGroup
+  TimeEater
+  MonsterGroup
+  Cultist
+  Cultist
+  AwakenedOne
+  MonsterGroup
+  Deca
+  Donu
+
+[KEY] The Heart
+
+[KEY] Shield and Spear
+  MonsterGroup
+  CorruptHeart
+  MonsterGroup
+  SpireShield
+  SpireSpear
+  MonsterGroup
+  ApologySlime

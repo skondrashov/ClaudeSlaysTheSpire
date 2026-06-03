@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Draw 1 card; if you draw a Skill, gain 3 block
-- **Upgraded:** Draw 1 card; if you draw a Skill, gain 5 block
+- **Effect:** Draw 1 card. If you draw a Skill, gain 3 Block.
+- **Upgrade:** +2 Block

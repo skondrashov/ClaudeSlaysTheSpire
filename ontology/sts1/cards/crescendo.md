@@ -1,8 +1,8 @@
 # Crescendo
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** Enter Wrath, Exhaust
-- **Upgraded:** Costs 0E, Exhaust
+- **Effect:** Retain. Enter Wrath. Exhaust.
+- **Upgrade:** cost 0E

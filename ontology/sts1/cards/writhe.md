@@ -1,5 +1,4 @@
 # Writhe
 
-- **Cost:** Unplayable
 - **Type:** [[types/Curse]]
-- **Effect:** Innate
+- **Effect:** Unplayable. Innate.

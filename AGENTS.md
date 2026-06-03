@@ -29,8 +29,8 @@ Deckbuilder roguelike. CommunicationMod (Java mod, Steam Workshop) handles all g
 **Interaction layer:** CommunicationMod (stdin/stdout) ↔ relay.py (TCP :19284) ↔ Claude Code CLI (cmd.py)
 **Mod stack:** ModTheSpire + BaseMod + CommunicationMod + SuperFastMode (all Steam Workshop, zero custom mod code)
 **Streaming:** stream.py (WebSocket :3001 + HTTP :3002) → overlay/index.html (OBS browser source). Broadcasts game state, decisions, and reasoning to overlay clients in real time.
-**Agents:** Player (plays), Analyst (post-run review → playbook updates), Steward (playbook quality + context hygiene). Definitions in `agents/`. See `AGENTS.md` in the game directory for full details.
-**Knowledge:** `playbook/` — 130+ individual files organized by type: cards/, enemies/, bosses/, events/, potions/, relics/, plus mechanics.md and strategy.md. Each entry has mechanics + strategy + decision prompts. Built from 17 runs of gameplay.
+**Goals:** Win (play), Audit (execution review), Curate (strategy review), Explore (test hypotheses), Develop (interface). Goal files in `goals/sts1/`.
+**Knowledge:** Organized as the **Praxis** framework — a `domain × layer` tree at the repo root: `ontology/sts1/` (atomic facts), `phenomena/sts1/` (generated resolved upgrades — base+delta materialized), `heuristics/sts1/` (strategy), `goals/sts1/` (operating modes), plus `awareness/sts1/` (preload manifests). The agent reads via `cmd.py` `reason()`/`plan()`; `tools/awareness/` handles goal-level preload with a session dedup cache; `tools/regen/` generates the card layers from canonical data. Concepts: `ontology/praxis/`. Session handoff: `HANDOFF.md`.
 **Site:** claudeslaysthespire.org — browsable playbook + changelog showing what Claude learned over time. Deploys via GitHub Actions.
 **Status:** Active. 17 runs (Ironclad A0), best floor 28, 0 wins. Pipeline working end-to-end. Own git repo at github.com/skondrashov/ClaudeSlaysTheSpire.
 
@@ -73,7 +73,7 @@ Not yet extracted — currently embedded in each game. Shared patterns to extrac
 - Playbook format and conventions (individual files per entry, decision prompts)
 - Run logging and post-run analysis
 - Decision framework (how Claude structures game reasoning)
-- Common agent roles (player, analyst, steward)
+- Common goal types (play, audit, curate, explore)
 
 ## Directory structure
 

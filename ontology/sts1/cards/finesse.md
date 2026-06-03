@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** 2 block, draw 1 card
-- **Upgraded:** 4 block, draw 1 card
+- **Effect:** Gain 2 Block. Draw 1 card.
+- **Upgrade:** +2 Block

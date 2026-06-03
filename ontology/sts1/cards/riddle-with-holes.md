@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** 3 x 5 damage
-- **Upgraded:** 4 x 5 damage
+- **Effect:** Deal 3 damage 5 times.
+- **Upgrade:** +1 damage

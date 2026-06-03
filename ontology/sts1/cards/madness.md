@@ -1,8 +1,8 @@
 # Madness
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** A random card in your hand costs 0 for the rest of combat, Exhaust
-- **Upgraded:** Costs 0E
+- **Effect:** Reduce the cost of a random card in your hand to 0 this combat. Exhaust.
+- **Upgrade:** cost 0E

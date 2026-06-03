@@ -1,32 +1,29 @@
-# Agents
+# Agent
 
-Actors that read from and write to the knowledge system. An agent is given a goal, reads relevant knowledge, performs actions in the domain, and writes back what it learned.
+The single actor that reads from and writes to the knowledge system. There is one agent. It is given a goal, reads the knowledge relevant to that goal, performs actions in the domain, and writes back what it learned.
 
 ## Properties
 
-Every agent:
-- **Has a goal** — one of the goal files, which defines what to read, do, and output
+The agent:
+- **Has a current goal** — one of the goal files, which defines what to read, what to do, and what to output
 - **Reads from all three layers** — ontology for facts, heuristics for strategy, goals for operating mode
-- **Writes to specific layers** — different agents have different write permissions
+- **Writes to specific layers** — different goals have different write targets
 - **Operates one action at a time** — no autonomous loops, no background automation
 
-## Agent Roles
+## Goals, Not Roles
 
-A Praxis system defines domain-specific agent roles. These typically include:
+A goal is not an identity. The agent doesn't become a different entity when it switches from playing to auditing — it changes what it's optimizing for, which changes which heuristics are relevant. The goal file specifies:
+- What knowledge to load
+- What behavior is expected
+- What output to produce
+- What goal to recommend next
 
-- **Performer** — acts in the domain (plays the game, solves the puzzle, writes the code). Reads knowledge, follows heuristics, records observations.
-- **Analyst** — reviews the performer's work for correctness. Checks execution against knowledge. Flags errors but doesn't rewrite strategy.
-- **Curator** — evaluates the knowledge system itself. Checks for overfitting, coverage gaps, contradictions, quality. Writes exploration directives.
-- **Explorer** — tests hypotheses from the curator or the performer's observations. Willing to try non-standard approaches to generate evidence.
+## Goal Cycling
 
-Not all systems need all roles. A minimal Praxis setup is just Performer + Curator.
-
-## Agent Cycling
-
-Agents cycle to prevent the system from converging on local optima:
-- Only performing → overfits to current strategy
+Goals cycle to prevent the system from converging on local optima:
+- Only playing → overfits to current strategy
 - Only curating without exploring → replaces one bias with another
 - Only exploring without curating → no direction for experiments
-- Only analyzing without curating → flags errors that never get addressed
+- Only auditing without curating → flags errors that never get addressed
 
 The cycle pattern and cadence are domain-specific, defined in the domain's goal files.

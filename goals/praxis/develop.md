@@ -1,4 +1,4 @@
-# Goal: Develop Praxis
+# Develop Praxis
 
 Improve the Praxis framework based on experience applying it to domains. You are not working in any specific domain — you are refining the framework itself.
 
@@ -9,7 +9,7 @@ Improve the Praxis framework based on experience applying it to domains. You are
 
 ## When to Develop Praxis
 
-- After a book has accumulated enough experience to reveal patterns (50+ entries, 10+ agent cycles)
+- After a book has accumulated enough experience to reveal patterns (50+ entries, 10+ goal cycles)
 - When a new domain is being set up and the existing Praxis guidance doesn't cover the situation
 - When a book-level Curate pass identifies an issue that's framework-level, not domain-level
 - When applying Praxis to a second domain reveals assumptions baked into the first

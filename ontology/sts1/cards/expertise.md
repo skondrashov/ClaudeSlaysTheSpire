@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** Draw cards until you have 6 in hand
-- **Upgraded:** Draw cards until you have 7 in hand
+- **Effect:** Draw cards until you have 6 in your hand.
+- **Upgrade:** +1 in

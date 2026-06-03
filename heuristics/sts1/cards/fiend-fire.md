@@ -8,7 +8,7 @@ Exhausts ALL other cards in hand. Deals 7 damage per card exhausted to a single 
 
 **CRITICAL CHECK before playing:** Scan your hand for [[cards/Impervious]], [[cards/Shockwave]], [[cards/Dark Shackles]], or any card you NEED for survival. Fiend Fire exhausts EVERYTHING. If a survival-critical card is in hand, do NOT play Fiend Fire — play that card first or skip Fiend Fire entirely. Confirmed kill: Run 183 Fiend Fire exhausted Impervious against non-lethal Chosen, leaving no block source for the remaining 4 turns.
 
-**Matchups:** [[bosses/Slime Boss]] -- burst + Slimed exhaust. [[enemies/Chosen]] -- only use when burst will kill or exhausted cards are genuinely expendable. If Chosen survives, remaining turns have zero block sources.
+**Matchups:** [[bosses/Slime Boss]] -- burst + Slimed exhaust. [[enemies/Chosen]] -- only use when burst will kill or exhausted cards are expendable. If Chosen survives, remaining turns have zero block sources.
 
 **Caution:** Exhausting key cards ([[cards/Barricade]], [[cards/Clothesline]]) is permanent. At critically low HP, exhausting everything for survival is correct -- survival > future value.
 

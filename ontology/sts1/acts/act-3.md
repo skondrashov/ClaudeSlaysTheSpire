@@ -13,13 +13,14 @@
 
 ### Hallway
 - [[encounters/Darklings]]
-- [[encounters/Orb Walkers]]
+- [[encounters/Orb Walker]]
+- [[encounters/Three Shapes]]
+- [[encounters/Double Orb Walkers]]
+- [[encounters/Four Shapes]]
+- [[encounters/Spheric Guardian with Shapes]]
+- [[encounters/Spire Growth]]
 - [[encounters/Writhing Mass]]
-- [[encounters/Spiker and Exploder]]
 - [[encounters/Jaw Worm Horde]]
-- [[encounters/Reptomancer]]
-- [[encounters/Nemesis]]
-- [[encounters/3 Shapes]]
 - [[encounters/The Maw]]
 - [[encounters/Transient]]
 

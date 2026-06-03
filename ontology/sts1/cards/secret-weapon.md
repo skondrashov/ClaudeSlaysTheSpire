@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Rare
-- **Effect:** Put an Attack from your draw pile into your hand, Exhaust
-- **Upgraded:** No longer Exhausts
+- **Effect:** Put an Attack from your draw pile into your hand. Exhaust.
+- **Upgrade:** loses Exhaust

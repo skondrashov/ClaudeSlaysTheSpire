@@ -1,8 +1,8 @@
 # Talk to the Hand
 
-- **Cost:** 2E
+- **Cost:** 1E
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 5 damage, whenever this enemy attacks you gain 2 block per hit, Exhaust
-- **Upgraded:** 7 damage, gain 3 block per hit, Exhaust
+- **Effect:** Deal 5 damage. Whenever you attack this enemy, gain 2 Block. Exhaust.
+- **Upgrade:** +2 damage, +1 Block

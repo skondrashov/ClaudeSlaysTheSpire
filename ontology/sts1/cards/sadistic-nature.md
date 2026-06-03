@@ -2,7 +2,7 @@
 
 - **Cost:** 0E
 - **Type:** [[types/Power]]
-- **Character:** Silent
+- **Character:** Colorless
 - **Rarity:** Rare
-- **Effect:** Apply 5 [[buffs/Sadistic Nature]] to self
-- **Upgraded:** Apply 7 [[buffs/Sadistic Nature]] to self
+- **Effect:** Whenever you apply a debuff to an enemy, they take 5 damage.
+- **Upgrade:** +2 damage

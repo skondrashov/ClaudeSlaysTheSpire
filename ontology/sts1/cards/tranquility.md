@@ -1,8 +1,8 @@
 # Tranquility
 
-- **Cost:** 1E (0E upgraded)
+- **Cost:** 1E
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** Enter Calm, Retain, Exhaust
-- **Upgraded:** Costs 0E
+- **Effect:** Retain. Enter Calm. Exhaust.
+- **Upgrade:** cost 0E

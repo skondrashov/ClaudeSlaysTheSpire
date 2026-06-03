@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 12 damage; if you discarded a card this turn, gain 2 Energy
-- **Upgraded:** 16 damage; if you discarded a card this turn, gain 2 Energy
+- **Effect:** Deal 12 damage. If you have discarded a card this turn, gain 2 Energy.
+- **Upgrade:** +4 damage

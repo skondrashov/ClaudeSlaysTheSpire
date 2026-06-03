@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 8 block, draw 1 card
-- **Upgraded:** 11 block, draw 1 card
+- **Effect:** Gain 8 Block. Draw 1 card.
+- **Upgrade:** +3 Block

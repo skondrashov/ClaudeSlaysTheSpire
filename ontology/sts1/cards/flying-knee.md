@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Common
-- **Effect:** 8 damage, next turn gain 1 Energy
-- **Upgraded:** 11 damage, next turn gain 1 Energy
+- **Effect:** Deal 8 damage. Next turn, gain 1 Energy.
+- **Upgrade:** +3 damage

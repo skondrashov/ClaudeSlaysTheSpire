@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Whenever you enter Wrath, draw 2 cards
-- **Upgraded:** Whenever you enter Wrath, draw 3 cards
+- **Effect:** Whenever you enter Wrath, draw 2 cards.
+- **Upgrade:** cost 0E

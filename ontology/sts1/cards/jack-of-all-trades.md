@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** Add 1 random Colorless card to your hand, Exhaust
-- **Upgraded:** Add 2 random Colorless cards to your hand, Exhaust
+- **Effect:** Add 1 random Colorless card into your hand. Exhaust.
+- **Upgrade:** +1 random

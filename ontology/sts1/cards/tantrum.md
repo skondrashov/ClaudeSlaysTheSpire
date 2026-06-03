@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 3 x 3 damage, enter Wrath, shuffle this card into your draw pile
-- **Upgraded:** 3 x 4 damage, enter Wrath, shuffle this card into your draw pile
+- **Effect:** Deal 3 damage 3 times. Enter Wrath. Shuffle this card into your draw pile.
+- **Upgrade:** +1 damage

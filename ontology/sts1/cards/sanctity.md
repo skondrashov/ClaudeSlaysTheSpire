@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 6 block; if previous card played was a Skill, draw 2 cards
-- **Upgraded:** 9 block; if previous card played was a Skill, draw 2 cards
+- **Effect:** Gain 6 Block. If the last card played this combat was a Skill, draw 2 cards.
+- **Upgrade:** +3 Block

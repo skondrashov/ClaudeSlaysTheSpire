@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Ironclad
 - **Rarity:** Common
-- **Effect:** 5 damage, gain 5 block
-- **Upgraded:** 7 damage, gain 7 block
+- **Effect:** Gain 5 Block. Deal 5 damage.
+- **Upgrade:** +2 damage, +2 Block

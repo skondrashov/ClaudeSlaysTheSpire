@@ -1,4 +1,4 @@
-# Goal: Develop the Interface
+# Develop the Interface
 
 Improve the code that lets agents interact with the game. You are not playing the game and you are not evaluating strategy — you are working on the tools, the relay, the state reader, the stream overlay, and anything else that bridges reasoning to execution.
 
@@ -14,19 +14,19 @@ Read these at the start of the session:
 - `interface/sts1/stream.md` — Current streaming setup
 
 **Heuristics:**
-- [[development/interface/sts1]] — Development patterns, known issues, architecture decisions (read what exists)
+- `interface/sts1/` — Development patterns, known issues, architecture decisions (read what exists)
 
 ## Inputs
 
-- **Knowledge gaps from playing agents.** Win and Explore agents drop `KNOWLEDGE GAP:` notes when the interface doesn't expose something they need. These are your primary work queue.
-- **Audit flags.** The Audit agent may flag UI misplays caused by confusing tool behavior — that's an interface problem, not a player problem.
-- **Curate observations.** The Curate agent may note that certain game states are poorly represented in `state()` output.
+- **Knowledge gaps from play.** Win and Explore sessions drop `KNOWLEDGE GAP:` notes when the interface doesn't expose something needed. These are your primary work queue.
+- **Audit flags.** Audit sessions may flag UI misplays caused by confusing tool behavior — that's an interface problem, not a play problem.
+- **Curate observations.** Curate sessions may note that certain game states are poorly represented in `state()` output.
 - **Direct requests.** The orchestrator may ask for a specific feature (new command, better state formatting, stream overlay improvement).
 
 ## What You Work On
 
 ### State Reading
-- Does `state()` expose everything the playing agents need? Missing information (enemy intents not shown, potion slots unclear, relic effects invisible) causes blind spots.
+- Does `state()` expose everything needed during play? Missing information (enemy intents not shown, potion slots unclear, relic effects invisible) causes blind spots.
 - Is the state format clear and parseable? Ambiguous formatting causes arithmetic errors.
 
 ### Action Execution
@@ -56,7 +56,7 @@ The game mod stack (CommunicationMod, BaseMod, SuperFastMode) is installed via S
 1. **Code changes.** Fix bugs, add features, improve reliability. Commit with clear messages.
 2. **Interface doc updates.** If you change what tools.md describes, update tools.md.
 3. **Knowledge gap responses.** For each gap you address, note which agent flagged it and what you did.
-4. **Known issues.** Document things you found but didn't fix in [[development/interface/sts1]].
+4. **Known issues.** Document things you found but didn't fix in `interface/sts1/`.
 
 ## Principles
 
@@ -66,4 +66,4 @@ The game mod stack (CommunicationMod, BaseMod, SuperFastMode) is installed via S
 
 ## Next Goal
 
-At the end of your output, read [[goals/next]] and recommend which goal the next agent should pursue (Win, Explore, Audit, Curate, or Develop) and why.
+At the end of your output, read [[layer:goals, next]] and recommend which goal the next agent should pursue (Win, Explore, Audit, Curate, or Develop) and why.

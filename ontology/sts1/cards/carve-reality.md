@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** 6 damage, add a [[cards/Smite]] to your hand
-- **Upgraded:** 10 damage, add a [[cards/Smite]] to your hand
+- **Effect:** Deal 6 damage. Add a Smite into your hand.
+- **Upgrade:** +4 damage

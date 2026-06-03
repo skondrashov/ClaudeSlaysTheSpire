@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** 13 Block, Retain your hand this turn
-- **Upgraded:** 16 Block
+- **Effect:** Gain 13 Block. Retain your hand this turn.
+- **Upgrade:** +3 Block

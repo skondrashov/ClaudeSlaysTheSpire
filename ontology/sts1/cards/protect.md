@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Common
-- **Effect:** 12 block, Retain
-- **Upgraded:** 16 block, Retain
+- **Effect:** Retain. Gain 12 Block.
+- **Upgrade:** +4 Block

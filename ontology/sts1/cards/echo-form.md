@@ -4,5 +4,5 @@
 - **Type:** [[types/Power]]
 - **Character:** Defect
 - **Rarity:** Rare
-- **Effect:** The first card you play each turn is played twice, Ethereal
-- **Upgraded:** The first card you play each turn is played twice (no Ethereal)
+- **Effect:** Ethereal. The first card you play each turn is played twice.
+- **Upgrade:** loses Ethereal

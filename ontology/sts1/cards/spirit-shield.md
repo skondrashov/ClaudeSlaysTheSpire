@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Rare
-- **Effect:** Gain 3 block for each card in your hand
-- **Upgraded:** Gain 4 block for each card in your hand
+- **Effect:** Gain 3 Block for each card in your hand.
+- **Upgrade:** +1 Block

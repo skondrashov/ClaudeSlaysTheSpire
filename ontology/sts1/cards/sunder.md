@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** 24 damage, if this kills an enemy gain 3 Energy
-- **Upgraded:** 32 damage
+- **Effect:** Deal 24 damage. If this kills an enemy, gain 3 Energy.
+- **Upgrade:** +8 damage

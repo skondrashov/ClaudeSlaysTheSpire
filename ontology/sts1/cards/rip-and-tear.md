@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Defect
 - **Rarity:** Uncommon
-- **Effect:** 7 x 2 damage to a random enemy
-- **Upgraded:** 9 x 2 damage
+- **Effect:** Deal 7 damage to a random enemy twice.
+- **Upgrade:** +2 damage

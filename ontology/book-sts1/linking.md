@@ -4,11 +4,11 @@ How entries reference each other within and across layers.
 
 ## Wiki-Links
 
-Syntax: `[[category/Name]]`
+Syntax: `[[category/id]]` — the **id** is the address, `category` annotates its type.
 
-Resolves to an entry within the same layer:
-- In ontology: `[[debuffs/Vulnerable]]` → `ontology/sts1/debuffs/vulnerable.md`
-- In heuristics: `[[enemies/Gremlin Nob]]` → `heuristics/sts1/enemies/gremlin-nob.md`
+Resolution is **ontology-canonical**: a bare link points at the *ontology* entry in the current page's domain, regardless of which layer the link sits in. A fact has one home, and naming it means that home.
+- `[[debuffs/vulnerable]]` → `ontology/sts1/debuffs/vulnerable.md` (from any layer).
+- To target another layer or domain, spell the qualifier out, lowercase, comma-separated, any order: `[[layer:heuristics, enemies/gremlin-nob]]`, `[[layer:goals, next]]`, `[[domain:praxis, layers]]`.
 
 Links enable composition: an entry about Bash can reference Vulnerable's mechanics without restating them.
 

@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** If in Wrath, apply 3 [[debuffs/Vulnerable]] to ALL enemies; otherwise enter Wrath
-- **Upgraded:** Apply 5 [[debuffs/Vulnerable]] if in Wrath
+- **Effect:** If you are in Wrath, apply 3 [[debuffs/Vulnerable]] to ALL enemies, otherwise enter Wrath.
+- **Upgrade:** +2 Vulnerable

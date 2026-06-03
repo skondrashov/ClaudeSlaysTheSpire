@@ -4,5 +4,5 @@
 - **Type:** [[types/Attack]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
-- **Effect:** 3 damage, draw 1 card
-- **Upgraded:** 6 damage, draw 1 card
+- **Effect:** Deal 3 damage. Draw 1 card.
+- **Upgrade:** +3 damage

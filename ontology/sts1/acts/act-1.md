@@ -11,22 +11,25 @@
 ## Encounters
 
 ### Hallway
+- [[encounters/Cultist]]
 - [[encounters/Jaw Worm]]
 - [[encounters/2 Louse]]
-- [[encounters/Small Slimes]]
-- [[encounters/Cultist]]
-- [[encounters/Blue Slaver]]
-- [[encounters/Looter]]
 - [[encounters/3 Louse]]
-- [[encounters/Gremlin Gang]]
+- [[encounters/Small Slimes]]
+- [[encounters/Swarm of Slimes]]
 - [[encounters/Large Slime]]
+- [[encounters/Blue Slaver]]
+- [[encounters/Red Slaver]]
+- [[encounters/Looter]]
+- [[encounters/Gang of Gremlins]]
 - [[encounters/2 Fungi Beasts]]
 - [[encounters/Exordium Thugs]]
+- [[encounters/Exordium Wildlife]]
 
 ### Elites
 - [[encounters/Gremlin Nob]]
 - [[encounters/Lagavulin]]
-- [[encounters/3 Sentries]]
+- [[encounters/Sentries]]
 
 ### Bosses (one per run, visible from floor 1)
 - [[bosses/The Guardian]]

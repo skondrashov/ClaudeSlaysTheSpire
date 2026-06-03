@@ -1,8 +1,8 @@
 # Masterful Stab
 
-- **Cost:** 0E (increases by 1 for each HP lost in combat)
+- **Cost:** 0E
 - **Type:** [[types/Attack]]
 - **Character:** Silent
 - **Rarity:** Uncommon
-- **Effect:** 12 damage
-- **Upgraded:** 16 damage
+- **Effect:** Costs 1 additional 1 Energy for each time you lose HP this combat. Deal 12 damage.
+- **Upgrade:** +4 damage

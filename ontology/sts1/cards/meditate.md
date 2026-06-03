@@ -4,5 +4,5 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Uncommon
-- **Effect:** Put 1 card from discard into hand (Retain), enter Calm, end your turn
-- **Upgraded:** Put 2 cards from discard into hand (Retain), enter Calm, end your turn
+- **Effect:** Put a card from your discard pile into your hand and Retain it. Enter Calm. End your turn.
+- **Upgrade:** +1 (magic)
