@@ -63,8 +63,10 @@ def _resolve_links(content, loader, domain, frontier):
     """One level of [[link]] expansion. category links -> ontology facts;
     bare [[name]] links -> heuristics top-level files. Deduped against frontier."""
     resolved, keys = [], []
-    for cat, name in extract_links(content):
-        layer = "ontology" if cat else "heuristics"
+    for layer_q, cat, name in extract_links(content):
+        # explicit `layer:` wins; else ontology-canonical for categorized links,
+        # heuristics for bare top-level references (combat, archetypes, ...).
+        layer = layer_q or ("ontology" if cat else "heuristics")
         key = ref_key(layer, domain, cat, name)
         if key in frontier:
             continue

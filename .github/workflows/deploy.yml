@@ -34,6 +34,8 @@ jobs:
           python-version: '3.12'
 
       - run: python site/build.py
+        env:
+          STS_STRICT_LINKS: '1'   # fail the deploy on any broken wiki-link
 
       - uses: actions/upload-pages-artifact@v3
         with:

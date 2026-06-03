@@ -11,7 +11,8 @@ import re
 from pathlib import Path
 
 _LINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
-_QUALIFIER_RE = re.compile(r"^[LD]:[^/|]*$", re.IGNORECASE)
+_QUAL_RE = re.compile(r"^(layer|domain|category)\s*:\s*(.+)$", re.IGNORECASE)
+_LINK_LAYERS = {"ontology", "phenomena", "heuristics", "goals"}
 
 
 def name_to_filename(name: str) -> str:
@@ -34,30 +35,61 @@ def ref_key(layer: str, domain: str, category, name: str) -> str:
     return f"{layer}:{domain}:{category or ''}:{name_to_filename(name)}"
 
 
-def extract_links(content: str):
-    """Return [(category|None, name)] for each [[...]] link, alias + qualifiers stripped.
+def parse_link(inner: str):
+    """Parse one [[...]] body to (layer, category, name), mirroring the site
+    resolver in site/build.py. Grammar: comma-separated, spelled-out and order-free
+    `layer:` / `domain:` / `category:` qualifiers; an optional `|Display` alias; a
+    leading layer keyword in the address (`goals/next`); `category/id` or flat `id`.
+    `layer` is None when unspecified (the caller applies its default). `domain:` is
+    parsed-but-ignored here (loaders are bound to a single domain).
 
-    Handles the linking grammar the site resolver uses: the id is the address, with
-    OPTIONAL leading `L:`/`D:` qualifiers (layer/domain, order-free) and an optional
-    `|Display` alias. The visible `category/` slash is preserved as the type.
-      [[cards/bash|Bash]]        -> ('cards', 'bash')
-      [[L:heuristics cards/bash]]-> ('cards', 'bash')   (qualifier dropped here)
-      [[D:sts1 buffs/strength]]  -> ('buffs', 'strength')
-      [[combat]]                 -> (None, 'combat')
+      [[cards/bash|Bash]]                 -> (None, 'cards', 'bash')
+      [[layer:heuristics, cards/bash]]    -> ('heuristics', 'cards', 'bash')
+      [[layer:goals, next]]               -> ('goals', None, 'next')
+      [[goals/next]]                      -> ('goals', None, 'next')
+      [[combat]]                          -> (None, None, 'combat')
     """
+    full = inner.split("|", 1)[0]  # drop |Display alias
+    layer = cat_q = addr = None
+    for tok in full.split(","):
+        tok = tok.strip()
+        if not tok:
+            continue
+        m = _QUAL_RE.match(tok)
+        if m:
+            key, val = m.group(1).lower(), m.group(2).strip()
+            if key == "layer":
+                layer = val
+            elif key == "category":
+                cat_q = val
+            # domain: captured-but-ignored (single-domain loaders)
+        elif addr is None:
+            addr = tok
+    if addr is None:
+        return (layer, cat_q, None)
+    if "/" in addr:                      # leading layer keyword acts as the layer
+        first, rest = addr.split("/", 1)
+        if first in _LINK_LAYERS and layer is None:
+            layer, addr = first, rest
+    if "/" in addr:
+        category, name = addr.split("/", 1)
+        category = category.strip() or None
+        name = name.strip()
+    else:
+        category, name = None, addr.strip()
+    if cat_q:
+        category = cat_q
+    return (layer, category, name)
+
+
+def extract_links(content: str):
+    """Return [(layer, category, name)] for each [[...]] link. `layer` is None when
+    the link does not specify one — the caller applies its default."""
     out = []
     for inner in _LINK_RE.findall(content):
-        target = inner.split("|", 1)[0].strip()  # drop |Display alias
-        # drop any leading L:/D: qualifier tokens (whitespace-separated)
-        tokens = [t for t in target.split() if not _QUALIFIER_RE.match(t)]
-        target = " ".join(tokens).strip()
-        if not target:
-            continue
-        if "/" in target:
-            cat, name = target.split("/", 1)
-            out.append((cat.strip(), name.strip()))
-        else:
-            out.append((None, target.strip()))
+        layer, cat, name = parse_link(inner)
+        if name:
+            out.append((layer, cat, name))
     return out
 
 

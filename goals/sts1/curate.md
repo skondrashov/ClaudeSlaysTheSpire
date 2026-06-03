@@ -8,7 +8,6 @@ Read these at the start of the session:
 
 **Ontology:**
 - `ontology/sts1/game.md` — Game domain (you need to understand the game to assess whether strategy makes sense)
-- `heuristics/book-sts1/analysis/index.md` — Analysis methodology: prediction errors, attribution, observation lifecycle
 
 **Heuristics:**
 - [[layer:heuristics, curate]] — Overfitting detection, coverage analysis, evidence standards, formatting (read what exists)

@@ -190,30 +190,74 @@ def _load_ontology_top(category: str, name: str) -> str | None:
     return None
 
 
-def _extract_links(content: str) -> list[tuple[str, str]]:
-    """Extract [[category/Name]] links from content.
+_LINK_QUAL_RE = re.compile(r"^(layer|domain|category)\s*:\s*(.+)$", re.IGNORECASE)
+_LINK_LAYERS = {"ontology", "phenomena", "heuristics", "goals"}
 
-    Returns list of (category, name) tuples.
+
+def _extract_links(content: str) -> list[tuple[str | None, str | None, str]]:
+    """Extract [[...]] links as (layer, category, name).
+
+    Mirrors the site resolver's grammar (site/build.py) and the awareness loader
+    (tools/awareness/loaders.py) — keep all three in sync: comma-separated,
+    order-free, spelled-out `layer:` / `domain:` / `category:` qualifiers; an
+    optional `|Display` alias; a leading layer keyword in the address (`goals/next`).
+    `layer` is None when unspecified.
     """
-    return re.findall(r'\[\[(\w+)/([^\]]+)\]\]', content)
+    out = []
+    for inner in re.findall(r'\[\[([^\]]+)\]\]', content):
+        full = inner.split("|", 1)[0]  # drop |Display alias
+        layer = cat_q = addr = None
+        for tok in full.split(","):
+            tok = tok.strip()
+            if not tok:
+                continue
+            m = _LINK_QUAL_RE.match(tok)
+            if m:
+                k, v = m.group(1).lower(), m.group(2).strip()
+                if k == "layer":
+                    layer = v
+                elif k == "category":
+                    cat_q = v
+                # domain: captured-but-ignored (single-domain loaders)
+            elif addr is None:
+                addr = tok
+        if addr is None:
+            continue
+        if "/" in addr:                  # leading layer keyword acts as the layer
+            first, rest = addr.split("/", 1)
+            if first in _LINK_LAYERS and layer is None:
+                layer, addr = first, rest
+        if "/" in addr:
+            cat, name = addr.split("/", 1)
+            cat = cat.strip() or None
+            name = name.strip()
+        else:
+            cat, name = None, addr.strip()
+        if cat_q:
+            cat = cat_q
+        if name:
+            out.append((layer, cat, name))
+    return out
 
 
 def _resolve_links(content: str, already_loaded: set = None) -> str:
-    """Resolve one level of [[category/Name]] links in content.
+    """Resolve one level of categorized [[...]] links in content.
 
-    Returns formatted string with resolved link targets appended.
-    Only resolves links not already in the already_loaded set.
+    Loads the ontology entry by default; an explicit `layer:heuristics` qualifier
+    loads the heuristic instead. Bare top-level refs are not followed here.
     """
     if already_loaded is None:
         already_loaded = set()
-    links = _extract_links(content)
     resolved = []
-    for cat, name in links:
-        key = f"{cat}/{name}"
+    for layer, cat, name in _extract_links(content):
+        if not cat:
+            continue
+        layer = layer or "ontology"
+        key = f"{layer}/{cat}/{name}"
         if key in already_loaded:
             continue
         already_loaded.add(key)
-        entry = _load_ontology(cat, name)
+        entry = _load_heuristic(cat, name) if layer == "heuristics" else _load_ontology(cat, name)
         if entry:
             resolved.append(entry)
     if resolved:
