@@ -21,17 +21,17 @@ RERANK_MODEL = os.environ.get("STS_RERANK_MODEL", "claude-haiku-4-5-20251001")
 
 _INSTRUCTIONS = """\
 You are a retrieval reranker for a game-playing agent. You are given the LIVE GAME \
-STATE and an INDEX of knowledge entries. Each index entry has an `id`, an \
-applicability `blurb` (when it applies), and a `target` (what to recall).
+STATE and an INDEX — a list of `<applies-when>: <path>` lines.
 
-Return ONLY a JSON array of target path strings whose blurb applies to the current \
-state — nothing else. No prose, no explanation, no knowledge content. Be inclusive \
-at the margin: surface anything plausibly relevant; the agent decides what to read.
+Return ONLY a JSON array of the `<path>` strings whose applies-when matches the \
+current state — nothing else. No prose, no explanation, no knowledge content. Be \
+inclusive at the margin: surface anything plausibly relevant; the agent decides what \
+to read.
 
-For the entry `rule:upgrades` (target kind "pattern", value \
-".../cards/<slug>-plus"): for every upgraded card in the state (its name ends in \
-'+'), emit the pattern with <slug> replaced by the card's lowercased, \
-hyphenated name without the '+' (e.g. "Shrug It Off+" -> ".../cards/shrug-it-off-plus").
+A path containing a placeholder like `<name>` is a rule: emit it once per matching \
+state entity, substituting `<name>` with that entity's lowercased hyphenated name. \
+(E.g. the `upgraded cards ('<name>+')` line, with "Shrug It Off+" in the state, \
+yields "phenomena/sts1/cards/shrug-it-off-plus".)
 
 Output example: ["phenomena/sts1/interactions/corruption-dead-branch", \
 "phenomena/sts1/cards/bash-plus"]"""
@@ -39,13 +39,12 @@ Output example: ["phenomena/sts1/interactions/corruption-dead-branch", \
 _JSON_ARRAY_RE = re.compile(r"\[.*\]", re.DOTALL)
 
 
-def load_index(domain: str = "sts1") -> dict:
-    """Load the committed {blurb, target} survey index for a domain."""
-    p = ROOT / "awareness" / domain / "survey-index.json"
-    return json.loads(p.read_text(encoding="utf-8"))
+def load_index(domain: str = "sts1") -> str:
+    """Load the committed survey index (markdown: `- <path> — <blurb>` per line)."""
+    return (ROOT / "awareness" / domain / "survey-index.md").read_text(encoding="utf-8")
 
 
-def survey(state: str, index: dict, *, model: str = None) -> list[str]:
+def survey(state: str, index: str, *, model: str = None) -> list[str]:
     """Map live `state` -> handles that might apply, via one reranker call."""
     return _rerank(state=state, index=index, model=model or RERANK_MODEL)
 
@@ -82,7 +81,7 @@ def _rerank(state: str, index: dict, model: str) -> list[str]:
         system=[
             {"type": "text", "text": _INSTRUCTIONS},
             # The index is stable within a run -> cache it so repeated surveys are cheap.
-            {"type": "text", "text": "INDEX:\n" + json.dumps(index),
+            {"type": "text", "text": "INDEX:\n" + index,
              "cache_control": {"type": "ephemeral"}},
         ],
         messages=[{"role": "user",

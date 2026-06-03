@@ -31,24 +31,25 @@ It works by handing the live state plus an **index** to a small/fast model (e.g.
 Haiku), which returns the handles whose entries might apply. The model holds the
 index; the state is the query. The model is instructed to **return paths only**.
 
-## The index: `{blurb, target}`
+## The index: just `blurb: path`
 
-One uniform shape per entry:
+The index is a generated markdown list, one line per entry — a blurb and the path it
+points at:
 
-- **blurb** — an applicability descriptor ("surface me when …"), written *for the
-  reranker*.
-- **target** — what to recall: usually a path, sometimes a *pattern*.
+    Ironclad deck contains Corruption and you hold Dead Branch…: phenomena/sts1/interactions/corruption-dead-branch
 
-Two kinds of entry populate it:
+That's the whole shape. No ids (the path *is* the id), no typed targets, no JSON; the
+reranker is a model reading text. Each contextual line's blurb is **extracted**
+(mechanically) from the phenomenon file's authored `Applies when:` field.
 
-1. **Resolvable phenomena** (generated upgrade forms, `phenomena/sts1/cards/`):
-   collapse to **one rule entry** — *"for any `+` card in state, include its
-   resolved form."* The target is a pattern, not a path. No per-card entries; the
-   mapping is mechanical and the reranker just applies the rule.
-2. **Contextual phenomena** (`phenomena/sts1/interactions/`): one entry each, the
-   blurb **extracted** (mechanically) from the file's authored `Applies when:`
-   field. Ontology/heuristic availability for on-screen entities rides along the
-   same call.
+The **upgrade rule** is just one more line, with a placeholder path:
+
+    upgraded cards ('<name>+'): phenomena/sts1/cards/<name>-plus
+
+A line whose path contains a placeholder (`<name>`) is a rule: the reranker emits it
+once per matching entity in the state, substituting the placeholder. Same format,
+same call — no schema around it. Ontology/heuristic availability for on-screen
+entities rides along the same call.
 
 ## Authored vs programmatic — the hard line
 
