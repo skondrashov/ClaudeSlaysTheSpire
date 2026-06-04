@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Common
 - **Effect:** Add 3 Shivs into your hand.
-- **Upgrade:** +1 Shivs

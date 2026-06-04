@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Rare
 - **Effect:** Lose 6 HP. Gain 2 Energy. Draw 3 cards. Exhaust.
-- **Upgrade:** +2 cards

@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Gain 2 Energy. Exhaust.
-- **Upgrade:** cost 0E

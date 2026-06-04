@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Common
 - **Effect:** Gain 7 Block. Scry 3.
-- **Upgrade:** +2 Block, +2 (magic)

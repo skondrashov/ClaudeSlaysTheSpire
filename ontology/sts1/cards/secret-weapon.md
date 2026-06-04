@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Rare
 - **Effect:** Put an Attack from your draw pile into your hand. Exhaust.
-- **Upgrade:** loses Exhaust

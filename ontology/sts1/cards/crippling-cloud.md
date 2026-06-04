@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Apply 4 [[debuffs/Poison]] and 2 [[debuffs/Weak]] to ALL enemies. Exhaust.
-- **Upgrade:** +3 Poison

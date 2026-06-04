@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** Your next Attack deals 5 additional damage.
-- **Upgrade:** +3 additional

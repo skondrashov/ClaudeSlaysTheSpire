@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Common
 - **Effect:** Deal 8 damage. Draw 1 card.
-- **Upgrade:** +4 damage

@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Rare
 - **Effect:** Exhaust your hand. Deal 7 damage for each card Exhausted. Exhaust.
-- **Upgrade:** +3 damage

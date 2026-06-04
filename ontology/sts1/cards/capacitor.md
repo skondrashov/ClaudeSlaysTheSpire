@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Gain 2 Orb slots.
-- **Upgrade:** +1 Orb

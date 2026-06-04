@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Gain 13 Block. Retain your hand this turn.
-- **Upgrade:** +3 Block

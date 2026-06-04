@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Deal 5 damage. If you have played less than 3 cards this turn, draw 1 card.
-- **Upgrade:** +1 damage, +1 cards

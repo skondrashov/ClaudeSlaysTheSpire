@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** At the start of your turn, add a Shiv into your hand.
-- **Upgrade:** becomes Innate

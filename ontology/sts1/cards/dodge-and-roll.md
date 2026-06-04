@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Common
 - **Effect:** Gain 4 Block. Next turn, gain 4 Block.
-- **Upgrade:** +2 Block

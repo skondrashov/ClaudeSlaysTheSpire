@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Rare
 - **Effect:** Double your [[buffs/Strength]]. Exhaust.
-- **Upgrade:** loses Exhaust

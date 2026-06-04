@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** At the start of your turn, Scry 3.
-- **Upgrade:** +1 (magic)

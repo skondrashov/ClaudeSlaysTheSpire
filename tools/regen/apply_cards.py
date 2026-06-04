@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import generate as G
 
 ONT_CARDS = G.CARDS_DIR
+ONT_UPGRADES = G.ONT / "upgrades"
 PHEN_CARDS = G.ROOT / "phenomena" / "sts1" / "cards"
 DATA = G.DATA
 
@@ -89,9 +90,10 @@ def main(argv=None):
 
     if args.apply:
         ONT_CARDS.mkdir(parents=True, exist_ok=True)
+        ONT_UPGRADES.mkdir(parents=True, exist_ok=True)
         PHEN_CARDS.mkdir(parents=True, exist_ok=True)
 
-    noum_new, noum_upd, phen_w, skipped, preserved, meta_changes = [], [], [], [], [], []
+    noum_new, noum_upd, phen_w, upg_w, skipped, preserved, meta_changes = [], [], [], [], [], [], []
 
     for card in cards:
         name = card["name"]
@@ -130,13 +132,17 @@ def main(argv=None):
 
         if G.has_upgrade(card):
             phen_path = PHEN_CARDS / f"{slug}-plus.md"
+            upg_path = ONT_UPGRADES / f"{slug}.md"
             phen_w.append(name)
+            upg_w.append(name)
             if args.apply:
                 phen_path.write_text(G.render_phenomenon(card, link_map), encoding="utf-8")
+                upg_path.write_text(G.render_upgrade(card), encoding="utf-8")
 
     mode = "APPLIED" if args.apply else "DRY-RUN (no writes)"
     print(f"=== apply_cards — {mode} ===")
     print(f"noumena: {len(noum_new)} new, {len(noum_upd)} updated, {len(skipped)} skipped (extra prose)")
+    print(f"upgrade deltas: {len(upg_w)} written")
     print(f"phenomena: {len(phen_w)} written")
     print(f"preserved provenance: {len(preserved)} ({', '.join(sorted(set(preserved)))})")
     if skipped:

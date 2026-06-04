@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Rare
 - **Effect:** Deal 12 damage. Deals additional damage equal to [[buffs/Mantra]] gained this combat.
-- **Upgrade:** +4 damage

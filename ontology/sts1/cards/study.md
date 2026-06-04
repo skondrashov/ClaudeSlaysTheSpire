@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** At the end of your turn, shuffle an Insight into your draw pile.
-- **Upgrade:** cost 1E

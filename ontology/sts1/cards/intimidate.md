@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Apply 1 [[debuffs/Weak]] to ALL enemies. Exhaust.
-- **Upgrade:** +1 Weak

@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Channel X Lightning. Exhaust.
-- **Upgrade:** +1 to X (Channel X+1 Lightning)

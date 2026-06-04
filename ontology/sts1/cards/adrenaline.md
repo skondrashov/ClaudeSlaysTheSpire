@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Rare
 - **Effect:** Gain 1 Energy. Draw 2 cards. Exhaust.
-- **Upgrade:** +1 energy

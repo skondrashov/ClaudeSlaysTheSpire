@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Deal 3 damage 5 times.
-- **Upgrade:** +1 damage

@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** Deal 5 damage. Whenever you attack this enemy, gain 2 Block. Exhaust.
-- **Upgrade:** +2 damage, +1 Block

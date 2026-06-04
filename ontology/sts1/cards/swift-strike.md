@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Uncommon
 - **Effect:** Deal 7 damage.
-- **Upgrade:** +3 damage

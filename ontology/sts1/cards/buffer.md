@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Rare
 - **Effect:** Prevent the next time you would lose HP.
-- **Upgrade:** +1 (magic)

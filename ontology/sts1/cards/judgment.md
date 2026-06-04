@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Rare
 - **Effect:** If the enemy has 30 or less HP, set their HP to 0.
-- **Upgrade:** +10 or

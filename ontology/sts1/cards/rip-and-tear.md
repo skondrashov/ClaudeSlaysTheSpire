@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Deal 7 damage to a random enemy twice.
-- **Upgrade:** +2 damage

@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Channel 1 Frost for each enemy in combat. Exhaust.
-- **Upgrade:** becomes Innate

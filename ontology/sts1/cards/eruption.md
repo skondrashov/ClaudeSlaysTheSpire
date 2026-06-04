@@ -4,5 +4,4 @@
 - **Type:** [[types/Attack]]
 - **Character:** Watcher
 - **Rarity:** Starter
-- **Effect:** Deal 9 damage. Enter Wrath.
-- **Upgrade:** cost 1E
+- **Effect:** Deal 9 damage. Enter [[buffs/Wrath]].

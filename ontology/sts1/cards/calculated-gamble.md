@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Discard your hand, then draw that many cards. Exhaust.
-- **Upgrade:** loses Exhaust

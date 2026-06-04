@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Common
 - **Effect:** Deal 7 damage for each enemy in combat.
-- **Upgrade:** +3 damage

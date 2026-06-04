@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Whenever you lose HP from a card, gain 1 [[buffs/Strength]].
-- **Upgrade:** +1 Strength

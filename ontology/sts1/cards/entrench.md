@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Double your Block.
-- **Upgrade:** cost 1E

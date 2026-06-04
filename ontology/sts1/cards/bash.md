@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Starter
 - **Effect:** Deal 8 damage. Apply 2 [[debuffs/Vulnerable]].
-- **Upgrade:** +2 damage, +1 Vulnerable

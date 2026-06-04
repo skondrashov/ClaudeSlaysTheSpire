@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** Deal 15 damage. Draw 2 cards.
-- **Upgrade:** +5 damage

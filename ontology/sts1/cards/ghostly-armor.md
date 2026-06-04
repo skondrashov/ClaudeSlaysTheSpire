@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Ethereal. Gain 10 Block.
-- **Upgrade:** +3 Block

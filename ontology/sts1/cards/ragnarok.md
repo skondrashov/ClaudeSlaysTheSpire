@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Rare
 - **Effect:** Deal 5 damage to a random enemy 5 times.
-- **Upgrade:** +1 damage, +1 times

@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** Deal 10 damage. Shuffle a Through Violence into your draw pile.
-- **Upgrade:** +5 damage

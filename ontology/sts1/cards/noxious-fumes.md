@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** At the start of your turn, apply 2 [[debuffs/Poison]] to ALL enemies.
-- **Upgrade:** +1 Poison

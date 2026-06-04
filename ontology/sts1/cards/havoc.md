@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Common
 - **Effect:** Play the top card of your draw pile and Exhaust it.
-- **Upgrade:** cost 0E

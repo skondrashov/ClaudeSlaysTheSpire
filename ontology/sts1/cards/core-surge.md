@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Rare
 - **Effect:** Deal 11 damage. Gain 1 [[buffs/Artifact]]. Exhaust.
-- **Upgrade:** +4 damage

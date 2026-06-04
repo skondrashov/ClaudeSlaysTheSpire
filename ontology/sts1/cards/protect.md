@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Common
 - **Effect:** Retain. Gain 12 Block.
-- **Upgrade:** +4 Block

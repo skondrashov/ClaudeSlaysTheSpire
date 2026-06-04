@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Double your Energy. Exhaust.
-- **Upgrade:** cost 0E

@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Uncommon
 - **Effect:** Deal 3 damage. Draw 1 card.
-- **Upgrade:** +3 damage

@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** If the enemy intends to attack, gain 3 [[buffs/Strength]].
-- **Upgrade:** +1 Strength

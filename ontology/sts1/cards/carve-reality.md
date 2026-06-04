@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** Deal 6 damage. Add a Smite into your hand.
-- **Upgrade:** +4 damage

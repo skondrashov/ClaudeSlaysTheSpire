@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Deal 6 damage for each Attack played this turn.
-- **Upgrade:** +2 damage

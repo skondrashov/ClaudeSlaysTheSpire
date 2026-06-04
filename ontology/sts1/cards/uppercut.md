@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Deal 13 damage. Apply 1 [[debuffs/Weak]]. Apply 1 [[debuffs/Vulnerable]].
-- **Upgrade:** +1 Weak

@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** Gain 5 [[buffs/Mantra]].
-- **Upgrade:** becomes Retain

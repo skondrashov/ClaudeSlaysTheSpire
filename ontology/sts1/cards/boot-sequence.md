@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Innate. Gain 10 Block. Exhaust.
-- **Upgrade:** +3 Block

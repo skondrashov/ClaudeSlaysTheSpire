@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Channel 1 random Orb.
-- **Upgrade:** +1 random

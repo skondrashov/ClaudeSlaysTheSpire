@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Rare
 - **Effect:** Next turn, your Attacks deal double damage.
-- **Upgrade:** cost 0E

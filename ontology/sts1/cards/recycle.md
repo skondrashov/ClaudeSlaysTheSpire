@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Exhaust a card. Gain 1 Energy equal to its cost.
-- **Upgrade:** cost 0E
