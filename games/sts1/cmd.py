@@ -1687,292 +1687,83 @@ def potion_discard(slot: int, reason: str = "") -> str:
 # Knowledge planning and reasoning (ontology + heuristics)
 # ---------------------------------------------------------------------------
 
-def plan() -> str:
-    """Load strategic context for the current situation.
+def survey() -> str:
+    """Survey the entities in play — a menu of recall() handles, not content.
 
-    Auto-detects mode based on game state:
-    - In combat: loads enemy files + hand card files + relevant relics
-    - Outside combat: loads strategy.md + boss file + full deck/relic/potion notes
-
-    Returns combined ontology + heuristic knowledge. Call at the start of each act
-    and at the start of each combat.
+    Deterministic: reads the live state and lists every on-board entity (enemies,
+    non-basic hand cards, the act boss/character, card rewards, relics) as recall()
+    handles, flagging which ones also have a heuristic. It surfaces what is in front
+    of you so you know what CAN be recalled; you decide what is worth pulling. Read
+    knowledge with recall().
     """
-    global _last_raw_state
     raw = _tcp_request({"type": "state"})
-    _last_raw_state = raw
-
     if not raw.get("in_game", False):
-        return "Not in game. Start a run first."
-
+        return "survey: not in a run."
     gs = raw.get("game_state", {})
     combat = gs.get("combat_state")
 
+    def _exists(base_dir, cat, name):
+        return os.path.exists(os.path.join(base_dir, cat, _name_to_filename(name) + ".md"))
+
+    def _ent(cat, name):
+        """Ontology handle (bare name) + heuristic handle if a heuristic exists."""
+        hs = [name]
+        if _exists(HEURISTICS_DIR, cat, name):
+            hs.append(f"layer:heuristics, {cat}/{name}")
+        return "   ".join(hs)
+
+    out = ["survey — entities in play. recall() any handle:"]
+
     if combat:
-        result = _plan_combat(gs, combat)
-        # Log what combat context was loaded
-        enemies = [m.get("name", "?") for m in combat.get("monsters", []) if not m.get("is_gone")]
-        hand = [c.get("name", "?") for c in combat.get("hand", [])]
-        _log_event({
-            "type": "plan",
-            "mode": "combat",
-            "summary": f"Enemies: {', '.join(enemies)}. Hand: {', '.join(hand)}",
-            "timestamp": time.time(),
-        })
-        return result
-    else:
-        result = _plan_act(gs)
-        # Log what act context was loaded
-        act = gs.get("act", 1)
-        boss = gs.get("act_boss", "?")
-        deck_size = len(gs.get("deck", []))
-        _log_event({
-            "type": "plan",
-            "mode": "act",
-            "summary": f"Act {act}, Boss: {boss}, Deck: {deck_size} cards",
-            "timestamp": time.time(),
-        })
-        return result
-
-
-def _plan_combat(gs: dict, combat: dict) -> str:
-    """Combat plan: enemy facts + strategy, hand card knowledge, relic effects."""
-    lines = ["=== COMBAT PLAN ===", ""]
-    loaded_keys = set()  # Track what we've loaded for link resolution
-
-    # Enemies — load ontology + heuristic for each unique monster
-    monsters = combat.get("monsters", [])
-    alive = [m for m in monsters if not m.get("is_gone")]
-    enemy_names = []
-    all_ontology_content = []
-    seen = set()
-    for m in alive:
-        name = m.get("name", "?")
-        enemy_names.append(name)
-        if name in seen:
-            continue
-        seen.add(name)
-        # Try enemies/ first, then bosses/
-        entry = _load_knowledge("enemies", name)
-        cat = "enemies"
-        if entry is None:
-            entry = _load_knowledge("bosses", name)
-            cat = "bosses"
-        if entry:
-            lines.append(entry)
-            lines.append("")
-            loaded_keys.add(f"{cat}/{name}")
-            # Collect ontology content for link resolution
-            ont = _load_ontology(cat, name)
-            if ont:
-                all_ontology_content.append(ont)
-        else:
-            lines.append(f"[No entry for enemy: {name}]")
-            lines.append("")
-
-    # Hand cards — ontology + heuristic
-    hand = combat.get("hand", [])
-    if hand:
-        lines.append("--- HAND CARD REFERENCE ---")
-        seen_cards = set()
-        for card in hand:
-            name = card.get("name", "?")
-            if card.get("upgrades", 0) > 0 and not name.endswith("+"):
-                name += "+"
-            base = name.rstrip("+")
-            if base in seen_cards or base in _BASIC_CARDS:
+        seen, enemies = set(), []
+        for m in combat.get("monsters", []):
+            if m.get("is_gone"):
                 continue
-            seen_cards.add(base)
-            entry = _load_knowledge("cards", name)
-            if entry:
-                lines.append(entry)
-                lines.append("")
-                loaded_keys.add(f"cards/{name}")
+            name = m.get("name", "?")
+            if name in seen:
+                continue
+            seen.add(name)
+            cat = "bosses" if _exists(ONTOLOGY_DIR, "bosses", name) else "enemies"
+            enemies.append("  " + _ent(cat, name))
+        if enemies:
+            out.append("ENEMIES:"); out += enemies
 
-    # Relics — ontology + heuristic
-    relics = gs.get("relics", [])
-    if relics:
-        lines.append("--- RELICS ---")
-        for r in relics:
-            name = r.get("name", "?")
-            counter = r.get("counter", -1)
-            entry = _load_knowledge("relics", name)
-            if entry:
-                counter_note = f" [counter: {counter}]" if counter >= 0 else ""
-                lines.append(f"{entry}{counter_note}")
-                lines.append("")
-                loaded_keys.add(f"relics/{name}")
-
-    # Resolve one level of [[links]] from enemy ontology entries
-    if all_ontology_content:
-        combined = "\n".join(all_ontology_content)
-        linked = _resolve_links(combined, loaded_keys)
-        if linked:
-            lines.append(linked)
-            lines.append("")
-
-    summary = f"Combat: vs {' + '.join(enemy_names)}"
-    _post_feed(f"PLAN — {summary}", highlight=True)
-    _log_event({
-        "type": "plan",
-        "mode": "combat",
-        "summary": summary,
-        "timestamp": time.time(),
-    })
-
-    return "\n".join(lines)
-
-
-def _plan_act(gs: dict) -> str:
-    """Act plan: strategy + boss prep + deck/relic/potion report."""
-    act = gs.get("act", 1)
-    boss = gs.get("act_boss", "?")
-    deck = gs.get("deck", [])
-
-    lines = ["=== ACT PLAN ===", ""]
-
-    # Strategy overview
-    strat = _load_heuristic_root("strategy.md")
-    if strat:
-        lines.append("--- STRATEGY ---")
-        lines.append(strat)
-        lines.append("")
-
-    # Character heuristic
-    character = gs.get("class", "")
-    if character:
-        char_heur = _load_heuristic("characters", character)
-        if char_heur:
-            lines.append(f"--- CHARACTER: {character} ---")
-            lines.append(char_heur)
-            lines.append("")
-
-    # Boss file
-    boss_entry = _load_knowledge("bosses", boss)
-    if boss_entry:
-        lines.append(f"--- BOSS: {boss} ---")
-        lines.append(boss_entry)
-        lines.append("")
+        seen_c, cards = set(), []
+        for c in combat.get("hand", []):
+            name = c.get("name", "?")
+            base = name.rstrip("+")
+            if base in seen_c or base in _BASIC_CARDS:
+                continue
+            seen_c.add(base)
+            hs = [base]
+            if c.get("upgrades", 0) > 0:
+                hs.append(f"{base}+")              # the resolved upgraded card
+            if _exists(HEURISTICS_DIR, "cards", base):
+                hs.append(f"layer:heuristics, cards/{base}")
+            cards.append("  " + "   ".join(hs))
+        if cards:
+            out.append("HAND (non-basic):"); out += cards
     else:
-        lines.append(f"[No entry for boss: {boss}]")
-        lines.append("")
+        boss = gs.get("act_boss", "")
+        if boss:
+            out.append("BOSS: " + _ent("bosses", boss))
+        char = gs.get("class", "")
+        if char and _exists(HEURISTICS_DIR, "characters", char):
+            out.append(f"CHARACTER: layer:heuristics, characters/{char}")
+        ss = gs.get("screen_state", {}) or {}
+        if gs.get("screen_type", "") == "CARD_REWARD":
+            names = [c.get("name", "?") for c in ss.get("cards", [])]
+            if names:
+                out.append("CARD REWARD: " + ", ".join(names))
 
-    # Deck composition summary
-    attacks, skills, powers, statuses = 0, 0, 0, 0
-    total_cost = 0
-    card_count = 0
-    for c in deck:
-        ctype = c.get("type", "").upper()
-        cost = c.get("cost", 0)
-        if isinstance(cost, int) and cost >= 0:
-            total_cost += cost
-            card_count += 1
-        if ctype == "ATTACK":
-            attacks += 1
-        elif ctype == "SKILL":
-            skills += 1
-        elif ctype == "POWER":
-            powers += 1
-        else:
-            statuses += 1
-    avg_cost = round(total_cost / card_count, 1) if card_count > 0 else 0
-
-    lines.append(f"--- DECK ({len(deck)} cards) ---")
-    lines.append(f"Attacks: {attacks} | Skills: {skills} | Powers: {powers}" +
-                 (f" | Status/Curse: {statuses}" if statuses else ""))
-    lines.append(f"Avg cost: {avg_cost}E")
-    lines.append("")
-
-    # Card notes — compact (first 2 lines) for non-basic cards
-    missing_cards = []
-    lines.append("Card Notes:")
-    seen_cards = set()
-    for c in deck:
-        name = c.get("name", "?")
-        if c.get("upgrades", 0) > 0 and not name.endswith("+"):
-            name += "+"
-        base = name.rstrip("+")
-        if base in seen_cards or name in _BASIC_CARDS or base in _BASIC_CARDS:
-            continue
-        seen_cards.add(base)
-        top = _load_ontology_top("cards", name)
-        if top:
-            # Indent under "Card Notes:"
-            lines.append(f"  {top.replace(chr(10), chr(10) + '  ')}")
-        else:
-            missing_cards.append(name)
-    lines.append("")
-
-    # Relics
-    relics = gs.get("relics", [])
+    relics = [r.get("name", "?") for r in gs.get("relics", [])]
     if relics:
-        lines.append(f"--- RELICS ({len(relics)}) ---")
-        for r in relics:
-            name = r.get("name", "?")
-            entry = _load_knowledge("relics", name)
-            if entry:
-                counter = r.get("counter", -1)
-                counter_note = f" [counter: {counter}]" if counter >= 0 else ""
-                lines.append(f"  {entry}{counter_note}")
-                lines.append("")
-            else:
-                missing_cards.append(f"relic:{name}")
+        out.append("RELICS: " + ", ".join(relics))
 
-    # Potions
-    potions = gs.get("potions", [])
-    active_potions = [p for p in potions if p.get("id") != "Potion Slot"]
-    if active_potions:
-        lines.append("--- POTIONS ---")
-        for p in active_potions:
-            name = p.get("name", "?")
-            entry = _load_knowledge("potions", name)
-            if entry:
-                lines.append(f"  {entry}")
-                lines.append("")
-            else:
-                missing_cards.append(f"potion:{name}")
-
-    # Missing entries
-    if missing_cards:
-        lines.append("--- MISSING ENTRIES ---")
-        for m in missing_cards:
-            lines.append(f"  {m}")
-        lines.append("")
-
-    summary = f"Act {act}: {len(deck)} cards vs {boss}"
-    _post_feed(f"PLAN — {summary}", highlight=True)
-    _log_event({
-        "type": "plan",
-        "mode": "act",
-        "summary": summary,
-        "timestamp": time.time(),
-    })
-
-    return "\n".join(lines)
-
-
-def survey() -> str:
-    """Survey what knowledge MIGHT apply to the current state — a menu, not content.
-
-    Maps the live game state to a list of handles (paths) for ontology, heuristic,
-    and phenomenon entries that might be relevant right now, via a fast selector.
-    Returns ONLY the menu; read the ones you want with recall(). It does not compose
-    context for you — you decide what is worth pulling.
-    """
-    try:
-        if ROOT not in sys.path:
-            sys.path.insert(0, ROOT)
-        from tools import retrieval
-    except Exception as e:
-        return f"survey unavailable: {e}"
-    try:
-        state_text = format_state(state_raw())
-        handles = retrieval.survey(state_text, retrieval.load_index("sts1"))
-    except Exception as e:
-        return f"survey failed: {e}"
-    if not handles:
-        return "survey: nothing flagged. recall() entities by name as needed."
-    return "\n".join(["survey — recall() any of these you want:"] +
-                     [f"  - {h}" for h in handles])
+    _log_event({"type": "survey", "timestamp": time.time()})
+    if len(out) == 1:
+        return "survey: nothing on board to flag. recall() any entity by name."
+    return "\n".join(out)
 
 
 
@@ -2129,8 +1920,8 @@ def deck() -> str:
 def think(reasoning: str, label: str = "Strategy") -> str:
     """Post your strategic reasoning to the stream overlay.
 
-    Call this after plan() to share your analysis with viewers. The reasoning
-    appears in the thinking panel and the action feed.
+    Call this after survey()/recall() to share your analysis with viewers. The
+    reasoning appears in the thinking panel and the action feed.
 
     This is how viewers see WHY you're making decisions — not just what
     knowledge entries were loaded, but your actual strategic synthesis.

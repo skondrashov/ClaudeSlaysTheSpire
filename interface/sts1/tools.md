@@ -7,7 +7,7 @@ The agent interacts with the game through Python functions imported from `cmd.py
 ```python
 import sys
 sys.path.insert(0, r"C:\Users\tkond\projects\praxis\games\sts1")
-from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start, survey, recall, plan
+from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, think, deck, start, survey, recall
 ```
 
 ## Observation
@@ -42,8 +42,8 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 
 | Function | Description |
 |----------|-------------|
-| `survey()` | Ask the selector which knowledge MIGHT apply to the current state → a menu of handles (paths). Discovery, not content. Use at meaningful decision points (combat start, rewards, shops, before elites/bosses), not every action. |
-| `recall(*handles)` | Fetch knowledge by handle. A handle is a path from `survey()`, a wiki-style address (`"enemies/Gremlin Nob"`, `"layer:heuristics, cards/Bash"`), a bare name (`"Gremlin Nob"` → ontology), or an upgraded card (`"Bash+"` → its resolved phenomenon). Pass several handles for several entries (an entity's ontology AND heuristic = two handles). Does NOT follow links — links in the text are a menu; `recall()` them too. **This is the single lookup verb** (replaces the old `reason()`). |
+| `survey()` | Lists the entities in play (enemies, non-basic hand cards, the act boss/character, card rewards, relics) as a menu of `recall()` handles, flagging which also have a heuristic. Deterministic — it reads the live state, so it surfaces what's in front of you. Discovery, not content. Use at meaningful decision points (combat start, rewards, before elites/bosses), not every action. |
+| `recall(*handles)` | Fetch knowledge by handle. A handle is a wiki-style address (`"enemies/Gremlin Nob"`, `"layer:heuristics, cards/Bash"`), a bare name (`"Gremlin Nob"` → ontology), or an upgraded card (`"Bash+"` → its resolved phenomenon). Names resolve robustly: variants (`"Spike Slime (M)"`), apostrophes (`"Charon's Ashes"`), and map aliases (`"The Transient"`, `"Centurion + Mystic"`, `"Louse"` → both lice) all work. Pass several handles for several entries (an entity's ontology AND heuristic = two handles). Does NOT follow links — `recall()` them too if you want them. **The single lookup verb.** |
 
 ## Known Issues
 
