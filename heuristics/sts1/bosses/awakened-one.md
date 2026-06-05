@@ -58,4 +58,4 @@ Sludge adds [[cards/Void]] to the deck, which drains 1 Energy when drawn. Multip
 
 - Save at least 1 potion for Phase 2 (the harder phase)
 - Poison-applying potions bypass the Power restriction entirely
-- **Duplication Potion + [[cards/Heavy Blade]]+ is a kill combo.** At 18 Str with [[debuffs/Vulnerable]], HB+ deals (14 + 18*5) * 1.5 = 156 per hit. Duplication doubles it to 312 — enough to one-shot Phase 2 from full 300 HP. Confirmed victory: Run 184, Spot Weakness+ stacked to 18 Str over multiple turns, Fear Potion applied Vulnerable, then Duplication Potion + HB+ for the 312-damage kill.
+- **Duplication Potion + [[cards/Heavy Blade]]+ is a kill combo.** At 18 Str with [[debuffs/Vulnerable]], HB+ deals (14 + 18*5) * 1.5 = 156 per hit. Duplication doubles it to 312 — enough to one-shot Phase 2 from full 300 HP. Spot Weakness+ can stack to 18 Str over multiple turns, Fear Potion applies Vulnerable, then Duplication Potion + HB+ delivers the 312-damage kill.

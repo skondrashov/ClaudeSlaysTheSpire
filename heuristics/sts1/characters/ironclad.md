@@ -2,10 +2,10 @@
 
 ## Identity
 
-The Ironclad has two proven winning engines. Which to pursue depends on what the run offers, not a preset preference. 6 wins across 130 runs: 3 via Strength scaling, 3 via Corruption+FNP engine (all also had Str sources -- the engine's independence is under investigation). Currently playing at Ascension 5.
+The Ironclad has two proven winning engines. Which to pursue depends on what the run offers, not a preset preference. Both Strength scaling and the Corruption+FNP engine can win; the engine's independence from Str is under investigation.
 
-1. **Strength engine (Runs 102, 103, 184):** [[buffs/Strength]] sources ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Limit Break]]) + [[cards/Heavy Blade]] finisher + optional [[relics/Snecko Eye]] for draw/cost manipulation + [[cards/Immolate]] for AOE
-2. **Corruption+FNP engine (Runs 104, 187, 219):** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + optional [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). All 3 wins also included Str sources ([[relics/Brimstone]] in 219, [[cards/Spot Weakness]]+[[relics/Red Skull]] in 187). Whether the engine can function independently without Strength is under investigation.
+1. **Strength engine:** [[buffs/Strength]] sources ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Limit Break]]) + [[cards/Heavy Blade]] finisher + optional [[relics/Snecko Eye]] for draw/cost manipulation + [[cards/Immolate]] for AOE
+2. **Corruption+FNP engine:** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + optional [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). Winning versions of this engine also included Str sources ([[relics/Brimstone]], or [[cards/Spot Weakness]]+[[relics/Red Skull]]). Whether the engine can function independently without Strength is under investigation.
 
 ## Key Heuristics
 
@@ -19,7 +19,7 @@ The Ironclad has two proven winning engines. Which to pursue depends on what the
 Pursue whichever engine the offerings support. Stay flexible through Act 1 -- most Ironclad Act 1 picks (Shrug It Off, Impervious, Pommel Strike, Inflame) are good in both engines. Commit once the run shows a clear direction:
 - **Commit to block engine:** Corruption + FNP appear by mid-[[acts/Act 2]]. Look for Barricade, Entrench, Body Slam, Second Wind.
 - **Commit to Strength engine:** [[relics/Snecko Eye]] offered as boss relic and Limit Break/Heavy Blade exist, OR multiple Str sources (Inflame + Spot Weakness) appear early. Look for Heavy Blade, Limit Break, Immolate.
-- **Hybrid is viable:** Run 187 won with Corruption+FNP + Spot Weakness + [[relics/Red Skull]]. Adding Str sources to the block engine increases kill speed.
+- **Hybrid is viable:** Corruption+FNP + Spot Weakness + [[relics/Red Skull]] can win. Adding Str sources to the block engine increases kill speed.
 
 ## Weaknesses
 

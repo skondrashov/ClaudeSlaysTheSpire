@@ -31,7 +31,7 @@ When you detect overfitting:
 ### 4. Quality
 
 - **Evidence grounding.** Does each heuristic claim cite evidence (run numbers, confirmed kills, observed mechanics)? Unsupported claims should be flagged or demoted.
-- **Actionability.** Can the player actually use this guidance? "Be careful with Fiend Fire" is not actionable. "NEVER use Fiend Fire against Thorns enemies — confirmed Run 182 death" is.
+- **Actionability.** Can the player actually use this guidance? "Be careful with Fiend Fire" is not actionable. "NEVER use Fiend Fire against Thorns enemies — each hit triggers Thorns and the self-damage can kill you" is.
 - **Signal-to-noise.** Are entries concise? Every sentence should help the player make a decision. History, caveats, and edge cases that don't change behavior should be trimmed.
 - **Formatting.** Are entries structurally consistent? Do they follow the patterns established in the category?
 

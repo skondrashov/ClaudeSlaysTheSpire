@@ -1,6 +1,6 @@
 # Exhaust Strategy
 
-- **Before Exhausting, Ask**: (1) Can remaining deck survive the enemy's biggest attack? (2) Is the card truly expendable? (3) Am I in first half (thin=good) or second half (thin=fatal)?
+- **Before Exhausting, Ask**: (1) Can remaining deck survive the enemy's biggest attack? (2) Is the card truly expendable? (3) Am I in first half (thin=good) or second half (thin leaves too little damage/block to survive)?
 - **Random Exhaust Is Run-Ending**: Unupgraded [[cards/True Grit]] and Havoc both cause random exhaust. Rule: Never play Havoc or unupgraded True Grit when deck contains irreplaceable cards. Upgrade True Grit IMMEDIATELY if taken.
 - **Safe Exhaust Targets**: Strikes (once better attacks exist), extra Defends, status cards ([[cards/Slimed]], Wound, Burn, [[cards/Dazed]]).
 - **Never Exhaust**: Last copy of best damage card, last high-block card, core combo pieces ([[cards/Bash]] when Vuln matters), synergy engines ([[cards/Fire Breathing]] when [[cards/Immolate]] is in deck).

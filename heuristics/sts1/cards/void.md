@@ -6,7 +6,7 @@
 
 ## Why Void Matters
 
-Void drains 1E on the turn it is drawn. In fights where every point of energy determines whether you can fully block, losing 1E can be fatal. Confirmed fatal: Run 221 died by exactly 1 HP against Awakened One Phase 2 because Void was drawn on the lethal turn, reducing energy from 4 to 3. With 4E the player could block 25 (surviving at 4 HP). With 3E they could only block 20 (dying at -1 HP).
+Void drains 1E on the turn it is drawn. In fights where every point of energy determines whether you can fully block, losing 1E can cost you the run. Void drawn on a lethal turn against Awakened One Phase 2 can cost exactly 1 HP, reducing energy from 4 to 3: with 4E you could block 25 (surviving at 4 HP), but with 3E you only block 20 (dying at -1 HP).
 
 ## Management
 

@@ -7,7 +7,7 @@
 ## Strategy
 
 - AOE ([[cards/Cleave]], [[cards/Thunderclap]], [[cards/Immolate]]) is efficient against Looter + Mugger pairing
-- Do NOT play expensive setup cards (3E Powers) on Turn 1 -- combined unblocked damage from both enemies will be 20+ and potentially fatal
+- Do NOT play expensive setup cards (3E Powers) on Turn 1 -- combined unblocked damage from both enemies will be 20+, enough to drop you to a dangerous HP total or kill you outright
 
 ## What to Bring
 

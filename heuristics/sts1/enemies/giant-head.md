@@ -2,7 +2,7 @@
 
 **Core rule:** This is a DPS race against escalating damage. Must have either [[cards/Demon Form]] ([[buffs/Strength]] scaling) or [[cards/Barricade]] + [[cards/Body Slam]] (block scaling). Without either engine, the fight is unwinnable.
 
-**HP Threshold:** Enter above 60% HP. The fight lasts 10+ turns with increasing damage. Confirmed death: Run 185, entered at 33% HP (21/63) — survived 10 turns but Snecko Oil variance + exhausted Reaper left no survival path by Turn 10.
+**HP Threshold:** Enter above 60% HP. The fight lasts 10+ turns with increasing damage. Entering at low HP (e.g. 33%, 21/63) is unsurvivable: even surviving 10 turns, the escalating damage outpaces your block and an exhausted Reaper leaves no survival path.
 
 ## Strategy (Ironclad)
 

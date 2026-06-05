@@ -32,9 +32,9 @@ Relics are the primary driver of run strength. Every winning formula was built o
 
 **Never route through an elite unless at least one rest site is reachable within 2 floors after the elite, OR HP is above 70% and no second elite follows before a rest.**
 
-Two of 3 deaths in Runs 220-222 were caused by routing into elites without rest site coverage:
-- Run 220: F5 Monster path locked into F6 Elite at 12 HP with no rest option. Died.
-- Run 222: Back-to-back elites (F7, F10) with no rest between. Nob cost 26 HP, then Lagavulin killed at 41 HP.
+Routing into elites without rest site coverage is a common cause of death:
+- A Monster path that locks into a following Elite floor with no rest option leaves no way to recover HP before the fight.
+- Back-to-back elites with no rest between (e.g. Gremlin Nob costing ~26 HP, then Lagavulin) compound HP loss past survivable levels.
 
 Before committing to an elite path, trace the route forward: count forced combats between the elite and the next rest site. If the path forces 2+ combats after the elite with no rest, take the safer route unless HP is above 70%.
 
@@ -43,7 +43,7 @@ Before committing to an elite path, trace the route forward: count forced combat
 Before fighting an elite, check:
 1. **HP threshold**: Below 30 HP for Act 1 elites is dangerous. Below 60% for Act 2 elites.
 2. **Deck vs elite matchup**: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling. Count your Attack/Skill ratio before committing to an elite path. **Minimum 3 monster rooms before first elite** — 0-2 fights are not enough to build a deck that can handle any Act 1 elite.
-3. **Damage scaling check**: Before routing through Act 1 elites, verify the deck has at least one damage scaling source ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Carnage]], or a strong Uncommon attack). Without scaling, high-HP elites ([[enemies/Lagavulin]] 110 HP, Sentries 40+42+42) are DPS races that base-damage decks cannot win. Confirmed fatal: Run 222 entered Lagavulin with no Str source and could not deal enough damage before Siphon Soul debuffs compounded.
+3. **Damage scaling check**: Before routing through Act 1 elites, verify the deck has at least one damage scaling source ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Carnage]], or a strong Uncommon attack). Without scaling, high-HP elites ([[enemies/Lagavulin]] 110 HP, Sentries 40+42+42) are DPS races that base-damage decks cannot win. Entering Lagavulin with no Str source means you cannot deal enough damage before its Siphon Soul debuffs compound, and the fight is unwinnable.
 4. **Potions available**: Potions compensate for bad matchups.
 5. **Path alternatives**: Only prefer a safer path if the elite risk is unmanageable. Don't default to "safer path exists, take it."
 

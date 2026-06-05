@@ -35,7 +35,7 @@ The most powerful tool for controlled experiments. Pass a seed to `start()` to r
 start("IRONCLAD", 0, seed="ABC123")
 ```
 
-Seeds are recorded in every run log (`analyst/runs/run_NNN.json`, field `seed`). When the session context says "replay Run 185's seed with a different strategy," look up the seed and use it.
+Seeds are recorded in every run log (`analyst/runs/run_NNN.json`, field `seed`). When the session context says "replay run N's seed with a different strategy," look up the seed and use it.
 
 **Why this matters:** In a normal run, you can't tell if a strategy failed because it's bad or because the card offerings were bad. Seed replay eliminates that confounder. If a Win session died on seed X building Strength and you win on seed X building Corruption, that's strong evidence the game was offering Corruption, not Strength — and the Win strategy missed it.
 
