@@ -88,19 +88,17 @@ _acquire_lock()
 # ---------------------------------------------------------------------------
 
 def _name_to_filename(name: str) -> str:
-    """Convert a game entity name to its filename (without extension).
+    """Convert a game entity name to its filename stem (robust slug, matches
+    tools/regen): drop a trailing '+', lowercase, drop ' and ., then collapse any
+    run of other non-alphanumerics to '-'.
 
     "Shrug It Off+" -> "shrug-it-off"
-    "Charon's Ashes" -> "charon-s-ashes"
+    "Charon's Ashes" -> "charons-ashes"
+    "Spike Slime (M)" -> "spike-slime-m"
     "3 Cultists" -> "3-cultists"
     """
-    name = name.rstrip("+").strip()
-    name = name.lower()
-    name = name.replace("'", "-")
-    name = name.replace(" ", "-")
-    while "--" in name:
-        name = name.replace("--", "-")
-    return name
+    name = name.rstrip("+").strip().lower().replace("'", "").replace(".", "")
+    return re.sub(r"[^a-z0-9]+", "-", name).strip("-")
 
 
 def _load_ontology(category: str, name: str) -> str | None:
@@ -1984,6 +1982,36 @@ _ONT_CATS = ["cards", "enemies", "bosses", "events", "relics", "potions", "buffs
 _HEUR_CATS = ["cards", "enemies", "bosses", "events", "relics", "potions", "characters"]
 
 
+_ALIASES = None
+
+
+def _load_aliases() -> dict:
+    """In-game names that don't slug to their file, parsed from the ontology map
+    (awareness/sts1/survey-index.md). {name_lower: ["category/stem", ...]}. The map
+    auto-detects these (e.g. "The Transient" -> enemies/transient, "Centurion +
+    Mystic" -> encounters/centurion-and-mystic, "Louse" -> both lice)."""
+    global _ALIASES
+    if _ALIASES is not None:
+        return _ALIASES
+    _ALIASES = {}
+    try:
+        path = os.path.join(ROOT, "awareness", "sts1", "survey-index.md")
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or ":" not in line:
+                    continue
+                name, targets = line.split(":", 1)
+                name = name.strip()
+                if name == "Ascension N":          # a rule, not a literal alias
+                    continue
+                targets = targets.split("(")[0].strip()   # drop a trailing "(note)"
+                _ALIASES[name.lower()] = [t.strip() for t in targets.split("|") if t.strip()]
+    except OSError:
+        pass
+    return _ALIASES
+
+
 def _recall_one(handle: str):
     """Resolve one recall handle -> text, or None. No link-following.
 
@@ -1999,6 +2027,15 @@ def _recall_one(handle: str):
             return open(os.path.join(ROOT, rel), encoding="utf-8").read().strip()
         except OSError:
             return None
+    alias = _load_aliases().get(h.lower())
+    if alias:
+        texts = []
+        for t in alias:                       # t like "enemies/transient"
+            cat, _, stem = t.partition("/")
+            txt = _load_ontology(cat, stem)
+            if txt:
+                texts.append(txt)
+        return "\n\n---\n\n".join(texts) if texts else None
     parsed = _extract_links(f"[[{h}]]")
     if not parsed:
         return None
