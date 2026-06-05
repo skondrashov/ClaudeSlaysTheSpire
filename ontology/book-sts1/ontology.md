@@ -26,11 +26,11 @@ All of the above describe *our process*. They live in the analyst layer (evidenc
 | potions | Rarity, effect description |
 | debuffs | Effect description, directionality |
 | bosses | HP (by ascension), attack cycle, move table |
-| analysis | Analysis methodology (attribution, prediction errors, patterns) |
 | rules | Core mechanics (energy, block, damage, card draw, buffs/debuffs) |
 | types | Card type definitions (Attack, Skill, Power, Status, Curse) |
 | characters | Starting deck, relic, HP, card pool description |
 | acts | Floor count, encounter lists, boss options, card rewards |
+| ascension | Per-level modifiers — the rule change each Ascension level applies |
 | shop | Shop mechanics and pricing |
 
 *(Live entry counts are shown on the site, not tracked here — hand-maintained counts only drift.)*
