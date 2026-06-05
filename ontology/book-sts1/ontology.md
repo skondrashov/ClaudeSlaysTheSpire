@@ -2,6 +2,17 @@
 
 The factual database. Every entry describes what something IS — mechanics, numbers, behavior patterns — with no strategic interpretation.
 
+## Game-only (no meta)
+
+An ontology entry describes the **game**, as if our book, our runs, our tooling, and our verification did not exist. The game has no concept of any of these, so neither does its ontology. Never appears in an entry:
+
+- **Run numbers or our win/loss record** — "Run 182", "confirmed in 3 runs", "0 wins in 14". The game has no past run.
+- **Outcome labels** — "fatal", "death", "cost the run". The only thing fatal in the game is damage that takes HP to 0; say *that* in game terms (damage, HP), not as a verdict on a run.
+- **The book's own structure** — file paths, layer names, "its own entity under `upgrades/`", "a phenomenon of", "base ⊕ delta". How we *organize* knowledge is `book`/`praxis` ontology, not the game's.
+- **How a fact was verified** — "verified in the game jar", code internals like `Eruption.use()` or `INFERNO_DMG`. Provenance is the analyst's job; the entry states the fact plainly.
+
+All of the above describe *our process*. They live in the analyst layer (evidence, provenance) or the `book`/`praxis` domains (framework structure) — never in game knowledge.
+
 ## Categories
 
 | Category | Contents |
