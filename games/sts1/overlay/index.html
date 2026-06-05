@@ -595,7 +595,7 @@
         <div class="overview-content" id="overviewContent"></div>
       </div>
       <div class="tile playbook-tile">
-        <div class="ctx-title">Playbook</div>
+        <div class="ctx-title">Knowledge</div>
         <div class="knowledge-grid" id="knowledgeGrid">
           <div class="knowledge-item"><span id="pb-cards">-</span> cards</div>
           <div class="knowledge-item"><span id="pb-enemies">-</span> enemies</div>
@@ -603,6 +603,7 @@
           <div class="knowledge-item"><span id="pb-events">-</span> events</div>
           <div class="knowledge-item"><span id="pb-relics">-</span> relics</div>
           <div class="knowledge-item"><span id="pb-potions">-</span> potions</div>
+          <div class="knowledge-item"><span id="pb-combos">-</span> combos</div>
         </div>
       </div>
       <div class="tile run-history-tile">
@@ -687,6 +688,7 @@
                        events:'pb-events', relics:'pb-relics', potions:'pb-potions'};
           const ont = stats.ontology || {};
           const heur = stats.heuristics || {};
+          const phen = stats.phenomena || {};
           for (const [key, id] of Object.entries(ids)) {
             const el = document.getElementById(id);
             if (el) {
@@ -694,6 +696,9 @@
               el.textContent = total || '-';
             }
           }
+          // Phenomena: authored interaction/combo entries (the new layer)
+          const comboEl = document.getElementById('pb-combos');
+          if (comboEl) comboEl.textContent = phen.interactions || '-';
         })
         .catch(() => {});
     }
@@ -899,6 +904,12 @@
           if (event.deck) updateDeck(event.deck);
           break;
         case 'decision':
+          if (event.command === 'reasoning') {
+            // Live agent deliberation (reasoning_bridge): Strategy panel ONLY —
+            // keep it out of the decision log and action feed.
+            if (event.reasoning) updateStrategy(event.translated || 'Reasoning', event.reasoning);
+            break;
+          }
           addReasoning(event);
           if (event.command === 'think' && event.reasoning) {
             updateStrategy(event.translated || 'Strategy', event.reasoning);
