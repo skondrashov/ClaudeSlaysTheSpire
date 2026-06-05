@@ -1,9 +1,13 @@
-"""Build the survey index: one `<blurb>: <path>` line per entry.
+"""Build the survey index: a condensed map from any game entity to its ontology entry.
 
-Contextual blurbs are LIFTED (not generated) from each phenomenon's authored
-`- **Applies when:**` field. The upgrade rule is one more line, with a placeholder
-path (`upgraded cards ('<name>+'): phenomena/<domain>/cards/<name>-plus`) — the
-selector emits any placeholder line once per matching state entity. No schema.
+Not a list of every entity → path (that would be ~800 lines). Instead a *rule* plus
+the handful of exceptions:
+
+  1. A slug rule that resolves the vast majority of names by convention.
+  2. The category search order.
+  3. The upgrade rule ("<name>+" → the resolved upgraded card).
+  4. An alias table — only the entries whose in-game name does NOT slug to its file
+     (auto-detected: title-slug ≠ filename), plus a few generic display names.
 
 Run: `python -m tools.retrieval.build_index sts1`
 """
@@ -12,27 +16,71 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-APPLIES_RE = re.compile(r"^- \*\*Applies when:\*\*\s*(.+)$", re.MULTILINE)
+
+# Categories a bare name is searched against, in priority order. `upgrades` is
+# excluded — it is reached via the upgrade rule or an explicit `upgrades/<name>`
+# address, never by bare-name search (every upgrade shares a card's name).
+SEARCH_CATEGORIES = ["cards", "enemies", "bosses", "relics", "potions", "events",
+                     "buffs", "debuffs", "encounters", "rules", "types",
+                     "characters", "acts", "ascension", "shop"]
+
+# Generic in-game display names that don't map 1:1 to a file (the state under-reports
+# the variant). Hand-maintained — the game shows these, the ontology splits them.
+GENERIC_ALIASES = {
+    "Louse": ["enemies/red-louse", "enemies/green-louse"],
+}
+
+
+def slug(s: str) -> str:
+    """Robust slug, matching tools/regen: lowercase, drop ' and ., runs of other
+    non-alphanumerics → '-'. So 'Spike Slime (M)' → 'spike-slime-m'."""
+    s = s.lower().replace("'", "").replace(".", "")
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+
+def _title(path: Path) -> str | None:
+    for line in path.read_text(encoding="utf-8").splitlines():
+        m = re.match(r"#\s+(.+)", line.strip())
+        if m:
+            return m.group(1).strip()
+    return None
 
 
 def build_index(domain: str) -> str:
-    """Return the index as markdown text: `<blurb>: <path>` per line.
+    ont = ROOT / "ontology" / domain
+    lines = [
+        f"# {domain} ontology map — resolve any game entity to its entry.",
+        "#",
+        "# slug(name): lowercase, drop ' and ., other non-alphanumeric runs -> '-'.",
+        "#   e.g. \"Spike Slime (M)\" -> spike-slime-m, \"Gremlin Nob\" -> gremlin-nob.",
+        "# To recall a bare name, search these categories in order for <category>/slug(name):",
+        f"#   {' '.join(SEARCH_CATEGORIES)}",
+        "# Upgraded card: \"<name>+\" -> phenomena/" + domain + "/cards/slug(name)-plus.",
+        "# The names below override the slug rule (in-game name doesn't slug to the file).",
+        "",
+    ]
 
-    A line whose path holds a `<name>` placeholder is a rule (the selector emits it
-    once per matching state entity). The upgrade rule is exactly that — one line, no
-    schema. Contextual blurbs are lifted from each phenomenon's `Applies when:` field.
-    """
-    lines = [f"upgraded cards ('<name>+'): phenomena/{domain}/cards/<name>-plus"]
-    idir = ROOT / "phenomena" / domain / "interactions"
-    for f in sorted(idir.glob("*.md")):
-        if f.stem == "index":
+    # Auto-detected aliases: title doesn't slug to its filename. Skip `upgrades`
+    # (systematic "Upgrade: " prefix) and `ascension` (systematic aN — its own rule).
+    aliases = []
+    for cat in SEARCH_CATEGORIES:
+        if cat == "ascension":      # covered by the "Ascension N: ascension/aN" rule
             continue
-        m = APPLIES_RE.search(f.read_text(encoding="utf-8"))
-        if not m:
-            print(f"WARN: no 'Applies when:' blurb in {f.name}", file=sys.stderr)
+        d = ont / cat
+        if not d.exists():
             continue
-        blurb = m.group(1).strip().rstrip(".")
-        lines.append(f"{blurb}: phenomena/{domain}/interactions/{f.stem}")
+        for f in sorted(d.glob("*.md")):
+            if f.stem == "index":
+                continue
+            title = _title(f)
+            if title and slug(title) != f.stem:
+                aliases.append(f"{title}: {cat}/{f.stem}")
+
+    lines.append("## aliases (in-game name -> entry)")
+    lines.append("Ascension N: ascension/aN   (e.g. \"Ascension 15\" -> ascension/a15)")
+    lines.extend(sorted(aliases))
+    for name, targets in sorted(GENERIC_ALIASES.items()):
+        lines.append(f"{name}: {' | '.join(targets)}   (ambiguous — pull both)")
     return "\n".join(lines) + "\n"
 
 
@@ -50,5 +98,4 @@ def write_index(domain: str) -> Path:
 if __name__ == "__main__":
     domain = sys.argv[1] if len(sys.argv) > 1 else "sts1"
     p = write_index(domain)
-    n = sum(1 for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip())
-    print(f"wrote {p.relative_to(ROOT)} — {n} lines (1 upgrade rule + {n - 1} contextual)")
+    print(p.read_text(encoding="utf-8"))
