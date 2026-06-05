@@ -120,13 +120,15 @@ Thunderclap applies [[debuffs/Vulnerable]] (target takes 50% MORE damage). It do
 
 **CRITICAL:** Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. **Confirmed fatal in Run 218:** player calculated enemy damage as reduced by 25% (Weak math) after playing Thunderclap (which applies Vulnerable, not Weak). Actual incoming was 30, not 21. Death at -6 HP.
 
-### 9. WRATH DOUBLES ALL DAMAGE
+### 9. WRATH DOUBLES DAMAGE — BUT NOT THE HIT THAT ENTERS WRATH
 
-For Watcher: ALL damage is doubled in Wrath, including multi-hit cards. When a card enters Wrath (e.g., Tantrum from Calm), the stance change resolves BEFORE damage, so all hits are doubled.
+For Watcher: while you are **already in Wrath**, your attacks deal double damage (and you take double from attacks). But the card that **enters** Wrath does NOT double its own hit. Verified from the game jar: `Eruption.use()` and `Tantrum.use()` both queue their `DamageAction`(s) FIRST, then `ChangeStanceAction("Wrath")` — so the damage resolves in the prior stance, before Wrath is active.
 
-Common miscalculation: Tantrum+ base is 2x5=10. In Wrath: 2x10=20. Players sometimes calculate the base damage and forget to double it, or assume "entering Wrath" means the first hit is undoubled. It is not. Every hit is doubled.
+- **Eruption** deals its 9 at base (not 18); **Eruption+** is also 9. Confirmed 3x in Run 225.
+- **Tantrum** deals `magicNumber x base` at base, THEN enters Wrath. Tantrum+ from Calm = 3x4 = 12 (NOT 24) on the turn it enters.
+- Only attacks played **after** you are already in Wrath are doubled — subsequent cards the same turn, or any attack on a later turn while Wrath persists. (A second copy of Tantrum, or any Strike, played after you're in Wrath IS doubled.)
 
-**Rule:** When in Wrath or entering Wrath, multiply EVERY damage number by 2 in kill math. Double-check the arithmetic before committing to end turn.
+**Rule:** In kill math, the entering card's hit is base — do NOT double the Eruption/Tantrum that enters Wrath. DO double every attack you play after it while Wrath is active. Double-check the arithmetic before committing to end turn.
 
 ---
 

@@ -50,9 +50,9 @@ The Watcher is more HP-sensitive than other characters because Wrath doubles inc
 
 ## Wrath Damage Arithmetic
 
-ALL damage is doubled in Wrath, including multi-hit cards. Common source of miscalculation:
+While you are IN Wrath, your attacks deal double damage (and you take double incoming). The catch, verified vs the game jar: the card that ENTERS Wrath does NOT double its own hit — its damage resolves *before* the stance turns on (see combat.md rule 9). Common miscalculations:
 
-- **Tantrum+ in Wrath:** Base 2x5 = 10. In Wrath: 2x10 = 20. From Calm (entering Wrath): still 20 — the stance change happens before damage resolves, so the hits ARE doubled. Confirmed in Run 193: Tantrum+ dealt 24 (with other modifiers) not 12. The player miscalculated this as 12 and it was the fatal error that ended the run.
+- **Tantrum** (3 dmg x 3 hits = 9; Tantrum+ = 3 x 4 = 12): Played while ALREADY in Wrath → doubled to 18 / 24. But if Tantrum is the card ENTERING Wrath (from Calm/Neutral), its own hits are NOT doubled — it deals 9 / 12, and Wrath only doubles the attacks you play AFTER it. Run 193's Tantrum+ = 24 was the already-in-Wrath case.
 - **Conclude+ in Wrath:** Base 12 AOE. In Wrath: 24 AOE. Conclude also ends the turn — so any surviving enemies attack into Wrath (doubled incoming). Only use Conclude in Wrath if it kills all enemies.
 - **Flurry of Blows in Wrath:** Base 4. In Wrath: 8. Free damage that adds up.
 
@@ -91,7 +91,7 @@ The Watcher's stance mechanics create unique execution failure modes not present
 1. **Accidental Wrath entry via turn() index shifting.** Batched turn() commands with index-based card references can play the wrong card when indices shift after each play. If the wrong card enters Wrath, the result is often lethal. **Always use card names in turn() batches** (see combat.md rule 6). Confirmed fatal: Run 190.
 2. **Blasphemy self-kill.** Blasphemy sets HP to 1 at end of next turn. The kill MUST be confirmed with exact arithmetic before playing. Confirmed fatal: Run 189.
 3. **Missing Wrath exit.** Entering Wrath without a confirmed exit card in hand or guaranteed next draw is gambling with doubled incoming damage. Before entering Wrath, verify: "Do I have an exit in hand RIGHT NOW?" If no, do not enter Wrath.
-4. **Wrath damage miscalculation.** Multi-hit cards entering Wrath (Tantrum, Ragnarok) are commonly miscalculated. The stance change resolves BEFORE damage, so all hits are doubled. See "Wrath Damage Arithmetic" above. Confirmed fatal: Run 193.
+4. **Wrath damage miscalculation.** Two distinct cases, commonly conflated: a card that ENTERS Wrath does NOT double its own hit (jar-verified — see combat.md rule 9), but any attack played while ALREADY in Wrath IS doubled. Track which case you are in. See "Wrath Damage Arithmetic" above. Confirmed fatal: Run 193.
 
 ## HP Management
 
