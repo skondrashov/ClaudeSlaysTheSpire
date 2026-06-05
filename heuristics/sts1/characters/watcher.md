@@ -50,7 +50,7 @@ The Watcher is more HP-sensitive than other characters because Wrath doubles inc
 
 ## Wrath Damage Arithmetic
 
-While you are IN Wrath, your attacks deal double damage (and you take double incoming). The catch, verified vs the game jar: the card that ENTERS Wrath does NOT double its own hit — its damage resolves *before* the stance turns on (see combat.md rule 9). Common miscalculations:
+While you are IN Wrath, your attacks deal double damage (and you take double incoming). The catch: the card that ENTERS Wrath does NOT double its own hit — it deals its damage first, then enters Wrath, so that hit lands before Wrath is active (see combat.md rule 9). Common miscalculations:
 
 - **Tantrum** (3 dmg x 3 hits = 9; Tantrum+ = 3 x 4 = 12): Played while ALREADY in Wrath → doubled to 18 / 24. But if Tantrum is the card ENTERING Wrath (from Calm/Neutral), its own hits are NOT doubled — it deals 9 / 12, and Wrath only doubles the attacks you play AFTER it. A Tantrum+ dealing 24 is the already-in-Wrath case.
 - **Conclude+ in Wrath:** Base 12 AOE. In Wrath: 24 AOE. Conclude also ends the turn — so any surviving enemies attack into Wrath (doubled incoming). Only use Conclude in Wrath if it kills all enemies.

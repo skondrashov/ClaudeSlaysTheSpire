@@ -41,4 +41,4 @@
 
 ## Danger Warning
 
-Single most dangerous [[acts/Act 2]] hallway fight. 5 deaths confirmed. Even with correct play and front-loaded Strength, expect 30-40 HP drain.
+Single most dangerous [[acts/Act 2]] hallway fight. Even with correct play and front-loaded Strength, expect 30-40 HP drain.

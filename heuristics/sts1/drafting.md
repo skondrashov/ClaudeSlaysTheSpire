@@ -26,7 +26,7 @@ The single biggest strategic failure: entering [[acts/Act 2]] without a healing 
 Verify by Floor 15. ALL FOUR criteria or die in Act 2:
 
 1. **Damage scaling** -- the deck needs SOME way to outpace enemy block and HP growth. Two valid paths:
-   - **Strength path:** [[cards/Inflame]], [[cards/Spot Weakness]] (front-loaded). NOT [[cards/Demon Form]] alone (too slow for hallway fights, confirmed in 2+ deaths). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).
+   - **Strength path:** [[cards/Inflame]], [[cards/Spot Weakness]] (front-loaded). NOT [[cards/Demon Form]] alone (too slow for hallway fights — its Strength ramps over several turns, so early fights get no benefit). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).
    - **Exhaust/Block path (under investigation):** [[cards/Corruption]] + [[cards/Feel No Pain]] (+ [[cards/Body Slam]] for damage conversion). This engine can generate block and damage without Strength as the primary engine (with supplementary Str from Spot Weakness + Red Skull). Whether it works WITHOUT any Str sources is being tested (see exploration directives).
 2. **AOE damage** -- [[cards/Thunderclap]], [[cards/Cleave]], [[cards/Immolate]], [[cards/Whirlwind]]. Required for [[enemies/Gremlin Leader]] (gremlins re-summon), 3 Cultists (hard-scaler, kill speed matters), [[bosses/Slime Boss]] split.
 3. **Healing beyond Burning Blood** -- Reaper, Feed, potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.
@@ -178,7 +178,7 @@ Single-purpose cards (Strike, Defend) are the weakest cards in the deck. When ch
 
 ## 3-Cost Power Setup Trap
 
-[[cards/Corruption]] (3E), Barricade (3E), Demon Form (3E) consume ALL energy on a 3-energy turn. Playing them on Turn 1 against attacking enemies leaves zero energy for block. Two deaths confirmed from this pattern.
+[[cards/Corruption]] (3E), Barricade (3E), Demon Form (3E) consume ALL energy on a 3-energy turn. Playing them on Turn 1 against attacking enemies leaves zero energy for block — you take the full hit unblocked.
 
 **Only play 3E Powers when:**
 - Enemy is buffing/defending (free turn with no incoming damage)

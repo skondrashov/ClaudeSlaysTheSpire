@@ -60,8 +60,8 @@ Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block o
 
 ## Key Lessons from Deaths
 
-- Insufficient block scaling (basic Defends = 20 max vs 38+ Hyper Beam) is the #1 killer
-- Intimidate wasted on Artifact stripping caused death when no Weak was available for Hyper Beam
+- Insufficient block scaling (basic Defends = 20 max vs 38+ Hyper Beam) is the central danger — basic block can't cover Hyper Beam, so it lands for lethal
+- Wasting Intimidate on Artifact stripping leaves no Weak for Hyper Beam, which then lands unreduced for lethal
 - Long fights (12+ turns) face a second Hyper Beam at 57+ damage -- need kill speed or second Impervious
 - Distilled Chaos with turn-ending cards in draw pile against Hyper Beam ends your turn with 0 block and gets you killed
 - Wrath damage miscalculation leads to unnecessary risk-taking when the kill is already achievable

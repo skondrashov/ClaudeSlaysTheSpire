@@ -122,7 +122,7 @@ Thunderclap applies [[debuffs/Vulnerable]] (target takes 50% MORE damage). It do
 
 ### 9. WRATH DOUBLES DAMAGE — BUT NOT THE HIT THAT ENTERS WRATH
 
-For Watcher: while you are **already in Wrath**, your attacks deal double damage (and you take double from attacks). But the card that **enters** Wrath does NOT double its own hit. Verified from the game jar: `Eruption.use()` and `Tantrum.use()` both queue their `DamageAction`(s) FIRST, then `ChangeStanceAction("Wrath")` — so the damage resolves in the prior stance, before Wrath is active.
+For Watcher: while you are **already in Wrath**, your attacks deal double damage (and you take double from attacks). But the card that **enters** Wrath does NOT double its own hit — it deals its damage first and enters Wrath after, so that hit lands before Wrath is active.
 
 - **Eruption** deals its 9 at base (not 18); **Eruption+** is also 9.
 - **Tantrum** deals `magicNumber x base` at base, THEN enters Wrath. Tantrum+ from Calm = 3x4 = 12 (NOT 24) on the turn it enters.
