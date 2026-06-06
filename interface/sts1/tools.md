@@ -42,7 +42,7 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 
 | Function | Description |
 |----------|-------------|
-| `survey()` | Lists the entities in play (enemies, non-basic hand cards, the act boss/character, card rewards, relics) as a menu of `recall()` handles, flagging which also have a heuristic. Deterministic — it reads the live state, so it surfaces what's in front of you. Discovery, not content. Use at meaningful decision points (combat start, rewards, before elites/bosses), not every action. |
+| `survey()` | One selector call maps the live state → a menu of `recall()` handles worth pulling: the on-board entities (with their heuristic handles), upgraded cards, and any phenomenon whose conditions match right now. Judgment, not a state echo — it surfaces the non-obvious (combos, contextual warnings). Discovery, not content. Use at meaningful decision points (combat start, rewards, before elites/bosses), not every action. |
 | `recall(*handles)` | Fetch knowledge by handle. A handle is a wiki-style address (`"enemies/Gremlin Nob"`, `"layer:heuristics, cards/Bash"`), a bare name (`"Gremlin Nob"` → ontology), or an upgraded card (`"Bash+"` → its resolved phenomenon). Names resolve robustly: variants (`"Spike Slime (M)"`), apostrophes (`"Charon's Ashes"`), and map aliases (`"The Transient"`, `"Centurion + Mystic"`, `"Louse"` → both lice) all work. Pass several handles for several entries (an entity's ontology AND heuristic = two handles). Does NOT follow links — `recall()` them too if you want them. **The single lookup verb.** |
 
 ## Known Issues

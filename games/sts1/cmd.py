@@ -1688,82 +1688,31 @@ def potion_discard(slot: int, reason: str = "") -> str:
 # ---------------------------------------------------------------------------
 
 def survey() -> str:
-    """Survey the entities in play — a menu of recall() handles, not content.
+    """Survey what knowledge applies to the current state — a menu of recall()
+    handles, not content.
 
-    Deterministic: reads the live state and lists every on-board entity (enemies,
-    non-basic hand cards, the act boss/character, card rewards, relics) as recall()
-    handles, flagging which ones also have a heuristic. It surfaces what is in front
-    of you so you know what CAN be recalled; you decide what is worth pulling. Read
-    knowledge with recall().
+    One selector call (a small fast model) reads the live state + the ontology map
+    and returns the handles worth pulling: the on-board entities (enemies, boss,
+    non-basic hand cards, relics, current event), upgraded cards, and any phenomenon
+    whose conditions match right now. Judgment, not a state echo — it surfaces the
+    non-obvious (combos, contextual warnings) the way a deterministic list can't.
+    Returns ONLY the menu; read what you want with recall().
     """
-    raw = _tcp_request({"type": "state"})
-    if not raw.get("in_game", False):
-        return "survey: not in a run."
-    gs = raw.get("game_state", {})
-    combat = gs.get("combat_state")
-
-    def _exists(base_dir, cat, name):
-        return os.path.exists(os.path.join(base_dir, cat, _name_to_filename(name) + ".md"))
-
-    def _ent(cat, name):
-        """Ontology handle (bare name) + heuristic handle if a heuristic exists."""
-        hs = [name]
-        if _exists(HEURISTICS_DIR, cat, name):
-            hs.append(f"layer:heuristics, {cat}/{name}")
-        return "   ".join(hs)
-
-    out = ["survey — entities in play. recall() any handle:"]
-
-    if combat:
-        seen, enemies = set(), []
-        for m in combat.get("monsters", []):
-            if m.get("is_gone"):
-                continue
-            name = m.get("name", "?")
-            if name in seen:
-                continue
-            seen.add(name)
-            cat = "bosses" if _exists(ONTOLOGY_DIR, "bosses", name) else "enemies"
-            enemies.append("  " + _ent(cat, name))
-        if enemies:
-            out.append("ENEMIES:"); out += enemies
-
-        seen_c, cards = set(), []
-        for c in combat.get("hand", []):
-            name = c.get("name", "?")
-            base = name.rstrip("+")
-            if base in seen_c or base in _BASIC_CARDS:
-                continue
-            seen_c.add(base)
-            hs = [base]
-            if c.get("upgrades", 0) > 0:
-                hs.append(f"{base}+")              # the resolved upgraded card
-            if _exists(HEURISTICS_DIR, "cards", base):
-                hs.append(f"layer:heuristics, cards/{base}")
-            cards.append("  " + "   ".join(hs))
-        if cards:
-            out.append("HAND (non-basic):"); out += cards
-    else:
-        boss = gs.get("act_boss", "")
-        if boss:
-            out.append("BOSS: " + _ent("bosses", boss))
-        char = gs.get("class", "")
-        if char and _exists(HEURISTICS_DIR, "characters", char):
-            out.append(f"CHARACTER: layer:heuristics, characters/{char}")
-        ss = gs.get("screen_state", {}) or {}
-        if gs.get("screen_type", "") == "CARD_REWARD":
-            names = [c.get("name", "?") for c in ss.get("cards", [])]
-            if names:
-                out.append("CARD REWARD: " + ", ".join(names))
-
-    relics = [r.get("name", "?") for r in gs.get("relics", [])]
-    if relics:
-        out.append("RELICS: " + ", ".join(relics))
-
-    _log_event({"type": "survey", "timestamp": time.time()})
-    if len(out) == 1:
-        return "survey: nothing on board to flag. recall() any entity by name."
-    return "\n".join(out)
+    try:
+        if ROOT not in sys.path:
+            sys.path.insert(0, ROOT)
+        from tools import retrieval
+    except Exception as e:
+        return f"survey unavailable: {e}"
+    try:
+        state_text = format_state(state_raw())
+        handles = retrieval.survey(state_text, retrieval.load_index("sts1"))
+    except Exception as e:
+        return f"survey failed: {e}"
+    _log_event({"type": "survey", "handles": handles, "timestamp": time.time()})
+    if not handles:
+        return "survey: nothing flagged. recall() entities by name as needed."
+    return "\n".join(["survey — recall() any of these:"] + [f"  {h}" for h in handles])
 
 
 

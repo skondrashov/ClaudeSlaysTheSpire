@@ -26,21 +26,31 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 SELECT_MODEL = os.environ.get("STS_SELECT_MODEL", "claude-haiku-4-5-20251001")
 
 _INSTRUCTIONS = """\
-You are a retrieval selector for a game-playing agent. You are given the LIVE GAME \
-STATE and an INDEX — a list of `<applies-when>: <path>` lines.
+You are a retrieval selector for a Slay the Spire agent. You are given the LIVE GAME \
+STATE and an ontology MAP — how to address any entity (a slug rule, the category \
+search order, the upgrade rule, an alias table) plus any `<applies-when>: <path>` \
+phenomenon lines.
 
-Return ONLY a JSON array of the `<path>` strings whose applies-when matches the \
-current state — nothing else. No prose, no explanation, no knowledge content. Be \
-inclusive at the margin: surface anything plausibly relevant; the agent decides what \
-to read.
+Return ONLY a JSON array of recall handles relevant to the current state — nothing \
+else (no prose, no knowledge content). Be inclusive at the margin; the agent decides \
+what to read.
 
-A path containing a placeholder like `<name>` is a rule: emit it once per matching \
-state entity, substituting `<name>` with that entity's lowercased hyphenated name. \
-(E.g. the `upgraded cards ('<name>+')` line, with "Shrug It Off+" in the state, \
-yields "phenomena/sts1/cards/shrug-it-off-plus".)
+Use each entity's EXACT in-game name verbatim — "The Guardian", not "guardian" or \
+"the-guardian"; "Spike Slime (M)", not "spike-slime-m". recall resolves names to \
+files; do NOT slugify, abbreviate, or drop words. (Only the alias table tells you a \
+canonical name to use instead, for the few names listed there.)
 
-Output example: ["phenomena/sts1/interactions/corruption-dead-branch", \
-"phenomena/sts1/cards/bash-plus"]"""
+Surface:
+1. Each entity present in the state — enemies, the act boss, non-basic cards in hand, \
+relics, the current event — as its name handle (e.g. "Cultist", "Gremlin Nob"). For \
+anything with a real decision attached (enemies, bosses, notable cards/relics) ALSO \
+emit the heuristic handle "layer:heuristics, <category>/<exact name>".
+2. Each UPGRADED card in hand: emit "<exact name>+" (e.g. "Shrug It Off+").
+3. Any phenomenon whose `<applies-when>` matches the current state: emit its path.
+
+Output example: ["Jaw Worm", "layer:heuristics, enemies/Jaw Worm", "The Guardian", \
+"layer:heuristics, bosses/The Guardian", "Eruption+", \
+"phenomena/sts1/interactions/wrath-burst-the-threat"]"""
 
 _JSON_ARRAY_RE = re.compile(r"\[.*\]", re.DOTALL)
 
