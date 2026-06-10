@@ -1247,7 +1247,7 @@ def send(command: str, reason: str = "") -> str:
         start CLASS [A] [S] — Start run (IRONCLAD/THE_SILENT/DEFECT/WATCHER, ascension, seed)
         state               — Re-request state
         key K [timeout]     — Press key K
-        wait T              — Wait T milliseconds
+        wait T              — Wait T frames (game time)
     """
     if not reason or not reason.strip():
         return (
@@ -1363,11 +1363,13 @@ def send(command: str, reason: str = "") -> str:
     _post_decision(resolved, reason)
     raw = _tcp_request({"type": "command", "command": resolved})
     _last_raw_state = raw  # Update cache
+
+    # Auto-handle mechanical transitions (gold, chests, shop wait, intent settle)
+    # BEFORE logging — the log must record the state the player actually saw,
+    # not the transient pre-settle frame.
+    raw = _auto_handle_mechanical(raw)
     _log_result(raw)
     _check_game_over(raw)
-
-    # Auto-handle mechanical transitions (gold, chests, shop wait)
-    raw = _auto_handle_mechanical(raw)
 
     return chose_echo + format_state(raw)
 
@@ -1466,17 +1468,28 @@ def _settle_debug_intents(raw: dict) -> dict:
     in-game wait lets the roll land; give up after a few tries (a few intents are
     legitimately hidden, e.g. while an enemy is stunned)."""
     global _last_raw_state
+
+    def _has_debug(r):
+        c = (r.get("game_state") or {}).get("combat_state") if r.get("in_game") else None
+        if not c:
+            return False
+        return any(m.get("intent") == "DEBUG"
+                   for m in c.get("monsters", []) if not m.get("is_gone"))
+
+    if not _has_debug(raw):
+        return raw
+    tries = 0
     for _ in range(3):
-        if not raw.get("in_game"):
-            return raw
-        combat = (raw.get("game_state") or {}).get("combat_state")
-        if not combat:
-            return raw
-        if not any(m.get("intent") == "DEBUG"
-                   for m in combat.get("monsters", []) if not m.get("is_gone")):
-            return raw
-        raw = _tcp_request({"type": "command", "command": "wait 200"})
+        tries += 1
+        nxt = _tcp_request({"type": "command", "command": "wait 30"})
+        if not isinstance(nxt, dict) or "game_state" not in nxt:
+            break                       # wait unsupported/errored — keep what we have
+        raw = nxt
         _last_raw_state = raw
+        if not _has_debug(raw):
+            break
+    _log_event({"type": "settle_intents", "tries": tries,
+                "resolved": not _has_debug(raw), "timestamp": time.time()})
     return raw
 
 
