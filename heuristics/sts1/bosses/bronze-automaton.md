@@ -54,7 +54,7 @@ Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block o
 1. **Turns 1-2 (Setup):** Play Powers (Rushdown, Mental Fortress, Battle Hymn). Use Apparitions for Intangible on attack turns. Enter Calm at end of turn for energy next turn.
 2. **Turns 3-5 (Burst):** Calm -> Wrath burst with doubled attacks. Use Apparitions to cover Hyper Beam turns. Pen Nib (if available) for doubled finisher.
 3. **Hyper Beam turn:** Must have either (a) Intangible from Apparition, (b) sufficient block in Calm (NOT Wrath), or (c) confirmed kill before Hyper Beam resolves. Option (a) is by far the safest.
-4. **Kill math:** Verify all damage numbers are doubled in Wrath. Tantrum+ = 2x10 = 20 in Wrath (not 2x5 = 10). See combat.md rule 8.
+4. **Kill math:** Attacks played while ALREADY in Wrath are doubled — Tantrum+ (4x3 = 12 base) deals 24 in Wrath. But the card that ENTERS Wrath does NOT double its own hit: a Tantrum+ played from Calm deals 12, and only the attacks after it are doubled. See combat.md rule 9.
 
 **A representative near-win:** Watcher can get Automaton to 36/300 HP by Turn 6 with the kill in hand (Smite + Strike = 36 damage in Wrath = exact lethal), then lose to Distilled Chaos randomly playing Meditate+ (ends turn, 0 block) against 102 Hyper Beam. An arithmetic error on Tantrum+ damage triggers the unnecessary potion use.
 

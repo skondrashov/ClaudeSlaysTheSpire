@@ -6,7 +6,7 @@ Exhausts ALL other cards in hand. Deals 7 damage per card exhausted to a single 
 
 **Synergies:** Status/Curse cards (become 7+ damage instead of dead draws), [[buffs/Strength]] (each card's damage scales), [[debuffs/Vulnerable]] (each hit gets 50% bonus), [[relics/Unceasing Top]] (empties hand, triggers Top draw engine), [[potions/Snecko Oil]] (randomize costs before Fiend Fire), [[cards/Feel No Pain]] (Fiend Fire self-exhausts too, so total FNP triggers = other cards + 1. With N other cards in hand: FNP block = (N+1) x 3).
 
-**CRITICAL CHECK before playing:** Scan your hand for [[cards/Impervious]], [[cards/Shockwave]], [[cards/Dark Shackles]], or any card you NEED for survival. Fiend Fire exhausts EVERYTHING. If a survival-critical card is in hand, do NOT play Fiend Fire — play that card first or skip Fiend Fire entirely. Confirmed kill: Fiend Fire exhausting Impervious against a non-lethal Chosen leaves no block source for the remaining turns.
+**CRITICAL CHECK before playing:** Scan your hand for [[cards/Impervious]], [[cards/Shockwave]], [[cards/Dark Shackles]], or any card you NEED for survival. Fiend Fire exhausts EVERYTHING. If a survival-critical card is in hand, do NOT play Fiend Fire — play that card first or skip Fiend Fire entirely. Fiend Fire exhausting Impervious against a non-lethal Chosen leaves no block source for the remaining turns — that loss of block is what kills you, turns later.
 
 **Matchups:** [[bosses/Slime Boss]] -- burst + Slimed exhaust. [[enemies/Chosen]] -- only use when burst will kill or exhausted cards are expendable. If Chosen survives, remaining turns have zero block sources.
 
@@ -18,7 +18,7 @@ Exhausts ALL other cards in hand. Deals 7 damage per card exhausted to a single 
 
 **[[relics/Runic Pyramid]] trap:** Runic Pyramid retains the entire hand across turns, so the hand grows. Fiend Fire exhausts MORE cards (more damage) but also exhausts every retained card. In boss fights requiring card conservation, do NOT play Fiend Fire while critical cards are in hand. With Runic Pyramid, those cards will NOT leave your hand naturally -- you must either play them first or accept that Fiend Fire cannot be used that turn.
 
-**[[buffs/Thorns]] WARNING — LETHAL:** Fiend Fire hits once per exhausted card. Against [[enemies/Spiker]] or any enemy with Thorns, each hit triggers Thorns separately. 4 exhausted cards at Thorns 9 = 36 self-damage. **NEVER use Fiend Fire against Thorns enemies.** Use single-hit attacks ([[cards/Heavy Blade]], [[cards/Carnage]]) instead. Confirmed kill: Fiend Fire + Thorns 9 is lethal.
+**[[buffs/Thorns]] WARNING — LETHAL:** Fiend Fire hits once per exhausted card. Against [[enemies/Spiker]] or any enemy with Thorns, each hit triggers Thorns separately. 4 exhausted cards at Thorns 9 = 36 self-damage. **NEVER use Fiend Fire against Thorns enemies.** Use single-hit attacks ([[cards/Heavy Blade]], [[cards/Carnage]]) instead. Fiend Fire into Thorns 9 deals enough self-damage to kill you outright.
 
 **Guardian warning:** Fiend Fire as a primary engine drains the deck unsustainably in 12-14 turn fights. Use on free turns for burst, do not plan the deck around it as sole damage engine.
 

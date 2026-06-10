@@ -98,7 +98,7 @@ On kill turns, play all deterministic damage cards FIRST. Only use random-outcom
 
 **Rationale:** If the kill is already in hand with deterministic cards, random effects are unnecessary and can only cause harm. If the kill is NOT in hand, playing deterministic damage first reduces the enemy to minimum HP, making the random effect more likely to finish the job and less costly if it fails.
 
-Example: using Distilled Chaos BEFORE playing Smite and Strike (which together were exactly lethal) lets Distilled Chaos randomly play Meditate+ (ends turn, enters Calm, 0 block) against 102 incoming Hyper Beam — death, even though the kill was already in hand. The miscalculation was believing they were 12 damage short.
+Example: using Distilled Chaos BEFORE playing Smite and Strike (which together were exactly lethal) lets Distilled Chaos randomly play Meditate+ (ends turn, enters Calm, 0 block) against 102 incoming Hyper Beam — death, even though the kill was already in hand. The root cause is a kill-math error: believing the hand was 12 damage short when it wasn't.
 
 **Rule:** Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.
 

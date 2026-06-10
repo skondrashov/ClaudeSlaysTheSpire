@@ -12,7 +12,7 @@
 
 ## Phase 2 -- Zero Powers, Maximum Discipline
 
-- **0 Powers is the rule.** Confirmed victory with ZERO Powers played in Phase 2.
+- **0 Powers is the rule.** Phase 2 is entirely winnable without playing a single Power.
 - **1 Power is the absolute maximum** in desperate situations.
 - Every Power beyond the first: +2 Str = ~+6 extra damage per multi-attack turn. Compounds across every remaining turn.
 - Must deal >10 net damage per turn to overcome Regenerate 10.
@@ -25,7 +25,7 @@
 - **Block without Powers:** [[cards/Impervious]], Defend, [[cards/Backflip]], [[cards/Leg Sweep]]
 - **Weak:** [[cards/Neutralize]], Leg Sweep, [[cards/Sucker Punch]]
 
-## Dead Branch Strategy (confirmed victory)
+## Dead Branch Strategy (a proven winning line)
 
 [[relics/Dead Branch]] + exhaust-heavy deck is the best approach:
 1. Phase 1: dump all Powers. Apply [[cards/Terror]] for Vuln 99.

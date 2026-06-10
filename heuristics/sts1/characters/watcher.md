@@ -82,7 +82,7 @@ The Chosen's Hex debuff adds a Dazed card to the draw pile every time a Skill is
 - If Hex is already applied, minimize Skill plays. Accept some damage rather than flooding the draw pile with Dazed.
 - Wave of the Hand is a Skill — using it for Weak triggers Hex. Accept the trade-off only if Weak prevents more damage than Dazed costs.
 
-**Confirmed dangerous:** Chosen+Byrd hallway. Hex + Watcher's Skill-heavy engine causes deck collapse. A functional engine can still fail here because Dazed flooding makes it impossible to draw the right cards.
+**The Chosen+Byrd hallway is uniquely dangerous:** Hex + Watcher's Skill-heavy engine causes deck collapse. A functional engine can still fail here because Dazed flooding makes it impossible to draw the right cards.
 
 ## Execution Risks
 
@@ -91,7 +91,7 @@ The Watcher's stance mechanics create unique execution failure modes not present
 1. **Accidental Wrath entry via turn() index shifting.** Batched turn() commands with index-based card references can play the wrong card when indices shift after each play. If the wrong card enters Wrath, the result is often lethal. **Always use card names in turn() batches** (see combat.md rule 6).
 2. **Blasphemy self-kill.** Blasphemy sets HP to 1 at end of next turn. The kill MUST be confirmed with exact arithmetic before playing.
 3. **Missing Wrath exit.** Entering Wrath without a confirmed exit card in hand or guaranteed next draw is gambling with doubled incoming damage. Before entering Wrath, verify: "Do I have an exit in hand RIGHT NOW?" If no, do not enter Wrath.
-4. **Wrath damage miscalculation.** Two distinct cases, commonly conflated: a card that ENTERS Wrath does NOT double its own hit (jar-verified — see combat.md rule 9), but any attack played while ALREADY in Wrath IS doubled. Track which case you are in. See "Wrath Damage Arithmetic" above.
+4. **Wrath damage miscalculation.** Two distinct cases, commonly conflated: a card that ENTERS Wrath does NOT double its own hit (see combat.md rule 9), but any attack played while ALREADY in Wrath IS doubled. Track which case you are in. See "Wrath Damage Arithmetic" above.
 
 ## HP Management
 
