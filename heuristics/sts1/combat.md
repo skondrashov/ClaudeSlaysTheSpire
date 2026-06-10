@@ -76,9 +76,9 @@ On kill turns, NEVER include `end` in the same command as the final attack. Play
 
 Always play X-cost cards LAST. To control the value of X, spend energy on other cards first.
 
-### 4. WRAITH FORM: FINISHER ONLY
+### 4. WRAITH FORM: TIME IT BY FIGHT LENGTH
 
-[[cards/Wraith Form]] gives [[buffs/Intangible]] but applies permanent -1 [[buffs/Dexterity]] per turn. Three recorded deaths from playing it too early. DO NOT play until the enemy is within 5 turns of dying.
+[[cards/Wraith Form]] gives [[buffs/Intangible]] but applies permanent -1 [[buffs/Dexterity]] per turn. In long fights, play it as a finisher only — see [[cards/Wraith Form]] for the timing framework by fight length.
 
 ### 5. VERIFY CARD IDENTITY BEFORE PLAYING
 
@@ -98,7 +98,7 @@ On kill turns, play all deterministic damage cards FIRST. Only use random-outcom
 
 **Rationale:** If the kill is already in hand with deterministic cards, random effects are unnecessary and can only cause harm. If the kill is NOT in hand, playing deterministic damage first reduces the enemy to minimum HP, making the random effect more likely to finish the job and less costly if it fails.
 
-Example: using Distilled Chaos BEFORE playing Smite and Strike (which together were exactly lethal) lets Distilled Chaos randomly play Meditate+ (ends turn, enters Calm, 0 block) against 102 incoming Hyper Beam — death, even though the kill was already in hand. The root cause is a kill-math error: believing the hand was 12 damage short when it wasn't.
+A random effect can play a turn-ender or a zero-value card while leaving the kill unfinished and your block at zero — converting a won turn into a lost fight. The usual root cause is a kill-math error: believing the hand is short on damage when it isn't. Verify the kill arithmetic before reaching for randomness.
 
 **Rule:** Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.
 
@@ -106,17 +106,9 @@ Example: using Distilled Chaos BEFORE playing Smite and Strike (which together w
 
 Thunderclap applies [[debuffs/Vulnerable]] (target takes 50% MORE damage). It does NOT reduce enemy damage. Vulnerable makes the TARGET take more damage from attacks -- it is an offensive amplifier, not a defensive tool.
 
-**Ironclad Weak sources (reduce enemy damage dealt by 25%):**
-- [[cards/Intimidate]] (mass Weak, exhausts, 0E)
-- [[cards/Clothesline]] (single target Weak, 2E)
-- [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)
-- [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)
+**Ironclad Weak sources (reduce enemy damage dealt by 25%):** [[cards/Intimidate]], [[cards/Clothesline]], [[cards/Shockwave]] (which also applies Vulnerable).
 
-**Ironclad Vulnerable sources (target takes 50% more damage from attacks):**
-- [[cards/Bash]] (single target Vulnerable, 2E)
-- [[cards/Thunderclap]] (mass Vulnerable, 1E)
-- [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)
-- [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)
+**Ironclad Vulnerable sources (target takes 50% more damage from attacks):** [[cards/Bash]], [[cards/Thunderclap]], [[cards/Uppercut]] (which also applies Weak).
 
 **CRITICAL:** Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. Treating Thunderclap as Weak miscalculates incoming — it applies Vulnerable, not Weak, so enemy damage is NOT reduced. If your block plan relied on a 25% reduction, actual incoming is the full 30 (not 21) and you take the full hit.
 

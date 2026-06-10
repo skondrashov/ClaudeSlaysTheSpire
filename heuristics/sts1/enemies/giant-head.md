@@ -2,7 +2,7 @@
 
 **Core rule:** This is a DPS race against escalating damage. Must have either [[cards/Demon Form]] ([[buffs/Strength]] scaling) or [[cards/Barricade]] + [[cards/Body Slam]] (block scaling). Without either engine, the fight is unwinnable.
 
-**HP Threshold:** Enter above 60% HP. The fight lasts 10+ turns with increasing damage. Entering at low HP (e.g. 33%, 21/63) is unsurvivable: even surviving 10 turns, the escalating damage outpaces your block and an exhausted Reaper leaves no survival path.
+**HP Threshold:** Enter above 60% HP. The fight lasts 10+ turns with increasing damage. Entering at low HP is unsurvivable: even surviving 10 turns, the escalating damage outpaces your block and an exhausted Reaper leaves no survival path.
 
 ## Strategy (Ironclad)
 
@@ -15,7 +15,7 @@
 
 ## Barricade Engine Approach
 
-Barricade + [[cards/Corruption]] + FNP + Entrench + Body Slam defeats Giant Head without Demon Form. Body Slam+ with 66-83 accumulated block deals massive single-card damage. The engine completed the kill in 8 turns with zero HP lost.
+Barricade + [[cards/Corruption]] + FNP + Entrench + Body Slam defeats Giant Head without Demon Form. Body Slam+ with a large accumulated block pool deals massive single-card damage while the same block absorbs the escalating attacks.
 
 ## Strategy (Silent)
 
@@ -26,6 +26,6 @@ Barricade + [[cards/Corruption]] + FNP + Entrench + Body Slam defeats Giant Head
 ## What NOT to Do
 
 - Delay Demon Form past Turn 2-3
-- Fail to use offensive potions before the kill window closes (confirmed death: Giant Head survived at 1 HP with [[potions/Strength Potion]] and [[potions/Explosive Potion]] unused)
+- Fail to use offensive potions before the kill window closes — leaving a [[potions/Strength Potion]] or [[potions/Explosive Potion]] unused while the kill falls a few damage short loses the fight
 - Play purely defensively without damage scaling
 - Enter below 60% HP

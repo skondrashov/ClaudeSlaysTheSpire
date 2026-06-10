@@ -2,7 +2,7 @@
 
 Extremely high variance. Removes 10 starter cards and replaces them with random class cards. Can produce game-winning decks or unplayable ones.
 
-CRITICAL RISK -- BLOCK LOSS: Removes ALL 4 Defend cards. If replacements contain zero block cards, the deck has NO defensive capability for [[acts/Act 1]]. Confirmed death: offense-heavy result with zero block cards died on Floor 16 to Guardian.
+CRITICAL RISK -- BLOCK LOSS: Removes ALL 4 Defend cards. If replacements contain zero block cards, the deck has NO defensive capability for [[acts/Act 1]] — an offense-heavy result with no block has no answer to the Act 1 boss's big attack turns.
 
 WHEN TO TAKE:
 - From Neow: HIGH RISK. Cannot undo. Only if comfortable gambling the run.

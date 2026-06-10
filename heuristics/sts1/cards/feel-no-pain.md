@@ -8,8 +8,8 @@ Passive block engine that triggers on every exhaust. Permanent for the rest of c
 
 **[[bosses/Slime Boss]] synergy:** Each [[cards/Slimed]] exhausted generates 3 block, partially offsetting 1E tempo cost. 5+ Slimed = 15+ block across the fight.
 
-**[[enemies/Spheric Guardian]]:** Corruption + FNP successfully defeated Spheric Guardian with only 12 HP lost. Recommended configuration for the hardest [[acts/Act 2]] hallway fight.
+**[[enemies/Spheric Guardian]]:** Corruption + FNP can beat Spheric Guardian cleanly — a promising configuration for the hardest [[acts/Act 2]] hallway fight, though the engine's track record is still thin.
 
-**Victory engine:** Mandatory component of [[cards/Barricade]] + Corruption engine. FNP+ (4 block/exhaust) generated 40-60+ block per fight from exhaust triggers alone.
+**Victory engine:** Mandatory component of [[cards/Barricade]] + Corruption engine. FNP+ (4 block/exhaust) can generate 40-60+ block per fight from exhaust triggers alone.
 
 **Anti-synergy:** [[debuffs/Weak]] in decks with few exhaust sources.

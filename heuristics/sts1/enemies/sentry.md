@@ -6,7 +6,7 @@
 
 ## Elite Readiness Gate
 
-Do NOT fight Sentries with a starter-quality deck (Strikes, Defends, [[cards/Bash]], 0-1 other cards). Without AOE or meaningful damage scaling, effective damage per Strike is only 2 (6 minus [[cards/Metallicize]] 4 absorb). Confirmed: a deck with Strikes/Defends/Bash/[[cards/Headbutt]]/SIO spent 20 turns and took 56 damage (76->20 HP).
+Do NOT fight Sentries with a starter-quality deck (Strikes, Defends, [[cards/Bash]], 0-1 other cards). Without AOE or meaningful damage scaling, effective damage per Strike is only 2 (6 minus [[cards/Metallicize]] 4 absorb) — the fight stretches toward 20 turns and the accumulated chip damage drains most of a health bar.
 
 The Sentries fight requires at least one of: AOE ([[cards/Thunderclap]], [[cards/Whirlwind]], [[cards/Cleave]]), damage scaling ([[cards/Inflame]], [[cards/Spot Weakness]]), or a strong attack card ([[cards/Carnage]], [[cards/Pommel Strike]]).
 

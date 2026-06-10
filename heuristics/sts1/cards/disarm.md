@@ -12,4 +12,4 @@ Permanent [[buffs/Strength]] reduction. Extremely powerful against scaling enemi
 
 **[[buffs/Artifact]] interaction:** Against enemies with Artifact, Disarm strips 1 Artifact instead of applying -2 Str.
 
-**[[bosses/The Champ]]:** Disarm applied before Anger is completely wasted (Anger cleanses all debuffs). Hold Disarm for Phase 2 -- the -2 Str reduction is critical against post-Anger +6/+9/+12 Str. With [[relics/Runic Pyramid]], Disarm stays in hand; if [[cards/Fiend Fire]] is also in deck, Disarm will be exhausted by Fiend Fire unless played first. Protect Disarm from Fiend Fire during Phase 1 burst.
+**[[bosses/The Champ]]:** Disarm applied before Anger is completely wasted (Anger cleanses all debuffs). Hold Disarm for Phase 2 -- the -2 Str reduction is critical against post-Anger +6/+9/+12 Str. Protect Disarm from [[cards/Fiend Fire]] while holding it (see [[layer:heuristics, cards/Fiend Fire]]).

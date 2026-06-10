@@ -25,8 +25,7 @@
 - Ignore Torch Heads entirely (14 combined damage/turn adds up)
 - Save potions for "later" (post-debuff turns 5-7 are the crisis -- use potions here)
 - Play Shockwave+ on Turn 1 before Torch Heads spawn
-- Enter Unknown rooms before the boss without accounting for Colosseum event (forces combat, drains HP)
-- Enter without Impervious or Shockwave+ (both deaths missing Impervious confirmed)
+- Enter without Impervious or Shockwave+ (without a big absorb or mass Weak, the post-debuff crisis turns are unsurvivable)
 
 ## Character Matchups
 

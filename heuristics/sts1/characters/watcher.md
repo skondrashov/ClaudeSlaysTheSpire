@@ -44,10 +44,6 @@ Play cards that trigger on stance change BEFORE changing stance. [[cards/Flurry 
 
 Need at minimum: (1) a Wrath exit in the deck (at least 2 sources), (2) a Weak source, (3) enough damage cards for Wrath burst windows.
 
-## HP Sensitivity
-
-The Watcher is more HP-sensitive than other characters because Wrath doubles incoming damage. A single turn ending in Wrath against an attacker can drain 20-40 HP from doubled multi-hits. Prioritize HP conservation. See "HP Management" below for relic interactions and boss math.
-
 ## Wrath Damage Arithmetic
 
 While you are IN Wrath, your attacks deal double damage (and you take double incoming). The catch: the card that ENTERS Wrath does NOT double its own hit — it deals its damage first, then enters Wrath, so that hit lands before Wrath is active (see combat.md rule 9). Common miscalculations:
@@ -58,18 +54,15 @@ While you are IN Wrath, your attacks deal double damage (and you take double inc
 
 **Rule:** When calculating kill math in Wrath, double EVERY damage number. Do not selectively double some cards and not others.
 
-## NEVER Use Distilled Chaos as Watcher
+## Distilled Chaos Is a Strong Skip for Watcher
 
-Distilled Chaos plays a random card from the draw pile. The Watcher's draw pile frequently contains cards that are CATASTROPHIC when played at the wrong time:
+Distilled Chaos plays random cards from the draw pile, and the Watcher's draw pile routinely contains turn-enders and Blasphemy — cards that are catastrophic at a random moment:
 
-- **Meditate / Meditate+:** Enters Calm and ENDS YOUR TURN. If played randomly with 0 block against lethal incoming, you die instantly. Distilled Chaos can play Meditate+ (ends your turn, 0 block) — against a 102-damage Hyper Beam that is 102 unblocked.
-- **Blasphemy:** Sets HP to 1. If played randomly, you die at end of next turn unless you kill everything.
-- **Conclude / Conclude+:** ENDS YOUR TURN (after dealing damage). Same risk as Meditate.
+- **Meditate / Conclude:** END YOUR TURN. Played randomly with 0 block against lethal incoming, the full attack lands.
+- **Blasphemy:** Sets HP to 1. You die at end of next turn unless you kill everything.
 - **Stance changers (Eruption, Crescendo, Tantrum):** May enter Wrath unexpectedly, doubling incoming damage.
 
-**This is not a marginal risk.** A typical Watcher deck has 5-8 Skills in the draw pile at any time. At least 1-2 of those are turn-ending or stance-changing. The expected value of Distilled Chaos is negative for Watcher.
-
-**Rule:** NEVER use Distilled Chaos as Watcher. If offered, skip it. If acquired from a random source, do not drink it. No exceptions.
+A typical Watcher deck has 5-8 Skills in the draw pile at any time, usually including at least one turn-ender or stance-changer, so the expected value is negative. Strong default: skip Distilled Chaos as Watcher, and do not drink one acquired from a random source. The generic ordering rule (deterministic cards first, random effects last) is combat.md rule 7 in [[layer:heuristics, combat]].
 
 ## Hex / Chosen Counter-Strategy
 
@@ -98,7 +91,7 @@ The Watcher's stance mechanics create unique execution failure modes not present
 The Watcher is more HP-sensitive than other characters because Wrath doubles incoming damage. Additional considerations:
 
 - **Reduced Max HP pools change boss math.** Council of Ghosts (-Max HP for Apparitions) is excellent but leaves absolute HP dangerously low. At 36 Max HP, a single unblocked Hyper Beam (45 base, 57+ with Str) is instantly lethal. When Max HP is reduced, boss entry HP percentage is less important than absolute HP — calculate survival against the worst single hit.
-- **Sozu + Philosopher's Stone is a lethal combination.** Sozu prevents potion use (no emergency healing), and Philosopher's Stone gives enemies +1 Str (amplifies all incoming damage). With no healing and harder fights, HP attrition through Act 3 becomes unsurvivable. Avoid both together.
+- **Sozu is doubly costly for Watcher** — see Relic Warnings below.
 - **Pantograph (+25 HP at boss start) is exceptional.** It changes the rest-vs-upgrade calculus at pre-boss rest sites. If Rest + Pantograph would overcap HP, always upgrade instead.
 
 ## Relic Warnings
@@ -107,19 +100,9 @@ The Watcher is more HP-sensitive than other characters because Wrath doubles inc
 
 **Sozu (no potions):** Removes the Watcher's only emergency healing and burst tools. Combined with Philosopher's Stone (+1 enemy Str), the Watcher takes amplified damage with no recovery option — a deadly pairing.
 
-## Spire Growth Counter-Strategy
+## Spire Growth
 
-Spire Growth (170 HP, Act 3) applies **Constricted X** on its STRONG_DEBUFF turns. Constricted deals X damage at end of every subsequent turn, and this damage IS affected by block. However, it stacks with the attack damage each turn, so the effective incoming damage per turn is (attack + Constricted).
-
-**At low HP, Constricted is lethal.** Constricted 10 means you need 10 EXTRA block every turn beyond blocking the attack. If the attack is 16 (Weakened), that's 26 block needed per turn. Without massive block generation or Wrath burst to kill quickly, this is unsurvivable at low HP.
-
-**Mitigation:**
-- Enter the fight at high HP (40+). Constricted is manageable if you can absorb a few turns of damage.
-- Kill FAST. Wrath burst with the full engine (Rushdown 4, Deva Form, Divinity) can output 50-100+ damage per turn.
-- Do NOT waste the first free debuff turn on setup if your HP is critical — prioritize block infrastructure over power setup.
-- Wave of the Hand + Wallop combo is key: Wallop generates block equal to damage dealt, Wave converts that to Weak, reducing attack component.
-
-Entering at low HP is unsurvivable: at 9 HP, Constricted 10 + 16 attack = 26 damage per turn while a hand maxes out at ~12 block, so you die within a couple of turns.
+Constricted stacks with attack damage every turn, demanding block output the Watcher must fund through stance cycling — see [[layer:heuristics, enemies/Spire Growth]] for the full counter-strategy, including the Watcher-specific lines.
 
 ## Key Lessons
 
@@ -127,5 +110,5 @@ The stance dance engine assembles reliably, but the recurring causes of death ar
 
 - **No built-in healing:** The Watcher has NO built-in healing. Without healing cards/relics/potions, HP attrition through Act 3 kills even with a strong engine. Stance dance generates damage and block but cannot recover HP. Prioritize acquiring healing sources (potions, Meal Ticket, events) to sustain through Act 3.
 - **NEVER end in Wrath without a guaranteed exit:** Ending in Wrath (e.g. against Orb Walker) with Burns in hand and no exit doubles incoming damage and causes catastrophic HP loss.
-- **Runic Pyramid is dangerous for Watcher:** Burns and other unplayable cards are retained by Runic Pyramid, permanently consuming hand slots. The Watcher needs specific cards in hand each turn for stance sequencing. Retained junk cards break the engine. Avoid Runic Pyramid unless the deck has very few status/curse sources.
+- **Runic Pyramid is dangerous for Watcher:** retained junk cards break the stance-sequencing engine — see Relic Warnings above.
 - **Slime Boss requires special preparation:** The Watcher's stance dance engine is single-target focused. Slimed flooding is uniquely punishing because drawing the right stance-change cards in the right order is critical. See Slime Boss matchup notes.

@@ -10,7 +10,7 @@ Free +1E that Retains and Exhausts. ONLY play when you have a useful way to spen
 - Funds the Calm -> Wrath energy loop when short 1E.
 - Enables a Power setup on a free turn.
 
-**BAD use:** Playing all Miracles with no plan for the energy. A confirmed death occurred with 4 Miracles in hand -- player played all 3 Miracles for +3E, had no useful cards to spend energy on (only [[cards/Meditate]] and [[cards/Rushdown]]), and died with 0 block against [[enemies/Snake Plant]]'s 21-damage attack.
+**BAD use:** Playing all Miracles with no plan for the energy. If the hand has nothing useful to spend the energy on, the Miracles are wasted — and Retain means holding them costs nothing. Energy is not a goal in itself; block and damage are.
 
 **Upgrade priority:** N/A (generated card, cannot be upgraded directly).
 

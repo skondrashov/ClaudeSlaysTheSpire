@@ -31,7 +31,7 @@
 
 ## Character Matchups
 
-**[[characters/Silent]]:** Mode Shift + Shivs: multiple Shivs accumulate toward Mode Shift quickly. [[cards/Cloak and Dagger]] (2 Shivs) is critical. [[cards/Noxious Fumes]] played Turn 1 deals 78 total poison over 12 turns. [[cards/Wraith Form]]: do NOT play early (Dex penalty compounds over 12+ turns). [[debuffs/Poison]] Potions bypass Sharp Hide.
+**[[characters/Silent]]:** Mode Shift + Shivs: multiple Shivs accumulate toward Mode Shift quickly. [[cards/Cloak and Dagger]] (2 Shivs) is critical — and the upgrade matters: 1 Shiv vs 2 can decide whether burst reaches the Mode Shift threshold on the planned turn. [[cards/Noxious Fumes]] played Turn 1 deals 78 total poison over 12 turns. [[cards/Wraith Form]]: do NOT play early (Dex penalty compounds over 12+ turns). [[debuffs/Poison]] Potions bypass Sharp Hide.
 
 **[[characters/Defect]]:** Frost wall sustains through the long fight. [[cards/Barrage]] with full orbs (5+) triggers Mode Shift in 1-2 plays. [[cards/Echo Form]] early on a free Charging Up turn. [[cards/Coolheaded]] cycling finds cards when needed.
 

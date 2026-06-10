@@ -1,8 +1,8 @@
 # 3 Cultists
 
-**THIS IS THE MOST LETHAL HALLWAY FIGHT IN THE GAME.** Six deaths across all runs -- more than any other single encounter. Deaths at 5%, 30%, 37%, 39%, 52%, and 53% HP entry.
+**THIS IS THE MOST LETHAL HALLWAY FIGHT IN THE GAME.** Triple +3 Str/turn scaling kills decks that enter even at comfortable-looking HP.
 
-**Core rule:** Enter with 50%+ HP MINIMUM -- this is a hard threshold, not a guideline. Kill one [[enemies/Cultist]] ASAP to reduce scaling by 33%.
+**Core rule:** Enter with 60%+ HP -- strongly preferred, because the fight can spiral even from above half HP. Kill one [[enemies/Cultist]] ASAP to reduce scaling by 33%.
 
 ## Strategy
 
@@ -26,7 +26,7 @@
 
 ## What to Avoid
 
-- Entering below 50% HP
+- Entering below 60% HP
 - Delaying Shockwave+ past the first attack turn
 - Spreading damage across all 3 instead of focus-firing
 - Relying solely on slow scaling (Demon Form) without fast burst

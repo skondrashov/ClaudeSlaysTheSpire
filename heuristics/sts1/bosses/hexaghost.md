@@ -4,7 +4,7 @@
 
 ## Preparation Checklist (must have at least 3 of 4)
 
-1. **Weak source** ([[cards/Shockwave]], [[cards/Clothesline]], [[cards/Intimidate]], [[potions/Weak Potion]]) -- reduces all damage by 25%. Inferno scales with accumulated [[buffs/Strength]] from [[cards/Inflame]] turns (first Inferno: 24 at A0, 30 at A4; second Inferno: 36 at A0, 42 at A4). Without Weak, this damage is unmitigable except by block. MANDATORY.
+1. **Weak source** ([[cards/Shockwave]], [[cards/Clothesline]], [[cards/Intimidate]], [[potions/Weak Potion]]) -- reduces all damage by 25%. Inferno scales with accumulated [[buffs/Strength]] from [[cards/Inflame]] turns (first Inferno: 24 at A0, 30 at A4; second Inferno: 36 at A0, 42 at A4). Without Weak, this damage must be blocked outright. Highest-value survival prep — but Weak keeps you alive without winning the fight; kill speed can substitute (see What Works).
 2. **HP above 70%** OR [[relics/Pantograph]] relic
 3. **Passive block** ([[cards/Metallicize]], [[cards/Flame Barrier]]) OR [[cards/Impervious]] for the Inferno turn
 4. **Burns management** OR damage scaling to end the fight before Burns overwhelm
@@ -30,7 +30,7 @@ Priority order:
 
 ## What Works
 
-- Evolve + Fire Breathing engine (confirmed clean victories)
+- Evolve + Fire Breathing engine (the cleanest answer to Burns)
 - [[potions/Cultist Potion]] + Rampage (devastating scaling, can kill in 9 turns without Weak)
 - Demon Form (+2 Str/turn, best scaling card for Hexaghost)
 - Spot Weakness+ (+4 Str on attack turns)
@@ -40,7 +40,7 @@ Priority order:
 ## What NOT to Do
 
 - Enter below 70% HP without Pantograph
-- Fight without Burns management OR damage scaling (six deaths had Weak but no way to handle Burns)
+- Fight without Burns management OR damage scaling (Weak alone keeps you alive but does not win the fight — Burns accumulate until the death spiral)
 - Play [[cards/Brutality]] (Burns + Brutality self-damage = death spiral)
 - Play [[cards/Berserk]] (self-[[debuffs/Vulnerable]] + Inferno = death)
 - Waste Shockwave on a non-Inferno turn

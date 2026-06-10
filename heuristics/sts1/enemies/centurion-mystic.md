@@ -26,7 +26,7 @@ Once Mystic is dead, Centurion uses the 6x3 multi-hit attack (18-30 damage). If 
 ## What to Avoid
 
 - Attacking Centurion while Mystic lives
-- Entering below 50% HP (confirmed deaths at 49% and 71% entry)
+- Entering below 60% HP (the fight drains 25-61 HP even when played correctly)
 - Wasting Fairy here when elites are ahead
 - Splitting damage between Centurion and Mystic even with temporary [[buffs/Strength]] buffs
 - Spending ALL potions on the Mystic kill phase

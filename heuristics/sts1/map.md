@@ -15,6 +15,8 @@ Relics are the primary driver of run strength. Every winning formula was built o
 
 **At the START of each act, read the ENTIRE map.** Count elites, shops, campfires, and unknowns on every viable route. Choose a full route before floor 1. This replaces room-by-room pathing.
 
+**Priority order: safety gate first, then default-aggressive.** Check the Elite Route Safety Rule and HP thresholds first — routes that fail the gate are off the table. Among routes that pass, default to the most elite-heavy one. These two doctrines are sequential, not in tension.
+
 - **Default to the elite-heavy route.** Only downgrade to the safe route when HP or deck quality can't handle the elite pool.
 - **Re-route only when forced.** Follow your act plan. Only deviate if HP drops below safe thresholds.
 - **At each floor, verify the planned route is still viable.** Count remaining forced combats to the next rest site. If the path forces 2+ combats and HP is below 50%, re-route.
@@ -49,8 +51,8 @@ Before fighting an elite, check:
 
 **Act 2 Elite Threat Ranking (most to least dangerous):**
 - **Book of Stabbing**: Double scaling — +1 hit/turn AND +3 Str/turn. Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. **If you have Brimstone, DO NOT FIGHT. Brimstone + Book of Stabbing = unsurvivable.**
-- **[[enemies/Gremlin Leader]]**: Rally gives +3 Str to ALL enemies per cast. Fight is unwinnable after turn 7. NEED: AOE for gremlins, [[cards/Shockwave]] for mass debuff, 60%+ HP.
-- **Slavers**: 3 enemies, 27+ combined damage from Turn 1. NEED: AOE, mass debuff, block density, 60%+ HP.
+- **[[enemies/Gremlin Leader]]**: Rally gives +3 Str to ALL enemies per cast. Must win by turn 5-6 or Rally scaling overwhelms you (see [[layer:heuristics, enemies/Gremlin Leader]]). NEED: AOE for gremlins, [[cards/Shockwave]] for mass debuff, 60%+ HP.
+- **Slavers**: 3 enemies, 27+ combined damage from Turn 1. NEED: AOE, mass debuff, block density, 50%+ HP (see [[layer:heuristics, enemies/Slavers]]).
 
 ## Brimstone Elite Avoidance
 
@@ -64,10 +66,11 @@ When holding Brimstone, avoid elite paths entirely if HP is below 70%.
 ## Pre-Boss Routing (last 5 floors)
 
 - **No HP-for-reward trades.** No [[events/Knowing Skull]], [[relics/Golden Idol]], or HP-cost events.
-- **Skip elites in the last 3 floors.** Relic value < boss HP threshold.
+- **Skip elites in the last 3 floors.** Relic value < boss HP threshold. High-drain elites (Slavers especially — 20-40+ HP) within 2 floors of the boss almost guarantee a sub-threshold boss entry; see [[layer:heuristics, enemies/Slavers]].
 - **Rest over upgrade at every rest site if below 70% HP.**
 - **Path priority: Rest > Shop > Event > Monster > Elite.** Invert normal priority.
-- Count forced combats on each path to the boss. If ALL paths force 4+ combats, use potions aggressively.
+- **Unknown rooms before the boss carry [[events/Colosseum]] risk** (forced combat, 15-25 HP drain — even with [[relics/Juzu Bracelet]]). Prefer known rooms in the last 2 floors.
+- Count forced combats on each path to the boss. Potion use is aggressive by default (see Potion Economy in [[layer:heuristics, combat]]); a path forcing many combats is a reason to drink even sooner, not a special trigger.
 
 ## Fairy Management
 

@@ -7,4 +7,4 @@ BEST TARGETS:
 - **[[cards/Offering]]** ([[characters/Ironclad]]): Guaranteed Turn 1 energy burst + draw.
 - **[[cards/Coolheaded]]** (Defect): Guaranteed Turn 1 Frost orb + 3 draws.
 
-Confirmed dominant: Bottled Lightning on Seek+ guaranteed Echo Form+ in hand Turn 1 of every boss fight in the first Defect victory. This single relic-card combination was the foundation of the winning engine.
+Bottled Lightning on Seek+ guarantees the engine card ([[cards/Echo Form]]+, [[cards/Barrage]]) is findable Turn 1 of every fight — one of the strongest known relic-card pairings for [[characters/Defect]].

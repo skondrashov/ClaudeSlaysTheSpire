@@ -4,4 +4,4 @@ A safety net that heals significantly more than [[potions/Fairy in a Bottle]] (5
 
 Can be deliberately "spent" by accepting lethal damage on a turn where you maximize damage output instead of blocking, knowing the revival will sustain you for killing turns. Not just a safety net -- it can be a strategic resource in DPS-race fights.
 
-It can be victory-enabling: a revive from 0 HP to 35 HP during a [[bosses/Time Eater]] fight buys 2 more turns of burst — enough to kill the boss from 139 HP.
+It can be victory-enabling: a mid-boss-fight revive at 50% Max HP can fund 1-2 more kill turns — often enough to finish a boss.

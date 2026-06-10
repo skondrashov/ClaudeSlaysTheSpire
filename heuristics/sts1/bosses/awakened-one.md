@@ -35,7 +35,7 @@
 
 ## Phase 2 HP Conservation
 
-Dark Echo (40 damage) opens Phase 2 with no warning. If you enter Phase 2 below 50% HP, Dark Echo alone puts you in lethal range for subsequent Tackle (30) or Sludge (18 + Void). Budget Phase 1 to end at 55%+ HP. This means blocking more aggressively in Phase 1 even at the cost of slower damage -- Phase 1 doesn't have Regenerate 10, so there's no DPS race.
+Dark Echo (40 damage) opens Phase 2 with no warning. If you enter Phase 2 below 50% HP, Dark Echo alone puts you in lethal range for subsequent Tackle (30) or Sludge (18 + Void). Budget Phase 1 to end at ~55-60% HP. This means blocking more aggressively in Phase 1 even at the cost of slower damage -- Phase 1 doesn't have Regenerate 10, so there's no DPS race.
 
 Sludge adds [[cards/Void]] to the deck, which drains 1 Energy when drawn. Multiple Voids compound: 2 Voids in a 5-card hand means effectively 2E and 2 dead cards. Minimize turns spent in Phase 2 to limit Void accumulation.
 
@@ -45,7 +45,7 @@ Sludge adds [[cards/Void]] to the deck, which drains 1 Energy when drawn. Multip
 2. Block density (Impervious, Leg Sweep, Backflip)
 3. Weak application (Neutralize, Leg Sweep)
 4. Sustain vs Regenerate 10 (Catalyst+ on poison, or high Str + multi-hit)
-5. Enter at 70%+ HP (budget Phase 1 to end at 55%+ HP)
+5. Enter at 70%+ HP (budget Phase 1 to end at ~55-60% HP)
 
 ## Deck Building
 
@@ -58,4 +58,4 @@ Sludge adds [[cards/Void]] to the deck, which drains 1 Energy when drawn. Multip
 
 - Save at least 1 potion for Phase 2 (the harder phase)
 - Poison-applying potions bypass the Power restriction entirely
-- **Duplication Potion + [[cards/Heavy Blade]]+ is a kill combo.** At 18 Str with [[debuffs/Vulnerable]], HB+ deals (14 + 18*5) * 1.5 = 156 per hit. Duplication doubles it to 312 — enough to one-shot Phase 2 from full 300 HP. Spot Weakness+ can stack to 18 Str over multiple turns, Fear Potion applies Vulnerable, then Duplication Potion + HB+ delivers the 312-damage kill.
+- **Duplication Potion + [[cards/Heavy Blade]]+ is a kill combo.** At high Strength with [[debuffs/Vulnerable]] active, Duplication + Heavy Blade+ can one-shot Phase 2 from full 300 HP (the 5x Str multiplier, the 1.5x Vulnerable bonus, and the doubled hit all compound). Spot Weakness+ stacks the Strength over multiple turns, Fear Potion applies Vulnerable, then Duplication Potion + HB+ delivers the kill.

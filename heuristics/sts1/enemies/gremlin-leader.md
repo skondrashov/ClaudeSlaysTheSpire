@@ -2,7 +2,7 @@
 
 **Core rule:** TURN ECONOMY IS EVERYTHING. Every turn must deal maximum damage or apply critical debuffs. Wasting even one turn allows Rally to stack once more. Must win by Turn 5-6 or Rally scaling overwhelms you.
 
-**HP Threshold:** Enter with 60%+ HP minimum AND at least 1 potion. Below 50% HP, take any alternative path.
+**HP Threshold:** Enter with 60%+ HP. Below 50% HP, take any alternative path. Potions are strongly recommended -- this fight rewards aggressive potion use.
 
 ## Turn 1 Priority
 
@@ -18,7 +18,7 @@ Deal damage, NOT setup. Playing [[cards/Inflame]] (1E setup) + [[cards/Imperviou
 
 ## Damage Scaling Required
 
-Without damage scaling, you cannot kill the Leader fast enough. Evaluate whether your deck can kill 144 HP in 5-6 turns BEFORE entering this fight. For Ironclad, Strength sources (Inflame, Spot Weakness) are the proven path. The Corruption+FNP engine with Body Slam may also work but hasn't been confirmed against Gremlin Leader specifically. For Silent, Poison or Shiv+Accuracy.
+Without damage scaling, you cannot kill the Leader fast enough. Evaluate whether your deck can kill 144 HP in 5-6 turns BEFORE entering this fight. This is a scaling check — any damage engine passes it: Strength sources (Inflame, Spot Weakness) or Corruption+FNP with Body Slam for Ironclad; Poison or Shiv+Accuracy for Silent.
 
 ## What to Bring
 
@@ -32,8 +32,8 @@ Without damage scaling, you cannot kill the Leader fast enough. Evaluate whether
 ## What to Avoid
 
 - Entering below 60% HP
-- Entering without potions
-- Entering without damage scaling ([[buffs/Strength]] for [[characters/Ironclad]], poison for [[characters/Silent]])
+- Entering without potions when an alternative path exists
+- Entering without a damage engine (Strength or Corruption+FNP+Body Slam for [[characters/Ironclad]], poison for [[characters/Silent]])
 - Exhaust-heavy decks (once key cards are gone, remaining deck is too weak)
 - Wasting turns -- do NOT batch end with draw effects (drawn cards need to be played)
 - Bloated decks (19+ cards with 4+ Strikes) cannot draw answers fast enough

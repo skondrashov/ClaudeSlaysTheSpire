@@ -2,7 +2,7 @@
 
 **Core rule:** Deliberate card counting is mandatory. Before playing any card, know the exact count (e.g., "9/12"). Plan your turn around the count. Play high-impact cards, minimize card count per turn.
 
-**HP Threshold:** Enter at 50%+ HP. The fight is long (10-15 turns) with escalating damage from [[debuffs/Time Warp]] Str stacks.
+**HP Threshold:** Enter at 50%+ HP (target; 40% is the absolute floor). The fight is long (10-15 turns) with escalating damage from [[debuffs/Time Warp]] Str stacks.
 
 ## Strategy
 
@@ -13,9 +13,9 @@
 - **Intentional phasing:** Choose WHEN Time Warp triggers. Plan to trigger it when your last 1-2 plays push past 12, so forced turn-end costs nothing.
 - **[[cards/Corruption]] + [[cards/Feel No Pain]]:** Excellent but be card-count conscious. Every free Skill counts toward the 12-card limit.
 
-## Confirmed Winning Approaches
+## Winning Approaches
 
-**[[characters/Ironclad]]:** Barricade + Corruption + FNP + Entrench + Body Slam engine. Accumulate 69 block, Entrench to 138, Body Slam+ for 146 damage.
+**[[characters/Ironclad]]:** Barricade + Corruption + FNP + Entrench + Body Slam engine. Accumulate a large persistent block pool, Entrench to double it, and Body Slam+ converts the whole pool into a single 100+ damage play.
 
 **[[characters/Silent]]:** [[cards/Accuracy]] x2 (+8 [[cards/Shiv]] damage) + [[cards/After Image]] + [[cards/Wraith Form]] + [[cards/Phantasmal Killer]]. Shivs deal 36 each doubled. [[potions/Cultist Potion]] Turn 1 for [[buffs/Ritual]] scaling. [[cards/Malaise]] X=5 for late-game Str/[[debuffs/Weak]] reduction. [[cards/Finisher]] scales with attacks played.
 
@@ -33,10 +33,10 @@ Time Eater heals to 50% HP (228 at A0) once when its HP first drops to or below 
 
 - Play many small cards per turn without purpose (accelerates Time Warp with low damage output)
 - Exhaust [[cards/Impervious]] early (save for high-damage turns after Str stacks)
-- Enter below 40% HP
+- Enter below 40% HP (the absolute floor)
 - Waste Malaise on [[buffs/Artifact]] stripping (use [[cards/Neutralize]] for that)
 - Lose track of the 12-card count
-- Use [[cards/Fiend Fire]] early with defensive tools in hand — Time Eater fights last 10-15 turns and every exhausted card is gone permanently. [[cards/Dark Shackles]], [[cards/Intimidate]], and block cards that seem expendable on Turn 2 become critical when Time Eater has +4-6 Str by Turn 10+
+- Use [[cards/Fiend Fire]] early with defensive tools in hand — in a 10-15 turn fight, exhausted defense is gone when Str stacks peak; see [[layer:heuristics, cards/Fiend Fire]]
 
 ## Potion Timing
 

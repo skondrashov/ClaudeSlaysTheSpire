@@ -18,7 +18,7 @@
 - [[cards/Reaper]]: single-use -- time for post-Anger when attacks are strongest
 - [[cards/Dark Shackles]]: excellent emergency post-Anger
 - [[cards/Heavy Blade]]: strong finisher if Str is high from Demon Form
-- **[[cards/Fiend Fire]] exhaust decks:** Fiend Fire is dangerous against The Champ. It exhausts ALL cards in hand, including debuff cards (Disarm, Shockwave, [[cards/Exhume]]) being held for Phase 2. With [[relics/Runic Pyramid]], the hand grows large and debuff cards accumulate in it -- they will never leave naturally. Do NOT use Fiend Fire to burst Phase 1 while Disarm, Shockwave, or Exhume are in hand. Use Heavy Blade+ and other attacks to chip through Phase 1 instead, saving Fiend Fire for Phase 2 (after debuffs have been applied). Losing all debuffs to a Phase 1 Fiend Fire leaves no way to handle +6 Str from Anger + any Gloat stacks.
+- **[[cards/Fiend Fire]] exhaust decks:** do NOT fire Fiend Fire in Phase 1 while debuffs (Disarm, Shockwave, [[cards/Exhume]]) held for Phase 2 are in hand — categorize your hand first; see [[layer:heuristics, cards/Fiend Fire]].
 
 **[[characters/Defect]]:**
 - [[cards/Barrage]] is the primary burst card (52+ damage with 5+ orbs and [[debuffs/Vulnerable]])
