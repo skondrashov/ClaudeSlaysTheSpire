@@ -342,7 +342,7 @@ def _remember(raw):
     returns the response unchanged so callers can still inspect errors."""
     global _last_raw_state
     if _healthy_state(raw):
-        _remember(raw)
+        _last_raw_state = raw
     return raw
 
 
