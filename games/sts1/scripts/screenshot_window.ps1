@@ -1,5 +1,8 @@
 # Screenshot a window by title substring (default: the OBS preview projector).
-# usage: powershell -File screenshot_window.ps1 [-Title "Projector - Preview"] [-Out path.png]
+# Uses PrintWindow (PW_RENDERFULLCONTENT) so the capture shows the window's own
+# content even when other windows cover it — CopyFromScreen photographed
+# whatever was visually on top of the target's rect.
+# usage: powershell -ExecutionPolicy Bypass -File screenshot_window.ps1 [-Title "..."] [-Out path.png]
 param(
     [string]$Title = "Projector - Preview",
     [string]$Out = "$env:TEMP\overlay_shot.png"
@@ -11,11 +14,11 @@ using System;
 using System.Runtime.InteropServices;
 public class Win32Shot {
     [DllImport("user32.dll")] public static extern bool SetProcessDPIAware();
-    [DllImport("user32.dll")] public static extern IntPtr FindWindow(string cls, string name);
     [DllImport("user32.dll", CharSet=CharSet.Unicode)] public static extern int GetWindowText(IntPtr h, System.Text.StringBuilder s, int n);
     [DllImport("user32.dll")] public static extern bool EnumWindows(EnumWindowsProc cb, IntPtr lp);
     [DllImport("user32.dll")] public static extern bool IsWindowVisible(IntPtr h);
     [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr h, out RECT r);
+    [DllImport("user32.dll")] public static extern bool PrintWindow(IntPtr h, IntPtr hdc, uint flags);
     public delegate bool EnumWindowsProc(IntPtr h, IntPtr lp);
     public struct RECT { public int Left, Top, Right, Bottom; }
 }
@@ -49,8 +52,12 @@ if ($w -le 0 -or $h -le 0) { Write-Error "degenerate rect ${w}x${h}"; exit 1 }
 
 $bmp = New-Object System.Drawing.Bitmap $w, $h
 $g = [System.Drawing.Graphics]::FromImage($bmp)
-$g.CopyFromScreen($r.Left, $r.Top, 0, 0, (New-Object System.Drawing.Size $w, $h))
+$hdc = $g.GetHdc()
+# 2 = PW_RENDERFULLCONTENT (captures GPU-composited content, needed for OBS)
+$ok = [Win32Shot]::PrintWindow($target, $hdc, 2)
+$g.ReleaseHdc($hdc)
 $g.Dispose()
+if (-not $ok) { Write-Error "PrintWindow failed"; $bmp.Dispose(); exit 1 }
 $bmp.Save($Out, [System.Drawing.Imaging.ImageFormat]::Png)
 $bmp.Dispose()
 Write-Output "$Out (${w}x${h})"
