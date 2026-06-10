@@ -7,95 +7,92 @@ agent composes its own context.
 
 ## The two verbs
 
-- **`survey(state)`** — returns a *menu of handles*: paths to documents the agent
+- **`survey(state)`** — returns a *menu of handles*: addresses of entries the agent
   *might* want, given the live state. No content. The agent reads the menu against
   its own reasoning and decides what's worth pulling.
-- **`recall(handles)`** — returns the full text of exactly the named documents.
+- **`recall(handles)`** — returns the full text of exactly the named entries.
   **Does not follow links.** Links inside returned text are just more menu items;
   to navigate them the agent calls `recall()` again. (Auto-following would
   re-introduce force-feeding through the back door.)
 
-Both are generic verbs and live in the Praxis layer. A domain supplies only *data*
-(its index) and *its state* — there is no domain-specific procedure. The agent sees
-one interface (the game tools); `survey`/`recall` there are thin pass-throughs to
-the Praxis verbs.
+Cadence is the agent's choice, not a fixed schedule — survey at meaningful decision
+points, recall whatever the menu (or the agent's own reasoning) makes relevant.
 
 ## What survey returns, and how
 
-`survey` is **one model call**. You cannot know whether a contextual interaction
-applies without asking, so there is no cheaper deterministic pre-pass that saves a
-call — the selector returns everything relevant in one shot: ontology, heuristics,
-and phenomena handles for the situation.
+`survey` is **one model call**. You cannot know whether a contextual phenomenon
+applies without judgment, so there is no cheaper deterministic pre-pass that saves
+a call — the selector returns everything relevant in one shot: the on-board
+entities (with their heuristic handles), upgraded cards, and any phenomenon whose
+conditions match the state.
 
-It works by handing the live state plus an **index** to a small/fast model (e.g.
-Haiku), which returns the handles whose entries might apply. The model holds the
-index; the state is the query. The model is instructed to **return paths only**.
+It works by handing the live state plus the domain's **map** to a small/fast model
+(e.g. Haiku), which returns the applicable handles. The model holds the map; the
+state is the query. The model is instructed to **return handles only** — never
+content, never composed prose.
 
-## The index: just `blurb: path`
+## The map
 
-The index is a generated markdown list, one line per entry — a blurb and the path it
-points at:
+The index is not a list of every entity (that would be hundreds of lines restating
+the directory tree). It is a **condensed map**: how to address anything, plus the
+exceptions.
 
-    Ironclad deck contains Corruption and you hold Dead Branch…: phenomena/sts1/interactions/corruption-dead-branch
+1. A **slug rule** that resolves the vast majority of names by convention.
+2. The **category search order** for bare names. A name that exists in several
+   categories returns every match.
+3. The **upgrade rule** — `<name>+` addresses the resolved upgraded card.
+4. An **alias table** — only the names that don't slug to their file, plus any
+   phenomenon recognition lines (`<applies-when>: <path>`).
 
-That's the whole shape. No ids (the path *is* the id), no typed targets, no JSON; the
-selector is a model reading text. Each contextual line's blurb is **extracted**
-(mechanically) from the phenomenon file's authored `Applies when:` field.
+Recall honors the same map: names resolve by slug, then by alias, in any layer.
 
-The **upgrade rule** is just one more line, with a placeholder path:
+## Two species of phenomena
 
-    upgraded cards ('<name>+'): phenomena/sts1/cards/<name>-plus
+A phenomenon is a materialized derivation, and the two ways one comes to exist are
+different in kind:
 
-A line whose path contains a placeholder (`<name>`) is a rule: the selector emits it
-once per matching entity in the state, substituting the placeholder. Same format,
-same call — no schema around it. Ontology/heuristic availability for on-screen
-entities rides along the same call.
+- **Resolutions** — deterministic compositions of ontology: an upgraded card
+  (base ⊕ delta), an encounter roster. **Generated** by tooling from the noumena
+  and regenerated rather than edited; each links back to what it derives from.
+- **Recognitions** — a particular configuration of things that should bring a
+  particular thought process to mind: a card combo, a dangerous board state, a
+  situation with its own tailored guidance. **Authored**, because nothing about
+  when the configuration applies — or whether it is worth keeping at all — is
+  derivable from structure. Recognizing "this is a thing you see" is the same
+  unscripted judgment as relevance itself, on the write side; the codify loop
+  makes the call, with no frequency threshold.
 
-## Authored vs programmatic — the hard line
-
-The split that matters: **blurbs are authored, extraction is programmatic.** A
-contextual interaction can take any shape (a two-card combo, or a whole board-state
-pattern), so *nothing* about when it applies is derivable from structure — not even
-"both participants present" is a reliable trigger. The semantic content is
-human/agent-authored end to end; code only lifts the already-written blurb into a
-searchable index.
-
-Likewise **materialization** — deciding a recurring derivation is *worth caching as
-a phenomenon* — is an agent judgment, vague on purpose. Recognizing "this is worth
-keeping" is the same unscripted recognition as relevance itself, on the write side.
-There is no frequency threshold; an LLM (the codify/analyst loop) makes the call.
-This is why phenomena are authored, not generated: the entire point of an LLM is to
-do the part that can't be scripted.
-
-## Two readers per phenomenon
-
-Authoring a contextual phenomenon means writing for two audiences in one file: the
-**blurb** is retrieval bait for the selector, the **body** is knowledge for the
-playing agent. Different register, same file. See `phenomena/sts1/interactions/`.
+An authored phenomenon is written for two readers in one file: its
+**applies-when** is retrieval bait for the selector (it becomes the phenomenon's
+line in the map), its **body** is what the recognition resolves to — linking the
+situation-tailored heuristics it should bring to mind. Different register, same
+file. Recognitions are how the awareness layer gets filled out: each one teaches
+the selector a situation worth surfacing before the agent thinks to ask.
 
 ## Where the pieces live
 
-- **Praxis (generic):** the `survey`/`recall` verbs, the index format, the select
-  call, the upgrade rule.
-- **Domain (data + thin glue):** the index contents (its phenomena), and handing
-  the selector the domain's live state. For sts1 that state already arrives from
-  CommunicationMod; if raw state is selector-legible (expected), the sts1 `survey`
-  is a one-liner and carries no procedure — the domain-specificity is the index.
+- **Praxis (generic):** the `survey`/`recall` verbs, the map format, the selector
+  call.
+- **Domain (data + thin glue):** the map contents, the live state handed to the
+  selector, and the name-resolution conventions (slug, categories, aliases) its
+  entries follow.
 - **Agent:** sees only the game tools. Calls `survey()` when it wants a menu;
-  `recall()` to pull. Cadence is the agent's choice, not a fixed schedule.
+  `recall()` to pull.
 
 ## Status
 
-Built, not yet validated against a live run. Implementation:
-- `tools/retrieval/build_index.py` — lifts `Applies when:` blurbs into the
-  `<blurb>: <path>` markdown index (incl. the upgrade-rule line); writes
-  `awareness/<domain>/survey-index.md`.
-- `awareness/sts1/survey-index.md` — the committed built index.
-- `tools/retrieval/survey.py` — `survey()` (one selector call via the **`claude`
-  CLI**, `claude -p`, returns paths only), `recall()` (fetch, no link-following),
-  `load_index()`.
-- `games/sts1/cmd.py` — agent-facing `survey()`/`recall()` (thin wrappers; guarded import).
+Validated against live runs. Implementation:
 
-Open: needs the `claude` CLI on PATH (subscription auth) at runtime — not an API
-key; selector prompt + model (`claude-haiku-4-5`) to be tuned against real surveys;
-cadence is the agent's call.
+- `tools/retrieval/build_index.py` — builds the condensed map (slug rule, category
+  order, upgrade rule, auto-detected aliases); writes
+  `awareness/<domain>/survey-index.md`.
+- `awareness/sts1/survey-index.md` — the committed map.
+- `tools/retrieval/survey.py` — the selector call (one `claude -p` invocation,
+  subscription auth, small/fast model; returns handles only) and `load_index()`.
+- `games/sts1/cmd.py` — agent-facing `survey()`/`recall()`; recall implements the
+  map's name resolution (slug, category search, aliases, layers).
+
+Open: selector latency (~10–50s per call via CLI cold start) is acceptable but
+unloved; recall's name resolution should eventually hoist into the generic layer
+so a new domain gets it for free; no authored recognitions exist yet — the first
+one is the real test of the applies-when path through the selector.

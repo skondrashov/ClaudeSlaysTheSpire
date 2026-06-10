@@ -30,10 +30,16 @@ An ontology entry is either correct or incomplete. It can be extended (new ascen
 
 **Derived facts, materialized.**
 
-- Deterministic consequences of composing ontology facts: a resolved upgraded card (base plus its upgrade delta), a worked interaction, an encounter (a composition of enemy entities).
-- **Generated** from ontology, never hand-authored — marked do-not-edit, each carrying a fall-back link to the noumenon it derives from.
+- Materialized derivations from ontology, of two species (see [[retrieval]]):
+  **resolutions** — deterministic compositions (a resolved upgraded card, an
+  encounter roster) — are *generated* by tooling and regenerated rather than
+  edited; **recognitions** — a configuration of things that should bring a
+  particular thought process to mind (a card combo, a dangerous board state) —
+  are *authored*, because neither when they apply nor whether they're worth
+  keeping is derivable from structure.
+- Each carries links back to the noumena it derives from.
 - Materialized only when the derivation is *stable, reused, and error-prone to recompute under time pressure* — the justification heuristics get, applied to facts. The long tail of possible derivations is computed on demand at runtime (working memory), never stored.
-- Still factual, not strategic: a phenomenon says what something *resolves to*, never what to *do* about it.
+- A phenomenon names what a situation *resolves to*; a recognition's body points at the situation-tailored heuristics it should call to mind, rather than restating strategy itself.
 
 Ontology is the generative truth (the noumenon); a phenomenon is its resolved, practical form. The game itself runs this split — a card's class defines base values plus an upgrade transform; the live instance holds the resolved values.
 

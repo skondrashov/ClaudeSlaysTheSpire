@@ -1716,10 +1716,13 @@ def survey() -> str:
 
 
 
-_ONT_CATS = ["cards", "enemies", "bosses", "events", "relics", "potions", "buffs",
-             "debuffs", "encounters", "acts", "characters", "rules", "shop", "types",
-             "ascension"]
-_HEUR_CATS = ["cards", "enemies", "bosses", "events", "relics", "potions", "characters"]
+# Category search order for bare names. MUST match SEARCH_CATEGORIES in
+# tools/retrieval/build_index.py — the committed map documents this order and the
+# selector reads it; a divergence makes recall() resolve differently than promised.
+_ONT_CATS = ["cards", "enemies", "bosses", "relics", "potions", "events", "buffs",
+             "debuffs", "encounters", "rules", "types", "characters", "acts",
+             "ascension", "shop"]
+_HEUR_CATS = ["cards", "enemies", "bosses", "relics", "potions", "events", "characters"]
 
 
 _ALIASES = None
@@ -1752,12 +1755,20 @@ def _load_aliases() -> dict:
     return _ALIASES
 
 
+def _alias_targets(name: str) -> list[tuple[str, str]]:
+    """Alias resolutions for an in-game name as (category, stem) pairs."""
+    return [tuple(t.partition("/")[::2]) for t in _load_aliases().get(name.strip().lower(), [])]
+
+
 def _recall_one(handle: str):
     """Resolve one recall handle -> text, or None. No link-following.
 
     Accepts a repo path, a wiki-style address (`enemies/Gremlin Nob`,
     `layer:heuristics, cards/Bash`, `cards/Bash+`), or a bare name (searched across
     ontology categories; the heuristic needs an explicit `layer:heuristics`).
+    A bare name that exists in several categories returns every match (e.g.
+    "Golden Idol" is both an event and a relic). Aliases (the map's in-game names
+    that don't slug to their file) apply in every layer, not just ontology.
     """
     h = handle.strip()
     first = h.split("/", 1)[0]
@@ -1767,38 +1778,43 @@ def _recall_one(handle: str):
             return open(os.path.join(ROOT, rel), encoding="utf-8").read().strip()
         except OSError:
             return None
-    alias = _load_aliases().get(h.lower())
-    if alias:
-        texts = []
-        for t in alias:                       # t like "enemies/transient"
-            cat, _, stem = t.partition("/")
-            txt = _load_ontology(cat, stem)
-            if txt:
-                texts.append(txt)
-        return "\n\n---\n\n".join(texts) if texts else None
     parsed = _extract_links(f"[[{h}]]")
     if not parsed:
         return None
     layer, cat, name = parsed[0]
     layer = layer or "ontology"
     is_plus = name.endswith("+")
+    if is_plus and layer != "heuristics":      # "Bash+" -> the resolved phenomenon
+        return _load_phenomenon(cat or "cards", name)
+    loader = (_load_heuristic if layer == "heuristics"
+              else _load_phenomenon if layer == "phenomena"
+              else _load_ontology)
     if cat:
-        if is_plus:
-            return _load_phenomenon(cat, name)
-        if layer == "heuristics":
-            return _load_heuristic(cat, name)
-        if layer == "phenomena":
-            return _load_phenomenon(cat, name)
-        return _load_ontology(cat, name)
-    if is_plus:
-        return _load_phenomenon("cards", name)
+        txt = loader(cat, name)
+        if txt:
+            return txt
+        for tcat, stem in _alias_targets(name):    # alias fallback, same category
+            if tcat == cat:
+                txt = loader(cat, stem)
+                if txt:
+                    return txt
+        return None
     cats = _HEUR_CATS if layer == "heuristics" else _ONT_CATS
-    loader = _load_heuristic if layer == "heuristics" else _load_ontology
+    texts = []   # (address, text) — several categories can share a name
     for c in cats:
         e = loader(c, name)
         if e:
-            return e
-    return None
+            texts.append((f"{c}/{name}", e))
+    if not texts:
+        for tcat, stem in _alias_targets(name):
+            e = loader(tcat, stem)
+            if e:
+                texts.append((f"{tcat}/{stem}", e))
+    if not texts:
+        return None
+    if len(texts) == 1:
+        return texts[0][1]
+    return "\n\n---\n\n".join(f"({addr})\n{e}" for addr, e in texts)
 
 
 def recall(*handles: str) -> str:
