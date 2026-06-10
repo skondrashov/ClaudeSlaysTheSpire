@@ -47,6 +47,8 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 
 ## Known Issues
 
+- **The map cannot show which elite is burning.** With the final act unlocked, one elite per act carries the Emerald Key and buffs every monster in its fight (see `ontology/sts1/rules/burning-elite.md`) — but CommunicationMod doesn't expose the flag, so the text map shows all elites identically. If an elite fight opens with an unexpected buff on every enemy (Strength, +25% HP, Metallicize, or Regenerate), it's the burning elite; expect the Emerald Key in its rewards and price the fight higher.
+
 - **Double-end bug (Run 216, confirmed fatal):** Sending `end` when the turn has already ended or is resolving can cause an extra enemy turn. Do NOT send `end` more than once per turn. If using `turn()` batches, include exactly one `"end"` at the end. If using `send()`, call `end()` only once and verify turn state before acting again. The snapshot-based fix in cmd.py addresses card index issues but does not guard against duplicate `end` commands.
 
 ## Card and Enemy References

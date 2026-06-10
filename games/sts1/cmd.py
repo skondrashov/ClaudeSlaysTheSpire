@@ -914,10 +914,21 @@ def _snapshot(raw: dict) -> dict:
         snap["block"] = player.get("block", 0)
         snap["energy"] = player.get("energy", 0)
         snap["hand"] = [c.get("name", "?") for c in combat.get("hand", [])]
+        # Powers included so audits can verify buff/debuff claims — their absence
+        # made a true burning-elite observation unverifiable (audits 228/229).
         snap["enemies"] = [
-            {"name": m.get("name"), "hp": m.get("current_hp"), "intent": m.get("intent")}
+            {k: v for k, v in {
+                "name": monster_name(m), "hp": m.get("current_hp"),
+                "intent": m.get("intent"),
+                "powers": [f"{p.get('name', '?')} {p.get('amount', '')}".strip()
+                           for p in m.get("powers", [])] or None,
+            }.items() if v is not None}
             for m in combat.get("monsters", []) if not m.get("is_gone")
         ]
+        snap["player_powers"] = [
+            f"{p.get('name', '?')} {p.get('amount', '')}".strip()
+            for p in player.get("powers", [])
+        ] or None
         snap["orbs"] = [
             {"name": o.get("name"), "passive": o.get("passive_amount"), "evoke": o.get("evoke_amount")}
             for o in combat.get("orbs", [])
