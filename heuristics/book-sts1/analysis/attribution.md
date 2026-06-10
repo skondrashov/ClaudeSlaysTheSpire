@@ -13,5 +13,6 @@ Ask: "Would this lesson apply in a different fight?" If yes, it doesn't belong o
 - **Boss/enemy heuristics** describe how to fight that enemy
 - **Card/relic heuristics** describe how that card/relic behaves across contexts
 - **Topic heuristics** (combat.md, drafting.md) describe cross-cutting patterns
+- **Disposition errors** — mistakes spread across many small decisions with no single cause (resource hoarding, accepted chip damage, deferred checks) — go to topic files ONLY. They have no entity, which means entity-routed attribution silently drops them; that is exactly how the same disposition survives audit after audit. If the same *kind* of small mistake shows up three times in a run, that kind is the finding.
 
 Don't overcorrect on the fatal fight. Don't put card/relic interaction lessons on boss files — put them on the card or relic.

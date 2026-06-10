@@ -12,6 +12,9 @@ The knowledge cycle can self-reinforce: agent dies without X → analyst writes 
 - **Archetype tunnel vision.** Does one archetype get a paragraph in archetypes.md while others get a sentence? Does the drafting tier list heavily favor one playstyle?
 - **Absolutist language inflation.** "Useful" → "important" → "critical" → "non-negotiable" over successive Curate passes, without new evidence at each step.
 - **Declining variance.** Are recent runs all playing the same strategy? Are card choices becoming more predictable? Narrowing behavior is a symptom.
+- **Emergency-gated disciplines.** Rules that fire only in crisis ("on lethal turns," "below 30%") where the discipline should be an every-turn default. These overfit to the *moment the mistake became visible* instead of the habit that produced it.
+- **One-sided resource warnings.** Warnings against spending with no counterpart against holding. The asymmetry accumulates because failures of waste are vivid single events while failures of hoarding are diffuse — so analysts keep writing the former.
+- **Incident residue.** Specific HP totals, exact damage numbers, and fight-particular details from one run, restated as universal thresholds.
 
 ## Why It Happens
 
@@ -21,7 +24,7 @@ The knowledge cycle can self-reinforce: agent dies without X → analyst writes 
 
 ## How to Detect
 
-- **Count the absolute claims.** Read drafting.md and archetypes.md. How many "MUST," "NEVER," "non-negotiable" claims are there? How many have ≥3 confirming run citations?
+- **Count the absolute claims.** Read drafting.md and archetypes.md. How many "MUST," "NEVER," "non-negotiable" claims are there? For how many does the analyst layer actually hold repeated evidence, or the claim a clean mechanical explanation?
 - **Check the Explore cadence.** When was the last Explore run? If it's been 20+ Win runs since the last experiment, the system is probably overfitting.
 - **Compare win strategies.** Do the 10 wins all use the same archetype? If yes, the system hasn't proven alternatives work — it's proven one thing works and assumed nothing else does.
 - **Look for disconfirming evidence.** Has any run violated a "NEVER" heuristic and survived? If so, the heuristic is overstated.

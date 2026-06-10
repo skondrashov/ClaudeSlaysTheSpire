@@ -143,16 +143,17 @@ Play Shockwave+ on the **FIRST ATTACK TURN** of multi-enemy fights.
 
 ---
 
-## Potion Timing Rule
+## Potion Economy
 
-**Do not hoard potions until death.** Two of three runs in audit 216-218 died with usable potions that would have changed the outcome.
+**Potions are expiring resources; HP is the resource that does not come back.** A potion held to the end of the run was worth zero. A potion that converts unblocked damage to zero converts directly into HP, the scarcest thing in the game. So the default is to DRINK, and it is *holding* that requires justification — not the other way around.
 
-**Trigger for potion evaluation:** If ANY of these conditions are true, evaluate potion use THIS TURN:
-1. **Turn 5+ in a tough fight** (elite, multi-enemy, hard-scaler) and potions are held.
-2. **HP below 30%** in any fight.
-3. **A damage potion would kill an enemy** that is generating status cards (Sentries generating Dazed, enemies applying debuffs). Killing the source earlier prevents compound damage from clogged draws.
-4. **A Strength/damage potion would accelerate a kill by 2+ turns.** Faster kills mean fewer incoming damage turns.
+**The check runs every fight, not just in emergencies.** Before ending any turn where unblocked damage will get through, or where a potion would shorten the fight by a full enemy turn, ask: does a potion close this gap? If yes, the default is to use it. Holding it instead requires naming the specific upcoming fight where it is clearly worth more — a named fight within the next 1-2 floors, not "later." If you cannot name the fight, drink.
 
-**Anti-pattern: "saving for later."** There is no later if you die. A Fire Potion used on Turn 5 to kill a Sentry prevents 3+ turns of Dazed generation and incoming damage. A Strength Potion used mid-fight accelerates kills and reduces total damage taken. The value of a potion in the CURRENT fight is almost always higher than its speculative value in a FUTURE fight.
+**Slot economics:** slots are part of the economy. Combat rewards regularly offer potions, and a full belt forces you to skip them. A potion drunk while your slots are full costs nothing: you were about to be offered its replacement. Err on the side of keeping a slot open. Winning a fight at full slots without drinking anything usually means a future potion was wasted.
 
-**Exception:** Fairy in a Bottle and potions specifically needed for the next boss fight (within 1-2 floors). These may be worth holding. All other potions should be evaluated for immediate use when the trigger conditions are met.
+Situations where drinking is almost always right:
+- A damage potion kills an enemy that is scaling or generating status cards (a Cultist ramping Strength, Sentries adding Dazed). Killing the source early prevents compound damage.
+- A Strength or damage potion removes a full enemy turn from the fight. Fewer enemy turns is the cleanest damage prevention there is.
+- A block potion covers a hit your hand cannot — in ANY fight. Chip damage in an "easy" hallway fight is the same HP as boss damage.
+
+**Exception:** [[potions/Fairy in a Bottle]], and a potion held for a *named* fight within the next 1-2 floors (the boss behind the next door, an elite already routed into). Everything else is evaluated for use in the fight you are in.

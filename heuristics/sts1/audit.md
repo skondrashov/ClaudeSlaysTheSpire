@@ -30,7 +30,7 @@ For each fight, evaluate:
 2. **Intent reading.** Did the player check enemy intents and plan accordingly? Missed an attacker intent = took avoidable damage.
 3. **Card order.** Did draw cards come last in the sequence? Did the player play cards in an order that makes sense (buffs before attacks, block cards on defense turns)?
 4. **Heuristic compliance.** Read the relevant heuristic files for each card played and enemy fought. Did the player follow the guidance? If they deviated, was it justified by the specific situation?
-5. **Potion timing.** Were potions used when they mattered, or hoarded until death? Were potions used wastefully on easy fights?
+5. **Potion economy.** Potions are expiring resources: were they spent to prevent unblocked damage or shorten fights, or held while HP drained? Ending a fight with damage taken AND full potion slots is a flag by default. (The rare opposite error — drinking for no gain when a named harder fight was 1-2 floors away — is also worth a note, but hoarding is the recurring failure, not waste.)
 6. **Lethal awareness.** On turns where the player was at risk of dying, did they recognize it and play accordingly?
 
 ## Non-Combat Decisions
@@ -39,6 +39,12 @@ For each fight, evaluate:
 3. **Shop purchases.** Did the player prioritize correctly (card removal, key relics, key cards)?
 4. **Rest sites.** Upgrade vs rest — was the choice correct given HP and upcoming threats?
 5. **Events.** Did the player look up the event? Did they choose the best option?
+
+## Disposition errors — the pattern with no entity
+
+Some recurring losses are not caused by any one fight, card, or choice: they are a *disposition* spread across many small decisions. Greedy resource play (chip damage accepted to conserve resources, potions hoarded, removes deferred) is the canonical one — each individual decision looks locally fine, and the death two fights later gets attributed to whatever fight it happened in. Per-entity attribution systematically loses these.
+
+So in every audit, after ranking regrets, ask explicitly: **do several small regrets share a shape?** A dozen 2-3 HP leaks with full potion slots is ONE finding (a hoarding disposition), not twelve trivia. Disposition findings go to the topic files ([[combat]], [[hp-management]]), and when flagging them for Curate, say the kind, not just the instances.
 
 ## What You're NOT Doing
 - You are NOT evaluating whether the playbook's strategy is correct. If the heuristic says "prioritize Strength" and you followed it but died anyway, that's a Curate problem, not an Audit problem.
