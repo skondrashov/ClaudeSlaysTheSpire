@@ -18,6 +18,14 @@ import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import threading
 
+# Precise monster display names (id-disambiguated: "Blue Slaver", not "Slaver") —
+# keep the stream labels consistent with what the playing agent sees.
+sys_path_dir = os.path.dirname(os.path.abspath(__file__))
+import sys as _sys
+if sys_path_dir not in _sys.path:
+    _sys.path.insert(0, sys_path_dir)
+from bot.state_formatter import monster_name
+
 try:
     import websockets
     import websockets.server
@@ -329,7 +337,7 @@ async def state_watcher():
                             if combat:
                                 for m in combat.get("monsters", []):
                                     if not m.get("is_gone"):
-                                        monsters.append(m.get("name", "?"))
+                                        monsters.append(monster_name(m))
                             enemy_str = " + ".join(monsters) if monsters else "?"
                             await broadcast({
                                 "type": "feed",
@@ -348,7 +356,7 @@ async def state_watcher():
                         if combat:
                             for m in combat.get("monsters", []):
                                 if not m.get("is_gone"):
-                                    enemies.append({"name": m.get("name"), "hp": m.get("current_hp"), "max_hp": m.get("max_hp"), "intent": m.get("intent")})
+                                    enemies.append({"name": monster_name(m), "hp": m.get("current_hp"), "max_hp": m.get("max_hp"), "intent": m.get("intent")})
                         choices = gs.get("choice_list", [])
 
                         # Deck summary for overlay
