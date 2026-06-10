@@ -824,12 +824,15 @@ def _translate_command(command: str) -> str:
             if 0 <= idx < len(relics):
                 return f"Take {relics[idx].get('name', 'Relic')}"
         elif screen in ("SHOP_ROOM", "SHOP_SCREEN"):
-            cards = ss.get("cards", [])
-            relics = ss.get("relics", [])
-            potions = ss.get("potions", [])
-            if 0 <= idx < len(cards):
-                return f"Buy {cards[idx].get('name', '?')}"
-            # Relics/potions use different indexing in CommunicationMod
+            # Index against CommunicationMod's REAL shop ordering (purge first,
+            # then affordable cards/relics/potions). Translating against the raw
+            # cards array mislabeled purchases by the purge offset and the
+            # affordability filter ("Buy Armaments" while actually buying
+            # Fiend Fire — run 230; "Buy Secret Weapon" → Skill Potion — IB-003).
+            items = _build_shop_choice_list(gs)
+            if 0 <= idx < len(items):
+                cat, name, _item = items[idx]
+                return "Remove Card (purge)" if cat == "purge" else f"Buy {name}"
         elif screen == "EVENT":
             event_name = ss.get("event_name", "")
             options = ss.get("options", [])
