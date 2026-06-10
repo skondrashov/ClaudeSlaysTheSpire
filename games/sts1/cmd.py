@@ -23,7 +23,7 @@ import sys
 import time
 import urllib.request
 
-from bot.state_formatter import format_state, monster_name
+from bot.state_formatter import format_state, monster_name, _build_shop_choice_list
 
 HOST = "127.0.0.1"
 PORT = 19284
@@ -300,6 +300,12 @@ def state() -> str:
     """Get current game state, formatted for reading."""
     global _last_raw_state
     raw = _tcp_request({"type": "state"})
+    if "error" in raw:
+        # A stale queued-command error can shadow a perfectly good state —
+        # retry once and only surface the error if it persists.
+        retry = _tcp_request({"type": "state"})
+        if "error" not in retry:
+            raw = retry
     _last_raw_state = raw
     # Auto-handle mechanical transitions before returning state
     raw = _auto_handle_mechanical(raw)
@@ -325,22 +331,30 @@ def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
     (including dead/gone enemies). This resolves a name to that index.
 
     Returns the index as a string, or None if no match.
+    Raises ValueError when the name matches several living enemies — silently
+    targeting the first match has hit the wrong enemy; the caller must surface
+    the error so the player picks an index.
     """
     name_lower = name_ref.lower()
     # Exact match first — against the precise (id-disambiguated) name the agent
     # sees in the formatted state ("Blue Slaver"), falling back to the raw name.
-    for i, m in enumerate(monsters):
-        if m.get("is_gone"):
-            continue
-        if name_lower in (monster_name(m).lower(), m.get("name", "").lower()):
-            return str(i)
-    # Substring match
-    for i, m in enumerate(monsters):
-        if m.get("is_gone"):
-            continue
-        if name_lower in monster_name(m).lower() or name_lower in m.get("name", "").lower():
-            return str(i)
-    return None
+    matches = [i for i, m in enumerate(monsters) if not m.get("is_gone")
+               and name_lower in (monster_name(m).lower(), m.get("name", "").lower())]
+    if not matches:
+        # Substring match
+        matches = [i for i, m in enumerate(monsters) if not m.get("is_gone")
+                   and (name_lower in monster_name(m).lower()
+                        or name_lower in m.get("name", "").lower())]
+    if not matches:
+        return None
+    if len(matches) > 1:
+        listing = ", ".join(
+            f"[{i}] {monster_name(monsters[i])} "
+            f"{monsters[i].get('current_hp', '?')}/{monsters[i].get('max_hp', '?')}"
+            for i in matches)
+        raise ValueError(
+            f"'{name_ref}' matches {len(matches)} enemies: {listing} — use the index.")
+    return str(matches[0])
 
 
 def _card_identity(card: dict) -> tuple:
@@ -488,7 +502,10 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
             except ValueError:
                 pass
             # Resolve enemy name
-            resolved_target = _resolve_enemy_name(monsters, target_ref)
+            try:
+                resolved_target = _resolve_enemy_name(monsters, target_ref)
+            except ValueError as e:
+                return f"[ERROR] {e}"
             if resolved_target is not None:
                 return f"play {card_idx} {resolved_target}"
         return action  # "play 3" or unresolvable target
@@ -553,7 +570,10 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
         pass
 
     # Resolve enemy name to absolute index
-    resolved_target = _resolve_enemy_name(monsters, remaining)
+    try:
+        resolved_target = _resolve_enemy_name(monsters, remaining)
+    except ValueError as e:
+        return f"[ERROR] {e}"
     if resolved_target is not None:
         return f"play {best_card_idx} {resolved_target}"
 
@@ -561,46 +581,8 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
     return f"play {best_card_idx} {remaining}"
 
 
-def _build_shop_choice_list(gs: dict) -> list[tuple[str, str, dict | None]]:
-    """Build the ordered choice list matching CommunicationMod's getAvailableShopItems().
-
-    CommunicationMod orders shop items as:
-        1. Purge (if available AND affordable)
-        2. Affordable cards (colored then colorless — same order as screen_state)
-        3. Affordable relics
-        4. Affordable potions
-
-    Only items the player can afford appear in the choice list.
-    This matches CommunicationMod's internal indexing for "choose N".
-
-    Returns list of (category, name, item_dict) tuples.
-    """
-    ss = gs.get("screen_state", {})
-    gold = gs.get("gold", 0)
-    cards = ss.get("cards", [])
-    relics = ss.get("relics", [])
-    potions = ss.get("potions", [])
-    purge_available = ss.get("purge_available", False)
-    purge_cost = ss.get("purge_cost", 0)
-
-    items: list[tuple[str, str, dict | None]] = []
-
-    if purge_available and gold >= purge_cost:
-        items.append(("purge", "purge", None))
-
-    for card in cards:
-        if gold >= card.get("price", float("inf")):
-            items.append(("card", card.get("name", ""), card))
-
-    for relic in relics:
-        if gold >= relic.get("price", float("inf")):
-            items.append(("relic", relic.get("name", ""), relic))
-
-    for pot in potions:
-        if gold >= pot.get("price", float("inf")):
-            items.append(("potion", pot.get("name", ""), pot))
-
-    return items
+# _build_shop_choice_list lives in bot.state_formatter (imported above) so the
+# shop display can render the same indices the choose command uses.
 
 
 def _resolve_shop_choose(raw_state: dict, action: str) -> str:
@@ -1347,6 +1329,8 @@ def send(command: str, reason: str = "") -> str:
 
     # Resolve card names to indices using current hand state
     resolved = _resolve_card_name(_last_raw_state, command)
+    if resolved.startswith("[ERROR]"):
+        return resolved  # e.g., ambiguous enemy name — don't execute
     # Resolve card names in choose commands (HAND_SELECT, CARD_REWARD, GRID)
     resolved = _resolve_choose_card_name(_last_raw_state, resolved)
     # Resolve shop card/relic names to indices
@@ -1358,14 +1342,20 @@ def send(command: str, reason: str = "") -> str:
     # misroute; a chest taking the Sapphire Key while the plan said Meal Ticket).
     # The echo makes the selection visible in the very next thing the player reads.
     chose_echo = ""
+    chose_label = ""
     if cmd_verb == "choose":
-        label = _translate_command(resolved)
-        if label and label != resolved:
-            chose_echo = f"[chose: {label}]\n\n"
+        chose_label = _translate_command(resolved)
+        if chose_label and chose_label != resolved:
+            chose_echo = f"[chose: {chose_label}]\n\n"
 
     _post_decision(resolved, reason)
     raw = _tcp_request({"type": "command", "command": resolved})
     _last_raw_state = raw  # Update cache
+
+    # The echo must not claim a choice happened when the command failed.
+    if chose_echo and ("error" in raw
+                       or (raw.get("in_game") and not raw.get("game_state"))):
+        chose_echo = f"[attempted: {chose_label} — command FAILED, see error below]\n\n"
 
     # Auto-handle mechanical transitions (gold, chests, shop wait, intent settle)
     # BEFORE logging — the log must record the state the player actually saw,
@@ -1700,6 +1690,14 @@ def turn(actions: list, reason: str = "") -> str:
         # For names: pass through to _resolve_card_name which handles them correctly.
         resolved_action = _resolve_play_from_snapshot(snapshot_hand, _last_raw_state, action)
         resolved_action = _resolve_card_name(_last_raw_state, resolved_action)
+        if resolved_action.startswith("[ERROR]"):
+            # e.g., ambiguous enemy name — stop without executing
+            stopped_msg = (
+                f"[SEQUENCE STOPPED at action {i + 1}/{total}: "
+                f"{resolved_action.removeprefix('[ERROR]').strip()} "
+                f"Remaining actions skipped.]"
+            )
+            break
 
         # Validate before sending (uses current game state)
         if i > 0:
@@ -1724,6 +1722,17 @@ def turn(actions: list, reason: str = "") -> str:
             # Auto-handle mechanical transitions even on error
             _last_raw_state = _auto_handle_mechanical(_last_raw_state)
             return format_state(_last_raw_state)
+
+        # A choice screen opened mid-batch (potion card choice, Warcry discard,
+        # combat over) — stop cleanly instead of crashing the next action into it.
+        new_screen = (raw.get("game_state") or {}).get("screen_type", "")
+        if (new_screen in ("HAND_SELECT", "GRID", "CARD_REWARD", "COMBAT_REWARD")
+                and i < total - 1):
+            stopped_msg = (
+                f"[SEQUENCE STOPPED after action {i + 1}/{total}: {new_screen} opened — "
+                f"resolve it with choose/proceed, then continue with send()]"
+            )
+            break
 
         # Detect draw: if we played a card but hand size didn't shrink, cards were drawn.
         # Stop the sequence so the player can see the new cards and re-plan.
@@ -1795,6 +1804,9 @@ def _resolve_map_choose(gs: dict, command: str) -> str:
     arg = " ".join(parts[1:]).strip().lower()
     nodes = gs.get("screen_state", {}).get("next_nodes", [])
     if not nodes:
+        # Pre-boss floor: the boss is the only (unlisted) choice at index 0.
+        if arg == "boss":
+            return "choose 0"
         return command
     try:
         int(arg)
@@ -2037,9 +2049,17 @@ def deck() -> str:
     with costs and upgrade status.
     """
     global _last_raw_state
+    prev_raw = _last_raw_state
     _last_raw_state = _tcp_request({"type": "state"})
-    gs = _last_raw_state.get("game_state", {})
+    gs = _last_raw_state.get("game_state") or {}
     cards = gs.get("deck", [])
+
+    # Some screens (e.g., GRID) omit the deck — fall back to the last known one.
+    note = ""
+    if not cards and prev_raw:
+        cards = (prev_raw.get("game_state") or {}).get("deck", [])
+        if cards:
+            note = " (as of last state)"
 
     if not cards:
         return "[No deck found — are you in a run?]"
@@ -2050,11 +2070,14 @@ def deck() -> str:
         ctype = c.get("type", "UNKNOWN").upper()
         name = c.get("name", "?")
         cost = c.get("cost", "?")
-        upgraded = c.get("upgrades", 0) > 0
-        display = f"{name}+" if upgraded else name
+        upgrades = c.get("upgrades", 0)
+        # Some payloads already include '+' in the name — don't double it.
+        display = name
+        if upgrades > 0 and "+" not in name:
+            display = f"{name}+{upgrades}" if upgrades > 1 else f"{name}+"
         groups.setdefault(ctype, []).append(f"  {display} ({cost}E)")
 
-    lines = [f"=== DECK ({len(cards)} cards) ==="]
+    lines = [f"=== DECK ({len(cards)} cards){note} ==="]
     for gtype in ["ATTACK", "SKILL", "POWER", "CURSE", "STATUS"]:
         group = groups.get(gtype, [])
         if group:
