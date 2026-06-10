@@ -14,7 +14,7 @@
 
 1. AOE damage (Immolate+ is the best card)
 2. Strength scaling (Spot Weakness+, [[cards/Inflame]], Limit Break, Heavy Blade)
-3. Enter at 70%+ HP (ideally full). Combined incoming is 20-32/turn.
+3. HP for an expected 30-50 HP fight (combined incoming is 20-32/turn over 6-10 turns) — run the ledger before the pre-boss rest site decision
 4. Block density for 6-10 turns
 5. Potions: [[potions/Snecko Oil]] Turn 1, [[potions/Duplication Potion]] on 0-cost Immolate+, [[potions/Strength Potion]] compounds with Limit Break
 

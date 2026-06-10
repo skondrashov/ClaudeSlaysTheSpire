@@ -15,6 +15,7 @@ The knowledge cycle can self-reinforce: agent dies without X → analyst writes 
 - **Emergency-gated disciplines.** Rules that fire only in crisis ("on lethal turns," "below 30%") where the discipline should be an every-turn default. These overfit to the *moment the mistake became visible* instead of the habit that produced it.
 - **One-sided resource warnings.** Warnings against spending with no counterpart against holding. The asymmetry accumulates because failures of waste are vivid single events while failures of hoarding are diffuse — so analysts keep writing the former.
 - **Incident residue.** Specific HP totals, exact damage numbers, and fight-particular details from one run, restated as universal thresholds.
+- **Death-proximity rules.** Rules written about the state adjacent to a failure ("enter above X%") rather than the upstream decisions that produced that state. They correlate with failure by construction — proximity — and so always look validated, while preventing nothing. The tell: the rule could only ever fire after the mistake was already made.
 
 ## Why It Happens
 

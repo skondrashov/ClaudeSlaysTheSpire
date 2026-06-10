@@ -46,6 +46,8 @@ Some recurring losses are not caused by any one fight, card, or choice: they are
 
 So in every audit, after ranking regrets, ask explicitly: **do several small regrets share a shape?** A dozen 2-3 HP leaks with full potion slots is ONE finding (a hoarding disposition), not twelve trivia. Disposition findings go to the topic files ([[combat]], [[hp-management]]), and when flagging them for Curate, say the kind, not just the instances.
 
+And when a death IS the finding: the state immediately before it is the least informative place to write the lesson. Low HP at the death fight is the residue of upstream regrets, not a regret itself — walk the win% trajectory backward to where the HP actually went, and attribute there. Never flag "entered the fight too low" as the root cause; flag whatever made the player low.
+
 ## What You're NOT Doing
 - You are NOT evaluating whether the playbook's strategy is correct. If the heuristic says "prioritize Strength" and you followed it but died anyway, that's a Curate problem, not an Audit problem.
 - You are NOT rewriting heuristics. Flag issues; don't fix them.

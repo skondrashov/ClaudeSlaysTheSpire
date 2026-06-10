@@ -2,7 +2,7 @@
 
 **Core rule:** This is a DPS race against escalating damage. Must have either [[cards/Demon Form]] ([[buffs/Strength]] scaling) or [[cards/Barricade]] + [[cards/Body Slam]] (block scaling). Without either engine, the fight is unwinnable.
 
-**HP Threshold:** Enter above 60% HP. The fight lasts 10+ turns with increasing damage. Entering at low HP is unsurvivable: even surviving 10 turns, the escalating damage outpaces your block and an exhausted Reaper leaves no survival path.
+**Expected cost:** at the top of the Act 3 elite range even played well. The fight lasts 10+ turns with escalating damage, so the cost is governed by kill speed — a slow deck pays a multiple of this; price it by your turns-to-kill before routing in. If the race runs long, the escalating damage outpaces your block and an exhausted Reaper leaves no recovery path.
 
 ## Strategy (Ironclad)
 
@@ -28,4 +28,3 @@ Barricade + [[cards/Corruption]] + FNP + Entrench + Body Slam defeats Giant Head
 - Delay Demon Form past Turn 2-3
 - Fail to use offensive potions before the kill window closes — leaving a [[potions/Strength Potion]] or [[potions/Explosive Potion]] unused while the kill falls a few damage short loses the fight
 - Play purely defensively without damage scaling
-- Enter below 60% HP

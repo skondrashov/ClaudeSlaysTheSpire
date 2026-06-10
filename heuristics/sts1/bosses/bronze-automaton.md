@@ -1,10 +1,10 @@
 # Bronze Automaton
 
-**Core rule:** Enter at 70%+ HP (target; 60% is the absolute floor). Use ONLY non-exhausting debuffs ([[cards/Bash]], [[cards/Thunderclap]]) for [[buffs/Artifact]] stripping. SAVE exhausting [[debuffs/Weak]] sources ([[cards/Intimidate]], [[cards/Shockwave]]) for Hyper Beam survival. Basic Defends cannot survive Hyper Beam.
+**Core rule:** Use ONLY non-exhausting debuffs ([[cards/Bash]], [[cards/Thunderclap]]) for [[buffs/Artifact]] stripping. SAVE exhausting [[debuffs/Weak]] sources ([[cards/Intimidate]], [[cards/Shockwave]]) for Hyper Beam survival. Basic Defends cannot survive Hyper Beam.
 
 ## Preparation Checklist
 
-1. Enter at 70%+ HP
+1. HP for an expected 30-50 HP fight, with Hyper Beam (45 base, 57+ the second time) as the single largest spike — run the ledger before the pre-boss rest site decision
 2. Artifact strippers (non-exhausting): Thunderclap, Bash+. Need 3+ applications.
 3. Weak source saved for Hyper Beam: Intimidate, Shockwave+, or [[potions/Weak Potion]]
 4. Block scaling: [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], [[cards/Ghostly Armor]] (basic Defends are NOT enough)
@@ -24,7 +24,6 @@
 
 - Use Intimidate or Shockwave for Artifact stripping (they exhaust -- save for Hyper Beam)
 - Play Impervious on non-Hyper-Beam turns when Hyper Beam is approaching
-- Enter below 60% HP (the absolute floor; target 70%+)
 - Enter without block scaling beyond basic Defends
 - Rely on a single irreplaceable card (Stasis will steal something)
 - Take [[relics/Runic Dome]] (cannot predict Hyper Beam timing without intent visibility)
@@ -32,7 +31,7 @@
 
 ## Dark Shackles Interaction
 
-Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block on top. [[cards/Dark Shackles]] + Metallicize + Ghostly Armor + 2 Defends = ~31 block vs reduced Hyper Beam = survivable at 70%+ HP.
+Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block on top. [[cards/Dark Shackles]] + Metallicize + Ghostly Armor + 2 Defends = ~31 block vs reduced Hyper Beam — enough to cover the spike.
 
 ## Character Matchups
 
@@ -46,7 +45,7 @@ Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block o
 
 **Dangers:**
 - **Hyper Beam in Wrath = 90+ damage (45 base x2).** If caught in Wrath with no block and no Intangible, Hyper Beam is instantly lethal at any HP total. NEVER end a turn in Wrath when Hyper Beam is possible unless Intangible is active.
-- **Reduced Max HP + Hyper Beam.** If the Watcher took Council of Ghosts (-Max HP for Apparitions), absolute HP is low (often 36-40). Hyper Beam at 45 base is lethal from full HP without block or Intangible. The 70% HP entry threshold means nothing when Max HP is 36 — calculate absolute survival instead.
+- **Reduced Max HP + Hyper Beam.** If the Watcher took Council of Ghosts (-Max HP for Apparitions), absolute HP is low (often 36-40). Hyper Beam at 45 base is lethal from full HP without block or Intangible. Run the ledger in absolute HP against the 45-damage spike — percentages mean nothing when Max HP is 36.
 - **Artifact does NOT affect stance changes.** Artifact blocks debuffs, not stance mechanics. Wrath/Calm cycling works normally.
 - **Distilled Chaos is uniquely dangerous here** — a randomly played turn-ender against Hyper Beam means 0 block against 90+ doubled damage. See [[layer:heuristics, characters/Watcher]].
 

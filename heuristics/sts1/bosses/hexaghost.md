@@ -5,7 +5,7 @@
 ## Preparation Checklist (must have at least 3 of 4)
 
 1. **Weak source** ([[cards/Shockwave]], [[cards/Clothesline]], [[cards/Intimidate]], [[potions/Weak Potion]]) -- reduces all damage by 25%. Inferno scales with accumulated [[buffs/Strength]] from [[cards/Inflame]] turns (first Inferno: 24 at A0, 30 at A4; second Inferno: 36 at A0, 42 at A4). Without Weak, this damage must be blocked outright. Highest-value survival prep — but Weak keeps you alive without winning the fight; kill speed can substitute (see What Works).
-2. **HP above 70%** OR [[relics/Pantograph]] relic
+2. **HP for an expected 30-50 HP fight** (run the ledger before the final rest site decision) OR [[relics/Pantograph]] relic
 3. **Passive block** ([[cards/Metallicize]], [[cards/Flame Barrier]]) OR [[cards/Impervious]] for the Inferno turn
 4. **Burns management** OR damage scaling to end the fight before Burns overwhelm
 
@@ -39,7 +39,6 @@ Priority order:
 
 ## What NOT to Do
 
-- Enter below 70% HP without Pantograph
 - Fight without Burns management OR damage scaling (Weak alone keeps you alive but does not win the fight — Burns accumulate until the death spiral)
 - Play [[cards/Brutality]] (Burns + Brutality self-damage = death spiral)
 - Play [[cards/Berserk]] (self-[[debuffs/Vulnerable]] + Inferno = death)
@@ -51,4 +50,4 @@ Priority order:
 
 **[[characters/Silent]]:** No native Burns management. Only solution is kill speed: poison scaling ([[cards/Deadly Poison]] + [[cards/Catalyst]], [[cards/Noxious Fumes]]) or [[cards/Shiv]] burst with amplifiers ([[cards/Accuracy]], [[cards/Terror]]). Save [[cards/Piercing Wail]] for Inferno (do NOT spend on [[enemies/Gremlin Nob]]). Save [[cards/Crippling Cloud]] for Inferno turn (Weak is worth more than 4 poison). [[cards/Masterful Stab]] is a trap (cost increases with Burns chip damage).
 
-**[[characters/Watcher]]:** Enter Wrath ONLY on free/debuff turns (Inflame intent). Do NOT enter Wrath on Turn 2 (Divider would be doubled = instant death). [[cards/Wave of the Hand]] for Weak on Inferno. Kill speed target: 9-11 turns via Wrath burst. [[cards/Judgment]] finishes at 30-40 HP remaining. Entry at 50%+ HP minimum.
+**[[characters/Watcher]]:** Enter Wrath ONLY on free/debuff turns (Inflame intent). Do NOT enter Wrath on Turn 2 (Divider would be doubled = instant death). [[cards/Wave of the Hand]] for Weak on Inferno. Kill speed target: 9-11 turns via Wrath burst. [[cards/Judgment]] finishes at 30-40 HP remaining.

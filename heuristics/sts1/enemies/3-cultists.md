@@ -2,7 +2,7 @@
 
 **THIS IS THE MOST LETHAL HALLWAY FIGHT IN THE GAME.** Triple +3 Str/turn scaling kills decks that enter even at comfortable-looking HP.
 
-**Core rule:** Enter with 60%+ HP -- strongly preferred, because the fight can spiral even from above half HP. Kill one [[enemies/Cultist]] ASAP to reduce scaling by 33%.
+**Expected cost:** among the most expensive hallway fights in the act even played well — and it scales: triple Ritual means a slow deck pays a multiple of this; price it by your turns-to-kill before routing in. Kill one [[enemies/Cultist]] ASAP to reduce scaling by 33%.
 
 ## Strategy
 
@@ -26,7 +26,6 @@
 
 ## What to Avoid
 
-- Entering below 60% HP
 - Delaying Shockwave+ past the first attack turn
 - Spreading damage across all 3 instead of focus-firing
 - Relying solely on slow scaling (Demon Form) without fast burst

@@ -17,7 +17,7 @@ The single biggest strategic failure: entering [[acts/Act 2]] without a healing 
 
 **Reaper alone is NOT sufficient.** Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. Multiple healing sources are required. **Aim for TWO healing sources by early Act 2.**
 
-**Sozu boss relic risk:** [[relics/Sozu]] (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. Taking Sozu with no healing card forces repeated rests in Act 2 (sacrificing upgrades) and still enters the boss far below the 70% HP threshold — an unwinnable position.
+**Sozu boss relic risk:** [[relics/Sozu]] (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. Taking Sozu with no healing card forces repeated rests in Act 2 (sacrificing upgrades) and still arrives at the boss without the HP to pay its expected 30-50 HP cost — the ledger doesn't clear.
 
 ---
 
@@ -211,6 +211,6 @@ Activate by Floor 17 if no healing card has been acquired. Do not wait until HP 
 2. **Event healing:** [[events/The Cleric]] heals. [[events/Big Fish]] offers healing. [[events/Woman in Blue]] sells potions. Prioritize these events.
 3. **Path through more rest sites:** Without healing cards, rest sites become the primary healing source. Accept fewer upgrades. Degraded strategy but better than dying.
 4. **Potion management:** Healing potions are still expiring resources — drink them whenever they convert into real HP saved (a hard fight, unblocked damage about to land). Holding one requires naming the specific upcoming fight it is for; see Potion Economy in [[layer:heuristics, combat]].
-5. **Conservative pathing:** Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.
+5. **Conservative pathing:** Take safer paths, skip elites after Floor 15, and avoid Unknown rooms when the ledger can't absorb a full hallway fight (they resolve as combat ~50% of the time).
 
 The absence of healing cards does NOT mean the run is lost. It means Full Block discipline becomes even more critical and map pathing must be more conservative.

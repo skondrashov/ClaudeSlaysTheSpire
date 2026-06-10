@@ -2,7 +2,7 @@
 
 **Core rule:** Deliberate card counting is mandatory. Before playing any card, know the exact count (e.g., "9/12"). Plan your turn around the count. Play high-impact cards, minimize card count per turn.
 
-**HP Threshold:** Enter at 50%+ HP (target; 40% is the absolute floor). The fight is long (10-15 turns) with escalating damage from [[debuffs/Time Warp]] Str stacks.
+**Expected cost:** 30-50 HP played well. The fight is long (10-15 turns) with escalating damage from [[debuffs/Time Warp]] Str stacks, so a slow deck pays the top of the range and beyond — run the ledger before the final rest site decision.
 
 ## Strategy
 
@@ -33,7 +33,6 @@ Time Eater heals to 50% HP (228 at A0) once when its HP first drops to or below 
 
 - Play many small cards per turn without purpose (accelerates Time Warp with low damage output)
 - Exhaust [[cards/Impervious]] early (save for high-damage turns after Str stacks)
-- Enter below 40% HP (the absolute floor)
 - Waste Malaise on [[buffs/Artifact]] stripping (use [[cards/Neutralize]] for that)
 - Lose track of the 12-card count
 - Use [[cards/Fiend Fire]] early with defensive tools in hand — in a 10-15 turn fight, exhausted defense is gone when Str stacks peak; see [[layer:heuristics, cards/Fiend Fire]]

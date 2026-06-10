@@ -2,7 +2,7 @@
 
 **Core rule:** Each hit must exceed 14 to make progress ([[buffs/Plated Armor]] absorbs 14 per attack). [[debuffs/Vulnerable]] and a large-hit damage engine are critical.
 
-**Benchmark:** At 13 damage/turn over 8+ turns, expect 100+ total incoming damage. Do NOT enter below 40% HP.
+**Benchmark:** At 13 damage/turn over 8+ turns, expect 100+ total incoming damage. **Expected cost:** 40-50 HP without a large-hit damage engine; an engine shortens the fight by several turns and cuts the cost with it — price it by your turns-to-kill.
 
 ## Strategy
 
@@ -24,7 +24,6 @@ Without scaling, each attack must overcome 14 Plated Armor before dealing real d
 
 - Small multi-hit attacks ([[cards/Whirlwind]] with low energy)
 - Decks that rely on chip damage
-- Entering below 40% HP
 
 ## Paired With Fungi Beast
 

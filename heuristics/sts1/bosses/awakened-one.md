@@ -45,7 +45,7 @@ Sludge adds [[cards/Void]] to the deck, which drains 1 Energy when drawn. Multip
 2. Block density (Impervious, Leg Sweep, Backflip)
 3. Weak application (Neutralize, Leg Sweep)
 4. Sustain vs Regenerate 10 (Catalyst+ on poison, or high Str + multi-hit)
-5. Enter at 70%+ HP (budget Phase 1 to end at ~55-60% HP)
+5. HP for an expected 30-50 HP fight — run the ledger before the final rest site decision, and budget Phase 1 to end with enough cushion for Dark Echo's 40 (see Phase 2 HP Conservation)
 
 ## Deck Building
 
