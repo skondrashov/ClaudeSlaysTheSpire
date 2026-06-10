@@ -1781,6 +1781,10 @@ def _recall_one(handle: str):
             return open(os.path.join(ROOT, rel), encoding="utf-8").read().strip()
         except OSError:
             return None
+    # The map's "Ascension N -> ascension/aN" rule ("Ascension 9" -> ascension/a9).
+    m = re.fullmatch(r"(?i)ascension\s+(\d+)", h)
+    if m:
+        return _load_ontology("ascension", f"a{m.group(1)}")
     parsed = _extract_links(f"[[{h}]]")
     if not parsed:
         return None

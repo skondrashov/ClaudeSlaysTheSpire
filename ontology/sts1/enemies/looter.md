@@ -12,7 +12,7 @@ Turns 1-2: Mug (10 damage + steals gold). Turn 3+: 50% Lunge (12 damage) or 50% 
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Mug | 10 | Steals gold |
+| Mug | 10 | Steals gold (theft happens even if the attack is fully blocked) |
 | Lunge | 12 | -- |
 | Smoke Bomb | -- | Gains 6 Block |
 | Escape | -- | Flees combat with stolen gold |
