@@ -2,7 +2,7 @@
 
 Most AI game-playing projects train on thousands of games. This one is trying something different: build a structured knowledge base that an AI agent reads, reasons over, and writes back to — the way a human would use notes, guides, and post-game analysis.
 
-The knowledge lives in two layers: **ontology** (facts about the game) and **heuristics** (strategy for navigating it). The agent is ephemeral — it spawns, plays, and disappears. The knowledge web is what persists and accumulates.
+The knowledge lives in layers: **ontology** (facts about the game), **phenomena** (derived facts, generated from the ontology), **heuristics** (strategy for navigating it), and **goals** (the agent's operating modes). The two that carry most of the weight are ontology and heuristics. The agent is ephemeral — it spawns, plays, and disappears. The knowledge web is what persists and accumulates.
 
 ---
 
@@ -16,7 +16,7 @@ Facts about the game. What exists, how it behaves, how things relate to each oth
 - "The draw pile reshuffles from the discard pile when empty."
 - "Gremlin Nob gains 2 Strength whenever the player plays a Skill card."
 
-A correct ontological entry never needs revision — only extension. The aspiration is completeness: know everything about how the game works. 731 entries and counting.
+A correct ontological entry never needs revision — only extension. The aspiration is completeness: know everything about how the game works. Over a thousand entries and counting.
 
 ### Heuristics — how to navigate it
 
@@ -72,7 +72,7 @@ The agent isn't playing blind, and it isn't running on pure instinct. It's readi
 
 ### What's browsable here
 
-**Ontology** — the complete factual database of the game. Every card, enemy, relic, potion, event, boss, buff, debuff, encounter, and game rule. 731 entries. Browse it like a wiki.
+**Ontology** — the complete factual database of the game. Every card, enemy, relic, potion, event, boss, buff, debuff, encounter, and game rule. Browse it like a wiki.
 
 **Heuristics** — strategic guidance organized in parallel. How to fight each enemy, when to play each card, which relics to prioritize. Accumulated from gameplay and analysis. These are the opinions — they might be wrong, and they'll improve over time.
 

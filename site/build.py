@@ -856,6 +856,7 @@ TWITCH_CHANNEL = "ClaudeSlaysTheSpire"
 def page(title, content, active=""):
     nav_items = [
         ("index.html", "Home"),
+        ("philosophy.html", "Philosophy"),
         ("goals.html", "Goals"),
         ("ontology.html", "Ontology"),
         ("phenomena.html", "Phenomena"),
@@ -871,7 +872,7 @@ def page(title, content, active=""):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{html.escape(title)} — Claude Slays the Spire</title>
+<title>{html.escape(title)} &middot; Claude Slays the Spire</title>
 <script async src="https://plausible.io/js/pa-DmrspWebBN8Lfq1qPfK3Z.js"></script>
 <script>window.plausible=window.plausible||function(){{(plausible.q=plausible.q||[]).push(arguments)}},plausible.init=plausible.init||function(i){{plausible.o=i||{{}}}};plausible.init()</script>
 <style>{STYLES}</style>
@@ -1057,16 +1058,17 @@ def build_landing(ont_categories, heur_categories, run_stats):
 <div class="state-details">
   <div class="state-card">
     <h3>System</h3>
-    <p><strong>Model:</strong> Claude Opus 4.6 via Claude Code</p>
+    <p><strong>Model:</strong> Claude Fable 5 via Claude Code</p>
     <p><strong>Character:</strong> {char_name}, Ascension {run_stats.get('best_ascension', 0)}</p>
     <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
   </div>
   <div class="state-card">
     <h3>The Approach</h3>
-    <p>The agent maintains a structured <a href="knowledge-system.html">knowledge system</a> split into
-    <a href="ontology.html">ontology</a> (facts about the game) and
-    <a href="heuristics.html">heuristics</a> (strategy for navigating it).
-    It reads, reasons, plays, and writes back what it learns.</p>
+    <p>The agent reads from a structured <a href="knowledge-system.html">knowledge system</a>:
+    <a href="ontology.html">ontology</a> (facts about the game),
+    <a href="phenomena.html">phenomena</a> (derived facts, generated from the ontology), and
+    <a href="heuristics.html">heuristics</a> (strategy, graded by results).
+    Playing agents only read; analysis sessions write the lessons back.</p>
   </div>
 </div>
 """
@@ -1082,20 +1084,24 @@ def build_landing(ont_categories, heur_categories, run_stats):
             continue
         _dn = _char_names[_cls]
         _w = _s["wins"] if _s else 0
-        _bf = _s["best_floor"] if _s else 0
-        if _w > 0:
-            _jcards.append(
-                '<div class="journey-card completed">'
-                '<div class="journey-badge">A0 COMPLETE</div>'
-                f'<div class="journey-name">{_dn}</div>'
-                f'<div class="journey-stats">{_w} wins &middot; Best floor {_bf}</div>'
-                '</div>')
-        elif _cur:
+        _runs = _s["runs"] if _s else 0
+        _wins_label = f"{_w} win" + ("s" if _w != 1 else "")
+        if _cur:
+            # The current class shows as NOW PLAYING even if it has past wins —
+            # an A0-complete badge alone hides that an A5 attempt is underway.
+            _extra = f" &middot; {_wins_label} at A0" if _w > 0 else ""
             _jcards.append(
                 '<div class="journey-card active">'
                 '<div class="journey-badge">NOW PLAYING</div>'
                 f'<div class="journey-name">{_dn}</div>'
-                f'<div class="journey-stats">Ascension {run_stats.get("best_ascension", 0)}</div>'
+                f'<div class="journey-stats">Ascension {run_stats.get("best_ascension", 0)}{_extra}</div>'
+                '</div>')
+        elif _w > 0:
+            _jcards.append(
+                '<div class="journey-card completed">'
+                '<div class="journey-badge">A0 COMPLETE</div>'
+                f'<div class="journey-name">{_dn}</div>'
+                f'<div class="journey-stats">{_wins_label} &middot; {_runs} runs</div>'
                 '</div>')
     journey_html = ""
     if _jcards:
@@ -1106,15 +1112,35 @@ def build_landing(ont_categories, heur_categories, run_stats):
 <div style="margin-bottom: 40px;">
 <p>
 Claude plays <a href="https://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>,
-makes decisions one at a time with explicit reasoning, and reviews its own runs to figure out what
-went wrong. No hardcoded strategy. Everything it knows is recorded in a structured
-knowledge system called <a href="ontology-praxis.html">Praxis</a> that grows over time.
+one decision at a time, with its reasoning written out at every step. There is no hardcoded
+strategy and no fine-tuning. Everything Claude knows about the game lives in a structured
+knowledge system called <a href="ontology-praxis.html">Praxis</a>, and all of it is browsable here.
 </p>
 
 <p>
-The <a href="ontology.html">Ontology</a> is the complete factual database &mdash; every
-card, enemy, relic, and mechanic. The <a href="heuristics.html">Heuristics</a> are strategic
-guidance accumulated from gameplay. The <a href="changelog.html">Changelog</a> shows what changed and when.
+The project is less about Slay the Spire than about how an LLM can learn. When a person learns
+a game, they do not play ten thousand matches and let the statistics settle. They read, they
+take notes, they go over their losses, and they come back with a corrected understanding of how
+the game works and what they should be doing in it. This project gives Claude that loop. A
+playing agent makes decisions and leaves behind a record of every one. Analysis sessions read
+that record, work out which decisions were wrong and why, and write the lessons into the
+knowledge system: facts about the game into the <a href="ontology.html">ontology</a>, advice
+about how to play into the <a href="heuristics.html">heuristics</a>. The next run reads the
+improved knowledge. The agents themselves are ephemeral. The knowledge is what accumulates,
+and the <a href="changelog.html">changelog</a> shows it accumulating.
+</p>
+
+<p>
+The split between facts and strategy is deliberate. A fact about the game is either correct or
+incomplete, and once correct it never needs to change, so facts can be composed and built on
+indefinitely. Strategy is provisional by nature: it is graded by how the runs actually go, and
+it gets rewritten when it turns out to be wrong. A heuristic is a conclusion the model caches
+because it could not reliably re-derive it in the middle of a fight, which means every
+heuristic is also an admission of a reasoning gap. As models improve, heuristics should become
+unnecessary and fall away, while the ontology keeps its value. The longer aim is transfer: to
+find out whether this way of organizing and building knowledge works for the next game, with
+none of the Slay the Spire content carried over. The <a href="philosophy.html">philosophy
+page</a> covers what that experiment is trying to establish.
 </p>
 </div>
 """
@@ -1131,19 +1157,19 @@ guidance accumulated from gameplay. The <a href="changelog.html">Changelog</a> s
     # Ontology card
     sections_html += f"""<div class="category-card ontology-card"><a href="ontology.html">
   <h3>Ontology</h3>
-  <div class="count">{ont_entries} game entries &mdash; facts</div>
+  <div class="count">{ont_entries} game entries &middot; facts</div>
 </a></div>\n"""
 
     # Phenomena card
     sections_html += f"""<div class="category-card phenomena-card"><a href="phenomena.html">
   <h3>Phenomena</h3>
-  <div class="count">Derived facts &mdash; generated</div>
+  <div class="count">Derived facts &middot; generated</div>
 </a></div>\n"""
 
     # Heuristics card
     sections_html += f"""<div class="category-card heuristics-card"><a href="heuristics.html">
   <h3>Heuristics</h3>
-  <div class="count">{heur_entries} game entries &mdash; strategy</div>
+  <div class="count">{heur_entries} game entries &middot; strategy</div>
 </a></div>\n"""
 
     sections_html += "</div>\n"
@@ -1438,6 +1464,21 @@ def build(strict=False):
     index_body = build_landing(ont_sts1["categories"], heur_sts1["categories"], run_stats)
     (OUT / "index.html").write_text(page("Home", index_body, "Home"), encoding="utf-8")
     total_pages += 1
+
+    # ── Static doc pages (site/*.md) ──
+    # philosophy.md is the project's purpose statement; knowledge-system.html is
+    # linked from the landing page. Both previously 404'd — the .md files existed
+    # but were never built.
+    for md_stem, doc_title, nav_name in (
+        ("philosophy", "Philosophy", "Philosophy"),
+        ("knowledge-system", "The Knowledge System", ""),
+    ):
+        md_path = ROOT / "site" / f"{md_stem}.md"
+        if md_path.exists():
+            doc_body = md_to_html(md_path.read_text(encoding="utf-8"))
+            (OUT / f"{md_stem}.html").write_text(
+                page(doc_title, doc_body, nav_name), encoding="utf-8")
+            total_pages += 1
 
     # ── Build all sections (ontology, heuristics, goals) ──
     for section, nodes in all_sections.items():
