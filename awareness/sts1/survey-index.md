@@ -16,4 +16,3 @@ Gremlin Leader + 2 Gremlins: encounters/gremlin-leader
 Reptomancer + 2 Daggers: encounters/reptomancer
 The Corrupt Heart: bosses/corrupt-heart
 The Transient: enemies/transient
-Louse: enemies/red-louse | enemies/green-louse   (ambiguous — pull both)

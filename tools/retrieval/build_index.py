@@ -24,11 +24,11 @@ SEARCH_CATEGORIES = ["cards", "enemies", "bosses", "relics", "potions", "events"
                      "buffs", "debuffs", "encounters", "rules", "types",
                      "characters", "acts", "ascension", "shop"]
 
-# Generic in-game display names that don't map 1:1 to a file (the state under-reports
-# the variant). Hand-maintained — the game shows these, the ontology splits them.
-GENERIC_ALIASES = {
-    "Louse": ["enemies/red-louse", "enemies/green-louse"],
-}
+# NO hand-maintained alias dict: every alias in the map is auto-detected
+# (title-slug != filename), so regenerating keeps it true. Display-name ambiguity
+# (the game showing "Louse"/"Slaver" for two different variants) is a PERCEPTION
+# problem — the state formatter disambiguates via monster id
+# (games/sts1/bot/state_formatter.py) so knowledge never sees an ambiguous name.
 
 
 def slug(s: str) -> str:
@@ -80,8 +80,6 @@ def build_index(domain: str) -> str:
     lines.append("## aliases (in-game name -> entry)")
     lines.append("Ascension N: ascension/aN   (e.g. \"Ascension 15\" -> ascension/a15)")
     lines.extend(sorted(aliases))
-    for name, targets in sorted(GENERIC_ALIASES.items()):
-        lines.append(f"{name}: {' | '.join(targets)}   (ambiguous — pull both)")
     return "\n".join(lines) + "\n"
 
 

@@ -23,7 +23,7 @@ import sys
 import time
 import urllib.request
 
-from bot.state_formatter import format_state
+from bot.state_formatter import format_state, monster_name
 
 HOST = "127.0.0.1"
 PORT = 19284
@@ -325,17 +325,18 @@ def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
     Returns the index as a string, or None if no match.
     """
     name_lower = name_ref.lower()
-    # Exact match first
+    # Exact match first — against the precise (id-disambiguated) name the agent
+    # sees in the formatted state ("Blue Slaver"), falling back to the raw name.
     for i, m in enumerate(monsters):
         if m.get("is_gone"):
             continue
-        if m.get("name", "").lower() == name_lower:
+        if name_lower in (monster_name(m).lower(), m.get("name", "").lower()):
             return str(i)
     # Substring match
     for i, m in enumerate(monsters):
         if m.get("is_gone"):
             continue
-        if name_lower in m.get("name", "").lower():
+        if name_lower in monster_name(m).lower() or name_lower in m.get("name", "").lower():
             return str(i)
     return None
 
