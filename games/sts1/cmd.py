@@ -306,7 +306,7 @@ def state() -> str:
         retry = _tcp_request({"type": "state"})
         if "error" not in retry:
             raw = retry
-    _last_raw_state = raw
+    _remember(raw)
     # Auto-handle mechanical transitions before returning state
     raw = _auto_handle_mechanical(raw)
     return format_state(raw)
@@ -316,12 +316,34 @@ def state_raw() -> dict:
     """Get current game state as raw dict."""
     global _last_raw_state
     raw = _tcp_request({"type": "state"})
-    _last_raw_state = raw
+    _remember(raw)
     return raw
 
 
 # Cached state for translating commands to readable text
 _last_raw_state = None
+
+
+def _healthy_state(raw) -> bool:
+    """A response safe to cache: a real in-game state, or a real out-of-game
+    state. Error dicts and transient relay acks ({"status":"ok","note":"command
+    sent, state pending"}) are NOT healthy — caching one poisons name->index
+    resolution for every subsequent command (a poisoned cache produced a
+    zero-cards-played turn that lost a run)."""
+    if not isinstance(raw, dict) or "error" in raw:
+        return False
+    if "game_state" in raw:
+        return True
+    return raw.get("in_game") is False and "available_commands" in raw
+
+
+def _remember(raw):
+    """Update the cached state ONLY when the response is healthy; always
+    returns the response unchanged so callers can still inspect errors."""
+    global _last_raw_state
+    if _healthy_state(raw):
+        _remember(raw)
+    return raw
 
 
 def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
@@ -1242,7 +1264,7 @@ def send(command: str, reason: str = "") -> str:
         )
     # Fetch pre-command state so translation has current hand/enemies
     global _last_raw_state
-    _last_raw_state = _tcp_request({"type": "state"})
+    _remember(_tcp_request({"type": "state"}))
 
     # Guard: prevent proceed on BOSS_REWARD (must choose a relic first)
     gs = _last_raw_state.get("game_state") or {}
@@ -1320,6 +1342,16 @@ def send(command: str, reason: str = "") -> str:
     else:
         _hand_select_snapshot = None  # Clear when leaving HAND_SELECT
 
+    # Guard: cancel/skip on a GRID selection screen has frozen CommunicationMod
+    # (states stop flowing; required killing and relaunching the game). Refuse it.
+    if cmd_verb in ("return", "cancel", "skip") and screen == "GRID":
+        return (
+            "[ERROR] cancel/skip on a card-selection grid can FREEZE the game "
+            "(confirmed — required a full game restart). Complete the selection "
+            "instead: choose <index> the required number of times, then proceed "
+            "if a confirm is needed."
+        )
+
     # MAP screens: support choosing by node type or x-coordinate, and resolve to
     # an index locally. Blind 'choose N' misroutes have decided runs.
     if cmd_verb == "choose" and screen == "MAP":
@@ -1350,7 +1382,7 @@ def send(command: str, reason: str = "") -> str:
 
     _post_decision(resolved, reason)
     raw = _tcp_request({"type": "command", "command": resolved})
-    _last_raw_state = raw  # Update cache
+    _remember(raw)  # Update cache (healthy responses only)
 
     # The echo must not claim a choice happened when the command failed.
     if chose_echo and ("error" in raw
@@ -1388,7 +1420,7 @@ def _auto_collect_gold(raw: dict) -> dict:
             break
         # Pick up the gold — always beneficial, never a trade-off.
         raw = _tcp_request({"type": "command", "command": f"choose {gold_idx}"})
-        _last_raw_state = raw
+        _remember(raw)
         if not raw.get("in_game"):
             return raw
         gs = raw.get("game_state", {})
@@ -1422,7 +1454,7 @@ def _auto_wait_shop_screen(raw: dict) -> dict:
     for _ in range(15):
         time.sleep(0.2)
         raw = _tcp_request({"type": "state"})
-        _last_raw_state = raw
+        _remember(raw)
         if not raw.get("in_game"):
             return raw
         gs = raw.get("game_state", {})
@@ -1450,7 +1482,7 @@ def _auto_open_chest(raw: dict) -> dict:
         return raw
     # Send "choose 0" which corresponds to "open"
     raw = _tcp_request({"type": "command", "command": "choose 0"})
-    _last_raw_state = raw
+    _remember(raw)
     return raw
 
 
@@ -1478,7 +1510,7 @@ def _settle_debug_intents(raw: dict) -> dict:
         if not isinstance(nxt, dict) or "game_state" not in nxt:
             break                       # wait unsupported/errored — keep what we have
         raw = nxt
-        _last_raw_state = raw
+        _remember(raw)
         if not _has_debug(raw):
             break
     _log_event({"type": "settle_intents", "tries": tries,
@@ -1650,7 +1682,7 @@ def turn(actions: list, reason: str = "") -> str:
 
     # Fetch pre-turn state for translation and snapshot
     global _last_raw_state
-    _last_raw_state = _tcp_request({"type": "state"})
+    _remember(_tcp_request({"type": "state"}))
 
     # Snapshot the hand at turn start for index stability.
     # When the agent says "play 3 0", it means "the card I see at position 3."
@@ -1717,10 +1749,10 @@ def turn(actions: list, reason: str = "") -> str:
         pre_hand_size = len(pre_combat.get("hand", [])) if pre_combat else None
 
         raw = _tcp_request({"type": "command", "command": resolved_action.strip()})
-        _last_raw_state = raw
+        _remember(raw)
         if "error" in raw:
             # Auto-handle mechanical transitions even on error
-            _last_raw_state = _auto_handle_mechanical(_last_raw_state)
+            _remember(_auto_handle_mechanical(_last_raw_state))
             return format_state(_last_raw_state)
 
         # A choice screen opened mid-batch (potion card choice, Warcry discard,
@@ -1759,7 +1791,7 @@ def turn(actions: list, reason: str = "") -> str:
     _check_game_over(_last_raw_state)
 
     # Auto-handle mechanical transitions after the turn completes
-    _last_raw_state = _auto_handle_mechanical(_last_raw_state)
+    _remember(_auto_handle_mechanical(_last_raw_state))
 
     formatted = format_state(_last_raw_state)
     if stopped_msg:
@@ -1857,12 +1889,26 @@ def skip(reason: str = "Skipping") -> str:
     return send("return", reason=reason)
 
 
-def potion_use(slot: int, target: int = None, reason: str = "") -> str:
-    """Use a potion. reason= is REQUIRED.
+def potion_use(slot, target: int = None, reason: str = "") -> str:
+    """Use a potion by SLOT NUMBER or by NAME. reason= is REQUIRED.
 
+    Prefer names: slots renumber after every drink, so two `potion_use(0)` calls
+    in a row hit different potions. A name resolves against the live belt.
     Automatically strips target for non-targeted potions (Block Potion, etc.)
     to prevent silent CommunicationMod failures.
     """
+    global _last_raw_state
+    if isinstance(slot, str) and not slot.isdigit():
+        fresh = _remember(_tcp_request({"type": "state"}))
+        potions = (fresh.get("game_state") or {}).get("potions", []) if _healthy_state(fresh) else []
+        matches = [i for i, p in enumerate(potions)
+                   if slot.lower() in p.get("name", "").lower() and p.get("id") != "Potion Slot"]
+        if len(matches) != 1:
+            belt = ", ".join(f"[{i}] {p.get('name', '?')}" for i, p in enumerate(potions))
+            return (f"[ERROR] potion name '{slot}' matched {len(matches)} potions. "
+                    f"Belt: {belt or '(unreadable)'} — use the slot number.")
+        slot = matches[0]
+    slot = int(slot)
     # Check if this potion actually requires a target
     if target is not None and _last_raw_state:
         potions = (_last_raw_state.get("game_state") or {}).get("potions", [])
@@ -2050,7 +2096,7 @@ def deck() -> str:
     """
     global _last_raw_state
     prev_raw = _last_raw_state
-    _last_raw_state = _tcp_request({"type": "state"})
+    _remember(_tcp_request({"type": "state"}))
     gs = _last_raw_state.get("game_state") or {}
     cards = gs.get("deck", [])
 
@@ -2130,8 +2176,30 @@ def think(reasoning: str, label: str = "Strategy") -> str:
     return f"[Reasoning posted to stream: {label}]"
 
 
+_SAVES_DIR = os.path.join("C:\\", "Program Files (x86)", "Steam", "steamapps", "common", "SlayTheSpire", "saves")
+_start_save_warned = False
+
+
 def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> str:
-    """Start a new run."""
+    """Start a new run.
+
+    GUARDED: CommunicationMod's start silently DESTROYS any existing save for
+    that character (there is no resume verb — a run in progress nearly got lost
+    twice this way). If a save exists, the first call refuses; calling start
+    again confirms you really want to abandon it.
+    """
+    global _start_save_warned
+    saves = [os.path.join(_SAVES_DIR, f"{character.upper()}{ext}")
+             for ext in (".autosave", ".autosaveBETA")]
+    if any(os.path.exists(s) for s in saves) and not _start_save_warned:
+        _start_save_warned = True
+        return (
+            f"[WARNING] A save for {character.upper()} exists — starting a new run "
+            f"DESTROYS it, and there is no resume command.\n"
+            f"If a run seems to be in progress, STOP and report to the orchestrator.\n"
+            f"If you intend to abandon it, call start again to confirm."
+        )
+    _start_save_warned = False
     cmd = f"start {character}"
     if ascension > 0:
         cmd += f" {ascension}"

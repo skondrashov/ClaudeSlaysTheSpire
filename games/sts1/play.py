@@ -75,9 +75,10 @@ if __name__ == "__main__":
     elif cmd == "deck":
         print(deck())
     elif cmd == "potion_use":
-        # potion_use <slot> [target] [reason] — target is optional, so a non-numeric
-        # second arg is the reason (non-targeted potions previously crashed on int()).
-        idx = int(args[0]) if args else 0
+        # potion_use <slot-or-name> [target] [reason] — slot may be a potion NAME
+        # (slots renumber after each drink; names are stable). Target optional, so
+        # a non-numeric second arg is the reason.
+        idx = args[0] if args else 0   # cmd.potion_use resolves names itself
         target = None
         reason = "using potion"
         if len(args) > 1:

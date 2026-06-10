@@ -28,7 +28,7 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 | `choose(option)` | Choose an option by index or name. On MAP screens prefer names: `choose("rest")`, `choose("elite")`, `choose("x=3")` — an ambiguous or wrong name errors with the labeled node list instead of misrouting. Every choose response begins with `[chose: ...]` naming what was actually selected — READ IT; if it isn't what your plan named, deal with it immediately. |
 | `proceed()` | Confirm / proceed / continue. |
 | `skip()` | Skip / cancel / leave. |
-| `potion_use(slot, target)` | Use a potion from a slot at a target. |
+| `potion_use(slot_or_name, target)` | Use a potion. **Prefer the potion's NAME** — slots renumber after every drink, so two `potion_use(0)` calls in a row hit different potions. |
 | `potion_discard(slot)` | Discard a potion from a slot. |
 | `start(character, ascension)` | Start a new run with the given character and ascension level. |
 
