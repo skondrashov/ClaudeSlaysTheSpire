@@ -1324,12 +1324,31 @@ def send(command: str, reason: str = "") -> str:
     else:
         _hand_select_snapshot = None  # Clear when leaving HAND_SELECT
 
+    # MAP screens: support choosing by node type or x-coordinate, and resolve to
+    # an index locally. Blind 'choose N' misroutes have decided runs.
+    if cmd_verb == "choose" and screen == "MAP":
+        command = _resolve_map_choose(gs, command)
+        if command.startswith("[ERROR]"):
+            return command
+
     # Resolve card names to indices using current hand state
     resolved = _resolve_card_name(_last_raw_state, command)
     # Resolve card names in choose commands (HAND_SELECT, CARD_REWARD, GRID)
     resolved = _resolve_choose_card_name(_last_raw_state, resolved)
     # Resolve shop card/relic names to indices
     resolved = _resolve_shop_choose(_last_raw_state, resolved)
+
+    # Resolve what a choose actually selects BEFORE executing, and echo it at the
+    # top of the response. Two consecutive runs were decided by an unverified
+    # 'choose N' picking something other than what the reasoning named (a map
+    # misroute; a chest taking the Sapphire Key while the plan said Meal Ticket).
+    # The echo makes the selection visible in the very next thing the player reads.
+    chose_echo = ""
+    if cmd_verb == "choose":
+        label = _translate_command(resolved)
+        if label and label != resolved:
+            chose_echo = f"[chose: {label}]\n\n"
+
     _post_decision(resolved, reason)
     raw = _tcp_request({"type": "command", "command": resolved})
     _last_raw_state = raw  # Update cache
@@ -1339,7 +1358,7 @@ def send(command: str, reason: str = "") -> str:
     # Auto-handle mechanical transitions (gold, chests, shop wait)
     raw = _auto_handle_mechanical(raw)
 
-    return format_state(raw)
+    return chose_echo + format_state(raw)
 
 
 def _auto_collect_gold(raw: dict) -> dict:
@@ -1648,6 +1667,59 @@ def play(card, target: int = None, reason: str = "") -> str:
 def end(reason: str = "End turn") -> str:
     """End turn."""
     return send("end", reason=reason)
+
+
+_MAP_NODE_NAMES = {"M": "monster", "?": "unknown", "$": "shop",
+                   "E": "elite", "R": "rest", "T": "treasure", "B": "boss"}
+
+
+def _resolve_map_choose(gs: dict, command: str) -> str:
+    """On MAP screens, resolve 'choose <type|x=N|index>' to 'choose <index>'.
+
+    Numeric indices pass through (the post-send echo names what they picked).
+    Type names ('choose rest', 'choose elite') and coordinates ('choose x=3')
+    resolve locally; an ambiguous or unknown name errors with the labeled node
+    list instead of guessing — a blind misroute loses runs.
+    """
+    parts = command.strip().split()
+    if len(parts) < 2:
+        return command
+    arg = " ".join(parts[1:]).strip().lower()
+    nodes = gs.get("screen_state", {}).get("next_nodes", [])
+    if not nodes:
+        return command
+    try:
+        int(arg)
+        return command                      # numeric — pass through, echo covers it
+    except ValueError:
+        pass
+
+    def options_list():
+        return "\n".join(
+            f"  [{i}] {_MAP_NODE_NAMES.get(n.get('symbol', '?'), n.get('symbol', '?'))} (x={n.get('x', '?')})"
+            for i, n in enumerate(nodes))
+
+    m = re.fullmatch(r"x\s*=?\s*(\d+)", arg)
+    if m:
+        x = int(m.group(1))
+        hits = [i for i, n in enumerate(nodes) if n.get("x") == x]
+    else:
+        wanted = {"rest": "R", "rest site": "R", "campfire": "R", "monster": "M",
+                  "fight": "M", "unknown": "?", "event": "?", "shop": "$",
+                  "store": "$", "elite": "E", "treasure": "T", "chest": "T",
+                  "boss": "B"}.get(arg)
+        if wanted is None:
+            return (f"[ERROR] '{arg}' is not a map node type. Available paths:\n"
+                    f"{options_list()}\n"
+                    f"Use: choose <index>, choose <type> (rest/monster/elite/shop/"
+                    f"unknown/treasure/boss), or choose x=<N>.")
+        hits = [i for i, n in enumerate(nodes) if n.get("symbol") == wanted]
+    if len(hits) == 1:
+        return f"choose {hits[0]}"
+    if not hits:
+        return (f"[ERROR] no '{arg}' node among the available paths:\n{options_list()}")
+    return (f"[ERROR] '{arg}' is ambiguous — {len(hits)} matching nodes. "
+            f"Use choose x=<N>:\n{options_list()}")
 
 
 def choose(option, reason: str = "") -> str:

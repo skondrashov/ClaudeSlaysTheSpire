@@ -25,7 +25,7 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 | `turn([actions], reason="...")` | Execute a full combat turn as a batch of actions. Each action is a string like `"play Bash 0"` or `"end"`. |
 | `play(card, target)` | Play a card at a target. Card is 1-indexed or name. Target is 0-indexed enemy. |
 | `end()` | End the current turn. |
-| `choose(option)` | Choose an option by index or name. |
+| `choose(option)` | Choose an option by index or name. On MAP screens prefer names: `choose("rest")`, `choose("elite")`, `choose("x=3")` — an ambiguous or wrong name errors with the labeled node list instead of misrouting. Every choose response begins with `[chose: ...]` naming what was actually selected — READ IT; if it isn't what your plan named, deal with it immediately. |
 | `proceed()` | Confirm / proceed / continue. |
 | `skip()` | Skip / cancel / leave. |
 | `potion_use(slot, target)` | Use a potion from a slot at a target. |

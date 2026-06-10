@@ -391,7 +391,9 @@ def format_map(gs: dict) -> str:
     if boss:
         lines.append(f"  BOSS: {boss.get('name', '?')}")
 
-    lines.append("\nUse: choose <index> to pick a path")
+    lines.append("\nUse: choose <type> (rest/monster/elite/shop/unknown/treasure/boss), "
+                 "choose x=<N>, or choose <index>. The response echoes [chose: ...] — "
+                 "verify it matches your plan before acting further.")
     return "\n".join(lines)
 
 
