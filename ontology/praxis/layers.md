@@ -49,7 +49,7 @@ Ontology is the generative truth (the noumenon); a phenomenon is its resolved, p
 
 - Strategy, decisions, priorities, warnings, algorithms
 - Provisional — every heuristic is a current best guess that may be updated
-- Evidence-grounded — claims cite observed outcomes
+- Evidence-grounded — grounded in observed outcomes; the evidence itself stays with the analyst, the claim carries only matching confidence (conditional vs absolute language), never a citation
 - Conditional — good heuristics specify when they apply AND when they don't
 - Actionable — every sentence should help make a specific decision
 
