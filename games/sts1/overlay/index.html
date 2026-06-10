@@ -603,7 +603,7 @@
           <div class="knowledge-item"><span id="pb-events">-</span> events</div>
           <div class="knowledge-item"><span id="pb-relics">-</span> relics</div>
           <div class="knowledge-item"><span id="pb-potions">-</span> potions</div>
-          <div class="knowledge-item"><span id="pb-combos">-</span> combos</div>
+          <div class="knowledge-item"><span id="pb-upgrades">-</span> upgrades</div>
         </div>
       </div>
       <div class="tile run-history-tile">
@@ -696,9 +696,9 @@
               el.textContent = total || '-';
             }
           }
-          // Phenomena: authored interaction/combo entries (the new layer)
-          const comboEl = document.getElementById('pb-combos');
-          if (comboEl) comboEl.textContent = phen.interactions || '-';
+          // Phenomena: resolved upgraded cards (generated layer)
+          const upEl = document.getElementById('pb-upgrades');
+          if (upEl) upEl.textContent = phen.cards || '-';
         })
         .catch(() => {});
     }
@@ -877,6 +877,9 @@
 
       ws.onopen = () => {
         reconnectDelay = 1000;
+        // The server replays the whole persisted action feed on (re)connect —
+        // clear the existing entries so a stream.py restart doesn't duplicate them.
+        document.getElementById('actionFeed').innerHTML = '';
       };
 
       ws.onmessage = (e) => {

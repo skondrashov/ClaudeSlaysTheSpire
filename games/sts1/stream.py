@@ -95,6 +95,24 @@ def _save_live_state():
 
 run_stats = _load_stats()
 
+# Run numbers come from analyst/runs/run_NNN.json (cmd.py is the authority and
+# numbers by max existing file + 1). total_runs in run_stats counts runs but has
+# migration gaps, so total_runs+1 displays the WRONG number (e.g. 190 vs 227).
+ANALYST_RUNS_DIR = os.path.join(os.path.dirname(__file__), "analyst", "runs")
+
+
+def _next_run_number() -> int:
+    """The number the in-progress run will get — mirrors cmd._get_next_run_number."""
+    try:
+        nums = []
+        for name in os.listdir(ANALYST_RUNS_DIR):
+            m = re.fullmatch(r"run_(\d+)\.json", name)
+            if m:
+                nums.append(int(m.group(1)))
+        return max(nums) + 1 if nums else 1
+    except OSError:
+        return run_stats.get("total_runs", 0) + 1
+
 
 def _archive_run(run_number: int, victory: bool, floor: int, cls: str):
     """Archive current run's event log to data/runs/run_NNN.jsonl.
@@ -261,7 +279,7 @@ async def state_watcher():
                             await broadcast({
                                 "type": "run_start",
                                 "class": cls,
-                                "run_number": run_stats.get("total_runs", 0) + 1,
+                                "run_number": _next_run_number(),
                             })
                             await _broadcast_stats()
 
