@@ -42,7 +42,7 @@ The Watcher's stance dance engine is single-target focused and uniquely vulnerab
 - Use Calm energy bonus (+2E from leaving Calm) to play through Slimed cards (1E each) while still having energy for real cards.
 - Consider pathing to avoid Slime Boss if possible (take an alternate path if the map offers one).
 
-**Confirmed fatal: Run 194 (F16)** -- Small deck + Slimed flooding = engine collapse. Could not draw stance-change cards reliably.
+**The failure mode:** Small deck + Slimed flooding = engine collapse. You cannot draw stance-change cards reliably, and the fight is lost.
 
 ## Confirmed Winning Approach (Ironclad)
 

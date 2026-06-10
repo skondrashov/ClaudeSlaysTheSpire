@@ -2,7 +2,7 @@
 
 All Skills become free but one-time-use. Extremely powerful but fundamentally changes deck economy.
 
-**Setup cost trap:** At 3E unupgraded, Turn 1 leaves ZERO energy for blocking. Against multi-enemy fights, unblocked damage can be 20+ and fatal. Safe to play when: (1) enemy is buffing/defending, (2) you have 4+ energy, (3) HP absorbs the hit, (4) upgraded to 2E.
+**Setup cost trap:** At 3E unupgraded, Turn 1 leaves ZERO energy for blocking. Against multi-enemy fights, that leaves you taking 20+ unblocked damage, enough to kill you. Safe to play when: (1) enemy is buffing/defending, (2) you have 4+ energy, (3) HP absorbs the hit, (4) upgraded to 2E.
 
 **Upgrade priority:** HIGH. 3E->2E makes the difference between blocking and not on the setup turn.
 

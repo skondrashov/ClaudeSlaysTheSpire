@@ -21,7 +21,7 @@ One file per game entity (card, enemy, boss, relic, event, potion). Describes ho
 Cross-cutting strategic documents covering a whole domain. These are the most valuable files in the system:
 - `combat.md` — Full block algorithm, arithmetic checklist, potion timing
 - `drafting.md` — Tier lists, healing priority, readiness checklists, gap-filling
-- `archetypes.md` — Proven winning deck formulas with run citations
+- `archetypes.md` — Proven winning deck formulas
 - `map.md` — Routing, elite targeting, act transitions
 
 ### Coverage gaps are mostly intentional
@@ -35,7 +35,8 @@ Straightforward entities (Strike, Defend) and rare entities may never need heuri
 ## Properties
 
 - **Provisional.** Every heuristic is a current best guess. It can be wrong. It gets updated when evidence contradicts it.
-- **Evidence-grounded.** Claims cite run numbers. "NEVER use Fiend Fire against Thorns enemies — confirmed Run 182 death."
+- **Evidence-grounded — evidence lives in the analyst layer.** A heuristic is grounded in observed gameplay, but it never cites a run number or labels an outcome "fatal." It states the lesson and its confidence; the run logs, audits, and win/loss record that justify it stay in the analyst layer. Express stakes in game terms — what damage you take, when HP reaches 0 — not as a verdict on a past run. So: "Don't play Fiend Fire while the enemy has Thorns — it exhausts your whole hand and each card triggers Thorns, often for lethal damage," NOT "NEVER use Fiend Fire vs Thorns — confirmed Run 182 death."
 - **Conditional.** Good heuristics specify when they apply and when they don't. "ALWAYS rest below 40% HP... UNLESS the upgrade is Bash+ and no boss in 3 floors."
 - **Actionable.** Every sentence should help make a decision. "Be careful with Fiend Fire" is not actionable. Specific conditions and outcomes are.
 - **Honest about uncertainty.** "I think" when evidence is thin, not "clearly."
+- **Game-only (no meta).** Same rule as ontology (see `ontology.md` → Game-only): no run numbers, no win/loss record, no "fatal"/outcome labels, no file paths or layer/structure references, no verification provenance. A heuristic says what to DO in the game and why — the evidence behind it lives in the analyst layer, not in the prose.

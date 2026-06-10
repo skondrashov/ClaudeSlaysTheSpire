@@ -4,7 +4,7 @@ Mass debuff. One of the most powerful cards in the game. Exhausts but returns to
 
 **When to play:** Play on the FIRST ATTACK TURN of multi-enemy fights. For 3 Cultists, that is turn 2. For Slavers, that is turn 1. Never save for turn 4+ -- preventing damage with early [[debuffs/Weak]] far exceeds healing from [[cards/Reaper]]. Never hold for "a harder fight" -- exhaust resets between fights.
 
-**Critical:** After Shockwave (2E), the remaining 1E MUST go to block at critical HP, NOT damage. Confirmed fatal: Shockwave + [[cards/Pommel Strike]] instead of Shockwave + Defend at 19 HP vs Slavers resulted in Turn 1 death.
+**Critical:** After Shockwave (2E), the remaining 1E MUST go to block at critical HP, NOT damage. Playing Shockwave + [[cards/Pommel Strike]] instead of Shockwave + Defend at 19 HP vs Slavers leaves you unblocked and dead on Turn 1.
 
 **Upgrade priority:** High. 2->3 turns of each debuff is 50% more duration.
 

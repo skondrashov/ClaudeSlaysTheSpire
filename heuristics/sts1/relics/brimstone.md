@@ -1,6 +1,6 @@
 # Brimstone
 
-**Run-defining relic.** +2 Str/combat to both you and all enemies. Turns every fight into a DPS race. When acquired early (Run 219, Floor 5), Brimstone carried damage scaling for the entire run -- by mid-Act 2, the player had 10+ Str, making Strikes deal 16+ and [[cards/Heavy Blade]]+ deal 50-100+. Confirmed as the primary damage engine in the first Ironclad A5 victory.
+**Run-defining relic.** +2 Str/combat to both you and all enemies. Turns every fight into a DPS race. When acquired early (e.g. Floor 5), Brimstone carries damage scaling for the entire run -- by mid-Act 2, Str reaches 10+, making Strikes deal 16+ and [[cards/Heavy Blade]]+ deal 50-100+. It can serve as the primary damage engine for an entire Ironclad run.
 
 WHEN TO TAKE: Almost always correct for Ironclad, especially with [[cards/Reaper]] (more Str = more healing per Reaper hit). Best purchased early for maximum compounding. Pairs well with [[debuffs/Weak]] application ([[cards/Bash]], [[cards/Thunderclap]], [[cards/Shockwave]]) to offset enemy [[buffs/Strength]] gains.
 

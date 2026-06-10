@@ -26,12 +26,12 @@ When you detect overfitting:
 
 - **Contradictions.** Do two heuristic files give conflicting advice? (e.g., one card entry says "always play early" while the combat heuristic says "save for later turns")
 - **Ontology/heuristic bleed.** Are ontology files (facts) leaking strategic advice? Are heuristic files stating facts that belong in ontology?
-- **Stale entries.** Are there heuristic entries that reference outdated information, old run numbers, or strategies that have been superseded?
+- **Stale entries.** Are there heuristic entries that reference outdated information or strategies that have been superseded?
 
 ### 4. Quality
 
-- **Evidence grounding.** Does each heuristic claim cite evidence (run numbers, confirmed kills, observed mechanics)? Unsupported claims should be flagged or demoted.
-- **Actionability.** Can the player actually use this guidance? "Be careful with Fiend Fire" is not actionable. "NEVER use Fiend Fire against Thorns enemies — confirmed Run 182 death" is.
+- **Evidence grounding.** Does each heuristic claim's language strength match the evidence held in the analyst layer (run logs, audits, statistics)? Absolute language ("NEVER", "ALWAYS") needs strong analyst-side evidence; thin evidence gets conditional language ("usually", "I think"). The evidence itself stays in the analyst layer — a heuristic never cites a run number or labels an outcome "fatal". Overclaimed entries should be softened or demoted.
+- **Actionability.** Can the player actually use this guidance? "Be careful with Fiend Fire" is not actionable. "NEVER use Fiend Fire against Thorns enemies — each hit triggers Thorns and the self-damage can kill you" is.
 - **Signal-to-noise.** Are entries concise? Every sentence should help the player make a decision. History, caveats, and edge cases that don't change behavior should be trimmed.
 - **Formatting.** Are entries structurally consistent? Do they follow the patterns established in the category?
 
@@ -45,7 +45,7 @@ The big picture:
 ## Editing Rules
 
 ### What you CAN edit directly
-- **Remove clearly wrong claims** (contradicted by evidence, with cited run numbers)
+- **Remove clearly wrong claims** (contradicted by analyst-layer evidence — run logs, audits)
 - **Soften absolutist language** when evidence is thin ("non-negotiable" → "strongly preferred", "always" → "usually")
 - **Fix contradictions** between files
 - **Formatting and structural cleanup**

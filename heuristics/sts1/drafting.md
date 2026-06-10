@@ -6,7 +6,7 @@ Card evaluation and deck construction heuristics for [[characters/Ironclad]]. Ev
 
 ## Healing Card Priority (THE CRITICAL GAP)
 
-The single biggest strategic failure across 50 runs: entering [[acts/Act 2]] without a healing card. [[relics/Burning Blood]] (+6/fight) heals 6% of max HP per fight. Act 2 fights drain 25-50 HP. The math does not work.
+The single biggest strategic failure: entering [[acts/Act 2]] without a healing card. [[relics/Burning Blood]] (+6/fight) heals 6% of max HP per fight. Act 2 fights drain 25-50 HP. The math does not work.
 
 **Card reward priority when offered a healing card:**
 - **[[cards/Reaper]]: TAKE IT.** Even over good damage/block cards. Best card in the game for Ironclad.
@@ -17,7 +17,7 @@ The single biggest strategic failure across 50 runs: entering [[acts/Act 2]] wit
 
 **Reaper alone is NOT sufficient.** Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. Multiple healing sources are required. **Minimum TWO healing sources by Act 2 Floor 5.**
 
-**Sozu boss relic risk:** [[relics/Sozu]] (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. **Confirmed fatal in Run 217:** took Sozu with no healing card, forced 5 rests in Act 2, entered boss at 51% HP (threshold 70%), died.
+**Sozu boss relic risk:** [[relics/Sozu]] (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. Taking Sozu with no healing card forces repeated rests in Act 2 (sacrificing upgrades) and still enters the boss far below the 70% HP threshold — an unwinnable position.
 
 ---
 
@@ -26,8 +26,8 @@ The single biggest strategic failure across 50 runs: entering [[acts/Act 2]] wit
 Verify by Floor 15. ALL FOUR criteria or die in Act 2:
 
 1. **Damage scaling** -- the deck needs SOME way to outpace enemy block and HP growth. Two valid paths:
-   - **Strength path:** [[cards/Inflame]], [[cards/Spot Weakness]] (front-loaded). NOT [[cards/Demon Form]] alone (too slow for hallway fights, confirmed in 2+ deaths). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).
-   - **Exhaust/Block path (under investigation):** [[cards/Corruption]] + [[cards/Feel No Pain]] (+ [[cards/Body Slam]] for damage conversion). This engine may generate block and damage without Strength — Run 187 won with it as the primary engine (with supplementary Str from Spot Weakness + Red Skull). Whether it works WITHOUT any Str sources is being tested (see exploration directives).
+   - **Strength path:** [[cards/Inflame]], [[cards/Spot Weakness]] (front-loaded). NOT [[cards/Demon Form]] alone (too slow for hallway fights — its Strength ramps over several turns, so early fights get no benefit). Demon Form fills the boss scaling role but does NOT satisfy this criterion. Without front-loaded Str, Reaper healing is also ineffective (Reaper needs Str on the turn it is played, not 3 turns later).
+   - **Exhaust/Block path (under investigation):** [[cards/Corruption]] + [[cards/Feel No Pain]] (+ [[cards/Body Slam]] for damage conversion). This engine can generate block and damage without Strength as the primary engine (with supplementary Str from Spot Weakness + Red Skull). Whether it works WITHOUT any Str sources is being tested (see exploration directives).
 2. **AOE damage** -- [[cards/Thunderclap]], [[cards/Cleave]], [[cards/Immolate]], [[cards/Whirlwind]]. Required for [[enemies/Gremlin Leader]] (gremlins re-summon), 3 Cultists (hard-scaler, kill speed matters), [[bosses/Slime Boss]] split.
 3. **Healing beyond Burning Blood** -- Reaper, Feed, potions/relics. Burning Blood (+6/fight) cannot offset 30-50 HP Act 2 fights.
 4. **Block scaling beyond basic Defends** -- [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], or [[cards/Corruption]] + [[cards/Feel No Pain]] (FNP generates block on every exhaust). Basic Defends provide only 20 block from a full hand of 4. Act 2 boss Hyper Beam deals 45-57 damage. Even late Act 2 hallway fights ([[enemies/Book of Stabbing]] turn 5: 6x6=36) outscale basic Defends.
@@ -134,7 +134,7 @@ A mediocre card that fills a gap is better than a strong card that duplicates wh
 2. [[cards/Barricade]] -- block persists, so the engine snowballs. Not required early but completes the engine.
 3. [[cards/Entrench]] -- doubles accumulated block. With Barricade, this is exponential growth.
 
-These paths are not mutually exclusive. Run 187 won with Corruption+FNP primary and Spot Weakness secondary. Run 104 won with the full Barricade+Corruption+FNP+Body Slam engine. Both winning runs ALSO had Strength sources. Whether the exhaust/block engine can win purely on its own (without any Str) is being tested — see exploration directives. What IS clear: a deck cannot survive without SOME scaling path.
+These paths are not mutually exclusive. A Corruption+FNP primary with Spot Weakness secondary can win, as can the full Barricade+Corruption+FNP+Body Slam engine. Both of those winning configurations ALSO had Strength sources. Whether the exhaust/block engine can win purely on its own (without any Str) is being tested — see exploration directives. What IS clear: a deck cannot survive without SOME scaling path.
 
 **Card reward priority when the deck has NO scaling path:**
 Inflame > Spot Weakness > Corruption (if FNP available or likely) > Feel No Pain (if Corruption available or likely) > Limit Break (with Str source) > anything.
@@ -178,7 +178,7 @@ Single-purpose cards (Strike, Defend) are the weakest cards in the deck. When ch
 
 ## 3-Cost Power Setup Trap
 
-[[cards/Corruption]] (3E), Barricade (3E), Demon Form (3E) consume ALL energy on a 3-energy turn. Playing them on Turn 1 against attacking enemies leaves zero energy for block. Two deaths confirmed from this pattern.
+[[cards/Corruption]] (3E), Barricade (3E), Demon Form (3E) consume ALL energy on a 3-energy turn. Playing them on Turn 1 against attacking enemies leaves zero energy for block — you take the full hit unblocked.
 
 **Only play 3E Powers when:**
 - Enemy is buffing/defending (free turn with no incoming damage)

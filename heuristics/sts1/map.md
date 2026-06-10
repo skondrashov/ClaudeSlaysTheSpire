@@ -26,15 +26,15 @@ Relics are the primary driver of run strength. Every winning formula was built o
 
 - **Act 2 route must include a non-combat room in the first 2-3 floors.** The first Act 2 hallway fight can be 3 Byrds (50-73 HP drain), [[enemies/Spheric Guardian]] (30-41 HP drain), or other high-damage encounters. If the first 2-3 floors are all Monster rooms with no rest/shop/event escape valve, a single brutal fight leaves no recovery option. Prefer routes where a rest site, shop, or event appears by floor 2-3.
 - **Evaluate rest site density across the entire path.** Count forced combats between rest sites on each viable path. A route of M-R-E-M-M-?-E forces 6 fights with only 1 rest site. Prefer paths where rest sites break up combat sequences (e.g., M-M-R-M-R-E gives recovery opportunities). At reduced Max HP (post-Apparitions, post-Vampires), rest site density is even more critical.
-- **Unknown rooms are NOT safe in Act 2.** They resolve as any hallway fight ~50% of the time, including Byrds, [[enemies/Snake Plant]], and Spheric Guardian. FIVE deaths confirmed from Unknown rooms resolving as combat. Treat Unknown rooms as Monster rooms when routing in Act 2. **At below 30% HP, Unknown rooms are lethal.**
+- **Unknown rooms are NOT safe in Act 2.** They resolve as any hallway fight ~50% of the time, including Byrds, [[enemies/Snake Plant]], and Spheric Guardian. Treat Unknown rooms as Monster rooms when routing in Act 2. **At below 30% HP, Unknown rooms are lethal.**
 
 ## Elite Route Safety Rule
 
 **Never route through an elite unless at least one rest site is reachable within 2 floors after the elite, OR HP is above 70% and no second elite follows before a rest.**
 
-Two of 3 deaths in Runs 220-222 were caused by routing into elites without rest site coverage:
-- Run 220: F5 Monster path locked into F6 Elite at 12 HP with no rest option. Died.
-- Run 222: Back-to-back elites (F7, F10) with no rest between. Nob cost 26 HP, then Lagavulin killed at 41 HP.
+Routing into elites without rest site coverage is a common cause of death:
+- A Monster path that locks into a following Elite floor with no rest option leaves no way to recover HP before the fight.
+- Back-to-back elites with no rest between (e.g. Gremlin Nob costing ~26 HP, then Lagavulin) compound HP loss past survivable levels.
 
 Before committing to an elite path, trace the route forward: count forced combats between the elite and the next rest site. If the path forces 2+ combats after the elite with no rest, take the safer route unless HP is above 70%.
 
@@ -43,19 +43,19 @@ Before committing to an elite path, trace the route forward: count forced combat
 Before fighting an elite, check:
 1. **HP threshold**: Below 30 HP for Act 1 elites is dangerous. Below 60% for Act 2 elites.
 2. **Deck vs elite matchup**: Gremlin Nob punishes Skill-heavy decks. Lagavulin punishes slow decks. Sentries need AOE or damage scaling. Count your Attack/Skill ratio before committing to an elite path. **Minimum 3 monster rooms before first elite** — 0-2 fights are not enough to build a deck that can handle any Act 1 elite.
-3. **Damage scaling check**: Before routing through Act 1 elites, verify the deck has at least one damage scaling source ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Carnage]], or a strong Uncommon attack). Without scaling, high-HP elites ([[enemies/Lagavulin]] 110 HP, Sentries 40+42+42) are DPS races that base-damage decks cannot win. Confirmed fatal: Run 222 entered Lagavulin with no Str source and could not deal enough damage before Siphon Soul debuffs compounded.
+3. **Damage scaling check**: Before routing through Act 1 elites, verify the deck has at least one damage scaling source ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Carnage]], or a strong Uncommon attack). Without scaling, high-HP elites ([[enemies/Lagavulin]] 110 HP, Sentries 40+42+42) are DPS races that base-damage decks cannot win. Entering Lagavulin with no Str source means you cannot deal enough damage before its Siphon Soul debuffs compound, and the fight is unwinnable.
 4. **Potions available**: Potions compensate for bad matchups.
 5. **Path alternatives**: Only prefer a safer path if the elite risk is unmanageable. Don't default to "safer path exists, take it."
 
-**Act 2 Elite Threat Ranking:**
-- **Book of Stabbing** (4 deaths, #1 elite killer): Double scaling — +1 hit/turn AND +3 Str/turn. Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. **If you have Brimstone, DO NOT FIGHT. Brimstone + Book of Stabbing = unsurvivable.**
-- **[[enemies/Gremlin Leader]]** (3 deaths): Rally gives +3 Str to ALL enemies per cast. Fight is unwinnable after turn 7. NEED: AOE for gremlins, [[cards/Shockwave]] for mass debuff, 60%+ HP.
-- **Slavers** (2 deaths): 3 enemies, 27+ combined damage from Turn 1. NEED: AOE, mass debuff, block density, 60%+ HP.
+**Act 2 Elite Threat Ranking (most to least dangerous):**
+- **Book of Stabbing**: Double scaling — +1 hit/turn AND +3 Str/turn. Wounds clog draw pile. NEED: exhaust for Wounds, fast kill, 60%+ HP. **If you have Brimstone, DO NOT FIGHT. Brimstone + Book of Stabbing = unsurvivable.**
+- **[[enemies/Gremlin Leader]]**: Rally gives +3 Str to ALL enemies per cast. Fight is unwinnable after turn 7. NEED: AOE for gremlins, [[cards/Shockwave]] for mass debuff, 60%+ HP.
+- **Slavers**: 3 enemies, 27+ combined damage from Turn 1. NEED: AOE, mass debuff, block density, 60%+ HP.
 
 ## Brimstone Elite Avoidance
 
 If Brimstone is equipped, the Act 2 elite pool becomes asymmetrically dangerous:
-- **Book of Stabbing: HARD AVOID.** Brimstone + multi-hit + hit-count escalation = quadratic damage growth. Two deaths confirmed.
+- **Book of Stabbing: HARD AVOID.** Brimstone + multi-hit + hit-count escalation = quadratic damage growth.
 - **Snake Plant: CAUTION.** Brimstone adds +2/turn to each of its 3 hits.
 - **Gremlin Leader: MODERATE RISK.** Brimstone adds +2 to every gremlin. With Rally +3, combined scaling is +5 Str/turn to all enemies.
 

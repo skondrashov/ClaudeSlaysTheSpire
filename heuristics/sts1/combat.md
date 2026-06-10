@@ -86,7 +86,7 @@ Hand indices shift after each play. Before entering `play N`, confirm the card a
 
 ### 6. USE CARD NAMES IN turn() BATCHES — NEVER INDICES
 
-In batched `turn()` commands, card indices shift after each play but the batch pre-computes all actions. This causes the wrong card to be played. **Confirmed fatal in Run 190:** `turn(["play 1", "play 2 0", "play 3 0", "play 4", "end"])` played Eruption+ instead of a Strike because indices shifted after the first card was played, entering Wrath with no exit and causing death.
+In batched `turn()` commands, card indices shift after each play but the batch pre-computes all actions. This causes the wrong card to be played. For example, `turn(["play 1", "play 2 0", "play 3 0", "play 4", "end"])` can play Eruption+ instead of a Strike because indices shift after the first card is played, entering Wrath with no exit and causing death.
 
 **RULE:** Always use card names in `turn()` sequences: `turn(["play Consecrate", "play Strike 0", "play Strike 0", "play Defend", "end"])`. Card names resolve against the current hand state at the time each action executes, so they are immune to index shifting.
 
@@ -98,7 +98,7 @@ On kill turns, play all deterministic damage cards FIRST. Only use random-outcom
 
 **Rationale:** If the kill is already in hand with deterministic cards, random effects are unnecessary and can only cause harm. If the kill is NOT in hand, playing deterministic damage first reduces the enemy to minimum HP, making the random effect more likely to finish the job and less costly if it fails.
 
-**Confirmed fatal in Run 193:** Player used Distilled Chaos BEFORE playing Smite and Strike, which together were exactly lethal. Distilled Chaos randomly played Meditate+ (ends turn, enters Calm, 0 block) against 102 incoming Hyper Beam. The kill was already in hand but the player miscalculated and thought they were 12 damage short.
+Example: using Distilled Chaos BEFORE playing Smite and Strike (which together were exactly lethal) lets Distilled Chaos randomly play Meditate+ (ends turn, enters Calm, 0 block) against 102 incoming Hyper Beam — death, even though the kill was already in hand. The root cause is a kill-math error: believing the hand was 12 damage short when it wasn't.
 
 **Rule:** Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.
 
@@ -118,15 +118,17 @@ Thunderclap applies [[debuffs/Vulnerable]] (target takes 50% MORE damage). It do
 - [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)
 - [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)
 
-**CRITICAL:** Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. **Confirmed fatal in Run 218:** player calculated enemy damage as reduced by 25% (Weak math) after playing Thunderclap (which applies Vulnerable, not Weak). Actual incoming was 30, not 21. Death at -6 HP.
+**CRITICAL:** Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. Treating Thunderclap as Weak miscalculates incoming — it applies Vulnerable, not Weak, so enemy damage is NOT reduced. If your block plan relied on a 25% reduction, actual incoming is the full 30 (not 21) and you take the full hit.
 
-### 9. WRATH DOUBLES ALL DAMAGE
+### 9. WRATH DOUBLES DAMAGE — BUT NOT THE HIT THAT ENTERS WRATH
 
-For Watcher: ALL damage is doubled in Wrath, including multi-hit cards. When a card enters Wrath (e.g., Tantrum from Calm), the stance change resolves BEFORE damage, so all hits are doubled.
+For Watcher: while you are **already in Wrath**, your attacks deal double damage (and you take double from attacks). But the card that **enters** Wrath does NOT double its own hit — it deals its damage first and enters Wrath after, so that hit lands before Wrath is active.
 
-Common miscalculation: Tantrum+ base is 2x5=10. In Wrath: 2x10=20. Players sometimes calculate the base damage and forget to double it, or assume "entering Wrath" means the first hit is undoubled. It is not. Every hit is doubled.
+- **Eruption** deals its 9 at base (not 18); **Eruption+** is also 9.
+- **Tantrum** deals `magicNumber x base` at base, THEN enters Wrath. Tantrum+ from Calm = 3x4 = 12 (NOT 24) on the turn it enters.
+- Only attacks played **after** you are already in Wrath are doubled — subsequent cards the same turn, or any attack on a later turn while Wrath persists. (A second copy of Tantrum, or any Strike, played after you're in Wrath IS doubled.)
 
-**Rule:** When in Wrath or entering Wrath, multiply EVERY damage number by 2 in kill math. Double-check the arithmetic before committing to end turn.
+**Rule:** In kill math, the entering card's hit is base — do NOT double the Eruption/Tantrum that enters Wrath. DO double every attack you play after it while Wrath is active. Double-check the arithmetic before committing to end turn.
 
 ---
 
