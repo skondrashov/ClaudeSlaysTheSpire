@@ -26,6 +26,11 @@ if __name__ == "__main__":
 
     cmd = sys.argv[1]
     args = sys.argv[2:] if len(sys.argv) > 2 else []
+    # Tolerate flag-style invocation: `play.py send "choose 0" --reason "text"`.
+    # The literal token "--reason" otherwise lands IN the positional reason slot —
+    # one run logged 116 decisions whose reasoning was the string "--reason",
+    # making them unauditable.
+    args = [a for a in args if a != "--reason"]
 
     if cmd == "state":
         print(state())
