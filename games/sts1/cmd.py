@@ -1570,6 +1570,55 @@ def _validate_action(raw: dict, action: str) -> str | None:
     return None
 
 
+# Cards that ADD energy mid-turn — a batch containing one can't be summed naively.
+_ENERGY_GAINERS = {"seeing red", "bloodletting", "offering", "adrenaline",
+                   "turbo", "double energy", "aggregate", "concentrate"}
+
+
+def _batch_energy_check(snapshot_hand: list, energy: int, actions: list) -> str | None:
+    """Sum the energy cost of a turn() batch against available energy.
+
+    Returns an error string when the plan is over budget, or None when it fits
+    (or can't be safely summed: an energy-gaining card in the batch, a card not
+    found in the hand snapshot, or an X-cost card — those consume the remainder
+    and can't overdraw)."""
+    remaining = list(snapshot_hand)  # multiset — duplicates consumed one at a time
+    total = 0
+    lines = []
+    for a in actions:
+        parts = a.strip().split()
+        if not parts or parts[0].lower() != "play":
+            continue
+        ref = " ".join(parts[1:-1]) if len(parts) > 2 and parts[-1].isdigit() else " ".join(parts[1:])
+        card = None
+        if ref.isdigit():                      # snapshot 1-indexed position
+            idx = int(ref) - 1
+            if 0 <= idx < len(snapshot_hand):
+                card = snapshot_hand[idx]
+        else:
+            for cand in remaining:
+                if cand.get("name", "").lower() == ref.lower():
+                    card = cand
+                    remaining.remove(cand)
+                    break
+        if card is None:
+            return None                        # can't identify — don't guess
+        if card.get("name", "").lower() in _ENERGY_GAINERS:
+            return None                        # energy math not naively summable
+        cost = card.get("cost", 0)
+        if cost is None or cost < 0:           # X-cost / unplayable markers
+            cost = 0
+        total += cost
+        lines.append(f"  {card.get('name', '?')} = {cost}E")
+    if total > energy:
+        return (f"[ERROR] Batch plans {total}E but you have {energy}E:\n"
+                + "\n".join(lines) +
+                f"\n  total = {total}E > {energy}E available.\n"
+                "Trim the plan and resend. (X-cost cards count as 0 here; if the plan "
+                "relies on an energy-gaining card, play it via send() first.)")
+    return None
+
+
 def turn(actions: list, reason: str = "") -> str:
     """Execute a full combat turn as a batch.
 
@@ -1619,6 +1668,16 @@ def turn(actions: list, reason: str = "") -> str:
     # the intended card in the current hand by identity (name + upgrades).
     pre_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
     snapshot_hand = list(pre_combat.get("hand", [])) if pre_combat else []
+
+    # Energy pre-check: refuse batches that plan more energy than is available.
+    # Over-planned batches (4E of cards on 3E turns) recurred across runs no
+    # matter how the discipline was worded; tool-level guards are what actually
+    # stopped the comparable choose-N error family.
+    if pre_combat:
+        energy_err = _batch_energy_check(
+            snapshot_hand, (pre_combat.get("player") or {}).get("energy", 0), actions)
+        if energy_err:
+            return energy_err
 
     # Resolve and translate all actions using pre-turn state for the stream
     # (Translation uses original names for readability; resolution happens per-action below)
