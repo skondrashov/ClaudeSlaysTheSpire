@@ -1459,11 +1459,33 @@ def _auto_open_chest(raw: dict) -> dict:
     return raw
 
 
+def _settle_debug_intents(raw: dict) -> dict:
+    """Wait out unrolled enemy intents. CommunicationMod sometimes reports state
+    before the game has rolled monster moves — intents read "DEBUG" (33 instances
+    in one audited run), forcing blind conservative play on those turns. A short
+    in-game wait lets the roll land; give up after a few tries (a few intents are
+    legitimately hidden, e.g. while an enemy is stunned)."""
+    global _last_raw_state
+    for _ in range(3):
+        if not raw.get("in_game"):
+            return raw
+        combat = (raw.get("game_state") or {}).get("combat_state")
+        if not combat:
+            return raw
+        if not any(m.get("intent") == "DEBUG"
+                   for m in combat.get("monsters", []) if not m.get("is_gone")):
+            return raw
+        raw = _tcp_request({"type": "command", "command": "wait 200"})
+        _last_raw_state = raw
+    return raw
+
+
 def _auto_handle_mechanical(raw: dict) -> dict:
     """Handle mechanical transitions that never involve a real decision."""
     raw = _auto_collect_gold(raw)
     raw = _auto_open_chest(raw)
     raw = _auto_wait_shop_screen(raw)
+    raw = _settle_debug_intents(raw)
     return raw
 
 
