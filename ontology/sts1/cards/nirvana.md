@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** Whenever you Scry, gain 3 Block.
-- **Upgrade:** +1 Block

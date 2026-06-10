@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Rare
 - **Effect:** This turn, your next Attack is played twice.
-- **Upgrade:** +1 (magic)

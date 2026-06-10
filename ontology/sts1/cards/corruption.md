@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Rare
 - **Effect:** Skills cost 0. Whenever you play a Skill, Exhaust it.
-- **Upgrade:** cost 2E

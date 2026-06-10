@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Deal 7 damage. Shuffle a Dazed into your draw pile.
-- **Upgrade:** +3 damage

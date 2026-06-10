@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Add 2 Wounds into your hand. Gain 15 Block.
-- **Upgrade:** +5 Block

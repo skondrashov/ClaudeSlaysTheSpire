@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Rare
 - **Effect:** Draw 3 cards. Exhaust.
-- **Upgrade:** +1 cards

@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Uncommon
 - **Effect:** Innate. Deal 8 damage to ALL enemies. Exhaust.
-- **Upgrade:** +4 damage

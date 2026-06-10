@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Rare
 - **Effect:** Whenever an Attack deals unblocked damage, apply 1 [[debuffs/Poison]].
-- **Upgrade:** cost 1E

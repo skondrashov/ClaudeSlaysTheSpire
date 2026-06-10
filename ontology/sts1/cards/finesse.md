@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Uncommon
 - **Effect:** Gain 2 Block. Draw 1 card.
-- **Upgrade:** +2 Block

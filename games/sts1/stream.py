@@ -33,8 +33,12 @@ EVENT_LOG = os.path.join(DATA_DIR, "stream_events.jsonl")
 STATS_FILE = os.path.join(DATA_DIR, "run_stats.json")
 RUNS_DIR = os.path.join(DATA_DIR, "runs")
 PID_FILE = os.path.join(DATA_DIR, "stream.pid")
-ONTOLOGY_DIR = os.path.join(os.path.dirname(__file__), "ontology")
-HEURISTICS_DIR = os.path.join(os.path.dirname(__file__), "heuristics")
+# Knowledge lives at the repo root (ontology/sts1, heuristics/sts1, phenomena/sts1),
+# NOT under games/sts1 — the praxis restructure moved it.
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+ONTOLOGY_DIR = os.path.join(REPO_ROOT, "ontology", "sts1")
+HEURISTICS_DIR = os.path.join(REPO_ROOT, "heuristics", "sts1")
+PHENOMENA_DIR = os.path.join(REPO_ROOT, "phenomena", "sts1")
 
 # Connected overlay clients
 clients = set()
@@ -461,16 +465,20 @@ class DecisionHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == "/playbook-stats" or self.path == "/knowledge-stats":
-            # Count .md files in ontology + heuristics
-            stats = {"ontology": {}, "heuristics": {}}
-            for label, base_dir in [("ontology", ONTOLOGY_DIR), ("heuristics", HEURISTICS_DIR)]:
+            # Count .md files per category in the three knowledge layers (recursive,
+            # so nested categories like cards/ under ontology are fully counted).
+            stats = {"ontology": {}, "phenomena": {}, "heuristics": {}}
+            for label, base_dir in [("ontology", ONTOLOGY_DIR),
+                                    ("phenomena", PHENOMENA_DIR),
+                                    ("heuristics", HEURISTICS_DIR)]:
                 try:
                     for d in sorted(os.listdir(base_dir)):
                         full = os.path.join(base_dir, d)
                         if os.path.isdir(full):
                             count = sum(
-                                1 for f in os.listdir(full)
-                                if f.endswith(".md") and f != "_index.md"
+                                1 for _root, _dirs, files in os.walk(full)
+                                for f in files
+                                if f.endswith(".md") and f not in ("_index.md", "index.md")
                             )
                             stats[label][d] = count
                 except FileNotFoundError:

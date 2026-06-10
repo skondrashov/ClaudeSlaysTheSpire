@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Rare
 - **Effect:** Obtain a random potion. Exhaust.
-- **Upgrade:** cost 0E

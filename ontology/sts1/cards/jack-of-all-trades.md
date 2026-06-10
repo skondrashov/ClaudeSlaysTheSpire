@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Uncommon
 - **Effect:** Add 1 random Colorless card into your hand. Exhaust.
-- **Upgrade:** +1 random

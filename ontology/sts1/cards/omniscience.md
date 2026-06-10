@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Rare
 - **Effect:** Choose a card in your draw pile. Play the chosen card twice and exhaust it. Exhaust.
-- **Upgrade:** cost 3E

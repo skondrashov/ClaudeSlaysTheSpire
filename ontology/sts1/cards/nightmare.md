@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Rare
 - **Effect:** Choose a card. Next turn, add 3 copies of that card into your hand. Exhaust.
-- **Upgrade:** cost 2E

@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Starter
 - **Effect:** Gain 8 Block. Discard 1 card.
-- **Upgrade:** +3 Block

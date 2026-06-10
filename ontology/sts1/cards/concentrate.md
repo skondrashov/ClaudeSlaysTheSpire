@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Discard 3 cards. Gain 2 Energy.
-- **Upgrade:** -1 cards

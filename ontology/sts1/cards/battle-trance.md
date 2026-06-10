@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Draw 3 cards. You cannot draw additional cards this turn.
-- **Upgrade:** +1 cards

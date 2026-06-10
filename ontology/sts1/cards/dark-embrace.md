@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Whenever a card is Exhausted, draw 1 card.
-- **Upgrade:** cost 1E

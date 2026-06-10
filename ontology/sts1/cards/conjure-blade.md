@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Rare
 - **Effect:** Shuffle an Expunger into your draw pile. Exhaust.
-- **Upgrade:** the Expunger's X becomes X+1

@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Gain 2 [[buffs/Strength]].
-- **Upgrade:** +1 Strength

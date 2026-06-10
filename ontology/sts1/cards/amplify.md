@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Rare
 - **Effect:** This turn, your next Power card is played twice.
-- **Upgrade:** +1 (magic)

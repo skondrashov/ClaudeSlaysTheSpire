@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** At the end of combat, heal 7 HP.
-- **Upgrade:** +3 HP

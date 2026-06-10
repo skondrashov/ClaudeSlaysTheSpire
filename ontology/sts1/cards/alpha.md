@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Rare
 - **Effect:** Shuffle a Beta into your draw pile. Exhaust.
-- **Upgrade:** becomes Innate

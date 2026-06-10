@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Uncommon
 - **Effect:** Heal 4 HP. Exhaust.
-- **Upgrade:** +2 HP

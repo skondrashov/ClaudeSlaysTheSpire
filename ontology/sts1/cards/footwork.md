@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Gain 2 [[buffs/Dexterity]].
-- **Upgrade:** +1 Dexterity

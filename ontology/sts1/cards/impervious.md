@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Rare
 - **Effect:** Gain 30 Block. Exhaust.
-- **Upgrade:** +10 Block

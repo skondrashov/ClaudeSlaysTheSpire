@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Common
 - **Effect:** Deal 3 damage to a random enemy 3 times.
-- **Upgrade:** +1 damage

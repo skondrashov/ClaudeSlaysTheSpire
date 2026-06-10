@@ -14,7 +14,7 @@ Curate the awareness manifests — the relevance index that decides what knowled
 1. **Collect retrieval-miss flags.** From recent audits, gather decisions where the player lacked a fact that *existed* in the book — present, but not loaded when it mattered. (Missing facts are a knowledge gap, not your job — that's Extend/Curate.)
 2. **Attribute each to a situation.** A retrieval miss is always relative to a context: a goal, an act, a fight type, an on-screen entity. Identify which awareness payload *should* have carried the entity.
 3. **Adjust the manifest.** Add the entity (or its category) to that payload's `refs`. Prefer the narrowest tier that fixes it — a goal-wide entity belongs in the goal tier; a fight-specific one belongs in a situation tier (once those exist), not bloated into every session's preload.
-4. **Guard against over-loading.** Awareness is a budget; every ref preloaded is context spent. Don't add an entity the player can cheaply `reason()` for on demand. Add the ones needed *before* they appear on screen, or too costly to look up mid-decision.
+4. **Guard against over-loading.** Awareness is a budget; every ref preloaded is context spent. Don't add an entity the player can cheaply `recall()` on demand. Add the ones needed *before* they appear on screen, or too costly to look up mid-decision.
 
 ## Output
 

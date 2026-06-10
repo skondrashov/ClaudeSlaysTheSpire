@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Rare
 - **Effect:** This turn, your next Skill is played twice.
-- **Upgrade:** +1 (magic)

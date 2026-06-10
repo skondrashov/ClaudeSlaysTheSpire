@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Rare
 - **Effect:** Upgrade ALL your cards for the rest of combat. Exhaust.
-- **Upgrade:** cost 1E

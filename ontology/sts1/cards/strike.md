@@ -5,4 +5,3 @@
 - **Character:** All
 - **Rarity:** Starter
 - **Effect:** Deal 6 damage.
-- **Upgrade:** +3 damage

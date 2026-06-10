@@ -4,5 +4,4 @@
 - **Type:** [[types/Skill]]
 - **Character:** Watcher
 - **Rarity:** Rare
-- **Effect:** Enter Divinity. Die next turn. Exhaust.
-- **Upgrade:** becomes Retain
+- **Effect:** Enter [[buffs/Divinity]]. Die next turn. Exhaust.

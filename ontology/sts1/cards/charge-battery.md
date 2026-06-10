@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Common
 - **Effect:** Gain 7 Block. Next turn, gain 1 Energy.
-- **Upgrade:** +3 Block

@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Starter
 - **Effect:** Evoke your next Orb twice.
-- **Upgrade:** cost 0E

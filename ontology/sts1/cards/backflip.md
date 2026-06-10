@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Common
 - **Effect:** Gain 5 Block. Draw 2 cards.
-- **Upgrade:** +3 Block

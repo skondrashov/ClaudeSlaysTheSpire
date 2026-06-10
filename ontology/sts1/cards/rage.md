@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Uncommon
 - **Effect:** Whenever you play an Attack this turn, gain 3 Block.
-- **Upgrade:** +2 Block

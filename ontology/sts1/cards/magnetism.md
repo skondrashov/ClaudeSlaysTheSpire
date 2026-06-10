@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Rare
 - **Effect:** At the start of your turn, add a random Colorless card into your hand.
-- **Upgrade:** cost 1E

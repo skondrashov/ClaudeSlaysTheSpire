@@ -1,12 +1,9 @@
 # Blind+
 
-<!-- DO NOT EDIT - generated from ontology/sts1/cards/blind.md
-     by tools/regen. Edit the noumenon (base + Upgrade delta) and re-apply. -->
-
 - **Cost:** 0E
 - **Type:** [[types/Skill]]
 - **Character:** Colorless
 - **Rarity:** Uncommon
 - **Effect:** Apply 2 [[debuffs/Weak]] to ALL enemies.
 
-Upgraded form of [[cards/Blind]].
+Resolves [[upgrades/Blind]] — [[rules/upgrade]] applied to [[cards/Blind]].

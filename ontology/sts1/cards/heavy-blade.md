@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Common
 - **Effect:** Deal 14 damage. [[buffs/Strength]] affects this card 3 times.
-- **Upgrade:** +2 times

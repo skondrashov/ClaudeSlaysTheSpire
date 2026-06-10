@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Common
 - **Effect:** Gain 9 Block.
-- **Upgrade:** +3 Block

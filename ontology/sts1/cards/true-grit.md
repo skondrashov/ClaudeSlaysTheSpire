@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Common
 - **Effect:** Gain 7 Block. Exhaust 1 card at random.
-- **Upgrade:** Exhaust a chosen card (was random)

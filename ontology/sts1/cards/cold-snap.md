@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Common
 - **Effect:** Deal 6 damage. Channel 1 Frost.
-- **Upgrade:** +3 damage

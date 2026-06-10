@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Rare
 - **Effect:** Deal 10 damage. If Fatal, raise your Max HP by 3. Exhaust.
-- **Upgrade:** +2 damage, +1 (magic)

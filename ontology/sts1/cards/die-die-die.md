@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Rare
 - **Effect:** Deal 13 damage to ALL enemies. Exhaust.
-- **Upgrade:** +4 damage

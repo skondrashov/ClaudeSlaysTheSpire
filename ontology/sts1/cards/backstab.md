@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Innate. Deal 11 damage. Exhaust.
-- **Upgrade:** +4 damage

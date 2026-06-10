@@ -8,6 +8,23 @@ expects (1-indexed for play commands).
 
 import re
 
+# Display names that under-report the variant: the game distinguishes these
+# monsters by id (and shows the player a red vs green sprite), but their display
+# name is identical. Recover the precise name from the id so the knowledge layer
+# never sees an ambiguous entity. Ids verified against the game code
+# (LouseNormal/LouseDefensive/SlaverBlue/SlaverRed classes).
+_MONSTER_ID_NAMES = {
+    "FuzzyLouseNormal": "Red Louse",
+    "FuzzyLouseDefensive": "Green Louse",
+    "SlaverBlue": "Blue Slaver",
+    "SlaverRed": "Red Slaver",
+}
+
+
+def monster_name(m: dict) -> str:
+    """A monster's precise display name (id-disambiguated where needed)."""
+    return _MONSTER_ID_NAMES.get(m.get("id"), m.get("name", "?"))
+
 
 def format_state(state: dict) -> str:
     """Main entry point. Dispatches to screen-specific formatter."""
@@ -172,7 +189,7 @@ def format_combat(gs: dict) -> str:
         max_hp = m.get("max_hp", 0)
         block = m.get("block", 0)
         intent = m.get("intent", "?")
-        name = m.get("name", "?")
+        name = monster_name(m)
 
         parts = [f"  [{i}] {name} — HP: {hp}/{max_hp}"]
         if block > 0:

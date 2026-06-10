@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Deal 10 damage to ALL enemies. Channel 1 Dark.
-- **Upgrade:** +4 damage

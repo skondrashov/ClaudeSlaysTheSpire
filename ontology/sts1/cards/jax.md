@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Special
 - **Effect:** Lose 3 HP. Gain 2 [[buffs/Strength]].
-- **Upgrade:** +1 Strength

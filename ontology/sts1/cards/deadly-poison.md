@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Common
 - **Effect:** Apply 5 [[debuffs/Poison]].
-- **Upgrade:** +2 Poison

@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Common
 - **Effect:** Deal 9 damage. Exit your Stance.
-- **Upgrade:** +5 damage

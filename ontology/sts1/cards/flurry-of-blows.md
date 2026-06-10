@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Common
 - **Effect:** Deal 4 damage. Whenever you change Stances, return this from the discard pile to your hand.
-- **Upgrade:** +2 damage

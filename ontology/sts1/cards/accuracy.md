@@ -5,4 +5,3 @@
 - **Character:** Silent
 - **Rarity:** Uncommon
 - **Effect:** Shivs deal 4 additional damage.
-- **Upgrade:** +2 additional

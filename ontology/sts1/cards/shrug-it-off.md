@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Common
 - **Effect:** Gain 8 Block. Draw 1 card.
-- **Upgrade:** +3 Block

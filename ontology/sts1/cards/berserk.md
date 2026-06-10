@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Rare
 - **Effect:** Gain 2 [[debuffs/Vulnerable]]. At the start of your turn, gain 1 Energy.
-- **Upgrade:** -1 Vulnerable

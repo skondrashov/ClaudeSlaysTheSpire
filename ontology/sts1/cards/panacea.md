@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Uncommon
 - **Effect:** Gain 1 [[buffs/Artifact]]. Exhaust.
-- **Upgrade:** +1 Artifact

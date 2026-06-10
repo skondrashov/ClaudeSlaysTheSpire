@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Rare
 - **Effect:** Draw 2 cards. Put a card from your hand on top of your draw pile. Exhaust.
-- **Upgrade:** loses Exhaust

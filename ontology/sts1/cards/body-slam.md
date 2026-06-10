@@ -5,4 +5,3 @@
 - **Character:** Ironclad
 - **Rarity:** Common
 - **Effect:** Deal damage equal to your Block.
-- **Upgrade:** cost 0E

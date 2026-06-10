@@ -5,4 +5,3 @@
 - **Character:** Colorless
 - **Rarity:** Rare
 - **Effect:** Deal 20 damage. If Fatal, gain 20 Gold.
-- **Upgrade:** +5 damage, +5 Gold

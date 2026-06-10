@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Whenever you play a Power card, draw 1 card.
-- **Upgrade:** +1 card

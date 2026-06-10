@@ -5,4 +5,3 @@
 - **Character:** Watcher
 - **Rarity:** Uncommon
 - **Effect:** At the start of each turn, add a Smite into your hand.
-- **Upgrade:** becomes Innate

@@ -5,4 +5,3 @@
 - **Character:** Defect
 - **Rarity:** Uncommon
 - **Effect:** Gain 1 [[buffs/Focus]].
-- **Upgrade:** +1 Focus

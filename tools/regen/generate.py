@@ -114,7 +114,10 @@ def build_link_map():
                 if mm:
                     title = mm.group(1).strip(); break
             if title:
-                m[title] = f"[[{cat}/{p.stem}|{title}]]"
+                # Bare link, no alias: the resolver slugifies the target, so
+                # [[debuffs/Vulnerable]] resolves to vulnerable.md and displays
+                # "Vulnerable" — matching the de-aliased convention.
+                m[title] = f"[[{cat}/{title}]]"
     return m
 
 
@@ -212,7 +215,7 @@ def _meta_lines(card, cost_override=None):
     if cost is not None:
         out.append(f"- **Cost:** {cost}")
     if ctype:
-        out.append(f"- **Type:** [[types/{ctype.lower()}|{ctype}]]")
+        out.append(f"- **Type:** [[types/{ctype}]]")
     if char and not is_special:
         out.append(f"- **Character:** {char}")
     if rarity and not is_special:
@@ -221,13 +224,32 @@ def _meta_lines(card, cost_override=None):
 
 
 def render(card, link_map):
-    """Noumenon: base values + Upgrade delta."""
+    """Base-card noumenon: base values only.
+
+    The upgrade is NOT a property of the base card — it is its own entity
+    (ontology/sts1/upgrades/<slug>.md, see render_upgrade). Base Bash states what
+    Bash is; the delta lives in the upgrade noumenon; Bash+ is the phenomenon that
+    composes the two.
+    """
     out = [f"# {card['name']}", ""]
     out += _meta_lines(card)
     out.append(f"- **Effect:** {clean(_base_desc(card), link_map)}")
-    delta = render_delta(card)
-    if delta:
-        out.append(f"- **Upgrade:** {delta}")
+    return "\n".join(out) + "\n"
+
+
+def render_upgrade(card):
+    """Upgrade noumenon: the per-card delta as its own entity.
+
+    Bash+ has as much to do with the upgrade as with Bash, so the delta is a
+    first-class entity — base card on one side, the generic [[rules/upgrade]]
+    mechanic on the other, this file the specific transformation between them.
+    """
+    name = card["name"]
+    delta = render_delta(card) or "(no mechanical change)"
+    out = [f"# Upgrade: {name}", ""]
+    out.append(f"- **Base:** [[cards/{name}]]")
+    out.append(f"- **Mechanic:** [[rules/upgrade]]")
+    out.append(f"- **Delta:** {delta}")
     return "\n".join(out) + "\n"
 
 
@@ -245,15 +267,12 @@ def render_phenomenon(card, link_map):
     eff_src = PHENOMENON_EFFECT.get(name) or _upg_desc(card) or _base_desc(card)
     cost = up.get("cost") if up.get("cost") is not None else card.get("cost")
     out = [f"# {name}+", ""]
-    out.append(f"<!-- DO NOT EDIT - generated from ontology/sts1/cards/{slugify(name)}.md")
-    out.append("     by tools/regen. Edit the noumenon (base + Upgrade delta) and re-apply. -->")
-    out.append("")
     out += _meta_lines(card, cost_override=cost)
     out.append(f"- **Effect:** {clean(eff_src, link_map)}")
     out.append("")
-    # The resolver slugifies the target, so [[cards/Bash]] resolves to bash.md
-    # and displays "Bash" — no capitalization-only alias needed.
-    out.append(f"Upgraded form of [[cards/{name}]].")
+    # Composition of two noumena: the base card and the per-card upgrade delta,
+    # joined by the generic Upgrade mechanic. Bare links (resolver slugifies).
+    out.append(f"Resolves [[upgrades/{name}]] — [[rules/upgrade]] applied to [[cards/{name}]].")
     return "\n".join(out) + "\n"
 
 
