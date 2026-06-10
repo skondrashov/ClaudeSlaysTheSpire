@@ -101,38 +101,40 @@ def _name_to_filename(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name).strip("-")
 
 
+def _stem_candidates(name: str) -> list[str]:
+    """Filename stems to try for a name. The slug first, then the 'the-' variant:
+    in-game names and entry titles disagree about a leading "The" ("Champ" vs
+    "The Champ", "Guardian" vs "The Guardian"), so a miss retries with the
+    article added or removed."""
+    s = _name_to_filename(name)
+    return [s, s[4:] if s.startswith("the-") else "the-" + s]
+
+
+def _load_entry(base_dir: str, category: str, name: str, suffix: str = ".md") -> str | None:
+    for stem in _stem_candidates(name):
+        path = os.path.join(base_dir, category, stem + suffix)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                return f.read().strip()
+        except FileNotFoundError:
+            continue
+    return None
+
+
 def _load_ontology(category: str, name: str) -> str | None:
     """Load an ontology file. Returns content or None if not found."""
-    filename = _name_to_filename(name) + ".md"
-    path = os.path.join(ONTOLOGY_DIR, category, filename)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return f.read().strip()
-    except FileNotFoundError:
-        return None
+    return _load_entry(ONTOLOGY_DIR, category, name)
 
 
 def _load_phenomenon(category: str, name: str) -> str | None:
     """Load a phenomenon (resolved upgraded card). Fires for '+'-suffixed names,
     mapping to phenomena/sts1/<category>/<stem>-plus.md. None if absent."""
-    filename = _name_to_filename(name) + "-plus.md"
-    path = os.path.join(PHENOMENA_DIR, category, filename)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return f.read().strip()
-    except FileNotFoundError:
-        return None
+    return _load_entry(PHENOMENA_DIR, category, name, suffix="-plus.md")
 
 
 def _load_heuristic(category: str, name: str) -> str | None:
     """Load a heuristic file. Returns content or None if not found."""
-    filename = _name_to_filename(name) + ".md"
-    path = os.path.join(HEURISTICS_DIR, category, filename)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return f.read().strip()
-    except FileNotFoundError:
-        return None
+    return _load_entry(HEURISTICS_DIR, category, name)
 
 
 def _load_heuristic_root(filename: str) -> str | None:

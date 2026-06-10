@@ -3,7 +3,8 @@
 # slug(name): lowercase, drop ' and ., other non-alphanumeric runs -> '-'.
 #   e.g. "Spike Slime (M)" -> spike-slime-m, "Gremlin Nob" -> gremlin-nob.
 # A bare name resolves to <category>/slug(name), searching these categories in
-# order; a name in several categories returns every match:
+# order; a miss retries with a leading "the-" added or removed ("Champ" ->
+# the-champ); a name in several categories returns every match:
 #   cards enemies bosses relics potions events buffs debuffs encounters rules types characters acts ascension shop
 # Upgraded card: "<name>+" -> phenomena/sts1/cards/slug(name)-plus.
 # The names below override the slug rule (in-game name doesn't slug to the file).
