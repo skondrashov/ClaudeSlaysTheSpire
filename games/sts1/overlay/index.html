@@ -1251,10 +1251,16 @@
           addRow(event.translated || translateCommand(event.command),
                  event.reasoning || '', categorizeAction(event.command));
           break;
-        case 'feed':
-          // Meta feed lines (RUN START / VICTORY / ...) become chip-only rows.
-          addRow(event.text, '', 'meta');
+        case 'feed': {
+          // Feed lines ("COMBAT — Centurion + Mystic", "RECALL — cards/Bash")
+          // split at the dash: the tag is the chip, the rest is the reasoning
+          // cell — keeps the rail narrow.
+          const t = event.text || '';
+          const m = t.match(/^(.*?)\s+(?:—|--)\s+(.*)$/);
+          if (m) addRow(m[1], m[2], 'meta');
+          else addRow(t, '', 'meta');
           break;
+        }
         case 'run_start':
           clearForNewRun();
           addRow('NEW RUN — ' + (event.class || ''), '', 'meta');
