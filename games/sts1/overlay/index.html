@@ -183,8 +183,9 @@
     }
 
     .tile.run-history-tile {
-      width: 300px;
+      width: 272px;
       flex-shrink: 0;
+      padding: 14px;
     }
 
     .tile.notes-tile {
@@ -784,9 +785,6 @@
       white-space: pre-wrap;
       word-wrap: break-word;
       overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 9;
     }
 
     .tile.deck-tile-sm {
@@ -804,7 +802,7 @@
     }
 
     .tile.learned-tile {
-      width: 330px;
+      width: 310px;
       flex-shrink: 0;
       justify-content: flex-start;
     }
@@ -1414,7 +1412,30 @@
       const el = document.getElementById('planContent');
       if (!el || !text) return;
       el.textContent = text.replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
+      el.scrollTop = 0;
+      planPhase = 'down';
     }
+
+    // Plan auto-scroll: when overflowing, drift down over ~8s, hold the
+    // bottom briefly, then return to top at 10x — a full loop ≈ 10s
+    // regardless of plan length (the step scales with the overflow).
+    let planPhase = 'down', planPauseTicks = 0;
+    setInterval(() => {
+      const el = document.getElementById('planContent');
+      if (!el) return;
+      const overflow = el.scrollHeight - el.clientHeight;
+      if (overflow <= 4) { el.scrollTop = 0; planPhase = 'down'; return; }
+      const downStep = Math.max(overflow / 160, 0.5);   // ~8s of 50ms ticks
+      if (planPhase === 'down') {
+        el.scrollTop += downStep;
+        if (el.scrollTop >= overflow - 1) { planPhase = 'pause'; planPauseTicks = 30; }
+      } else if (planPhase === 'pause') {
+        if (--planPauseTicks <= 0) planPhase = 'up';
+      } else {
+        el.scrollTop -= downStep * 10;
+        if (el.scrollTop <= 0) { el.scrollTop = 0; planPhase = 'down'; }
+      }
+    }, 50);
 
     // --- Decision rows: chip on the rail (over game), reasoning in the
     // sidebar. One flex row per decision keeps the pair height-synced. ---
