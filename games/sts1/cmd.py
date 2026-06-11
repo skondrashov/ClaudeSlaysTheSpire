@@ -669,6 +669,36 @@ def _resolve_shop_choose(raw_state: dict, action: str) -> str:
     return action  # No match found, pass through unchanged
 
 
+def _resolve_reward_choose(raw_state: dict, action: str) -> str:
+    """Resolve item NAMES in choose commands on reward screens (COMBAT_REWARD /
+    BOSS_REWARD) to indices. Multi-word relic/potion names previously only
+    worked in shops; reward screens rejected them, forcing index-chaining --
+    the error family behind two mis-taken keys."""
+    parts = action.strip().split()
+    if len(parts) < 2 or parts[0].lower() != "choose":
+        return action
+    arg = " ".join(parts[1:]).strip()
+    if arg.isdigit():
+        return action
+    gs = (raw_state or {}).get("game_state") or {}
+    screen = gs.get("screen_type", "")
+    ss = gs.get("screen_state", {})
+    name = arg.lower()
+    if screen == "COMBAT_REWARD":
+        for i, r in enumerate(ss.get("rewards", [])):
+            label = (r.get("relic", {}).get("name")
+                     or r.get("potion", {}).get("name")
+                     or ("card" if r.get("reward_type") == "CARD" else "")
+                     or r.get("reward_type", ""))
+            if label and name in str(label).lower():
+                return f"choose {i}"
+    elif screen == "BOSS_REWARD":
+        for i, r in enumerate(ss.get("relics", [])):
+            if name in r.get("name", "").lower():
+                return f"choose {i}"
+    return action
+
+
 def _resolve_choose_card_name(raw_state: dict, action: str) -> str:
     """Resolve card names in choose commands to indices for card-selection screens.
 
@@ -1159,14 +1189,26 @@ def _write_run_log(gs: dict, victory: bool):
 def _check_game_over(raw: dict):
     """Check if the game just ended. If so, write the run log.
 
-    Called after every send(). Only fires once per run — the flag resets
-    when a non-GAME_OVER screen is seen.
+    Called after every send(). Fires once per run — idempotency is a FILE
+    marker keyed by the ending (every play.py call is a fresh process, so the
+    in-memory flag let a second GAME_OVER proceed write a duplicate run log:
+    run_240/241 were the same death).
     """
     global _game_over_handled
     gs = raw.get("game_state") or {}
     screen = gs.get("screen_type")
 
     if screen == "GAME_OVER" and not _game_over_handled:
+        marker = os.path.join(_BASE_DIR, "data", "gameover_captured.flag")
+        ending = f"{gs.get('seed', '?')}|{gs.get('floor', '?')}"
+        try:
+            if os.path.exists(marker) and open(marker).read().strip() == ending:
+                _game_over_handled = True
+                return
+            with open(marker, "w") as f:
+                f.write(ending)
+        except OSError:
+            pass
         _game_over_handled = True
         ss = gs.get("screen_state", {})
         victory = ss.get("victory", False)
@@ -1401,6 +1443,8 @@ def send(command: str, reason: str = "") -> str:
     resolved = _resolve_choose_card_name(_last_raw_state, resolved)
     # Resolve shop card/relic names to indices
     resolved = _resolve_shop_choose(_last_raw_state, resolved)
+    # Resolve relic/potion names on reward screens
+    resolved = _resolve_reward_choose(_last_raw_state, resolved)
 
     # Resolve what a choose actually selects BEFORE executing, and echo it at the
     # top of the response. Two consecutive runs were decided by an unverified
