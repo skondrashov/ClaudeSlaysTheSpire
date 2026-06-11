@@ -2249,6 +2249,30 @@ def think(reasoning: str, label: str = "Strategy") -> str:
 
 _SAVES_DIR = os.path.join("C:\\", "Program Files (x86)", "Steam", "steamapps", "common", "SlayTheSpire", "saves")
 
+# The game's seed-string alphabet (base 35, no 'O') — from the game's SeedHelper.
+_SEED_CHARS = "0123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"
+
+
+def _encode_seed(seed) -> str:
+    """Run logs store seeds as signed 64-bit integers, but the game (and
+    CommunicationMod's start command) takes the base-35 STRING. Passing the
+    digits raw silently starts the WRONG run (the digits decode as base 35) —
+    a seed replay burned a run number this way. Numeric input is encoded the
+    way the game's SeedHelper does: unsigned 64-bit, base 35."""
+    s = str(seed).strip().upper().replace("O", "0")
+    try:
+        n = int(s)
+    except ValueError:
+        return s                      # already a seed string
+    n &= (1 << 64) - 1                # Long.toUnsignedString semantics
+    if n == 0:
+        return "0"
+    out = ""
+    while n:
+        n, r = divmod(n, 35)
+        out = _SEED_CHARS[r] + out
+    return out
+
 
 def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> str:
     """Start a new run.
@@ -2286,7 +2310,7 @@ def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> 
     if ascension > 0:
         cmd += f" {ascension}"
     if seed:
-        cmd += f" {seed}"
+        cmd += f" {_encode_seed(seed)}"
     return send(cmd, reason=f"Starting {character} A{ascension}")
 
 
