@@ -34,6 +34,7 @@ What to evaluate (overfitting, coverage, consistency, quality, strategic framewo
 2. **Exploration directives**: Specific hypotheses to test during Explore sessions. This is your PRIMARY output — most insights should become directives, not immediate edits.
 3. **Playbook edits**: Only for changes with strong evidence. See editing rules below.
 4. **Cleanup**: Dedup, trim, fix contradictions, formatting.
+5. **Stream lessons** (`games/sts1/data/learned_lines.txt`): one line per lesson you banked this session, written for a stream viewer who knows the game but not this project — plain language, no directive numbers, no run numbers, no internal jargon. Keep the file to the ~10 freshest lines (newest first); drop the oldest.
 
 Write directives to `analyst/directives.md`. Be conservative with direct playbook edits.
 

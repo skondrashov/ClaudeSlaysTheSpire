@@ -43,12 +43,22 @@ _lessons_cache = {"at": 0.0, "lines": []}
 
 
 def _recent_lessons() -> list:
-    """Subjects of the latest knowledge-layer commits (heuristics/ontology/
-    phenomena) — what the book most recently learned. 5-minute cache."""
+    """Viewer-readable lessons for the Book card. Prefers the curated
+    data/learned_lines.txt (one lesson per line, plain language, maintained
+    by Curate sessions); falls back to knowledge-layer commit subjects.
+    5-minute cache."""
     import subprocess
     now = time.time()
     if now - _lessons_cache["at"] < 300 and _lessons_cache["lines"]:
         return _lessons_cache["lines"]
+    try:
+        with open(os.path.join(DATA_DIR, "learned_lines.txt"), encoding="utf-8") as f:
+            curated = [l.strip() for l in f if l.strip() and not l.startswith("#")]
+        if curated:
+            _lessons_cache.update(at=now, lines=curated[:10])
+            return _lessons_cache["lines"]
+    except OSError:
+        pass
     try:
         out = subprocess.run(
             ["git", "log", "-n", "8", "--format=%s", "--",

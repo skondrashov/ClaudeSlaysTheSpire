@@ -340,13 +340,15 @@
 
     .header {
       background: linear-gradient(135deg, rgba(30, 12, 52, 0.98), rgba(24, 36, 68, 0.98));
-      padding: 18px 20px;
+      /* height matches the game's own top HUD bar (~43px) so the two top
+         edges read as one line across the screen */
+      padding: 7px 20px;
       border-bottom: 3px solid #5a2a9a;
       flex-shrink: 0;
     }
 
     .header h1 {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
       color: #d4a0ff;
       letter-spacing: 2px;
@@ -545,7 +547,7 @@
        chip and reasoning stay vertically in sync. === */
     .decision-rows {
       position: absolute;
-      top: 64px;
+      top: 56px;
       right: 0;
       bottom: 124px;            /* clear of the sidebar's floor graph */
       width: 670px;             /* 250px rail (over game) + 420px sidebar */
@@ -557,7 +559,22 @@
       pointer-events: none;
     }
 
-    .d-row { display: flex; align-items: flex-start; }
+    .d-row { display: flex; align-items: flex-start; position: relative; }
+
+    /* Divider between reasoning paragraphs — extends 15px past the sidebar
+       edge onto the game, fading out leftward */
+    .d-row:not(:first-child)::before {
+      content: '';
+      position: absolute;
+      top: -7px;
+      right: 0;
+      width: 435px;   /* 420px sidebar + 15px onto the game */
+      height: 1px;
+      background: linear-gradient(to right,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.22) 15px,
+        rgba(255, 255, 255, 0.22) 100%);
+    }
 
     .d-act {
       width: 250px;
@@ -578,6 +595,9 @@
 
     .d-act.kind-think .command-badge { background: #14605a; color: #c8f5ee; }
     .d-act.kind-meta .command-badge { background: #2a5a35; color: #c9f5d2; }
+    .d-act.kind-combat .command-badge { background: #6e2030; color: #ffd2d8; }
+    .d-act.kind-reward .command-badge { background: #6e5510; color: #ffeec0; }
+    .d-act.kind-event .command-badge { background: #46307e; color: #ddd0ff; }
 
     .d-reason {
       width: 420px;
@@ -610,9 +630,9 @@
     /* === WIN% EVAL BAR (left edge, over the game) === */
     .win-bar {
       position: absolute;
-      left: 14px;
+      left: 10px;
       top: 250px;
-      width: 70px;
+      width: 96px;
       text-align: center;
       z-index: 5;
       transition: opacity 0.6s ease;
@@ -621,9 +641,10 @@
     .win-bar.stale { opacity: 0.5; }
 
     .win-bar .winbar-label {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: 1.5px;
       color: #ddd;
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
       margin-bottom: 6px;
@@ -634,9 +655,8 @@
       width: 26px;
       height: 360px;
       margin: 0 auto;
-      background: rgba(0, 0, 0, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 255, 255, 0.35);
       overflow: hidden;
     }
 
@@ -659,44 +679,52 @@
     }
 
     .win-bar .winbar-age {
-      font-size: 12px;
-      color: #ccc;
+      font-size: 17px;
+      font-weight: 600;
+      color: #ddd;
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
-      min-height: 15px;
+      min-height: 21px;
     }
 
     /* === STATIC BOTTOM BAR: book tile === */
     .tile.book-tile {
-      width: 320px;
+      width: 360px;
       flex-shrink: 0;
+    }
+
+    .book-tile .project-url {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
     }
 
     .book-tile .knowledge-grid {
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 2px 14px;
-      margin-bottom: 8px;
+      gap: 3px 16px;
+      margin-bottom: 0;
+      justify-content: center;
     }
 
-    .book-tile .knowledge-item { font-size: 14px; }
-    .book-tile .knowledge-item span { width: auto; }
+    .book-tile .knowledge-item { font-size: 18px; }
+    .book-tile .knowledge-item span { width: auto; font-size: 18px; }
 
     .learned-line {
       flex: 1;
-      font-size: 14px;
+      font-size: 19px;
       line-height: 1.45;
-      color: #ccc;
+      color: #ddd;
       overflow: hidden;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .learned-line .learned-tag {
       color: #4ade80;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 11px;
+      font-size: 14px;
       letter-spacing: 1px;
-      margin-right: 6px;
+      margin-right: 8px;
     }
 
     /* Hide all scrollbars */
@@ -737,7 +765,7 @@
 
   <!-- Win% eval bar over the game's left edge -->
   <div class="win-bar" id="winBar">
-    <div class="winbar-label">WIN%</div>
+    <div class="winbar-label">PREDICTED<br>WIN%</div>
     <div class="winbar-track"><div class="winbar-fill" id="winFill"></div></div>
     <div class="winbar-value" id="winValue">—</div>
     <div class="winbar-age" id="winAge"></div>
@@ -755,7 +783,8 @@
         <div id="charStats"></div>
       </div>
       <div class="tile book-tile">
-        <div class="ctx-title">The Book</div>
+        <div class="project-url">claudeslaysthespire.org</div>
+        <div class="learned-line" id="learnedLine"><span class="learned-tag">Learned</span>Every run updates the book.</div>
         <div class="knowledge-grid" id="knowledgeGrid">
           <div class="knowledge-item"><span id="pb-cards">-</span> cards</div>
           <div class="knowledge-item"><span id="pb-enemies">-</span> enemies</div>
@@ -765,8 +794,6 @@
           <div class="knowledge-item"><span id="pb-potions">-</span> potions</div>
           <div class="knowledge-item"><span id="pb-upgrades">-</span> upgrades</div>
         </div>
-        <div class="learned-line" id="learnedLine"><span class="learned-tag">Learned</span>Every run updates the book.</div>
-        <div class="project-url">claudeslaysthespire.org</div>
       </div>
     </div>
   </div>
@@ -1067,7 +1094,7 @@
           break;
         case 'run_start':
           clearForNewRun();
-          addRow('RUN ' + (event.run_number || '?') + ' — ' + event.class, '', 'meta');
+          addRow('NEW RUN — ' + (event.class || ''), '', 'meta');
           if (event.run_number) {
             fetchCharacterStats();
           }
