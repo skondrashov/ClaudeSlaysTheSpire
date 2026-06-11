@@ -1276,7 +1276,7 @@ def send(command: str, reason: str = "") -> str:
     _remember(_tcp_request({"type": "state"}))
 
     # Guard: prevent proceed on BOSS_REWARD (must choose a relic first)
-    gs = _last_raw_state.get("game_state") or {}
+    gs = (_last_raw_state or {}).get("game_state") or {}
     screen = gs.get("screen_type", "")
     cmd_verb = command.strip().split()[0].lower() if command.strip() else ""
     if cmd_verb == "proceed" and screen == "BOSS_REWARD":
@@ -1730,14 +1730,21 @@ def turn(actions: list, reason: str = "") -> str:
     # When the agent says "play 3 0", it means "the card I see at position 3."
     # As cards are played and indices shift, we use this snapshot to find
     # the intended card in the current hand by identity (name + upgrades).
-    pre_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+    pre_combat = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
     snapshot_hand = list(pre_combat.get("hand", [])) if pre_combat else []
 
     # Energy pre-check: refuse batches that plan more energy than is available.
     # Over-planned batches (4E of cards on 3E turns) recurred across runs no
     # matter how the discipline was worded; tool-level guards are what actually
     # stopped the comparable choose-N error family.
-    if pre_combat:
+    # Skipped when a relic discounts costs MID-turn (Mummified Hand zeroes a
+    # random card per Power play) — snapshot costs cannot model that, and the
+    # guard false-positived on an affordable batch (run 235).
+    _discount_relics = {"mummified hand", "necronomicon"}
+    _gs_now = (_last_raw_state or {}).get("game_state") or {}
+    _has_discounter = any(r.get("name", "").lower() in _discount_relics
+                          for r in _gs_now.get("relics", []))
+    if pre_combat and not _has_discounter:
         energy_err = _batch_energy_check(
             snapshot_hand, (pre_combat.get("player") or {}).get("energy", 0), actions)
         if energy_err:
@@ -1787,7 +1794,7 @@ def turn(actions: list, reason: str = "") -> str:
                 break
 
         # Capture hand size before action to detect draws
-        pre_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+        pre_combat = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
         pre_hand_size = len(pre_combat.get("hand", [])) if pre_combat else None
 
         raw = _tcp_request({"type": "command", "command": resolved_action.strip()})
@@ -1815,7 +1822,7 @@ def turn(actions: list, reason: str = "") -> str:
                 and i < total - 1  # more actions remain
                 and actions[i + 1] != "end"  # next action isn't just "end" -- that's harmless to stop before
                 ):
-            post_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+            post_combat = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
             if post_combat:
                 post_hand_size = len(post_combat.get("hand", []))
                 if post_hand_size >= pre_hand_size:
@@ -1953,7 +1960,7 @@ def potion_use(slot, target: int = None, reason: str = "") -> str:
     slot = int(slot)
     # Check if this potion actually requires a target
     if target is not None and _last_raw_state:
-        potions = (_last_raw_state.get("game_state") or {}).get("potions", [])
+        potions = ((_last_raw_state or {}).get("game_state") or {}).get("potions", [])
         if slot < len(potions) and not potions[slot].get("requires_target", False):
             target = None  # Strip invalid target for non-targeted potions
     if target is not None:
@@ -2139,7 +2146,7 @@ def deck() -> str:
     global _last_raw_state
     prev_raw = _last_raw_state
     _remember(_tcp_request({"type": "state"}))
-    gs = _last_raw_state.get("game_state") or {}
+    gs = (_last_raw_state or {}).get("game_state") or {}
     cards = gs.get("deck", [])
 
     # Some screens (e.g., GRID) omit the deck — fall back to the last known one.
