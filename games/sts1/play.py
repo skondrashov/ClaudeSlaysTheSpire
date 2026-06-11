@@ -41,9 +41,17 @@ if __name__ == "__main__":
         print(send(command, reason=reason))
     elif cmd == "turn":
         # python play.py turn "play 1 0|play 2 0|end" "reason text"
-        actions = args[0].split("|") if args else []
-        reason = args[1] if len(args) > 1 else "executing turn"
-        print(turn(actions, reason=reason))
+        # Guard: actions must be ONE pipe-separated arg. Passing each action as
+        # its own argument silently executed only the first (the rest became the
+        # reason) — refuse instead.
+        extra_actions = [a for a in args[1:] if a.strip().lower().startswith(("play ", "end"))]
+        if extra_actions:
+            print('[ERROR] turn takes ONE pipe-separated actions argument plus a reason:')
+            print('  python play.py turn "play Bash 0|play Defend|end" "reason text"')
+        else:
+            actions = args[0].split("|") if args else []
+            reason = args[1] if len(args) > 1 else "executing turn"
+            print(turn(actions, reason=reason))
     elif cmd == "play":
         # python play.py play "card_index [target]" "reason text"
         play_args = args[0] if args else ""

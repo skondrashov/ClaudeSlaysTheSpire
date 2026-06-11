@@ -766,15 +766,23 @@ def _translate_command(command: str) -> str:
     combat = gs.get("combat_state")
 
     if verb == "play" and combat:
+        # The card ref may be an index OR a multi-word name (an unresolved name
+        # used to crash this translator with ValueError, killing the command).
         hand = combat.get("hand", [])
-        card_idx = int(parts[1]) - 1 if len(parts) > 1 else -1
-        card = hand[card_idx] if 0 <= card_idx < len(hand) else None
-        card_name = card["name"] if card else f"card {parts[1]}"
-        if len(parts) > 2 and combat:
+        target_tok = parts[-1] if len(parts) > 2 and parts[-1].lstrip("-").isdigit() else None
+        ref_tokens = parts[1:-1] if target_tok is not None else parts[1:]
+        ref = " ".join(ref_tokens)
+        if ref.isdigit():
+            card_idx = int(ref) - 1
+            card = hand[card_idx] if 0 <= card_idx < len(hand) else None
+            card_name = card["name"] if card else f"card {ref}"
+        else:
+            card_name = ref or "card ?"
+        if target_tok is not None:
             monsters = combat.get("monsters", [])  # absolute index
-            target_idx = int(parts[2])
+            target_idx = int(target_tok)
             enemy = monsters[target_idx] if 0 <= target_idx < len(monsters) else None
-            enemy_name = enemy["name"] if enemy else f"enemy {parts[2]}"
+            enemy_name = monster_name(enemy) if enemy else f"enemy {target_tok}"
             return f"{card_name} → {enemy_name}"
         return card_name
 
@@ -988,6 +996,7 @@ def _log_result(raw: dict):
 
 _game_over_handled = False
 _potion_skip_warned = False
+_key_take_warned = False
 # Snapshot of HAND_SELECT card list from when the screen first appeared.
 # Used to translate numeric indices across selections (cards get removed, shifting indices).
 _hand_select_snapshot = None
@@ -1342,6 +1351,25 @@ def send(command: str, reason: str = "") -> str:
     else:
         _hand_select_snapshot = None  # Clear when leaving HAND_SELECT
 
+    # Guard: taking a KEY from a reward forfeits the linked relic — twice a
+    # chained 'choose N' grabbed the Sapphire Key while the plan named the relic
+    # (Sundial, War Paint). Warn once; an identical second choose proceeds.
+    global _key_take_warned
+    if cmd_verb == "choose" and screen in ("COMBAT_REWARD", "CHEST"):
+        parts_k = command.strip().split()
+        if len(parts_k) >= 2 and parts_k[1].isdigit():
+            rewards_k = gs.get("screen_state", {}).get("rewards", [])
+            ridx = int(parts_k[1])
+            if (0 <= ridx < len(rewards_k)
+                    and rewards_k[ridx].get("reward_type") in ("SAPPHIRE_KEY", "EMERALD_KEY")
+                    and not _key_take_warned):
+                _key_take_warned = True
+                return ("[WARNING] choose {} selects the KEY - taking it forfeits the "
+                        "linked relic. If you want the relic, choose its index instead. "
+                        "If the key is intended, send the same choose again.".format(ridx))
+    if cmd_verb != "choose" or screen not in ("COMBAT_REWARD", "CHEST"):
+        _key_take_warned = False
+
     # Guard: cancel/skip on a GRID selection screen has frozen CommunicationMod
     # (states stop flowing; required killing and relaunching the game). Refuse it.
     if cmd_verb in ("return", "cancel", "skip") and screen == "GRID":
@@ -1380,9 +1408,23 @@ def send(command: str, reason: str = "") -> str:
         if chose_label and chose_label != resolved:
             chose_echo = f"[chose: {chose_label}]\n\n"
 
+    def _fingerprint(r):
+        g = (r or {}).get("game_state") or {}
+        c = g.get("combat_state") or {}
+        return (g.get("screen_type"), g.get("floor"), g.get("current_hp"),
+                g.get("gold"), len(c.get("hand", [])),
+                (c.get("player") or {}).get("energy"))
+
+    pre_fp = _fingerprint(_last_raw_state)
     _post_decision(resolved, reason)
     raw = _tcp_request({"type": "command", "command": resolved})
     _remember(raw)  # Update cache (healthy responses only)
+    stale_note = ""
+    if cmd_verb not in ("state", "wait") and _healthy_state(raw) and _fingerprint(raw) == pre_fp:
+        # The relay can return before the command processes; a blind retry then
+        # double-fires it (one campfire healed twice this way). Say so.
+        stale_note = ("[NOTE: state unchanged after this command - it may still be "
+                      "processing. Re-read state before retrying; do NOT resend blindly.]\n\n")
 
     # The echo must not claim a choice happened when the command failed.
     if chose_echo and ("error" in raw
@@ -1396,7 +1438,7 @@ def send(command: str, reason: str = "") -> str:
     _log_result(raw)
     _check_game_over(raw)
 
-    return chose_echo + format_state(raw)
+    return stale_note + chose_echo + format_state(raw)
 
 
 def _auto_collect_gold(raw: dict) -> dict:
@@ -2177,7 +2219,6 @@ def think(reasoning: str, label: str = "Strategy") -> str:
 
 
 _SAVES_DIR = os.path.join("C:\\", "Program Files (x86)", "Steam", "steamapps", "common", "SlayTheSpire", "saves")
-_start_save_warned = False
 
 
 def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> str:
@@ -2188,18 +2229,30 @@ def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> 
     twice this way). If a save exists, the first call refuses; calling start
     again confirms you really want to abandon it.
     """
-    global _start_save_warned
     saves = [os.path.join(_SAVES_DIR, f"{character.upper()}{ext}")
              for ext in (".autosave", ".autosaveBETA")]
-    if any(os.path.exists(s) for s in saves) and not _start_save_warned:
-        _start_save_warned = True
-        return (
-            f"[WARNING] A save for {character.upper()} exists — starting a new run "
-            f"DESTROYS it, and there is no resume command.\n"
-            f"If a run seems to be in progress, STOP and report to the orchestrator.\n"
-            f"If you intend to abandon it, call start again to confirm."
-        )
-    _start_save_warned = False
+    if any(os.path.exists(s) for s in saves):
+        # A save only matters if a run might actually be in progress. If the game
+        # cleanly reports OUT OF GAME, the file is a stale leftover — proceed.
+        # (The warn flag is a FILE because every play.py call is a new process —
+        # an in-memory flag made the CLI warn forever and never proceed.)
+        probe = _remember(_tcp_request({"type": "state"}))
+        cleanly_out = _healthy_state(probe) and probe.get("in_game") is False
+        flag = os.path.join(_BASE_DIR, "data", "start_confirm.flag")
+        if not cleanly_out:
+            if not os.path.exists(flag):
+                with open(flag, "w") as f:
+                    f.write(character.upper())
+                return (
+                    f"[WARNING] A save for {character.upper()} exists and the game does "
+                    f"not report a clean OUT OF GAME state — starting DESTROYS the save, "
+                    f"and there is no resume command.\n"
+                    f"If a run seems to be in progress, STOP and report to the orchestrator.\n"
+                    f"If you intend to abandon it, call start again to confirm."
+                )
+            os.remove(flag)
+        elif os.path.exists(flag):
+            os.remove(flag)
     cmd = f"start {character}"
     if ascension > 0:
         cmd += f" {ascension}"
