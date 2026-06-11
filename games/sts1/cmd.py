@@ -2043,14 +2043,61 @@ def potion_discard(slot: int, reason: str = "") -> str:
 # Knowledge planning and reasoning (ontology + heuristics)
 # ---------------------------------------------------------------------------
 
+def _current_boundaries(raw: dict) -> list[str]:
+    """Which decision boundaries the live state sits on — deterministic, from the
+    screen alone (the boundary is fully determined by the screen, so it must not
+    depend on selector judgment). Returns awareness handles for files that exist;
+    mirrors the dispatch in bot/state_formatter.format_state.
+    """
+    names: list[str] = []
+    if not raw.get("in_game", False):
+        names = ["game-start"]
+    else:
+        gs = raw.get("game_state", {}) or {}
+        screen = gs.get("screen_type", "NONE")
+        phase = gs.get("room_phase", "")
+        combat = gs.get("combat_state")
+        floor = gs.get("floor", 0)
+        if screen == "CARD_REWARD":
+            names = ["card-reward"]
+        elif screen in ("GRID", "HAND_SELECT") and combat:
+            names = ["turn"]
+        elif (phase == "COMBAT" or screen == "NONE") and combat:
+            names = ["fight-start", "turn"] if combat.get("turn", 0) <= 1 else ["turn"]
+        elif screen == "EVENT":
+            ev = (gs.get("screen_state", {}) or {}).get("event_name", "")
+            names = ["game-start", "event"] if "neow" in ev.lower() else ["event"]
+        elif screen in ("SHOP_ROOM", "SHOP_SCREEN"):
+            names = ["shop"]
+        elif screen == "MAP":
+            # First map view of an act: floor 0 (after Neow) or a boss floor
+            # (16/33/50 — floor % 17 == 16) means the next pick opens a new act.
+            at_act_start = floor == 0 or floor % 17 == 16
+            names = ["act-start", "node-choice"] if at_act_start else ["node-choice"]
+        elif screen == "REST":
+            names = ["rest-site"]
+        elif screen == "COMBAT_REWARD":
+            names = ["card-reward"]
+        elif screen == "BOSS_REWARD":
+            names = ["boss-relic"]
+    handles = []
+    for n in names:
+        if os.path.exists(os.path.join(ROOT, "awareness", "sts1", "boundaries", f"{n}.md")):
+            handles.append(f"awareness/sts1/boundaries/{n}")
+    return handles
+
+
 def survey() -> str:
     """Survey what knowledge applies to the current state — a menu of recall()
     handles, not content.
 
-    One selector call (a small fast model) reads the live state + the ontology map
-    and returns the handles worth pulling: the on-board entities (enemies, boss,
-    non-basic hand cards, relics, current event), upgraded cards, and any phenomenon
-    whose conditions match right now. Judgment, not a state echo — it surfaces the
+    Two parts. First, the decision boundary: the screen you're on determines which
+    boundary index applies (turn, card-reward, shop, ...), so those handles are
+    included deterministically — code, not judgment. Second, one selector call
+    (a small fast model) reads the live state + the ontology map and returns the
+    handles worth pulling: the on-board entities (enemies, boss, non-basic hand
+    cards, relics, current event), upgraded cards, and any phenomenon whose
+    conditions match right now. Judgment, not a state echo — it surfaces the
     non-obvious (combos, contextual warnings) the way a deterministic list can't.
     Returns ONLY the menu; read what you want with recall().
     """
@@ -2061,14 +2108,25 @@ def survey() -> str:
     except Exception as e:
         return f"survey unavailable: {e}"
     try:
-        state_text = format_state(state_raw())
+        raw = state_raw()
+        boundary_handles = _current_boundaries(raw)
+        state_text = format_state(raw)
         handles = retrieval.survey(state_text, retrieval.load_index("sts1"))
     except Exception as e:
         return f"survey failed: {e}"
-    _log_event({"type": "survey", "handles": handles, "timestamp": time.time()})
-    if not handles:
+    handles = [h for h in handles if h not in boundary_handles]
+    _log_event({"type": "survey", "boundaries": boundary_handles, "handles": handles,
+                "timestamp": time.time()})
+    lines = []
+    if boundary_handles:
+        lines.append("this decision's boundary — consider its index:")
+        lines.extend(f"  {h}" for h in boundary_handles)
+    if handles:
+        lines.append("survey — recall() any of these:")
+        lines.extend(f"  {h}" for h in handles)
+    if not lines:
         return "survey: nothing flagged. recall() entities by name as needed."
-    return "\n".join(["survey — recall() any of these:"] + [f"  {h}" for h in handles])
+    return "\n".join(lines)
 
 
 
