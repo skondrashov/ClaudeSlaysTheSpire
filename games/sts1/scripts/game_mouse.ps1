@@ -1,7 +1,10 @@
+# ORCHESTRATOR-ONLY EMERGENCY TOOL — never expose to player agents, never wire
+# into play.py/cmd.py. The system's contract is a text interface; this exists
+# solely for IB-012 recovery (main menu Continue after a crash-to-menu), where
+# vanilla CommunicationMod has no verb (click/key are isInDungeon()-gated).
+# Slated for retirement once a `resume` command ships in the companion mod.
 # Move the real cursor over the game window (and optionally click).
 # The game runs borderless fullscreen at 1920x1080, so game coords == screen coords.
-# Used for menu recovery when CommunicationMod has no verb for the screen
-# (e.g. the main menu's Continue button after a crash-to-menu).
 # usage: powershell -File game_mouse.ps1 -X 232 -Y 304 [-Click] [-Title "Modded Slay the Spire"]
 param(
     [Parameter(Mandatory=$true)][int]$X,

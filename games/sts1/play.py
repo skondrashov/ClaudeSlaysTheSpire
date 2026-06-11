@@ -10,10 +10,10 @@ sys.path.insert(0, r'C:\Users\tkond\projects\praxis\games\sts1')
 FIXED_SESSION = "player-agent-fixed-session-001"
 os.environ["PLAYER_SESSION"] = FIXED_SESSION
 
-# Remove any stale lock before importing cmd
-lock_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "player.lock")
-if os.path.exists(lock_file):
-    os.remove(lock_file)
+# Do NOT delete the lock here. cmd._acquire_lock() re-enters its own session's
+# lock fine; deleting unconditionally erased OTHER sessions' locks, making the
+# single-player guarantee a no-op (run 241 margin note). The orchestrator owns
+# lock removal between agents.
 
 from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use, potion_discard, start, think, deck, state_raw, _tcp_request, survey, recall
 from bot.state_formatter import format_state
