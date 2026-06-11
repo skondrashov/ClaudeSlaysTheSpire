@@ -393,7 +393,12 @@ def format_shop(gs: dict) -> str:
             lines.append(_item_line(relic, relic.get("name", "?")))
 
     if potions:
-        lines.append("Potions:")
+        belt = gs.get("potions", [])
+        belt_full = bool(belt) and not any(p.get("id") == "Potion Slot" for p in belt)
+        if belt_full:
+            lines.append("Potions: [CANNOT BUY — your potion slots are FULL; drink or discard first]")
+        else:
+            lines.append("Potions:")
         for pot in potions:
             lines.append(_item_line(pot, pot.get("name", "?")))
 

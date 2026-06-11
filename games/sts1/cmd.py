@@ -1419,6 +1419,30 @@ def send(command: str, reason: str = "") -> str:
     if screen != "COMBAT_REWARD":
         _potion_skip_warned = False
 
+    # Guard: buying a SHOP potion with full slots is a silent no-op — the mod's
+    # choice list filters by gold only; the game just ignores the purchase
+    # (gold undeducted, echo claims success). Refuse loudly instead.
+    if cmd_verb == "choose" and screen in ("SHOP_ROOM", "SHOP_SCREEN"):
+        try:
+            resolved_probe = _resolve_shop_choose(_last_raw_state, command)
+            probe_parts = resolved_probe.strip().split()
+            if len(probe_parts) >= 2 and probe_parts[1].isdigit():
+                items = _build_shop_choice_list(gs)
+                pidx = int(probe_parts[1])
+                if 0 <= pidx < len(items) and items[pidx][0] == "potion":
+                    potions_now = gs.get("potions", [])
+                    if potions_now and not any(p.get("id") == "Potion Slot" for p in potions_now):
+                        names_now = ", ".join(p.get("name", "?") for p in potions_now)
+                        return (
+                            f"[ERROR] Cannot buy {items[pidx][1]} — all potion slots are full, "
+                            f"and the game silently ignores the purchase (gold stays, nothing "
+                            f"happens).\n"
+                            f"Current potions: {names_now}\n"
+                            f"Drink or discard one first (potion_use / potion_discard), then buy."
+                        )
+        except Exception:
+            pass  # never let the guard break a normal purchase
+
     # Guard: prevent choosing a potion reward when all potion slots are full.
     # CommunicationMod hangs/crashes if you try to pick up a potion with no empty slots.
     if cmd_verb == "choose" and screen == "COMBAT_REWARD":
