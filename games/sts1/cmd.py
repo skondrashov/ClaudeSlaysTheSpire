@@ -312,7 +312,7 @@ def state() -> str:
     _remember(raw)
     # Auto-handle mechanical transitions before returning state
     raw = _auto_handle_mechanical(raw)
-    return _interruption_notice(raw) + format_state(raw)
+    return _interruption_notice(raw) + _fight_start_notice(raw) + format_state(raw)
 
 
 def state_raw() -> dict:
@@ -364,6 +364,37 @@ def _remember(raw):
                     f.write(str((raw.get("game_state") or {}).get("seed", "")))
         # out-of-game: leave the flag — its presence IS the interruption signal
     return raw
+
+
+def _fight_start_notice(raw) -> str:
+    """One mechanical line on the FIRST echo of each new combat (run 242's
+    audit: the death fight was a retrieval miss — the page existed, no recall
+    fired; protocols collapsed post-directive). Names the moment, not the
+    strategy: what to recall stays the player's call. File marker keyed by
+    seed|floor — every play.py call is a fresh process."""
+    if not isinstance(raw, dict) or not raw.get("in_game"):
+        return ""
+    gs = raw.get("game_state") or {}
+    cs = gs.get("combat_state")
+    if not cs or gs.get("screen_type") in ("GAME_OVER", "COMPLETE"):
+        return ""
+    if (cs.get("turn") or 0) > 1:
+        return ""
+    key = f"{gs.get('seed')}|{gs.get('floor')}"
+    marker = os.path.join(_BASE_DIR, "data", "fight_seen.flag")
+    try:
+        if os.path.exists(marker):
+            with open(marker) as f:
+                if f.read().strip() == key:
+                    return ""
+        with open(marker, "w") as f:
+            f.write(key)
+    except OSError:
+        return ""
+    monsters = [m for m in cs.get("monsters", []) if not m.get("is_gone")]
+    names = ", ".join(dict.fromkeys(monster_name(m) for m in monsters)) or "enemies"
+    return (f"[new fight: {names} — survey() lists this fight's handles "
+            f"(boundary + entities)]\n\n")
 
 
 def _interruption_notice(raw) -> str:
@@ -1536,7 +1567,8 @@ def send(command: str, reason: str = "") -> str:
             stale_note = ("[WARNING] the key does NOT appear in your possession after "
                           "that choose - re-read state and retry before leaving the "
                           "screen.]\n\n") + stale_note
-    return _interruption_notice(raw) + stale_note + chose_echo + format_state(raw)
+    return (_interruption_notice(raw) + _fight_start_notice(raw)
+            + stale_note + chose_echo + format_state(raw))
 
 
 def _auto_collect_gold(raw: dict) -> dict:
@@ -1985,7 +2017,8 @@ def turn(actions: list, reason: str = "") -> str:
     # Auto-handle mechanical transitions after the turn completes
     _remember(_auto_handle_mechanical(_last_raw_state))
 
-    formatted = _interruption_notice(_last_raw_state) + format_state(_last_raw_state)
+    formatted = (_interruption_notice(_last_raw_state)
+                 + _fight_start_notice(_last_raw_state) + format_state(_last_raw_state))
     if stopped_msg:
         return stopped_msg + "\n\n" + formatted
     return formatted
