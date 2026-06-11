@@ -162,13 +162,13 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 **What:** At an event, `choose 1` echoed "[Offer: 182 Gold] Lose all Gold. Obtain a Relic." but the game executed [Leave]: gold unchanged, no relic, screen advanced EVENT→MAP with no relic screen. The IB-003 shape (translation/index ordering mismatch), but here it changed the outcome instead of just the log line.
 
-**Root cause:** Suspected: event option ordering in the translation list differs from CommunicationMod's actual indexing (the event-screen analog of IB-003). Alternative (game no-opped a correctly-routed offer) also interface-side.
+**Root cause:** FOUND (2026-06-11, via IB-013's run-241 recurrence): `format_event` and the translation numbered the full display list while `choose N` indexes CommunicationMod's enabled-only choice_list. Red Mask's "Don the Mask" option is DISABLED without the Red Mask — shifting the offer to display [1] while the executable list had [0]=offer, [1]=Leave. `choose 1` = Leave, exactly as observed.
 
 **Impact:** Medium this time (~0 cost — run 237, F41 Tomb of Lord Red Mask, gold ended the run unspent), but the same desync on a consequential event (Vampires, Falling, Mind Bloom) would be run-altering. Player blameless — intent and echo agreed.
 
-**Affected runs:** 237 (F41, idx 630-631).
+**Affected runs:** 237 (F41, idx 630-631), 241 (F38 — see IB-013).
 
-**Status:** OPEN.
+**Status:** FIXED (2026-06-11) — see IB-013 for the shared fix (`_event_choice_options()`, enabled-only indexing in both formatter and translation).
 
 **Fix:** Compare event option ordering between `_translate_command()` and CommunicationMod; add a post-choice assertion (gold/relic/HP delta vs the echoed option's stated effect) that flags a mismatch immediately instead of leaving it to audit-time inventory reconciliation.
 
@@ -205,6 +205,20 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 **Status:** OPEN (recovery procedure proven; menu-drop cause not yet found). Guard hardening shipped: `start()` no longer treats "cleanly OUT OF GAME + save exists" as a stale save (a crash-to-menu produces exactly that state with a LIVE save) — it now always requires the two-call confirm when a save file exists.
 
 **Fix candidates:** a cmd.py tripwire — when `in_game` flips false while the last known state was mid-run (not GAME_OVER), return a loud `[RUN INTERRUPTED — game at main menu, save likely intact: STOP, do not start(), report to orchestrator]` instead of a normal state echo.
+
+---
+
+## IB-013: Event option indices shift past disabled options (chose relic offer, executed Leave)
+
+**What:** Run 241 floor 38: the formatted event showed the pay-23-gold relic offer at `[1]`; the player sent `choose 1` with that intent; the echo even named the offer — but the game executed **Leave**. Gold untouched, no relic, event gone.
+
+**Root cause:** FOUND, mechanical. `format_event` numbered ALL of `screen_state.options` (disabled included), but CommunicationMod's `choose N` indexes its `choice_list`, which contains only ENABLED options. Any disabled option above the target (here: an offer the player couldn't afford) shifts every later index by one. The command translation made it invisible by reading the same display list — echo said one thing, game did another. **This is also IB-010's mechanism** (Tomb of Lord Red Mask, run 237: option executed ≠ option echoed — that event has conditionally disabled options).
+
+**Impact:** Medium-FATAL — silently converts any event decision into a different one whenever a disabled option is present. Wasted the run-241 relic; IB-010's instance altered gameplay.
+
+**Affected runs:** 241 (relic offer → Leave), 237 (IB-010, Red Mask).
+
+**Status:** FIXED (2026-06-11). Shared source of truth `_event_choice_options()` (enabled options, in order — exactly CommunicationMod's event choice_list). `format_event` numbers only enabled options (`[-] ... (DISABLED — not choosable, has no index)` for the rest) and the command translation indexes the same list. Verified with a synthetic disabled-offer event: display index == executed index. Same lesson as the shop's IB-003: always index against CommunicationMod's REAL choice list, never the raw display array.
 
 ---
 

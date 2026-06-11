@@ -23,7 +23,8 @@ import sys
 import time
 import urllib.request
 
-from bot.state_formatter import format_state, monster_name, _build_shop_choice_list
+from bot.state_formatter import (format_state, monster_name,
+                                 _build_shop_choice_list, _event_choice_options)
 
 HOST = "127.0.0.1"
 PORT = 19284
@@ -911,10 +912,13 @@ def _translate_command(command: str) -> str:
                 cat, name, _item = items[idx]
                 return "Remove Card (purge)" if cat == "purge" else f"Buy {name}"
         elif screen == "EVENT":
-            event_name = ss.get("event_name", "")
-            options = ss.get("options", [])
-            if 0 <= idx < len(options):
-                text = options[idx].get("text", "?")
+            # Index against the ENABLED options only — CommunicationMod's
+            # choice_list excludes disabled ones, so translating against the
+            # full display list mislabels every option after a disabled one
+            # (IB-010/IB-013: echoed the relic offer, executed Leave).
+            enabled = _event_choice_options(ss)
+            if 0 <= idx < len(enabled):
+                text = enabled[idx].get("text", "?")
                 text = re.sub(r"<[^>]+>", "", text)[:50]
                 return text
         elif screen == "GRID":
