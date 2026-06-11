@@ -37,6 +37,8 @@ That live trail is what lets an Audit measure calibration — where your in-the-
 
 **Anchor the label, don't inherit it.** Derive the baseline from the corpus record — count this character's wins and runs at this ascension — never from an optimistic constant carried over from easier runs, and never from any single previous run's live trail ("the last run started at X" is not evidence; that label was itself unvalidated). Re-derive the number at act entries and boss entries (HP minus the booked costs of every forced fight to the next recovery; kill-turns × expected incoming for a boss) instead of carrying the previous label forward — and make each milestone tick (+N at a boss kill or act entry) cite that same subtraction, not just momentum. A label that does not move when its inputs moved is not an estimate — it is the previous label.
 
+**At a boss-commitment node, "it's just arithmetic now" must show the arithmetic BOTH ways.** Price your sustained damage/turn from REALIZED fight data (not theoretical maxima) against the boss's HP, AND your block-required/turn against the boss's scaling clock (Strength ramps escalate the requirement every cycle). A label that jumps +15 or more in one step on output math alone — without running the incoming side against the loaded boss page — is the known shape of a fatal overclaim.
+
 **Do NOT force a single archetype.** The game offers cards and relics — your job is to recognize which archetype the game is pushing you toward and build into it. Strength scaling, exhaust engines, Barricade+Body Slam, Corruption+FNP, defensive attrition — all are viable. Evaluate what you're offered, not what you wish you were offered.
 
 ## Margin Notes

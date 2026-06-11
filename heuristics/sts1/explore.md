@@ -54,7 +54,12 @@ When the experiment compares against a specific prior run, treat the baseline lo
 - **List knowledge confounders, not just RNG ones.** Rules codified AFTER the baseline run are an asymmetry the baseline never had; list them alongside purchase/roll confounders. If a foreknowledge purchase goes UNUSED, say so in the conclusion — it cleans the result rather than dirtying it.
 - **?-nodes can diverge between runs on the same seed.** Route both arms around ?-nodes, or log the divergence as a confounder when it happens.
 - **Label run-win% and experiment status SEPARATELY.** "Directive criterion met" is not run-win evidence — do not price experiment progress into the run's win label.
+- **Write the arm's OWN results down as you go.** Baseline citations are only half the ledger: at each act boundary, post a checkpoint think with this arm's per-fight HP results — favorable AND unfavorable. A closure summary written without them silently drops the experiment's negative measurements, and the closure summary is exactly the artifact a later Curate session quotes.
 - **A book-flagged death-spiral fight is a material state change:** give it a fresh win% label, an expected-cost row, and a potion plan before turn 1, even mid-experiment.
+
+## When the Experiment Completes Mid-Run
+
+**Protocols bind to the RUN, not the directive.** Recalls, fight plans, win% labels, and checkpoint ledgers do not stop when the experiment's criteria are met — "wins are a bonus" means the win is not the objective, not that process is optional once the data is in. The known failure shape is post-success discipline collapse: every habit holds exactly as long as the directive enforces it, then stops on the same floor the criteria are met — and the bare, unlabeled fights that follow are where runs die. If the experiment completes, say so in one think, then keep playing the run under the full Win-goal protocol.
 
 ## Confounders
 

@@ -93,6 +93,8 @@ In batched `turn()` commands, card indices shift after each play but the batch p
 
 **RULE:** Always use card names in `turn()` sequences: `turn(["play Consecrate", "play Strike 0", "play Strike 0", "play Defend", "end"])`. Card names resolve against the current hand state at the time each action executes, so they are immune to index shifting.
 
+**This covers EVERY card after the first in a batch, with no exceptions for "obvious" picks.** A mid-batch index resolves against the PRE-batch display hand, and the echo can print the stale card's name while a different card — or NOTHING (an unaffordable card) — actually plays. The echo is not evidence. The post-play check is the STATE: did energy drop, did the power stack appear, did enemy HP move, did the card leave the hand? If the state did not change as the play intended, the play did not happen — re-send it by name before doing anything else.
+
 If two copies of the same card exist in hand and you need to play a specific one, play each card individually via `send()` with a state check between plays instead of using `turn()`.
 
 ### 7. POTION ORDERING ON KILL TURNS
@@ -128,6 +130,8 @@ For Watcher: while you are **already in Wrath**, your attacks deal double damage
 ### 10. INCLUDE YOUR OWN DEBUFFS IN EVERY CALC
 
 Your own [[debuffs/Weak]] cuts YOUR attack damage by 25%; your own [[debuffs/Frail]] cuts YOUR block by 25%. Both multipliers round DOWN (Defend 5 under Frail = 3 block, not 4). Run every kill-math and every block total with your own active debuffs applied — a "lethal" line computed without your Weak comes up short by exactly the discount, and a block plan that ignores Frail under-blocks at the worst margins.
+
+**[[debuffs/Vulnerable]] and Weak multiply ATTACK damage ONLY.** [[buffs/Thorns]], [[buffs/Juggernaut]], and potion damage are NOT multiplied — do not apply x1.5 to them in kill projections (and enemy Thorns is not reduced by their Weak). Inflating non-Attack damage by Vulnerable corrupts lethal math in both directions.
 
 ### 11. SEND DISCIPLINE UNDER INTERFACE LAG
 

@@ -136,7 +136,7 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 **Repro seed:** `start IRONCLAD 5 9128496640971033917` (Run 216). Play to F14 Sentries. In a turn with no playable cards, send `end` and immediately send `end` again before the state updates.
 
-**Status:** REPORTED FIXED at source by the maintainer post-run-240 (relay race). Previously OPEN with "one `end` per turn" guidance only. Keep the habit rule (empty/unchanged echo after `end` → re-poll, never re-send) until a clean run confirms.
+**Status:** FIXED — verified in the wild (run 242: zero interface HP lost across 48 floors; four benign empty echoes recovered correctly, no duplicate `end` fired). The relay-race fix (post-run-240) plus the batch no-op tripwire (commit 974add1 — a `play` must remove the card from hand at state level; it caught and flagged one silent no-op in run 242, replayed by name) closed the family. Keep the habit rule (empty/unchanged echo after `end` → re-poll, never re-send) as cheap insurance.
 
 **Fix:** cmd.py should track whether `end` has been sent this turn and reject duplicates. Add a `_turn_ended` flag that's set on `end` and cleared when state shows a new turn (different turn number or enemy phase). Simple guard in `send()`.
 

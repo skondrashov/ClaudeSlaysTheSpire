@@ -4,6 +4,8 @@
 
 **Price the Frail turn explicitly.** The spores turn costs no damage, but the [[debuffs/Frail]] it lands cuts your block 25% (rounded down) on exactly the turns the 3-hit Chomps arrive. Before treating the spores turn as free, run the NEXT attack turn's block math with Frail applied — block plans that ignore the Frail discount under-block at lethal margins, and this fight has ended runs that way.
 
+**Block VOLUME passes the Frail check that block CEILINGS fail.** Frail taxes ~25-30% of whatever you generate, so a deck that can pour out 25-30+ block (e.g. [[cards/Corruption]] free-Skill volume) still zeroes the Chomps after the tax, while a deck whose ceiling is ~12-15 block cannot block a Chomp through Frail no matter how it sequences. If your max block per turn under Frail is below the Chomp total, the fix is kill speed or [[debuffs/Weak]], not better blocking.
+
 **Benchmark:** With a damage engine: 4-5 turn fight, 15-25 HP lost. Without one: 7-turn fight, 40+ HP lost. This fight is a scaling check — any damage engine passes it ([[buffs/Strength]], Corruption+FNP block conversion via [[cards/Body Slam]], etc.), as long as it produces large single hits.
 
 ## Strategy
