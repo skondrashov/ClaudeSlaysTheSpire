@@ -1086,22 +1086,34 @@ def build_landing(ont_categories, heur_categories, run_stats):
         _w = _s["wins"] if _s else 0
         _runs = _s["runs"] if _s else 0
         _wins_label = f"{_w} win" + ("s" if _w != 1 else "")
+        # "Best" is ordered by ascension first: a deep A9 attempt outranks an
+        # A5 win; within an ascension a win outranks any floor.
+        _b = (_s or {}).get("best") or {}
+        _won_a = (_s or {}).get("best_won_ascension")
+        _complete = f"A{_won_a} complete" if _won_a is not None else "no win yet"
         if _cur:
-            # The current class shows as NOW PLAYING even if it has past wins —
-            # an A0-complete badge alone hides that an A5 attempt is underway.
-            _extra = f" &middot; {_wins_label} at A0" if _w > 0 else ""
+            _best_bit = (f"best A{_b.get('ascension', 0)} "
+                         + ("WIN" if _b.get("victory") else f"F{_b.get('floor', 0)}"))
             _jcards.append(
                 '<div class="journey-card active">'
                 '<div class="journey-badge">NOW PLAYING</div>'
                 f'<div class="journey-name">{_dn}</div>'
-                f'<div class="journey-stats">Ascension {run_stats.get("best_ascension", 0)}{_extra}</div>'
+                f'<div class="journey-stats">Ascension {run_stats.get("best_ascension", 0)} '
+                f'&middot; {_best_bit} &middot; {_complete}</div>'
                 '</div>')
-        elif _w > 0:
+        elif _b.get("victory"):
             _jcards.append(
                 '<div class="journey-card completed">'
-                '<div class="journey-badge">A0 COMPLETE</div>'
+                f'<div class="journey-badge">A{_b.get("ascension", 0)} COMPLETE</div>'
                 f'<div class="journey-name">{_dn}</div>'
                 f'<div class="journey-stats">{_wins_label} &middot; {_runs} runs</div>'
+                '</div>')
+        elif _s:
+            _jcards.append(
+                '<div class="journey-card active">'
+                f'<div class="journey-badge">BEST A{_b.get("ascension", 0)} F{_b.get("floor", 0)}</div>'
+                f'<div class="journey-name">{_dn}</div>'
+                f'<div class="journey-stats">{_complete} &middot; {_runs} runs</div>'
                 '</div>')
     journey_html = ""
     if _jcards:

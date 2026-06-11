@@ -1,0 +1,153 @@
+{
+  "run": 238,
+  "character": "IRONCLAD",
+  "ascension": 9,
+  "victory": false,
+  "floor": 0,
+  "deck": [
+    "Strike",
+    "Strike",
+    "Strike",
+    "Strike",
+    "Strike",
+    "Defend",
+    "Defend",
+    "Defend",
+    "Defend",
+    "Bash"
+  ],
+  "relics": [
+    "Burning Blood"
+  ],
+  "potions": [
+    "Potion Slot",
+    "Potion Slot",
+    "Potion Slot"
+  ],
+  "gold": 99,
+  "hp": 72,
+  "max_hp": 80,
+  "seed": 2768637335505570820,
+  "events": [
+    {
+      "type": "decision",
+      "command": "proceed",
+      "translated": "Proceed",
+      "reasoning": "proceeding"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "feed",
+      "text": "RECALL -- layer:goals, next"
+    },
+    {
+      "type": "decision",
+      "command": "start IRONCLAD 9 5894277716703663016",
+      "translated": "Start \u2014 IRONCLAD",
+      "reasoning": "Starting IRONCLAD A9"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 80,
+        "gold": 99,
+        "screen": "EVENT"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "start IRONCLAD 9 1R1QM9WQALVQG",
+      "translated": "Start \u2014 IRONCLAD",
+      "reasoning": "Starting IRONCLAD A9"
+    },
+    {
+      "type": "result",
+      "state": {}
+    },
+    {
+      "type": "decision",
+      "command": "key CANCEL",
+      "translated": "key CANCEL",
+      "reasoning": "open pause menu to abandon wrong-seed run"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 80,
+        "gold": 99,
+        "screen": "NONE"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "click left 1437 227",
+      "translated": "click left 1437 227",
+      "reasoning": "click Abandon Run"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 80,
+        "gold": 99,
+        "screen": "NONE"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "click left 848 696",
+      "translated": "click left 848 696",
+      "reasoning": "confirm abandon"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 80,
+        "gold": 99,
+        "screen": "NONE"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "wait 60",
+      "translated": "wait 60",
+      "reasoning": "let abandon resolve"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 80,
+        "gold": 99,
+        "screen": "NONE"
+      }
+    },
+    {
+      "type": "decision",
+      "command": "click left 848 696",
+      "translated": "click left 848 696",
+      "reasoning": "confirm abandon (retry)"
+    },
+    {
+      "type": "result",
+      "state": {
+        "floor": 0,
+        "hp": 72,
+        "max_hp": 80,
+        "gold": 99,
+        "screen": "GAME_OVER"
+      }
+    }
+  ]
+}

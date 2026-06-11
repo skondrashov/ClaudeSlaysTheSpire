@@ -2,6 +2,8 @@
 
 Free 52 AOE damage with no energy or card investment in long fights. In fights that end in 4-5 turns, the relic does nothing.
 
+Count the turn-7 nuke in your kill math for long fights — and in dangerous ones, plan the fight so you are still standing on turn 7. The 52 only matters if you get there.
+
 KEY MATCHUPS:
 - **[[enemies/Centurion]]+[[enemies/Mystic]]**: Ideal -- fight naturally lasts 7+ turns while killing Mystic through block. 52 damage lands on Centurion.
 - **Boss fights**: Most last 10+ turns, so the nuke always fires. 52 free damage is significant.

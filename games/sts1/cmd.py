@@ -669,6 +669,36 @@ def _resolve_shop_choose(raw_state: dict, action: str) -> str:
     return action  # No match found, pass through unchanged
 
 
+def _resolve_reward_choose(raw_state: dict, action: str) -> str:
+    """Resolve item NAMES in choose commands on reward screens (COMBAT_REWARD /
+    BOSS_REWARD) to indices. Multi-word relic/potion names previously only
+    worked in shops; reward screens rejected them, forcing index-chaining --
+    the error family behind two mis-taken keys."""
+    parts = action.strip().split()
+    if len(parts) < 2 or parts[0].lower() != "choose":
+        return action
+    arg = " ".join(parts[1:]).strip()
+    if arg.isdigit():
+        return action
+    gs = (raw_state or {}).get("game_state") or {}
+    screen = gs.get("screen_type", "")
+    ss = gs.get("screen_state", {})
+    name = arg.lower()
+    if screen == "COMBAT_REWARD":
+        for i, r in enumerate(ss.get("rewards", [])):
+            label = (r.get("relic", {}).get("name")
+                     or r.get("potion", {}).get("name")
+                     or ("card" if r.get("reward_type") == "CARD" else "")
+                     or r.get("reward_type", ""))
+            if label and name in str(label).lower():
+                return f"choose {i}"
+    elif screen == "BOSS_REWARD":
+        for i, r in enumerate(ss.get("relics", [])):
+            if name in r.get("name", "").lower():
+                return f"choose {i}"
+    return action
+
+
 def _resolve_choose_card_name(raw_state: dict, action: str) -> str:
     """Resolve card names in choose commands to indices for card-selection screens.
 
@@ -996,7 +1026,6 @@ def _log_result(raw: dict):
 
 _game_over_handled = False
 _potion_skip_warned = False
-_key_take_warned = False
 # Snapshot of HAND_SELECT card list from when the screen first appeared.
 # Used to translate numeric indices across selections (cards get removed, shifting indices).
 _hand_select_snapshot = None
@@ -1160,14 +1189,26 @@ def _write_run_log(gs: dict, victory: bool):
 def _check_game_over(raw: dict):
     """Check if the game just ended. If so, write the run log.
 
-    Called after every send(). Only fires once per run — the flag resets
-    when a non-GAME_OVER screen is seen.
+    Called after every send(). Fires once per run — idempotency is a FILE
+    marker keyed by the ending (every play.py call is a fresh process, so the
+    in-memory flag let a second GAME_OVER proceed write a duplicate run log:
+    run_240/241 were the same death).
     """
     global _game_over_handled
     gs = raw.get("game_state") or {}
     screen = gs.get("screen_type")
 
     if screen == "GAME_OVER" and not _game_over_handled:
+        marker = os.path.join(_BASE_DIR, "data", "gameover_captured.flag")
+        ending = f"{gs.get('seed', '?')}|{gs.get('floor', '?')}"
+        try:
+            if os.path.exists(marker) and open(marker).read().strip() == ending:
+                _game_over_handled = True
+                return
+            with open(marker, "w") as f:
+                f.write(ending)
+        except OSError:
+            pass
         _game_over_handled = True
         ss = gs.get("screen_state", {})
         victory = ss.get("victory", False)
@@ -1354,21 +1395,28 @@ def send(command: str, reason: str = "") -> str:
     # Guard: taking a KEY from a reward forfeits the linked relic — twice a
     # chained 'choose N' grabbed the Sapphire Key while the plan named the relic
     # (Sundial, War Paint). Warn once; an identical second choose proceeds.
-    global _key_take_warned
+    _key_flag = os.path.join(_BASE_DIR, "data", "key_confirm.flag")
+    _expect_key = None
     if cmd_verb == "choose" and screen in ("COMBAT_REWARD", "CHEST"):
         parts_k = command.strip().split()
         if len(parts_k) >= 2 and parts_k[1].isdigit():
             rewards_k = gs.get("screen_state", {}).get("rewards", [])
             ridx = int(parts_k[1])
             if (0 <= ridx < len(rewards_k)
-                    and rewards_k[ridx].get("reward_type") in ("SAPPHIRE_KEY", "EMERALD_KEY")
-                    and not _key_take_warned):
-                _key_take_warned = True
-                return ("[WARNING] choose {} selects the KEY - taking it forfeits the "
-                        "linked relic. If you want the relic, choose its index instead. "
-                        "If the key is intended, send the same choose again.".format(ridx))
-    if cmd_verb != "choose" or screen not in ("COMBAT_REWARD", "CHEST"):
-        _key_take_warned = False
+                    and rewards_k[ridx].get("reward_type") in ("SAPPHIRE_KEY", "EMERALD_KEY")):
+                # Flag is a FILE: every play.py call is a fresh process, so an
+                # in-memory flag warned forever and made keys uncollectable.
+                if not os.path.exists(_key_flag):
+                    with open(_key_flag, "w") as f:
+                        f.write(str(ridx))
+                    return ("[WARNING] choose {} selects the KEY - taking it forfeits "
+                            "the linked relic. If you want the relic, choose its index "
+                            "instead. If the key is intended, send the same choose "
+                            "again.".format(ridx))
+                os.remove(_key_flag)
+                _expect_key = rewards_k[ridx]["reward_type"]
+    elif os.path.exists(_key_flag):
+        os.remove(_key_flag)
 
     # Guard: cancel/skip on a GRID selection screen has frozen CommunicationMod
     # (states stop flowing; required killing and relaunching the game). Refuse it.
@@ -1395,6 +1443,8 @@ def send(command: str, reason: str = "") -> str:
     resolved = _resolve_choose_card_name(_last_raw_state, resolved)
     # Resolve shop card/relic names to indices
     resolved = _resolve_shop_choose(_last_raw_state, resolved)
+    # Resolve relic/potion names on reward screens
+    resolved = _resolve_reward_choose(_last_raw_state, resolved)
 
     # Resolve what a choose actually selects BEFORE executing, and echo it at the
     # top of the response. Two consecutive runs were decided by an unverified
@@ -1438,6 +1488,15 @@ def send(command: str, reason: str = "") -> str:
     _log_result(raw)
     _check_game_over(raw)
 
+    # Confirmed key picks: verify possession — the relay's response to a key
+    # choose is shape-identical for success and silent failure.
+    if _expect_key and _healthy_state(raw):
+        _g = raw.get("game_state") or {}
+        _got = _g.get("has_emerald_key") if _expect_key == "EMERALD_KEY" else _g.get("has_sapphire_key")
+        if not _got:
+            stale_note = ("[WARNING] the key does NOT appear in your possession after "
+                          "that choose - re-read state and retry before leaving the "
+                          "screen.]\n\n") + stale_note
     return stale_note + chose_echo + format_state(raw)
 
 
@@ -1671,6 +1730,13 @@ def _batch_energy_check(snapshot_hand: list, energy: int, actions: list) -> str 
             return None                        # energy math not naively summable
         cost = card.get("cost", 0)
         if cost is None or cost < 0:           # X-cost / unplayable markers
+            if cost == -1 and a is not actions[-1] and any(
+                    x.strip().lower().startswith("play ")
+                    for x in actions[actions.index(a) + 1:]):
+                return ("[ERROR] An X-cost card consumes ALL remaining energy when "
+                        "played - nothing after it in the batch can be paid for. "
+                        "Play the X-cost card LAST (combat.md rule 3), or spend the "
+                        "energy you want to keep BEFORE it.")
             cost = 0
         total += cost
         lines.append(f"  {card.get('name', '?')} = {cost}E")
@@ -2227,6 +2293,30 @@ def think(reasoning: str, label: str = "Strategy") -> str:
 
 _SAVES_DIR = os.path.join("C:\\", "Program Files (x86)", "Steam", "steamapps", "common", "SlayTheSpire", "saves")
 
+# The game's seed-string alphabet (base 35, no 'O') — from the game's SeedHelper.
+_SEED_CHARS = "0123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"
+
+
+def _encode_seed(seed) -> str:
+    """Run logs store seeds as signed 64-bit integers, but the game (and
+    CommunicationMod's start command) takes the base-35 STRING. Passing the
+    digits raw silently starts the WRONG run (the digits decode as base 35) —
+    a seed replay burned a run number this way. Numeric input is encoded the
+    way the game's SeedHelper does: unsigned 64-bit, base 35."""
+    s = str(seed).strip().upper().replace("O", "0")
+    try:
+        n = int(s)
+    except ValueError:
+        return s                      # already a seed string
+    n &= (1 << 64) - 1                # Long.toUnsignedString semantics
+    if n == 0:
+        return "0"
+    out = ""
+    while n:
+        n, r = divmod(n, 35)
+        out = _SEED_CHARS[r] + out
+    return out
+
 
 def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> str:
     """Start a new run.
@@ -2264,7 +2354,7 @@ def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> 
     if ascension > 0:
         cmd += f" {ascension}"
     if seed:
-        cmd += f" {seed}"
+        cmd += f" {_encode_seed(seed)}"
     return send(cmd, reason=f"Starting {character} A{ascension}")
 
 

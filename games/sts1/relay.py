@@ -96,16 +96,23 @@ def stdin_reader():
         # Signal that we have at least one state (for initial state requests)
         state_ready.set()
 
-        # If this state is the result of a client command, deliver it
-        if waiting_for_result:
+        # If this state is the result of a client command, deliver it — but only
+        # a SETTLED state (ready_for_command) or an error. The game streams
+        # intermediate states mid-animation; delivering the first arrival as the
+        # "result" handed clients stale snapshots, which poisoned name->index
+        # resolution (wrong card played) and produced eaten turns. Three runs
+        # had fight-deciding losses from this race.
+        if waiting_for_result and (ready or is_error):
             result_state = state
             command_result.set()
             waiting_for_result = False
             # Fall through to check for next command — CommunicationMod
             # is waiting for one.
 
-        # CommunicationMod is ready for a command
-        if ready or not is_error:
+        # Dispatch client commands ONLY into a ready game. A not-ready state
+        # previously still dispatched (the `or not is_error` clause), sending
+        # commands into mid-animation states the game could drop.
+        if ready:
             try:
                 cmd = command_queue.get(timeout=IDLE_TIMEOUT)
                 log(f"Sending command: {cmd}")
@@ -117,6 +124,10 @@ def stdin_reader():
                 # it can push updated state when the game changes (e.g.,
                 # user loads a save, enters combat, etc.).
                 print("state", flush=True)
+        elif not is_error:
+            # Not ready: keep the lock-step moving without consuming the
+            # client queue; the next ready state will dispatch.
+            print("state", flush=True)
         else:
             log("Error without ready_for_command, skipping command wait")
 

@@ -8,7 +8,7 @@ Free card draw. Finds key cards faster.
 
 **Decision points:** Against [[enemies/Gremlin Nob]], Battle Trance is a Skill and triggers [[buffs/Enrage]] -- still worth playing on free turns but avoid during attack turns.
 
-**Downside:** You cannot draw additional cards the turn you play Battle Trance (locks out further draw effects like [[cards/Pommel Strike]] draw, [[cards/Shrug It Off]] draw).
+**Downside:** You cannot draw additional cards the turn you play Battle Trance — No Draw kills EVERY later draw effect this turn: [[cards/Pommel Strike]] digs find nothing, [[cards/Shrug It Off]]'s draw is gone, and a [[potions/Snecko Oil]] drunk after it is wasted whole. Sequence any draw effect you intend to use BEFORE Battle Trance, or drop it from the turn — never play a card this turn whose value is the draw.
 
 **Upgrade priority:** Moderate. Draw 4 instead of 3.
 

@@ -41,5 +41,5 @@ Time Eater heals to 50% HP (228 at A0) once when its HP first drops to or below 
 
 - [[enemies/Cultist]] Potion Turn 1 (maximum Str scaling over the long fight)
 - [[potions/Fear Potion]] on Phantasmal Killer burst turns
-- [[potions/Snecko Oil]] as emergency draw
+- [[potions/Snecko Oil]] as emergency draw — but it draws NOTHING under No Draw: if [[cards/Battle Trance]] is part of the turn, drink the Oil FIRST (or not at all)
 - Save [[relics/Lizard Tail]] / Fairy as death insurance

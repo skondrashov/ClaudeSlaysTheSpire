@@ -32,13 +32,11 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 
 ## Directive 12: Barricade/Body Slam — seed replay
 
-**Status:** Open. Seed `5894277716703663016` (A9 Ironclad).
+**Status:** CLOSED — run 239 (audited: analyst/audits/run_239.md). **Primary criterion CONFIRMED-WITH-CAVEATS; archetype generality NEEDS-REPLICATION.** (Run 238 on this directive was a junk false-start — seed-format bug, fixed post-run.)
 
-**Context:** Flagged by the maintainer for a Barricade/Body Slam build-around attempt. The previous run on this seed went a Strength+exhaust line and died on floor 22 (Snake Plant, own-Weak omitted from kill math — that checklist item is now codified).
+**Outcome:** Floor 22 PASSED (Snake Plant dead in 6 turns, low-water 32/80, vs the baseline's death there); Act 2 boss NOT reached (died floor 24, Cultist+Chosen — an allocation/potion execution error, not an engine failure, though Hex's tax on the engine's Skill-heavy setup is a real recorded weakness). Offer-stream question answered emphatically: Body Slam offered 5x, Barricade twice (F10 elite reward + Act 1 boss reward). This is the project's **first level-4 (controlled-comparison) evidence**: on this seed at A9, the engine beat the Strength+exhaust line in attrition fights (Lagavulin 25 vs 39 gross, Hexaghost 10 turns pre-Inferno vs 13, Shelled Parasite, the F22 pass) and LOST the races/mirrors (Nob +13 worse, Spheric +10 worse). Caveats: baseline F22 death had an execution-error component; favorable Snecko Confusion rolls (F22 conclusion robust to them); F12 ?-event diverged between runs; the own-Weak checklist post-dates the baseline. Curate: word the archetypes.md update per audit §3 — claim scoped to attrition fights on offer-supported seeds, A9 viability past early Act 2 still level 2.
 
-**Test:** Replay the seed building toward the Barricade + Body Slam block engine (Barricade, Body Slam, Entrench, block density; Corruption/FNP welcome but not the focus). The archetype has one win on record (Time Eater) but no A9 evidence.
-
-**Success criteria:** Pass floor 22; reach the Act 2 boss. Record whether the offer stream actually supports the engine (card rewards are not logged, so note offers manually in thinks).
+**Replication (warranted, but not same-seed):** a same-seed rerun adds no rungs; the next rung (level 5) needs the comparison shape on a DIFFERENT seed. Run it opportunistically — in any A9 run where Barricade + a Body Slam are offered by early Act 2, commit and record. Bias for: (1) **Entrench** (the engine's missing piece this run — wall peaked ~39/turn without it), (2) reaching the Act 2 boss (the unmet secondary; Automaton's Stasis stealing Barricade is the untested risk), (3) a Cultist+Chosen / Hex plan decided BEFORE T1 (commit one target per chosen.md's branch, potions converted early — the run-239 death), (4) potion conversion discipline generally (run 239 died with 2 unspent).
 
 ## Directive 13: Mummified Hand power-density build-around
 

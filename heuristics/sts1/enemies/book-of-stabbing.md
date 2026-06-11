@@ -2,7 +2,7 @@
 
 **Core rule:** Front-load damage -- every turn the fight goes on, attacks get worse AND Wounds clog draws. Exhaust tools for Wounds are the #1 priority.
 
-**Benchmark:** Even with strong burst, expect 5+ turns. **Expected cost:** at the top of the elite range (roughly 25-45 HP) with exhaust tools and front-loaded burst — and the fight scales (~+7 incoming per turn), so a slow deck pays a multiple of this; price it by your turns-to-kill. Without exhaust tools, avoid entirely.
+**Benchmark:** Even with strong burst, expect 5+ turns. **Expected cost:** at the top of the elite range (roughly 25-45 HP) with exhaust tools and front-loaded burst — and the fight scales (~+7 incoming per turn), so a slow deck pays a multiple of this; price it by your turns-to-kill. At A8+ its HP is 168 (160-164 base) — one extra turn of scaling on top of everything. Without exhaust tools, avoid entirely.
 
 ## Strategy
 

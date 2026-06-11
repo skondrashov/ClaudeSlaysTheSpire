@@ -14,8 +14,9 @@ import sys
 import tempfile
 from glob import glob
 
-RUNS_DIR = "analyst/runs"
-STATS_FILE = "data/run_stats.json"
+_BASE = os.path.dirname(os.path.abspath(__file__))
+RUNS_DIR = os.path.join(_BASE, "analyst", "runs")
+STATS_FILE = os.path.join(_BASE, "data", "run_stats.json")
 
 
 def load_run_file(path: str) -> dict | None:
@@ -53,15 +54,30 @@ def main():
     best_floor = max((e["floor"] for e in entries), default=0)
     best_ascension = max((e.get("ascension", 0) for e in entries), default=0)
 
+    def _best_key(e):
+        # "Best" is ordered by ascension first: a deep A9 attempt outranks an A5
+        # win. Within an ascension, a win outranks any floor.
+        return (e.get("ascension", 0), 1 if e["victory"] else 0, e["floor"])
+
     char_stats = {}
     for e in entries:
         cls = e.get("class", e.get("character", "UNKNOWN"))
         if cls not in char_stats:
-            char_stats[cls] = {"wins": 0, "best_floor": 0, "runs": 0}
-        char_stats[cls]["runs"] += 1
+            char_stats[cls] = {"wins": 0, "best_floor": 0, "runs": 0,
+                               "best": None, "best_won_ascension": None}
+        cs = char_stats[cls]
+        cs["runs"] += 1
         if e["victory"]:
-            char_stats[cls]["wins"] += 1
-        char_stats[cls]["best_floor"] = max(char_stats[cls]["best_floor"], e["floor"])
+            cs["wins"] += 1
+            won_a = e.get("ascension", 0)
+            if cs["best_won_ascension"] is None or won_a > cs["best_won_ascension"]:
+                cs["best_won_ascension"] = won_a
+        cs["best_floor"] = max(cs["best_floor"], e["floor"])
+        if cs["best"] is None or _best_key(e) > (cs["best"]["ascension"],
+                                                 1 if cs["best"]["victory"] else 0,
+                                                 cs["best"]["floor"]):
+            cs["best"] = {"ascension": e.get("ascension", 0),
+                          "victory": e["victory"], "floor": e["floor"]}
 
     floor_history = [
         {

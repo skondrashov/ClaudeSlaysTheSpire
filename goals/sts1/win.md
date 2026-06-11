@@ -35,6 +35,8 @@ WHY: [what moved it]
 
 That live trail is what lets an Audit measure calibration — where your in-the-moment beliefs were wrong — not just regret. When you instead want a no-overhead, all-tokens-on-the-game attempt (a clean benchmark of best play), use [[layer:goals, tournament]], which drops the labeling entirely.
 
+**Anchor the label, don't inherit it.** Derive the baseline from the situation — this ascension level, this character's actual record at it — not from an optimistic constant carried over from easier runs. And re-derive the number at act entries and boss entries (HP minus the booked costs of every forced fight to the next recovery; kill-turns × expected incoming for a boss) instead of carrying the previous label forward. A label that does not move when its inputs moved is not an estimate — it is the previous label.
+
 **Do NOT force a single archetype.** The game offers cards and relics — your job is to recognize which archetype the game is pushing you toward and build into it. Strength scaling, exhaust engines, Barricade+Body Slam, Corruption+FNP, defensive attrition — all are viable. Evaluate what you're offered, not what you wish you were offered.
 
 ## Margin Notes
