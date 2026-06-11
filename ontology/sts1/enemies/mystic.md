@@ -19,6 +19,4 @@ Priority: **Heal whenever the TOTAL missing HP across all living enemies exceeds
 ## Mechanics
 
 - Heal threshold is the group's summed missing HP (> 15; A17+ > 20) — in a two-enemy fight, 8 chip on each is enough to arm it.
-- **Alone**, the Mystic keeps the same kit pointed at itself: self-heal when its own missing HP crosses the threshold, self-buff +Str, and the 8/9-damage Frail attack. It ramps slowly but its per-turn damage stays the fight's smallest.
-
-(Numbers decompiled from the game jar, 2026-06-11.)
+- **Alone**, the Mystic keeps the same kit pointed at itself: self-heal when its own missing HP crosses the threshold, self-buff +Str, and the 8/9-damage Frail attack.
