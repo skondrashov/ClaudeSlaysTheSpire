@@ -34,3 +34,11 @@ Audits append a line for each fight whose cost was notable (unusually cheap, unu
 - Gremlin Leader | ~25-45 historical band | mixed | mixed | legacy book row: decks killing by turn 5-6 | pre-243 pages
 - Byrd flock | ~20 | mixed | mixed | legacy book row: Thunderclap AOE + burst, ~7-turn kill (the 36-73 band above is the no-AOE row) | pre-243 pages
 - Slime Boss / Bronze Automaton / Time Eater | ~30-50 historical band each | mixed | mixed | identical generic row on the legacy boss pages, decks unrecorded — likely a template budget, low confidence (same row on Guardian/Collector pages contradicted by run data above and dropped) | pre-243 pages
+- 3 Sentries | 6 | A9 | Silent | NF+ poison race, artifact stripped by cheap debuffs first, outer-then-middle kill order | run 244
+- Gremlin Nob | 14 | A9 | Silent | zero-skills race, Duplication Potion 6-shiv T1, NF+ played as Power exception | run 244
+- Hexaghost | 33 | A9 | Silent | NF+ clock + Terror 99-vuln T2, killed T8 before second Inferno; Divider eaten at 29 | run 244
+- Gremlin Leader | 3 | A9 | Silent | kill-speed pricing vindicated: T1 Sneaky kill + T2 Wizard kill, Terror+Bane burst, NF+/Envenom ~30/turn, 146 HP down T6 | run 244
+- Book of Stabbing | 6 | A9 | Silent | shiv race + per-hit-denial blocking (24-32 ceilings), Speed Potion on worst multi-stab turn | run 244
+- The Collector | 56 (29 of it a self-inflicted double-end skipped turn + the Fairy; ~27 organic) | A9 | Silent | poison clock kill T11; crisis turn spent on revive-surviving permanents | run 244
+- Nemesis | 45 | A9 | Silent | structurally dear for shiv/poison decks: Intangible halves the clock (poison ticks 1), Scythe 45 vs ~30 block ceiling; page-compliant execution, priced off realized elite averages at routing — the mispricing, not the play | run 244
+- Transient | death from 6/70 (T1-4 taken at ZERO, T5 80 > 62 max mitigation) | A9 | Silent | strip line played to ceiling; A2+ ladder is 40-80, not the page's 30-70 | run 244

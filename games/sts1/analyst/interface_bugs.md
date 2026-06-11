@@ -132,11 +132,11 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 **Impact:** FATAL. Run 216: extra enemy turn cost 22 HP against Sentries, generating additional Dazes that snowballed into death.
 
-**Affected runs:** 216 (fatal — Sentries), 240 (fatal contribution — F25 Centurion+Mystic: `end` re-sent after an empty `{}` state echo, T2 eaten with 5 cards unplayed, 12 HP; the same lag also produced a wrong-card index re-send. See analyst/audits/run_240.md §4-5.)
+**Affected runs:** 216 (fatal — Sentries), 240 (fatal contribution — F25 Centurion+Mystic: `end` re-sent after an empty `{}` state echo, T2 eaten with 5 cards unplayed, 12 HP; the same lag also produced a wrong-card index re-send. See analyst/audits/run_240.md §4-5.), **244 (fatal contribution — Collector T2: `end` re-sent during a relay lag window, turn skipped, 29 unanswered damage + the Fairy burned; the Fairy's absence was but-for at the floor-45 death. See analyst/audits/run_244.md §4.)**
 
 **Repro seed:** `start IRONCLAD 5 9128496640971033917` (Run 216). Play to F14 Sentries. In a turn with no playable cards, send `end` and immediately send `end` again before the state updates.
 
-**Status:** FIXED — verified in the wild (run 242: zero interface HP lost across 48 floors; four benign empty echoes recovered correctly, no duplicate `end` fired). The relay-race fix (post-run-240) plus the batch no-op tripwire (commit 974add1 — a `play` must remove the card from hand at state level; it caught and flagged one silent no-op in run 242, replayed by name) closed the family. Keep the habit rule (empty/unchanged echo after `end` → re-poll, never re-send) as cheap insurance.
+**Status:** REGRESSED — OPEN at tool level. The run-242 "FIXED" verdict rested on habit-level evidence (relay-race fix + batch no-op tripwire + the re-poll-never-re-send habit); run 244 reproduced the original shape under relay lag at a boss, with the habit rule failing exactly when lag made it matter. The `_turn_ended` tool guard described in the Fix paragraph below has never shipped — it should. Keep the habit rule as insurance, not as the fix.
 
 **Fix:** cmd.py should track whether `end` has been sent this turn and reject duplicates. Add a `_turn_ended` flag that's set on `end` and cleared when state shows a new turn (different turn number or enemy phase). Simple guard in `send()`.
 
