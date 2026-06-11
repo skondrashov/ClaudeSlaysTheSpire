@@ -472,6 +472,52 @@
 
     .agent-panel.active { display: flex; }
 
+    /* Agent mode owns the screen: the play-time rail and eval bar hide */
+    body.agent-active .decision-rows { display: none; }
+    body.agent-active .win-bar { display: none; }
+
+    .agent-explainer {
+      font-size: 17px;
+      color: #b89ad8;
+      margin-top: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .agent-columns {
+      flex: 1;
+      display: flex;
+      min-height: 0;
+    }
+
+    .agent-side {
+      width: 360px;
+      flex-shrink: 0;
+      border-left: 2px solid rgba(140, 70, 230, 0.3);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    .agent-side .side-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .agent-side .side-line {
+      font-size: 18px;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .agent-side .side-line.result-death { color: #e07070; font-weight: 700; }
+    .agent-side .side-line.result-victory { color: #4ade80; font-weight: 700; }
+
     .agent-header {
       padding: 24px 32px 16px;
       border-bottom: 2px solid rgba(140, 70, 230, 0.4);
@@ -766,8 +812,12 @@
   <div class="agent-panel" id="agentPanel">
     <div class="agent-header">
       <h2 id="agentTitle">ANALYSIS</h2>
+      <div class="agent-explainer" id="agentExplainer"></div>
     </div>
-    <div class="agent-body" id="agentBody"></div>
+    <div class="agent-columns">
+      <div class="agent-body" id="agentBody"></div>
+      <div class="agent-side" id="agentSide"></div>
+    </div>
   </div>
 
   <!-- Right sidebar: header + floor graph (decision reasoning lives in #decisionRows) -->
@@ -1168,30 +1218,35 @@
 
     function toggleAgentMode(event) {
       const panel = document.getElementById('agentPanel');
+      document.body.classList.toggle('agent-active', !!event.active);
+
       if (event.active) {
         panel.classList.add('active');
         document.getElementById('agentTitle').textContent = event.title || 'ANALYSIS';
+        document.getElementById('agentExplainer').textContent =
+          'Between runs, Claude reviews its own play and updates the book — every lesson below is written from evidence in the run log.';
         document.getElementById('agentBody').innerHTML = '';
+
         const stats = event.run_stats || {};
+        const side = document.getElementById('agentSide');
+        const cls = stats.current_class || '';
+        const floor = stats.current_floor;
+        const resultClass = (typeof floor === 'number' && floor > 50) ? 'result-victory' : 'result-death';
+        const resultWord = (typeof floor === 'number' && floor > 50) ? 'VICTORY' : 'DEFEAT';
+        let html = '<div class="side-title">Last Run</div>';
         const summary = event.run_summary || '';
-        const runNum = stats.total_runs || '?';
-        const cls = stats.current_class || '?';
-        const floor = stats.current_floor || '?';
-        const resultClass = floor > 50 ? 'result-victory' : 'result-death';
-
-        let summaryHTML = `<div class="run-summary">`;
-        summaryHTML += `<div class="summary-title">Last Run</div>`;
-        summaryHTML += `<div class="summary-line">Run ${runNum} — ${cls}</div>`;
-        summaryHTML += `<div class="summary-line ${resultClass}">Floor ${floor}</div>`;
-
+        // run_stats can be stale across stream restarts — only fall back to it
+        // when no explicit summary was provided with the arm request.
+        if (!summary) {
+          if (cls) html += `<div class="side-line">${esc(cls)}</div>`;
+          if (typeof floor === 'number') html += `<div class="side-line ${resultClass}">${resultWord} — Floor ${floor}</div>`;
+        }
         if (summary) {
-          const lines = summary.split('\n').filter(l => l.trim());
-          for (const line of lines) {
-            summaryHTML += `<div class="summary-line">${esc(line.trim())}</div>`;
+          for (const line of summary.split('\n').filter(l => l.trim())) {
+            html += `<div class="side-line">${esc(line.trim())}</div>`;
           }
         }
-
-        summaryHTML += `</div>`;
+        side.innerHTML = html;
       } else {
         panel.classList.remove('active');
       }
