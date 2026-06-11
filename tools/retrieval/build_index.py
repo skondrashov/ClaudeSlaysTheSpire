@@ -8,6 +8,9 @@ the handful of exceptions:
   3. The upgrade rule ("<name>+" → the resolved upgraded card).
   4. An alias table — only the entries whose in-game name does NOT slug to its file
      (auto-detected: title-slug ≠ filename), plus a few generic display names.
+  5. Phenomenon lines — every phenomena file with an `Applies when:` predicate,
+     emitted as `<applies-when>: <path>` so the selector can match conditions
+     against the live state (recognitions self-register here on regen).
 
 Run: `python -m tools.retrieval.build_index sts1`
 """
@@ -81,6 +84,25 @@ def build_index(domain: str) -> str:
     lines.append("## aliases (in-game name -> entry)")
     lines.append("Ascension N: ascension/aN   (e.g. \"Ascension 15\" -> ascension/a15)")
     lines.extend(sorted(aliases))
+
+    # Phenomenon applies-when lines: any phenomena file stating a predicate.
+    # Generated card resolutions have none and are skipped automatically.
+    phen = ROOT / "phenomena" / domain
+    predicates = []
+    if phen.exists():
+        for f in sorted(phen.rglob("*.md")):
+            if f.stem == "index":
+                continue
+            for line in f.read_text(encoding="utf-8").splitlines():
+                m = re.match(r"\*{0,2}Applies when\*{0,2}:\s*(.+)", line.strip())
+                if m:
+                    rel = f.relative_to(ROOT).with_suffix("").as_posix()
+                    predicates.append(f"{m.group(1).strip()}: {rel}")
+                    break
+    if predicates:
+        lines.append("")
+        lines.append("## phenomena (applies-when -> entry)")
+        lines.extend(predicates)
     return "\n".join(lines) + "\n"
 
 

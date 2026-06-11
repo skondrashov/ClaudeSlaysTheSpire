@@ -17,3 +17,6 @@ Gremlin Leader + 2 Gremlins: encounters/gremlin-leader
 Reptomancer + 2 Daggers: encounters/reptomancer
 The Corrupt Heart: bosses/corrupt-heart
 The Transient: enemies/transient
+
+## phenomena (applies-when -> entry)
+in combat holding any potion, and at least one of — incoming damage exceeds what the hand can block; a kill may be in reach this turn or next; the fight is an elite or boss; the belt is full.: phenomena/sts1/recognitions/potion-use

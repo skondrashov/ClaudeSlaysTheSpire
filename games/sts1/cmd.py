@@ -2156,9 +2156,16 @@ def _load_aliases() -> dict:
     try:
         path = os.path.join(ROOT, "awareness", "sts1", "survey-index.md")
         with open(path, encoding="utf-8") as f:
+            in_aliases = False
             for line in f:
                 line = line.strip()
-                if not line or line.startswith("#") or ":" not in line:
+                if line.startswith("## "):
+                    # Only the aliases section holds name->entry lines; later
+                    # sections (phenomena applies-when) also use ":" but are
+                    # selector input, not aliases.
+                    in_aliases = line == "## aliases (in-game name -> entry)"
+                    continue
+                if not in_aliases or not line or line.startswith("#") or ":" not in line:
                     continue
                 name, targets = line.split(":", 1)
                 name = name.strip()
