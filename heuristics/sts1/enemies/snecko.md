@@ -2,7 +2,9 @@
 
 **Core rule:** Kill fast before cost Confusion ruins multiple turns. Apply [[debuffs/Vulnerable]] early to maximize every successful attack turn.
 
-**HP is high (~114-120).** Plan for a 5-7 turn fight even with good damage.
+**HP is high (~114-120 base; 125 at A7+).** Plan for a 5-7 turn fight even with good damage.
+
+**Expected cost:** at high ascension price the fight ~25-40 HP, not as an ordinary hallway. Confusion can roll your block cards to unplayable costs for consecutive turns — expect a turn or two of largely unblocked ~25+ hits and make sure the entry HP can absorb them.
 
 ## Strategy
 

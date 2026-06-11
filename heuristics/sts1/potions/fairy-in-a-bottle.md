@@ -6,4 +6,6 @@ Can be intentionally sacrificed when the math works: if an enemy's attack will t
 
 In scaling fights ([[enemies/Gremlin Leader]]), Fairy buys one extra turn but does NOT solve the underlying problem of insufficient damage output vs scaling. Plan to win before Fairy is needed.
 
+**Multi-hit attacks keep landing after the revive.** The revive (to ~30% Max HP) interrupts nothing: if the killing blow is hit 2 of a 3-hit attack, hit 3 lands on your freshly revived HP. Plan the revive against a single big hit or the LAST hit of a multi-hit — and count passive end-of-turn block sources (Orichalcum, [[cards/Metallicize]]) when predicting which hit actually kills you, since they shift the lethal hit within the sequence.
+
 **Fairy triggers on ANY lethal damage, including end-of-turn effects.** Burns in hand deal damage at end of turn. If your HP equals or is less than total Burn damage, Fairy triggers on the Burns, not on the boss's next attack. This wastes the safety net on chip damage instead of saving it for the actual lethal hit. Against [[bosses/Hexaghost]], account for Burn EOT damage when calculating whether Fairy will survive to the Inferno turn.

@@ -7,7 +7,9 @@
 - **[[cards/Demon Form]] and slow scaling:** Need enough turns to ramp BEFORE Execute triggers. If Demon Form played Turn 1 and Execute happens Turn 5, only +10 [[buffs/Strength]] -- may not be enough.
 - **Burst through Phase 2:** Have enough burst to kill quickly after Anger. Slow attrition decks struggle because [[cards/Metallicize]] 5 + cleansed debuffs mean he takes less damage and deals more.
 - **Re-apply debuffs after Anger:** [[cards/Shockwave]], [[cards/Disarm]], and other debuffs are wasted if applied before Anger. Save them (or have second copies) for Phase 2.
-- **HP management:** Budget for an expected 30-50 HP fight — run the ledger before the final rest site decision. Post-Anger Strength is +6 (A0) / +9 (A4) / +12 (A19), plus any Gloat stacks from Phase 1 (+2 each). With 1-2 Gloats before transition, expect +8 to +14 Str. Execute (10x2) with +8 Str hits for 18x2=36.
+- **Phase 2 budget — plan the crossing turn:** Do NOT cross the 50% line without the Anger-then-Execute follow-up planned. The crossing turn's certain sequel is Anger (your debuffs wiped) and then Execute, so size the transition burst — at realistic, deck-validated damage, not hoped-for Strength — to skip at least one full Execute cycle, and keep a debuff (second Shockwave, Disarm) in reserve to survive the purge. Crossing with 100+ boss HP left and nothing held for Phase 2 turns a winnable fight into a raw Execute race.
+- **HP management:** Budget for an expected 30-50 HP fight — run the ledger before the final rest site decision. Post-Anger Strength is +6 (A0) / +9 (A4+) / +12 (A19), plus any Gloat stacks from Phase 1 (+2 each). With 1-2 Gloats before transition, expect +8 to +14 Str. Execute (10x2) with +8 Str hits for 18x2=36.
+- **High ascension:** HP 440 at A9 (420 base), so the 50% line sits at 220. The base attacks also run hotter at A4+ — Heavy Slash ~18 and Face Slap ~14 (vs 16/12 base) — and Defensive Stance has given Metallicize 6. Use the higher numbers in block math.
 - **Vulnerability window:** After Execute, The Champ spends one turn on the transition. Use this for block and preparation.
 
 ## Character Matchups

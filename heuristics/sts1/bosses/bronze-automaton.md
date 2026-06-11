@@ -4,7 +4,7 @@
 
 ## Preparation Checklist
 
-1. HP for an expected 30-50 HP fight, with Hyper Beam (45 base, 57+ the second time) as the single largest spike — run the ledger before the pre-boss rest site decision
+1. HP for an expected 30-50 HP fight, with Hyper Beam (45 base, 57+ the second time) as the single largest spike — run the ledger before the pre-boss rest site decision. At A9: HP 320 (300 base) and the FIRST Hyper Beam arrives at ~58 — budget the spike at the second-beam number from the start.
 2. Artifact strippers (non-exhausting): Thunderclap, Bash+. Need 3+ applications.
 3. Weak source saved for Hyper Beam: Intimidate, Shockwave+, or [[potions/Weak Potion]]
 4. Block scaling: [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], [[cards/Ghostly Armor]] (basic Defends are NOT enough)

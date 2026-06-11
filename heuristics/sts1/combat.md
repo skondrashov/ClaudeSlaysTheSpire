@@ -14,6 +14,7 @@ Every turn:
    - **Potion-assisted** (damage potion to kill, block potion to survive)
 3. Compare paths that achieve zero: prefer kill paths (removes future damage).
 4. If NO path achieves zero: minimize damage. Use potions. Kill the highest-damage attacker.
+5. **Premises decay mid-turn.** After any mid-turn kill or state change, re-derive incoming from the LIVING enemies before playing block — block bought against a dead enemy's attack is wasted energy. Before each card, confirm the fact that put it in the plan still holds (target alive, draws unlocked, stance unchanged).
 
 **Enumerate at least two paths before choosing.** Do not pick ONE plan and execute.
 
@@ -50,6 +51,8 @@ CHOSEN: [A/B] because [reason]
 ### Draw Effects — CRITICAL
 
 **NEVER include cards after a draw card in a `turn()` sequence.** If a card draws ([[cards/Backflip]], [[cards/Shrug It Off]], [[cards/Pommel Strike]], [[cards/Battle Trance]], [[cards/Offering]], etc.), it MUST be the last card before `"end"`. Play it via `send()` and re-read state before continuing.
+
+**No Draw kills every later draw effect this turn.** Once No Draw is active ([[cards/Battle Trance]] applies it), ALL further draw effects this turn are dead — Pommel Strike digs find nothing, Shrug It Off's draw is gone, [[potions/Snecko Oil]] is wasted whole. Sequence the draw effects you intend to use BEFORE Battle Trance, or drop them from the turn. Before any draw-motivated play (a dig for block, a draw potion), check whether a draw lock is active.
 
 ---
 
@@ -121,6 +124,10 @@ For Watcher: while you are **already in Wrath**, your attacks deal double damage
 - Only attacks played **after** you are already in Wrath are doubled — subsequent cards the same turn, or any attack on a later turn while Wrath persists. (A second copy of Tantrum, or any Strike, played after you're in Wrath IS doubled.)
 
 **Rule:** In kill math, the entering card's hit is base — do NOT double the Eruption/Tantrum that enters Wrath. DO double every attack you play after it while Wrath is active. Double-check the arithmetic before committing to end turn.
+
+### 10. INCLUDE YOUR OWN DEBUFFS IN EVERY CALC
+
+Your own [[debuffs/Weak]] cuts YOUR attack damage by 25%; your own [[debuffs/Frail]] cuts YOUR block by 25%. Both multipliers round DOWN (Defend 5 under Frail = 3 block, not 4). Run every kill-math and every block total with your own active debuffs applied — a "lethal" line computed without your Weak comes up short by exactly the discount, and a block plan that ignores Frail under-blocks at the worst margins.
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Core rule:** AOE is king. Without AOE or meaningful damage scaling, the fight takes 14-20 turns and drains 52-56+ HP.
 
-**Benchmark:** WITH AOE: 7-turn fight, ~22 HP damage. WITHOUT AOE: 18-20 turns, 50-60 HP damage. The AOE benchmark is the only acceptable outcome.
+**Benchmark:** WITH AOE: 7-turn fight, ~22 HP damage. WITHOUT AOE: 18-20 turns, 50-60 HP damage. The AOE benchmark is the only acceptable outcome. At A8+ even the clean AOE line runs ~24-34 HP — budget the elite at the higher range.
 
 ## Elite Readiness Gate
 

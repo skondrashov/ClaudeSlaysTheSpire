@@ -4,6 +4,8 @@
 
 **Benchmark:** Kill in 3-4 turns. Every extra turn costs gold and HP.
 
+**Blocking does not protect your gold.** Its Mug steals through full block — only killing it before Escape stops the theft. Race the thief, don't turtle against it.
+
 ## Strategy
 
 - AOE ([[cards/Cleave]], [[cards/Thunderclap]], [[cards/Immolate]]) is efficient against Looter + Mugger pairing

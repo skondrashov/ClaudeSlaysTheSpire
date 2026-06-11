@@ -14,7 +14,7 @@
 ## Strategy
 
 - **Pre-split:** Use debuff turns (free turns) for damage. Apply [[debuffs/Vulnerable]]. Manage damage near the 70 HP threshold to avoid massive overkill.
-- **Splitting a slime about to attack IS your block:** If a slime is close to its split threshold and about to deal damage, prioritize damage to split it (removing the attacking enemy from the board is better than blocking).
+- **Splitting a slime about to attack IS your block:** If a slime is close to its split threshold and about to deal damage, prioritize damage to split it — the split replaces the declared move, so a Slam crossed-under on the Slam turn never lands. Removing the attacking enemy from the board is strictly better than blocking it.
 - **At split:** Thunderclap for mass Vulnerable on both slimes. AOE with Whirlwind or Cleave.
 - **Post-split:** SPREAD DAMAGE to both large slimes before killing either one. Killing one creates a 3-enemy nightmare. Reduce both to low HP, then kill in quick succession.
 - **Slimed management:** Exhaust as priority. Each one exhausted is one fewer dead draw for the rest of combat.

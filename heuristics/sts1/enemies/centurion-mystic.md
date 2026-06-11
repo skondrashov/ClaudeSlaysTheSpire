@@ -4,6 +4,8 @@
 
 **Benchmark:** Kill Mystic in 5-6 turns. **Expected cost:** 25-61 HP played well — one of the most expensive hallway fights in the act; put the full range on the ledger before routing in.
 
+**High ascension numbers:** at A2+ Centurion's Slash runs ~14 base (12 at A0) and Mystic's attack ~9 (8 base); Mystic's buff has given +3 Strength to BOTH allies (+2 at A0). At exact-lethal margins the extra 2 on Slash is the entire margin — use the higher numbers in block math.
+
 ## Strategy
 
 - Focus all damage on Mystic despite Centurion being the bigger per-turn threat
