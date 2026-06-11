@@ -996,7 +996,6 @@ def _log_result(raw: dict):
 
 _game_over_handled = False
 _potion_skip_warned = False
-_key_take_warned = False
 # Snapshot of HAND_SELECT card list from when the screen first appeared.
 # Used to translate numeric indices across selections (cards get removed, shifting indices).
 _hand_select_snapshot = None
@@ -1354,21 +1353,26 @@ def send(command: str, reason: str = "") -> str:
     # Guard: taking a KEY from a reward forfeits the linked relic — twice a
     # chained 'choose N' grabbed the Sapphire Key while the plan named the relic
     # (Sundial, War Paint). Warn once; an identical second choose proceeds.
-    global _key_take_warned
+    _key_flag = os.path.join(_BASE_DIR, "data", "key_confirm.flag")
     if cmd_verb == "choose" and screen in ("COMBAT_REWARD", "CHEST"):
         parts_k = command.strip().split()
         if len(parts_k) >= 2 and parts_k[1].isdigit():
             rewards_k = gs.get("screen_state", {}).get("rewards", [])
             ridx = int(parts_k[1])
             if (0 <= ridx < len(rewards_k)
-                    and rewards_k[ridx].get("reward_type") in ("SAPPHIRE_KEY", "EMERALD_KEY")
-                    and not _key_take_warned):
-                _key_take_warned = True
-                return ("[WARNING] choose {} selects the KEY - taking it forfeits the "
-                        "linked relic. If you want the relic, choose its index instead. "
-                        "If the key is intended, send the same choose again.".format(ridx))
-    if cmd_verb != "choose" or screen not in ("COMBAT_REWARD", "CHEST"):
-        _key_take_warned = False
+                    and rewards_k[ridx].get("reward_type") in ("SAPPHIRE_KEY", "EMERALD_KEY")):
+                # Flag is a FILE: every play.py call is a fresh process, so an
+                # in-memory flag warned forever and made keys uncollectable.
+                if not os.path.exists(_key_flag):
+                    with open(_key_flag, "w") as f:
+                        f.write(str(ridx))
+                    return ("[WARNING] choose {} selects the KEY - taking it forfeits "
+                            "the linked relic. If you want the relic, choose its index "
+                            "instead. If the key is intended, send the same choose "
+                            "again.".format(ridx))
+                os.remove(_key_flag)
+    elif os.path.exists(_key_flag):
+        os.remove(_key_flag)
 
     # Guard: cancel/skip on a GRID selection screen has frozen CommunicationMod
     # (states stop flowing; required killing and relaunching the game). Refuse it.
@@ -1671,6 +1675,13 @@ def _batch_energy_check(snapshot_hand: list, energy: int, actions: list) -> str 
             return None                        # energy math not naively summable
         cost = card.get("cost", 0)
         if cost is None or cost < 0:           # X-cost / unplayable markers
+            if cost == -1 and a is not actions[-1] and any(
+                    x.strip().lower().startswith("play ")
+                    for x in actions[actions.index(a) + 1:]):
+                return ("[ERROR] An X-cost card consumes ALL remaining energy when "
+                        "played - nothing after it in the batch can be paid for. "
+                        "Play the X-cost card LAST (combat.md rule 3), or spend the "
+                        "energy you want to keep BEFORE it.")
             cost = 0
         total += cost
         lines.append(f"  {card.get('name', '?')} = {cost}E")
