@@ -1,6 +1,6 @@
 # Exploration Directives
 
-Written by Curate agent. Updated after the run 227-233 audit consolidation (sixth curation cycle). Run-222-era directives retired below.
+Written by Curate agent. Updated after the run 236-240 audit consolidation (seventh curation cycle). Run-222-era directives retired below.
 
 ## Directive 10: Knowledge delivery to hallway fights and own-deck locks
 
@@ -20,6 +20,8 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 
 **Until decided, Explore/Win runs should drill the manual habit (shape 4) and each audit should re-run the recall census** (boss/elite/hallway/event/card coverage) so the fix's effect is measurable when it lands.
 
+**Census update (runs 236-240):** total feeds 10 → 4 → 14 → 7. The manual habit CAN take — run 239 recalled 10 hallway pages including a pre-routing recall, and its fights ran closest to book cost of any run in the series — but it does not stick (240 regressed to targeted-only). Two cautions now on record: (a) the first A9 WIN (run 237) read LESS than the 1-HP loss before it — the deck, not the habit, was the difference; do not let the victory teach "reading is optional." (b) Delivery is necessary but compliance binds at the death fight: run 239 died contradicting a page it had LOADED (chosen.md kill order). Persistent blind spots: boss-relic screens (run 236's costliest miss was the unread Ectoplasm/Black Star choice), final-boss entry (237's Awakened One, unread), Book of Stabbing (4 audited runs bare), own-deck card pages (one crack of daylight: run 240 recalled cards/Corruption at run start, directive-driven). The delivery mechanism remains the maintainer's call.
+
 ## Directive 11: Corruption-without-FNP — seed replay
 
 **Status:** Open — ONE REPLICATION AUTHORIZED, then close regardless (run 240 attempted, audited: analyst/audits/run_240.md). Seed `3405875975300375922` (A9 Ironclad).
@@ -36,7 +38,7 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 
 **Outcome:** Floor 22 PASSED (Snake Plant dead in 6 turns, low-water 32/80, vs the baseline's death there); Act 2 boss NOT reached (died floor 24, Cultist+Chosen — an allocation/potion execution error, not an engine failure, though Hex's tax on the engine's Skill-heavy setup is a real recorded weakness). Offer-stream question answered emphatically: Body Slam offered 5x, Barricade twice (F10 elite reward + Act 1 boss reward). This is the project's **first level-4 (controlled-comparison) evidence**: on this seed at A9, the engine beat the Strength+exhaust line in attrition fights (Lagavulin 25 vs 39 gross, Hexaghost 10 turns pre-Inferno vs 13, Shelled Parasite, the F22 pass) and LOST the races/mirrors (Nob +13 worse, Spheric +10 worse). Caveats: baseline F22 death had an execution-error component; favorable Snecko Confusion rolls (F22 conclusion robust to them); F12 ?-event diverged between runs; the own-Weak checklist post-dates the baseline. Curate: word the archetypes.md update per audit §3 — claim scoped to attrition fights on offer-supported seeds, A9 viability past early Act 2 still level 2.
 
-**Replication (warranted, but not same-seed):** a same-seed rerun adds no rungs; the next rung (level 5) needs the comparison shape on a DIFFERENT seed. Run it opportunistically — in any A9 run where Barricade + a Body Slam are offered by early Act 2, commit and record. Bias for: (1) **Entrench** (the engine's missing piece this run — wall peaked ~39/turn without it), (2) reaching the Act 2 boss (the unmet secondary; Automaton's Stasis stealing Barricade is the untested risk), (3) a Cultist+Chosen / Hex plan decided BEFORE T1 (commit one target per chosen.md's branch, potions converted early — the run-239 death), (4) potion conversion discipline generally (run 239 died with 2 unspent).
+**Replication:** spun out as Directive 14 (different-seed, opportunistic) — a same-seed rerun adds no rungs.
 
 ## Directive 13: Mummified Hand power-density build-around
 
@@ -47,6 +49,16 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 **Test:** When holding Mummified Hand, weight Powers up in drafting and tally free plays per turn per fight in thinks.
 
 **Success criteria:** Evidence it sustains ≥2 free plays/turn across a run's fights → promote a build-around note to mummified-hand.md; otherwise record the ceiling.
+
+## Directive 14: Barricade/Body Slam — different-seed replication
+
+**Status:** Open (opportunistic — no dedicated runs; activate in any A9 run where Barricade + a Body Slam are offered by early Act 2).
+
+**Hypothesis (the level-5 rung):** the attrition-fight advantage Directive 12 demonstrated on one seed generalizes across seeds. The archetypes.md entry is currently fenced to "offer-supported seeds, unproven past early Act 2" — this directive tests both fences.
+
+**When activated, bias for:** (1) **Entrench** — the engine's missing piece; without it the wall peaked ~39/turn while hard scalers demand 60+ (observation filed: the wall is linear without Entrench and hard scalers outpace it); (2) **reaching the Act 2 boss** — the unmet secondary; Bronze Automaton's Stasis stealing Barricade (a Power, likely the deck's rarest card) is the untested catastrophic risk; (3) a Cultist+Chosen / Hex plan decided BEFORE T1 — commit one target per chosen.md's branch, potions converted early; (4) potion conversion discipline generally.
+
+**Success criteria:** Reach the Act 2 boss with the engine online on a fresh seed. Record per-fight costs by fight type (attrition vs race vs mirror) so the fight-type-dependence claim can be tested, not just the engine's viability.
 
 ---
 

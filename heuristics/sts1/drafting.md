@@ -133,6 +133,7 @@ A mediocre card that fills a gap is better than a strong card that duplicates wh
 1. [[cards/Corruption]] + [[cards/Feel No Pain]] -- core combo. FNP generates block on each exhausted Skill; Corruption makes all Skills free but one-use. Together they produce massive block per turn. Add [[cards/Body Slam]] to convert block to damage.
 2. [[cards/Barricade]] -- block persists, so the engine snowballs. Not required early but completes the engine.
 3. [[cards/Entrench]] -- doubles accumulated block. With Barricade, this is exponential growth.
+4. A Barricade + 0-cost [[cards/Body Slam]] + block-density line WITHOUT Corruption is also viable into early Act 2 — strongest in long attrition fights, weak in short races and block mirrors (see [[archetypes]] entry 4).
 
 These paths are not mutually exclusive. A Corruption+FNP primary with Spot Weakness secondary can win, as can the full Barricade+Corruption+FNP+Body Slam engine. Both of those winning configurations ALSO had Strength sources. Whether the exhaust/block engine can win purely on its own (without any Str) is being tested — see exploration directives. What IS clear: a deck cannot survive without SOME scaling path.
 

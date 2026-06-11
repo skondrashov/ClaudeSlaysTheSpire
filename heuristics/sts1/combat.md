@@ -21,7 +21,7 @@ Every turn:
 ### Exceptions
 
 1. **Boss fights.** HP resets via rest/heal. Spend HP freely to kill faster.
-2. **Hard-scaling enemies ([[buffs/Ritual]], Rally).** Kill speed prevents more total damage than blocking.
+2. **Hard-scaling enemies ([[buffs/Ritual]], Rally).** Kill speed prevents more total damage than blocking. This sets the fight TYPE (race, spend HP), not the kill ORDER — in multi-enemy fights, target priority still follows the enemy pages (e.g. Chosen+Cultist: [[enemies/Chosen]]'s branch), and whichever target is chosen gets ALL the damage.
 
 Everything else is a hallway fight: zero damage taken.
 
@@ -50,7 +50,7 @@ CHOSEN: [A/B] because [reason]
 
 ### Draw Effects — CRITICAL
 
-**NEVER include cards after a draw card in a `turn()` sequence.** If a card draws ([[cards/Backflip]], [[cards/Shrug It Off]], [[cards/Pommel Strike]], [[cards/Battle Trance]], [[cards/Offering]], etc.), it MUST be the last card before `"end"`. Play it via `send()` and re-read state before continuing.
+**NEVER include cards after a draw card in a `turn()` sequence.** If a card draws ([[cards/Backflip]], [[cards/Shrug It Off]], [[cards/Pommel Strike]], [[cards/Battle Trance]], [[cards/Offering]], etc.), it must be the LAST action in the batch — and **never batch `end` right after a draw card while energy remains.** A trailing `end` is honored even after the draw stop, committing the turn before you see the drawn cards (the drawn card and leftover energy are forfeited). Play the draw card via `send()`, read the result, THEN end. turn() does NOT auto-end — an open turn stays open until you send `end`.
 
 **No Draw kills every later draw effect this turn.** Once No Draw is active ([[cards/Battle Trance]] applies it), ALL further draw effects this turn are dead — Pommel Strike digs find nothing, Shrug It Off's draw is gone, [[potions/Snecko Oil]] is wasted whole. Sequence the draw effects you intend to use BEFORE Battle Trance, or drop them from the turn. Before any draw-motivated play (a dig for block, a draw potion), check whether a draw lock is active.
 
@@ -77,7 +77,7 @@ On kill turns, NEVER include `end` in the same command as the final attack. Play
 
 ### 3. X-COST CARDS: PLAY LAST
 
-Always play X-cost cards LAST. To control the value of X, spend energy on other cards first.
+Always play X-cost cards LAST. To control the value of X, spend energy on other cards first. This applies INSIDE batches too: an X-cost play consumes ALL remaining energy at the moment it resolves, so any play queued after it in the same batch fizzles — a batch like `play Whirlwind; play Defend; end` spends the Defend's energy on X and never blocks.
 
 ### 4. WRAITH FORM: TIME IT BY FIGHT LENGTH
 
@@ -128,6 +128,14 @@ For Watcher: while you are **already in Wrath**, your attacks deal double damage
 ### 10. INCLUDE YOUR OWN DEBUFFS IN EVERY CALC
 
 Your own [[debuffs/Weak]] cuts YOUR attack damage by 25%; your own [[debuffs/Frail]] cuts YOUR block by 25%. Both multipliers round DOWN (Defend 5 under Frail = 3 block, not 4). Run every kill-math and every block total with your own active debuffs applied — a "lethal" line computed without your Weak comes up short by exactly the discount, and a block plan that ignores Frail under-blocks at the worst margins.
+
+### 11. SEND DISCIPLINE UNDER INTERFACE LAG
+
+When state echoes come back empty (`{}`) or unchanged, the interface is racing — slow down before anything else:
+
+- **Never re-send `end` after an empty echo.** WAIT and re-poll the state. A queued duplicate `end` ends the NEXT turn with zero cards played — an entire discarded hand.
+- **Re-send lost actions by card NAME, never by index.** If a batch's result never echoed, your hand model is stale; an index computed against it plays the wrong card.
+- **Single-card sends bypass the batch energy guard.** When lag forces one-send-per-echo play, re-sum the turn's energy plan by hand before each play — the error family the guard retired comes back exactly here.
 
 ---
 

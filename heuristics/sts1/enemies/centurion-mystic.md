@@ -6,6 +6,10 @@
 
 **High ascension numbers:** at A2+ Centurion's Slash runs ~14 base (12 at A0) and Mystic's attack ~9 (8 base); Mystic's buff has given +3 Strength to BOTH allies (+2 at A0). At exact-lethal margins the extra 2 on Slash is the entire margin — use the higher numbers in block math.
 
+## Heal Arming
+
+The heal is CONDITIONAL: Mystic heals (priority move, can repeat back-to-back) only once ANY enemy is missing 16+ HP. Damage on Mystic below that threshold is free; past it you are racing a 16-HP-per-enemy-per-turn pump. So either burst Mystic from above the threshold to dead inside one arm-window (arm and kill before its next move — Centurion's Protect 15 block raises the bar), or hold ALL damage and block until the deck can. Sustained chip is the one losing shape: it arms the heal and then feeds it. (The harness may display the Heal intent as BUFF.)
+
 ## Strategy
 
 - Focus all damage on Mystic despite Centurion being the bigger per-turn threat

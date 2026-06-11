@@ -27,6 +27,7 @@
 - Exhausting Spot Weakness (permanent Strength gain is needed to break through [[cards/Barricade]])
 - Playing [[cards/Brutality]] (1 HP/turn self-damage over an 8-13 turn fight)
 - Entering with zero potions
+- Playing the wall game with a block engine ([[cards/Barricade]] banking, Corruption free-Skill turns) — block-on-block mirrors here have repeatedly cost block-led lines 2-3x what attack-led lines pay; even a committed block deck should fight Spheric attack-first and keep the engine for fights with incoming worth banking against
 
 ## Winning Formulas
 

@@ -39,6 +39,8 @@ Dark Echo (40 damage) opens Phase 2 with no warning. If you enter Phase 2 below 
 
 Sludge adds [[cards/Void]] to the deck, which drains 1 Energy when drawn. Multiple Voids compound: 2 Voids in a 5-card hand means effectively 2E and 2 dead cards. Minimize turns spent in Phase 2 to limit Void accumulation.
 
+**Burst-deck rider:** a deck that can plausibly end Phase 2 in 2-3 turns can weight Phase 1 HP conservation lower and the Phase 2 opening nuke higher — Dark Echo budgeting and Void accumulation matter little when Phase 2 barely happens. The conservation guidance above remains the default for everyone else.
+
 ## Preparation Checklist
 
 1. Damage source that works without Powers

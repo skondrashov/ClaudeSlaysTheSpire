@@ -4,7 +4,7 @@
 
 ## Preparation Checklist
 
-1. HP for an expected 30-50 HP fight (run the ledger; Pantograph's +25 counts toward it)
+1. HP for an expected 30-50 HP fight (run the ledger; Pantograph's +25 counts toward it). At A9 the Collector's HP is ~300 (282 base) — use the higher number in kill-turn math.
 2. AOE damage ([[cards/Immolate]] is the MVP -- hits Collector + both Torch Heads)
 3. Mass debuff ([[cards/Shockwave]] reduces combined incoming from 3 enemies by 25% for 3 turns)
 4. [[cards/Impervious]] (30 block absorbs an entire post-debuff turn)

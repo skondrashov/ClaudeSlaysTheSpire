@@ -10,4 +10,4 @@ Block persists between turns instead of resetting to 0. Transforms block cards f
 
 **Victory engine:** Barricade + [[cards/Corruption]] + [[cards/Feel No Pain]] + Entrench + Body Slam defeated [[bosses/Time Eater]] (480 HP). Block snowball makes hallway fights trivial.
 
-**Matchups:** Guardian -- deploy on free turn (DEFEND/STRONG_DEBUFF intent), then build permanent block wall. Multi-enemy fights with constant damage -- 3E setup often too expensive.
+**Matchups:** Guardian -- deploy on free turn (DEFEND/STRONG_DEBUFF intent), then build permanent block wall. Multi-enemy fights with constant damage -- 3E setup often too expensive. [[bosses/Hexaghost]] -- end-of-turn Burn damage resolves against standing block, so a persistent wall eats Burn chip one-for-one and largely replaces Burns-management tech. [[enemies/Spheric Guardian]] -- do NOT play the wall game against another wall; attack-led lines clear it far cheaper.

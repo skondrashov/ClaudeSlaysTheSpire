@@ -12,6 +12,8 @@ This converts a single terminal label ("the run was lost") into a dense win% tra
 
 **Calibration = belief error.** If the run carries the player's own live win% labels (Casual Win and Explore runs do), compare them to your forward estimates. A large gap is a place the player's *beliefs* were wrong, independent of whether they won — and it shows up in won runs too, so mine those as well. High regret with good calibration is an EXECUTION flag (knew better, didn't do it); a large calibration gap is a CURATOR flag (the playbook taught a wrong prior). Check the label's ANCHOR separately from its moves: a baseline inherited from prior runs rather than derived from the situation (ascension level, the character's actual record there), or a label re-affirmed unchanged across a material state change, is a calibration finding even when every relative update is well-sized.
 
+**Win-side calibration reference (A9 Ironclad):** the one compliant winning trail on record ran ~28 flat through Act 1, +4 to +7 per boss kill/engine milestone, ~38 at Act 2 boss entry, ~45 at Act 3 entry, ~60 at final-boss entry — with the honest forward sitting ~5 higher from the engine-online point onward. Two implications: winners can err conservative (do not "correct" a winning trail upward into the old inflation pattern), and a winning trail with zero negative ticks is consistent with a run that genuinely had no setback — it is not by itself a calibration failure, and not a new norm.
+
 The combat and non-combat checks below are how you EXPLAIN a regret once you have found it — the mechanism behind the lost win%.
 
 ## Diagnosing a book failure: knowledge gap vs retrieval miss

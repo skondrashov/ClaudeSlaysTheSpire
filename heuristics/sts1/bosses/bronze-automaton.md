@@ -5,11 +5,12 @@
 ## Preparation Checklist
 
 1. HP for an expected 30-50 HP fight, with Hyper Beam (45 base, 57+ the second time) as the single largest spike — run the ledger before the pre-boss rest site decision. At A9: HP 320 (300 base) and the FIRST Hyper Beam arrives at ~58 — budget the spike at the second-beam number from the start.
-2. Artifact strippers (non-exhausting): Thunderclap, Bash+. Need 3+ applications.
-3. Weak source saved for Hyper Beam: Intimidate, Shockwave+, or [[potions/Weak Potion]]
-4. Block scaling: [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], [[cards/Ghostly Armor]] (basic Defends are NOT enough)
-5. Burst damage for post-Hyper Beam stun window
-6. Redundant key cards (Stasis steals cards -- single copies are fragile)
+2. **The Flail/Boost cycle, not the Beam, is the fight's HP bill.** Flail is 7x2 at base (8x2 at A4+) and every Boost adds +3 Strength (+4 at A4+), so Flails escalate ~16 → 24 → 32 → 40 every other turn for the whole fight. The Beam is one telegraphed, stun-rewarded spike; the Flails are repeating and unbounded. Budget repeatable block or a repeatable [[debuffs/Weak]] for the cycle, and price most of the fight's expected cost there.
+3. Artifact strippers (non-exhausting): Thunderclap, Bash+. Need 3+ applications.
+4. Weak source saved for Hyper Beam: Intimidate, Shockwave+, or [[potions/Weak Potion]]
+5. Block scaling: [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], [[cards/Ghostly Armor]] (basic Defends are NOT enough)
+6. Burst damage for post-Hyper Beam stun window
+7. Redundant key cards (Stasis steals cards -- single copies are fragile)
 
 ## Fight Phases
 
@@ -58,5 +59,6 @@ Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block o
 ## Key Dangers
 
 - Insufficient block scaling (basic Defends = 20 max vs 38+ Hyper Beam) is the central danger — basic block can't cover Hyper Beam, so it lands for lethal
+- The escalating Flail cycle out-damages the Beam across the fight: with no repeatable block or repeatable Weak, every Flail turn bleeds 15-30+ even when the Beam itself is fully answered
 - Wasting Intimidate on Artifact stripping leaves no Weak for Hyper Beam, which then lands unreduced for lethal
 - Long fights (12+ turns) face a second Hyper Beam at 57+ damage -- need kill speed or second Impervious

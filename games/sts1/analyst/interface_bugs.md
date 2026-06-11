@@ -158,6 +158,38 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 ---
 
+## IB-010: Event-screen choice desync ALTERS GAMEPLAY (executes a different option than echoed)
+
+**What:** At an event, `choose 1` echoed "[Offer: 182 Gold] Lose all Gold. Obtain a Relic." but the game executed [Leave]: gold unchanged, no relic, screen advanced EVENT→MAP with no relic screen. The IB-003 shape (translation/index ordering mismatch), but here it changed the outcome instead of just the log line.
+
+**Root cause:** Suspected: event option ordering in the translation list differs from CommunicationMod's actual indexing (the event-screen analog of IB-003). Alternative (game no-opped a correctly-routed offer) also interface-side.
+
+**Impact:** Medium this time (~0 cost — run 237, F41 Tomb of Lord Red Mask, gold ended the run unspent), but the same desync on a consequential event (Vampires, Falling, Mind Bloom) would be run-altering. Player blameless — intent and echo agreed.
+
+**Affected runs:** 237 (F41, idx 630-631).
+
+**Status:** OPEN.
+
+**Fix:** Compare event option ordering between `_translate_command()` and CommunicationMod; add a post-choice assertion (gold/relic/HP delta vs the echoed option's stated effect) that flags a mismatch immediately instead of leaving it to audit-time inventory reconciliation.
+
+---
+
+## IB-011: Key acquisition fails silently (Emerald Key)
+
+**What:** `choose Emerald Key` (echo "Emerald") returned an empty `{}` result; no confirmation, no retry; the key was never collected (end-of-run state shows "no keys").
+
+**Root cause:** Unknown. Note: empty `{}` results ALSO follow SUCCESSFUL special-screen picks (run 237: Black Blood idx 263, Snecko idx 524, both acquired), so a guard cannot key on the empty state alone.
+
+**Impact:** Low at A9 with an Act 3 goal (keys unused); FATAL to any Act 4 attempt.
+
+**Affected runs:** 237 (idx 160-161, burning-elite reward).
+
+**Status:** OPEN (known to orchestrator).
+
+**Fix:** Post-hoc possession check after any key/relic special-screen pick — re-poll state and assert the item appears in inventory; retry once if absent.
+
+---
+
 ## Tracking
 
 When a new interface bug is observed, add it here with:

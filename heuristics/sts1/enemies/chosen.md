@@ -10,6 +10,8 @@
 
 **Exception:** If the [[enemies/Cultist]] can be killed in 1-2 turns ([[potions/Fire Potion]] burst, or it has <15 HP), killing it first is acceptable because Hex only applies for 1-2 turns.
 
+**Whichever branch applies, COMMIT.** Splitting damage between Chosen and the Cultist is strictly worse than either committed line — neither dies before the fight's damage converges (at A9 the pairing's combined incoming reaches ~60/turn by turns 6-7 if neither target has died — that clock outpaces any block plan). Convert damage potions EARLY on the committed target; a potion that dies unspent in this fight was the missing kill-turn.
+
 ## Strategy
 
 - Attacks and Powers are safe (do not trigger Hex)
