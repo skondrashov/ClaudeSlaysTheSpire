@@ -26,6 +26,11 @@ if __name__ == "__main__":
 
     cmd = sys.argv[1]
     args = sys.argv[2:] if len(sys.argv) > 2 else []
+    # Tolerate flag-style invocation: `play.py send "choose 0" --reason "text"`.
+    # The literal token "--reason" otherwise lands IN the positional reason slot —
+    # one run logged 116 decisions whose reasoning was the string "--reason",
+    # making them unauditable.
+    args = [a for a in args if a != "--reason"]
 
     if cmd == "state":
         print(state())
@@ -36,9 +41,17 @@ if __name__ == "__main__":
         print(send(command, reason=reason))
     elif cmd == "turn":
         # python play.py turn "play 1 0|play 2 0|end" "reason text"
-        actions = args[0].split("|") if args else []
-        reason = args[1] if len(args) > 1 else "executing turn"
-        print(turn(actions, reason=reason))
+        # Guard: actions must be ONE pipe-separated arg. Passing each action as
+        # its own argument silently executed only the first (the rest became the
+        # reason) — refuse instead.
+        extra_actions = [a for a in args[1:] if a.strip().lower().startswith(("play ", "end"))]
+        if extra_actions:
+            print('[ERROR] turn takes ONE pipe-separated actions argument plus a reason:')
+            print('  python play.py turn "play Bash 0|play Defend|end" "reason text"')
+        else:
+            actions = args[0].split("|") if args else []
+            reason = args[1] if len(args) > 1 else "executing turn"
+            print(turn(actions, reason=reason))
     elif cmd == "play":
         # python play.py play "card_index [target]" "reason text"
         play_args = args[0] if args else ""
@@ -75,9 +88,10 @@ if __name__ == "__main__":
     elif cmd == "deck":
         print(deck())
     elif cmd == "potion_use":
-        # potion_use <slot> [target] [reason] — target is optional, so a non-numeric
-        # second arg is the reason (non-targeted potions previously crashed on int()).
-        idx = int(args[0]) if args else 0
+        # potion_use <slot-or-name> [target] [reason] — slot may be a potion NAME
+        # (slots renumber after each drink; names are stable). Target optional, so
+        # a non-numeric second arg is the reason.
+        idx = args[0] if args else 0   # cmd.potion_use resolves names itself
         target = None
         reason = "using potion"
         if len(args) > 1:

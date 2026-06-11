@@ -50,6 +50,12 @@ def format_state(state: dict) -> str:
         parts.append(format_hand_select(gs))
         if gs.get("combat_state"):
             parts.append(format_combat(gs))
+    elif screen == "CARD_REWARD":
+        # Can appear mid-combat too (e.g., potion card choices) — render the
+        # options first, then combat context below.
+        parts.append(format_card_reward(gs))
+        if gs.get("combat_state"):
+            parts.append(format_combat(gs))
     elif phase == "COMBAT" or screen == "NONE":
         if gs.get("combat_state"):
             parts.append(format_combat(gs))
@@ -61,8 +67,6 @@ def format_state(state: dict) -> str:
         parts.append(format_map(gs))
     elif screen == "REST":
         parts.append(format_rest(gs))
-    elif screen == "CARD_REWARD":
-        parts.append(format_card_reward(gs))
     elif screen == "COMBAT_REWARD":
         parts.append(format_combat_reward(gs))
     elif screen == "BOSS_REWARD":
@@ -239,8 +243,10 @@ def format_combat(gs: dict) -> str:
         if card.get("upgrades", 0) > 0 and not name.endswith("+"):
             name += "+"
 
+        # Cost sentinels: -1 is X-cost, -2 is unplayable (curses/statuses)
+        cost_str = "X" if cost == -1 else "-" if cost == -2 else f"{cost}E"
         flag_str = f" [{', '.join(flags)}]" if flags else ""
-        lines.append(f"  [{idx}] {name} ({ctype}, {cost}E){flag_str}")
+        lines.append(f"  [{idx}] {name} ({ctype}, {cost_str}){flag_str}")
 
     # Pile contents — grouped summaries so the player knows what's coming
     draw_pile = cs.get("draw_pile", [])
@@ -281,6 +287,48 @@ def format_event(gs: dict) -> str:
     return "\n".join(lines)
 
 
+def _build_shop_choice_list(gs: dict) -> list:
+    """Build the ordered choice list matching CommunicationMod's getAvailableShopItems().
+
+    CommunicationMod orders shop items as:
+        1. Purge (if available AND affordable)
+        2. Affordable cards (colored then colorless — same order as screen_state)
+        3. Affordable relics
+        4. Affordable potions
+
+    Only items the player can afford appear in the choice list.
+    This matches CommunicationMod's internal indexing for "choose N".
+
+    Returns list of (category, name, item_dict) tuples.
+    """
+    ss = gs.get("screen_state", {})
+    gold = gs.get("gold", 0)
+    cards = ss.get("cards", [])
+    relics = ss.get("relics", [])
+    potions = ss.get("potions", [])
+    purge_available = ss.get("purge_available", False)
+    purge_cost = ss.get("purge_cost", 0)
+
+    items = []
+
+    if purge_available and gold >= purge_cost:
+        items.append(("purge", "purge", None))
+
+    for card in cards:
+        if gold >= card.get("price", float("inf")):
+            items.append(("card", card.get("name", ""), card))
+
+    for relic in relics:
+        if gold >= relic.get("price", float("inf")):
+            items.append(("relic", relic.get("name", ""), relic))
+
+    for pot in potions:
+        if gold >= pot.get("price", float("inf")):
+            items.append(("potion", pot.get("name", ""), pot))
+
+    return items
+
+
 def format_shop(gs: dict) -> str:
     ss = gs.get("screen_state", {})
     cards = ss.get("cards", [])
@@ -289,50 +337,57 @@ def format_shop(gs: dict) -> str:
     purge_available = ss.get("purge_available", False)
     purge_cost = ss.get("purge_cost", 0)
 
-    # SHOP_ROOM is the "entering shop" transitional state — items may not be
-    # populated yet. Call state() again to get the full SHOP_SCREEN inventory.
-    # Do NOT send proceed — that leaves the shop without buying anything.
+    # SHOP_ROOM is the "entering shop" state — the merchant's wares aren't open
+    # yet. choose 0 opens the shop screen; proceed leaves the room.
     screen = gs.get("screen_type", "")
     if screen == "SHOP_ROOM" and not cards and not relics and not potions:
         lines = ["\n=== SHOP (entering) ==="]
-        lines.append("Shop inventory loading. Call state() to refresh — items will appear shortly.")
-        lines.append("Do NOT use proceed here — that leaves the shop.")
+        lines.append("Use: choose 0 to browse the merchant's wares; proceed to leave the room.")
         lines.append(f"\nGold: {gs.get('gold', 0)}")
         return "\n".join(lines)
+
+    # Real choice indices (purge first, then affordable cards/relics/potions).
+    # Unaffordable items have NO index — they aren't in the choice list at all.
+    items = _build_shop_choice_list(gs)
+    idx_by_id = {id(item): i for i, (cat, _name, item) in enumerate(items) if item is not None}
+    purge_idx = next((i for i, (cat, _n, _it) in enumerate(items) if cat == "purge"), None)
+
+    def _item_line(item: dict, name: str) -> str:
+        price = item.get("price", "?")
+        idx = idx_by_id.get(id(item))
+        if idx is not None:
+            return f"  [{idx}] {name} — {price}g"
+        return f"  {name} — {price}g (can't afford)"
 
     lines = ["\n=== SHOP ==="]
 
     if cards:
         lines.append("Cards:")
-        for i, card in enumerate(cards):
+        for card in cards:
             name = card.get("name", "?")
-            price = card.get("price", "?")
-            affordable = " " if gs.get("gold", 0) >= (card.get("price", 0) or 0) else " (can't afford) "
             if card.get("upgrades", 0) > 0 and not name.endswith("+"):
                 name += "+"
-            lines.append(f"  {name} — {price}g{affordable}")
+            lines.append(_item_line(card, name))
 
     if relics:
         lines.append("Relics:")
-        for i, relic in enumerate(relics):
-            name = relic.get("name", "?")
-            price = relic.get("price", "?")
-            affordable = " " if gs.get("gold", 0) >= (relic.get("price", 0) or 0) else " (can't afford) "
-            lines.append(f"  {name} — {price}g{affordable}")
+        for relic in relics:
+            lines.append(_item_line(relic, relic.get("name", "?")))
 
     if potions:
         lines.append("Potions:")
-        for i, pot in enumerate(potions):
-            name = pot.get("name", "?")
-            price = pot.get("price", "?")
-            affordable = " " if gs.get("gold", 0) >= (pot.get("price", 0) or 0) else " (can't afford) "
-            lines.append(f"  {name} — {price}g{affordable}")
+        for pot in potions:
+            lines.append(_item_line(pot, pot.get("name", "?")))
 
     if purge_available:
-        lines.append(f"Card removal: {purge_cost}g")
+        if purge_idx is not None:
+            lines.append(f"Card removal: [{purge_idx}] Remove Card — {purge_cost}g")
+        else:
+            lines.append(f"Card removal: {purge_cost}g (can't afford)")
 
     lines.append(f"\nGold: {gs.get('gold', 0)}")
-    lines.append("Buy with: choose <Name> (e.g., choose Inflame, choose purge). Use return to leave.")
+    lines.append("Buy by NAME (preferred): choose <Name> (e.g., choose Inflame, choose purge), "
+                 "or choose <index> using the indices above. Use return to leave.")
     return "\n".join(lines)
 
 
@@ -358,6 +413,14 @@ def format_map(gs: dict) -> str:
             x = node.get("x", "?")
             node_type = SYMBOLS.get(symbol, symbol)
             lines.append(f"  [{i}] {node_type} (x={x})")
+    else:
+        # Pre-boss floor: next_nodes is empty but the boss is the (only) choice.
+        ss = gs.get("screen_state", {})
+        boss_name = (boss.get("name") if isinstance(boss, dict) else boss) \
+            or gs.get("act_boss", "?")
+        if ss.get("boss_available") or boss or gs.get("act_boss"):
+            lines.append("Available paths (choose one):")
+            lines.append(f"  [0] Boss ({boss_name})")
 
     # Show full map for act pathing — group by floor, show connections
     if map_data:
@@ -391,7 +454,9 @@ def format_map(gs: dict) -> str:
     if boss:
         lines.append(f"  BOSS: {boss.get('name', '?')}")
 
-    lines.append("\nUse: choose <index> to pick a path")
+    lines.append("\nUse: choose <type> (rest/monster/elite/shop/unknown/treasure/boss), "
+                 "choose x=<N>, or choose <index>. The response echoes [chose: ...] — "
+                 "verify it matches your plan before acting further.")
     return "\n".join(lines)
 
 
@@ -410,10 +475,9 @@ def format_rest(gs: dict) -> str:
         for i, opt in enumerate(options):
             label = opt if isinstance(opt, str) else opt.get("label", str(opt))
             lines.append(f"  [{i}] {label}")
+        lines.append("\nUse: choose <option_name> (e.g., choose rest, choose smith)")
     else:
-        lines.append("Options: rest (heal), smith (upgrade card)")
-
-    lines.append("\nUse: choose <option_name> (e.g., choose rest, choose smith)")
+        lines.append("(already used — proceed to continue)")
     return "\n".join(lines)
 
 
@@ -493,6 +557,7 @@ def format_boss_reward(gs: dict) -> str:
 def format_grid(gs: dict) -> str:
     ss = gs.get("screen_state", {})
     cards = ss.get("cards", [])
+    selected = ss.get("selected_cards", [])
     for_upgrade = ss.get("for_upgrade", False)
     for_transform = ss.get("for_transform", False)
     for_purge = ss.get("for_purge", False)
@@ -504,13 +569,33 @@ def format_grid(gs: dict) -> str:
     select_str = "any number" if any_number else str(num_cards)
     lines.append(f"Select {select_str} card(s) to {action}:")
 
-    for i, card in enumerate(cards):
+    def _grid_name(card: dict) -> str:
         name = card.get("name", "?")
         if card.get("upgrades", 0) > 0 and not name.endswith("+"):
             name += "+"
+        return name
+
+    if selected:
+        lines.append(f"Selected ({len(selected)}/{select_str}): "
+                     f"{', '.join(_grid_name(c) for c in selected)}")
+
+    # Mark already-selected cards in the list (matched by name + upgrades,
+    # consuming one match per selected copy).
+    sel_remaining = {}
+    for c in selected:
+        key = (c.get("name", ""), c.get("upgrades", 0))
+        sel_remaining[key] = sel_remaining.get(key, 0) + 1
+
+    for i, card in enumerate(cards):
+        name = _grid_name(card)
         cost = card.get("cost", "?")
         ctype = card.get("type", "?").lower()
-        lines.append(f"  [{i}] {name} ({ctype}, {cost}E)")
+        mark = ""
+        key = (card.get("name", ""), card.get("upgrades", 0))
+        if sel_remaining.get(key, 0) > 0:
+            sel_remaining[key] -= 1
+            mark = " [SELECTED]"
+        lines.append(f"  [{i}] {name} ({ctype}, {cost}E){mark}")
 
     lines.append("\nUse the indices above: choose 0, choose 1, etc. These are GRID indices (NOT hand indices — they differ!).")
     return "\n".join(lines)
@@ -576,10 +661,21 @@ def _summarize_pile(cards: list) -> str:
     return ", ".join(parts)
 
 
+# Powers where a negative amount is REAL information (reduced Strength from
+# Disarm/Shackled, Dexterity decay from Wraith Form, negative Focus) — never
+# suppress these. For everything else a negative amount is a no-amount sentinel
+# (Split -1, Minion -1).
+_SIGNED_POWERS = {"strength", "dexterity", "focus"}
+
+
 def format_power(power: dict) -> str:
-    """Format a single power/buff/debuff."""
+    """Format a single power/buff/debuff.
+
+    Negative amounts are usually sentinels for "no amount" (Split -1, Minion -1)
+    — show just the name — EXCEPT for signed stats, where negative is real.
+    """
     name = power.get("name", "?")
     amount = power.get("amount", 0)
-    if amount != 0:
+    if amount > 0 or (amount < 0 and name.lower() in _SIGNED_POWERS):
         return f"{name} {amount}"
     return name

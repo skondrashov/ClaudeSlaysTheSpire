@@ -22,5 +22,5 @@ Uses Taunt every 4 turns. On other turns: 15% Defensive Stance, 15% Gloat, 25% F
 
 ## Phase 2 -- Anger Transition (Below 50% HP)
 
-When HP drops below 50%, performs Anger: removes ALL debuffs, gains 6 [[buffs/Strength]]. Then repeats: Random Move -> Random Move -> Execute (10x2 = 20 damage).
+When HP drops below 50%, the next move is always Anger: removes ALL debuffs and gains 6 [[buffs/Strength]]. **The move immediately after Anger is always Execute** -- and from then on, Execute fires on any turn where it was not used in either of the previous two turns. The most spaced-out pattern is Execute, X, X, Execute, X, X...; there are never two guaranteed Execute-free turns after the transition. The turn that crosses 50% should be planned with Anger-then-Execute as the certain follow-up.
 

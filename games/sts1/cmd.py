@@ -23,7 +23,7 @@ import sys
 import time
 import urllib.request
 
-from bot.state_formatter import format_state, monster_name
+from bot.state_formatter import format_state, monster_name, _build_shop_choice_list
 
 HOST = "127.0.0.1"
 PORT = 19284
@@ -300,7 +300,13 @@ def state() -> str:
     """Get current game state, formatted for reading."""
     global _last_raw_state
     raw = _tcp_request({"type": "state"})
-    _last_raw_state = raw
+    if "error" in raw:
+        # A stale queued-command error can shadow a perfectly good state —
+        # retry once and only surface the error if it persists.
+        retry = _tcp_request({"type": "state"})
+        if "error" not in retry:
+            raw = retry
+    _remember(raw)
     # Auto-handle mechanical transitions before returning state
     raw = _auto_handle_mechanical(raw)
     return format_state(raw)
@@ -310,12 +316,34 @@ def state_raw() -> dict:
     """Get current game state as raw dict."""
     global _last_raw_state
     raw = _tcp_request({"type": "state"})
-    _last_raw_state = raw
+    _remember(raw)
     return raw
 
 
 # Cached state for translating commands to readable text
 _last_raw_state = None
+
+
+def _healthy_state(raw) -> bool:
+    """A response safe to cache: a real in-game state, or a real out-of-game
+    state. Error dicts and transient relay acks ({"status":"ok","note":"command
+    sent, state pending"}) are NOT healthy — caching one poisons name->index
+    resolution for every subsequent command (a poisoned cache produced a
+    zero-cards-played turn that lost a run)."""
+    if not isinstance(raw, dict) or "error" in raw:
+        return False
+    if "game_state" in raw:
+        return True
+    return raw.get("in_game") is False and "available_commands" in raw
+
+
+def _remember(raw):
+    """Update the cached state ONLY when the response is healthy; always
+    returns the response unchanged so callers can still inspect errors."""
+    global _last_raw_state
+    if _healthy_state(raw):
+        _last_raw_state = raw
+    return raw
 
 
 def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
@@ -325,22 +353,30 @@ def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
     (including dead/gone enemies). This resolves a name to that index.
 
     Returns the index as a string, or None if no match.
+    Raises ValueError when the name matches several living enemies — silently
+    targeting the first match has hit the wrong enemy; the caller must surface
+    the error so the player picks an index.
     """
     name_lower = name_ref.lower()
     # Exact match first — against the precise (id-disambiguated) name the agent
     # sees in the formatted state ("Blue Slaver"), falling back to the raw name.
-    for i, m in enumerate(monsters):
-        if m.get("is_gone"):
-            continue
-        if name_lower in (monster_name(m).lower(), m.get("name", "").lower()):
-            return str(i)
-    # Substring match
-    for i, m in enumerate(monsters):
-        if m.get("is_gone"):
-            continue
-        if name_lower in monster_name(m).lower() or name_lower in m.get("name", "").lower():
-            return str(i)
-    return None
+    matches = [i for i, m in enumerate(monsters) if not m.get("is_gone")
+               and name_lower in (monster_name(m).lower(), m.get("name", "").lower())]
+    if not matches:
+        # Substring match
+        matches = [i for i, m in enumerate(monsters) if not m.get("is_gone")
+                   and (name_lower in monster_name(m).lower()
+                        or name_lower in m.get("name", "").lower())]
+    if not matches:
+        return None
+    if len(matches) > 1:
+        listing = ", ".join(
+            f"[{i}] {monster_name(monsters[i])} "
+            f"{monsters[i].get('current_hp', '?')}/{monsters[i].get('max_hp', '?')}"
+            for i in matches)
+        raise ValueError(
+            f"'{name_ref}' matches {len(matches)} enemies: {listing} — use the index.")
+    return str(matches[0])
 
 
 def _card_identity(card: dict) -> tuple:
@@ -488,7 +524,10 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
             except ValueError:
                 pass
             # Resolve enemy name
-            resolved_target = _resolve_enemy_name(monsters, target_ref)
+            try:
+                resolved_target = _resolve_enemy_name(monsters, target_ref)
+            except ValueError as e:
+                return f"[ERROR] {e}"
             if resolved_target is not None:
                 return f"play {card_idx} {resolved_target}"
         return action  # "play 3" or unresolvable target
@@ -553,7 +592,10 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
         pass
 
     # Resolve enemy name to absolute index
-    resolved_target = _resolve_enemy_name(monsters, remaining)
+    try:
+        resolved_target = _resolve_enemy_name(monsters, remaining)
+    except ValueError as e:
+        return f"[ERROR] {e}"
     if resolved_target is not None:
         return f"play {best_card_idx} {resolved_target}"
 
@@ -561,46 +603,8 @@ def _resolve_card_name(raw_state: dict, action: str) -> str:
     return f"play {best_card_idx} {remaining}"
 
 
-def _build_shop_choice_list(gs: dict) -> list[tuple[str, str, dict | None]]:
-    """Build the ordered choice list matching CommunicationMod's getAvailableShopItems().
-
-    CommunicationMod orders shop items as:
-        1. Purge (if available AND affordable)
-        2. Affordable cards (colored then colorless — same order as screen_state)
-        3. Affordable relics
-        4. Affordable potions
-
-    Only items the player can afford appear in the choice list.
-    This matches CommunicationMod's internal indexing for "choose N".
-
-    Returns list of (category, name, item_dict) tuples.
-    """
-    ss = gs.get("screen_state", {})
-    gold = gs.get("gold", 0)
-    cards = ss.get("cards", [])
-    relics = ss.get("relics", [])
-    potions = ss.get("potions", [])
-    purge_available = ss.get("purge_available", False)
-    purge_cost = ss.get("purge_cost", 0)
-
-    items: list[tuple[str, str, dict | None]] = []
-
-    if purge_available and gold >= purge_cost:
-        items.append(("purge", "purge", None))
-
-    for card in cards:
-        if gold >= card.get("price", float("inf")):
-            items.append(("card", card.get("name", ""), card))
-
-    for relic in relics:
-        if gold >= relic.get("price", float("inf")):
-            items.append(("relic", relic.get("name", ""), relic))
-
-    for pot in potions:
-        if gold >= pot.get("price", float("inf")):
-            items.append(("potion", pot.get("name", ""), pot))
-
-    return items
+# _build_shop_choice_list lives in bot.state_formatter (imported above) so the
+# shop display can render the same indices the choose command uses.
 
 
 def _resolve_shop_choose(raw_state: dict, action: str) -> str:
@@ -762,15 +766,23 @@ def _translate_command(command: str) -> str:
     combat = gs.get("combat_state")
 
     if verb == "play" and combat:
+        # The card ref may be an index OR a multi-word name (an unresolved name
+        # used to crash this translator with ValueError, killing the command).
         hand = combat.get("hand", [])
-        card_idx = int(parts[1]) - 1 if len(parts) > 1 else -1
-        card = hand[card_idx] if 0 <= card_idx < len(hand) else None
-        card_name = card["name"] if card else f"card {parts[1]}"
-        if len(parts) > 2 and combat:
+        target_tok = parts[-1] if len(parts) > 2 and parts[-1].lstrip("-").isdigit() else None
+        ref_tokens = parts[1:-1] if target_tok is not None else parts[1:]
+        ref = " ".join(ref_tokens)
+        if ref.isdigit():
+            card_idx = int(ref) - 1
+            card = hand[card_idx] if 0 <= card_idx < len(hand) else None
+            card_name = card["name"] if card else f"card {ref}"
+        else:
+            card_name = ref or "card ?"
+        if target_tok is not None:
             monsters = combat.get("monsters", [])  # absolute index
-            target_idx = int(parts[2])
+            target_idx = int(target_tok)
             enemy = monsters[target_idx] if 0 <= target_idx < len(monsters) else None
-            enemy_name = enemy["name"] if enemy else f"enemy {parts[2]}"
+            enemy_name = monster_name(enemy) if enemy else f"enemy {target_tok}"
             return f"{card_name} → {enemy_name}"
         return card_name
 
@@ -824,12 +836,15 @@ def _translate_command(command: str) -> str:
             if 0 <= idx < len(relics):
                 return f"Take {relics[idx].get('name', 'Relic')}"
         elif screen in ("SHOP_ROOM", "SHOP_SCREEN"):
-            cards = ss.get("cards", [])
-            relics = ss.get("relics", [])
-            potions = ss.get("potions", [])
-            if 0 <= idx < len(cards):
-                return f"Buy {cards[idx].get('name', '?')}"
-            # Relics/potions use different indexing in CommunicationMod
+            # Index against CommunicationMod's REAL shop ordering (purge first,
+            # then affordable cards/relics/potions). Translating against the raw
+            # cards array mislabeled purchases by the purge offset and the
+            # affordability filter ("Buy Armaments" while actually buying
+            # Fiend Fire — run 230; "Buy Secret Weapon" → Skill Potion — IB-003).
+            items = _build_shop_choice_list(gs)
+            if 0 <= idx < len(items):
+                cat, name, _item = items[idx]
+                return "Remove Card (purge)" if cat == "purge" else f"Buy {name}"
         elif screen == "EVENT":
             event_name = ss.get("event_name", "")
             options = ss.get("options", [])
@@ -914,10 +929,21 @@ def _snapshot(raw: dict) -> dict:
         snap["block"] = player.get("block", 0)
         snap["energy"] = player.get("energy", 0)
         snap["hand"] = [c.get("name", "?") for c in combat.get("hand", [])]
+        # Powers included so audits can verify buff/debuff claims — their absence
+        # made a true burning-elite observation unverifiable (audits 228/229).
         snap["enemies"] = [
-            {"name": m.get("name"), "hp": m.get("current_hp"), "intent": m.get("intent")}
+            {k: v for k, v in {
+                "name": monster_name(m), "hp": m.get("current_hp"),
+                "intent": m.get("intent"),
+                "powers": [f"{p.get('name', '?')} {p.get('amount', '')}".strip()
+                           for p in m.get("powers", [])] or None,
+            }.items() if v is not None}
             for m in combat.get("monsters", []) if not m.get("is_gone")
         ]
+        snap["player_powers"] = [
+            f"{p.get('name', '?')} {p.get('amount', '')}".strip()
+            for p in player.get("powers", [])
+        ] or None
         snap["orbs"] = [
             {"name": o.get("name"), "passive": o.get("passive_amount"), "evoke": o.get("evoke_amount")}
             for o in combat.get("orbs", [])
@@ -970,6 +996,7 @@ def _log_result(raw: dict):
 
 _game_over_handled = False
 _potion_skip_warned = False
+_key_take_warned = False
 # Snapshot of HAND_SELECT card list from when the screen first appeared.
 # Used to translate numeric indices across selections (cards get removed, shifting indices).
 _hand_select_snapshot = None
@@ -1236,7 +1263,7 @@ def send(command: str, reason: str = "") -> str:
         start CLASS [A] [S] — Start run (IRONCLAD/THE_SILENT/DEFECT/WATCHER, ascension, seed)
         state               — Re-request state
         key K [timeout]     — Press key K
-        wait T              — Wait T milliseconds
+        wait T              — Wait T frames (game time)
     """
     if not reason or not reason.strip():
         return (
@@ -1246,10 +1273,10 @@ def send(command: str, reason: str = "") -> str:
         )
     # Fetch pre-command state so translation has current hand/enemies
     global _last_raw_state
-    _last_raw_state = _tcp_request({"type": "state"})
+    _remember(_tcp_request({"type": "state"}))
 
     # Guard: prevent proceed on BOSS_REWARD (must choose a relic first)
-    gs = _last_raw_state.get("game_state") or {}
+    gs = (_last_raw_state or {}).get("game_state") or {}
     screen = gs.get("screen_type", "")
     cmd_verb = command.strip().split()[0].lower() if command.strip() else ""
     if cmd_verb == "proceed" and screen == "BOSS_REWARD":
@@ -1324,22 +1351,94 @@ def send(command: str, reason: str = "") -> str:
     else:
         _hand_select_snapshot = None  # Clear when leaving HAND_SELECT
 
+    # Guard: taking a KEY from a reward forfeits the linked relic — twice a
+    # chained 'choose N' grabbed the Sapphire Key while the plan named the relic
+    # (Sundial, War Paint). Warn once; an identical second choose proceeds.
+    global _key_take_warned
+    if cmd_verb == "choose" and screen in ("COMBAT_REWARD", "CHEST"):
+        parts_k = command.strip().split()
+        if len(parts_k) >= 2 and parts_k[1].isdigit():
+            rewards_k = gs.get("screen_state", {}).get("rewards", [])
+            ridx = int(parts_k[1])
+            if (0 <= ridx < len(rewards_k)
+                    and rewards_k[ridx].get("reward_type") in ("SAPPHIRE_KEY", "EMERALD_KEY")
+                    and not _key_take_warned):
+                _key_take_warned = True
+                return ("[WARNING] choose {} selects the KEY - taking it forfeits the "
+                        "linked relic. If you want the relic, choose its index instead. "
+                        "If the key is intended, send the same choose again.".format(ridx))
+    if cmd_verb != "choose" or screen not in ("COMBAT_REWARD", "CHEST"):
+        _key_take_warned = False
+
+    # Guard: cancel/skip on a GRID selection screen has frozen CommunicationMod
+    # (states stop flowing; required killing and relaunching the game). Refuse it.
+    if cmd_verb in ("return", "cancel", "skip") and screen == "GRID":
+        return (
+            "[ERROR] cancel/skip on a card-selection grid can FREEZE the game "
+            "(confirmed — required a full game restart). Complete the selection "
+            "instead: choose <index> the required number of times, then proceed "
+            "if a confirm is needed."
+        )
+
+    # MAP screens: support choosing by node type or x-coordinate, and resolve to
+    # an index locally. Blind 'choose N' misroutes have decided runs.
+    if cmd_verb == "choose" and screen == "MAP":
+        command = _resolve_map_choose(gs, command)
+        if command.startswith("[ERROR]"):
+            return command
+
     # Resolve card names to indices using current hand state
     resolved = _resolve_card_name(_last_raw_state, command)
+    if resolved.startswith("[ERROR]"):
+        return resolved  # e.g., ambiguous enemy name — don't execute
     # Resolve card names in choose commands (HAND_SELECT, CARD_REWARD, GRID)
     resolved = _resolve_choose_card_name(_last_raw_state, resolved)
     # Resolve shop card/relic names to indices
     resolved = _resolve_shop_choose(_last_raw_state, resolved)
+
+    # Resolve what a choose actually selects BEFORE executing, and echo it at the
+    # top of the response. Two consecutive runs were decided by an unverified
+    # 'choose N' picking something other than what the reasoning named (a map
+    # misroute; a chest taking the Sapphire Key while the plan said Meal Ticket).
+    # The echo makes the selection visible in the very next thing the player reads.
+    chose_echo = ""
+    chose_label = ""
+    if cmd_verb == "choose":
+        chose_label = _translate_command(resolved)
+        if chose_label and chose_label != resolved:
+            chose_echo = f"[chose: {chose_label}]\n\n"
+
+    def _fingerprint(r):
+        g = (r or {}).get("game_state") or {}
+        c = g.get("combat_state") or {}
+        return (g.get("screen_type"), g.get("floor"), g.get("current_hp"),
+                g.get("gold"), len(c.get("hand", [])),
+                (c.get("player") or {}).get("energy"))
+
+    pre_fp = _fingerprint(_last_raw_state)
     _post_decision(resolved, reason)
     raw = _tcp_request({"type": "command", "command": resolved})
-    _last_raw_state = raw  # Update cache
+    _remember(raw)  # Update cache (healthy responses only)
+    stale_note = ""
+    if cmd_verb not in ("state", "wait") and _healthy_state(raw) and _fingerprint(raw) == pre_fp:
+        # The relay can return before the command processes; a blind retry then
+        # double-fires it (one campfire healed twice this way). Say so.
+        stale_note = ("[NOTE: state unchanged after this command - it may still be "
+                      "processing. Re-read state before retrying; do NOT resend blindly.]\n\n")
+
+    # The echo must not claim a choice happened when the command failed.
+    if chose_echo and ("error" in raw
+                       or (raw.get("in_game") and not raw.get("game_state"))):
+        chose_echo = f"[attempted: {chose_label} — command FAILED, see error below]\n\n"
+
+    # Auto-handle mechanical transitions (gold, chests, shop wait, intent settle)
+    # BEFORE logging — the log must record the state the player actually saw,
+    # not the transient pre-settle frame.
+    raw = _auto_handle_mechanical(raw)
     _log_result(raw)
     _check_game_over(raw)
 
-    # Auto-handle mechanical transitions (gold, chests, shop wait)
-    raw = _auto_handle_mechanical(raw)
-
-    return format_state(raw)
+    return stale_note + chose_echo + format_state(raw)
 
 
 def _auto_collect_gold(raw: dict) -> dict:
@@ -1363,7 +1462,7 @@ def _auto_collect_gold(raw: dict) -> dict:
             break
         # Pick up the gold — always beneficial, never a trade-off.
         raw = _tcp_request({"type": "command", "command": f"choose {gold_idx}"})
-        _last_raw_state = raw
+        _remember(raw)
         if not raw.get("in_game"):
             return raw
         gs = raw.get("game_state", {})
@@ -1397,7 +1496,7 @@ def _auto_wait_shop_screen(raw: dict) -> dict:
     for _ in range(15):
         time.sleep(0.2)
         raw = _tcp_request({"type": "state"})
-        _last_raw_state = raw
+        _remember(raw)
         if not raw.get("in_game"):
             return raw
         gs = raw.get("game_state", {})
@@ -1425,7 +1524,39 @@ def _auto_open_chest(raw: dict) -> dict:
         return raw
     # Send "choose 0" which corresponds to "open"
     raw = _tcp_request({"type": "command", "command": "choose 0"})
-    _last_raw_state = raw
+    _remember(raw)
+    return raw
+
+
+def _settle_debug_intents(raw: dict) -> dict:
+    """Wait out unrolled enemy intents. CommunicationMod sometimes reports state
+    before the game has rolled monster moves — intents read "DEBUG" (33 instances
+    in one audited run), forcing blind conservative play on those turns. A short
+    in-game wait lets the roll land; give up after a few tries (a few intents are
+    legitimately hidden, e.g. while an enemy is stunned)."""
+    global _last_raw_state
+
+    def _has_debug(r):
+        c = (r.get("game_state") or {}).get("combat_state") if r.get("in_game") else None
+        if not c:
+            return False
+        return any(m.get("intent") == "DEBUG"
+                   for m in c.get("monsters", []) if not m.get("is_gone"))
+
+    if not _has_debug(raw):
+        return raw
+    tries = 0
+    for _ in range(3):
+        tries += 1
+        nxt = _tcp_request({"type": "command", "command": "wait 30"})
+        if not isinstance(nxt, dict) or "game_state" not in nxt:
+            break                       # wait unsupported/errored — keep what we have
+        raw = nxt
+        _remember(raw)
+        if not _has_debug(raw):
+            break
+    _log_event({"type": "settle_intents", "tries": tries,
+                "resolved": not _has_debug(raw), "timestamp": time.time()})
     return raw
 
 
@@ -1434,6 +1565,7 @@ def _auto_handle_mechanical(raw: dict) -> dict:
     raw = _auto_collect_gold(raw)
     raw = _auto_open_chest(raw)
     raw = _auto_wait_shop_screen(raw)
+    raw = _settle_debug_intents(raw)
     return raw
 
 
@@ -1502,6 +1634,55 @@ def _validate_action(raw: dict, action: str) -> str | None:
     return None
 
 
+# Cards that ADD energy mid-turn — a batch containing one can't be summed naively.
+_ENERGY_GAINERS = {"seeing red", "bloodletting", "offering", "adrenaline",
+                   "turbo", "double energy", "aggregate", "concentrate"}
+
+
+def _batch_energy_check(snapshot_hand: list, energy: int, actions: list) -> str | None:
+    """Sum the energy cost of a turn() batch against available energy.
+
+    Returns an error string when the plan is over budget, or None when it fits
+    (or can't be safely summed: an energy-gaining card in the batch, a card not
+    found in the hand snapshot, or an X-cost card — those consume the remainder
+    and can't overdraw)."""
+    remaining = list(snapshot_hand)  # multiset — duplicates consumed one at a time
+    total = 0
+    lines = []
+    for a in actions:
+        parts = a.strip().split()
+        if not parts or parts[0].lower() != "play":
+            continue
+        ref = " ".join(parts[1:-1]) if len(parts) > 2 and parts[-1].isdigit() else " ".join(parts[1:])
+        card = None
+        if ref.isdigit():                      # snapshot 1-indexed position
+            idx = int(ref) - 1
+            if 0 <= idx < len(snapshot_hand):
+                card = snapshot_hand[idx]
+        else:
+            for cand in remaining:
+                if cand.get("name", "").lower() == ref.lower():
+                    card = cand
+                    remaining.remove(cand)
+                    break
+        if card is None:
+            return None                        # can't identify — don't guess
+        if card.get("name", "").lower() in _ENERGY_GAINERS:
+            return None                        # energy math not naively summable
+        cost = card.get("cost", 0)
+        if cost is None or cost < 0:           # X-cost / unplayable markers
+            cost = 0
+        total += cost
+        lines.append(f"  {card.get('name', '?')} = {cost}E")
+    if total > energy:
+        return (f"[ERROR] Batch plans {total}E but you have {energy}E:\n"
+                + "\n".join(lines) +
+                f"\n  total = {total}E > {energy}E available.\n"
+                "Trim the plan and resend. (X-cost cards count as 0 here; if the plan "
+                "relies on an energy-gaining card, play it via send() first.)")
+    return None
+
+
 def turn(actions: list, reason: str = "") -> str:
     """Execute a full combat turn as a batch.
 
@@ -1543,14 +1724,31 @@ def turn(actions: list, reason: str = "") -> str:
 
     # Fetch pre-turn state for translation and snapshot
     global _last_raw_state
-    _last_raw_state = _tcp_request({"type": "state"})
+    _remember(_tcp_request({"type": "state"}))
 
     # Snapshot the hand at turn start for index stability.
     # When the agent says "play 3 0", it means "the card I see at position 3."
     # As cards are played and indices shift, we use this snapshot to find
     # the intended card in the current hand by identity (name + upgrades).
-    pre_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+    pre_combat = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
     snapshot_hand = list(pre_combat.get("hand", [])) if pre_combat else []
+
+    # Energy pre-check: refuse batches that plan more energy than is available.
+    # Over-planned batches (4E of cards on 3E turns) recurred across runs no
+    # matter how the discipline was worded; tool-level guards are what actually
+    # stopped the comparable choose-N error family.
+    # Skipped when a relic discounts costs MID-turn (Mummified Hand zeroes a
+    # random card per Power play) — snapshot costs cannot model that, and the
+    # guard false-positived on an affordable batch (run 235).
+    _discount_relics = {"mummified hand", "necronomicon"}
+    _gs_now = (_last_raw_state or {}).get("game_state") or {}
+    _has_discounter = any(r.get("name", "").lower() in _discount_relics
+                          for r in _gs_now.get("relics", []))
+    if pre_combat and not _has_discounter:
+        energy_err = _batch_energy_check(
+            snapshot_hand, (pre_combat.get("player") or {}).get("energy", 0), actions)
+        if energy_err:
+            return energy_err
 
     # Resolve and translate all actions using pre-turn state for the stream
     # (Translation uses original names for readability; resolution happens per-action below)
@@ -1573,6 +1771,14 @@ def turn(actions: list, reason: str = "") -> str:
         # For names: pass through to _resolve_card_name which handles them correctly.
         resolved_action = _resolve_play_from_snapshot(snapshot_hand, _last_raw_state, action)
         resolved_action = _resolve_card_name(_last_raw_state, resolved_action)
+        if resolved_action.startswith("[ERROR]"):
+            # e.g., ambiguous enemy name — stop without executing
+            stopped_msg = (
+                f"[SEQUENCE STOPPED at action {i + 1}/{total}: "
+                f"{resolved_action.removeprefix('[ERROR]').strip()} "
+                f"Remaining actions skipped.]"
+            )
+            break
 
         # Validate before sending (uses current game state)
         if i > 0:
@@ -1588,15 +1794,26 @@ def turn(actions: list, reason: str = "") -> str:
                 break
 
         # Capture hand size before action to detect draws
-        pre_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+        pre_combat = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
         pre_hand_size = len(pre_combat.get("hand", [])) if pre_combat else None
 
         raw = _tcp_request({"type": "command", "command": resolved_action.strip()})
-        _last_raw_state = raw
+        _remember(raw)
         if "error" in raw:
             # Auto-handle mechanical transitions even on error
-            _last_raw_state = _auto_handle_mechanical(_last_raw_state)
+            _remember(_auto_handle_mechanical(_last_raw_state))
             return format_state(_last_raw_state)
+
+        # A choice screen opened mid-batch (potion card choice, Warcry discard,
+        # combat over) — stop cleanly instead of crashing the next action into it.
+        new_screen = (raw.get("game_state") or {}).get("screen_type", "")
+        if (new_screen in ("HAND_SELECT", "GRID", "CARD_REWARD", "COMBAT_REWARD")
+                and i < total - 1):
+            stopped_msg = (
+                f"[SEQUENCE STOPPED after action {i + 1}/{total}: {new_screen} opened — "
+                f"resolve it with choose/proceed, then continue with send()]"
+            )
+            break
 
         # Detect draw: if we played a card but hand size didn't shrink, cards were drawn.
         # Stop the sequence so the player can see the new cards and re-plan.
@@ -1605,7 +1822,7 @@ def turn(actions: list, reason: str = "") -> str:
                 and i < total - 1  # more actions remain
                 and actions[i + 1] != "end"  # next action isn't just "end" -- that's harmless to stop before
                 ):
-            post_combat = (_last_raw_state.get("game_state") or {}).get("combat_state")
+            post_combat = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
             if post_combat:
                 post_hand_size = len(post_combat.get("hand", []))
                 if post_hand_size >= pre_hand_size:
@@ -1623,7 +1840,7 @@ def turn(actions: list, reason: str = "") -> str:
     _check_game_over(_last_raw_state)
 
     # Auto-handle mechanical transitions after the turn completes
-    _last_raw_state = _auto_handle_mechanical(_last_raw_state)
+    _remember(_auto_handle_mechanical(_last_raw_state))
 
     formatted = format_state(_last_raw_state)
     if stopped_msg:
@@ -1650,6 +1867,62 @@ def end(reason: str = "End turn") -> str:
     return send("end", reason=reason)
 
 
+_MAP_NODE_NAMES = {"M": "monster", "?": "unknown", "$": "shop",
+                   "E": "elite", "R": "rest", "T": "treasure", "B": "boss"}
+
+
+def _resolve_map_choose(gs: dict, command: str) -> str:
+    """On MAP screens, resolve 'choose <type|x=N|index>' to 'choose <index>'.
+
+    Numeric indices pass through (the post-send echo names what they picked).
+    Type names ('choose rest', 'choose elite') and coordinates ('choose x=3')
+    resolve locally; an ambiguous or unknown name errors with the labeled node
+    list instead of guessing — a blind misroute loses runs.
+    """
+    parts = command.strip().split()
+    if len(parts) < 2:
+        return command
+    arg = " ".join(parts[1:]).strip().lower()
+    nodes = gs.get("screen_state", {}).get("next_nodes", [])
+    if not nodes:
+        # Pre-boss floor: the boss is the only (unlisted) choice at index 0.
+        if arg == "boss":
+            return "choose 0"
+        return command
+    try:
+        int(arg)
+        return command                      # numeric — pass through, echo covers it
+    except ValueError:
+        pass
+
+    def options_list():
+        return "\n".join(
+            f"  [{i}] {_MAP_NODE_NAMES.get(n.get('symbol', '?'), n.get('symbol', '?'))} (x={n.get('x', '?')})"
+            for i, n in enumerate(nodes))
+
+    m = re.fullmatch(r"x\s*=?\s*(\d+)", arg)
+    if m:
+        x = int(m.group(1))
+        hits = [i for i, n in enumerate(nodes) if n.get("x") == x]
+    else:
+        wanted = {"rest": "R", "rest site": "R", "campfire": "R", "monster": "M",
+                  "fight": "M", "unknown": "?", "event": "?", "shop": "$",
+                  "store": "$", "elite": "E", "treasure": "T", "chest": "T",
+                  "boss": "B"}.get(arg)
+        if wanted is None:
+            return (f"[ERROR] '{arg}' is not a map node type. Available paths:\n"
+                    f"{options_list()}\n"
+                    f"Use: choose <index>, choose <type> (rest/monster/elite/shop/"
+                    f"unknown/treasure/boss), or choose x=<N>.")
+        hits = [i for i, n in enumerate(nodes) if n.get("symbol") == wanted]
+    if len(hits) == 1:
+        return f"choose {hits[0]}"
+    if not hits:
+        return (f"[ERROR] no '{arg}' node among the available paths:\n{options_list()}")
+    return (f"[ERROR] '{arg}' is ambiguous — {len(hits)} matching nodes. "
+            f"Use choose x=<N>:\n{options_list()}")
+
+
 def choose(option, reason: str = "") -> str:
     """Choose an option by index or name. reason= is REQUIRED."""
     return send(f"choose {option}", reason=reason)
@@ -1665,15 +1938,29 @@ def skip(reason: str = "Skipping") -> str:
     return send("return", reason=reason)
 
 
-def potion_use(slot: int, target: int = None, reason: str = "") -> str:
-    """Use a potion. reason= is REQUIRED.
+def potion_use(slot, target: int = None, reason: str = "") -> str:
+    """Use a potion by SLOT NUMBER or by NAME. reason= is REQUIRED.
 
+    Prefer names: slots renumber after every drink, so two `potion_use(0)` calls
+    in a row hit different potions. A name resolves against the live belt.
     Automatically strips target for non-targeted potions (Block Potion, etc.)
     to prevent silent CommunicationMod failures.
     """
+    global _last_raw_state
+    if isinstance(slot, str) and not slot.isdigit():
+        fresh = _remember(_tcp_request({"type": "state"}))
+        potions = (fresh.get("game_state") or {}).get("potions", []) if _healthy_state(fresh) else []
+        matches = [i for i, p in enumerate(potions)
+                   if slot.lower() in p.get("name", "").lower() and p.get("id") != "Potion Slot"]
+        if len(matches) != 1:
+            belt = ", ".join(f"[{i}] {p.get('name', '?')}" for i, p in enumerate(potions))
+            return (f"[ERROR] potion name '{slot}' matched {len(matches)} potions. "
+                    f"Belt: {belt or '(unreadable)'} — use the slot number.")
+        slot = matches[0]
+    slot = int(slot)
     # Check if this potion actually requires a target
     if target is not None and _last_raw_state:
-        potions = (_last_raw_state.get("game_state") or {}).get("potions", [])
+        potions = ((_last_raw_state or {}).get("game_state") or {}).get("potions", [])
         if slot < len(potions) and not potions[slot].get("requires_target", False):
             target = None  # Strip invalid target for non-targeted potions
     if target is not None:
@@ -1781,6 +2068,10 @@ def _recall_one(handle: str):
             return open(os.path.join(ROOT, rel), encoding="utf-8").read().strip()
         except OSError:
             return None
+    # The map's "Ascension N -> ascension/aN" rule ("Ascension 9" -> ascension/a9).
+    m = re.fullmatch(r"(?i)ascension\s+(\d+)", h)
+    if m:
+        return _load_ontology("ascension", f"a{m.group(1)}")
     parsed = _extract_links(f"[[{h}]]")
     if not parsed:
         return None
@@ -1853,9 +2144,17 @@ def deck() -> str:
     with costs and upgrade status.
     """
     global _last_raw_state
-    _last_raw_state = _tcp_request({"type": "state"})
-    gs = _last_raw_state.get("game_state", {})
+    prev_raw = _last_raw_state
+    _remember(_tcp_request({"type": "state"}))
+    gs = (_last_raw_state or {}).get("game_state") or {}
     cards = gs.get("deck", [])
+
+    # Some screens (e.g., GRID) omit the deck — fall back to the last known one.
+    note = ""
+    if not cards and prev_raw:
+        cards = (prev_raw.get("game_state") or {}).get("deck", [])
+        if cards:
+            note = " (as of last state)"
 
     if not cards:
         return "[No deck found — are you in a run?]"
@@ -1866,11 +2165,14 @@ def deck() -> str:
         ctype = c.get("type", "UNKNOWN").upper()
         name = c.get("name", "?")
         cost = c.get("cost", "?")
-        upgraded = c.get("upgrades", 0) > 0
-        display = f"{name}+" if upgraded else name
+        upgrades = c.get("upgrades", 0)
+        # Some payloads already include '+' in the name — don't double it.
+        display = name
+        if upgrades > 0 and "+" not in name:
+            display = f"{name}+{upgrades}" if upgrades > 1 else f"{name}+"
         groups.setdefault(ctype, []).append(f"  {display} ({cost}E)")
 
-    lines = [f"=== DECK ({len(cards)} cards) ==="]
+    lines = [f"=== DECK ({len(cards)} cards){note} ==="]
     for gtype in ["ATTACK", "SKILL", "POWER", "CURSE", "STATUS"]:
         group = groups.get(gtype, [])
         if group:
@@ -1923,8 +2225,41 @@ def think(reasoning: str, label: str = "Strategy") -> str:
     return f"[Reasoning posted to stream: {label}]"
 
 
+_SAVES_DIR = os.path.join("C:\\", "Program Files (x86)", "Steam", "steamapps", "common", "SlayTheSpire", "saves")
+
+
 def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> str:
-    """Start a new run."""
+    """Start a new run.
+
+    GUARDED: CommunicationMod's start silently DESTROYS any existing save for
+    that character (there is no resume verb — a run in progress nearly got lost
+    twice this way). If a save exists, the first call refuses; calling start
+    again confirms you really want to abandon it.
+    """
+    saves = [os.path.join(_SAVES_DIR, f"{character.upper()}{ext}")
+             for ext in (".autosave", ".autosaveBETA")]
+    if any(os.path.exists(s) for s in saves):
+        # A save only matters if a run might actually be in progress. If the game
+        # cleanly reports OUT OF GAME, the file is a stale leftover — proceed.
+        # (The warn flag is a FILE because every play.py call is a new process —
+        # an in-memory flag made the CLI warn forever and never proceed.)
+        probe = _remember(_tcp_request({"type": "state"}))
+        cleanly_out = _healthy_state(probe) and probe.get("in_game") is False
+        flag = os.path.join(_BASE_DIR, "data", "start_confirm.flag")
+        if not cleanly_out:
+            if not os.path.exists(flag):
+                with open(flag, "w") as f:
+                    f.write(character.upper())
+                return (
+                    f"[WARNING] A save for {character.upper()} exists and the game does "
+                    f"not report a clean OUT OF GAME state — starting DESTROYS the save, "
+                    f"and there is no resume command.\n"
+                    f"If a run seems to be in progress, STOP and report to the orchestrator.\n"
+                    f"If you intend to abandon it, call start again to confirm."
+                )
+            os.remove(flag)
+        elif os.path.exists(flag):
+            os.remove(flag)
     cmd = f"start {character}"
     if ascension > 0:
         cmd += f" {ascension}"
