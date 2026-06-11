@@ -213,7 +213,7 @@
     }
 
     .char-table th {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       color: #999;
       text-transform: uppercase;
@@ -227,8 +227,8 @@
     }
 
     .char-table td {
-      font-size: 17px;
-      padding: 3px 0;
+      font-size: 21px;
+      padding: 5px 0;
       color: #aaa;
     }
 
@@ -591,11 +591,14 @@
     .topbar-url {
       position: absolute;
       left: 980px;
-      top: 9px;
+      top: 6px;
+      padding: 3px 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 9px;
       font-size: 21px;
       font-weight: 700;
       letter-spacing: 0.5px;
-      color: rgba(212, 160, 255, 0.85);
+      color: rgba(212, 160, 255, 0.9);
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
       z-index: 4;
     }
@@ -803,7 +806,7 @@
     .tile.learned-tile {
       width: 330px;
       flex-shrink: 0;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .learned-tile .learned-line {
@@ -919,7 +922,7 @@
         <div class="deck-list" id="deckList"></div>
       </div>
       <div class="tile learned-tile">
-        <div class="learned-line" id="learnedLine"><span class="learned-tag">Learned</span>Every run updates the book.</div>
+        <div class="learned-line" id="learnedLine"><span class="learned-tag">Learnings</span>Every run updates the book.</div>
       </div>
     </div>
   </div>
@@ -1059,7 +1062,7 @@
       if (!keep) learnedIdx = (learnedIdx + 1) % learnedLines.length;
       learnedIdx = Math.min(learnedIdx, learnedLines.length - 1);
       document.getElementById('learnedLine').innerHTML =
-        `<span class="learned-tag">Learned</span>${esc(learnedLines[learnedIdx])}`;
+        `<span class="learned-tag">Learnings</span>${esc(learnedLines[learnedIdx])}`;
     }
 
     // Fetch all context data on load and periodically
