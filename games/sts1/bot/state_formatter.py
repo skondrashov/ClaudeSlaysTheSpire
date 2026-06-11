@@ -76,8 +76,11 @@ def format_state(state: dict) -> str:
     elif screen == "COMPLETE":
         parts.append(format_complete(gs))
     elif screen == "CHEST":
-        parts.append("CHEST — Use 'choose open' to open the chest and collect the relic.")
-        parts.append("WARNING: Do NOT use proceed here — it will skip the chest entirely.")
+        if (gs.get("screen_state") or {}).get("chest_open"):
+            parts.append("CHEST (already opened) — contents collected. Use 'proceed' to continue.")
+        else:
+            parts.append("CHEST — Use 'choose open' to open the chest and collect the relic.")
+            parts.append("WARNING: Do NOT use proceed here — it will skip the chest entirely.")
     else:
         parts.append(f"SCREEN: {screen} (no specific formatter)")
 

@@ -1992,10 +1992,13 @@ def turn(actions: list, reason: str = "") -> str:
 
         # Detect draw: if we played a card but hand size didn't shrink, cards were drawn.
         # Stop the sequence so the player can see the new cards and re-plan.
+        # A queued "end" is NOT exempt: the old "harmless to stop before" carve-out
+        # let a batched end fire right after a draw card, committing the turn before
+        # the drawn cards were ever seen — a drawn 0-cost Shiv went unplayed against
+        # a boss this way. Drawn cards may be playable even at 0 energy.
         if (pre_hand_size is not None
                 and resolved_action.startswith("play ")
                 and i < total - 1  # more actions remain
-                and actions[i + 1] != "end"  # next action isn't just "end" -- that's harmless to stop before
                 ):
             post_combat = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
             if post_combat:
@@ -2007,7 +2010,8 @@ def turn(actions: list, reason: str = "") -> str:
                         f"[DRAW DETECTED after playing {resolved_action}: "
                         f"hand went from {pre_hand_size} to {post_hand_size} cards. "
                         f"Remaining actions skipped: {remaining_actions}. "
-                        f"You drew new cards — read the state and plan the rest of your turn.]"
+                        f"You drew new cards — they may be playable (0-cost included). "
+                        f"Read the state, then end the turn explicitly.]"
                     )
                     break
 
