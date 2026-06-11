@@ -1354,6 +1354,7 @@ def send(command: str, reason: str = "") -> str:
     # chained 'choose N' grabbed the Sapphire Key while the plan named the relic
     # (Sundial, War Paint). Warn once; an identical second choose proceeds.
     _key_flag = os.path.join(_BASE_DIR, "data", "key_confirm.flag")
+    _expect_key = None
     if cmd_verb == "choose" and screen in ("COMBAT_REWARD", "CHEST"):
         parts_k = command.strip().split()
         if len(parts_k) >= 2 and parts_k[1].isdigit():
@@ -1371,6 +1372,7 @@ def send(command: str, reason: str = "") -> str:
                             "instead. If the key is intended, send the same choose "
                             "again.".format(ridx))
                 os.remove(_key_flag)
+                _expect_key = rewards_k[ridx]["reward_type"]
     elif os.path.exists(_key_flag):
         os.remove(_key_flag)
 
@@ -1442,6 +1444,15 @@ def send(command: str, reason: str = "") -> str:
     _log_result(raw)
     _check_game_over(raw)
 
+    # Confirmed key picks: verify possession — the relay's response to a key
+    # choose is shape-identical for success and silent failure.
+    if _expect_key and _healthy_state(raw):
+        _g = raw.get("game_state") or {}
+        _got = _g.get("has_emerald_key") if _expect_key == "EMERALD_KEY" else _g.get("has_sapphire_key")
+        if not _got:
+            stale_note = ("[WARNING] the key does NOT appear in your possession after "
+                          "that choose - re-read state and retry before leaving the "
+                          "screen.]\n\n") + stale_note
     return stale_note + chose_echo + format_state(raw)
 
 
