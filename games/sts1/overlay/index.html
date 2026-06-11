@@ -657,9 +657,9 @@
       font-family: 'Consolas', monospace;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
       max-width: 235px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      white-space: normal;
+      overflow-wrap: break-word;
+      text-align: right;
       margin-bottom: 0;
     }
 
@@ -784,7 +784,7 @@
       color: #ddd;
       white-space: pre-wrap;
       word-wrap: break-word;
-      overflow: hidden;
+      overflow-y: auto;
     }
 
     .tile.deck-tile-sm {
@@ -1413,28 +1413,32 @@
       if (!el || !text) return;
       el.textContent = text.replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
       el.scrollTop = 0;
+      planPos = 0;
       planPhase = 'down';
     }
 
     // Plan auto-scroll: when overflowing, drift down over ~8s, hold the
     // bottom briefly, then return to top at 10x — a full loop ≈ 10s
     // regardless of plan length (the step scales with the overflow).
-    let planPhase = 'down', planPauseTicks = 0;
+    let planPhase = 'down', planPauseTicks = 0, planPos = 0;
     setInterval(() => {
       const el = document.getElementById('planContent');
       if (!el) return;
       const overflow = el.scrollHeight - el.clientHeight;
-      if (overflow <= 4) { el.scrollTop = 0; planPhase = 'down'; return; }
-      const downStep = Math.max(overflow / 160, 0.5);   // ~8s of 50ms ticks
+      if (overflow <= 4) { planPos = 0; el.scrollTop = 0; planPhase = 'down'; return; }
+      // Track position in a float and assign rounded — fractional scrollTop
+      // increments can clamp back to the same integer and never move.
+      const downStep = Math.max(overflow / 160, 0.6);   // ~8s of 50ms ticks
       if (planPhase === 'down') {
-        el.scrollTop += downStep;
-        if (el.scrollTop >= overflow - 1) { planPhase = 'pause'; planPauseTicks = 30; }
+        planPos = Math.min(planPos + downStep, overflow);
+        if (planPos >= overflow - 0.5) { planPhase = 'pause'; planPauseTicks = 30; }
       } else if (planPhase === 'pause') {
         if (--planPauseTicks <= 0) planPhase = 'up';
       } else {
-        el.scrollTop -= downStep * 10;
-        if (el.scrollTop <= 0) { el.scrollTop = 0; planPhase = 'down'; }
+        planPos = Math.max(planPos - downStep * 10, 0);
+        if (planPos <= 0) planPhase = 'down';
       }
+      el.scrollTop = Math.round(planPos);
     }, 50);
 
     // --- Decision rows: chip on the rail (over game), reasoning in the
