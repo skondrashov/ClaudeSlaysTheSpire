@@ -1241,7 +1241,10 @@
             break;
           }
           if (event.command === 'think') {
-            addRow(event.translated || 'STRATEGY', event.reasoning || '', 'think');
+            // The full text lives in the bottom Plan card — the sidebar row
+            // is just a pointer, not a duplicate.
+            addRow(event.translated || 'STRATEGY',
+                   'PLAN updated at the bottom of the screen.', 'think');
             updatePlan(event.reasoning || '');
             break;
           }
