@@ -935,16 +935,31 @@
 
     function parseWinPct(text) {
       if (!text) return null;
+      // New relative trail: "EVAL: +/-N (running total +/-T)" — the total is
+      // the position. Prefer it when present.
+      const evals = [...text.matchAll(/running\s+total\s*([+-]?\d{1,3})/gi)];
+      if (evals.length) return { rel: parseInt(evals[evals.length - 1][1], 10) };
+      const moves = [...text.matchAll(/EVAL[:\s]+([+-]\d{1,3})/gi)];
+      if (moves.length) return { move: parseInt(moves[moves.length - 1][1], 10) };
+      // Legacy absolute labels (Explore runs): "WIN%: NN"
       const matches = [...text.matchAll(/WIN\s*%[\s:~]*(\d{1,3})/gi)];
-      if (!matches.length) return null;
-      return Math.min(100, parseInt(matches[matches.length - 1][1], 10));
+      if (matches.length) return { abs: Math.min(100, parseInt(matches[matches.length - 1][1], 10)) };
+      return null;
     }
 
     function noteWinPct(text) {
-      const pct = parseWinPct(text);
-      if (pct === null) return;
-      if (winAnchor === null) winAnchor = pct;   // the run's starting estimate
-      winPct = pct;
+      const p = parseWinPct(text);
+      if (p === null) return;
+      if (p.abs !== undefined) {
+        if (winAnchor === null) winAnchor = p.abs;
+        winPct = p.abs;
+      } else if (p.rel !== undefined) {
+        winAnchor = 0;
+        winPct = p.rel;
+      } else {
+        winAnchor = 0;
+        winPct = (winPct === null ? 0 : winPct) + p.move;
+      }
       winFloor = curFloor;
       renderWinBar();
     }
@@ -965,14 +980,18 @@
       // room to rise or fall regardless of where the run started.
       const anchor = winAnchor === null ? winPct : winAnchor;
       const delta = winPct - anchor;
+      // Relative trails (anchor 0) scale +/-40 points to a full half-bar;
+      // legacy absolute trails keep the to-100%/to-0% normalization.
       let half;
       if (delta >= 0) {
-        half = (delta / Math.max(100 - anchor, 1)) * 50;
+        const range = anchor === 0 ? 40 : Math.max(100 - anchor, 1);
+        half = Math.min(delta / range, 1) * 50;
         fill.style.top = (50 - half) + '%';
         fill.style.height = half + '%';
         fill.style.background = '#3aa860';
       } else {
-        half = (-delta / Math.max(anchor, 1)) * 50;
+        const range = anchor === 0 ? 40 : Math.max(anchor, 1);
+        half = Math.min(-delta / range, 1) * 50;
         fill.style.top = '50%';
         fill.style.height = half + '%';
         fill.style.background = '#c04848';
