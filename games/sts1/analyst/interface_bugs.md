@@ -222,6 +222,22 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 ---
 
+## IB-014: Boss-chest stale-echo desync (relay answers "Invalid command: choose" against an already-open chest)
+
+**What:** Run 243, floor 17 (Act 1 boss chest after BOSS_REWARD): the chest arrives already open (`chest_open` true), but the relay/formatter pipeline desynced for ~6 commands — stale "Invalid command: choose" echoes while the formatter (pre-c552a85) was simultaneously instructing "choose open / do NOT proceed." The choice list was empty (no `choose` is actually offered on an opened chest), so the player was steered into a stall: `choose open` → invalid echo → wait → repeat.
+
+**Root cause:** Two halves. (1) Formatter half — `state_formatter.py` unconditionally emitted unopened-chest guidance ("choose open / do NOT proceed") even when `chest_open` was set. FIXED in c552a85 (2026-06-11, mid-run-243): the branch now reads `chest_open` and says "use proceed." (2) Echo half — the relay kept returning stale "Invalid command: choose" responses for several commands rather than a fresh state, so the player couldn't see the screen had no choices. OPEN; mechanism not yet isolated (candidates: cached last-error echo in relay.py, or CommunicationMod returning no state delta for rejected commands so the relay re-serves the previous response).
+
+**Impact:** Low this time — ~6 wasted commands and a manual recovery (`wait` → `key confirm` → `wait` → `proceed`), zero game-state loss; the player's raw-read recovery worked. But a stale-echo loop on a screen with a real timer or a consequential default would be run-altering, and the same staleness shape contributed to the IB-008 family's deaths.
+
+**Affected runs:** 243 (floor 17, idx 442-450; player's interface note at idx 452).
+
+**Status:** HALF-FIXED (formatter guidance, c552a85). Echo staleness OPEN.
+
+**Fix:** (1) Isolate why a rejected command can echo stale — the relay should always return the CURRENT state with the rejection, never a cached error. (2) Broader guard worth considering from the same run: the F9 Akabeko forfeit (queued `choose` hit a shifted index after a gold pickup, tool warned, pre-chained `proceed` consumed the retry) shows reward screens lack the acquisition-assert guard IB-011 proposes — extend it: after any `choose` on a reward/chest screen, assert the named item entered inventory before honoring a queued `proceed`.
+
+---
+
 ## Tracking
 
 When a new interface bug is observed, add it here with:
