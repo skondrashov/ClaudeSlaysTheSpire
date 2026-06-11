@@ -96,8 +96,14 @@ def build_index(domain: str) -> str:
             for line in f.read_text(encoding="utf-8").splitlines():
                 m = re.match(r"\*{0,2}Applies when\*{0,2}:\s*(.+)", line.strip())
                 if m:
+                    # Strip wiki markup for the selector: [[cards/Corruption]] ->
+                    # "Corruption", [[x|Display]] -> "Display".
+                    pred = re.sub(
+                        r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]",
+                        lambda mm: mm.group(2) or mm.group(1).rsplit("/", 1)[-1],
+                        m.group(1).strip())
                     rel = f.relative_to(ROOT).with_suffix("").as_posix()
-                    predicates.append(f"{m.group(1).strip()}: {rel}")
+                    predicates.append(f"{pred}: {rel}")
                     break
     if predicates:
         lines.append("")

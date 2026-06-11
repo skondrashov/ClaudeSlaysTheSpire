@@ -19,4 +19,5 @@ The Corrupt Heart: bosses/corrupt-heart
 The Transient: enemies/transient
 
 ## phenomena (applies-when -> entry)
+an exhaust payoff is in the deck, on board, or on offer — Corruption, Feel No Pain, Dark Embrace, Dead Branch — or a mass-exhaust card like Fiend Fire is in hand.: phenomena/sts1/recognitions/exhaust-engine
 in combat holding any potion, and at least one of — incoming damage exceeds what the hand can block; a kill may be in reach this turn or next; the fight is an elite or boss; the belt is full.: phenomena/sts1/recognitions/potion-use
