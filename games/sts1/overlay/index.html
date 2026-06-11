@@ -1428,10 +1428,10 @@
       if (overflow <= 4) { planPos = 0; el.scrollTop = 0; planPhase = 'down'; return; }
       // Track position in a float and assign rounded — fractional scrollTop
       // increments can clamp back to the same integer and never move.
-      const downStep = Math.max(overflow / 160, 0.6);   // ~8s of 50ms ticks
+      const downStep = Math.max(overflow / 300, 0.4);   // ~15s of 50ms ticks
       if (planPhase === 'down') {
         planPos = Math.min(planPos + downStep, overflow);
-        if (planPos >= overflow - 0.5) { planPhase = 'pause'; planPauseTicks = 30; }
+        if (planPos >= overflow - 0.5) { planPhase = 'pause'; planPauseTicks = 100; }
       } else if (planPhase === 'pause') {
         if (--planPauseTicks <= 0) planPhase = 'up';
       } else {
