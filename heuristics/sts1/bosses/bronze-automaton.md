@@ -4,8 +4,8 @@
 
 ## Preparation Checklist
 
-1. HP for an expected 30-50 HP fight, with Hyper Beam (45 base, 57+ the second time) as the single largest spike — run the ledger before the pre-boss rest site decision. At A9: HP 320 (300 base) and the FIRST Hyper Beam arrives at ~58 — budget the spike at the second-beam number from the start.
-2. **The Flail/Boost cycle, not the Beam, is the fight's HP bill.** Flail is 7x2 at base (8x2 at A4+) and every Boost adds +3 Strength (+4 at A4+), so Flails escalate ~16 → 24 → 32 → 40 every other turn for the whole fight. The Beam is one telegraphed, stun-rewarded spike; the Flails are repeating and unbounded. Budget repeatable block or a repeatable [[debuffs/Weak]] for the cycle, and price most of the fight's expected cost there.
+1. Run the ledger before the pre-boss rest site decision — price the fight by your turns-to-kill against the Flail/Boost clock below, with Hyper Beam (45 base, 57+ the second time) as the single largest spike. At A9: HP 320 (300 base) and the FIRST Hyper Beam arrives at ~58 — budget the spike at the second-beam number from the start.
+2. **The Flail/Boost cycle, not the Beam, is the fight's HP bill.** Flail is 7x2 at base (8x2 at A4+) and every Boost adds +3 Strength (+4 at A4+), so Flails escalate ~16 → 24 → 32 → 40 every other turn for the whole fight. The Beam is one telegraphed, stun-rewarded spike; the Flails are repeating and unbounded. Budget repeatable block or a repeatable [[debuffs/Weak]] for the cycle — most of what the fight ends up costing accrues there, turn by turn.
 3. Artifact strippers (non-exhausting): Thunderclap, Bash+. Need 3+ applications.
 4. Weak source saved for Hyper Beam: Intimidate, Shockwave+, or [[potions/Weak Potion]]
 5. Block scaling: [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], [[cards/Ghostly Armor]] (basic Defends are NOT enough)

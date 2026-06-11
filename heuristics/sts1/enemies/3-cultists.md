@@ -2,7 +2,7 @@
 
 **THIS IS THE MOST LETHAL HALLWAY FIGHT IN THE GAME.** Triple +3 Str/turn scaling kills decks that enter even at comfortable-looking HP.
 
-**Expected cost:** among the most expensive hallway fights in the act even played well — and it scales: triple Ritual means a slow deck pays a multiple of this; price it by your turns-to-kill before routing in. Kill one [[enemies/Cultist]] ASAP to reduce scaling by 33%.
+Among the most expensive hallway fights in the act even played well — and it scales: after the free Incantation turn each Cultist strikes for 6 plus 3 per elapsed turn, so combined incoming runs ~27 → 36 → 45 and keeps climbing. Triple Ritual means a slow deck pays a multiple of what a burst deck pays; price it by your turns-to-kill against that clock before routing in. Kill one [[enemies/Cultist]] ASAP to reduce scaling by 33%.
 
 ## Strategy
 

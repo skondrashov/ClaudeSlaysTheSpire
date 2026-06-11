@@ -6,7 +6,7 @@
 
 **Block VOLUME passes the Frail check that block CEILINGS fail.** Frail taxes ~25-30% of whatever you generate, so a deck that can pour out 25-30+ block (e.g. [[cards/Corruption]] free-Skill volume) still zeroes the Chomps after the tax, while a deck whose ceiling is ~12-15 block cannot block a Chomp through Frail no matter how it sequences. If your max block per turn under Frail is below the Chomp total, the fix is kill speed or [[debuffs/Weak]], not better blocking.
 
-**Benchmark:** With a damage engine: 4-5 turn fight, 15-25 HP lost. Without one: 7-turn fight, 40+ HP lost. This fight is a scaling check — any damage engine passes it ([[buffs/Strength]], Corruption+FNP block conversion via [[cards/Body Slam]], etc.), as long as it produces large single hits.
+**Benchmark:** a scaling check — the price is almost purely your turns-to-kill against its multi-hit clock (a damage engine ends it in 4-5 turns; without one it runs 7+ and the chip compounds). Any damage engine passes it ([[buffs/Strength]], Corruption+FNP block conversion via [[cards/Body Slam]], etc.), as long as it produces large single hits.
 
 ## Strategy
 

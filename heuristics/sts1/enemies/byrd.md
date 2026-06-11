@@ -2,14 +2,14 @@
 
 **Core rule:** [[cards/Thunderclap]] is CRITICAL. Without it, Flight 3 on three enemies means 9 hits just to strip all Flight once -- at half damage each.
 
-**Benchmark:** With Thunderclap + burst: 7-turn fight, ~20 HP lost. Without AOE: 8-10 turns, 36+ HP lost — worst cases drain nearly a full health bar. **Expected cost:** ~20 HP with AOE, 36-73 without — a slow deck pays the top of that range; price it by your turns-to-kill.
+**Benchmark:** With Thunderclap + burst: a ~7-turn fight. Without AOE: 8-10 turns, and the worst cases drain nearly a full health bar. **Damage clock:** each Byrd Pecks 1x5 or Swoops 12, with Caw banking +1 Strength on off-turns — Strength multiplies through Peck's five hits, so the flock's combined 10-25+ per turn climbs as the fight drags; price it by your turns-to-kill against that clock.
 
 ## Strategy
 
 - Use Thunderclap to strip 1 Flight from ALL Byrds and apply [[debuffs/Vulnerable]] simultaneously
 - Focus fire one Byrd at a time -- going from 3 to 2 removes 33% of incoming damage
 - Once Flight is at 0, burst with Vulnerable attacks to kill
-- Expect 7-12 turn fights and heavy HP loss (20-70+)
+- Expect 7-12 turn fights — every extra turn is another round of the clock above
 
 ## Engine Setup Trap
 
@@ -34,4 +34,4 @@ If all 3 Byrds attack simultaneously (after gaining Str from buff turns), combin
 
 ## Chosen+Byrd Fight
 
-Combines Flight mechanics with [[debuffs/Hex]] (Skills add [[cards/Dazed]]). Extremely dangerous -- need Attacks for Byrd Flight stripping but also need block from Skills, which trigger Hex. Expect it to cost noticeably more than a plain Byrd fight; price it at the top of the range on the ledger.
+Combines Flight mechanics with [[debuffs/Hex]] (Skills add [[cards/Dazed]]). Extremely dangerous -- need Attacks for Byrd Flight stripping but also need block from Skills, which trigger Hex. Price it on the ledger as strictly dearer than a plain Byrd fight — the Hex tax lands on exactly the block cards the flock forces you to play.

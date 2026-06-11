@@ -31,6 +31,7 @@ The awareness layer (boundary indexes, recognitions) is written under the same d
 13. **Attention is kept or cut by whether attending helps.** An entry — whether it points at a file or at a piece of game state — earns its place by demonstrably improving decisions when attended to. An entry nobody's decision ever turned on is noise crowding out the ones that matter; cut it.
 14. **Stored conclusions are caches and pay cache rules.** Anything that skips the reasoning (a tier ranking, a default pick, a threshold) additionally requires earned evidence in the analyst layer or a forced mechanical explanation — the same bar as rule 9.
 15. **Boundary indexes stay thin.** They point at where content lives; they do not contain it. A boundary file that grows past a handful of lines is absorbing content that belongs on an entity or topic page — move it there and leave the pointer.
+16. **No stored fight prices.** A heuristic page never carries an "expected HP cost" — a stored price anchors the player toward paying it, kills the cheaper-line search, and is too brittle to be true (the cost is a function of the deck that fights; observed spreads run 2-3x). Fight pages carry the **damage clock** (per-turn output, scaling, damage shape) and the **reduction levers** (kill order, debuffs, burst windows); the player derives the price live against its own deck. Paid costs are analyst DATA (analyst/fight-costs.md, keyed to deck shape), never heuristic-layer budgets.
 
 ## Don't
 

@@ -6,7 +6,7 @@
 - **Centurion-first** removes the fight's big numbers and leaves a lone [[enemies/Mystic]] (9 + Frail, slow self-ramp, self-heal) — the gentle endgame, at the cost of fighting through Protect (15/20 block on the Mystic) and heals while you do it. This is the default when burst isn't there; it needs enough damage-per-turn to outpace a 16/20 self-heal.
 - What loses is the middle: damage split between them arms heals, banks Strength, and reaches neither endgame.
 
-**Benchmark:** one of the most expensive hallway fights in the act — **expected cost 25-61 HP** played well; put the full range on the ledger before routing in.
+**Benchmark:** one of the most expensive hallway fights in the act even played well — the clock (Slash 14 + Mystic 9, both rising +3 per buff cast) runs the whole time you fight through Protect and heals, so price it by your turns-to-kill against it before routing in.
 
 **High ascension numbers:** at A2+ Centurion's Slash runs 14 (12 at A0) and Mystic's attack 9 (8 base); Mystic's buff gives +3 Strength to BOTH allies per cast (+2 at A0, +4 at A17+). At exact-lethal margins the extra 2 on Slash is the entire margin — use the higher numbers in block math.
 
@@ -38,4 +38,4 @@ The heal is CONDITIONAL on the **group's summed missing HP** crossing 15 (A17+: 
 
 ## Character Matchups
 
-**[[characters/Silent]]:** [[debuffs/Poison]] + Dex stacking works but expect 24+ HP drain. [[cards/Malaise]] on Centurion early (-2 Str, 2 Weak) neuters early attacks. [[cards/Catalyst]] doubles poison for sustained kill. [[cards/Piercing Wail]] on the lone Centurion's Fury turns is critical. Fight lasts ~10 turns. At 55% HP entry, survivable but leaves only 21% HP.
+**[[characters/Silent]]:** [[debuffs/Poison]] + Dex stacking works but is a slow line (~10 turns) — it pays the clock for every one of them. [[cards/Malaise]] on Centurion early (-2 Str, 2 Weak) neuters early attacks. [[cards/Catalyst]] doubles poison for sustained kill. [[cards/Piercing Wail]] on the lone Centurion's Fury turns is critical.

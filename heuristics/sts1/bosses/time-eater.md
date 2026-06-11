@@ -2,7 +2,7 @@
 
 **Core rule:** Deliberate card counting is mandatory. Before playing any card, know the exact count (e.g., "9/12"). Plan your turn around the count. Play high-impact cards, minimize card count per turn.
 
-**Expected cost:** 30-50 HP played well. The fight is long (10-15 turns) with escalating damage from [[debuffs/Time Warp]] Str stacks, so a slow deck pays the top of the range and beyond — run the ledger before the final rest site decision.
+**Damage clock:** Reverberate 7x3 or Head Slam 26 (plus draw reduction), with Strength banked on every [[debuffs/Time Warp]] trigger — the multi-hit scales hardest. The fight is long (10-15 turns) and a slow deck pays for every extra cycle; price it by your turns-to-kill against that clock and run the ledger before the final rest site decision.
 
 ## Strategy
 

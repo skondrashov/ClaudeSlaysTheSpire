@@ -2,7 +2,7 @@
 
 **Core rule:** Use single large hits, not multi-hit attacks. [[buffs/Malleable]] gains block per hit, punishing [[cards/Whirlwind]]/[[cards/Pummel]] severely.
 
-**Expected cost:** 25-40 HP played well over a long fight (6-8 turns).
+**Damage clock:** something lands almost every turn — Multi Hit 7x3, Big Hit 32, or a 10-15 chip attack carrying [[debuffs/Weak]]/[[debuffs/Vulnerable]] or 16 block — and the fight runs long (6-8 turns), so the price is that clock times your turns-to-kill.
 
 ## Strategy
 

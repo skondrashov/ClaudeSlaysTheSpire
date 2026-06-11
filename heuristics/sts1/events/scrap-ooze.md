@@ -5,6 +5,6 @@ High variance. Set a maximum HP budget BEFORE starting:
 - At 60-80% HP: spend at most 6 HP (2 attempts)
 - Below 60% HP: LEAVE IMMEDIATELY
 
-Expected cost for one relic: 12 HP (4 attempts average). Getting unlucky with 8+ attempts costs 25+ HP for nothing.
+Each Reach Inside costs 3 HP against a 25% relic chance ([[events/Scrap Ooze]]), and a bad streak keeps billing with nothing to show for it — the budget caps above exist to stop the sunk-cost chase.
 
 Priority: Attempt with budget (high HP) > Leave immediately (moderate/low HP).

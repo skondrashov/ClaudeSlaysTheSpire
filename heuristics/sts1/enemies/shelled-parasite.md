@@ -2,7 +2,7 @@
 
 **Core rule:** Each hit must exceed 14 to make progress ([[buffs/Plated Armor]] absorbs 14 per attack). [[debuffs/Vulnerable]] and a large-hit damage engine are critical.
 
-**Benchmark:** At 13 damage/turn over 8+ turns, expect 100+ total incoming damage. **Expected cost:** 40-50 HP without a large-hit damage engine; an engine shortens the fight by several turns and cuts the cost with it — price it by your turns-to-kill.
+**Benchmark:** The damage clock is ~13/turn, and without a large-hit engine the fight runs 8+ turns — 100+ total incoming. An engine shortens the fight by several turns and cuts the cost with it; price it by your turns-to-kill against that clock.
 
 ## Strategy
 
@@ -12,7 +12,7 @@
 
 ## A Damage Engine is Critical
 
-Without scaling, each attack must overcome 14 Plated Armor before dealing real damage. A Strike (6 damage) deals ZERO against Plated Armor. Any engine that produces large hits passes the check ([[buffs/Strength]], Corruption+FNP block conversion via [[cards/Body Slam]], etc.); fights without one drain 40-50 HP even from a comfortable starting position.
+Without scaling, each attack must overcome 14 Plated Armor before dealing real damage. A Strike (6 damage) deals ZERO against Plated Armor. Any engine that produces large hits passes the check ([[buffs/Strength]], Corruption+FNP block conversion via [[cards/Body Slam]], etc.); without one the fight stretches past 8 turns and the per-turn clock grinds down even a comfortable starting position.
 
 ## What to Bring
 

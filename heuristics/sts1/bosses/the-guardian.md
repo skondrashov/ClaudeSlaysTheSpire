@@ -2,7 +2,7 @@
 
 **Core rule:** Plan burst damage to trigger [[buffs/Mode Shift]] on lethal attack turns (32-damage and 5x4=20 attacks), canceling them. Do NOT over-exhaust -- this is a 12-14 turn fight.
 
-**High ascension:** at A9 the HP bar is ~250 (240 base — accounts differ by ~10, plan for 250), Mode Shift thresholds run 35/45/55 (30/40/50 base), and Fierce Bash hits 36 (32 base). Expected cost runs 30-50+ HP — run the ledger before the final rest site decision. On free turns (Charging/buff intents), dealing damage deliberately UNDER the Mode Shift threshold parks the counter a few points from the edge, so a cheap poke on the Fierce Bash turn cancels it.
+**High ascension:** at A9 the HP bar is ~250 (240 base — accounts differ by ~10, plan for 250), Mode Shift thresholds run 35/45/55 (30/40/50 base), and Fierce Bash hits 36 (32 base). Price the fight by your turns-to-kill against its attack cycle and run the ledger before the final rest site decision. On free turns (Charging/buff intents), dealing damage deliberately UNDER the Mode Shift threshold parks the counter a few points from the edge, so a cheap poke on the Fierce Bash turn cancels it.
 
 ## Preparation Checklist
 

@@ -2,7 +2,7 @@
 
 **Core rule:** This fight is unwinnable at low HP. Block is mandatory Turn 1.
 
-**Expected cost:** 20-40 HP played well. There are no free turns and no way to stall the cost down — put the full range on the ledger before routing in.
+**Damage clock:** three lanes attack every turn — [[enemies/Red Slaver]] Stab 13 / Scrape 8 (+Vulnerable), [[enemies/Blue Slaver]] Stab 12 / Rake 7 (+Weak), [[enemies/Taskmaster]] always 7 (+Wound) — roughly 27-32 combined, with the riders amplifying everything after. There are no free turns and no way to stall the cost down — price it by your block coverage against that clock and your turns-to-kill before routing in.
 
 ## Kill Priority
 
@@ -17,7 +17,7 @@
 
 ## Timing Rule
 
-Do NOT fight Slavers within 2 floors of the [[acts/Act 2]] boss — the HP drain (20-40+ HP) stacks directly on top of the boss's own expected cost, and the ledger rarely clears. See pre-boss routing in [[layer:heuristics, map]].
+Do NOT fight Slavers within 2 floors of the [[acts/Act 2]] boss — the HP drain stacks directly on top of whatever the boss will cost your deck, and the ledger rarely clears. See pre-boss routing in [[layer:heuristics, map]].
 
 ## What to Bring
 
@@ -33,4 +33,4 @@ Do NOT fight Slavers within 2 floors of the [[acts/Act 2]] boss — the HP drain
 
 ## Character Matchups
 
-**[[characters/Silent]]:** [[cards/Shiv]] burst can eliminate one Slaver quickly ([[relics/Ninja Scroll]] + STR = 21+ free damage Turn 1). [[cards/Piercing Wail]] is excellent Turn 1 (reduces 27 combined incoming to ~9). Expect 30-40 HP drain even with correct play.
+**[[characters/Silent]]:** [[cards/Shiv]] burst can eliminate one Slaver quickly ([[relics/Ninja Scroll]] + STR = 21+ free damage Turn 1). [[cards/Piercing Wail]] is excellent Turn 1 (reduces 27 combined incoming to ~9).
