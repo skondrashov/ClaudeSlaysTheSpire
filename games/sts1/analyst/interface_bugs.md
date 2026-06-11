@@ -190,6 +190,24 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 ---
 
+## IB-012: Game drops to main menu mid-run; subsequent commands echo against a dead session
+
+**What:** Run 241 (Silent A9, floor 28 shop): the game left the run and sat at the MAIN MENU while the relay kept answering. Every shop `choose` echoed `[chose: Buy X]` but nothing happened — gold never deducted, state flickered "OUT OF GAME transient". The player diagnosed a "broken shop," tried `key escape` (rejected out of game — but one queued escape executed and opened the Settings panel), and eventually planned to abandon the floor, losing ~178g of intended purchases.
+
+**Root cause:** Unknown for the menu drop itself (no crash dialog; the save was written normally at floor entry — candidates: a stray input reaching the pause menu's Save and Quit, or an internal exception unwinding to menu). The SECONDARY failure is ours: command echoes don't verify the game is still in a run, so buys "succeed" against a dead session.
+
+**Impact:** Medium-FATAL — unrecoverable by the agent alone (no resume verb exists in CommunicationMod; `start` DESTROYS the save). Without orchestrator intervention this ends the run as surely as a death.
+
+**Recovery (worked, run 241):** (1) back up `saves/<CHAR>.autosave` immediately; (2) `scripts/game_mouse.ps1` — hover the main menu's Continue with the real cursor, VERIFY the gold hover-highlight via an OBS projector screenshot (Abandon Run sits one slot below), then click. Save loaded intact (floor 28, 45 HP, 214 gold); player resumed within its next poll.
+
+**Affected runs:** 241 (recovered, ~40 min lost).
+
+**Status:** OPEN (recovery procedure proven; menu-drop cause not yet found). Guard hardening shipped: `start()` no longer treats "cleanly OUT OF GAME + save exists" as a stale save (a crash-to-menu produces exactly that state with a LIVE save) — it now always requires the two-call confirm when a save file exists.
+
+**Fix candidates:** a cmd.py tripwire — when `in_game` flips false while the last known state was mid-run (not GAME_OVER), return a loud `[RUN INTERRUPTED — game at main menu, save likely intact: STOP, do not start(), report to orchestrator]` instead of a normal state echo.
+
+---
+
 ## Tracking
 
 When a new interface bug is observed, add it here with:

@@ -311,7 +311,7 @@ def state() -> str:
     _remember(raw)
     # Auto-handle mechanical transitions before returning state
     raw = _auto_handle_mechanical(raw)
-    return format_state(raw)
+    return _interruption_notice(raw) + format_state(raw)
 
 
 def state_raw() -> dict:
@@ -341,11 +341,44 @@ def _healthy_state(raw) -> bool:
 
 def _remember(raw):
     """Update the cached state ONLY when the response is healthy; always
-    returns the response unchanged so callers can still inspect errors."""
+    returns the response unchanged so callers can still inspect errors.
+
+    Also maintains the run-live FILE marker (data/run_live.flag) behind the
+    IB-012 tripwire: set while a run is in progress, cleared when the run ends
+    legitimately (GAME_OVER/COMPLETE). If the game reports out-of-game while
+    the marker is set, the run was INTERRUPTED (crash-to-menu), not finished —
+    _interruption_notice() makes every state echo say so. A file, not memory:
+    every play.py call is a fresh process."""
     global _last_raw_state
     if _healthy_state(raw):
         _last_raw_state = raw
+        flag = os.path.join(_BASE_DIR, "data", "run_live.flag")
+        if raw.get("in_game"):
+            screen = (raw.get("game_state") or {}).get("screen_type", "")
+            if screen in ("GAME_OVER", "COMPLETE"):
+                if os.path.exists(flag):
+                    os.remove(flag)
+            elif not os.path.exists(flag):
+                with open(flag, "w") as f:
+                    f.write(str((raw.get("game_state") or {}).get("seed", "")))
+        # out-of-game: leave the flag — its presence IS the interruption signal
     return raw
+
+
+def _interruption_notice(raw) -> str:
+    """A loud banner when the game is out-of-game but the run never ended
+    (IB-012: crash to main menu with a live save). Empty string otherwise."""
+    if not isinstance(raw, dict) or raw.get("in_game") is not False:
+        return ""
+    if not os.path.exists(os.path.join(_BASE_DIR, "data", "run_live.flag")):
+        return ""
+    return (
+        "[RUN INTERRUPTED] The game is at the main menu but your run never "
+        "reached GAME_OVER — it crashed out mid-run and the save is almost "
+        "certainly intact (IB-012). Do NOT call start() (it DESTROYS the save). "
+        "STOP issuing commands and report to the orchestrator, who can resume "
+        "the run by clicking Continue in the game window.\n\n"
+    )
 
 
 def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
@@ -1499,7 +1532,7 @@ def send(command: str, reason: str = "") -> str:
             stale_note = ("[WARNING] the key does NOT appear in your possession after "
                           "that choose - re-read state and retry before leaving the "
                           "screen.]\n\n") + stale_note
-    return stale_note + chose_echo + format_state(raw)
+    return _interruption_notice(raw) + stale_note + chose_echo + format_state(raw)
 
 
 def _auto_collect_gold(raw: dict) -> dict:
@@ -1910,7 +1943,7 @@ def turn(actions: list, reason: str = "") -> str:
     # Auto-handle mechanical transitions after the turn completes
     _remember(_auto_handle_mechanical(_last_raw_state))
 
-    formatted = format_state(_last_raw_state)
+    formatted = _interruption_notice(_last_raw_state) + format_state(_last_raw_state)
     if stopped_msg:
         return stopped_msg + "\n\n" + formatted
     return formatted
@@ -2418,27 +2451,28 @@ def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> 
     saves = [os.path.join(_SAVES_DIR, f"{character.upper()}{ext}")
              for ext in (".autosave", ".autosaveBETA")]
     if any(os.path.exists(s) for s in saves):
-        # A save only matters if a run might actually be in progress. If the game
-        # cleanly reports OUT OF GAME, the file is a stale leftover — proceed.
-        # (The warn flag is a FILE because every play.py call is a new process —
-        # an in-memory flag made the CLI warn forever and never proceed.)
-        probe = _remember(_tcp_request({"type": "state"}))
-        cleanly_out = _healthy_state(probe) and probe.get("in_game") is False
+        # ALWAYS require the two-call confirm when a save file exists. A clean
+        # OUT OF GAME report does NOT mean the save is stale: a crash-to-menu
+        # mid-run (IB-012, run 241) produces exactly that state with a LIVE save
+        # that the orchestrator can resume by clicking Continue — and start()
+        # DESTROYS it. (The confirm flag is a FILE because every play.py call is
+        # a new process — an in-memory flag warned forever and never proceeded.)
         flag = os.path.join(_BASE_DIR, "data", "start_confirm.flag")
-        if not cleanly_out:
-            if not os.path.exists(flag):
-                with open(flag, "w") as f:
-                    f.write(character.upper())
-                return (
-                    f"[WARNING] A save for {character.upper()} exists and the game does "
-                    f"not report a clean OUT OF GAME state — starting DESTROYS the save, "
-                    f"and there is no resume command.\n"
-                    f"If a run seems to be in progress, STOP and report to the orchestrator.\n"
-                    f"If you intend to abandon it, call start again to confirm."
-                )
-            os.remove(flag)
-        elif os.path.exists(flag):
-            os.remove(flag)
+        if not os.path.exists(flag):
+            with open(flag, "w") as f:
+                f.write(character.upper())
+            return (
+                f"[WARNING] A save for {character.upper()} exists — starting DESTROYS "
+                f"it, and there is no resume command. If the game dropped to the main "
+                f"menu mid-run, the save is LIVE and recoverable (IB-012): STOP and "
+                f"report to the orchestrator.\n"
+                f"If you intend to abandon the save, call start again to confirm."
+            )
+        os.remove(flag)
+    # A confirmed start abandons whatever run the live-marker tracked.
+    live = os.path.join(_BASE_DIR, "data", "run_live.flag")
+    if os.path.exists(live):
+        os.remove(live)
     cmd = f"start {character}"
     if ascension > 0:
         cmd += f" {ascension}"
