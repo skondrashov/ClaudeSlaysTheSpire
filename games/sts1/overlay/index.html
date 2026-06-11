@@ -604,20 +604,6 @@
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
     }
 
-    .topbar-clock {
-      position: absolute;
-      left: 880px;
-      top: 3px;
-      padding: 5px 14px 9px;
-      background: rgba(0, 0, 0, 0.99);
-      border-radius: 10px;
-      font-size: 23px;
-      font-weight: 700;
-      font-family: 'Consolas', monospace;
-      color: #ddd;
-      z-index: 20;
-    }
-
     /* === DECISION ROWS: action rail over the game + reasoning in the sidebar.
        One row per decision; the row's height is the max of its two cells, so
        chip and reasoning stay vertically in sync. === */
@@ -901,7 +887,6 @@
 
   <!-- Site URL in the game's own top bar (blank space right of ascension) -->
   <div class="topbar-url">claudeslaysthespire.org</div>
-  <div class="topbar-clock" id="topbarClock">0:00</div>
 
   <!-- Decision rows: action chips on a transparent rail over the game's right
        edge, reasoning in the sidebar — one row each, heights synced -->
@@ -1296,7 +1281,6 @@
           break;
         }
         case 'run_start':
-          localStorage.setItem('runStartMs', String(Date.now()));
           clearForNewRun();
           addRow('NEW RUN — ' + (event.class || ''), '', 'meta');
           if (event.run_number) {
@@ -1549,18 +1533,6 @@
       d.textContent = s;
       return d.innerHTML;
     }
-
-    // Run clock: elapsed since run_start, persisted across overlay reloads.
-    setInterval(() => {
-      const el = document.getElementById('topbarClock');
-      const t0 = parseInt(localStorage.getItem('runStartMs') || '0', 10);
-      if (!el || !t0) return;
-      const s = Math.max(0, Math.floor((Date.now() - t0) / 1000));
-      const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
-      el.textContent = h > 0
-        ? `${h}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`
-        : `${m}:${String(sec).padStart(2, '0')}`;
-    }, 1000);
 
     connect();
   </script>
