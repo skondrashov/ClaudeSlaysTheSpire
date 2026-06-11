@@ -183,9 +183,9 @@
     }
 
     .tile.run-history-tile {
-      width: 272px;
+      width: 257px;
       flex-shrink: 0;
-      padding: 14px;
+      padding: 14px 0 14px 14px;
     }
 
     .tile.notes-tile {
@@ -592,16 +592,16 @@
     .topbar-url {
       position: absolute;
       left: 980px;
-      top: 6px;
-      padding: 3px 14px;
+      top: 5px;
+      padding: 5px 17px 9px;
       background: rgba(0, 0, 0, 0.99);
-      border-radius: 9px;
-      font-size: 21px;
+      border-radius: 10px;
+      font-size: 23px;
+      z-index: 20;   /* above the agent-mode panel too */
       font-weight: 700;
       letter-spacing: 0.5px;
       color: rgba(212, 160, 255, 0.9);
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-      z-index: 4;
     }
 
     /* === DECISION ROWS: action rail over the game + reasoning in the sidebar.
