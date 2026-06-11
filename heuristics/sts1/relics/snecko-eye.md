@@ -1,6 +1,6 @@
 # Snecko Eye
 
-Drawing 7 cards per turn means reliably finding key combo pieces every turn. Cost randomization averages 1.5E/card, but high-cost cards (2E+) benefit enormously -- 25% chance of costing 0E each turn. Present in both consecutive [[characters/Ironclad]] victories.
+Drawing 7 cards per turn means reliably finding key combo pieces every turn. Cost randomization averages 1.5E/card, but high-cost cards (2E+) benefit enormously -- 25% chance of costing 0E each turn. A cornerstone of strong [[characters/Ironclad]] decks.
 
 WHEN TO TAKE: Deck has multiple 2E+ cards. The more expensive the average card cost, the better. A deck with [[cards/Immolate]], [[cards/Heavy Blade]], [[cards/Impervious]], [[cards/Flame Barrier]], [[cards/Bash]] has 5 cards that can become free.
 

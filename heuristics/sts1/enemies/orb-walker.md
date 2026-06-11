@@ -21,4 +21,3 @@
 - Set up slow Powers on Turn 1 (fight is too short for setup to pay off)
 - Let the fight go past Turn 5
 - Spend Catalyst+ here if the Act 3 boss is Awakened One
-- Enter at low HP when [[relics/Mark of the Bloom]] is active (no healing = run-ending)

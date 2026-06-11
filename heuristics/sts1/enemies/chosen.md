@@ -2,7 +2,7 @@
 
 **Core rule:** Minimize Skill usage after [[debuffs/Hex]] is applied. Front-load damage with Attacks. Kill before [[buffs/Strength]] buffs make attacks lethal.
 
-**Benchmark:** Kill in 4-5 turns. Must enter with 40+ HP minimum. This fight routinely drains 30-40 HP.
+**Benchmark:** Kill in 4-5 turns. **Expected cost:** 30-40 HP played well — and the Strength scaling means a slow deck pays a multiple of this; price it by your turns-to-kill.
 
 ## Kill Priority (Multi-Enemy Fights)
 
@@ -30,7 +30,6 @@
 
 - Playing Defend unless absolutely necessary
 - Slow kill (Strength scaling is lethal)
-- Entering below 30 HP
 - [[cards/Fiend Fire]] unless the burst will kill (exhausts ALL other cards in hand including defensive cards)
 
 ## Character Matchups

@@ -2,13 +2,12 @@
 
 **Core rule:** Front-load damage -- every turn the fight goes on, attacks get worse AND Wounds clog draws. Exhaust tools for Wounds are the #1 priority.
 
-**Benchmark:** Even with strong burst, expect 5+ turns. Minimum entry: 60% HP with exhaust tools, or avoid entirely.
+**Benchmark:** Even with strong burst, expect 5+ turns. **Expected cost:** at the top of the elite range (roughly 25-45 HP) with exhaust tools and front-loaded burst — and the fight scales (~+7 incoming per turn), so a slow deck pays a multiple of this; price it by your turns-to-kill. Without exhaust tools, avoid entirely.
 
 ## Strategy
 
 - Apply [[debuffs/Vulnerable]] immediately
 - Use exhaust tools for Wound removal ([[cards/True Grit]], [[cards/Burning Pact]], [[cards/Second Wind]], [[cards/Fiend Fire]])
-- Enter with HIGH HP (60%+ minimum)
 - Deck size matters: a 15-card deck survives Wound clog better than a 21-card deck
 - [[debuffs/Weak]] and [[cards/Piercing Wail]] are extremely valuable but temporary
 
@@ -36,7 +35,6 @@ Do not waste turns on setup that does not deal damage. Prioritize damage cards o
 
 ## What to Avoid
 
-- Entering below 60% HP
 - Entering with a large deck (20+ cards) and no exhaust
 - Slow play (each turn is worse than the last)
 - Power-heavy setup (spending turns 1-3 on Powers instead of dealing damage)

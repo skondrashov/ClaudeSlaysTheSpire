@@ -6,7 +6,7 @@ ANTI-SYNERGIES: [[relics/Toy Ornithopter]] (completely dead), [[relics/Potion Be
 
 SILENT-SPECIFIC DANGER: The [[characters/Silent]] lacks innate healing and relies on potions as emergency saves. Sozu removes the safety net that would otherwise save you in a single critical turn. For the Silent, **strongly prefer other boss relics** unless the deck has [[cards/Wraith Form]] and multiple block sources independent of potions.
 
-IRONCLAD-SPECIFIC DANGER: Taking Sozu with no healing card in deck and only [[relics/Burning Blood]] is a trap. Burning Blood heals 6 HP/fight, but Act 2 fights drain 25-50 HP. Without potions as a backup healing source, the run is forced to rest at every campfire (sacrificing upgrades) and still enters the Act 2 boss far below the 70% HP threshold with empty potion slots — an unwinnable position. **Do NOT take Sozu unless the deck already has a healing card ([[cards/Reaper]], [[cards/Feed]]) or a healing relic ([[relics/Toy Ornithopter]], [[relics/Meal Ticket]]).** Burning Blood alone cannot offset Act 2 HP drain without potion supplementation.
+IRONCLAD-SPECIFIC DANGER: **Do NOT take Sozu unless the deck already has a healing card ([[cards/Reaper]], [[cards/Feed]]) or a healing relic ([[relics/Toy Ornithopter]], [[relics/Meal Ticket]]).** Sozu removes potions as the backup healing source, and [[relics/Burning Blood]] alone cannot offset Act 2 HP drain — see the healing priority in [[layer:heuristics, drafting]].
 
 WHEN TO TAKE:
 - **Only if the deck has an existing healing card** (Reaper, Feed) or healing relic.

@@ -1,8 +1,8 @@
 # Slavers
 
-**Core rule:** This fight is unwinnable at low HP. Block is mandatory Turn 1. Do NOT fight Slavers within 2 floors of the [[acts/Act 2]] boss.
+**Core rule:** This fight is unwinnable at low HP. Block is mandatory Turn 1.
 
-**HP Threshold:** Do NOT enter below 50% HP. Two confirmed deaths at low HP entry (27% and 23%). At sub-25% HP, even mass [[debuffs/Weak]] ([[cards/Shockwave]]) cannot save you.
+**Expected cost:** 20-40 HP played well. There are no free turns and no way to stall the cost down — put the full range on the ledger before routing in.
 
 ## Kill Priority
 
@@ -17,7 +17,7 @@
 
 ## Timing Rule
 
-Do NOT fight Slavers within 2 floors of the Act 2 boss. The HP drain (20-40+ HP) almost guarantees entering the boss at sub-threshold HP.
+Do NOT fight Slavers within 2 floors of the [[acts/Act 2]] boss — the HP drain (20-40+ HP) stacks directly on top of the boss's own expected cost, and the ledger rarely clears. See pre-boss routing in [[layer:heuristics, map]].
 
 ## What to Bring
 

@@ -13,5 +13,4 @@
 
 - AOE damage ([[cards/Immolate]], [[cards/Whirlwind]], [[cards/Cleave]])
 - Strength scaling to ensure the AOE kill hits hard enough
-- Block density for the 4-6 turns of softening before the kill turn
-- 50%+ HP entry recommended
+- Block density for the 4-6 turns of softening before the kill turn — the fight's expected cost is whatever chip damage those turns let through, so price it by how fast your AOE kill comes online

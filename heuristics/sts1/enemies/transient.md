@@ -19,7 +19,7 @@
 ## What NOT to Do
 
 - Play purely defensively (blocking without attacking wastes the Shifting mechanic)
-- Enter below 40% HP without strong block density or Strength debuffs
+- Fight it without strong block density or Strength debuffs — with them the expected cost is near zero; without them the Turn 3-5 hits (50-70 base) land hard
 - **Play with Normality curse in deck.** Normality limits card plays to 3/turn, which cripples the ability to play attacks (for Shifting) AND block in the same turn. If Normality is in the deck, exhaust it immediately when drawn ([[cards/Burning Pact]], [[cards/True Grit]]). Normality can cost 40 HP in a single Transient fight by locking you out of attacking and blocking on the same turn.
 
 ## Character-Specific Notes

@@ -76,9 +76,9 @@ On kill turns, NEVER include `end` in the same command as the final attack. Play
 
 Always play X-cost cards LAST. To control the value of X, spend energy on other cards first.
 
-### 4. WRAITH FORM: FINISHER ONLY
+### 4. WRAITH FORM: TIME IT BY FIGHT LENGTH
 
-[[cards/Wraith Form]] gives [[buffs/Intangible]] but applies permanent -1 [[buffs/Dexterity]] per turn. Three recorded deaths from playing it too early. DO NOT play until the enemy is within 5 turns of dying.
+[[cards/Wraith Form]] gives [[buffs/Intangible]] but applies permanent -1 [[buffs/Dexterity]] per turn. In long fights, play it as a finisher only — see [[cards/Wraith Form]] for the timing framework by fight length.
 
 ### 5. VERIFY CARD IDENTITY BEFORE PLAYING
 
@@ -98,7 +98,7 @@ On kill turns, play all deterministic damage cards FIRST. Only use random-outcom
 
 **Rationale:** If the kill is already in hand with deterministic cards, random effects are unnecessary and can only cause harm. If the kill is NOT in hand, playing deterministic damage first reduces the enemy to minimum HP, making the random effect more likely to finish the job and less costly if it fails.
 
-Example: using Distilled Chaos BEFORE playing Smite and Strike (which together were exactly lethal) lets Distilled Chaos randomly play Meditate+ (ends turn, enters Calm, 0 block) against 102 incoming Hyper Beam — death, even though the kill was already in hand. The root cause is a kill-math error: believing the hand was 12 damage short when it wasn't.
+A random effect can play a turn-ender or a zero-value card while leaving the kill unfinished and your block at zero — converting a won turn into a lost fight. The usual root cause is a kill-math error: believing the hand is short on damage when it isn't. Verify the kill arithmetic before reaching for randomness.
 
 **Rule:** Deterministic cards first, random effects last, on EVERY kill turn. No exceptions.
 
@@ -106,17 +106,9 @@ Example: using Distilled Chaos BEFORE playing Smite and Strike (which together w
 
 Thunderclap applies [[debuffs/Vulnerable]] (target takes 50% MORE damage). It does NOT reduce enemy damage. Vulnerable makes the TARGET take more damage from attacks -- it is an offensive amplifier, not a defensive tool.
 
-**Ironclad Weak sources (reduce enemy damage dealt by 25%):**
-- [[cards/Intimidate]] (mass Weak, exhausts, 0E)
-- [[cards/Clothesline]] (single target Weak, 2E)
-- [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)
-- [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)
+**Ironclad Weak sources (reduce enemy damage dealt by 25%):** [[cards/Intimidate]], [[cards/Clothesline]], [[cards/Shockwave]] (which also applies Vulnerable).
 
-**Ironclad Vulnerable sources (target takes 50% more damage from attacks):**
-- [[cards/Bash]] (single target Vulnerable, 2E)
-- [[cards/Thunderclap]] (mass Vulnerable, 1E)
-- [[cards/Shockwave]] (mass Weak + Vulnerable, exhausts, 2E)
-- [[cards/Uppercut]] (single target Weak + Vulnerable, 2E)
+**Ironclad Vulnerable sources (target takes 50% more damage from attacks):** [[cards/Bash]], [[cards/Thunderclap]], [[cards/Uppercut]] (which also applies Weak).
 
 **CRITICAL:** Thunderclap and Intimidate are both mass debuff cards, but they apply OPPOSITE effects. Playing Thunderclap does NOT reduce incoming damage. If the survival plan depends on reducing enemy damage, you need a Weak source (Intimidate, Clothesline, Shockwave), NOT Thunderclap. Treating Thunderclap as Weak miscalculates incoming — it applies Vulnerable, not Weak, so enemy damage is NOT reduced. If your block plan relied on a 25% reduction, actual incoming is the full 30 (not 21) and you take the full hit.
 
@@ -143,16 +135,17 @@ Play Shockwave+ on the **FIRST ATTACK TURN** of multi-enemy fights.
 
 ---
 
-## Potion Timing Rule
+## Potion Economy
 
-**Do not hoard potions until death.** Two of three runs in audit 216-218 died with usable potions that would have changed the outcome.
+**Potions are expiring resources; HP is the resource that does not come back.** A potion held to the end of the run was worth zero. A potion that converts unblocked damage to zero converts directly into HP, the scarcest thing in the game. So the default is to DRINK, and it is *holding* that requires justification — not the other way around.
 
-**Trigger for potion evaluation:** If ANY of these conditions are true, evaluate potion use THIS TURN:
-1. **Turn 5+ in a tough fight** (elite, multi-enemy, hard-scaler) and potions are held.
-2. **HP below 30%** in any fight.
-3. **A damage potion would kill an enemy** that is generating status cards (Sentries generating Dazed, enemies applying debuffs). Killing the source earlier prevents compound damage from clogged draws.
-4. **A Strength/damage potion would accelerate a kill by 2+ turns.** Faster kills mean fewer incoming damage turns.
+**The check runs every fight, not just in emergencies.** Before ending any turn where unblocked damage will get through, or where a potion would shorten the fight by a full enemy turn, ask: does a potion close this gap? If yes, the default is to use it. Holding it instead requires naming the specific upcoming fight where it is clearly worth more — a named fight within the next 1-2 floors, not "later." If you cannot name the fight, drink.
 
-**Anti-pattern: "saving for later."** There is no later if you die. A Fire Potion used on Turn 5 to kill a Sentry prevents 3+ turns of Dazed generation and incoming damage. A Strength Potion used mid-fight accelerates kills and reduces total damage taken. The value of a potion in the CURRENT fight is almost always higher than its speculative value in a FUTURE fight.
+**Slot economics:** slots are part of the economy. Combat rewards regularly offer potions, and a full belt forces you to skip them. A potion drunk while your slots are full costs nothing: you were about to be offered its replacement. Err on the side of keeping a slot open. Winning a fight at full slots without drinking anything usually means a future potion was wasted.
 
-**Exception:** Fairy in a Bottle and potions specifically needed for the next boss fight (within 1-2 floors). These may be worth holding. All other potions should be evaluated for immediate use when the trigger conditions are met.
+Situations where drinking is almost always right:
+- A damage potion kills an enemy that is scaling or generating status cards (a Cultist ramping Strength, Sentries adding Dazed). Killing the source early prevents compound damage.
+- A Strength or damage potion removes a full enemy turn from the fight. Fewer enemy turns is the cleanest damage prevention there is.
+- A block potion covers a hit your hand cannot — in ANY fight. Chip damage in an "easy" hallway fight is the same HP as boss damage.
+
+**Exception:** [[potions/Fairy in a Bottle]], and a potion held for a *named* fight within the next 1-2 floors (the boss behind the next door, an elite already routed into). Everything else is evaluated for use in the fight you are in.

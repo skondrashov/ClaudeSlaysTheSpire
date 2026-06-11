@@ -2,7 +2,7 @@
 
 **Core rule:** KILL MYSTIC FIRST. Non-negotiable. If you attack [[enemies/Centurion]] while [[enemies/Mystic]] is alive, you're in an unwinnable attrition war (Mystic heals all enemies 16 HP). Never split damage.
 
-**Benchmark:** Kill Mystic in 5-6 turns. Expect 25-61 HP lost even with correct play. Enter with 60%+ HP.
+**Benchmark:** Kill Mystic in 5-6 turns. **Expected cost:** 25-61 HP played well — one of the most expensive hallway fights in the act; put the full range on the ledger before routing in.
 
 ## Strategy
 
@@ -26,7 +26,6 @@ Once Mystic is dead, Centurion uses the 6x3 multi-hit attack (18-30 damage). If 
 ## What to Avoid
 
 - Attacking Centurion while Mystic lives
-- Entering below 50% HP (confirmed deaths at 49% and 71% entry)
 - Wasting Fairy here when elites are ahead
 - Splitting damage between Centurion and Mystic even with temporary [[buffs/Strength]] buffs
 - Spending ALL potions on the Mystic kill phase

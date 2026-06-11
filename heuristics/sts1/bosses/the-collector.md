@@ -1,10 +1,10 @@
 # The Collector
 
-**Core rule:** Enter at 70%+ HP or have [[relics/Pantograph]]. The Mega Debuff on Turn 4 creates a 3-turn crisis where incoming spikes by 50% and block is reduced by 25%. AOE is the highest priority card type.
+**Core rule:** The Mega Debuff on Turn 4 creates a 3-turn crisis where incoming spikes by 50% and block is reduced by 25%. AOE is the highest priority card type. **Expected cost:** 30-50 HP played well, concentrated in the post-debuff crisis turns — run the ledger before the final rest site decision ([[relics/Pantograph]]'s +25 counts on it as exactly +25).
 
 ## Preparation Checklist
 
-1. Enter at 70%+ HP or Pantograph
+1. HP for an expected 30-50 HP fight (run the ledger; Pantograph's +25 counts toward it)
 2. AOE damage ([[cards/Immolate]] is the MVP -- hits Collector + both Torch Heads)
 3. Mass debuff ([[cards/Shockwave]] reduces combined incoming from 3 enemies by 25% for 3 turns)
 4. [[cards/Impervious]] (30 block absorbs an entire post-debuff turn)
@@ -21,12 +21,10 @@
 
 ## What NOT to Do
 
-- Enter below 70% HP without Pantograph (Mega Debuff creates mathematically unwinnable turns at low HP)
 - Ignore Torch Heads entirely (14 combined damage/turn adds up)
 - Save potions for "later" (post-debuff turns 5-7 are the crisis -- use potions here)
 - Play Shockwave+ on Turn 1 before Torch Heads spawn
-- Enter Unknown rooms before the boss without accounting for Colosseum event (forces combat, drains HP)
-- Enter without Impervious or Shockwave+ (both deaths missing Impervious confirmed)
+- Enter without Impervious or Shockwave+ (without a big absorb or mass Weak, the post-debuff crisis turns are unsurvivable)
 
 ## Character Matchups
 

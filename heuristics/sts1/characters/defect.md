@@ -2,12 +2,12 @@
 
 ## Identity
 
-The Defect scales through Focus and orb manipulation. One proven winning engine:
+The Defect scales through Focus and orb manipulation. Best known engine so far:
 1. **[[cards/Echo Form]] orb engine:** Echo Form+ + [[cards/Seek]] ([[relics/Bottled Lightning]]) + [[cards/Coolheaded]] + [[cards/Barrage]] + [[relics/Mummified Hand]]
 
 ## Key Heuristics
 
-- **Focus is everything.** [[cards/Defragment]] is the #1 priority card — equivalent of [[cards/Inflame]] for [[characters/Ironclad]]. Without Focus, orb passives are too weak for [[acts/Act 2]].
+- **Focus is everything.** [[cards/Defragment]] is the best priority pick known so far — equivalent of [[cards/Inflame]] for [[characters/Ironclad]]. Without Focus, orb passives are too weak for [[acts/Act 2]].
 - **Frost orbs replace Defend cards.** With Focus 3+, each Frost orb gives 5 passive block/turn. Three Frost orbs = 15 free block/turn.
 - **Channel order matters.** Leftmost orb evokes first. Channel damage orbs you want to evoke (Lightning) before defensive orbs you want to keep (Frost).
 - **[[cards/Fission]] MUST be upgraded.** Unupgraded removes orbs without evoking. Upgraded evokes all orbs AND gives Energy + draws. Critical distinction.

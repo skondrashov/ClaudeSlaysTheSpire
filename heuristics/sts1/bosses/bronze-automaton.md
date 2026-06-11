@@ -1,10 +1,10 @@
 # Bronze Automaton
 
-**Core rule:** Enter at 70%+ HP. Use ONLY non-exhausting debuffs ([[cards/Bash]], [[cards/Thunderclap]]) for [[buffs/Artifact]] stripping. SAVE exhausting [[debuffs/Weak]] sources ([[cards/Intimidate]], [[cards/Shockwave]]) for Hyper Beam survival. Basic Defends cannot survive Hyper Beam.
+**Core rule:** Use ONLY non-exhausting debuffs ([[cards/Bash]], [[cards/Thunderclap]]) for [[buffs/Artifact]] stripping. SAVE exhausting [[debuffs/Weak]] sources ([[cards/Intimidate]], [[cards/Shockwave]]) for Hyper Beam survival. Basic Defends cannot survive Hyper Beam.
 
 ## Preparation Checklist
 
-1. Enter at 70%+ HP
+1. HP for an expected 30-50 HP fight, with Hyper Beam (45 base, 57+ the second time) as the single largest spike — run the ledger before the pre-boss rest site decision
 2. Artifact strippers (non-exhausting): Thunderclap, Bash+. Need 3+ applications.
 3. Weak source saved for Hyper Beam: Intimidate, Shockwave+, or [[potions/Weak Potion]]
 4. Block scaling: [[cards/Shrug It Off]], [[cards/Flame Barrier]], [[cards/Metallicize]], [[cards/Impervious]], [[cards/Ghostly Armor]] (basic Defends are NOT enough)
@@ -24,7 +24,6 @@
 
 - Use Intimidate or Shockwave for Artifact stripping (they exhaust -- save for Hyper Beam)
 - Play Impervious on non-Hyper-Beam turns when Hyper Beam is approaching
-- Enter below 60% HP
 - Enter without block scaling beyond basic Defends
 - Rely on a single irreplaceable card (Stasis will steal something)
 - Take [[relics/Runic Dome]] (cannot predict Hyper Beam timing without intent visibility)
@@ -32,23 +31,23 @@
 
 ## Dark Shackles Interaction
 
-Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block on top. [[cards/Dark Shackles]] + Metallicize + Ghostly Armor + 2 Defends = ~31 block vs reduced Hyper Beam = survivable at 70%+ HP.
+Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block on top. [[cards/Dark Shackles]] + Metallicize + Ghostly Armor + 2 Defends = ~31 block vs reduced Hyper Beam — enough to cover the spike.
 
 ## Character Matchups
 
 **[[characters/Watcher]]:** The stance dance engine has unique advantages and dangers against Bronze Automaton.
 
 **Advantages:**
-- Wrath burst damage can kill Automaton quickly (down to 36/300 HP by Turn 6 is achievable).
+- Wrath burst damage can chew through Automaton's 300 HP quickly.
 - Apparitions provide Intangible, which is the cleanest Hyper Beam survival tool (reduces 45+ damage to 1).
 - Battle Hymn provides sustained Smite generation for long fights.
 - Calm energy bonus (+2E on exit) funds large burst turns.
 
 **Dangers:**
 - **Hyper Beam in Wrath = 90+ damage (45 base x2).** If caught in Wrath with no block and no Intangible, Hyper Beam is instantly lethal at any HP total. NEVER end a turn in Wrath when Hyper Beam is possible unless Intangible is active.
-- **Reduced Max HP + Hyper Beam.** If the Watcher took Council of Ghosts (-Max HP for Apparitions), absolute HP is low (often 36-40). Hyper Beam at 45 base is lethal from full HP without block or Intangible. The 70% HP entry threshold means nothing when Max HP is 36 — calculate absolute survival instead.
+- **Reduced Max HP + Hyper Beam.** If the Watcher took Council of Ghosts (-Max HP for Apparitions), absolute HP is low (often 36-40). Hyper Beam at 45 base is lethal from full HP without block or Intangible. Run the ledger in absolute HP against the 45-damage spike — percentages mean nothing when Max HP is 36.
 - **Artifact does NOT affect stance changes.** Artifact blocks debuffs, not stance mechanics. Wrath/Calm cycling works normally.
-- **NEVER use Distilled Chaos in this fight.** Meditate ends the turn, Conclude ends the turn, Blasphemy sets HP to 1. Any of these randomly played against Hyper Beam leaves you with 0 block against 90+ doubled damage — you die. See watcher.md for full explanation.
+- **Distilled Chaos is uniquely dangerous here** — a randomly played turn-ender against Hyper Beam means 0 block against 90+ doubled damage. See [[layer:heuristics, characters/Watcher]].
 
 **Watcher strategy:**
 1. **Turns 1-2 (Setup):** Play Powers (Rushdown, Mental Fortress, Battle Hymn). Use Apparitions for Intangible on attack turns. Enter Calm at end of turn for energy next turn.
@@ -56,12 +55,8 @@ Reduces Hyper Beam by ~9 damage but NOT sufficient alone. Still need 30+ block o
 3. **Hyper Beam turn:** Must have either (a) Intangible from Apparition, (b) sufficient block in Calm (NOT Wrath), or (c) confirmed kill before Hyper Beam resolves. Option (a) is by far the safest.
 4. **Kill math:** Attacks played while ALREADY in Wrath are doubled — Tantrum+ (4x3 = 12 base) deals 24 in Wrath. But the card that ENTERS Wrath does NOT double its own hit: a Tantrum+ played from Calm deals 12, and only the attacks after it are doubled. See combat.md rule 9.
 
-**A representative near-win:** Watcher can get Automaton to 36/300 HP by Turn 6 with the kill in hand (Smite + Strike = 36 damage in Wrath = exact lethal), then lose to Distilled Chaos randomly playing Meditate+ (ends turn, 0 block) against 102 Hyper Beam. An arithmetic error on Tantrum+ damage triggers the unnecessary potion use.
-
-## Key Lessons from Deaths
+## Key Dangers
 
 - Insufficient block scaling (basic Defends = 20 max vs 38+ Hyper Beam) is the central danger — basic block can't cover Hyper Beam, so it lands for lethal
 - Wasting Intimidate on Artifact stripping leaves no Weak for Hyper Beam, which then lands unreduced for lethal
 - Long fights (12+ turns) face a second Hyper Beam at 57+ damage -- need kill speed or second Impervious
-- Distilled Chaos with turn-ending cards in draw pile against Hyper Beam ends your turn with 0 block and gets you killed
-- Wrath damage miscalculation leads to unnecessary risk-taking when the kill is already achievable

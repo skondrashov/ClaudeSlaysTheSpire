@@ -13,11 +13,11 @@ The single biggest strategic failure: entering [[acts/Act 2]] without a healing 
 - **Feed: TAKE IT** in early [[acts/Act 1]]. +3-4 Max HP per kill compounds over 15+ fights.
 - If neither offered by Floor 12, seek healing potions ([[potions/Blood Potion]], [[potions/Regen Potion]]) and healing relics ([[relics/Toy Ornithopter]], [[relics/Meal Ticket]], [[relics/Bloody Idol]]) at shops.
 
-**This is non-negotiable.** A deck with Reaper + adequate damage will reach [[acts/Act 3]]. A deck with perfect damage/block but no healing will die in Act 2 floors 20-30.
+**Decks without a healing plan rarely survive Act 2.** A deck with Reaper + adequate damage will reach [[acts/Act 3]]. A deck with strong damage/block but no healing usually dies in Act 2 floors 20-30.
 
-**Reaper alone is NOT sufficient.** Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. Multiple healing sources are required. **Minimum TWO healing sources by Act 2 Floor 5.**
+**Reaper alone is NOT sufficient.** Reaper exhausts after a single use per fight. In consecutive combat rooms (common in Act 2), Reaper heals once per fight but cannot offset sustained drain across multiple fights. Multiple healing sources are required. **Aim for TWO healing sources by early Act 2.**
 
-**Sozu boss relic risk:** [[relics/Sozu]] (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. Taking Sozu with no healing card forces repeated rests in Act 2 (sacrificing upgrades) and still enters the boss far below the 70% HP threshold — an unwinnable position.
+**Sozu boss relic risk:** [[relics/Sozu]] (+1E, no potions) permanently eliminates potions as a healing source. Do NOT take Sozu unless the deck already has a healing card (Reaper, Feed) or a healing relic (Toy Ornithopter, Meal Ticket). Burning Blood alone cannot compensate for Act 2 HP drain without potion supplementation. Taking Sozu with no healing card forces repeated rests in Act 2 (sacrificing upgrades) and still arrives at the boss without the HP to pay its expected 30-50 HP cost — the ledger doesn't clear.
 
 ---
 
@@ -71,7 +71,7 @@ The starting deck is nearly identical every run. Use a tier list, not first-prin
 - [[cards/Feel No Pain]] (3 block per exhaust. Enables Corruption engine; also good standalone with True Grit, Fiend Fire, or any exhaust source. Under investigation as a high-priority pick — see exploration directives.)
 
 **SKIP** (do not take in Act 1 unless noted):
-- Demon Form (too slow for hallway fights, does not satisfy front-loaded damage scaling)
+- Demon Form (too slow for hallway fights, does not satisfy front-loaded damage scaling — EXCEPT when Hexaghost is the act boss or the route includes Giant Head: both are long fights that reward Demon Form's ramp; see [[layer:heuristics, bosses/Hexaghost]] and [[layer:heuristics, enemies/Giant Head]])
 - [[cards/Limit Break]] (needs a Str source first)
 - [[cards/Barricade]] (3E, too slow, no immediate value -- but take from boss card rewards if building block engine)
 - [[cards/Corruption]] (3E, dangerous without [[cards/Feel No Pain]]. Under investigation: may be worth taking if FNP is already in deck, but needs more data — see exploration directives.)
@@ -80,7 +80,7 @@ The starting deck is nearly identical every run. Use a tier list, not first-prin
 
 **Boss-specific overrides (APPLY BEFORE tier list):**
 - Slime Boss visible: Evolve and Fire Breathing become MUST-TAKES
-- [[bosses/Hexaghost]] visible: Weak sources (Shockwave, Clothesline, [[cards/Intimidate]]) become MUST-TAKES. A Weak source outranks ANY generic tier list pick -- take Clothesline over Pommel Strike, take Intimidate over Iron Wave, etc. Without Weak, Hexaghost's Inferno and Tackles deal full damage for 16+ turns. No amount of block cards compensates.
+- [[bosses/Hexaghost]] visible: damage scaling and Burns management are the highest-value prep — Evolve, Fire Breathing, and Demon Form (the SKIP on Demon Form is lifted) all rise to MUST-TAKE consideration. A Weak source (Shockwave, Clothesline, [[cards/Intimidate]]) is also high value for Inferno turns, but Weak keeps you alive without winning the fight — insufficient damage is what actually kills. See [[layer:heuristics, bosses/Hexaghost]].
 - [[bosses/The Guardian]] visible: Burst damage for [[buffs/Mode Shift]] (Carnage, [[cards/Bludgeon]])
 
 **Elite-specific overrides:**
@@ -164,7 +164,7 @@ Remove Strikes before Defends. Strikes get outclassed faster by better attacks; 
 
 ## Multi-Purpose Cards Win
 
-The winning formula across all victories: cards that do two things.
+A consistent winning formula: cards that do two things.
 
 - Block + draw: Shrug It Off
 - Damage + draw: Pommel Strike
@@ -210,7 +210,7 @@ Activate by Floor 17 if no healing card has been acquired. Do not wait until HP 
 1. **Shop healing:** Buy Blood Potion or Regen Potion at every shop. Buy Toy Ornithopter or Meal Ticket if offered.
 2. **Event healing:** [[events/The Cleric]] heals. [[events/Big Fish]] offers healing. [[events/Woman in Blue]] sells potions. Prioritize these events.
 3. **Path through more rest sites:** Without healing cards, rest sites become the primary healing source. Accept fewer upgrades. Degraded strategy but better than dying.
-4. **Potion management:** Treat Blood Potions and Regen Potions as precious resources. Do not use them in trivial fights.
-5. **Conservative pathing:** Take safer paths, skip elites after Floor 15, avoid Unknown rooms below 50% HP.
+4. **Potion management:** Healing potions are still expiring resources — drink them whenever they convert into real HP saved (a hard fight, unblocked damage about to land). Holding one requires naming the specific upcoming fight it is for; see Potion Economy in [[layer:heuristics, combat]].
+5. **Conservative pathing:** Take safer paths, skip elites after Floor 15, and avoid Unknown rooms when the ledger can't absorb a full hallway fight (they resolve as combat ~50% of the time).
 
 The absence of healing cards does NOT mean the run is lost. It means Full Block discipline becomes even more critical and map pathing must be more conservative.

@@ -2,9 +2,9 @@
 
 **Core rule:** AOE is king (every point does double duty). Focus fire Donu first (stops [[buffs/Strength]] scaling). Strength scaling + [[cards/Heavy Blade]] for the finisher.
 
-## Winning Strategy (confirmed in 2 victories)
+## Winning Strategy
 
-1. **AOE is king.** [[cards/Immolate]] hits BOTH bosses every cast. Three Immolate+ in one turn dealt 102 AOE.
+1. **AOE is king.** [[cards/Immolate]] hits BOTH bosses every cast — multiple copies in one turn (via Dual Wield or cheap [[relics/Snecko Eye]] costs) produce 100+ total AOE.
 2. **Focus fire Donu.** All single-target attacks go to Donu. AOE handles Deca passively.
 3. **Strength scaling is the finisher.** [[cards/Spot Weakness]] -> [[cards/Limit Break]] -> Heavy Blade (50+ damage) as lethal finisher.
 4. **[[relics/Snecko Eye]] is exceptional.** 7 cards/turn with random costs. Multiple 0-cost Immolate+ plays win the fight.
@@ -14,7 +14,7 @@
 
 1. AOE damage (Immolate+ is the best card)
 2. Strength scaling (Spot Weakness+, [[cards/Inflame]], Limit Break, Heavy Blade)
-3. Enter at 70%+ HP (ideally full). Combined incoming is 20-32/turn.
+3. HP for an expected 30-50 HP fight (combined incoming is 20-32/turn over 6-10 turns) — run the ledger before the pre-boss rest site decision
 4. Block density for 6-10 turns
 5. Potions: [[potions/Snecko Oil]] Turn 1, [[potions/Duplication Potion]] on 0-cost Immolate+, [[potions/Strength Potion]] compounds with Limit Break
 

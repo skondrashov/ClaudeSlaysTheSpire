@@ -6,7 +6,7 @@ Recovers one card from the exhaust pile. The only way to reuse exhausted cards. 
 
 **Upgrade priority:** Very high. 1E to 0E makes Exhume free, allowing recovery + play of the recovered card in the same turn.
 
-**[[cards/Fiend Fire]] interaction (CRITICAL):** Exhume is a Skill, so Fiend Fire exhausts it along with everything else in hand. If Fiend Fire exhausts Exhume unused, Exhume sits in the exhaust pile with no way to activate it (unless a second Exhume exists). The solution is NOT to play Exhume before Fiend Fire (nothing useful may be in the exhaust pile yet). The solution is: do not play Fiend Fire while Exhume is in hand. Wait until Exhume is safely in the draw pile, then use Fiend Fire. With [[relics/Runic Pyramid]], this means Exhume must be played on a prior turn for some purpose (even a marginal one) before Fiend Fire can safely fire.
+**[[cards/Fiend Fire]] interaction (CRITICAL):** Fiend Fire exhausts Exhume from hand, stranding it in the exhaust pile with no way to activate it. Do not play Fiend Fire while Exhume is in hand — see [[layer:heuristics, cards/Fiend Fire]].
 
 **Phased boss fights ([[bosses/The Champ]], [[bosses/Awakened One]]):** Exhume's highest value is recovering debuff cards after a phase transition. Against The Champ: Exhume after Anger can recover Disarm or Shockwave for Phase 2. Plan the fight around keeping Exhume available for this purpose.
 

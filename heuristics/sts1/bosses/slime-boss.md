@@ -1,6 +1,6 @@
 # Slime Boss
 
-**Core rule:** AOE is MANDATORY for the split phase. Without AOE, you must single-target each of 4+ enemies. Enter at 60%+ HP.
+**Core rule:** AOE is MANDATORY for the split phase. Without AOE, you must single-target each of 4+ enemies. **Expected cost:** 30-50 HP played well — run the ledger before the final rest site decision.
 
 ## Preparation Checklist
 
@@ -23,7 +23,6 @@
 
 - Enter without AOE (single-target cannot handle the split)
 - Enter with 0 upgrades (makes the fight dramatically harder)
-- Enter below 60% HP
 - Play [[cards/Berserk]] (self-Vulnerable against 2 enemies doing 25-36 combined is suicidal)
 - Focus all damage on one large slime while ignoring the other
 - Use [[cards/Hemokinesis]] at low HP during split phase

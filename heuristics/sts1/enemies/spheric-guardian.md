@@ -2,7 +2,7 @@
 
 **Core rule:** This is a DPS check disguised as a hallway fight. Must kill within 6-8 turns or block becomes insurmountable. Strip 3 [[buffs/Artifact]] charges first, then apply [[debuffs/Vulnerable]], then burst through remaining block + HP.
 
-**Benchmark:** Expect 30-50+ HP lost from [[debuffs/Frail]]-reduced blocking vs 10x2 attacks. At low [[buffs/Strength]] without burst, this fight is a guaranteed loss through attrition.
+**Expected cost:** 30-50+ HP played well, lost to [[debuffs/Frail]]-reduced blocking vs 10x2 attacks — and it is a DPS check, so a slow deck pays more; price it by your turns-to-kill. Without a damage engine ([[buffs/Strength]], Corruption+FNP block conversion, etc.) and burst, this fight is a guaranteed loss through attrition.
 
 ## Strategy
 
@@ -26,13 +26,12 @@
 - Random exhaust effects (Havoc, unupgraded [[cards/True Grit]])
 - Exhausting Spot Weakness (permanent Strength gain is needed to break through [[cards/Barricade]])
 - Playing [[cards/Brutality]] (1 HP/turn self-damage over an 8-13 turn fight)
-- Entering at low HP (<50%) -- routinely drains 30-50 HP
 - Entering with zero potions
 
 ## Winning Formulas
 
-- [[cards/Corruption]] + [[cards/Feel No Pain]] engine (12 HP lost)
-- Immolate + [[cards/Impervious]] + [[relics/Calipers]] + Spot Weakness (20 HP lost)
+- [[cards/Corruption]] + [[cards/Feel No Pain]] engine
+- Immolate + [[cards/Impervious]] + [[relics/Calipers]] + Spot Weakness
 - Front-loaded Str (Inflame/Spot Weakness) + burst (Fiend Fire, Bludgeon) + potions
 
 ## Character Matchups
