@@ -1414,29 +1414,34 @@
       el.textContent = text.replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
       el.scrollTop = 0;
       planPos = 0;
-      planPhase = 'down';
+      planPhase = 'top';
+      planPauseTicks = 100;
     }
 
     // Plan auto-scroll: when overflowing, drift down over ~8s, hold the
     // bottom briefly, then return to top at 10x — a full loop ≈ 10s
     // regardless of plan length (the step scales with the overflow).
-    let planPhase = 'down', planPauseTicks = 0, planPos = 0;
+    // Cycle: 5s at the top, ~10s drifting down, 5s at the bottom, fast return.
+    let planPhase = 'top', planPauseTicks = 100, planPos = 0;
     setInterval(() => {
       const el = document.getElementById('planContent');
       if (!el) return;
       const overflow = el.scrollHeight - el.clientHeight;
-      if (overflow <= 4) { planPos = 0; el.scrollTop = 0; planPhase = 'down'; return; }
+      if (overflow <= 4) { planPos = 0; el.scrollTop = 0; planPhase = 'top'; planPauseTicks = 100; return; }
       // Track position in a float and assign rounded — fractional scrollTop
       // increments can clamp back to the same integer and never move.
-      const downStep = Math.max(overflow / 300, 0.4);   // ~15s of 50ms ticks
-      if (planPhase === 'down') {
+      const downStep = Math.max(overflow / 200, 0.5);   // ~10s of 50ms ticks
+      if (planPhase === 'top') {
+        planPos = 0;
+        if (--planPauseTicks <= 0) planPhase = 'down';
+      } else if (planPhase === 'down') {
         planPos = Math.min(planPos + downStep, overflow);
-        if (planPos >= overflow - 0.5) { planPhase = 'pause'; planPauseTicks = 100; }
-      } else if (planPhase === 'pause') {
+        if (planPos >= overflow - 0.5) { planPhase = 'bottom'; planPauseTicks = 100; }
+      } else if (planPhase === 'bottom') {
         if (--planPauseTicks <= 0) planPhase = 'up';
       } else {
         planPos = Math.max(planPos - downStep * 10, 0);
-        if (planPos <= 0) planPhase = 'down';
+        if (planPos <= 0) { planPhase = 'top'; planPauseTicks = 100; }
       }
       el.scrollTop = Math.round(planPos);
     }, 50);
