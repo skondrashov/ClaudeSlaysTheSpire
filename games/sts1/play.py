@@ -68,12 +68,15 @@ if __name__ == "__main__":
         print(end(reason=reason))
     elif cmd == "choose":
         # Accept an index OR a name (shops/rewards need by-name). cmd.choose handles both.
+        # NO default reason: map routes, rewards, and events are real decisions and
+        # the stream must show why — a "choosing" placeholder silently defeated the
+        # reason requirement for a whole run's worth of navigation.
         raw = args[0] if args else "0"
         try:
             opt = int(raw)
         except ValueError:
             opt = raw
-        reason = args[1] if len(args) > 1 else "choosing"
+        reason = args[1] if len(args) > 1 else ""
         print(choose(opt, reason=reason))
     elif cmd == "proceed":
         reason = args[0] if args else "proceeding"
