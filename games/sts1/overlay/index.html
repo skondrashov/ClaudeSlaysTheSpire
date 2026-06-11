@@ -657,8 +657,9 @@
       margin: 0 auto;
       background: rgba(0, 0, 0, 0.6);
       border: 2px solid rgba(255, 255, 255, 0.35);
-      overflow: hidden;
     }
+
+    .win-bar .winbar-fill { z-index: 0; }
 
     .win-bar .winbar-fill {
       position: absolute;
@@ -681,21 +682,18 @@
       z-index: 1;
     }
 
-    .win-bar .winbar-delta {
-      font-size: 16px;
-      font-weight: 700;
-      min-height: 20px;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
-    }
-    .win-bar .winbar-delta.up { color: #4ade80; }
-    .win-bar .winbar-delta.down { color: #f87171; }
-    .win-bar .winbar-delta.flat { color: #aaa; }
 
-    .win-bar .winbar-value {
-      margin-top: 6px;
-      font-size: 22px;
-      font-weight: 800;
-      color: #fff;
+
+    .win-bar .winbar-anchor-tag {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-left: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ddd;
+      white-space: nowrap;
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
     }
 
@@ -786,10 +784,8 @@
 
   <!-- Win% eval bar over the game's left edge -->
   <div class="win-bar" id="winBar">
-    <div class="winbar-label">PREDICTED<br>WIN%</div>
-    <div class="winbar-track"><div class="winbar-center"></div><div class="winbar-fill" id="winFill"></div></div>
-    <div class="winbar-value" id="winValue">—</div>
-    <div class="winbar-delta flat" id="winDelta"></div>
+    <div class="winbar-label">EVAL</div>
+    <div class="winbar-track"><div class="winbar-center"></div><div class="winbar-fill" id="winFill"></div><div class="winbar-anchor-tag">&lt; run start</div></div>
     <div class="winbar-age" id="winAge"></div>
   </div>
 
@@ -831,7 +827,6 @@
     // mandates them). Persists the last value; dims with an age marker when
     // the label hasn't moved for 2+ floors.
     let winPct = null, winFloor = null, curFloor = null, winAnchor = null;
-    const WIN_RANGE = 25;   // percentage points mapped to a full half-bar
 
     function parseWinPct(text) {
       if (!text) return null;
@@ -852,35 +847,31 @@
     function renderWinBar() {
       const bar = document.getElementById('winBar');
       const fill = document.getElementById('winFill');
-      const value = document.getElementById('winValue');
       const age = document.getElementById('winAge');
       if (winPct === null) {
         fill.style.height = '0%';
-        value.textContent = '—';
         age.textContent = '';
-        document.getElementById('winDelta').textContent = '';
         bar.classList.remove('stale');
         return;
       }
-      // Movement around the run's starting estimate: center line is the
-      // anchor; the fill grows up (green) or down (red) from it. The true
-      // number stays in the text — only the bar is relative.
-      const delta = winPct - (winAnchor === null ? winPct : winAnchor);
-      const half = Math.min(Math.abs(delta) / WIN_RANGE, 1) * 50;
+      // Normalized eval: the bar's top is 100%, its bottom is 0%, and the
+      // center line is the run's FIRST estimate — each half is linearly
+      // rescaled to its side of the anchor, so the visual always has full
+      // room to rise or fall regardless of where the run started.
+      const anchor = winAnchor === null ? winPct : winAnchor;
+      const delta = winPct - anchor;
+      let half;
       if (delta >= 0) {
+        half = (delta / Math.max(100 - anchor, 1)) * 50;
         fill.style.top = (50 - half) + '%';
         fill.style.height = half + '%';
         fill.style.background = '#3aa860';
       } else {
+        half = (-delta / Math.max(anchor, 1)) * 50;
         fill.style.top = '50%';
         fill.style.height = half + '%';
         fill.style.background = '#c04848';
       }
-      value.textContent = winPct + '%';
-      const deltaEl = document.getElementById('winDelta');
-      deltaEl.className = 'winbar-delta ' + (delta > 0 ? 'up' : delta < 0 ? 'down' : 'flat');
-      deltaEl.textContent = winAnchor === null ? '' :
-        (delta > 0 ? '▲ +' + delta : delta < 0 ? '▼ ' + delta : '— even');
       const floorsAgo = (curFloor !== null && winFloor !== null) ? curFloor - winFloor : 0;
       const stale = floorsAgo >= 2;
       bar.classList.toggle('stale', stale);
