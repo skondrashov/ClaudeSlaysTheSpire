@@ -127,9 +127,11 @@ def _load_ontology(category: str, name: str) -> str | None:
 
 
 def _load_phenomenon(category: str, name: str) -> str | None:
-    """Load a phenomenon (resolved upgraded card). Fires for '+'-suffixed names,
-    mapping to phenomena/sts1/<category>/<stem>-plus.md. None if absent."""
-    return _load_entry(PHENOMENA_DIR, category, name, suffix="-plus.md")
+    """Load a phenomenon. Resolved upgraded cards live at
+    phenomena/sts1/<category>/<stem>-plus.md (tried first); authored phenomena
+    (recognitions) are plain <stem>.md files. None if absent."""
+    return (_load_entry(PHENOMENA_DIR, category, name, suffix="-plus.md")
+            or _load_entry(PHENOMENA_DIR, category, name))
 
 
 def _load_heuristic(category: str, name: str) -> str | None:
@@ -2200,6 +2202,20 @@ def _recall_one(handle: str):
     if not parsed:
         return None
     layer, cat, name = parsed[0]
+    if cat == "recognitions" and layer in (None, "phenomena"):
+        # Recognitions live only in phenomena — route the bare category there so
+        # "recognitions/potion-use" and "category:recognitions, potion-use" resolve.
+        layer = "phenomena"
+    if cat == "boundaries" and layer in (None, "awareness"):
+        # Boundary indexes live only in awareness — "boundaries/turn" and
+        # "category:boundaries, turn" route straight to the file.
+        for stem in _stem_candidates(name):
+            try:
+                path = os.path.join(ROOT, "awareness", "sts1", "boundaries", stem + ".md")
+                return open(path, encoding="utf-8").read().strip()
+            except OSError:
+                continue
+        return None
     layer = layer or "ontology"
     is_plus = name.endswith("+")
     if is_plus and layer != "heuristics":      # "Bash+" -> the resolved phenomenon
@@ -2219,6 +2235,14 @@ def _recall_one(handle: str):
         return None
     cats = _HEUR_CATS if layer == "heuristics" else _ONT_CATS
     texts = []   # (address, text) — several categories can share a name
+    if layer == "heuristics":
+        # Root-level topic files (combat.md, map.md, hp-management.md, ...) —
+        # "layer:heuristics, combat" must reach them; they have no category.
+        for stem in _stem_candidates(name):
+            e = _load_heuristic_root(stem + ".md")
+            if e:
+                texts.append((name, e))
+                break
     for c in cats:
         e = loader(c, name)
         if e:
