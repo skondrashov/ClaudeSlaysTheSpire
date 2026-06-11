@@ -540,6 +540,165 @@
     .run-summary .summary-line.result-death { color: #e07070; }
     .run-summary .summary-line.result-victory { color: #4ade80; }
 
+    /* === DECISION ROWS: action rail over the game + reasoning in the sidebar.
+       One row per decision; the row's height is the max of its two cells, so
+       chip and reasoning stay vertically in sync. === */
+    .decision-rows {
+      position: absolute;
+      top: 64px;
+      right: 0;
+      bottom: 124px;            /* clear of the sidebar's floor graph */
+      width: 670px;             /* 250px rail (over game) + 420px sidebar */
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      overflow: hidden;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .d-row { display: flex; align-items: flex-start; }
+
+    .d-act {
+      width: 250px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 12px;
+    }
+
+    .d-act .command-badge {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      max-width: 235px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 0;
+    }
+
+    .d-act.kind-think .command-badge { background: #14605a; color: #c8f5ee; }
+    .d-act.kind-meta .command-badge { background: #2a5a35; color: #c9f5d2; }
+
+    .d-reason {
+      width: 420px;
+      padding: 0 20px;
+      font-size: 18px;
+      line-height: 1.45;
+      color: #999;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+    }
+
+    .d-row:first-child .d-reason {
+      font-size: 21px;
+      line-height: 1.5;
+      color: #eee;
+      -webkit-line-clamp: 14;
+    }
+
+    .d-rows-empty {
+      width: 420px;
+      margin-left: 250px;
+      padding: 0 20px;
+      color: #999;
+      font-style: italic;
+      font-size: 22px;
+    }
+
+    /* === WIN% EVAL BAR (left edge, over the game) === */
+    .win-bar {
+      position: absolute;
+      left: 14px;
+      top: 250px;
+      width: 70px;
+      text-align: center;
+      z-index: 5;
+      transition: opacity 0.6s ease;
+    }
+
+    .win-bar.stale { opacity: 0.5; }
+
+    .win-bar .winbar-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #ddd;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      margin-bottom: 6px;
+    }
+
+    .win-bar .winbar-track {
+      position: relative;
+      width: 26px;
+      height: 360px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .win-bar .winbar-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: #888;
+      transition: height 0.8s ease, background 0.8s ease;
+    }
+
+    .win-bar .winbar-value {
+      margin-top: 6px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    }
+
+    .win-bar .winbar-age {
+      font-size: 12px;
+      color: #ccc;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      min-height: 15px;
+    }
+
+    /* === STATIC BOTTOM BAR: book tile === */
+    .tile.book-tile {
+      width: 320px;
+      flex-shrink: 0;
+    }
+
+    .book-tile .knowledge-grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 2px 14px;
+      margin-bottom: 8px;
+    }
+
+    .book-tile .knowledge-item { font-size: 14px; }
+    .book-tile .knowledge-item span { width: auto; }
+
+    .learned-line {
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #ccc;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .learned-line .learned-tag {
+      color: #4ade80;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-right: 6px;
+    }
+
     /* Hide all scrollbars */
     ::-webkit-scrollbar { width: 0; height: 0; display: none; }
     * { scrollbar-width: none; }
@@ -556,17 +715,13 @@
     <div class="agent-body" id="agentBody"></div>
   </div>
 
-  <!-- Right sidebar: reasoning history -->
+  <!-- Right sidebar: header + floor graph (decision reasoning lives in #decisionRows) -->
   <div class="sidebar">
     <div class="header">
       <h1>CLAUDE SLAYS THE SPIRE</h1>
     </div>
 
-    <div class="sidebar-section grow">
-      <div class="reasoning-log" id="reasoningLog">
-        <div class="reasoning-empty">Waiting for first decision...</div>
-      </div>
-    </div>
+    <div style="flex: 1; min-height: 0;"></div>
 
     <div class="floor-graph" id="floorGraphContainer">
       <div class="floor-graph-label">Previous Runs</div>
@@ -574,28 +729,33 @@
     </div>
   </div>
 
-  <!-- Bottom bar: cycles between gameplay and context -->
+  <!-- Decision rows: action chips on a transparent rail over the game's right
+       edge, reasoning in the sidebar — one row each, heights synced -->
+  <div class="decision-rows" id="decisionRows">
+    <div class="d-rows-empty">Waiting for first decision...</div>
+  </div>
+
+  <!-- Win% eval bar over the game's left edge -->
+  <div class="win-bar" id="winBar">
+    <div class="winbar-label">WIN%</div>
+    <div class="winbar-track"><div class="winbar-fill" id="winFill"></div></div>
+    <div class="winbar-value" id="winValue">—</div>
+    <div class="winbar-age" id="winAge"></div>
+  </div>
+
+  <!-- Bottom bar: static — deck, previous runs, the book -->
   <div class="bottom-bar">
-    <!-- Panel A: Gameplay (action log + deck) -->
-    <div class="panel" id="panelGameplay">
+    <div class="panel active" id="panelMain">
       <div class="tile feed-tile">
-        <div class="ctx-title">Actions</div>
-        <div class="action-feed" id="actionFeed"></div>
-      </div>
-      <div class="tile deck-tile">
         <div class="ctx-title">Deck (<span id="deckCount">0</span>)</div>
         <div class="deck-list" id="deckList"></div>
       </div>
-    </div>
-
-    <!-- Panel B: Context (overview + playbook + run history + notes) -->
-    <div class="panel active" id="panelContext">
-      <div class="tile overview-tile">
-        <div class="project-url">claudeslaysthespire.org</div>
-        <div class="overview-content" id="overviewContent"></div>
+      <div class="tile run-history-tile">
+        <div class="ctx-title">Previous Runs</div>
+        <div id="charStats"></div>
       </div>
-      <div class="tile playbook-tile">
-        <div class="ctx-title">Knowledge</div>
+      <div class="tile book-tile">
+        <div class="ctx-title">The Book</div>
         <div class="knowledge-grid" id="knowledgeGrid">
           <div class="knowledge-item"><span id="pb-cards">-</span> cards</div>
           <div class="knowledge-item"><span id="pb-enemies">-</span> enemies</div>
@@ -605,77 +765,59 @@
           <div class="knowledge-item"><span id="pb-potions">-</span> potions</div>
           <div class="knowledge-item"><span id="pb-upgrades">-</span> upgrades</div>
         </div>
+        <div class="learned-line" id="learnedLine"><span class="learned-tag">Learned</span>Every run updates the book.</div>
+        <div class="project-url">claudeslaysthespire.org</div>
       </div>
-      <div class="tile run-history-tile">
-        <div class="ctx-title">Run History</div>
-        <div id="charStats"></div>
-      </div>
-      <div class="tile notes-tile">
-        <div class="ctx-title">Notes</div>
-        <div class="notes-content" id="notes"></div>
-      </div>
-    </div>
-
-    <!-- Panel C: Strategy (last think() output) -->
-    <div class="panel" id="panelStrategy">
-      <div class="tile strategy-tile">
-        <div class="ctx-title" id="strategyTitle">Latest Strategy Reasoning</div>
-        <div class="strategy-content" id="strategyContent">
-          <div class="reasoning-empty">No strategy posted yet...</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Countdown bar -->
-    <div class="countdown-bar">
-      <div class="countdown-bar-fill" id="countdownBar"></div>
     </div>
   </div>
 
   <script>
     const WS_URL = 'ws://127.0.0.1:3001';
-    const CYCLE_INTERVAL = 30000; // 30 seconds
     let ws = null;
     let reconnectDelay = 1000;
     let lastState = null;
-    let savedFeedHTML = '';
-    let currentPanel = 1;
-    const panels = ['panelGameplay', 'panelContext', 'panelStrategy'];
-    let cycleStart = Date.now();
-    let cycleTimer = null;
 
-    // --- Bottom bar cycling with countdown bar ---
+    // --- Win% eval bar ---
+    // Driven by the WIN% labels the player posts in its reasoning (win.md
+    // mandates them). Persists the last value; dims with an age marker when
+    // the label hasn't moved for 2+ floors.
+    let winPct = null, winFloor = null, curFloor = null;
 
-    function cyclePanel() {
-      // Collapse expanded strategy when leaving that panel
-      if (panels[currentPanel] === 'panelStrategy') {
-        const bar = document.querySelector('.bottom-bar');
-        bar.classList.remove('strategy-expanded');
-        bar.style.height = '';
+    function parseWinPct(text) {
+      if (!text) return null;
+      const matches = [...text.matchAll(/WIN\s*%[\s:~]*(\d{1,3})/gi)];
+      if (!matches.length) return null;
+      return Math.min(100, parseInt(matches[matches.length - 1][1], 10));
+    }
+
+    function noteWinPct(text) {
+      const pct = parseWinPct(text);
+      if (pct === null) return;
+      winPct = pct;
+      winFloor = curFloor;
+      renderWinBar();
+    }
+
+    function renderWinBar() {
+      const bar = document.getElementById('winBar');
+      const fill = document.getElementById('winFill');
+      const value = document.getElementById('winValue');
+      const age = document.getElementById('winAge');
+      if (winPct === null) {
+        fill.style.height = '0%';
+        value.textContent = '—';
+        age.textContent = '';
+        bar.classList.remove('stale');
+        return;
       }
-      document.getElementById(panels[currentPanel]).classList.remove('active');
-      currentPanel = (currentPanel + 1) % panels.length;
-      document.getElementById(panels[currentPanel]).classList.add('active');
-      cycleStart = Date.now();
+      fill.style.height = winPct + '%';
+      fill.style.background = `hsl(${Math.round(winPct * 1.2)}, 65%, 48%)`;
+      value.textContent = winPct + '%';
+      const floorsAgo = (curFloor !== null && winFloor !== null) ? curFloor - winFloor : 0;
+      const stale = floorsAgo >= 2;
+      bar.classList.toggle('stale', stale);
+      age.textContent = stale ? `${floorsAgo} floors ago` : '';
     }
-
-    function resetCycleTimer() {
-      if (cycleTimer) clearInterval(cycleTimer);
-      cycleStart = Date.now();
-      cycleTimer = setInterval(cyclePanel, CYCLE_INTERVAL);
-    }
-
-    resetCycleTimer();
-
-    // Animate the countdown bar — shrinks right-to-left, resets on cycle
-    function updateCountdownBar() {
-      const elapsed = Date.now() - cycleStart;
-      const remaining = Math.max(1 - elapsed / CYCLE_INTERVAL, 0);
-      const bar = document.getElementById('countdownBar');
-      if (bar) bar.style.transform = `scaleX(${remaining})`;
-      requestAnimationFrame(updateCountdownBar);
-    }
-    requestAnimationFrame(updateCountdownBar);
 
     // --- Data fetching ---
 
@@ -733,37 +875,34 @@
         .catch(() => {});
     }
 
-    function fetchNotes() {
-      fetch('http://127.0.0.1:3002/notes')
-        .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-        .then(text => {
-          const container = document.getElementById('notes');
-          const lines = text.split('\n').filter(l => l.trim());
-          container.innerHTML = lines.map(l => `<div class="note-line">${esc(l)}</div>`).join('');
-        })
+    // --- "Recently learned" line in the Book card — rotates through the
+    // latest knowledge-layer commit subjects (served by stream.py /learned;
+    // 404s harmlessly until that endpoint ships/restarts). ---
+    let learnedLines = [], learnedIdx = 0;
+
+    function fetchLearned() {
+      fetch('http://127.0.0.1:3002/learned')
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(j => { learnedLines = j.lines || []; rotateLearned(true); })
         .catch(() => {});
     }
 
-    function fetchOverview() {
-      fetch('http://127.0.0.1:3002/overview')
-        .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-        .then(text => {
-          const container = document.getElementById('overviewContent');
-          const lines = text.split('\n').filter(l => l.trim());
-          container.innerHTML = lines.map(l => `<div class="note-line">${esc(l)}</div>`).join('');
-        })
-        .catch(() => {});
+    function rotateLearned(keep) {
+      if (!learnedLines.length) return;
+      if (!keep) learnedIdx = (learnedIdx + 1) % learnedLines.length;
+      learnedIdx = Math.min(learnedIdx, learnedLines.length - 1);
+      document.getElementById('learnedLine').innerHTML =
+        `<span class="learned-tag">Learned</span>${esc(learnedLines[learnedIdx])}`;
     }
 
     // Fetch all context data on load and periodically
     fetchPlaybookStats();
     fetchCharacterStats();
-    fetchNotes();
-    fetchOverview();
+    fetchLearned();
     setInterval(fetchPlaybookStats, 60000);
     setInterval(fetchCharacterStats, 60000);
-    setInterval(fetchNotes, 30000);
-    setInterval(fetchOverview, 30000);
+    setInterval(fetchLearned, 300000);
+    setInterval(() => rotateLearned(false), 20000);
 
     // --- Deck display ---
 
@@ -877,9 +1016,9 @@
 
       ws.onopen = () => {
         reconnectDelay = 1000;
-        // The server replays the whole persisted action feed on (re)connect —
-        // clear the existing entries so a stream.py restart doesn't duplicate them.
-        document.getElementById('actionFeed').innerHTML = '';
+        // The server replays the persisted feed on (re)connect — clear the
+        // decision rows so a stream.py restart doesn't duplicate them.
+        document.getElementById('decisionRows').innerHTML = '';
       };
 
       ws.onmessage = (e) => {
@@ -904,40 +1043,37 @@
           return;
         case 'state':
           lastState = event;
+          if (typeof event.floor === 'number') { curFloor = event.floor; renderWinBar(); }
           if (event.deck) updateDeck(event.deck);
           break;
         case 'decision':
+          if (event.reasoning) noteWinPct(event.reasoning);
           if (event.command === 'reasoning') {
-            // Live agent deliberation (reasoning_bridge): Strategy panel ONLY —
-            // keep it out of the decision log and action feed.
-            if (event.reasoning) updateStrategy(event.translated || 'Reasoning', event.reasoning);
+            // Live agent deliberation (reasoning_bridge): a THINKING row in
+            // the unified decision log.
+            if (event.reasoning) addRow(event.translated || 'THINKING', event.reasoning, 'think');
             break;
           }
-          addReasoning(event);
-          if (event.command === 'think' && event.reasoning) {
-            updateStrategy(event.translated || 'Strategy', event.reasoning);
+          if (event.command === 'think') {
+            addRow(event.translated || 'STRATEGY', event.reasoning || '', 'think');
+            break;
           }
-          if (!event.skip_feed) {
-            const displayText = event.translated || translateCommand(event.command);
-            const color = categorizeAction(event.command);
-            addFeedEntry(displayText, color);
-          }
+          addRow(event.translated || translateCommand(event.command),
+                 event.reasoning || '', categorizeAction(event.command));
           break;
         case 'feed':
-          addFeedEntry(event.text, categorizeFeed(event.text));
+          // Meta feed lines (RUN START / VICTORY / ...) become chip-only rows.
+          addRow(event.text, '', 'meta');
           break;
         case 'run_start':
           clearForNewRun();
-          addFeedEntry('RUN ' + (event.run_number || '?') + ' — ' + event.class, 'meta');
+          addRow('RUN ' + (event.run_number || '?') + ' — ' + event.class, '', 'meta');
           if (event.run_number) {
             fetchCharacterStats();
           }
           break;
         case 'run_end':
-          addFeedEntry(
-            (event.victory ? 'VICTORY' : 'DEFEAT') + ` — Floor ${event.floor}`,
-            'meta'
-          );
+          addRow((event.victory ? 'VICTORY' : 'DEFEAT') + ` — Floor ${event.floor}`, '', 'meta');
           if (event.stats) updateRunStats(event.stats);
           fetchFloorHistory();
           fetchPlaybookStats();
@@ -965,14 +1101,10 @@
 
     function toggleAgentMode(event) {
       const panel = document.getElementById('agentPanel');
-      const feed = document.getElementById('actionFeed');
-
       if (event.active) {
         panel.classList.add('active');
         document.getElementById('agentTitle').textContent = event.title || 'ANALYSIS';
         document.getElementById('agentBody').innerHTML = '';
-
-        savedFeedHTML = feed.innerHTML;
         const stats = event.run_stats || {};
         const summary = event.run_summary || '';
         const runNum = stats.total_runs || '?';
@@ -993,13 +1125,8 @@
         }
 
         summaryHTML += `</div>`;
-        feed.innerHTML = summaryHTML;
       } else {
         panel.classList.remove('active');
-        if (savedFeedHTML) {
-          feed.innerHTML = savedFeedHTML;
-          savedFeedHTML = '';
-        }
       }
     }
 
@@ -1088,145 +1215,51 @@
     // --- UI updates ---
 
     function clearForNewRun() {
-      const log = document.getElementById('reasoningLog');
-      log.innerHTML = '<div class="reasoning-empty">New run starting...</div>';
-      const feed = document.getElementById('actionFeed');
-      feed.innerHTML = '';
-      document.getElementById('strategyTitle').textContent = 'Latest Strategy Reasoning';
-      document.getElementById('strategyContent').innerHTML = '<div class="reasoning-empty">No strategy posted yet...</div>';
+      document.getElementById('decisionRows').innerHTML =
+        '<div class="d-rows-empty">New run starting...</div>';
       lastState = null;
+      winPct = null; winFloor = null; curFloor = null;
+      renderWinBar();
     }
 
-    function updateStrategy(label, reasoning) {
-      document.getElementById('strategyTitle').textContent = 'Latest Strategy Reasoning';
-      const el = document.getElementById('strategyContent');
 
-      // Check if this is the first think (placeholder still showing) before overwriting
-      const isFirstThink = !!el.querySelector('.reasoning-empty');
-
-      // Collapse consecutive blank lines and trim
-      const cleaned = reasoning.replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
-      el.textContent = cleaned;
-
-      // Reset any previous expansion
-      const bottomBar = document.querySelector('.bottom-bar');
-      bottomBar.classList.remove('strategy-expanded');
-      bottomBar.style.height = '';
-
-      // Only force-switch on the first think of the run (placeholder → real content).
-      // Don't force-switch on every think — frequent thinks starve other panels.
-      const stratIdx = panels.indexOf('panelStrategy');
-      if (stratIdx !== -1 && currentPanel !== stratIdx && isFirstThink) {
-        document.getElementById(panels[currentPanel]).classList.remove('active');
-        currentPanel = stratIdx;
-        document.getElementById(panels[currentPanel]).classList.add('active');
-        resetCycleTimer();
-      }
-
-      // Fit text after layout settles
-      requestAnimationFrame(() => fitStrategyText());
-    }
-
-    function fitStrategyText() {
-      const el = document.getElementById('strategyContent');
-      const tile = el.closest('.strategy-tile');
-      if (!tile) return;
-      const bottomBar = document.querySelector('.bottom-bar');
-      const maxFontSize = 19;
-      const minFontSize = 15;
-      const defaultBarHeight = 236;
-      const maxBarHeight = 500;
-
-      // Reset to single column, default size
-      el.style.columnCount = '';
-      el.style.columnGap = '';
-      let fontSize = maxFontSize;
-      el.style.fontSize = fontSize + 'px';
-
-      function getAvailableHeight() {
-        const titleEl = document.getElementById('strategyTitle');
-        const tileStyle = getComputedStyle(tile);
-        const tileH = tile.clientHeight
-          - parseFloat(tileStyle.paddingTop) - parseFloat(tileStyle.paddingBottom);
-        return tileH - titleEl.offsetHeight - 4;
-      }
-
-      // Phase 1: shrink font to min at default bar height
-      let availableHeight = getAvailableHeight();
-      while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
-        fontSize -= 0.5;
-        el.style.fontSize = fontSize + 'px';
-      }
-
-      // Phase 2: if still overflowing at min font, grow the bar to fit
-      if (el.scrollHeight > availableHeight) {
-        const overflow = el.scrollHeight - availableHeight;
-        const newHeight = Math.min(defaultBarHeight + overflow + 16, maxBarHeight);
-        bottomBar.classList.add('strategy-expanded');
-        bottomBar.style.height = newHeight + 'px';
-
-        // Re-fit with the extra space — try to get font back up
-        requestAnimationFrame(() => {
-          availableHeight = getAvailableHeight();
-          fontSize = maxFontSize;
-          el.style.fontSize = fontSize + 'px';
-          while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
-            fontSize -= 0.5;
-            el.style.fontSize = fontSize + 'px';
-          }
-
-          // Phase 3: if STILL overflowing, two columns as last resort
-          if (el.scrollHeight > availableHeight) {
-            el.style.columnCount = '2';
-            el.style.columnGap = '24px';
-            el.style.columnFill = 'auto';
-            fontSize = maxFontSize;
-            el.style.fontSize = fontSize + 'px';
-            while (fontSize > minFontSize && el.scrollHeight > availableHeight) {
-              fontSize -= 0.5;
-              el.style.fontSize = fontSize + 'px';
-            }
-          }
-        });
-      }
-    }
-
-    function addReasoning(d) {
-      const log = document.getElementById('reasoningLog');
-      const empty = log.querySelector('.reasoning-empty');
+    // --- Decision rows: chip on the rail (over game), reasoning in the
+    // sidebar. One flex row per decision keeps the pair height-synced. ---
+    function addRow(chipText, reasoning, kind) {
+      const rows = document.getElementById('decisionRows');
+      const empty = rows.querySelector('.d-rows-empty');
       if (empty) empty.remove();
 
-      const entry = document.createElement('div');
-      entry.className = 'reasoning-entry';
-      let html = '';
-      if (d.command) {
-        const badgeText = d.translated || translateCommand(d.command);
-        html += `<div class="command-badge">${esc(badgeText)}</div>`;
-      }
-      // For think events, only show the badge — full text goes to strategy panel
-      if (d.reasoning && d.command !== 'think') {
-        html += `<span class="reason-text">${esc(d.reasoning)}</span>`;
-      }
-      entry.innerHTML = html;
-      log.insertBefore(entry, log.firstChild);
+      const row = document.createElement('div');
+      row.className = 'd-row';
+      const kindClass = kind === 'think' ? ' kind-think' : (kind === 'meta' ? ' kind-meta' : '');
+      const cleaned = (reasoning || '').replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
+      row.innerHTML =
+        `<div class="d-act${kindClass}"><div class="command-badge">${esc(chipText || '')}</div></div>` +
+        `<div class="d-reason">${esc(cleaned)}</div>`;
+      rows.insertBefore(row, rows.firstChild);
 
-      while (log.children.length > 20) {
-        log.removeChild(log.lastChild);
+      while (rows.children.length > 14) {
+        rows.removeChild(rows.lastChild);
       }
-      log.scrollTop = 0;
+      requestAnimationFrame(applyRowFade);
     }
 
-    function addFeedEntry(text, color) {
-      const feed = document.getElementById('actionFeed');
-      const entry = document.createElement('div');
-      entry.className = 'feed-entry';
-      const colorClass = color ? ` color-${color}` : '';
-      entry.innerHTML = `<span class="feed-action${colorClass}">${esc(text || '')}</span>`;
-      feed.appendChild(entry);
-
-      const maxEntries = 21;
-      while (feed.children.length > maxEntries) {
-        feed.removeChild(feed.firstChild);
+    // Progressive fade for the action rail: full strength up top, ~50% by the
+    // exhaust-count region, fully gone before the bottom bar (game y≈844).
+    function applyRowFade() {
+      const rows = document.getElementById('decisionRows');
+      const containerTop = 64;
+      for (const row of rows.children) {
+        const act = row.querySelector('.d-act');
+        if (!act) continue;
+        const y = containerTop + row.offsetTop;
+        let o;
+        if (y <= 380) o = 1;
+        else if (y <= 700) o = 1 - 0.5 * (y - 380) / 320;
+        else if (y <= 830) o = 0.5 * (1 - (y - 700) / 130);
+        else o = 0;
+        act.style.opacity = o.toFixed(2);
       }
     }
 

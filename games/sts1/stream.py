@@ -36,6 +36,38 @@ except ImportError:
 WS_PORT = 3001
 HTTP_PORT = 3002
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+# "Recently learned" cache for the overlay's Book card
+_lessons_cache = {"at": 0.0, "lines": []}
+
+
+def _recent_lessons() -> list:
+    """Subjects of the latest knowledge-layer commits (heuristics/ontology/
+    phenomena) — what the book most recently learned. 5-minute cache."""
+    import subprocess
+    now = time.time()
+    if now - _lessons_cache["at"] < 300 and _lessons_cache["lines"]:
+        return _lessons_cache["lines"]
+    try:
+        out = subprocess.run(
+            ["git", "log", "-n", "8", "--format=%s", "--",
+             "heuristics", "ontology", "phenomena", "awareness"],
+            capture_output=True, text=True, encoding="utf-8",
+            cwd=REPO_ROOT, timeout=10)
+        lines = []
+        for s in (out.stdout or "").splitlines():
+            s = s.strip()
+            if not s:
+                continue
+            # Drop conventional prefixes; keep the human-readable subject.
+            s = re.sub(r"^\w[\w-]*:\s*", "", s)
+            lines.append(s[:120])
+        if lines:
+            _lessons_cache.update(at=now, lines=lines[:8])
+    except Exception:
+        pass
+    return _lessons_cache["lines"]
 STATE_FILE = os.path.join(DATA_DIR, "last_state.json")
 EVENT_LOG = os.path.join(DATA_DIR, "stream_events.jsonl")
 STATS_FILE = os.path.join(DATA_DIR, "run_stats.json")
@@ -584,6 +616,15 @@ class DecisionHandler(BaseHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(content.encode("utf-8"))
+        elif self.path == "/learned":
+            # Recent knowledge-layer commit subjects — the overlay's Book card
+            # rotates these as "recently learned" lines. Cached 5 minutes.
+            lines = _recent_lessons()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps({"lines": lines}).encode("utf-8"))
         elif self.path == "/reload":
             # Reload stats from disk and broadcast to all overlay clients
             _reload_stats()
