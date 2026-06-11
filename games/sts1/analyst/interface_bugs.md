@@ -238,6 +238,22 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 ---
 
+## IB-015: Full-belt shop potion purchase wedges the CommunicationMod command loop
+
+**What:** Run 244 floor 31: the player bought a shop potion with all slots full. The game silently ignores the purchase (no state change), CommunicationMod's command loop waited forever for a state change that never came, and the relay stopped answering entirely — every subsequent command got empty acks, then raw state queries timed out. The player spammed leave/return retries into the dead pipe.
+
+**Root cause:** The mod's shop choice list filters by GOLD only (verified in decompiled getAvailableShopItems), so a full-belt potion is offered as a valid choice; the game-side purchase no-ops; the mod's ready/state-change handshake never completes. Same mechanism as the documented combat-reward potion hang, shop flavor.
+
+**Impact:** FATAL to the session without orchestrator recovery (pipeline wedge, not a game crash — the game stays interactive on screen).
+
+**Recovery (proven, runs 241/244):** save backup -> kill.ps1 + launch.ps1 (game+relay restart) -> game_mouse.ps1 hover-verify Continue click -> save resumes at floor entry. ~5 minutes.
+
+**Affected runs:** 244 (recovered).
+
+**Status:** GUARDED (2026-06-11, commit d3d2519 — landed minutes after the wedge): cmd.py refuses full-belt shop potion purchases with a loud drink/discard-first error, and the shop formatter flags the potions section CANNOT BUY. The underlying mod hang remains (candidate fix for the companion mod: have the purchase command fail loudly when slots are full).
+
+---
+
 ## Tracking
 
 When a new interface bug is observed, add it here with:
