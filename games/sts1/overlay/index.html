@@ -662,13 +662,34 @@
 
     .win-bar .winbar-fill {
       position: absolute;
-      bottom: 0;
       left: 0;
       width: 100%;
       height: 0%;
       background: #888;
-      transition: height 0.8s ease, background 0.8s ease;
+      transition: height 0.8s ease, top 0.8s ease, background 0.8s ease;
     }
+
+    /* Center line = the run's starting estimate; the bar shows movement
+       around it (up green, down red), chess-eval style */
+    .win-bar .winbar-center {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.5);
+      z-index: 1;
+    }
+
+    .win-bar .winbar-delta {
+      font-size: 16px;
+      font-weight: 700;
+      min-height: 20px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    }
+    .win-bar .winbar-delta.up { color: #4ade80; }
+    .win-bar .winbar-delta.down { color: #f87171; }
+    .win-bar .winbar-delta.flat { color: #aaa; }
 
     .win-bar .winbar-value {
       margin-top: 6px;
@@ -766,8 +787,9 @@
   <!-- Win% eval bar over the game's left edge -->
   <div class="win-bar" id="winBar">
     <div class="winbar-label">PREDICTED<br>WIN%</div>
-    <div class="winbar-track"><div class="winbar-fill" id="winFill"></div></div>
+    <div class="winbar-track"><div class="winbar-center"></div><div class="winbar-fill" id="winFill"></div></div>
     <div class="winbar-value" id="winValue">—</div>
+    <div class="winbar-delta flat" id="winDelta"></div>
     <div class="winbar-age" id="winAge"></div>
   </div>
 
@@ -808,7 +830,8 @@
     // Driven by the WIN% labels the player posts in its reasoning (win.md
     // mandates them). Persists the last value; dims with an age marker when
     // the label hasn't moved for 2+ floors.
-    let winPct = null, winFloor = null, curFloor = null;
+    let winPct = null, winFloor = null, curFloor = null, winAnchor = null;
+    const WIN_RANGE = 25;   // percentage points mapped to a full half-bar
 
     function parseWinPct(text) {
       if (!text) return null;
@@ -820,6 +843,7 @@
     function noteWinPct(text) {
       const pct = parseWinPct(text);
       if (pct === null) return;
+      if (winAnchor === null) winAnchor = pct;   // the run's starting estimate
       winPct = pct;
       winFloor = curFloor;
       renderWinBar();
@@ -834,12 +858,29 @@
         fill.style.height = '0%';
         value.textContent = '—';
         age.textContent = '';
+        document.getElementById('winDelta').textContent = '';
         bar.classList.remove('stale');
         return;
       }
-      fill.style.height = winPct + '%';
-      fill.style.background = `hsl(${Math.round(winPct * 1.2)}, 65%, 48%)`;
+      // Movement around the run's starting estimate: center line is the
+      // anchor; the fill grows up (green) or down (red) from it. The true
+      // number stays in the text — only the bar is relative.
+      const delta = winPct - (winAnchor === null ? winPct : winAnchor);
+      const half = Math.min(Math.abs(delta) / WIN_RANGE, 1) * 50;
+      if (delta >= 0) {
+        fill.style.top = (50 - half) + '%';
+        fill.style.height = half + '%';
+        fill.style.background = '#3aa860';
+      } else {
+        fill.style.top = '50%';
+        fill.style.height = half + '%';
+        fill.style.background = '#c04848';
+      }
       value.textContent = winPct + '%';
+      const deltaEl = document.getElementById('winDelta');
+      deltaEl.className = 'winbar-delta ' + (delta > 0 ? 'up' : delta < 0 ? 'down' : 'flat');
+      deltaEl.textContent = winAnchor === null ? '' :
+        (delta > 0 ? '▲ +' + delta : delta < 0 ? '▼ ' + delta : '— even');
       const floorsAgo = (curFloor !== null && winFloor !== null) ? curFloor - winFloor : 0;
       const stale = floorsAgo >= 2;
       bar.classList.toggle('stale', stale);
@@ -1245,7 +1286,7 @@
       document.getElementById('decisionRows').innerHTML =
         '<div class="d-rows-empty">New run starting...</div>';
       lastState = null;
-      winPct = null; winFloor = null; curFloor = null;
+      winPct = null; winFloor = null; curFloor = null; winAnchor = null;
       renderWinBar();
     }
 
