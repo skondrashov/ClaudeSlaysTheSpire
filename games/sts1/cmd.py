@@ -1920,6 +1920,44 @@ def turn(actions: list, reason: str = "") -> str:
             )
             break
 
+        # Silent no-op tripwire (run 241 F50 — third consecutive run with this
+        # family, second contributing to a death): a "play" the relay accepted
+        # but the game ignored leaves the echo claiming success while the card
+        # sits in hand. Echo-level verification lies; verify at STATE level —
+        # the played card must actually leave the hand (a draw restores hand
+        # SIZE but not the played card's count, so both must be unchanged to
+        # trigger).
+        if (resolved_action.strip().lower().startswith("play ")
+                and pre_combat is not None
+                and new_screen not in ("HAND_SELECT", "GRID", "CARD_REWARD",
+                                       "COMBAT_REWARD")):
+            tokens = resolved_action.strip().split()
+            intended_name = None
+            if len(tokens) >= 2:
+                pre_hand = pre_combat.get("hand", [])
+                if tokens[1].isdigit():
+                    k = int(tokens[1]) - 1
+                    if 0 <= k < len(pre_hand):
+                        intended_name = pre_hand[k].get("name")
+                else:
+                    intended_name = tokens[1]
+            post_combat_now = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
+            if intended_name and post_combat_now is not None and pre_hand_size is not None:
+                def _count_named(hand, name=intended_name):
+                    return sum(1 for c in hand if c.get("name", "").lower() == name.lower())
+                before_n = _count_named(pre_combat.get("hand", []))
+                after_hand = post_combat_now.get("hand", [])
+                if (before_n > 0 and _count_named(after_hand) >= before_n
+                        and len(after_hand) >= pre_hand_size):
+                    stopped_msg = (
+                        f"[SEQUENCE STOPPED after action {i + 1}/{total}: SILENT NO-OP — "
+                        f"'{resolved_action.strip()}' was accepted but {intended_name} is "
+                        f"still in your hand and the hand did not shrink. The play appears "
+                        f"NOT to have happened. Re-read the state and replay by NAME. "
+                        f"Remaining actions skipped.]"
+                    )
+                    break
+
         # Detect draw: if we played a card but hand size didn't shrink, cards were drawn.
         # Stop the sequence so the player can see the new cards and re-plan.
         if (pre_hand_size is not None
