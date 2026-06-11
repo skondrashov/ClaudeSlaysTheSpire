@@ -22,13 +22,13 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 
 ## Directive 11: Corruption-without-FNP — seed replay
 
-**Status:** Open. Seed `3405875975300375922` (A9 Ironclad).
+**Status:** Open — ONE REPLICATION AUTHORIZED, then close regardless (run 240 attempted, audited: analyst/audits/run_240.md). Seed `3405875975300375922` (A9 Ironclad).
 
-**Context:** A run on this seed picked up a free Corruption at the burning Gremlin Nob (Power Potion on the free turn), explicitly tagged it "engine seed — need FNP," never completed the package, and died on floor 31 (Snake Plant) with strong Act 1 momentum wasted. A standing margin note also suggests Corruption alone (zeroing Skill costs) may be underrated even without FNP.
+**Run 240 outcome:** Died floor 25 (Centurion+Mystic) from 47/80 — **predominantly interface races** (an eaten turn + a wrong-card resolution during relay lag; the race is since fixed at source), not the thesis. Route/pick controls held node-for-node both acts (comparison-integrity grade B). **Sub-question (a) ANSWERED: CONFIRMED, scoped to ~4-7 turn fights** — verified ledgers: Nob T1 4E of Skills free; Spheric Guardian 8 Skills at 0E (~9E saved) with Barricade banking the surplus; **Sentinel under Corruption is strictly energy-positive (0E play → block + 2E refund, mechanically clean)**; exhaust never bound before fight end. Counter-finding: Frail taxed ~30% of all engine block, and on the one matched Act 2 fight (solo Spheric F18) the engine paid 42 HP where the baseline's attack line paid 16 — net-positive energy per turn does NOT mean fight-level superiority in block-vs-block attrition. FNP never appeared on this seed (both shops verified). **Sub-question (b) — Snake Plant F31 with the engine — STILL UNCOLLECTED.**
 
-**Test:** Replay the seed. Priorities: complete the exhaust package (Feel No Pain, exhaust tools; Dead Branch if offered) around Corruption, and weight block density per the updated drafting checklist. Record: (a) whether Corruption-without-FNP turns were net positive before the package completes (energy saved vs cards lost to exhaust), (b) the Snake Plant fight cost with the engine vs without.
+**Replication (one only, conditions):** (1) identical draft/route — the run-240 controls carry over; (2) Spheric F18: the engine measurement is already collected — play it attack-led/cheaper to preserve HP (the run-240 death chain started with the 42-HP overpay there); (3) enter Book of Stabbing ≥ ~30 HP or bail pre-commitment, so **Smoke Bomb survives to Centurion+Mystic** (it saved the baseline there); (4) C+M: Mystic-first per the page, and apply the heal-arming rule — Mystic heals (priority, repeatable, +16 all enemies) once ANY enemy is missing 16+ HP, so burst Mystic past the kill inside one arm-window or hold damage entirely; (5) the prize is floor 31: survive to Snake Plant and price the Frail turn vs the baseline's death there. If the rerun dies pre-F25 for non-interface reasons, close with run 240's findings as final.
 
-**Success criteria:** Reach the Act 2 boss. Secondary: survive floor 31's Snake Plant with a priced Frail turn.
+**Success criteria (unchanged):** Reach the Act 2 boss. Secondary: survive floor 31's Snake Plant with a priced Frail turn.
 
 ## Directive 12: Barricade/Body Slam — seed replay
 

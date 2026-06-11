@@ -132,11 +132,11 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 **Impact:** FATAL. Run 216: extra enemy turn cost 22 HP against Sentries, generating additional Dazes that snowballed into death.
 
-**Affected runs:** 216 (fatal — Sentries)
+**Affected runs:** 216 (fatal — Sentries), 240 (fatal contribution — F25 Centurion+Mystic: `end` re-sent after an empty `{}` state echo, T2 eaten with 5 cards unplayed, 12 HP; the same lag also produced a wrong-card index re-send. See analyst/audits/run_240.md §4-5.)
 
 **Repro seed:** `start IRONCLAD 5 9128496640971033917` (Run 216). Play to F14 Sentries. In a turn with no playable cards, send `end` and immediately send `end` again before the state updates.
 
-**Status:** OPEN. Documented in `interface/sts1/tools.md` as known issue. Agent prompt now says "one `end` per turn" but no cmd.py-level guard.
+**Status:** REPORTED FIXED at source by the maintainer post-run-240 (relay race). Previously OPEN with "one `end` per turn" guidance only. Keep the habit rule (empty/unchanged echo after `end` → re-poll, never re-send) until a clean run confirms.
 
 **Fix:** cmd.py should track whether `end` has been sent this turn and reject duplicates. Add a `_turn_ended` flag that's set on `end` and cleared when state shows a new turn (different turn number or enemy phase). Simple guard in `send()`.
 
@@ -150,9 +150,9 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 **Impact:** Low. Creates duplicate files and inflates run counts. Caught manually and cleaned up, but wastes time.
 
-**Affected runs:** 216/217 (identical), 220/221 (two genuine runs but agent wasn't told to stop after one)
+**Affected runs:** 216/217 (identical), 220/221 (two genuine runs but agent wasn't told to stop after one), 240/241 (identical — run_241 was a duplicate from a double GAME_OVER proceed; removed)
 
-**Status:** OPEN. Workaround: "Play only ONE run" in agent prompt prevents the two-genuine-runs case. The identical-duplicate case (216/217) needs investigation in cmd.py's GAME_OVER handler.
+**Status:** REPORTED FIXED by the maintainer after the run 240/241 duplicate (capture bug). Previously OPEN.
 
 **Fix:** Investigate whether `_log_run()` in cmd.py can fire twice for the same game_over event. Add a guard (e.g., check if run file already exists before writing). Also check regen_stats.py deduplication.
 
