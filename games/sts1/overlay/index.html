@@ -342,7 +342,7 @@
       background: linear-gradient(135deg, rgba(30, 12, 52, 0.98), rgba(24, 36, 68, 0.98));
       /* height matches the game's own top HUD bar (~43px) so the two top
          edges read as one line across the screen */
-      padding: 7px 20px;
+      padding: 9px 20px 10px;
       border-bottom: 3px solid #5a2a9a;
       flex-shrink: 0;
     }
@@ -547,7 +547,7 @@
        chip and reasoning stay vertically in sync. === */
     .decision-rows {
       position: absolute;
-      top: 56px;
+      top: 61px;
       right: 0;
       bottom: 124px;            /* clear of the sidebar's floor graph */
       width: 670px;             /* 250px rail (over game) + 420px sidebar */
@@ -1259,7 +1259,7 @@
 
       const row = document.createElement('div');
       row.className = 'd-row';
-      const kindClass = kind === 'think' ? ' kind-think' : (kind === 'meta' ? ' kind-meta' : '');
+      const kindClass = kind ? ` kind-${kind}` : '';
       const cleaned = (reasoning || '').replace(/\n{3,}/g, '\n\n').replace(/^\n+|\n+$/g, '');
       row.innerHTML =
         `<div class="d-act${kindClass}"><div class="command-badge">${esc(chipText || '')}</div></div>` +

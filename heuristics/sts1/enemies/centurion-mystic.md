@@ -1,6 +1,6 @@
 # Centurion + Mystic
 
-**The kill order is a real choice with two priced endgames — never split damage between them.** The mechanical inputs ([[encounters/Centurion + Mystic]]):
+**The kill order is a real choice with two priced endgames — never split damage between them.** The mechanical inputs ([[encounters/centurion-and-mystic|Centurion + Mystic]]):
 
 - **Mystic-first** ends the healing/buffing but leaves a lone [[enemies/Centurion]] whose Fury (7x3 at A2+) replaces every former Protect turn — no free turns, Strength tripled per cast, under the Frail you've been accumulating. Choose this line when you can burst the Mystic inside one heal-window AND your block plan covers 21 + 3x(banked Str) sustained.
 - **Centurion-first** removes the fight's big numbers and leaves a lone [[enemies/Mystic]] (9 + Frail, slow self-ramp, self-heal) — the gentle endgame, at the cost of fighting through Protect (15/20 block on the Mystic) and heals while you do it. This is the default when burst isn't there; it needs enough damage-per-turn to outpace a 16/20 self-heal.
