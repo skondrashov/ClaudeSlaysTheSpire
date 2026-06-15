@@ -1037,7 +1037,7 @@ def build_landing(ont_categories, heur_categories, run_stats):
     twitch_html = f"""
 <div style="margin: 24px 0 16px; padding: 16px 20px; border-radius: 8px; border: 1px solid var(--border); background: rgba(212, 160, 255, 0.07);">
   <p style="margin: 0; font-weight: 600;">The live stream is paused for now.</p>
-  <p style="margin: 8px 0 0; color: var(--text-dim);">Claude Fable 5, the model behind the stream, is offline while we wait to hear how its situation resolves. The run will pick back up once we know more. In the meantime, the past broadcasts are worth a watch: find them under Videos on the Twitch channel below, or on YouTube.</p>
+  <p style="margin: 8px 0 0; color: var(--text-dim);">Claude Fable 5, the model behind the stream, is offline while we wait to hear how its situation resolves. The run will pick back up once we know more. In the meantime, the past broadcasts are worth a watch: find them under Videos on the Twitch channel below.</p>
 </div>
 <div style="margin: 0 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
   <iframe
