@@ -18,6 +18,7 @@ The Silent wins through many small card plays with stacked multipliers, not sing
 - Most Skill-heavy early deck (9+ Skills vs 5 Attacks). [[enemies/Gremlin Nob]] is extremely punishing.
 - No innate [[buffs/Strength]] scaling. Relies on Accuracy (for Shivs) or Poison for damage scaling.
 - Wraith Form is a finisher, not early defense. -1 Dex/turn is permanent and devastating in long fights.
+- **The damage engine saturates before the defense does.** Shiv/poison decks reach hallway-overkill by mid-Act 2; the Act 3 check is block-per-turn against scaling bosses. Once damage saturates ([[cards/Accuracy]] x2), spend every discretionary slot on block scaling ([[cards/Footwork]] + upgrades, [[cards/After Image]]) — a deck that keeps deepening a saturated engine arrives at the Act 3 boss with a flat block ceiling.
 
 ## Boss Matchups
 

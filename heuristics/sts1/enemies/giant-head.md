@@ -2,7 +2,7 @@
 
 **Core rule:** This is a DPS race against escalating damage. Must have either [[cards/Demon Form]] ([[buffs/Strength]] scaling) or [[cards/Barricade]] + [[cards/Body Slam]] (block scaling). Without either engine, the fight is unwinnable.
 
-**Expected cost:** at the top of the Act 3 elite range even played well. The fight lasts 10+ turns with escalating damage, so the cost is governed by kill speed — a slow deck pays a multiple of this; price it by your turns-to-kill before routing in. If the race runs long, the escalating damage outpaces your block and an exhausted Reaper leaves no recovery path.
+One of the dearest elite fights in Act 3 even played well. **Damage clock:** Count 13 / Glare (Weak) for the first 4 turns, then It Is Time every turn — 30, rising +5 per use to a 60 cap. The fight lasts 10+ turns against that escalation, so the cost is governed by kill speed — a slow deck pays a multiple of what a fast one pays; price it by your turns-to-kill against the clock before routing in. If the race runs long, the escalating damage outpaces your block and an exhausted Reaper leaves no recovery path.
 
 ## Strategy (Ironclad)
 

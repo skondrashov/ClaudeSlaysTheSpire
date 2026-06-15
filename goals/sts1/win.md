@@ -26,16 +26,20 @@ Post reasoning to the stream overlay with `think()` so viewers can follow your d
 
 Use the current best knowledge. Read heuristic files for enemies, cards, bosses as you encounter them. Follow the guidance unless the current situation clearly warrants deviation — and if you deviate, say why.
 
-**This is the casual Win goal — play to win, but with room to learn.** You are not racing, so spend some of your budget on the learning artifact: label a win% as you go — forward, blind to how the run ends — at least at every meaningful decision, ideally at every state.
+**This is the casual Win goal — play to win, but with room to learn.** You are not racing, so spend some of your budget on the learning artifact: keep a live EVAL trail — forward, blind to how the run ends — at least at every meaningful decision, ideally at every state. The trail is RELATIVE: the run starts at even (EVAL 0), and every label is a signed move from there.
 
 ```
-WIN%: [estimate] ([+/-] from last)
+EVAL: [+/-N] (running total [+/-T])
 WHY: [what moved it]
 ```
 
+You never estimate an absolute win probability and you never consult past-run statistics — the analyst owns absolutes. Your job is the movement: when the run's prospects change, the eval moves, sized to how much, with the input that moved it named.
+
 That live trail is what lets an Audit measure calibration — where your in-the-moment beliefs were wrong — not just regret. When you instead want a no-overhead, all-tokens-on-the-game attempt (a clean benchmark of best play), use [[layer:goals, tournament]], which drops the labeling entirely.
 
-**Anchor the label, don't inherit it.** Derive the baseline from the situation — this ascension level, this character's actual record at it — not from an optimistic constant carried over from easier runs. And re-derive the number at act entries and boss entries (HP minus the booked costs of every forced fight to the next recovery; kill-turns × expected incoming for a boss) instead of carrying the previous label forward. A label that does not move when its inputs moved is not an estimate — it is the previous label.
+**Re-derive the move, don't carry the total.** At act entries and boss entries, re-run the inputs (HP against your live-priced ledger to the next recovery; kill-turns against the boss's clock BOTH ways — see below) and let the eval move to match — a milestone tick (+N at a boss kill or act entry) must cite that arithmetic, not momentum. An eval that does not move when its inputs moved is not an estimate — it is the previous label.
+
+**At a boss-commitment node, "it's just arithmetic now" must show the arithmetic BOTH ways.** Price your sustained damage/turn from REALIZED fight data (not theoretical maxima) against the boss's HP, AND your block-required/turn against the boss's scaling clock (Strength ramps escalate the requirement every cycle). A label that jumps +15 or more in one step on output math alone — without running the incoming side against the loaded boss page — is the known shape of a fatal overclaim.
 
 **Do NOT force a single archetype.** The game offers cards and relics — your job is to recognize which archetype the game is pushing you toward and build into it. Strength scaling, exhaust engines, Barricade+Body Slam, Corruption+FNP, defensive attrition — all are viable. Evaluate what you're offered, not what you wish you were offered.
 

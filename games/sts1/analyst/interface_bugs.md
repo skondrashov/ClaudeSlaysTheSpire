@@ -132,11 +132,11 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 **Impact:** FATAL. Run 216: extra enemy turn cost 22 HP against Sentries, generating additional Dazes that snowballed into death.
 
-**Affected runs:** 216 (fatal — Sentries)
+**Affected runs:** 216 (fatal — Sentries), 240 (fatal contribution — F25 Centurion+Mystic: `end` re-sent after an empty `{}` state echo, T2 eaten with 5 cards unplayed, 12 HP; the same lag also produced a wrong-card index re-send. See analyst/audits/run_240.md §4-5.), **244 (fatal contribution — Collector T2: `end` re-sent during a relay lag window, turn skipped, 29 unanswered damage + the Fairy burned; the Fairy's absence was but-for at the floor-45 death. See analyst/audits/run_244.md §4.)**
 
 **Repro seed:** `start IRONCLAD 5 9128496640971033917` (Run 216). Play to F14 Sentries. In a turn with no playable cards, send `end` and immediately send `end` again before the state updates.
 
-**Status:** OPEN. Documented in `interface/sts1/tools.md` as known issue. Agent prompt now says "one `end` per turn" but no cmd.py-level guard.
+**Status:** REGRESSED — OPEN at tool level. The run-242 "FIXED" verdict rested on habit-level evidence (relay-race fix + batch no-op tripwire + the re-poll-never-re-send habit); run 244 reproduced the original shape under relay lag at a boss, with the habit rule failing exactly when lag made it matter. The `_turn_ended` tool guard described in the Fix paragraph below has never shipped — it should. Keep the habit rule as insurance, not as the fix.
 
 **Fix:** cmd.py should track whether `end` has been sent this turn and reject duplicates. Add a `_turn_ended` flag that's set on `end` and cleared when state shows a new turn (different turn number or enemy phase). Simple guard in `send()`.
 
@@ -150,11 +150,107 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 **Impact:** Low. Creates duplicate files and inflates run counts. Caught manually and cleaned up, but wastes time.
 
-**Affected runs:** 216/217 (identical), 220/221 (two genuine runs but agent wasn't told to stop after one)
+**Affected runs:** 216/217 (identical), 220/221 (two genuine runs but agent wasn't told to stop after one), 240/241 (identical — run_241 was a duplicate from a double GAME_OVER proceed; removed)
 
-**Status:** OPEN. Workaround: "Play only ONE run" in agent prompt prevents the two-genuine-runs case. The identical-duplicate case (216/217) needs investigation in cmd.py's GAME_OVER handler.
+**Status:** REPORTED FIXED by the maintainer after the run 240/241 duplicate (capture bug). Previously OPEN.
 
 **Fix:** Investigate whether `_log_run()` in cmd.py can fire twice for the same game_over event. Add a guard (e.g., check if run file already exists before writing). Also check regen_stats.py deduplication.
+
+---
+
+## IB-010: Event-screen choice desync ALTERS GAMEPLAY (executes a different option than echoed)
+
+**What:** At an event, `choose 1` echoed "[Offer: 182 Gold] Lose all Gold. Obtain a Relic." but the game executed [Leave]: gold unchanged, no relic, screen advanced EVENT→MAP with no relic screen. The IB-003 shape (translation/index ordering mismatch), but here it changed the outcome instead of just the log line.
+
+**Root cause:** FOUND (2026-06-11, via IB-013's run-241 recurrence): `format_event` and the translation numbered the full display list while `choose N` indexes CommunicationMod's enabled-only choice_list. Red Mask's "Don the Mask" option is DISABLED without the Red Mask — shifting the offer to display [1] while the executable list had [0]=offer, [1]=Leave. `choose 1` = Leave, exactly as observed.
+
+**Impact:** Medium this time (~0 cost — run 237, F41 Tomb of Lord Red Mask, gold ended the run unspent), but the same desync on a consequential event (Vampires, Falling, Mind Bloom) would be run-altering. Player blameless — intent and echo agreed.
+
+**Affected runs:** 237 (F41, idx 630-631), 241 (F38 — see IB-013).
+
+**Status:** FIXED (2026-06-11) — see IB-013 for the shared fix (`_event_choice_options()`, enabled-only indexing in both formatter and translation).
+
+**Fix:** Compare event option ordering between `_translate_command()` and CommunicationMod; add a post-choice assertion (gold/relic/HP delta vs the echoed option's stated effect) that flags a mismatch immediately instead of leaving it to audit-time inventory reconciliation.
+
+---
+
+## IB-011: Key acquisition fails silently (Emerald Key)
+
+**What:** `choose Emerald Key` (echo "Emerald") returned an empty `{}` result; no confirmation, no retry; the key was never collected (end-of-run state shows "no keys").
+
+**Root cause:** Unknown. Note: empty `{}` results ALSO follow SUCCESSFUL special-screen picks (run 237: Black Blood idx 263, Snecko idx 524, both acquired), so a guard cannot key on the empty state alone.
+
+**Impact:** Low at A9 with an Act 3 goal (keys unused); FATAL to any Act 4 attempt.
+
+**Affected runs:** 237 (idx 160-161, burning-elite reward).
+
+**Status:** OPEN (known to orchestrator).
+
+**Fix:** Post-hoc possession check after any key/relic special-screen pick — re-poll state and assert the item appears in inventory; retry once if absent.
+
+---
+
+## IB-012: Game drops to main menu mid-run; subsequent commands echo against a dead session
+
+**What:** Run 241 (Silent A9, floor 28 shop): the game left the run and sat at the MAIN MENU while the relay kept answering. Every shop `choose` echoed `[chose: Buy X]` but nothing happened — gold never deducted, state flickered "OUT OF GAME transient". The player diagnosed a "broken shop," tried `key escape` (rejected out of game — but one queued escape executed and opened the Settings panel), and eventually planned to abandon the floor, losing ~178g of intended purchases.
+
+**Root cause:** Unknown for the menu drop itself (no crash dialog; the save was written normally at floor entry — candidates: a stray input reaching the pause menu's Save and Quit, or an internal exception unwinding to menu). The SECONDARY failure is ours: command echoes don't verify the game is still in a run, so buys "succeed" against a dead session.
+
+**Impact:** Medium-FATAL — unrecoverable by the agent alone (no resume verb exists in CommunicationMod; `start` DESTROYS the save). Without orchestrator intervention this ends the run as surely as a death.
+
+**Recovery (worked, run 241):** (1) back up `saves/<CHAR>.autosave` immediately; (2) `scripts/game_mouse.ps1` — hover the main menu's Continue with the real cursor, VERIFY the gold hover-highlight via an OBS projector screenshot (Abandon Run sits one slot below), then click. Save loaded intact (floor 28, 45 HP, 214 gold); player resumed within its next poll.
+
+**Affected runs:** 241 (recovered, ~40 min lost).
+
+**Status:** OPEN (recovery procedure proven; menu-drop cause not yet found). Guard hardening shipped: `start()` no longer treats "cleanly OUT OF GAME + save exists" as a stale save (a crash-to-menu produces exactly that state with a LIVE save) — it now always requires the two-call confirm when a save file exists.
+
+**Fix candidates:** a cmd.py tripwire — when `in_game` flips false while the last known state was mid-run (not GAME_OVER), return a loud `[RUN INTERRUPTED — game at main menu, save likely intact: STOP, do not start(), report to orchestrator]` instead of a normal state echo.
+
+---
+
+## IB-013: Event option indices shift past disabled options (chose relic offer, executed Leave)
+
+**What:** Run 241 floor 38: the formatted event showed the pay-23-gold relic offer at `[1]`; the player sent `choose 1` with that intent; the echo even named the offer — but the game executed **Leave**. Gold untouched, no relic, event gone.
+
+**Root cause:** FOUND, mechanical. `format_event` numbered ALL of `screen_state.options` (disabled included), but CommunicationMod's `choose N` indexes its `choice_list`, which contains only ENABLED options. Any disabled option above the target (here: an offer the player couldn't afford) shifts every later index by one. The command translation made it invisible by reading the same display list — echo said one thing, game did another. **This is also IB-010's mechanism** (Tomb of Lord Red Mask, run 237: option executed ≠ option echoed — that event has conditionally disabled options).
+
+**Impact:** Medium-FATAL — silently converts any event decision into a different one whenever a disabled option is present. Wasted the run-241 relic; IB-010's instance altered gameplay.
+
+**Affected runs:** 241 (relic offer → Leave), 237 (IB-010, Red Mask).
+
+**Status:** FIXED (2026-06-11). Shared source of truth `_event_choice_options()` (enabled options, in order — exactly CommunicationMod's event choice_list). `format_event` numbers only enabled options (`[-] ... (DISABLED — not choosable, has no index)` for the rest) and the command translation indexes the same list. Verified with a synthetic disabled-offer event: display index == executed index. Same lesson as the shop's IB-003: always index against CommunicationMod's REAL choice list, never the raw display array.
+
+---
+
+## IB-014: Boss-chest stale-echo desync (relay answers "Invalid command: choose" against an already-open chest)
+
+**What:** Run 243, floor 17 (Act 1 boss chest after BOSS_REWARD): the chest arrives already open (`chest_open` true), but the relay/formatter pipeline desynced for ~6 commands — stale "Invalid command: choose" echoes while the formatter (pre-c552a85) was simultaneously instructing "choose open / do NOT proceed." The choice list was empty (no `choose` is actually offered on an opened chest), so the player was steered into a stall: `choose open` → invalid echo → wait → repeat.
+
+**Root cause:** Two halves. (1) Formatter half — `state_formatter.py` unconditionally emitted unopened-chest guidance ("choose open / do NOT proceed") even when `chest_open` was set. FIXED in c552a85 (2026-06-11, mid-run-243): the branch now reads `chest_open` and says "use proceed." (2) Echo half — the relay kept returning stale "Invalid command: choose" responses for several commands rather than a fresh state, so the player couldn't see the screen had no choices. OPEN; mechanism not yet isolated (candidates: cached last-error echo in relay.py, or CommunicationMod returning no state delta for rejected commands so the relay re-serves the previous response).
+
+**Impact:** Low this time — ~6 wasted commands and a manual recovery (`wait` → `key confirm` → `wait` → `proceed`), zero game-state loss; the player's raw-read recovery worked. But a stale-echo loop on a screen with a real timer or a consequential default would be run-altering, and the same staleness shape contributed to the IB-008 family's deaths.
+
+**Affected runs:** 243 (floor 17, idx 442-450; player's interface note at idx 452).
+
+**Status:** HALF-FIXED (formatter guidance, c552a85). Echo staleness OPEN.
+
+**Fix:** (1) Isolate why a rejected command can echo stale — the relay should always return the CURRENT state with the rejection, never a cached error. (2) Broader guard worth considering from the same run: the F9 Akabeko forfeit (queued `choose` hit a shifted index after a gold pickup, tool warned, pre-chained `proceed` consumed the retry) shows reward screens lack the acquisition-assert guard IB-011 proposes — extend it: after any `choose` on a reward/chest screen, assert the named item entered inventory before honoring a queued `proceed`.
+
+---
+
+## IB-015: Full-belt shop potion purchase wedges the CommunicationMod command loop
+
+**What:** Run 244 floor 31: the player bought a shop potion with all slots full. The game silently ignores the purchase (no state change), CommunicationMod's command loop waited forever for a state change that never came, and the relay stopped answering entirely — every subsequent command got empty acks, then raw state queries timed out. The player spammed leave/return retries into the dead pipe.
+
+**Root cause:** The mod's shop choice list filters by GOLD only (verified in decompiled getAvailableShopItems), so a full-belt potion is offered as a valid choice; the game-side purchase no-ops; the mod's ready/state-change handshake never completes. Same mechanism as the documented combat-reward potion hang, shop flavor.
+
+**Impact:** FATAL to the session without orchestrator recovery (pipeline wedge, not a game crash — the game stays interactive on screen).
+
+**Recovery (proven, runs 241/244):** save backup -> kill.ps1 + launch.ps1 (game+relay restart) -> game_mouse.ps1 hover-verify Continue click -> save resumes at floor entry. ~5 minutes.
+
+**Affected runs:** 244 (recovered).
+
+**Status:** GUARDED (2026-06-11, commit d3d2519 — landed minutes after the wedge): cmd.py refuses full-belt shop potion purchases with a loud drink/discard-first error, and the shop formatter flags the potions section CANNOT BUY. The underlying mod hang remains (candidate fix for the companion mod: have the purchase command fail loudly when slots are full).
 
 ---
 

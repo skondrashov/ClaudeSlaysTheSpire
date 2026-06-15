@@ -11,7 +11,7 @@
 
 ## Burns Management (CRITICAL)
 
-**Block absorbs Burn damage.** Burns resolve at end of turn while your block is still active, so every point of leftover block eats Burn damage one-for-one. Block math for this fight is therefore (incoming attack + 2 per Burn in hand, 4 per Burn+) — over-block by the Burn total instead of treating it as unavoidable chip.
+**Block absorbs Burn damage.** Burns resolve at end of turn while your block is still active, so every point of leftover block eats Burn damage one-for-one. Block math for this fight is therefore (incoming attack + 2 per Burn in hand, 4 per Burn+) — over-block by the Burn total instead of treating it as unavoidable chip. A [[cards/Barricade]] wall makes this automatic: standing block eats every tick, so a committed wall deck can largely skip Burns-management tech and budget only the attack cycle.
 
 Priority order:
 1. [[cards/Evolve]] + [[cards/Fire Breathing]] (the best anti-Burns engine -- Burns become free damage with no downside)

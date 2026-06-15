@@ -15,6 +15,7 @@
         { "layer": "heuristics", "name": "combat" },
         { "layer": "heuristics", "name": "drafting" },
         { "layer": "heuristics", "name": "map" },
+        { "layer": "heuristics", "name": "hp-management" },
         { "layer": "heuristics", "name": "archetypes" }
       ]
     }

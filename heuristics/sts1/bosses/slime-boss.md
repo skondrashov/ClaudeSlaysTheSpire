@@ -1,6 +1,6 @@
 # Slime Boss
 
-**Core rule:** AOE is MANDATORY for the split phase. Without AOE, you must single-target each of 4+ enemies. **Expected cost:** 30-50 HP played well — run the ledger before the final rest site decision.
+**Core rule:** AOE is MANDATORY for the split phase. Without AOE, you must single-target each of 4+ enemies. **Damage clock:** pre-split a fixed 3-turn cycle (Goop Spray → Preparing → Slam 35) — one big spike every third turn; post-split the two large slimes swing 25-36 combined per turn. Price the fight by how fast you get through the split, and run the ledger before the final rest site decision.
 
 ## Preparation Checklist
 

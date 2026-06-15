@@ -4,7 +4,7 @@
 
 **HP is high (~114-120 base; 125 at A7+).** Plan for a 5-7 turn fight even with good damage.
 
-**Expected cost:** at high ascension price the fight ~25-40 HP, not as an ordinary hallway. Confusion can roll your block cards to unplayable costs for consecutive turns — expect a turn or two of largely unblocked ~25+ hits and make sure the entry HP can absorb them.
+**Damage clock:** Tail Whip 8 (+2 [[debuffs/Vulnerable]]), then Bites at 15 (~22 under the Vulnerable it just applied). At high ascension price this against your own deck, not as an ordinary hallway: Confusion can roll your block cards to unplayable costs for consecutive turns, so expect a turn or two of those hits landing largely unblocked and make sure the entry HP can absorb them.
 
 ## Strategy
 

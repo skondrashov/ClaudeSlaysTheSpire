@@ -1,8 +1,10 @@
 # Gremlin Leader
 
-**Core rule:** TURN ECONOMY IS EVERYTHING. Every turn must deal maximum damage or apply critical debuffs. Wasting even one turn allows Rally to stack once more. Must win by Turn 5-6 or Rally scaling overwhelms you.
+**Core rule:** TURN ECONOMY IS EVERYTHING. Every turn must deal maximum damage or apply critical debuffs — the scaling clock is ENCOURAGE (+3/4/5 permanent Strength to everything, ~2 of every 3 turns while 2+ gremlins live), not Rally. Must win by Turn 5-6 or the Strength stacks overwhelm you.
 
-**Expected cost:** elite-range (25-45 HP) for a deck that kills by Turn 5-6 — Rally scaling means a slow deck pays a multiple of this; price it by your turns-to-kill before routing in. Potions are strongly recommended -- this fight rewards aggressive potion use.
+**The minion count is a dial you control** ([[enemies/Gremlin Leader]]): with 2+ gremlins alive the Leader never summons — it Encourage-spams; below 2, half-to-most of its turns become Rally, which deals no damage and buffs nothing. So killing gremlins converts the Leader's buff turns into wasted summon turns (tempo for you), at the price of fighting the replacements; ignoring gremlins to race the Leader accepts the Encourage clock on everything alive. Both lines exist — what loses is clearing gremlins slowly while the Leader re-buffs the replacements.
+
+**Damage clock:** the Leader Stabs 6x3 (each Strength point is +3 across the hits) on roughly a third of its turns while the gremlin mix swings alongside, and every Encourage permanently raises the whole board's output — so a slow deck pays a multiple of what a Turn 5-6 kill pays; price it by your turns-to-kill before routing in. Potions are strongly recommended -- this fight rewards aggressive potion use.
 
 ## Turn 1 Priority
 

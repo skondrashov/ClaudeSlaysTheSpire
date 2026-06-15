@@ -76,8 +76,11 @@ def format_state(state: dict) -> str:
     elif screen == "COMPLETE":
         parts.append(format_complete(gs))
     elif screen == "CHEST":
-        parts.append("CHEST — Use 'choose open' to open the chest and collect the relic.")
-        parts.append("WARNING: Do NOT use proceed here — it will skip the chest entirely.")
+        if (gs.get("screen_state") or {}).get("chest_open"):
+            parts.append("CHEST (already opened) — contents collected. Use 'proceed' to continue.")
+        else:
+            parts.append("CHEST — Use 'choose open' to open the chest and collect the relic.")
+            parts.append("WARNING: Do NOT use proceed here — it will skip the chest entirely.")
     else:
         parts.append(f"SCREEN: {screen} (no specific formatter)")
 
@@ -261,6 +264,19 @@ def format_combat(gs: dict) -> str:
     return "\n".join(lines)
 
 
+def _event_choice_options(ss: dict) -> list:
+    """The event options that `choose N` actually indexes, in order.
+
+    CommunicationMod's choice_list for an EVENT contains only the ENABLED
+    options. Numbering the full display list (disabled included) shifts every
+    index after a disabled option — run 241 chose the on-screen relic offer
+    and executed Leave (IB-013); run 237's Red Mask desync (IB-010) is the
+    same mechanism. Single source of truth for the formatter, the command
+    translation, and any guard.
+    """
+    return [opt for opt in ss.get("options", []) if not opt.get("disabled", False)]
+
+
 def format_event(gs: dict) -> str:
     ss = gs.get("screen_state", {})
     event_name = ss.get("event_name", "Unknown Event")
@@ -274,14 +290,16 @@ def format_event(gs: dict) -> str:
         lines.append(clean)
 
     lines.append("")
-    for i, opt in enumerate(options):
-        text = opt.get("text", "?")
-        disabled = opt.get("disabled", False)
-        label = opt.get("label", "")
-        # Strip HTML
-        text = re.sub(r"<[^>]+>", "", text)
-        status = " (DISABLED)" if disabled else ""
-        lines.append(f"  [{i}] {text}{status}")
+    # Indices must match CommunicationMod's choice_list (enabled options only) —
+    # disabled options get NO index so a shifted number can never be chosen.
+    idx = 0
+    for opt in options:
+        text = re.sub(r"<[^>]+>", "", opt.get("text", "?"))
+        if opt.get("disabled", False):
+            lines.append(f"  [-] {text} (DISABLED — not choosable, has no index)")
+        else:
+            lines.append(f"  [{idx}] {text}")
+            idx += 1
 
     lines.append("\nUse: choose <index>")
     return "\n".join(lines)
@@ -375,7 +393,12 @@ def format_shop(gs: dict) -> str:
             lines.append(_item_line(relic, relic.get("name", "?")))
 
     if potions:
-        lines.append("Potions:")
+        belt = gs.get("potions", [])
+        belt_full = bool(belt) and not any(p.get("id") == "Potion Slot" for p in belt)
+        if belt_full:
+            lines.append("Potions: [CANNOT BUY — your potion slots are FULL; drink or discard first]")
+        else:
+            lines.append("Potions:")
         for pot in potions:
             lines.append(_item_line(pot, pot.get("name", "?")))
 

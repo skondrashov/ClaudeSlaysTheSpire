@@ -23,6 +23,16 @@ These are the ways past analyst sessions have written heuristics that made play 
 10. **Disposition lessons go to topic files.** If the mistake was a pattern across many small decisions (greed, hoarding, deferred checks) rather than a single wrong choice, no entity page can hold it — it belongs in [[layer:heuristics, domain:sts1, combat]] / hp-management / drafting, where every session reads it.
 11. **Never write a rule about the state next to the death.** The state immediately before a death is the most tempting and least informative place to put a lesson: it is the *residue* of the mistakes, not a mistake. The canonical artifact is the entry threshold — a death at 33% HP becomes "enter this fight above 60%" — which predicts death by proximity and prevents nothing, because by the time it fires the real options are gone. Trace the regret upstream to the decision that *created* the low-HP state (a leak, a hoard, a routing choice) and write the rule there. If a fight's danger is the lesson, express it as the fight's **expected HP cost** (knowledge that feeds the pathing ledger), never as an entry gate.
 
+## Attention-graph governance
+
+The awareness layer (boundary indexes, recognitions) is written under the same discipline as heuristics, plus these:
+
+12. **Consider-statements over action-statements.** A conclusion ("always smith above 50%") delegates poorly and rots when the game state it assumed shifts; a consideration ("whether current HP covers the path's expected cost") names an input to judgment and rarely needs updating. Awareness entries name what to weigh, never what to do — conclusions appear only as caches (rule 14).
+13. **Attention is kept or cut by whether attending helps.** An entry — whether it points at a file or at a piece of game state — earns its place by demonstrably improving decisions when attended to. An entry nobody's decision ever turned on is noise crowding out the ones that matter; cut it.
+14. **Stored conclusions are caches and pay cache rules.** Anything that skips the reasoning (a tier ranking, a default pick, a threshold) additionally requires earned evidence in the analyst layer or a forced mechanical explanation — the same bar as rule 9.
+15. **Boundary indexes stay thin.** They point at where content lives; they do not contain it. A boundary file that grows past a handful of lines is absorbing content that belongs on an entity or topic page — move it there and leave the pointer.
+16. **No stored fight prices.** A heuristic page never carries an "expected HP cost" — a stored price anchors the player toward paying it, kills the cheaper-line search, and is too brittle to be true (the cost is a function of the deck that fights; observed spreads run 2-3x). Fight pages carry the **damage clock** (per-turn output, scaling, damage shape) and the **reduction levers** (kill order, debuffs, burst windows); the player derives the price live against its own deck. Paid costs are analyst DATA (analyst/fight-costs.md, keyed to deck shape), never heuristic-layer budgets.
+
 ## Don't
 
 - Don't rewrite heuristic files from scratch

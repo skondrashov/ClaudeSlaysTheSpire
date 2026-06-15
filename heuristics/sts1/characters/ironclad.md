@@ -2,10 +2,10 @@
 
 ## Identity
 
-The Ironclad has two proven winning engines. Which to pursue depends on what the run offers, not a preset preference. Both Strength scaling and the Corruption+FNP engine can win; the engine's independence from Str is under investigation.
+The Ironclad has two proven winning engines. Which to pursue depends on what the run offers, not a preset preference. Both Strength scaling and the Corruption+FNP engine can win; the engine's independence from Str remains unproven (no win without Str sources yet).
 
 1. **Strength engine:** [[buffs/Strength]] sources ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Limit Break]]) + [[cards/Heavy Blade]] finisher + optional [[relics/Snecko Eye]] for draw/cost manipulation + [[cards/Immolate]] for AOE
-2. **Corruption+FNP engine:** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + optional [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). Winning versions of this engine also included Str sources ([[relics/Brimstone]], or [[cards/Spot Weakness]]+[[relics/Red Skull]]). Whether the engine can function independently without Strength is under investigation.
+2. **Corruption+FNP engine:** [[cards/Corruption]] + [[cards/Feel No Pain]] (core combo) + optional [[cards/Barricade]] (block persists) + [[cards/Entrench]] (doubles block) + [[cards/Body Slam]] (damage = block). Winning versions of this engine also included Str sources ([[relics/Brimstone]], or [[cards/Spot Weakness]]+[[relics/Red Skull]]). Corruption even WITHOUT FNP, with Barricade as the accumulator, has cleared two acts in a same-seed comparison (single seed — see [[archetypes]]). Whether the engine can function with NO Strength at all remains unproven.
 
 ## Key Heuristics
 

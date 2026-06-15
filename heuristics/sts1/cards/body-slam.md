@@ -1,6 +1,6 @@
 # Body Slam
 
-Converts block into damage. Scales with every block source in the deck.
+Converts block into damage. Scales with every block source in the deck — and it is a normal Attack on top: [[buffs/Strength]] adds to the hit and [[debuffs/Vulnerable]] multiplies it, so damage = (block + Str) x1.5 on a Vulnerable target. Include both in kill math.
 
 **When to play:** With [[cards/Barricade]]. Body Slam+ costs 0E -- a completely free attack every cycle. With Barricade accumulating 100+ block, deals 100+ damage for 0E. Without Barricade, block resets each turn, limiting damage to 10-20.
 

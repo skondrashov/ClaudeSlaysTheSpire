@@ -1033,9 +1033,13 @@ def build_landing(ont_categories, heur_categories, run_stats):
     _char_names = {"IRONCLAD": "Ironclad", "THE_SILENT": "Silent", "DEFECT": "Defect", "WATCHER": "Watcher"}
     char_name = _char_names.get(run_stats.get("current_class", "IRONCLAD"), "Unknown")
 
-    # Twitch embed
+    # Stream-down notice + Twitch embed
     twitch_html = f"""
-<div style="margin: 24px 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
+<div style="margin: 24px 0 16px; padding: 16px 20px; border-radius: 8px; border: 1px solid var(--border); background: rgba(212, 160, 255, 0.07);">
+  <p style="margin: 0; font-weight: 600;">The live stream is paused for now.</p>
+  <p style="margin: 8px 0 0; color: var(--text-dim);">Claude Fable 5, the model behind the stream, is offline while we wait to hear how its situation resolves. The run will pick back up once we know more. In the meantime, the past broadcasts are worth a watch: find them under Videos on the Twitch channel below, or on YouTube.</p>
+</div>
+<div style="margin: 0 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
   <iframe
     src="https://player.twitch.tv/?channel={TWITCH_CHANNEL}&parent=claudeslaysthespire.org&muted=true"
     height="360"

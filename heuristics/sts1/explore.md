@@ -15,6 +15,8 @@ WIN%: [estimate] ([+/-] from last)
 WHY: [what moved it]
 ```
 
+Anchor the baseline from the corpus record at this ascension (count wins/runs — the Win goal's anchor rule applies here too); never inherit a prior run's live label, including the baseline run's — that label was itself unvalidated.
+
 Label every state, but spend your thinking budget unevenly — a snap number on a trivial turn, real deliberation at the swingy ones. At pivotal states, also estimate the win% of the best ALTERNATIVE action you are passing up; the gap between what you did and that best option is the regret an audit will hunt for. The complete win% trajectory — not just the big moments — is what lets an audit locate where a run was actually lost.
 
 Exploration deliberately PAYS win% for information, and labeling makes the price explicit: a drop you chose into is regret you accepted for evidence; a drop that surprises you later is a hole in your own model. Note which is which.
@@ -42,6 +44,22 @@ Seeds are recorded in every run log (`analyst/runs/run_NNN.json`, field `seed`).
 **When to replay vs fresh run:**
 - **Replay** when testing "could this specific run have gone differently with a different strategy?"
 - **Fresh run** when testing "is archetype X generally viable?" (you want natural variance)
+
+## Controlled Comparisons (seed replay against a baseline run)
+
+When the experiment compares against a specific prior run, treat the baseline log as the only source of baseline facts:
+
+- **Quote the baseline only with its log open.** Any think that cites a baseline fact (HP at a floor, a pick, a fight's cost) must quote the baseline log's state line inline. Baseline facts recalled from memory have repeatedly been wrong — sometimes in the direction that flatters the experiment.
+- **Pick ONE HP basis and name it.** Net (including end-of-fight heals like Burning Blood) or gross — the same basis in every fight ledger, declared once at the start.
+- **List knowledge confounders, not just RNG ones.** Rules codified AFTER the baseline run are an asymmetry the baseline never had; list them alongside purchase/roll confounders. If a foreknowledge purchase goes UNUSED, say so in the conclusion — it cleans the result rather than dirtying it.
+- **?-nodes can diverge between runs on the same seed.** Route both arms around ?-nodes, or log the divergence as a confounder when it happens.
+- **Label run-win% and experiment status SEPARATELY.** "Directive criterion met" is not run-win evidence — do not price experiment progress into the run's win label.
+- **Write the arm's OWN results down as you go.** Baseline citations are only half the ledger: at each act boundary, post a checkpoint think with this arm's per-fight HP results — favorable AND unfavorable. A closure summary written without them silently drops the experiment's negative measurements, and the closure summary is exactly the artifact a later Curate session quotes.
+- **A book-flagged death-spiral fight is a material state change:** give it a fresh win% label, an expected-cost row, and a potion plan before turn 1, even mid-experiment.
+
+## When the Experiment Completes Mid-Run
+
+**Protocols bind to the RUN, not the directive.** Recalls, fight plans, win% labels, and checkpoint ledgers do not stop when the experiment's criteria are met — "wins are a bonus" means the win is not the objective, not that process is optional once the data is in. The known failure shape is post-success discipline collapse: every habit holds exactly as long as the directive enforces it, then stops on the same floor the criteria are met — and the bare, unlabeled fights that follow are where runs die. If the experiment completes, say so in one think, then keep playing the run under the full Win-goal protocol.
 
 ## Confounders
 

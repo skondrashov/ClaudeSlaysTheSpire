@@ -18,8 +18,8 @@
 
 ## What NOT to Do
 
-- Play purely defensively (blocking without attacking wastes the Shifting mechanic)
-- Fight it without strong block density or Strength debuffs — with them the expected cost is near zero; without them the Turn 3-5 hits (50-70 base) land hard
+- Play purely defensively (blocking without attacking wastes the Shifting mechanic). The strips are PER-TURN consumables — Shifting's Strength loss restores at end of turn ([[buffs/Shifting]]), so a strip skipped on turn 1 is gone, not deferred. An attack in the opening hand IS a block card here: a 10-damage attack prevents 10 incoming this turn at the same rate as 10 block, and a pure-block turn 1 that takes the same damage as the attack line has paid the strip for nothing
+- Fight it without strong block density or Strength debuffs — with them the fight can end near-free; without them the Turn 3-5 hits (50-70 base) land hard
 - **Play with Normality curse in deck.** Normality limits card plays to 3/turn, which cripples the ability to play attacks (for Shifting) AND block in the same turn. If Normality is in the deck, exhaust it immediately when drawn ([[cards/Burning Pact]], [[cards/True Grit]]). Normality can cost 40 HP in a single Transient fight by locking you out of attacking and blocking on the same turn.
 
 ## Character-Specific Notes

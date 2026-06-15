@@ -1,10 +1,10 @@
 # The Collector
 
-**Core rule:** The Mega Debuff on Turn 4 creates a 3-turn crisis where incoming spikes by 50% and block is reduced by 25%. AOE is the highest priority card type. **Expected cost:** 30-50 HP played well, concentrated in the post-debuff crisis turns — run the ledger before the final rest site decision ([[relics/Pantograph]]'s +25 counts on it as exactly +25).
+**Core rule:** The Mega Debuff on Turn 4 creates a 3-turn crisis where incoming spikes by 50% and block is reduced by 25%. AOE is the highest priority card type. **Damage clock:** Fireball 18 (rising +3 per Buff cast) plus 7 from each Torch Head; the cost concentrates in the post-debuff crisis turns, when that output is amplified 50% and your block is cut. Price the fight by your turns-to-kill against it and run the ledger before the final rest site decision ([[relics/Pantograph]]'s +25 counts on it as exactly +25).
 
 ## Preparation Checklist
 
-1. HP for an expected 30-50 HP fight (run the ledger; Pantograph's +25 counts toward it)
+1. Run the ledger (Pantograph's +25 counts toward it). At A9 the Collector's HP is ~300 (282 base) — use the higher number in kill-turn math.
 2. AOE damage ([[cards/Immolate]] is the MVP -- hits Collector + both Torch Heads)
 3. Mass debuff ([[cards/Shockwave]] reduces combined incoming from 3 enemies by 25% for 3 turns)
 4. [[cards/Impervious]] (30 block absorbs an entire post-debuff turn)

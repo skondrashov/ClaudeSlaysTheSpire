@@ -1,6 +1,6 @@
 # Exploration Directives
 
-Written by Curate agent. Updated after the run 227-233 audit consolidation (sixth curation cycle). Run-222-era directives retired below.
+Written by Curate agent. Updated after the runs 241-242 audits (eighth curation cycle — D11 closed, D15 added). Run-222-era directives retired below.
 
 ## Directive 10: Knowledge delivery to hallway fights and own-deck locks
 
@@ -20,15 +20,13 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 
 **Until decided, Explore/Win runs should drill the manual habit (shape 4) and each audit should re-run the recall census** (boss/elite/hallway/event/card coverage) so the fix's effect is measurable when it lands.
 
+**Census update (runs 236-242):** total feeds 10 → 4 → 14 → 7 → 3 → 10. The manual habit CAN take — run 239 recalled 10 hallway pages including a pre-routing recall, and its fights ran closest to book cost of any run in the series — but it does not stick (240 regressed to targeted-only; 241 regressed to bosses-only and paid at the one place a loaded page was contradicted). Two cautions now on record: (a) the first A9 WIN (run 237) read LESS than the 1-HP loss before it — the deck, not the habit, was the difference; do not let the victory teach "reading is optional." (b) Delivery is necessary but compliance binds at the death fight: runs 239 AND 241 both died deviating from a kill-order page they had LOADED (chosen.md; donu-and-deca.md). Persistent blind spots: boss-relic screens, final-boss entry (237's Awakened One; 242 never identified its Act 3 boss before dying 2.5 floors out), Writhing Mass (FIVE audited runs bare), own-deck card pages. **Strongest evidence yet that the fix must be tool-level (run 242):** all 10 of its feeds landed inside its directive's scope and 0/8 fights after the directive's criteria were met — including the fatal Transient, whose page names the exact losing shape played at T1. The manual habit held exactly as long as a directive enforced it, failing on a floor boundary INSIDE a single run. The post-success-discipline rule is now written into the Explore goal/heuristics; the delivery mechanism remains the maintainer's call.
+
 ## Directive 11: Corruption-without-FNP — seed replay
 
-**Status:** Open. Seed `3405875975300375922` (A9 Ironclad).
+**Status:** CLOSED — CONFIRMED, scoped (run 242, audited: analyst/audits/run_242.md §3/§11; the authorized replication is spent). Final standing of "can Corruption-without-FNP work on Ironclad at A9": **YES at same-seed controlled-comparison level.** The engine with Barricade as accumulator cleared Act 1, Act 2, the Act 2 boss (Collector, net -4 vs expected 30-50), and the baseline's death fight (F31 Snake Plant, +11 net). Frail tax measured twice (~30%, runs 240/242) and answered by VOLUME — free-Skill block survives the tax that kills capped-block decks. Exhaust scope-edge observed directly: in a ~20-card deck the Skill pool empties ~3 engine turns in (max block 12 by T4 of uptime) — the 4-7-turn scoping is confirmed from the inside. Mirror-fight caveat triple-confirmed: Spheric-likes cost the Skill-heavy deck more even attack-led (-28 vs -16). NOT licensed: cross-seed generality (Directive 14's lane); raw "engine better than attack line" (the third arm carried curated rules + seed foreknowledge the baseline lacked — matched fights only). The closure package is worded into corruption.md, archetypes.md, spheric-guardian.md, snake-plant.md, sentinel.md, centurion-mystic.md (heal-arming rule: third datum, first prospective validation — followed as written, zero heals fired). Run 242's death (F48 Transient, 15 floors past the directive's scope) was a retrieval miss, not an engine failure — see D10's census update.
 
-**Context:** A run on this seed picked up a free Corruption at the burning Gremlin Nob (Power Potion on the free turn), explicitly tagged it "engine seed — need FNP," never completed the package, and died on floor 31 (Snake Plant) with strong Act 1 momentum wasted. A standing margin note also suggests Corruption alone (zeroing Skill costs) may be underrated even without FNP.
-
-**Test:** Replay the seed. Priorities: complete the exhaust package (Feel No Pain, exhaust tools; Dead Branch if offered) around Corruption, and weight block density per the updated drafting checklist. Record: (a) whether Corruption-without-FNP turns were net positive before the package completes (energy saved vs cards lost to exhaust), (b) the Snake Plant fight cost with the engine vs without.
-
-**Success criteria:** Reach the Act 2 boss. Secondary: survive floor 31's Snake Plant with a priced Frail turn.
+**History:** three arms on seed `3405875975300375922` (A9 Ironclad) — run 234 (attack baseline, died F31), run 240 (engine, died F25, interface-confounded; sub-question (a) confirmed scoped to ~4-7 turn fights, Sentinel strictly energy-positive), run 242 (replication: both criteria met — Act 2 boss reached and beaten, F31 Snake Plant survived with the Frail turn priced at 31%).
 
 ## Directive 12: Barricade/Body Slam — seed replay
 
@@ -36,7 +34,7 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 
 **Outcome:** Floor 22 PASSED (Snake Plant dead in 6 turns, low-water 32/80, vs the baseline's death there); Act 2 boss NOT reached (died floor 24, Cultist+Chosen — an allocation/potion execution error, not an engine failure, though Hex's tax on the engine's Skill-heavy setup is a real recorded weakness). Offer-stream question answered emphatically: Body Slam offered 5x, Barricade twice (F10 elite reward + Act 1 boss reward). This is the project's **first level-4 (controlled-comparison) evidence**: on this seed at A9, the engine beat the Strength+exhaust line in attrition fights (Lagavulin 25 vs 39 gross, Hexaghost 10 turns pre-Inferno vs 13, Shelled Parasite, the F22 pass) and LOST the races/mirrors (Nob +13 worse, Spheric +10 worse). Caveats: baseline F22 death had an execution-error component; favorable Snecko Confusion rolls (F22 conclusion robust to them); F12 ?-event diverged between runs; the own-Weak checklist post-dates the baseline. Curate: word the archetypes.md update per audit §3 — claim scoped to attrition fights on offer-supported seeds, A9 viability past early Act 2 still level 2.
 
-**Replication (warranted, but not same-seed):** a same-seed rerun adds no rungs; the next rung (level 5) needs the comparison shape on a DIFFERENT seed. Run it opportunistically — in any A9 run where Barricade + a Body Slam are offered by early Act 2, commit and record. Bias for: (1) **Entrench** (the engine's missing piece this run — wall peaked ~39/turn without it), (2) reaching the Act 2 boss (the unmet secondary; Automaton's Stasis stealing Barricade is the untested risk), (3) a Cultist+Chosen / Hex plan decided BEFORE T1 (commit one target per chosen.md's branch, potions converted early — the run-239 death), (4) potion conversion discipline generally (run 239 died with 2 unspent).
+**Replication:** spun out as Directive 14 (different-seed, opportunistic) — a same-seed rerun adds no rungs.
 
 ## Directive 13: Mummified Hand power-density build-around
 
@@ -47,6 +45,26 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 **Test:** When holding Mummified Hand, weight Powers up in drafting and tally free plays per turn per fight in thinks.
 
 **Success criteria:** Evidence it sustains ≥2 free plays/turn across a run's fights → promote a build-around note to mummified-hand.md; otherwise record the ceiling.
+
+## Directive 14: Barricade/Body Slam — different-seed replication
+
+**Status:** Open (opportunistic — no dedicated runs; activate in any A9 run where Barricade + a Body Slam are offered by early Act 2).
+
+**Hypothesis (the level-5 rung):** the attrition-fight advantage Directive 12 demonstrated on one seed generalizes across seeds. The archetypes.md entry is currently fenced to "offer-supported seeds, unproven past early Act 2" — this directive tests both fences.
+
+**When activated, bias for:** (1) **Entrench** — the engine's missing piece; without it the wall peaked ~39/turn while hard scalers demand 60+ (observation filed: the wall is linear without Entrench and hard scalers outpace it); (2) **reaching the Act 2 boss** — the unmet secondary; Bronze Automaton's Stasis stealing Barricade (a Power, likely the deck's rarest card) is the untested catastrophic risk; (3) a Cultist+Chosen / Hex plan decided BEFORE T1 — commit one target per chosen.md's branch, potions converted early; (4) potion conversion discipline generally.
+
+**Success criteria:** Reach the Act 2 boss with the engine online on a fresh seed. Record per-fight costs by fight type (attrition vs race vs mirror) so the fight-type-dependence claim can be tested, not just the engine's viability.
+
+## Directive 15: Silent A9 — block scaling past Shiv saturation
+
+**Status:** Open (opportunistic — activate on the next Silent run at A9, Win or Explore; no dedicated runs required).
+
+**Hypothesis:** Deep Silent A9 runs fail on BLOCK scaling, not damage. The Shiv engine saturates at ~2x Accuracy (Shivs one-shot hallway enemies); past that point additional engine depth (3rd/4th Accuracy, more Blade Dances) is worth ~0, while the Act 3 boss check is block-per-turn against an escalating clock (Donu's +3 Str/cycle grew the beam requirement +6/cycle while the deepest Silent run's block ceiling stayed flat ~21-24). The deck named its own block gap for two acts and kept buying engine. Evidence: one run (the deepest Silent A9 on record, died at the Act 3 boss exactly on this gap) — needs prospective confirmation before any tier-list change.
+
+**When activated:** (1) once Shivs one-shot hallway enemies, spend every discretionary slot (card rewards, shop slots, upgrades) on defensive scaling — Footwork + upgrades, After Image, second Footwork, repeatable Weak (Leg Sweep) — and tally the picks vs engine-depth alternatives in thinks; (2) target a block ceiling ≥ 30/turn before the Act 3 boss; record the realized max-block-per-turn at each boss; (3) if the Act 3 boss is Donu & Deca, follow the page's Donu-first order as written and record the Square-of-Protection/Dazed tax — the counterfactual datum the page's no-AOE section needs.
+
+**Success criteria:** A Silent A9 run entering the Act 3 boss with a 30+ block ceiling. Confirm or refute: does the defensive-scaling disposition close the gap the saturated-engine disposition left open? If confirmed across 2 runs, promote the saturation rule in accuracy.md/silent.md from disposition note to drafting rule.
 
 ---
 

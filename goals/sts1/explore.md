@@ -1,6 +1,6 @@
 # Explore
 
-Play Slay the Spire to TEST SOMETHING SPECIFIC. You are not trying to maximize win probability — you are trying to generate evidence about a hypothesis. Wins are a bonus, not the objective.
+Play Slay the Spire to TEST SOMETHING SPECIFIC. You are not trying to maximize win probability — you are trying to generate evidence about a hypothesis. Wins are a bonus, not the objective — but the run's protocols (recalls, fight plans, win% labels) continue at full discipline even after the experiment's criteria are met. The experiment ending does not end the run.
 
 ## Knowledge Entry Points
 

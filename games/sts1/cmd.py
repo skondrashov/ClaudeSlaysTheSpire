@@ -23,7 +23,8 @@ import sys
 import time
 import urllib.request
 
-from bot.state_formatter import format_state, monster_name, _build_shop_choice_list
+from bot.state_formatter import (format_state, monster_name,
+                                 _build_shop_choice_list, _event_choice_options)
 
 HOST = "127.0.0.1"
 PORT = 19284
@@ -127,9 +128,11 @@ def _load_ontology(category: str, name: str) -> str | None:
 
 
 def _load_phenomenon(category: str, name: str) -> str | None:
-    """Load a phenomenon (resolved upgraded card). Fires for '+'-suffixed names,
-    mapping to phenomena/sts1/<category>/<stem>-plus.md. None if absent."""
-    return _load_entry(PHENOMENA_DIR, category, name, suffix="-plus.md")
+    """Load a phenomenon. Resolved upgraded cards live at
+    phenomena/sts1/<category>/<stem>-plus.md (tried first); authored phenomena
+    (recognitions) are plain <stem>.md files. None if absent."""
+    return (_load_entry(PHENOMENA_DIR, category, name, suffix="-plus.md")
+            or _load_entry(PHENOMENA_DIR, category, name))
 
 
 def _load_heuristic(category: str, name: str) -> str | None:
@@ -309,7 +312,7 @@ def state() -> str:
     _remember(raw)
     # Auto-handle mechanical transitions before returning state
     raw = _auto_handle_mechanical(raw)
-    return format_state(raw)
+    return _interruption_notice(raw) + _fight_start_notice(raw) + format_state(raw)
 
 
 def state_raw() -> dict:
@@ -339,11 +342,75 @@ def _healthy_state(raw) -> bool:
 
 def _remember(raw):
     """Update the cached state ONLY when the response is healthy; always
-    returns the response unchanged so callers can still inspect errors."""
+    returns the response unchanged so callers can still inspect errors.
+
+    Also maintains the run-live FILE marker (data/run_live.flag) behind the
+    IB-012 tripwire: set while a run is in progress, cleared when the run ends
+    legitimately (GAME_OVER/COMPLETE). If the game reports out-of-game while
+    the marker is set, the run was INTERRUPTED (crash-to-menu), not finished —
+    _interruption_notice() makes every state echo say so. A file, not memory:
+    every play.py call is a fresh process."""
     global _last_raw_state
     if _healthy_state(raw):
         _last_raw_state = raw
+        flag = os.path.join(_BASE_DIR, "data", "run_live.flag")
+        if raw.get("in_game"):
+            screen = (raw.get("game_state") or {}).get("screen_type", "")
+            if screen in ("GAME_OVER", "COMPLETE"):
+                if os.path.exists(flag):
+                    os.remove(flag)
+            elif not os.path.exists(flag):
+                with open(flag, "w") as f:
+                    f.write(str((raw.get("game_state") or {}).get("seed", "")))
+        # out-of-game: leave the flag — its presence IS the interruption signal
     return raw
+
+
+def _fight_start_notice(raw) -> str:
+    """One mechanical line on the FIRST echo of each new combat (run 242's
+    audit: the death fight was a retrieval miss — the page existed, no recall
+    fired; protocols collapsed post-directive). Names the moment, not the
+    strategy: what to recall stays the player's call. File marker keyed by
+    seed|floor — every play.py call is a fresh process."""
+    if not isinstance(raw, dict) or not raw.get("in_game"):
+        return ""
+    gs = raw.get("game_state") or {}
+    cs = gs.get("combat_state")
+    if not cs or gs.get("screen_type") in ("GAME_OVER", "COMPLETE"):
+        return ""
+    if (cs.get("turn") or 0) > 1:
+        return ""
+    key = f"{gs.get('seed')}|{gs.get('floor')}"
+    marker = os.path.join(_BASE_DIR, "data", "fight_seen.flag")
+    try:
+        if os.path.exists(marker):
+            with open(marker) as f:
+                if f.read().strip() == key:
+                    return ""
+        with open(marker, "w") as f:
+            f.write(key)
+    except OSError:
+        return ""
+    monsters = [m for m in cs.get("monsters", []) if not m.get("is_gone")]
+    names = ", ".join(dict.fromkeys(monster_name(m) for m in monsters)) or "enemies"
+    return (f"[new fight: {names} — survey() lists this fight's handles "
+            f"(boundary + entities)]\n\n")
+
+
+def _interruption_notice(raw) -> str:
+    """A loud banner when the game is out-of-game but the run never ended
+    (IB-012: crash to main menu with a live save). Empty string otherwise."""
+    if not isinstance(raw, dict) or raw.get("in_game") is not False:
+        return ""
+    if not os.path.exists(os.path.join(_BASE_DIR, "data", "run_live.flag")):
+        return ""
+    return (
+        "[RUN INTERRUPTED] The game is at the main menu but your run never "
+        "reached GAME_OVER — it crashed out mid-run and the save is almost "
+        "certainly intact (IB-012). Do NOT call start() (it DESTROYS the save). "
+        "STOP issuing commands and report to the orchestrator, who can resume "
+        "the run by clicking Continue in the game window.\n\n"
+    )
 
 
 def _resolve_enemy_name(monsters: list, name_ref: str) -> str | None:
@@ -876,10 +943,13 @@ def _translate_command(command: str) -> str:
                 cat, name, _item = items[idx]
                 return "Remove Card (purge)" if cat == "purge" else f"Buy {name}"
         elif screen == "EVENT":
-            event_name = ss.get("event_name", "")
-            options = ss.get("options", [])
-            if 0 <= idx < len(options):
-                text = options[idx].get("text", "?")
+            # Index against the ENABLED options only — CommunicationMod's
+            # choice_list excludes disabled ones, so translating against the
+            # full display list mislabels every option after a disabled one
+            # (IB-010/IB-013: echoed the relic offer, executed Leave).
+            enabled = _event_choice_options(ss)
+            if 0 <= idx < len(enabled):
+                text = enabled[idx].get("text", "?")
                 text = re.sub(r"<[^>]+>", "", text)[:50]
                 return text
         elif screen == "GRID":
@@ -1349,6 +1419,30 @@ def send(command: str, reason: str = "") -> str:
     if screen != "COMBAT_REWARD":
         _potion_skip_warned = False
 
+    # Guard: buying a SHOP potion with full slots is a silent no-op — the mod's
+    # choice list filters by gold only; the game just ignores the purchase
+    # (gold undeducted, echo claims success). Refuse loudly instead.
+    if cmd_verb == "choose" and screen in ("SHOP_ROOM", "SHOP_SCREEN"):
+        try:
+            resolved_probe = _resolve_shop_choose(_last_raw_state, command)
+            probe_parts = resolved_probe.strip().split()
+            if len(probe_parts) >= 2 and probe_parts[1].isdigit():
+                items = _build_shop_choice_list(gs)
+                pidx = int(probe_parts[1])
+                if 0 <= pidx < len(items) and items[pidx][0] == "potion":
+                    potions_now = gs.get("potions", [])
+                    if potions_now and not any(p.get("id") == "Potion Slot" for p in potions_now):
+                        names_now = ", ".join(p.get("name", "?") for p in potions_now)
+                        return (
+                            f"[ERROR] Cannot buy {items[pidx][1]} — all potion slots are full, "
+                            f"and the game silently ignores the purchase (gold stays, nothing "
+                            f"happens).\n"
+                            f"Current potions: {names_now}\n"
+                            f"Drink or discard one first (potion_use / potion_discard), then buy."
+                        )
+        except Exception:
+            pass  # never let the guard break a normal purchase
+
     # Guard: prevent choosing a potion reward when all potion slots are full.
     # CommunicationMod hangs/crashes if you try to pick up a potion with no empty slots.
     if cmd_verb == "choose" and screen == "COMBAT_REWARD":
@@ -1497,7 +1591,8 @@ def send(command: str, reason: str = "") -> str:
             stale_note = ("[WARNING] the key does NOT appear in your possession after "
                           "that choose - re-read state and retry before leaving the "
                           "screen.]\n\n") + stale_note
-    return stale_note + chose_echo + format_state(raw)
+    return (_interruption_notice(raw) + _fight_start_notice(raw)
+            + stale_note + chose_echo + format_state(raw))
 
 
 def _auto_collect_gold(raw: dict) -> dict:
@@ -1881,12 +1976,53 @@ def turn(actions: list, reason: str = "") -> str:
             )
             break
 
+        # Silent no-op tripwire (run 241 F50 — third consecutive run with this
+        # family, second contributing to a death): a "play" the relay accepted
+        # but the game ignored leaves the echo claiming success while the card
+        # sits in hand. Echo-level verification lies; verify at STATE level —
+        # the played card must actually leave the hand (a draw restores hand
+        # SIZE but not the played card's count, so both must be unchanged to
+        # trigger).
+        if (resolved_action.strip().lower().startswith("play ")
+                and pre_combat is not None
+                and new_screen not in ("HAND_SELECT", "GRID", "CARD_REWARD",
+                                       "COMBAT_REWARD")):
+            tokens = resolved_action.strip().split()
+            intended_name = None
+            if len(tokens) >= 2:
+                pre_hand = pre_combat.get("hand", [])
+                if tokens[1].isdigit():
+                    k = int(tokens[1]) - 1
+                    if 0 <= k < len(pre_hand):
+                        intended_name = pre_hand[k].get("name")
+                else:
+                    intended_name = tokens[1]
+            post_combat_now = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
+            if intended_name and post_combat_now is not None and pre_hand_size is not None:
+                def _count_named(hand, name=intended_name):
+                    return sum(1 for c in hand if c.get("name", "").lower() == name.lower())
+                before_n = _count_named(pre_combat.get("hand", []))
+                after_hand = post_combat_now.get("hand", [])
+                if (before_n > 0 and _count_named(after_hand) >= before_n
+                        and len(after_hand) >= pre_hand_size):
+                    stopped_msg = (
+                        f"[SEQUENCE STOPPED after action {i + 1}/{total}: SILENT NO-OP — "
+                        f"'{resolved_action.strip()}' was accepted but {intended_name} is "
+                        f"still in your hand and the hand did not shrink. The play appears "
+                        f"NOT to have happened. Re-read the state and replay by NAME. "
+                        f"Remaining actions skipped.]"
+                    )
+                    break
+
         # Detect draw: if we played a card but hand size didn't shrink, cards were drawn.
         # Stop the sequence so the player can see the new cards and re-plan.
+        # A queued "end" is NOT exempt: the old "harmless to stop before" carve-out
+        # let a batched end fire right after a draw card, committing the turn before
+        # the drawn cards were ever seen — a drawn 0-cost Shiv went unplayed against
+        # a boss this way. Drawn cards may be playable even at 0 energy.
         if (pre_hand_size is not None
                 and resolved_action.startswith("play ")
                 and i < total - 1  # more actions remain
-                and actions[i + 1] != "end"  # next action isn't just "end" -- that's harmless to stop before
                 ):
             post_combat = ((_last_raw_state or {}).get("game_state") or {}).get("combat_state")
             if post_combat:
@@ -1898,7 +2034,8 @@ def turn(actions: list, reason: str = "") -> str:
                         f"[DRAW DETECTED after playing {resolved_action}: "
                         f"hand went from {pre_hand_size} to {post_hand_size} cards. "
                         f"Remaining actions skipped: {remaining_actions}. "
-                        f"You drew new cards — read the state and plan the rest of your turn.]"
+                        f"You drew new cards — they may be playable (0-cost included). "
+                        f"Read the state, then end the turn explicitly.]"
                     )
                     break
 
@@ -1908,7 +2045,8 @@ def turn(actions: list, reason: str = "") -> str:
     # Auto-handle mechanical transitions after the turn completes
     _remember(_auto_handle_mechanical(_last_raw_state))
 
-    formatted = format_state(_last_raw_state)
+    formatted = (_interruption_notice(_last_raw_state)
+                 + _fight_start_notice(_last_raw_state) + format_state(_last_raw_state))
     if stopped_msg:
         return stopped_msg + "\n\n" + formatted
     return formatted
@@ -2043,14 +2181,61 @@ def potion_discard(slot: int, reason: str = "") -> str:
 # Knowledge planning and reasoning (ontology + heuristics)
 # ---------------------------------------------------------------------------
 
+def _current_boundaries(raw: dict) -> list[str]:
+    """Which decision boundaries the live state sits on — deterministic, from the
+    screen alone (the boundary is fully determined by the screen, so it must not
+    depend on selector judgment). Returns awareness handles for files that exist;
+    mirrors the dispatch in bot/state_formatter.format_state.
+    """
+    names: list[str] = []
+    if not raw.get("in_game", False):
+        names = ["game-start"]
+    else:
+        gs = raw.get("game_state", {}) or {}
+        screen = gs.get("screen_type", "NONE")
+        phase = gs.get("room_phase", "")
+        combat = gs.get("combat_state")
+        floor = gs.get("floor", 0)
+        if screen == "CARD_REWARD":
+            names = ["card-reward"]
+        elif screen in ("GRID", "HAND_SELECT") and combat:
+            names = ["turn"]
+        elif (phase == "COMBAT" or screen == "NONE") and combat:
+            names = ["fight-start", "turn"] if combat.get("turn", 0) <= 1 else ["turn"]
+        elif screen == "EVENT":
+            ev = (gs.get("screen_state", {}) or {}).get("event_name", "")
+            names = ["game-start", "event"] if "neow" in ev.lower() else ["event"]
+        elif screen in ("SHOP_ROOM", "SHOP_SCREEN"):
+            names = ["shop"]
+        elif screen == "MAP":
+            # First map view of an act: floor 0 (after Neow) or a boss floor
+            # (16/33/50 — floor % 17 == 16) means the next pick opens a new act.
+            at_act_start = floor == 0 or floor % 17 == 16
+            names = ["act-start", "node-choice"] if at_act_start else ["node-choice"]
+        elif screen == "REST":
+            names = ["rest-site"]
+        elif screen == "COMBAT_REWARD":
+            names = ["card-reward"]
+        elif screen == "BOSS_REWARD":
+            names = ["boss-relic"]
+    handles = []
+    for n in names:
+        if os.path.exists(os.path.join(ROOT, "awareness", "sts1", "boundaries", f"{n}.md")):
+            handles.append(f"awareness/sts1/boundaries/{n}")
+    return handles
+
+
 def survey() -> str:
     """Survey what knowledge applies to the current state — a menu of recall()
     handles, not content.
 
-    One selector call (a small fast model) reads the live state + the ontology map
-    and returns the handles worth pulling: the on-board entities (enemies, boss,
-    non-basic hand cards, relics, current event), upgraded cards, and any phenomenon
-    whose conditions match right now. Judgment, not a state echo — it surfaces the
+    Two parts. First, the decision boundary: the screen you're on determines which
+    boundary index applies (turn, card-reward, shop, ...), so those handles are
+    included deterministically — code, not judgment. Second, one selector call
+    (a small fast model) reads the live state + the ontology map and returns the
+    handles worth pulling: the on-board entities (enemies, boss, non-basic hand
+    cards, relics, current event), upgraded cards, and any phenomenon whose
+    conditions match right now. Judgment, not a state echo — it surfaces the
     non-obvious (combos, contextual warnings) the way a deterministic list can't.
     Returns ONLY the menu; read what you want with recall().
     """
@@ -2061,14 +2246,25 @@ def survey() -> str:
     except Exception as e:
         return f"survey unavailable: {e}"
     try:
-        state_text = format_state(state_raw())
+        raw = state_raw()
+        boundary_handles = _current_boundaries(raw)
+        state_text = format_state(raw)
         handles = retrieval.survey(state_text, retrieval.load_index("sts1"))
     except Exception as e:
         return f"survey failed: {e}"
-    _log_event({"type": "survey", "handles": handles, "timestamp": time.time()})
-    if not handles:
+    handles = [h for h in handles if h not in boundary_handles]
+    _log_event({"type": "survey", "boundaries": boundary_handles, "handles": handles,
+                "timestamp": time.time()})
+    lines = []
+    if boundary_handles:
+        lines.append("this decision's boundary — consider its index:")
+        lines.extend(f"  {h}" for h in boundary_handles)
+    if handles:
+        lines.append("survey — recall() any of these:")
+        lines.extend(f"  {h}" for h in handles)
+    if not lines:
         return "survey: nothing flagged. recall() entities by name as needed."
-    return "\n".join(["survey — recall() any of these:"] + [f"  {h}" for h in handles])
+    return "\n".join(lines)
 
 
 
@@ -2096,9 +2292,16 @@ def _load_aliases() -> dict:
     try:
         path = os.path.join(ROOT, "awareness", "sts1", "survey-index.md")
         with open(path, encoding="utf-8") as f:
+            in_aliases = False
             for line in f:
                 line = line.strip()
-                if not line or line.startswith("#") or ":" not in line:
+                if line.startswith("## "):
+                    # Only the aliases section holds name->entry lines; later
+                    # sections (phenomena applies-when) also use ":" but are
+                    # selector input, not aliases.
+                    in_aliases = line == "## aliases (in-game name -> entry)"
+                    continue
+                if not in_aliases or not line or line.startswith("#") or ":" not in line:
                     continue
                 name, targets = line.split(":", 1)
                 name = name.strip()
@@ -2142,6 +2345,20 @@ def _recall_one(handle: str):
     if not parsed:
         return None
     layer, cat, name = parsed[0]
+    if cat == "recognitions" and layer in (None, "phenomena"):
+        # Recognitions live only in phenomena — route the bare category there so
+        # "recognitions/potion-use" and "category:recognitions, potion-use" resolve.
+        layer = "phenomena"
+    if cat == "boundaries" and layer in (None, "awareness"):
+        # Boundary indexes live only in awareness — "boundaries/turn" and
+        # "category:boundaries, turn" route straight to the file.
+        for stem in _stem_candidates(name):
+            try:
+                path = os.path.join(ROOT, "awareness", "sts1", "boundaries", stem + ".md")
+                return open(path, encoding="utf-8").read().strip()
+            except OSError:
+                continue
+        return None
     layer = layer or "ontology"
     is_plus = name.endswith("+")
     if is_plus and layer != "heuristics":      # "Bash+" -> the resolved phenomenon
@@ -2161,6 +2378,14 @@ def _recall_one(handle: str):
         return None
     cats = _HEUR_CATS if layer == "heuristics" else _ONT_CATS
     texts = []   # (address, text) — several categories can share a name
+    if layer == "heuristics":
+        # Root-level topic files (combat.md, map.md, hp-management.md, ...) —
+        # "layer:heuristics, combat" must reach them; they have no category.
+        for stem in _stem_candidates(name):
+            e = _load_heuristic_root(stem + ".md")
+            if e:
+                texts.append((name, e))
+                break
     for c in cats:
         e = loader(c, name)
         if e:
@@ -2329,27 +2554,28 @@ def start(character: str = "IRONCLAD", ascension: int = 0, seed: str = None) -> 
     saves = [os.path.join(_SAVES_DIR, f"{character.upper()}{ext}")
              for ext in (".autosave", ".autosaveBETA")]
     if any(os.path.exists(s) for s in saves):
-        # A save only matters if a run might actually be in progress. If the game
-        # cleanly reports OUT OF GAME, the file is a stale leftover — proceed.
-        # (The warn flag is a FILE because every play.py call is a new process —
-        # an in-memory flag made the CLI warn forever and never proceed.)
-        probe = _remember(_tcp_request({"type": "state"}))
-        cleanly_out = _healthy_state(probe) and probe.get("in_game") is False
+        # ALWAYS require the two-call confirm when a save file exists. A clean
+        # OUT OF GAME report does NOT mean the save is stale: a crash-to-menu
+        # mid-run (IB-012, run 241) produces exactly that state with a LIVE save
+        # that the orchestrator can resume by clicking Continue — and start()
+        # DESTROYS it. (The confirm flag is a FILE because every play.py call is
+        # a new process — an in-memory flag warned forever and never proceeded.)
         flag = os.path.join(_BASE_DIR, "data", "start_confirm.flag")
-        if not cleanly_out:
-            if not os.path.exists(flag):
-                with open(flag, "w") as f:
-                    f.write(character.upper())
-                return (
-                    f"[WARNING] A save for {character.upper()} exists and the game does "
-                    f"not report a clean OUT OF GAME state — starting DESTROYS the save, "
-                    f"and there is no resume command.\n"
-                    f"If a run seems to be in progress, STOP and report to the orchestrator.\n"
-                    f"If you intend to abandon it, call start again to confirm."
-                )
-            os.remove(flag)
-        elif os.path.exists(flag):
-            os.remove(flag)
+        if not os.path.exists(flag):
+            with open(flag, "w") as f:
+                f.write(character.upper())
+            return (
+                f"[WARNING] A save for {character.upper()} exists — starting DESTROYS "
+                f"it, and there is no resume command. If the game dropped to the main "
+                f"menu mid-run, the save is LIVE and recoverable (IB-012): STOP and "
+                f"report to the orchestrator.\n"
+                f"If you intend to abandon the save, call start again to confirm."
+            )
+        os.remove(flag)
+    # A confirmed start abandons whatever run the live-marker tracked.
+    live = os.path.join(_BASE_DIR, "data", "run_live.flag")
+    if os.path.exists(live):
+        os.remove(live)
     cmd = f"start {character}"
     if ascension > 0:
         cmd += f" {ascension}"
