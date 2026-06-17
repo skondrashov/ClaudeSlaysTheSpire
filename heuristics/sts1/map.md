@@ -32,7 +32,9 @@ Relics are the primary driver of run strength. Every winning formula was built o
 
 ## Elite Route Safety Rule
 
-**An elite is affordable when the ledger clears: current HP covers your derived price for the elite (its page gives the clock and levers; YOUR turns-to-kill against it gives the price) PLUS the derived prices of every forced fight between the elite and the next recovery, with margin for a spike.** A rest site within a floor or two of the elite makes most elites affordable; back-to-back elites with no rest between stack two full prices and usually don't clear. Check the rest site's CHILDREN before committing a column — a rest whose only child is the elite forces the fight at rest-capped HP (this funnel has killed a run).
+**An elite is affordable when the ledger clears: current HP covers your derived price for the elite (its page gives the clock and levers; YOUR turns-to-kill against it gives the price) PLUS the derived prices of every forced fight between the elite and the next recovery, with margin for a spike.** A rest site within a floor or two of the elite makes most elites affordable; back-to-back elites with no rest between stack two full prices and usually don't clear.
+
+**The funnel rule (generalized): before committing to a node, check its CHILDREN.** A node whose only child is an elite forces that elite no matter what you do at the node itself — the choice is already made one floor up. This applies to ANY node type, not just rest sites: a rest→elite funnel forces the elite at rest-capped HP; a treasure→elite, shop→elite, or event→elite funnel forces it just as hard (a treasure node whose only child is a forced Nemesis is the same trap). When your plan names an "escape" branch ("decide at F9 — skip via F9 x0"), the decision lives at the parent node where the branch still exists, not at the child where it has already collapsed. Make the call at the fork, not after it.
 
 Routing into elites without rest site coverage is a common cause of death:
 - A Monster path that locks into a following Elite floor with no rest option leaves no way to recover HP before the fight.

@@ -1,8 +1,10 @@
-Corruption can carry two full acts without Feel No Pain — free Skills pay for themselves in short fights
-Frail taxes every block card ~30%, but a big enough volume of free Skills absorbs the tax
+At high ascension the Transient hits harder: its final turn is 80, not 70, and that one number has ended two Silent runs
+Don't walk into the Transient at low HP without an Intangible turn or a guaranteed 80 block ready for turn five
+Before you click a map node, look one floor ahead — if its only child is an elite, you've already chosen that elite
+Price an elite when you ROUTE toward it, not when you walk in — by then every other path is gone
+Nemesis is brutal for poison decks: Intangible halves your clock and its 45 Scythe punches through your block
+Envenom plus Snecko Skull means two Poison per unblocked hit — with a pile of Shivs that nearly doubles your clock
+Omamori makes "I am Rich" free of curses, but free gold is worthless if you have no shop left to spend it in
+A lesson you can recite isn't a lesson you'll apply — the funnel still gets committed at the click
 Against Donu & Deca, kill Donu first — it stops the Strength ramp before the beams outgrow your block
-The Transient is a damage race: an attack in your opening hand counts as a block card there
-Drink potions in the fight that needs them — a full belt at the end of a run is wasted healing
-After every kill, re-check the plan: a dead enemy's attack no longer needs blocking
-Enter a boss pricing both sides of the race — your damage per turn AND the block its scaling will demand
 A win estimate must move when its inputs move, or it's not an estimate — it's the previous estimate

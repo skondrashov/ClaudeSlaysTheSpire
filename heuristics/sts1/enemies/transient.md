@@ -2,7 +2,7 @@
 
 **Core mechanic:** The Transient has [[buffs/Fading]] 5 -- it dies automatically after 5 turns regardless of HP. It also has [[buffs/Shifting]], so every point of damage dealt reduces incoming by the same amount this turn. Attacking is strictly better than pure blocking.
 
-**Primary strategy: survive 5 turns.** You do not need to kill the Transient. It will die on its own. The goal is to minimize total HP loss across 5 attack turns (30/40/50/60/70 at A2+). Use attacks to reduce incoming via Shifting, then block the remainder.
+**Primary strategy: survive 5 turns.** You do not need to kill the Transient. It will die on its own. The goal is to minimize total HP loss across 5 attack turns. Base ladder is 30/40/50/60/70; **at A2+ (so at A9) the ladder is 40/50/60/70/80**. The turn-5 hit of **80** is the killer: it exceeds most reachable Silent block ceilings, so the strip/block line MUST be planned to cover an 80, not a 70. Use attacks to reduce incoming via Shifting, then block the remainder.
 
 ## Optimal Play Each Turn
 
@@ -14,12 +14,12 @@
 
 - [[buffs/Strength]] debuffs are excellent ([[cards/Disarm]], [[cards/Dark Shackles]], [[cards/Malaise]] -- permanent or large temporary Str reduction compounds across turns)
 - [[debuffs/Weak]] is excellent (reduces the already-Shifting-reduced damage by another 25%)
-- [[cards/Impervious]] is best saved for Turns 3-5 when incoming is 50-70 base
+- [[cards/Impervious]] is best saved for Turns 3-5 when incoming is highest (60/70/80 at A9)
 
 ## What NOT to Do
 
 - Play purely defensively (blocking without attacking wastes the Shifting mechanic). The strips are PER-TURN consumables — Shifting's Strength loss restores at end of turn ([[buffs/Shifting]]), so a strip skipped on turn 1 is gone, not deferred. An attack in the opening hand IS a block card here: a 10-damage attack prevents 10 incoming this turn at the same rate as 10 block, and a pure-block turn 1 that takes the same damage as the attack line has paid the strip for nothing
-- Fight it without strong block density or Strength debuffs — with them the fight can end near-free; without them the Turn 3-5 hits (50-70 base) land hard
+- Fight it without strong block density or Strength debuffs — with them the fight can end near-free; without them the Turn 3-5 hits (60/70/80 at A9) land hard. Entering the Transient at low HP off a prior elite is the death pattern here: the turn-5 80 exceeds most reachable block ceilings, so do not route in at <~15 HP without an Intangible turn (Wraith Form) or a guaranteed turn-5 block of 80+
 - **Play with Normality curse in deck.** Normality limits card plays to 3/turn, which cripples the ability to play attacks (for Shifting) AND block in the same turn. If Normality is in the deck, exhaust it immediately when drawn ([[cards/Burning Pact]], [[cards/True Grit]]). Normality can cost 40 HP in a single Transient fight by locking you out of attacking and blocking on the same turn.
 
 ## Character-Specific Notes

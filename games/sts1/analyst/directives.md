@@ -1,6 +1,6 @@
 # Exploration Directives
 
-Written by Curate agent. Updated after the runs 241-242 audits (eighth curation cycle — D11 closed, D15 added). Run-222-era directives retired below.
+Written by Curate agent. Updated after the runs 243-244 audits (ninth curation cycle — D16 added on commit-node blindness; D15 progress note). Run-222-era directives retired below.
 
 ## Directive 10: Knowledge delivery to hallway fights and own-deck locks
 
@@ -65,6 +65,20 @@ Codified hallway facts also get re-derived or misapplied repeatedly (thievery-th
 **When activated:** (1) once Shivs one-shot hallway enemies, spend every discretionary slot (card rewards, shop slots, upgrades) on defensive scaling — Footwork + upgrades, After Image, second Footwork, repeatable Weak (Leg Sweep) — and tally the picks vs engine-depth alternatives in thinks; (2) target a block ceiling ≥ 30/turn before the Act 3 boss; record the realized max-block-per-turn at each boss; (3) if the Act 3 boss is Donu & Deca, follow the page's Donu-first order as written and record the Square-of-Protection/Dazed tax — the counterfactual datum the page's no-AOE section needs.
 
 **Success criteria:** A Silent A9 run entering the Act 3 boss with a 30+ block ceiling. Confirm or refute: does the defensive-scaling disposition close the gap the saturated-engine disposition left open? If confirmed across 2 runs, promote the saturation rule in accuracy.md/silent.md from disposition note to drafting rule.
+
+**Progress (runs 243-244):** Drafting discipline held both runs (Footwork+/Deflect+/Dex relics, every discretionary slot defensive). Run 244 REACHED saturation for the first time (Wrist Blade, Act 3 entry) with a realized block ceiling of 32 (Book T5) — but neither run reached the Act 3 boss, so the directive's actual hypothesis is still untested. Both failure modes so far were kill-speed floors on Act 2/3 elites and routing, NOT the block ceiling — note this when the directive is next touched; the block-ceiling hypothesis may be downstream of a more pressing routing/kill-speed problem.
+
+## Directive 16: Commit-node blindness — does decision-at-the-fork survive contact?
+
+**Status:** Open (opportunistic — activate every Win/Explore run; it's a map-discipline drill, no dedicated runs).
+
+**The pattern (runs 243 + 244, the two most recent deaths):** the run's largest avoidable regret was the same shape both times — a node committed past a funnel whose only child was a forced elite, fought at capped/low HP. Run 243: rest→Gremlin Leader (rest-capped 40/70). Run 244: treasure→Nemesis, AND the lesson was recited verbatim at run start with the escape named in the player's OWN act plan ("decide at F9 — skip via F9 x0"). At the F9 click the player chose x2 saying "decide there [F10]" — deferring to a floor where its own plan said no decision existed. **Recitation did not produce application.** Both runs also acknowledged the funnel correctly at OTHER nodes in the same run (244's F23 rest→GL funnel was priced fine). The failure localizes precisely to the map-choice click on the node WHOSE CHILD is the trap.
+
+**Hypothesis:** the generalized funnel rule (map.md, edited this cycle: "check the children of ANY node before committing its parent") plus pricing the act's elite pool by turns-to-kill at ROUTING time (not fight entry) is sufficient to prevent the funnel commit — IF a check actually fires at every map-choice. The competing hypothesis (audit's preferred): habit-level rules don't bind here and only a tool/manifest-level surfacing at the node-choice boundary will — i.e. this is D10 shape 3, second and third corpse.
+
+**When activated:** (1) at EVERY map-choice node, before clicking, enumerate the children of each candidate node one floor down; if any candidate's only child is an elite, treat the elite as already-chosen and price it NOW by your turns-to-kill against THAT enemy's clock (Act 2/3 elites are uniformly kill-speed checks — Intangible/HP-scaler enemies invalidate any realized-average transfer); (2) when your plan names an escape branch, make the call at the fork where the branch exists, never one node later; (3) re-derive WIN% at every elite entry and after any >15-HP fight, citing the re-derived inputs (not a re-affirmed prior total). Log each map-choice with the children check shown, so the audit can measure whether the check fired.
+
+**Success criteria:** Two consecutive audited runs with NO funnel-commit regret flagged (the check fired and changed or consciously confirmed the route at the fork). If the funnel still gets committed despite the check being in the habit, that is the evidence that promotes D10 shape 3 from problem-statement to a maintainer tool/manifest task.
 
 ---
 

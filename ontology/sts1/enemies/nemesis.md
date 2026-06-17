@@ -2,7 +2,7 @@
 
 - **Type:** Elite
 - **Act:** 3
-- **HP:** 185
+- **HP:** 185 (A8+: 200)
 
 ## Pattern
 
@@ -12,7 +12,7 @@ First turn: 50/50 chance of Scorch (Burns) or Attack. Subsequent turns: ~35% Sco
 
 | Move | Damage | Effect |
 |------|--------|--------|
-| Attack (multi-hit) | 6x3 = 18 | -- |
+| Attack (multi-hit) | 6x3 = 18 (A3+: 7x3 = 21) | -- |
 | Scythe | 45 | Single massive hit |
 | Scorch | -- | Adds 3 Burns to discard pile |
 

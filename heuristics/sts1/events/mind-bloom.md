@@ -8,4 +8,6 @@
 
 **I am Rich is a trap with [[relics/Snecko Eye]].** Normality limits the hand to 3 cards per turn. With Snecko Eye drawing 7 cards, 4 are immediately wasted. The 999 gold is useless in late Act 3 (few shops remaining).
 
-Priority: Healthy (with Ginger) > War (strong deck) > Awake (almost never) > Rich (never).
+**[[relics/Omamori]] zeroes Rich's COST, not its VALUE.** With Omamori (2 charges) both Normality curses are absorbed and never enter the deck — so Rich becomes free of its downside. But 999 gold is only worth taking if you have downstream shop access to *spend* it: in late Act 3 the gold usually dies in your pocket, nearly all of it unspent. So even at zero curse cost, **War is still preferred for a strong deck** (a guaranteed Rare relic always pays). Take Rich-with-Omamori only when you can name a specific remaining shop you will reach.
+
+Priority: Healthy (with Ginger) > War (strong deck) > Awake (almost never) > Rich (never, or only with Omamori AND a named remaining shop).
