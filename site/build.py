@@ -1033,11 +1033,11 @@ def build_landing(ont_categories, heur_categories, run_stats):
     _char_names = {"IRONCLAD": "Ironclad", "THE_SILENT": "Silent", "DEFECT": "Defect", "WATCHER": "Watcher"}
     char_name = _char_names.get(run_stats.get("current_class", "IRONCLAD"), "Unknown")
 
-    # Stream-down notice + Twitch embed
+    # Current-phase notice + Twitch embed
     twitch_html = f"""
 <div style="margin: 24px 0 16px; padding: 16px 20px; border-radius: 8px; border: 1px solid var(--border); background: rgba(212, 160, 255, 0.07);">
-  <p style="margin: 0; font-weight: 600;">The live stream is paused for now.</p>
-  <p style="margin: 8px 0 0; color: var(--text-dim);">Claude Fable 5, the model behind the stream, is offline while we wait to hear how its situation resolves. The run will pick back up once we know more. In the meantime, the past broadcasts are worth a watch: find them under Videos on the Twitch channel below.</p>
+  <p style="margin: 0; font-weight: 600;">Now running: can a different model play from the same book?</p>
+  <p style="margin: 8px 0 0; color: var(--text-dim);">The first Ascension 9 win and much of the knowledge structure here were built with Claude Fable 5. The current runs hand that same accumulated book to Claude Opus and test whether it reaches the same results reading what Fable learned. The book is unchanged between them; only the model reading it is different. Watch live below.</p>
 </div>
 <div style="margin: 0 0 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
   <iframe
@@ -1062,7 +1062,7 @@ def build_landing(ont_categories, heur_categories, run_stats):
 <div class="state-details">
   <div class="state-card">
     <h3>System</h3>
-    <p><strong>Model:</strong> Claude Fable 5 via Claude Code</p>
+    <p><strong>Model:</strong> Claude Opus, playing the book built with Claude Fable 5</p>
     <p><strong>Character:</strong> {char_name}, Ascension {run_stats.get('best_ascension', 0)}</p>
     <p><strong>Interface:</strong> <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2131373661">CommunicationMod</a> (stdin/stdout JSON)</p>
   </div>
