@@ -49,6 +49,8 @@ from cmd import state, send, turn, play, end, choose, proceed, skip, potion_use,
 
 - **Intent damage numbers are final.** The displayed intent damage (e.g. `Intent: ATTACK (30x2)`) already includes every active modifier — the enemy's Strength, its Weak, your Vulnerable. Use the number as-is in block math; re-applying modifiers double-counts them (a confirmed source of under-blocking).
 
+- **The MAP screen shows a FORCED-ROUTE ANALYSIS.** Under the available paths, each choosable node lists what picking it LOCKS IN with no further choice: the forced single-child chain forward (e.g. `Treasure → Monster → Elite → Elite → (you choose again)`) and a flag counting forced elites / Act-3 monster rooms before the next rest (`⚠⚠ 2 FORCED elites before any rest`). This is computed from the map graph, not judgment — a node whose only child funnels into elites has already chosen those fights for you. Price the flagged forced fights against current HP at THIS node, where the escape branches still exist; once you walk into the funnel they have collapsed. Branches (`→ (you choose again)`) are where you re-decide.
+
 ## Known Issues
 
 - **The map cannot show which elite is burning.** With the final act unlocked, one elite per act carries the Emerald Key and buffs every monster in its fight (see `ontology/sts1/rules/burning-elite.md`) — but CommunicationMod doesn't expose the flag, so the text map shows all elites identically. If an elite fight opens with an unexpected buff on every enemy (Strength, +25% HP, Metallicize, or Regenerate), it's the burning elite; expect the Emerald Key in its rewards and price the fight higher.

@@ -414,17 +414,107 @@ def format_shop(gs: dict) -> str:
     return "\n".join(lines)
 
 
+_MAP_SYMBOLS = {
+    "M": "Monster", "?": "Unknown", "$": "Shop",
+    "E": "Elite", "R": "Rest", "T": "Treasure", "B": "Boss",
+}
+
+
+def _forced_route(start_node, lookup, max_depth=25):
+    """Follow the single-child (forced) chain forward from start_node.
+
+    A node with exactly one child forces that child; a node with several
+    children is a branch where the player chooses again. Returns the list of
+    forced descendant symbols (excluding start) and a stop reason
+    ('branch' | 'boss' | 'end'). Pure traversal of the map graph the harness
+    already provides — invents nothing.
+    """
+    chain, cur, seen = [], start_node, set()
+    for _ in range(max_depth):
+        key = (cur.get("x"), cur.get("y"))
+        if key in seen:
+            return chain, "end"
+        seen.add(key)
+        children = cur.get("children") or []
+        if len(children) == 0:
+            return chain, "boss"
+        if len(children) > 1:
+            return chain, "branch"
+        ch = children[0]
+        # Children are always on the next floor; infer y when the link omits it.
+        cy = ch.get("y")
+        if cy is None:
+            cy = cur.get("y", 0) + 1
+        nxt = lookup.get((ch.get("x"), cy))
+        if nxt is None:
+            return chain, "end"
+        chain.append(nxt.get("symbol", "?"))
+        cur = nxt
+    return chain, "end"
+
+
+def _route_analysis(gs: dict) -> list:
+    """Per-candidate forced-route summary for the MAP screen.
+
+    For each immediately choosable node, surfaces what picking it FORCES with
+    no further choice: the forced fight chain to the next rest and the count of
+    forced elites / Act-3 monster rooms before that rest. The recurring death
+    is committing a node whose only-child chain funnels into elites at low HP;
+    this puts that structure in front of the decision. Presentation only — it
+    flags structure, not enemy identity (the node-choice knowledge supplies
+    threats). Returns [] when the data isn't a normal mid-act map.
+    """
+    map_data = gs.get("map") or []
+    next_nodes = gs.get("screen_state", {}).get("next_nodes") or []
+    cur_floor = gs.get("floor", 0)
+    act = gs.get("act", 1)
+    if not map_data or not next_nodes:
+        return []
+    lookup = {(n.get("x"), n.get("y")): n for n in map_data}
+
+    out = []
+    for i, choice in enumerate(next_nodes):
+        # next_nodes lack children; resolve to the map node at (x, cur_floor).
+        node = lookup.get((choice.get("x"), cur_floor)) or dict(choice)
+        node.setdefault("symbol", choice.get("symbol", "?"))
+        sym0 = node.get("symbol", "?")
+        chain, stop = _forced_route(node, lookup)
+        # Full forced sequence including the candidate itself.
+        seq = [sym0] + chain
+        # Fights forced before the first Rest in the sequence.
+        before_rest, rest_seen = [], False
+        for s in seq:
+            if s == "R":
+                rest_seen = True
+                break
+            before_rest.append(s)
+        n_elite = before_rest.count("E")
+        n_monster = sum(before_rest.count(s) for s in ("M",))  # forced monster rooms
+        pretty = " → ".join(_MAP_SYMBOLS.get(s, s) for s in seq) or _MAP_SYMBOLS.get(sym0, sym0)
+        tail = {"branch": " → (you choose again)", "boss": " → BOSS", "end": ""}[stop]
+        flag = ""
+        if n_elite >= 2:
+            flag = f"   ⚠⚠ {n_elite} FORCED elites before any rest"
+        elif n_elite == 1:
+            flag = "   ⚠ forces an elite with no rest before it"
+        elif act >= 3 and n_monster >= 1 and not rest_seen:
+            flag = "   ⚠ forces an Act 3 monster room (price its worst case — block-check pool)"
+        out.append(f"  [{i}] forced: {pretty}{tail}{flag}")
+    # Only worth showing if at least one candidate forces a fight downstream.
+    if not any("⚠" in l for l in out):
+        # Still show it when any chain is non-trivial, so the player sees the structure.
+        if not any("→" in l for l in out):
+            return []
+    return out
+
+
 def format_map(gs: dict) -> str:
     map_data = gs.get("map", [])
     next_nodes = gs.get("screen_state", {}).get("next_nodes", [])
     current_floor = gs.get("floor", 0)
     boss = gs.get("screen_state", {}).get("boss", {})
 
-    SYMBOLS = {
-        "M": "Monster", "?": "Unknown", "$": "Shop",
-        "E": "Elite", "R": "Rest", "T": "Treasure",
-        "B": "Boss",
-    }
+    SYMBOLS = _MAP_SYMBOLS
 
     lines = ["\n=== MAP ==="]
 
@@ -436,6 +526,11 @@ def format_map(gs: dict) -> str:
             x = node.get("x", "?")
             node_type = SYMBOLS.get(symbol, symbol)
             lines.append(f"  [{i}] {node_type} (x={x})")
+        route = _route_analysis(gs)
+        if route:
+            lines.append("")
+            lines.append("FORCED-ROUTE ANALYSIS (what each choice locks in before your next free pick / next rest):")
+            lines.extend(route)
     else:
         # Pre-boss floor: next_nodes is empty but the boss is the (only) choice.
         ss = gs.get("screen_state", {})
