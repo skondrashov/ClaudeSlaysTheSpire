@@ -272,6 +272,22 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 ---
 
+## IB-017: Card-reward screen is the one selection screen that does NOT advertise by-name choosing
+
+**What:** `format_card_reward` (state_formatter.py ~line 619) ends with `Use: choose <index> to take, return to skip` — index only. The shop screen (line 412, `Buy by NAME (preferred): choose <Name> ... choose purge`) and the rest screen (line 596, `choose <option_name>`) both surface and recommend the name-based path; the card-reward screen does not. CommunicationMod's `choose` accepts a card name at CARD_REWARD, so the affordance exists at the engine level — it is simply not shown, so the player defaults to a raw index and an index fumble has no name-based safety net. Run 248 F1: intended index 1 (Spot Weakness), sent `choose 0` and took Whirlwind — the deck's first scaling source was lost to a one-character index slip on the one screen that steers toward indices. (Contrast IB-003/IB-013, where the index itself was *wrong*; here the index does what it says — the gap is the missing name affordance that would have let the player write `choose "Spot Weakness"` and avoid the slip entirely.)
+
+**Root cause:** Presentation inconsistency in `format_card_reward` — the by-name hint that exists on shop/rest was never added to card reward.
+
+**Impact:** Low-Medium. Not a desync (the echo is honest), but a card reward is a high-leverage, hard-to-undo pick, and the index-only framing is exactly where a fat-finger costs a key card. Classify the F1 misplay as **execution error on top of an interface gap**: the player owns the wrong index, but the UI gave them no by-name option to reach for. A cheap fix removes the trap.
+
+**Fix candidate:** Add a by-name hint to `format_card_reward` mirroring the shop line — `choose <Name> (preferred): choose Spot Weakness` — and verify CommunicationMod resolves card names at CARD_REWARD (it does for shop/rest). Optional stronger guard: echo the resolved card name back before commit (card rewards have no confirm step, unlike purge's GRID→confirm).
+
+**Affected runs:** 248 (F1, intended Spot Weakness, took Whirlwind via `choose 0`).
+
+**Status:** OPEN.
+
+---
+
 ## Tracking
 
 When a new interface bug is observed, add it here with:
