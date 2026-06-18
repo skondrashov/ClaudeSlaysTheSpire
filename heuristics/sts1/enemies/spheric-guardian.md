@@ -2,7 +2,7 @@
 
 **Core rule:** This is a DPS check disguised as a hallway fight. Must kill within 6-8 turns or block becomes insurmountable. Strip 3 [[buffs/Artifact]] charges first, then apply [[debuffs/Vulnerable]], then burst through remaining block + HP.
 
-**Damage clock:** 10x2 attacks every attack turn, blocked through the [[debuffs/Frail]] it stacks on you — the cost is that leak, turn after turn, and it is a DPS check, so a slow deck pays a multiple of what a fast one pays; price it by your turns-to-kill. Without a damage engine ([[buffs/Strength]], Corruption+FNP block conversion, etc.) and burst, this fight is a guaranteed loss through attrition.
+**Damage clock:** 10x2 attacks every attack turn, blocked through the [[debuffs/Frail]] it stacks on you — the cost is that leak, turn after turn, and it is a DPS check, so a slow deck pays a multiple of what a fast one pays; price it by your turns-to-kill. The win condition is NOT "one hit exceeds the block" — the [[buffs/Barricade]]-retained block still TAKES damage, so what matters is that a turn's TOTAL chip exceeds (block + remaining HP). That means even a slow Strength source plus burst stockpiling can grind the wall down; it is just expensive in turns and HP (see Slow-but-viable note below). Price every turn the fight will last.
 
 ## Strategy
 
@@ -16,13 +16,16 @@
 - Thunderclap (strip remaining Artifact)
 - [[relics/Pen Nib]] (double damage to break block)
 - Burst damage ([[cards/Fiend Fire]], [[cards/Immolate]], [[cards/Bludgeon]])
-- FAST Strength scaling ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Limit Break]] -- NOT [[cards/Demon Form]])
+- FAST Strength scaling preferred ([[cards/Inflame]], [[cards/Spot Weakness]], [[cards/Limit Break]]); [[cards/Demon Form]] alone also works but is slow and bills you for every extra turn (see Slow-but-viable note)
 - Potions ([[potions/Strength Potion]], [[potions/Fire Potion]])
+
+## Slow-but-viable: chip + a ramping Str source
+
+Chipping the persistent [[buffs/Barricade]] block while a slow Strength source (even [[cards/Demon Form]] alone) ramps IS a viable win — just slow and expensive. With [[relics/Runic Pyramid]] stockpiling attacks for a big turn + [[relics/Pen Nib]] doubling the break hit, accumulated Strength eventually pushes a turn's total damage past (block + remaining HP) and ends the fight. This is a DPS-CHECK WARNING, not a guaranteed loss: it can cost you down to ~20 HP and is a real near-miss, so prefer front-loaded Strength + burst when you have it. But if Demon Form is your only scaler, the fight is still winnable — price it by turns-to-break-the-wall and bring every burst potion.
 
 ## What to Avoid
 
-- Chip damage with Strikes (block regenerates faster than you can deplete it)
-- Demon Form as sole Strength source (too slow -- 13 Str by turn 9 still lost to 65+ block)
+- Chip damage with Strikes ALONE and no scaling (block regenerates faster than bare Strikes deplete it — you need a ramping damage source behind the chip; see Slow-but-viable above)
 - Random exhaust effects (Havoc, unupgraded [[cards/True Grit]])
 - Exhausting Spot Weakness (permanent Strength gain is needed to break through [[cards/Barricade]])
 - Playing [[cards/Brutality]] (1 HP/turn self-damage over an 8-13 turn fight)

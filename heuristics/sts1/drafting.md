@@ -161,6 +161,8 @@ Remove Strikes at shops and events. A 10-12 card deck draws key cards much more 
 
 Remove Strikes before Defends. Strikes get outclassed faster by better attacks; Defend's 5 block stays relevant longer.
 
+**Deferred thinning is a cumulative HP leak — flag it.** A bloated deck (27-28 cards) does not just feel slow; it draws its scaling engine (Demon Form, Corruption, the block power) 5-6 turns late EVERY grind fight, and each of those early engine-less turns bleeds HP. The leak is invisible per-fight and lethal in aggregate: three grind fights each costing 10-18 extra HP because the engine sat in the draw pile is what delivers you to an Act 3 survival check at half HP. Hand-clogging relics amplify it — [[relics/Runic Pyramid]] retains a 10-card hand and blocks new draws, so the engine can sit undrawn even longer. With a 27+ card deck, treat REMOVAL as an active priority, not a someday-nicety: spend shop/event removals on Strikes/Defends to pull the deck toward 10-15 cards, OR (with Runic Pyramid) empty the hand each turn to cycle toward the engine. Skipping card rewards to stay lean is correct but NOT sufficient on its own — a deck that is merely "not growing" at 28 cards still arrives late.
+
 ---
 
 ## Multi-Purpose Cards Win

@@ -12,6 +12,8 @@ Passive block engine that triggers on every exhaust. Permanent for the rest of c
 
 **[[enemies/Spheric Guardian]]:** Corruption + FNP can beat Spheric Guardian cleanly — a promising configuration for the hardest [[acts/Act 2]] hallway fight, though the engine's track record is still thin.
 
+**Emergency 0-energy block from a dead hand:** With FNP already online, a mass-exhaust source converts otherwise-useless cards into instant block under lethal pressure. [[cards/Second Wind]] (exhaust every non-Attack in hand) or an [[potions/Elixir]] (exhaust any chosen cards, 0 energy) fired through FNP turns a clog of dead Strikes/Skills into a block burst the same turn — e.g. exhausting 3 cards through FNP (3/exhaust, or FNP+ 4/exhaust) = +9 to +12 emergency block at zero energy cost, on top of whatever the rest of your hand blocks. This is the survival line when you draw a block-light hand into a big incoming hit and need block from cards that can't otherwise pay for it. Requires FNP to already be in play.
+
 **Victory engine:** Mandatory component of [[cards/Barricade]] + Corruption engine. FNP+ (4 block/exhaust) can generate 40-60+ block per fight from exhaust triggers alone.
 
 **Anti-synergy:** [[debuffs/Weak]] in decks with few exhaust sources.

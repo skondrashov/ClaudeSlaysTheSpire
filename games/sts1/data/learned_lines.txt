@@ -1,10 +1,10 @@
-At high ascension the Transient hits harder: its final turn is 80, not 70, and that one number has ended two Silent runs
-Don't walk into the Transient at low HP without an Intangible turn or a guaranteed 80 block ready for turn five
+A forced monster room is not a safe default — Act 3 can roll the Transient, the Maw, or Reptomancer, deadlier than the elite you dodged
+Attack the Transient, don't turtle: it loses Strength equal to the damage you deal, so every hit you land cuts the incoming
+Kill Bear first in the Masked Bandits fight — its Dexterity-down debuff rots your block for the rest of the fight
+A Pen-Nib-doubled Heavy Blade under Vulnerable at high Strength can blast a boss clean past its phase line so the next phase never even starts
+With Feel No Pain already up, a mass-exhaust like Second Wind or an Elixir turns a hand of dead cards into emergency block for free
+The Spheric Guardian wall is grindable: even Demon Form alone can eventually break it — slow and expensive, but not a guaranteed loss
+A 28-card deck draws its engine five or six turns late every fight, and that quiet HP leak is what kills you three fights later
+At high ascension the Transient hits harder: its final turn is 80, not 70, and that one number has ended runs
 Before you click a map node, look one floor ahead — if its only child is an elite, you've already chosen that elite
 Price an elite when you ROUTE toward it, not when you walk in — by then every other path is gone
-Nemesis is brutal for poison decks: Intangible halves your clock and its 45 Scythe punches through your block
-Envenom plus Snecko Skull means two Poison per unblocked hit — with a pile of Shivs that nearly doubles your clock
-Omamori makes "I am Rich" free of curses, but free gold is worthless if you have no shop left to spend it in
-A lesson you can recite isn't a lesson you'll apply — the funnel still gets committed at the click
-Against Donu & Deca, kill Donu first — it stops the Strength ramp before the beams outgrow your block
-A win estimate must move when its inputs move, or it's not an estimate — it's the previous estimate
