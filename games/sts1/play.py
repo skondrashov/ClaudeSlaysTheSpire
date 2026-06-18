@@ -53,16 +53,24 @@ if __name__ == "__main__":
             reason = args[1] if len(args) > 1 else "executing turn"
             print(turn(actions, reason=reason))
     elif cmd == "play":
-        # python play.py play "card_index [target]" "reason text"
+        # python play.py play "card [target]" "reason text"
+        # card may be an INDEX (1-based) or a NAME ("Strike", "Shrug It Off");
+        # target may be an enemy INDEX (0-based) or NAME. cmd.play -> send
+        # resolves names, so DON'T int() here — forcing numeric indices was a
+        # documented-but-unimplemented gap that wasted calls every run.
         play_args = args[0] if args else ""
         reason = args[1] if len(args) > 1 else "playing card"
         parts = play_args.split()
-        card_idx = int(parts[0]) if parts else 1
-        target = int(parts[1]) if len(parts) > 1 else None
-        if target is not None:
-            print(play(card_idx, target, reason=reason))
+        card = parts[0] if parts else "1"
+        if card.isdigit():
+            card = int(card)
+        if len(parts) > 1:
+            target = " ".join(parts[1:])      # numeric or enemy name
+            if target.isdigit():
+                target = int(target)
+            print(play(card, target, reason=reason))
         else:
-            print(play(card_idx, reason=reason))
+            print(play(card, reason=reason))
     elif cmd == "end":
         reason = args[0] if args else "ending turn"
         print(end(reason=reason))
