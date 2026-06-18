@@ -614,7 +614,8 @@ def format_card_reward(gs: dict) -> str:
             name += "+"
         lines.append(f"  [{i}] {name} ({ctype}, {cost}E, {rarity})")
 
-    lines.append("\nUse: choose <index> to take, return to skip")
+    lines.append("\nUse: choose <card name> (PREFERRED — by-index slips are a known misplay; e.g. choose Spot Weakness) "
+                 "or choose <index> to take; return to skip. Verify the [chose: ...] echo.")
     return "\n".join(lines)
 
 
