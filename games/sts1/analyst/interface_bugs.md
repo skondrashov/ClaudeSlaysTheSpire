@@ -254,6 +254,24 @@ Known issues in the CommunicationMod / relay / cmd.py / state_formatter pipeline
 
 ---
 
+## IB-016: "Heart of Iron" surfaced as a takeable combat-reward consumable (Boss relic shown as a hallway/potion-class reward)
+
+**What:** On a hallway combat reward (Floor 1, COMBAT_REWARD), "Heart of Iron" was offered as a takeable reward (`choose 0 | Take Heart of Iron`) and behaved as a single-combat consumable granting combat-long Metallicize 6: it was used once (Floor 6 Sentry fight — "Metallicize 6 now active all fight") and then appears in NEITHER the end-of-run relics list NOR the potions belt. In vanilla Slay the Spire, Heart of Iron is a **Boss relic** (Metallicize 6 at the start of every combat, permanent) — it does not appear as a normal/elite combat reward, is not a potion, and persists for the whole run. The Metallicize-6 VALUE the player observed is correct for the relic; the discrepancy is the **acquisition class and persistence** — a Boss relic was delivered as a one-shot hallway reward and consumed.
+
+**Root cause:** Unknown — not yet isolated in the relay/formatter pipeline. Candidates: the reward-list builder is pulling a Boss-pool relic into a hallway combat-reward slot, or the formatter is mis-classing a relic reward as a consumable/potion-style "take" with no inventory persistence. Needs a targeted look at how combat-reward relic options are enumerated and how taken items are written to the relic inventory vs. discarded.
+
+**Impact:** Medium. The player got ~one fight of free Metallicize 6 it should either not have had at all (if the reward shouldn't exist) or should have kept all run (if it's the real Boss relic). It distorts the HP economy and the eval trail in either direction, and it has now appeared in **two consecutive runs** (245 audit flagged the same "Heart of Iron as a combat-long-Metallicize-6 potion" observation; 246 reproduces it). Not fatal, but a real ontology/interface integrity gap.
+
+**Ontology note:** `ontology/sts1/relics/heart-of-iron.md` is correct and already carries an Identity note ("This is a RELIC, not a potion... there is no use action"). **Do NOT add a Heart of Iron potion to the ontology potion space** — there is no such potion in vanilla; inventing one to match the interface would codify the bug. The fix is in the tool pipeline, not the book.
+
+**Affected runs:** 245 (observed), 246 (Floor 1 reward idx 37-38, used Floor 6 idx 116-122; absent from final inventory).
+
+**Status:** OPEN. Investigate the combat-reward relic enumeration + the take-and-persist path for relic-class rewards.
+
+**Fix candidates:** (1) verify whether the reward list is correctly filtering the Boss relic pool out of hallway/elite combat rewards; (2) if a relic reward is legitimately offered, ensure "take" writes it to the permanent relic inventory (it should show in end-of-run relics), not consume it; (3) add a post-take possession assert (same shape as IB-011) so a relic reward that fails to persist is caught immediately.
+
+---
+
 ## Tracking
 
 When a new interface bug is observed, add it here with:
